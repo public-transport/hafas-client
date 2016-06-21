@@ -10,5 +10,8 @@
 	"bugs":         "https://github.com/derhuerst/hafas-client/issues",
 	"license":      "ISC",
 	"keywords":     ["hafas", "public", "transport", "api"],
-	"engines" :     {"node": ">=4"}
+	"engines" :     {"node": ">=4"},
+	"dependencies": {
+		"got": "^6.3"
+	}
 }
