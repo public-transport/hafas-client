@@ -1,0 +1,14 @@
+{
+	"name":         "hafas-client",
+	"description":  "JavaScript client for HAFAS mobile APIs.",
+	"version":      "0.1.0",
+	"main":         "index.js",
+	"files":        ["index.js"],
+	"author":       "Jannis R <mail@jannisr.de>",
+	"homepage":     "https://github.com/derhuerst/hafas-client",
+	"repository":   "derhuerst/hafas-client",
+	"bugs":         "https://github.com/derhuerst/hafas-client/issues",
+	"license":      "ISC",
+	"keywords":     ["hafas", "public", "transport", "api"],
+	"engines" :     {"node": ">=4"}
+}
