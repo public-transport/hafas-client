@@ -12,6 +12,7 @@
 	"keywords":     ["hafas", "public", "transport", "api"],
 	"engines" :     {"node": ">=4"},
 	"dependencies": {
-		"got": "^6.3"
+		"got": "^6.3",
+		"moment-timezone": "^0.5.4"
 	}
 }
