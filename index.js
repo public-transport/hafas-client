@@ -9,9 +9,9 @@ const onData = (d) => {
 	if (!d.common) return d
 	const c = d.common
 	if (Array.isArray(c.locL)) d.locations = c.locL.map(parse.location)
-	if (Array.isArray(c.prodL)) d.locations = c.prodL.map(parse.product)
-	if (Array.isArray(c.remL)) d.locations = c.remL.map(parse.remark)
-	if (Array.isArray(c.opL)) d.locations = c.opL.map(parse.agency)
+	if (Array.isArray(c.prodL)) d.products = c.prodL.map(parse.product)
+	if (Array.isArray(c.remL)) d.remarks = c.remL.map(parse.remark)
+	if (Array.isArray(c.opL)) d.agencies = c.opL.map(parse.agency)
 	return d
 }
 
@@ -26,7 +26,7 @@ const request = (cfg) => (data) => {
 			'Accept-Encoding': 'gzip, deflate'
 		}
 	}
-	if (cfg.req) req = cfg.req(req)
+	if (cfg.onReq) req = cfg.onReq(req)
 
 	return got.post(cfg.endpoint, req)
 	.then((res) => {
