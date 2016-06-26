@@ -4,13 +4,13 @@ const moment = require('moment-timezone')
 
 
 
-const dateTime = (timezone) => (date, time) => {
+const dateTime = (tz, date, time) => {
 	let offset = 0 // in days
 	if (time.length > 6) {
 		offset = +time.slice(0, -6)
 		time = time.slice(-6)
 	}
-	return moment.tz(date + 'T' + time, timezone)
+	return moment.tz(date + 'T' + time, tz)
 	.add(offset, 'days')
 	.valueOf()
 }
@@ -52,7 +52,29 @@ const remark = (r) => null // todo
 
 
 const agency = (a) => a.name
+
+
+
+
+// todo: what is d.jny.dirFlg?
+// todo: d.stbStop.dProgType
+// todo: what is d.stbStop.dTimeR?
+// tz = timezone, s = stations, p = products, r = remarks
+const departure = (tz, s, p, r) => (d) => {
+	const result = {
+		  station:   s[parseInt(d.stbStop.locX)]
+		, when:      new Date(dateTime(tz, d.date, d.stbStop.dTimeR || d.stbStop.dTimeS))
+		, direction: shorten(d.dirTxt) // todo: parse this
+		, product:   p[parseInt(d.prodX)]
+		, remarks:   d.remL ? d.remL.map((rm) => r[parseInt(rm.remX)]) : null
+		, trip:      +d.jid.split('|')[1]
+	}
+	if (d.stbStop.dTimeR && d.stbStop.dTimeS) result.delay =
+		dateTime(tz, d.date, d.stbStop.dTimeR) - dateTime(tz, d.date, d.stbStop.dTimeS)
+	return result
+}
 module.exports = {
 	dateTime,
-	location, product, remark, agency
+	location, product, remark, agency,
+	departure
 }
