@@ -73,8 +73,23 @@ const departure = (tz, s, p, r) => (d) => {
 		dateTime(tz, d.date, d.stbStop.dTimeR) - dateTime(tz, d.date, d.stbStop.dTimeS)
 	return result
 }
+
+// todo: remarks
+// todo: products
+// todo: what is s.pCls?
+// todo: what is s.wt?
+// todo: what is s.dur?
+const nearby = (n) => {
+	const result = location(n)
+	result.distance = n.dist
+	return result
+}
+
+
+
 module.exports = {
 	dateTime,
 	location, product, remark, agency,
-	departure
+	departure,
+	nearby
 }
