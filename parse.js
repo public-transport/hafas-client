@@ -55,6 +55,66 @@ const agency = (a) => a.name
 
 
 
+// s = stations, p = products, r = remarks, c = connection
+const stop = (tz, s, p, r, c) => (st) => {
+	const result = {station:   s[parseInt(st.locX)]}
+	if (st.aTimeR || st.aTimeS) result.arrival =
+		new Date(dateTime(tz, c.date, st.aTimeR || st.aTimeS))
+	if (st.dTimeR || st.dTimeS) result.departure =
+		new Date(dateTime(tz, c.date, st.dTimeR || st.dTimeS))
+	return result
+}
+
+// todo: finish parseRemark first
+// s = stations, p = products, r = remarks, c = connection
+const applyRemark = (s, p, r, c) => (rm) => null
+
+// todo: pt.sDays
+// todo: pt.dep.dProgType, pt.arr.dProgType
+// todo: what is pt.jny.dirFlg?
+// todo: how does pt.freq work?
+// s = stations, p = products, r = remarks, c = connection
+const part = (tz, s, p, r, c) => (pt) => {
+	const result = {
+		  from:      s[parseInt(pt.dep.locX)]
+		, to:        s[parseInt(pt.arr.locX)]
+		, start:     new Date(dateTime(tz, c.date, pt.dep.dTimeR || pt.dep.dTimeS))
+		, end:       new Date(dateTime(tz, c.date, pt.dep.aTimeR || pt.arr.aTimeS))
+	}
+	if (pt.type === 'WALK') result.type = 'walking'
+	else if (pt.type === 'JNY') {
+		result.product = p[parseInt(pt.jny.prodX)]
+		result.direction = pt.jny.dirTxt // todo: parse this
+		if (pt.jny.stopL) result.passed = pt.jny.stopL.map(stop(tz, s, p, r, c))
+		pt.jny.remL.forEach(applyRemark(s, p, r, c))
+
+		if (pt.jny.freq && pt.jny.freq.jnyL)
+			result.alternatives = pt.jny.freq.jnyL
+				.filter((a) => a.stopL[0].locX === pt.dep.locX)
+				.map((a) => ({
+					product: p[parseInt(a.prodX)],
+					when:    new Date(dateTime(tz, c.date, a.stopL[0].dTimeS))
+				}))
+	}
+	return result
+}
+
+// todo: c.sDays
+// todo: c.dep.dProgType, c.arr.dProgType
+// todo: c.conSubscr
+// todo: c.trfRes x vbb-parse-ticket
+// todo: use computed information from part
+// s = stations, p = products, r = remarks
+const route = (tz, s, p, r) => (c) => {
+	const parts = c.secL.map(part(tz, s, p, r, c))
+	return {
+		  parts
+		, from:  parts[0].from
+		, start: parts[0].start
+		, to:    parts[parts.length - 1].to
+		, end:   parts[parts.length - 1].end
+	}
+}
 
 // todo: what is d.jny.dirFlg?
 // todo: d.stbStop.dProgType
@@ -64,7 +124,7 @@ const departure = (tz, s, p, r) => (d) => {
 	const result = {
 		  station:   s[parseInt(d.stbStop.locX)]
 		, when:      new Date(dateTime(tz, d.date, d.stbStop.dTimeR || d.stbStop.dTimeS))
-		, direction: shorten(d.dirTxt) // todo: parse this
+		, direction: d.dirTxt
 		, product:   p[parseInt(d.prodX)]
 		, remarks:   d.remL ? d.remL.map((rm) => r[parseInt(rm.remX)]) : null
 		, trip:      +d.jid.split('|')[1]
@@ -90,6 +150,7 @@ const nearby = (n) => {
 module.exports = {
 	dateTime,
 	location, product, remark, agency,
+	stop, applyRemark, part, route,
 	departure,
 	nearby
 }
