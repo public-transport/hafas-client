@@ -1,6 +1,6 @@
 # hafas-client
 
-**A client for the HAFAS mobile API**, providing the base for [vbb-hafas](https://github.com/derhuerst/vbb-hafas) and [db-hafas](https://github.com/derhuerst/db-hafas).
+**A client for HAFAS mobile APIs**, providing the base for [vbb-hafas](https://github.com/derhuerst/vbb-hafas) and [db-hafas](https://github.com/derhuerst/db-hafas).
 
 [![npm version](https://img.shields.io/npm/v/hafas-client.svg)](https://www.npmjs.com/package/hafas-client)
 [![build status](https://img.shields.io/travis/derhuerst/hafas-client.svg)](https://travis-ci.org/derhuerst/hafas-client)
@@ -18,7 +18,7 @@ npm install hafas-client
 
 ## Usage
 
-todo
+See [vbb-hafas](https://github.com/derhuerst/vbb-hafas/blob/master/lib/request.js).
 
 
 ## Contributing

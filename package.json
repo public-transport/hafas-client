@@ -9,7 +9,7 @@
 	"repository":   "derhuerst/hafas-client",
 	"bugs":         "https://github.com/derhuerst/hafas-client/issues",
 	"license":      "ISC",
-	"keywords":     ["hafas", "public", "transport", "api"],
+	"keywords":     ["hafas", "public", "transport", "api", "mgate"],
 	"engines" :     {"node": ">=4"},
 	"dependencies": {
 		"got": "^6.3",
