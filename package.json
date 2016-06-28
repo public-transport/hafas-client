@@ -1,9 +1,9 @@
 {
 	"name":         "hafas-client",
 	"description":  "JavaScript client for HAFAS mobile APIs.",
-	"version":      "0.2.0",
+	"version":      "0.2.1",
 	"main":         "index.js",
-	"files":        ["index.js"],
+	"files":        ["index.js", "parse.js"],
 	"author":       "Jannis R <mail@jannisr.de>",
 	"homepage":     "https://github.com/derhuerst/hafas-client",
 	"repository":   "derhuerst/hafas-client",
