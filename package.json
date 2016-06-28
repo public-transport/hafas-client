@@ -14,5 +14,9 @@
 	"dependencies": {
 		"got": "^6.3",
 		"moment-timezone": "^0.5.4"
+	},
+	"scripts": {
+		"test":       "node -e \"require('./index')\"",
+		"prepublish": "npm test"
 	}
 }
