@@ -30,10 +30,17 @@ const poi = (latitude, longitude, id, name) => {
 	return {type: 'P', name, lid: 'L=' + id, crd: {x: coord(longitude), y: coord(latitude)}}
 }
 
+const locationFilter = (stations, addresses, poi) => {
+	if (stations && addresses && poi) return 'ALL'
+	return (stations ? 'S' : '')
+	+ (addresses ? 'A' : '')
+	+ (poi ? 'P' : '')
+}
+
 
 
 module.exports = {
 	date, time,
 	bike, accessibility,
-	coord, station, address, poi
+	coord, station, address, poi, locationFilter
 }
