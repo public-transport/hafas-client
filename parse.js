@@ -86,7 +86,8 @@ const part = (tz, s, p, r, c) => (pt) => {
 		result.product = p[parseInt(pt.jny.prodX)]
 		result.direction = pt.jny.dirTxt // todo: parse this
 		if (pt.jny.stopL) result.passed = pt.jny.stopL.map(stop(tz, s, p, r, c))
-		pt.jny.remL.forEach(applyRemark(s, p, r, c))
+		if (Array.isArray(pt.jny.remL))
+			pt.jny.remL.forEach(applyRemark(s, p, r, c))
 
 		if (pt.jny.freq && pt.jny.freq.jnyL)
 			result.alternatives = pt.jny.freq.jnyL

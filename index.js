@@ -34,9 +34,9 @@ const request = (opt) => {
 		.then((res) => {
 			const b = res.body
 
-			if (b.err) return new Error(b.err)
-			if (!b.svcResL || !b.svcResL[0]) return new Error('invalid response')
-			if (b.svcResL[0].err !== 'OK') return new Error(b.svcResL[0].errTxt)
+			if (b.err) throw new Error(b.err)
+			if (!b.svcResL || !b.svcResL[0]) throw new Error('invalid response')
+			if (b.svcResL[0].err !== 'OK') throw new Error(b.svcResL[0].errTxt)
 			const d = b.svcResL[0].res
 			const c = d.common || {}
 
