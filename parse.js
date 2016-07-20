@@ -79,8 +79,10 @@ const part = (tz, s, p, r, c) => (pt) => {
 		  from:      s[parseInt(pt.dep.locX)]
 		, to:        s[parseInt(pt.arr.locX)]
 		, start:     new Date(dateTime(tz, c.date, pt.dep.dTimeR || pt.dep.dTimeS))
-		, end:       new Date(dateTime(tz, c.date, pt.dep.aTimeR || pt.arr.aTimeS))
+		, end:       new Date(dateTime(tz, c.date, pt.arr.aTimeR || pt.arr.aTimeS))
 	}
+	if (pt.dep.dTimeR && pt.dep.dTimeS) result.delay =
+		dateTime(c.date, pt.dep.dTimeR) - dateTime(c.date, pt.dep.dTimeS)
 	if (pt.type === 'WALK') result.type = 'walking'
 	else if (pt.type === 'JNY') {
 		result.product = p[parseInt(pt.jny.prodX)]
