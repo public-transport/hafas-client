@@ -1,7 +1,7 @@
 {
 	"name":         "hafas-client",
 	"description":  "JavaScript client for HAFAS mobile APIs.",
-	"version":      "0.5.0",
+	"version":      "0.5.1",
 	"main":         "index.js",
 	"files":        ["index.js", "parse.js", "stringify.js"],
 	"author":       "Jannis R <mail@jannisr.de>",
