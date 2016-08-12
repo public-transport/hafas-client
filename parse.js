@@ -35,15 +35,15 @@ const location = (l) => {
 
 // todo: what is p.number vs p.line?
 // todo: what is p.icoX?
-// todo: what is p.cls?
 // todo: what is p.oprX?
 const product = (p) => {
-	if (p.prodCtx) p = p.prodCtx
 	if (!p) return null
-	return {
-		name: p.name, nr: +p.number, class: p.cls,
-		productCode: +p.prodCtx.catCode, productName: p.prodCtx.catOutS
+	const result = {line: p.line, class: p.cls}
+	if (p.prodCtx) {
+		result.productCode = +p.prodCtx.catCode
+		result.productName = p.prodCtx.catOutS
 	}
+	return result
 }
 
 
