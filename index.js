@@ -45,7 +45,7 @@ const request = (opt) => {
 			if (Array.isArray(c.remL)) d.remarks = c.remL.map(opt.onRemark)
 			if (Array.isArray(c.opL)) d.agencies = c.opL.map(opt.onAgency)
 			return d
-		}).catch((err) => err)
+		}).catch((err) => {throw err})
 	}
 }
 
