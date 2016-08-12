@@ -148,6 +148,39 @@ const nearby = (n) => {
 	return result
 }
 
+// todo: what is m.dirGeo? maybe the speed?
+// todo: what is m.stopL?
+// todo: what is m.proc? wut?
+// todo: what is m.pos?
+// todo: what is m.ani.dirGeo[n]? maybe the speed?
+// todo: what is m.ani.proc[n]? wut?
+// todo: how does m.ani.poly work?
+// tz = timezone, l = locations, p = products, r = remarks
+const movement = (tz, l, p, r) => (m) => {
+	const result = {
+		  direction: m.dirTxt
+		, product:   p[m.prodX]
+		, latitude:  m.pos ? m.pos.y / 1000000 : null
+		, longitude: m.pos ? m.pos.x / 1000000 : null
+		, nextStops: m.stopL.map((s) => ({
+			  station:   l[s.locX]
+			, departure: s.dTimeR || s.dTimeS ?
+				new Date(dateTime(tz, m.date, s.dTimeR || s.dTimeS)) : null
+			, arrival: s.aTimeR || s.aTimeS ?
+				new Date(dateTime(tz, m.date, s.aTimeR || s.aTimeS)) : null
+		}))
+		, frames: []
+	}
+	if (m.ani && Array.isArray(m.ani.mSec))
+		for (let i = 0; i < m.ani.mSec.length; i++)
+			result.frames.push({
+				from: l[m.ani.fLocX[i]],
+				to: l[m.ani.tLocX[i]],
+				t: m.ani.mSec[i]
+			})
+	return result
+}
+
 
 
 module.exports = {
@@ -155,5 +188,6 @@ module.exports = {
 	location, product, remark, agency,
 	stop, applyRemark, part, route,
 	departure,
-	nearby
+	nearby,
+	movement
 }
