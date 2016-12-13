@@ -10,13 +10,13 @@
 	"bugs":         "https://github.com/derhuerst/hafas-client/issues",
 	"license":      "ISC",
 	"keywords":     ["hafas", "public", "transport", "api", "mgate"],
-	"engines" :     {"node": ">=4"},
+	"engines" :     {"node": ">=6"},
 	"dependencies": {
 		"got": "^6.3",
 		"moment-timezone": "^0.5.4"
 	},
 	"scripts": {
-		"test":       "node -e \"require('./index')\"",
+		"test": "node -e \"require('.')\"",
 		"prepublish": "npm test"
 	}
 }
