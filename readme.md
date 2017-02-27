@@ -7,6 +7,7 @@
 [![dependency status](https://img.shields.io/david/derhuerst/hafas-client.svg)](https://david-dm.org/derhuerst/hafas-client)
 [![dev dependency status](https://img.shields.io/david/dev/derhuerst/hafas-client.svg)](https://david-dm.org/derhuerst/hafas-client#info=devDependencies)
 ![ISC-licensed](https://img.shields.io/github/license/derhuerst/hafas-client.svg)
+[![chat on gitter](https://badges.gitter.im/derhuerst.svg)](https://gitter.im/derhuerst)
 
 
 ## Installing

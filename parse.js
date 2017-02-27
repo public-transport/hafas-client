@@ -38,7 +38,7 @@ const location = (l) => {
 // todo: what is p.oprX?
 const product = (p) => {
 	if (!p) return null
-	const result = {line: p.line, class: p.cls}
+	const result = {line: p.line, name: p.name, class: p.cls}
 	if (p.prodCtx) {
 		result.productCode = +p.prodCtx.catCode
 		result.productName = p.prodCtx.catOutS
