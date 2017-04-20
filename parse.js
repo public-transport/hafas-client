@@ -77,10 +77,10 @@ const applyRemark = (s, p, r, c) => (rm) => null
 // s = stations, p = products, r = remarks, c = connection
 const part = (tz, s, p, r, c) => (pt) => {
 	const result = {
-		  from:      s[parseInt(pt.dep.locX)]
-		, to:        s[parseInt(pt.arr.locX)]
-		, start:     new Date(dateTime(tz, c.date, pt.dep.dTimeR || pt.dep.dTimeS))
-		, end:       new Date(dateTime(tz, c.date, pt.arr.aTimeR || pt.arr.aTimeS))
+		  from:  Object.assign({}, s[parseInt(pt.dep.locX)])
+		, to:    Object.assign({}, s[parseInt(pt.arr.locX)])
+		, start: new Date(dateTime(tz, c.date, pt.dep.dTimeR || pt.dep.dTimeS))
+		, end:   new Date(dateTime(tz, c.date, pt.arr.aTimeR || pt.arr.aTimeS))
 	}
 	if (pt.dep.dTimeR && pt.dep.dTimeS) result.delay =
 		dateTime(tz, c.date, pt.dep.dTimeR) - dateTime(tz, c.date, pt.dep.dTimeS)
@@ -88,6 +88,10 @@ const part = (tz, s, p, r, c) => (pt) => {
 	else if (pt.type === 'JNY') {
 		result.product = p[parseInt(pt.jny.prodX)]
 		result.direction = pt.jny.dirTxt // todo: parse this
+
+		if (pt.dep.dPlatfS) result.from.platform = pt.dep.dPlatfS
+		if (pt.arr.aPlatfS) result.to.platform = pt.arr.aPlatfS
+
 		if (pt.jny.stopL) result.passed = pt.jny.stopL.map(stop(tz, s, p, r, c))
 		if (Array.isArray(pt.jny.remL))
 			pt.jny.remL.forEach(applyRemark(s, p, r, c))
