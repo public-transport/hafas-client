@@ -1,7 +1,7 @@
 {
 	"name":         "hafas-client",
 	"description":  "JavaScript client for HAFAS mobile APIs.",
-	"version":      "0.6.2",
+	"version":      "0.7.0",
 	"main":         "index.js",
 	"files":        ["index.js", "parse.js", "stringify.js"],
 	"author":       "Jannis R <mail@jannisr.de>",
@@ -12,8 +12,8 @@
 	"keywords":     ["hafas", "public", "transport", "api", "mgate"],
 	"engines" :     {"node": ">=6"},
 	"dependencies": {
-		"got": "^6.3",
-		"moment-timezone": "^0.5.4"
+		"got": "^6.7.1",
+		"moment-timezone": "^0.5.13"
 	},
 	"scripts": {
 		"test": "node -e \"require('.')\"",
