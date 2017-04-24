@@ -1,6 +1,7 @@
 'use strict'
 
 const moment = require('moment-timezone')
+const slugg = require('slugg')
 
 
 
@@ -22,9 +23,12 @@ const types = {P: 'poi', S: 'station', A: 'address'}
 const location = (l) => {
 	const type = types[l.type] || 'unknown'
 	const result = {
-		  type, name: l.name
-		, latitude:  l.crd ? l.crd.y / 1000000 : null
-		, longitude: l.crd ? l.crd.x / 1000000 : null
+		type,
+		name: l.name,
+		coordinates: l.crd ? {
+			latitude: l.crd.y / 1000000,
+			longitude: l.crd.x / 1000000
+		} : null
 	}
 	if (type === 'poi' || type === 'station') result.id = parseInt(l.extId)
 	if ('pCls' in l) result.products = l.pCls
@@ -52,17 +56,23 @@ const remark = (r) => null // todo
 
 
 
-const agency = (a) => a.name
+const operator = (a) => ({
+	type: 'operator',
+	id: slugg(a.name),
+	name: a.name
+})
 
 
 
 // s = stations, p = products, r = remarks, c = connection
 const stop = (tz, s, p, r, c) => (st) => {
 	const result = {station:   s[parseInt(st.locX)]}
-	if (st.aTimeR || st.aTimeS) result.arrival =
-		new Date(dateTime(tz, c.date, st.aTimeR || st.aTimeS))
-	if (st.dTimeR || st.dTimeS) result.departure =
-		new Date(dateTime(tz, c.date, st.dTimeR || st.dTimeS))
+	if (st.aTimeR || st.aTimeS) {
+		result.arrival = dateTime(tz, c.date, st.aTimeR || st.aTimeS)
+	}
+	if (st.dTimeR || st.dTimeS) {
+		result.departure = dateTime(tz, c.date, st.dTimeR || st.dTimeS)
+	}
 	return result
 }
 
@@ -77,20 +87,20 @@ const applyRemark = (s, p, r, c) => (rm) => null
 // s = stations, p = products, r = remarks, c = connection
 const part = (tz, s, p, r, c) => (pt) => {
 	const result = {
-		  from:  Object.assign({}, s[parseInt(pt.dep.locX)])
-		, to:    Object.assign({}, s[parseInt(pt.arr.locX)])
-		, start: new Date(dateTime(tz, c.date, pt.dep.dTimeR || pt.dep.dTimeS))
-		, end:   new Date(dateTime(tz, c.date, pt.arr.aTimeR || pt.arr.aTimeS))
+		  origin: Object.assign({}, s[parseInt(pt.dep.locX)])
+		, destination: Object.assign({}, s[parseInt(pt.arr.locX)])
+		, departure: dateTime(tz, c.date, pt.dep.dTimeR || pt.dep.dTimeS)
+		, arrival: dateTime(tz, c.date, pt.arr.aTimeR || pt.arr.aTimeS)
 	}
 	if (pt.dep.dTimeR && pt.dep.dTimeS) result.delay =
 		dateTime(tz, c.date, pt.dep.dTimeR) - dateTime(tz, c.date, pt.dep.dTimeS)
-	if (pt.type === 'WALK') result.type = 'walking'
+	if (pt.type === 'WALK') result.mode = 'walking'
 	else if (pt.type === 'JNY') {
 		result.product = p[parseInt(pt.jny.prodX)]
 		result.direction = pt.jny.dirTxt // todo: parse this
 
-		if (pt.dep.dPlatfS) result.from.platform = pt.dep.dPlatfS
-		if (pt.arr.aPlatfS) result.to.platform = pt.arr.aPlatfS
+		if (pt.dep.dPlatfS) result.departurePlatform = pt.dep.dPlatfS
+		if (pt.arr.aPlatfS) result.arrivalPlatform = pt.arr.aPlatfS
 
 		if (pt.jny.stopL) result.passed = pt.jny.stopL.map(stop(tz, s, p, r, c))
 		if (Array.isArray(pt.jny.remL))
@@ -101,7 +111,7 @@ const part = (tz, s, p, r, c) => (pt) => {
 				.filter((a) => a.stopL[0].locX === pt.dep.locX)
 				.map((a) => ({
 					product: p[parseInt(a.prodX)],
-					when:    new Date(dateTime(tz, c.date, a.stopL[0].dTimeS))
+					when: dateTime(tz, c.date, a.stopL[0].dTimeS)
 				}))
 	}
 	return result
@@ -131,7 +141,7 @@ const route = (tz, s, p, r) => (c) => {
 const departure = (tz, s, p, r) => (d) => {
 	const result = {
 		  station:   s[parseInt(d.stbStop.locX)]
-		, when:      new Date(dateTime(tz, d.date, d.stbStop.dTimeR || d.stbStop.dTimeS))
+		, when: dateTime(tz, d.date, d.stbStop.dTimeR || d.stbStop.dTimeS)
 		, direction: d.dirTxt
 		, product:   p[parseInt(d.prodX)]
 		, remarks:   d.remL ? d.remL.map((rm) => r[parseInt(rm.remX)]) : null
@@ -165,14 +175,18 @@ const movement = (tz, l, p, r) => (m) => {
 	const result = {
 		  direction: m.dirTxt
 		, product:   p[m.prodX]
-		, latitude:  m.pos ? m.pos.y / 1000000 : null
-		, longitude: m.pos ? m.pos.x / 1000000 : null
+		, coordinates: m.pos ? {
+			latitude: m.pos.y / 1000000,
+			longitude: m.pos.x / 1000000
+		} : null
 		, nextStops: m.stopL.map((s) => ({
 			  station:   l[s.locX]
-			, departure: s.dTimeR || s.dTimeS ?
-				new Date(dateTime(tz, m.date, s.dTimeR || s.dTimeS)) : null
-			, arrival: s.aTimeR || s.aTimeS ?
-				new Date(dateTime(tz, m.date, s.aTimeR || s.aTimeS)) : null
+			, departure: s.dTimeR || s.dTimeS
+				? dateTime(tz, m.date, s.dTimeR || s.dTimeS)
+				: null
+			, arrival: s.aTimeR || s.aTimeS
+				? dateTime(tz, m.date, s.aTimeR || s.aTimeS)
+				: null
 		}))
 		, frames: []
 	}
@@ -190,7 +204,7 @@ const movement = (tz, l, p, r) => (m) => {
 
 module.exports = {
 	dateTime,
-	location, product, remark, agency,
+	location, product, remark, operator,
 	stop, applyRemark, part, route,
 	departure,
 	nearby,
