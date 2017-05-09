@@ -127,10 +127,10 @@ const route = (tz, s, p, r) => (c) => {
 	const parts = c.secL.map(part(tz, s, p, r, c))
 	return {
 		  parts
-		, from:  parts[0].from
-		, start: parts[0].start
-		, to:    parts[parts.length - 1].to
-		, end:   parts[parts.length - 1].end
+		, origin: parts[0].origin
+		, destination: parts[0].destination
+		, departure: parts[parts.length - 1].departure
+		, arrival: parts[parts.length - 1].arrival
 	}
 }
 

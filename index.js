@@ -12,7 +12,7 @@ const defaults = {
 	onLocation: parse.location,
 	onProduct:  parse.product,
 	onRemark:   parse.remark,
-	onAgency:   parse.agency
+	onOperator: parse.operator
 }
 
 
@@ -26,7 +26,8 @@ const request = (opt) => {
 			json: true, body: JSON.stringify(body),
 			headers: {
 				'Content-Type':    'application/json',
-				'Accept-Encoding': 'gzip, deflate'
+				'Accept-Encoding': 'gzip, deflate',
+				'user-agent': 'https://github.com/derhuerst/hafas-client'
 			}
 		})
 
@@ -43,7 +44,7 @@ const request = (opt) => {
 			if (Array.isArray(c.locL)) d.locations = c.locL.map(opt.onLocation)
 			if (Array.isArray(c.prodL)) d.products = c.prodL.map(opt.onProduct)
 			if (Array.isArray(c.remL)) d.remarks = c.remL.map(opt.onRemark)
-			if (Array.isArray(c.opL)) d.agencies = c.opL.map(opt.onAgency)
+			if (Array.isArray(c.opL)) d.operators = c.opL.map(opt.onOperator)
 			return d
 		}).catch((err) => {throw err})
 	}
