@@ -10,7 +10,7 @@ const defaults = {
 	onBody:     id,
 	onReq:      id,
 	onLocation: parse.location,
-	onProduct:  parse.product,
+	onLine: parse.line,
 	onRemark:   parse.remark,
 	onOperator: parse.operator
 }
@@ -42,7 +42,7 @@ const request = (opt) => {
 			const c = d.common || {}
 
 			if (Array.isArray(c.locL)) d.locations = c.locL.map(opt.onLocation)
-			if (Array.isArray(c.prodL)) d.products = c.prodL.map(opt.onProduct)
+			if (Array.isArray(c.prodL)) d.lines = c.prodL.map(opt.onLine)
 			if (Array.isArray(c.remL)) d.remarks = c.remL.map(opt.onRemark)
 			if (Array.isArray(c.opL)) d.operators = c.opL.map(opt.onOperator)
 			return d

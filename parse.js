@@ -40,9 +40,10 @@ const location = (l) => {
 // todo: what is p.number vs p.line?
 // todo: what is p.icoX?
 // todo: what is p.oprX?
-const product = (p) => {
+const line = (p) => {
 	if (!p) return null
-	const result = {line: p.line, name: p.name, class: p.cls}
+	const result = {type: 'line', name: p.line || p.name}
+	if (p.cls) result.class = p.cls
 	if (p.prodCtx) {
 		result.productCode = +p.prodCtx.catCode
 		result.productName = p.prodCtx.catOutS
@@ -64,8 +65,8 @@ const operator = (a) => ({
 
 
 
-// s = stations, p = products, r = remarks, c = connection
-const stop = (tz, s, p, r, c) => (st) => {
+// s = stations, ln = lines, r = remarks, c = connection
+const stop = (tz, s, ln, r, c) => (st) => {
 	const result = {station:   s[parseInt(st.locX)]}
 	if (st.aTimeR || st.aTimeS) {
 		result.arrival = dateTime(tz, c.date, st.aTimeR || st.aTimeS)
@@ -77,15 +78,15 @@ const stop = (tz, s, p, r, c) => (st) => {
 }
 
 // todo: finish parseRemark first
-// s = stations, p = products, r = remarks, c = connection
-const applyRemark = (s, p, r, c) => (rm) => null
+// s = stations, ln = lines, r = remarks, c = connection
+const applyRemark = (s, ln, r, c) => (rm) => null
 
 // todo: pt.sDays
 // todo: pt.dep.dProgType, pt.arr.dProgType
 // todo: what is pt.jny.dirFlg?
 // todo: how does pt.freq work?
-// s = stations, p = products, r = remarks, c = connection
-const part = (tz, s, p, r, c) => (pt) => {
+// s = stations, ln = lines, r = remarks, c = connection
+const part = (tz, s, ln, r, c) => (pt) => {
 	const result = {
 		  origin: Object.assign({}, s[parseInt(pt.dep.locX)])
 		, destination: Object.assign({}, s[parseInt(pt.arr.locX)])
@@ -96,21 +97,21 @@ const part = (tz, s, p, r, c) => (pt) => {
 		dateTime(tz, c.date, pt.dep.dTimeR) - dateTime(tz, c.date, pt.dep.dTimeS)
 	if (pt.type === 'WALK') result.mode = 'walking'
 	else if (pt.type === 'JNY') {
-		result.product = p[parseInt(pt.jny.prodX)]
+		result.line = ln[parseInt(pt.jny.prodX)]
 		result.direction = pt.jny.dirTxt // todo: parse this
 
 		if (pt.dep.dPlatfS) result.departurePlatform = pt.dep.dPlatfS
 		if (pt.arr.aPlatfS) result.arrivalPlatform = pt.arr.aPlatfS
 
-		if (pt.jny.stopL) result.passed = pt.jny.stopL.map(stop(tz, s, p, r, c))
+		if (pt.jny.stopL) result.passed = pt.jny.stopL.map(stop(tz, s, ln, r, c))
 		if (Array.isArray(pt.jny.remL))
-			pt.jny.remL.forEach(applyRemark(s, p, r, c))
+			pt.jny.remL.forEach(applyRemark(s, ln, r, c))
 
 		if (pt.jny.freq && pt.jny.freq.jnyL)
 			result.alternatives = pt.jny.freq.jnyL
 				.filter((a) => a.stopL[0].locX === pt.dep.locX)
 				.map((a) => ({
-					product: p[parseInt(a.prodX)],
+					line: ln[parseInt(a.prodX)],
 					when: dateTime(tz, c.date, a.stopL[0].dTimeS)
 				}))
 	}
@@ -122,9 +123,9 @@ const part = (tz, s, p, r, c) => (pt) => {
 // todo: c.conSubscr
 // todo: c.trfRes x vbb-parse-ticket
 // todo: use computed information from part
-// s = stations, p = products, r = remarks
-const route = (tz, s, p, r) => (c) => {
-	const parts = c.secL.map(part(tz, s, p, r, c))
+// s = stations, ln = lines, r = remarks
+const route = (tz, s, ln, r) => (c) => {
+	const parts = c.secL.map(part(tz, s, ln, r, c))
 	return {
 		  parts
 		, origin: parts[0].origin
@@ -137,13 +138,13 @@ const route = (tz, s, p, r) => (c) => {
 // todo: what is d.jny.dirFlg?
 // todo: d.stbStop.dProgType
 // todo: what is d.stbStop.dTimeR?
-// tz = timezone, s = stations, p = products, r = remarks
-const departure = (tz, s, p, r) => (d) => {
+// tz = timezone, s = stations, ln = lines, r = remarks
+const departure = (tz, s, ln, r) => (d) => {
 	const result = {
 		  station:   s[parseInt(d.stbStop.locX)]
 		, when: dateTime(tz, d.date, d.stbStop.dTimeR || d.stbStop.dTimeS)
 		, direction: d.dirTxt
-		, product:   p[parseInt(d.prodX)]
+		, line: ln[parseInt(d.prodX)]
 		, remarks:   d.remL ? d.remL.map((rm) => r[parseInt(rm.remX)]) : null
 		, trip:      +d.jid.split('|')[1]
 	}
@@ -153,7 +154,7 @@ const departure = (tz, s, p, r) => (d) => {
 }
 
 // todo: remarks
-// todo: products
+// todo: lines
 // todo: what is s.pCls?
 // todo: what is s.wt?
 // todo: what is s.dur?
@@ -170,11 +171,11 @@ const nearby = (n) => {
 // todo: what is m.ani.dirGeo[n]? maybe the speed?
 // todo: what is m.ani.proc[n]? wut?
 // todo: how does m.ani.poly work?
-// tz = timezone, l = locations, p = products, r = remarks
-const movement = (tz, l, p, r) => (m) => {
+// tz = timezone, l = locations, ln = lines, r = remarks
+const movement = (tz, l, ln, r) => (m) => {
 	const result = {
 		  direction: m.dirTxt
-		, product:   p[m.prodX]
+		, line: ln[m.prodX]
 		, coordinates: m.pos ? {
 			latitude: m.pos.y / 1000000,
 			longitude: m.pos.x / 1000000
@@ -204,7 +205,7 @@ const movement = (tz, l, p, r) => (m) => {
 
 module.exports = {
 	dateTime,
-	location, product, remark, operator,
+	location, line, remark, operator,
 	stop, applyRemark, part, route,
 	departure,
 	nearby,
