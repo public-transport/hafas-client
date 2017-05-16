@@ -194,8 +194,8 @@ const movement = (tz, l, ln, r) => (m) => {
 	if (m.ani && Array.isArray(m.ani.mSec))
 		for (let i = 0; i < m.ani.mSec.length; i++)
 			result.frames.push({
-				from: l[m.ani.fLocX[i]],
-				to: l[m.ani.tLocX[i]],
+				origin: l[m.ani.fLocX[i]],
+				destination: l[m.ani.tLocX[i]],
 				t: m.ani.mSec[i]
 			})
 	return result
