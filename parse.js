@@ -13,7 +13,6 @@ const dateTime = (tz, date, time) => {
 	}
 	return moment.tz(date + 'T' + time, tz)
 	.add(offset, 'days')
-	.valueOf()
 }
 
 
@@ -69,10 +68,10 @@ const operator = (a) => ({
 const stop = (tz, s, ln, r, c) => (st) => {
 	const result = {station:   s[parseInt(st.locX)]}
 	if (st.aTimeR || st.aTimeS) {
-		result.arrival = dateTime(tz, c.date, st.aTimeR || st.aTimeS)
+		result.arrival = dateTime(tz, c.date, st.aTimeR || st.aTimeS).format()
 	}
 	if (st.dTimeR || st.dTimeS) {
-		result.departure = dateTime(tz, c.date, st.dTimeR || st.dTimeS)
+		result.departure = dateTime(tz, c.date, st.dTimeR || st.dTimeS).format()
 	}
 	return result
 }
@@ -90,11 +89,15 @@ const part = (tz, s, ln, r, c) => (pt) => {
 	const result = {
 		  origin: Object.assign({}, s[parseInt(pt.dep.locX)])
 		, destination: Object.assign({}, s[parseInt(pt.arr.locX)])
-		, departure: dateTime(tz, c.date, pt.dep.dTimeR || pt.dep.dTimeS)
-		, arrival: dateTime(tz, c.date, pt.arr.aTimeR || pt.arr.aTimeS)
+		, departure: dateTime(tz, c.date, pt.dep.dTimeR || pt.dep.dTimeS).format()
+		, arrival: dateTime(tz, c.date, pt.arr.aTimeR || pt.arr.aTimeS).format()
 	}
-	if (pt.dep.dTimeR && pt.dep.dTimeS) result.delay =
-		dateTime(tz, c.date, pt.dep.dTimeR) - dateTime(tz, c.date, pt.dep.dTimeS)
+	if (pt.dep.dTimeR && pt.dep.dTimeS) {
+		const realtime = dateTime(tz, c.date, pt.dep.dTimeR)
+		const planned = dateTime(tz, c.date, pt.dep.dTimeS)
+		result.delay = realtime - planned
+	}
+
 	if (pt.type === 'WALK') result.mode = 'walking'
 	else if (pt.type === 'JNY') {
 		result.line = ln[parseInt(pt.jny.prodX)]
@@ -112,7 +115,7 @@ const part = (tz, s, ln, r, c) => (pt) => {
 				.filter((a) => a.stopL[0].locX === pt.dep.locX)
 				.map((a) => ({
 					line: ln[parseInt(a.prodX)],
-					when: dateTime(tz, c.date, a.stopL[0].dTimeS)
+					when: dateTime(tz, c.date, a.stopL[0].dTimeS).format()
 				}))
 	}
 	return result
@@ -142,14 +145,17 @@ const route = (tz, s, ln, r) => (c) => {
 const departure = (tz, s, ln, r) => (d) => {
 	const result = {
 		  station:   s[parseInt(d.stbStop.locX)]
-		, when: dateTime(tz, d.date, d.stbStop.dTimeR || d.stbStop.dTimeS)
+		, when: dateTime(tz, d.date, d.stbStop.dTimeR || d.stbStop.dTimeS).format()
 		, direction: d.dirTxt
 		, line: ln[parseInt(d.prodX)]
-		, remarks:   d.remL ? d.remL.map((rm) => r[parseInt(rm.remX)]) : null
-		, trip:      +d.jid.split('|')[1]
+		, remarks: d.remL ? d.remL.map((rm) => r[parseInt(rm.remX)]) : null
+		, trip: +d.jid.split('|')[1]
 	}
-	if (d.stbStop.dTimeR && d.stbStop.dTimeS) result.delay =
-		dateTime(tz, d.date, d.stbStop.dTimeR) - dateTime(tz, d.date, d.stbStop.dTimeS)
+	if (d.stbStop.dTimeR && d.stbStop.dTimeS) {
+		const realtime = dateTime(tz, d.date, d.stbStop.dTimeR)
+		const planned = dateTime(tz, d.date, d.stbStop.dTimeS)
+		result.delay = realtime - planned
+	}
 	return result
 }
 
@@ -183,10 +189,10 @@ const movement = (tz, l, ln, r) => (m) => {
 		, nextStops: m.stopL.map((s) => ({
 			  station:   l[s.locX]
 			, departure: s.dTimeR || s.dTimeS
-				? dateTime(tz, m.date, s.dTimeR || s.dTimeS)
+				? dateTime(tz, m.date, s.dTimeR || s.dTimeS).format()
 				: null
 			, arrival: s.aTimeR || s.aTimeS
-				? dateTime(tz, m.date, s.aTimeR || s.aTimeS)
+				? dateTime(tz, m.date, s.aTimeR || s.aTimeS).format()
 				: null
 		}))
 		, frames: []
