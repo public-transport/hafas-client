@@ -95,7 +95,7 @@ const part = (tz, s, ln, r, c) => (pt) => {
 	if (pt.dep.dTimeR && pt.dep.dTimeS) {
 		const realtime = dateTime(tz, c.date, pt.dep.dTimeR)
 		const planned = dateTime(tz, c.date, pt.dep.dTimeS)
-		result.delay = realtime - planned
+		result.delay = Math.round((realtime - planned) / 1000)
 	}
 
 	if (pt.type === 'WALK') result.mode = 'walking'
@@ -154,7 +154,7 @@ const departure = (tz, s, ln, r) => (d) => {
 	if (d.stbStop.dTimeR && d.stbStop.dTimeS) {
 		const realtime = dateTime(tz, d.date, d.stbStop.dTimeR)
 		const planned = dateTime(tz, d.date, d.stbStop.dTimeS)
-		result.delay = realtime - planned
+		result.delay = Math.round((realtime - planned) / 1000)
 	}
 	return result
 }
