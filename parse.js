@@ -65,7 +65,7 @@ const operator = (a) => ({
 
 
 // s = stations, ln = lines, r = remarks, c = connection
-const stop = (tz, s, ln, r, c) => (st) => {
+const stopover = (tz, s, ln, r, c) => (st) => {
 	const result = {station:   s[parseInt(st.locX)]}
 	if (st.aTimeR || st.aTimeS) {
 		result.arrival = dateTime(tz, c.date, st.aTimeR || st.aTimeS).format()
@@ -106,7 +106,7 @@ const part = (tz, s, ln, r, c) => (pt) => {
 		if (pt.dep.dPlatfS) result.departurePlatform = pt.dep.dPlatfS
 		if (pt.arr.aPlatfS) result.arrivalPlatform = pt.arr.aPlatfS
 
-		if (pt.jny.stopL) result.passed = pt.jny.stopL.map(stop(tz, s, ln, r, c))
+		if (pt.jny.stopL) result.passed = pt.jny.stopL.map(stopover(tz, s, ln, r, c))
 		if (Array.isArray(pt.jny.remL))
 			pt.jny.remL.forEach(applyRemark(s, ln, r, c))
 
@@ -127,7 +127,7 @@ const part = (tz, s, ln, r, c) => (pt) => {
 // todo: c.trfRes x vbb-parse-ticket
 // todo: use computed information from part
 // s = stations, ln = lines, r = remarks
-const route = (tz, s, ln, r) => (c) => {
+const journey = (tz, s, ln, r) => (c) => {
 	const parts = c.secL.map(part(tz, s, ln, r, c))
 	return {
 		  parts
@@ -212,7 +212,7 @@ const movement = (tz, l, ln, r) => (m) => {
 module.exports = {
 	dateTime,
 	location, line, remark, operator,
-	stop, applyRemark, part, route,
+	stopover, applyRemark, part, journey,
 	departure,
 	nearby,
 	movement
