@@ -29,7 +29,7 @@ const location = (l) => {
 			longitude: l.crd.x / 1000000
 		} : null
 	}
-	if (type === 'poi' || type === 'station') result.id = parseInt(l.extId)
+	if (type === 'poi' || type === 'station') result.id = l.extId
 	if ('pCls' in l) result.products = l.pCls
 	return result
 }
@@ -132,8 +132,8 @@ const journey = (tz, s, ln, r) => (c) => {
 	return {
 		  parts
 		, origin: parts[0].origin
-		, destination: parts[0].destination
-		, departure: parts[parts.length - 1].departure
+		, destination: parts[parts.length - 1].destination
+		, departure: parts[0].departure
 		, arrival: parts[parts.length - 1].arrival
 	}
 }
