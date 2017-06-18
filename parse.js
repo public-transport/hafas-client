@@ -100,6 +100,7 @@ const part = (tz, s, ln, r, c) => (pt) => {
 
 	if (pt.type === 'WALK') result.mode = 'walking'
 	else if (pt.type === 'JNY') {
+		result.id = pt.jny.jid
 		result.line = ln[parseInt(pt.jny.prodX)]
 		result.direction = pt.jny.dirTxt // todo: parse this
 
@@ -144,7 +145,7 @@ const journey = (tz, s, ln, r) => (c) => {
 // tz = timezone, s = stations, ln = lines, r = remarks
 const departure = (tz, s, ln, r) => (d) => {
 	const result = {
-		  station:   s[parseInt(d.stbStop.locX)]
+		  station: s[parseInt(d.stbStop.locX)]
 		, when: dateTime(tz, d.date, d.stbStop.dTimeR || d.stbStop.dTimeS).format()
 		, direction: d.dirTxt
 		, line: ln[parseInt(d.prodX)]
@@ -155,7 +156,7 @@ const departure = (tz, s, ln, r) => (d) => {
 		const realtime = dateTime(tz, d.date, d.stbStop.dTimeR)
 		const planned = dateTime(tz, d.date, d.stbStop.dTimeS)
 		result.delay = Math.round((realtime - planned) / 1000)
-	}
+	} else result.delay = null
 	return result
 }
 
