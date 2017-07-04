@@ -66,7 +66,7 @@ const operator = (a) => ({
 
 // s = stations, ln = lines, r = remarks, c = connection
 const stopover = (tz, s, ln, r, c) => (st) => {
-	const result = {station:   s[parseInt(st.locX)]}
+	const result = {station: s[parseInt(st.locX)]}
 	if (st.aTimeR || st.aTimeS) {
 		result.arrival = dateTime(tz, c.date, st.aTimeR || st.aTimeS).format()
 	}
@@ -84,7 +84,7 @@ const applyRemark = (s, ln, r, c) => (rm) => null
 // todo: pt.dep.dProgType, pt.arr.dProgType
 // todo: what is pt.jny.dirFlg?
 // todo: how does pt.freq work?
-// s = stations, ln = lines, r = remarks, c = connection
+// tz = timezone, s = stations, ln = lines, r = remarks, c = connection
 const part = (tz, s, ln, r, c) => (pt) => {
 	const result = {
 		  origin: Object.assign({}, s[parseInt(pt.dep.locX)])
@@ -127,9 +127,9 @@ const part = (tz, s, ln, r, c) => (pt) => {
 // todo: c.conSubscr
 // todo: c.trfRes x vbb-parse-ticket
 // todo: use computed information from part
-// s = stations, ln = lines, r = remarks
-const journey = (tz, s, ln, r) => (c) => {
-	const parts = c.secL.map(part(tz, s, ln, r, c))
+// s = stations, ln = lines, r = remarks, p = parsePart
+const journey = (tz, s, ln, r, p = part) => (c) => {
+	const parts = c.secL.map(p(tz, s, ln, r, c))
 	return {
 		  parts
 		, origin: parts[0].origin
@@ -145,7 +145,8 @@ const journey = (tz, s, ln, r) => (c) => {
 // tz = timezone, s = stations, ln = lines, r = remarks
 const departure = (tz, s, ln, r) => (d) => {
 	const result = {
-		  station: s[parseInt(d.stbStop.locX)]
+		  ref: d.jid
+		, station: s[parseInt(d.stbStop.locX)]
 		, when: dateTime(tz, d.date, d.stbStop.dTimeR || d.stbStop.dTimeS).format()
 		, direction: d.dirTxt
 		, line: ln[parseInt(d.prodX)]
