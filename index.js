@@ -17,6 +17,12 @@ const defaults = {
 
 
 
+const hafasError = (msg) => {
+	const err = new Error(msg)
+	err.isHafasError = true
+	return err
+}
+
 const request = (opt) => {
 	opt = Object.assign({}, defaults, opt)
 
@@ -35,9 +41,9 @@ const request = (opt) => {
 		.then((res) => {
 			const b = res.body
 
-			if (b.err) throw new Error(b.err)
+			if (b.err) throw hafasError(b.err)
 			if (!b.svcResL || !b.svcResL[0]) throw new Error('invalid response')
-			if (b.svcResL[0].err !== 'OK') throw new Error(b.svcResL[0].errTxt)
+			if (b.svcResL[0].err !== 'OK') throw hafasError(b.svcResL[0].errTxt)
 			const d = b.svcResL[0].res
 			const c = d.common || {}
 
