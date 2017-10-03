@@ -23,10 +23,10 @@ const hafasError = (msg) => {
 	return err
 }
 
-const request = (opt) => {
+const createRequest = (opt) => {
 	opt = Object.assign({}, defaults, opt)
 
-	return (data) => {
+	const request = (data) => {
 		const body = opt.onBody({lang: 'en', svcReqL: [data]})
 		const req = opt.onReq({
 			json: true, body: JSON.stringify(body),
@@ -52,8 +52,10 @@ const request = (opt) => {
 			if (Array.isArray(c.remL)) d.remarks = c.remL.map(opt.onRemark)
 			if (Array.isArray(c.opL)) d.operators = c.opL.map(opt.onOperator)
 			return d
-		}).catch((err) => {throw err})
+		})
 	}
+
+	return request
 }
 
-module.exports = request
+module.exports = createRequest

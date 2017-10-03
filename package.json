@@ -1,18 +1,30 @@
 {
-	"name":         "hafas-client",
-	"description":  "JavaScript client for HAFAS mobile APIs.",
-	"version":      "1.2.0",
-	"main":         "index.js",
-	"files":        ["index.js", "parse.js", "stringify.js"],
-	"author":       "Jannis R <mail@jannisr.de>",
-	"homepage":     "https://github.com/derhuerst/hafas-client",
-	"repository":   "derhuerst/hafas-client",
-	"bugs":         "https://github.com/derhuerst/hafas-client/issues",
-	"license":      "ISC",
-	"keywords":     ["hafas", "public", "transport", "api", "mgate"],
-	"engines" :     {"node": ">=6"},
+	"name": "hafas-client",
+	"description": "JavaScript client for HAFAS mobile APIs.",
+	"version": "1.2.1",
+	"main": "index.js",
+	"files": [
+		"index.js",
+		"parse.js",
+		"stringify.js"
+	],
+	"author": "Jannis R <mail@jannisr.de>",
+	"homepage": "https://github.com/derhuerst/hafas-client",
+	"repository": "derhuerst/hafas-client",
+	"bugs": "https://github.com/derhuerst/hafas-client/issues",
+	"license": "ISC",
+	"keywords": [
+		"hafas",
+		"public",
+		"transport",
+		"api",
+		"mgate"
+	],
+	"engines": {
+		"node": ">=6"
+	},
 	"dependencies": {
-		"got": "^6.7.1",
+		"got": "^7.1.0",
 		"moment-timezone": "^0.5.13",
 		"slugg": "^1.2.0"
 	},
