@@ -1,6 +1,9 @@
 'use strict'
 
-const got = require('got')
+const Promise = require('pinkie-promise')
+const {fetch} = require('fetch-ponyfill')({Promise})
+const {stringify} = require('query-string')
+
 const parse = require('./parse')
 
 
@@ -17,30 +20,34 @@ const defaults = {
 
 
 
-const hafasError = (msg) => {
-	const err = new Error(msg)
-	err.isHafasError = true
-	return err
-}
-
 const createRequest = (opt) => {
 	opt = Object.assign({}, defaults, opt)
 
 	const request = (data) => {
 		const body = opt.onBody({lang: 'en', svcReqL: [data]})
 		const req = opt.onReq({
-			json: true, body: body,
+			method: 'post',
+			body: JSON.stringify(body),
 			headers: {
-				'Content-Type':    'application/json',
+				'Content-Type': 'application/json',
 				'Accept-Encoding': 'gzip, deflate',
 				'user-agent': 'https://github.com/derhuerst/hafas-client'
-			}
+			},
+			query: null
 		})
+		const url = opt.endpoint + (req.query ? '?' + stringify(req.query) : '')
 
-		return got.post(opt.endpoint, req)
+		return fetch(url, req)
 		.then((res) => {
-			const b = res.body
-
+			if (!res.ok) {
+				const err = new Error(res.statusText)
+				err.statusCode = res.status
+				err.isHafasError = true
+				throw err
+			}
+			return res.json()
+		})
+		.then((b) => {
 			if (b.err) throw hafasError(b.err)
 			if (!b.svcResL || !b.svcResL[0]) throw new Error('invalid response')
 			if (b.svcResL[0].err !== 'OK') throw hafasError(b.svcResL[0].errTxt)

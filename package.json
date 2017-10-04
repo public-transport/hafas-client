@@ -1,7 +1,7 @@
 {
 	"name": "hafas-client",
 	"description": "JavaScript client for HAFAS mobile APIs.",
-	"version": "1.2.2",
+	"version": "1.2.5",
 	"main": "index.js",
 	"files": [
 		"index.js",
@@ -24,12 +24,14 @@
 		"node": ">=6"
 	},
 	"dependencies": {
-		"got": "^7.1.0",
+		"fetch-ponyfill": "^4.1.0",
 		"moment-timezone": "^0.5.13",
+		"pinkie-promise": "^2.0.1",
+		"query-string": "^5.0.0",
 		"slugg": "^1.2.0"
 	},
 	"scripts": {
 		"test": "node -e \"require('.')\"",
-		"prepublish": "npm test"
+		"prepublishOnly": "npm test"
 	}
 }
