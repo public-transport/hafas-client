@@ -29,7 +29,7 @@ const createRequest = (opt) => {
 	const request = (data) => {
 		const body = opt.onBody({lang: 'en', svcReqL: [data]})
 		const req = opt.onReq({
-			json: true, body: JSON.stringify(body),
+			json: true, body: body,
 			headers: {
 				'Content-Type':    'application/json',
 				'Accept-Encoding': 'gzip, deflate',
