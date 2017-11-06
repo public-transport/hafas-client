@@ -20,6 +20,11 @@ const defaults = {
 
 
 
+const hafasError = (err) => {
+	err.isHafasError = true
+	return err
+}
+
 const createRequest = (opt) => {
 	opt = Object.assign({}, defaults, opt)
 
@@ -42,15 +47,16 @@ const createRequest = (opt) => {
 			if (!res.ok) {
 				const err = new Error(res.statusText)
 				err.statusCode = res.status
-				err.isHafasError = true
-				throw err
+				throw hafasError(err)
 			}
 			return res.json()
 		})
 		.then((b) => {
-			if (b.err) throw hafasError(b.err)
+			if (b.err) throw hafasError(new Error(b.err))
 			if (!b.svcResL || !b.svcResL[0]) throw new Error('invalid response')
-			if (b.svcResL[0].err !== 'OK') throw hafasError(b.svcResL[0].errTxt)
+			if (b.svcResL[0].err !== 'OK') {
+				throw hafasError(new Error(b.svcResL[0].errTxt))
+			}
 			const d = b.svcResL[0].res
 			const c = d.common || {}
 
