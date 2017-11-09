@@ -139,9 +139,11 @@ const journey = (tz, s, ln, r, p = part) => (c) => {
 	}
 }
 
+// todos from derhuerst/hafas-client#2
+// - stdStop.dCncl
+// - stdStop.dPlatfS, stdStop.dPlatfR
 // todo: what is d.jny.dirFlg?
 // todo: d.stbStop.dProgType
-// todo: what is d.stbStop.dTimeR?
 // tz = timezone, s = stations, ln = lines, r = remarks
 const departure = (tz, s, ln, r) => (d) => {
 	const result = {
