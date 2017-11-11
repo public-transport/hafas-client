@@ -7,7 +7,7 @@
 		"index.js",
 		"lib",
 		"parse",
-		"stringify.js"
+		"stringify"
 	],
 	"author": "Jannis R <mail@jannisr.de>",
 	"homepage": "https://github.com/derhuerst/hafas-client",
