@@ -5,7 +5,7 @@
 	"main": "index.js",
 	"files": [
 		"index.js",
-		"parse.js",
+		"parse",
 		"stringify.js"
 	],
 	"author": "Jannis R <mail@jannisr.de>",

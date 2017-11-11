@@ -4,7 +4,10 @@ const Promise = require('pinkie-promise')
 const {fetch} = require('fetch-ponyfill')({Promise})
 const {stringify} = require('query-string')
 
-const parse = require('./parse')
+const parseLocation = require('./parse/location')
+const parseLine = require('./parse/line')
+const parseRemark = require('./parse/remark')
+const parseOperator = require('./parse/operator')
 
 
 
@@ -12,13 +15,11 @@ const id = (x) => x
 const defaults = {
 	onBody:     id,
 	onReq:      id,
-	onLocation: parse.location,
-	onLine: parse.line,
-	onRemark:   parse.remark,
-	onOperator: parse.operator
+	parseLocation: parseLocation,
+	parseLine: parseLine,
+	parseRemark: parseRemark,
+	parseOperator: parseOperator
 }
-
-
 
 const hafasError = (err) => {
 	err.isHafasError = true
@@ -60,10 +61,10 @@ const createRequest = (opt) => {
 			const d = b.svcResL[0].res
 			const c = d.common || {}
 
-			if (Array.isArray(c.locL)) d.locations = c.locL.map(opt.onLocation)
-			if (Array.isArray(c.prodL)) d.lines = c.prodL.map(opt.onLine)
-			if (Array.isArray(c.remL)) d.remarks = c.remL.map(opt.onRemark)
-			if (Array.isArray(c.opL)) d.operators = c.opL.map(opt.onOperator)
+			if (Array.isArray(c.locL)) d.locations = c.locL.map(opt.parseLocation)
+			if (Array.isArray(c.prodL)) d.lines = c.prodL.map(opt.parseLine)
+			if (Array.isArray(c.remL)) d.remarks = c.remL.map(opt.parseRemark)
+			if (Array.isArray(c.opL)) d.operators = c.opL.map(opt.parseOperator)
 			return d
 		})
 	}
