@@ -8,9 +8,9 @@ const parseLocation = require('./location')
 // todo: what is s.wt?
 // todo: what is s.dur?
 const parseNearby = (n) => {
-	const result = location(n)
-	result.distance = n.dist
-	return result
+	const res = parseLocation(n)
+	res.distance = n.dist
+	return res
 }
 
 module.exports = parseNearby

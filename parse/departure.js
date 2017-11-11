@@ -8,27 +8,28 @@ const parseDateTime = require('./date-time')
 // todo: what is d.jny.dirFlg?
 // todo: d.stbStop.dProgType
 
-// tz = timezone, s = stations, ln = lines, r = remarks
-const createParseDeparture = (tz, s, ln, r) => {
+const createParseDeparture = (timezone, stations, lines, remarks) => {
+	const findRemark = rm => remarks[parseInt(rm.remX)] || null
+
 	const parseDeparture = (d) => {
-		const when = parseDateTime(tz, d.date, d.stbStop.dTimeR || d.stbStop.dTimeS)
-		const result = {
-			  ref: d.jid
-			, station: s[parseInt(d.stbStop.locX)]
-			, when: when.format()
-			, direction: d.dirTxt
-			, line: ln[parseInt(d.prodX)]
-			, remarks: d.remL ? d.remL.map((rm) => r[parseInt(rm.remX)]) : null
-			, trip: +d.jid.split('|')[1]
+		const when = parseDateTime(timezone, d.date, d.stbStop.dTimeR || d.stbStop.dTimeS)
+		const res = {
+			ref: d.jid,
+			station: stations[parseInt(d.stbStop.locX)], // todo: default to null
+			when: when.format(),
+			direction: d.dirTxt,
+			line: lines[parseInt(d.prodX)], // todo: default to null
+			remarks: d.remL ? d.remL.map(findRemark) : [],
+			trip: +d.jid.split('|')[1] // todo: this seems brittle
 		}
 
 		if (d.stbStop.dTimeR && d.stbStop.dTimeS) {
-			const realtime = parseDateTime(tz, d.date, d.stbStop.dTimeR)
-			const planned = parseDateTime(tz, d.date, d.stbStop.dTimeS)
-			result.delay = Math.round((realtime - planned) / 1000)
-		} else result.delay = null
+			const realtime = parseDateTime(timezone, d.date, d.stbStop.dTimeR)
+			const planned = parseDateTime(timezone, d.date, d.stbStop.dTimeS)
+			res.delay = Math.round((realtime - planned) / 1000)
+		} else res.delay = null
 
-		return result
+		return res
 	}
 
 	return parseDeparture

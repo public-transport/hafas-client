@@ -16,8 +16,10 @@ const parseLocation = (l) => {
 			longitude: l.crd.x / 1000000
 		} : null
 	}
+
 	if (type === 'poi' || type === 'station') result.id = l.extId
 	if ('pCls' in l) result.products = l.pCls
+
 	return result
 }
 

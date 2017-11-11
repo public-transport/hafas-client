@@ -2,18 +2,19 @@
 
 const parseDateTime = require('./date-time')
 
-// s = stations, ln = lines, r = remarks, c = connection
-const createParseStopover = (tz, s, ln, r, c) => {
+const clone = obj => Object.assign({}, obj)
+
+const createParseStopover = (tz, stations, lines, remarks, j) => { // j = journey
 	const parseStopover = (st) => {
 		const res = {
-			station: s[parseInt(st.locX)]
+			station: stations[parseInt(st.locX)]
 		}
 		if (st.aTimeR || st.aTimeS) {
-			const arr = parseDateTime(tz, c.date, st.aTimeR || st.aTimeS)
+			const arr = parseDateTime(tz, j.date, st.aTimeR || st.aTimeS)
 			res.arrival = arr.format()
 		}
 		if (st.dTimeR || st.dTimeS) {
-			const dep = parseDateTime(tz, c.date, st.dTimeR || st.dTimeS)
+			const dep = parseDateTime(tz, j.date, st.dTimeR || st.dTimeS)
 			res.departure = dep.format()
 		}
 		return res
@@ -22,32 +23,31 @@ const createParseStopover = (tz, s, ln, r, c) => {
 	return parseStopover
 }
 
-// s = stations, ln = lines, r = remarks, c = connection
-const createApplyRemark = (s, ln, r, c) => {
+const createApplyRemark = (stations, lines, remarks, j) => { // j = journey
 	// todo: finish parse/remark.js first
 	const applyRemark = (rm) => {}
 	return applyRemark
 }
 
-// tz = timezone, s = stations, ln = lines, r = remarks, c = connection
-const createParsePart = (tz, s, ln, r, c) => {
+const createParsePart = (tz, stations, lines, remarks, j) => { // j = journey
 	// todo: pt.sDays
 	// todo: pt.dep.dProgType, pt.arr.dProgType
 	// todo: what is pt.jny.dirFlg?
 	// todo: how does pt.freq work?
 	const parsePart = (pt) => {
-		const dep = parseDateTime(tz, c.date, pt.dep.dTimeR || pt.dep.dTimeS)
-		const arr = parseDateTime(tz, c.date, pt.arr.aTimeR || pt.arr.aTimeS)
+		const dep = parseDateTime(tz, j.date, pt.dep.dTimeR || pt.dep.dTimeS)
+		const arr = parseDateTime(tz, j.date, pt.arr.aTimeR || pt.arr.aTimeS)
 		const res = {
-			  origin: Object.assign({}, s[parseInt(pt.dep.locX)]) // todo: what about null?
-			, destination: Object.assign({}, s[parseInt(pt.arr.locX)]) // todo: what about null?
-			, departure: dep.format()
-			, arrival: dep.format()
+			// todo: what about null?
+			origin: clone(stations[parseInt(pt.dep.locX)]),
+			destination: clone(stations[parseInt(pt.arr.locX)]),
+			departure: dep.format(),
+			arrival: arr.format()
 		}
 
 		if (pt.dep.dTimeR && pt.dep.dTimeS) {
-			const realtime = parseDateTime(tz, c.date, pt.dep.dTimeR)
-			const planned = parseDateTime(tz, c.date, pt.dep.dTimeS)
+			const realtime = parseDateTime(tz, j.date, pt.dep.dTimeR)
+			const planned = parseDateTime(tz, j.date, pt.dep.dTimeS)
 			res.delay = Math.round((realtime - planned) / 1000)
 		}
 
@@ -55,26 +55,27 @@ const createParsePart = (tz, s, ln, r, c) => {
 			res.mode = 'walking'
 		} else if (pt.type === 'JNY') {
 			res.id = pt.jny.jid
-			res.line = ln[parseInt(pt.jny.prodX)] // todo: default null
+			res.line = lines[parseInt(pt.jny.prodX)] // todo: default null
 			res.direction = pt.jny.dirTxt // todo: parse this
 
 			if (pt.dep.dPlatfS) res.departurePlatform = pt.dep.dPlatfS
 			if (pt.arr.aPlatfS) res.arrivalPlatform = pt.arr.aPlatfS
 
 			if (pt.jny.stopL) {
-				res.passed = pt.jny.stopL.map(createParseStopover(tz, s, ln, r, c))
+				const parseStopover = createParseStopover(tz, stations, lines, remarks, j)
+				res.passed = pt.jny.stopL.map(parseStopover)
 			}
 			if (Array.isArray(pt.jny.remL)) {
-				pt.jny.remL.forEach(createApplyRemark(s, ln, r, c))
+				pt.jny.remL.forEach(createApplyRemark(stations, lines, remarks, j))
 			}
 
 			if (pt.jny.freq && pt.jny.freq.jnyL) {
 				const parseAlternative = (a) => ({
-					line: ln[parseInt(a.prodX)], // todo: default null
-					when: parseDateTime(tz, c.date, a.stopL[0].dTimeS).format() // todo: realtime
+					line: lines[parseInt(a.prodX)], // todo: default null
+					when: parseDateTime(tz, j.date, a.stopL[0].dTimeS).format() // todo: realtime
 				})
 				res.alternatives = pt.jny.freq.jnyL
-				.filter((a) => a.stopL[0].locX === pt.dep.locX)
+				.filter(a => a.stopL[0].locX === pt.dep.locX)
 				.map(parseAlternative)
 			}
 		}
@@ -84,21 +85,20 @@ const createParsePart = (tz, s, ln, r, c) => {
 	return parsePart
 }
 
-// s = stations, ln = lines, r = remarks, p = createParsePart
-const createParseJourney = (tz, s, ln, r, p = createParsePart) => {
+const createParseJourney = (tz, stations, lines, remarks, p = createParsePart) => {
 	// todo: c.sDays
 	// todo: c.dep.dProgType, c.arr.dProgType
 	// todo: c.conSubscr
 	// todo: c.trfRes x vbb-parse-ticket
 	// todo: use computed information from part
-	const parseJourney = (c) => {
-		const parts = c.secL.map(p(tz, s, ln, r, c))
+	const parseJourney = (journey) => {
+		const parts = journey.secL.map(p(tz, stations, lines, remarks, journey))
 		return {
-			  parts
-			, origin: parts[0].origin
-			, destination: parts[parts.length - 1].destination
-			, departure: parts[0].departure
-			, arrival: parts[parts.length - 1].arrival
+			parts,
+			origin: parts[0].origin,
+			destination: parts[parts.length - 1].destination,
+			departure: parts[0].departure,
+			arrival: parts[parts.length - 1].arrival
 		}
 	}
 

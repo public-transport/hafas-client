@@ -1,17 +1,18 @@
 'use strict'
 
-// s = stations, ln = lines, r = remarks, c = connection
-const createParseStopover = (tz, s, ln, r, c) => {
+const parseDateTime = require('./date-time')
+
+const createParseStopover = (tz, stations, lines, remarks, connection) => {
 	const parseStopover = (st) => {
 		const res = {
-			station: s[parseInt(st.locX)]
+			station: stations[parseInt(st.locX)] // default to null
 		}
 		if (st.aTimeR || st.aTimeS) {
-			const arr = parseDateTime(tz, c.date, st.aTimeR || st.aTimeS)
+			const arr = parseDateTime(tz, connection.date, st.aTimeR || st.aTimeS)
 			res.arrival = arr.format()
 		}
 		if (st.dTimeR || st.dTimeS) {
-			const dep = parseDateTime(tz, c.date, st.dTimeR || st.dTimeS)
+			const dep = parseDateTime(tz, connection.date, st.dTimeR || st.dTimeS)
 			res.departure = dep.format()
 		}
 		return res
