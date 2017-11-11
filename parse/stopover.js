@@ -5,7 +5,7 @@ const parseDateTime = require('./date-time')
 const createParseStopover = (tz, stations, lines, remarks, connection) => {
 	const parseStopover = (st) => {
 		const res = {
-			station: stations[parseInt(st.locX)] // default to null
+			station: stations[parseInt(st.locX)] || null
 		}
 		if (st.aTimeR || st.aTimeS) {
 			const arr = parseDateTime(tz, connection.date, st.aTimeR || st.aTimeS)

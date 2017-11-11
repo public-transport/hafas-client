@@ -15,10 +15,10 @@ const createParseDeparture = (timezone, stations, lines, remarks) => {
 		const when = parseDateTime(timezone, d.date, d.stbStop.dTimeR || d.stbStop.dTimeS)
 		const res = {
 			ref: d.jid,
-			station: stations[parseInt(d.stbStop.locX)], // todo: default to null
+			station: stations[parseInt(d.stbStop.locX)] || null,
 			when: when.format(),
 			direction: d.dirTxt,
-			line: lines[parseInt(d.prodX)], // todo: default to null
+			line: lines[parseInt(d.prodX)] || null,
 			remarks: d.remL ? d.remL.map(findRemark) : [],
 			trip: +d.jid.split('|')[1] // todo: this seems brittle
 		}

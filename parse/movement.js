@@ -28,7 +28,7 @@ const createParseMovement = (tz, locations, lines, remarks) => {
 
 		const res = {
 			direction: m.dirTxt,
-			line: lines[m.prodX], // default to null
+			line: lines[m.prodX] || null,
 			coordinates: m.pos ? {
 				latitude: m.pos.y / 1000000,
 				longitude: m.pos.x / 1000000
@@ -40,8 +40,8 @@ const createParseMovement = (tz, locations, lines, remarks) => {
 		if (m.ani && Array.isArray(m.ani.mSec)) {
 			for (let i = 0; i < m.ani.mSec.length; i++) {
 				res.frames.push({
-					origin: locations[m.ani.fLocX[i]], // todo: default to null
-					destination: locations[m.ani.tLocX[i]], // todo: default to null
+					origin: locations[m.ani.fLocX[i]] || null,
+					destination: locations[m.ani.tLocX[i]] || null,
 					t: m.ani.mSec[i]
 				})
 			}

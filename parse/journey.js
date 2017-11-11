@@ -38,8 +38,7 @@ const createParsePart = (tz, stations, lines, remarks, j) => { // j = journey
 		const dep = parseDateTime(tz, j.date, pt.dep.dTimeR || pt.dep.dTimeS)
 		const arr = parseDateTime(tz, j.date, pt.arr.aTimeR || pt.arr.aTimeS)
 		const res = {
-			// todo: what about null?
-			origin: clone(stations[parseInt(pt.dep.locX)]),
+			origin: clone(stations[parseInt(pt.dep.locX)]) || null,
 			destination: clone(stations[parseInt(pt.arr.locX)]),
 			departure: dep.format(),
 			arrival: arr.format()
@@ -55,7 +54,7 @@ const createParsePart = (tz, stations, lines, remarks, j) => { // j = journey
 			res.mode = 'walking'
 		} else if (pt.type === 'JNY') {
 			res.id = pt.jny.jid
-			res.line = lines[parseInt(pt.jny.prodX)] // todo: default null
+			res.line = lines[parseInt(pt.jny.prodX)] || null
 			res.direction = pt.jny.dirTxt // todo: parse this
 
 			if (pt.dep.dPlatfS) res.departurePlatform = pt.dep.dPlatfS
@@ -71,7 +70,7 @@ const createParsePart = (tz, stations, lines, remarks, j) => { // j = journey
 
 			if (pt.jny.freq && pt.jny.freq.jnyL) {
 				const parseAlternative = (a) => ({
-					line: lines[parseInt(a.prodX)], // todo: default null
+					line: lines[parseInt(a.prodX)] || null,
 					when: parseDateTime(tz, j.date, a.stopL[0].dTimeS).format() // todo: realtime
 				})
 				res.alternatives = pt.jny.freq.jnyL
