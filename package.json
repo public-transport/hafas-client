@@ -1,7 +1,7 @@
 {
 	"name": "hafas-client",
-	"description": "JavaScript client for HAFAS mobile APIs.",
-	"version": "1.2.6",
+	"description": "JavaScript client for HAFAS public transport APIs.",
+	"version": "2.0.0",
 	"main": "index.js",
 	"files": [
 		"index.js",
@@ -17,8 +17,9 @@
 		"hafas",
 		"public",
 		"transport",
+		"transit",
 		"api",
-		"mgate"
+		"http"
 	],
 	"engines": {
 		"node": ">=6"

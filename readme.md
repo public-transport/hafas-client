@@ -1,11 +1,9 @@
 # hafas-client
 
-**A client for HAFAS mobile APIs**, providing the base for [vbb-hafas](https://github.com/derhuerst/vbb-hafas) and [db-hafas](https://github.com/derhuerst/db-hafas).
+**A client for HAFAS public transport APIs**, providing the base for [vbb-hafas](https://github.com/derhuerst/vbb-hafas) and [db-hafas](https://github.com/derhuerst/db-hafas).
 
 [![npm version](https://img.shields.io/npm/v/hafas-client.svg)](https://www.npmjs.com/package/hafas-client)
 [![build status](https://img.shields.io/travis/derhuerst/hafas-client.svg)](https://travis-ci.org/derhuerst/hafas-client)
-[![dependency status](https://img.shields.io/david/derhuerst/hafas-client.svg)](https://david-dm.org/derhuerst/hafas-client)
-[![dev dependency status](https://img.shields.io/david/dev/derhuerst/hafas-client.svg)](https://david-dm.org/derhuerst/hafas-client#info=devDependencies)
 ![ISC-licensed](https://img.shields.io/github/license/derhuerst/hafas-client.svg)
 [![chat on gitter](https://badges.gitter.im/derhuerst.svg)](https://gitter.im/derhuerst)
 
@@ -19,7 +17,9 @@ npm install hafas-client
 
 ## Usage
 
-See [vbb-hafas](https://github.com/derhuerst/vbb-hafas/blob/master/lib/request.js).
+```
+todo
+```
 
 
 ## Contributing
