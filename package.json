@@ -5,6 +5,7 @@
 	"main": "index.js",
 	"files": [
 		"index.js",
+		"lib",
 		"parse",
 		"stringify.js"
 	],
