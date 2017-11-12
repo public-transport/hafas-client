@@ -5,6 +5,7 @@ const tape = require('tape')
 const isRoughlyEqual = require('is-roughly-equal')
 
 const createClient = require('..')
+const dbProfile = require('../p/db')
 const {
 	findStation,
 	assertValidStation,
