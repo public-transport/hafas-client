@@ -2,8 +2,8 @@
 
 const moment = require('moment-timezone')
 
-const formatDate = (tz, when) => {
-	moment(when).tz(tz).format('YYYYMMDD')
+const formatDate = (profile, when) => {
+	return moment(when).tz(profile.timezone).format('YYYYMMDD')
 }
 
 module.exports = formatDate
