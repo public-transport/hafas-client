@@ -2,14 +2,16 @@
 
 const formatCoord = require('./coord')
 
-const formatAddress = (latitude, longitude, name) => {
-	if (!latitude || !longitude || !name) throw new Error('invalid address.')
+const formatAddress = (a) => {
+	// todo: type-checking, better error msgs
+	if (!a.latitude || !a.longitude || !a.name) throw new Error('invalid address.')
+
 	return {
 		type: 'A',
-		name,
+		name: a.name,
 		crd: {
-			x: formatCoord(longitude),
-			y: formatCoord(latitude)
+			x: formatCoord(a.longitude),
+			y: formatCoord(a.latitude)
 		}
 	}
 }

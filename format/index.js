@@ -7,5 +7,6 @@ module.exports = {
 	station: require('./station'),
 	address: require('./address'),
 	poi: require('./poi'),
+	location: require('./location'),
 	locationFilter: require('./location-filter')
 }
