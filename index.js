@@ -121,7 +121,41 @@ const createClient = (profile) => {
 		})
 	}
 
-	return {departures, journeys, locations}
+	const nearby = (latitude, longitude, opt = {}) => {
+		if ('number' !== typeof latitude) throw new Error('latitude must be a number.')
+		if ('number' !== typeof longitude) throw new Error('longitude must be a number.')
+		opt = Object.assign({
+			results: 8, // maximum number of results
+			distance: null, // maximum walking distance in meters
+			poi: false, // return points of interest?
+			stations: true, // return stations?
+		}, opt)
+
+		return request(profile, {
+			cfg: {polyEnc: 'GPA'},
+			meth: 'LocGeoPos',
+			req: {
+				ring: {
+					cCrd: {
+						x: profile.formatCoord(longitude),
+						y: profile.formatCoord(latitude)
+					},
+					maxDist: opt.distance || -1,
+					minDist: 0
+				},
+				getPOIs: !!opt.poi,
+				getStops: !!opt.stations,
+				maxLoc: opt.results
+			}
+		})
+		.then((d) => {
+			if (!Array.isArray(d.locL)) return []
+			const parse = profile.parseNearby
+			return d.locL.map(loc => parse(profile, loc))
+		})
+	}
+
+	return {departures, journeys, locations, nearby}
 }
 
 module.exports = createClient
