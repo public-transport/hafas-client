@@ -3,7 +3,8 @@
 // todo: what is p.number vs p.line?
 // todo: what is p.icoX?
 // todo: what is p.oprX?
-const parseLine = (p) => {
+// todo: is passing in profile necessary?
+const parseLine = (profile, p) => {
 	if (!p) return null // todo: handle this upstream
 	const res = {type: 'line', name: p.line || p.name}
 

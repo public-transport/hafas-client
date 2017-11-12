@@ -2,7 +2,8 @@
 
 const slugg = require('slugg')
 
-const parseOperator = (a) => {
+// todo: is passing in profile necessary?
+const parseOperator = (profile, a) => {
 	return {
 		type: 'operator',
 		id: slugg(a.name), // todo: find a more reliable way

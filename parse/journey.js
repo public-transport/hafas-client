@@ -4,8 +4,10 @@ const parseDateTime = require('./date-time')
 
 const clone = obj => Object.assign({}, obj)
 
-const createParseStopover = (tz, stations, lines, remarks, j) => { // j = journey
-	const parseStopover = (st) => {
+const createParseJourney = (profile, stations, lines, remarks) => {
+	const tz = profile.timezone
+
+	const parseStopover = (j, st) => {
 		const res = {
 			station: stations[parseInt(st.locX)]
 		}
@@ -17,26 +19,20 @@ const createParseStopover = (tz, stations, lines, remarks, j) => { // j = journe
 			const dep = parseDateTime(tz, j.date, st.dTimeR || st.dTimeS)
 			res.departure = dep.format()
 		}
+
 		return res
 	}
 
-	return parseStopover
-}
-
-const createApplyRemark = (stations, lines, remarks, j) => { // j = journey
 	// todo: finish parse/remark.js first
-	const applyRemark = (rm) => {}
-	return applyRemark
-}
+	const applyRemark = (j, rm) => {}
 
-const createParsePart = (tz, stations, lines, remarks, j) => { // j = journey
 	// todo: pt.sDays
 	// todo: pt.dep.dProgType, pt.arr.dProgType
 	// todo: what is pt.jny.dirFlg?
 	// todo: how does pt.freq work?
-	const parsePart = (pt) => {
-		const dep = parseDateTime(tz, j.date, pt.dep.dTimeR || pt.dep.dTimeS)
-		const arr = parseDateTime(tz, j.date, pt.arr.aTimeR || pt.arr.aTimeS)
+	const parsePart = (j, pt) => { // j = journey, pt = part
+		const dep = profile.parseDateTime(tz, j.date, pt.dep.dTimeR || pt.dep.dTimeS)
+		const arr = profile.parseDateTime(tz, j.date, pt.arr.aTimeR || pt.arr.aTimeS)
 		const res = {
 			origin: clone(stations[parseInt(pt.dep.locX)]) || null,
 			destination: clone(stations[parseInt(pt.arr.locX)]),
@@ -45,8 +41,8 @@ const createParsePart = (tz, stations, lines, remarks, j) => { // j = journey
 		}
 
 		if (pt.dep.dTimeR && pt.dep.dTimeS) {
-			const realtime = parseDateTime(tz, j.date, pt.dep.dTimeR)
-			const planned = parseDateTime(tz, j.date, pt.dep.dTimeS)
+			const realtime = profile.parseDateTime(tz, j.date, pt.dep.dTimeR)
+			const planned = profile.parseDateTime(tz, j.date, pt.dep.dTimeS)
 			res.delay = Math.round((realtime - planned) / 1000)
 		}
 
@@ -61,18 +57,21 @@ const createParsePart = (tz, stations, lines, remarks, j) => { // j = journey
 			if (pt.arr.aPlatfS) res.arrivalPlatform = pt.arr.aPlatfS
 
 			if (pt.jny.stopL) {
-				const parseStopover = createParseStopover(tz, stations, lines, remarks, j)
-				res.passed = pt.jny.stopL.map(parseStopover)
+				res.passed = pt.jny.stopL.map(stopover => parseStopover(j, stopover))
 			}
 			if (Array.isArray(pt.jny.remL)) {
-				pt.jny.remL.forEach(createApplyRemark(stations, lines, remarks, j))
+				for (let remark of pt.jny.remL) applyRemark(j, remark)
 			}
 
 			if (pt.jny.freq && pt.jny.freq.jnyL) {
-				const parseAlternative = (a) => ({
-					line: lines[parseInt(a.prodX)] || null,
-					when: parseDateTime(tz, j.date, a.stopL[0].dTimeS).format() // todo: realtime
-				})
+				const parseAlternative = (a) => {
+					// todo: realtime
+					const when = profile.parseDateTime(tz, j.date, a.stopL[0].dTimeS)
+					return {
+						line: lines[parseInt(a.prodX)] || null,
+						when: when.format()
+					}
+				}
 				res.alternatives = pt.jny.freq.jnyL
 				.filter(a => a.stopL[0].locX === pt.dep.locX)
 				.map(parseAlternative)
@@ -81,17 +80,14 @@ const createParsePart = (tz, stations, lines, remarks, j) => { // j = journey
 
 		return res
 	}
-	return parsePart
-}
 
-const createParseJourney = (tz, stations, lines, remarks, p = createParsePart) => {
 	// todo: c.sDays
 	// todo: c.dep.dProgType, c.arr.dProgType
 	// todo: c.conSubscr
 	// todo: c.trfRes x vbb-parse-ticket
 	// todo: use computed information from part
-	const parseJourney = (journey) => {
-		const parts = journey.secL.map(p(tz, stations, lines, remarks, journey))
+	const parseJourney = (j) => {
+		const parts = j.secL.map(part => parsePart(j, part))
 		return {
 			parts,
 			origin: parts[0].origin,

@@ -1,8 +1,8 @@
 'use strict'
 
-const parseDateTime = require('./date-time')
+const createParseMovement = (profile, locations, lines, remarks) => {
+	const tz = profile.timezone
 
-const createParseMovement = (tz, locations, lines, remarks) => {
 	// todo: what is m.dirGeo? maybe the speed?
 	// todo: what is m.stopL?
 	// todo: what is m.proc? wut?
@@ -13,10 +13,10 @@ const createParseMovement = (tz, locations, lines, remarks) => {
 	const parseMovement = (m) => {
 		const parseNextStop = (s) => {
 			const dep = s.dTimeR || s.dTimeS
-				? parseDateTime(tz, m.date, s.dTimeR || s.dTimeS)
+				? profile.parseDateTime(tz, m.date, s.dTimeR || s.dTimeS)
 				: null
 			const arr = s.aTimeR || s.aTimeS
-				? parseDateTime(tz, m.date, s.aTimeR || s.aTimeS)
+				? profile.parseDateTime(tz, m.date, s.aTimeR || s.aTimeS)
 				: null
 
 			return {

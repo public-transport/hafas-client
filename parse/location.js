@@ -6,9 +6,10 @@ types.S = 'station'
 types.A = 'address'
 
 // todo: what is s.rRefL?
-const parseLocation = (l) => {
+// todo: is passing in profile necessary?
+const parseLocation = (profile, l) => {
 	const type = types[l.type] || 'unknown'
-	const result = {
+	const res = {
 		type,
 		name: l.name,
 		coordinates: l.crd ? {
@@ -17,10 +18,10 @@ const parseLocation = (l) => {
 		} : null
 	}
 
-	if (type === 'poi' || type === 'station') result.id = l.extId
-	if ('pCls' in l) result.products = l.pCls
+	if (type === 'poi' || type === 'station') res.id = l.extId
+	if ('pCls' in l) res.products = l.pCls
 
-	return result
+	return res
 }
 
 module.exports = parseLocation
