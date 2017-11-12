@@ -41,10 +41,10 @@ const assertValidLocation = (t, l) => {
 	else if (l.type === 'address') assertValidAddress(t, l)
 	else t.fail('invalid type ' + l.type)
 
-	t.equal(typeof s.name, 'string')
-	t.ok(s.coordinates)
-	t.equal(typeof s.coordinates.latitude, 'number')
-	t.equal(typeof s.coordinates.longitude, 'number')
+	t.equal(typeof l.name, 'string')
+	t.ok(l.coordinates)
+	t.equal(typeof l.coordinates.latitude, 'number')
+	t.equal(typeof l.coordinates.longitude, 'number')
 }
 
 const isValidMode = (m) => {
@@ -57,7 +57,7 @@ const isValidMode = (m) => {
 const assertValidLine = (t, l) => {
 	t.equal(l.type, 'line')
 	t.equal(typeof l.name, 'string')
-	t.ok(isValidMode(l.mode))
+	t.ok(isValidMode(l.mode), 'invalid mode ' + l.mode)
 	t.equal(typeof l.product, 'string')
 }
 
@@ -73,33 +73,6 @@ const assertValidStopover = (t, s) => {
 	}
 	t.ok(s.station)
 	assertValidStation(t, s.station)
-}
-
-const isJungfernheide = (s) => {
-	return s.type === 'station' &&
-	s.id === '8011167' &&
-	s.name === 'Berlin Jungfernheide' &&
-	s.coordinates &&
-	isRoughlyEqual(s.coordinates.latitude, 52.530408, .0005) &&
-	isRoughlyEqual(s.coordinates.longitude, 13.299424, .0005)
-}
-
-const assertIsJungfernheide = (t, s) => {
-	t.equal(s.type, 'station')
-	t.equal(s.id, '8011167')
-	t.equal(s.name, 'Berlin Jungfernheide')
-	t.ok(s.coordinates)
-	t.ok(isRoughlyEqual(s.coordinates.latitude, 52.530408, .0005))
-	t.ok(isRoughlyEqual(s.coordinates.longitude, 13.299424, .0005))
-}
-
-const assertIsMünchenHbf = (s) => {
-	t.equal(s.type, 'station')
-	t.equal(s.id, '8000261')
-	t.equal(s.name, 'München Hbf')
-	t.ok(s.coordinates)
-	t.equal(s.coordinates.latitude, 48.140229)
-	t.equal(s.coordinates.longitude, 11.558339)
 }
 
 const minute = 60 * 1000
@@ -125,7 +98,5 @@ module.exports = {
 	assertValidLine,
 	isValidDateTime,
 	assertValidStopover,
-	isJungfernheide, assertIsJungfernheide,
-	assertIsMünchenHbf,
 	when, isValidWhen
 }
