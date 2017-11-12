@@ -82,6 +82,14 @@ const defaultProducts = {
 	regional: true,
 	regionalExp: true
 }
+const formatProducts = (products) => {
+	products = Object.assign(Object.create(null), defaultProducts, products)
+	return {
+		type: 'PROD',
+		mode: 'INC',
+		value: modes.stringifyBitmask(products) + ''
+	}
+}
 
 // todo: find option for absolute number of results
 
@@ -94,16 +102,10 @@ const dbProfile = {
 
 	// todo: parseLocation
 	parseLine,
+	parseProducts: modes.parseBitmask,
 
 	formatStation,
-	formatProducts: (products) => {
-		products = Object.assign(Object.create(null), defaultProducts, products)
-		return {
-			type: 'PROD',
-			mode: 'INC',
-			value: modes.stringifyBitmask(products) + ''
-		}
-	}
+	formatProducts
 }
 
 module.exports = dbProfile

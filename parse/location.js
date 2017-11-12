@@ -19,7 +19,7 @@ const parseLocation = (profile, l) => {
 	}
 
 	if (type === 'poi' || type === 'station') res.id = l.extId
-	if ('pCls' in l) res.products = l.pCls
+	if ('pCls' in l) res.products = profile.parseProducts(l.pCls)
 
 	return res
 }

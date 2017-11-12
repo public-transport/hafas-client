@@ -6,6 +6,7 @@ const isRoughlyEqual = require('is-roughly-equal')
 
 const createClient = require('..')
 const dbProfile = require('../p/db')
+const modes = require('../p/db/modes')
 const {
 	findStation,
 	assertValidStation,
@@ -35,6 +36,12 @@ const assertIsJungfernheide = (t, s) => {
 	t.ok(isRoughlyEqual(s.coordinates.longitude, 13.299424, .0005))
 }
 
+const assertValidProducts = (t, p) => {
+	for (let k of Object.keys(modes)) {
+		t.ok('boolean', typeof modes[k], 'mode ' + k + ' must be a boolean')
+	}
+}
+
 const test = tapePromise(tape)
 const client = createClient(dbProfile)
 
@@ -50,11 +57,17 @@ test('Berlin Jungfernheide to München Hbf', async (t) => {
 		if (!await findStation(journey.origin.id)) {
 			console.error('unknown station', journey.origin.id, journey.origin.name)
 		}
+		if (journey.origin.products) {
+			assertValidProducts(t, journey.origin.products)
+		}
 		t.ok(isValidWhen(journey.departure))
 
 		assertValidStation(t, journey.destination)
 		if (!await findStation(journey.origin.id)) {
 			console.error('unknown station', journey.destination.id, journey.destination.name)
+		}
+		if (journey.destination.products) {
+			assertValidProducts(t, journey.destination.products)
 		}
 		t.ok(isValidWhen(journey.arrival))
 
@@ -100,6 +113,7 @@ test('Berlin Jungfernheide to Torfstraße 17', async (t) => {
 	if (!await findStation(part.origin.id)) {
 		console.error('unknown station', part.origin.id, part.origin.name)
 	}
+	if (part.origin.products) assertValidProducts(t, part.origin.products)
 	t.ok(isValidWhen(part.departure))
 	t.ok(isValidWhen(part.arrival))
 
@@ -127,6 +141,7 @@ test('Berlin Jungfernheide to ATZE Musiktheater', async (t) => {
 	if (!await findStation(part.origin.id)) {
 		console.error('unknown station', part.origin.id, part.origin.name)
 	}
+	if (part.origin.products) assertValidProducts(t, part.origin.products)
 	t.ok(isValidWhen(part.departure))
 	t.ok(isValidWhen(part.arrival))
 
@@ -150,6 +165,7 @@ test('departures at Berlin Jungfernheide', async (t) => {
 		if (!await findStation(dep.station.id)) {
 			console.error('unknown station', dep.station.id, dep.station.name)
 		}
+		if (dep.station.products) assertValidProducts(t, dep.station.products)
 		t.ok(isValidWhen(dep.when))
 	}
 

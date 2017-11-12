@@ -57,6 +57,7 @@ const isValidMode = (m) => {
 const assertValidLine = (t, l) => {
 	t.equal(l.type, 'line')
 	t.equal(typeof l.name, 'string')
+	if (!isValidMode(l.mode)) console.error(l)
 	t.ok(isValidMode(l.mode), 'invalid mode ' + l.mode)
 	t.equal(typeof l.product, 'string')
 }
