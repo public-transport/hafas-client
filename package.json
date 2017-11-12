@@ -32,8 +32,16 @@
 		"query-string": "^5.0.0",
 		"slugg": "^1.2.0"
 	},
+	"devDependencies": {
+		"db-stations": "^1.25.0",
+		"floordate": "^3.0.0",
+		"is-roughly-equal": "^0.1.0",
+		"tap-spec": "^4.1.1",
+		"tape": "^4.8.0",
+		"tape-promise": "^2.0.1"
+	},
 	"scripts": {
-		"test": "node -e \"require('.')\"",
+		"test": "node test/index.js | tap-spec",
 		"prepublishOnly": "npm test"
 	}
 }
