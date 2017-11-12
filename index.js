@@ -91,7 +91,37 @@ const createClient = (profile) => {
 		})
 	}
 
-	return {departures, journeys}
+	const locations = (query, opt = {}) => {
+		if ('string' !== typeof query) throw new Error('query must be a string.')
+		opt = Object.assign({
+			fuzzy: true, // find only exact matches?
+			results: 10, // how many search results?
+			stations: true,
+			addresses: true,
+			poi: true // points of interest
+		}, opt)
+
+		const f = profile.formatLocationFilter(opt.stations, opt.addresses, opt.poi)
+		return request(profile, {
+			cfg: {polyEnc: 'GPA'},
+			meth: 'LocMatch',
+			req: {input: {
+				loc: {
+					type: f,
+					name: opt.fuzzy ? query + '?' : query
+				},
+				maxLoc: opt.results,
+				field: 'S' // todo: what is this?
+			}}
+		})
+		.then((d) => {
+			if (!d.match || !Array.isArray(d.match.locL)) return []
+			const parse = profile.parseLocation
+			return d.match.locL.map(loc => parse(profile, loc))
+		})
+	}
+
+	return {departures, journeys, locations}
 }
 
 module.exports = createClient
