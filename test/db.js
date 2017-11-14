@@ -1,5 +1,6 @@
 'use strict'
 
+const getStations = require('db-stations').full
 const tapePromise = require('tape-promise').default
 const tape = require('tape')
 const isRoughlyEqual = require('is-roughly-equal')
@@ -8,7 +9,6 @@ const createClient = require('..')
 const dbProfile = require('../p/db')
 const modes = require('../p/db/modes')
 const {
-	findStation,
 	assertValidStation,
 	assertValidPoi,
 	assertValidAddress,
@@ -17,6 +17,22 @@ const {
 	assertValidStopover,
 	when, isValidWhen
 } = require('./util.js')
+
+const findStation = (id) => new Promise((yay, nay) => {
+	const stations = getStations()
+	stations
+	.once('error', nay)
+	.on('data', (s) => {
+		if (
+			s.id === id ||
+			(s.additionalIds && s.additionalIds.includes(id))
+		) {
+			yay(s)
+			stations.destroy()
+		}
+	})
+	.once('end', yay)
+})
 
 const isJungfernheide = (s) => {
 	return s.type === 'station' &&

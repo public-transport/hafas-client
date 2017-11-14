@@ -39,7 +39,9 @@
 		"is-roughly-equal": "^0.1.0",
 		"tap-spec": "^4.1.1",
 		"tape": "^4.8.0",
-		"tape-promise": "^2.0.1"
+		"tape-promise": "^2.0.1",
+		"vbb-parse-line": "^0.2.5",
+		"vbb-stations-autocomplete": "^2.9.0"
 	},
 	"scripts": {
 		"test": "node test/index.js | tap-spec",

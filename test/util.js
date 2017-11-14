@@ -1,24 +1,7 @@
 'use strict'
 
 const isRoughlyEqual = require('is-roughly-equal')
-const getStations = require('db-stations').full
 const floor = require('floordate')
-
-const findStation = (id) => new Promise((yay, nay) => {
-	const stations = getStations()
-	stations
-	.once('error', nay)
-	.on('data', (s) => {
-		if (
-			s.id === id ||
-			(s.additionalIds && s.additionalIds.includes(id))
-		) {
-			yay(s)
-			stations.destroy()
-		}
-	})
-	.once('end', yay)
-})
 
 const assertValidStation = (t, s) => {
 	t.equal(s.type, 'station')
@@ -90,7 +73,6 @@ const isValidWhen = (w) => {
 }
 
 module.exports = {
-	findStation,
 	assertValidStation,
 	assertValidPoi,
 	assertValidAddress,
