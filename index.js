@@ -37,6 +37,7 @@ const createClient = (profile) => {
 			if (!Array.isArray(d.jnyL)) return [] // todo: throw err?
 			const parse = profile.parseDeparture(profile, d.locations, d.lines, d.remarks)
 			return d.jnyL.map(parse)
+			.sort((a, b) => new Date(a.when) - new Date(b.when))
 		})
 	}
 

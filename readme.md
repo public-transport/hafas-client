@@ -1,6 +1,6 @@
 # hafas-client
 
-**A client for HAFAS public transport APIs**. Sort of like [public-transport-enable](https://github.com/schildbach/public-transport-enabler), but with a smaller scope. It also has customisations for the following transport networks:
+**A client for HAFAS public transport APIs**. Sort of like [public-transport-enable](https://github.com/schildbach/public-transport-enabler), but with a smaller scope. It also contains customisations for the following transport networks:
 
 - [Deutsche Bahn](https://en.wikipedia.org/wiki/Deutsche_Bahn) – [src](p/db/index.js)
 
@@ -12,7 +12,7 @@
 
 ## Background
 
-There's [a company called HaCon](http://hacon.de) that sells [a public transport management system called HAFAS](https://de.wikipedia.org/wiki/HAFAS). It is [used by companies all over Europe](https://gist.github.com/derhuerst/2b7ed83bfa5f115125a5) to server routing and departure information for apps. All those endpoints are similar, with the same terms and API routes, but have slightly different options, filters and enable features.
+There's [a company called HaCon](http://hacon.de) that sells [a public transport management system called HAFAS](https://de.wikipedia.org/wiki/HAFAS). It is [used by companies all over Europe](https://gist.github.com/derhuerst/2b7ed83bfa5f115125a5) to serve routing and departure information for apps. All those endpoints are similar, with the same terms and API routes, but have slightly different options, filters and enable features.
 
 `hafas-client` contains all logic for communicating with these, as well as serialising from and parsing to [FPTF](https://github.com/public-transport/friendly-public-transport-format). Endpoint-specific customisations increase the quality of the returned data.
 
@@ -26,7 +26,7 @@ npm install hafas-client
 
 ## Usage
 
-```
+```js
 const createClient = require('hafas-client')
 const dbProfile = require('hafas-client/p/db')
 
