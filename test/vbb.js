@@ -271,7 +271,7 @@ test('locations', async (t) => {
 
 
 
-test('radar', async (t) => {
+test.skip('radar', async (t) => {
 	const vehicles = await client.radar(52.52411, 13.41002, 52.51942, 13.41709, {
 		duration: 5 * 60, when
 	})
