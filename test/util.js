@@ -3,31 +3,52 @@
 const isRoughlyEqual = require('is-roughly-equal')
 const floor = require('floordate')
 
-const assertValidStation = (t, s) => {
+const assertValidStation = (t, s, coordsOptional = false) => {
+	t.equal(typeof s.type, 'string')
 	t.equal(s.type, 'station')
 	t.equal(typeof s.id, 'string')
+
+	t.equal(typeof s.name, 'string')
+	if (!coordsOptional) {
+		if (!s.coordinates) console.trace()
+		t.ok(s.coordinates)
+	}
+	if (s.coordinates) {
+		t.equal(typeof s.coordinates.latitude, 'number')
+		t.equal(typeof s.coordinates.longitude, 'number')
+	}
 }
 
 const assertValidPoi = (t, p) => {
+	t.equal(typeof p.type, 'string')
 	t.equal(p.type, 'poi')
 	t.equal(typeof p.id, 'string')
+
+	t.equal(typeof p.name, 'string')
+	t.ok(p.coordinates)
+	if (s.coordinates) {
+		t.equal(typeof p.coordinates.latitude, 'number')
+		t.equal(typeof p.coordinates.longitude, 'number')
+	}
 }
 
 const assertValidAddress = (t, a) => {
+	t.equal(typeof a.type, 'string')
 	t.equal(a.type, 'address')
+
+	t.equal(typeof a.name, 'string')
+	t.ok(a.coordinates)
+	if (s.coordinates) {
+		t.equal(typeof a.coordinates.latitude, 'number')
+		t.equal(typeof a.coordinates.longitude, 'number')
+	}
 }
 
 const assertValidLocation = (t, l) => {
-	t.equal(typeof l.type, 'string')
 	if (l.type === 'station') assertValidStation(t, l)
 	else if (l.type === 'poi') assertValidPoi(t, l)
 	else if (l.type === 'address') assertValidAddress(t, l)
 	else t.fail('invalid type ' + l.type)
-
-	t.equal(typeof l.name, 'string')
-	t.ok(l.coordinates)
-	t.equal(typeof l.coordinates.latitude, 'number')
-	t.equal(typeof l.coordinates.longitude, 'number')
 }
 
 const isValidMode = (m) => {
@@ -40,7 +61,6 @@ const isValidMode = (m) => {
 const assertValidLine = (t, l) => {
 	t.equal(l.type, 'line')
 	t.equal(typeof l.name, 'string')
-	if (!isValidMode(l.mode)) console.error(l)
 	t.ok(isValidMode(l.mode), 'invalid mode ' + l.mode)
 	t.equal(typeof l.product, 'string')
 	t.equal(l.public, true)
@@ -50,14 +70,14 @@ const isValidDateTime = (w) => {
 	return !Number.isNaN(+new Date(w))
 }
 
-const assertValidStopover = (t, s) => {
+const assertValidStopover = (t, s, coordsOptional = false) => {
 	if ('arrival' in s) t.ok(isValidDateTime(s.arrival))
 	if ('departure' in s) t.ok(isValidDateTime(s.departure))
 	if (!('arrival' in s) && !('departure' in s)) {
 		t.fail('stopover doesn\'t contain arrival or departure')
 	}
 	t.ok(s.station)
-	assertValidStation(t, s.station)
+	assertValidStation(t, s.station, coordsOptional)
 }
 
 const minute = 60 * 1000
@@ -86,5 +106,5 @@ module.exports = {
 	assertValidLine,
 	isValidDateTime,
 	assertValidStopover,
-	when, isValidWhen, assertValidWhen
+	hour, when, isValidWhen, assertValidWhen
 }

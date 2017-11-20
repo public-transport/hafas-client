@@ -269,8 +269,7 @@ test('locations', async (t) => {
 
 
 
-// todo
-test.skip('radar', async (t) => {
+test('radar', async (t) => {
 	const vehicles = await client.radar(52.52411, 13.41002, 52.51942, 13.41709, {
 		duration: 5 * 60, when
 	})
@@ -290,21 +289,19 @@ test.skip('radar', async (t) => {
 		t.ok(v.coordinates.longitude <= 15, 'vehicle is too far away')
 
 		t.ok(Array.isArray(v.nextStops))
-		for (let s of v.nextStops) {
-			assertValidFrameStation(t, s.station)
-			if (!s.arrival && !s.departure)
-				t.ifError(new Error('neither arrival nor departure return'))
-			if (s.arrival) {
-				t.equal(typeof s.arrival, 'string')
-				const arr = +new Date(s.arrival)
-				t.ok(!Number.isNaN(arr))
+		for (let st of v.nextStops) {
+			assertValidStopover(t, st, true)
+			t.strictEqual(st.station.name.indexOf('(Berlin)'), -1)
+
+			if (st.arrival) {
+				t.equal(typeof st.arrival, 'string')
+				const arr = +new Date(st.arrival)
 				// note that this can be an ICE train
 				t.ok(isRoughlyEqual(14 * hour, +when, arr))
 			}
-			if (s.departure) {
-				t.equal(typeof s.departure, 'string')
-				const dep = +new Date(s.departure)
-				t.ok(!Number.isNaN(dep))
+			if (st.departure) {
+				t.equal(typeof st.departure, 'string')
+				const dep = +new Date(st.departure)
 				// note that this can be an ICE train
 				t.ok(isRoughlyEqual(14 * hour, +when, dep))
 			}
@@ -312,8 +309,10 @@ test.skip('radar', async (t) => {
 
 		t.ok(Array.isArray(v.frames))
 		for (let f of v.frames) {
-			assertValidFrameStation(t, f.origin)
-			assertValidFrameStation(t, f.destination)
+			assertValidStation(t, f.origin, true)
+			t.strictEqual(f.origin.name.indexOf('(Berlin)'), -1)
+			assertValidStation(t, f.destination, true)
+			t.strictEqual(f.destination.name.indexOf('(Berlin)'), -1)
 			t.equal(typeof f.t, 'number')
 		}
 	}

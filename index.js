@@ -184,7 +184,48 @@ const createClient = (profile) => {
 		})
 	}
 
-	return {departures, journeys, locations, nearby, journeyPart}
+	const radar = (north, west, south, east, opt) => {
+		if ('number' !== typeof north) throw new Error('north must be a number.')
+		if ('number' !== typeof west) throw new Error('west must be a number.')
+		if ('number' !== typeof south) throw new Error('south must be a number.')
+		if ('number' !== typeof east) throw new Error('east must be a number.')
+
+		opt = Object.assign({
+			results: 256, // maximum number of vehicles
+			duration: 30, // compute frames for the next n seconds
+			frames: 3 // nr of frames to compute
+		}, opt || {})
+		opt.when = opt.when || new Date()
+
+		const durationPerStep = opt.duration / Math.max(opt.frames, 1) * 1000
+		return request(profile, {
+			meth: 'JourneyGeoPos',
+			req: {
+				maxJny: opt.results,
+				onlyRT: false, // todo: does this mean "only realtime"?
+				date: profile.formatDate(profile, opt.when),
+				time: profile.formatTime(profile, opt.when),
+				// todo: would a ring work here as well?
+				rect: profile.formatRectangle(profile, north, west, south, east),
+				perSize: opt.duration * 1000,
+				perStep: Math.round(durationPerStep),
+				ageOfReport: true, // todo: what is this?
+				jnyFltrL: [
+					// todo: use `profile.formatProducts(opt.products || {})`
+					{type: 'PROD', mode: 'INC', value: '127'}
+				],
+				trainPosMode: 'CALC' // todo: what is this? what about realtime?
+			}
+		})
+		.then((d) => {
+			if (!Array.isArray(d.jnyL)) return []
+
+			const parse = profile.parseMovement(profile, d.locations, d.lines, d.remarks)
+			return d.jnyL.map(parse)
+		})
+	}
+
+	return {departures, journeys, locations, nearby, journeyPart, radar}
 }
 
 module.exports = createClient

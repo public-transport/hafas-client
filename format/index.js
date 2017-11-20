@@ -8,5 +8,6 @@ module.exports = {
 	address: require('./address'),
 	poi: require('./poi'),
 	location: require('./location'),
-	locationFilter: require('./location-filter')
+	locationFilter: require('./location-filter'),
+	rectangle: require('./rectangle')
 }

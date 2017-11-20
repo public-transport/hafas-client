@@ -27,7 +27,7 @@ const createParseMovement = (profile, locations, lines, remarks) => {
 		}
 
 		const res = {
-			direction: m.dirTxt,
+			direction: profile.parseStationName(m.dirTxt),
 			line: lines[m.prodX] || null,
 			coordinates: m.pos ? {
 				latitude: m.pos.y / 1000000,
