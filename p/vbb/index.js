@@ -1,6 +1,7 @@
 'use strict'
 
 const shorten = require('vbb-short-station-name')
+const {to12Digit, to9Digit} = require('vbb-translate-ids')
 
 const _formatStation = require('../../format/station')
 const _parseLine = require('../../parse/line')
@@ -34,14 +35,17 @@ const parseLine = (profile, l) => {
 
 const parseLocation = (profile, l) => {
 	const res = _parseLocation(profile, l)
-	res.name = shorten(res.name)
+	if (res.type === 'station') {
+		res.id = to12Digit(res.id)
+		res.name = shorten(res.name)
+	}
 	return res
 }
 
 const isIBNR = /^\d{9,}$/
 const formatStation = (id) => {
-	// todo: convert short to long IDs
 	if (!isIBNR.test(id)) throw new Error('station ID must be an IBNR.')
+	id = to9Digit(id)
 	return _formatStation(id)
 }
 
@@ -72,6 +76,7 @@ const vbbProfile = {
 	parseLine,
 	parseProducts: modes.parseBitmask,
 
+	formatStation,
 	formatProducts
 }
 

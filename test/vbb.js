@@ -26,9 +26,12 @@ const findStation = (query) => stations(query, true, false)
 const test = tapePromise(tape)
 const client = createClient(vbbProfile)
 
+const amrumerStr = '900000009101'
+const spichernstr = '900000042101'
+const bismarckstr = '900000024201'
+
 test('journeys – station to station', async (t) => {
-	// U Spichernstr. to U Amrumer Str.
-	const journeys = await client.journeys('900000042101', '900000009101', {
+	const journeys = await client.journeys(spichernstr, amrumerStr, {
 		results: 3, when, passedStations: true
 	})
 
@@ -38,11 +41,11 @@ test('journeys – station to station', async (t) => {
 	for (let journey of journeys) {
 		assertValidStation(t, journey.origin)
 		t.ok(journey.origin.name.indexOf('(Berlin)') === -1)
-		t.strictEqual(journey.origin.id, '900000042101')
+		t.strictEqual(journey.origin.id, spichernstr)
 		assertValidWhen(t, journey.departure)
 
 		assertValidStation(t, journey.destination)
-		t.strictEqual(journey.destination.id, '900000009101')
+		t.strictEqual(journey.destination.id, amrumerStr)
 		assertValidWhen(t, journey.arrival)
 
 		t.ok(Array.isArray(journey.parts))
@@ -53,11 +56,11 @@ test('journeys – station to station', async (t) => {
 		t.ok(part.id)
 		assertValidStation(t, part.origin)
 		t.ok(part.origin.name.indexOf('(Berlin)') === -1)
-		t.strictEqual(part.origin.id, '900000042101')
+		t.strictEqual(part.origin.id, spichernstr)
 		assertValidWhen(t, part.departure)
 
 		assertValidStation(t, part.destination)
-		t.strictEqual(part.destination.id, '900000009101')
+		t.strictEqual(part.destination.id, amrumerStr)
 		assertValidWhen(t, part.arrival)
 
 		assertValidLine(t, part.line)
@@ -71,8 +74,7 @@ test('journeys – station to station', async (t) => {
 })
 
 test('journeys – only subway', async (t) => {
-	// U Spichernstr. to U Bismarckstr.
-	const journeys = await client.journeys('900000042101', '900000024201', {
+	const journeys = await client.journeys(spichernstr, bismarckstr, {
 		results: 20, when,
 		products: {
 			suburban: false,
@@ -102,8 +104,7 @@ test('journeys – only subway', async (t) => {
 
 test('journeys – fails with no product', async (t) => {
 	try {
-		// U Spichernstr. to U Bismarckstr.
-		await client.journeys('900000042101', '900000024201', {
+		await client.journeys(spichernstr, bismarckstr, {
 			when,
 			products: {
 				suburban: false,
@@ -122,8 +123,7 @@ test('journeys – fails with no product', async (t) => {
 })
 
 test('journey part details', async (t) => {
-	// U Spichernstr. to U Amrumer Str.
-	const journeys = await client.journeys('900000042101', '900000009101', {
+	const journeys = await client.journeys(spichernstr, amrumerStr, {
 		results: 1, when
 	})
 
@@ -149,8 +149,7 @@ test('journey part details', async (t) => {
 
 
 test('journeys – station to address', async (t) => {
-	// U Spichernstr. to Torfstraße 17
-	const journeys = await client.journeys('900000042101', {
+	const journeys = await client.journeys(spichernstr, {
 		type: 'address', name: 'Torfstraße 17',
 		latitude: 52.5416823, longitude: 13.3491223
 	}, {results: 1, when})
@@ -176,8 +175,7 @@ test('journeys – station to address', async (t) => {
 
 
 test('journeys – station to POI', async (t) => {
-	// U Spichernstr. to ATZE Musiktheater
-	const journeys = await client.journeys('900000042101', {
+	const journeys = await client.journeys(spichernstr, {
 		type: 'poi', name: 'ATZE Musiktheater', id: 9980720,
 		latitude: 52.543333, longitude: 13.351686
 	}, {results: 1, when})
@@ -202,9 +200,8 @@ test('journeys – station to POI', async (t) => {
 
 
 
-test('departures', async (t) => {
-	// U Spichernstr.
-	const deps = await client.departures('900000042101', {duration: 5, when})
+test.only('departures', async (t) => {
+	const deps = await client.departures(spichernstr, {duration: 5, when})
 
 	t.ok(Array.isArray(deps))
 	t.deepEqual(deps, deps.sort((a, b) => t.when > b.when))
@@ -214,7 +211,7 @@ test('departures', async (t) => {
 
 		t.equal(dep.station.name, 'U Spichernstr.')
 		assertValidStation(t, dep.station)
-		t.strictEqual(dep.station.id, '900000042101')
+		t.strictEqual(dep.station.id, spichernstr)
 
 		assertValidWhen(t, dep.when)
 		t.ok(findStation(dep.direction))
@@ -235,7 +232,7 @@ test('departures at 7-digit station', async (t) => {
 
 test('nearby', async (t) => {
 	// Berliner Str./Bundesallee
-	const nearby = await client.nearby(52.4873452,13.3310411, {distance: 200})
+	const nearby = await client.nearby(52.4873452, 13.3310411, {distance: 200})
 
 	t.ok(Array.isArray(nearby))
 	for (let n of nearby) assertValidLocation(t, n, false)
