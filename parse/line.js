@@ -5,7 +5,11 @@
 // todo: what is p.oprX?
 const parseLine = (profile, p) => {
 	if (!p) return null // todo: handle this upstream
-	const res = {type: 'line', name: p.line || p.name}
+	const res = {
+		type: 'line',
+		name: p.line || p.name,
+		public: true
+	}
 
 	if (p.cls) res.class = p.cls
 	if (p.prodCtx) {

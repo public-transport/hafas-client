@@ -15,7 +15,7 @@ const {
 	assertValidAddress,
 	assertValidLocation,
 	assertValidLine,
-	assertValidPassed,
+	assertValidStopover,
 	hour, when,
 	assertValidWhen
 } = require('./util')
@@ -68,7 +68,7 @@ test('journeys – station to station', async (t) => {
 		t.ok(part.direction.indexOf('(Berlin)') === -1)
 
 		t.ok(Array.isArray(part.passed))
-		for (let passed of part.passed) assertValidPassed(t, passed)
+		for (let passed of part.passed) assertValidStopover(t, passed)
 	}
 	t.end()
 })
@@ -93,9 +93,9 @@ test('journeys – only subway', async (t) => {
 	for (let journey of journeys) {
 		for (let part of journey.parts) {
 			if (part.line) {
+				assertValidLine(t, part.line)
 				t.equal(part.line.mode, 'train')
 				t.equal(part.line.product, 'subway')
-				t.equal(part.line.public, true)
 			}
 		}
 	}
@@ -122,7 +122,8 @@ test('journeys – fails with no product', async (t) => {
 	}
 })
 
-test('journey part details', async (t) => {
+// todo
+test.skip('journey part details', async (t) => {
 	const journeys = await client.journeys(spichernstr, amrumerStr, {
 		results: 1, when
 	})
@@ -141,7 +142,7 @@ test('journey part details', async (t) => {
 	t.ok(part.direction)
 
 	t.ok(Array.isArray(part.passed))
-	for (let passed of part.passed) assertValidPassed(t, passed)
+	for (let passed of part.passed) assertValidStopover(t, passed)
 
 	t.end()
 })
@@ -200,7 +201,7 @@ test('journeys – station to POI', async (t) => {
 
 
 
-test.only('departures', async (t) => {
+test('departures', async (t) => {
 	const deps = await client.departures(spichernstr, {duration: 5, when})
 
 	t.ok(Array.isArray(deps))
@@ -220,7 +221,8 @@ test.only('departures', async (t) => {
 	t.end()
 })
 
-test('departures at 7-digit station', async (t) => {
+// todo
+test.skip('departures at 7-digit station', async (t) => {
 	const eisenach = '8010097' // see derhuerst/vbb-hafas#22
 	await client.departures(eisenach, {when})
 	t.pass('did not fail')
@@ -268,6 +270,7 @@ test('locations', async (t) => {
 
 
 
+// todo
 test.skip('radar', async (t) => {
 	const vehicles = await client.radar(52.52411, 13.41002, 52.51942, 13.41709, {
 		duration: 5 * 60, when

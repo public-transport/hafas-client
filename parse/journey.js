@@ -51,7 +51,7 @@ const createParseJourney = (profile, stations, lines, remarks) => {
 		} else if (pt.type === 'JNY') {
 			res.id = pt.jny.jid
 			res.line = lines[parseInt(pt.jny.prodX)] || null
-			res.direction = pt.jny.dirTxt // todo: parse this
+			res.direction = profile.parseStationName(pt.jny.dirTxt)
 
 			if (pt.dep.dPlatfS) res.departurePlatform = pt.dep.dPlatfS
 			if (pt.arr.aPlatfS) res.arrivalPlatform = pt.arr.aPlatfS

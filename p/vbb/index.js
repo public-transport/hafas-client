@@ -26,7 +26,7 @@ const parseLine = (profile, l) => {
 		const data = modes.bitmasks[parseInt(res.class)]
 		if (data) {
 			res.mode = data.mode
-			res.product = data.product
+			res.product = data.type
 		}
 	}
 
@@ -35,9 +35,13 @@ const parseLine = (profile, l) => {
 
 const parseLocation = (profile, l) => {
 	const res = _parseLocation(profile, l)
+
+	// todo: shorten has been made for stations, not any type of location
+	res.name = shorten(res.name)
+
 	if (res.type === 'station') {
 		res.id = to12Digit(res.id)
-		res.name = shorten(res.name)
+		// todo: https://github.com/derhuerst/vbb-hafas/blob/1c64bfe42422e2648b21016d233c808460250308/lib/parse.js#L67-L75
 	}
 	return res
 }
@@ -72,6 +76,7 @@ const vbbProfile = {
 	endpoint: 'https://fahrinfo.vbb.de/bin/mgate.exe',
 	transformReqBody,
 
+	parseStationName: shorten,
 	parseLocation,
 	parseLine,
 	parseProducts: modes.parseBitmask,

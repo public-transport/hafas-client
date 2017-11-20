@@ -108,7 +108,6 @@ m.bitmasks[16] = m.ferry
 m.bitmasks[32] = m.express
 m.bitmasks[64] = m.regional
 
-
 m.categories = [
 	m.suburban,
 	m.subway,

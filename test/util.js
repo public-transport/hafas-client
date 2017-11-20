@@ -43,6 +43,7 @@ const assertValidLine = (t, l) => {
 	if (!isValidMode(l.mode)) console.error(l)
 	t.ok(isValidMode(l.mode), 'invalid mode ' + l.mode)
 	t.equal(typeof l.product, 'string')
+	t.equal(l.public, true)
 }
 
 const isValidDateTime = (w) => {
@@ -72,6 +73,10 @@ const isValidWhen = (w) => {
 	return isRoughlyEqual(10 * hour, +when, ts)
 }
 
+const assertValidWhen = (t, w) => {
+	t.ok(isValidWhen(w), 'invalid when')
+}
+
 module.exports = {
 	assertValidStation,
 	assertValidPoi,
@@ -81,5 +86,5 @@ module.exports = {
 	assertValidLine,
 	isValidDateTime,
 	assertValidStopover,
-	when, isValidWhen
+	when, isValidWhen, assertValidWhen
 }
