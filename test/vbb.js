@@ -122,8 +122,7 @@ test('journeys – fails with no product', async (t) => {
 	}
 })
 
-// todo
-test.skip('journey part details', async (t) => {
+test('journey part details', async (t) => {
 	const journeys = await client.journeys(spichernstr, amrumerStr, {
 		results: 1, when
 	})

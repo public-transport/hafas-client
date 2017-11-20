@@ -28,6 +28,7 @@
 	},
 	"dependencies": {
 		"fetch-ponyfill": "^4.1.0",
+		"lodash": "^4.17.4",
 		"moment-timezone": "^0.5.13",
 		"pinkie-promise": "^2.0.1",
 		"query-string": "^5.0.0",

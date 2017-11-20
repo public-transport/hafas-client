@@ -1,5 +1,8 @@
 'use strict'
 
+const minBy = require('lodash/minBy')
+const maxBy = require('lodash/maxBy')
+
 const defaultProfile = require('./lib/default-profile')
 const request = require('./lib/request')
 
@@ -23,14 +26,14 @@ const createClient = (profile) => {
 		return request(profile, {
 			meth: 'StationBoard',
 			req: {
-	        	type: 'DEP',
+				type: 'DEP',
 				date: profile.formatDate(profile, opt.when),
 				time: profile.formatTime(profile, opt.when),
 				stbLoc: profile.formatStation(station),
 				dirLoc: dir,
 				jnyFltrL: [products],
 				dur: opt.duration,
-		        getPasslist: false
+				getPasslist: false
 			}
 		})
 		.then((d) => {
@@ -156,7 +159,32 @@ const createClient = (profile) => {
 		})
 	}
 
-	return {departures, journeys, locations, nearby}
+	const journeyPart = (ref, lineName, opt = {}) => {
+		opt.when = opt.when || new Date()
+
+		return request(profile, {
+			cfg: {polyEnc: 'GPA'},
+			meth: 'JourneyDetails',
+			req: {
+				jid: ref,
+				name: lineName,
+				date: profile.formatDate(profile, opt.when)
+			}
+		})
+		.then((d) => {
+			const parse = profile.parseJourneyPart(profile, d.locations, d.lines, d.remarks)
+
+			const part = { // pretend the part is contained in a journey
+				type: 'JNY',
+				dep: minBy(d.journey.stopL, 'idx'),
+				arr: maxBy(d.journey.stopL, 'idx'),
+				jny: d.journey
+			}
+			return parse(d.journey, part)
+		})
+	}
+
+	return {departures, journeys, locations, nearby, journeyPart}
 }
 
 module.exports = createClient
