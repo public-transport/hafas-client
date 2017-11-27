@@ -6,8 +6,12 @@ const {to12Digit, to9Digit} = require('vbb-translate-ids')
 const _formatStation = require('../../format/station')
 const _parseLine = require('../../parse/line')
 const _parseLocation = require('../../parse/location')
+const createParseBitmask = require('../../parse/products-bitmask')
+const createFormatBitmask = require('../../format/products-bitmask')
 
 const modes = require('./modes')
+
+const formatBitmask = createFormatBitmask(modes)
 
 const transformReqBody = (body) => {
 	body.client = {type: 'IPA', id: 'BVG'}
@@ -67,7 +71,7 @@ const formatProducts = (products) => {
 	return {
 		type: 'PROD',
 		mode: 'INC',
-		value: modes.stringifyBitmask(products) + ''
+		value: formatBitmask(products) + ''
 	}
 }
 
@@ -79,7 +83,7 @@ const vbbProfile = {
 	parseStationName: shorten,
 	parseLocation,
 	parseLine,
-	parseProducts: modes.parseBitmask,
+	parseProducts: createParseBitmask(modes.bitmasks),
 
 	formatStation,
 	formatProducts

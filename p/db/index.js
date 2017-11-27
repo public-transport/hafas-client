@@ -4,10 +4,14 @@ const crypto = require('crypto')
 
 const _formatStation = require('../../format/station')
 const _parseLine = require('../../parse/line')
+const createParseBitmask = require('../../parse/products-bitmask')
+const createFormatBitmask = require('../../format/products-bitmask')
 const {accessibility, bike} = require('../../format/filters')
 
 const modes = require('./modes')
 const formatLoyaltyCard = require('./loyalty-cards').format
+
+const formatBitmask = createFormatBitmask(modes)
 
 const transformReqBody = (body) => {
 	body.client = {id: 'DB', v: '16040000', type: 'IPH', name: 'DB Navigator'}
@@ -87,7 +91,7 @@ const formatProducts = (products) => {
 	return {
 		type: 'PROD',
 		mode: 'INC',
-		value: modes.stringifyBitmask(products) + ''
+		value: formatBitmask(products) + ''
 	}
 }
 
@@ -102,7 +106,7 @@ const dbProfile = {
 
 	// todo: parseLocation
 	parseLine,
-	parseProducts: modes.parseBitmask,
+	parseProducts: createParseBitmask(modes.bitmasks),
 
 	formatStation,
 	formatProducts

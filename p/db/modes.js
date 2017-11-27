@@ -91,23 +91,4 @@ m.bitmasks[128] = m.subway
 m.bitmasks[256] = m.tram
 m.bitmasks[512] = m.taxi
 
-// todo: move up
-m.stringifyBitmask = (products) => {
-	let bitmask = 0
-	for (let product in products) {
-		if (products[product] === true) bitmask += m[product].bitmask
-	}
-	return bitmask
-}
-
-// todo: move up
-m.parseBitmask = (bitmask) => {
-	let products = {}, i = 1
-	do {
-		products[m.bitmasks[i].product] = !!(bitmask & i)
-		i *= 2
-	} while (m.bitmasks[i] && m.bitmasks[i].product)
-	return products
-}
-
 module.exports = m

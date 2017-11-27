@@ -123,23 +123,4 @@ m.categories = [
 // 	return m.categories[parseInt(category)] || m.unknown
 // }
 
-// todo: move up
-m.stringifyBitmask = (types) => {
-	let bitmask = 0
-	for (let type in types) {
-		if (types[type] === true) bitmask += m[type].bitmask
-	}
-	return bitmask
-}
-
-// todo: move up
-m.parseBitmask = (bitmask) => {
-	let types = {}, i = 1
-	do {
-		types[m.bitmasks[i].type] = !!(bitmask & i)
-		i *= 2
-	} while (m.bitmasks[i] && m.bitmasks[i].type)
-	return types
-}
-
 module.exports = m
