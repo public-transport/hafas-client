@@ -26,7 +26,7 @@ const assertValidPoi = (t, p) => {
 
 	t.equal(typeof p.name, 'string')
 	t.ok(p.coordinates)
-	if (s.coordinates) {
+	if (p.coordinates) {
 		t.equal(typeof p.coordinates.latitude, 'number')
 		t.equal(typeof p.coordinates.longitude, 'number')
 	}
@@ -38,7 +38,7 @@ const assertValidAddress = (t, a) => {
 
 	t.equal(typeof a.name, 'string')
 	t.ok(a.coordinates)
-	if (s.coordinates) {
+	if (a.coordinates) {
 		t.equal(typeof a.coordinates.latitude, 'number')
 		t.equal(typeof a.coordinates.longitude, 'number')
 	}

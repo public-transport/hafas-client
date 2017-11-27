@@ -225,7 +225,10 @@ const createClient = (profile) => {
 		})
 	}
 
-	return {departures, journeys, locations, nearby, journeyPart, radar}
+	const client = {departures, journeys, locations, nearby}
+	if (profile.journeyPart) client.journeyPart = journeyPart
+	if (profile.radar) client.radar = radar
+	return client
 }
 
 module.exports = createClient

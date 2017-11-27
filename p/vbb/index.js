@@ -86,7 +86,10 @@ const vbbProfile = {
 	parseProducts: createParseBitmask(modes.bitmasks),
 
 	formatStation,
-	formatProducts
+	formatProducts,
+
+	journeyPart: true,
+	radar: true
 }
 
 module.exports = vbbProfile
