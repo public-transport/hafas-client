@@ -47,7 +47,7 @@
 		"vbb-stations-autocomplete": "^2.9.0"
 	},
 	"scripts": {
-		"test": "node test/index.js | tap-spec",
-		"prepublishOnly": "npm test"
+		"test": "node test/index.js",
+		"prepublishOnly": "npm test | tap-spec"
 	}
 }

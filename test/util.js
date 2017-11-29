@@ -90,7 +90,7 @@ const when = new Date(+floor(new Date(), 'week') + week + 10 * hour)
 const isValidWhen = (w) => {
 	const ts = +new Date(w)
 	if (Number.isNaN(ts)) return false
-	return isRoughlyEqual(10 * hour, +when, ts)
+	return isRoughlyEqual(12 * hour, +when, ts)
 }
 
 const assertValidWhen = (t, w) => {
