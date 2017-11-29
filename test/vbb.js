@@ -5,6 +5,7 @@ const isRoughlyEqual = require('is-roughly-equal')
 const stations = require('vbb-stations-autocomplete')
 const tapePromise = require('tape-promise').default
 const tape = require('tape')
+const co = require('co')
 
 const createClient = require('..')
 const vbbProfile = require('../p/vbb')
@@ -30,8 +31,8 @@ const amrumerStr = '900000009101'
 const spichernstr = '900000042101'
 const bismarckstr = '900000024201'
 
-test('journeys – station to station', async (t) => {
-	const journeys = await client.journeys(spichernstr, amrumerStr, {
+test('journeys – station to station', co.wrap(function* (t) {
+	const journeys = yield client.journeys(spichernstr, amrumerStr, {
 		results: 3, when, passedStations: true
 	})
 
@@ -71,10 +72,10 @@ test('journeys – station to station', async (t) => {
 		for (let passed of part.passed) assertValidStopover(t, passed)
 	}
 	t.end()
-})
+}))
 
-test('journeys – only subway', async (t) => {
-	const journeys = await client.journeys(spichernstr, bismarckstr, {
+test('journeys – only subway', co.wrap(function* (t) {
+	const journeys = yield client.journeys(spichernstr, bismarckstr, {
 		results: 20, when,
 		products: {
 			suburban: false,
@@ -100,11 +101,11 @@ test('journeys – only subway', async (t) => {
 		}
 	}
 	t.end()
-})
+}))
 
-test('journeys – fails with no product', async (t) => {
+test('journeys – fails with no product', co.wrap(function* (t) {
 	try {
-		await client.journeys(spichernstr, bismarckstr, {
+		yield client.journeys(spichernstr, bismarckstr, {
 			when,
 			products: {
 				suburban: false,
@@ -120,17 +121,17 @@ test('journeys – fails with no product', async (t) => {
 		t.ok(err, 'error thrown')
 		t.end()
 	}
-})
+}))
 
-test('journey part details', async (t) => {
-	const journeys = await client.journeys(spichernstr, amrumerStr, {
+test('journey part details', co.wrap(function* (t) {
+	const journeys = yield client.journeys(spichernstr, amrumerStr, {
 		results: 1, when
 	})
 
 	const p = journeys[0].parts[0]
 	t.ok(p.id, 'precondition failed')
 	t.ok(p.line.name, 'precondition failed')
-	const part = await client.journeyPart(p.id, p.line.name, {when})
+	const part = yield client.journeyPart(p.id, p.line.name, {when})
 
 	t.equal(typeof part.id, 'string')
 	t.ok(part.id)
@@ -144,12 +145,12 @@ test('journey part details', async (t) => {
 	for (let passed of part.passed) assertValidStopover(t, passed)
 
 	t.end()
-})
+}))
 
 
 
-test('journeys – station to address', async (t) => {
-	const journeys = await client.journeys(spichernstr, {
+test('journeys – station to address', co.wrap(function* (t) {
+	const journeys = yield client.journeys(spichernstr, {
 		type: 'address', name: 'Torfstraße 17',
 		latitude: 52.5416823, longitude: 13.3491223
 	}, {results: 1, when})
@@ -170,12 +171,12 @@ test('journeys – station to address', async (t) => {
 	assertValidWhen(t, part.arrival)
 
 	t.end()
-})
+}))
 
 
 
-test('journeys – station to POI', async (t) => {
-	const journeys = await client.journeys(spichernstr, {
+test('journeys – station to POI', co.wrap(function* (t) {
+	const journeys = yield client.journeys(spichernstr, {
 		type: 'poi', name: 'ATZE Musiktheater', id: 9980720,
 		latitude: 52.543333, longitude: 13.351686
 	}, {results: 1, when})
@@ -196,12 +197,12 @@ test('journeys – station to POI', async (t) => {
 	assertValidWhen(t, part.arrival)
 
 	t.end()
-})
+}))
 
 
 
-test('departures', async (t) => {
-	const deps = await client.departures(spichernstr, {duration: 5, when})
+test('departures', co.wrap(function* (t) {
+	const deps = yield client.departures(spichernstr, {duration: 5, when})
 
 	t.ok(Array.isArray(deps))
 	t.deepEqual(deps, deps.sort((a, b) => t.when > b.when))
@@ -218,22 +219,22 @@ test('departures', async (t) => {
 		assertValidLine(t, dep.line)
 	}
 	t.end()
-})
+}))
 
 // todo
-test.skip('departures at 7-digit station', async (t) => {
+test.skip('departures at 7-digit station', co.wrap(function* (t) {
 	const eisenach = '8010097' // see derhuerst/vbb-hafas#22
-	await client.departures(eisenach, {when})
+	yield client.departures(eisenach, {when})
 	t.pass('did not fail')
 
 	t.end()
-})
+}))
 
 
 
-test('nearby', async (t) => {
+test('nearby', co.wrap(function* (t) {
 	// Berliner Str./Bundesallee
-	const nearby = await client.nearby(52.4873452, 13.3310411, {distance: 200})
+	const nearby = yield client.nearby(52.4873452, 13.3310411, {distance: 200})
 
 	t.ok(Array.isArray(nearby))
 	for (let n of nearby) assertValidLocation(t, n, false)
@@ -249,12 +250,12 @@ test('nearby', async (t) => {
 	t.ok(nearby[1].distance < 200)
 
 	t.end()
-})
+}))
 
 
 
-test('locations', async (t) => {
-	const locations = await client.locations('Alexanderplatz', {results: 10})
+test('locations', co.wrap(function* (t) {
+	const locations = yield client.locations('Alexanderplatz', {results: 10})
 
 	t.ok(Array.isArray(locations))
 	t.ok(locations.length > 0)
@@ -265,12 +266,12 @@ test('locations', async (t) => {
 	t.ok(locations.find((s) => s.type === 'address'))
 
 	t.end()
-})
+}))
 
 
 
-test('radar', async (t) => {
-	const vehicles = await client.radar(52.52411, 13.41002, 52.51942, 13.41709, {
+test('radar', co.wrap(function* (t) {
+	const vehicles = yield client.radar(52.52411, 13.41002, 52.51942, 13.41709, {
 		duration: 5 * 60, when
 	})
 
@@ -317,4 +318,4 @@ test('radar', async (t) => {
 		}
 	}
 	t.end()
-})
+}))
