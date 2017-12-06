@@ -119,6 +119,10 @@ const part = (tz, s, ln, r, c) => (pt) => {
 					when: dateTime(tz, c.date, a.stopL[0].dTimeS).format()
 				}))
 	}
+
+	// todo: follow public-transport/friendly-public-transport-format#27 here
+	if (pt.dep.dCncl && pt.arr.dCncl) result.cancelled = true
+
 	return result
 }
 
