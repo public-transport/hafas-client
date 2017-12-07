@@ -78,6 +78,15 @@ const createParseJourneyPart = (profile, stations, lines, remarks) => {
 			}
 		}
 
+		// todo: follow public-transport/friendly-public-transport-format#27 here
+		// see also derhuerst/vbb-rest#19
+		if (pt.arr.dCncl && pt.dep.dCncl) {
+			result.cancelled = true
+			result.departure = result.departurePlatform = null
+			result.arrival = result.arrivalPlatform = null
+			result.delay = null
+		}
+
 		return res
 	}
 

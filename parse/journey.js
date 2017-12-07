@@ -15,13 +15,19 @@ const createParseJourney = (profile, stations, lines, remarks) => {
 	// todo: use computed information from part
 	const parseJourney = (j) => {
 		const parts = j.secL.map(part => parsePart(j, part))
-		return {
+		const res = {
 			parts,
 			origin: parts[0].origin,
 			destination: parts[parts.length - 1].destination,
 			departure: parts[0].departure,
 			arrival: parts[parts.length - 1].arrival
 		}
+		if (parts.some(p => p.cancelled)) {
+			res.cancelled = true
+			res.departure = res.arrival = null
+		}
+
+		return res
 	}
 
 	return parseJourney
