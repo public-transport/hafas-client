@@ -6,20 +6,26 @@ const stations = require('vbb-stations-autocomplete')
 const tapePromise = require('tape-promise').default
 const tape = require('tape')
 const co = require('co')
+const shorten = require('vbb-short-station-name')
 
 const createClient = require('..')
 const vbbProfile = require('../p/vbb')
 const modes = require('../p/vbb/modes')
 const {
-	assertValidStation, assertValidFrameStation,
+	assertValidStation: _assertValidStation,
 	assertValidPoi,
 	assertValidAddress,
 	assertValidLocation,
 	assertValidLine: _assertValidLine,
 	assertValidStopover,
 	hour, when,
-	assertValidWhen
+	assertValidWhen // todo: timezone
 } = require('./util')
+
+const assertValidStation = (t, s, coordsOptional = false) => {
+	_assertValidStation(t, s, coordsOptional)
+	t.equal(s.name, shorten(s.name))
+}
 
 const assertValidStationProducts = (t, p) => {
 	t.ok(p)
@@ -233,8 +239,8 @@ test('departures', co.wrap(function* (t) {
 	t.ok(Array.isArray(deps))
 	t.deepEqual(deps, deps.sort((a, b) => t.when > b.when))
 	for (let dep of deps) {
-		t.equal(typeof dep.ref, 'string')
-		t.ok(dep.ref)
+		t.equal(typeof dep.journeyId, 'string')
+		t.ok(dep.journeyId)
 
 		t.equal(dep.station.name, 'U Spichernstr.')
 		assertValidStation(t, dep.station)

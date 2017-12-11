@@ -14,10 +14,10 @@ const createParseDeparture = (profile, stations, lines, remarks) => {
 	const parseDeparture = (d) => {
 		const when = profile.parseDateTime(tz, d.date, d.stbStop.dTimeR || d.stbStop.dTimeS)
 		const res = {
-			ref: d.jid,
+			journeyId: d.jid,
 			station: stations[parseInt(d.stbStop.locX)] || null,
 			when: when.format(),
-			direction: d.dirTxt,
+			direction: profile.parseStationName(d.dirTxt),
 			line: lines[parseInt(d.prodX)] || null,
 			remarks: d.remL ? d.remL.map(findRemark) : [],
 			trip: +d.jid.split('|')[1] // todo: this seems brittle
