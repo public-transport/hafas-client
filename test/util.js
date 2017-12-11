@@ -2,53 +2,57 @@
 
 const isRoughlyEqual = require('is-roughly-equal')
 const {DateTime} = require('luxon')
+const isValidWGS84 = require('is-coordinates')
 
 const assertValidStation = (t, s, coordsOptional = false) => {
-	t.equal(typeof s.type, 'string')
 	t.equal(s.type, 'station')
 	t.equal(typeof s.id, 'string')
-
+	t.ok(s.id)
 	t.equal(typeof s.name, 'string')
-	if (!coordsOptional) {
-		if (!s.coordinates) console.trace()
-		t.ok(s.coordinates)
-	}
-	if (s.coordinates) {
-		t.equal(typeof s.coordinates.latitude, 'number')
-		t.equal(typeof s.coordinates.longitude, 'number')
+	t.ok(s.name)
+
+	if (!coordsOptional || (s.location !== null && s.location !== undefined)) {
+		t.ok(s.location)
+		assertValidLocation(t, s.location, coordsOptional)
 	}
 }
 
 const assertValidPoi = (t, p) => {
-	t.equal(typeof p.type, 'string')
-	t.equal(p.type, 'poi')
 	t.equal(typeof p.id, 'string')
-
 	t.equal(typeof p.name, 'string')
-	t.ok(p.coordinates)
-	if (p.coordinates) {
-		t.equal(typeof p.coordinates.latitude, 'number')
-		t.equal(typeof p.coordinates.longitude, 'number')
-	}
+	t.equal(typeof a.address, 'string') // todo: do POIs always have an address?
+	assertValidLocation(t, a, true) // todo: do POIs always have coords?
 }
 
 const assertValidAddress = (t, a) => {
-	t.equal(typeof a.type, 'string')
-	t.equal(a.type, 'address')
-
-	t.equal(typeof a.name, 'string')
-	t.ok(a.coordinates)
-	if (a.coordinates) {
-		t.equal(typeof a.coordinates.latitude, 'number')
-		t.equal(typeof a.coordinates.longitude, 'number')
-	}
+	t.equal(typeof a.address, 'string')
+	assertValidLocation(t, a, true) // todo: do addresses always have coords?
 }
 
-const assertValidLocation = (t, l) => {
-	if (l.type === 'station') assertValidStation(t, l)
-	else if (l.type === 'poi') assertValidPoi(t, l)
-	else if (l.type === 'address') assertValidAddress(t, l)
-	else t.fail('invalid type ' + l.type)
+const assertValidLocation = (t, l, coordsOptional = false) => {
+	t.equal(l.type, 'location')
+	if (l.name !== null && l.name !== undefined) {
+		t.equal(typeof l.name, 'string')
+		t.ok(l.name)
+	}
+
+	if (l.address !== null && l.address !== undefined) {
+		t.equal(typeof l.address, 'string')
+		t.ok(l.address)
+	}
+
+	const hasLatitude = l.latitude !== null && l.latitude !== undefined
+	const hasLongitude = l.longitude !== null && l.longitude !== undefined
+	if (!coordsOptional && hasLatitude) t.equal(typeof l.latitude, 'number')
+	if (!coordsOptional && hasLongitude) t.equal(typeof l.longitude, 'number')
+	if ((hasLongitude && !hasLatitude) || (hasLatitude && !hasLongitude)) {
+		t.fail('should have both .latitude and .longitude')
+	}
+	if (hasLatitude && hasLongitude) isValidWGS84([l.longitude, l.latitude])
+
+	if (!coordsOptional && l.altitude !== null && l.altitude !== undefined) {
+		t.equal(typeof l.altitude, 'number')
+	}
 }
 
 const isValidMode = (m) => {

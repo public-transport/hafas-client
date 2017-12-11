@@ -204,8 +204,8 @@ test('journeys – station to address', co.wrap(function* (t) {
 	const dest = part.destination
 	assertValidAddress(t, dest)
 	t.strictEqual(dest.name, 'Torfstr. 17')
-	t.ok(isRoughlyEqual(.0001, dest.coordinates.latitude, 52.5416823))
-	t.ok(isRoughlyEqual(.0001, dest.coordinates.longitude, 13.3491223))
+	t.ok(isRoughlyEqual(.0001, dest.latitude, 52.5416823))
+	t.ok(isRoughlyEqual(.0001, dest.longitude, 13.3491223))
 	assertValidWhen(t, part.arrival)
 
 	t.end()
@@ -231,8 +231,8 @@ test('journeys – station to POI', co.wrap(function* (t) {
 	const dest = part.destination
 	assertValidPoi(t, dest)
 	t.strictEqual(dest.name, 'ATZE Musiktheater')
-	t.ok(isRoughlyEqual(.0001, dest.coordinates.latitude, 52.543333))
-	t.ok(isRoughlyEqual(.0001, dest.coordinates.longitude, 13.351686))
+	t.ok(isRoughlyEqual(.0001, dest.latitude, 52.543333))
+	t.ok(isRoughlyEqual(.0001, dest.longitude, 13.351686))
 	assertValidWhen(t, part.arrival)
 
 	t.end()
@@ -322,12 +322,12 @@ test('radar', co.wrap(function* (t) {
 		t.ok(findStation(v.direction))
 		assertValidLine(t, v.line)
 
-		t.equal(typeof v.coordinates.latitude, 'number')
-		t.ok(v.coordinates.latitude <= 55, 'vehicle is too far away')
-		t.ok(v.coordinates.latitude >= 45, 'vehicle is too far away')
-		t.equal(typeof v.coordinates.longitude, 'number')
-		t.ok(v.coordinates.longitude >= 9, 'vehicle is too far away')
-		t.ok(v.coordinates.longitude <= 15, 'vehicle is too far away')
+		t.equal(typeof v.location.latitude, 'number')
+		t.ok(v.location.latitude <= 55, 'vehicle is too far away')
+		t.ok(v.location.latitude >= 45, 'vehicle is too far away')
+		t.equal(typeof v.location.longitude, 'number')
+		t.ok(v.location.longitude >= 9, 'vehicle is too far away')
+		t.ok(v.location.longitude <= 15, 'vehicle is too far away')
 
 		t.ok(Array.isArray(v.nextStops))
 		for (let st of v.nextStops) {

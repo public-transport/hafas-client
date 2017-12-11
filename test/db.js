@@ -53,18 +53,18 @@ const isJungfernheide = (s) => {
 	return s.type === 'station' &&
 	(s.id === '008011167' || s.id === '8011167') &&
 	s.name === 'Berlin Jungfernheide' &&
-	s.coordinates &&
-	isRoughlyEqual(s.coordinates.latitude, 52.530408, .0005) &&
-	isRoughlyEqual(s.coordinates.longitude, 13.299424, .0005)
+	s.location &&
+	isRoughlyEqual(s.location.latitude, 52.530408, .0005) &&
+	isRoughlyEqual(s.location.longitude, 13.299424, .0005)
 }
 
 const assertIsJungfernheide = (t, s) => {
 	t.equal(s.type, 'station')
 	t.ok(s.id === '008011167' || s.id === '8011167', 'id should be 8011167')
 	t.equal(s.name, 'Berlin Jungfernheide')
-	t.ok(s.coordinates)
-	t.ok(isRoughlyEqual(s.coordinates.latitude, 52.530408, .0005))
-	t.ok(isRoughlyEqual(s.coordinates.longitude, 13.299424, .0005))
+	t.ok(s.location)
+	t.ok(isRoughlyEqual(s.location.latitude, 52.530408, .0005))
+	t.ok(isRoughlyEqual(s.location.longitude, 13.299424, .0005))
 }
 
 const assertValidProducts = (t, p) => {
@@ -170,8 +170,8 @@ test('Berlin Jungfernheide to Torfstraße 17', co.wrap(function* (t) {
 	const d = part.destination
 	assertValidAddress(t, d)
 	t.equal(d.name, 'Torfstraße 17')
-	t.ok(isRoughlyEqual(.0001, d.coordinates.latitude, 52.5416823))
-	t.ok(isRoughlyEqual(.0001, d.coordinates.longitude, 13.3491223))
+	t.ok(isRoughlyEqual(.0001, d.latitude, 52.5416823))
+	t.ok(isRoughlyEqual(.0001, d.longitude, 13.3491223))
 
 	t.end()
 }))
@@ -199,8 +199,8 @@ test('Berlin Jungfernheide to ATZE Musiktheater', co.wrap(function* (t) {
 	const d = part.destination
 	assertValidPoi(t, d)
 	t.equal(d.name, 'ATZE Musiktheater')
-	t.ok(isRoughlyEqual(.0001, d.coordinates.latitude, 52.542399))
-	t.ok(isRoughlyEqual(.0001, d.coordinates.longitude, 13.350402))
+	t.ok(isRoughlyEqual(.0001, d.latitude, 52.542399))
+	t.ok(isRoughlyEqual(.0001, d.longitude, 13.350402))
 
 	t.end()
 }))
