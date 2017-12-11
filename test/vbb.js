@@ -277,7 +277,10 @@ test('nearby', co.wrap(function* (t) {
 	const nearby = yield client.nearby(52.4873452, 13.3310411, {distance: 200})
 
 	t.ok(Array.isArray(nearby))
-	for (let n of nearby) assertValidLocation(t, n, false)
+	for (let n of nearby) {
+		if (n.type === 'station') assertValidStation(t, n)
+		else assertValidLocation(t, n, false)
+	}
 
 	t.equal(nearby[0].id, '900000044201')
 	t.equal(nearby[0].name, 'U Berliner Str.')
@@ -300,10 +303,13 @@ test('locations', co.wrap(function* (t) {
 	t.ok(Array.isArray(locations))
 	t.ok(locations.length > 0)
 	t.ok(locations.length <= 10)
-	for (let l of locations) assertValidLocation(t, l)
-	t.ok(locations.find((s) => s.type === 'station'))
-	t.ok(locations.find((s) => s.type === 'poi'))
-	t.ok(locations.find((s) => s.type === 'address'))
+	for (let l of locations) {
+		if (l.type === 'station') assertValidStation(t, l)
+		else assertValidLocation(t, l)
+	}
+	t.ok(locations.find(s => s.type === 'station'))
+	t.ok(locations.find(s => s.id && s.name)) // POIs
+	t.ok(locations.find(s => !s.name && s.address)) // addresses
 
 	t.end()
 }))

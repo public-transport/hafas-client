@@ -238,6 +238,11 @@ test('nearby Berlin Jungfernheide', co.wrap(function* (t) {
 	t.ok(nearby[0].distance >= 0)
 	t.ok(nearby[0].distance <= 100)
 
+	for (let n of nearby) {
+		if (n.type === 'station') assertValidStation(t, n)
+		else assertValidLocation(t, n)
+	}
+
 	t.end()
 }))
 
@@ -250,7 +255,10 @@ test('locations named Jungfernheide', co.wrap(function* (t) {
 	t.ok(locations.length > 0)
 	t.ok(locations.length <= 10)
 
-	for (let location of locations) assertValidLocation(t, location)
+	for (let l of locations) {
+		if (l.type === 'station') assertValidStation(t, l)
+		else assertValidLocation(t, l)
+	}
 	t.ok(locations.some(isJungfernheide))
 
 	t.end()

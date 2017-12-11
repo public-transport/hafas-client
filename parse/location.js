@@ -24,9 +24,9 @@ const parseLocation = (profile, l) => {
 		return station
 	}
 
-	if (l.type === POI) res.id = l.extId
-	else if (l.type === ADDRESS) res.address = l.name
+	if (l.type === ADDRESS) res.address = l.name
 	else res.name = l.name
+	if (l.type === POI) res.id = l.extId
 
 	return res
 }

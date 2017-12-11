@@ -15,7 +15,7 @@ const createParseDeparture = (profile, stations, lines, remarks) => {
 		const res = {
 			journeyId: d.jid,
 			station: stations[parseInt(d.stbStop.locX)] || null,
-			when: when.format(),
+			when: when.toISO(),
 			direction: profile.parseStationName(d.dirTxt),
 			line: lines[parseInt(d.prodX)] || null,
 			remarks: d.remL ? d.remL.map(findRemark) : [],

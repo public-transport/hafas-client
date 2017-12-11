@@ -20,8 +20,11 @@ const assertValidStation = (t, s, coordsOptional = false) => {
 const assertValidPoi = (t, p) => {
 	t.equal(typeof p.id, 'string')
 	t.equal(typeof p.name, 'string')
-	t.equal(typeof a.address, 'string') // todo: do POIs always have an address?
-	assertValidLocation(t, a, true) // todo: do POIs always have coords?
+	if (p.address !== null && p.address !== undefined) {
+		t.equal(typeof p.address, 'string')
+		t.ok(p.address)
+	}
+	assertValidLocation(t, p, true) // todo: do POIs always have coords?
 }
 
 const assertValidAddress = (t, a) => {
