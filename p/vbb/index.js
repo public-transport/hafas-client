@@ -19,7 +19,7 @@ const formatBitmask = createFormatBitmask(modes)
 const transformReqBody = (body) => {
 	body.client = {type: 'IPA', id: 'VBB', name: 'vbbPROD', v: '4010300'}
 	body.ext = 'VBB.1'
-	body.ver = '1.11'
+	body.ver = '1.11' // todo: 1.16 with `mic` and `mac` query params
 	body.auth = {type: 'AID', aid: 'hafas-vbb-apps'}
 
 	return body
