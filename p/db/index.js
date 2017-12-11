@@ -2,8 +2,9 @@
 
 const crypto = require('crypto')
 
-const _formatStation = require('../../format/station')
 const _parseLine = require('../../parse/line')
+const _createParseJourney = require('../../parse/journey')
+const _formatStation = require('../../format/station')
 const createParseBitmask = require('../../parse/products-bitmask')
 const createFormatBitmask = require('../../format/products-bitmask')
 const {accessibility, bike} = require('../../format/filters')
@@ -69,6 +70,42 @@ const parseLine = (profile, l) => {
 	return res
 }
 
+const createParseJourney = (profile, stations, lines, remarks) => {
+	const parseJourney = _createParseJourney(profile, stations, lines, remarks)
+
+	const parseJourneyWithPrice = (j) => {
+		const res = parseJourney(j)
+
+		// todo: find cheapest, find discounts
+		// todo: write a parser like vbb-parse-ticket
+		// [ {
+		// 	prc: 15000,
+		// 	isFromPrice: true,
+		// 	isBookable: true,
+		// 	isUpsell: false,
+		// 	targetCtx: 'D',
+		// 	buttonText: 'To offer selection'
+		// } ]
+		res.price = {amount: null, hint: 'No pricing information available.'}
+		if (
+			j.trfRes &&
+			Array.isArray(j.trfRes.fareSetL) &&
+			j.trfRes.fareSetL[0] &&
+			Array.isArray(j.trfRes.fareSetL[0].fareL) &&
+			j.trfRes.fareSetL[0].fareL[0]
+		) {
+			const tariff = j.trfRes.fareSetL[0].fareL[0]
+			if (tariff.prc >= 0) { // wat
+				res.price = {amount: tariff.prc / 100, hint: null}
+			}
+		}
+
+		return res
+	}
+
+	return parseJourneyWithPrice
+}
+
 const isIBNR = /^\d{6,}$/
 const formatStation = (id) => {
 	if (!isIBNR.test(id)) throw new Error('station ID must be an IBNR.')
@@ -107,6 +144,7 @@ const dbProfile = {
 	// todo: parseLocation
 	parseLine,
 	parseProducts: createParseBitmask(modes.bitmasks),
+	parseJourney: createParseJourney,
 
 	formatStation,
 	formatProducts

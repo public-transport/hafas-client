@@ -73,6 +73,18 @@ const assertValidProducts = (t, p) => {
 	}
 }
 
+const assertValidPrice = (t, p) => {
+	t.ok(p)
+	if (p.amount !== null) {
+		t.equal(typeof p.amount, 'number')
+		t.ok(p.amount > 0)
+	}
+	if (p.hint !== null) {
+		t.equal(typeof p.hint, 'string')
+		t.ok(p.hint)
+	}
+}
+
 const test = tapePromise(tape)
 const client = createClient(dbProfile)
 
@@ -128,6 +140,8 @@ test('Berlin Jungfernheide to München Hbf', co.wrap(function* (t) {
 
 		t.ok(Array.isArray(part.passed))
 		for (let stopover of part.passed) assertValidStopover(t, stopover)
+
+		if (journey.price) assertValidPrice(t, journey.price)
 	}
 
 	t.end()
