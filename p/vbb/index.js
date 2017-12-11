@@ -116,6 +116,7 @@ const formatProducts = (products) => {
 }
 
 const vbbProfile = {
+	locale: 'de-DE',
 	timezone: 'Europe/Berlin',
 	endpoint: 'https://fahrinfo.vbb.de/bin/mgate.exe',
 	transformReqBody,

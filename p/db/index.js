@@ -135,6 +135,7 @@ const formatProducts = (products) => {
 // todo: find option for absolute number of results
 
 const dbProfile = {
+	locale: 'de-DE',
 	timezone: 'Europe/Berlin',
 	endpoint: 'https://reiseauskunft.bahn.de/bin/mgate.exe',
 	transformReqBody,

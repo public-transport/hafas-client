@@ -1,9 +1,12 @@
 'use strict'
 
-const moment = require('moment-timezone')
+const {DateTime} = require('luxon')
 
 const formatDate = (profile, when) => {
-	return moment(when).tz(profile.timezone).format('YYYYMMDD')
+	return DateTime.fromMillis(+when, {
+		locale: profile.locale,
+		zone: profile.timezone
+	}).toFormat('yyyyMMdd')
 }
 
 module.exports = formatDate

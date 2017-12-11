@@ -1,6 +1,5 @@
 'use strict'
 
-const parseDateTime = require('./date-time')
 const createParseJourneyPart = require('./journey-part')
 
 const clone = obj => Object.assign({}, obj)

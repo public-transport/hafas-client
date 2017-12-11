@@ -5,19 +5,17 @@ const parseDateTime = require('./date-time')
 const clone = obj => Object.assign({}, obj)
 
 const createParseJourneyPart = (profile, stations, lines, remarks) => {
-	const tz = profile.timezone
-
 	const parseStopover = (j, st) => {
 		const res = {
 			station: stations[parseInt(st.locX)]
 		}
 		if (st.aTimeR || st.aTimeS) {
-			const arr = parseDateTime(tz, j.date, st.aTimeR || st.aTimeS)
-			res.arrival = arr.format()
+			const arr = parseDateTime(profile, j.date, st.aTimeR || st.aTimeS)
+			res.arrival = arr.toISO()
 		}
 		if (st.dTimeR || st.dTimeS) {
-			const dep = parseDateTime(tz, j.date, st.dTimeR || st.dTimeS)
-			res.departure = dep.format()
+			const dep = parseDateTime(profile, j.date, st.dTimeR || st.dTimeS)
+			res.departure = dep.toISO()
 		}
 
 		return res
@@ -31,18 +29,18 @@ const createParseJourneyPart = (profile, stations, lines, remarks) => {
 	// todo: what is pt.jny.dirFlg?
 	// todo: how does pt.freq work?
 	const parseJourneyPart = (j, pt) => { // j = journey, pt = part
-		const dep = profile.parseDateTime(tz, j.date, pt.dep.dTimeR || pt.dep.dTimeS)
-		const arr = profile.parseDateTime(tz, j.date, pt.arr.aTimeR || pt.arr.aTimeS)
+		const dep = profile.parseDateTime(profile, j.date, pt.dep.dTimeR || pt.dep.dTimeS)
+		const arr = profile.parseDateTime(profile, j.date, pt.arr.aTimeR || pt.arr.aTimeS)
 		const res = {
 			origin: clone(stations[parseInt(pt.dep.locX)]) || null,
 			destination: clone(stations[parseInt(pt.arr.locX)]),
-			departure: dep.format(),
-			arrival: arr.format()
+			departure: dep.toISO(),
+			arrival: arr.toISO()
 		}
 
 		if (pt.dep.dTimeR && pt.dep.dTimeS) {
-			const realtime = profile.parseDateTime(tz, j.date, pt.dep.dTimeR)
-			const planned = profile.parseDateTime(tz, j.date, pt.dep.dTimeS)
+			const realtime = profile.parseDateTime(profile, j.date, pt.dep.dTimeR)
+			const planned = profile.parseDateTime(profile, j.date, pt.dep.dTimeS)
 			res.delay = Math.round((realtime - planned) / 1000)
 		}
 
@@ -66,10 +64,10 @@ const createParseJourneyPart = (profile, stations, lines, remarks) => {
 			if (pt.jny.freq && pt.jny.freq.jnyL) {
 				const parseAlternative = (a) => {
 					// todo: realtime
-					const when = profile.parseDateTime(tz, j.date, a.stopL[0].dTimeS)
+					const when = profile.parseDateTime(profile, j.date, a.stopL[0].dTimeS)
 					return {
 						line: lines[parseInt(a.prodX)] || null,
-						when: when.format()
+						when: when.toISO()
 					}
 				}
 				res.alternatives = pt.jny.freq.jnyL

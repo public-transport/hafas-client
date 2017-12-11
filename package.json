@@ -29,7 +29,7 @@
 	"dependencies": {
 		"fetch-ponyfill": "^4.1.0",
 		"lodash": "^4.17.4",
-		"moment-timezone": "^0.5.13",
+		"luxon": "^0.2.7",
 		"pinkie-promise": "^2.0.1",
 		"query-string": "^5.0.0",
 		"slugg": "^1.2.0",
@@ -41,7 +41,6 @@
 		"co": "^4.6.0",
 		"db-stations": "^1.25.0",
 		"is-roughly-equal": "^0.1.0",
-		"luxon": "^0.2.7",
 		"tap-spec": "^4.1.1",
 		"tape": "^4.8.0",
 		"tape-promise": "^2.0.1",
