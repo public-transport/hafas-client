@@ -19,7 +19,8 @@ const {
 	assertValidLine: _assertValidLine,
 	assertValidStopover,
 	hour, when,
-	assertValidWhen // todo: timezone
+	assertValidWhen, // todo: timezone
+	assertValidTicket
 } = require('./util')
 
 const assertValidStation = (t, s, coordsOptional = false) => {
@@ -100,6 +101,9 @@ test('journeys – station to station', co.wrap(function* (t) {
 
 		t.ok(Array.isArray(part.passed))
 		for (let passed of part.passed) assertValidStopover(t, passed)
+
+		t.ok(Array.isArray(journey.tickets))
+		for (let ticket of journey.tickets) assertValidTicket(t, ticket)
 	}
 	t.end()
 }))

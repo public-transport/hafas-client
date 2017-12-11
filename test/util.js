@@ -97,6 +97,37 @@ const assertValidWhen = (t, w) => {
 	t.ok(isValidWhen(w), 'invalid when')
 }
 
+const assertValidTicket = (t, ti) => {
+	t.strictEqual(typeof ti.name, 'string')
+	t.ok(ti.name.length > 0)
+	if (ti.price !== null) {
+		t.strictEqual(typeof ti.price, 'number')
+		t.ok(ti.price > 0)
+	}
+	if (ti.amount !== null) {
+		t.strictEqual(typeof ti.amount, 'number')
+		t.ok(ti.amount > 0)
+	}
+
+	if ('bike' in ti) t.strictEqual(typeof ti.bike, 'boolean')
+	if ('shortTrip' in ti) t.strictEqual(typeof ti.shortTrip, 'boolean')
+	if ('group' in ti) t.strictEqual(typeof ti.group, 'boolean')
+	if ('fullDay' in ti) t.strictEqual(typeof ti.fullDay, 'boolean')
+
+	if (ti.tariff !== null) {
+		t.strictEqual(typeof ti.tariff, 'string')
+		t.ok(ti.tariff.length > 0)
+	}
+	if (ti.coverage !== null) {
+		t.strictEqual(typeof ti.coverage, 'string')
+		t.ok(ti.coverage.length > 0)
+	}
+	if (ti.variant !== null) {
+		t.strictEqual(typeof ti.variant, 'string')
+		t.ok(ti.variant.length > 0)
+	}
+}
+
 module.exports = {
 	assertValidStation,
 	assertValidPoi,
@@ -106,5 +137,6 @@ module.exports = {
 	assertValidLine,
 	isValidDateTime,
 	assertValidStopover,
-	hour, when, isValidWhen, assertValidWhen
+	hour, when, isValidWhen, assertValidWhen,
+	assertValidTicket
 }

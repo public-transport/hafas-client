@@ -6,7 +6,7 @@ const dbProfile = require('./p/db')
 const client = createClient(dbProfile)
 
 // Berlin Jungfernheide to München Hbf
-client.journeys('8011167', '8000261', {results: 1})
+client.journeys('8011167', '8000261', {results: 1, tickets: true})
 // client.departures('8011167', {duration: 1})
 // client.locations('Berlin Jungfernheide')
 // client.locations('ATZE Musiktheater', {poi: true, addressses: false, fuzzy: false})

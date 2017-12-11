@@ -57,6 +57,7 @@ const createClient = (profile) => {
 			// todo: does this work with every endpoint?
 			accessibility: 'none', // 'none', 'partial' or 'complete'
 			bike: false, // only bike-friendly journeys
+			tickets: false, // return tickets?
 		}, opt)
 		if (opt.via) opt.via = profile.formatLocation(profile, opt.via)
 		opt.when = opt.when || new Date()
@@ -78,7 +79,7 @@ const createClient = (profile) => {
 			// todo: what are all these for?
 			getPT: true,
 			outFrwd: true,
-			getTariff: false,
+			getTariff: !!opt.tickets,
 			getIV: false, // walk & bike as alternatives?
 			getPolyline: false // shape for displaying on a map?
 		}, opt)

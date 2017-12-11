@@ -3,10 +3,12 @@
 const shorten = require('vbb-short-station-name')
 const {to12Digit, to9Digit} = require('vbb-translate-ids')
 const parseLineName = require('vbb-parse-line')
+const parseTicket = require('vbb-parse-ticket')
 
-const _formatStation = require('../../format/station')
 const _parseLine = require('../../parse/line')
 const _parseLocation = require('../../parse/location')
+const _createParseJourney = require('../../parse/journey')
+const _formatStation = require('../../format/station')
 const createParseBitmask = require('../../parse/products-bitmask')
 const createFormatBitmask = require('../../format/products-bitmask')
 
@@ -15,8 +17,8 @@ const modes = require('./modes')
 const formatBitmask = createFormatBitmask(modes)
 
 const transformReqBody = (body) => {
-	body.client = {type: 'IPA', id: 'BVG'}
-	body.ext = 'VBB.2'
+	body.client = {type: 'IPA', id: 'VBB', name: 'vbbPROD', v: '4010300'}
+	body.ext = 'VBB.1'
 	body.ver = '1.11'
 	body.auth = {type: 'AID', aid: 'hafas-vbb-apps'}
 
@@ -58,6 +60,36 @@ const parseLocation = (profile, l) => {
 	return res
 }
 
+const createParseJourney = (profile, stations, lines, remarks) => {
+	const parseJourney = _createParseJourney(profile, stations, lines, remarks)
+
+	const parseJourneyWithTickets = (j) => {
+		const res = parseJourney(j)
+
+		if (
+			j.trfRes &&
+			Array.isArray(j.trfRes.fareSetL) &&
+			j.trfRes.fareSetL[0] &&
+			Array.isArray(j.trfRes.fareSetL[0].fareL)
+		) {
+			res.tickets = []
+			const sets = j.trfRes.fareSetL[0].fareL
+			for (let s of sets) {
+				if (!Array.isArray(s.ticketL) || s.ticketL.length === 0) continue
+				for (let t of s.ticketL) {
+					const ticket = parseTicket(t)
+					ticket.name = s.name + ' – ' + ticket.name
+					res.tickets.push(ticket)
+				}
+			}
+		}
+
+		return res
+	}
+
+	return parseJourneyWithTickets
+}
+
 const isIBNR = /^\d{9,}$/
 const formatStation = (id) => {
 	if (!isIBNR.test(id)) throw new Error('station ID must be an IBNR.')
@@ -92,6 +124,7 @@ const vbbProfile = {
 	parseLocation,
 	parseLine,
 	parseProducts: createParseBitmask(modes.bitmasks),
+	parseJourney: createParseJourney,
 
 	formatStation,
 	formatProducts,
