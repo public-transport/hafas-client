@@ -203,7 +203,7 @@ test('journeys – station to address', co.wrap(function* (t) {
 
 	const dest = part.destination
 	assertValidAddress(t, dest)
-	t.strictEqual(dest.name, 'Torfstr. 17')
+	t.strictEqual(dest.address, 'Torfstraße 17')
 	t.ok(isRoughlyEqual(.0001, dest.latitude, 52.5416823))
 	t.ok(isRoughlyEqual(.0001, dest.longitude, 13.3491223))
 	assertValidWhen(t, part.arrival)

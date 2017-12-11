@@ -73,6 +73,8 @@ const parseLine = (profile, l) => {
 const createParseJourney = (profile, stations, lines, remarks) => {
 	const parseJourney = _createParseJourney(profile, stations, lines, remarks)
 
+	// todo: j.sotRating, j.conSubscr, j.isSotCon, j.showARSLink, k.sotCtxt
+	// todo: j.conSubscr, j.showARSLink, j.useableTime
 	const parseJourneyWithPrice = (j) => {
 		const res = parseJourney(j)
 

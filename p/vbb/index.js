@@ -50,10 +50,8 @@ const parseLine = (profile, l) => {
 const parseLocation = (profile, l) => {
 	const res = _parseLocation(profile, l)
 
-	// todo: shorten has been made for stations, not any type of location
-	res.name = shorten(res.name)
-
 	if (res.type === 'station') {
+		res.name = shorten(res.name)
 		res.id = to12Digit(res.id)
 		// todo: https://github.com/derhuerst/vbb-hafas/blob/1c64bfe42422e2648b21016d233c808460250308/lib/parse.js#L67-L75
 	}

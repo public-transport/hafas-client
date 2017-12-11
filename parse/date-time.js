@@ -17,7 +17,6 @@ const parseDateTime = (profile, date, time) => {
 
 	const offset = time.length > 6 ? parseInt(time.slice(0, -6)) : 0
 
-	console.error(pDate, pTime, offset)
 	const dt = DateTime.fromISO(pDate.join('-') + 'T' + pTime.join(':'), {
 		locale: profile.locale,
 		zone: profile.timezone

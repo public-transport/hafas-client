@@ -17,13 +17,14 @@ const parseLocation = (profile, l) => {
 		const station = {
 			type: 'station',
 			id: l.extId,
+			name: l.name,
 			location: res
 		}
 		if ('pCls' in l) station.products = profile.parseProducts(l.pCls)
 		return station
 	}
 
-	if (type === POI) res.id = l.extId
+	if (l.type === POI) res.id = l.extId
 	else if (l.type === ADDRESS) res.address = l.name
 	else res.name = l.name
 

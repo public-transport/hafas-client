@@ -19,8 +19,8 @@ const createParseMovement = (profile, locations, lines, remarks) => {
 
 			return {
 				station: locations[s.locX],
-				departure: dep ? dep.format() : null,
-				arrival: arr ? arr.format() : null
+				departure: dep ? dep.toISO() : null,
+				arrival: arr ? arr.toISO() : null
 			}
 		}
 

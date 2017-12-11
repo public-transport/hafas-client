@@ -55,6 +55,7 @@ const assertValidLocation = (t, l, coordsOptional = false) => {
 	}
 }
 
+// todo: https://github.com/public-transport/friendly-public-transport-format/tree/babf2b82947ab0e655a4a0e1cbee6b5519af9172/spec#modes
 const isValidMode = (m) => {
 	return m === 'walking' ||
 		m === 'train' ||

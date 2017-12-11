@@ -7,11 +7,11 @@ const createParseStopover = (profile, stations, lines, remarks, connection) => {
 		}
 		if (st.aTimeR || st.aTimeS) {
 			const arr = profile.parseDateTime(profile, connection.date, st.aTimeR || st.aTimeS)
-			res.arrival = arr.format()
+			res.arrival = arr.toISO()
 		}
 		if (st.dTimeR || st.dTimeS) {
 			const dep = profile.parseDateTime(profile, connection.date, st.dTimeR || st.dTimeS)
-			res.departure = dep.format()
+			res.departure = dep.toISO()
 		}
 		return res
 	}

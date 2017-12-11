@@ -67,6 +67,8 @@ const assertIsJungfernheide = (t, s) => {
 	t.ok(isRoughlyEqual(s.location.longitude, 13.299424, .0005))
 }
 
+// todo: this doesnt seem to work
+// todo: DRY with assertValidStationProducts
 const assertValidProducts = (t, p) => {
 	for (let k of Object.keys(modes)) {
 		t.ok('boolean', typeof modes[k], 'mode ' + k + ' must be a boolean')
@@ -169,7 +171,7 @@ test('Berlin Jungfernheide to Torfstraße 17', co.wrap(function* (t) {
 
 	const d = part.destination
 	assertValidAddress(t, d)
-	t.equal(d.name, 'Torfstraße 17')
+	t.equal(d.address, 'Torfstraße 17')
 	t.ok(isRoughlyEqual(.0001, d.latitude, 52.5416823))
 	t.ok(isRoughlyEqual(.0001, d.longitude, 13.3491223))
 
