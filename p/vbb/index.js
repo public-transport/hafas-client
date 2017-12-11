@@ -2,6 +2,7 @@
 
 const shorten = require('vbb-short-station-name')
 const {to12Digit, to9Digit} = require('vbb-translate-ids')
+const parseLineName = require('vbb-parse-line')
 
 const _formatStation = require('../../format/station')
 const _parseLine = require('../../parse/line')
@@ -33,6 +34,13 @@ const parseLine = (profile, l) => {
 			res.product = data.product
 		}
 	}
+
+	const details = parseLineName(l.name)
+	res.symbol = details.symbol
+	res.nr = details.nr
+	res.metro = details.metro
+	res.express = details.express
+	res.night = details.night
 
 	return res
 }

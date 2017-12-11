@@ -15,7 +15,7 @@ const {
 	assertValidPoi,
 	assertValidAddress,
 	assertValidLocation,
-	assertValidLine,
+	assertValidLine: _assertValidLine,
 	assertValidStopover,
 	hour, when,
 	assertValidWhen
@@ -30,6 +30,15 @@ const assertValidStationProducts = (t, p) => {
 	t.equal(typeof p.ferry, 'boolean')
 	t.equal(typeof p.express, 'boolean')
 	t.equal(typeof p.regional, 'boolean')
+}
+
+const assertValidLine = (t, l) => {
+	_assertValidLine(t, l)
+	if (l.symbol !== null) t.equal(typeof l.symbol, 'string')
+	if (l.nr !== null) t.equal(typeof l.nr, 'number')
+	if (l.metro !== null) t.equal(typeof l.metro, 'boolean')
+	if (l.express !== null) t.equal(typeof l.express, 'boolean')
+	if (l.night !== null) t.equal(typeof l.night, 'boolean')
 }
 
 // todo
