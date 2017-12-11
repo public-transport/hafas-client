@@ -1,7 +1,7 @@
 'use strict'
 
 const isRoughlyEqual = require('is-roughly-equal')
-const floor = require('floordate')
+const {DateTime} = require('luxon')
 
 const assertValidStation = (t, s, coordsOptional = false) => {
 	t.equal(typeof s.type, 'string')
@@ -80,13 +80,12 @@ const assertValidStopover = (t, s, coordsOptional = false) => {
 	assertValidStation(t, s.station, coordsOptional)
 }
 
-const minute = 60 * 1000
-const hour = 60 * minute
-const day = 24 * hour
-const week = 7 * day
+const hour = 60 * 60 * 1000
+const week = 7 * 24 * hour
 
-// next Monday
-const when = new Date(+floor(new Date(), 'week') + week + 10 * hour)
+// next Monday 10 am
+const dt = DateTime.local().startOf('week').plus({weeks: 1, hours: 10})
+const when = new Date(dt.toISO())
 const isValidWhen = (w) => {
 	const ts = +new Date(w)
 	if (Number.isNaN(ts)) return false
