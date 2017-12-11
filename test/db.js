@@ -19,6 +19,20 @@ const {
 	when, isValidWhen
 } = require('./util.js')
 
+const assertValidStationProducts = (t, p) => {
+	t.ok(p)
+	t.equal(typeof p.nationalExp, 'boolean')
+	t.equal(typeof p.national, 'boolean')
+	t.equal(typeof p.regionalExp, 'boolean')
+	t.equal(typeof p.regional, 'boolean')
+	t.equal(typeof p.suburban, 'boolean')
+	t.equal(typeof p.bus, 'boolean')
+	t.equal(typeof p.ferry, 'boolean')
+	t.equal(typeof p.subway, 'boolean')
+	t.equal(typeof p.tram, 'boolean')
+	t.equal(typeof p.taxi, 'boolean')
+}
+
 const findStation = (id) => new Promise((yay, nay) => {
 	const stations = getStations()
 	stations
@@ -71,6 +85,7 @@ test('Berlin Jungfernheide to München Hbf', co.wrap(function* (t) {
 	t.ok(journeys.length > 0, 'no journeys')
 	for (let journey of journeys) {
 		assertValidStation(t, journey.origin)
+		assertValidStationProducts(t, journey.origin.products)
 		if (!(yield findStation(journey.origin.id))) {
 			console.error('unknown station', journey.origin.id, journey.origin.name)
 		}
@@ -80,6 +95,7 @@ test('Berlin Jungfernheide to München Hbf', co.wrap(function* (t) {
 		t.ok(isValidWhen(journey.departure))
 
 		assertValidStation(t, journey.destination)
+		assertValidStationProducts(t, journey.origin.products)
 		if (!(yield findStation(journey.origin.id))) {
 			console.error('unknown station', journey.destination.id, journey.destination.name)
 		}
@@ -93,6 +109,7 @@ test('Berlin Jungfernheide to München Hbf', co.wrap(function* (t) {
 		const part = journey.parts[0]
 
 		assertValidStation(t, part.origin)
+		assertValidStationProducts(t, part.origin.products)
 		if (!(yield findStation(part.origin.id))) {
 			console.error('unknown station', part.origin.id, part.origin.name)
 		}
@@ -100,6 +117,7 @@ test('Berlin Jungfernheide to München Hbf', co.wrap(function* (t) {
 		t.equal(typeof part.departurePlatform, 'string')
 
 		assertValidStation(t, part.destination)
+		assertValidStationProducts(t, part.origin.products)
 		if (!(yield findStation(part.destination.id))) {
 			console.error('unknown station', part.destination.id, part.destination.name)
 		}
@@ -127,6 +145,7 @@ test('Berlin Jungfernheide to Torfstraße 17', co.wrap(function* (t) {
 	const part = journey.parts[journey.parts.length - 1]
 
 	assertValidStation(t, part.origin)
+	assertValidStationProducts(t, part.origin.products)
 	if (!(yield findStation(part.origin.id))) {
 		console.error('unknown station', part.origin.id, part.origin.name)
 	}
@@ -155,6 +174,7 @@ test('Berlin Jungfernheide to ATZE Musiktheater', co.wrap(function* (t) {
 	const part = journey.parts[journey.parts.length - 1]
 
 	assertValidStation(t, part.origin)
+	assertValidStationProducts(t, part.origin.products)
 	if (!(yield findStation(part.origin.id))) {
 		console.error('unknown station', part.origin.id, part.origin.name)
 	}
@@ -179,6 +199,7 @@ test('departures at Berlin Jungfernheide', co.wrap(function* (t) {
 	t.ok(Array.isArray(deps))
 	for (let dep of deps) {
 		assertValidStation(t, dep.station)
+		assertValidStationProducts(t, dep.station.products)
 		if (!(yield findStation(dep.station.id))) {
 			console.error('unknown station', dep.station.id, dep.station.name)
 		}

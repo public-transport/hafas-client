@@ -8,10 +8,7 @@ const m = {
 		name:     'S-Bahn',
 		mode:     'train',
 		short:    'S',
-		type:     'suburban',
-		color:    '#008c4f',
-		unicode:  '🚈',
-		ansi:     ['green'] // `chalk` color code
+		product: 'suburban'
 	},
 
 	subway: {
@@ -20,10 +17,7 @@ const m = {
 		name:     'U-Bahn',
 		mode:     'train',
 		short:    'U',
-		type:     'subway',
-		color:    '#0067ac',
-		unicode:  '🚇',
-		ansi:     ['blue'] // `chalk` color code
+		product: 'subway'
 	},
 
 	tram: {
@@ -32,34 +26,25 @@ const m = {
 		name:     'Tram',
 		mode:     'train',
 		short:    'T',
-		type:     'tram',
-		color:    '#e3001b',
-		unicode:  '🚋',
-		ansi:     ['red'] // `chalk` color code
+		product: 'tram'
 	},
 
 	bus: {
 		category: 3,
 		bitmask:  8,
 		name:     'Bus',
-		mode:     'train',
+		mode: 'bus',
 		short:    'B',
-		type:     'bus',
-		color:    '#922A7D',
-		unicode:  '🚌',
-		ansi:     ['dim', 'magenta'] // `chalk` color codes
+		product: 'bus'
 	},
 
 	ferry: {
 		category: 4,
 		bitmask:  16,
 		name:     'Fähre',
-		mode:     'train',
+		mode: 'ferry',
 		short:    'F',
-		type:     'ferry',
-		color:    '#099bd6',
-		unicode:  '🚢',
-		ansi:     ['cyan'] // `chalk` color code
+		product: 'ferry'
 	},
 
 	express: {
@@ -68,10 +53,7 @@ const m = {
 		name:     'IC/ICE',
 		mode:     'train',
 		short:    'E',
-		type:     'express',
-		color:    '#f4e613',
-		unicode:  '🚄',
-		ansi:     ['yellow'] // `chalk` color code
+		product: 'express'
 	},
 
 	regional: {
@@ -80,10 +62,7 @@ const m = {
 		name:     'RB/RE',
 		mode:     'train',
 		short:    'R',
-		type:     'regional',
-		color:    '#D9222A',
-		unicode:  '🚆',
-		ansi:     ['red'] // `chalk` color code
+		product: 'regional'
 	},
 
 	unknown: {
@@ -92,10 +71,7 @@ const m = {
 		name:     'unknown',
 		mode:     null,
 		short:    '?',
-		type:     'unknown',
-		color:    '#555555',
-		unicode:  '?',
-		ansi:     ['gray'] // `chalk` color code
+		product: 'unknown'
 	}
 }
 

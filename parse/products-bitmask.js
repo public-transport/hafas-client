@@ -1,7 +1,7 @@
 'use strict'
 
 const createParseBitmask = (bitmasks) => {
-	const createBitmask = (bitmask) => {
+	const parseBitmask = (bitmask) => {
 		const products = {}
 		let i = 1
 		do {
@@ -10,7 +10,7 @@ const createParseBitmask = (bitmasks) => {
 		} while (bitmasks[i] && bitmasks[i].product)
 		return products
 	}
-	return createBitmask
+	return parseBitmask
 }
 
 module.exports = createParseBitmask

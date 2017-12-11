@@ -30,7 +30,7 @@ const parseLine = (profile, l) => {
 		const data = modes.bitmasks[parseInt(res.class)]
 		if (data) {
 			res.mode = data.mode
-			res.product = data.type
+			res.product = data.product
 		}
 	}
 

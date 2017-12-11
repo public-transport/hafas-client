@@ -21,6 +21,17 @@ const {
 	assertValidWhen
 } = require('./util')
 
+const assertValidStationProducts = (t, p) => {
+	t.ok(p)
+	t.equal(typeof p.suburban, 'boolean')
+	t.equal(typeof p.subway, 'boolean')
+	t.equal(typeof p.tram, 'boolean')
+	t.equal(typeof p.bus, 'boolean')
+	t.equal(typeof p.ferry, 'boolean')
+	t.equal(typeof p.express, 'boolean')
+	t.equal(typeof p.regional, 'boolean')
+}
+
 // todo
 const findStation = (query) => stations(query, true, false)
 
@@ -41,11 +52,13 @@ test('journeys – station to station', co.wrap(function* (t) {
 
 	for (let journey of journeys) {
 		assertValidStation(t, journey.origin)
+		assertValidStationProducts(t, journey.origin.products)
 		t.ok(journey.origin.name.indexOf('(Berlin)') === -1)
 		t.strictEqual(journey.origin.id, spichernstr)
 		assertValidWhen(t, journey.departure)
 
 		assertValidStation(t, journey.destination)
+		assertValidStationProducts(t, journey.destination.products)
 		t.strictEqual(journey.destination.id, amrumerStr)
 		assertValidWhen(t, journey.arrival)
 
@@ -56,11 +69,13 @@ test('journeys – station to station', co.wrap(function* (t) {
 		t.equal(typeof part.id, 'string')
 		t.ok(part.id)
 		assertValidStation(t, part.origin)
+		assertValidStationProducts(t, part.origin.products)
 		t.ok(part.origin.name.indexOf('(Berlin)') === -1)
 		t.strictEqual(part.origin.id, spichernstr)
 		assertValidWhen(t, part.departure)
 
 		assertValidStation(t, part.destination)
+		assertValidStationProducts(t, part.destination.products)
 		t.strictEqual(part.destination.id, amrumerStr)
 		assertValidWhen(t, part.arrival)
 
@@ -161,6 +176,7 @@ test('journeys – station to address', co.wrap(function* (t) {
 	const part = journey.parts[journey.parts.length - 1]
 
 	assertValidStation(t, part.origin)
+	assertValidStationProducts(t, part.origin.products)
 	assertValidWhen(t, part.departure)
 
 	const dest = part.destination
@@ -187,6 +203,7 @@ test('journeys – station to POI', co.wrap(function* (t) {
 	const part = journey.parts[journey.parts.length - 1]
 
 	assertValidStation(t, part.origin)
+	assertValidStationProducts(t, part.origin.products)
 	assertValidWhen(t, part.departure)
 
 	const dest = part.destination
@@ -212,6 +229,7 @@ test('departures', co.wrap(function* (t) {
 
 		t.equal(dep.station.name, 'U Spichernstr.')
 		assertValidStation(t, dep.station)
+		assertValidStationProducts(t, dep.station.products)
 		t.strictEqual(dep.station.id, spichernstr)
 
 		assertValidWhen(t, dep.when)
@@ -311,8 +329,10 @@ test('radar', co.wrap(function* (t) {
 		t.ok(Array.isArray(v.frames))
 		for (let f of v.frames) {
 			assertValidStation(t, f.origin, true)
+			assertValidStationProducts(t, f.origin.products)
 			t.strictEqual(f.origin.name.indexOf('(Berlin)'), -1)
 			assertValidStation(t, f.destination, true)
+			assertValidStationProducts(t, f.destination.products)
 			t.strictEqual(f.destination.name.indexOf('(Berlin)'), -1)
 			t.equal(typeof f.t, 'number')
 		}
