@@ -11,7 +11,9 @@ const parseLine = (profile, p) => {
 	}
 
 	if (p.cls) res.class = p.cls
-	if (p.prodCtx) res.productCode = +p.prodCtx.catCode
+	if (p.prodCtx && p.prodCtx.catCode !== undefined) {
+		res.productCode = +p.prodCtx.catCode
+	}
 
 	// todo: parse mode, remove from profiles
 

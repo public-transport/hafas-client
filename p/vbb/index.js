@@ -10,6 +10,7 @@ const _parseLine = require('../../parse/line')
 const _parseLocation = require('../../parse/location')
 const _createParseJourney = require('../../parse/journey')
 const _createParseStopover = require('../../parse/stopover')
+const _createParseDeparture = require('../../parse/departure')
 const _formatStation = require('../../format/station')
 const createParseBitmask = require('../../parse/products-bitmask')
 const createFormatBitmask = require('../../format/products-bitmask')
@@ -107,6 +108,26 @@ const createParseStopover = (profile, stations, lines, remarks, connection) => {
 	return parseStopoverWithShorten
 }
 
+const createParseDeparture = (profile, stations, lines, remarks) => {
+	const parseDeparture = _createParseDeparture(profile, stations, lines, remarks)
+
+	const ringbahnClockwise = /^ringbahn s\s?41$/i
+	const ringbahnAnticlockwise = /^ringbahn s\s?42$/i
+	const parseDepartureRenameRingbahn = (j) => {
+		const res = parseDeparture(j)
+
+		if (res.line && res.line.product === 'suburban') {
+			const d = res.direction && res.direction.trim()
+			if (ringbahnClockwise.test(d)) res.direction = 'Ringbahn S41 ⟳'
+			else if (ringbahnAnticlockwise.test(d)) res.direction = 'Ringbahn S42 ⟲'
+		}
+
+		return res
+	}
+
+	return parseDepartureRenameRingbahn
+}
+
 const isIBNR = /^\d{9,}$/
 const formatStation = (id) => {
 	if (!isIBNR.test(id)) throw new Error('station ID must be an IBNR.')
@@ -145,6 +166,7 @@ const vbbProfile = {
 	parseLine,
 	parseProducts: createParseBitmask(modes.bitmasks),
 	parseJourney: createParseJourney,
+	parseDeparture: createParseDeparture,
 	parseStopover: createParseStopover,
 
 	formatStation,
