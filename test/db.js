@@ -151,7 +151,7 @@ test('Berlin Jungfernheide to München Hbf', co.wrap(function* (t) {
 
 test('Berlin Jungfernheide to Torfstraße 17', co.wrap(function* (t) {
 	const journeys = yield client.journeys('8011167', {
-		type: 'address', name: 'Torfstraße 17',
+		type: 'location', address: 'Torfstraße 17',
 		latitude: 52.5416823, longitude: 13.3491223
 	}, {when})
 
@@ -180,7 +180,7 @@ test('Berlin Jungfernheide to Torfstraße 17', co.wrap(function* (t) {
 
 test('Berlin Jungfernheide to ATZE Musiktheater', co.wrap(function* (t) {
 	const journeys = yield client.journeys('8011167', {
-		type: 'poi', name: 'ATZE Musiktheater', id: '991598902',
+		type: 'location', id: '991598902', name: 'ATZE Musiktheater',
 		latitude: 52.542417, longitude: 13.350437
 	}, {when})
 

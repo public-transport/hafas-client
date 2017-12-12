@@ -188,7 +188,7 @@ test('journey part details', co.wrap(function* (t) {
 
 test('journeys – station to address', co.wrap(function* (t) {
 	const journeys = yield client.journeys(spichernstr, {
-		type: 'address', name: 'Torfstraße 17',
+		type: 'location', address: 'Torfstraße 17',
 		latitude: 52.5416823, longitude: 13.3491223
 	}, {results: 1, when})
 
@@ -215,7 +215,7 @@ test('journeys – station to address', co.wrap(function* (t) {
 
 test('journeys – station to POI', co.wrap(function* (t) {
 	const journeys = yield client.journeys(spichernstr, {
-		type: 'poi', name: 'ATZE Musiktheater', id: 9980720,
+		type: 'location', id: '9980720', name: 'ATZE Musiktheater',
 		latitude: 52.543333, longitude: 13.351686
 	}, {results: 1, when})
 
