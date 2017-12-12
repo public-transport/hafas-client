@@ -19,7 +19,7 @@ const {
 	assertValidLine: _assertValidLine,
 	assertValidStopover,
 	hour, when,
-	assertValidWhen, // todo: timezone
+	assertValidWhen,
 	assertValidTicket
 } = require('./util')
 

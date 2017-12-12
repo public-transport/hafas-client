@@ -16,7 +16,7 @@ const {
 	assertValidLocation,
 	assertValidLine,
 	assertValidStopover,
-	when, isValidWhen // todo: timezone
+	when, isValidWhen
 } = require('./util.js')
 
 const assertValidStationProducts = (t, p) => {

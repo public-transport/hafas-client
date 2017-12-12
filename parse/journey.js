@@ -11,7 +11,6 @@ const createParseJourney = (profile, stations, lines, remarks) => {
 	// todo: c.dep.dProgType, c.arr.dProgType
 	// todo: c.conSubscr
 	// todo: c.trfRes x vbb-parse-ticket
-	// todo: use computed information from part
 	const parseJourney = (j) => {
 		const parts = j.secL.map(part => parsePart(j, part))
 		const res = {

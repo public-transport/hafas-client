@@ -89,8 +89,10 @@ const hour = 60 * 60 * 1000
 const week = 7 * 24 * hour
 
 // next Monday 10 am
-const dt = DateTime.local().startOf('week').plus({weeks: 1, hours: 10})
-const when = new Date(dt.toISO())
+const when = DateTime.fromMillis(Date.now(), {
+	zone: 'Europe/Berlin',
+	locale: 'de-DE'
+}).startOf('week').plus({weeks: 1, hours: 10}).toJSDate()
 const isValidWhen = (w) => {
 	const ts = +new Date(w)
 	if (Number.isNaN(ts)) return false

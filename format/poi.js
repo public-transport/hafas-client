@@ -3,8 +3,9 @@
 const formatCoord = require('./coord')
 
 const formatPoi = (p) => {
-	// todo: type-checking, better error msgs
-	if (!p.latitude || !p.longitude || !p.id || !p.name) throw new Error('invalid poi.')
+	if (!p.type !== 'location' || !p.latitude || !p.longitude || !p.id || !p.name) {
+		throw new Error('invalid POI')
+	}
 
 	return {
 		type: 'P',

@@ -42,7 +42,7 @@ const transformJourneysQuery = (query, opt) => {
 	if (opt.bike) filters.push(bike)
 
 	query.trfReq = {
-		jnyCl: 2, // todo
+		jnyCl: opt.firstClass === true ? 1 : 2,
 		tvlrProf: [{
 			type: 'E',
 			redtnCard: opt.loyaltyCard
