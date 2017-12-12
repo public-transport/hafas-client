@@ -3,14 +3,13 @@
 const minBy = require('lodash/minBy')
 const maxBy = require('lodash/maxBy')
 
+const validateProfile = require('./lib/validate-profile')
 const defaultProfile = require('./lib/default-profile')
 const request = require('./lib/request')
 
 const createClient = (profile) => {
 	profile = Object.assign({}, defaultProfile, profile)
-	if ('string' !== typeof profile.timezone) {
-		throw new Error('profile.timezone must be a string.')
-	}
+	validateProfile(profile)
 
 	const departures = (station, opt = {}) => {
 		if ('string' !== typeof station) throw new Error('station must be a string.')
