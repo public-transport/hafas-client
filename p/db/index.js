@@ -144,6 +144,8 @@ const dbProfile = {
 	transformReq,
 	transformJourneysQuery,
 
+	products: modes.allProducts,
+
 	// todo: parseLocation
 	parseLine,
 	parseProducts: createParseBitmask(modes.bitmasks),

@@ -91,4 +91,17 @@ m.bitmasks[128] = m.subway
 m.bitmasks[256] = m.tram
 m.bitmasks[512] = m.taxi
 
+m.allProducts = [
+	m.nationalExp,
+	m.national,
+	m.regionalExp,
+	m.regional,
+	m.suburban,
+	m.bus,
+	m.ferry,
+	m.subway,
+	m.tram,
+	m.taxi
+]
+
 module.exports = m

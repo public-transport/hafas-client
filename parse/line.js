@@ -1,8 +1,7 @@
 'use strict'
 
-// todo: what is p.number vs p.line?
-// todo: what is p.icoX?
-// todo: what is p.oprX?
+// todo: are p.number and p.line ever different?
+// todo: operator from p.oprX?
 const parseLine = (profile, p) => {
 	if (!p) return null // todo: handle this upstream
 	const res = {

@@ -24,12 +24,12 @@ const assertValidPoi = (t, p) => {
 		t.equal(typeof p.address, 'string')
 		t.ok(p.address)
 	}
-	assertValidLocation(t, p, true) // todo: do POIs always have coords?
+	assertValidLocation(t, p, true)
 }
 
 const assertValidAddress = (t, a) => {
 	t.equal(typeof a.address, 'string')
-	assertValidLocation(t, a, true) // todo: do addresses always have coords?
+	assertValidLocation(t, a, true)
 }
 
 const assertValidLocation = (t, l, coordsOptional = false) => {
@@ -58,18 +58,15 @@ const assertValidLocation = (t, l, coordsOptional = false) => {
 	}
 }
 
-// todo: https://github.com/public-transport/friendly-public-transport-format/tree/babf2b82947ab0e655a4a0e1cbee6b5519af9172/spec#modes
-const isValidMode = (m) => {
-	return m === 'walking' ||
-		m === 'train' ||
-		m === 'bus' ||
-		m === 'ferry'
-}
+const validLineModes = [
+	'train', 'bus', 'ferry', 'taxi', 'gondola', 'aircraft',
+	'car', 'bicycle', 'walking'
+]
 
 const assertValidLine = (t, l) => {
 	t.equal(l.type, 'line')
 	t.equal(typeof l.name, 'string')
-	t.ok(isValidMode(l.mode), 'invalid mode ' + l.mode)
+	t.ok(validLineModes.includes(l.mode), 'invalid mode ' + l.mode)
 	t.equal(typeof l.product, 'string')
 	t.equal(l.public, true)
 }
@@ -140,7 +137,6 @@ module.exports = {
 	assertValidPoi,
 	assertValidAddress,
 	assertValidLocation,
-	isValidMode,
 	assertValidLine,
 	isValidDateTime,
 	assertValidStopover,

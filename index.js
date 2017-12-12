@@ -73,14 +73,13 @@ const createClient = (profile) => {
 			viaLocL: opt.via ? [opt.via] : null,
 			arrLocL: [to],
 			jnyFltrL: [products],
+			getTariff: !!opt.tickets,
 
 			// todo: what is req.gisFltrL?
-			// todo: what are all these for?
-			getPT: true,
-			outFrwd: true,
-			getTariff: !!opt.tickets,
-			getIV: false, // walk & bike as alternatives?
-			getPolyline: false // shape for displaying on a map?
+			getPT: true, // todo: what is this?
+			outFrwd: true, // todo: what is this?
+			getIV: false, // todo: walk & bike as alternatives?
+			getPolyline: false // todo: shape for displaying on a map?
 		}, opt)
 
 		return request(profile, {
@@ -193,7 +192,8 @@ const createClient = (profile) => {
 		opt = Object.assign({
 			results: 256, // maximum number of vehicles
 			duration: 30, // compute frames for the next n seconds
-			frames: 3 // nr of frames to compute
+			frames: 3, // nr of frames to compute
+			products: null // optionally an object of booleans
 		}, opt || {})
 		opt.when = opt.when || new Date()
 
@@ -211,8 +211,7 @@ const createClient = (profile) => {
 				perStep: Math.round(durationPerStep),
 				ageOfReport: true, // todo: what is this?
 				jnyFltrL: [
-					// todo: use `profile.formatProducts(opt.products || {})`
-					{type: 'PROD', mode: 'INC', value: '127'}
+					profile.formatProducts(opt.products || {})
 				],
 				trainPosMode: 'CALC' // todo: what is this? what about realtime?
 			}

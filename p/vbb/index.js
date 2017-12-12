@@ -4,10 +4,12 @@ const shorten = require('vbb-short-station-name')
 const {to12Digit, to9Digit} = require('vbb-translate-ids')
 const parseLineName = require('vbb-parse-line')
 const parseTicket = require('vbb-parse-ticket')
+const getStations = require('vbb-stations')
 
 const _parseLine = require('../../parse/line')
 const _parseLocation = require('../../parse/location')
 const _createParseJourney = require('../../parse/journey')
+const _createParseStopover = require('../../parse/stopover')
 const _formatStation = require('../../format/station')
 const createParseBitmask = require('../../parse/products-bitmask')
 const createFormatBitmask = require('../../format/products-bitmask')
@@ -53,7 +55,10 @@ const parseLocation = (profile, l) => {
 	if (res.type === 'station') {
 		res.name = shorten(res.name)
 		res.id = to12Digit(res.id)
-		// todo: https://github.com/derhuerst/vbb-hafas/blob/1c64bfe42422e2648b21016d233c808460250308/lib/parse.js#L67-L75
+		if (!res.location.latitude || !res.location.longitude) {
+			const [s] = getStations(res.id)
+			if (s) Object.assign(res.location, s.coordinates)
+		}
 	}
 	return res
 }
@@ -88,6 +93,20 @@ const createParseJourney = (profile, stations, lines, remarks) => {
 	return parseJourneyWithTickets
 }
 
+const createParseStopover = (profile, stations, lines, remarks, connection) => {
+	const parseStopover = _createParseStopover(profile, stations, lines, remarks, connection)
+
+	const parseStopoverWithShorten = (st) => {
+		const res = parseStopover(st)
+		if (res.station && res.station.name) {
+			res.station.name = shorten(res.station.name)
+		}
+		return res
+	}
+
+	return parseStopoverWithShorten
+}
+
 const isIBNR = /^\d{9,}$/
 const formatStation = (id) => {
 	if (!isIBNR.test(id)) throw new Error('station ID must be an IBNR.')
@@ -119,11 +138,14 @@ const vbbProfile = {
 	endpoint: 'https://fahrinfo.vbb.de/bin/mgate.exe',
 	transformReqBody,
 
+	products: modes.allProducts,
+
 	parseStationName: shorten,
 	parseLocation,
 	parseLine,
 	parseProducts: createParseBitmask(modes.bitmasks),
 	parseJourney: createParseJourney,
+	parseStopover: createParseStopover,
 
 	formatStation,
 	formatProducts,

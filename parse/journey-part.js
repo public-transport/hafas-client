@@ -5,22 +5,6 @@ const parseDateTime = require('./date-time')
 const clone = obj => Object.assign({}, obj)
 
 const createParseJourneyPart = (profile, stations, lines, remarks) => {
-	const parseStopover = (j, st) => {
-		const res = {
-			station: stations[parseInt(st.locX)]
-		}
-		if (st.aTimeR || st.aTimeS) {
-			const arr = parseDateTime(profile, j.date, st.aTimeR || st.aTimeS)
-			res.arrival = arr.toISO()
-		}
-		if (st.dTimeR || st.dTimeS) {
-			const dep = parseDateTime(profile, j.date, st.dTimeR || st.dTimeS)
-			res.departure = dep.toISO()
-		}
-
-		return res
-	}
-
 	// todo: finish parse/remark.js first
 	const applyRemark = (j, rm) => {}
 
@@ -28,6 +12,7 @@ const createParseJourneyPart = (profile, stations, lines, remarks) => {
 	// todo: pt.dep.dProgType, pt.arr.dProgType
 	// todo: what is pt.jny.dirFlg?
 	// todo: how does pt.freq work?
+	// todo: what is pt.himL?
 	const parseJourneyPart = (j, pt) => { // j = journey, pt = part
 		const dep = profile.parseDateTime(profile, j.date, pt.dep.dTimeR || pt.dep.dTimeS)
 		const arr = profile.parseDateTime(profile, j.date, pt.arr.aTimeR || pt.arr.aTimeS)
@@ -46,7 +31,9 @@ const createParseJourneyPart = (profile, stations, lines, remarks) => {
 
 		if (pt.type === 'WALK') {
 			res.mode = 'walking'
+			res.public = true
 		} else if (pt.type === 'JNY') {
+			// todo: pull `public` value from `profile.products`
 			res.id = pt.jny.jid
 			res.line = lines[parseInt(pt.jny.prodX)] || null
 			res.direction = profile.parseStationName(pt.jny.dirTxt)
@@ -55,7 +42,8 @@ const createParseJourneyPart = (profile, stations, lines, remarks) => {
 			if (pt.arr.aPlatfS) res.arrivalPlatform = pt.arr.aPlatfS
 
 			if (pt.jny.stopL) {
-				res.passed = pt.jny.stopL.map(stopover => parseStopover(j, stopover))
+				const parse = profile.parseStopover(profile, stations, lines, remarks, j)
+				res.passed = pt.jny.stopL.map(parse)
 			}
 			if (Array.isArray(pt.jny.remL)) {
 				for (let remark of pt.jny.remL) applyRemark(j, remark)
@@ -63,8 +51,8 @@ const createParseJourneyPart = (profile, stations, lines, remarks) => {
 
 			if (pt.jny.freq && pt.jny.freq.jnyL) {
 				const parseAlternative = (a) => {
-					// todo: realtime
-					const when = profile.parseDateTime(profile, j.date, a.stopL[0].dTimeS)
+					const t = a.stopL[0].dTimeS || a.stopL[0].dTimeR
+					const when = profile.parseDateTime(profile, j.date, t)
 					return {
 						line: lines[parseInt(a.prodX)] || null,
 						when: when.toISO()

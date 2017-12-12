@@ -95,6 +95,16 @@ m.categories = [
 	m.unknown
 ]
 
+m.allProducts = [
+	m.suburban,
+	m.subway,
+	m.tram,
+	m.bus,
+	m.ferry,
+	m.express,
+	m.regional
+]
+
 // m.parseCategory = (category) => {
 // 	return m.categories[parseInt(category)] || m.unknown
 // }
