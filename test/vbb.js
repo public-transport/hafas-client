@@ -260,10 +260,9 @@ test('departures', co.wrap(function* (t) {
 	t.end()
 }))
 
-// todo
-test.skip('departures at 7-digit station', co.wrap(function* (t) {
+test('departures at 7-digit station', co.wrap(function* (t) {
 	const eisenach = '8010097' // see derhuerst/vbb-hafas#22
-	yield client.departures(eisenach, {when})
+	await client.departures(eisenach, {when})
 	t.pass('did not fail')
 
 	t.end()

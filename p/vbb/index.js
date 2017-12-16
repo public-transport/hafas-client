@@ -128,10 +128,16 @@ const createParseDeparture = (profile, stations, lines, remarks) => {
 	return parseDepartureRenameRingbahn
 }
 
-const isIBNR = /^\d{9,}$/
+const validIBNR = /^\d+$/
 const formatStation = (id) => {
-	if (!isIBNR.test(id)) throw new Error('station ID must be an IBNR.')
-	id = to9Digit(id)
+	if ('string' !== typeof id) throw new Error('station ID must be a string.')
+	const l = id.length
+	if ((l !== 7 && l !== 9 && l !== 12) || !validIBNR.test(id)) {
+		throw new Error('station ID must be a valid IBNR.')
+	}
+	// The VBB has some 7-digit stations. We don't convert them to 12 digits,
+	// because it only recognizes in the 7-digit format. see derhuerst/vbb-hafas#22
+	if (l !== 7) id = to9Digit(id)
 	return _formatStation(id)
 }
 
