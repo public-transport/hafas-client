@@ -26,6 +26,7 @@ const createParseMovement = (profile, locations, lines, remarks) => {
 
 		const res = {
 			direction: profile.parseStationName(m.dirTxt),
+			trip: m.jid && +m.jid.split('|')[1] || null, // todo: this seems brittle
 			line: lines[m.prodX] || null,
 			location: m.pos ? {
 				type: 'location',

@@ -46,7 +46,7 @@
 		"tap-spec": "^4.1.1",
 		"tape": "^4.8.0",
 		"tape-promise": "^2.0.1",
-		"validate-fptf": "^1.0.1",
+		"validate-fptf": "^1.0.2",
 		"vbb-parse-line": "^0.2.5",
 		"vbb-stations-autocomplete": "^2.9.0"
 	},
