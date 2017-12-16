@@ -42,7 +42,7 @@ const m = {
 		category: 4,
 		bitmask:  16,
 		name:     'Fähre',
-		mode: 'ferry',
+		mode: 'watercraft',
 		short:    'F',
 		product: 'ferry'
 	},

@@ -1,15 +1,20 @@
 'use strict'
 
+const validateFptf = require('validate-fptf')
 const isRoughlyEqual = require('is-roughly-equal')
 const {DateTime} = require('luxon')
 const isValidWGS84 = require('is-coordinates')
 
+const validateFptfWith = (t, item, allowedTypes, name) => {
+	try {
+		validateFptf.recurse(allowedTypes, item, name)
+	} catch (err) {
+		t.ifError(err)
+	}
+}
+
 const assertValidStation = (t, s, coordsOptional = false) => {
-	t.equal(s.type, 'station')
-	t.equal(typeof s.id, 'string')
-	t.ok(s.id)
-	t.equal(typeof s.name, 'string')
-	t.ok(s.name)
+	validateFptfWith(t, s, ['station'], 'station')
 
 	if (!coordsOptional || (s.location !== null && s.location !== undefined)) {
 		t.ok(s.location)
@@ -18,18 +23,20 @@ const assertValidStation = (t, s, coordsOptional = false) => {
 }
 
 const assertValidPoi = (t, p) => {
+	assertValidLocation(t, p, true)
+
 	t.equal(typeof p.id, 'string')
 	t.equal(typeof p.name, 'string')
 	if (p.address !== null && p.address !== undefined) {
 		t.equal(typeof p.address, 'string')
 		t.ok(p.address)
 	}
-	assertValidLocation(t, p, true)
 }
 
 const assertValidAddress = (t, a) => {
-	t.equal(typeof a.address, 'string')
 	assertValidLocation(t, a, true)
+
+	t.equal(typeof a.address, 'string')
 }
 
 const assertValidLocation = (t, l, coordsOptional = false) => {
@@ -59,16 +66,12 @@ const assertValidLocation = (t, l, coordsOptional = false) => {
 }
 
 const validLineModes = [
-	'train', 'bus', 'ferry', 'taxi', 'gondola', 'aircraft',
+	'train', 'bus', 'watercraft', 'taxi', 'gondola', 'aircraft',
 	'car', 'bicycle', 'walking'
 ]
 
 const assertValidLine = (t, l) => {
-	t.equal(l.type, 'line')
-	t.equal(typeof l.name, 'string')
-	t.ok(validLineModes.includes(l.mode), 'invalid mode ' + l.mode)
-	t.equal(typeof l.product, 'string')
-	t.equal(l.public, true)
+	validateFptfWith(t, l, ['line'], 'line')
 }
 
 const isValidDateTime = (w) => {

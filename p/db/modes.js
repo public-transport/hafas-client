@@ -47,7 +47,7 @@ const m = {
 		bitmask: 64,
 		name: 'Ferry',
 		short: 'F',
-		mode: 'ferry',
+		mode: 'watercraft',
 		product: 'ferry'
 	},
 	subway: {

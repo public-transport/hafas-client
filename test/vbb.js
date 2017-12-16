@@ -10,7 +10,6 @@ const shorten = require('vbb-short-station-name')
 
 const createClient = require('..')
 const vbbProfile = require('../p/vbb')
-const modes = require('../p/vbb/modes')
 const {
 	assertValidStation: _assertValidStation,
 	assertValidPoi,
