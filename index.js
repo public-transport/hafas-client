@@ -227,6 +227,7 @@ const createClient = (profile) => {
 	const client = {departures, journeys, locations, nearby}
 	if (profile.journeyPart) client.journeyPart = journeyPart
 	if (profile.radar) client.radar = radar
+	Object.defineProperty(client, 'profile', {value: profile})
 	return client
 }
 

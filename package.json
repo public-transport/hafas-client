@@ -33,6 +33,7 @@
 		"pinkie-promise": "^2.0.1",
 		"query-string": "^5.0.0",
 		"slugg": "^1.2.0",
+		"vbb-parse-line": "^0.2.5",
 		"vbb-parse-ticket": "^0.2.1",
 		"vbb-short-station-name": "^0.4.0",
 		"vbb-stations": "^5.8.0",
@@ -47,7 +48,6 @@
 		"tape": "^4.8.0",
 		"tape-promise": "^2.0.1",
 		"validate-fptf": "^1.0.2",
-		"vbb-parse-line": "^0.2.5",
 		"vbb-stations-autocomplete": "^2.9.0"
 	},
 	"scripts": {
