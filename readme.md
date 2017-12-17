@@ -2,8 +2,8 @@
 
 **A client for HAFAS public transport APIs**. Sort of like [public-transport-enabler](https://github.com/schildbach/public-transport-enabler), but with a smaller scope. It also [contains customisations](p) for the following transport networks:
 
-- [Deutsche Bahn](https://en.wikipedia.org/wiki/Deutsche_Bahn) - [docs](p/db/readme.md) – [src](p/db/index.js)
-- [Berlin public transport](https://en.wikipedia.org/wiki/Verkehrsverbund_Berlin-Brandenburg) - [docs](p/vbb/readme.md) – [src](p/vbb/index.js)
+- [Deutsche Bahn](https://en.wikipedia.org/wiki/Deutsche_Bahn) - [docs](p/db/readme.md) – [usage example](p/db/example.js) – [src](p/db/index.js)
+- [Berlin public transport](https://en.wikipedia.org/wiki/Verkehrsverbund_Berlin-Brandenburg) - [docs](p/vbb/readme.md) – [usage example](p/vbb/example.js) – [src](p/vbb/index.js)
 
 [![npm version](https://img.shields.io/npm/v/hafas-client.svg)](https://www.npmjs.com/package/hafas-client)
 [![build status](https://img.shields.io/travis/derhuerst/hafas-client.svg)](https://travis-ci.org/derhuerst/hafas-client)
@@ -162,6 +162,27 @@ The returned [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript
 	}
 } ]
 ```
+
+## API
+
+- [`journeys(from, to, [opt])`](docs/journeys.md) – get journeys between locations
+- [`journeyPart(ref, name, [opt])`](docs/journey-part.md) – get details for a part of a journey
+- [`departures(station, [opt])`](docs/departures.md) – query the next departures at a station
+- [`locations(query, [opt])`](docs/locations.md) – find stations, POIs and addresses
+- [`nearby(latitude, longitude, [opt])`](docs/nearby.md) – show stations & POIs around
+- [`radar(query, [opt])`](docs/radar.md) – find all vehicles currently in a certain area
+
+
+## Related
+
+- [*Friendly Public Transport Format*](https://github.com/public-transport/friendly-public-transport-format#friendly-public-transport-format-fptf) – A format for APIs, libraries and datasets containing and working with public transport data.
+- [`db-hafas`](https://github.com/derhuerst/db-hafas#db-hafas) – JavaScript client for the DB HAFAS API.
+- [`vbb-hafas`](https://github.com/derhuerst/vbb-hafas#vbb-hafas) – JavaScript client for Berlin & Brandenburg public transport HAFAS API.
+- [`hafas-departures-in-direction`](https://github.com/derhuerst/hafas-departures-in-direction#hafas-departures-in-direction) – Pass in a HAFAS client, get departures in a certain direction.
+- [`hafas-collect-departures-at`](https://github.com/derhuerst/hafas-collect-departures-at#hafas-collect-departures-at) – Utility to collect departures, using any HAFAS client.
+- [`hafas-rest-api`](https://github.com/derhuerst/hafas-rest-api#hafas-rest-api) – Expose a HAFAS client via an HTTP REST API.
+- [List of european long-distance transport operators, available API endpoints, GTFS feeds and client modules.](https://github.com/public-transport/european-transport-operators)
+- [Collection of european transport JavaScript modules.](https://github.com/public-transport/european-transport-modules)
 
 
 ## Contributing

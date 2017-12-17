@@ -8,7 +8,8 @@
 		"lib",
 		"parse",
 		"format",
-		"p"
+		"p",
+		"docs"
 	],
 	"author": "Jannis R <mail@jannisr.de>",
 	"homepage": "https://github.com/derhuerst/hafas-client",
