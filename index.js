@@ -159,6 +159,9 @@ const createClient = (profile) => {
 	}
 
 	const journeyPart = (ref, lineName, opt = {}) => {
+		opt = Object.assign({
+			passedStations: true // return stations on the way?
+		}, opt)
 		opt.when = opt.when || new Date()
 
 		return request(profile, {
@@ -179,7 +182,7 @@ const createClient = (profile) => {
 				arr: maxBy(d.journey.stopL, 'idx'),
 				jny: d.journey
 			}
-			return parse(d.journey, part)
+			return parse(d.journey, part, !!opt.passedStations)
 		})
 	}
 

@@ -24,7 +24,8 @@ With `opt`, you can override the default options, which look like this:
 
 ```js
 {
-	when: new Date()
+	when: new Date(),
+	passedStations: true // return stations on the way?
 }
 ```
 

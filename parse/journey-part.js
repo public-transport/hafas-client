@@ -13,7 +13,7 @@ const createParseJourneyPart = (profile, stations, lines, remarks) => {
 	// todo: what is pt.jny.dirFlg?
 	// todo: how does pt.freq work?
 	// todo: what is pt.himL?
-	const parseJourneyPart = (j, pt) => { // j = journey, pt = part
+	const parseJourneyPart = (j, pt, passed = true) => { // j = journey, pt = part
 		const dep = profile.parseDateTime(profile, j.date, pt.dep.dTimeR || pt.dep.dTimeS)
 		const arr = profile.parseDateTime(profile, j.date, pt.arr.aTimeR || pt.arr.aTimeS)
 		const res = {
@@ -41,7 +41,7 @@ const createParseJourneyPart = (profile, stations, lines, remarks) => {
 			if (pt.dep.dPlatfS) res.departurePlatform = pt.dep.dPlatfS
 			if (pt.arr.aPlatfS) res.arrivalPlatform = pt.arr.aPlatfS
 
-			if (pt.jny.stopL) {
+			if (passed && pt.jny.stopL) {
 				const parse = profile.parseStopover(profile, stations, lines, remarks, j)
 				res.passed = pt.jny.stopL.map(parse)
 			}
