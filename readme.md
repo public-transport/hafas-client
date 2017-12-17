@@ -2,7 +2,7 @@
 
 **A client for HAFAS public transport APIs**. Sort of like [public-transport-enabler](https://github.com/schildbach/public-transport-enabler), but with a smaller scope. It also [contains customisations](p) for the following transport networks:
 
-- [Deutsche Bahn](https://en.wikipedia.org/wiki/Deutsche_Bahn) – [src at `p/db`](p/db/index.js)
+- [Deutsche Bahn](https://en.wikipedia.org/wiki/Deutsche_Bahn) - [docs](p/db/readme.md) – [src](p/db/index.js)
 - [Berlin public transport](https://en.wikipedia.org/wiki/Verkehrsverbund_Berlin-Brandenburg) - [docs](p/vbb/readme.md) – [src](p/vbb/index.js)
 
 [![npm version](https://img.shields.io/npm/v/hafas-client.svg)](https://www.npmjs.com/package/hafas-client)
