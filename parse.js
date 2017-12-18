@@ -73,6 +73,9 @@ const stopover = (tz, s, ln, r, c) => (st) => {
 	if (st.dTimeR || st.dTimeS) {
 		result.departure = dateTime(tz, c.date, st.dTimeR || st.dTimeS).format()
 	}
+	if (st.aCncl && st.dCncl) {
+		result.cancelled = true
+	}
 	return result
 }
 
@@ -121,7 +124,9 @@ const part = (tz, s, ln, r, c) => (pt) => {
 	}
 
 	// todo: follow public-transport/friendly-public-transport-format#27 here
-	if (pt.dep.dCncl && pt.arr.dCncl) result.cancelled = true
+	if (pt.dep.dCncl && pt.arr.aCncl) {
+		result.cancelled = true
+	}
 
 	return result
 }
@@ -144,7 +149,6 @@ const journey = (tz, s, ln, r, p = part) => (c) => {
 }
 
 // todos from derhuerst/hafas-client#2
-// - stdStop.dCncl
 // - stdStop.dPlatfS, stdStop.dPlatfR
 // todo: what is d.jny.dirFlg?
 // todo: d.stbStop.dProgType
@@ -164,6 +168,12 @@ const departure = (tz, s, ln, r) => (d) => {
 		const planned = dateTime(tz, d.date, d.stbStop.dTimeS)
 		result.delay = Math.round((realtime - planned) / 1000)
 	} else result.delay = null
+
+	// todo: follow public-transport/friendly-public-transport-format#27 here
+	if (d.stbStop.dCncl) {
+		result.cancelled = true
+	}
+
 	return result
 }
 
