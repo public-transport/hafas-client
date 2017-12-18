@@ -25,6 +25,16 @@ npm install hafas-client
 ```
 
 
+## API
+
+- [`journeys(from, to, [opt])`](docs/journeys.md) – get journeys between locations
+- [`journeyPart(ref, name, [opt])`](docs/journey-part.md) – get details for a part of a journey
+- [`departures(station, [opt])`](docs/departures.md) – query the next departures at a station
+- [`locations(query, [opt])`](docs/locations.md) – find stations, POIs and addresses
+- [`nearby(latitude, longitude, [opt])`](docs/nearby.md) – show stations & POIs around
+- [`radar(query, [opt])`](docs/radar.md) – find all vehicles currently in a certain area
+
+
 ## Usage
 
 ```js
@@ -129,23 +139,8 @@ The returned [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript
 		type: 'station',
 		id: '8089100',
 		name: 'Berlin Jungfernheide (S)',
-		location: {
-			type: 'location',
-			latitude: 52.530291,
-			longitude: 13.299451
-		},
-		products: {
-			nationalExp: false,
-			national: false,
-			regionalExp: false,
-			regional: true,
-			suburban: true,
-			bus: true,
-			ferry: false,
-			subway: true,
-			tram: false,
-			taxi: false
-		}
+		location: { /* … */ },
+		products: { /* … */ }
 	},
 	departure: '2017-12-17T17:05:00.000+01:00',
 	destination: {
@@ -162,15 +157,6 @@ The returned [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript
 	}
 } ]
 ```
-
-## API
-
-- [`journeys(from, to, [opt])`](docs/journeys.md) – get journeys between locations
-- [`journeyPart(ref, name, [opt])`](docs/journey-part.md) – get details for a part of a journey
-- [`departures(station, [opt])`](docs/departures.md) – query the next departures at a station
-- [`locations(query, [opt])`](docs/locations.md) – find stations, POIs and addresses
-- [`nearby(latitude, longitude, [opt])`](docs/nearby.md) – show stations & POIs around
-- [`radar(query, [opt])`](docs/radar.md) – find all vehicles currently in a certain area
 
 
 ## Related
