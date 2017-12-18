@@ -1,5 +1,6 @@
 'use strict'
 
+// todo: https://gist.github.com/anonymous/d3323a5d2d6e159ed42b12afd0380434#file-haf_products-properties-L1-L95
 const m = {
 	nationalExp: {
 		bitmask: 1,
