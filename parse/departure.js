@@ -30,7 +30,7 @@ const createParseDeparture = (profile, stations, lines, remarks) => {
 
 		// todo: follow public-transport/friendly-public-transport-format#27 here
 		// see also derhuerst/vbb-rest#19
-		if (pt.arr.aCncl || pt.dep.dCncl) {
+		if (d.stbStop.aCncl || d.stbStop.dCncl) {
 			res.cancelled = true
 			res.when = res.delay = null
 		}
