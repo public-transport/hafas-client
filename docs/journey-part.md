@@ -92,6 +92,7 @@ The response looked like this:
 		}
 	},
 	arrival: '2017-12-17T19:49:00.000+01:00',
+	arrivalPlatform: '2',
 	line: {
 		type: 'line',
 		id: '18299',
@@ -106,7 +107,6 @@ The response looked like this:
 		night: false,
 		productCode: 0
 	},
-	arrivalPlatform: '2',
 	direction: 'S Spandau',
 	passed: [ /* … */ ]
 }

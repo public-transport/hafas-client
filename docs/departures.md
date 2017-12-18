@@ -95,8 +95,9 @@ The response may look like this:
 	journeyId: '1|30977|8|86|17122017',
 	trip: 30977,
 	station: { /* … */ },
-	when: '2017-12-17T19:35:00.000+01:00',
-	delay: 0,
+	when: null,
+	delay: null,
+	cancelled: true,
 	line: {
 		type: 'line',
 		id: '16441',

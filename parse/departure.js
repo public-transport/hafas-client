@@ -1,7 +1,6 @@
 'use strict'
 
 // todos from derhuerst/hafas-client#2
-// - stdStop.dCncl
 // - stdStop.dPlatfS, stdStop.dPlatfR
 // todo: what is d.jny.dirFlg?
 // todo: d.stbStop.dProgType
@@ -28,6 +27,13 @@ const createParseDeparture = (profile, stations, lines, remarks) => {
 			const planned = profile.parseDateTime(profile, d.date, d.stbStop.dTimeS)
 			res.delay = Math.round((realtime - planned) / 1000)
 		} else res.delay = null
+
+		// todo: follow public-transport/friendly-public-transport-format#27 here
+		// see also derhuerst/vbb-rest#19
+		if (pt.arr.aCncl || pt.dep.dCncl) {
+			res.cancelled = true
+			res.when = res.delay = null
+		}
 
 		return res
 	}

@@ -154,8 +154,9 @@ The response may look like this:
 				location: { /* … */ },
 				products: { /* … */ }
 			},
-			arrival: '2017-12-17T19:06:00.000+01:00',
-			departure: '2017-12-17T19:07:00.000+01:00'
+			arrival: null,
+			departure: null,
+			cancelled: true
 		}, {
 			station: {
 				type: 'station',
@@ -234,3 +235,5 @@ If you pass `tickets: true`, each `journey` will have a tickets array that looks
 	amount: 4
 } ]
 ```
+
+If a journey leg has been cancelled, a `cancelled: true` will be added. Also, `departure`/`departureDelay`/`departurePlatform` and `arrival`/`arrivalDelay`/`arrivalPlatform` will be `null`.
