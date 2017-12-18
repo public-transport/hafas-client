@@ -76,7 +76,9 @@ The response may look like this:
 			}
 		},
 		arrival: null,
-		departure: '2017-12-17T19:16:00.000+01:00'
+		arrivalDelay: null,
+		departure: '2017-12-17T19:16:00.000+01:00',
+		departureDelay: null
 	} /* … */ ],
 	frames: [ {
 		origin: {
@@ -123,11 +125,15 @@ The response may look like this:
 	nextStops: [ {
 		station: { /* S+U Alexanderplatz/Dircksenstr. */ },
 		arrival: null,
-		departure: '2017-12-17T19:52:00.000+01:00'
+		arrivalDelay: null,
+		departure: '2017-12-17T19:52:00.000+01:00',
+		departureDelay: null
 	}, {
 		station: { /* Memhardstr. */ },
 		arrival: '2017-12-17T19:54:00.000+01:00',
-		departure: '2017-12-17T19:54:00.000+01:00'
+		arrivalDelay: null,
+		departure: '2017-12-17T19:54:00.000+01:00',
+		departureDelay: null
 	}, /* … */ ],
 	frames: [ {
 		origin: { /* S+U Alexanderplatz/Dircksenstr. */ },

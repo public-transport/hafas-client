@@ -17,11 +17,23 @@ const createParseMovement = (profile, locations, lines, remarks) => {
 				? profile.parseDateTime(profile, m.date, s.aTimeR || s.aTimeS)
 				: null
 
-			return {
+			const res = {
 				station: locations[s.locX],
 				departure: dep ? dep.toISO() : null,
 				arrival: arr ? arr.toISO() : null
 			}
+
+			if (m.dTimeR && m.dTimeS) {
+				const plannedDep = profile.parseDateTime(profile, m.date, s.dTimeS)
+				res.departureDelay = Math.round((dep - plannedDep) / 1000)
+			} else res.departureDelay = null
+
+			if (m.aTimeR && m.aTimeS) {
+				const plannedArr = profile.parseDateTime(profile, m.date, s.aTimeS)
+				res.arrivalDelay = Math.round((arr - plannedArr) / 1000)
+			} else res.arrivalDelay = null
+
+			return res
 		}
 
 		const res = {

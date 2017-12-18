@@ -81,6 +81,12 @@ const isValidDateTime = (w) => {
 const assertValidStopover = (t, s, coordsOptional = false) => {
 	if ('arrival' in s) t.ok(isValidDateTime(s.arrival))
 	if ('departure' in s) t.ok(isValidDateTime(s.departure))
+	if (s.arrivalDelay !== null && s.arrivalDelay !== undefined) {
+		t.equal(typeof s.arrivalDelay, 'number')
+	}
+	if (s.departureDelay !== null && s.departureDelay !== undefined) {
+		t.equal(typeof s.departureDelay, 'number')
+	}
 	if (!('arrival' in s) && !('departure' in s)) {
 		t.fail('stopover doesn\'t contain arrival or departure')
 	}
