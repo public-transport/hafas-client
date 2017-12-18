@@ -60,7 +60,18 @@ const createClient = (profile) => {
 		}, opt)
 		if (opt.via) opt.via = profile.formatLocation(profile, opt.via)
 		opt.when = opt.when || new Date()
-		const products = profile.formatProducts(opt.products || {})
+
+		const filters = [
+			profile.formatProducts(opt.products || {})
+		]
+		if (
+			opt.accessibility &&
+			profile.filters &&
+			profile.filters.accessibility &&
+			profile.filters.accessibility[opt.accessibility]
+		) {
+			filters.push(profile.filters.accessibility[opt.accessibility])
+		}
 
 		const query = profile.transformJourneysQuery({
 			outDate: profile.formatDate(profile, opt.when),
@@ -72,7 +83,7 @@ const createClient = (profile) => {
 			depLocL: [from],
 			viaLocL: opt.via ? [opt.via] : null,
 			arrLocL: [to],
-			jnyFltrL: [products],
+			jnyFltrL: filters,
 			getTariff: !!opt.tickets,
 
 			// todo: what is req.gisFltrL?

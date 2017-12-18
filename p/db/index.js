@@ -7,7 +7,7 @@ const _createParseJourney = require('../../parse/journey')
 const _formatStation = require('../../format/station')
 const createParseBitmask = require('../../parse/products-bitmask')
 const createFormatBitmask = require('../../format/products-bitmask')
-const {accessibility, bike} = require('../../format/filters')
+const {bike} = require('../../format/filters')
 
 const modes = require('./modes')
 const formatLoyaltyCard = require('./loyalty-cards').format
@@ -36,9 +36,6 @@ const transformReq = (req) => {
 
 const transformJourneysQuery = (query, opt) => {
 	const filters = query.jnyFltrL
-	if (opt.accessibility && accessibility[opt.accessibility]) {
-		filters.push(accessibility[opt.accessibility])
-	}
 	if (opt.bike) filters.push(bike)
 
 	query.trfReq = {
