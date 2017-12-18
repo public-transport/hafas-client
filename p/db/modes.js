@@ -17,15 +17,15 @@ const m = {
 	},
 	regionalExp: {
 		bitmask: 4,
-		name: 'InterRegio',
-		short: 'IR',
+		name: 'RegionalExpress & InterRegio',
+		short: 'RE/IR',
 		mode: 'train',
 		product: 'regionalExp'
 	},
 	regional: {
 		bitmask: 8,
-		name: 'RegionalExpress & Regio',
-		short: 'RE/RB',
+		name: 'Regio',
+		short: 'RB',
 		mode: 'train',
 		product: 'regional'
 	},
