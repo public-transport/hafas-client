@@ -3,6 +3,11 @@
 // todo: https://gist.github.com/anonymous/a5fc856bc80ae7364721943243f934f4#file-haf_config_base-properties-L5
 // todo: https://gist.github.com/anonymous/a5fc856bc80ae7364721943243f934f4#file-haf_config_base-properties-L47-L234
 
+const createParseBitmask = require('../../parse/products-bitmask')
+const createFormatBitmask = require('../../format/products-bitmask')
+
+const modes = require('./modes')
+
 const transformReqBody = (body) => {
 	body.client = {type: 'IPA', id: 'OEBB'}
 	// todo: https://gist.github.com/anonymous/a5fc856bc80ae7364721943243f934f4#file-haf_config_base-properties-L33 shows 1.16
@@ -17,7 +22,13 @@ const oebbProfile = {
 	timezone: 'Europe/Vienna',
 	// todo: there is also https://beta.verkehrsauskunft.at/bin/mgate.exe
 	endpoint: 'http://fahrplan.oebb.at/bin/mgate.exe',
-	transformReqBody
+	transformReqBody,
+
+	products: modes.allProducts,
+
+	parseProducts: createParseBitmask(modes.bitmasks),
+
+	formatProducts: createFormatBitmask(modes)
 }
 
 module.exports = oebbProfile

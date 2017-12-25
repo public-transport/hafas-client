@@ -1,110 +1,109 @@
 'use strict'
 
-// todo: https://gist.github.com/anonymous/a5fc856bc80ae7364721943243f934f4#file-haf_products-properties-L32-L144
-// - walking
-// - bicycle
-// - car
-// - taxi_t
-// - ic_bus, bus_t
-// - pr
-// - comm, comm_t
-// - sub_t
-// - tram_t
-// - wchair
-// - ic
-// - reg
-// - gen
-// - ship
-// - plane
-// - transf
-// etc.
-
-const m = [
-	{
-		category: 1,
-		bitmask: null, // todo
-		name: 'walking',
-		shortName: 'walking',
-		mode: 'walking',
-		product: 'walking'
-	}, {
-		category: 2,
-		bitmask: null, // todo
-		name: 'bicycle',
-		shortName: 'bicycle',
-		mode: 'bicycle',
-		product: 'bicycle'
-	}, {
-		category: 3,
-		bitmask: null, // todo
-		name: 'car',
-		shortName: 'car',
-		mode: 'car',
-		product: 'car'
-	}, {
-		category: 4,
-		bitmask: null, // todo
-		name: 'Taxi',
-		shortName: 'Taxi',
-		mode: 'taxi',
-		product: 'taxi'
-	}, {
-		category: 6,
-		bitmask: null, // todo
-		name: 'Bus',
-		shortName: 'Bus',
-		mode: 'bus',
-		product: 'bus'
-	}, {
-		category: 12,
-		bitmask: null, // todo
-		name: 'Subway',
-		shortName: 'Subway',
-		mode: 'train',
-		product: 'subway'
-	}, {
-		category: 14,
-		bitmask: null, // todo
-		name: 'Tram',
-		shortName: 'Tram',
-		mode: 'train',
-		product: 'tram'
-	}, {
-		category: 17,
+const m = {
+	nationalExp: {
 		bitmask: 1,
-		name: 'RailJet/InterCityExpress/TGV highspeed train',
-		shortName: 'RJ/ICE/TGV', // todo: is there a way to tell which?
+		name: 'InterCityExpress & RailJet',
+		short: 'ICE/RJ',
 		mode: 'train',
-		product: 'nationalExpress'
-	}, {
-		category: 18,
-		bitmask: 2,
-		name: 'EuroCity/InterCity train',
-		shortName: 'EC/IC',
+		product: 'nationalExp'
+	},
+	national: {
+		bitmask: 2 + 4,
+		name: 'InterCity & EuroCity',
+		short: 'IC/EC',
 		mode: 'train',
 		product: 'national'
-	}, {
-		category: 24,
-		bitmask: 3,
-		name: 'NightJet/EuroNight/D train',
-		shortName: 'EN/D',
+	},
+	interregional: {
+		bitmask: 8 + 4096,
+		name: 'Durchgangszug & EuroNight',
+		short: 'D/EN',
 		mode: 'train',
-		product: 'sleeper'
-	}, {
-		category: 22,
-		bitmask: null, // todo
-		name: 'Airplane',
-		shortName: 'Plane',
-		mode: 'aircraft',
-		product: 'airplane'
-	}, {
-		category: 0,
-		bitmask: null,
+		product: 'regional'
+	},
+	regional: {
+		bitmask: 16,
+		name: 'Regional & RegionalExpress',
+		short: 'R/REX',
+		mode: 'train',
+		product: 'regional'
+	},
+	suburban: {
+		bitmask: 32,
+		name: 'S-Bahn',
+		short: 'S',
+		mode: 'train',
+		product: 'suburban'
+	},
+	bus: {
+		bitmask: 64,
+		name: 'Bus',
+		short: 'B',
+		mode: 'bus',
+		product: 'bus'
+	},
+	ferry: {
+		bitmask: 128,
+		name: 'Ferry',
+		short: 'F',
+		mode: 'watercraft',
+		product: 'ferry'
+	},
+	subway: {
+		bitmask: 256,
+		name: 'U-Bahn',
+		short: 'U',
+		mode: 'train',
+		product: 'subway'
+	},
+	tram: {
+		bitmask: 512,
+		name: 'Tram',
+		short: 'T',
+		mode: 'tram',
+		product: 'tram'
+	},
+	onCall: {
+		bitmask: 2048,
+		name: 'On-call transit',
+		short: 'on-call',
+		mode: null, // todo
+		product: 'onCall'
+	},
+	unknown: {
+		bitmask: 0,
 		name: 'unknown',
-		shortName: '?',
-		mode: null,
-		product: null
+		short: '?',
+		product: 'unknown'
 	}
 }
+
+m.bitmasks = []
+m.bitmasks[1] = m.nationalExp
+m.bitmasks[2] = m.national
+m.bitmasks[4] = m.national
+m.bitmasks[8] = m.interregional
+m.bitmasks[16] = m.regional
+m.bitmasks[32] = m.suburban
+m.bitmasks[64] = m.bus
+m.bitmasks[128] = m.ferry
+m.bitmasks[256] = m.subway
+m.bitmasks[512] = m.tram
+m.bitmasks[2048] = m.onCall
+m.bitmasks[4096] = m.interregional
+
+m.allProducts = [
+	m.nationalExp,
+	m.national,
+	m.interregional,
+	m.regional,
+	m.suburban,
+	m.bus,
+	m.ferry,
+	m.subway,
+	m.tram,
+	m.onCall
+]
 
 module.exports = m
