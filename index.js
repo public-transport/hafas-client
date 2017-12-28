@@ -30,7 +30,7 @@ const createClient = (profile) => {
 				time: profile.formatTime(profile, opt.when),
 				stbLoc: profile.formatStation(station),
 				dirLoc: dir,
-				jnyFltrL: [products].filter(x => x !== null),
+				jnyFltrL: [products],
 				dur: opt.duration,
 				getPasslist: false
 			}
@@ -63,7 +63,7 @@ const createClient = (profile) => {
 
 		const filters = [
 			profile.formatProducts(opt.products || {})
-		].filter(x => x !== null)
+		]
 		if (
 			opt.accessibility &&
 			profile.filters &&
@@ -226,7 +226,7 @@ const createClient = (profile) => {
 				ageOfReport: true, // todo: what is this?
 				jnyFltrL: [
 					profile.formatProducts(opt.products || {})
-				].filter(x => x !== null),
+				],
 				trainPosMode: 'CALC' // todo: what is this? what about realtime?
 			}
 		})
