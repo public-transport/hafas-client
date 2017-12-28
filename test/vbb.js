@@ -77,29 +77,29 @@ test('journeys – station to station', co.wrap(function* (t) {
 		t.strictEqual(journey.destination.id, amrumerStr)
 		assertValidWhen(t, journey.arrival)
 
-		t.ok(Array.isArray(journey.parts))
-		t.strictEqual(journey.parts.length, 1)
-		const part = journey.parts[0]
+		t.ok(Array.isArray(journey.legs))
+		t.strictEqual(journey.legs.length, 1)
+		const leg = journey.legs[0]
 
-		t.equal(typeof part.id, 'string')
-		t.ok(part.id)
-		assertValidStation(t, part.origin)
-		assertValidStationProducts(t, part.origin.products)
-		t.ok(part.origin.name.indexOf('(Berlin)') === -1)
-		t.strictEqual(part.origin.id, spichernstr)
-		assertValidWhen(t, part.departure)
+		t.equal(typeof leg.id, 'string')
+		t.ok(leg.id)
+		assertValidStation(t, leg.origin)
+		assertValidStationProducts(t, leg.origin.products)
+		t.ok(leg.origin.name.indexOf('(Berlin)') === -1)
+		t.strictEqual(leg.origin.id, spichernstr)
+		assertValidWhen(t, leg.departure)
 
-		assertValidStation(t, part.destination)
-		assertValidStationProducts(t, part.destination.products)
-		t.strictEqual(part.destination.id, amrumerStr)
-		assertValidWhen(t, part.arrival)
+		assertValidStation(t, leg.destination)
+		assertValidStationProducts(t, leg.destination.products)
+		t.strictEqual(leg.destination.id, amrumerStr)
+		assertValidWhen(t, leg.arrival)
 
-		assertValidLine(t, part.line)
-		t.ok(findStation(part.direction))
-		t.ok(part.direction.indexOf('(Berlin)') === -1)
+		assertValidLine(t, leg.line)
+		t.ok(findStation(leg.direction))
+		t.ok(leg.direction.indexOf('(Berlin)') === -1)
 
-		t.ok(Array.isArray(part.passed))
-		for (let passed of part.passed) assertValidStopover(t, passed)
+		t.ok(Array.isArray(leg.passed))
+		for (let passed of leg.passed) assertValidStopover(t, passed)
 
 		// todo: find a journey where there ticket info is always available
 		if (journey.tickets) {
@@ -128,11 +128,11 @@ test('journeys – only subway', co.wrap(function* (t) {
 	t.ok(journeys.length > 1)
 
 	for (let journey of journeys) {
-		for (let part of journey.parts) {
-			if (part.line) {
-				assertValidLine(t, part.line)
-				t.equal(part.line.mode, 'train')
-				t.equal(part.line.product, 'subway')
+		for (let leg of journey.legs) {
+			if (leg.line) {
+				assertValidLine(t, leg.line)
+				t.equal(leg.line.mode, 'train')
+				t.equal(leg.line.product, 'subway')
 			}
 		}
 	}
@@ -159,26 +159,26 @@ test('journeys – fails with no product', co.wrap(function* (t) {
 	}
 }))
 
-test('journey part details', co.wrap(function* (t) {
+test('journey leg details', co.wrap(function* (t) {
 	const journeys = yield client.journeys(spichernstr, amrumerStr, {
 		results: 1, when
 	})
 
-	const p = journeys[0].parts[0]
+	const p = journeys[0].legs[0]
 	t.ok(p.id, 'precondition failed')
 	t.ok(p.line.name, 'precondition failed')
-	const part = yield client.journeyPart(p.id, p.line.name, {when})
+	const leg = yield client.journeyLeg(p.id, p.line.name, {when})
 
-	t.equal(typeof part.id, 'string')
-	t.ok(part.id)
+	t.equal(typeof leg.id, 'string')
+	t.ok(leg.id)
 
-	assertValidLine(t, part.line)
+	assertValidLine(t, leg.line)
 
-	t.equal(typeof part.direction, 'string')
-	t.ok(part.direction)
+	t.equal(typeof leg.direction, 'string')
+	t.ok(leg.direction)
 
-	t.ok(Array.isArray(part.passed))
-	for (let passed of part.passed) assertValidStopover(t, passed)
+	t.ok(Array.isArray(leg.passed))
+	for (let passed of leg.passed) assertValidStopover(t, passed)
 
 	t.end()
 }))
@@ -194,18 +194,18 @@ test('journeys – station to address', co.wrap(function* (t) {
 	t.ok(Array.isArray(journeys))
 	t.strictEqual(journeys.length, 1)
 	const journey = journeys[0]
-	const part = journey.parts[journey.parts.length - 1]
+	const leg = journey.legs[journey.legs.length - 1]
 
-	assertValidStation(t, part.origin)
-	assertValidStationProducts(t, part.origin.products)
-	assertValidWhen(t, part.departure)
+	assertValidStation(t, leg.origin)
+	assertValidStationProducts(t, leg.origin.products)
+	assertValidWhen(t, leg.departure)
 
-	const dest = part.destination
+	const dest = leg.destination
 	assertValidAddress(t, dest)
 	t.strictEqual(dest.address, 'Torfstraße 17')
 	t.ok(isRoughlyEqual(.0001, dest.latitude, 52.5416823))
 	t.ok(isRoughlyEqual(.0001, dest.longitude, 13.3491223))
-	assertValidWhen(t, part.arrival)
+	assertValidWhen(t, leg.arrival)
 
 	t.end()
 }))
@@ -221,18 +221,18 @@ test('journeys – station to POI', co.wrap(function* (t) {
 	t.ok(Array.isArray(journeys))
 	t.strictEqual(journeys.length, 1)
 	const journey = journeys[0]
-	const part = journey.parts[journey.parts.length - 1]
+	const leg = journey.legs[journey.legs.length - 1]
 
-	assertValidStation(t, part.origin)
-	assertValidStationProducts(t, part.origin.products)
-	assertValidWhen(t, part.departure)
+	assertValidStation(t, leg.origin)
+	assertValidStationProducts(t, leg.origin.products)
+	assertValidWhen(t, leg.departure)
 
-	const dest = part.destination
+	const dest = leg.destination
 	assertValidPoi(t, dest)
 	t.strictEqual(dest.name, 'ATZE Musiktheater')
 	t.ok(isRoughlyEqual(.0001, dest.latitude, 52.543333))
 	t.ok(isRoughlyEqual(.0001, dest.longitude, 13.351686))
-	assertValidWhen(t, part.arrival)
+	assertValidWhen(t, leg.arrival)
 
 	t.end()
 }))

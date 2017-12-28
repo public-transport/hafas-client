@@ -86,7 +86,7 @@ The response may look like this:
 
 ```js
 [ {
-	parts: [ {
+	legs: [ {
 		id: '1|31041|35|86|17122017',
 		origin: {
 			type: 'station',

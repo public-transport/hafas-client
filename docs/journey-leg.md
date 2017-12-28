@@ -1,4 +1,4 @@
-# `journeyPart(ref, lineName, [opt])`
+# `journeyLeg(ref, lineName, [opt])`
 
 This method can be used to refetch information about a leg of a journey. Note that it is not supported by every profile/endpoint.
 
@@ -13,8 +13,8 @@ const client = createClient(vbbProfile)
 // Hauptbahnhof to Heinrich-Heine-Str.
 client.journeys('900000003201', '900000100008', {results: 1})
 .then(([journey]) => {
-	const part = journey.parts[0]
-	return client.journeyPart(part.id, part.line.name)
+	const leg = journey.legs[0]
+	return client.journeyLeg(leg.id, leg.line.name)
 })
 .then(console.log)
 .catch(console.error)
@@ -41,7 +41,7 @@ const vbbProfile = require('hafas-client/p/vbb')
 
 const client = createClient(vbbProfile)
 
-client.journeyPart('1|31431|28|86|17122017', 'S9', {when: 1513534689273})
+client.journeyLeg('1|31431|28|86|17122017', 'S9', {when: 1513534689273})
 .then(console.log)
 .catch(console.error)
 ```
