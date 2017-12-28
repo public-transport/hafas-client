@@ -98,18 +98,20 @@ const hour = 60 * 60 * 1000
 const week = 7 * 24 * hour
 
 // next Monday 10 am
-const when = DateTime.fromMillis(Date.now(), {
-	zone: 'Europe/Berlin',
-	locale: 'de-DE'
-}).startOf('week').plus({weeks: 1, hours: 10}).toJSDate()
-const isValidWhen = (w) => {
-	const ts = +new Date(w)
+const createWhen = (timezone, locale) => {
+	return DateTime.fromMillis(Date.now(), {
+		zone: timezone,
+		locale,
+	}).startOf('week').plus({weeks: 1, hours: 10}).toJSDate()
+}
+const isValidWhen = (actual, expected) => {
+	const ts = +new Date(actual)
 	if (Number.isNaN(ts)) return false
-	return isRoughlyEqual(12 * hour, +when, ts)
+	return isRoughlyEqual(12 * hour, +expected, ts)
 }
 
-const assertValidWhen = (t, w) => {
-	t.ok(isValidWhen(w), 'invalid when')
+const assertValidWhen = (t, actual, expected) => {
+	t.ok(isValidWhen(actual, expected), 'invalid when')
 }
 
 const assertValidTicket = (t, ti) => {
@@ -151,6 +153,6 @@ module.exports = {
 	assertValidLine,
 	isValidDateTime,
 	assertValidStopover,
-	hour, when, isValidWhen, assertValidWhen,
+	hour, createWhen, isValidWhen, assertValidWhen,
 	assertValidTicket
 }

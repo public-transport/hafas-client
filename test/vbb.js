@@ -17,10 +17,12 @@ const {
 	assertValidLocation,
 	assertValidLine: _assertValidLine,
 	assertValidStopover,
-	hour, when,
+	hour, createWhen,
 	assertValidWhen,
 	assertValidTicket
 } = require('./util')
+
+const when = createWhen('Europe/Berlin', 'de-DE')
 
 const assertValidStation = (t, s, coordsOptional = false) => {
 	_assertValidStation(t, s, coordsOptional)
@@ -70,12 +72,12 @@ test('journeys – station to station', co.wrap(function* (t) {
 		assertValidStationProducts(t, journey.origin.products)
 		t.ok(journey.origin.name.indexOf('(Berlin)') === -1)
 		t.strictEqual(journey.origin.id, spichernstr)
-		assertValidWhen(t, journey.departure)
+		assertValidWhen(t, journey.departure, when)
 
 		assertValidStation(t, journey.destination)
 		assertValidStationProducts(t, journey.destination.products)
 		t.strictEqual(journey.destination.id, amrumerStr)
-		assertValidWhen(t, journey.arrival)
+		assertValidWhen(t, journey.arrival, when)
 
 		t.ok(Array.isArray(journey.legs))
 		t.strictEqual(journey.legs.length, 1)
@@ -87,12 +89,12 @@ test('journeys – station to station', co.wrap(function* (t) {
 		assertValidStationProducts(t, leg.origin.products)
 		t.ok(leg.origin.name.indexOf('(Berlin)') === -1)
 		t.strictEqual(leg.origin.id, spichernstr)
-		assertValidWhen(t, leg.departure)
+		assertValidWhen(t, leg.departure, when)
 
 		assertValidStation(t, leg.destination)
 		assertValidStationProducts(t, leg.destination.products)
 		t.strictEqual(leg.destination.id, amrumerStr)
-		assertValidWhen(t, leg.arrival)
+		assertValidWhen(t, leg.arrival, when)
 
 		assertValidLine(t, leg.line)
 		t.ok(findStation(leg.direction))
@@ -198,14 +200,14 @@ test('journeys – station to address', co.wrap(function* (t) {
 
 	assertValidStation(t, leg.origin)
 	assertValidStationProducts(t, leg.origin.products)
-	assertValidWhen(t, leg.departure)
+	assertValidWhen(t, leg.departure, when)
 
 	const dest = leg.destination
 	assertValidAddress(t, dest)
 	t.strictEqual(dest.address, 'Torfstraße 17')
 	t.ok(isRoughlyEqual(.0001, dest.latitude, 52.5416823))
 	t.ok(isRoughlyEqual(.0001, dest.longitude, 13.3491223))
-	assertValidWhen(t, leg.arrival)
+	assertValidWhen(t, leg.arrival, when)
 
 	t.end()
 }))
@@ -225,14 +227,14 @@ test('journeys – station to POI', co.wrap(function* (t) {
 
 	assertValidStation(t, leg.origin)
 	assertValidStationProducts(t, leg.origin.products)
-	assertValidWhen(t, leg.departure)
+	assertValidWhen(t, leg.departure, when)
 
 	const dest = leg.destination
 	assertValidPoi(t, dest)
 	t.strictEqual(dest.name, 'ATZE Musiktheater')
 	t.ok(isRoughlyEqual(.0001, dest.latitude, 52.543333))
 	t.ok(isRoughlyEqual(.0001, dest.longitude, 13.351686))
-	assertValidWhen(t, leg.arrival)
+	assertValidWhen(t, leg.arrival, when)
 
 	t.end()
 }))
@@ -253,7 +255,7 @@ test('departures', co.wrap(function* (t) {
 		assertValidStationProducts(t, dep.station.products)
 		t.strictEqual(dep.station.id, spichernstr)
 
-		assertValidWhen(t, dep.when)
+		assertValidWhen(t, dep.when, when)
 		t.ok(findStation(dep.direction))
 		assertValidLine(t, dep.line)
 	}
