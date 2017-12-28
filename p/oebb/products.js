@@ -1,6 +1,6 @@
 'use strict'
 
-const m = {
+const p = {
 	nationalExp: {
 		bitmask: 1,
 		name: 'InterCityExpress & RailJet',
@@ -79,31 +79,31 @@ const m = {
 	}
 }
 
-m.bitmasks = []
-m.bitmasks[1] = m.nationalExp
-m.bitmasks[2] = m.national
-m.bitmasks[4] = m.national
-m.bitmasks[8] = m.interregional
-m.bitmasks[16] = m.regional
-m.bitmasks[32] = m.suburban
-m.bitmasks[64] = m.bus
-m.bitmasks[128] = m.ferry
-m.bitmasks[256] = m.subway
-m.bitmasks[512] = m.tram
-m.bitmasks[2048] = m.onCall
-m.bitmasks[4096] = m.interregional
+p.bitmasks = []
+p.bitmasks[1] = p.nationalExp
+p.bitmasks[2] = p.national
+p.bitmasks[4] = p.national
+p.bitmasks[8] = p.interregional
+p.bitmasks[16] = p.regional
+p.bitmasks[32] = p.suburban
+p.bitmasks[64] = p.bus
+p.bitmasks[128] = p.ferry
+p.bitmasks[256] = p.subway
+p.bitmasks[512] = p.tram
+p.bitmasks[2048] = p.onCall
+p.bitmasks[4096] = p.interregional
 
-m.allProducts = [
-	m.nationalExp,
-	m.national,
-	m.interregional,
-	m.regional,
-	m.suburban,
-	m.bus,
-	m.ferry,
-	m.subway,
-	m.tram,
-	m.onCall
+p.allProducts = [
+	p.nationalExp,
+	p.national,
+	p.interregional,
+	p.regional,
+	p.suburban,
+	p.bus,
+	p.ferry,
+	p.subway,
+	p.tram,
+	p.onCall
 ]
 
-module.exports = m
+module.exports = p

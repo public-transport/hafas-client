@@ -6,7 +6,7 @@
 const createParseBitmask = require('../../parse/products-bitmask')
 const createFormatBitmask = require('../../format/products-bitmask')
 
-const modes = require('./modes')
+const products = require('./products')
 
 const transformReqBody = (body) => {
 	body.client = {type: 'IPA', id: 'OEBB'}
@@ -24,11 +24,11 @@ const oebbProfile = {
 	endpoint: 'http://fahrplan.oebb.at/bin/mgate.exe',
 	transformReqBody,
 
-	products: modes.allProducts,
+	products: products.allProducts,
 
-	parseProducts: createParseBitmask(modes.bitmasks),
+	parseProducts: createParseBitmask(products.bitmasks),
 
-	formatProducts: createFormatBitmask(modes)
+	formatProducts: createFormatBitmask(products)
 }
 
 module.exports = oebbProfile
