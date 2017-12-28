@@ -118,30 +118,30 @@ test('Berlin Jungfernheide to München Hbf', co.wrap(function* (t) {
 		}
 		t.ok(isValidWhen(journey.arrival))
 
-		t.ok(Array.isArray(journey.parts))
-		t.ok(journey.parts.length > 0, 'no parts')
-		const part = journey.parts[0]
+		t.ok(Array.isArray(journey.legs))
+		t.ok(journey.legs.length > 0, 'no legs')
+		const leg = journey.legs[0]
 
-		assertValidStation(t, part.origin)
-		assertValidStationProducts(t, part.origin.products)
-		if (!(yield findStation(part.origin.id))) {
-			console.error('unknown station', part.origin.id, part.origin.name)
+		assertValidStation(t, leg.origin)
+		assertValidStationProducts(t, leg.origin.products)
+		if (!(yield findStation(leg.origin.id))) {
+			console.error('unknown station', leg.origin.id, leg.origin.name)
 		}
-		t.ok(isValidWhen(part.departure))
-		t.equal(typeof part.departurePlatform, 'string')
+		t.ok(isValidWhen(leg.departure))
+		t.equal(typeof leg.departurePlatform, 'string')
 
-		assertValidStation(t, part.destination)
-		assertValidStationProducts(t, part.origin.products)
-		if (!(yield findStation(part.destination.id))) {
-			console.error('unknown station', part.destination.id, part.destination.name)
+		assertValidStation(t, leg.destination)
+		assertValidStationProducts(t, leg.origin.products)
+		if (!(yield findStation(leg.destination.id))) {
+			console.error('unknown station', leg.destination.id, leg.destination.name)
 		}
-		t.ok(isValidWhen(part.arrival))
-		t.equal(typeof part.arrivalPlatform, 'string')
+		t.ok(isValidWhen(leg.arrival))
+		t.equal(typeof leg.arrivalPlatform, 'string')
 
-		assertValidLine(t, part.line)
+		assertValidLine(t, leg.line)
 
-		t.ok(Array.isArray(part.passed))
-		for (let stopover of part.passed) assertValidStopover(t, stopover)
+		t.ok(Array.isArray(leg.passed))
+		for (let stopover of leg.passed) assertValidStopover(t, stopover)
 
 		if (journey.price) assertValidPrice(t, journey.price)
 	}
@@ -158,18 +158,18 @@ test('Berlin Jungfernheide to Torfstraße 17', co.wrap(function* (t) {
 	t.ok(Array.isArray(journeys))
 	t.ok(journeys.length >= 1, 'no journeys')
 	const journey = journeys[0]
-	const part = journey.parts[journey.parts.length - 1]
+	const leg = journey.legs[journey.legs.length - 1]
 
-	assertValidStation(t, part.origin)
-	assertValidStationProducts(t, part.origin.products)
-	if (!(yield findStation(part.origin.id))) {
-		console.error('unknown station', part.origin.id, part.origin.name)
+	assertValidStation(t, leg.origin)
+	assertValidStationProducts(t, leg.origin.products)
+	if (!(yield findStation(leg.origin.id))) {
+		console.error('unknown station', leg.origin.id, leg.origin.name)
 	}
-	if (part.origin.products) assertValidProducts(t, part.origin.products)
-	t.ok(isValidWhen(part.departure))
-	t.ok(isValidWhen(part.arrival))
+	if (leg.origin.products) assertValidProducts(t, leg.origin.products)
+	t.ok(isValidWhen(leg.departure))
+	t.ok(isValidWhen(leg.arrival))
 
-	const d = part.destination
+	const d = leg.destination
 	assertValidAddress(t, d)
 	t.equal(d.address, 'Torfstraße 17')
 	t.ok(isRoughlyEqual(.0001, d.latitude, 52.5416823))
@@ -187,18 +187,18 @@ test('Berlin Jungfernheide to ATZE Musiktheater', co.wrap(function* (t) {
 	t.ok(Array.isArray(journeys))
 	t.ok(journeys.length >= 1, 'no journeys')
 	const journey = journeys[0]
-	const part = journey.parts[journey.parts.length - 1]
+	const leg = journey.legs[journey.legs.length - 1]
 
-	assertValidStation(t, part.origin)
-	assertValidStationProducts(t, part.origin.products)
-	if (!(yield findStation(part.origin.id))) {
-		console.error('unknown station', part.origin.id, part.origin.name)
+	assertValidStation(t, leg.origin)
+	assertValidStationProducts(t, leg.origin.products)
+	if (!(yield findStation(leg.origin.id))) {
+		console.error('unknown station', leg.origin.id, leg.origin.name)
 	}
-	if (part.origin.products) assertValidProducts(t, part.origin.products)
-	t.ok(isValidWhen(part.departure))
-	t.ok(isValidWhen(part.arrival))
+	if (leg.origin.products) assertValidProducts(t, leg.origin.products)
+	t.ok(isValidWhen(leg.departure))
+	t.ok(isValidWhen(leg.arrival))
 
-	const d = part.destination
+	const d = leg.destination
 	assertValidPoi(t, d)
 	t.equal(d.name, 'ATZE Musiktheater')
 	t.ok(isRoughlyEqual(.0001, d.latitude, 52.542399))

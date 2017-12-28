@@ -7,7 +7,7 @@ module.exports = {
 	remark: require('./remark'),
 	operator: require('./operator'),
 	stopover: require('./stopover'),
-	journeyPart: require('./journey-part'),
+	journeyLeg: require('./journey-leg'),
 	journey: require('./journey'),
 	nearby: require('./nearby'),
 	movement: require('./movement')

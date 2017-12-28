@@ -4,7 +4,7 @@ const parseDateTime = require('./date-time')
 
 const clone = obj => Object.assign({}, obj)
 
-const createParseJourneyPart = (profile, stations, lines, remarks) => {
+const createParseJourneyLeg = (profile, stations, lines, remarks) => {
 	// todo: finish parse/remark.js first
 	const applyRemark = (j, rm) => {}
 
@@ -13,7 +13,7 @@ const createParseJourneyPart = (profile, stations, lines, remarks) => {
 	// todo: what is pt.jny.dirFlg?
 	// todo: how does pt.freq work?
 	// todo: what is pt.himL?
-	const parseJourneyPart = (j, pt, passed = true) => { // j = journey, pt = part
+	const parseJourneyLeg = (j, pt, passed = true) => { // j = journey, pt = part
 		const dep = profile.parseDateTime(profile, j.date, pt.dep.dTimeR || pt.dep.dTimeS)
 		const arr = profile.parseDateTime(profile, j.date, pt.arr.aTimeR || pt.arr.aTimeS)
 		const res = {
@@ -79,7 +79,7 @@ const createParseJourneyPart = (profile, stations, lines, remarks) => {
 		return res
 	}
 
-	return parseJourneyPart
+	return parseJourneyLeg
 }
 
-module.exports = createParseJourneyPart
+module.exports = createParseJourneyLeg
