@@ -169,7 +169,7 @@ const createClient = (profile) => {
 		})
 	}
 
-	const journeyPart = (ref, lineName, opt = {}) => {
+	const journeyLeg = (ref, lineName, opt = {}) => {
 		opt = Object.assign({
 			passedStations: true // return stations on the way?
 		}, opt)
@@ -185,15 +185,15 @@ const createClient = (profile) => {
 			}
 		})
 		.then((d) => {
-			const parse = profile.parseJourneyPart(profile, d.locations, d.lines, d.remarks)
+			const parse = profile.parseJourneyLeg(profile, d.locations, d.lines, d.remarks)
 
-			const part = { // pretend the part is contained in a journey
+			const leg = { // pretend the leg is contained in a journey
 				type: 'JNY',
 				dep: minBy(d.journey.stopL, 'idx'),
 				arr: maxBy(d.journey.stopL, 'idx'),
 				jny: d.journey
 			}
-			return parse(d.journey, part, !!opt.passedStations)
+			return parse(d.journey, leg, !!opt.passedStations)
 		})
 	}
 
@@ -239,7 +239,7 @@ const createClient = (profile) => {
 	}
 
 	const client = {departures, journeys, locations, nearby}
-	if (profile.journeyPart) client.journeyPart = journeyPart
+	if (profile.journeyLeg) client.journeyLeg = journeyLeg
 	if (profile.radar) client.radar = radar
 	Object.defineProperty(client, 'profile', {value: profile})
 	return client
