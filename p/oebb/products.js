@@ -20,7 +20,7 @@ const p = {
 		name: 'Durchgangszug & EuroNight',
 		short: 'D/EN',
 		mode: 'train',
-		product: 'regional'
+		product: 'interregional'
 	},
 	regional: {
 		bitmask: 16,
@@ -61,7 +61,7 @@ const p = {
 		bitmask: 512,
 		name: 'Tram',
 		short: 'T',
-		mode: 'tram',
+		mode: 'train',
 		product: 'tram'
 	},
 	onCall: {
@@ -83,6 +83,7 @@ p.bitmasks = []
 p.bitmasks[1] = p.nationalExp
 p.bitmasks[2] = p.national
 p.bitmasks[4] = p.national
+p.bitmasks[2+4] = p.national
 p.bitmasks[8] = p.interregional
 p.bitmasks[16] = p.regional
 p.bitmasks[32] = p.suburban
@@ -90,8 +91,10 @@ p.bitmasks[64] = p.bus
 p.bitmasks[128] = p.ferry
 p.bitmasks[256] = p.subway
 p.bitmasks[512] = p.tram
+p.bitmasks[1024] = p.unknown
 p.bitmasks[2048] = p.onCall
 p.bitmasks[4096] = p.interregional
+p.bitmasks[8+4096] = p.interregional
 
 p.allProducts = [
 	p.nationalExp,
