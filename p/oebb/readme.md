@@ -8,7 +8,7 @@
 const createClient = require('hafas-client')
 const oebbProfile = require('hafas-client/p/oebb')
 
-// create a client with DB profile
+// create a client with ÖBB profile
 const client = createClient(oebbProfile)
 ```
 
