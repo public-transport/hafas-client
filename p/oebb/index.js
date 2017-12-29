@@ -44,15 +44,20 @@ const parseLine = (profile, l) => {
 }
 
 const parseLocation = (profile, l) => {
-	// ÖBB has some 'stations' **in austria** with no departures/products, like station entrances, that are actually POI
+	// ÖBB has some 'stations' **in austria** with no departures/products,
+	// like station entrances, that are actually POIs.
 	const res = _parseLocation(profile, l)
-	if(res.type === 'station' && !res.products && res.name && res.id && res.id.length !== 7){
-		const newRes = {
+	if (
+		res.type === 'station' &&
+		!res.products &&
+		res.name &&
+		res.id && res.id.length !== 7
+	) {
+		return Object.assign({
 			type: 'location',
 			id: res.id,
 			name: res.name
-		}
-		return Object.assign({}, newRes, res.location)
+		}, res.location)
 	}
 	return res
 }
@@ -61,9 +66,12 @@ const createParseMovement = (profile, locations, lines, remarks) => {
 	const _parseMovement = _createParseMovement(profile, locations, lines, remarks)
 	const parseMovement = (m) => {
 		const res = _parseMovement(m)
-		// filter POI
+		// filter out POIs
+		// todo: make use of them, as some of them specify fare zones
 		res.nextStops = res.nextStops.filter(s => s.type === 'station')
-		res.frames = res.frames.filter(f => !(f.origin.type === 'location' && f.destination.type === 'location'))
+		res.frames = res.frames.filter((f) => {
+			return f.origin.type !== 'location' && f.destination.type !== 'location'
+		})
 		return res
 	}
 	return parseMovement
