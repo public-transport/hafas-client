@@ -43,7 +43,9 @@ const createParseJourneyLeg = (profile, stations, lines, remarks) => {
 
 			if (passed && pt.jny.stopL) {
 				const parse = profile.parseStopover(profile, stations, lines, remarks, j)
-				res.passed = pt.jny.stopL.map(parse)
+				const passedStations = pt.jny.stopL.map(parse)
+				// filter stations the train passes without stopping, as this doesn't comply with fptf (yet)
+				res.passed = passedStations.filter((x) => !x.passBy)
 			}
 			if (Array.isArray(pt.jny.remL)) {
 				for (let remark of pt.jny.remL) applyRemark(j, remark)
