@@ -12,6 +12,7 @@
 		"docs"
 	],
 	"author": "Jannis R <mail@jannisr.de>",
+	"contributors": ["Julius Tens <mail@juliustens.eu>"],
 	"homepage": "https://github.com/derhuerst/hafas-client",
 	"repository": "derhuerst/hafas-client",
 	"bugs": "https://github.com/derhuerst/hafas-client/issues",
