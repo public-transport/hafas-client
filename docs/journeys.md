@@ -199,7 +199,7 @@ The response may look like this:
 } ]
 ```
 
-If you pass `tickets: true`, each `journey` will have a tickets array that looks like this:
+Some [profiles](../p) are able to parse the ticket information, if returned by the API. For example, if you pass `tickets: true` with the [VBB profile](../p/vbb), each `journey` will have a tickets array that looks like this:
 
 ```js
 [ {

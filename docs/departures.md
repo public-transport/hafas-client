@@ -31,7 +31,7 @@ With `opt`, you can override the default options, which look like this:
 
 ## Response
 
-*Note:* As stated in the [*Friendly Public Transport Format* `1.0.1`](https://github.com/public-transport/friendly-public-transport-format/tree/1.0.1), the `when` include the current delay. The `delay` field, if present, expresses how much the former differs from the schedule.
+*Note:* As stated in the [*Friendly Public Transport Format* `1.0.1`](https://github.com/public-transport/friendly-public-transport-format/tree/1.0.1), the `when` field includes the current delay. The `delay` field, if present, expresses how much the former differs from the schedule.
 
 You may pass the `journeyId` field into [`journeyLeg(ref, lineName, [opt])`](journey-leg.md) to get details on the vehicle's journey.
 
