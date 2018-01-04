@@ -12,7 +12,9 @@ const createClient = (profile) => {
 	validateProfile(profile)
 
 	const departures = (station, opt = {}) => {
-		if ('string' !== typeof station) throw new Error('station must be a string.')
+		if ('object' === typeof station) station = profile.formatStation(station.id)
+		else if ('string' === typeof station) station = profile.formatStation(station)
+		else throw new Error('station must be an object or a string.')
 
 		opt = Object.assign({
 			direction: null, // only show departures heading to this station
@@ -28,7 +30,7 @@ const createClient = (profile) => {
 				type: 'DEP',
 				date: profile.formatDate(profile, opt.when),
 				time: profile.formatTime(profile, opt.when),
-				stbLoc: profile.formatStation(station),
+				stbLoc: station,
 				dirLoc: dir,
 				jnyFltrL: [products],
 				dur: opt.duration,

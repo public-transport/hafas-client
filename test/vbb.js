@@ -260,6 +260,22 @@ test('departures', co.wrap(function* (t) {
 	t.end()
 }))
 
+test('departures with station object', co.wrap(function* (t) {
+	yield client.departures({
+		type: 'station',
+		id: spichernstr,
+		name: 'U Spichernstr',
+		location: {
+			type: 'location',
+			latitude: 1.23,
+			longitude: 2.34
+		}
+	}, {when})
+
+	t.ok('did not fail')
+	t.end()
+}))
+
 test('departures at 7-digit station', co.wrap(function* (t) {
 	const eisenach = '8010097' // see derhuerst/vbb-hafas#22
 	yield client.departures(eisenach, {when})
