@@ -18,7 +18,7 @@ With `opt`, you can override the default options, which look like this:
 
 *Note:* As stated in the [*Friendly Public Transport Format* `1.0.1`](https://github.com/public-transport/friendly-public-transport-format/tree/1.0.1), the returned `departure` and `arrival` times include the current delay. The `departureDelay`/`arrivalDelay` fields express how much they differ from the schedule.
 
-As an example, we're going to use the VBB profile:
+As an example, we're going to use the [VBB profile](../p/vbb):
 
 ```js
 const createClient = require('hafas-client')

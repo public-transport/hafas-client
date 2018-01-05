@@ -16,7 +16,7 @@ With `opt`, you can override the default options, which look like this:
 
 ## Response
 
-As an example, we're going to use the VBB profile:
+As an example, we're going to use the [VBB profile](../p/vbb):
 
 ```js
 const createClient = require('hafas-client')

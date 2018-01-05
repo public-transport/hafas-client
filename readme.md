@@ -2,8 +2,8 @@
 
 **A client for HAFAS public transport APIs**. Sort of like [public-transport-enabler](https://github.com/schildbach/public-transport-enabler), but with a smaller scope. It also [contains customisations](p) for the following transport networks:
 
-- [Deutsche Bahn](https://en.wikipedia.org/wiki/Deutsche_Bahn) - [docs](p/db/readme.md) – [usage example](p/db/example.js) – [src](p/db/index.js)
-- [Berlin public transport](https://en.wikipedia.org/wiki/Verkehrsverbund_Berlin-Brandenburg) - [docs](p/vbb/readme.md) – [usage example](p/vbb/example.js) – [src](p/vbb/index.js)
+- [Deutsche Bahn](https://en.wikipedia.org/wiki/Deutsche_Bahn) – [docs](p/db/readme.md) – [usage example](p/db/example.js) – [src](p/db/index.js)
+- [Berlin public transport](https://en.wikipedia.org/wiki/Verkehrsverbund_Berlin-Brandenburg) – [docs](p/vbb/readme.md) – [usage example](p/vbb/example.js) – [src](p/vbb/index.js)
 
 [![npm version](https://img.shields.io/npm/v/hafas-client.svg)](https://www.npmjs.com/package/hafas-client)
 [![build status](https://img.shields.io/travis/derhuerst/hafas-client.svg)](https://travis-ci.org/derhuerst/hafas-client)
@@ -13,9 +13,9 @@
 
 ## Background
 
-There's [a company called HaCon](http://hacon.de) that sells [a public transport management system called HAFAS](https://de.wikipedia.org/wiki/HAFAS). It is [used by companies all over Europe](https://gist.github.com/derhuerst/2b7ed83bfa5f115125a5) to serve routing and departure information for apps. All those endpoints are similar, with the same terms and API routes, but have slightly different options, filters and enable features.
+There's [a company called HaCon](http://hacon.de) that sells [a public transport management system called HAFAS](https://de.wikipedia.org/wiki/HAFAS). It is [used by companies all over Europe](https://gist.github.com/derhuerst/2b7ed83bfa5f115125a5) to serve routing and departure information for apps. All those endpoints are similar, with the same terms and API routes, but have slightly different options, filters and sets of enabled features.
 
-`hafas-client` contains all logic for communicating with these, as well as serialising from and parsing to [*Friendly Public Transport Format (FPTF)* `1.0.1`](https://github.com/public-transport/friendly-public-transport-format/blob/1.0.1/spec/readme.md). Endpoint-specific customisations (called "profiles" here) increase the quality of the returned data.
+`hafas-client` contains all logic for communicating with these, as well as serialising from and parsing to [*Friendly Public Transport Format (FPTF)* `1.0.1`](https://github.com/public-transport/friendly-public-transport-format/blob/1.0.1/spec/readme.md). Endpoint-specific customisations (called *profiles* here) increase the quality of the returned data.
 
 
 ## Installing
