@@ -1,12 +1,16 @@
 {
 	"name": "hafas-client",
 	"description": "JavaScript client for HAFAS mobile APIs.",
-	"version": "1.3.1",
+	"description": "JavaScript client for HAFAS public transport APIs.",
+	"version": "2.0.0",
 	"main": "index.js",
 	"files": [
 		"index.js",
-		"parse.js",
-		"stringify.js"
+		"lib",
+		"parse",
+		"format",
+		"p",
+		"docs"
 	],
 	"author": "Jannis R <mail@jannisr.de>",
 	"homepage": "https://github.com/derhuerst/hafas-client",
@@ -17,21 +21,39 @@
 		"hafas",
 		"public",
 		"transport",
+		"transit",
 		"api",
-		"mgate"
+		"http"
 	],
 	"engines": {
 		"node": ">=6"
 	},
 	"dependencies": {
 		"fetch-ponyfill": "^4.1.0",
-		"moment-timezone": "^0.5.13",
+		"lodash": "^4.17.4",
+		"luxon": "^0.2.7",
 		"pinkie-promise": "^2.0.1",
 		"query-string": "^5.0.0",
-		"slugg": "^1.2.0"
+		"slugg": "^1.2.0",
+		"vbb-parse-line": "^0.2.5",
+		"vbb-parse-ticket": "^0.2.1",
+		"vbb-short-station-name": "^0.4.0",
+		"vbb-stations": "^5.9.0",
+		"vbb-translate-ids": "^3.1.0"
+	},
+	"devDependencies": {
+		"co": "^4.6.0",
+		"db-stations": "^1.25.0",
+		"is-coordinates": "^2.0.2",
+		"is-roughly-equal": "^0.1.0",
+		"tap-spec": "^4.1.1",
+		"tape": "^4.8.0",
+		"tape-promise": "^2.0.1",
+		"validate-fptf": "^1.0.2",
+		"vbb-stations-autocomplete": "^2.11.0"
 	},
 	"scripts": {
-		"test": "node -e \"require('.')\"",
-		"prepublishOnly": "npm test"
+		"test": "node test/index.js",
+		"prepublishOnly": "npm test | tap-spec"
 	}
 }
