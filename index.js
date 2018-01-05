@@ -137,9 +137,17 @@ const createClient = (profile) => {
 		})
 	}
 
-	const nearby = (latitude, longitude, opt = {}) => {
-		if ('number' !== typeof latitude) throw new Error('latitude must be a number.')
-		if ('number' !== typeof longitude) throw new Error('longitude must be a number.')
+	const nearby = (location, opt = {}) => {
+		if ('object' !== typeof location || Array.isArray(location)) {
+			throw new Error('location must be an object.')
+		} else if (location.type !== 'location') {
+			throw new Error('invalid location object.')
+		} else if ('number' !== typeof location.latitude) {
+			throw new Error('location.latitude must be a number.')
+		} else if ('number' !== typeof location.longitude) {
+			throw new Error('location.longitude must be a number.')
+		}
+
 		opt = Object.assign({
 			results: 8, // maximum number of results
 			distance: null, // maximum walking distance in meters
@@ -153,8 +161,8 @@ const createClient = (profile) => {
 			req: {
 				ring: {
 					cCrd: {
-						x: profile.formatCoord(longitude),
-						y: profile.formatCoord(latitude)
+						x: profile.formatCoord(location.longitude),
+						y: profile.formatCoord(location.latitude)
 					},
 					maxDist: opt.distance || -1,
 					minDist: 0

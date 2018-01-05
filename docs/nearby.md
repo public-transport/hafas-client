@@ -1,8 +1,8 @@
-# `nearby(latitude, longitude, [opt])`
+# `nearby(location, [opt])`
 
 This method can be used to find stations close to a location. Note that it is not supported by every profile/endpoint.
 
-`latitude` and `longitude` must be GPS coordinates like `52.5137344` and `13.4744798`.
+`location` must be an [*FPTF* `location` object](https://github.com/public-transport/friendly-public-transport-format/blob/1.0.1/spec/readme.md#location-objects).
 
 With `opt`, you can override the default options, which look like this:
 
@@ -24,7 +24,11 @@ const vbbProfile = require('hafas-client/p/vbb')
 
 const client = createClient(vbbProfile)
 
-client.nearby(52.5137344, 13.4744798, {distance: 400})
+client.nearby({
+	type: 'location',
+	latitude: 52.5137344,
+	longitude: 13.4744798
+}, {distance: 400})
 .then(console.log)
 .catch(console.error)
 ```

@@ -243,7 +243,11 @@ test('departures with station object', co.wrap(function* (t) {
 }))
 
 test('nearby Berlin Jungfernheide', co.wrap(function* (t) {
-	const nearby = yield client.nearby(52.530273, 13.299433, {
+	const nearby = yield client.nearby({
+		type: 'location',
+		latitude: 52.530273,
+		longitude: 13.299433
+	}, {
 		results: 2, distance: 400
 	})
 

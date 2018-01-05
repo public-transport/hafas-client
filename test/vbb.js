@@ -288,7 +288,11 @@ test('departures at 7-digit station', co.wrap(function* (t) {
 
 test('nearby', co.wrap(function* (t) {
 	// Berliner Str./Bundesallee
-	const nearby = yield client.nearby(52.4873452, 13.3310411, {distance: 200})
+	const nearby = yield client.nearby({
+		type: 'location',
+		latitude: 52.4873452,
+		longitude: 13.3310411
+	}, {distance: 200})
 
 	t.ok(Array.isArray(nearby))
 	for (let n of nearby) {
