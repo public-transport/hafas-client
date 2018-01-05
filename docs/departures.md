@@ -65,13 +65,13 @@ The response may look like this:
 			longitude: 13.303846
 		},
 		products: {
-		suburban: true,
-		subway: false,
-		tram: false,
-		bus: true,
-		ferry: false,
-		express: false,
-		regional: true
+			suburban: true,
+			subway: false,
+			tram: false,
+			bus: true,
+			ferry: false,
+			express: false,
+			regional: true
 		}
 	},
 	when: '2017-12-17T19:32:00.000+01:00',

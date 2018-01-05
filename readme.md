@@ -2,8 +2,10 @@
 
 **A client for HAFAS public transport APIs**. Sort of like [public-transport-enabler](https://github.com/schildbach/public-transport-enabler), but with a smaller scope. It also [contains customisations](p) for the following transport networks:
 
-- [Deutsche Bahn](https://en.wikipedia.org/wiki/Deutsche_Bahn) – [docs](p/db/readme.md) – [usage example](p/db/example.js) – [src](p/db/index.js)
-- [Berlin public transport](https://en.wikipedia.org/wiki/Verkehrsverbund_Berlin-Brandenburg) – [docs](p/vbb/readme.md) – [usage example](p/vbb/example.js) – [src](p/vbb/index.js)
+HAFAS endpoint | wrapper library? | docs | example code | source code
+---------------|------------------|------|---------|------------
+[Deutsche Bahn](https://en.wikipedia.org/wiki/Deutsche_Bahn) | [`vbb-hafas`](https://github.com/derhuerst/vbb-hafas), which has additional features | [docs](p/db/readme.md) | [example code](p/db/example.js) | [src](p/db/index.js)
+[Berlin & Brandenburg public transport](https://en.wikipedia.org/wiki/Verkehrsverbund_Berlin-Brandenburg) | [`db-hafas`](https://github.com/derhuerst/db-hafas), which has additional features | [docs](p/vbb/readme.md) | [example code](p/vbb/example.js) | [src](p/vbb/index.js)
 
 [![npm version](https://img.shields.io/npm/v/hafas-client.svg)](https://www.npmjs.com/package/hafas-client)
 [![build status](https://img.shields.io/travis/derhuerst/hafas-client.svg)](https://travis-ci.org/derhuerst/hafas-client)
@@ -50,7 +52,7 @@ client.journeys('8011167', '8000261', {results: 1})
 .catch(console.error)
 ```
 
-The returned [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/promise) will resolved with an array of one `journey` in the [*FPTF* `1.0.1`](https://github.com/public-transport/friendly-public-transport-format/blob/1.0.1/spec/readme.md).
+The returned [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/promise) will resolve with an array of one [*FPTF* `journey`](https://github.com/public-transport/friendly-public-transport-format/blob/1.0.1/spec/readme.md#journey).
 
 ```js
 [ {
@@ -86,7 +88,12 @@ The returned [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript
 			mode: 'train',
 			product: 'suburban',
 			class: 16,
-			productCode: 4
+			productCode: 4,
+			operator: {
+				type: 'operator',
+				id: 's-bahn-berlin-gmbh',
+				name: 'S-Bahn Berlin GmbH'
+			}
 		},
 		direction: 'Ringbahn ->'
 	}, /* … */ {
