@@ -1,6 +1,5 @@
 {
 	"name": "hafas-client",
-	"description": "JavaScript client for HAFAS mobile APIs.",
 	"description": "JavaScript client for HAFAS public transport APIs.",
 	"version": "2.0.0",
 	"main": "index.js",
@@ -31,7 +30,7 @@
 	"dependencies": {
 		"fetch-ponyfill": "^4.1.0",
 		"lodash": "^4.17.4",
-		"luxon": "^0.2.7",
+		"luxon": "^0.2.11",
 		"pinkie-promise": "^2.0.1",
 		"query-string": "^5.0.0",
 		"slugg": "^1.2.0",
@@ -43,7 +42,7 @@
 	},
 	"devDependencies": {
 		"co": "^4.6.0",
-		"db-stations": "^1.25.0",
+		"db-stations": "^1.34.0",
 		"is-coordinates": "^2.0.2",
 		"is-roughly-equal": "^0.1.0",
 		"tap-spec": "^4.1.1",
