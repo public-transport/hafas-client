@@ -88,7 +88,12 @@ The response may look like this:
 		metro: false,
 		express: false,
 		night: false,
-		productCode: 0
+		productCode: 0,
+		operator: {
+			type: 'operator',
+			id: 's-bahn-berlin-gmbh',
+			name: 'S-Bahn Berlin GmbH'
+		}
 	},
 	direction: 'S Spandau'
 }, {
@@ -110,7 +115,8 @@ The response may look like this:
 		metro: false,
 		express: false,
 		night: false,
-		productCode: 0
+		productCode: 0,
+		operator: { /* … */ }
 	},
 	direction: 'S Westkreuz'
 }, {
@@ -149,7 +155,8 @@ The response may look like this:
 		metro: false,
 		express: false,
 		night: false,
-		productCode: 1
+		productCode: 1,
+		operator: { /* … */ }
 	},
 	direction: 'U Rudow'
 } ]

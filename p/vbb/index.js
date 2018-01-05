@@ -6,7 +6,7 @@ const parseLineName = require('vbb-parse-line')
 const parseTicket = require('vbb-parse-ticket')
 const getStations = require('vbb-stations')
 
-const _parseLine = require('../../parse/line')
+const _createParseLine = require('../../parse/line')
 const _parseLocation = require('../../parse/location')
 const _createParseJourney = require('../../parse/journey')
 const _createParseStopover = require('../../parse/stopover')
@@ -28,26 +28,31 @@ const transformReqBody = (body) => {
 	return body
 }
 
-const parseLine = (profile, l) => {
-	const res = _parseLine(profile, l)
+const createParseLine = (profile, operators) => {
+	const parseLine = _createParseLine(profile, operators)
 
-	res.mode = res.product = null
-	if ('class' in res) {
-		const data = modes.bitmasks[parseInt(res.class)]
-		if (data) {
-			res.mode = data.mode
-			res.product = data.product
+	const parseLineWithMode = (l) => {
+		const res = parseLine(l)
+
+		res.mode = res.product = null
+		if ('class' in res) {
+			const data = modes.bitmasks[parseInt(res.class)]
+			if (data) {
+				res.mode = data.mode
+				res.product = data.product
+			}
 		}
+
+		const details = parseLineName(l.name)
+		res.symbol = details.symbol
+		res.nr = details.nr
+		res.metro = details.metro
+		res.express = details.express
+		res.night = details.night
+
+		return res
 	}
-
-	const details = parseLineName(l.name)
-	res.symbol = details.symbol
-	res.nr = details.nr
-	res.metro = details.metro
-	res.express = details.express
-	res.night = details.night
-
-	return res
+	return parseLineWithMode
 }
 
 const parseLocation = (profile, l) => {
@@ -169,7 +174,7 @@ const vbbProfile = {
 
 	parseStationName: shorten,
 	parseLocation,
-	parseLine,
+	parseLine: createParseLine,
 	parseProducts: createParseBitmask(modes.bitmasks),
 	parseJourney: createParseJourney,
 	parseDeparture: createParseDeparture,

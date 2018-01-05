@@ -2,7 +2,7 @@
 
 const crypto = require('crypto')
 
-const _parseLine = require('../../parse/line')
+const _createParseLine = require('../../parse/line')
 const _createParseJourney = require('../../parse/journey')
 const _formatStation = require('../../format/station')
 const createParseBitmask = require('../../parse/products-bitmask')
@@ -52,19 +52,24 @@ const transformJourneysQuery = (query, opt) => {
 	return query
 }
 
-const parseLine = (profile, l) => {
-	const res = _parseLine(profile, l)
+const createParseLine = (profile, operators) => {
+	const parseLine = _createParseLine(profile, operators)
 
-	res.mode = res.product = null
-	if ('class' in res) {
-		const data = modes.bitmasks[parseInt(res.class)]
-		if (data) {
-			res.mode = data.mode
-			res.product = data.product
+	const parseLineWithMode = (l) => {
+		const res = parseLine(l)
+
+		res.mode = res.product = null
+		if ('class' in res) {
+			const data = modes.bitmasks[parseInt(res.class)]
+			if (data) {
+				res.mode = data.mode
+				res.product = data.product
+			}
 		}
-	}
 
-	return res
+		return res
+	}
+	return parseLineWithMode
 }
 
 const createParseJourney = (profile, stations, lines, remarks) => {
@@ -144,7 +149,7 @@ const dbProfile = {
 	products: modes.allProducts,
 
 	// todo: parseLocation
-	parseLine,
+	parseLine: createParseLine,
 	parseProducts: createParseBitmask(modes.bitmasks),
 	parseJourney: createParseJourney,
 

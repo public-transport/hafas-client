@@ -143,7 +143,12 @@ The response may look like this:
 			metro: false,
 			express: false,
 			night: false,
-			productCode: 0
+			productCode: 0,
+			operator: {
+				type: 'operator',
+				id: 's-bahn-berlin-gmbh',
+				name: 'S-Bahn Berlin GmbH'
+			}
 		},
 		direction: 'S Potsdam Hauptbahnhof',
 		passed: [ {

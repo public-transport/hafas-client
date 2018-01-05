@@ -51,7 +51,12 @@ The response may look like this:
 		nr: 9,
 		metro: false,
 		express: false,
-		night: false
+		night: false,
+		operator: {
+			type: 'operator',
+			id: 's-bahn-berlin-gmbh',
+			name: 'S-Bahn Berlin GmbH'
+		}
 	},
 	direction: 'S Flughafen Berlin-Schönefeld',
 	trip: 31463,
@@ -118,7 +123,12 @@ The response may look like this:
 		nr: 2,
 		metro: true,
 		express: false,
-		night: false
+		night: false,
+		operator: {
+			type: 'operator',
+			id: 'berliner-verkehrsbetriebe',
+			name: 'Berliner Verkehrsbetriebe'
+		}
 	},
 	direction: 'Heinersdorf',
 	trip: 26321,
