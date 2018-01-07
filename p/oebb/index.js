@@ -5,7 +5,7 @@
 
 const createParseBitmask = require('../../parse/products-bitmask')
 const createFormatBitmask = require('../../format/products-bitmask')
-const _parseLine = require('../../parse/line')
+const _createParseLine = require('../../parse/line')
 const _parseLocation = require('../../parse/location')
 const _createParseMovement = require('../../parse/movement')
 
@@ -28,19 +28,24 @@ const transformReqBody = (body) => {
 	return body
 }
 
-const parseLine = (profile, l) => {
-	const res = _parseLine(profile, l)
+const createParseLine = (profile, operators) => {
+	const parseLine = _createParseLine(profile, operators)
 
-	res.mode = res.product = null
-	if ('class' in res) {
-		const data = products.bitmasks[parseInt(res.class)]
-		if (data) {
-			res.mode = data.mode
-			res.product = data.product
+	const parseLineWithMode = (l) => {
+		const res = parseLine(l)
+
+		res.mode = res.product = null
+		if ('class' in res) {
+			const data = products.bitmasks[parseInt(res.class)]
+			if (data) {
+				res.mode = data.mode
+				res.product = data.product
+			}
 		}
-	}
 
-	return res
+		return res
+	}
+	return parseLineWithMode
 }
 
 const parseLocation = (profile, l) => {
@@ -109,7 +114,7 @@ const oebbProfile = {
 	products: products.allProducts,
 
 	parseProducts: createParseBitmask(products.bitmasks),
-	parseLine,
+	parseLine: createParseLine,
 	parseLocation,
 	parseMovement: createParseMovement,
 
