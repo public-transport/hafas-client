@@ -6,6 +6,9 @@ const tapePromise = require('tape-promise').default
 const tape = require('tape')
 const co = require('co')
 const isRoughlyEqual = require('is-roughly-equal')
+const validateFptf = require('validate-fptf')
+
+const validateLineWithoutMode = require('./validate-line-without-mode')
 
 const createClient = require('..')
 const oebbProfile = require('../p/oebb')
@@ -15,7 +18,6 @@ const {
 	assertValidPoi,
 	assertValidAddress,
 	assertValidLocation,
-	assertValidLine,
 	assertValidStopover,
 	hour, createWhen, assertValidWhen
 } = require('./util.js')
@@ -88,6 +90,20 @@ const assertValidPrice = (t, p) => {
 	if (p.hint !== null) {
 		t.equal(typeof p.hint, 'string')
 		t.ok(p.hint)
+	}
+}
+
+// todo: fix this upstream
+// see https://github.com/derhuerst/hafas-client/blob/c6e558be217667f1bcdac4a605898eb75ea80374/p/oebb/products.js#L71
+const assertValidLine = (t, l) => { // with optional mode
+	const validators = Object.assign({}, validateFptf.defaultValidators, {
+		line: validateLineWithoutMode
+	})
+	const recurse = validateFptf.createRecurse(validators)
+	try {
+		recurse(['line'], l, 'line')
+	} catch (err) {
+		t.ifError(err)
 	}
 }
 
@@ -285,10 +301,11 @@ test('departures at Salzburg Hbf', co.wrap(function* (t) {
 
 test('nearby Salzburg Hbf', co.wrap(function* (t) {
 	const salzburgHbfPosition = {
+		type: 'location',
 		longitude: 13.045604,
 		latitude: 47.812851
 	}
-	const nearby = yield client.nearby(salzburgHbfPosition.latitude, salzburgHbfPosition.longitude, {
+	const nearby = yield client.nearby(salzburgHbfPosition, {
 		results: 2, distance: 400
 	})
 
