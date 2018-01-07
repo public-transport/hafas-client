@@ -16,6 +16,9 @@ const createParseStopover = (profile, stations, lines, remarks, connection) => {
 			res.departure = dep.toISO()
 		}
 
+		// mark stations the train passes without stopping
+		if(st.dInS === false && st.aOutS === false) res.passBy = true
+
 		// todo: follow public-transport/friendly-public-transport-format#27 here
 		// see also derhuerst/vbb-rest#19
 		if (st.aCncl) {

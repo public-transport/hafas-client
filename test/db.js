@@ -16,8 +16,10 @@ const {
 	assertValidLocation,
 	assertValidLine,
 	assertValidStopover,
-	when, isValidWhen
+	createWhen, assertValidWhen
 } = require('./util.js')
+
+const when = createWhen('Europe/Berlin', 'de-DE')
 
 const assertValidStationProducts = (t, p) => {
 	t.ok(p)
@@ -106,7 +108,7 @@ test('Berlin Jungfernheide to München Hbf', co.wrap(function* (t) {
 		if (journey.origin.products) {
 			assertValidProducts(t, journey.origin.products)
 		}
-		t.ok(isValidWhen(journey.departure))
+		assertValidWhen(t, journey.departure, when)
 
 		assertValidStation(t, journey.destination)
 		assertValidStationProducts(t, journey.origin.products)
@@ -116,7 +118,7 @@ test('Berlin Jungfernheide to München Hbf', co.wrap(function* (t) {
 		if (journey.destination.products) {
 			assertValidProducts(t, journey.destination.products)
 		}
-		t.ok(isValidWhen(journey.arrival))
+		assertValidWhen(t, journey.arrival, when)
 
 		t.ok(Array.isArray(journey.legs))
 		t.ok(journey.legs.length > 0, 'no legs')
@@ -127,7 +129,7 @@ test('Berlin Jungfernheide to München Hbf', co.wrap(function* (t) {
 		if (!(yield findStation(leg.origin.id))) {
 			console.error('unknown station', leg.origin.id, leg.origin.name)
 		}
-		t.ok(isValidWhen(leg.departure))
+		assertValidWhen(t, leg.departure, when)
 		t.equal(typeof leg.departurePlatform, 'string')
 
 		assertValidStation(t, leg.destination)
@@ -135,7 +137,7 @@ test('Berlin Jungfernheide to München Hbf', co.wrap(function* (t) {
 		if (!(yield findStation(leg.destination.id))) {
 			console.error('unknown station', leg.destination.id, leg.destination.name)
 		}
-		t.ok(isValidWhen(leg.arrival))
+		assertValidWhen(t, leg.arrival, when)
 		t.equal(typeof leg.arrivalPlatform, 'string')
 
 		assertValidLine(t, leg.line)
@@ -166,8 +168,8 @@ test('Berlin Jungfernheide to Torfstraße 17', co.wrap(function* (t) {
 		console.error('unknown station', leg.origin.id, leg.origin.name)
 	}
 	if (leg.origin.products) assertValidProducts(t, leg.origin.products)
-	t.ok(isValidWhen(leg.departure))
-	t.ok(isValidWhen(leg.arrival))
+	assertValidWhen(t, leg.departure, when)
+	assertValidWhen(t, leg.arrival, when)
 
 	const d = leg.destination
 	assertValidAddress(t, d)
@@ -195,8 +197,8 @@ test('Berlin Jungfernheide to ATZE Musiktheater', co.wrap(function* (t) {
 		console.error('unknown station', leg.origin.id, leg.origin.name)
 	}
 	if (leg.origin.products) assertValidProducts(t, leg.origin.products)
-	t.ok(isValidWhen(leg.departure))
-	t.ok(isValidWhen(leg.arrival))
+	assertValidWhen(t, leg.departure, when)
+	assertValidWhen(t, leg.arrival, when)
 
 	const d = leg.destination
 	assertValidPoi(t, d)
@@ -220,7 +222,7 @@ test('departures at Berlin Jungfernheide', co.wrap(function* (t) {
 			console.error('unknown station', dep.station.id, dep.station.name)
 		}
 		if (dep.station.products) assertValidProducts(t, dep.station.products)
-		t.ok(isValidWhen(dep.when))
+		assertValidWhen(t, dep.when, when)
 	}
 
 	t.end()
