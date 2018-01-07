@@ -1,7 +1,7 @@
 {
 	"name": "hafas-client",
 	"description": "JavaScript client for HAFAS public transport APIs.",
-	"version": "2.0.0",
+	"version": "2.1.0",
 	"main": "index.js",
 	"files": [
 		"index.js",
@@ -12,7 +12,9 @@
 		"docs"
 	],
 	"author": "Jannis R <mail@jannisr.de>",
-	"contributors": ["Julius Tens <mail@juliustens.eu>"],
+	"contributors": [
+		"Julius Tens <mail@juliustens.eu>"
+	],
 	"homepage": "https://github.com/derhuerst/hafas-client",
 	"repository": "derhuerst/hafas-client",
 	"bugs": "https://github.com/derhuerst/hafas-client/issues",
