@@ -209,6 +209,25 @@ test('Berlin Jungfernheide to ATZE Musiktheater', co.wrap(function* (t) {
 	t.end()
 }))
 
+test('Berlin Hbf to München Hbf with stopover at Hannover Hbf', co.wrap(function* (t) {
+	const berlinHbf = '8011160'
+	const münchenHbf = '8000261'
+	const hannoverHbf = '8000152'
+	const [journey] = yield client.journeys(berlinHbf, münchenHbf, {
+		via: hannoverHbf,
+		results: 1
+	})
+
+	const i = journey.legs.findIndex(leg => leg.destination.id === hannoverHbf)
+	t.ok(i >= 0, 'no leg with Hannover Hbf as destination')
+
+	const nextLeg = journey.legs[i + 1]
+	t.ok(nextLeg)
+	t.equal(nextLeg.origin.id, hannoverHbf)
+
+	t.end()
+}))
+
 test('departures at Berlin Jungfernheide', co.wrap(function* (t) {
 	const deps = yield client.departures('8011167', {
 		duration: 5, when

@@ -83,7 +83,7 @@ const createClient = (profile) => {
 			maxChg: opt.transfers,
 			minChgTime: opt.transferTime,
 			depLocL: [from],
-			viaLocL: opt.via ? [opt.via] : null,
+			viaLocL: opt.via ? [{loc: opt.via}] : null,
 			arrLocL: [to],
 			jnyFltrL: filters,
 			getTariff: !!opt.tickets,

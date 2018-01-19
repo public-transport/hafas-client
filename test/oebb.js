@@ -252,6 +252,25 @@ test('Albertina to Salzburg Hbf', co.wrap(function* (t) {
 	t.end()
 }))
 
+test('Wien to Klagenfurt Hbf with stopover at Salzburg Hbf', co.wrap(function* (t) {
+	const wien = '1190100'
+	const klagenfurtHbf = '8100085'
+	const salzburgHbf = '8100002'
+	const [journey] = yield client.journeys(wien, klagenfurtHbf, {
+		via: salzburgHbf,
+		results: 1
+	})
+
+	const i = journey.legs.findIndex(leg => leg.destination.id === salzburgHbf)
+	t.ok(i >= 0, 'no leg with Hannover Hbf as destination')
+
+	const nextLeg = journey.legs[i + 1]
+	t.ok(nextLeg)
+	t.equal(nextLeg.origin.id, salzburgHbf)
+
+	t.end()
+}))
+
 test('leg details for Wien Westbahnhof to München Hbf', co.wrap(function* (t) {
 	const wienWestbahnhof = '1291501'
 	const muenchenHbf = '8000261'

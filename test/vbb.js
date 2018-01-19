@@ -241,6 +241,26 @@ test('journeys – station to POI', co.wrap(function* (t) {
 
 
 
+test('journeys – with stopover', co.wrap(function* (t) {
+	const halleschesTor = '900000012103'
+	const leopoldplatz = '900000009102'
+	const [journey] = yield client.journeys(spichernstr, halleschesTor, {
+		via: leopoldplatz,
+		results: 1
+	})
+
+	const i = journey.legs.findIndex(leg => leg.destination.id === leopoldplatz)
+	t.ok(i >= 0, 'no leg with Leopoldplatz as destination')
+
+	const nextLeg = journey.legs[i + 1]
+	t.ok(nextLeg)
+	t.equal(nextLeg.origin.id, leopoldplatz)
+
+	t.end()
+}))
+
+
+
 test('departures', co.wrap(function* (t) {
 	const deps = yield client.departures(spichernstr, {duration: 5, when})
 
