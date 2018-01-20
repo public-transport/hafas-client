@@ -4,8 +4,8 @@
 
 HAFAS endpoint | wrapper library? | docs | example code | source code
 ---------------|------------------|------|---------|------------
-[Deutsche Bahn](https://en.wikipedia.org/wiki/Deutsche_Bahn) | [`vbb-hafas`](https://github.com/derhuerst/vbb-hafas), which has additional features | [docs](p/db/readme.md) | [example code](p/db/example.js) | [src](p/db/index.js)
-[Berlin & Brandenburg public transport](https://en.wikipedia.org/wiki/Verkehrsverbund_Berlin-Brandenburg) | [`db-hafas`](https://github.com/derhuerst/db-hafas), which has additional features | [docs](p/vbb/readme.md) | [example code](p/vbb/example.js) | [src](p/vbb/index.js)
+[Deutsche Bahn](https://en.wikipedia.org/wiki/Deutsche_Bahn) | [`db-hafas`](https://github.com/derhuerst/db-hafas), which has additional features | [docs](p/db/readme.md) | [example code](p/db/example.js) | [src](p/db/index.js)
+[Berlin & Brandenburg public transport](https://en.wikipedia.org/wiki/Verkehrsverbund_Berlin-Brandenburg) | [`vbb-hafas`](https://github.com/derhuerst/vbb-hafas), which has additional features | [docs](p/vbb/readme.md) | [example code](p/vbb/example.js) | [src](p/vbb/index.js)
 [Österreichische Bundesbahnen (ÖBB)](https://en.wikipedia.org/wiki/Austrian_Federal_Railways) | – | [docs](p/oebb/readme.md) | [example code](p/oebb/example.js) | [src](p/oebb/index.js)
 
 [![npm version](https://img.shields.io/npm/v/hafas-client.svg)](https://www.npmjs.com/package/hafas-client)
