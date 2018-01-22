@@ -50,7 +50,7 @@ const assertValidLine = (t, l) => {
 }
 
 // todo
-const findStation = (query) => stations(query, true, false)
+const findStation = (query) => stations(query, true, false)[0]
 
 const test = tapePromise(tape)
 const client = createClient(vbbProfile)

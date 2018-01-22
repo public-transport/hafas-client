@@ -63,7 +63,7 @@ const parseLocation = (profile, l) => {
 		res.id = to12Digit(res.id)
 		if (!res.location.latitude || !res.location.longitude) {
 			const [s] = getStations(res.id)
-			if (s) Object.assign(res.location, s.coordinates)
+			if (s) Object.assign(res.location, s.location)
 		}
 	}
 	return res

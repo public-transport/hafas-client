@@ -33,14 +33,14 @@
 	"dependencies": {
 		"fetch-ponyfill": "^4.1.0",
 		"lodash": "^4.17.4",
-		"luxon": "^0.2.11",
+		"luxon": "^0.3.1",
 		"pinkie-promise": "^2.0.1",
 		"query-string": "^5.0.0",
 		"slugg": "^1.2.0",
-		"vbb-parse-line": "^0.2.5",
+		"vbb-parse-line": "^0.3.0",
 		"vbb-parse-ticket": "^0.2.1",
 		"vbb-short-station-name": "^0.4.0",
-		"vbb-stations": "^5.9.0",
+		"vbb-stations": "^6.1.0",
 		"vbb-translate-ids": "^3.1.0"
 	},
 	"devDependencies": {
@@ -52,7 +52,7 @@
 		"tape": "^4.8.0",
 		"tape-promise": "^2.0.1",
 		"validate-fptf": "^1.2.0",
-		"vbb-stations-autocomplete": "^2.11.0"
+		"vbb-stations-autocomplete": "^3.0.0"
 	},
 	"scripts": {
 		"test": "node test/index.js",
