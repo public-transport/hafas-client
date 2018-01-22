@@ -5,9 +5,9 @@ const maxBy = require('lodash/maxBy')
 
 const validateProfile = require('./lib/validate-profile')
 const defaultProfile = require('./lib/default-profile')
-const request = require('./lib/request')
+const _request = require('./lib/request')
 
-const createClient = (profile) => {
+const createClient = (profile, request = _request) => {
 	profile = Object.assign({}, defaultProfile, profile)
 	validateProfile(profile)
 
