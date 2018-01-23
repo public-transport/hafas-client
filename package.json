@@ -35,6 +35,7 @@
 		"fetch-ponyfill": "^4.1.0",
 		"lodash": "^4.17.4",
 		"luxon": "^0.3.1",
+		"p-throttle": "^1.1.0",
 		"pinkie-promise": "^2.0.1",
 		"query-string": "^5.0.0",
 		"slugg": "^1.2.0",
