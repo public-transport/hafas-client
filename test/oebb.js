@@ -261,12 +261,12 @@ test('Wien to Klagenfurt Hbf with stopover at Salzburg Hbf', co.wrap(function* (
 		results: 1
 	})
 
-	const i = journey.legs.findIndex(leg => leg.destination.id === salzburgHbf)
-	t.ok(i >= 0, 'no leg with Hannover Hbf as destination')
+	const i1 = journey.legs.findIndex(leg => leg.destination.id === salzburgHbf)
+	t.ok(i1 >= 0, 'no leg with Salzburg Hbf as destination')
 
-	const nextLeg = journey.legs[i + 1]
-	t.ok(nextLeg)
-	t.equal(nextLeg.origin.id, salzburgHbf)
+	const i2 = journey.legs.findIndex(leg => leg.origin.id === salzburgHbf)
+	t.ok(i2 >= 0, 'no leg with Salzburg Hbf as origin')
+	t.ok(i2 > i1, 'leg with Salzburg Hbf as origin must be after leg to it')
 
 	t.end()
 }))
