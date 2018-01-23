@@ -3,9 +3,9 @@
 const getStations = require('db-stations').full
 const tapePromise = require('tape-promise').default
 const tape = require('tape')
-const co = require('co')
 const isRoughlyEqual = require('is-roughly-equal')
 
+const co = require('./co')
 const createClient = require('..')
 const dbProfile = require('../p/db')
 const modes = require('../p/db/modes')
@@ -92,7 +92,7 @@ const assertValidPrice = (t, p) => {
 const test = tapePromise(tape)
 const client = createClient(dbProfile)
 
-test('Berlin Jungfernheide to München Hbf', co.wrap(function* (t) {
+test('Berlin Jungfernheide to München Hbf', co(function* (t) {
 	const journeys = yield client.journeys('8011167', '8000261', {
 		when, passedStations: true
 	})
@@ -151,7 +151,7 @@ test('Berlin Jungfernheide to München Hbf', co.wrap(function* (t) {
 	t.end()
 }))
 
-test('Berlin Jungfernheide to Torfstraße 17', co.wrap(function* (t) {
+test('Berlin Jungfernheide to Torfstraße 17', co(function* (t) {
 	const journeys = yield client.journeys('8011167', {
 		type: 'location', address: 'Torfstraße 17',
 		latitude: 52.5416823, longitude: 13.3491223
@@ -180,7 +180,7 @@ test('Berlin Jungfernheide to Torfstraße 17', co.wrap(function* (t) {
 	t.end()
 }))
 
-test('Berlin Jungfernheide to ATZE Musiktheater', co.wrap(function* (t) {
+test('Berlin Jungfernheide to ATZE Musiktheater', co(function* (t) {
 	const journeys = yield client.journeys('8011167', {
 		type: 'location', id: '991598902', name: 'ATZE Musiktheater',
 		latitude: 52.542417, longitude: 13.350437
@@ -209,7 +209,7 @@ test('Berlin Jungfernheide to ATZE Musiktheater', co.wrap(function* (t) {
 	t.end()
 }))
 
-test('Berlin Hbf to München Hbf with stopover at Hannover Hbf', co.wrap(function* (t) {
+test('Berlin Hbf to München Hbf with stopover at Hannover Hbf', co(function* (t) {
 	const berlinHbf = '8011160'
 	const münchenHbf = '8000261'
 	const hannoverHbf = '8000152'
@@ -228,7 +228,7 @@ test('Berlin Hbf to München Hbf with stopover at Hannover Hbf', co.wrap(functio
 	t.end()
 }))
 
-test('departures at Berlin Jungfernheide', co.wrap(function* (t) {
+test('departures at Berlin Jungfernheide', co(function* (t) {
 	const deps = yield client.departures('8011167', {
 		duration: 5, when
 	})
@@ -247,7 +247,7 @@ test('departures at Berlin Jungfernheide', co.wrap(function* (t) {
 	t.end()
 }))
 
-test('departures with station object', co.wrap(function* (t) {
+test('departures with station object', co(function* (t) {
 	yield client.departures({
 		type: 'station',
 		id: '8011167',
@@ -263,7 +263,7 @@ test('departures with station object', co.wrap(function* (t) {
 	t.end()
 }))
 
-test('nearby Berlin Jungfernheide', co.wrap(function* (t) {
+test('nearby Berlin Jungfernheide', co(function* (t) {
 	const nearby = yield client.nearby({
 		type: 'location',
 		latitude: 52.530273,
@@ -287,7 +287,7 @@ test('nearby Berlin Jungfernheide', co.wrap(function* (t) {
 	t.end()
 }))
 
-test('locations named Jungfernheide', co.wrap(function* (t) {
+test('locations named Jungfernheide', co(function* (t) {
 	const locations = yield client.locations('Jungfernheide', {
 		results: 10
 	})
