@@ -12,11 +12,10 @@ const createParseLine = (profile, operators) => {
 			name: p.line || p.name,
 			public: true
 		}
+		// todo: what is p.prodCtx && p.prodCtx.num?
 
-		// We don't get a proper line id from the API, so we use the trip nr here.
-		// todo: find a better way
-		if (p.prodCtx && p.prodCtx.num) res.id = p.prodCtx.num
 		// This is terrible, but FPTF demands an ID. Let's pray for VBB to expose an ID.
+		// todo: find a better way
 		else if (p.line) res.id = slugg(p.line.trim())
 		else if (p.name) res.id = slugg(p.name.trim())
 
