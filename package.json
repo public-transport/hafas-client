@@ -31,6 +31,7 @@
 		"node": ">=6"
 	},
 	"dependencies": {
+		"capture-stack-trace": "^1.0.0",
 		"fetch-ponyfill": "^4.1.0",
 		"lodash": "^4.17.4",
 		"luxon": "^0.3.1",
@@ -55,7 +56,7 @@
 		"vbb-stations-autocomplete": "^3.0.0"
 	},
 	"scripts": {
-		"test": "node test/index.js",
+		"test": "env NODE_ENV=dev node test/index.js",
 		"prepublishOnly": "npm test | tap-spec"
 	}
 }
