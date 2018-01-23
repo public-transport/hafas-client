@@ -16,7 +16,7 @@ const createParseLine = (profile, operators) => {
 
 		// This is terrible, but FPTF demands an ID. Let's pray for VBB to expose an ID.
 		// todo: find a better way
-		else if (p.line) res.id = slugg(p.line.trim())
+		if (p.line) res.id = slugg(p.line.trim())
 		else if (p.name) res.id = slugg(p.name.trim())
 
 		if (p.cls) res.class = p.cls
