@@ -49,7 +49,6 @@ const assertValidLine = (t, l) => {
 	if (l.night !== null) t.equal(typeof l.night, 'boolean')
 }
 
-// todo
 const findStation = (query) => stations(query, true, false)[0]
 
 const test = tapePromise(tape)
@@ -97,7 +96,11 @@ test('journeys – station to station', co(function* (t) {
 		assertValidWhen(t, leg.arrival, when)
 
 		assertValidLine(t, leg.line)
-		t.ok(findStation(leg.direction))
+		if (!findStation(leg.direction)) {
+			const err = new Error('unknown direction: ' + leg.direction)
+			err.stack = err.stack.split('\n').slice(0, 2).join('\n')
+			console.error(err)
+		}
 		t.ok(leg.direction.indexOf('(Berlin)') === -1)
 
 		t.ok(Array.isArray(leg.passed))
@@ -276,7 +279,11 @@ test('departures', co(function* (t) {
 		t.strictEqual(dep.station.id, spichernstr)
 
 		assertValidWhen(t, dep.when, when)
-		t.ok(findStation(dep.direction))
+		if (!findStation(dep.direction)) {
+			const err = new Error('unknown direction: ' + dep.direction)
+			err.stack = err.stack.split('\n').slice(0, 2).join('\n')
+			console.error(err)
+		}
 		assertValidLine(t, dep.line)
 	}
 	t.end()
@@ -365,7 +372,11 @@ test('radar', co(function* (t) {
 	t.ok(vehicles.length > 0)
 	for (let v of vehicles) {
 
-		t.ok(findStation(v.direction))
+		if (!findStation(v.direction)) {
+			const err = new Error('unknown direction: ' + v.direction)
+			err.stack = err.stack.split('\n').slice(0, 2).join('\n')
+			console.error(err)
+		}
 		assertValidLine(t, v.line)
 
 		t.equal(typeof v.location.latitude, 'number')
