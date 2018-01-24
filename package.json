@@ -1,10 +1,11 @@
 {
 	"name": "hafas-client",
 	"description": "JavaScript client for HAFAS public transport APIs.",
-	"version": "2.2.0",
+	"version": "2.2.1",
 	"main": "index.js",
 	"files": [
 		"index.js",
+		"throttle.js",
 		"lib",
 		"parse",
 		"format",
