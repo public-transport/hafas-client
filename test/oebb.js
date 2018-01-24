@@ -258,7 +258,8 @@ test('Wien to Klagenfurt Hbf with stopover at Salzburg Hbf', co(function* (t) {
 	const salzburgHbf = '8100002'
 	const [journey] = yield client.journeys(wien, klagenfurtHbf, {
 		via: salzburgHbf,
-		results: 1
+		results: 1,
+		when
 	})
 
 	const i1 = journey.legs.findIndex(leg => leg.destination.id === salzburgHbf)
