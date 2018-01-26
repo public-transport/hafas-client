@@ -137,6 +137,26 @@ const createClient = (profile, request = _request) => {
 		})
 	}
 
+	const location = (station) => {
+		if ('object' === typeof station) station = profile.formatStation(station.id)
+		else if ('string' === typeof station) station = profile.formatStation(station)
+		else throw new Error('station must be an object or a string.')
+
+		return request(profile, {
+			meth: 'LocDetails',
+			req: {
+				locL: [station]
+			}
+		})
+		.then((d) => {
+			if (!d || !Array.isArray(d.locL) || !d.locL[0]) {
+				// todo: proper stack trace?
+				throw new Error('invalid response')
+			}
+			return profile.parseLocation(profile, d.locL[0], d.lines)
+		})
+	}
+
 	const nearby = (location, opt = {}) => {
 		if ('object' !== typeof location || Array.isArray(location)) {
 			throw new Error('location must be an object.')
@@ -248,7 +268,7 @@ const createClient = (profile, request = _request) => {
 		})
 	}
 
-	const client = {departures, journeys, locations, nearby}
+	const client = {departures, journeys, locations, location, nearby}
 	if (profile.journeyLeg) client.journeyLeg = journeyLeg
 	if (profile.radar) client.radar = radar
 	Object.defineProperty(client, 'profile', {value: profile})

@@ -362,6 +362,16 @@ test('locations named Salzburg', co(function* (t) {
 	t.end()
 }))
 
+test('location', co(function* (t) {
+	const grazHbf = '8100173'
+	const loc = yield client.location(grazHbf)
+
+	assertValidStation(t, loc)
+	t.equal(loc.id, grazHbf)
+
+	t.end()
+}))
+
 test('radar Salzburg', co(function* (t) {
 	const vehicles = yield client.radar(47.827203, 13.001261, 47.773278, 13.07562, {
 		duration: 5 * 60, when

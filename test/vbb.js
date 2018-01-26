@@ -361,6 +361,15 @@ test('locations', co(function* (t) {
 	t.end()
 }))
 
+test('location', co(function* (t) {
+	const loc = yield client.location(spichernstr)
+
+	assertValidStation(t, loc)
+	t.equal(loc.id, spichernstr)
+
+	t.end()
+}))
+
 
 
 test('radar', co(function* (t) {

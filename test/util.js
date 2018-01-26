@@ -6,11 +6,9 @@ const {DateTime} = require('luxon')
 const isValidWGS84 = require('is-coordinates')
 
 const validateFptfWith = (t, item, allowedTypes, name) => {
-	try {
+	t.doesNotThrow(() => {
 		validateFptf.recurse(allowedTypes, item, name)
-	} catch (err) {
-		t.ifError(err)
-	}
+	})
 }
 
 const assertValidStation = (t, s, coordsOptional = false) => {
