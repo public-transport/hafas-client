@@ -367,6 +367,11 @@ test('location', co(function* (t) {
 	assertValidStation(t, loc)
 	t.equal(loc.id, spichernstr)
 
+	t.ok(Array.isArray(loc.lines))
+	if (Array.isArray(loc.lines)) {
+		for (let line of loc.lines) assertValidLine(t, line)
+	}
+
 	t.end()
 }))
 
