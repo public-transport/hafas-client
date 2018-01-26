@@ -9,6 +9,7 @@ const client = createClient(vbbProfile)
 client.journeys('900000003201', '900000024101', {results: 1})
 // client.departures('900000013102', {duration: 1})
 // client.locations('Alexanderplatz', {results: 2})
+// client.location('900000042101') // Spichernstr
 // client.nearby(52.5137344, 13.4744798, {distance: 60})
 // client.radar(52.52411, 13.41002, 52.51942, 13.41709, {results: 10})
 

@@ -34,6 +34,7 @@ npm install hafas-client
 - [`journeyLeg(ref, lineName, [opt])`](docs/journey-leg.md) – get details for a leg of a journey
 - [`departures(station, [opt])`](docs/departures.md) – query the next departures at a station
 - [`locations(query, [opt])`](docs/locations.md) – find stations, POIs and addresses
+- [`location(id)`](docs/location.md) – get details about a location
 - [`nearby(location, [opt])`](docs/nearby.md) – show stations & POIs around
 - [`radar(query, [opt])`](docs/radar.md) – find all vehicles currently in a certain area
 
