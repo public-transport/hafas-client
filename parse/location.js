@@ -6,7 +6,9 @@ const ADDRESS = 'A'
 
 // todo: what is s.rRefL?
 // todo: is passing in profile necessary?
-const parseLocation = (profile, l) => {
+
+// todo: [breaking] change to createParseLocation(profile, lines) => (l) => loc
+const parseLocation = (profile, l, lines) => {
 	const res = {type: 'location'}
 	if (l.crd) {
 		res.latitude = l.crd.y / 1000000
@@ -20,7 +22,17 @@ const parseLocation = (profile, l) => {
 			name: l.name,
 			location: res
 		}
+
 		if ('pCls' in l) station.products = profile.parseProducts(l.pCls)
+
+		if (Array.isArray(l.pRefL) && Array.isArray(lines)) {
+			station.lines = []
+			for (let pRef of l.pRefL) {
+				const line = lines[pRef]
+				if (line) station.lines.push(line)
+			}
+		}
+
 		return station
 	}
 

@@ -55,8 +55,8 @@ const createParseLine = (profile, operators) => {
 	return parseLineWithMode
 }
 
-const parseLocation = (profile, l) => {
-	const res = _parseLocation(profile, l)
+const parseLocation = (profile, l, lines) => {
+	const res = _parseLocation(profile, l, lines)
 
 	if (res.type === 'station') {
 		res.name = shorten(res.name)

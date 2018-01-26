@@ -133,7 +133,7 @@ const createClient = (profile, request = _request) => {
 		.then((d) => {
 			if (!d.match || !Array.isArray(d.match.locL)) return []
 			const parse = profile.parseLocation
-			return d.match.locL.map(loc => parse(profile, loc))
+			return d.match.locL.map(loc => parse(profile, loc, d.lines))
 		})
 	}
 

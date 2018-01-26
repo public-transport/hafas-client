@@ -20,6 +20,11 @@ const assertValidStation = (t, s, coordsOptional = false) => {
 		t.ok(s.location)
 		assertValidLocation(t, s.location, coordsOptional)
 	}
+
+	if ('lines' in s) {
+		t.ok(Array.isArray(s.lines))
+		for (let l of s.lines) assertValidLine(t, l)
+	}
 }
 
 const assertValidPoi = (t, p) => {
