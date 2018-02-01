@@ -26,7 +26,12 @@ const createParseJourneyLeg = (profile, stations, lines, remarks) => {
 		if (pt.dep.dTimeR && pt.dep.dTimeS) {
 			const realtime = profile.parseDateTime(profile, j.date, pt.dep.dTimeR)
 			const planned = profile.parseDateTime(profile, j.date, pt.dep.dTimeS)
-			res.delay = Math.round((realtime - planned) / 1000)
+			res.departureDelay = Math.round((realtime - planned) / 1000)
+		}
+		if (pt.arr.aTimeR && pt.arr.aTimeS) {
+			const realtime = profile.parseDateTime(profile, j.date, pt.arr.aTimeR)
+			const planned = profile.parseDateTime(profile, j.date, pt.arr.aTimeS)
+			res.arrivalDelay = Math.round((realtime - planned) / 1000)
 		}
 
 		if (pt.type === 'WALK') {
@@ -70,12 +75,11 @@ const createParseJourneyLeg = (profile, stations, lines, remarks) => {
 		// see also derhuerst/vbb-rest#19
 		if (pt.arr.aCncl) {
 			res.cancelled = true
-			res.arrival = res.arrivalPlatform = null
+			res.arrival = res.arrivalPlatform = res.arrivalDelay = null
 		}
 		if (pt.dep.dCncl) {
 			res.cancelled = true
-			res.departure = res.departurePlatform = null
-			res.delay = null
+			res.departure = res.departurePlatform = res.departureDelay = null
 		}
 
 		return res
