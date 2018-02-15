@@ -33,28 +33,28 @@
 	},
 	"dependencies": {
 		"capture-stack-trace": "^1.0.0",
-		"fetch-ponyfill": "^4.1.0",
-		"lodash": "^4.17.4",
-		"luxon": "^0.3.1",
+		"fetch-ponyfill": "^5.0.0",
+		"lodash": "^4.17.5",
+		"luxon": "^0.4.0",
 		"p-throttle": "^1.1.0",
 		"pinkie-promise": "^2.0.1",
-		"query-string": "^5.0.0",
+		"query-string": "^5.1.0",
 		"slugg": "^1.2.0",
-		"vbb-parse-line": "^0.3.0",
+		"vbb-parse-line": "^0.3.1",
 		"vbb-parse-ticket": "^0.2.1",
 		"vbb-short-station-name": "^0.4.0",
-		"vbb-stations": "^6.1.0",
+		"vbb-stations": "^6.2.1",
 		"vbb-translate-ids": "^3.1.0"
 	},
 	"devDependencies": {
-		"db-stations": "^1.34.0",
+		"db-stations": "^2.3.0",
 		"is-coordinates": "^2.0.2",
 		"is-roughly-equal": "^0.1.0",
 		"tap-spec": "^4.1.1",
 		"tape": "^4.8.0",
 		"tape-promise": "^2.0.1",
-		"validate-fptf": "^1.2.0",
-		"vbb-stations-autocomplete": "^3.0.0"
+		"validate-fptf": "^1.2.1",
+		"vbb-stations-autocomplete": "^3.1.0"
 	},
 	"scripts": {
 		"test": "env NODE_ENV=dev node test/index.js",
