@@ -20,10 +20,10 @@ const modes = require('./modes')
 const formatBitmask = createFormatBitmask(modes)
 
 const transformReqBody = (body) => {
-	body.client = {type: 'IPA', id: 'VBB', name: 'vbbPROD', v: '4010300'}
-	body.ext = 'VBB.1'
-	body.ver = '1.11' // todo: 1.16 with `mic` and `mac` query params
-	body.auth = {type: 'AID', aid: 'hafas-vbb-apps'}
+	body.client = {type: 'IPA', id: 'BVG', name: 'FahrInfo', v: '4070700'}
+	body.ext = 'BVG.1'
+	body.ver = '1.15' // todo: 1.16 with `mic` and `mac` query params
+	body.auth = {type: 'AID', aid: '1Rxs112shyHLatUX4fofnmdxK'}
 
 	return body
 }
@@ -167,7 +167,7 @@ const formatProducts = (products) => {
 const vbbProfile = {
 	locale: 'de-DE',
 	timezone: 'Europe/Berlin',
-	endpoint: 'https://fahrinfo.vbb.de/bin/mgate.exe',
+	endpoint: 'https://bvg-apps.hafas.de/bin/mgate.exe',
 	transformReqBody,
 
 	products: modes.allProducts,

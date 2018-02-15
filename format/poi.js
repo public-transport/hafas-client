@@ -1,5 +1,6 @@
 'use strict'
 
+const formatLocationIdentifier = require('./location-identifier')
 const formatCoord = require('./coord')
 
 const formatPoi = (p) => {
@@ -8,13 +9,14 @@ const formatPoi = (p) => {
 	}
 
 	return {
-		type: 'P',
 		name: p.name,
-		lid: 'L=' + p.id,
-		crd: {
-			x: formatCoord(p.longitude),
-			y: formatCoord(p.latitude)
-		}
+		lid: formatLocationIdentifier({
+			A: '4', // POI
+			O: p.name,
+			X: formatCoord(p.longitude),
+			Y: formatCoord(p.latitude),
+			L: p.id
+		})
 	}
 }
 

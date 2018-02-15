@@ -345,11 +345,11 @@ test('nearby', co(function* (t) {
 
 
 test('locations', co(function* (t) {
-	const locations = yield client.locations('Alexanderplatz', {results: 10})
+	const locations = yield client.locations('Alexanderplatz', {results: 20})
 
 	t.ok(Array.isArray(locations))
 	t.ok(locations.length > 0)
-	t.ok(locations.length <= 10)
+	t.ok(locations.length <= 20)
 	for (let l of locations) {
 		if (l.type === 'station') assertValidStation(t, l)
 		else assertValidLocation(t, l)

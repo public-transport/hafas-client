@@ -1,5 +1,6 @@
 'use strict'
 
+const formatLocationIdentifier = require('./location-identifier')
 const formatCoord = require('./coord')
 
 const formatAddress = (a) => {
@@ -7,13 +8,16 @@ const formatAddress = (a) => {
 		throw new Error('invalid address')
 	}
 
+	const data = {
+		A: '2', // address
+		O: a.address,
+		X: formatCoord(a.longitude),
+		Y: formatCoord(a.latitude)
+	}
+	if (a.id) data.L = a.id
 	return {
-		type: 'A',
 		name: a.address,
-		crd: {
-			x: formatCoord(a.longitude),
-			y: formatCoord(a.latitude)
-		}
+		lid: formatLocationIdentifier(data)
 	}
 }
 
