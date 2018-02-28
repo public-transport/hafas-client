@@ -7,12 +7,14 @@ const validateProfile = require('./lib/validate-profile')
 const defaultProfile = require('./lib/default-profile')
 const _request = require('./lib/request')
 
+const isObj = o => o !== null && 'object' === typeof o && !Array.isArray(o)
+
 const createClient = (profile, request = _request) => {
 	profile = Object.assign({}, defaultProfile, profile)
 	validateProfile(profile)
 
 	const departures = (station, opt = {}) => {
-		if ('object' === typeof station) station = profile.formatStation(station.id)
+		if (isObj(station)) station = profile.formatStation(station.id)
 		else if ('string' === typeof station) station = profile.formatStation(station)
 		else throw new Error('station must be an object or a string.')
 
@@ -108,7 +110,9 @@ const createClient = (profile, request = _request) => {
 	}
 
 	const locations = (query, opt = {}) => {
-		if ('string' !== typeof query) throw new Error('query must be a string.')
+		if ('string' !== typeof query || !query) {
+			throw new Error('query must be a non-empty string.')
+		}
 		opt = Object.assign({
 			fuzzy: true, // find only exact matches?
 			results: 10, // how many search results?
@@ -158,7 +162,7 @@ const createClient = (profile, request = _request) => {
 	}
 
 	const nearby = (location, opt = {}) => {
-		if ('object' !== typeof location || Array.isArray(location)) {
+		if (!isObj(location)) {
 			throw new Error('location must be an object.')
 		} else if (location.type !== 'location') {
 			throw new Error('invalid location object.')
@@ -200,6 +204,12 @@ const createClient = (profile, request = _request) => {
 	}
 
 	const journeyLeg = (ref, lineName, opt = {}) => {
+		if ('string' !== typeof ref || !ref) {
+			throw new Error('ref must be a non-empty string.')
+		}
+		if ('string' !== typeof lineName || !lineName) {
+			throw new Error('lineName must be a non-empty string.')
+		}
 		opt = Object.assign({
 			passedStations: true // return stations on the way?
 		}, opt)
