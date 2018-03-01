@@ -100,6 +100,8 @@ test('Berlin Jungfernheide to München Hbf', co(function* (t) {
 	t.ok(Array.isArray(journeys))
 	t.ok(journeys.length > 0, 'no journeys')
 	for (let journey of journeys) {
+		t.equal(journey.type, 'journey')
+
 		assertValidStation(t, journey.origin)
 		assertValidStationProducts(t, journey.origin.products)
 		if (!(yield findStation(journey.origin.id))) {

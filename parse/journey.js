@@ -14,6 +14,7 @@ const createParseJourney = (profile, stations, lines, remarks) => {
 	const parseJourney = (j) => {
 		const legs = j.secL.map(leg => parseLeg(j, leg))
 		const res = {
+			type: 'journey',
 			legs,
 			origin: legs[0].origin,
 			destination: legs[legs.length - 1].destination,
