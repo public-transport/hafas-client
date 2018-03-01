@@ -67,6 +67,8 @@ test('journeys – station to station', co(function* (t) {
 	t.strictEqual(journeys.length, 3)
 
 	for (let journey of journeys) {
+		t.equal(journey.type, 'journey')
+
 		assertValidStation(t, journey.origin)
 		assertValidStationProducts(t, journey.origin.products)
 		t.ok(journey.origin.name.indexOf('(Berlin)') === -1)
