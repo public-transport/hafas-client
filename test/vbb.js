@@ -148,7 +148,7 @@ test('journeys – only subway', co(function* (t) {
 
 test('journeys – fails with no product', co(function* (t) {
 	try {
-		yield client.journeys(spichernstr, bismarckstr, {
+		client.journeys(spichernstr, bismarckstr, {
 			when,
 			products: {
 				suburban: false,
@@ -160,6 +160,8 @@ test('journeys – fails with no product', co(function* (t) {
 				regional: false
 			}
 		})
+		// silence rejections, we're only interested in exceptions
+		.catch(() => {})
 	} catch (err) {
 		t.ok(err, 'error thrown')
 		t.end()
