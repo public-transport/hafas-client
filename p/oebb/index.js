@@ -48,10 +48,10 @@ const createParseLine = (profile, operators) => {
 	return parseLineWithMode
 }
 
-const parseLocation = (profile, l) => {
+const parseLocation = (profile, l, lines) => {
 	// ÖBB has some 'stations' **in austria** with no departures/products,
 	// like station entrances, that are actually POIs.
-	const res = _parseLocation(profile, l)
+	const res = _parseLocation(profile, l, lines)
 	if (
 		res.type === 'station' &&
 		!res.products &&

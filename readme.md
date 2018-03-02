@@ -4,8 +4,8 @@
 
 HAFAS endpoint | wrapper library? | docs | example code | source code
 ---------------|------------------|------|---------|------------
-[Deutsche Bahn](https://en.wikipedia.org/wiki/Deutsche_Bahn) | [`vbb-hafas`](https://github.com/derhuerst/vbb-hafas), which has additional features | [docs](p/db/readme.md) | [example code](p/db/example.js) | [src](p/db/index.js)
-[Berlin & Brandenburg public transport](https://en.wikipedia.org/wiki/Verkehrsverbund_Berlin-Brandenburg) | [`db-hafas`](https://github.com/derhuerst/db-hafas), which has additional features | [docs](p/vbb/readme.md) | [example code](p/vbb/example.js) | [src](p/vbb/index.js)
+[Deutsche Bahn](https://en.wikipedia.org/wiki/Deutsche_Bahn) | [`db-hafas`](https://github.com/derhuerst/db-hafas), which has additional features | [docs](p/db/readme.md) | [example code](p/db/example.js) | [src](p/db/index.js)
+[Berlin & Brandenburg public transport](https://en.wikipedia.org/wiki/Verkehrsverbund_Berlin-Brandenburg) | [`vbb-hafas`](https://github.com/derhuerst/vbb-hafas), which has additional features | [docs](p/vbb/readme.md) | [example code](p/vbb/example.js) | [src](p/vbb/index.js)
 [Österreichische Bundesbahnen (ÖBB)](https://en.wikipedia.org/wiki/Austrian_Federal_Railways) | – | [docs](p/oebb/readme.md) | [example code](p/oebb/example.js) | [src](p/oebb/index.js)
 
 [![npm version](https://img.shields.io/npm/v/hafas-client.svg)](https://www.npmjs.com/package/hafas-client)
@@ -34,6 +34,7 @@ npm install hafas-client
 - [`journeyLeg(ref, lineName, [opt])`](docs/journey-leg.md) – get details for a leg of a journey
 - [`departures(station, [opt])`](docs/departures.md) – query the next departures at a station
 - [`locations(query, [opt])`](docs/locations.md) – find stations, POIs and addresses
+- [`location(id)`](docs/location.md) – get details about a location
 - [`nearby(location, [opt])`](docs/nearby.md) – show stations & POIs around
 - [`radar(query, [opt])`](docs/radar.md) – find all vehicles currently in a certain area
 

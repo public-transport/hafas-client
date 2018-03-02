@@ -5,9 +5,9 @@ const isRoughlyEqual = require('is-roughly-equal')
 const stations = require('vbb-stations-autocomplete')
 const tapePromise = require('tape-promise').default
 const tape = require('tape')
-const co = require('co')
 const shorten = require('vbb-short-station-name')
 
+const co = require('./co')
 const createClient = require('..')
 const vbbProfile = require('../p/vbb')
 const {
@@ -49,8 +49,7 @@ const assertValidLine = (t, l) => {
 	if (l.night !== null) t.equal(typeof l.night, 'boolean')
 }
 
-// todo
-const findStation = (query) => stations(query, true, false)
+const findStation = (query) => stations(query, true, false)[0]
 
 const test = tapePromise(tape)
 const client = createClient(vbbProfile)
@@ -59,7 +58,7 @@ const amrumerStr = '900000009101'
 const spichernstr = '900000042101'
 const bismarckstr = '900000024201'
 
-test('journeys – station to station', co.wrap(function* (t) {
+test('journeys – station to station', co(function* (t) {
 	const journeys = yield client.journeys(spichernstr, amrumerStr, {
 		results: 3, when, passedStations: true
 	})
@@ -97,7 +96,11 @@ test('journeys – station to station', co.wrap(function* (t) {
 		assertValidWhen(t, leg.arrival, when)
 
 		assertValidLine(t, leg.line)
-		t.ok(findStation(leg.direction))
+		if (!findStation(leg.direction)) {
+			const err = new Error('unknown direction: ' + leg.direction)
+			err.stack = err.stack.split('\n').slice(0, 2).join('\n')
+			console.error(err)
+		}
 		t.ok(leg.direction.indexOf('(Berlin)') === -1)
 
 		t.ok(Array.isArray(leg.passed))
@@ -112,7 +115,7 @@ test('journeys – station to station', co.wrap(function* (t) {
 	t.end()
 }))
 
-test('journeys – only subway', co.wrap(function* (t) {
+test('journeys – only subway', co(function* (t) {
 	const journeys = yield client.journeys(spichernstr, bismarckstr, {
 		results: 20, when,
 		products: {
@@ -141,7 +144,7 @@ test('journeys – only subway', co.wrap(function* (t) {
 	t.end()
 }))
 
-test('journeys – fails with no product', co.wrap(function* (t) {
+test('journeys – fails with no product', co(function* (t) {
 	try {
 		yield client.journeys(spichernstr, bismarckstr, {
 			when,
@@ -161,7 +164,7 @@ test('journeys – fails with no product', co.wrap(function* (t) {
 	}
 }))
 
-test('journey leg details', co.wrap(function* (t) {
+test('journey leg details', co(function* (t) {
 	const journeys = yield client.journeys(spichernstr, amrumerStr, {
 		results: 1, when
 	})
@@ -187,7 +190,7 @@ test('journey leg details', co.wrap(function* (t) {
 
 
 
-test('journeys – station to address', co.wrap(function* (t) {
+test('journeys – station to address', co(function* (t) {
 	const journeys = yield client.journeys(spichernstr, {
 		type: 'location', address: 'Torfstraße 17',
 		latitude: 52.5416823, longitude: 13.3491223
@@ -214,7 +217,7 @@ test('journeys – station to address', co.wrap(function* (t) {
 
 
 
-test('journeys – station to POI', co.wrap(function* (t) {
+test('journeys – station to POI', co(function* (t) {
 	const journeys = yield client.journeys(spichernstr, {
 		type: 'location', id: '9980720', name: 'ATZE Musiktheater',
 		latitude: 52.543333, longitude: 13.351686
@@ -241,7 +244,27 @@ test('journeys – station to POI', co.wrap(function* (t) {
 
 
 
-test('departures', co.wrap(function* (t) {
+test('journeys – with stopover', co(function* (t) {
+	const halleschesTor = '900000012103'
+	const leopoldplatz = '900000009102'
+	const [journey] = yield client.journeys(spichernstr, halleschesTor, {
+		via: leopoldplatz,
+		results: 1
+	})
+
+	const i = journey.legs.findIndex(leg => leg.destination.id === leopoldplatz)
+	t.ok(i >= 0, 'no leg with Leopoldplatz as destination')
+
+	const nextLeg = journey.legs[i + 1]
+	t.ok(nextLeg)
+	t.equal(nextLeg.origin.id, leopoldplatz)
+
+	t.end()
+}))
+
+
+
+test('departures', co(function* (t) {
 	const deps = yield client.departures(spichernstr, {duration: 5, when})
 
 	t.ok(Array.isArray(deps))
@@ -256,13 +279,17 @@ test('departures', co.wrap(function* (t) {
 		t.strictEqual(dep.station.id, spichernstr)
 
 		assertValidWhen(t, dep.when, when)
-		t.ok(findStation(dep.direction))
+		if (!findStation(dep.direction)) {
+			const err = new Error('unknown direction: ' + dep.direction)
+			err.stack = err.stack.split('\n').slice(0, 2).join('\n')
+			console.error(err)
+		}
 		assertValidLine(t, dep.line)
 	}
 	t.end()
 }))
 
-test('departures with station object', co.wrap(function* (t) {
+test('departures with station object', co(function* (t) {
 	yield client.departures({
 		type: 'station',
 		id: spichernstr,
@@ -278,7 +305,7 @@ test('departures with station object', co.wrap(function* (t) {
 	t.end()
 }))
 
-test('departures at 7-digit station', co.wrap(function* (t) {
+test('departures at 7-digit station', co(function* (t) {
 	const eisenach = '8010097' // see derhuerst/vbb-hafas#22
 	yield client.departures(eisenach, {when})
 	t.pass('did not fail')
@@ -288,7 +315,7 @@ test('departures at 7-digit station', co.wrap(function* (t) {
 
 
 
-test('nearby', co.wrap(function* (t) {
+test('nearby', co(function* (t) {
 	// Berliner Str./Bundesallee
 	const nearby = yield client.nearby({
 		type: 'location',
@@ -317,7 +344,7 @@ test('nearby', co.wrap(function* (t) {
 
 
 
-test('locations', co.wrap(function* (t) {
+test('locations', co(function* (t) {
 	const locations = yield client.locations('Alexanderplatz', {results: 10})
 
 	t.ok(Array.isArray(locations))
@@ -334,9 +361,23 @@ test('locations', co.wrap(function* (t) {
 	t.end()
 }))
 
+test('location', co(function* (t) {
+	const loc = yield client.location(spichernstr)
+
+	assertValidStation(t, loc)
+	t.equal(loc.id, spichernstr)
+
+	t.ok(Array.isArray(loc.lines))
+	if (Array.isArray(loc.lines)) {
+		for (let line of loc.lines) assertValidLine(t, line)
+	}
+
+	t.end()
+}))
 
 
-test('radar', co.wrap(function* (t) {
+
+test('radar', co(function* (t) {
 	const vehicles = yield client.radar(52.52411, 13.41002, 52.51942, 13.41709, {
 		duration: 5 * 60, when
 	})
@@ -345,7 +386,11 @@ test('radar', co.wrap(function* (t) {
 	t.ok(vehicles.length > 0)
 	for (let v of vehicles) {
 
-		t.ok(findStation(v.direction))
+		if (!findStation(v.direction)) {
+			const err = new Error('unknown direction: ' + v.direction)
+			err.stack = err.stack.split('\n').slice(0, 2).join('\n')
+			console.error(err)
+		}
 		assertValidLine(t, v.line)
 
 		t.equal(typeof v.location.latitude, 'number')

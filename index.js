@@ -5,9 +5,9 @@ const maxBy = require('lodash/maxBy')
 
 const validateProfile = require('./lib/validate-profile')
 const defaultProfile = require('./lib/default-profile')
-const request = require('./lib/request')
+const _request = require('./lib/request')
 
-const createClient = (profile) => {
+const createClient = (profile, request = _request) => {
 	profile = Object.assign({}, defaultProfile, profile)
 	validateProfile(profile)
 
@@ -83,7 +83,7 @@ const createClient = (profile) => {
 			maxChg: opt.transfers,
 			minChgTime: opt.transferTime,
 			depLocL: [from],
-			viaLocL: opt.via ? [opt.via] : null,
+			viaLocL: opt.via ? [{loc: opt.via}] : null,
 			arrLocL: [to],
 			jnyFltrL: filters,
 			getTariff: !!opt.tickets,
@@ -133,7 +133,27 @@ const createClient = (profile) => {
 		.then((d) => {
 			if (!d.match || !Array.isArray(d.match.locL)) return []
 			const parse = profile.parseLocation
-			return d.match.locL.map(loc => parse(profile, loc))
+			return d.match.locL.map(loc => parse(profile, loc, d.lines))
+		})
+	}
+
+	const location = (station) => {
+		if ('object' === typeof station) station = profile.formatStation(station.id)
+		else if ('string' === typeof station) station = profile.formatStation(station)
+		else throw new Error('station must be an object or a string.')
+
+		return request(profile, {
+			meth: 'LocDetails',
+			req: {
+				locL: [station]
+			}
+		})
+		.then((d) => {
+			if (!d || !Array.isArray(d.locL) || !d.locL[0]) {
+				// todo: proper stack trace?
+				throw new Error('invalid response')
+			}
+			return profile.parseLocation(profile, d.locL[0], d.lines)
 		})
 	}
 
@@ -248,7 +268,7 @@ const createClient = (profile) => {
 		})
 	}
 
-	const client = {departures, journeys, locations, nearby}
+	const client = {departures, journeys, locations, location, nearby}
 	if (profile.journeyLeg) client.journeyLeg = journeyLeg
 	if (profile.radar) client.radar = radar
 	Object.defineProperty(client, 'profile', {value: profile})

@@ -20,7 +20,7 @@ const createParseDeparture = (profile, stations, lines, remarks) => {
 			remarks: d.remL ? d.remL.map(findRemark) : [],
 			trip: +d.jid.split('|')[1] // todo: this seems brittle
 		}
-		// todo: res.trip from rawLine.prodCtx.num
+		// todo: res.trip from rawLine.prodCtx.num?
 
 		if (d.stbStop.dTimeR && d.stbStop.dTimeS) {
 			const realtime = profile.parseDateTime(profile, d.date, d.stbStop.dTimeR)

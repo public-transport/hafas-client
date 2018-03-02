@@ -4,12 +4,12 @@
 // const getStations = require('db-stations').full
 const tapePromise = require('tape-promise').default
 const tape = require('tape')
-const co = require('co')
 const isRoughlyEqual = require('is-roughly-equal')
 const validateFptf = require('validate-fptf')
 
 const validateLineWithoutMode = require('./validate-line-without-mode')
 
+const co = require('./co')
 const createClient = require('..')
 const oebbProfile = require('../p/oebb')
 const products = require('../p/oebb/products')
@@ -110,7 +110,7 @@ const assertValidLine = (t, l) => { // with optional mode
 const test = tapePromise(tape)
 const client = createClient(oebbProfile)
 
-test('Salzburg Hbf to Wien Westbahnhof', co.wrap(function* (t) {
+test('Salzburg Hbf to Wien Westbahnhof', co(function* (t) {
 	const salzburgHbf = '8100002'
 	const wienWestbahnhof = '1291501'
 	const journeys = yield client.journeys(salzburgHbf, wienWestbahnhof, {
@@ -175,7 +175,7 @@ test('Salzburg Hbf to Wien Westbahnhof', co.wrap(function* (t) {
 	t.end()
 }))
 
-test('Salzburg Hbf to 1220 Wien, Wagramer Straße 5', co.wrap(function* (t) {
+test('Salzburg Hbf to 1220 Wien, Wagramer Straße 5', co(function* (t) {
 	const salzburgHbf = '8100002'
 	const wagramerStr = {
 		type: 'location',
@@ -213,7 +213,7 @@ test('Salzburg Hbf to 1220 Wien, Wagramer Straße 5', co.wrap(function* (t) {
 	t.end()
 }))
 
-test('Albertina to Salzburg Hbf', co.wrap(function* (t) {
+test('Albertina to Salzburg Hbf', co(function* (t) {
 	const albertina = {
 		type: 'location',
     	latitude: 48.204699,
@@ -252,7 +252,27 @@ test('Albertina to Salzburg Hbf', co.wrap(function* (t) {
 	t.end()
 }))
 
-test('leg details for Wien Westbahnhof to München Hbf', co.wrap(function* (t) {
+test('Wien to Klagenfurt Hbf with stopover at Salzburg Hbf', co(function* (t) {
+	const wien = '1190100'
+	const klagenfurtHbf = '8100085'
+	const salzburgHbf = '8100002'
+	const [journey] = yield client.journeys(wien, klagenfurtHbf, {
+		via: salzburgHbf,
+		results: 1,
+		when
+	})
+
+	const i1 = journey.legs.findIndex(leg => leg.destination.id === salzburgHbf)
+	t.ok(i1 >= 0, 'no leg with Salzburg Hbf as destination')
+
+	const i2 = journey.legs.findIndex(leg => leg.origin.id === salzburgHbf)
+	t.ok(i2 >= 0, 'no leg with Salzburg Hbf as origin')
+	t.ok(i2 > i1, 'leg with Salzburg Hbf as origin must be after leg to it')
+
+	t.end()
+}))
+
+test('leg details for Wien Westbahnhof to München Hbf', co(function* (t) {
 	const wienWestbahnhof = '1291501'
 	const muenchenHbf = '8000261'
 	const journeys = yield client.journeys(wienWestbahnhof, muenchenHbf, {
@@ -278,7 +298,7 @@ test('leg details for Wien Westbahnhof to München Hbf', co.wrap(function* (t) {
 	t.end()
 }))
 
-test('departures at Salzburg Hbf', co.wrap(function* (t) {
+test('departures at Salzburg Hbf', co(function* (t) {
 	const salzburgHbf = '8100002'
 	const deps = yield client.departures(salzburgHbf, {
 		duration: 5, when
@@ -299,7 +319,7 @@ test('departures at Salzburg Hbf', co.wrap(function* (t) {
 	t.end()
 }))
 
-test('nearby Salzburg Hbf', co.wrap(function* (t) {
+test('nearby Salzburg Hbf', co(function* (t) {
 	const salzburgHbfPosition = {
 		type: 'location',
 		longitude: 13.045604,
@@ -324,7 +344,7 @@ test('nearby Salzburg Hbf', co.wrap(function* (t) {
 	t.end()
 }))
 
-test('locations named Salzburg', co.wrap(function* (t) {
+test('locations named Salzburg', co(function* (t) {
 	const locations = yield client.locations('Salzburg', {
 		results: 10
 	})
@@ -342,7 +362,17 @@ test('locations named Salzburg', co.wrap(function* (t) {
 	t.end()
 }))
 
-test('radar Salzburg', co.wrap(function* (t) {
+test('location', co(function* (t) {
+	const grazHbf = '8100173'
+	const loc = yield client.location(grazHbf)
+
+	assertValidStation(t, loc)
+	t.equal(loc.id, grazHbf)
+
+	t.end()
+}))
+
+test('radar Salzburg', co(function* (t) {
 	const vehicles = yield client.radar(47.827203, 13.001261, 47.773278, 13.07562, {
 		duration: 5 * 60, when
 	})

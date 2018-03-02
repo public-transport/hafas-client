@@ -55,15 +55,15 @@ const createParseLine = (profile, operators) => {
 	return parseLineWithMode
 }
 
-const parseLocation = (profile, l) => {
-	const res = _parseLocation(profile, l)
+const parseLocation = (profile, l, lines) => {
+	const res = _parseLocation(profile, l, lines)
 
 	if (res.type === 'station') {
 		res.name = shorten(res.name)
 		res.id = to12Digit(res.id)
 		if (!res.location.latitude || !res.location.longitude) {
 			const [s] = getStations(res.id)
-			if (s) Object.assign(res.location, s.coordinates)
+			if (s) Object.assign(res.location, s.location)
 		}
 	}
 	return res
