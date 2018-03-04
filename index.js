@@ -101,41 +101,96 @@ const createClient = (profile, request = _request) => {
 			filters.push(profile.filters.accessibility[opt.accessibility])
 		}
 
-		const query = profile.transformJourneysQuery({
-			outDate: profile.formatDate(profile, opt.when),
-			outTime: profile.formatTime(profile, opt.when),
-			ctxScr: journeysRef,
-			numF: opt.results,
-			getPasslist: !!opt.passedStations,
-			maxChg: opt.transfers,
-			minChgTime: opt.transferTime,
-			depLocL: [from],
-			viaLocL: opt.via ? [{loc: opt.via}] : null,
-			arrLocL: [to],
-			jnyFltrL: filters,
-			getTariff: !!opt.tickets,
+		// With protocol version `1.16`, the VBB endpoint fails with
+		// `CGI_READ_FAILED` if you pass `numF`, the parameter for the number
+		// of results. To circumvent this, we loop here, collecting journeys
+		// until we have enough.
+		// see https://github.com/derhuerst/hafas-client/pull/23#issuecomment-370246163
+		// todo: check if `numF` is supported again, revert this change
+		const journeys = []
+		const more = (when, journeysRef) => {
+			const query = {
+				// numF: opt.results,
+				getPasslist: !!opt.passedStations,
+				maxChg: opt.transfers,
+				minChgTime: opt.transferTime,
+				depLocL: [from],
+				viaLocL: opt.via ? [{loc: opt.via}] : null,
+				arrLocL: [to],
+				jnyFltrL: filters,
+				getTariff: !!opt.tickets,
 
-			// todo: what is req.gisFltrL?
-			getPT: true, // todo: what is this?
-			outFrwd: true, // todo: what is this?
-			getIV: false, // todo: walk & bike as alternatives?
-			getPolyline: false // todo: shape for displaying on a map?
-		}, opt)
+				// todo: what is req.gisFltrL?
+				getPT: true, // todo: what is this?
+				outFrwd: true, // todo: what is this?
+				getIV: false, // todo: walk & bike as alternatives?
+				getPolyline: false // todo: shape for displaying on a map?
+			}
+			if (when) {
+				query.outDate = profile.formatDate(profile, when)
+				query.outTime = profile.formatTime(profile, when)
+			} else if (journeysRef) {
+				query.ctxScr = journeysRef
+			} else throw new Error('when or ref required')
 
-		return request(profile, {
-			cfg: {polyEnc: 'GPA'},
-			meth: 'TripSearch',
-			req: query
-		})
-		.then((d) => {
-			if (!Array.isArray(d.outConL)) return []
-			const parse = profile.parseJourney(profile, d.locations, d.lines, d.remarks)
-			const res = d.outConL.map(parse)
+			return request(profile, {
+				cfg: {polyEnc: 'GPA'},
+				meth: 'TripSearch',
+				req: profile.transformJourneysQuery(query, opt)
+			})
+			.then((d) => {
+				if (!Array.isArray(d.outConL)) return []
+				const parse = profile.parseJourney(profile, d.locations, d.lines, d.remarks)
+				if (!journeys.earlierRef) journeys.earlierRef = d.outCtxScrB
 
-			if (d.outCtxScrB) res.earlierRef = d.outCtxScrB
-			if (d.outCtxScrF) res.laterRef = d.outCtxScrF
-			return res
-		})
+				for (let j of d.outConL) {
+					journeys.push(parse(j))
+					if (journeys.length === opt.results) { // collected enough
+						journeys.laterRef = d.outCtxScrF
+						return journeys
+					}
+				}
+				return more(null, d.outCtxScrF) // otherwise continue
+			})
+		}
+
+		return more(opt.when, journeysRef)
+
+		// const query = profile.transformJourneysQuery({
+		// 	outDate: profile.formatDate(profile, opt.when),
+		// 	outTime: profile.formatTime(profile, opt.when),
+		// 	ctxScr: journeysRef,
+		// 	numF: opt.results,
+		// 	getPasslist: !!opt.passedStations,
+		// 	maxChg: opt.transfers,
+		// 	minChgTime: opt.transferTime,
+		// 	depLocL: [from],
+		// 	viaLocL: opt.via ? [{loc: opt.via}] : null,
+		// 	arrLocL: [to],
+		// 	jnyFltrL: filters,
+		// 	getTariff: !!opt.tickets,
+
+		// 	// todo: what is req.gisFltrL?
+		// 	getPT: true, // todo: what is this?
+		// 	outFrwd: true, // todo: what is this?
+		// 	getIV: false, // todo: walk & bike as alternatives?
+		// 	getPolyline: false // todo: shape for displaying on a map?
+		// }, opt)
+
+		// return request(profile, {
+		// 	cfg: {polyEnc: 'GPA'},
+		// 	meth: 'TripSearch',
+		// 	req: query
+		// })
+		// .then((d) => {
+		// 	if (!Array.isArray(d.outConL)) return []
+		// 	const parse = profile.parseJourney(profile, d.locations, d.lines, d.remarks)
+		// 	const res = d.outConL.map(parse)
+
+		// 	if (d.outCtxScrB) res.earlierRef = d.outCtxScrB
+		// 	if (d.outCtxScrF) res.laterRef = d.outCtxScrF
+		// 	return res
+		// })
 	}
 
 	const locations = (query, opt = {}) => {
