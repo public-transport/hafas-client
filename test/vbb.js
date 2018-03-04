@@ -168,6 +168,44 @@ test('journeys – fails with no product', co(function* (t) {
 	}
 }))
 
+test('earlier/later journeys', co(function* (t) {
+	const model = yield client.journeys(spichernstr, bismarckstr, {
+		results: 3, when
+	})
+
+	t.equal(typeof model.earlierJourneysRef, 'string')
+	t.ok(model.earlierJourneysRef)
+	t.equal(typeof model.laterJourneysRef, 'string')
+	t.ok(model.laterJourneysRef)
+
+	let earliestDep = Infinity, latestDep = -Infinity
+	for (let j of model) {
+		const dep = +new Date(j.departure)
+		if (dep < earliestDep) earliestDep = dep
+		else if (dep > latestDep) latestDep = dep
+	}
+
+	const earlier = yield client.journeys(spichernstr, bismarckstr, {
+		results: 3,
+		// todo: single journey ref?
+		beforeJourneys: model.earlierJourneysRef
+	})
+	for (let j of earlier) {
+		t.ok(new Date(j.departure) < earliestDep)
+	}
+
+	const later = yield client.journeys(spichernstr, bismarckstr, {
+		results: 3,
+		// todo: single journey ref?
+		afterJourneys: model.laterJourneysRef
+	})
+	for (let j of later) {
+		t.ok(new Date(j.departure) > latestDep)
+	}
+
+	t.end()
+}))
+
 test('journey leg details', co(function* (t) {
 	const journeys = yield client.journeys(spichernstr, amrumerStr, {
 		results: 1, when
