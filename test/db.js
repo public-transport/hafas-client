@@ -53,7 +53,7 @@ const findStation = (id) => new Promise((yay, nay) => {
 
 const isJungfernheide = (s) => {
 	return s.type === 'station' &&
-	(s.id === '008011167' || s.id === '8011167') &&
+	(s.id === '008011167' || s.id === jungfernh) &&
 	s.name === 'Berlin Jungfernheide' &&
 	s.location &&
 	isRoughlyEqual(s.location.latitude, 52.530408, .0005) &&
@@ -62,7 +62,7 @@ const isJungfernheide = (s) => {
 
 const assertIsJungfernheide = (t, s) => {
 	t.equal(s.type, 'station')
-	t.ok(s.id === '008011167' || s.id === '8011167', 'id should be 8011167')
+	t.ok(s.id === '008011167' || s.id === jungfernh, 'id should be 8011167')
 	t.equal(s.name, 'Berlin Jungfernheide')
 	t.ok(s.location)
 	t.ok(isRoughlyEqual(s.location.latitude, 52.530408, .0005))
@@ -92,8 +92,14 @@ const assertValidPrice = (t, p) => {
 const test = tapePromise(tape)
 const client = createClient(dbProfile)
 
+const jungfernh = '8011167'
+const berlinHbf = '8011160'
+const münchenHbf = '8000261'
+const hannoverHbf = '8000152'
+const regensburgHbf = '8000309'
+
 test('Berlin Jungfernheide to München Hbf', co(function* (t) {
-	const journeys = yield client.journeys('8011167', '8000261', {
+	const journeys = yield client.journeys(jungfernh, münchenHbf, {
 		when, passedStations: true
 	})
 
@@ -154,7 +160,7 @@ test('Berlin Jungfernheide to München Hbf', co(function* (t) {
 }))
 
 test('Berlin Jungfernheide to Torfstraße 17', co(function* (t) {
-	const journeys = yield client.journeys('8011167', {
+	const journeys = yield client.journeys(jungfernh, {
 		type: 'location', address: 'Torfstraße 17',
 		latitude: 52.5416823, longitude: 13.3491223
 	}, {when})
@@ -183,7 +189,7 @@ test('Berlin Jungfernheide to Torfstraße 17', co(function* (t) {
 }))
 
 test('Berlin Jungfernheide to ATZE Musiktheater', co(function* (t) {
-	const journeys = yield client.journeys('8011167', {
+	const journeys = yield client.journeys(jungfernh, {
 		type: 'location', id: '991598902', name: 'ATZE Musiktheater',
 		latitude: 52.542417, longitude: 13.350437
 	}, {when})
@@ -212,9 +218,6 @@ test('Berlin Jungfernheide to ATZE Musiktheater', co(function* (t) {
 }))
 
 test('Berlin Hbf to München Hbf with stopover at Hannover Hbf', co(function* (t) {
-	const berlinHbf = '8011160'
-	const münchenHbf = '8000261'
-	const hannoverHbf = '8000152'
 	const [journey] = yield client.journeys(berlinHbf, münchenHbf, {
 		via: hannoverHbf,
 		results: 1
@@ -230,8 +233,46 @@ test('Berlin Hbf to München Hbf with stopover at Hannover Hbf', co(function* (t
 	t.end()
 }))
 
+test('earlier/later journeys, Jungfernheide -> München Hbf', co(function* (t) {
+	const model = yield client.journeys(jungfernh, münchenHbf, {
+		results: 3, when
+	})
+
+	t.equal(typeof model.earlierJourneysRef, 'string')
+	t.ok(model.earlierJourneysRef)
+	t.equal(typeof model.laterJourneysRef, 'string')
+	t.ok(model.laterJourneysRef)
+
+	let earliestDep = Infinity, latestDep = -Infinity
+	for (let j of model) {
+		const dep = +new Date(j.departure)
+		if (dep < earliestDep) earliestDep = dep
+		else if (dep > latestDep) latestDep = dep
+	}
+
+	const earlier = yield client.journeys(jungfernh, münchenHbf, {
+		results: 3,
+		// todo: single journey ref?
+		beforeJourneys: model.earlierJourneysRef
+	})
+	for (let j of earlier) {
+		t.ok(new Date(j.departure) < earliestDep)
+	}
+
+	const later = yield client.journeys(jungfernh, münchenHbf, {
+		results: 3,
+		// todo: single journey ref?
+		afterJourneys: model.laterJourneysRef
+	})
+	for (let j of later) {
+		t.ok(new Date(j.departure) > latestDep)
+	}
+
+	t.end()
+}))
+
 test('departures at Berlin Jungfernheide', co(function* (t) {
-	const deps = yield client.departures('8011167', {
+	const deps = yield client.departures(jungfernh, {
 		duration: 5, when
 	})
 
@@ -252,7 +293,7 @@ test('departures at Berlin Jungfernheide', co(function* (t) {
 test('departures with station object', co(function* (t) {
 	yield client.departures({
 		type: 'station',
-		id: '8011167',
+		id: jungfernh,
 		name: 'Berlin Jungfernheide',
 		location: {
 			type: 'location',
@@ -308,7 +349,6 @@ test('locations named Jungfernheide', co(function* (t) {
 }))
 
 test('location', co(function* (t) {
-	const regensburgHbf = '8000309'
 	const loc = yield client.location(regensburgHbf)
 
 	assertValidStation(t, loc)
