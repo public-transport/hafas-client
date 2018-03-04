@@ -159,42 +159,6 @@ const createClient = (profile, request = _request) => {
 		}
 
 		return more(opt.when, journeysRef)
-
-		// const query = profile.transformJourneysQuery({
-		// 	outDate: profile.formatDate(profile, opt.when),
-		// 	outTime: profile.formatTime(profile, opt.when),
-		// 	ctxScr: journeysRef,
-		// 	numF: opt.results,
-		// 	getPasslist: !!opt.passedStations,
-		// 	maxChg: opt.transfers,
-		// 	minChgTime: opt.transferTime,
-		// 	depLocL: [from],
-		// 	viaLocL: opt.via ? [{loc: opt.via}] : null,
-		// 	arrLocL: [to],
-		// 	jnyFltrL: filters,
-		// 	getTariff: !!opt.tickets,
-
-		// 	// todo: what is req.gisFltrL?
-		// 	getPT: true, // todo: what is this?
-		// 	outFrwd: true, // todo: what is this?
-		// 	getIV: false, // todo: walk & bike as alternatives?
-		// 	getPolyline: false // todo: shape for displaying on a map?
-		// }, opt)
-
-		// return request(profile, {
-		// 	cfg: {polyEnc: 'GPA'},
-		// 	meth: 'TripSearch',
-		// 	req: query
-		// })
-		// .then((d) => {
-		// 	if (!Array.isArray(d.outConL)) return []
-		// 	const parse = profile.parseJourney(profile, d.locations, d.lines, d.remarks)
-		// 	const res = d.outConL.map(parse)
-
-		// 	if (d.outCtxScrB) res.earlierRef = d.outCtxScrB
-		// 	if (d.outCtxScrF) res.laterRef = d.outCtxScrF
-		// 	return res
-		// })
 	}
 
 	const locations = (query, opt = {}) => {
