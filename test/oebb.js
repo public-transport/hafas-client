@@ -284,6 +284,18 @@ test('earlier/later journeys, Salzburg Hbf -> Wien Westbahnhof', co(function* (t
 	t.equal(typeof model.laterRef, 'string')
 	t.ok(model.laterRef)
 
+	// when and earlierThan/laterThan should be mutually exclusive
+	t.throws(() => {
+		client.journeys(salzburgHbf, wienWestbahnhof, {
+			when, earlierThan: model.earlierRef
+		})
+	})
+	t.throws(() => {
+		client.journeys(salzburgHbf, wienWestbahnhof, {
+			when, laterThan: model.laterRef
+		})
+	})
+
 	let earliestDep = Infinity, latestDep = -Infinity
 	for (let j of model) {
 		const dep = +new Date(j.departure)
@@ -294,7 +306,7 @@ test('earlier/later journeys, Salzburg Hbf -> Wien Westbahnhof', co(function* (t
 	const earlier = yield client.journeys(salzburgHbf, wienWestbahnhof, {
 		results: 3,
 		// todo: single journey ref?
-		beforeJourneys: model.earlierRef
+		earlierThan: model.earlierRef
 	})
 	for (let j of earlier) {
 		t.ok(new Date(j.departure) < earliestDep)
@@ -303,7 +315,7 @@ test('earlier/later journeys, Salzburg Hbf -> Wien Westbahnhof', co(function* (t
 	const later = yield client.journeys(salzburgHbf, wienWestbahnhof, {
 		results: 3,
 		// todo: single journey ref?
-		afterJourneys: model.laterRef
+		laterThan: model.laterRef
 	})
 	for (let j of later) {
 		t.ok(new Date(j.departure) > latestDep)

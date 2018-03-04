@@ -52,27 +52,27 @@ const createClient = (profile, request = _request) => {
 		from = profile.formatLocation(profile, from)
 		to = profile.formatLocation(profile, to)
 
-		if (('beforeJourneys' in opt) && ('afterJourneys' in opt)) {
-			throw new Error('opt.afterJourneys and opt.afterJourneys are mutually exclusive.')
+		if (('earlierThan' in opt) && ('laterThan' in opt)) {
+			throw new Error('opt.laterThan and opt.laterThan are mutually exclusive.')
 		}
 		let journeysRef = null
-		if ('beforeJourneys' in opt) {
-			if (!isNonEmptyString(opt.beforeJourneys)) {
-				throw new Error('opt.beforeJourneys must be a non-empty string.')
+		if ('earlierThan' in opt) {
+			if (!isNonEmptyString(opt.earlierThan)) {
+				throw new Error('opt.earlierThan must be a non-empty string.')
 			}
 			if ('when' in opt) {
-				throw new Error('opt.beforeJourneys and opt.when are mutually exclusive.')
+				throw new Error('opt.earlierThan and opt.when are mutually exclusive.')
 			}
-			journeysRef = opt.beforeJourneys
+			journeysRef = opt.earlierThan
 		}
-		if ('afterJourneys' in opt) {
-			if (!isNonEmptyString(opt.afterJourneys)) {
-				throw new Error('opt.afterJourneys must be a non-empty string.')
+		if ('laterThan' in opt) {
+			if (!isNonEmptyString(opt.laterThan)) {
+				throw new Error('opt.laterThan must be a non-empty string.')
 			}
 			if ('when' in opt) {
-				throw new Error('opt.afterJourneys and opt.when are mutually exclusive.')
+				throw new Error('opt.laterThan and opt.when are mutually exclusive.')
 			}
-			journeysRef = opt.afterJourneys
+			journeysRef = opt.laterThan
 		}
 
 		opt = Object.assign({
