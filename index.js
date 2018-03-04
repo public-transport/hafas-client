@@ -8,6 +8,7 @@ const defaultProfile = require('./lib/default-profile')
 const _request = require('./lib/request')
 
 const isObj = o => o !== null && 'object' === typeof o && !Array.isArray(o)
+const isNonEmptyString = str => 'string' === typeof str && str.length > 0
 
 const createClient = (profile, request = _request) => {
 	profile = Object.assign({}, defaultProfile, profile)
@@ -110,7 +111,7 @@ const createClient = (profile, request = _request) => {
 	}
 
 	const locations = (query, opt = {}) => {
-		if ('string' !== typeof query || !query) {
+		if (!isNonEmptyString(query)) {
 			throw new Error('query must be a non-empty string.')
 		}
 		opt = Object.assign({
@@ -204,10 +205,10 @@ const createClient = (profile, request = _request) => {
 	}
 
 	const journeyLeg = (ref, lineName, opt = {}) => {
-		if ('string' !== typeof ref || !ref) {
+		if (!isNonEmptyString(ref)) {
 			throw new Error('ref must be a non-empty string.')
 		}
-		if ('string' !== typeof lineName || !lineName) {
+		if (!isNonEmptyString(lineName)) {
 			throw new Error('lineName must be a non-empty string.')
 		}
 		opt = Object.assign({
