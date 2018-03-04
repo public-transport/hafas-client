@@ -244,8 +244,9 @@ test('journey leg details', co(function* (t) {
 
 test('journeys – station to address', co(function* (t) {
 	const journeys = yield client.journeys(spichernstr, {
-		type: 'location', address: 'Torfstraße 17',
-		latitude: 52.5416823, longitude: 13.3491223
+		type: 'location',
+		address: 'Torfstr. 17, Berlin',
+		latitude: 52.541797, longitude: 13.350042
 	}, {results: 1, when})
 
 	t.ok(Array.isArray(journeys))
@@ -259,9 +260,9 @@ test('journeys – station to address', co(function* (t) {
 
 	const dest = leg.destination
 	assertValidAddress(t, dest)
-	t.strictEqual(dest.address, 'Torfstraße 17')
-	t.ok(isRoughlyEqual(.0001, dest.latitude, 52.5416823))
-	t.ok(isRoughlyEqual(.0001, dest.longitude, 13.3491223))
+	t.strictEqual(dest.address, '13353 Berlin-Wedding, Torfstr. 17')
+	t.ok(isRoughlyEqual(.0001, dest.latitude, 52.541797))
+	t.ok(isRoughlyEqual(.0001, dest.longitude, 13.350042))
 	assertValidWhen(t, leg.arrival, when)
 
 	t.end()
@@ -271,7 +272,9 @@ test('journeys – station to address', co(function* (t) {
 
 test('journeys – station to POI', co(function* (t) {
 	const journeys = yield client.journeys(spichernstr, {
-		type: 'location', id: '9980720', name: 'ATZE Musiktheater',
+		type: 'location',
+		id: '900980720',
+		name: 'Berlin, Atze Musiktheater für Kinder',
 		latitude: 52.543333, longitude: 13.351686
 	}, {results: 1, when})
 
@@ -286,7 +289,8 @@ test('journeys – station to POI', co(function* (t) {
 
 	const dest = leg.destination
 	assertValidPoi(t, dest)
-	t.strictEqual(dest.name, 'ATZE Musiktheater')
+	t.strictEqual(dest.id, '900980720')
+	t.strictEqual(dest.name, 'Berlin, Atze Musiktheater für Kinder')
 	t.ok(isRoughlyEqual(.0001, dest.latitude, 52.543333))
 	t.ok(isRoughlyEqual(.0001, dest.longitude, 13.351686))
 	assertValidWhen(t, leg.arrival, when)
