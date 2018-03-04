@@ -52,6 +52,29 @@ const createClient = (profile, request = _request) => {
 		from = profile.formatLocation(profile, from)
 		to = profile.formatLocation(profile, to)
 
+		if (('beforeJourneys' in opt) && ('afterJourneys' in opt)) {
+			throw new Error('opt.afterJourneys and opt.afterJourneys are mutually exclusive.')
+		}
+		let journeysRef = null
+		if ('beforeJourneys' in opt) {
+			if (!isNonEmptyString(opt.beforeJourneys)) {
+				throw new Error('opt.beforeJourneys must be a non-empty string.')
+			}
+			if ('when' in opt) {
+				throw new Error('opt.beforeJourneys and opt.when are mutually exclusive.')
+			}
+			journeysRef = opt.beforeJourneys
+		}
+		if ('afterJourneys' in opt) {
+			if (!isNonEmptyString(opt.afterJourneys)) {
+				throw new Error('opt.afterJourneys must be a non-empty string.')
+			}
+			if ('when' in opt) {
+				throw new Error('opt.afterJourneys and opt.when are mutually exclusive.')
+			}
+			journeysRef = opt.afterJourneys
+		}
+
 		opt = Object.assign({
 			results: 5, // how many journeys?
 			via: null, // let journeys pass this station?
@@ -81,6 +104,7 @@ const createClient = (profile, request = _request) => {
 		const query = profile.transformJourneysQuery({
 			outDate: profile.formatDate(profile, opt.when),
 			outTime: profile.formatTime(profile, opt.when),
+			ctxScr: journeysRef,
 			numF: opt.results,
 			getPasslist: !!opt.passedStations,
 			maxChg: opt.transfers,
@@ -106,7 +130,11 @@ const createClient = (profile, request = _request) => {
 		.then((d) => {
 			if (!Array.isArray(d.outConL)) return []
 			const parse = profile.parseJourney(profile, d.locations, d.lines, d.remarks)
-			return d.outConL.map(parse)
+			const res = d.outConL.map(parse)
+
+			if (d.outCtxScrB) res.earlierJourneysRef = d.outCtxScrB
+			if (d.outCtxScrF) res.laterJourneysRef = d.outCtxScrF
+			return res
 		})
 	}
 
