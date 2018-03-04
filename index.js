@@ -110,6 +110,9 @@ const createClient = (profile, request = _request) => {
 		const journeys = []
 		const more = (when, journeysRef) => {
 			const query = {
+				outDate: profile.formatDate(profile, when),
+				outTime: profile.formatTime(profile, when),
+				ctxScr: journeysRef,
 				// numF: opt.results,
 				getPasslist: !!opt.passedStations,
 				maxChg: opt.transfers,
@@ -126,12 +129,6 @@ const createClient = (profile, request = _request) => {
 				getIV: false, // todo: walk & bike as alternatives?
 				getPolyline: false // todo: shape for displaying on a map?
 			}
-			if (when) {
-				query.outDate = profile.formatDate(profile, when)
-				query.outTime = profile.formatTime(profile, when)
-			} else if (journeysRef) {
-				query.ctxScr = journeysRef
-			} else throw new Error('when or ref required')
 
 			return request(profile, {
 				cfg: {polyEnc: 'GPA'},
@@ -143,14 +140,21 @@ const createClient = (profile, request = _request) => {
 				const parse = profile.parseJourney(profile, d.locations, d.lines, d.remarks)
 				if (!journeys.earlierRef) journeys.earlierRef = d.outCtxScrB
 
+				let latestDep = -Infinity
 				for (let j of d.outConL) {
-					journeys.push(parse(j))
+					j = parse(j)
+					journeys.push(j)
+
 					if (journeys.length === opt.results) { // collected enough
 						journeys.laterRef = d.outCtxScrF
 						return journeys
 					}
+					const dep = +new Date(j.departure)
+					if (dep > latestDep) latestDep = dep
 				}
-				return more(null, d.outCtxScrF) // otherwise continue
+
+				const when = new Date(latestDep)
+				return more(when, d.outCtxScrF) // otherwise continue
 			})
 		}
 
