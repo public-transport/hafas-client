@@ -166,6 +166,56 @@ test('journeys – fails with no product', co(function* (t) {
 	}
 }))
 
+test('earlier/later journeys', co(function* (t) {
+	const model = yield client.journeys(spichernstr, bismarckstr, {
+		results: 3, when
+	})
+
+	t.equal(typeof model.earlierRef, 'string')
+	t.ok(model.earlierRef)
+	t.equal(typeof model.laterRef, 'string')
+	t.ok(model.laterRef)
+
+	// when and earlierThan/laterThan should be mutually exclusive
+	t.throws(() => {
+		client.journeys(spichernstr, bismarckstr, {
+			when, earlierThan: model.earlierRef
+		})
+	})
+	t.throws(() => {
+		client.journeys(spichernstr, bismarckstr, {
+			when, laterThan: model.laterRef
+		})
+	})
+
+	let earliestDep = Infinity, latestDep = -Infinity
+	for (let j of model) {
+		const dep = +new Date(j.departure)
+		if (dep < earliestDep) earliestDep = dep
+		else if (dep > latestDep) latestDep = dep
+	}
+
+	const earlier = yield client.journeys(spichernstr, bismarckstr, {
+		results: 3,
+		// todo: single journey ref?
+		earlierThan: model.earlierRef
+	})
+	for (let j of earlier) {
+		t.ok(new Date(j.departure) < earliestDep)
+	}
+
+	const later = yield client.journeys(spichernstr, bismarckstr, {
+		results: 3,
+		// todo: single journey ref?
+		laterThan: model.laterRef
+	})
+	for (let j of later) {
+		t.ok(new Date(j.departure) > latestDep)
+	}
+
+	t.end()
+}))
+
 test('journey leg details', co(function* (t) {
 	const journeys = yield client.journeys(spichernstr, amrumerStr, {
 		results: 1, when

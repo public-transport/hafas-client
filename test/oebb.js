@@ -110,9 +110,14 @@ const assertValidLine = (t, l) => { // with optional mode
 const test = tapePromise(tape)
 const client = createClient(oebbProfile)
 
+const salzburgHbf = '8100002'
+const wienWestbahnhof = '1291501'
+const wien = '1190100'
+const klagenfurtHbf = '8100085'
+const muenchenHbf = '8000261'
+const grazHbf = '8100173'
+
 test('Salzburg Hbf to Wien Westbahnhof', co(function* (t) {
-	const salzburgHbf = '8100002'
-	const wienWestbahnhof = '1291501'
 	const journeys = yield client.journeys(salzburgHbf, wienWestbahnhof, {
 		when, passedStations: true
 	})
@@ -178,7 +183,6 @@ test('Salzburg Hbf to Wien Westbahnhof', co(function* (t) {
 }))
 
 test('Salzburg Hbf to 1220 Wien, Wagramer Straße 5', co(function* (t) {
-	const salzburgHbf = '8100002'
 	const wagramerStr = {
 		type: 'location',
     	latitude: 48.236216,
@@ -223,7 +227,6 @@ test('Albertina to Salzburg Hbf', co(function* (t) {
     	name: 'Albertina',
     	id: '975900003'
 	}
-	const salzburgHbf = '8100002'
 	const journeys = yield client.journeys(albertina, salzburgHbf, {when})
 
 	t.ok(Array.isArray(journeys))
@@ -255,9 +258,6 @@ test('Albertina to Salzburg Hbf', co(function* (t) {
 }))
 
 test('Wien to Klagenfurt Hbf with stopover at Salzburg Hbf', co(function* (t) {
-	const wien = '1190100'
-	const klagenfurtHbf = '8100085'
-	const salzburgHbf = '8100002'
 	const [journey] = yield client.journeys(wien, klagenfurtHbf, {
 		via: salzburgHbf,
 		results: 1,
@@ -274,9 +274,57 @@ test('Wien to Klagenfurt Hbf with stopover at Salzburg Hbf', co(function* (t) {
 	t.end()
 }))
 
+test('earlier/later journeys, Salzburg Hbf -> Wien Westbahnhof', co(function* (t) {
+	const model = yield client.journeys(salzburgHbf, wienWestbahnhof, {
+		results: 3, when
+	})
+
+	t.equal(typeof model.earlierRef, 'string')
+	t.ok(model.earlierRef)
+	t.equal(typeof model.laterRef, 'string')
+	t.ok(model.laterRef)
+
+	// when and earlierThan/laterThan should be mutually exclusive
+	t.throws(() => {
+		client.journeys(salzburgHbf, wienWestbahnhof, {
+			when, earlierThan: model.earlierRef
+		})
+	})
+	t.throws(() => {
+		client.journeys(salzburgHbf, wienWestbahnhof, {
+			when, laterThan: model.laterRef
+		})
+	})
+
+	let earliestDep = Infinity, latestDep = -Infinity
+	for (let j of model) {
+		const dep = +new Date(j.departure)
+		if (dep < earliestDep) earliestDep = dep
+		else if (dep > latestDep) latestDep = dep
+	}
+
+	const earlier = yield client.journeys(salzburgHbf, wienWestbahnhof, {
+		results: 3,
+		// todo: single journey ref?
+		earlierThan: model.earlierRef
+	})
+	for (let j of earlier) {
+		t.ok(new Date(j.departure) < earliestDep)
+	}
+
+	const later = yield client.journeys(salzburgHbf, wienWestbahnhof, {
+		results: 3,
+		// todo: single journey ref?
+		laterThan: model.laterRef
+	})
+	for (let j of later) {
+		t.ok(new Date(j.departure) > latestDep)
+	}
+
+	t.end()
+}))
+
 test('leg details for Wien Westbahnhof to München Hbf', co(function* (t) {
-	const wienWestbahnhof = '1291501'
-	const muenchenHbf = '8000261'
 	const journeys = yield client.journeys(wienWestbahnhof, muenchenHbf, {
 		results: 1, when
 	})
@@ -301,7 +349,6 @@ test('leg details for Wien Westbahnhof to München Hbf', co(function* (t) {
 }))
 
 test('departures at Salzburg Hbf', co(function* (t) {
-	const salzburgHbf = '8100002'
 	const deps = yield client.departures(salzburgHbf, {
 		duration: 5, when
 	})
@@ -365,7 +412,6 @@ test('locations named Salzburg', co(function* (t) {
 }))
 
 test('location', co(function* (t) {
-	const grazHbf = '8100173'
 	const loc = yield client.location(grazHbf)
 
 	assertValidStation(t, loc)

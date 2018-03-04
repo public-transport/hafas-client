@@ -8,6 +8,7 @@ const defaultProfile = require('./lib/default-profile')
 const _request = require('./lib/request')
 
 const isObj = o => o !== null && 'object' === typeof o && !Array.isArray(o)
+const isNonEmptyString = str => 'string' === typeof str && str.length > 0
 
 const createClient = (profile, request = _request) => {
 	profile = Object.assign({}, defaultProfile, profile)
@@ -51,6 +52,29 @@ const createClient = (profile, request = _request) => {
 		from = profile.formatLocation(profile, from)
 		to = profile.formatLocation(profile, to)
 
+		if (('earlierThan' in opt) && ('laterThan' in opt)) {
+			throw new Error('opt.laterThan and opt.laterThan are mutually exclusive.')
+		}
+		let journeysRef = null
+		if ('earlierThan' in opt) {
+			if (!isNonEmptyString(opt.earlierThan)) {
+				throw new Error('opt.earlierThan must be a non-empty string.')
+			}
+			if ('when' in opt) {
+				throw new Error('opt.earlierThan and opt.when are mutually exclusive.')
+			}
+			journeysRef = opt.earlierThan
+		}
+		if ('laterThan' in opt) {
+			if (!isNonEmptyString(opt.laterThan)) {
+				throw new Error('opt.laterThan must be a non-empty string.')
+			}
+			if ('when' in opt) {
+				throw new Error('opt.laterThan and opt.when are mutually exclusive.')
+			}
+			journeysRef = opt.laterThan
+		}
+
 		opt = Object.assign({
 			results: 5, // how many journeys?
 			via: null, // let journeys pass this station?
@@ -80,6 +104,7 @@ const createClient = (profile, request = _request) => {
 		const query = profile.transformJourneysQuery({
 			outDate: profile.formatDate(profile, opt.when),
 			outTime: profile.formatTime(profile, opt.when),
+			ctxScr: journeysRef,
 			numF: opt.results,
 			getPasslist: !!opt.passedStations,
 			maxChg: opt.transfers,
@@ -105,12 +130,16 @@ const createClient = (profile, request = _request) => {
 		.then((d) => {
 			if (!Array.isArray(d.outConL)) return []
 			const parse = profile.parseJourney(profile, d.locations, d.lines, d.remarks)
-			return d.outConL.map(parse)
+			const res = d.outConL.map(parse)
+
+			if (d.outCtxScrB) res.earlierRef = d.outCtxScrB
+			if (d.outCtxScrF) res.laterRef = d.outCtxScrF
+			return res
 		})
 	}
 
 	const locations = (query, opt = {}) => {
-		if ('string' !== typeof query || !query) {
+		if (!isNonEmptyString(query)) {
 			throw new Error('query must be a non-empty string.')
 		}
 		opt = Object.assign({
@@ -204,10 +233,10 @@ const createClient = (profile, request = _request) => {
 	}
 
 	const journeyLeg = (ref, lineName, opt = {}) => {
-		if ('string' !== typeof ref || !ref) {
+		if (!isNonEmptyString(ref)) {
 			throw new Error('ref must be a non-empty string.')
 		}
-		if ('string' !== typeof lineName || !lineName) {
+		if (!isNonEmptyString(lineName)) {
 			throw new Error('lineName must be a non-empty string.')
 		}
 		opt = Object.assign({
