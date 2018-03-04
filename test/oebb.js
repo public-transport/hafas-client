@@ -279,10 +279,10 @@ test('earlier/later journeys, Salzburg Hbf -> Wien Westbahnhof', co(function* (t
 		results: 3, when
 	})
 
-	t.equal(typeof model.earlierJourneysRef, 'string')
-	t.ok(model.earlierJourneysRef)
-	t.equal(typeof model.laterJourneysRef, 'string')
-	t.ok(model.laterJourneysRef)
+	t.equal(typeof model.earlierRef, 'string')
+	t.ok(model.earlierRef)
+	t.equal(typeof model.laterRef, 'string')
+	t.ok(model.laterRef)
 
 	let earliestDep = Infinity, latestDep = -Infinity
 	for (let j of model) {
@@ -294,7 +294,7 @@ test('earlier/later journeys, Salzburg Hbf -> Wien Westbahnhof', co(function* (t
 	const earlier = yield client.journeys(salzburgHbf, wienWestbahnhof, {
 		results: 3,
 		// todo: single journey ref?
-		beforeJourneys: model.earlierJourneysRef
+		beforeJourneys: model.earlierRef
 	})
 	for (let j of earlier) {
 		t.ok(new Date(j.departure) < earliestDep)
@@ -303,7 +303,7 @@ test('earlier/later journeys, Salzburg Hbf -> Wien Westbahnhof', co(function* (t
 	const later = yield client.journeys(salzburgHbf, wienWestbahnhof, {
 		results: 3,
 		// todo: single journey ref?
-		afterJourneys: model.laterJourneysRef
+		afterJourneys: model.laterRef
 	})
 	for (let j of later) {
 		t.ok(new Date(j.departure) > latestDep)

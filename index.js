@@ -132,8 +132,8 @@ const createClient = (profile, request = _request) => {
 			const parse = profile.parseJourney(profile, d.locations, d.lines, d.remarks)
 			const res = d.outConL.map(parse)
 
-			if (d.outCtxScrB) res.earlierJourneysRef = d.outCtxScrB
-			if (d.outCtxScrF) res.laterJourneysRef = d.outCtxScrF
+			if (d.outCtxScrB) res.earlierRef = d.outCtxScrB
+			if (d.outCtxScrF) res.laterRef = d.outCtxScrF
 			return res
 		})
 	}
