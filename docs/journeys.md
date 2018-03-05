@@ -249,7 +249,7 @@ Some [profiles](../p) are able to parse the ticket information, if returned by t
 
 If a journey leg has been cancelled, a `cancelled: true` will be added. Also, `departure`/`departureDelay`/`departurePlatform` and `arrival`/`arrivalDelay`/`arrivalPlatform` will be `null`.
 
-To get more journeys earlier/later than the current set of results, use `journey.earlierRef`/`journey.laterRef` as follows:
+To get more journeys earlier/later than the current set of results, pass `journeys.earlierRef`/`journeys.laterRef` into `opt.earlierThan`/`opt.laterThan`. For example, query *later* journeys as follows:
 
 ```js
 const hbf = '900000003201'
