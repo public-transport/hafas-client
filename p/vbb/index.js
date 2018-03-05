@@ -20,10 +20,10 @@ const modes = require('./modes')
 const formatBitmask = createFormatBitmask(modes)
 
 const transformReqBody = (body) => {
-	body.client = {type: 'IPA', id: 'BVG', name: 'FahrInfo', v: '4070700'}
-	body.ext = 'BVG.1'
-	body.ver = '1.15' // todo: 1.16 with `mic` and `mac` query params
-	body.auth = {type: 'AID', aid: '1Rxs112shyHLatUX4fofnmdxK'}
+	body.client = {type: 'IPA', id: 'VBB', name: 'vbbPROD', v: '4010300'}
+	body.ext = 'VBB.1'
+	body.ver = '1.16'
+	body.auth = {type: 'AID', aid: 'hafas-vbb-apps'}
 
 	return body
 }
@@ -167,7 +167,13 @@ const formatProducts = (products) => {
 const vbbProfile = {
 	locale: 'de-DE',
 	timezone: 'Europe/Berlin',
-	endpoint: 'https://bvg-apps.hafas.de/bin/mgate.exe',
+	endpoint: 'https://fahrinfo.vbb.de/bin/mgate.exe',
+
+	// https://gist.github.com/derhuerst/a8d94a433358abc015ff77df4481070c#file-haf_config_base-properties-L39
+	// https://runkit.com/derhuerst/hafas-decrypt-encrypted-mac-salt
+	salt: Buffer.from('5243544a4d3266467846667878516649', 'hex'),
+	addMicMac: true,
+
 	transformReqBody,
 
 	products: modes.allProducts,

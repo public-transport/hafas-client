@@ -7,7 +7,7 @@ const formatLocationIdentifier = (data) => {
 	for (let key in data) {
 		if (!Object.prototype.hasOwnProperty.call(data, key)) continue
 
-		str += key + '=' + data[key] + sep // todo: escape
+		str += key + '=' + data[key] + sep // todo: escape, but how?
 	}
 
 	return str
