@@ -113,7 +113,6 @@ const createClient = (profile, request = _request) => {
 				outDate: profile.formatDate(profile, when),
 				outTime: profile.formatTime(profile, when),
 				ctxScr: journeysRef,
-				// numF: opt.results,
 				getPasslist: !!opt.passedStations,
 				maxChg: opt.transfers,
 				minChgTime: opt.transferTime,
@@ -129,6 +128,7 @@ const createClient = (profile, request = _request) => {
 				getIV: false, // todo: walk & bike as alternatives?
 				getPolyline: false // todo: shape for displaying on a map?
 			}
+			if (profile.journeysNumF) query.numF = opt.results
 
 			return request(profile, {
 				cfg: {polyEnc: 'GPA'},
