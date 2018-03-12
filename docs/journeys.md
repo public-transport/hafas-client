@@ -41,6 +41,8 @@ With `opt`, you can override the default options, which look like this:
 ```js
 {
 	when: new Date(),
+	earlierThan: null, // ref to get journeys earlier than the last query
+	laterThan: null, // ref to get journeys later than the last query
 	results: 5, // how many journeys?
 	via: null, // let journeys pass this station
 	passedStations: false, // return stations on the way?
@@ -85,123 +87,127 @@ client.journeys('900000003201', '900000100008', {
 The response may look like this:
 
 ```js
-[ {
-	legs: [ {
-		id: '1|31041|35|86|17122017',
+[
+	{
+		legs: [ {
+			id: '1|31041|35|86|17122017',
+			origin: {
+				type: 'station',
+				id: '900000003201',
+				name: 'S+U Berlin Hauptbahnhof',
+				location: {
+					type: 'location',
+					latitude: 52.52585,
+					longitude: 13.368928
+				},
+				products: {
+					suburban: true,
+					subway: true,
+					tram: true,
+					bus: true,
+					ferry: false,
+					express: true,
+					regional: true
+				}
+			},
+			departure: '2017-12-17T19:07:00.000+01:00',
+			departurePlatform: '16',
+			destination: {
+				type: 'station',
+				id: '900000024101',
+				name: 'S Charlottenburg',
+				location: {
+					type: 'location',
+					latitude: 52.504806,
+					longitude: 13.303846
+				},
+				products: {
+					suburban: true,
+					subway: false,
+					tram: false,
+					bus: true,
+					ferry: false,
+					express: false,
+					regional: true
+				}
+			},
+			arrival: '2017-12-17T19:47:00.000+01:00',
+			arrivalPlatform: '8',
+			arrivalDelay: 30,
+			line: {
+				type: 'line',
+				id: '16845',
+				name: 'S7',
+				public: true,
+				mode: 'train',
+				product: 'suburban',
+				symbol: 'S',
+				nr: 7,
+				metro: false,
+				express: false,
+				night: false,
+				productCode: 0,
+				operator: {
+					type: 'operator',
+					id: 's-bahn-berlin-gmbh',
+					name: 'S-Bahn Berlin GmbH'
+				}
+			},
+			direction: 'S Potsdam Hauptbahnhof',
+			passed: [ {
+				station: {
+					type: 'station',
+					id: '900000003201',
+					name: 'S+U Berlin Hauptbahnhof',
+					location: { /* … */ },
+					products: { /* … */ }
+				},
+				arrival: null,
+				departure: null,
+				cancelled: true
+			}, {
+				station: {
+					type: 'station',
+					id: '900000003102',
+					name: 'S Bellevue',
+					location: { /* … */ },
+					products: { /* … */ }
+				},
+				arrival: '2017-12-17T19:09:00.000+01:00',
+				departure: '2017-12-17T19:09:00.000+01:00'
+			}, /* … */ {
+				station: {
+					type: 'station',
+					id: '900000024101',
+					name: 'S Charlottenburg',
+					location: { /* … */ },
+					products: { /* … */ }
+				},
+				arrival: '2017-12-17T19:17:00.000+01:00',
+				departure: '2017-12-17T19:17:00.000+01:00'
+			} ]
+		} ],
 		origin: {
 			type: 'station',
 			id: '900000003201',
 			name: 'S+U Berlin Hauptbahnhof',
-			location: {
-				type: 'location',
-				latitude: 52.52585,
-				longitude: 13.368928
-			},
-			products: {
-				suburban: true,
-				subway: true,
-				tram: true,
-				bus: true,
-				ferry: false,
-				express: true,
-				regional: true
-			}
+			location: { /* … */ },
+			products: { /* … */ }
 		},
 		departure: '2017-12-17T19:07:00.000+01:00',
-		departurePlatform: '16',
 		destination: {
 			type: 'station',
 			id: '900000024101',
 			name: 'S Charlottenburg',
-			location: {
-				type: 'location',
-				latitude: 52.504806,
-				longitude: 13.303846
-			},
-			products: {
-				suburban: true,
-				subway: false,
-				tram: false,
-				bus: true,
-				ferry: false,
-				express: false,
-				regional: true
-			}
+			location: { /* … */ },
+			products: { /* … */ }
 		},
 		arrival: '2017-12-17T19:47:00.000+01:00',
-		arrivalPlatform: '8',
-		arrivalDelay: 30,
-		line: {
-			type: 'line',
-			id: '16845',
-			name: 'S7',
-			public: true,
-			mode: 'train',
-			product: 'suburban',
-			symbol: 'S',
-			nr: 7,
-			metro: false,
-			express: false,
-			night: false,
-			productCode: 0,
-			operator: {
-				type: 'operator',
-				id: 's-bahn-berlin-gmbh',
-				name: 'S-Bahn Berlin GmbH'
-			}
-		},
-		direction: 'S Potsdam Hauptbahnhof',
-		passed: [ {
-			station: {
-				type: 'station',
-				id: '900000003201',
-				name: 'S+U Berlin Hauptbahnhof',
-				location: { /* … */ },
-				products: { /* … */ }
-			},
-			arrival: null,
-			departure: null,
-			cancelled: true
-		}, {
-			station: {
-				type: 'station',
-				id: '900000003102',
-				name: 'S Bellevue',
-				location: { /* … */ },
-				products: { /* … */ }
-			},
-			arrival: '2017-12-17T19:09:00.000+01:00',
-			departure: '2017-12-17T19:09:00.000+01:00'
-		}, /* … */ {
-			station: {
-				type: 'station',
-				id: '900000024101',
-				name: 'S Charlottenburg',
-				location: { /* … */ },
-				products: { /* … */ }
-			},
-			arrival: '2017-12-17T19:17:00.000+01:00',
-			departure: '2017-12-17T19:17:00.000+01:00'
-		} ]
-	} ],
-	origin: {
-		type: 'station',
-		id: '900000003201',
-		name: 'S+U Berlin Hauptbahnhof',
-		location: { /* … */ },
-		products: { /* … */ }
+		arrivalDelay: 30
 	},
-	departure: '2017-12-17T19:07:00.000+01:00',
-	destination: {
-		type: 'station',
-		id: '900000024101',
-		name: 'S Charlottenburg',
-		location: { /* … */ },
-		products: { /* … */ }
-	},
-	arrival: '2017-12-17T19:47:00.000+01:00',
-	arrivalDelay: 30
-} ]
+	earlierRef: '…', // use with the `earlierThan` option
+	laterRef: '…' // use with the `laterThan` option
+]
 ```
 
 Some [profiles](../p) are able to parse the ticket information, if returned by the API. For example, if you pass `tickets: true` with the [VBB profile](../p/vbb), each `journey` will have a tickets array that looks like this:
@@ -242,3 +248,31 @@ Some [profiles](../p) are able to parse the ticket information, if returned by t
 ```
 
 If a journey leg has been cancelled, a `cancelled: true` will be added. Also, `departure`/`departureDelay`/`departurePlatform` and `arrival`/`arrivalDelay`/`arrivalPlatform` will be `null`.
+
+To get more journeys earlier/later than the current set of results, pass `journeys.earlierRef`/`journeys.laterRef` into `opt.earlierThan`/`opt.laterThan`. For example, query *later* journeys as follows:
+
+```js
+const hbf = '900000003201'
+const heinrichHeineStr = '900000100008'
+
+client.journeys(hbf, heinrichHeineStr)
+.then((journeys) => {
+	const lastJourney = journeys[journeys.length - 1]
+	console.log('departure of last journey', lastJourney.departure)
+
+	// get later journeys
+	return client.journeys(hbf, heinrichHeineStr, {
+		laterThan: journeys.laterRef
+	})
+})
+.then((laterourneys) => {
+	const firstJourney = laterourneys[laterourneys.length - 1]
+	console.log('departure of first (later) journey', firstJourney.departure)
+})
+.catch(console.error)
+```
+
+```
+departure of last journey 2017-12-17T19:07:00.000+01:00
+departure of first (later) journey 2017-12-17T19:19:00.000+01:00
+```

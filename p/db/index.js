@@ -1,7 +1,5 @@
 'use strict'
 
-const crypto = require('crypto')
-
 const _createParseLine = require('../../parse/line')
 const _createParseJourney = require('../../parse/journey')
 const _formatStation = require('../../format/station')
@@ -21,17 +19,6 @@ const transformReqBody = (body) => {
 	body.auth = {type: 'AID', aid: 'n91dB8Z77MLdoR0K'}
 
 	return body
-}
-
-const salt = 'bdI8UVj40K5fvxwf'
-const transformReq = (req) => {
-	const hash = crypto.createHash('md5')
-	hash.update(req.body + salt)
-
-	if (!req.query) req.query = {}
-	req.query.checksum = hash.digest('hex')
-
-	return req
 }
 
 const transformJourneysQuery = (query, opt) => {
@@ -142,8 +129,11 @@ const dbProfile = {
 	locale: 'de-DE',
 	timezone: 'Europe/Berlin',
 	endpoint: 'https://reiseauskunft.bahn.de/bin/mgate.exe',
+
+	salt: Buffer.from('bdI8UVj40K5fvxwf', 'utf8'),
+	addChecksum: true,
+
 	transformReqBody,
-	transformReq,
 	transformJourneysQuery,
 
 	products: modes.allProducts,

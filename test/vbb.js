@@ -67,6 +67,8 @@ test('journeys – station to station', co(function* (t) {
 	t.strictEqual(journeys.length, 3)
 
 	for (let journey of journeys) {
+		t.equal(journey.type, 'journey')
+
 		assertValidStation(t, journey.origin)
 		assertValidStationProducts(t, journey.origin.products)
 		t.ok(journey.origin.name.indexOf('(Berlin)') === -1)
@@ -146,7 +148,7 @@ test('journeys – only subway', co(function* (t) {
 
 test('journeys – fails with no product', co(function* (t) {
 	try {
-		yield client.journeys(spichernstr, bismarckstr, {
+		client.journeys(spichernstr, bismarckstr, {
 			when,
 			products: {
 				suburban: false,
@@ -158,10 +160,62 @@ test('journeys – fails with no product', co(function* (t) {
 				regional: false
 			}
 		})
+		// silence rejections, we're only interested in exceptions
+		.catch(() => {})
 	} catch (err) {
 		t.ok(err, 'error thrown')
 		t.end()
 	}
+}))
+
+test('earlier/later journeys', co(function* (t) {
+	const model = yield client.journeys(spichernstr, bismarckstr, {
+		results: 3, when
+	})
+
+	t.equal(typeof model.earlierRef, 'string')
+	t.ok(model.earlierRef)
+	t.equal(typeof model.laterRef, 'string')
+	t.ok(model.laterRef)
+
+	// when and earlierThan/laterThan should be mutually exclusive
+	t.throws(() => {
+		client.journeys(spichernstr, bismarckstr, {
+			when, earlierThan: model.earlierRef
+		})
+	})
+	t.throws(() => {
+		client.journeys(spichernstr, bismarckstr, {
+			when, laterThan: model.laterRef
+		})
+	})
+
+	let earliestDep = Infinity, latestDep = -Infinity
+	for (let j of model) {
+		const dep = +new Date(j.departure)
+		if (dep < earliestDep) earliestDep = dep
+		else if (dep > latestDep) latestDep = dep
+	}
+
+	const earlier = yield client.journeys(spichernstr, bismarckstr, {
+		results: 3,
+		// todo: single journey ref?
+		earlierThan: model.earlierRef
+	})
+	for (let j of earlier) {
+		t.ok(new Date(j.departure) < earliestDep)
+	}
+
+	const later = yield client.journeys(spichernstr, bismarckstr, {
+		results: 3,
+		// todo: single journey ref?
+		laterThan: model.laterRef
+	})
+	for (let j of later) {
+		t.ok(new Date(j.departure) > latestDep)
+	}
+
+	t.end()
 }))
 
 test('journey leg details', co(function* (t) {
@@ -192,8 +246,9 @@ test('journey leg details', co(function* (t) {
 
 test('journeys – station to address', co(function* (t) {
 	const journeys = yield client.journeys(spichernstr, {
-		type: 'location', address: 'Torfstraße 17',
-		latitude: 52.5416823, longitude: 13.3491223
+		type: 'location',
+		address: 'Torfstr. 17, Berlin',
+		latitude: 52.541797, longitude: 13.350042
 	}, {results: 1, when})
 
 	t.ok(Array.isArray(journeys))
@@ -207,9 +262,9 @@ test('journeys – station to address', co(function* (t) {
 
 	const dest = leg.destination
 	assertValidAddress(t, dest)
-	t.strictEqual(dest.address, 'Torfstraße 17')
-	t.ok(isRoughlyEqual(.0001, dest.latitude, 52.5416823))
-	t.ok(isRoughlyEqual(.0001, dest.longitude, 13.3491223))
+	t.strictEqual(dest.address, '13353 Berlin-Wedding, Torfstr. 17')
+	t.ok(isRoughlyEqual(.0001, dest.latitude, 52.541797))
+	t.ok(isRoughlyEqual(.0001, dest.longitude, 13.350042))
 	assertValidWhen(t, leg.arrival, when)
 
 	t.end()
@@ -219,7 +274,9 @@ test('journeys – station to address', co(function* (t) {
 
 test('journeys – station to POI', co(function* (t) {
 	const journeys = yield client.journeys(spichernstr, {
-		type: 'location', id: '9980720', name: 'ATZE Musiktheater',
+		type: 'location',
+		id: '900980720',
+		name: 'Berlin, Atze Musiktheater für Kinder',
 		latitude: 52.543333, longitude: 13.351686
 	}, {results: 1, when})
 
@@ -234,7 +291,8 @@ test('journeys – station to POI', co(function* (t) {
 
 	const dest = leg.destination
 	assertValidPoi(t, dest)
-	t.strictEqual(dest.name, 'ATZE Musiktheater')
+	t.strictEqual(dest.id, '900980720')
+	t.strictEqual(dest.name, 'Berlin, Atze Musiktheater für Kinder')
 	t.ok(isRoughlyEqual(.0001, dest.latitude, 52.543333))
 	t.ok(isRoughlyEqual(.0001, dest.longitude, 13.351686))
 	assertValidWhen(t, leg.arrival, when)

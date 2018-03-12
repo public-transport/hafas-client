@@ -75,11 +75,17 @@ const createParseJourneyLeg = (profile, stations, lines, remarks) => {
 		// see also derhuerst/vbb-rest#19
 		if (pt.arr.aCncl) {
 			res.cancelled = true
+			Object.defineProperty(res, 'canceled', {value: true})
 			res.arrival = res.arrivalPlatform = res.arrivalDelay = null
+			const arr = profile.parseDateTime(profile, j.date, pt.arr.aTimeS)
+			res.formerScheduledArrival = arr.toISO()
 		}
 		if (pt.dep.dCncl) {
 			res.cancelled = true
+			Object.defineProperty(res, 'canceled', {value: true})
 			res.departure = res.departurePlatform = res.departureDelay = null
+			const dep = profile.parseDateTime(profile, j.date, pt.dep.dTimeS)
+			res.formerScheduledDeparture = dep.toISO()
 		}
 
 		return res

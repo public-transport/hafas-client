@@ -7,12 +7,15 @@ const validateProfile = require('./lib/validate-profile')
 const defaultProfile = require('./lib/default-profile')
 const _request = require('./lib/request')
 
+const isObj = o => o !== null && 'object' === typeof o && !Array.isArray(o)
+const isNonEmptyString = str => 'string' === typeof str && str.length > 0
+
 const createClient = (profile, request = _request) => {
 	profile = Object.assign({}, defaultProfile, profile)
 	validateProfile(profile)
 
 	const departures = (station, opt = {}) => {
-		if ('object' === typeof station) station = profile.formatStation(station.id)
+		if (isObj(station)) station = profile.formatStation(station.id)
 		else if ('string' === typeof station) station = profile.formatStation(station)
 		else throw new Error('station must be an object or a string.')
 
@@ -49,6 +52,29 @@ const createClient = (profile, request = _request) => {
 		from = profile.formatLocation(profile, from)
 		to = profile.formatLocation(profile, to)
 
+		if (('earlierThan' in opt) && ('laterThan' in opt)) {
+			throw new Error('opt.laterThan and opt.laterThan are mutually exclusive.')
+		}
+		let journeysRef = null
+		if ('earlierThan' in opt) {
+			if (!isNonEmptyString(opt.earlierThan)) {
+				throw new Error('opt.earlierThan must be a non-empty string.')
+			}
+			if ('when' in opt) {
+				throw new Error('opt.earlierThan and opt.when are mutually exclusive.')
+			}
+			journeysRef = opt.earlierThan
+		}
+		if ('laterThan' in opt) {
+			if (!isNonEmptyString(opt.laterThan)) {
+				throw new Error('opt.laterThan must be a non-empty string.')
+			}
+			if ('when' in opt) {
+				throw new Error('opt.laterThan and opt.when are mutually exclusive.')
+			}
+			journeysRef = opt.laterThan
+		}
+
 		opt = Object.assign({
 			results: 5, // how many journeys?
 			via: null, // let journeys pass this station?
@@ -75,40 +101,70 @@ const createClient = (profile, request = _request) => {
 			filters.push(profile.filters.accessibility[opt.accessibility])
 		}
 
-		const query = profile.transformJourneysQuery({
-			outDate: profile.formatDate(profile, opt.when),
-			outTime: profile.formatTime(profile, opt.when),
-			numF: opt.results,
-			getPasslist: !!opt.passedStations,
-			maxChg: opt.transfers,
-			minChgTime: opt.transferTime,
-			depLocL: [from],
-			viaLocL: opt.via ? [{loc: opt.via}] : null,
-			arrLocL: [to],
-			jnyFltrL: filters,
-			getTariff: !!opt.tickets,
+		// With protocol version `1.16`, the VBB endpoint fails with
+		// `CGI_READ_FAILED` if you pass `numF`, the parameter for the number
+		// of results. To circumvent this, we loop here, collecting journeys
+		// until we have enough.
+		// see https://github.com/derhuerst/hafas-client/pull/23#issuecomment-370246163
+		// todo: check if `numF` is supported again, revert this change
+		const journeys = []
+		const more = (when, journeysRef) => {
+			const query = {
+				outDate: profile.formatDate(profile, when),
+				outTime: profile.formatTime(profile, when),
+				ctxScr: journeysRef,
+				getPasslist: !!opt.passedStations,
+				maxChg: opt.transfers,
+				minChgTime: opt.transferTime,
+				depLocL: [from],
+				viaLocL: opt.via ? [{loc: opt.via}] : null,
+				arrLocL: [to],
+				jnyFltrL: filters,
+				getTariff: !!opt.tickets,
 
-			// todo: what is req.gisFltrL?
-			getPT: true, // todo: what is this?
-			outFrwd: true, // todo: what is this?
-			getIV: false, // todo: walk & bike as alternatives?
-			getPolyline: false // todo: shape for displaying on a map?
-		}, opt)
+				// todo: what is req.gisFltrL?
+				getPT: true, // todo: what is this?
+				outFrwd: true, // todo: what is this?
+				getIV: false, // todo: walk & bike as alternatives?
+				getPolyline: false // todo: shape for displaying on a map?
+			}
+			if (profile.journeysNumF) query.numF = opt.results
 
-		return request(profile, {
-			cfg: {polyEnc: 'GPA'},
-			meth: 'TripSearch',
-			req: query
-		})
-		.then((d) => {
-			if (!Array.isArray(d.outConL)) return []
-			const parse = profile.parseJourney(profile, d.locations, d.lines, d.remarks)
-			return d.outConL.map(parse)
-		})
+			return request(profile, {
+				cfg: {polyEnc: 'GPA'},
+				meth: 'TripSearch',
+				req: profile.transformJourneysQuery(query, opt)
+			})
+			.then((d) => {
+				if (!Array.isArray(d.outConL)) return []
+				const parse = profile.parseJourney(profile, d.locations, d.lines, d.remarks)
+				if (!journeys.earlierRef) journeys.earlierRef = d.outCtxScrB
+
+				let latestDep = -Infinity
+				for (let j of d.outConL) {
+					j = parse(j)
+					journeys.push(j)
+
+					if (journeys.length === opt.results) { // collected enough
+						journeys.laterRef = d.outCtxScrF
+						return journeys
+					}
+					const dep = +new Date(j.departure)
+					if (dep > latestDep) latestDep = dep
+				}
+
+				const when = new Date(latestDep)
+				return more(when, d.outCtxScrF) // otherwise continue
+			})
+		}
+
+		return more(opt.when, journeysRef)
 	}
 
 	const locations = (query, opt = {}) => {
-		if ('string' !== typeof query) throw new Error('query must be a string.')
+		if (!isNonEmptyString(query)) {
+			throw new Error('query must be a non-empty string.')
+		}
 		opt = Object.assign({
 			fuzzy: true, // find only exact matches?
 			results: 10, // how many search results?
@@ -158,7 +214,7 @@ const createClient = (profile, request = _request) => {
 	}
 
 	const nearby = (location, opt = {}) => {
-		if ('object' !== typeof location || Array.isArray(location)) {
+		if (!isObj(location)) {
 			throw new Error('location must be an object.')
 		} else if (location.type !== 'location') {
 			throw new Error('invalid location object.')
@@ -200,6 +256,12 @@ const createClient = (profile, request = _request) => {
 	}
 
 	const journeyLeg = (ref, lineName, opt = {}) => {
+		if (!isNonEmptyString(ref)) {
+			throw new Error('ref must be a non-empty string.')
+		}
+		if (!isNonEmptyString(lineName)) {
+			throw new Error('lineName must be a non-empty string.')
+		}
 		opt = Object.assign({
 			passedStations: true // return stations on the way?
 		}, opt)

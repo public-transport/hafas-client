@@ -32,7 +32,11 @@ const createParseDeparture = (profile, stations, lines, remarks) => {
 		// see also derhuerst/vbb-rest#19
 		if (d.stbStop.aCncl || d.stbStop.dCncl) {
 			res.cancelled = true
+			Object.defineProperty(res, 'canceled', {value: true})
 			res.when = res.delay = null
+
+			const when = profile.parseDateTime(profile, d.date, d.stbStop.dTimeS)
+			res.formerScheduledWhen = when.toISO()
 		}
 
 		return res

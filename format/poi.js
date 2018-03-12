@@ -13,9 +13,9 @@ const formatPoi = (p) => {
 		lid: formatLocationIdentifier({
 			A: '4', // POI
 			O: p.name,
+			L: p.id,
 			X: formatCoord(p.longitude),
-			Y: formatCoord(p.latitude),
-			L: p.id
+			Y: formatCoord(p.latitude)
 		})
 	}
 }
