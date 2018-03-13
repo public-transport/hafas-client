@@ -153,7 +153,8 @@ const defaultProducts = {
 	bus: true,
 	ferry: true,
 	express: true,
-	regional: true
+	regional: true,
+	taxi: false
 }
 const formatProducts = (products) => {
 	products = Object.assign(Object.create(null), defaultProducts, products)

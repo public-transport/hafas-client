@@ -109,9 +109,6 @@ test('Magdeburg Hbf to Magdeburg-Buckau', co(function*(t) {
 
 		t.ok(Array.isArray(leg.passed))
 		for (let stopover of leg.passed) assertValidStopover(t, stopover)
-
-		// todo
-		// if (journey.price) assertValidPrice(t, journey.price)
 	}
 
 	t.end()
