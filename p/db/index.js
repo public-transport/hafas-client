@@ -140,7 +140,7 @@ const dbProfile = {
 
 	// todo: parseLocation
 	parseLine: createParseLine,
-	parseProducts: createParseBitmask(modes.bitmasks),
+	parseProducts: createParseBitmask(modes.allProducts, defaultProducts),
 	parseJourney: createParseJourney,
 
 	formatStation,

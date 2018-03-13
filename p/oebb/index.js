@@ -113,7 +113,7 @@ const oebbProfile = {
 
 	products: products.allProducts,
 
-	parseProducts: createParseBitmask(products.bitmasks),
+	parseProducts: createParseBitmask(products.allProducts, defaultProducts),
 	parseLine: createParseLine,
 	parseLocation,
 	parseMovement: createParseMovement,

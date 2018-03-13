@@ -181,7 +181,7 @@ const vbbProfile = {
 	parseStationName: shorten,
 	parseLocation,
 	parseLine: createParseLine,
-	parseProducts: createParseBitmask(modes.bitmasks),
+	parseProducts: createParseBitmask(modes.allProducts, defaultProducts),
 	parseJourney: createParseJourney,
 	parseDeparture: createParseDeparture,
 	parseStopover: createParseStopover,

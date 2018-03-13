@@ -8,7 +8,7 @@ const validateFptf = require('validate-fptf')
 const co = require('./co')
 const createClient = require('..')
 const insaProfile = require('../p/insa')
-const products = require('../p/insa/products')
+const {allProducts} = require('../p/insa/products')
 const {
 	assertValidStation,
 	assertValidPoi,
@@ -56,11 +56,12 @@ const assertIsMagdeburgHbf = (t, s) => {
 	t.ok(isRoughlyEqual(s.location.longitude, 11.626891, 0.001))
 }
 
-// todo: this doesnt seem to work
 // todo: DRY with assertValidStationProducts
+// todo: DRY with other tests
 const assertValidProducts = (t, p) => {
-	for (let k of Object.keys(products)) {
-		t.ok('boolean', typeof products[k], 'mode ' + k + ' must be a boolean')
+	for (let product of allProducts) {
+		product = product.product // wat
+		t.equal(typeof p[product], 'boolean', 'product ' + p + ' must be a boolean')
 	}
 }
 

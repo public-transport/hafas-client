@@ -71,7 +71,7 @@ const insaProfile = {
 	transformReqBody,
 
 	defaultProducts,
-	parseProducts: createParseBitmask(products.bitmasks),
+	parseProducts: createParseBitmask(products.allProducts, defaultProducts),
 	formatProducts,
 
 	parseLine: createParseLine

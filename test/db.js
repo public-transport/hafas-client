@@ -8,7 +8,7 @@ const isRoughlyEqual = require('is-roughly-equal')
 const co = require('./co')
 const createClient = require('..')
 const dbProfile = require('../p/db')
-const modes = require('../p/db/modes')
+const {allProducts} = require('../p/db/modes')
 const {
 	assertValidStation,
 	assertValidPoi,
@@ -69,11 +69,12 @@ const assertIsJungfernheide = (t, s) => {
 	t.ok(isRoughlyEqual(s.location.longitude, 13.299424, .0005))
 }
 
-// todo: this doesnt seem to work
 // todo: DRY with assertValidStationProducts
+// todo: DRY with other tests
 const assertValidProducts = (t, p) => {
-	for (let k of Object.keys(modes)) {
-		t.ok('boolean', typeof modes[k], 'mode ' + k + ' must be a boolean')
+	for (let product of allProducts) {
+		product = product.product // wat
+		t.equal(typeof p[product], 'boolean', 'product ' + p + ' must be a boolean')
 	}
 }
 
