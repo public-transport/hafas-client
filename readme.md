@@ -1,6 +1,6 @@
 # hafas-client
 
-**A client for HAFAS public transport APIs**. Sort of like [public-transport-enabler](https://github.com/schildbach/public-transport-enabler), but with a smaller scope. It also [contains customisations](p) for the following transport networks:
+**A client for HAFAS public transport APIs**. Sort of like [public-transport-enabler](https://github.com/schildbach/public-transport-enabler), but with a smaller scope. It [contains customisations](p) for the following transport networks:
 
 HAFAS endpoint | wrapper library? | docs | example code | source code
 ---------------|------------------|------|---------|------------
@@ -37,7 +37,7 @@ npm install hafas-client
 - [`locations(query, [opt])`](docs/locations.md) – find stations, POIs and addresses
 - [`location(id)`](docs/location.md) – get details about a location
 - [`nearby(location, [opt])`](docs/nearby.md) – show stations & POIs around
-- [`radar(query, [opt])`](docs/radar.md) – find all vehicles currently in a certain area
+- [`radar(north, west, south, east, [opt])`](docs/radar.md) – find all vehicles currently in a certain area
 
 
 ## Usage
@@ -171,6 +171,7 @@ The returned [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript
 
 ## Related
 
+- [`public-transport-enabler`](https://github.com/schildbach/public-transport-enabler) – Unleash public transport data in your Java project.
 - [*Friendly Public Transport Format*](https://github.com/public-transport/friendly-public-transport-format#friendly-public-transport-format-fptf) – A format for APIs, libraries and datasets containing and working with public transport data.
 - [`db-hafas`](https://github.com/derhuerst/db-hafas#db-hafas) – JavaScript client for the DB HAFAS API.
 - [`vbb-hafas`](https://github.com/derhuerst/vbb-hafas#vbb-hafas) – JavaScript client for Berlin & Brandenburg public transport HAFAS API.
