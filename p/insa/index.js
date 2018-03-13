@@ -67,10 +67,8 @@ const insaProfile = {
 	locale: 'de-DE',
 	timezone: 'Europe/Berlin',
 	endpoint: 'http://reiseauskunft.insa.de/bin/mgate.exe',
-	products: products.allProducts,
 	transformReqBody,
 
-	defaultProducts,
 	parseProducts: createParseBitmask(products.allProducts, defaultProducts),
 	formatProducts,
 

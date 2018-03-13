@@ -24,7 +24,6 @@ const {
 const when = createWhen('Europe/Berlin', 'de-DE')
 
 const assertValidStationProducts = (t, p) => {
-	return null; // todo
 	t.ok(p)
 	t.equal(typeof p.nationalExp, 'boolean')
 	t.equal(typeof p.national, 'boolean')
@@ -32,7 +31,6 @@ const assertValidStationProducts = (t, p) => {
 	t.equal(typeof p.suburban, 'boolean')
 	t.equal(typeof p.tram, 'boolean')
 	t.equal(typeof p.bus, 'boolean')
-	// console.error(p); // todo
 	t.equal(typeof p.tourismTrain, 'boolean')
 }
 
