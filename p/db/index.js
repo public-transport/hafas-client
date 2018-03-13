@@ -112,7 +112,8 @@ const defaultProducts = {
 	national: true,
 	nationalExp: true,
 	regional: true,
-	regionalExp: true
+	regionalExp: true,
+	taxi: false
 }
 const formatProducts = (products) => {
 	products = Object.assign(Object.create(null), defaultProducts, products)
@@ -140,7 +141,7 @@ const dbProfile = {
 
 	// todo: parseLocation
 	parseLine: createParseLine,
-	parseProducts: createParseBitmask(modes.bitmasks),
+	parseProducts: createParseBitmask(modes.allProducts, defaultProducts),
 	parseJourney: createParseJourney,
 
 	formatStation,

@@ -12,7 +12,7 @@ const validateLineWithoutMode = require('./validate-line-without-mode')
 const co = require('./co')
 const createClient = require('..')
 const oebbProfile = require('../p/oebb')
-const products = require('../p/oebb/products')
+const {allProducts} = require('../p/oebb/products')
 const {
 	assertValidStation,
 	assertValidPoi,
@@ -73,11 +73,12 @@ const assertIsSalzburgHbf = (t, s) => {
 	t.ok(isRoughlyEqual(s.location.longitude, 13.045604, .0005))
 }
 
-// todo: this doesnt seem to work
 // todo: DRY with assertValidStationProducts
+// todo: DRY with other tests
 const assertValidProducts = (t, p) => {
-	for (let k of Object.keys(products)) {
-		t.ok('boolean', typeof products[k], 'mode ' + k + ' must be a boolean')
+	for (let product of allProducts) {
+		product = product.product // wat
+		t.equal(typeof p[product], 'boolean', 'product ' + p + ' must be a boolean')
 	}
 }
 
