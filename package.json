@@ -33,9 +33,9 @@
 	},
 	"dependencies": {
 		"capture-stack-trace": "^1.0.0",
-		"fetch-ponyfill": "^5.0.0",
+		"fetch-ponyfill": "^6.0.0",
 		"lodash": "^4.17.5",
-		"luxon": "^0.4.0",
+		"luxon": "^0.5.6",
 		"p-throttle": "^1.1.0",
 		"pinkie-promise": "^2.0.1",
 		"query-string": "^5.1.0",
