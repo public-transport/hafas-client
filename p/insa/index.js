@@ -69,6 +69,7 @@ const insaProfile = {
 	endpoint: 'http://reiseauskunft.insa.de/bin/mgate.exe',
 	transformReqBody,
 
+	products: products.allProducts,
 	parseProducts: createParseBitmask(products.allProducts, defaultProducts),
 	formatProducts,
 
