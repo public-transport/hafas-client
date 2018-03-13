@@ -122,9 +122,9 @@ test('Magdeburg Hbf to 39104 Magdeburg, Sternstr. 10', co(function*(t) {
 	const magdeburgHbf = '8010224'
 	const sternStr = {
 		type: 'location',
-		latitude: 52.118745,
-		longitude: 11.627117,
-		address: '39104 Magdeburg, Sternstr. 10'
+		latitude: 52.118414,
+		longitude: 11.422332,
+		address: 'Magdeburg - Altenstadt, Sternstraße 10'
 	}
 
 	const journeys = yield client.journeys(magdeburgHbf, sternStr, {
@@ -148,9 +148,9 @@ test('Magdeburg Hbf to 39104 Magdeburg, Sternstr. 10', co(function*(t) {
 
 	const d = lastLeg.destination
 	assertValidAddress(t, d)
-	t.equal(d.address, '39104 Magdeburg, Sternstr. 10')
-	t.ok(isRoughlyEqual(0.0001, d.latitude, 52.118745))
-	t.ok(isRoughlyEqual(0.0001, d.longitude, 11.627117))
+	t.equal(d.address, 'Magdeburg - Altenstadt, Sternstraße 10')
+	t.ok(isRoughlyEqual(0.0001, d.latitude, 52.118414))
+	t.ok(isRoughlyEqual(0.0001, d.longitude, 11.422332))
 
 	t.end()
 }))
