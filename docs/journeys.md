@@ -51,6 +51,7 @@ With `opt`, you can override the default options, which look like this:
 	accessibility: 'none', // 'none', 'partial' or 'complete'
 	bike: false, // only bike-friendly journeys
 	products: {
+		// these entries may vary from profile to profile
 		suburban: true,
 		subway: true,
 		tram: true,
