@@ -69,7 +69,7 @@ const m = {
 		bitmask: 512,
 		name: 'Group Taxi',
 		short: 'Taxi',
-		mode: null, // todo
+		mode: 'taxi',
 		product: 'taxi'
 	},
 	unknown: {
