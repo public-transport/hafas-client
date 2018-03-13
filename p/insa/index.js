@@ -73,9 +73,9 @@ const insaProfile = {
 	parseProducts: createParseBitmask(products.allProducts, defaultProducts),
 	formatProducts,
 
-	parseLine: createParseLine
+	parseLine: createParseLine,
 
-	// todo: journeyLeg?
+	journeyLeg: true
 	// todo: radar?
 }
 

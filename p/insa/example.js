@@ -17,6 +17,11 @@ client.journeys('008010226', '008013456', {results: 1})
 // 	longitude: 11.641705
 // }, {distance: 200})
 
+// .then(([journey]) => {
+// 	const leg = journey.legs[0]
+// 	return client.journeyLeg(leg.id, leg.line.name)
+// })
+
 .then(data => {
 	console.log(require('util').inspect(data, { depth: null }))
 })
