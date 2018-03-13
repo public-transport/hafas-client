@@ -1,5 +1,6 @@
 'use strict'
 
+const _createParseLine = require('../../parse/line')
 const products = require('./products')
 const createParseBitmask = require('../../parse/products-bitmask')
 const createFormatBitmask = require('../../format/products-bitmask')
@@ -30,7 +31,25 @@ const transformReqBody = (body) => {
 	return body
 }
 
+const createParseLine = (profile, operators) => {
+	const parseLine = _createParseLine(profile, operators)
 
+	const parseLineWithMode = (l) => {
+		const res = parseLine(l)
+
+		res.mode = res.product = null
+		if ('class' in res) {
+			const data = products.bitmasks[parseInt(res.class)]
+			if (data) {
+				res.mode = data.mode
+				res.product = data.product
+			}
+		}
+
+		return res
+	}
+	return parseLineWithMode
+}
 
 const formatProducts = (products) => {
 	products = Object.assign(Object.create(null), defaultProducts, products)
@@ -53,7 +72,9 @@ const insaProfile = {
 
 	defaultProducts,
 	parseProducts: createParseBitmask(products.bitmasks),
-	formatProducts
+	formatProducts,
+
+	parseLine: createParseLine
 
 	// todo: journeyLeg?
 	// todo: radar?
