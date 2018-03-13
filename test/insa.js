@@ -310,3 +310,56 @@ test('location', co(function*(t) {
 
 	t.end()
 }))
+
+test('radar', co(function* (t) {
+	const north = 52.148364
+	const west = 11.600826
+	const south = 52.108486
+	const east = 11.651451
+	const vehicles = yield client.radar(north, west, south, east, {
+		duration: 5 * 60, when, results: 10
+	})
+
+	t.ok(Array.isArray(vehicles))
+	t.ok(vehicles.length > 0)
+	for (let v of vehicles) {
+		assertValidLine(t, v.line)
+
+		t.equal(typeof v.location.latitude, 'number')
+		t.ok(v.location.latitude <= 57, 'vehicle is too far away')
+		t.ok(v.location.latitude >= 47, 'vehicle is too far away')
+		t.equal(typeof v.location.longitude, 'number')
+		t.ok(v.location.longitude >= 8, 'vehicle is too far away')
+		t.ok(v.location.longitude <= 14, 'vehicle is too far away')
+
+		t.ok(Array.isArray(v.nextStops))
+		for (let st of v.nextStops) {
+			assertValidStopover(t, st, true)
+
+			if (st.arrival) {
+				t.equal(typeof st.arrival, 'string')
+				const arr = +new Date(st.arrival)
+				// note that this can be an ICE train
+				t.ok(isRoughlyEqual(14 * hour, +when, arr))
+			}
+			if (st.departure) {
+				t.equal(typeof st.departure, 'string')
+				const dep = +new Date(st.departure)
+				// note that this can be an ICE train
+				t.ok(isRoughlyEqual(14 * hour, +when, dep))
+			}
+		}
+
+		t.ok(Array.isArray(v.frames))
+		for (let f of v.frames) {
+			// see #28
+			// todo: check if this works by now
+			assertValidStation(t, f.origin, true)
+			assertValidStationProducts(t, f.origin.products)
+			assertValidStation(t, f.destination, true)
+			assertValidStationProducts(t, f.destination.products)
+			t.equal(typeof f.t, 'number')
+		}
+	}
+	t.end()
+}))

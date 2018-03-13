@@ -65,7 +65,8 @@ p.bitmasks[2] = p.national
 p.bitmasks[8] = p.regional
 p.bitmasks[16] = p.suburban
 p.bitmasks[32] = p.tram
-p.bitmasks[64+128] = p.bus
+p.bitmasks[64] = p.bus
+p.bitmasks[128] = p.bus
 p.bitmasks[256] = p.tourismTrain
 
 p.allProducts = [

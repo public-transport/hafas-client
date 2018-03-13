@@ -20,7 +20,7 @@ const parseLocation = (profile, l, lines) => {
 			type: 'station',
 			id: l.extId,
 			name: l.name,
-			location: res
+			location: 'number' === typeof res.latitude ? res : null
 		}
 
 		if ('pCls' in l) station.products = profile.parseProducts(l.pCls)

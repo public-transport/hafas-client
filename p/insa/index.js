@@ -76,7 +76,7 @@ const insaProfile = {
 	parseLine: createParseLine,
 
 	journeyLeg: true
-	// todo: radar?
+	radar: true
 }
 
 module.exports = insaProfile;
