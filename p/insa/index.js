@@ -75,7 +75,7 @@ const insaProfile = {
 
 	parseLine: createParseLine,
 
-	journeyLeg: true
+	journeyLeg: true,
 	radar: true
 }
 
