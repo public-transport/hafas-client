@@ -10,9 +10,9 @@
 
 *Note*: You can always ask for help by creating an issue! We're motivated to help people expand the scope of this library.
 
-## 0. How does it work?
+## 0. How does the profiles work?
 
-A profile contains two things:
+A profile contains of three things:
 
 - **mandatory details about the HAFAS endpoint**
 	- `endpoint`: The protocol, host and path of the endpoint.
@@ -55,3 +55,35 @@ If you pass this profile into `hafas-client`, the `parseLine` method will overri
 const createClient = require('hafas-client')
 const client = createClient(myProfile) // create a client with our profile
 ```
+
+## 1. Setup
+
+*Note*: There are many ways to find the required values. This way is rather easy and has worked for most of the apps that I've looked at so far.
+
+1. **Get an iOS or Android device and download the "official" app** for the public transport provider that you want to build a profile for.
+2. **Configure a [man-in-the-middle HTTP proxy](https://docs.mitmproxy.org/stable/concepts-howmitmproxyworks/)** like [mitmproxy](https://mitmproxy.org).
+3. **Record requests of the app.**
+	- To help others in the future, post the requests (in their entirety!) on GitHub, e.g. in a format like [this](https://gist.github.com/derhuerst/5fa86ed5aec63645e5ae37e23e555886). This will also let us help you if you have any questions.
+	- Make sure to cover all relevant sections of the app, e.g. "journeys", "departures", "live map". Better record more than less; You will regret not having enough information later on.
+	- *Note*: This method does not work if the app uses [public key pinning](https://en.wikipedia.org/wiki/HTTP_Public_Key_Pinning). In this case, please create an issue, so we can discuss other techniques.
+
+## 2. Basic profile
+
+- **Identify the `endpoint`.** The protocol, host and path of the endpoint, *but not* the query string.
+	- *Note*: **`hafas-client` for now only supports the interface providing JSON** (generated from XML), which is being used by the corresponding iOS/Android apps. It supports neither the JSONP, nor the XML, nor the HTML interface. If the endpoint does not end in `mgate.exe`, it mostly likely won't work.
+- **Identify the `locale`.** Basically guess work; Use the date & time formats as an indicator.
+- **Identify the `timezone`.** This may be tricky, a for example [Deutsche Bahn](https://en.wikipedia.org/wiki/Deutsche_Bahn) returns departures for Moscow as `+01:00` instead of `+03:00`.
+
+## 3. Additional info
+
+We consider these *optional* improvements:
+
+- **Check if the endpoint supports the journey legs call.**
+	- In the app, check if you can query details for the status of a single journey leg. It should load realtime delays and the current progress.
+	- If this feature is supported, add `journeyLeg: true` to the profile.
+- **Check if the endpoint supports the live map call.** Does the app have a "live map" showing all vehicles within an area? If so, add `radar: true` to the profile.
+-  **Consider transforming station & line names** into the formats that's most suitable for *local users*. Some examples:
+	- `M13 (Tram)` -> `M13`. With Berlin context, it is obvious that `M13` is a tram.
+	- `Berlin Jungfernheide Bhf` -> `Berlin Jungfernheide`. With local context, it's obvious that *Jungfernheide* is a train station.
+- **Check if the endpoint has non-obvious limitations** and let use know about these. Examples:
+	- Some endpoints have a time limit, after which they won't return more departures, but silently discard them.
