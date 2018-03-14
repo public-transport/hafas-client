@@ -7,3 +7,7 @@
 - [`location(id)`](location.md) – get details about a location
 - [`nearby(location, [opt])`](nearby.md) – show stations & POIs around
 - [`radar(north, west, south, east, [opt])`](radar.md) – find all vehicles currently in a certain area
+
+## Writing a profile
+
+Check [the guide](writing-a-profile.md).
