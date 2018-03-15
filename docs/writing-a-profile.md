@@ -10,7 +10,7 @@ This guide is about writing such a profile. If you just want to use an already s
 
 *Note*: **If you get stuck, ask for help by creating an issue!** We're motivated to help people expand the scope of this library.
 
-## 0. How does the profiles work?
+## 0. How do the profiles work?
 
 A profile contains of three things:
 
@@ -21,7 +21,19 @@ A profile contains of three things:
 - **flags indicating that features are supported by the endpoint** – e.g. `journeyRef`
 - **methods overriding the [default profile](../lib/default-profile.js)**
 
-As an example, let's say that our endpoint `https://example.org/bin/mgate.exe` has the timezone `Europe/Vienna` and locale `de-AT`. It also returns all lines names prefixed with `foo `. We can strip them like this:
+As an example, let's say we have an [Austrian](https://en.wikipedia.org/wiki/Austria) endpoint:
+
+```js
+const myProfile = {
+	endpoint: 'https://example.org/bin/mgate.exe',
+	locale: 'de-AT',
+	timezone: 'Europe/Vienna'
+}
+```
+
+If you pass this profile into `hafas-client`, the `parseLine` method will override [the default one](../parse/line.js).
+
+Assuming the endpoint returns all lines names prefixed with `foo `, We can strip them like this:
 
 ```js
 // get the default line parser
@@ -38,18 +50,9 @@ const createParseLineWithoutFoo = (profile, operators) => {
 	}
 	return parseLineWithoutFoo
 }
+
+profile.parseLine = createParseLineWithoutFoo
 ```
-
-Our profile will look like this:
-
-```js
-const myProfile = {
-	endpoint: 'https://example.org/bin/mgate.exe',
-	parseLine: createParseLineWithoutFoo
-}
-```
-
-If you pass this profile into `hafas-client`, the `parseLine` method will override [the default one](../parse/line.js).
 
 ## 1. Setup
 
@@ -69,7 +72,7 @@ If you pass this profile into `hafas-client`, the `parseLine` method will overri
 - **Identify the `locale`.** Basically guess work; Use the date & time formats as an indicator.
 - **Identify the `timezone`.** This may be tricky, a for example [Deutsche Bahn](https://en.wikipedia.org/wiki/Deutsche_Bahn) returns departures for Moscow as `+01:00` instead of `+03:00`.
 - **Copy the authentication** and other meta fields, namely `ver`, `ext`, `client` and `lang`.
-	- You can find these fields in the root of each request JSON. Check [a VBB request](https://gist.github.com/derhuerst/5fa86ed5aec63645e5ae37e23e555886#file-1-http-L13-L22) and the corresponding [the VBB profile](https://github.com/derhuerst/hafas-client/blob/6e61097687a37b60d53e767f2711466b80c5142c/p/vbb/index.js#L22-L29) for an example.
+	- You can find these fields in the root of each request JSON. Check [a VBB request](https://gist.github.com/derhuerst/5fa86ed5aec63645e5ae37e23e555886#file-1-http-L13-L22) and [the corresponding VBB profile](https://github.com/derhuerst/hafas-client/blob/6e61097687a37b60d53e767f2711466b80c5142c/p/vbb/index.js#L22-L29) for an example.
 	- Add a function `transformReqBody(body)` to your profile, which assigns them to `body`.
 	- Some profiles have a `checksum` parameter (like [here](https://gist.github.com/derhuerst/2a735268bd82a0a6779633f15dceba33#file-journey-details-1-http-L1)) or two `mic` & `mac` parameters (like [here](https://gist.github.com/derhuerst/5fa86ed5aec63645e5ae37e23e555886#file-1-http-L1)). If you see one of them in your requests, jump to [*Appendix A: checksum, mic, mac*](#appendix-a-checksum-mic-mac). Unfortunately, this is necessary to get the profile working.
 
