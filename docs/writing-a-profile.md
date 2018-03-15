@@ -8,7 +8,7 @@
 
 This guide is about writing such a profile. If you just want to use an already supported endpoint, refer to the [API documentation](readme.md) instead.
 
-*Note*: **If you get stuck, ask for help by creating an issue!** We're motivated to help people expand the scope of this library.
+*Note*: **If you get stuck, ask for help by [creating an issue](https://github.com/derhuerst/hafas-client/issues/new)!** We're motivated to help people expand the scope of this library.
 
 ## 0. How do the profiles work?
 
@@ -58,9 +58,11 @@ profile.parseLine = createParseLineWithoutFoo
 
 *Note*: There are many ways to find the required values. This way is rather easy and has worked for most of the apps that I've looked at so far.
 
+[There's a video showing the following steps](https://stuff.jannisr.de/how-to-record-hafas-requests.mp4).
+
 1. **Get an iOS or Android device and download the "official" app** for the public transport provider that you want to build a profile for.
 2. **Configure a [man-in-the-middle HTTP proxy](https://docs.mitmproxy.org/stable/concepts-howmitmproxyworks/)** like [mitmproxy](https://mitmproxy.org).
-	- *Note*: This method does not work if the app uses [public key pinning](https://en.wikipedia.org/wiki/HTTP_Public_Key_Pinning). In this case (the app won't be able to query data), please create an issue, so we can discuss other techniques.
+	- *Note*: This method does not work if the app uses [public key pinning](https://en.wikipedia.org/wiki/HTTP_Public_Key_Pinning). In this case (the app won't be able to query data), please [create an issue](https://github.com/derhuerst/hafas-client/issues/new), so we can discuss other techniques.
 3. **Record requests of the app.**
 	- To help others in the future, post the requests (in their entirety!) on GitHub, e.g. in as format like [this](https://gist.github.com/derhuerst/5fa86ed5aec63645e5ae37e23e555886). This will also let us help you if you have any questions.
 	- Make sure to cover all relevant sections of the app, e.g. "journeys", "departures", "live map". Better record more than less; You will regret not having enough information later on.
@@ -75,6 +77,8 @@ profile.parseLine = createParseLineWithoutFoo
 	- You can find these fields in the root of each request JSON. Check [a VBB request](https://gist.github.com/derhuerst/5fa86ed5aec63645e5ae37e23e555886#file-1-http-L13-L22) and [the corresponding VBB profile](https://github.com/derhuerst/hafas-client/blob/6e61097687a37b60d53e767f2711466b80c5142c/p/vbb/index.js#L22-L29) for an example.
 	- Add a function `transformReqBody(body)` to your profile, which assigns them to `body`.
 	- Some profiles have a `checksum` parameter (like [here](https://gist.github.com/derhuerst/2a735268bd82a0a6779633f15dceba33#file-journey-details-1-http-L1)) or two `mic` & `mac` parameters (like [here](https://gist.github.com/derhuerst/5fa86ed5aec63645e5ae37e23e555886#file-1-http-L1)). If you see one of them in your requests, jump to [*Appendix A: checksum, mic, mac*](#appendix-a-checksum-mic-mac). Unfortunately, this is necessary to get the profile working.
+
+todo: products/modes
 
 If you want, you can now **verify that the profile works**; I've prepared [a script](https://runkit.com/derhuerst/hafas-client-profile-example) for that. Alternatively, [submit Pull Request](https://help.github.com/articles/creating-a-pull-request-from-a-fork/) and I will help you out with testing and improvements.
 
@@ -104,10 +108,10 @@ You can just query these if you send a formally correct request.
 
 ### endpoints using the `checksum` query parameter
 
-`checksum` is a [message authentication code](https://en.wikipedia.org/wiki/Message_authentication_code): `hafas-client` will compute it by [hashing](https://en.wikipedia.org/wiki/Hash_function) the request body and a *salt* (which means secret). **This secret can be read from the config file inside the app bundle.** There is no guide for this yet, so please open an issue instead.
+`checksum` is a [message authentication code](https://en.wikipedia.org/wiki/Message_authentication_code): `hafas-client` will compute it by [hashing](https://en.wikipedia.org/wiki/Hash_function) the request body and a *salt* (which means secret). **This secret can be read from the config file inside the app bundle.** There is no guide for this yet, so please [open an issue](https://github.com/derhuerst/hafas-client/issues/new) instead.
 
 ### endpoints using the `mic` & `mac` query parameters
 
 `mic` is a [message integrity code](https://en.wikipedia.org/wiki/Message_authentication_code), the [hash](https://en.wikipedia.org/wiki/Hash_function) of the request body.
 
-`mac` is a [message authentication code](https://en.wikipedia.org/wiki/Message_authentication_code), the hash of `mic` and a *salt* (which means secret). **This secret can be read from the config file inside the app bundle.** There is no guide for this yet, so please open an issue instead.
+`mac` is a [message authentication code](https://en.wikipedia.org/wiki/Message_authentication_code), the hash of `mic` and a *salt* (which means secret). **This secret can be read from the config file inside the app bundle.** There is no guide for this yet, so please [open an issue](https://github.com/derhuerst/hafas-client/issues/new) instead.
