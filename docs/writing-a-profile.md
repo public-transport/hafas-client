@@ -6,9 +6,9 @@
 - extract additional information from the data provided by the endpoint,
 - guard against triggering bugs of certain endpoints (e.g. time limits).
 
-**This guide is about writing such a profile.** If you just want to use an already supported endpoint, refer to the [API documentation](index.md) instead.
+This guide is about writing such a profile. If you just want to use an already supported endpoint, refer to the [API documentation](readme.md) instead.
 
-*Note*: You can always ask for help by creating an issue! We're motivated to help people expand the scope of this library.
+*Note*: **If you get stuck, ask for help by creating an issue!** We're motivated to help people expand the scope of this library.
 
 ## 0. How does the profiles work?
 
@@ -59,7 +59,7 @@ If you pass this profile into `hafas-client`, the `parseLine` method will overri
 2. **Configure a [man-in-the-middle HTTP proxy](https://docs.mitmproxy.org/stable/concepts-howmitmproxyworks/)** like [mitmproxy](https://mitmproxy.org).
 	- *Note*: This method does not work if the app uses [public key pinning](https://en.wikipedia.org/wiki/HTTP_Public_Key_Pinning). In this case (the app won't be able to query data), please create an issue, so we can discuss other techniques.
 3. **Record requests of the app.**
-	- To help others in the future, post the requests (in their entirety!) on GitHub, e.g. in a format like [this](https://gist.github.com/derhuerst/5fa86ed5aec63645e5ae37e23e555886). This will also let us help you if you have any questions.
+	- To help others in the future, post the requests (in their entirety!) on GitHub, e.g. in as format like [this](https://gist.github.com/derhuerst/5fa86ed5aec63645e5ae37e23e555886). This will also let us help you if you have any questions.
 	- Make sure to cover all relevant sections of the app, e.g. "journeys", "departures", "live map". Better record more than less; You will regret not having enough information later on.
 
 ## 2. Basic profile
@@ -76,7 +76,7 @@ If you want, you can now **verify that the profile works**; I've prepared [a scr
 
 ## 3. Additional info
 
-We consider these *optional* improvements:
+We consider these improvements to be *optional*:
 
 - **Check if the endpoint supports the journey legs call.**
 	- In the app, check if you can query details for the status of a single journey leg. It should load realtime delays and the current progress.

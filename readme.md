@@ -32,7 +32,7 @@ npm install hafas-client
 
 ## API
 
-[API documentation](docs/index.md)
+[API documentation](docs/readme.md)
 
 
 ## Usage
