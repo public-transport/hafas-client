@@ -51,21 +51,16 @@ const myProfile = {
 
 If you pass this profile into `hafas-client`, the `parseLine` method will override [the default one](../parse/line.js).
 
-```js
-const createClient = require('hafas-client')
-const client = createClient(myProfile) // create a client with our profile
-```
-
 ## 1. Setup
 
 *Note*: There are many ways to find the required values. This way is rather easy and has worked for most of the apps that I've looked at so far.
 
 1. **Get an iOS or Android device and download the "official" app** for the public transport provider that you want to build a profile for.
 2. **Configure a [man-in-the-middle HTTP proxy](https://docs.mitmproxy.org/stable/concepts-howmitmproxyworks/)** like [mitmproxy](https://mitmproxy.org).
+	- *Note*: This method does not work if the app uses [public key pinning](https://en.wikipedia.org/wiki/HTTP_Public_Key_Pinning). In this case (the app won't be able to query data), please create an issue, so we can discuss other techniques.
 3. **Record requests of the app.**
 	- To help others in the future, post the requests (in their entirety!) on GitHub, e.g. in a format like [this](https://gist.github.com/derhuerst/5fa86ed5aec63645e5ae37e23e555886). This will also let us help you if you have any questions.
 	- Make sure to cover all relevant sections of the app, e.g. "journeys", "departures", "live map". Better record more than less; You will regret not having enough information later on.
-	- *Note*: This method does not work if the app uses [public key pinning](https://en.wikipedia.org/wiki/HTTP_Public_Key_Pinning). In this case, please create an issue, so we can discuss other techniques.
 
 ## 2. Basic profile
 
@@ -73,6 +68,11 @@ const client = createClient(myProfile) // create a client with our profile
 	- *Note*: **`hafas-client` for now only supports the interface providing JSON** (generated from XML), which is being used by the corresponding iOS/Android apps. It supports neither the JSONP, nor the XML, nor the HTML interface. If the endpoint does not end in `mgate.exe`, it mostly likely won't work.
 - **Identify the `locale`.** Basically guess work; Use the date & time formats as an indicator.
 - **Identify the `timezone`.** This may be tricky, a for example [Deutsche Bahn](https://en.wikipedia.org/wiki/Deutsche_Bahn) returns departures for Moscow as `+01:00` instead of `+03:00`.
+- **Copy the authentication** and other meta fields, namely `ver`, `ext`, `client` and `lang`.
+	- You can find these fields in the root of each request JSON. Check [a VBB request](https://gist.github.com/derhuerst/5fa86ed5aec63645e5ae37e23e555886#file-1-http-L13-L22) and the corresponding [the VBB profile](https://github.com/derhuerst/hafas-client/blob/6e61097687a37b60d53e767f2711466b80c5142c/p/vbb/index.js#L22-L29) for an example.
+	- Add a function `transformReqBody(body)` to your profile, which assigns them to `body`.
+
+If you want, you can now **verify that the profile works**; I've prepared [a script](https://runkit.com/derhuerst/hafas-client-profile-example) for that. Alternatively, [submit Pull Request](https://help.github.com/articles/creating-a-pull-request-from-a-fork/) and I will help you out with testing and improvements.
 
 ## 3. Additional info
 
