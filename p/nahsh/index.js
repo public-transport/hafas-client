@@ -4,6 +4,7 @@ const createParseBitmask = require('../../parse/products-bitmask')
 const createFormatBitmask = require('../../format/products-bitmask')
 const _createParseLine = require('../../parse/line')
 const _parseLocation = require('../../parse/location')
+const _createParseJourney = require('../../parse/journey')
 
 const products = require('./products')
 
@@ -62,6 +63,49 @@ const createParseLine = (profile, operators) => {
 	return parseLineWithMode
 }
 
+const createParseJourney = (profile, stations, lines, remarks) => {
+	const parseJourney = _createParseJourney(profile, stations, lines, remarks)
+
+	const parseJourneyWithTickets = (j) => {
+		const res = parseJourney(j)
+
+		if (
+			j.trfRes &&
+			Array.isArray(j.trfRes.fareSetL) &&
+			j.trfRes.fareSetL.length > 0
+		) {
+			res.tickets = []
+
+			for(let t of j.trfRes.fareSetL){
+				const tariff = t.desc
+				if(!tariff || !Array.isArray(t.fareL)) continue
+				for(let v of t.fareL){
+					const variant = v.name
+					if(!variant) continue
+					const ticket = {
+						name: [tariff, variant].join(' - '),
+						tariff,
+						variant
+					}
+					if(v.prc && Number.isInteger(v.prc) && v.cur){
+						ticket.amount = v.prc/100
+						ticket.currency = v.cur
+					}
+					else{
+						ticket.amount = null
+						ticket.hint = 'No pricing information available.'
+					}
+					res.tickets.push(ticket)
+				}
+			}
+		}
+
+		return res
+	}
+
+	return parseJourneyWithTickets
+}
+
 const defaultProducts = {
 	nationalExp: true,
 	national: true,
@@ -95,6 +139,7 @@ const nahshProfile = {
 	parseProducts: createParseBitmask(products.allProducts, defaultProducts),
 	parseLine: createParseLine,
 	parseLocation,
+	parseJourney: createParseJourney,
 
 	formatProducts,
 
