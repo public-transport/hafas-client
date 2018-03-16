@@ -12,7 +12,7 @@ const validateLineWithoutMode = require('./validate-line-without-mode')
 const co = require('./co')
 const createClient = require('..')
 const oebbProfile = require('../p/oebb')
-const {allProducts} = require('../p/oebb/products')
+const allProducts = require('../p/oebb/products')
 const {
 	assertValidStation,
 	assertValidPoi,

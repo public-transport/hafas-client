@@ -8,7 +8,7 @@ const validateFptf = require('validate-fptf')
 const co = require('./co')
 const createClient = require('..')
 const insaProfile = require('../p/insa')
-const {allProducts} = require('../p/insa/products')
+const allProducts = require('../p/insa/products')
 const {
 	assertValidStation,
 	assertValidPoi,
