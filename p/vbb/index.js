@@ -15,9 +15,9 @@ const _formatStation = require('../../format/station')
 const createParseBitmask = require('../../parse/products-bitmask')
 const createFormatBitmask = require('../../format/products-bitmask')
 
-const modes = require('./modes')
+const products = require('./products')
 
-const formatBitmask = createFormatBitmask(modes)
+const formatBitmask = createFormatBitmask(products)
 
 const transformReqBody = (body) => {
 	body.client = {type: 'IPA', id: 'VBB', name: 'vbbPROD', v: '4010300'}
@@ -36,7 +36,7 @@ const createParseLine = (profile, operators) => {
 
 		res.mode = res.product = null
 		if ('class' in res) {
-			const data = modes.bitmasks[parseInt(res.class)]
+			const data = products.bitmasks[parseInt(res.class)]
 			if (data) {
 				res.mode = data.mode
 				res.product = data.product
@@ -176,12 +176,12 @@ const vbbProfile = {
 
 	transformReqBody,
 
-	products: modes.allProducts,
+	products: products.allProducts,
 
 	parseStationName: shorten,
 	parseLocation,
 	parseLine: createParseLine,
-	parseProducts: createParseBitmask(modes.allProducts, defaultProducts),
+	parseProducts: createParseBitmask(products.allProducts, defaultProducts),
 	parseJourney: createParseJourney,
 	parseDeparture: createParseDeparture,
 	parseStopover: createParseStopover,

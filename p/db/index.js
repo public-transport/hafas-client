@@ -7,10 +7,10 @@ const createParseBitmask = require('../../parse/products-bitmask')
 const createFormatBitmask = require('../../format/products-bitmask')
 const {bike} = require('../../format/filters')
 
-const modes = require('./modes')
+const products = require('./products')
 const formatLoyaltyCard = require('./loyalty-cards').format
 
-const formatBitmask = createFormatBitmask(modes)
+const formatBitmask = createFormatBitmask(products)
 
 const transformReqBody = (body) => {
 	body.client = {id: 'DB', v: '16040000', type: 'IPH', name: 'DB Navigator'}
@@ -47,7 +47,7 @@ const createParseLine = (profile, operators) => {
 
 		res.mode = res.product = null
 		if ('class' in res) {
-			const data = modes.bitmasks[parseInt(res.class)]
+			const data = products.bitmasks[parseInt(res.class)]
 			if (data) {
 				res.mode = data.mode
 				res.product = data.product
@@ -137,11 +137,11 @@ const dbProfile = {
 	transformReqBody,
 	transformJourneysQuery,
 
-	products: modes.allProducts,
+	products: products.allProducts,
 
 	// todo: parseLocation
 	parseLine: createParseLine,
-	parseProducts: createParseBitmask(modes.allProducts, defaultProducts),
+	parseProducts: createParseBitmask(products.allProducts, defaultProducts),
 	parseJourney: createParseJourney,
 
 	formatStation,
