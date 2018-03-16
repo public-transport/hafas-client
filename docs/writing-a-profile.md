@@ -8,7 +8,7 @@
 
 This guide is about writing such a profile. If you just want to use an already supported endpoint, refer to the [API documentation](readme.md) instead.
 
-*Note*: **If you get stuck, ask for help by [creating an issue](https://github.com/derhuerst/hafas-client/issues/new)!** We're motivated to help people expand the scope of this library.
+*Note*: **If you get stuck, ask for help by [creating an issue](https://github.com/derhuerst/hafas-client/issues/new)!** I want to help people expand the scope of this library.
 
 ## 0. How do the profiles work?
 
@@ -58,14 +58,14 @@ profile.parseLine = createParseLineWithoutFoo
 
 *Note*: There are many ways to find the required values. This way is rather easy and has worked for most of the apps that I've looked at so far.
 
-[There's a video showing the following steps](https://stuff.jannisr.de/how-to-record-hafas-requests.mp4).
-
 1. **Get an iOS or Android device and download the "official" app** for the public transport provider that you want to build a profile for.
 2. **Configure a [man-in-the-middle HTTP proxy](https://docs.mitmproxy.org/stable/concepts-howmitmproxyworks/)** like [mitmproxy](https://mitmproxy.org).
+	- Configure your device to trust the self-signed SSL certificate, [as outlined in the mitmproxy docs](https://docs.mitmproxy.org/stable/concepts-certificates/).
 	- *Note*: This method does not work if the app uses [public key pinning](https://en.wikipedia.org/wiki/HTTP_Public_Key_Pinning). In this case (the app won't be able to query data), please [create an issue](https://github.com/derhuerst/hafas-client/issues/new), so we can discuss other techniques.
 3. **Record requests of the app.**
-	- To help others in the future, post the requests (in their entirety!) on GitHub, e.g. in as format like [this](https://gist.github.com/derhuerst/5fa86ed5aec63645e5ae37e23e555886). This will also let us help you if you have any questions.
+	- [There's a video showing this step](https://stuff.jannisr.de/how-to-record-hafas-requests.mp4).
 	- Make sure to cover all relevant sections of the app, e.g. "journeys", "departures", "live map". Better record more than less; You will regret not having enough information later on.
+	- To help others in the future, post the requests (in their entirety!) on GitHub, e.g. in as format like [this](https://gist.github.com/derhuerst/5fa86ed5aec63645e5ae37e23e555886). This will also let us help you if you have any questions.
 
 ## 2. Basic profile
 
@@ -108,15 +108,15 @@ const products = {
 
 Let's break this down:
 
-- `product` should contain a sensible, [camelCased](https://en.wikipedia.org/wiki/Camel_case#Variations_and_synonyms), alphanumeric identifier. Use it for the key in the `products` object as well.
-- `mode` should be a [valid *Friendly Public Transport Format* `1.0.1` mode](https://github.com/public-transport/friendly-public-transport-format/blob/1.0.1/spec/readme.md#modes).
-- HAFAS endpoints work with a [bitmask](https://en.wikipedia.org/wiki/Mask_(computing)#Arguments_to_functions) that toggles the individual products. `bitmask` should toggle the appropriate bit(s) in the bitmask (see below).
-- `name` should be a short, but distinct name for the means of transport, *just precise enough in local context*. In Berlin, `S-Bahn commuter rail` would be too much, because everyone knows what `S-Bahn` means.
-- `short` short be the shortest possible symbol that identifies the product.
+- `product`: A sensible, [camelCased](https://en.wikipedia.org/wiki/Camel_case#Variations_and_synonyms), alphanumeric identifier. Use it for the key in the `products` object as well.
+- `mode`: A [valid *Friendly Public Transport Format* `1.0.1` mode](https://github.com/public-transport/friendly-public-transport-format/blob/1.0.1/spec/readme.md#modes).
+- `bitmask`: HAFAS endpoints work with a [bitmask](https://en.wikipedia.org/wiki/Mask_(computing)#Arguments_to_functions) that toggles the individual products. the value should toggle the appropriate bit(s) in the bitmask (see below).
+- `name`: A short, but distinct name for the means of transport, *just precise enough in local context*. In Berlin, `S-Bahn commuter rail` would be too much, because everyone knows what `S-Bahn` means.
+- `short`: The shortest possible symbol that identifies the product.
 
 todo: `defaultProducts`, `allProducts`, `bitmasks`, add to profile
 
-If you want, you can now **verify that the profile works**; I've prepared [a script](https://runkit.com/derhuerst/hafas-client-profile-example) for that. Alternatively, [submit Pull Request](https://help.github.com/articles/creating-a-pull-request-from-a-fork/) and I will help you out with testing and improvements.
+If you want, you can now **verify that the profile works**; I've prepared [a script](https://runkit.com/derhuerst/hafas-client-profile-example) for that. Alternatively, [submit a Pull Request](https://help.github.com/articles/creating-a-pull-request-from-a-fork/) and I will help you out with testing and improvements.
 
 ### Finding the right values for the `bitmask` field
 
@@ -129,14 +129,14 @@ all but ACME Commuter Rail  127    01111111         255 - 2^7        2^7
 all but Foo Bar Metro       191    10111111         255 - 2^6        2^6
 all but product C           223    11011111         255 - 2^5        2^5
 all but product D           239    11101111         255 - 2^4        2^4
-all but product E           243    11110011         255 - 2^3 - 2^2  2^3 & 2^2
+all but product E           243    11110011         255 - 2^3 - 2^2  2^3, 2^2
 all but product F           253    11111101         255 - 2^1        2^1
 all but product G           254    11111110         255 - 2^0        2^0
 ```
 
 ## 4. Additional info
 
-We consider these improvements to be *optional*:
+I consider these improvements to be *optional*:
 
 - **Check if the endpoint supports the journey legs call.**
 	- In the app, check if you can query details for the status of a single journey leg. It should load realtime delays and the current progress.
@@ -156,14 +156,14 @@ As far as I know, there are three different types of authentication used among H
 
 ### unprotected endpoints
 
-You can just query these if you send a formally correct request.
+You can just query these, as long as you send a formally correct request.
 
 ### endpoints using the `checksum` query parameter
 
-`checksum` is a [message authentication code](https://en.wikipedia.org/wiki/Message_authentication_code): `hafas-client` will compute it by [hashing](https://en.wikipedia.org/wiki/Hash_function) the request body and a *salt* (which means secret). **This secret can be read from the config file inside the app bundle.** There is no guide for this yet, so please [open an issue](https://github.com/derhuerst/hafas-client/issues/new) instead.
+`checksum` is a [message authentication code](https://en.wikipedia.org/wiki/Message_authentication_code): `hafas-client` will compute it by [hashing](https://en.wikipedia.org/wiki/Hash_function) the request body and a secret *salt*. **This secret can be read from the config file inside the app bundle.** There is no guide for this yet, so please [open an issue](https://github.com/derhuerst/hafas-client/issues/new) instead.
 
 ### endpoints using the `mic` & `mac` query parameters
 
 `mic` is a [message integrity code](https://en.wikipedia.org/wiki/Message_authentication_code), the [hash](https://en.wikipedia.org/wiki/Hash_function) of the request body.
 
-`mac` is a [message authentication code](https://en.wikipedia.org/wiki/Message_authentication_code), the hash of `mic` and a *salt* (which means secret). **This secret can be read from the config file inside the app bundle.** There is no guide for this yet, so please [open an issue](https://github.com/derhuerst/hafas-client/issues/new) instead.
+`mac` is a [message authentication code](https://en.wikipedia.org/wiki/Message_authentication_code), the hash of `mic` and a secret *salt*. **This secret can be read from the config file inside the app bundle.** There is no guide for this yet, so please [open an issue](https://github.com/derhuerst/hafas-client/issues/new) instead.
