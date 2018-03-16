@@ -3,7 +3,7 @@
 // todo: https://gist.github.com/anonymous/d3323a5d2d6e159ed42b12afd0380434#file-haf_products-properties-L1-L95
 module.exports = [
 	{
-		product: 'nationalExp',
+		id: 'nationalExp',
 		mode: 'train',
 		bitmasks: [1],
 		name: 'InterCityExpress',
@@ -11,7 +11,7 @@ module.exports = [
 		default: true
 	},
 	{
-		product: 'national',
+		id: 'national',
 		mode: 'train',
 		bitmasks: [2],
 		name: 'InterCity & EuroCity',
@@ -19,7 +19,7 @@ module.exports = [
 		default: true
 	},
 	{
-		product: 'regionalExp',
+		id: 'regionalExp',
 		mode: 'train',
 		bitmasks: [4],
 		name: 'RegionalExpress & InterRegio',
@@ -27,7 +27,7 @@ module.exports = [
 		default: true
 	},
 	{
-		product: 'regional',
+		id: 'regional',
 		mode: 'train',
 		bitmasks: [8],
 		name: 'Regio',
@@ -35,7 +35,7 @@ module.exports = [
 		default: true
 	},
 	{
-		product: 'suburban',
+		id: 'suburban',
 		mode: 'train',
 		bitmasks: [16],
 		name: 'S-Bahn',
@@ -43,7 +43,7 @@ module.exports = [
 		default: true
 	},
 	{
-		product: 'bus',
+		id: 'bus',
 		mode: 'bus',
 		bitmasks: [32],
 		name: 'Bus',
@@ -51,7 +51,7 @@ module.exports = [
 		default: true
 	},
 	{
-		product: 'ferry',
+		id: 'ferry',
 		mode: 'watercraft',
 		bitmasks: [64],
 		name: 'Ferry',
@@ -59,7 +59,7 @@ module.exports = [
 		default: true
 	},
 	{
-		product: 'subway',
+		id: 'subway',
 		mode: 'train',
 		bitmasks: [128],
 		name: 'U-Bahn',
@@ -67,7 +67,7 @@ module.exports = [
 		default: true
 	},
 	{
-		product: 'tram',
+		id: 'tram',
 		mode: 'tram',
 		bitmasks: [256],
 		name: 'Tram',
@@ -75,7 +75,7 @@ module.exports = [
 		default: true
 	},
 	{
-		product: 'taxi',
+		id: 'taxi',
 		mode: 'taxi',
 		bitmasks: [512],
 		name: 'Group Taxi',

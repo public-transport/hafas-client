@@ -2,7 +2,7 @@
 
 module.exports = [
 	{
-		product: 'suburban',
+		id: 'suburban',
 		mode: 'train',
 		bitmasks: [1],
 		name: 'S-Bahn',
@@ -10,7 +10,7 @@ module.exports = [
 		default: true
 	},
 	{
-		product: 'subway',
+		id: 'subway',
 		mode: 'train',
 		bitmasks: [2],
 		name: 'U-Bahn',
@@ -18,7 +18,7 @@ module.exports = [
 		default: true
 	},
 	{
-		product: 'tram',
+		id: 'tram',
 		mode: 'train',
 		bitmasks: [4],
 		name: 'Tram',
@@ -26,7 +26,7 @@ module.exports = [
 		default: true
 	},
 	{
-		product: 'bus',
+		id: 'bus',
 		mode: 'bus',
 		bitmasks: [8],
 		name: 'Bus',
@@ -34,7 +34,7 @@ module.exports = [
 		default: true
 	},
 	{
-		product: 'ferry',
+		id: 'ferry',
 		mode: 'watercraft',
 		bitmasks: [16],
 		name: 'Fähre',
@@ -42,7 +42,7 @@ module.exports = [
 		default: true
 	},
 	{
-		product: 'express',
+		id: 'express',
 		mode: 'train',
 		bitmasks: [32],
 		name: 'IC/ICE',
@@ -50,7 +50,7 @@ module.exports = [
 		default: true
 	},
 	{
-		product: 'regional',
+		id: 'regional',
 		mode: 'train',
 		bitmasks: [64],
 		name: 'RB/RE',

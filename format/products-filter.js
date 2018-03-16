@@ -7,8 +7,8 @@ const createFormatProductsFilter = (profile) => {
 	const byProduct = {}
 	const defaultProducts = {}
 	for (let product of profile.products) {
-		byProduct[product.product] = product
-		defaultProducts[product.product] = product.default
+		byProduct[product.id] = product
+		defaultProducts[product.id] = product.default
 	}
 
 	const formatProductsFilter = (filter) => {

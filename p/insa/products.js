@@ -2,7 +2,7 @@
 
 module.exports = [
 	{
-		product: 'nationalExp',
+		id: 'nationalExp',
 		mode: 'train',
 		bitmasks: [1],
 		name: 'InterCityExpress',
@@ -10,7 +10,7 @@ module.exports = [
 		default: true
 	},
 	{
-		product: 'national',
+		id: 'national',
 		mode: 'train',
 		bitmasks: [2],
 		name: 'InterCity & EuroCity',
@@ -18,7 +18,7 @@ module.exports = [
 		default: true
 	},
 	{
-		product: 'regional',
+		id: 'regional',
 		mode: 'train',
 		bitmasks: [8],
 		name: 'RegionalExpress & RegionalBahn',
@@ -26,7 +26,7 @@ module.exports = [
 		default: true
 	},
 	{
-		product: 'suburban',
+		id: 'suburban',
 		mode: 'train',
 		bitmasks: [16],
 		name: 'S-Bahn',
@@ -34,7 +34,7 @@ module.exports = [
 		default: true
 	},
 	{
-		product: 'tram',
+		id: 'tram',
 		mode: 'train',
 		bitmasks: [32],
 		name: 'Tram',
@@ -42,7 +42,7 @@ module.exports = [
 		default: true
 	},
 	{
-		product: 'bus',
+		id: 'bus',
 		mode: 'bus',
 		bitmasks: [64, 128],
 		name: 'Bus',
@@ -50,7 +50,7 @@ module.exports = [
 		default: true
 	},
 	{
-		product: 'tourismTrain',
+		id: 'tourismTrain',
 		mode: 'train',
 		bitmasks: [256],
 		name: 'Tourism Train',

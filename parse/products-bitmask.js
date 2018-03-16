@@ -4,7 +4,7 @@ const createParseBitmask = (profile) => {
 	const defaultProducts = {}
 	let withBitmask = []
 	for (let product of profile.products) {
-		defaultProducts[product.product] = false
+		defaultProducts[product.id] = false
 		for (let bitmask of product.bitmasks) {
 			withBitmask.push([bitmask, product])
 		}
@@ -16,7 +16,7 @@ const createParseBitmask = (profile) => {
 
 		for (let [pBitmask, product] of withBitmask) {
 			if ((pBitmask & bitmask) > 0) {
-				res[product.product] = true
+				res[product.id] = true
 				bitmask -= pBitmask
 			}
 		}

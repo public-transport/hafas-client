@@ -33,9 +33,9 @@ const createParseLine = (profile, operators) => {
 
 		if ('class' in res) {
 			// todo: what if `res.class` is the sum of two bitmasks?
-			const data = byBitmask[parseInt(res.class)]
-			res.mode = data && data.mode || null
-			res.product = data && data.product || null
+			const product = byBitmask[parseInt(res.class)]
+			res.mode = product && product.mode || null
+			res.product = product && product.id || null
 		}
 
 		if ('number' === typeof p.oprX) {

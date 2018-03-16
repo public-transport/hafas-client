@@ -2,7 +2,7 @@
 
 module.exports = [
 	{
-		product: 'nationalExp',
+		id: 'nationalExp',
 		mode: 'train',
 		bitmasks: [1],
 		name: 'InterCityExpress & RailJet',
@@ -10,7 +10,7 @@ module.exports = [
 		default: true
 	},
 	{
-		product: 'national',
+		id: 'national',
 		mode: 'train',
 		bitmasks: [2, 4],
 		name: 'InterCity & EuroCity',
@@ -18,7 +18,7 @@ module.exports = [
 		default: true
 	},
 	{
-		product: 'interregional',
+		id: 'interregional',
 		mode: 'train',
 		bitmasks: [8, 4096],
 		name: 'Durchgangszug & EuroNight',
@@ -26,7 +26,7 @@ module.exports = [
 		default: true
 	},
 	{
-		product: 'regional',
+		id: 'regional',
 		mode: 'train',
 		bitmasks: [16],
 		name: 'Regional & RegionalExpress',
@@ -34,7 +34,7 @@ module.exports = [
 		default: true
 	},
 	{
-		product: 'suburban',
+		id: 'suburban',
 		mode: 'train',
 		bitmasks: [32],
 		name: 'S-Bahn',
@@ -42,7 +42,7 @@ module.exports = [
 		default: true
 	},
 	{
-		product: 'bus',
+		id: 'bus',
 		mode: 'bus',
 		bitmasks: [64],
 		name: 'Bus',
@@ -50,7 +50,7 @@ module.exports = [
 		default: true
 	},
 	{
-		product: 'ferry',
+		id: 'ferry',
 		mode: 'watercraft',
 		bitmasks: [128],
 		name: 'Ferry',
@@ -58,7 +58,7 @@ module.exports = [
 		default: true
 	},
 	{
-		product: 'subway',
+		id: 'subway',
 		mode: 'train',
 		bitmasks: [256],
 		name: 'U-Bahn',
@@ -66,7 +66,7 @@ module.exports = [
 		default: true
 	},
 	{
-		product: 'tram',
+		id: 'tram',
 		mode: 'train',
 		bitmasks: [512],
 		name: 'Tram',
@@ -74,7 +74,7 @@ module.exports = [
 		default: true
 	},
 	{
-		product: 'onCall',
+		id: 'onCall',
 		mode: null, // todo
 		bitmasks: [2048],
 		name: 'On-call transit',
