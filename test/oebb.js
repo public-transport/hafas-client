@@ -260,7 +260,7 @@ test('Albertina to Salzburg Hbf', co(function* (t) {
 
 test('journeys: via works – with detour', co(function* (t) {
 	// Going from Stephansplatz to Schottenring via Donauinsel without detour
-	// is currently impossible
+	// is currently impossible. We check if the routing engine computes a detour.
 	const stephansplatz = '001390167'
 	const schottenring = '001390163'
 	const donauinsel = '001392277'

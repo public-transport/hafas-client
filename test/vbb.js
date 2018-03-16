@@ -302,7 +302,7 @@ test('journeys – station to POI', co(function* (t) {
 
 test('journeys: via works – with detour', co(function* (t) {
 	// Going from Westhafen to Wedding via Württembergalle without detour
-	// is currently impossible
+	// is currently impossible. We check if the routing engine computes a detour.
 	const westhafen = '900000001201'
 	const wedding = '900000009104'
 	const württembergallee = '900000026153'
