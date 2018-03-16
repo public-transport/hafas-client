@@ -5,16 +5,7 @@ const slugg = require('slugg')
 const createParseLine = (profile, operators) => {
 	const byBitmask = []
 	for (let product of profile.products) {
-		if ('string' !== typeof product.product) {
-			throw new Error('profile.products[].product must be a string.')
-		}
-		if (!Array.isArray(product.bitmasks)) {
-			throw new Error(product.product + '.bitmasks must be an array.')
-		}
 		for (let bitmask of product.bitmasks) {
-			if ('number' !== typeof bitmask) {
-				throw new Error(product.product + '.bitmasks[] must be a number.')
-			}
 			byBitmask[bitmask] = product
 		}
 	}
