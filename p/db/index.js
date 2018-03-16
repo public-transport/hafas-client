@@ -1,6 +1,5 @@
 'use strict'
 
-const _createParseLine = require('../../parse/line')
 const _createParseJourney = require('../../parse/journey')
 const _formatStation = require('../../format/station')
 const {bike} = require('../../format/filters')
@@ -33,26 +32,6 @@ const transformJourneysQuery = (query, opt) => {
 	}
 
 	return query
-}
-
-const createParseLine = (profile, operators) => {
-	const parseLine = _createParseLine(profile, operators)
-
-	const parseLineWithMode = (l) => {
-		const res = parseLine(l)
-
-		res.mode = res.product = null
-		if ('class' in res) {
-			const data = products.bitmasks[parseInt(res.class)]
-			if (data) {
-				res.mode = data.mode
-				res.product = data.product
-			}
-		}
-
-		return res
-	}
-	return parseLineWithMode
 }
 
 const createParseJourney = (profile, stations, lines, remarks) => {
@@ -112,10 +91,9 @@ const dbProfile = {
 	transformReqBody,
 	transformJourneysQuery,
 
-	products: products.allProducts,
+	products: products,
 
 	// todo: parseLocation
-	parseLine: createParseLine,
 	parseJourney: createParseJourney,
 
 	formatStation

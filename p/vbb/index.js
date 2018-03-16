@@ -27,17 +27,8 @@ const transformReqBody = (body) => {
 const createParseLine = (profile, operators) => {
 	const parseLine = _createParseLine(profile, operators)
 
-	const parseLineWithMode = (l) => {
+	const parseLineWithMoreDetails = (l) => {
 		const res = parseLine(l)
-
-		res.mode = res.product = null
-		if ('class' in res) {
-			const data = products.bitmasks[parseInt(res.class)]
-			if (data) {
-				res.mode = data.mode
-				res.product = data.product
-			}
-		}
 
 		const details = parseLineName(l.name)
 		res.symbol = details.symbol
@@ -48,7 +39,7 @@ const createParseLine = (profile, operators) => {
 
 		return res
 	}
-	return parseLineWithMode
+	return parseLineWithMoreDetails
 }
 
 const parseLocation = (profile, l, lines) => {
@@ -154,7 +145,7 @@ const vbbProfile = {
 
 	transformReqBody,
 
-	products: products.allProducts,
+	products: products,
 
 	parseStationName: shorten,
 	parseLocation,
