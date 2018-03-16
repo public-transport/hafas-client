@@ -300,36 +300,30 @@ test('journeys – station to POI', co(function* (t) {
 	t.end()
 }))
 
-
-
-test('journeys: via works – changing trains', co(function* (t) {
-	// Going from Westhafen to Wedding via Württembergalle without changing
-	// is currently impossible. We check if the routing engine lets us change
-	// at Württembergallee if we set it as via.
+test('journeys: via works – with detour', co(function* (t) {
+	// Going from Westhafen to Wedding via Württembergalle without detour
+	// is currently impossible
 	const westhafen = '900000001201'
 	const wedding = '900000009104'
 	const württembergallee = '900000026153'
 	const [journey] = yield client.journeys(westhafen, wedding, {
 		via: württembergallee,
 		results: 1,
-		when
+		when,
+		passedStations: true
 	})
 
 	t.ok(journey)
-	const i1 = journey.legs.findIndex(l => l.destination.id === württembergallee)
-	t.ok(i1 >= 0, 'no leg with Württembergallee as destination')
 
-	const i2 = journey.legs.findIndex(l => l.origin.id === württembergallee)
-	t.ok(i2 >= 0, 'no leg with Württembergallee as origin')
-	t.ok(i2 >= i1)
+	const l = journey.legs.some(l => l.passed && l.passed.some(p => p.station.id === württembergallee))
+	t.ok(l, 'no stopover at Württembergalle')
 
 	t.end()
 }))
 
-test('journeys: via works – *without* changing trains', co(function* (t) {
+test('journeys: via works – without detour', co(function* (t) {
 	// When going from Ruhleben to Zoo via Kastanienallee, there is *no need*
-	// to change trains. We check if the routing engine *does not* require
-	// one to change at the via station.
+	// to change trains / no need for a "detour".
 	const ruhleben = '900000025202'
 	const zoo = '900000023201'
 	const kastanienallee = '900000020152'
@@ -341,37 +335,12 @@ test('journeys: via works – *without* changing trains', co(function* (t) {
 	})
 
 	t.ok(journey)
-	const i1 = journey.legs.findIndex(l => l.destination.id === kastanienallee)
-	t.ok(i1 < 0, 'routing engine changes at Kastanienallee')
 
-	const l = journey.legs.some(l => l.passed.some(p => p.station.id === kastanienallee))
+	const l = journey.legs.some(l => l.passed && l.passed.some(p => p.station.id === kastanienallee))
 	t.ok(l, 'no stopover at Kastanienallee')
 
 	t.end()
 }))
-
-test('journeys: via works – even if on the obvious path', co(function* (t) {
-	const birkenwerder = '900000200008'
-	const borgsdorf = '900000200007'
-	const lehnitz = '900000200006'
-	const [journey] = yield client.journeys(birkenwerder, lehnitz, {
-		via: borgsdorf,
-		results: 1,
-		when,
-		passedStations: true
-	})
-
-	t.ok(journey)
-	const i1 = journey.legs.findIndex(l => l.destination.id === borgsdorf)
-	t.ok(i1 < 0, 'routing engine changes at Borgsdorf')
-
-	const l = journey.legs.some(l => l.passed.some(p => p.station.id === borgsdorf))
-	t.ok(l, 'no stopover at Borgsdorf')
-
-	t.end()
-}))
-
-
 
 test('departures', co(function* (t) {
 	const deps = yield client.departures(spichernstr, {duration: 5, when})
