@@ -258,19 +258,47 @@ test('Albertina to Salzburg Hbf', co(function* (t) {
 	t.end()
 }))
 
-test('Wien to Klagenfurt Hbf with stopover at Salzburg Hbf', co(function* (t) {
-	const [journey] = yield client.journeys(wien, klagenfurtHbf, {
-		via: salzburgHbf,
+test('journeys: via works – with detour', co(function* (t) {
+	// Going from Stephansplatz to Schottenring via Donauinsel without detour
+	// is currently impossible
+	const stephansplatz = '001390167'
+	const schottenring = '001390163'
+	const donauinsel = '001392277'
+	const donauinselPassed = '922001'
+	const [journey] = yield client.journeys(stephansplatz, schottenring, {
+		via: donauinsel,
 		results: 1,
-		when
+		when,
+		passedStations: true
 	})
 
-	const i1 = journey.legs.findIndex(leg => leg.destination.id === salzburgHbf)
-	t.ok(i1 >= 0, 'no leg with Salzburg Hbf as destination')
+	t.ok(journey)
 
-	const i2 = journey.legs.findIndex(leg => leg.origin.id === salzburgHbf)
-	t.ok(i2 >= 0, 'no leg with Salzburg Hbf as origin')
-	t.ok(i2 > i1, 'leg with Salzburg Hbf as origin must be after leg to it')
+	const l = journey.legs.some(l => l.passed && l.passed.some(p => p.station.id === donauinselPassed))
+	t.ok(l, 'no stopover at Donauinsel')
+
+	t.end()
+}))
+
+test('journeys: via works – without detour', co(function* (t) {
+	// When going from Karlsplatz to Praterstern via Museumsquartier, there is *no need*
+	// to change trains / no need for a "detour".
+	const karlsplatz = '001390461'
+	const praterstern = '001290201'
+	const museumsquartier = '001390171'
+	const museumsquartierPassed = '901014'
+
+	const [journey] = yield client.journeys(karlsplatz, praterstern, {
+		via: museumsquartier,
+		results: 1,
+		when,
+		passedStations: true
+	})
+
+	t.ok(journey)
+
+	const l = journey.legs.some(l => l.passed && l.passed.some(p => p.station.id === museumsquartierPassed))
+	t.ok(l, 'no stopover at Weihburggasse')
 
 	t.end()
 }))
