@@ -189,22 +189,47 @@ test('Kloster Unser Lieben Frauen to Magdeburg Hbf', co(function*(t) {
 	t.end()
 }))
 
-test('Magdeburg-Buckau to Magdeburg-Neustadt with stopover at Magdeburg Hbf', co(function*(t) {
-	const magdeburgBuckau = '8013456'
-	const magdeburgNeustadt = '8010226'
-	const magdeburgHbf = '8010224'
-	const [journey] = yield client.journeys(magdeburgBuckau, magdeburgNeustadt, {
-		via: magdeburgHbf,
+test('journeys: via works – with detour', co(function* (t) {
+	// Going from Magdeburg, Hasselbachplatz (Sternstr.) (Tram/Bus) to Stendal via Dessau without detour
+	// is currently impossible. We check if the routing engine computes a detour.
+	const hasselbachplatzSternstrasse = '000006545'
+	const stendal = '008010334'
+	const dessau = '008010077'
+	const dessauPassed = '8010077'
+	const [journey] = yield client.journeys(hasselbachplatzSternstrasse, stendal, {
+		via: dessau,
 		results: 1,
-		when
+		when,
+		passedStations: true
 	})
 
-	const i1 = journey.legs.findIndex(leg => leg.destination.id === magdeburgHbf)
-	t.ok(i1 >= 0, 'no leg with Magdeburg Hbf as destination')
+	t.ok(journey)
 
-	const i2 = journey.legs.findIndex(leg => leg.origin.id === magdeburgHbf)
-	t.ok(i2 >= 0, 'no leg with Magdeburg Hbf as origin')
-	t.ok(i2 > i1, 'leg with Magdeburg Hbf as origin must be after leg to it')
+	const l = journey.legs.some(l => l.passed && l.passed.some(p => p.station.id === dessauPassed))
+	t.ok(l, 'Dessau is not being passed')
+
+	t.end()
+}))
+
+test('journeys: via works – without detour', co(function* (t) {
+	// When going from Magdeburg, Hasselbachplatz (Sternstr.) (Tram/Bus) to Magdeburg, Universität via Magdeburg, Breiter Weg, there is *no need*
+	// to change trains / no need for a "detour".
+	const hasselbachplatzSternstrasse = '000006545'
+	const universitaet = '000019686'
+	const breiterWeg = '000013519'
+	const breiterWegPassed = '13519'
+
+	const [journey] = yield client.journeys(hasselbachplatzSternstrasse, universitaet, {
+		via: breiterWeg,
+		results: 1,
+		when,
+		passedStations: true
+	})
+
+	t.ok(journey)
+
+	const l = journey.legs.some(l => l.passed && l.passed.some(p => p.station.id === breiterWegPassed))
+	t.ok(l, 'Magdeburg, Breiter Weg is not being passed')
 
 	t.end()
 }))
