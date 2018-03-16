@@ -3,8 +3,9 @@
 const minBy = require('lodash/minBy')
 const maxBy = require('lodash/maxBy')
 
-const validateProfile = require('./lib/validate-profile')
 const defaultProfile = require('./lib/default-profile')
+const createParseBitmask = require('./parse/products-bitmask')
+const validateProfile = require('./lib/validate-profile')
 const _request = require('./lib/request')
 
 const isObj = o => o !== null && 'object' === typeof o && !Array.isArray(o)
@@ -12,6 +13,7 @@ const isNonEmptyString = str => 'string' === typeof str && str.length > 0
 
 const createClient = (profile, request = _request) => {
 	profile = Object.assign({}, defaultProfile, profile)
+	profile.parseProducts = createParseBitmask(profile)
 	validateProfile(profile)
 
 	const departures = (station, opt = {}) => {

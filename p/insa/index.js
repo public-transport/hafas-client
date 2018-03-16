@@ -2,7 +2,6 @@
 
 const _createParseLine = require('../../parse/line')
 const products = require('./products')
-const createParseBitmask = require('../../parse/products-bitmask')
 const createFormatBitmask = require('../../format/products-bitmask')
 
 const defaultProducts = {
@@ -70,7 +69,6 @@ const insaProfile = {
 	transformReqBody,
 
 	products: products.allProducts,
-	parseProducts: createParseBitmask(products.allProducts, defaultProducts),
 	formatProducts,
 
 	parseLine: createParseLine,

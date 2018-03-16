@@ -12,7 +12,6 @@ const _createParseJourney = require('../../parse/journey')
 const _createParseStopover = require('../../parse/stopover')
 const _createParseDeparture = require('../../parse/departure')
 const _formatStation = require('../../format/station')
-const createParseBitmask = require('../../parse/products-bitmask')
 const createFormatBitmask = require('../../format/products-bitmask')
 
 const products = require('./products')
@@ -181,7 +180,6 @@ const vbbProfile = {
 	parseStationName: shorten,
 	parseLocation,
 	parseLine: createParseLine,
-	parseProducts: createParseBitmask(products.allProducts, defaultProducts),
 	parseJourney: createParseJourney,
 	parseDeparture: createParseDeparture,
 	parseStopover: createParseStopover,

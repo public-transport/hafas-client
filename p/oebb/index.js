@@ -3,7 +3,6 @@
 // todo: https://gist.github.com/anonymous/a5fc856bc80ae7364721943243f934f4#file-haf_config_base-properties-L5
 // todo: https://gist.github.com/anonymous/a5fc856bc80ae7364721943243f934f4#file-haf_config_base-properties-L47-L234
 
-const createParseBitmask = require('../../parse/products-bitmask')
 const createFormatBitmask = require('../../format/products-bitmask')
 const _createParseLine = require('../../parse/line')
 const _parseLocation = require('../../parse/location')
@@ -113,7 +112,6 @@ const oebbProfile = {
 
 	products: products.allProducts,
 
-	parseProducts: createParseBitmask(products.allProducts, defaultProducts),
 	parseLine: createParseLine,
 	parseLocation,
 	parseMovement: createParseMovement,

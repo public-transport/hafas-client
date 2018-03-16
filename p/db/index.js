@@ -3,7 +3,6 @@
 const _createParseLine = require('../../parse/line')
 const _createParseJourney = require('../../parse/journey')
 const _formatStation = require('../../format/station')
-const createParseBitmask = require('../../parse/products-bitmask')
 const createFormatBitmask = require('../../format/products-bitmask')
 const {bike} = require('../../format/filters')
 
@@ -141,7 +140,6 @@ const dbProfile = {
 
 	// todo: parseLocation
 	parseLine: createParseLine,
-	parseProducts: createParseBitmask(products.allProducts, defaultProducts),
 	parseJourney: createParseJourney,
 
 	formatStation,
