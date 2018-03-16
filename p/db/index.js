@@ -3,13 +3,10 @@
 const _createParseLine = require('../../parse/line')
 const _createParseJourney = require('../../parse/journey')
 const _formatStation = require('../../format/station')
-const createFormatBitmask = require('../../format/products-bitmask')
 const {bike} = require('../../format/filters')
 
 const products = require('./products')
 const formatLoyaltyCard = require('./loyalty-cards').format
-
-const formatBitmask = createFormatBitmask(products)
 
 const transformReqBody = (body) => {
 	body.client = {id: 'DB', v: '16040000', type: 'IPH', name: 'DB Navigator'}
@@ -102,27 +99,6 @@ const formatStation = (id) => {
 	return _formatStation(id)
 }
 
-const defaultProducts = {
-	suburban: true,
-	subway: true,
-	tram: true,
-	bus: true,
-	ferry: true,
-	national: true,
-	nationalExp: true,
-	regional: true,
-	regionalExp: true,
-	taxi: false
-}
-const formatProducts = (products) => {
-	products = Object.assign(Object.create(null), defaultProducts, products)
-	return {
-		type: 'PROD',
-		mode: 'INC',
-		value: formatBitmask(products) + ''
-	}
-}
-
 // todo: find option for absolute number of results
 
 const dbProfile = {
@@ -142,8 +118,7 @@ const dbProfile = {
 	parseLine: createParseLine,
 	parseJourney: createParseJourney,
 
-	formatStation,
-	formatProducts
+	formatStation
 }
 
 module.exports = dbProfile

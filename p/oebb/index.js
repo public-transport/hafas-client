@@ -3,7 +3,6 @@
 // todo: https://gist.github.com/anonymous/a5fc856bc80ae7364721943243f934f4#file-haf_config_base-properties-L5
 // todo: https://gist.github.com/anonymous/a5fc856bc80ae7364721943243f934f4#file-haf_config_base-properties-L47-L234
 
-const createFormatBitmask = require('../../format/products-bitmask')
 const _createParseLine = require('../../parse/line')
 const _parseLocation = require('../../parse/location')
 const _createParseMovement = require('../../parse/movement')
@@ -81,28 +80,6 @@ const createParseMovement = (profile, locations, lines, remarks) => {
 	return parseMovement
 }
 
-const defaultProducts = {
-	nationalExp: true,
-	national: true,
-	interregional: true,
-	regional: true,
-	suburban: true,
-	bus: true,
-	ferry: true,
-	subway: true,
-	tram: true,
-	onCall: true
-}
-const formatBitmask = createFormatBitmask(products)
-const formatProducts = (products) => {
-	products = Object.assign(Object.create(null), defaultProducts, products)
-	return {
-		type: 'PROD',
-		mode: 'INC',
-		value: formatBitmask(products) + ''
-	}
-}
-
 const oebbProfile = {
 	locale: 'de-AT',
 	timezone: 'Europe/Vienna',
@@ -115,8 +92,6 @@ const oebbProfile = {
 	parseLine: createParseLine,
 	parseLocation,
 	parseMovement: createParseMovement,
-
-	formatProducts,
 
 	journeyLeg: true,
 	radar: true

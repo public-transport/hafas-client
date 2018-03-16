@@ -12,11 +12,8 @@ const _createParseJourney = require('../../parse/journey')
 const _createParseStopover = require('../../parse/stopover')
 const _createParseDeparture = require('../../parse/departure')
 const _formatStation = require('../../format/station')
-const createFormatBitmask = require('../../format/products-bitmask')
 
 const products = require('./products')
-
-const formatBitmask = createFormatBitmask(products)
 
 const transformReqBody = (body) => {
 	body.client = {type: 'IPA', id: 'VBB', name: 'vbbPROD', v: '4010300'}
@@ -145,24 +142,6 @@ const formatStation = (id) => {
 	return _formatStation(id)
 }
 
-const defaultProducts = {
-	suburban: true,
-	subway: true,
-	tram: true,
-	bus: true,
-	ferry: true,
-	express: true,
-	regional: true
-}
-const formatProducts = (products) => {
-	products = Object.assign(Object.create(null), defaultProducts, products)
-	return {
-		type: 'PROD',
-		mode: 'INC',
-		value: formatBitmask(products) + ''
-	}
-}
-
 const vbbProfile = {
 	locale: 'de-DE',
 	timezone: 'Europe/Berlin',
@@ -185,7 +164,6 @@ const vbbProfile = {
 	parseStopover: createParseStopover,
 
 	formatStation,
-	formatProducts,
 
 	journeysNumF: false,
 	journeyLeg: true,

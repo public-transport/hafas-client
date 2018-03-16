@@ -5,6 +5,7 @@ const maxBy = require('lodash/maxBy')
 
 const defaultProfile = require('./lib/default-profile')
 const createParseBitmask = require('./parse/products-bitmask')
+const createFormatProductsFilter = require('./format/products-filter')
 const validateProfile = require('./lib/validate-profile')
 const _request = require('./lib/request')
 
@@ -14,6 +15,7 @@ const isNonEmptyString = str => 'string' === typeof str && str.length > 0
 const createClient = (profile, request = _request) => {
 	profile = Object.assign({}, defaultProfile, profile)
 	profile.parseProducts = createParseBitmask(profile)
+	profile.formatProductsFilter = createFormatProductsFilter(profile)
 	validateProfile(profile)
 
 	const departures = (station, opt = {}) => {
@@ -26,7 +28,7 @@ const createClient = (profile, request = _request) => {
 			duration:  10 // show departures for the next n minutes
 		}, opt)
 		opt.when = opt.when || new Date()
-		const products = profile.formatProducts(opt.products || {})
+		const products = profile.formatProductsFilter(opt.products || {})
 
 		const dir = opt.direction ? profile.formatStation(opt.direction) : null
 		return request(profile, {
@@ -92,7 +94,7 @@ const createClient = (profile, request = _request) => {
 		opt.when = opt.when || new Date()
 
 		const filters = [
-			profile.formatProducts(opt.products || {})
+			profile.formatProductsFilter(opt.products || {})
 		]
 		if (
 			opt.accessibility &&
@@ -319,7 +321,7 @@ const createClient = (profile, request = _request) => {
 				perStep: Math.round(durationPerStep),
 				ageOfReport: true, // todo: what is this?
 				jnyFltrL: [
-					profile.formatProducts(opt.products || {})
+					profile.formatProductsFilter(opt.products || {})
 				],
 				trainPosMode: 'CALC' // todo: what is this? what about realtime?
 			}

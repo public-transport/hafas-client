@@ -2,18 +2,6 @@
 
 const _createParseLine = require('../../parse/line')
 const products = require('./products')
-const createFormatBitmask = require('../../format/products-bitmask')
-
-const defaultProducts = {
-	nationalExp: true,
-	national: true,
-	regional: true,
-	suburban: true,
-	bus: true,
-	tram: true,
-	tourismTrain: true,
-}
-
 
 const transformReqBody = (body) => {
 	body.client = {
@@ -50,18 +38,6 @@ const createParseLine = (profile, operators) => {
 	return parseLineWithMode
 }
 
-const formatProducts = (products) => {
-	products = Object.assign(Object.create(null), defaultProducts, products)
-	return {
-		type: 'PROD',
-		mode: 'INC',
-		value: formatBitmask(products) + ''
-	}
-}
-
-const formatBitmask = createFormatBitmask(products)
-
-
 const insaProfile = {
 	locale: 'de-DE',
 	timezone: 'Europe/Berlin',
@@ -69,9 +45,6 @@ const insaProfile = {
 	transformReqBody,
 
 	products: products.allProducts,
-	formatProducts,
-
-	parseLine: createParseLine,
 
 	journeyLeg: true,
 	radar: true
