@@ -38,7 +38,7 @@ npm install hafas-client
 - [`locations(query, [opt])`](docs/locations.md) – find stations, POIs and addresses
 - [`location(id)`](docs/location.md) – get details about a location
 - [`nearby(location, [opt])`](docs/nearby.md) – show stations & POIs around
-- [`radar(north, west, south, east, [opt])`](docs/radar.md) – find all vehicles currently in a certain area
+- [`radar({north, west, south, east}, [opt])`](docs/radar.md) – find all vehicles currently in a certain area
 
 
 ## Usage

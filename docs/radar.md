@@ -1,4 +1,4 @@
-# `radar(north, west, south, east, [opt])`
+# `radar({north, west, south, east}, [opt])`
 
 Use this method to find all vehicles currently in an area. Note that it is not supported by every profile/endpoint.
 
@@ -26,7 +26,12 @@ const vbbProfile = require('hafas-client/p/vbb')
 
 const client = createClient(vbbProfile)
 
-client.radar(52.52411, 13.41002, 52.51942, 13.41709, {results: 5})
+client.radar({
+	north: 52.52411,
+	west: 13.41002,
+	south: 52.51942,
+	east: 13.41709
+}, {results: 5})
 .then(console.log)
 .catch(console.error)
 ```
