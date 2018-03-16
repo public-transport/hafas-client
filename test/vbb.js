@@ -300,27 +300,47 @@ test('journeys – station to POI', co(function* (t) {
 	t.end()
 }))
 
-
-
-test('journeys – with stopover', co(function* (t) {
-	const halleschesTor = '900000012103'
-	const leopoldplatz = '900000009102'
-	const [journey] = yield client.journeys(spichernstr, halleschesTor, {
-		via: leopoldplatz,
-		results: 1
+test('journeys: via works – with detour', co(function* (t) {
+	// Going from Westhafen to Wedding via Württembergalle without detour
+	// is currently impossible. We check if the routing engine computes a detour.
+	const westhafen = '900000001201'
+	const wedding = '900000009104'
+	const württembergallee = '900000026153'
+	const [journey] = yield client.journeys(westhafen, wedding, {
+		via: württembergallee,
+		results: 1,
+		when,
+		passedStations: true
 	})
 
-	const i = journey.legs.findIndex(leg => leg.destination.id === leopoldplatz)
-	t.ok(i >= 0, 'no leg with Leopoldplatz as destination')
+	t.ok(journey)
 
-	const nextLeg = journey.legs[i + 1]
-	t.ok(nextLeg)
-	t.equal(nextLeg.origin.id, leopoldplatz)
+	const l = journey.legs.some(l => l.passed && l.passed.some(p => p.station.id === württembergallee))
+	t.ok(l, 'Württembergalle is not being passed')
 
 	t.end()
 }))
 
+test('journeys: via works – without detour', co(function* (t) {
+	// When going from Ruhleben to Zoo via Kastanienallee, there is *no need*
+	// to change trains / no need for a "detour".
+	const ruhleben = '900000025202'
+	const zoo = '900000023201'
+	const kastanienallee = '900000020152'
+	const [journey] = yield client.journeys(ruhleben, zoo, {
+		via: kastanienallee,
+		results: 1,
+		when,
+		passedStations: true
+	})
 
+	t.ok(journey)
+
+	const l = journey.legs.some(l => l.passed && l.passed.some(p => p.station.id === kastanienallee))
+	t.ok(l, 'Kastanienallee is not being passed')
+
+	t.end()
+}))
 
 test('departures', co(function* (t) {
 	const deps = yield client.departures(spichernstr, {duration: 5, when})
