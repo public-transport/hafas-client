@@ -219,7 +219,7 @@ test('Berlin Jungfernheide to ATZE Musiktheater', co(function* (t) {
 
 test('journeys: via works – with detour', co(function* (t) {
 	// Going from Westhafen to Wedding via Württembergalle without detour
-	// is currently impossible
+	// is currently impossible. We check if the routing engine computes a detour.
 	const westhafen = '008089116'
 	const wedding = '008089131'
 	const württembergallee = '731084'
