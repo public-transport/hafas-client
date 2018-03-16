@@ -341,7 +341,7 @@ test('radar', co(function* (t) {
 	const west = 11.600826
 	const south = 52.108486
 	const east = 11.651451
-	const vehicles = yield client.radar(north, west, south, east, {
+	const vehicles = yield client.radar({north, west, south, east}, {
 		duration: 5 * 60, when, results: 10
 	})
 
