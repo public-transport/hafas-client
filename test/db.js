@@ -233,7 +233,7 @@ test('journeys: via works – with detour', co(function* (t) {
 	t.ok(journey)
 
 	const l = journey.legs.some(l => l.passed && l.passed.some(p => p.station.id === württembergallee))
-	t.ok(l, 'no stopover at Württembergalle')
+	t.ok(l, 'Württembergalle is not being passed')
 
 	t.end()
 }))
@@ -254,7 +254,7 @@ test('journeys: via works – without detour', co(function* (t) {
 	t.ok(journey)
 
 	const l = journey.legs.some(l => l.passed && l.passed.some(p => p.station.id === kastanienallee))
-	t.ok(l, 'no stopover at Kastanienallee')
+	t.ok(l, 'Kastanienallee is not being passed')
 
 	t.end()
 }))
