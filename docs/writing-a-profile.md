@@ -111,7 +111,7 @@ Let's break this down:
 - `product`: A sensible, [camelCased](https://en.wikipedia.org/wiki/Camel_case#Variations_and_synonyms), alphanumeric identifier. Use it for the key in the `products` object as well.
 - `mode`: A [valid *Friendly Public Transport Format* `1.0.1` mode](https://github.com/public-transport/friendly-public-transport-format/blob/1.0.1/spec/readme.md#modes).
 - `bitmask`: HAFAS endpoints work with a [bitmask](https://en.wikipedia.org/wiki/Mask_(computing)#Arguments_to_functions) that toggles the individual products. the value should toggle the appropriate bit(s) in the bitmask (see below).
-- `name`: A short, but distinct name for the means of transport, *just precise enough in local context*, and in the local language. In Berlin, `S-Bahn commuter rail` would be too much, because everyone knows what `S-Bahn` means.
+- `name`: A short, but distinct name for the means of transport, *just precise enough in local context*, and in the local language. In Berlin, `S-Bahn-Schnellzug` would be too much, because everyone knows what `S-Bahn` means.
 - `short`: The shortest possible symbol that identifies the product.
 
 todo: `defaultProducts`, `allProducts`, `bitmasks`, add to profile
