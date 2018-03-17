@@ -26,15 +26,13 @@ const transformReqBody = (body) => {
 const parseLocation = (profile, l, lines) => {
 	const res = _parseLocation(profile, l, lines)
 	// weird fix for empty lines, e.g. IC/EC at Flensburg Hbf
-	if(res.lines){
+	if (res.lines) {
 		res.lines = res.lines.filter(x => x.id && x.name)
 	}
 
 	// remove trailing zeroes, todo
-	if(res.id && res.id.length > 2){
-		while(res.id.slice(0, 1) === '0'){
-			res.id = res.id.slice(1)
-		}
+	if (res.id && res.id.length > 0) {
+		res.id = res.id.replace(/^0+/, '')
 	}
 
 	return res
@@ -73,10 +71,10 @@ const createParseJourney = (profile, stations, lines, remarks) => {
 		) {
 			res.tickets = []
 
-			for(let t of j.trfRes.fareSetL){
+			for (let t of j.trfRes.fareSetL) {
 				const tariff = t.desc
-				if(!tariff || !Array.isArray(t.fareL)) continue
-				for(let v of t.fareL){
+				if (!tariff || !Array.isArray(t.fareL)) continue
+				for (let v of t.fareL) {
 					const variant = v.name
 					if(!variant) continue
 					const ticket = {
@@ -84,11 +82,11 @@ const createParseJourney = (profile, stations, lines, remarks) => {
 						tariff,
 						variant
 					}
-					if(v.prc && Number.isInteger(v.prc) && v.cur){
+					if (v.prc && Number.isInteger(v.prc) && v.cur) {
 						ticket.amount = v.prc/100
 						ticket.currency = v.cur
 					}
-					else{
+					else {
 						ticket.amount = null
 						ticket.hint = 'No pricing information available.'
 					}
