@@ -1,6 +1,7 @@
 'use strict'
 
-const isObj = o => o !== null && 'object' === typeof o && !Array.isArray(o)
+const isObj = require('lodash/isObject')
+
 const hasProp = (o, k) => Object.prototype.hasOwnProperty.call(o, k)
 
 const createFormatProductsFilter = (profile) => {
