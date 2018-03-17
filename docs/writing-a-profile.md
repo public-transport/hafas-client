@@ -8,7 +8,7 @@
 
 This guide is about writing such a profile. If you just want to use an already supported endpoint, refer to the [API documentation](readme.md) instead.
 
-*Note*: **If you get stuck, ask for help by [creating an issue](https://github.com/derhuerst/hafas-client/issues/new)!** I want to help people expand the scope of this library.
+*Note*: **If you get stuck, ask for help by [creating an issue](https://github.com/derhuerst/hafas-client/issues/new)!** We want to help people expand the scope of this library.
 
 ## 0. How do the profiles work?
 
@@ -31,8 +31,6 @@ const myProfile = {
 }
 ```
 
-If you pass this profile into `hafas-client`, the `parseLine` method will override [the default one](../parse/line.js).
-
 Assuming the endpoint returns all lines names prefixed with `foo `, We can strip them like this:
 
 ```js
@@ -54,9 +52,11 @@ const createParseLineWithoutFoo = (profile, operators) => {
 profile.parseLine = createParseLineWithoutFoo
 ```
 
+If you pass this profile into `hafas-client`, the `parseLine` method will override [the default one](../parse/line.js).
+
 ## 1. Setup
 
-*Note*: There are many ways to find the required values. This way is rather easy and has worked for most of the apps that I've looked at so far.
+*Note*: There are many ways to find the required values. This way is rather easy and has worked for most of the apps that we've looked at so far.
 
 1. **Get an iOS or Android device and download the "official" app** for the public transport provider that you want to build a profile for.
 2. **Configure a [man-in-the-middle HTTP proxy](https://docs.mitmproxy.org/stable/concepts-howmitmproxyworks/)** like [mitmproxy](https://mitmproxy.org).
@@ -111,12 +111,12 @@ Let's break this down:
 - `product`: A sensible, [camelCased](https://en.wikipedia.org/wiki/Camel_case#Variations_and_synonyms), alphanumeric identifier. Use it for the key in the `products` object as well.
 - `mode`: A [valid *Friendly Public Transport Format* `1.0.1` mode](https://github.com/public-transport/friendly-public-transport-format/blob/1.0.1/spec/readme.md#modes).
 - `bitmask`: HAFAS endpoints work with a [bitmask](https://en.wikipedia.org/wiki/Mask_(computing)#Arguments_to_functions) that toggles the individual products. the value should toggle the appropriate bit(s) in the bitmask (see below).
-- `name`: A short, but distinct name for the means of transport, *just precise enough in local context*. In Berlin, `S-Bahn commuter rail` would be too much, because everyone knows what `S-Bahn` means.
+- `name`: A short, but distinct name for the means of transport, *just precise enough in local context*, and in the local language. In Berlin, `S-Bahn commuter rail` would be too much, because everyone knows what `S-Bahn` means.
 - `short`: The shortest possible symbol that identifies the product.
 
 todo: `defaultProducts`, `allProducts`, `bitmasks`, add to profile
 
-If you want, you can now **verify that the profile works**; I've prepared [a script](https://runkit.com/derhuerst/hafas-client-profile-example) for that. Alternatively, [submit a Pull Request](https://help.github.com/articles/creating-a-pull-request-from-a-fork/) and I will help you out with testing and improvements.
+If you want, you can now **verify that the profile works**; We've prepared [a script](https://runkit.com/derhuerst/hafas-client-profile-example) for that. Alternatively, [submit a Pull Request](https://help.github.com/articles/creating-a-pull-request-from-a-fork/) and we will help you out with testing and improvements.
 
 ### Finding the right values for the `bitmask` field
 
@@ -133,7 +133,7 @@ all but product F           253    11110   31 - 2^1        2^0
 
 ## 4. Additional info
 
-I consider these improvements to be *optional*:
+We consider these improvements to be *optional*:
 
 - **Check if the endpoint supports the journey legs call.**
 	- In the app, check if you can query details for the status of a single journey leg. It should load realtime delays and the current progress.
@@ -149,7 +149,7 @@ I consider these improvements to be *optional*:
 
 ## Appendix A: `checksum`, `mic`, `mac`
 
-As far as I know, there are three different types of authentication used among HAFAS deployments.
+As far as we know, there are three different types of authentication used among HAFAS deployments.
 
 ### unprotected endpoints
 
