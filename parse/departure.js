@@ -22,14 +22,14 @@ const createParseDeparture = (profile, stations, lines, remarks) => {
 		}
 		// todo: res.trip from rawLine.prodCtx.num?
 
+		// todo: DRY with parseStopover
+		// todo: DRY with parseJourneyLeg
 		if (d.stbStop.dTimeR && d.stbStop.dTimeS) {
 			const realtime = profile.parseDateTime(profile, d.date, d.stbStop.dTimeR)
 			const planned = profile.parseDateTime(profile, d.date, d.stbStop.dTimeS)
 			res.delay = Math.round((realtime - planned) / 1000)
 		} else res.delay = null
 
-		// todo: follow public-transport/friendly-public-transport-format#27 here
-		// see also derhuerst/vbb-rest#19
 		if (d.stbStop.aCncl || d.stbStop.dCncl) {
 			res.cancelled = true
 			Object.defineProperty(res, 'canceled', {value: true})

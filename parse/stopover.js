@@ -19,15 +19,21 @@ const createParseStopover = (profile, stations, lines, remarks, date) => {
 		// mark stations the train passes without stopping
 		if(st.dInS === false && st.aOutS === false) res.passBy = true
 
-		// todo: follow public-transport/friendly-public-transport-format#27 here
-		// see also derhuerst/vbb-rest#19
-		if (st.aCncl) {
+		// todo: DRY with parseDeparture
+		// todo: DRY with parseJourneyLeg
+		if (st.aCncl || st.dCncl) {
 			res.cancelled = true
-			res.arrival = null
-		}
-		if (st.dCncl) {
-			res.cancelled = true
-			res.departure = null
+			Object.defineProperty(res, 'canceled', {value: true})
+			if (st.aCncl) {
+				res.arrival = res.arrivalDelay = null
+				const arr = profile.parseDateTime(profile, d.date, st.aTimeS)
+				res.formerScheduledArrival = arr.toISO()
+			}
+			if (st.dCncl) {
+				res.departure = res.departureDelay = null
+				const arr = profile.parseDateTime(profile, d.date, st.dTimeS)
+				res.formerScheduledDeparture = arr.toISO()
+			}
 		}
 
 		return res

@@ -71,21 +71,21 @@ const createParseJourneyLeg = (profile, stations, lines, remarks) => {
 			}
 		}
 
-		// todo: follow public-transport/friendly-public-transport-format#27 here
-		// see also derhuerst/vbb-rest#19
-		if (pt.arr.aCncl) {
+		// todo: DRY with parseDeparture
+		// todo: DRY with parseStopover
+		if (pt.arr.aCncl || pt.dep.dCncl) {
 			res.cancelled = true
 			Object.defineProperty(res, 'canceled', {value: true})
-			res.arrival = res.arrivalPlatform = res.arrivalDelay = null
-			const arr = profile.parseDateTime(profile, j.date, pt.arr.aTimeS)
-			res.formerScheduledArrival = arr.toISO()
-		}
-		if (pt.dep.dCncl) {
-			res.cancelled = true
-			Object.defineProperty(res, 'canceled', {value: true})
-			res.departure = res.departurePlatform = res.departureDelay = null
-			const dep = profile.parseDateTime(profile, j.date, pt.dep.dTimeS)
-			res.formerScheduledDeparture = dep.toISO()
+			if (pt.arr.aCncl) {
+				res.arrival = res.arrivalPlatform = res.arrivalDelay = null
+				const arr = profile.parseDateTime(profile, j.date, pt.arr.aTimeS)
+				res.formerScheduledArrival = arr.toISO()
+			}
+			if (pt.dep.dCncl) {
+				res.departure = res.departurePlatform = res.departureDelay = null
+				const dep = profile.parseDateTime(profile, j.date, pt.dep.dTimeS)
+				res.formerScheduledDeparture = dep.toISO()
+			}
 		}
 
 		return res
