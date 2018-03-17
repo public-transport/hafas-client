@@ -289,7 +289,7 @@ const createClient = (profile, request = _request) => {
 		})
 	}
 
-	const radar = ({north, west, south, east, opt}) => {
+	const radar = ({north, west, south, east}, opt) => {
 		if ('number' !== typeof north) throw new Error('north must be a number.')
 		if ('number' !== typeof west) throw new Error('west must be a number.')
 		if ('number' !== typeof south) throw new Error('south must be a number.')
