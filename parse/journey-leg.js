@@ -47,7 +47,7 @@ const createParseJourneyLeg = (profile, stations, lines, remarks) => {
 			if (pt.arr.aPlatfS) res.arrivalPlatform = pt.arr.aPlatfS
 
 			if (passed && pt.jny.stopL) {
-				const parse = profile.parseStopover(profile, stations, lines, remarks, j)
+				const parse = profile.parseStopover(profile, stations, lines, remarks, j.date)
 				const passedStations = pt.jny.stopL.map(parse)
 				// filter stations the train passes without stopping, as this doesn't comply with fptf (yet)
 				res.passed = passedStations.filter((x) => !x.passBy)

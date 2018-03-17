@@ -9,32 +9,7 @@ const createParseMovement = (profile, locations, lines, remarks) => {
 	// todo: what is m.ani.proc[n]? wut?
 	// todo: how does m.ani.poly work?
 	const parseMovement = (m) => {
-		const parseNextStop = (s) => {
-			const dep = s.dTimeR || s.dTimeS
-				? profile.parseDateTime(profile, m.date, s.dTimeR || s.dTimeS)
-				: null
-			const arr = s.aTimeR || s.aTimeS
-				? profile.parseDateTime(profile, m.date, s.aTimeR || s.aTimeS)
-				: null
-
-			const res = {
-				station: locations[s.locX],
-				departure: dep ? dep.toISO() : null,
-				arrival: arr ? arr.toISO() : null
-			}
-
-			if (m.dTimeR && m.dTimeS) {
-				const plannedDep = profile.parseDateTime(profile, m.date, s.dTimeS)
-				res.departureDelay = Math.round((dep - plannedDep) / 1000)
-			} else res.departureDelay = null
-
-			if (m.aTimeR && m.aTimeS) {
-				const plannedArr = profile.parseDateTime(profile, m.date, s.aTimeS)
-				res.arrivalDelay = Math.round((arr - plannedArr) / 1000)
-			} else res.arrivalDelay = null
-
-			return res
-		}
+		const pStopover = profile.parseStopover(profile, locations, lines, remarks, m.date)
 
 		const res = {
 			direction: profile.parseStationName(m.dirTxt),
@@ -45,7 +20,7 @@ const createParseMovement = (profile, locations, lines, remarks) => {
 				latitude: m.pos.y / 1000000,
 				longitude: m.pos.x / 1000000
 			} : null,
-			nextStops: m.stopL.map(parseNextStop),
+			nextStops: m.stopL.map(pStopover),
 			frames: []
 		}
 

@@ -99,8 +99,8 @@ const createParseJourney = (profile, stations, lines, remarks) => {
 	return parseJourneyWithTickets
 }
 
-const createParseStopover = (profile, stations, lines, remarks, connection) => {
-	const parseStopover = _createParseStopover(profile, stations, lines, remarks, connection)
+const createParseStopover = (profile, stations, lines, remarks, date) => {
+	const parseStopover = _createParseStopover(profile, stations, lines, remarks, date)
 
 	const parseStopoverWithShorten = (st) => {
 		const res = parseStopover(st)
