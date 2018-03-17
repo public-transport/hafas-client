@@ -12,7 +12,7 @@ const _request = require('./lib/request')
 
 const isNonEmptyString = str => 'string' === typeof str && str.length > 0
 
-const createClient = (_profile, request = _request) => {
+const createClient = (profile, request = _request) => {
 	profile = Object.assign({}, defaultProfile, profile)
 	if (!profile.parseProducts) {
 		profile.parseProducts = createParseBitmask(profile)
@@ -20,7 +20,6 @@ const createClient = (_profile, request = _request) => {
 	if (!profile.formatProductsFilter) {
 		profile.formatProductsFilter = createFormatProductsFilter(profile)
 	}
-	}, defaultProfile, profile)
 	validateProfile(profile)
 
 	const departures = (station, opt = {}) => {
