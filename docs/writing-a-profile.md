@@ -1,6 +1,6 @@
 # Writing a profile
 
-**Per endpoint, there is an endpoint-specific customisation called *profile*** which may for example do the following:
+**Per endpoint, `hafas-client` has an endpoint-specific customisation called *profile*** which may for example do the following:
 
 - handle the additional requirements of the endpoint (e.g. authentication),
 - extract additional information from the data provided by the endpoint,
@@ -123,15 +123,12 @@ If you want, you can now **verify that the profile works**; I've prepared [a scr
 As shown in [the video](https://stuff.jannisr.de/how-to-record-hafas-requests.mp4), search for a journey and toggle off one product at a time, recording the requests. After extracting the products bitmask ([example](https://gist.github.com/derhuerst/193ef489f8aa50c2343f8bf1f2a22069#file-via-http-L34)) you will end up with values looking like these:
 
 ```
-toggles                     value  binary notation  subtraction      bit(s)
-all products                255    11111111         255 - 0
-all but ACME Commuter Rail  127    01111111         255 - 2^7        2^7
-all but Foo Bar Metro       191    10111111         255 - 2^6        2^6
-all but product C           223    11011111         255 - 2^5        2^5
-all but product D           239    11101111         255 - 2^4        2^4
-all but product E           243    11110011         255 - 2^3 - 2^2  2^3, 2^2
-all but product F           253    11111101         255 - 2^1        2^1
-all but product G           254    11111110         255 - 2^0        2^0
+toggles                     value  binary  subtraction     bit(s)
+all products                31     11111   31 - 0
+all but ACME Commuter Rail  15     01111   31 - 2^4        2^4
+all but Foo Bar Metro       23     10111   31 - 2^3        2^3
+all but product E           30     11001   31 - 2^2 - 2^1  2^2, 2^1
+all but product F           253    11110   31 - 2^1        2^0
 ```
 
 ## 4. Additional info
