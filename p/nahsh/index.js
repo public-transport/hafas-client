@@ -11,12 +11,9 @@ const products = require('./products')
 // todo: journey prices
 
 const transformReqBody = (body) => {
-	// todo: all headers necessary?
 	body.client = {
 		id: 'NAHSH',
 		name: 'NAHSHPROD',
-		os: 'iOS',
-		type: 'IPH',
 		v: '3000700'
 	}
 	body.ver = '1.16'
@@ -144,7 +141,7 @@ const nahshProfile = {
 	formatProducts,
 
 	journeyLeg: true,
-	radar: false // todo: fix nameless station bug
+	radar: false // todo: see #34
 }
 
 module.exports = nahshProfile
