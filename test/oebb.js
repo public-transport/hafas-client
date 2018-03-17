@@ -450,7 +450,12 @@ test('location', co(function* (t) {
 }))
 
 test('radar Salzburg', co(function* (t) {
-	const vehicles = yield client.radar(47.827203, 13.001261, 47.773278, 13.07562, {
+	const vehicles = yield client.radar({
+		north: 47.827203,
+		west: 13.001261,
+		south: 47.773278,
+		east: 13.07562
+	}, {
 		duration: 5 * 60, when
 	})
 
