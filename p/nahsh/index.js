@@ -85,8 +85,7 @@ const createParseJourney = (profile, stations, lines, remarks) => {
 					if (v.prc && Number.isInteger(v.prc) && v.cur) {
 						ticket.amount = v.prc/100
 						ticket.currency = v.cur
-					}
-					else {
+					} else {
 						ticket.amount = null
 						ticket.hint = 'No pricing information available.'
 					}
