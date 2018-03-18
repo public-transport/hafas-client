@@ -30,7 +30,7 @@ const parseLocation = (profile, l, lines) => {
 		res.lines = res.lines.filter(x => x.id && x.name)
 	}
 
-	// remove trailing zeroes, todo
+	// remove leading zeroes, todo
 	if (res.id && res.id.length > 0) {
 		res.id = res.id.replace(/^0+/, '')
 	}
