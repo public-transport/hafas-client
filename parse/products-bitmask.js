@@ -21,6 +21,9 @@ const createParseBitmask = (allProducts, defaultProducts) => {
 				res[product.product] = true
 				bitmask -= product.bitmask
 			}
+			else{
+				res[product.product] = false
+			}
 		}
 
 		return res
