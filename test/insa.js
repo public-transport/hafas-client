@@ -8,7 +8,7 @@ const validateFptf = require('validate-fptf')
 const co = require('./co')
 const createClient = require('..')
 const insaProfile = require('../p/insa')
-const {allProducts} = require('../p/insa/products')
+const allProducts = require('../p/insa/products')
 const {
 	assertValidStation,
 	assertValidPoi,
@@ -58,7 +58,7 @@ const assertIsMagdeburgHbf = (t, s) => {
 // todo: DRY with other tests
 const assertValidProducts = (t, p) => {
 	for (let product of allProducts) {
-		product = product.product // wat
+		product = product.id
 		t.equal(typeof p[product], 'boolean', 'product ' + p + ' must be a boolean')
 	}
 }

@@ -12,7 +12,7 @@ const validateLineWithoutMode = require('./validate-line-without-mode')
 const co = require('./co')
 const createClient = require('..')
 const oebbProfile = require('../p/oebb')
-const {allProducts} = require('../p/oebb/products')
+const allProducts = require('../p/oebb/products')
 const {
 	assertValidStation,
 	assertValidPoi,
@@ -77,7 +77,7 @@ const assertIsSalzburgHbf = (t, s) => {
 // todo: DRY with other tests
 const assertValidProducts = (t, p) => {
 	for (let product of allProducts) {
-		product = product.product // wat
+		product = product.id
 		t.equal(typeof p[product], 'boolean', 'product ' + p + ' must be a boolean')
 	}
 }

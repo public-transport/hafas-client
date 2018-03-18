@@ -12,12 +12,8 @@ const _createParseJourney = require('../../parse/journey')
 const _createParseStopover = require('../../parse/stopover')
 const _createParseDeparture = require('../../parse/departure')
 const _formatStation = require('../../format/station')
-const createParseBitmask = require('../../parse/products-bitmask')
-const createFormatBitmask = require('../../format/products-bitmask')
 
-const modes = require('./modes')
-
-const formatBitmask = createFormatBitmask(modes)
+const products = require('./products')
 
 const transformReqBody = (body) => {
 	body.client = {type: 'IPA', id: 'VBB', name: 'vbbPROD', v: '4010300'}
@@ -31,17 +27,8 @@ const transformReqBody = (body) => {
 const createParseLine = (profile, operators) => {
 	const parseLine = _createParseLine(profile, operators)
 
-	const parseLineWithMode = (l) => {
+	const parseLineWithMoreDetails = (l) => {
 		const res = parseLine(l)
-
-		res.mode = res.product = null
-		if ('class' in res) {
-			const data = modes.bitmasks[parseInt(res.class)]
-			if (data) {
-				res.mode = data.mode
-				res.product = data.product
-			}
-		}
 
 		const details = parseLineName(l.name)
 		res.symbol = details.symbol
@@ -52,7 +39,7 @@ const createParseLine = (profile, operators) => {
 
 		return res
 	}
-	return parseLineWithMode
+	return parseLineWithMoreDetails
 }
 
 const parseLocation = (profile, l, lines) => {
@@ -146,24 +133,6 @@ const formatStation = (id) => {
 	return _formatStation(id)
 }
 
-const defaultProducts = {
-	suburban: true,
-	subway: true,
-	tram: true,
-	bus: true,
-	ferry: true,
-	express: true,
-	regional: true
-}
-const formatProducts = (products) => {
-	products = Object.assign(Object.create(null), defaultProducts, products)
-	return {
-		type: 'PROD',
-		mode: 'INC',
-		value: formatBitmask(products) + ''
-	}
-}
-
 const vbbProfile = {
 	locale: 'de-DE',
 	timezone: 'Europe/Berlin',
@@ -176,18 +145,16 @@ const vbbProfile = {
 
 	transformReqBody,
 
-	products: modes.allProducts,
+	products: products,
 
 	parseStationName: shorten,
 	parseLocation,
 	parseLine: createParseLine,
-	parseProducts: createParseBitmask(modes.allProducts, defaultProducts),
 	parseJourney: createParseJourney,
 	parseDeparture: createParseDeparture,
 	parseStopover: createParseStopover,
 
 	formatStation,
-	formatProducts,
 
 	journeysNumF: false,
 	journeyLeg: true,

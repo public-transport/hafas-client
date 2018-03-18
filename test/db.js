@@ -8,7 +8,7 @@ const isRoughlyEqual = require('is-roughly-equal')
 const co = require('./co')
 const createClient = require('..')
 const dbProfile = require('../p/db')
-const {allProducts} = require('../p/db/modes')
+const allProducts = require('../p/db/products')
 const {
 	assertValidStation,
 	assertValidPoi,
@@ -73,7 +73,7 @@ const assertIsJungfernheide = (t, s) => {
 // todo: DRY with other tests
 const assertValidProducts = (t, p) => {
 	for (let product of allProducts) {
-		product = product.product // wat
+		product = product.id
 		t.equal(typeof p[product], 'boolean', 'product ' + p + ' must be a boolean')
 	}
 }
