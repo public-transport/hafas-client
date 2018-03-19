@@ -88,37 +88,38 @@ In `hafas-client`, there's a difference between the `mode` and the `product` fie
 **Specify `product`s that appear in the app** you recorded requests of. For a fictional transit network, this may look like this:
 
 ```js
-const products = {
-	commuterTrain: {
-		product: 'commuterTrain',
+const products = [
+	{
+		id: 'commuterTrain',
 		mode: 'train',
-		bitmask: 1,
+		bitmasks: [16],
 		name: 'ACME Commuter Rail',
-		short: 'CR'
+		short: 'CR',
+		default: true
 	},
-	metro: {
-		product: 'metro',
+	{
+		id: 'metro',
 		mode: 'train',
-		bitmask: 2,
+		bitmasks: [8],
 		name: 'Foo Bar Metro',
-		short: 'M'
+		short: 'M',
+		default: true
 	}
-}
+]
 ```
 
 Let's break this down:
 
-- `product`: A sensible, [camelCased](https://en.wikipedia.org/wiki/Camel_case#Variations_and_synonyms), alphanumeric identifier. Use it for the key in the `products` object as well.
+- `id`: A sensible, [camelCased](https://en.wikipedia.org/wiki/Camel_case#Variations_and_synonyms), alphanumeric identifier. Use it for the key in the `products` array as well.
 - `mode`: A [valid *Friendly Public Transport Format* `1.0.1` mode](https://github.com/public-transport/friendly-public-transport-format/blob/1.0.1/spec/readme.md#modes).
-- `bitmask`: HAFAS endpoints work with a [bitmask](https://en.wikipedia.org/wiki/Mask_(computing)#Arguments_to_functions) that toggles the individual products. the value should toggle the appropriate bit(s) in the bitmask (see below).
+- `bitmasks`: HAFAS endpoints work with a [bitmask](https://en.wikipedia.org/wiki/Mask_(computing)#Arguments_to_functions) that toggles the individual products. It should be an array of values that toggle the appropriate bit(s) in the bitmask (see below).
 - `name`: A short, but distinct name for the means of transport, *just precise enough in local context*, and in the local language. In Berlin, `S-Bahn-Schnellzug` would be too much, because everyone knows what `S-Bahn` means.
 - `short`: The shortest possible symbol that identifies the product.
-
-todo: `defaultProducts`, `allProducts`, `bitmasks`, add to profile
+- `default`: Should the product be used for queries (e.g. journeys) by default?
 
 If you want, you can now **verify that the profile works**; We've prepared [a script](https://runkit.com/derhuerst/hafas-client-profile-example) for that. Alternatively, [submit a Pull Request](https://help.github.com/articles/creating-a-pull-request-from-a-fork/) and we will help you out with testing and improvements.
 
-### Finding the right values for the `bitmask` field
+### Finding the right values for the `bitmasks` field
 
 As shown in [the video](https://stuff.jannisr.de/how-to-record-hafas-requests.mp4), search for a journey and toggle off one product at a time, recording the requests. After extracting the products bitmask ([example](https://gist.github.com/derhuerst/193ef489f8aa50c2343f8bf1f2a22069#file-via-http-L34)) you will end up with values looking like these:
 
@@ -127,8 +128,8 @@ toggles                     value  binary  subtraction     bit(s)
 all products                31     11111   31 - 0
 all but ACME Commuter Rail  15     01111   31 - 2^4        2^4
 all but Foo Bar Metro       23     10111   31 - 2^3        2^3
-all but product E           30     11001   31 - 2^2 - 2^1  2^2, 2^1
-all but product F           253    11110   31 - 2^1        2^0
+all but product E           25     11001   31 - 2^2 - 2^1  2^2, 2^1
+all but product F           30     11110   31 - 2^0        2^0
 ```
 
 ## 4. Additional info
