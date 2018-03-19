@@ -95,7 +95,7 @@ const assertValidPrice = (t, p) => {
 }
 
 // todo: fix this upstream
-// see https://github.com/derhuerst/hafas-client/blob/c6e558be217667f1bcdac4a605898eb75ea80374/p/oebb/products.js#L71
+// see https://github.com/public-transport/hafas-client/blob/c6e558be217667f1bcdac4a605898eb75ea80374/p/oebb/products.js#L71
 const assertValidLine = (t, l) => { // with optional mode
 	const validators = Object.assign({}, validateFptf.defaultValidators, {
 		line: validateLineWithoutMode

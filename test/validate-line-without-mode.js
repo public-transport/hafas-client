@@ -19,7 +19,7 @@ const validateLineWithoutMode = (validate, line, name) => {
 	a.ok(line.name.length > 0, name + '.name can\'t be empty')
 
 	// skipping line validation here
-	// see https://github.com/derhuerst/hafas-client/issues/8#issuecomment-355839965
+	// see https://github.com/public-transport/hafas-client/issues/8#issuecomment-355839965
 	if (is.undefined(line.mode) || is.null(line.mode)) {
 		console.error(`ÖBB: Missing \`mode\` for line ${line.name} (at ${name}).`)
 	}

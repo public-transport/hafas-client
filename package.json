@@ -16,9 +16,9 @@
 	"contributors": [
 		"Julius Tens <mail@juliustens.eu>"
 	],
-	"homepage": "https://github.com/derhuerst/hafas-client",
-	"repository": "derhuerst/hafas-client",
-	"bugs": "https://github.com/derhuerst/hafas-client/issues",
+	"homepage": "https://github.com/public-transport/hafas-client",
+	"repository": "public-transport/hafas-client",
+	"bugs": "https://github.com/public-transport/hafas-client/issues",
 	"license": "ISC",
 	"keywords": [
 		"hafas",
