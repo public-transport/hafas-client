@@ -117,7 +117,7 @@ Let's break this down:
 - `short`: The shortest possible symbol that identifies the product.
 - `default`: Should the product be used for queries (e.g. journeys) by default?
 
-If you want, you can now **verify that the profile works**; We've prepared [a script](https://runkit.com/derhuerst/hafas-client-profile-example) for that. Alternatively, [submit a Pull Request](https://help.github.com/articles/creating-a-pull-request-from-a-fork/) and we will help you out with testing and improvements.
+If you want, you can now **verify that the profile works**; We've prepared [a script](https://runkit.com/derhuerst/hafas-client-profile-example/0.2.0) for that. Alternatively, [submit a Pull Request](https://help.github.com/articles/creating-a-pull-request-from-a-fork/) and we will help you out with testing and improvements.
 
 ### Finding the right values for the `bitmasks` field
 
