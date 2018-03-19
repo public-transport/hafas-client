@@ -9,7 +9,6 @@ const getStations = require('vbb-stations')
 const _createParseLine = require('../../parse/line')
 const _parseLocation = require('../../parse/location')
 const _createParseJourney = require('../../parse/journey')
-const _createParseStopover = require('../../parse/stopover')
 const _createParseDeparture = require('../../parse/departure')
 const _formatStation = require('../../format/station')
 
@@ -86,20 +85,6 @@ const createParseJourney = (profile, stations, lines, remarks) => {
 	return parseJourneyWithTickets
 }
 
-const createParseStopover = (profile, stations, lines, remarks, connection) => {
-	const parseStopover = _createParseStopover(profile, stations, lines, remarks, connection)
-
-	const parseStopoverWithShorten = (st) => {
-		const res = parseStopover(st)
-		if (res.station && res.station.name) {
-			res.station.name = shorten(res.station.name)
-		}
-		return res
-	}
-
-	return parseStopoverWithShorten
-}
-
 const createParseDeparture = (profile, stations, lines, remarks) => {
 	const parseDeparture = _createParseDeparture(profile, stations, lines, remarks)
 
@@ -152,7 +137,6 @@ const vbbProfile = {
 	parseLine: createParseLine,
 	parseJourney: createParseJourney,
 	parseDeparture: createParseDeparture,
-	parseStopover: createParseStopover,
 
 	formatStation,
 

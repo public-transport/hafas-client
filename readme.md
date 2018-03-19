@@ -4,10 +4,11 @@
 
 HAFAS endpoint | wrapper library | docs | example code | source code
 ---------------|------------------|------|---------|------------
-[Deutsche Bahn](https://en.wikipedia.org/wiki/Deutsche_Bahn) | [`db-hafas`](https://github.com/derhuerst/db-hafas) | [docs](p/db/readme.md) | [example code](p/db/example.js) | [src](p/db/index.js)
-[Berlin & Brandenburg public transport](https://en.wikipedia.org/wiki/Verkehrsverbund_Berlin-Brandenburg) | [`vbb-hafas`](https://github.com/derhuerst/vbb-hafas) | [docs](p/vbb/readme.md) | [example code](p/vbb/example.js) | [src](p/vbb/index.js)
+[Deutsche Bahn (DB)](https://en.wikipedia.org/wiki/Deutsche_Bahn) | [`db-hafas`](https://github.com/derhuerst/db-hafas) | [docs](p/db/readme.md) | [example code](p/db/example.js) | [src](p/db/index.js)
+[Berlin & Brandenburg public transport (VBB)](https://en.wikipedia.org/wiki/Verkehrsverbund_Berlin-Brandenburg) | [`vbb-hafas`](https://github.com/derhuerst/vbb-hafas) | [docs](p/vbb/readme.md) | [example code](p/vbb/example.js) | [src](p/vbb/index.js)
 [Österreichische Bundesbahnen (ÖBB)](https://en.wikipedia.org/wiki/Austrian_Federal_Railways) | [`oebb-hafas`](https://github.com/juliuste/oebb-hafas) | [docs](p/oebb/readme.md) | [example code](p/oebb/example.js) | [src](p/oebb/index.js)
 [Nahverkehr Sachsen-Anhalt (NASA)](https://de.wikipedia.org/wiki/Nahverkehrsservice_Sachsen-Anhalt)/[INSA](https://insa.de) | – | [docs](p/insa/readme.md) | [example code](p/insa/example.js) | [src](p/insa/index.js)
+[Nahverkehrsverbund Schleswig-Holstein (NAH.SH)](https://de.wikipedia.org/wiki/Nahverkehrsverbund_Schleswig-Holstein) | [`nahsh-hafas`](https://github.com/juliuste/nahsh-hafas) | [docs](p/nahsh/readme.md) | [example code](p/nahsh/example.js) | [src](p/nahsh/index.js)
 
 [![npm version](https://img.shields.io/npm/v/hafas-client.svg)](https://www.npmjs.com/package/hafas-client)
 [![build status](https://img.shields.io/travis/derhuerst/hafas-client.svg)](https://travis-ci.org/derhuerst/hafas-client)
@@ -32,13 +33,7 @@ npm install hafas-client
 
 ## API
 
-- [`journeys(from, to, [opt])`](docs/journeys.md) – get journeys between locations
-- [`journeyLeg(ref, lineName, [opt])`](docs/journey-leg.md) – get details for a leg of a journey
-- [`departures(station, [opt])`](docs/departures.md) – query the next departures at a station
-- [`locations(query, [opt])`](docs/locations.md) – find stations, POIs and addresses
-- [`location(id)`](docs/location.md) – get details about a location
-- [`nearby(location, [opt])`](docs/nearby.md) – show stations & POIs around
-- [`radar({north, west, south, east}, [opt])`](docs/radar.md) – find all vehicles currently in a certain area
+[API documentation](docs/readme.md)
 
 
 ## Usage
