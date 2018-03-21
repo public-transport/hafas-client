@@ -157,7 +157,7 @@ const createClient = (profile, request = _request) => {
 						journeys.laterRef = d.outCtxScrF
 						return journeys
 					}
-					const dep = +new Date(j.departure)
+					const dep = +new Date(j.legs[0].departure)
 					if (dep > latestDep) latestDep = dep
 				}
 
