@@ -77,23 +77,9 @@ test('Magdeburg Hbf to Magdeburg-Buckau', co(function*(t) {
 	t.ok(Array.isArray(journeys))
 	t.ok(journeys.length > 0, 'no journeys')
 	for (let journey of journeys) {
-		assertValidStation(t, journey.origin)
-		assertValidStationProducts(t, journey.origin.products)
-		if (journey.origin.products) {
-			assertValidProducts(t, journey.origin.products)
-		}
-		assertValidWhen(t, journey.departure, when)
-
-		assertValidStation(t, journey.destination)
-		assertValidStationProducts(t, journey.origin.products)
-		if (journey.destination.products) {
-			assertValidProducts(t, journey.destination.products)
-		}
-		assertValidWhen(t, journey.arrival, when)
-
 		t.ok(Array.isArray(journey.legs))
 		t.ok(journey.legs.length > 0, 'no legs')
-		const leg = journey.legs[0]
+		const leg = journey.legs[0] // todo: all legs
 
 		assertValidStation(t, leg.origin)
 		assertValidStationProducts(t, leg.origin.products)

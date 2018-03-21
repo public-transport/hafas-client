@@ -69,20 +69,9 @@ test('journeys – station to station', co(function* (t) {
 	for (let journey of journeys) {
 		t.equal(journey.type, 'journey')
 
-		assertValidStation(t, journey.origin)
-		assertValidStationProducts(t, journey.origin.products)
-		t.ok(journey.origin.name.indexOf('(Berlin)') === -1)
-		t.strictEqual(journey.origin.id, spichernstr)
-		assertValidWhen(t, journey.departure, when)
-
-		assertValidStation(t, journey.destination)
-		assertValidStationProducts(t, journey.destination.products)
-		t.strictEqual(journey.destination.id, amrumerStr)
-		assertValidWhen(t, journey.arrival, when)
-
 		t.ok(Array.isArray(journey.legs))
 		t.strictEqual(journey.legs.length, 1)
-		const leg = journey.legs[0]
+		const leg = journey.legs[0] // todo: all legs
 
 		t.equal(typeof leg.id, 'string')
 		t.ok(leg.id)
@@ -192,7 +181,7 @@ test('earlier/later journeys', co(function* (t) {
 
 	let earliestDep = Infinity, latestDep = -Infinity
 	for (let j of model) {
-		const dep = +new Date(j.departure)
+		const dep = +new Date(j.legs[0].departure)
 		if (dep < earliestDep) earliestDep = dep
 		else if (dep > latestDep) latestDep = dep
 	}
@@ -203,7 +192,7 @@ test('earlier/later journeys', co(function* (t) {
 		earlierThan: model.earlierRef
 	})
 	for (let j of earlier) {
-		t.ok(new Date(j.departure) < earliestDep)
+		t.ok(new Date(j.legs[0].departure) < earliestDep)
 	}
 
 	const later = yield client.journeys(spichernstr, bismarckstr, {
@@ -212,7 +201,7 @@ test('earlier/later journeys', co(function* (t) {
 		laterThan: model.laterRef
 	})
 	for (let j of later) {
-		t.ok(new Date(j.departure) > latestDep)
+		t.ok(new Date(j.legs[0].departure) > latestDep)
 	}
 
 	t.end()

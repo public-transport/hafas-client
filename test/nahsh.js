@@ -12,7 +12,7 @@ const validateLineWithoutMode = require('./validate-line-without-mode')
 const co = require('./co')
 const createClient = require('..')
 const nahshProfile = require('../p/nahsh')
-const {allProducts} = require('../p/nahsh/products')
+const allProducts = require('../p/nahsh/products')
 const {
 	assertValidStation,
 	assertValidPoi,
@@ -108,31 +108,9 @@ test('Kiel Hbf to Flensburg', co(function* (t) {
 	for (let journey of journeys) {
 		t.equal(journey.type, 'journey')
 
-		assertValidStation(t, journey.origin)
-		assertValidStationProducts(t, journey.origin.products)
-		// todo
-		// if (!(yield findStation(journey.origin.id))) {
-		// 	console.error('unknown station', journey.origin.id, journey.origin.name)
-		// }
-		if (journey.origin.products) {
-			assertValidProducts(t, journey.origin.products)
-		}
-		assertValidWhen(t, journey.departure, when)
-
-		assertValidStation(t, journey.destination)
-		assertValidStationProducts(t, journey.origin.products)
-		// todo
-		// if (!(yield findStation(journey.origin.id))) {
-		// 	console.error('unknown station', journey.destination.id, journey.destination.name)
-		// }
-		if (journey.destination.products) {
-			assertValidProducts(t, journey.destination.products)
-		}
-		assertValidWhen(t, journey.arrival, when)
-
 		t.ok(Array.isArray(journey.legs))
 		t.ok(journey.legs.length > 0, 'no legs')
-		const leg = journey.legs[0]
+		const leg = journey.legs[0] // todo: all legs
 
 		assertValidStation(t, leg.origin)
 		assertValidStationProducts(t, leg.origin.products)
@@ -279,7 +257,7 @@ test('earlier/later journeys, Kiel Hbf -> Flensburg', co(function* (t) {
 
 	let earliestDep = Infinity, latestDep = -Infinity
 	for (let j of model) {
-		const dep = +new Date(j.departure)
+		const dep = +new Date(j.legs[0].departure)
 		if (dep < earliestDep) earliestDep = dep
 		else if (dep > latestDep) latestDep = dep
 	}
@@ -290,7 +268,7 @@ test('earlier/later journeys, Kiel Hbf -> Flensburg', co(function* (t) {
 		earlierThan: model.earlierRef
 	})
 	for (let j of earlier) {
-		t.ok(new Date(j.departure) < earliestDep)
+		t.ok(new Date(j.legs[0].departure) < earliestDep)
 	}
 
 	const later = yield client.journeys(kielHbf, flensburg, {
@@ -299,7 +277,7 @@ test('earlier/later journeys, Kiel Hbf -> Flensburg', co(function* (t) {
 		laterThan: model.laterRef
 	})
 	for (let j of later) {
-		t.ok(new Date(j.departure) > latestDep)
+		t.ok(new Date(j.legs[0].departure) > latestDep)
 	}
 
 	t.end()
