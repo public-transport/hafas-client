@@ -78,6 +78,8 @@ If you pass this profile into `hafas-client`, the `parseLine` method will overri
 	- Add a function `transformReqBody(body)` to your profile, which assigns them to `body`.
 	- Some profiles have a `checksum` parameter (like [here](https://gist.github.com/derhuerst/2a735268bd82a0a6779633f15dceba33#file-journey-details-1-http-L1)) or two `mic` & `mac` parameters (like [here](https://gist.github.com/derhuerst/5fa86ed5aec63645e5ae37e23e555886#file-1-http-L1)). If you see one of them in your requests, jump to [*Appendix A: checksum, mic, mac*](#appendix-a-checksum-mic-mac). Unfortunately, this is necessary to get the profile working.
 
+You may want to use the [profile boilerplate code](profile-boilerplate.js).
+
 ## 3. Products
 
 In `hafas-client`, there's a difference between the `mode` and the `product` field:
