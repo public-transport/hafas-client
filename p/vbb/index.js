@@ -29,7 +29,8 @@ const createParseLine = (profile, operators) => {
 	const parseLineWithMoreDetails = (l) => {
 		const res = parseLine(l)
 
-		const details = parseLineName(l.name)
+		res.name = l.name.replace(/^bus\s+/i, '')
+		const details = parseLineName(res.name)
 		res.symbol = details.symbol
 		res.nr = details.nr
 		res.metro = details.metro
