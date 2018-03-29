@@ -153,7 +153,7 @@ const createClient = (profile, request = _request) => {
 					j = parse(j)
 					journeys.push(j)
 
-					if (journeys.length === opt.results) { // collected enough
+					if (journeys.length >= opt.results) { // collected enough
 						journeys.laterRef = d.outCtxScrF
 						return journeys
 					}
