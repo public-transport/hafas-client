@@ -20,7 +20,7 @@ const createParseBitmask = (profile) => {
 				bitmask -= pBitmask
 			}
 			else{
-				res[product.product] = false
+				res[product.id] = false
 			}
 		}
 
