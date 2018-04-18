@@ -52,6 +52,14 @@ const validateLocation = (validate, loc, name = 'location') => {
 	else validateAddress(validate, loc, name)
 }
 
+const validateLocations = (validate, locs, name = 'locations') => {
+	a.ok(Array.isArray(locs), name + ' must be an array')
+	a.ok(locs.length > 0, name + ' must not be empty')
+	for (let i = 0; i < locs.length; i++) {
+		validate('location', locs[i], name + `[${i}]`)
+	}
+}
+
 const createValidateLine = (cfg) => {
 	const validLineModes = []
 	for (let product of cfg.products) {
@@ -180,14 +188,98 @@ const validateJourney = (validate, j, name = 'journey') => {
 	}
 }
 
+const validateJourneys = (validate, js, name = 'journeys') => {
+	a.ok(Array.isArray(js), name + ' must be an array')
+	a.ok(js.length > 0, name + ' must not be empty')
+	for (let i = 0; i < js.length; i++) {
+		validate(['journey'], js[i], name + `[${i}]`)
+	}
+}
+
+const createValidateDeparture = (cfg) => {
+	const validateDeparture = (validate, dep, name = 'departure') => {
+		a.ok(isObj(dep), name + ' must be an object')
+		// todo: let hafas-client add a .type field
+
+		a.strictEqual(typeof dep.journeyId, 'string', name + '.journeyId must be a string')
+		a.ok(dep.journeyId, name + '.journeyId must not be empty')
+		a.strictEqual(typeof dep.trip, 'number', name + '.trip must be a number')
+
+		validate(['station'], dep.station, name + '.station')
+
+		a.ok(isValidWhen(dep.when, cfg.when), name + '.when is invalid')
+		if (dep.delay !== null) {
+			const msg = name + '.delay must be a number'
+			a.strictEqual(typeof dep.delay, 'number', msg)
+		}
+
+		validate(['line'], dep.line, name + '.line')
+	}
+	return validateDeparture
+}
+
+const validateDepartures = (validate, deps, name = 'departures') => {
+	a.ok(Array.isArray(deps), name + ' must be an array')
+	a.ok(deps.length > 0, name + ' must not be empty')
+	for (let i = 0; i < deps.length; i++) {
+		validate('departure', deps[i], name + `[${i}]`)
+	}
+}
+
+const validateMovement = (validate, m, name = 'movement') => {
+	a.ok(isObj(m), name + ' must be an object')
+	// todo: let hafas-client add a .type field
+
+	validate(['line'], v.line, name + '.line')
+
+	const lName = name + '.location'
+	validate(['location'], v.location, lName)
+	a.ok(v.location.latitude <= 55, lName + '.latitude is too small')
+	a.ok(v.location.latitude >= 45, lName + '.latitude is too large')
+	a.ok(v.location.longitude >= 9, lName + '.longitude is too small')
+	a.ok(v.location.longitude <= 15, lName + '.longitude is too small')
+
+	a.ok(Array.isArray(v.nextStops), name + '.nextStops must be an array')
+	for (let i = 0; i < v.nextStops.length; i++) {
+		const st = v.nextStops[i]
+		assertValidStopover('stopover', v.nextStops[i], name + `.nextStops[${i}]`)
+	}
+
+	a.ok(Array.isArray(v.frames), name + '.frames must be an array')
+	a.ok(v.frames.length > 0, name + '.frames must not be empty')
+	for (let i = 0; i < v.frames.length; i++) {
+		const f = v.frames[i]
+		const fName = name + `.frames[${i}]`
+
+		a.ok(isObj(f), fName + ' must be an object')
+		assertValidStation(['station'], f.origin, fName + '.origin')
+		assertValidStation(['station'], f.destination, fName + '.destination')
+		a.strictEqual(typeof f.t, 'number', fName + '.frames must be a number')
+	}
+}
+
+const validateMovements = (validate, ms, name = 'movements') => {
+	a.ok(Array.isArray(ms), name + ' must be an array')
+	a.ok(ms.length > 0, name + ' must not be empty')
+	for (let i = 0; i < ms.length; i++) {
+		validate('movement', ms[i], name + `[${i}]`)
+	}
+}
+
 module.exports = {
 	station: createValidateStation,
 	location: () => validateLocation,
+	locations: () => validateLocations,
 	poi: () => validatePoi,
 	address: () => validateAddress,
 	line: createValidateLine,
 	stopover: createValidateStopover,
 	ticket: () => validateTicket,
 	journeyLeg: createValidateJourneyLeg,
-	journey: () => validateJourney
+	journey: () => validateJourney,
+	journeys: () => validateJourneys,
+	departure: createValidateDeparture,
+	departures: () => validateDepartures,
+	movement: () => validateMovement,
+	movements: () => validateMovements
 }
