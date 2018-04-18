@@ -5,7 +5,7 @@ const tape = require('tape')
 const isRoughlyEqual = require('is-roughly-equal')
 const validateFptf = require('validate-fptf')
 
-const co = require('./co')
+const co = require('./lib/co')
 const createClient = require('..')
 const insaProfile = require('../p/insa')
 const allProducts = require('../p/insa/products')
@@ -19,7 +19,7 @@ const {
 	hour,
 	createWhen,
 	assertValidWhen
-} = require('./util.js')
+} = require('./lib/util.js')
 
 const when = createWhen('Europe/Berlin', 'de-DE')
 

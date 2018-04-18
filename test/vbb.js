@@ -7,7 +7,7 @@ const tapePromise = require('tape-promise').default
 const tape = require('tape')
 const shorten = require('vbb-short-station-name')
 
-const co = require('./co')
+const co = require('./lib/co')
 const createClient = require('..')
 const vbbProfile = require('../p/vbb')
 const allProducts = require('../p/vbb/products')
@@ -21,7 +21,7 @@ const {
 	hour, createWhen,
 	assertValidWhen,
 	assertValidTicket
-} = require('./util')
+} = require('./lib/util')
 
 const when = createWhen('Europe/Berlin', 'de-DE')
 

@@ -5,7 +5,7 @@ const tapePromise = require('tape-promise').default
 const tape = require('tape')
 const isRoughlyEqual = require('is-roughly-equal')
 
-const co = require('./co')
+const co = require('./lib/co')
 const createClient = require('..')
 const dbProfile = require('../p/db')
 const allProducts = require('../p/db/products')
@@ -17,7 +17,7 @@ const {
 	assertValidLine,
 	assertValidStopover,
 	createWhen, assertValidWhen
-} = require('./util.js')
+} = require('./lib/util.js')
 
 const when = createWhen('Europe/Berlin', 'de-DE')
 

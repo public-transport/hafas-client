@@ -7,9 +7,9 @@ const tape = require('tape')
 const isRoughlyEqual = require('is-roughly-equal')
 const validateFptf = require('validate-fptf')
 
-const validateLineWithoutMode = require('./validate-line-without-mode')
+const validateLineWithoutMode = require('./lib/validate-line-without-mode')
 
-const co = require('./co')
+const co = require('./lib/co')
 const createClient = require('..')
 const nahshProfile = require('../p/nahsh')
 const allProducts = require('../p/nahsh/products')
@@ -20,7 +20,7 @@ const {
 	assertValidLocation,
 	assertValidStopover,
 	hour, createWhen, assertValidWhen
-} = require('./util.js')
+} = require('./lib/util.js')
 
 const when = createWhen('Europe/Berlin', 'de-DE')
 
