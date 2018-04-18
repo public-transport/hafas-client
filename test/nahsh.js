@@ -14,7 +14,7 @@ const createClient = require('..')
 const nahshProfile = require('../p/nahsh')
 const allProducts = require('../p/nahsh/products')
 const {
-	assertValidStation,
+	assertValidStation: _assertValidStation,
 	assertValidPoi,
 	assertValidAddress,
 	assertValidLocation,
@@ -24,18 +24,15 @@ const {
 
 const when = createWhen('Europe/Berlin', 'de-DE')
 
-const assertValidStationProducts = (t, p) => {
-	t.ok(p)
-	t.equal(typeof p.nationalExp, 'boolean')
-	t.equal(typeof p.national, 'boolean')
-	t.equal(typeof p.interregional, 'boolean')
-	t.equal(typeof p.regional, 'boolean')
-	t.equal(typeof p.suburban, 'boolean')
-	t.equal(typeof p.bus, 'boolean')
-	t.equal(typeof p.ferry, 'boolean')
-	t.equal(typeof p.subway, 'boolean')
-	t.equal(typeof p.tram, 'boolean')
-	t.equal(typeof p.onCall, 'boolean')
+// todo: DRY with other tests, move into lib
+const assertValidStation = (t, s, coordsOptional = false) => {
+	_assertValidStation(t, s, coordsOptional)
+	t.ok(s.products)
+	for (let product of allProducts) {
+		product = product.id
+		const msg = `station.products[${product}] must be a boolean`
+		t.equal(typeof s.products[product], 'boolean', msg)
+	}
 }
 
 const isKielHbf = (s) => {
@@ -54,15 +51,6 @@ const assertIsKielHbf = (t, s) => {
 	t.ok(s.location)
 	t.ok(isRoughlyEqual(s.location.latitude, 54.314982, .0005))
 	t.ok(isRoughlyEqual(s.location.longitude, 10.131976, .0005))
-}
-
-// todo: DRY with assertValidStationProducts
-// todo: DRY with other tests
-const assertValidProducts = (t, p) => {
-	for (let product of allProducts) {
-		product = product.product // wat
-		t.equal(typeof p[product], 'boolean', 'product ' + p + ' must be a boolean')
-	}
 }
 
 const assertValidPrice = (t, p) => {
@@ -113,7 +101,6 @@ test('Kiel Hbf to Flensburg', co(function* (t) {
 		const leg = journey.legs[0] // todo: all legs
 
 		assertValidStation(t, leg.origin)
-		assertValidStationProducts(t, leg.origin.products)
 		// todo
 		// if (!(yield findStation(leg.origin.id))) {
 		// 	console.error('unknown station', leg.origin.id, leg.origin.name)
@@ -122,7 +109,6 @@ test('Kiel Hbf to Flensburg', co(function* (t) {
 		t.equal(typeof leg.departurePlatform, 'string')
 
 		assertValidStation(t, leg.destination)
-		assertValidStationProducts(t, leg.origin.products)
 		// todo
 		// if (!(yield findStation(leg.destination.id))) {
 		// 	console.error('unknown station', leg.destination.id, leg.destination.name)
@@ -158,12 +144,10 @@ test('Kiel Hbf to Husum, Zingel 10', co(function* (t) {
 	const lastLeg = journey.legs[journey.legs.length - 1]
 
 	assertValidStation(t, firstLeg.origin)
-	assertValidStationProducts(t, firstLeg.origin.products)
 	// todo
 	// if (!(yield findStation(leg.origin.id))) {
 	// 	console.error('unknown station', leg.origin.id, leg.origin.name)
 	// }
-	if (firstLeg.origin.products) assertValidProducts(t, firstLeg.origin.products)
 	assertValidWhen(t, firstLeg.departure, when)
 	assertValidWhen(t, firstLeg.arrival, when)
 	assertValidWhen(t, lastLeg.departure, when)
@@ -206,8 +190,6 @@ test('Holstentor to Kiel Hbf', co(function* (t) {
 	assertValidWhen(t, lastLeg.arrival, when)
 
 	assertValidStation(t, lastLeg.destination)
-	assertValidStationProducts(t, lastLeg.destination.products)
-	if (lastLeg.destination.products) assertValidProducts(t, lastLeg.destination.products)
 	// todo
 	// if (!(yield findStation(leg.destination.id))) {
 	// 	console.error('unknown station', leg.destination.id, leg.destination.name)
@@ -315,12 +297,10 @@ test('departures at Kiel Hbf', co(function* (t) {
 	t.ok(Array.isArray(deps))
 	for (let dep of deps) {
 		assertValidStation(t, dep.station)
-		assertValidStationProducts(t, dep.station.products)
 		// todo
 		// if (!(yield findStation(dep.station.id))) {
 		// 	console.error('unknown station', dep.station.id, dep.station.name)
 		// }
-		if (dep.station.products) assertValidProducts(t, dep.station.products)
 		assertValidWhen(t, dep.when, when)
 	}
 
@@ -420,9 +400,7 @@ test.skip('radar Kiel', co(function* (t) {
 		t.ok(Array.isArray(v.frames))
 		for (let f of v.frames) {
 			assertValidStation(t, f.origin, true)
-			assertValidStationProducts(t, f.origin.products)
 			assertValidStation(t, f.destination, true)
-			assertValidStationProducts(t, f.destination.products)
 			t.equal(typeof f.t, 'number')
 		}
 	}

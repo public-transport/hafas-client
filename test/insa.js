@@ -10,7 +10,7 @@ const createClient = require('..')
 const insaProfile = require('../p/insa')
 const allProducts = require('../p/insa/products')
 const {
-	assertValidStation,
+	assertValidStation: _assertValidStation,
 	assertValidPoi,
 	assertValidAddress,
 	assertValidLocation,
@@ -23,15 +23,15 @@ const {
 
 const when = createWhen('Europe/Berlin', 'de-DE')
 
-const assertValidStationProducts = (t, p) => {
-	t.ok(p)
-	t.equal(typeof p.nationalExp, 'boolean')
-	t.equal(typeof p.national, 'boolean')
-	t.equal(typeof p.regional, 'boolean')
-	t.equal(typeof p.suburban, 'boolean')
-	t.equal(typeof p.tram, 'boolean')
-	t.equal(typeof p.bus, 'boolean')
-	t.equal(typeof p.tourismTrain, 'boolean')
+// todo: DRY with other tests, move into lib
+const assertValidStation = (t, s, coordsOptional = false) => {
+	_assertValidStation(t, s, coordsOptional)
+	t.ok(s.products)
+	for (let product of allProducts) {
+		product = product.id
+		const msg = `station.products[${product}] must be a boolean`
+		t.equal(typeof s.products[product], 'boolean', msg)
+	}
 }
 
 const isMagdeburgHbf = s => {
@@ -54,15 +54,6 @@ const assertIsMagdeburgHbf = (t, s) => {
 	t.ok(isRoughlyEqual(s.location.longitude, 11.626891, 0.001))
 }
 
-// todo: DRY with assertValidStationProducts
-// todo: DRY with other tests
-const assertValidProducts = (t, p) => {
-	for (let product of allProducts) {
-		product = product.id
-		t.equal(typeof p[product], 'boolean', 'product ' + p + ' must be a boolean')
-	}
-}
-
 const test = tapePromise(tape)
 const client = createClient(insaProfile)
 
@@ -82,12 +73,10 @@ test('Magdeburg Hbf to Magdeburg-Buckau', co(function*(t) {
 		const leg = journey.legs[0] // todo: all legs
 
 		assertValidStation(t, leg.origin)
-		assertValidStationProducts(t, leg.origin.products)
 		assertValidWhen(t, leg.departure, when)
 		t.equal(typeof leg.departurePlatform, 'string')
 
 		assertValidStation(t, leg.destination)
-		assertValidStationProducts(t, leg.origin.products)
 		assertValidWhen(t, leg.arrival, when)
 		t.equal(typeof leg.arrivalPlatform, 'string')
 
@@ -120,9 +109,6 @@ test('Magdeburg Hbf to 39104 Magdeburg, Sternstr. 10', co(function*(t) {
 	const lastLeg = journey.legs[journey.legs.length - 1]
 
 	assertValidStation(t, firstLeg.origin)
-	assertValidStationProducts(t, firstLeg.origin.products)
-	if (firstLeg.origin.products)
-		assertValidProducts(t, firstLeg.origin.products)
 	assertValidWhen(t, firstLeg.departure, when)
 	assertValidWhen(t, firstLeg.arrival, when)
 	assertValidWhen(t, lastLeg.departure, when)
@@ -168,9 +154,6 @@ test('Kloster Unser Lieben Frauen to Magdeburg Hbf', co(function*(t) {
 	assertValidWhen(t, lastLeg.arrival, when)
 
 	assertValidStation(t, lastLeg.destination)
-	assertValidStationProducts(t, lastLeg.destination.products)
-	if (lastLeg.destination.products)
-		assertValidProducts(t, lastLeg.destination.products)
 
 	t.end()
 }))
@@ -230,10 +213,6 @@ test('departures at Magdeburg Hbf', co(function*(t) {
 	t.ok(Array.isArray(deps))
 	for (let dep of deps) {
 		assertValidStation(t, dep.station)
-		assertValidStationProducts(t, dep.station.products)
-		if (dep.station.products) {
-			assertValidProducts(t, dep.station.products)
-		}
 		assertValidWhen(t, dep.when, when)
 	}
 
@@ -366,9 +345,7 @@ test('radar', co(function* (t) {
 			// see #28
 			// todo: check if this works by now
 			assertValidStation(t, f.origin, true)
-			assertValidStationProducts(t, f.origin.products)
 			assertValidStation(t, f.destination, true)
-			assertValidStationProducts(t, f.destination.products)
 			t.equal(typeof f.t, 'number')
 		}
 	}

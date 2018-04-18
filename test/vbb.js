@@ -10,6 +10,7 @@ const shorten = require('vbb-short-station-name')
 const co = require('./co')
 const createClient = require('..')
 const vbbProfile = require('../p/vbb')
+const allProducts = require('../p/vbb/products')
 const {
 	assertValidStation: _assertValidStation,
 	assertValidPoi,
@@ -24,20 +25,16 @@ const {
 
 const when = createWhen('Europe/Berlin', 'de-DE')
 
+// todo: DRY with other tests, move into lib
 const assertValidStation = (t, s, coordsOptional = false) => {
 	_assertValidStation(t, s, coordsOptional)
 	t.equal(s.name, shorten(s.name))
-}
-
-const assertValidStationProducts = (t, p) => {
-	t.ok(p)
-	t.equal(typeof p.suburban, 'boolean')
-	t.equal(typeof p.subway, 'boolean')
-	t.equal(typeof p.tram, 'boolean')
-	t.equal(typeof p.bus, 'boolean')
-	t.equal(typeof p.ferry, 'boolean')
-	t.equal(typeof p.express, 'boolean')
-	t.equal(typeof p.regional, 'boolean')
+	t.ok(s.products)
+	for (let product of allProducts) {
+		product = product.id
+		const msg = `station.products[${product}] must be a boolean`
+		t.equal(typeof s.products[product], 'boolean', msg)
+	}
 }
 
 const assertValidLine = (t, l) => {
@@ -76,13 +73,11 @@ test('journeys – station to station', co(function* (t) {
 		t.equal(typeof leg.id, 'string')
 		t.ok(leg.id)
 		assertValidStation(t, leg.origin)
-		assertValidStationProducts(t, leg.origin.products)
 		t.ok(leg.origin.name.indexOf('(Berlin)') === -1)
 		t.strictEqual(leg.origin.id, spichernstr)
 		assertValidWhen(t, leg.departure, when)
 
 		assertValidStation(t, leg.destination)
-		assertValidStationProducts(t, leg.destination.products)
 		t.strictEqual(leg.destination.id, amrumerStr)
 		assertValidWhen(t, leg.arrival, when)
 
@@ -246,7 +241,6 @@ test('journeys – station to address', co(function* (t) {
 	const leg = journey.legs[journey.legs.length - 1]
 
 	assertValidStation(t, leg.origin)
-	assertValidStationProducts(t, leg.origin.products)
 	assertValidWhen(t, leg.departure, when)
 
 	const dest = leg.destination
@@ -275,7 +269,6 @@ test('journeys – station to POI', co(function* (t) {
 	const leg = journey.legs[journey.legs.length - 1]
 
 	assertValidStation(t, leg.origin)
-	assertValidStationProducts(t, leg.origin.products)
 	assertValidWhen(t, leg.departure, when)
 
 	const dest = leg.destination
@@ -342,7 +335,6 @@ test('departures', co(function* (t) {
 
 		t.equal(dep.station.name, 'U Spichernstr.')
 		assertValidStation(t, dep.station)
-		assertValidStationProducts(t, dep.station.products)
 		t.strictEqual(dep.station.id, spichernstr)
 
 		assertValidWhen(t, dep.when, when)
@@ -494,10 +486,8 @@ test('radar', co(function* (t) {
 		t.ok(Array.isArray(v.frames))
 		for (let f of v.frames) {
 			assertValidStation(t, f.origin, true)
-			assertValidStationProducts(t, f.origin.products)
 			t.strictEqual(f.origin.name.indexOf('(Berlin)'), -1)
 			assertValidStation(t, f.destination, true)
-			assertValidStationProducts(t, f.destination.products)
 			t.strictEqual(f.destination.name.indexOf('(Berlin)'), -1)
 			t.equal(typeof f.t, 'number')
 		}

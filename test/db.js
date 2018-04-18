@@ -10,7 +10,7 @@ const createClient = require('..')
 const dbProfile = require('../p/db')
 const allProducts = require('../p/db/products')
 const {
-	assertValidStation,
+	assertValidStation: _assertValidStation,
 	assertValidPoi,
 	assertValidAddress,
 	assertValidLocation,
@@ -21,18 +21,15 @@ const {
 
 const when = createWhen('Europe/Berlin', 'de-DE')
 
-const assertValidStationProducts = (t, p) => {
-	t.ok(p)
-	t.equal(typeof p.nationalExp, 'boolean')
-	t.equal(typeof p.national, 'boolean')
-	t.equal(typeof p.regionalExp, 'boolean')
-	t.equal(typeof p.regional, 'boolean')
-	t.equal(typeof p.suburban, 'boolean')
-	t.equal(typeof p.bus, 'boolean')
-	t.equal(typeof p.ferry, 'boolean')
-	t.equal(typeof p.subway, 'boolean')
-	t.equal(typeof p.tram, 'boolean')
-	t.equal(typeof p.taxi, 'boolean')
+// todo: DRY with other tests, move into lib
+const assertValidStation = (t, s) => {
+	_assertValidStation(t, s)
+	t.ok(s.products)
+	for (let product of allProducts) {
+		product = product.id
+		const msg = `station.products[${product}] must be a boolean`
+		t.equal(typeof s.products[product], 'boolean', msg)
+	}
 }
 
 const findStation = (id) => new Promise((yay, nay) => {
@@ -67,15 +64,6 @@ const assertIsJungfernheide = (t, s) => {
 	t.ok(s.location)
 	t.ok(isRoughlyEqual(s.location.latitude, 52.530408, .0005))
 	t.ok(isRoughlyEqual(s.location.longitude, 13.299424, .0005))
-}
-
-// todo: DRY with assertValidStationProducts
-// todo: DRY with other tests
-const assertValidProducts = (t, p) => {
-	for (let product of allProducts) {
-		product = product.id
-		t.equal(typeof p[product], 'boolean', 'product ' + p + ' must be a boolean')
-	}
 }
 
 const assertValidPrice = (t, p) => {
@@ -114,7 +102,6 @@ test('Berlin Jungfernheide to München Hbf', co(function* (t) {
 		const leg = journey.legs[0] // todo: all legs
 
 		assertValidStation(t, leg.origin)
-		assertValidStationProducts(t, leg.origin.products)
 		if (!(yield findStation(leg.origin.id))) {
 			console.error('unknown station', leg.origin.id, leg.origin.name)
 		}
@@ -122,7 +109,6 @@ test('Berlin Jungfernheide to München Hbf', co(function* (t) {
 		t.equal(typeof leg.departurePlatform, 'string')
 
 		assertValidStation(t, leg.destination)
-		assertValidStationProducts(t, leg.origin.products)
 		if (!(yield findStation(leg.destination.id))) {
 			console.error('unknown station', leg.destination.id, leg.destination.name)
 		}
@@ -152,11 +138,9 @@ test('Berlin Jungfernheide to Torfstraße 17', co(function* (t) {
 	const leg = journey.legs[journey.legs.length - 1]
 
 	assertValidStation(t, leg.origin)
-	assertValidStationProducts(t, leg.origin.products)
 	if (!(yield findStation(leg.origin.id))) {
 		console.error('unknown station', leg.origin.id, leg.origin.name)
 	}
-	if (leg.origin.products) assertValidProducts(t, leg.origin.products)
 	assertValidWhen(t, leg.departure, when)
 	assertValidWhen(t, leg.arrival, when)
 
@@ -181,11 +165,9 @@ test('Berlin Jungfernheide to ATZE Musiktheater', co(function* (t) {
 	const leg = journey.legs[journey.legs.length - 1]
 
 	assertValidStation(t, leg.origin)
-	assertValidStationProducts(t, leg.origin.products)
 	if (!(yield findStation(leg.origin.id))) {
 		console.error('unknown station', leg.origin.id, leg.origin.name)
 	}
-	if (leg.origin.products) assertValidProducts(t, leg.origin.products)
 	assertValidWhen(t, leg.departure, when)
 	assertValidWhen(t, leg.arrival, when)
 
@@ -298,11 +280,9 @@ test('departures at Berlin Jungfernheide', co(function* (t) {
 	t.ok(Array.isArray(deps))
 	for (let dep of deps) {
 		assertValidStation(t, dep.station)
-		assertValidStationProducts(t, dep.station.products)
 		if (!(yield findStation(dep.station.id))) {
 			console.error('unknown station', dep.station.id, dep.station.name)
 		}
-		if (dep.station.products) assertValidProducts(t, dep.station.products)
 		assertValidWhen(t, dep.when, when)
 	}
 
