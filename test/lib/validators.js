@@ -49,7 +49,9 @@ const validateLocation = (validate, loc, name = 'location') => {
 	a.ok(isObj(loc), name + ' must be an object')
 	if (loc.type === 'station') validate(['station'], loc, name)
 	else if ('id' in loc) validatePoi(validate, loc, name)
-	else validateAddress(validate, loc, name)
+	else if (!('name' in loc) && ('address' in loc)) {
+		validateAddress(validate, loc, name)
+	} else defaultValidators.location(validate, loc, name)
 }
 
 const validateLocations = (validate, locs, name = 'locations') => {
@@ -86,7 +88,7 @@ const createValidateStopover = (cfg) => {
 			a.ok(isValidWhen(s.departure, cfg.when), name + '.departure is invalid')
 		}
 		if (!is(s.arrival) && !is(s.departure)) {
-			asser.fail(name + ' contains neither arrival nor departure')
+			a.fail(name + ' contains neither arrival nor departure')
 		}
 
 		if (is(s.arrivalDelay)) {
@@ -159,12 +161,14 @@ const createValidateJourneyLeg = (cfg) => {
 			const msg = name + '.departure is invalid'
 			a.ok(isValidWhen(leg.departure, cfg.when), msg)
 		}
-		if (leg.arrivalPlatform !== null) {
+		// todo: leg.arrivalPlatform !== null
+		if (is(leg.arrivalPlatform)) {
 			const msg = name + '.arrivalPlatform must be a string'
 			a.strictEqual(typeof leg.arrivalPlatform, 'string', msg)
 			a.ok(leg.arrivalPlatform, name + '.arrivalPlatform must not be empty')
 		}
-		if (leg.departurePlatform !== null) {
+		// todo: leg.departurePlatform !== null
+		if (is(leg.departurePlatform)) {
 			const msg = name + '.departurePlatform must be a string'
 			a.strictEqual(typeof leg.departurePlatform, 'string', msg)
 			a.ok(leg.departurePlatform, name + '.departurePlatform must not be empty')
@@ -248,32 +252,32 @@ const validateMovement = (validate, m, name = 'movement') => {
 	a.ok(isObj(m), name + ' must be an object')
 	// todo: let hafas-client add a .type field
 
-	validate(['line'], v.line, name + '.line')
-	a.strictEqual(typeof v.direction, 'string', name + '.direction must be a string')
-	a.ok(v.direction, name + '.direction must not be empty')
+	validate(['line'], m.line, name + '.line')
+	a.strictEqual(typeof m.direction, 'string', name + '.direction must be a string')
+	a.ok(m.direction, name + '.direction must not be empty')
 
 	const lName = name + '.location'
-	validate(['location'], v.location, lName)
-	a.ok(v.location.latitude <= 55, lName + '.latitude is too small')
-	a.ok(v.location.latitude >= 45, lName + '.latitude is too large')
-	a.ok(v.location.longitude >= 9, lName + '.longitude is too small')
-	a.ok(v.location.longitude <= 15, lName + '.longitude is too small')
+	validate(['location'], m.location, lName)
+	a.ok(m.location.latitude <= 55, lName + '.latitude is too small')
+	a.ok(m.location.latitude >= 45, lName + '.latitude is too large')
+	a.ok(m.location.longitude >= 9, lName + '.longitude is too small')
+	a.ok(m.location.longitude <= 15, lName + '.longitude is too small')
 
-	a.ok(Array.isArray(v.nextStops), name + '.nextStops must be an array')
-	for (let i = 0; i < v.nextStops.length; i++) {
-		const st = v.nextStops[i]
-		assertValidStopover('stopover', v.nextStops[i], name + `.nextStops[${i}]`)
+	a.ok(Array.isArray(m.nextStops), name + '.nextStops must be an array')
+	for (let i = 0; i < m.nextStops.length; i++) {
+		const st = m.nextStops[i]
+		validate('stopover', m.nextStops[i], name + `.nextStops[${i}]`)
 	}
 
-	a.ok(Array.isArray(v.frames), name + '.frames must be an array')
-	a.ok(v.frames.length > 0, name + '.frames must not be empty')
-	for (let i = 0; i < v.frames.length; i++) {
-		const f = v.frames[i]
+	a.ok(Array.isArray(m.frames), name + '.frames must be an array')
+	a.ok(m.frames.length > 0, name + '.frames must not be empty')
+	for (let i = 0; i < m.frames.length; i++) {
+		const f = m.frames[i]
 		const fName = name + `.frames[${i}]`
 
 		a.ok(isObj(f), fName + ' must be an object')
-		assertValidStation(['station'], f.origin, fName + '.origin')
-		assertValidStation(['station'], f.destination, fName + '.destination')
+		validate(['location', 'station'], f.origin, fName + '.origin')
+		validate(['location', 'station'], f.destination, fName + '.destination')
 		a.strictEqual(typeof f.t, 'number', fName + '.frames must be a number')
 	}
 }
