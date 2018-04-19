@@ -159,6 +159,16 @@ const createValidateJourneyLeg = (cfg) => {
 			const msg = name + '.departure is invalid'
 			a.ok(isValidWhen(leg.departure, cfg.when), msg)
 		}
+		if (leg.arrivalPlatform !== null) {
+			const msg = name + '.arrivalPlatform must be a string'
+			a.strictEqual(typeof leg.arrivalPlatform, 'string', msg)
+			a.ok(leg.arrivalPlatform, name + '.arrivalPlatform must not be empty')
+		}
+		if (leg.departurePlatform !== null) {
+			const msg = name + '.departurePlatform must be a string'
+			a.strictEqual(typeof leg.departurePlatform, 'string', msg)
+			a.ok(leg.departurePlatform, name + '.departurePlatform must not be empty')
+		}
 
 		if ('passed' in leg) {
 			a.ok(Array.isArray(leg.passed), name + '.passed must be an array')
@@ -167,6 +177,12 @@ const createValidateJourneyLeg = (cfg) => {
 			for (let i = 0; i < leg.passed.length; i++) {
 				validate('stopover', leg.passed[i], name + `.passed[${i}]`)
 			}
+		}
+
+		if (leg.mode !== 'walking') {
+			const msg = name + '.direction must be a string'
+			a.strictEqual(typeof leg.direction, 'string', msg)
+			a.ok(leg.direction, name + '.direction must not be empty')
 		}
 	}
 	return validateJourneyLeg
@@ -214,6 +230,8 @@ const createValidateDeparture = (cfg) => {
 		}
 
 		validate(['line'], dep.line, name + '.line')
+		a.strictEqual(typeof dep.direction, 'string', name + '.direction must be a string')
+		a.ok(dep.direction, name + '.direction must not be empty')
 	}
 	return validateDeparture
 }
@@ -231,6 +249,8 @@ const validateMovement = (validate, m, name = 'movement') => {
 	// todo: let hafas-client add a .type field
 
 	validate(['line'], v.line, name + '.line')
+	a.strictEqual(typeof v.direction, 'string', name + '.direction must be a string')
+	a.ok(v.direction, name + '.direction must not be empty')
 
 	const lName = name + '.location'
 	validate(['location'], v.location, lName)

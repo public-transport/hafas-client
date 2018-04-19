@@ -32,8 +32,6 @@ const cfg = {
 }
 
 const validateDirection = (dir, name) => {
-	a.strictEqual(typeof dir, 'string', name + ' must be a string')
-	a.ok(dir, name + ' must not be empty')
 	if (!stations(dir, true, false)[0]) {
 		console.error(name + `: station "${dir}" is unknown`)
 	}
@@ -333,6 +331,7 @@ test('departures', co(function* (t) {
 		t.equal(dep.station.name, 'U Spichernstr.', name + '.station.name is invalid')
 		t.equal(dep.station.id, spichernstr, name + '.station.id is invalid')
 	}
+	// todo: move into deps validator
 	t.deepEqual(deps, deps.sort((a, b) => t.when > b.when))
 
 	t.end()
