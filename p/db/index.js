@@ -62,7 +62,11 @@ const createParseJourney = (profile, stations, lines, remarks) => {
 		) {
 			const tariff = j.trfRes.fareSetL[0].fareL[0]
 			if (tariff.prc >= 0) { // wat
-				res.price = {amount: tariff.prc / 100, hint: null}
+				res.price = {
+					amount: tariff.prc / 100,
+					currency: 'EUR',
+					hint: null
+				}
 			}
 		}
 
@@ -96,7 +100,9 @@ const dbProfile = {
 	// todo: parseLocation
 	parseJourney: createParseJourney,
 
-	formatStation
+	formatStation,
+
+	journeyLeg: true
 }
 
 module.exports = dbProfile

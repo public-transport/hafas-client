@@ -199,7 +199,7 @@ test('earlier/later journeys, Jungfernheide -> München Hbf', co(function* (t) {
 	t.end()
 }))
 
-test.skip('journey leg details', co(function* (t) {
+test('journey leg details', co(function* (t) {
 	const journeys = yield client.journeys(berlinHbf, münchenHbf, {
 		results: 1, when
 	})
