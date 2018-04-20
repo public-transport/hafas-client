@@ -312,6 +312,7 @@ test('radar', co(function* (t) {
 		duration: 5 * 60, when
 	})
 
+	// todo: cfg.stationProductsOptional option
 	const allProducts = products.reduce((acc, p) => (acc[p.id] = true, acc), {})
 	const validateStation = createValidateStation(cfg)
 	const validate = createValidate(cfg, {

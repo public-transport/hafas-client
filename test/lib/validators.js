@@ -72,7 +72,7 @@ const createValidateLine = (cfg) => {
 
 	const validateLine = (validate, line, name = 'line') => {
 		defaultValidators.line(validate, line, name)
-		a.ok(validLineModes.includes(line.mode))
+		a.ok(validLineModes.includes(line.mode), name + '.mode is invalid')
 	}
 	return validateLine
 }
