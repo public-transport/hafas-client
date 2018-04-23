@@ -2,6 +2,7 @@
 
 const _parseLocation = require('../../parse/location')
 const _createParseJourney = require('../../parse/journey')
+const _createParseMovement = require('../../parse/movement')
 
 const products = require('./products')
 
@@ -77,6 +78,19 @@ const createParseJourney = (profile, stations, lines, remarks) => {
 	return parseJourneyWithTickets
 }
 
+const createParseMovement = (profile, locations, lines, remarks) => {
+	const _parseMovement = _createParseMovement(profile, locations, lines, remarks)
+	const parseMovement = (m) => {
+		const res = _parseMovement(m)
+		// filter out empty nextStops entries
+		res.nextStops = res.nextStops.filter((f) => {
+			return f.station !== null || f.arrival !== null || f.departure !== null
+		})
+		return res
+	}
+	return parseMovement
+}
+
 const nahshProfile = {
 	locale: 'de-DE',
 	timezone: 'Europe/Berlin',
@@ -87,9 +101,10 @@ const nahshProfile = {
 
 	parseLocation,
 	parseJourney: createParseJourney,
+	parseMovement: createParseMovement,
 
 	journeyLeg: true,
-	radar: false // todo: see #34
+	radar: true // todo: see #34
 }
 
 module.exports = nahshProfile
