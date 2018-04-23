@@ -14,6 +14,7 @@ const {
 	station: createValidateStation
 } = require('./lib/validators')
 const createValidate = require('./lib/validate-fptf-with')
+const testJourneysStationToStation = require('./lib/journeys-station-to-station')
 
 const when = createWhen('Europe/Vienna', 'de-AT')
 
@@ -45,20 +46,29 @@ const test = tapePromise(tape)
 const client = createClient(oebbProfile)
 
 const salzburgHbf = '8100002'
-const wienWestbahnhof = '1291501'
+const wienFickeystr = '911014'
 const wien = '1190100'
+const wienWestbahnhof = '1291501'
 const klagenfurtHbf = '8100085'
 const muenchenHbf = '8000261'
 const wienRenngasse = '1390186'
 
-test('Salzburg Hbf to Wien Westbahnhof', co(function* (t) {
-	const journeys = yield client.journeys(salzburgHbf, wienWestbahnhof, {
-		when, passedStations: true
+test('journeys – Salzburg Hbf to Wien Westbahnhof', co(function* (t) {
+	const journeys = yield client.journeys(salzburgHbf, wienFickeystr, {
+		results: 3, when, passedStations: true
 	})
 
-	validate(t, journeys, 'journeys', 'journeys')
-	for (let journey of journeys) {
-		if (journey.price) assertValidPrice(t, journey.price)
+	yield testJourneysStationToStation({
+		test: t,
+		journeys,
+		validate,
+		fromId: salzburgHbf,
+		toId: wienFickeystr
+	})
+
+	for (let i = 0; i < journeys.length; i++) {
+		const j = journeys[i]
+		if (j.price) assertValidPrice(t, j.price, `journeys[${i}].price`)
 	}
 
 	t.end()

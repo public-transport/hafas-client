@@ -10,6 +10,7 @@ const createClient = require('..')
 const insaProfile = require('../p/insa')
 const products = require('../p/insa/products')
 const createValidate = require('./lib/validate-fptf-with')
+const testJourneysStationToStation = require('./lib/journeys-station-to-station')
 
 const isObj = o => o !== null && 'object' === typeof o && !Array.isArray(o)
 
@@ -32,20 +33,18 @@ const hasselbachplatzSternstrasse = '000006545'
 const stendal = '008010334'
 const dessau = '008010077'
 
-test('Magdeburg Hbf to Magdeburg-Buckau', co(function*(t) {
+test('journeys – Magdeburg Hbf to Magdeburg-Buckau', co(function* (t) {
 	const journeys = yield client.journeys(magdeburgHbf, magdeburgBuckau, {
-		when,
-		passedStations: true
+		results: 3, when, passedStations: true
 	})
 
-	validate(t, journeys, 'journeys', 'journeys')
-
-	for (let j of journeys) {
-		const firstLeg = j.legs[0]
-		const lastLeg = j.legs[j.legs.length - 1]
-		t.strictEqual(firstLeg.origin.id, magdeburgHbf)
-		t.strictEqual(lastLeg.destination.id, magdeburgBuckau)
-	}
+	yield testJourneysStationToStation({
+		test: t,
+		journeys,
+		validate,
+		fromId: magdeburgHbf,
+		toId: magdeburgBuckau
+	})
 	t.end()
 }))
 

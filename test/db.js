@@ -15,6 +15,7 @@ const {
 	station: createValidateStation
 } = require('./lib/validators')
 const createValidate = require('./lib/validate-fptf-with')
+const testJourneysStationToStation = require('./lib/journeys-station-to-station')
 
 const isObj = o => o !== null && 'object' === typeof o && !Array.isArray(o)
 
@@ -60,18 +61,26 @@ const client = createClient(dbProfile)
 const berlinHbf = '8011160'
 const münchenHbf = '8000261'
 const jungfernheide = '8011167'
+const blnSchwedterStr = '732652'
 const atze = '991598902'
 const westhafen = '008089116'
 const wedding = '008089131'
 const württembergallee = '731084'
 const regensburgHbf = '8000309'
 
-test('Berlin Jungfernheide to München Hbf', co(function* (t) {
-	const journeys = yield client.journeys(jungfernheide, münchenHbf, {
-		when, passedStations: true
+test('journeys – Berlin Schwedter Str. to München Hbf', co(function* (t) {
+	const journeys = yield client.journeys(blnSchwedterStr, münchenHbf, {
+		results: 3, when, passedStations: true
 	})
 
-	validate(t, journeys, 'journeys', 'journeys')
+	yield testJourneysStationToStation({
+		test: t,
+		journeys,
+		validate,
+		fromId: blnSchwedterStr,
+		toId: münchenHbf
+	})
+	// todo: find a journey where there pricing info is always available
 	for (let journey of journeys) {
 		if (journey.price) assertValidPrice(t, journey.price)
 	}

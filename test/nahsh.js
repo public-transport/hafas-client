@@ -14,6 +14,7 @@ const {
 	station: createValidateStation
 } = require('./lib/validators')
 const createValidate = require('./lib/validate-fptf-with')
+const testJourneysStationToStation = require('./lib/journeys-station-to-station')
 
 const when = createWhen('Europe/Berlin', 'de-DE')
 
@@ -60,24 +61,25 @@ const luebeckHbf = '8000237'
 const husum = '8000181'
 const schleswig = '8005362'
 
-test('Kiel Hbf to Flensburg', co(function* (t) {
+test('journeys – Kiel Hbf to Flensburg', co(function* (t) {
 	const journeys = yield client.journeys(kielHbf, flensburg, {
-		when, passedStations: true, results: 3
+		results: 3, when, passedStations: true
 	})
 
-	validate(t, journeys, 'journeys', 'journeys')
-	t.strictEqual(journeys.length, 3)
+	yield testJourneysStationToStation({
+		test: t,
+		journeys,
+		validate,
+		fromId: kielHbf,
+		toId: flensburg
+	})
+
 	for (let i = 0; i < journeys.length; i++) {
 		const j = journeys[i]
-
-		const firstLeg = j.legs[0]
-		const lastLeg = j.legs[j.legs.length - 1]
-		t.strictEqual(firstLeg.origin.id, kielHbf)
-		t.strictEqual(lastLeg.destination.id, flensburg)
-
 		// todo: find a journey where there pricing info is always available
-		if (j.price) assertValidPrice(t, j.price)
+		if (j.price) assertValidPrice(t, j.price, `journeys[${i}].price`)
 	}
+
 	t.end()
 }))
 

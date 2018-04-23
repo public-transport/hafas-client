@@ -20,8 +20,7 @@ const {
 	movement: _validateMovement
 } = require('./lib/validators')
 const createValidate = require('./lib/validate-fptf-with')
-
-const isObj = o => o !== null && 'object' === typeof o && !Array.isArray(o)
+const testJourneysStationToStation = require('./lib/journeys-station-to-station')
 
 const when = createWhen('Europe/Berlin', 'de-DE')
 
@@ -106,23 +105,20 @@ const württembergallee = '900000026153'
 const berlinerStr = '900000044201'
 const landhausstr = '900000043252'
 
-test('journeys – station to station', co(function* (t) {
-	const journeys = yield client.journeys(spichernstr, amrumerStr, {
+test('journeys – Spichernstr. to Bismarckstr.', co(function* (t) {
+	const journeys = yield client.journeys(spichernstr, bismarckstr, {
 		results: 3, when, passedStations: true
 	})
 
-	validate(t, journeys, 'journeys', 'journeys')
-	t.strictEqual(journeys.length, 3)
-	for (let i = 0; i < journeys.length; i++) {
-		const j = journeys[i]
+	yield testJourneysStationToStation({
+		test: t,
+		journeys,
+		validate,
+		fromId: spichernstr,
+		toId: bismarckstr
+	})
+	// todo: find a journey where there ticket info is always available
 
-		const firstLeg = j.legs[0]
-		const lastLeg = j.legs[j.legs.length - 1]
-		t.strictEqual(firstLeg.origin.id, spichernstr)
-		t.strictEqual(lastLeg.destination.id, amrumerStr)
-
-		// todo: find a journey where there ticket info is always available
-	}
 	t.end()
 }))
 
