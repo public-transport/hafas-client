@@ -16,6 +16,7 @@ const {
 const createValidate = require('./lib/validate-fptf-with')
 const testJourneysStationToStation = require('./lib/journeys-station-to-station')
 const testJourneysStationToAddress = require('./lib/journeys-station-to-address')
+const testJourneysStationToPoi = require('./lib/journeys-station-to-poi')
 const testEarlierLaterJourneys = require('./lib/earlier-later-journeys')
 
 const when = createWhen('Europe/Vienna', 'de-AT')
@@ -101,25 +102,24 @@ test('Salzburg Hbf to 1220 Wien, Wagramer Straße 5', co(function* (t) {
 }))
 
 test('Salzburg Hbf to Albertina', co(function* (t) {
-	const latitude = 48.204699
-	const longitude = 16.368404
 	const albertina = {
 		type: 'location',
     	id: '975900003',
     	name: 'Albertina',
-    	latitude, longitude
+    	latitude: 48.204699,
+    	longitude: 16.368404
 	}
-	const journeys = yield client.journeys(salzburgHbf, albertina, {when})
+	const journeys = yield client.journeys(salzburgHbf, albertina, {
+		results: 3, when
+	})
 
-	validate(t, journeys, 'journeys', 'journeys')
-
-	const i = journeys[0].legs.length - 1
-	const d = journeys[0].legs[i].destination
-	const k = `journeys[0].legs[${i}].destination`
-	t.equal(d.name, 'Albertina', k + '.name is invalid')
-	t.ok(isRoughlyEqual(.0001, d.latitude, latitude), k + '.latitude is invalid')
-	t.ok(isRoughlyEqual(.0001, d.longitude, longitude), k + '.longitude is invalid')
-
+	yield testJourneysStationToPoi({
+		test: t,
+		journeys,
+		validate,
+		fromId: salzburgHbf,
+		to: albertina
+	})
 	t.end()
 }))
 

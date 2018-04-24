@@ -16,6 +16,7 @@ const {
 const createValidate = require('./lib/validate-fptf-with')
 const testJourneysStationToStation = require('./lib/journeys-station-to-station')
 const testJourneysStationToAddress = require('./lib/journeys-station-to-address')
+const testJourneysStationToPoi = require('./lib/journeys-station-to-poi')
 const testEarlierLaterJourneys = require('./lib/earlier-later-journeys')
 
 const when = createWhen('Europe/Berlin', 'de-DE')
@@ -58,7 +59,6 @@ const client = createClient(nahshProfile)
 
 const kielHbf = '8000199'
 const flensburg = '8000103'
-const holstentor = '970003547'
 const luebeckHbf = '8000237'
 const husum = '8000181'
 const schleswig = '8005362'
@@ -110,27 +110,24 @@ test('Kiel Hbf to Husum, Zingel 10', co(function* (t) {
 }))
 
 test('Kiel Hbf to Holstentor', co(function* (t) {
-	const latitude = 53.866321
-	const longitude = 10.679976
-	const name = 'Hansestadt Lübeck, Holstentor (Denkmal)'
-	const journeys = yield client.journeys(kielHbf, {
+	const holstentor = {
 		type: 'location',
-		id: holstentor,
-		name,
-		latitude, longitude
-	}, {when})
+		id: '970003547',
+		name: 'Hansestadt Lübeck, Holstentor (Denkmal)',
+		latitude: 53.866321,
+		longitude: 10.679976
+	}
+	const journeys = yield client.journeys(kielHbf, holstentor, {
+		results: 3, when
+	})
 
-	validate(t, journeys, 'journeys', 'journeys')
-
-	const i = journeys[0].legs.length - 1
-	const d = journeys[0].legs[i].destination
-	const k = `journeys[0].legs[${i}].destination`
-
-	t.strictEqual(d.id, holstentor, k + '.id is invalid')
-	t.strictEqual(d.name, name, k + '.name is invalid')
-	t.ok(isRoughlyEqual(.0001, d.latitude, latitude), k + '.latitude is invalid')
-	t.ok(isRoughlyEqual(.0001, d.longitude, longitude), k + '.longitude is invalid')
-
+	yield testJourneysStationToPoi({
+		test: t,
+		journeys,
+		validate,
+		fromId: kielHbf,
+		to: holstentor
+	})
 	t.end()
 }))
 

@@ -17,6 +17,7 @@ const {
 const createValidate = require('./lib/validate-fptf-with')
 const testJourneysStationToStation = require('./lib/journeys-station-to-station')
 const testJourneysStationToAddress = require('./lib/journeys-station-to-address')
+const testJourneysStationToPoi = require('./lib/journeys-station-to-poi')
 const testEarlierLaterJourneys = require('./lib/earlier-later-journeys')
 
 const isObj = o => o !== null && 'object' === typeof o && !Array.isArray(o)
@@ -64,7 +65,6 @@ const berlinHbf = '8011160'
 const münchenHbf = '8000261'
 const jungfernheide = '8011167'
 const blnSchwedterStr = '732652'
-const atze = '991598902'
 const westhafen = '008089116'
 const wedding = '008089131'
 const württembergallee = '731084'
@@ -114,23 +114,25 @@ test('Berlin Schwedter Str. to Torfstraße 17', co(function* (t) {
 	t.end()
 }))
 
-test('Berlin Jungfernheide to ATZE Musiktheater', co(function* (t) {
-	const latitude = 52.542417
-	const longitude = 13.350437
-	const journeys = yield client.journeys(jungfernheide, {
-		type: 'location', id: atze, name: 'ATZE Musiktheater',
-		latitude, longitude
-	}, {when})
+test('Berlin Schwedter Str. to ATZE Musiktheater', co(function* (t) {
+	const atze = {
+		type: 'location',
+		id: '991598902',
+		name: 'ATZE Musiktheater',
+		latitude: 52.542417,
+		longitude: 13.350437
+	}
+	const journeys = yield client.journeys(blnSchwedterStr, atze, {
+		results: 3, when
+	})
 
-	validate(t, journeys, 'journeys', 'journeys')
-
-	const i = journeys[0].legs.length - 1
-	const d = journeys[0].legs[i].destination
-	const name = `journeys[0].legs[${i}].destination`
-	t.equal(d.name, 'ATZE Musiktheater', name + '.name is invalid')
-	t.ok(isRoughlyEqual(.0001, d.latitude, latitude), name + '.latitude is invalid')
-	t.ok(isRoughlyEqual(.0001, d.longitude, longitude), name + '.longitude is invalid')
-
+	yield testJourneysStationToPoi({
+		test: t,
+		journeys,
+		validate,
+		fromId: blnSchwedterStr,
+		to: atze
+	})
 	t.end()
 }))
 

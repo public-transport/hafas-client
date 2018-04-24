@@ -12,6 +12,7 @@ const products = require('../p/insa/products')
 const createValidate = require('./lib/validate-fptf-with')
 const testJourneysStationToStation = require('./lib/journeys-station-to-station')
 const testJourneysStationToAddress = require('./lib/journeys-station-to-address')
+const testJourneysStationToPoi = require('./lib/journeys-station-to-poi')
 const testEarlierLaterJourneys = require('./lib/earlier-later-journeys')
 
 const isObj = o => o !== null && 'object' === typeof o && !Array.isArray(o)
@@ -75,7 +76,7 @@ test('Magdeburg Hbf to 39104 Magdeburg, Sternstr. 10', co(function*(t) {
 	t.end()
 }))
 
-test('Kloster Unser Lieben Frauen to Magdeburg Hbf', co(function*(t) {
+test('Magdeburg Hbf to Kloster Unser Lieben Frauen', co(function*(t) {
 	const kloster = {
 		type: 'location',
 		id: '970012223',
@@ -83,20 +84,17 @@ test('Kloster Unser Lieben Frauen to Magdeburg Hbf', co(function*(t) {
 		latitude: 52.127601,
 		longitude: 11.636437
 	}
-
 	const journeys = yield client.journeys(magdeburgHbf, kloster, {
-		when
+		results: 3, when
 	})
-	validate(t, journeys, 'journeys', 'journeys')
 
-	for (let journey of journeys) {
-		const i = journey.legs.length - 1
-		const d = journey.legs[i].destination
-		t.equal(d.id, kloster.id)
-		t.equal(d.name, kloster.name)
-		t.ok(isRoughlyEqual(0.0001, d.latitude, kloster.latitude))
-		t.ok(isRoughlyEqual(0.0001, d.longitude, kloster.longitude))
-	}
+	yield testJourneysStationToPoi({
+		test: t,
+		journeys,
+		validate,
+		fromId: magdeburgHbf,
+		to: kloster
+	})
 	t.end()
 }))
 
