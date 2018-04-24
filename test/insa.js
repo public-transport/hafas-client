@@ -11,6 +11,7 @@ const insaProfile = require('../p/insa')
 const products = require('../p/insa/products')
 const createValidate = require('./lib/validate-fptf-with')
 const testJourneysStationToStation = require('./lib/journeys-station-to-station')
+const testEarlierLaterJourneys = require('./lib/earlier-later-journeys')
 
 const isObj = o => o !== null && 'object' === typeof o && !Array.isArray(o)
 
@@ -126,56 +127,13 @@ test('journeys: via works – with detour', co(function* (t) {
 }))
 
 test('earlier/later journeys', co(function* (t) {
-	const model = yield client.journeys(magdeburgHbf, magdeburgBuckau, {
-		results: 3, when
+	yield testEarlierLaterJourneys({
+		test: t,
+		fetchJourneys: client.journeys,
+		validate,
+		fromId: magdeburgHbf,
+		toId: magdeburgBuckau
 	})
-
-	// todo: move to journeys validator?
-	t.equal(typeof model.earlierRef, 'string')
-	t.ok(model.earlierRef)
-	t.equal(typeof model.laterRef, 'string')
-	t.ok(model.laterRef)
-
-	// when and earlierThan/laterThan should be mutually exclusive
-	t.throws(() => {
-		client.journeys(magdeburgHbf, magdeburgBuckau, {
-			when, earlierThan: model.earlierRef
-		})
-		// silence rejections, we're only interested in exceptions
-		.catch(() => {})
-	})
-	t.throws(() => {
-		client.journeys(magdeburgHbf, magdeburgBuckau, {
-			when, laterThan: model.laterRef
-		})
-		// silence rejections, we're only interested in exceptions
-		.catch(() => {})
-	})
-
-	let earliestDep = Infinity, latestDep = -Infinity
-	for (let j of model) {
-		const dep = +new Date(j.legs[0].departure)
-		if (dep < earliestDep) earliestDep = dep
-		else if (dep > latestDep) latestDep = dep
-	}
-
-	const earlier = yield client.journeys(magdeburgHbf, magdeburgBuckau, {
-		results: 3,
-		// todo: single journey ref?
-		earlierThan: model.earlierRef
-	})
-	for (let j of earlier) {
-		t.ok(new Date(j.legs[0].departure) < earliestDep)
-	}
-
-	const later = yield client.journeys(magdeburgHbf, magdeburgBuckau, {
-		results: 3,
-		// todo: single journey ref?
-		laterThan: model.laterRef
-	})
-	for (let j of later) {
-		t.ok(new Date(j.legs[0].departure) > latestDep)
-	}
 
 	t.end()
 }))
