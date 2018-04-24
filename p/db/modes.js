@@ -62,7 +62,7 @@ const m = {
 		bitmask: 256,
 		name: 'Tram',
 		short: 'T',
-		mode: 'tram',
+		mode: 'train',
 		product: 'tram'
 	},
 	taxi: {
