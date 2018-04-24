@@ -14,6 +14,7 @@ const testJourneysStationToStation = require('./lib/journeys-station-to-station'
 const testJourneysStationToAddress = require('./lib/journeys-station-to-address')
 const testJourneysStationToPoi = require('./lib/journeys-station-to-poi')
 const testEarlierLaterJourneys = require('./lib/earlier-later-journeys')
+const testDepartures = require('./lib/departures')
 
 const isObj = o => o !== null && 'object' === typeof o && !Array.isArray(o)
 
@@ -32,6 +33,7 @@ const client = createClient(insaProfile)
 
 const magdeburgHbf = '8010224'
 const magdeburgBuckau = '8013456'
+const leiterstr = '7464'
 const hasselbachplatzSternstrasse = '000006545'
 const stendal = '008010334'
 const dessau = '008010077'
@@ -150,24 +152,17 @@ test('journey leg details', co(function* (t) {
 	t.end()
 }))
 
-test('departures at Magdeburg Hbf', co(function*(t) {
-	const deps = yield client.departures(magdeburgHbf, {
-		duration: 5,
-		when
+test('departures at Magdeburg Leiterstr.', co(function*(t) {
+	const departures = yield client.departures(leiterstr, {
+		duration: 5, when
 	})
 
-	validate(t, deps, 'departures', 'departures')
-	for (let i = 0; i < deps.length; i++) {
-		const dep = deps[i]
-		const name = `deps[${i}]`
-
-		// todo: fix this
-		// t.equal(dep.station.name, 'Magdeburg Hbf', name + '.station.name is invalid')
-		// t.equal(dep.station.id, magdeburgHbf, name + '.station.id is invalid')
-	}
-	// todo: move into deps validator
-	t.deepEqual(deps, deps.sort((a, b) => t.when > b.when))
-
+	yield testDepartures({
+		test: t,
+		departures,
+		validate,
+		id: leiterstr
+	})
 	t.end()
 }))
 

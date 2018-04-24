@@ -24,6 +24,7 @@ const testJourneysStationToStation = require('./lib/journeys-station-to-station'
 const testJourneysStationToAddress = require('./lib/journeys-station-to-address')
 const testJourneysStationToPoi = require('./lib/journeys-station-to-poi')
 const testEarlierLaterJourneys = require('./lib/earlier-later-journeys')
+const testDepartures = require('./lib/departures')
 
 const when = createWhen('Europe/Berlin', 'de-DE')
 
@@ -273,19 +274,16 @@ test('journeys: via works – with detour', co(function* (t) {
 }))
 
 test('departures', co(function* (t) {
-	const deps = yield client.departures(spichernstr, {duration: 5, when})
+	const departures = yield client.departures(spichernstr, {
+		duration: 5, when
+	})
 
-	validate(t, deps, 'departures', 'departures')
-	for (let i = 0; i < deps.length; i++) {
-		const dep = deps[i]
-		const name = `deps[${i}]`
-
-		t.equal(dep.station.name, 'U Spichernstr.', name + '.station.name is invalid')
-		t.equal(dep.station.id, spichernstr, name + '.station.id is invalid')
-	}
-	// todo: move into deps validator
-	t.deepEqual(deps, deps.sort((a, b) => t.when > b.when))
-
+	yield testDepartures({
+		test: t,
+		departures,
+		validate,
+		id: spichernstr
+	})
 	t.end()
 }))
 

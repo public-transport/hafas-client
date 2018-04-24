@@ -19,6 +19,7 @@ const testJourneysStationToStation = require('./lib/journeys-station-to-station'
 const testJourneysStationToAddress = require('./lib/journeys-station-to-address')
 const testJourneysStationToPoi = require('./lib/journeys-station-to-poi')
 const testEarlierLaterJourneys = require('./lib/earlier-later-journeys')
+const testDepartures = require('./lib/departures')
 
 const isObj = o => o !== null && 'object' === typeof o && !Array.isArray(o)
 
@@ -184,21 +185,17 @@ test('journey leg details', co(function* (t) {
 	t.end()
 }))
 
-test('departures at Berlin Jungfernheide', co(function* (t) {
-	const deps = yield client.departures(jungfernheide, {
+test('departures at Berlin Schwedter Str.', co(function* (t) {
+	const departures = yield client.departures(blnSchwedterStr, {
 		duration: 5, when
 	})
 
-	validate(t, deps, 'departures', 'departures')
-	for (let i = 0; i < deps.length; i++) {
-		const dep = deps[i]
-		const name = `deps[${i}]`
-		// todo: make this pass
-		// t.equal(dep.station.id, jungfernheide, name + '.station.id is invalid')
-	}
-	// todo: move into deps validator
-	t.deepEqual(deps, deps.sort((a, b) => t.when > b.when))
-
+	yield testDepartures({
+		test: t,
+		departures,
+		validate,
+		id: blnSchwedterStr
+	})
 	t.end()
 }))
 
