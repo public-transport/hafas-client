@@ -16,6 +16,7 @@ const {
 } = require('./lib/validators')
 const createValidate = require('./lib/validate-fptf-with')
 const testJourneysStationToStation = require('./lib/journeys-station-to-station')
+const testJourneysStationToAddress = require('./lib/journeys-station-to-address')
 const testEarlierLaterJourneys = require('./lib/earlier-later-journeys')
 
 const isObj = o => o !== null && 'object' === typeof o && !Array.isArray(o)
@@ -92,23 +93,24 @@ test('journeys – Berlin Schwedter Str. to München Hbf', co(function* (t) {
 // todo: journeys, only one product
 // todo: journeys, fails with no product
 
-test('Berlin Jungfernheide to Torfstraße 17', co(function* (t) {
-	const latitude = 52.5416823
-	const longitude = 13.3491223
-	const journeys = yield client.journeys(jungfernheide, {
-		type: 'location', address: 'Torfstraße 17',
-		latitude, longitude
-	}, {when})
+test('Berlin Schwedter Str. to Torfstraße 17', co(function* (t) {
+	const torfstr = {
+		type: 'location',
+		address: 'Torfstraße 17',
+		latitude: 52.5416823,
+		longitude: 13.3491223
+	}
+	const journeys = yield client.journeys(blnSchwedterStr, torfstr, {
+		results: 3, when
+	})
 
-	validate(t, journeys, 'journeys', 'journeys')
-
-	const i = journeys[0].legs.length - 1
-	const d = journeys[0].legs[i].destination
-	const name = `journeys[0].legs[${i}].destination`
-	t.equal(d.address, 'Torfstraße 17', name + '.address is invalid')
-	t.ok(isRoughlyEqual(.0001, d.latitude, latitude), name + '.latitude is invalid')
-	t.ok(isRoughlyEqual(.0001, d.longitude, longitude), name + '.longitude is invalid')
-
+	yield testJourneysStationToAddress({
+		test: t,
+		journeys,
+		validate,
+		fromId: blnSchwedterStr,
+		to: torfstr
+	})
 	t.end()
 }))
 

@@ -11,6 +11,7 @@ const insaProfile = require('../p/insa')
 const products = require('../p/insa/products')
 const createValidate = require('./lib/validate-fptf-with')
 const testJourneysStationToStation = require('./lib/journeys-station-to-station')
+const testJourneysStationToAddress = require('./lib/journeys-station-to-address')
 const testEarlierLaterJourneys = require('./lib/earlier-later-journeys')
 
 const isObj = o => o !== null && 'object' === typeof o && !Array.isArray(o)
@@ -55,23 +56,22 @@ test('journeys – Magdeburg Hbf to Magdeburg-Buckau', co(function* (t) {
 test('Magdeburg Hbf to 39104 Magdeburg, Sternstr. 10', co(function*(t) {
 	const sternStr = {
 		type: 'location',
+		address: 'Magdeburg - Altenstadt, Sternstraße 10',
 		latitude: 52.118414,
-		longitude: 11.422332,
-		address: 'Magdeburg - Altenstadt, Sternstraße 10'
+		longitude: 11.422332
 	}
 
 	const journeys = yield client.journeys(magdeburgHbf, sternStr, {
-		when
+		results: 3, when
 	})
-	validate(t, journeys, 'journeys', 'journeys')
 
-	for (let journey of journeys) {
-		const i = journey.legs.length - 1
-		const d = journey.legs[i].destination
-		t.equal(d.address, sternStr.address)
-		t.ok(isRoughlyEqual(0.0001, d.latitude, sternStr.latitude))
-		t.ok(isRoughlyEqual(0.0001, d.longitude, sternStr.longitude))
-	}
+	yield testJourneysStationToAddress({
+		test: t,
+		journeys,
+		validate,
+		fromId: magdeburgHbf,
+		to: sternStr
+	})
 	t.end()
 }))
 

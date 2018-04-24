@@ -15,6 +15,7 @@ const {
 } = require('./lib/validators')
 const createValidate = require('./lib/validate-fptf-with')
 const testJourneysStationToStation = require('./lib/journeys-station-to-station')
+const testJourneysStationToAddress = require('./lib/journeys-station-to-address')
 const testEarlierLaterJourneys = require('./lib/earlier-later-journeys')
 
 const when = createWhen('Europe/Berlin', 'de-DE')
@@ -88,25 +89,23 @@ test('journeys – Kiel Hbf to Flensburg', co(function* (t) {
 // todo: journeys, fails with no product
 
 test('Kiel Hbf to Husum, Zingel 10', co(function* (t) {
-	const latitude = 54.475359
-	const longitude = 9.050798
 	const zingel = {
 		type: 'location',
 		address: 'Husum, Zingel 10',
-		latitude, longitude
+		latitude: 54.475359,
+		longitude: 9.050798
 	}
-	const journeys = yield client.journeys(kielHbf, zingel, {when})
+	const journeys = yield client.journeys(kielHbf, zingel, {
+		results: 3, when
+	})
 
-	validate(t, journeys, 'journeys', 'journeys')
-
-	const i = journeys[0].legs.length - 1
-	const d = journeys[0].legs[i].destination
-	const name = `journeys[0].legs[${i}].destination`
-
-	t.strictEqual(d.address, 'Husum, Zingel 10', name + '.address is invalid')
-	t.ok(isRoughlyEqual(.0001, d.latitude, latitude), name + '.latitude is invalid')
-	t.ok(isRoughlyEqual(.0001, d.longitude, longitude), name + '.longitude is invalid')
-
+	yield testJourneysStationToAddress({
+		test: t,
+		journeys,
+		validate,
+		fromId: kielHbf,
+		to: zingel
+	})
 	t.end()
 }))
 
