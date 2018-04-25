@@ -45,6 +45,7 @@ const validateDirection = (dir, name) => {
 const _validateStation = createValidateStation(cfg)
 const validateStation = (validate, s, name) => {
 	_validateStation(validate, s, name)
+	// todo: find station by ID
 	a.equal(s.name, shorten(s.name), name + '.name must be shortened')
 }
 
@@ -261,6 +262,8 @@ test('journeys: via works – with detour', co(function* (t) {
 
 	t.end()
 }))
+
+// todo: without detour test
 
 test('departures', co(function* (t) {
 	const departures = yield client.departures(spichernstr, {

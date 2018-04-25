@@ -138,6 +138,8 @@ test('journeys: via works – with detour', co(function* (t) {
 	t.end()
 }))
 
+// todo: without detour
+
 test('earlier/later journeys', co(function* (t) {
 	yield testEarlierLaterJourneys({
 		test: t,

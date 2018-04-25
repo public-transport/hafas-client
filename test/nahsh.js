@@ -174,6 +174,9 @@ test('earlier/later journeys, Kiel Hbf -> Flensburg', co(function* (t) {
 	t.end()
 }))
 
+// todo: with detour test
+// todo: without detour test
+
 test('journey leg details for Flensburg to Husum', co(function* (t) {
 	const journeys = yield client.journeys(flensburg, husum, {
 		results: 1, when
