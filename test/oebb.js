@@ -18,6 +18,7 @@ const testJourneysStationToStation = require('./lib/journeys-station-to-station'
 const testJourneysStationToAddress = require('./lib/journeys-station-to-address')
 const testJourneysStationToPoi = require('./lib/journeys-station-to-poi')
 const testEarlierLaterJourneys = require('./lib/earlier-later-journeys')
+const journeysFailsWithNoProduct = require('./lib/journeys-fails-with-no-product')
 const testDepartures = require('./lib/departures')
 
 const when = createWhen('Europe/Vienna', 'de-AT')
@@ -79,7 +80,18 @@ test.skip('journeys – Salzburg Hbf to Wien Westbahnhof', co(function* (t) {
 }))
 
 // todo: journeys, only one product
-// todo: journeys, fails with no product
+
+test('journeys – fails with no product', (t) => {
+	journeysFailsWithNoProduct({
+		test: t,
+		fetchJourneys: client.journeys,
+		fromId: salzburgHbf,
+		toId: wienFickeystr,
+		when,
+		products
+	})
+	t.end()
+})
 
 test('Salzburg Hbf to 1220 Wien, Wagramer Straße 5', co(function* (t) {
 	const wagramerStr = {

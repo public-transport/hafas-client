@@ -24,6 +24,7 @@ const testJourneysStationToStation = require('./lib/journeys-station-to-station'
 const testJourneysStationToAddress = require('./lib/journeys-station-to-address')
 const testJourneysStationToPoi = require('./lib/journeys-station-to-poi')
 const testEarlierLaterJourneys = require('./lib/earlier-later-journeys')
+const journeysFailsWithNoProduct = require('./lib/journeys-fails-with-no-product')
 const testDepartures = require('./lib/departures')
 
 const when = createWhen('Europe/Berlin', 'de-DE')
@@ -159,26 +160,14 @@ test('journeys – only subway', co(function* (t) {
 }))
 
 test('journeys – fails with no product', (t) => {
-	// todo: make this test work
-	// t.plan(1)
-	try {
-		client.journeys(spichernstr, bismarckstr, {
-			when,
-			products: {
-				suburban: false,
-				subway:   false,
-				tram:     false,
-				bus:      false,
-				ferry:    false,
-				express:  false,
-				regional: false
-			}
-		})
-		// silence rejections, we're only interested in exceptions
-		.catch(() => {})
-	} catch (err) {
-		t.ok(err, 'error thrown')
-	}
+	journeysFailsWithNoProduct({
+		test: t,
+		fetchJourneys: client.journeys,
+		fromId: spichernstr,
+		toId: bismarckstr,
+		when,
+		products
+	})
 	t.end()
 })
 

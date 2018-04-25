@@ -19,6 +19,7 @@ const testJourneysStationToStation = require('./lib/journeys-station-to-station'
 const testJourneysStationToAddress = require('./lib/journeys-station-to-address')
 const testJourneysStationToPoi = require('./lib/journeys-station-to-poi')
 const testEarlierLaterJourneys = require('./lib/earlier-later-journeys')
+const journeysFailsWithNoProduct = require('./lib/journeys-fails-with-no-product')
 const testDepartures = require('./lib/departures')
 
 const isObj = o => o !== null && 'object' === typeof o && !Array.isArray(o)
@@ -92,7 +93,18 @@ test('journeys – Berlin Schwedter Str. to München Hbf', co(function* (t) {
 }))
 
 // todo: journeys, only one product
-// todo: journeys, fails with no product
+
+test('journeys – fails with no product', (t) => {
+	journeysFailsWithNoProduct({
+		test: t,
+		fetchJourneys: client.journeys,
+		fromId: blnSchwedterStr,
+		toId: münchenHbf,
+		when,
+		products
+	})
+	t.end()
+})
 
 test('Berlin Schwedter Str. to Torfstraße 17', co(function* (t) {
 	const torfstr = {

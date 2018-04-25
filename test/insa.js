@@ -14,6 +14,7 @@ const testJourneysStationToStation = require('./lib/journeys-station-to-station'
 const testJourneysStationToAddress = require('./lib/journeys-station-to-address')
 const testJourneysStationToPoi = require('./lib/journeys-station-to-poi')
 const testEarlierLaterJourneys = require('./lib/earlier-later-journeys')
+const journeysFailsWithNoProduct = require('./lib/journeys-fails-with-no-product')
 const testDepartures = require('./lib/departures')
 
 const isObj = o => o !== null && 'object' === typeof o && !Array.isArray(o)
@@ -54,7 +55,18 @@ test('journeys – Magdeburg Hbf to Magdeburg-Buckau', co(function* (t) {
 }))
 
 // todo: journeys, only one product
-// todo: journeys, fails with no product
+
+test('journeys – fails with no product', (t) => {
+	journeysFailsWithNoProduct({
+		test: t,
+		fetchJourneys: client.journeys,
+		fromId: magdeburgHbf,
+		toId: magdeburgBuckau,
+		when,
+		products
+	})
+	t.end()
+})
 
 test('Magdeburg Hbf to 39104 Magdeburg, Sternstr. 10', co(function*(t) {
 	const sternStr = {

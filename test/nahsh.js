@@ -18,6 +18,7 @@ const testJourneysStationToStation = require('./lib/journeys-station-to-station'
 const testJourneysStationToAddress = require('./lib/journeys-station-to-address')
 const testJourneysStationToPoi = require('./lib/journeys-station-to-poi')
 const testEarlierLaterJourneys = require('./lib/earlier-later-journeys')
+const journeysFailsWithNoProduct = require('./lib/journeys-fails-with-no-product')
 const testDepartures = require('./lib/departures')
 
 const when = createWhen('Europe/Berlin', 'de-DE')
@@ -87,7 +88,18 @@ test('journeys – Kiel Hbf to Flensburg', co(function* (t) {
 }))
 
 // todo: journeys, only one product
-// todo: journeys, fails with no product
+
+test('journeys – fails with no product', (t) => {
+	journeysFailsWithNoProduct({
+		test: t,
+		fetchJourneys: client.journeys,
+		fromId: kielHbf,
+		toId: flensburg,
+		when,
+		products
+	})
+	t.end()
+})
 
 test('Kiel Hbf to Husum, Zingel 10', co(function* (t) {
 	const zingel = {
