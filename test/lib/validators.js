@@ -2,8 +2,7 @@
 
 const a = require('assert')
 const {defaultValidators} = require('validate-fptf')
-const validateRef = require('validate-fptf/lib/reference')
-const validateDate = require('validate-fptf/lib/date')
+const anyOf = require('validate-fptf/lib/any-of')
 
 const {isValidWhen} = require('./util')
 
@@ -11,8 +10,8 @@ const isObj = o => o !== null && 'object' === typeof o && !Array.isArray(o)
 const is = val => val !== null && val !== undefined
 
 const createValidateStation = (cfg) => {
-	const validateStation = (validate, s, name = 'station') => {
-		defaultValidators.station(validate, s, name)
+	const validateStation = (val, s, name = 'station') => {
+		defaultValidators.station(val, s, name)
 
 		if (!cfg.stationCoordsOptional) {
 			a.ok(is(s.location), `missing ${name}.location`)
@@ -26,39 +25,39 @@ const createValidateStation = (cfg) => {
 		if ('lines' in s) {
 			a.ok(Array.isArray(s.lines), name + `.lines must be an array`)
 			for (let i = 0; i < s.lines.length; i++) {
-				validate(['line'], s.lines[i], name + `.lines[${i}]`)
+				val.line(val, s.lines[i], name + `.lines[${i}]`)
 			}
 		}
 	}
 	return validateStation
 }
 
-const validatePoi = (validate, poi, name = 'location') => {
-	defaultValidators.location(validate, poi, name)
-	validateRef(poi.id, name + '.id')
+const validatePoi = (val, poi, name = 'location') => {
+	defaultValidators.location(val, poi, name)
+	val.ref(val, poi.id, name + '.id')
 	a.ok(poi.name, name + '.name must not be empty')
 }
 
-const validateAddress = (validate, addr, name = 'location') => {
-	defaultValidators.location(validate, addr, name)
+const validateAddress = (val, addr, name = 'location') => {
+	defaultValidators.location(val, addr, name)
 	a.strictEqual(typeof addr.address, 'string', name + '.address must be a string')
 	a.ok(addr.address, name + '.address must not be empty')
 }
 
-const validateLocation = (validate, loc, name = 'location') => {
+const validateLocation = (val, loc, name = 'location') => {
 	a.ok(isObj(loc), name + ' must be an object')
-	if (loc.type === 'station') validate(['station'], loc, name)
-	else if ('id' in loc) validatePoi(validate, loc, name)
+	if (loc.type === 'station') val.station(val, loc, name)
+	else if ('id' in loc) validatePoi(val, loc, name)
 	else if (!('name' in loc) && ('address' in loc)) {
-		validateAddress(validate, loc, name)
-	} else defaultValidators.location(validate, loc, name)
+		validateAddress(val, loc, name)
+	} else defaultValidators.location(val, loc, name)
 }
 
-const validateLocations = (validate, locs, name = 'locations') => {
+const validateLocations = (val, locs, name = 'locations') => {
 	a.ok(Array.isArray(locs), name + ' must be an array')
 	a.ok(locs.length > 0, name + ' must not be empty')
 	for (let i = 0; i < locs.length; i++) {
-		validate('location', locs[i], name + `[${i}]`)
+		val.location(locs[i], name + `[${i}]`)
 	}
 }
 
@@ -70,21 +69,21 @@ const createValidateLine = (cfg) => {
 		}
 	}
 
-	const validateLine = (validate, line, name = 'line') => {
-		defaultValidators.line(validate, line, name)
+	const validateLine = (val, line, name = 'line') => {
+		defaultValidators.line(val, line, name)
 		a.ok(validLineModes.includes(line.mode), name + '.mode is invalid')
 	}
 	return validateLine
 }
 
 const createValidateStopover = (cfg) => {
-	const validateStopover = (validate, s, name = 'stopover') => {
+	const validateStopover = (val, s, name = 'stopover') => {
 		if (is(s.arrival)) {
-			validateDate(s.arrival, name + '.arrival')
+			val.date(val, s.arrival, name + '.arrival')
 			a.ok(isValidWhen(s.arrival, cfg.when), name + '.arrival is invalid')
 		}
 		if (is(s.departure)) {
-			validateDate(s.departure, name + '.departure')
+			val.date(val, s.departure, name + '.departure')
 			a.ok(isValidWhen(s.departure, cfg.when), name + '.departure is invalid')
 		}
 		if (!is(s.arrival) && !is(s.departure)) {
@@ -100,12 +99,12 @@ const createValidateStopover = (cfg) => {
 			a.strictEqual(typeof s.departureDelay, 'number', msg)
 		}
 
-		validate(['station'], s.station, name + '.station')
+		val.station(val, s.station, name + '.station')
 	}
 	return validateStopover
 }
 
-const validateTicket = (validate, ti, name = 'ticket') => {
+const validateTicket = (val, ti, name = 'ticket') => {
 	a.strictEqual(typeof ti.name, 'string', name + '.name must be a string')
 	a.ok(ti.name, name + '.name must not be empty')
 
@@ -146,12 +145,12 @@ const validateTicket = (validate, ti, name = 'ticket') => {
 }
 
 const createValidateJourneyLeg = (cfg) => {
-	const validateJourneyLeg = (validate, leg, name = 'journeyLeg') => {
+	const validateJourneyLeg = (val, leg, name = 'journeyLeg') => {
 		const withFakeScheduleAndOperator = Object.assign({
 			schedule: 'foo', // todo: let hafas-client parse a schedule ID
 			operator: 'bar' // todo: let hafas-client parse the operator
 		}, leg)
-		defaultValidators.journeyLeg(validate, withFakeScheduleAndOperator, name)
+		defaultValidators.journeyLeg(val, withFakeScheduleAndOperator, name)
 
 		if (leg.arrival !== null) {
 			const msg = name + '.arrival is invalid'
@@ -179,7 +178,7 @@ const createValidateJourneyLeg = (cfg) => {
 			a.ok(leg.passed.length > 0, name + '.passed must not be empty')
 
 			for (let i = 0; i < leg.passed.length; i++) {
-				validate('stopover', leg.passed[i], name + `.passed[${i}]`)
+				val.stopover(val, leg.passed[i], name + `.passed[${i}]`)
 			}
 		}
 
@@ -192,32 +191,32 @@ const createValidateJourneyLeg = (cfg) => {
 	return validateJourneyLeg
 }
 
-const validateJourney = (validate, j, name = 'journey') => {
+const validateJourney = (val, j, name = 'journey') => {
 	const withFakeId = Object.assign({
 		id: 'foo' // todo: let hafas-client parse a journey ID
 	}, j)
-	defaultValidators.journey(validate, withFakeId, name)
+	defaultValidators.journey(val, withFakeId, name)
 
 	if ('tickets' in j) {
 		a.ok(Array.isArray(j.tickets), name + '.tickets must be an array')
 		a.ok(j.tickets.length > 0, name + '.tickets must not be empty')
 
 		for (let i = 0; i < j.tickets.length; i++) {
-			validate(['ticket'], j.tickets[i], name + `.tickets[${i}]`)
+			val.ticket(val, j.tickets[i], name + `.tickets[${i}]`)
 		}
 	}
 }
 
-const validateJourneys = (validate, js, name = 'journeys') => {
+const validateJourneys = (val, js, name = 'journeys') => {
 	a.ok(Array.isArray(js), name + ' must be an array')
 	a.ok(js.length > 0, name + ' must not be empty')
 	for (let i = 0; i < js.length; i++) {
-		validate(['journey'], js[i], name + `[${i}]`)
+		val.journey(val, js[i], name + `[${i}]`)
 	}
 }
 
 const createValidateDeparture = (cfg) => {
-	const validateDeparture = (validate, dep, name = 'departure') => {
+	const validateDeparture = (val, dep, name = 'departure') => {
 		a.ok(isObj(dep), name + ' must be an object')
 		// todo: let hafas-client add a .type field
 
@@ -225,7 +224,7 @@ const createValidateDeparture = (cfg) => {
 		a.ok(dep.journeyId, name + '.journeyId must not be empty')
 		a.strictEqual(typeof dep.trip, 'number', name + '.trip must be a number')
 
-		validate(['station'], dep.station, name + '.station')
+		val.station(val, dep.station, name + '.station')
 
 		a.ok(isValidWhen(dep.when, cfg.when), name + '.when is invalid')
 		if (dep.delay !== null) {
@@ -233,31 +232,31 @@ const createValidateDeparture = (cfg) => {
 			a.strictEqual(typeof dep.delay, 'number', msg)
 		}
 
-		validate(['line'], dep.line, name + '.line')
+		val.line(val, dep.line, name + '.line')
 		a.strictEqual(typeof dep.direction, 'string', name + '.direction must be a string')
 		a.ok(dep.direction, name + '.direction must not be empty')
 	}
 	return validateDeparture
 }
 
-const validateDepartures = (validate, deps, name = 'departures') => {
+const validateDepartures = (val, deps, name = 'departures') => {
 	a.ok(Array.isArray(deps), name + ' must be an array')
 	a.ok(deps.length > 0, name + ' must not be empty')
 	for (let i = 0; i < deps.length; i++) {
-		validate('departure', deps[i], name + `[${i}]`)
+		val.departure(val, deps[i], name + `[${i}]`)
 	}
 }
 
-const validateMovement = (validate, m, name = 'movement') => {
+const validateMovement = (val, m, name = 'movement') => {
 	a.ok(isObj(m), name + ' must be an object')
 	// todo: let hafas-client add a .type field
 
-	validate(['line'], m.line, name + '.line')
+	val.line(val, m.line, name + '.line')
 	a.strictEqual(typeof m.direction, 'string', name + '.direction must be a string')
 	a.ok(m.direction, name + '.direction must not be empty')
 
 	const lName = name + '.location'
-	validate(['location'], m.location, lName)
+	val.location(val, m.location, lName)
 	a.ok(m.location.latitude <= 55, lName + '.latitude is too small')
 	a.ok(m.location.latitude >= 45, lName + '.latitude is too large')
 	a.ok(m.location.longitude >= 9, lName + '.longitude is too small')
@@ -266,7 +265,7 @@ const validateMovement = (validate, m, name = 'movement') => {
 	a.ok(Array.isArray(m.nextStops), name + '.nextStops must be an array')
 	for (let i = 0; i < m.nextStops.length; i++) {
 		const st = m.nextStops[i]
-		validate('stopover', m.nextStops[i], name + `.nextStops[${i}]`)
+		val.stopover(val, m.nextStops[i], name + `.nextStops[${i}]`)
 	}
 
 	a.ok(Array.isArray(m.frames), name + '.frames must be an array')
@@ -276,17 +275,17 @@ const validateMovement = (validate, m, name = 'movement') => {
 		const fName = name + `.frames[${i}]`
 
 		a.ok(isObj(f), fName + ' must be an object')
-		validate(['location', 'station'], f.origin, fName + '.origin')
-		validate(['location', 'station'], f.destination, fName + '.destination')
+		anyOf(['location', 'station'], val, f.origin, fName + '.origin')
+		anyOf(['location', 'station'], val, f.destination, fName + '.destination')
 		a.strictEqual(typeof f.t, 'number', fName + '.frames must be a number')
 	}
 }
 
-const validateMovements = (validate, ms, name = 'movements') => {
+const validateMovements = (val, ms, name = 'movements') => {
 	a.ok(Array.isArray(ms), name + ' must be an array')
 	a.ok(ms.length > 0, name + ' must not be empty')
 	for (let i = 0; i < ms.length; i++) {
-		validate('movement', ms[i], name + `[${i}]`)
+		val.movement(val, ms[i], name + `[${i}]`)
 	}
 }
 

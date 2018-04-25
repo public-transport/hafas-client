@@ -1,19 +1,25 @@
 'use strict'
 
-const {defaultValidators, createRecurse} = require('validate-fptf')
+const {defaultValidators} = require('validate-fptf')
+const anyOf = require('validate-fptf/lib/any-of')
+
 const validators = require('./validators')
 
 const create = (cfg, customValidators = {}) => {
-	const vals = Object.assign({}, defaultValidators)
+	const val = Object.assign({}, defaultValidators)
 	for (let key of Object.keys(validators)) {
-		vals[key] = validators[key](cfg)
+		val[key] = validators[key](cfg)
 	}
-	Object.assign(vals, customValidators)
-	const recurse = createRecurse(vals)
+	Object.assign(val, customValidators)
 
 	const validateFptfWith = (t, item, allowedTypes, name) => {
 		try {
-			recurse(allowedTypes, item, name)
+			if ('string' === typeof allowedTypes) {
+				val[allowedTypes](val, item, name)
+			} else {
+				anyOf(allowedTypes, val, item, name)
+			}
+			t.pass(name + ' is valid')
 		} catch (err) {
 			t.ifError(err) // todo: improve error logging
 		}
