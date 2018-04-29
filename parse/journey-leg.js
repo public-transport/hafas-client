@@ -56,7 +56,15 @@ const createParseJourneyLeg = (profile, stations, lines, remarks) => {
 				for (let remark of pt.jny.remL) applyRemark(j, remark)
 			}
 
-			if (pt.jny.freq && pt.jny.freq.jnyL) {
+			const freq = pt.jny.freq || {}
+			if (freq.minC && freq.maxC) {
+				// todo: what is freq.numC?
+				res.cycle = {
+					min: freq.minC * 60,
+					max: freq.maxC * 60
+				}
+			}
+			if (freq.jnyL) {
 				const parseAlternative = (a) => {
 					const t = a.stopL[0].dTimeR || a.stopL[0].dTimeS
 					const when = profile.parseDateTime(profile, j.date, t)
@@ -66,8 +74,7 @@ const createParseJourneyLeg = (profile, stations, lines, remarks) => {
 						when: when.toISO()
 					}
 				}
-				res.alternatives = pt.jny.freq.jnyL
-				.map(parseAlternative)
+				res.alternatives = freq.jnyL.map(parseAlternative)
 			}
 		}
 
