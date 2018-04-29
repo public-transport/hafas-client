@@ -58,15 +58,15 @@ const createParseJourneyLeg = (profile, stations, lines, remarks) => {
 
 			if (pt.jny.freq && pt.jny.freq.jnyL) {
 				const parseAlternative = (a) => {
-					const t = a.stopL[0].dTimeS || a.stopL[0].dTimeR
+					const t = a.stopL[0].dTimeR || a.stopL[0].dTimeS
 					const when = profile.parseDateTime(profile, j.date, t)
+					// todo: expose a.stopL[0]
 					return {
 						line: lines[parseInt(a.prodX)] || null,
 						when: when.toISO()
 					}
 				}
 				res.alternatives = pt.jny.freq.jnyL
-				.filter(a => a.stopL[0].locX === pt.dep.locX)
 				.map(parseAlternative)
 			}
 		}
