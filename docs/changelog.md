@@ -1,5 +1,18 @@
 # Changelog
 
+## `2.5.3`
+
+- d676b84 fix parsing for journey leg alternatives 🐛
+
+## `2.5.2`
+
+- 16e6dd6 departure docs: fix method 📝
+- c60213a DB: tram mode should be `train` 🐛
+
+## `2.5.1`
+
+- afc0124 fix stopover parsing 🐛
+
 ## `2.5.0`
 
 - new [Schleswig-Holstein (NAH.SH)](https://de.wikipedia.org/wiki/Nahverkehrsverbund_Schleswig-Holstein) [profile](../p/nahsh)
