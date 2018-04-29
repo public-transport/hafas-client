@@ -1,5 +1,9 @@
 # Changelog
 
+## `2.6.0`
+
+- 5d10d76 journey legs: parse cycle
+
 ## `2.5.3`
 
 - d676b84 fix parsing for journey leg alternatives 🐛
