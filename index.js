@@ -138,7 +138,13 @@ const createClient = (profile, request = _request) => {
 			})
 			.then((d) => {
 				if (!Array.isArray(d.outConL)) return []
-				const parse = profile.parseJourney(profile, d.locations, d.lines, d.remarks)
+
+				let polylines = []
+				if (opt.polylines && Array.isArray(d.common.polyL)) {
+					polylines = d.common.polyL.map(p => p.crdEncYX)
+				}
+				const parse = profile.parseJourney(profile, d.locations, d.lines, d.remarks, polylines)
+
 				if (!journeys.earlierRef) journeys.earlierRef = d.outCtxScrB
 
 				let latestDep = -Infinity
