@@ -4,7 +4,7 @@ const parseDateTime = require('./date-time')
 
 const clone = obj => Object.assign({}, obj)
 
-const createParseJourneyLeg = (profile, stations, lines, remarks) => {
+const createParseJourneyLeg = (profile, stations, lines, remarks, polylines) => {
 	// todo: finish parse/remark.js first
 	const applyRemark = (j, rm) => {}
 
@@ -32,6 +32,12 @@ const createParseJourneyLeg = (profile, stations, lines, remarks) => {
 			const realtime = profile.parseDateTime(profile, j.date, pt.arr.aTimeR)
 			const planned = profile.parseDateTime(profile, j.date, pt.arr.aTimeS)
 			res.arrivalDelay = Math.round((realtime - planned) / 1000)
+		}
+
+		if (pt.jny && pt.jny.polyG) {
+			const p = pt.jny.polyG.polyXL
+			// todo: there can be >1 polyline
+			if (p && p.length > 0) res.polyline = polylines[p[0]] || null
 		}
 
 		if (pt.type === 'WALK') {
