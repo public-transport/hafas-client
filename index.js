@@ -270,7 +270,8 @@ const createClient = (profile, request = _request) => {
 			throw new Error('lineName must be a non-empty string.')
 		}
 		opt = Object.assign({
-			passedStations: true // return stations on the way?
+			passedStations: true, // return stations on the way?
+			polyline: false
 		}, opt)
 		opt.when = opt.when || new Date()
 
@@ -280,11 +281,16 @@ const createClient = (profile, request = _request) => {
 			req: {
 				jid: ref,
 				name: lineName,
-				date: profile.formatDate(profile, opt.when)
+				date: profile.formatDate(profile, opt.when),
+				getPolyline: !!opt.polyline
 			}
 		})
 		.then((d) => {
-			const parse = profile.parseJourneyLeg(profile, d.locations, d.lines, d.remarks)
+			let polylines = []
+			if (opt.polyline && Array.isArray(d.common.polyL)) {
+				polylines = d.common.polyL.map(p => p.crdEncYX)
+			}
+			const parse = profile.parseJourneyLeg(profile, d.locations, d.lines, d.remarks, polylines)
 
 			const leg = { // pretend the leg is contained in a journey
 				type: 'JNY',

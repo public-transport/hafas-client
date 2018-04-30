@@ -25,7 +25,8 @@ With `opt`, you can override the default options, which look like this:
 ```js
 {
 	when: new Date(),
-	passedStations: true // return stations on the way?
+	passedStations: true, // return stations on the way?
+	polyline: false // return a shape for the leg?
 }
 ```
 
@@ -116,3 +117,5 @@ The response looked like this:
 	passed: [ /* … */ ]
 }
 ```
+
+If you pass `polyline: true`, the leg will have a `polyline` field, containing an encoded shape. You can use e.g. [`@mapbox/polyline`](https://www.npmjs.com/package/@mapbox/polyline) to decode it.
