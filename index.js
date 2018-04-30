@@ -85,6 +85,7 @@ const createClient = (profile, request = _request) => {
 			accessibility: 'none', // 'none', 'partial' or 'complete'
 			bike: false, // only bike-friendly journeys
 			tickets: false, // return tickets?
+			polylines: false // return leg shapes?
 		}, opt)
 		if (opt.via) opt.via = profile.formatLocation(profile, opt.via)
 		opt.when = opt.when || new Date()
@@ -126,7 +127,7 @@ const createClient = (profile, request = _request) => {
 				getPT: true, // todo: what is this?
 				outFrwd: true, // todo: what is this?
 				getIV: false, // todo: walk & bike as alternatives?
-				getPolyline: false // todo: shape for displaying on a map?
+				getPolyline: !!opt.polylines
 			}
 			if (profile.journeysNumF) query.numF = opt.results
 
