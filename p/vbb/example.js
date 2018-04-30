@@ -13,6 +13,10 @@ client.journeys('900000003201', '900000024101', {results: 1, polylines: true})
 // client.nearby(52.5137344, 13.4744798, {distance: 60})
 // client.radar(52.52411, 13.41002, 52.51942, 13.41709, {results: 10})
 
+// .then(([journey]) => {
+// 	const leg = journey.legs[0]
+// 	return client.journeyLeg(leg.id, leg.line.name, {polyline: true})
+// })
 .then((data) => {
 	console.log(require('util').inspect(data, {depth: null}))
 })
