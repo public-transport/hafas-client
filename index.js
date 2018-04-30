@@ -141,7 +141,7 @@ const createClient = (profile, request = _request) => {
 
 				let polylines = []
 				if (opt.polylines && Array.isArray(d.common.polyL)) {
-					polylines = d.common.polyL.map(p => p.crdEncYX)
+					polylines = d.common.polyL
 				}
 				const parse = profile.parseJourney(profile, d.locations, d.lines, d.remarks, polylines)
 
@@ -279,6 +279,7 @@ const createClient = (profile, request = _request) => {
 			cfg: {polyEnc: 'GPA'},
 			meth: 'JourneyDetails',
 			req: {
+				// todo: getTrainComposition
 				jid: ref,
 				name: lineName,
 				date: profile.formatDate(profile, opt.when),
@@ -288,7 +289,7 @@ const createClient = (profile, request = _request) => {
 		.then((d) => {
 			let polylines = []
 			if (opt.polyline && Array.isArray(d.common.polyL)) {
-				polylines = d.common.polyL.map(p => p.crdEncYX)
+				polylines = d.common.polyL
 			}
 			const parse = profile.parseJourneyLeg(profile, d.locations, d.lines, d.remarks, polylines)
 
