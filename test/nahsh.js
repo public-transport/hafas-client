@@ -379,9 +379,41 @@ test('location', co(function* (t) {
 	t.end()
 }))
 
-// todo: see #34
-test.skip('radar Kiel', co(function* (t) {
-	const vehicles = yield client.radar(54.4, 10.0, 54.2, 10.2, {
+test('radar Kiel', co(function* (t) {
+	const fakeStation = (s) => {
+		const fake = Object.assign({
+			products: {
+				nationalExp: true,
+				national: false,
+				interregional: true,
+				regional: false,
+				suburban: true,
+				bus: false,
+				ferry: true,
+				subway: false,
+				tram: true,
+				onCall: false
+			}
+		}, s)
+		if (s.name === null) fake.name = 'foo'
+		return fake
+	}
+	const _assertValidStation = (t, s, coordsOptional = false) => {
+		assertValidStation(t, fakeStation(s), coordsOptional)
+	}
+	const _assertValidStopover = (t, s, coordsOptional = false) => {
+		const fake = Object.assign({}, s, {
+			station: fakeStation(s.station)
+		})
+		assertValidStopover(t, fake, coordsOptional)
+	}
+
+	const vehicles = yield client.radar({
+		north: 54.4,
+		west: 10.0,
+		south: 54.2,
+		east: 10.2
+	}, {
 		duration: 5 * 60, when
 	})
 
@@ -402,7 +434,7 @@ test.skip('radar Kiel', co(function* (t) {
 
 		t.ok(Array.isArray(v.nextStops))
 		for (let st of v.nextStops) {
-			assertValidStopover(t, st, true)
+			_assertValidStopover(t, st, true)
 
 			if (st.arrival) {
 				t.equal(typeof st.arrival, 'string')
@@ -419,10 +451,15 @@ test.skip('radar Kiel', co(function* (t) {
 
 		t.ok(Array.isArray(v.frames))
 		for (let f of v.frames) {
-			assertValidStation(t, f.origin, true)
-			assertValidStationProducts(t, f.origin.products)
-			assertValidStation(t, f.destination, true)
-			assertValidStationProducts(t, f.destination.products)
+			// todo: see #34
+			_assertValidStation(t, f.origin, true)
+			if (f.origin.products) {
+				assertValidStationProducts(t, f.origin.products)
+			}
+			_assertValidStation(t, f.destination, true)
+			if (f.destination.products) {
+				assertValidStationProducts(t, f.destination.products)
+			}
 			t.equal(typeof f.t, 'number')
 		}
 	}
