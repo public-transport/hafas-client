@@ -57,7 +57,7 @@ const validateLocations = (val, locs, name = 'locations') => {
 	a.ok(Array.isArray(locs), name + ' must be an array')
 	a.ok(locs.length > 0, name + ' must not be empty')
 	for (let i = 0; i < locs.length; i++) {
-		val.location(locs[i], name + `[${i}]`)
+		val.location(val, locs[i], name + `[${i}]`)
 	}
 }
 

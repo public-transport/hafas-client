@@ -40,6 +40,7 @@ const testEarlierLaterJourneys = co(function* (cfg) {
 
 	let earliestDep = Infinity, latestDep = -Infinity
 	for (let j of model) {
+		if (j.legs[0].departure === null) continue
 		const dep = +new Date(j.legs[0].departure)
 		if (dep < earliestDep) earliestDep = dep
 		else if (dep > latestDep) latestDep = dep
