@@ -19,7 +19,7 @@ const parseLocation = (profile, l, lines) => {
 		const station = {
 			type: 'station',
 			id: l.extId,
-			name: profile.parseStationName(l.name),
+			name: l.name ? profile.parseStationName(l.name) : null,
 			location: 'number' === typeof res.latitude ? res : null
 		}
 
