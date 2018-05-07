@@ -1,11 +1,9 @@
 'use strict'
 
-const createParseJourneyLeg = require('./journey-leg')
-
 const clone = obj => Object.assign({}, obj)
 
-const createParseJourney = (profile, stations, lines, remarks) => {
-	const parseLeg = createParseJourneyLeg(profile, stations, lines, remarks)
+const createParseJourney = (profile, stations, lines, remarks, polylines) => {
+	const parseLeg = profile.parseJourneyLeg(profile, stations, lines, remarks, polylines)
 
 	// todo: c.sDays
 	// todo: c.conSubscr

@@ -28,12 +28,12 @@ const createParseStopover = (profile, stations, lines, remarks, date) => {
 			Object.defineProperty(res, 'canceled', {value: true})
 			if (st.aCncl) {
 				res.arrival = res.arrivalDelay = null
-				const arr = profile.parseDateTime(profile, d.date, st.aTimeS)
+				const arr = profile.parseDateTime(profile, date, st.aTimeS)
 				res.formerScheduledArrival = arr.toISO()
 			}
 			if (st.dCncl) {
 				res.departure = res.departureDelay = null
-				const arr = profile.parseDateTime(profile, d.date, st.dTimeS)
+				const arr = profile.parseDateTime(profile, date, st.dTimeS)
 				res.formerScheduledDeparture = arr.toISO()
 			}
 		}
