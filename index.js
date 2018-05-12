@@ -93,6 +93,7 @@ const createClient = (profile, request = _request) => {
 			accessibility: 'none', // 'none', 'partial' or 'complete'
 			bike: false, // only bike-friendly journeys
 			tickets: false, // return tickets?
+			polylines: false // return leg shapes?
 		}, opt)
 		if (opt.via) opt.via = profile.formatLocation(profile, opt.via)
 		opt.when = opt.when || new Date()
@@ -113,7 +114,7 @@ const createClient = (profile, request = _request) => {
 		// `CGI_READ_FAILED` if you pass `numF`, the parameter for the number
 		// of results. To circumvent this, we loop here, collecting journeys
 		// until we have enough.
-		// see https://github.com/derhuerst/hafas-client/pull/23#issuecomment-370246163
+		// see https://github.com/public-transport/hafas-client/pull/23#issuecomment-370246163
 		// todo: check if `numF` is supported again, revert this change
 		const journeys = []
 		const more = (when, journeysRef) => {
@@ -134,7 +135,7 @@ const createClient = (profile, request = _request) => {
 				getPT: true, // todo: what is this?
 				outFrwd: true, // todo: what is this?
 				getIV: false, // todo: walk & bike as alternatives?
-				getPolyline: false // todo: shape for displaying on a map?
+				getPolyline: !!opt.polylines
 			}
 			if (profile.journeysNumF) query.numF = opt.results
 
@@ -145,7 +146,13 @@ const createClient = (profile, request = _request) => {
 			})
 			.then((d) => {
 				if (!Array.isArray(d.outConL)) return []
-				const parse = profile.parseJourney(profile, d.locations, d.lines, d.remarks)
+
+				let polylines = []
+				if (opt.polylines && Array.isArray(d.common.polyL)) {
+					polylines = d.common.polyL
+				}
+				const parse = profile.parseJourney(profile, d.locations, d.lines, d.remarks, polylines)
+
 				if (!journeys.earlierRef) journeys.earlierRef = d.outCtxScrB
 
 				let latestDep = -Infinity
@@ -271,7 +278,8 @@ const createClient = (profile, request = _request) => {
 			throw new Error('lineName must be a non-empty string.')
 		}
 		opt = Object.assign({
-			passedStations: true // return stations on the way?
+			passedStations: true, // return stations on the way?
+			polyline: false
 		}, opt)
 		opt.when = opt.when || new Date()
 
@@ -279,13 +287,19 @@ const createClient = (profile, request = _request) => {
 			cfg: {polyEnc: 'GPA'},
 			meth: 'JourneyDetails',
 			req: {
+				// todo: getTrainComposition
 				jid: ref,
 				name: lineName,
-				date: profile.formatDate(profile, opt.when)
+				date: profile.formatDate(profile, opt.when),
+				getPolyline: !!opt.polyline
 			}
 		})
 		.then((d) => {
-			const parse = profile.parseJourneyLeg(profile, d.locations, d.lines, d.remarks)
+			let polylines = []
+			if (opt.polyline && Array.isArray(d.common.polyL)) {
+				polylines = d.common.polyL
+			}
+			const parse = profile.parseJourneyLeg(profile, d.locations, d.lines, d.remarks, polylines)
 
 			const leg = { // pretend the leg is contained in a journey
 				type: 'JNY',

@@ -44,7 +44,7 @@ const vbbProfile = require('hafas-client/p/vbb')
 const client = createClient(vbbProfile)
 
 // S Charlottenburg
-client.journeys('900000024101', {duration: 3})
+client.departures('900000024101', {duration: 3})
 .then(console.log)
 .catch(console.error)
 ```
