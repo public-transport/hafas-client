@@ -269,8 +269,8 @@ test('nearby Salzburg Hbf', co(function* (t) {
 	const s = nearby[0]
 	t.ok(s.id === '008100002' || s.id === '8100002', 'id should be 8100002')
 	t.equal(s.name, 'Salzburg Hbf')
-	t.ok(isRoughlyEqual(s.location.latitude, 47.812851, .0005))
-	t.ok(isRoughlyEqual(s.location.longitude, 13.045604, .0005))
+	t.ok(isRoughlyEqual(.0005, s.location.latitude, 47.812851))
+	t.ok(isRoughlyEqual(.0005, s.location.longitude, 13.045604))
 	t.ok(s.distance >= 0)
 	t.ok(s.distance <= 100)
 

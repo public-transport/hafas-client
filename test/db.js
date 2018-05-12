@@ -244,12 +244,11 @@ test('nearby Berlin Jungfernheide', co(function* (t) {
 	// todo: trim IDs
 	t.ok(s0.id === '008011167' || s0.id === jungfernheide)
 	t.equal(s0.name, 'Berlin Jungfernheide')
-	t.ok(isRoughlyEqual(s0.location.latitude, 52.530408, .0005))
-	t.ok(isRoughlyEqual(s0.location.longitude, 13.299424, .0005))
+	t.ok(isRoughlyEqual(.0005, s0.location.latitude, 52.530408))
+	t.ok(isRoughlyEqual(.0005, s0.location.longitude, 13.299424))
 	t.ok(s0.distance >= 0)
 	t.ok(s0.distance <= 100)
 
-	// todo: nearby[0]
 	t.end()
 }))
 

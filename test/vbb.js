@@ -108,8 +108,6 @@ const bismarckstr = '900000024201'
 const westhafen = '900000001201'
 const wedding = '900000009104'
 const württembergallee = '900000026153'
-const berlinerStr = '900000044201'
-const landhausstr = '900000043252'
 
 test('journeys – Spichernstr. to Bismarckstr.', co(function* (t) {
 	const journeys = yield client.journeys(spichernstr, bismarckstr, {
@@ -301,6 +299,9 @@ test('departures at 7-digit station', co(function* (t) {
 }))
 
 test('nearby', co(function* (t) {
+	const berlinerStr = '900000044201'
+	const landhausstr = '900000043252'
+
 	// Berliner Str./Bundesallee
 	const nearby = yield client.nearby({
 		type: 'location',
