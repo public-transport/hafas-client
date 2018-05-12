@@ -16,6 +16,7 @@ const testJourneysStationToPoi = require('./lib/journeys-station-to-poi')
 const testEarlierLaterJourneys = require('./lib/earlier-later-journeys')
 const journeysFailsWithNoProduct = require('./lib/journeys-fails-with-no-product')
 const testDepartures = require('./lib/departures')
+const testJourneysWithDetour = require('./lib/journeys-with-detour')
 
 const isObj = o => o !== null && 'object' === typeof o && !Array.isArray(o)
 
@@ -123,18 +124,12 @@ test('journeys: via works – with detour', co(function* (t) {
 		passedStations: true
 	})
 
-	validate(t, journeys, 'journeys', 'journeys')
-
-	const leg = journeys[0].legs.some((leg) => {
-		return leg.passed && leg.passed.some((passed) => {
-			return (
-				passed.station.id === '8010077' || // todo: trim IDs
-				passed.station.id === dessau
-			)
-		})
+	yield testJourneysWithDetour({
+		test: t,
+		journeys,
+		validate,
+		detourIds: ['8010077', dessau] // todo: trim IDs
 	})
-	t.ok(leg, 'Dessau is not being passed')
-
 	t.end()
 }))
 

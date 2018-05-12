@@ -20,6 +20,7 @@ const testJourneysStationToPoi = require('./lib/journeys-station-to-poi')
 const testEarlierLaterJourneys = require('./lib/earlier-later-journeys')
 const journeysFailsWithNoProduct = require('./lib/journeys-fails-with-no-product')
 const testDepartures = require('./lib/departures')
+const testJourneysWithDetour = require('./lib/journeys-with-detour')
 
 const when = createWhen('Europe/Vienna', 'de-AT')
 
@@ -150,18 +151,12 @@ test('journeys: via works – with detour', co(function* (t) {
 		passedStations: true
 	})
 
-	validate(t, journeys, 'journeys', 'journeys')
-
-	const leg = journeys[0].legs.some((leg) => {
-		return leg.passed && leg.passed.some((passed) => {
-			return (
-				passed.station.id === donauinsel ||
-				passed.station.id === donauinselPassed
-			)
-		})
+	yield testJourneysWithDetour({
+		test: t,
+		journeys,
+		validate,
+		detourIds: [donauinsel, donauinselPassed]
 	})
-	t.ok(leg, 'Donauinsel is not being passed')
-
 	t.end()
 }))
 
