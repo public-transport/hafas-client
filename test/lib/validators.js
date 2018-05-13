@@ -4,7 +4,7 @@ const a = require('assert')
 const {defaultValidators} = require('validate-fptf')
 const anyOf = require('validate-fptf/lib/any-of')
 
-const {isValidWhen} = require('./util')
+const {assertValidWhen} = require('./util')
 
 const isObj = o => o !== null && 'object' === typeof o && !Array.isArray(o)
 const is = val => val !== null && val !== undefined
@@ -80,11 +80,11 @@ const createValidateStopover = (cfg) => {
 	const validateStopover = (val, s, name = 'stopover') => {
 		if (is(s.arrival)) {
 			val.date(val, s.arrival, name + '.arrival')
-			a.ok(isValidWhen(s.arrival, cfg.when), name + '.arrival is invalid')
+			assertValidWhen(s.arrival, cfg.when, name)
 		}
 		if (is(s.departure)) {
 			val.date(val, s.departure, name + '.departure')
-			a.ok(isValidWhen(s.departure, cfg.when), name + '.departure is invalid')
+			assertValidWhen(s.departure, cfg.when, name)
 		}
 		if (!is(s.arrival) && !is(s.departure)) {
 			a.fail(name + ' contains neither arrival nor departure')
@@ -153,12 +153,10 @@ const createValidateJourneyLeg = (cfg) => {
 		defaultValidators.journeyLeg(val, withFakeScheduleAndOperator, name)
 
 		if (leg.arrival !== null) {
-			const msg = name + '.arrival is invalid'
-			a.ok(isValidWhen(leg.arrival, cfg.when), msg)
+			assertValidWhen(leg.arrival, cfg.when, name + '.arrival')
 		}
 		if (leg.departure !== null) {
-			const msg = name + '.departure is invalid'
-			a.ok(isValidWhen(leg.departure, cfg.when), msg)
+			assertValidWhen(leg.departure, cfg.when, name + '.departure')
 		}
 		// todo: leg.arrivalPlatform !== null
 		if (is(leg.arrivalPlatform)) {
@@ -226,7 +224,7 @@ const createValidateDeparture = (cfg) => {
 
 		val.station(val, dep.station, name + '.station')
 
-		a.ok(isValidWhen(dep.when, cfg.when), name + '.when is invalid')
+		assertValidWhen(dep.when, cfg.when, name)
 		if (dep.delay !== null) {
 			const msg = name + '.delay must be a number'
 			a.strictEqual(typeof dep.delay, 'number', msg)
