@@ -1,5 +1,11 @@
 # Changelog
 
+## `2.7.0`
+
+- `journeys()`: `polylines` option
+- `journeyLeg()`: `polyline` option
+- `radar()`: `polylines` option
+
 ## `2.6.0`
 
 - 5d10d76 journey legs: parse cycle
