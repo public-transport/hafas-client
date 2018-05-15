@@ -1,6 +1,6 @@
 'use strict'
 
-const createParseMovement = (profile, locations, lines, remarks, polylines) => {
+const createParseMovement = (profile, locations, lines, remarks, polylines = []) => {
 	// todo: what is m.dirGeo? maybe the speed?
 	// todo: what is m.stopL?
 	// todo: what is m.proc? wut?
