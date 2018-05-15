@@ -39,7 +39,7 @@ const createParseMovement = (profile, locations, lines, remarks, polylines = [])
 			} else if (m.ani.polyG && Array.isArray(m.ani.polyG.polyXL)) {
 				let p = m.ani.polyG.polyXL[0]
 				// todo: there can be >1 polyline
-				res.polyline = polylines[p] && polylines[p].crdEncXY || null
+				res.polyline = polylines[p] && polylines[p].crdEncYX || null
 			}
 		}
 
