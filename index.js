@@ -341,7 +341,7 @@ const createClient = (profile, request = _request) => {
 			if (!Array.isArray(d.jnyL)) return []
 
 			let polylines = []
-			if (opt.polylines && Array.isArray(d.common.polyL)) {
+			if (opt.polylines && d.common && Array.isArray(d.common.polyL)) {
 				polylines = d.common.polyL
 			}
 			const parse = profile.parseMovement(profile, d.locations, d.lines, d.remarks, polylines)
