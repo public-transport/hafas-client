@@ -32,8 +32,10 @@
 		"node": ">=6"
 	},
 	"dependencies": {
+		"@mapbox/polyline": "^1.0.0",
 		"capture-stack-trace": "^1.0.0",
 		"fetch-ponyfill": "^6.0.0",
+		"gps-distance": "0.0.4",
 		"lodash": "^4.17.5",
 		"luxon": "^0.5.8",
 		"p-throttle": "^1.1.0",
