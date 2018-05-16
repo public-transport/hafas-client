@@ -321,7 +321,8 @@ const createClient = (profile, request = _request) => {
 			results: 256, // maximum number of vehicles
 			duration: 30, // compute frames for the next n seconds
 			frames: 3, // nr of frames to compute
-			products: null // optionally an object of booleans
+			products: null, // optionally an object of booleans
+			polylines: false // return a track shape for each vehicle?
 		}, opt || {})
 		opt.when = opt.when || new Date()
 
@@ -347,7 +348,11 @@ const createClient = (profile, request = _request) => {
 		.then((d) => {
 			if (!Array.isArray(d.jnyL)) return []
 
-			const parse = profile.parseMovement(profile, d.locations, d.lines, d.remarks)
+			let polylines = []
+			if (opt.polylines && d.common && Array.isArray(d.common.polyL)) {
+				polylines = d.common.polyL
+			}
+			const parse = profile.parseMovement(profile, d.locations, d.lines, d.remarks, polylines)
 			return d.jnyL.map(parse)
 		})
 	}
