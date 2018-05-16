@@ -316,6 +316,8 @@ const createClient = (profile, request = _request) => {
 		if ('number' !== typeof west) throw new Error('west must be a number.')
 		if ('number' !== typeof south) throw new Error('south must be a number.')
 		if ('number' !== typeof east) throw new Error('east must be a number.')
+		if (north <= south) throw new Error('north must be larger than south.')
+		if (east <= west) throw new Error('east must be larger than west.')
 
 		opt = Object.assign({
 			results: 256, // maximum number of vehicles
