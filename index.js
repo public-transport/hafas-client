@@ -149,10 +149,7 @@ const createClient = (profile, request = _request) => {
 			.then((d) => {
 				if (!Array.isArray(d.outConL)) return []
 
-				let polylines = []
-				if (opt.polylines && Array.isArray(d.common.polyL)) {
-					polylines = d.common.polyL
-				}
+				const polylines = opt.polyline && d.common.polyL || []
 				const parse = profile.parseJourney(profile, d.locations, d.lines, d.remarks, polylines)
 
 				if (!journeys.earlierRef) journeys.earlierRef = d.outCtxScrB
@@ -298,10 +295,7 @@ const createClient = (profile, request = _request) => {
 			}
 		})
 		.then((d) => {
-			let polylines = []
-			if (opt.polyline && Array.isArray(d.common.polyL)) {
-				polylines = d.common.polyL
-			}
+			const polylines = opt.polyline && d.common.polyL || []
 			const parse = profile.parseJourneyLeg(profile, d.locations, d.lines, d.remarks, polylines)
 
 			const leg = { // pretend the leg is contained in a journey
@@ -354,10 +348,7 @@ const createClient = (profile, request = _request) => {
 		.then((d) => {
 			if (!Array.isArray(d.jnyL)) return []
 
-			let polylines = []
-			if (opt.polylines && d.common && Array.isArray(d.common.polyL)) {
-				polylines = d.common.polyL
-			}
+			const polylines = opt.polyline && d.common.polyL || []
 			const parse = profile.parseMovement(profile, d.locations, d.lines, d.remarks, polylines)
 			return d.jnyL.map(parse)
 		})

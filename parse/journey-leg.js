@@ -36,9 +36,10 @@ const createParseJourneyLeg = (profile, stations, lines, remarks, polylines) => 
 
 		if (pt.jny && pt.jny.polyG) {
 			let p = pt.jny.polyG.polyXL
-			p = p && polylines[p[0]]
+			p = Array.isArray(p) && polylines[p[0]]
 			// todo: there can be >1 polyline
-			res.polyline = p && p.crdEncYX || null
+			const parse = profile.parsePolyline(stations)
+			res.polyline = p && parse(p) || null
 		}
 
 		if (pt.type === 'WALK') {
