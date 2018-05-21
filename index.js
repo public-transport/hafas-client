@@ -31,7 +31,8 @@ const createClient = (profile, request = _request) => {
 			direction: null, // only show departures heading to this station
 			duration:  10 // show departures for the next n minutes
 		}, opt)
-		opt.when = opt.when || new Date()
+		opt.when = new Date(opt.when || Date.now())
+		if (Number.isNaN(+opt.when)) throw new Error('opt.when is invalid')
 		const products = profile.formatProductsFilter(opt.products || {})
 
 		const dir = opt.direction ? profile.formatStation(opt.direction) : null
@@ -96,7 +97,8 @@ const createClient = (profile, request = _request) => {
 			polylines: false // return leg shapes?
 		}, opt)
 		if (opt.via) opt.via = profile.formatLocation(profile, opt.via)
-		opt.when = opt.when || new Date()
+		opt.when = new Date(opt.when || Date.now())
+		if (Number.isNaN(+opt.when)) throw new Error('opt.when is invalid')
 
 		const filters = [
 			profile.formatProductsFilter(opt.products || {})
@@ -281,7 +283,8 @@ const createClient = (profile, request = _request) => {
 			passedStations: true, // return stations on the way?
 			polyline: false
 		}, opt)
-		opt.when = opt.when || new Date()
+		opt.when = new Date(opt.when || Date.now())
+		if (Number.isNaN(+opt.when)) throw new Error('opt.when is invalid')
 
 		return request(profile, {
 			cfg: {polyEnc: 'GPA'},
@@ -326,7 +329,8 @@ const createClient = (profile, request = _request) => {
 			products: null, // optionally an object of booleans
 			polylines: false // return a track shape for each vehicle?
 		}, opt || {})
-		opt.when = opt.when || new Date()
+		opt.when = new Date(opt.when || Date.now())
+		if (Number.isNaN(+opt.when)) throw new Error('opt.when is invalid')
 
 		const durationPerStep = opt.duration / Math.max(opt.frames, 1) * 1000
 		return request(profile, {
