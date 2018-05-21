@@ -181,16 +181,17 @@ const createClient = (profile, request = _request) => {
 		}, opt)
 
 		const f = profile.formatLocationFilter(opt.stations, opt.addresses, opt.poi)
+
 		return request(profile, {
 			cfg: {polyEnc: 'GPA'},
 			meth: 'LocMatch',
 			req: {input: {
 				loc: {
 					type: f,
-					name: opt.fuzzy ? query + '?' : query
+					name: opt.fuzzy ? query : query
 				},
 				maxLoc: opt.results,
-				field: 'S' // todo: what is this?
+				field: 'S' 
 			}}
 		})
 		.then((d) => {

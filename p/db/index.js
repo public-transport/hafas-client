@@ -1,4 +1,5 @@
 'use strict'
+import { Buffer } from 'buffer'
 
 const _createParseLine = require('../../parse/line')
 const _createParseJourney = require('../../parse/journey')
