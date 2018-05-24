@@ -149,7 +149,7 @@ const createClient = (profile, request = _request) => {
 			.then((d) => {
 				if (!Array.isArray(d.outConL)) return []
 
-				const polylines = opt.polyline && d.common.polyL || []
+				const polylines = opt.polylines && d.common.polyL || []
 				const parse = profile.parseJourney(profile, d.locations, d.lines, d.remarks, polylines)
 
 				if (!journeys.earlierRef) journeys.earlierRef = d.outCtxScrB
