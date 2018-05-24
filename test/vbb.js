@@ -168,6 +168,21 @@ test('journeys – fails with no product', co(function* (t) {
 	}
 }))
 
+test('journeys – with arrival time', co(function* (t) {
+	const journeys = yield client.journeys(spichernstr, bismarckstr, {
+		results: 3,
+		when,
+		whenRepresents: 'arrival'
+	})
+
+	for (let j of journeys) {
+		const arr = +new Date(j.arrival)
+		t.ok(arr <= when)
+	}
+
+	t.end()
+}))
+
 test('earlier/later journeys', co(function* (t) {
 	const model = yield client.journeys(spichernstr, bismarckstr, {
 		results: 3, when

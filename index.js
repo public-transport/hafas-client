@@ -79,6 +79,7 @@ const createClient = (profile, request = _request) => {
 			results: 5, // how many journeys?
 			via: null, // let journeys pass this station?
 			passedStations: false, // return stations on the way?
+			whenRepresents: 'departure', // use 'arrival' for journeys arriving before `when`
 			transfers: 5, // maximum of 5 transfers
 			transferTime: 0, // minimum time for a single transfer in minutes
 			// todo: does this work with every endpoint?
@@ -89,6 +90,10 @@ const createClient = (profile, request = _request) => {
 		}, opt)
 		if (opt.via) opt.via = profile.formatLocation(profile, opt.via)
 		opt.when = opt.when || new Date()
+
+		if (opt.whenRepresents !== 'departure' && opt.whenRepresents !== 'arrival') {
+			throw new Error('opt.whenRepresents must be `departure` or `arrival`.')
+		}
 
 		const filters = [
 			profile.formatProducts(opt.products || {})
@@ -122,10 +127,10 @@ const createClient = (profile, request = _request) => {
 				arrLocL: [to],
 				jnyFltrL: filters,
 				getTariff: !!opt.tickets,
+				outFrwd: opt.whenRepresents !== 'arrival',
 
 				// todo: what is req.gisFltrL?
 				getPT: true, // todo: what is this?
-				outFrwd: true, // todo: what is this?
 				getIV: false, // todo: walk & bike as alternatives?
 				getPolyline: !!opt.polylines
 			}
