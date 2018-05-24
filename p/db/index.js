@@ -59,8 +59,8 @@ const createParseLine = (profile, operators) => {
 	return parseLineWithMode
 }
 
-const createParseJourney = (profile, stations, lines, remarks) => {
-	const parseJourney = _createParseJourney(profile, stations, lines, remarks)
+const createParseJourney = (profile, stations, lines, remarks, polylines) => {
+	const parseJourney = _createParseJourney(profile, stations, lines, remarks, polylines)
 
 	// todo: j.sotRating, j.conSubscr, j.isSotCon, j.showARSLink, k.sotCtxt
 	// todo: j.conSubscr, j.showARSLink, j.useableTime
