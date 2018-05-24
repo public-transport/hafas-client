@@ -41,6 +41,7 @@ With `opt`, you can override the default options, which look like this:
 ```js
 {
 	when: new Date(),
+	whenRepresents: 'departure', // use 'arrival' for journeys arriving before `when`
 	earlierThan: null, // ref to get journeys earlier than the last query
 	laterThan: null, // ref to get journeys later than the last query
 	results: 5, // how many journeys?
