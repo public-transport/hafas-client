@@ -1,7 +1,7 @@
 {
 	"name": "hafas-client",
 	"description": "JavaScript client for HAFAS public transport APIs.",
-	"version": "2.7.3",
+	"version": "2.7.4",
 	"main": "index.js",
 	"files": [
 		"index.js",
@@ -36,14 +36,14 @@
 		"create-hash": "^1.2.0",
 		"fetch-ponyfill": "^6.0.0",
 		"lodash": "^4.17.5",
-		"luxon": "^0.5.8",
+		"luxon": "^1.2.1",
 		"p-throttle": "^1.1.0",
 		"pinkie-promise": "^2.0.1",
 		"query-string": "^6.0.0",
 		"slugg": "^1.2.0",
 		"vbb-parse-line": "^0.3.1",
 		"vbb-parse-ticket": "^0.2.1",
-		"vbb-short-station-name": "^0.4.0",
+		"vbb-short-station-name": "^1.0.1",
 		"vbb-stations": "^6.2.1",
 		"vbb-translate-ids": "^3.1.0"
 	},
