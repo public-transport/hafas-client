@@ -58,8 +58,8 @@ const createClient = (profile, request = _request) => {
 	}
 
 	const journeys = (from, to, opt = {}) => {
-		from = profile.formatLocation(profile, from)
-		to = profile.formatLocation(profile, to)
+		from = profile.formatLocation(profile, from, 'from')
+		to = profile.formatLocation(profile, to, 'to')
 
 		if (('earlierThan' in opt) && ('laterThan' in opt)) {
 			throw new Error('opt.laterThan and opt.laterThan are mutually exclusive.')
@@ -96,7 +96,7 @@ const createClient = (profile, request = _request) => {
 			tickets: false, // return tickets?
 			polylines: false // return leg shapes?
 		}, opt)
-		if (opt.via) opt.via = profile.formatLocation(profile, opt.via)
+		if (opt.via) opt.via = profile.formatLocation(profile, opt.via, 'opt.via')
 		opt.when = new Date(opt.when || Date.now())
 		if (Number.isNaN(+opt.when)) throw new Error('opt.when is invalid')
 
