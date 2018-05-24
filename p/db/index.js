@@ -15,7 +15,7 @@ const formatBitmask = createFormatBitmask(modes)
 const transformReqBody = (body) => {
 	body.client = {id: 'DB', v: '16040000', type: 'IPH', name: 'DB Navigator'}
 	body.ext = 'DB.R15.12.a'
-	body.ver = '1.15'
+	body.ver = '1.16'
 	body.auth = {type: 'AID', aid: 'n91dB8Z77MLdoR0K'}
 
 	return body
@@ -145,7 +145,9 @@ const dbProfile = {
 	parseJourney: createParseJourney,
 
 	formatStation,
-	formatProducts
+	formatProducts,
+
+	journeyLeg: true // todo: #49
 }
 
 module.exports = dbProfile
