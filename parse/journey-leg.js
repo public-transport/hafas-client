@@ -4,7 +4,7 @@ const parseDateTime = require('./date-time')
 
 const clone = obj => Object.assign({}, obj)
 
-const createParseJourneyLeg = (profile, stations, lines, remarks) => {
+const createParseJourneyLeg = (profile, stations, lines, remarks, polylines) => {
 	// todo: finish parse/remark.js first
 	const applyRemark = (j, rm) => {}
 
@@ -34,6 +34,14 @@ const createParseJourneyLeg = (profile, stations, lines, remarks) => {
 			res.arrivalDelay = Math.round((realtime - planned) / 1000)
 		}
 
+		if (pt.jny && pt.jny.polyG) {
+			let p = pt.jny.polyG.polyXL
+			p = Array.isArray(p) && polylines[p[0]]
+			// todo: there can be >1 polyline
+			const parse = profile.parsePolyline(stations)
+			res.polyline = p && parse(p) || null
+		}
+
 		if (pt.type === 'WALK') {
 			res.mode = 'walking'
 			res.public = true
@@ -41,7 +49,7 @@ const createParseJourneyLeg = (profile, stations, lines, remarks) => {
 			// todo: pull `public` value from `profile.products`
 			res.id = pt.jny.jid
 			res.line = lines[parseInt(pt.jny.prodX)] || null
-			res.direction = profile.parseStationName(pt.jny.dirTxt)
+			res.direction = profile.parseStationName(pt.jny.dirTxt) || null
 
 			if (pt.dep.dPlatfS) res.departurePlatform = pt.dep.dPlatfS
 			if (pt.arr.aPlatfS) res.arrivalPlatform = pt.arr.aPlatfS
@@ -56,18 +64,25 @@ const createParseJourneyLeg = (profile, stations, lines, remarks) => {
 				for (let remark of pt.jny.remL) applyRemark(j, remark)
 			}
 
-			if (pt.jny.freq && pt.jny.freq.jnyL) {
+			const freq = pt.jny.freq || {}
+			if (freq.minC && freq.maxC) {
+				// todo: what is freq.numC?
+				res.cycle = {
+					min: freq.minC * 60,
+					max: freq.maxC * 60
+				}
+			}
+			if (freq.jnyL) {
 				const parseAlternative = (a) => {
-					const t = a.stopL[0].dTimeS || a.stopL[0].dTimeR
+					const t = a.stopL[0].dTimeR || a.stopL[0].dTimeS
 					const when = profile.parseDateTime(profile, j.date, t)
+					// todo: expose a.stopL[0]
 					return {
 						line: lines[parseInt(a.prodX)] || null,
 						when: when.toISO()
 					}
 				}
-				res.alternatives = pt.jny.freq.jnyL
-				.filter(a => a.stopL[0].locX === pt.dep.locX)
-				.map(parseAlternative)
+				res.alternatives = freq.jnyL.map(parseAlternative)
 			}
 		}
 

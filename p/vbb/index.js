@@ -56,8 +56,8 @@ const parseLocation = (profile, l, lines) => {
 	return res
 }
 
-const createParseJourney = (profile, stations, lines, remarks) => {
-	const parseJourney = _createParseJourney(profile, stations, lines, remarks)
+const createParseJourney = (profile, stations, lines, remarks, polylines) => {
+	const parseJourney = _createParseJourney(profile, stations, lines, remarks, polylines)
 
 	const parseJourneyWithTickets = (j) => {
 		const res = parseJourney(j)

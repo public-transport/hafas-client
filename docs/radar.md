@@ -11,6 +11,7 @@ With `opt`, you can override the default options, which look like this:
 	results: 256, // maximum number of vehicles
 	duration: 30, // compute frames for the next n seconds
 	frames: 3, // nr of frames to compute
+	polylines: false // return a track shape for each vehicle?
 }
 ```
 
@@ -161,3 +162,5 @@ The response may look like this:
 	} ]
 }, /* … */ ]
 ```
+
+If you pass `polylines: true`, each journey leg will have a `polyline` field, as documented in [the corresponding section in the `journeyLeg()` docs](journey-leg.md#polyline-option), with the exception that station info is missing.

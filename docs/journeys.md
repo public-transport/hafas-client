@@ -60,7 +60,8 @@ With `opt`, you can override the default options, which look like this:
 		express: true,
 		regional: true
 	},
-	tickets: false // return tickets? only available with some profiles
+	tickets: false, // return tickets? only available with some profiles
+	polylines: false // return a shape for each leg?
 }
 ```
 
@@ -260,3 +261,5 @@ client.journeys(hbf, heinrichHeineStr)
 departure of last journey 2017-12-17T19:07:00.000+01:00
 departure of first (later) journey 2017-12-17T19:19:00.000+01:00
 ```
+
+If you pass `polylines: true`, each journey leg will have a `polyline` field. Refer to [the section in the `journeyLeg()` docs](journey-leg.md#polyline-option) for details.

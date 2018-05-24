@@ -1,7 +1,7 @@
 {
 	"name": "hafas-client",
 	"description": "JavaScript client for HAFAS public transport APIs.",
-	"version": "2.5.0",
+	"version": "2.7.2",
 	"main": "index.js",
 	"files": [
 		"index.js",
@@ -16,9 +16,9 @@
 	"contributors": [
 		"Julius Tens <mail@juliustens.eu>"
 	],
-	"homepage": "https://github.com/derhuerst/hafas-client",
-	"repository": "derhuerst/hafas-client",
-	"bugs": "https://github.com/derhuerst/hafas-client/issues",
+	"homepage": "https://github.com/public-transport/hafas-client",
+	"repository": "public-transport/hafas-client",
+	"bugs": "https://github.com/public-transport/hafas-client/issues",
 	"license": "ISC",
 	"keywords": [
 		"hafas",
@@ -32,8 +32,10 @@
 		"node": ">=6"
 	},
 	"dependencies": {
+		"@mapbox/polyline": "^1.0.0",
 		"capture-stack-trace": "^1.0.0",
 		"fetch-ponyfill": "^6.0.0",
+		"gps-distance": "0.0.4",
 		"lodash": "^4.17.5",
 		"luxon": "^0.5.8",
 		"p-throttle": "^1.1.0",

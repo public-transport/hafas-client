@@ -1,10 +1,10 @@
 'use strict'
 
-// todos from derhuerst/hafas-client#2
+// todos from public-transport/hafas-client#2
 // - stdStop.dPlatfS, stdStop.dPlatfR
 // todo: what is d.jny.dirFlg?
 // todo: d.stbStop.dProgType
-// todo: d.freq, d.freq.jnyL, see https://github.com/derhuerst/hafas-client/blob/9203ed1481f08baacca41ac5e3c19bf022f01b0b/parse.js#L115
+// todo: d.freq, d.freq.jnyL, see https://github.com/public-transport/hafas-client/blob/9203ed1481f08baacca41ac5e3c19bf022f01b0b/parse.js#L115
 
 const createParseDeparture = (profile, stations, lines, remarks) => {
 	const findRemark = rm => remarks[parseInt(rm.remX)] || null

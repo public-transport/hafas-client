@@ -25,7 +25,8 @@ With `opt`, you can override the default options, which look like this:
 ```js
 {
 	when: new Date(),
-	passedStations: true // return stations on the way?
+	passedStations: true, // return stations on the way?
+	polyline: false // return a shape for the leg?
 }
 ```
 
@@ -114,5 +115,69 @@ The response looked like this:
 	},
 	direction: 'S Spandau',
 	passed: [ /* … */ ]
+}
+```
+
+### `polyline` option
+
+If you pass `polyline: true`, the leg will have a `polyline` field, containing a [GeoJSON](http://geojson.org) [`FeatureCollection`](https://tools.ietf.org/html/rfc7946#section-3.3) of [`Point`s](https://tools.ietf.org/html/rfc7946#appendix-A.1). Every `Point` next to a station will have `properties` containing the station's metadata.
+
+We'll look at an example for *U6* from *Alt-Mariendorf* to *Alt-Tegel*, taken from the [VBB profile](../p/vbb):
+
+```js
+{
+	type: 'FeatureCollection',
+	features: [
+		{
+			type: 'Feature',
+			properties: {
+				type: 'station',
+				id: '900000070301',
+				name: 'U Alt-Mariendorf',
+				/* … */
+			},
+			geometry: {
+				type: 'Point',
+				coordinates: [13.3875, 52.43993] // longitude, latitude
+			}
+		},
+		/* … */
+		{
+			type: 'Feature',
+			properties: {
+				type: 'station',
+				id: '900000017101',
+				name: 'U Mehringdamm',
+				/* … */
+			},
+			geometry: {
+				type: 'Point',
+				coordinates: [13.38892, 52.49448] // longitude, latitude
+			}
+		},
+		/* … */
+		{
+			// intermediate point, without associated station
+			type: 'Feature',
+			properties: {},
+			geometry: {
+				type: 'Point',
+				coordinates: [13.28599, 52.58742] // longitude, latitude
+			}
+		},
+		{
+			type: 'Feature',
+			properties: {
+				type: 'station',
+				id: '900000089301',
+				name: 'U Alt-Tegel',
+				/* … */
+			},
+			geometry: {
+				type: 'Point',
+				coordinates: [13.28406, 52.58915] // longitude, latitude
+			}
+		}
+	]
 }
 ```

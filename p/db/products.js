@@ -68,7 +68,7 @@ module.exports = [
 	},
 	{
 		id: 'tram',
-		mode: 'tram',
+		mode: 'train',
 		bitmasks: [256],
 		name: 'Tram',
 		short: 'T',
