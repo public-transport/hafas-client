@@ -60,7 +60,7 @@ const bismarckstr = '900000024201'
 
 test('journeys – station to station', co(function* (t) {
 	const journeys = yield client.journeys(spichernstr, amrumerStr, {
-		results: 3, when, passedStations: true
+		results: 3, departure: when, passedStations: true
 	})
 
 	t.ok(Array.isArray(journeys))
@@ -108,7 +108,7 @@ test('journeys – station to station', co(function* (t) {
 
 test('journeys – only subway', co(function* (t) {
 	const journeys = yield client.journeys(spichernstr, bismarckstr, {
-		results: 20, when,
+		results: 20, departure: when,
 		products: {
 			suburban: false,
 			subway:   true,
@@ -136,9 +136,10 @@ test('journeys – only subway', co(function* (t) {
 }))
 
 test('journeys – fails with no product', co(function* (t) {
+	t.plan(1)
 	try {
 		client.journeys(spichernstr, bismarckstr, {
-			when,
+			departure: when,
 			products: {
 				suburban: false,
 				subway:   false,
@@ -159,7 +160,7 @@ test('journeys – fails with no product', co(function* (t) {
 
 test('earlier/later journeys', co(function* (t) {
 	const model = yield client.journeys(spichernstr, bismarckstr, {
-		results: 3, when
+		results: 3, departure: when
 	})
 
 	t.equal(typeof model.earlierRef, 'string')
@@ -167,15 +168,25 @@ test('earlier/later journeys', co(function* (t) {
 	t.equal(typeof model.laterRef, 'string')
 	t.ok(model.laterRef)
 
-	// when and earlierThan/laterThan should be mutually exclusive
+	// departure/arrival and earlierThan/laterThan should be mutually exclusive
 	t.throws(() => {
 		client.journeys(spichernstr, bismarckstr, {
-			when, earlierThan: model.earlierRef
+			departure: when, earlierThan: model.earlierRef
 		})
 	})
 	t.throws(() => {
 		client.journeys(spichernstr, bismarckstr, {
-			when, laterThan: model.laterRef
+			departure: when, laterThan: model.laterRef
+		})
+	})
+	t.throws(() => {
+		client.journeys(spichernstr, bismarckstr, {
+			arrival: when, earlierThan: model.earlierRef
+		})
+	})
+	t.throws(() => {
+		client.journeys(spichernstr, bismarckstr, {
+			arrival: when, laterThan: model.laterRef
 		})
 	})
 
@@ -209,7 +220,7 @@ test('earlier/later journeys', co(function* (t) {
 
 test('journey leg details', co(function* (t) {
 	const journeys = yield client.journeys(spichernstr, amrumerStr, {
-		results: 1, when
+		results: 1, departure: when
 	})
 
 	const p = journeys[0].legs[0]
@@ -238,7 +249,7 @@ test('journeys – station to address', co(function* (t) {
 		type: 'location',
 		address: 'Torfstr. 17, Berlin',
 		latitude: 52.541797, longitude: 13.350042
-	}, {results: 1, when})
+	}, {results: 1, departure: when})
 
 	t.ok(Array.isArray(journeys))
 	t.strictEqual(journeys.length, 1)
@@ -267,7 +278,7 @@ test('journeys – station to POI', co(function* (t) {
 		id: '900980720',
 		name: 'Berlin, Atze Musiktheater für Kinder',
 		latitude: 52.543333, longitude: 13.351686
-	}, {results: 1, when})
+	}, {results: 1, departure: when})
 
 	t.ok(Array.isArray(journeys))
 	t.strictEqual(journeys.length, 1)
@@ -298,7 +309,7 @@ test('journeys: via works – with detour', co(function* (t) {
 	const [journey] = yield client.journeys(westhafen, wedding, {
 		via: württembergallee,
 		results: 1,
-		when,
+		departure: when,
 		passedStations: true
 	})
 
@@ -319,7 +330,7 @@ test('journeys: via works – without detour', co(function* (t) {
 	const [journey] = yield client.journeys(ruhleben, zoo, {
 		via: kastanienallee,
 		results: 1,
-		when,
+		departure: when,
 		passedStations: true
 	})
 

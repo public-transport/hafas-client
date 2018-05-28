@@ -101,7 +101,7 @@ const regensburgHbf = '8000309'
 
 test('Berlin Jungfernheide to München Hbf', co(function* (t) {
 	const journeys = yield client.journeys(jungfernh, münchenHbf, {
-		when, passedStations: true
+		departure: when, passedStations: true
 	})
 
 	t.ok(Array.isArray(journeys))
@@ -144,7 +144,7 @@ test('Berlin Jungfernheide to Torfstraße 17', co(function* (t) {
 	const journeys = yield client.journeys(jungfernh, {
 		type: 'location', address: 'Torfstraße 17',
 		latitude: 52.5416823, longitude: 13.3491223
-	}, {when})
+	}, {departure: when})
 
 	t.ok(Array.isArray(journeys))
 	t.ok(journeys.length >= 1, 'no journeys')
@@ -173,7 +173,7 @@ test('Berlin Jungfernheide to ATZE Musiktheater', co(function* (t) {
 	const journeys = yield client.journeys(jungfernh, {
 		type: 'location', id: '991598902', name: 'ATZE Musiktheater',
 		latitude: 52.542417, longitude: 13.350437
-	}, {when})
+	}, {departure: when})
 
 	t.ok(Array.isArray(journeys))
 	t.ok(journeys.length >= 1, 'no journeys')
@@ -207,7 +207,7 @@ test('journeys: via works – with detour', co(function* (t) {
 	const [journey] = yield client.journeys(westhafen, wedding, {
 		via: württembergallee,
 		results: 1,
-		when,
+		departure: when,
 		passedStations: true
 	})
 
@@ -228,7 +228,7 @@ test('journeys: via works – without detour', co(function* (t) {
 	const [journey] = yield client.journeys(ruhleben, zoo, {
 		via: kastanienallee,
 		results: 1,
-		when,
+		departure: when,
 		passedStations: true
 	})
 
@@ -242,7 +242,7 @@ test('journeys: via works – without detour', co(function* (t) {
 
 test('earlier/later journeys, Jungfernheide -> München Hbf', co(function* (t) {
 	const model = yield client.journeys(jungfernh, münchenHbf, {
-		results: 3, when
+		results: 3, departure: when
 	})
 
 	t.equal(typeof model.earlierRef, 'string')
@@ -253,12 +253,12 @@ test('earlier/later journeys, Jungfernheide -> München Hbf', co(function* (t) {
 	// when and earlierThan/laterThan should be mutually exclusive
 	t.throws(() => {
 		client.journeys(jungfernh, münchenHbf, {
-			when, earlierThan: model.earlierRef
+			departure: when, earlierThan: model.earlierRef
 		})
 	})
 	t.throws(() => {
 		client.journeys(jungfernh, münchenHbf, {
-			when, laterThan: model.laterRef
+			departure: when, laterThan: model.laterRef
 		})
 	})
 

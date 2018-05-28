@@ -99,7 +99,7 @@ const schleswig = '8005362'
 
 test('Kiel Hbf to Flensburg', co(function* (t) {
 	const journeys = yield client.journeys(kielHbf, flensburg, {
-		when, passedStations: true
+		departure: when, passedStations: true
 	})
 
 	t.ok(Array.isArray(journeys))
@@ -148,7 +148,7 @@ test('Kiel Hbf to Husum, Zingel 10', co(function* (t) {
 		address: 'Husum, Zingel 10'
 	}
 
-	const journeys = yield client.journeys(kielHbf, zingel, {when})
+	const journeys = yield client.journeys(kielHbf, zingel, {departure: when})
 
 	t.ok(Array.isArray(journeys))
 	t.ok(journeys.length >= 1, 'no journeys')
@@ -185,7 +185,7 @@ test('Holstentor to Kiel Hbf', co(function* (t) {
 		name: 'Hansestadt Lübeck, Holstentor (Denkmal)',
 		id: '970003547'
 	}
-	const journeys = yield client.journeys(holstentor, kielHbf, {when})
+	const journeys = yield client.journeys(holstentor, kielHbf, {departure: when})
 
 	t.ok(Array.isArray(journeys))
 	t.ok(journeys.length >= 1, 'no journeys')
@@ -219,7 +219,7 @@ test('Husum to Lübeck Hbf with stopover at Husum', co(function* (t) {
 	const [journey] = yield client.journeys(husum, luebeckHbf, {
 		via: kielHbf,
 		results: 1,
-		when
+		departure: when
 	})
 
 	const i1 = journey.legs.findIndex(leg => leg.destination.id === kielHbf)
@@ -234,7 +234,7 @@ test('Husum to Lübeck Hbf with stopover at Husum', co(function* (t) {
 
 test('earlier/later journeys, Kiel Hbf -> Flensburg', co(function* (t) {
 	const model = yield client.journeys(kielHbf, flensburg, {
-		results: 3, when
+		results: 3, departure: when
 	})
 
 	t.equal(typeof model.earlierRef, 'string')
@@ -245,12 +245,12 @@ test('earlier/later journeys, Kiel Hbf -> Flensburg', co(function* (t) {
 	// when and earlierThan/laterThan should be mutually exclusive
 	t.throws(() => {
 		client.journeys(kielHbf, flensburg, {
-			when, earlierThan: model.earlierRef
+			departure: when, earlierThan: model.earlierRef
 		})
 	})
 	t.throws(() => {
 		client.journeys(kielHbf, flensburg, {
-			when, laterThan: model.laterRef
+			departure: when, laterThan: model.laterRef
 		})
 	})
 
@@ -284,7 +284,7 @@ test('earlier/later journeys, Kiel Hbf -> Flensburg', co(function* (t) {
 
 test('leg details for Flensburg to Husum', co(function* (t) {
 	const journeys = yield client.journeys(flensburg, husum, {
-		results: 1, when
+		results: 1, departure: when
 	})
 
 	const p = journeys[0].legs[0]

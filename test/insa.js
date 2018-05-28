@@ -70,7 +70,7 @@ test('Magdeburg Hbf to Magdeburg-Buckau', co(function*(t) {
 	const magdeburgHbf = '8010224'
 	const magdeburgBuckau = '8013456'
 	const journeys = yield client.journeys(magdeburgHbf, magdeburgBuckau, {
-		when,
+		departure: when,
 		passedStations: true
 	})
 
@@ -110,7 +110,7 @@ test('Magdeburg Hbf to 39104 Magdeburg, Sternstr. 10', co(function*(t) {
 	}
 
 	const journeys = yield client.journeys(magdeburgHbf, sternStr, {
-		when
+		departure: when
 	})
 
 	t.ok(Array.isArray(journeys))
@@ -147,7 +147,7 @@ test('Kloster Unser Lieben Frauen to Magdeburg Hbf', co(function*(t) {
 	}
 	const magdeburgHbf = '8010224'
 	const journeys = yield client.journeys(kloster, magdeburgHbf, {
-		when
+		departure: when
 	})
 
 	t.ok(Array.isArray(journeys))
@@ -185,7 +185,7 @@ test('journeys: via works – with detour', co(function* (t) {
 	const [journey] = yield client.journeys(hasselbachplatzSternstrasse, stendal, {
 		via: dessau,
 		results: 1,
-		when,
+		departure: when,
 		passedStations: true
 	})
 
@@ -208,7 +208,7 @@ test('journeys: via works – without detour', co(function* (t) {
 	const [journey] = yield client.journeys(hasselbachplatzSternstrasse, universitaet, {
 		via: breiterWeg,
 		results: 1,
-		when,
+		departure: when,
 		passedStations: true
 	})
 
@@ -270,7 +270,7 @@ test('journey leg details', co(function* (t) {
 	const magdeburgHbf = '8010224'
 	const magdeburgBuckau = '8013456'
 	const [journey] = yield client.journeys(magdeburgHbf, magdeburgBuckau, {
-		results: 1, when
+		results: 1, departure: when
 	})
 
 	const p = journey.legs[0]
