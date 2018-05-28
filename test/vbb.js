@@ -158,6 +158,23 @@ test('journeys – fails with no product', co(function* (t) {
 	}
 }))
 
+test('journeys before date/time', co(function* (t) {
+	const journeys = yield client.journeys(spichernstr, bismarckstr, {
+		results: 3, arrival: when
+	})
+
+	for (let i = 0; i < journeys.length; i++) {
+		const j = journeys[i]
+		const name = `journeys[${i}]`
+
+		const lastLeg = j.legs[j.legs.length - 1]
+		const arr = +new Date(lastLeg.arrival)
+		t.ok(arr <= when, name + '.arrival is after `when`')
+	}
+
+	t.end()
+}))
+
 test('earlier/later journeys', co(function* (t) {
 	const model = yield client.journeys(spichernstr, bismarckstr, {
 		results: 3, departure: when
