@@ -125,7 +125,7 @@ const formatProducts = (products) => {
 const nahshProfile = {
 	locale: 'de-DE',
 	timezone: 'Europe/Berlin',
-	endpoint: 'http://nah.sh.hafas.de/bin/mgate.exe',
+	endpoint: 'https://nah.sh.hafas.de/bin/mgate.exe',
 	transformReqBody,
 
 	products: products.allProducts,
