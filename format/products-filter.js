@@ -16,12 +16,14 @@ const createFormatProductsFilter = (profile) => {
 		if (!isObj(filter)) throw new Error('products filter must be an object')
 		filter = Object.assign({}, defaultProducts, filter)
 
-		let res = 0
+		let res = 0, products = 0
 		for (let product in filter) {
 			if (!hasProp(filter, product) || filter[product] !== true) continue
 			if (!byProduct[product]) throw new Error('unknown product ' + product)
+			products++
 			for (let bitmask of byProduct[product].bitmasks) res += bitmask
 		}
+		if (products === 0) throw new Error('no products used')
 
 		return {
 			type: 'PROD',
