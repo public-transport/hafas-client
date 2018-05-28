@@ -120,7 +120,7 @@ const grazHbf = '8100173'
 
 test('Salzburg Hbf to Wien Westbahnhof', co(function* (t) {
 	const journeys = yield client.journeys(salzburgHbf, wienWestbahnhof, {
-		when, passedStations: true
+		departure: when, passedStations: true
 	})
 
 	t.ok(Array.isArray(journeys))
@@ -169,7 +169,7 @@ test('Salzburg Hbf to 1220 Wien, Wagramer Straße 5', co(function* (t) {
     	address: '1220 Wien, Wagramer Straße 5'
 	}
 
-	const journeys = yield client.journeys(salzburgHbf, wagramerStr, {when})
+	const journeys = yield client.journeys(salzburgHbf, wagramerStr, {departure: when})
 
 	t.ok(Array.isArray(journeys))
 	t.ok(journeys.length >= 1, 'no journeys')
@@ -206,7 +206,7 @@ test('Albertina to Salzburg Hbf', co(function* (t) {
     	name: 'Albertina',
     	id: '975900003'
 	}
-	const journeys = yield client.journeys(albertina, salzburgHbf, {when})
+	const journeys = yield client.journeys(albertina, salzburgHbf, {departure: when})
 
 	t.ok(Array.isArray(journeys))
 	t.ok(journeys.length >= 1, 'no journeys')
@@ -246,7 +246,7 @@ test('journeys: via works – with detour', co(function* (t) {
 	const [journey] = yield client.journeys(stephansplatz, schottenring, {
 		via: donauinsel,
 		results: 1,
-		when,
+		departure: when,
 		passedStations: true
 	})
 
@@ -269,7 +269,7 @@ test('journeys: via works – without detour', co(function* (t) {
 	const [journey] = yield client.journeys(karlsplatz, praterstern, {
 		via: museumsquartier,
 		results: 1,
-		when,
+		departure: when,
 		passedStations: true
 	})
 
@@ -283,7 +283,7 @@ test('journeys: via works – without detour', co(function* (t) {
 
 test('earlier/later journeys, Salzburg Hbf -> Wien Westbahnhof', co(function* (t) {
 	const model = yield client.journeys(salzburgHbf, wienWestbahnhof, {
-		results: 3, when
+		results: 3, departure: when
 	})
 
 	t.equal(typeof model.earlierRef, 'string')
@@ -294,12 +294,12 @@ test('earlier/later journeys, Salzburg Hbf -> Wien Westbahnhof', co(function* (t
 	// when and earlierThan/laterThan should be mutually exclusive
 	t.throws(() => {
 		client.journeys(salzburgHbf, wienWestbahnhof, {
-			when, earlierThan: model.earlierRef
+			departure: when, earlierThan: model.earlierRef
 		})
 	})
 	t.throws(() => {
 		client.journeys(salzburgHbf, wienWestbahnhof, {
-			when, laterThan: model.laterRef
+			departure: when, laterThan: model.laterRef
 		})
 	})
 
@@ -333,7 +333,7 @@ test('earlier/later journeys, Salzburg Hbf -> Wien Westbahnhof', co(function* (t
 
 test('leg details for Wien Westbahnhof to München Hbf', co(function* (t) {
 	const journeys = yield client.journeys(wienWestbahnhof, muenchenHbf, {
-		results: 1, when
+		results: 1, departure: when
 	})
 
 	const p = journeys[0].legs[0]
