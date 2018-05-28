@@ -58,10 +58,9 @@ const assertIsKielHbf = (t, s) => {
 
 // todo: DRY with assertValidStationProducts
 // todo: DRY with other tests
-const assertValidProducts = (t, p) => {
-	for (let product of allProducts) {
-		product = product.product // wat
-		t.equal(typeof p[product], 'boolean', 'product ' + p + ' must be a boolean')
+const assertValidProducts = (t, products) => {
+	for (let p of allProducts) {
+		t.equal(typeof products[p.id], 'boolean', `product ${p.id} must be a boolean`)
 	}
 }
 
