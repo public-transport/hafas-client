@@ -62,7 +62,10 @@ const createClient = (profile, request = _request) => {
 		to = profile.formatLocation(profile, to, 'to')
 
 		if (('earlierThan' in opt) && ('laterThan' in opt)) {
-			throw new Error('opt.laterThan and opt.laterThan are mutually exclusive.')
+			throw new Error('opt.earlierThan and opt.laterThan are mutually exclusive.')
+		}
+		if (('departure' in opt) && ('arrival' in opt)) {
+			throw new Error('opt.departure and opt.arrival are mutually exclusive.')
 		}
 		let journeysRef = null
 		if ('earlierThan' in opt) {
