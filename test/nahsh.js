@@ -191,8 +191,10 @@ test('journey leg details for Flensburg to Husum', co(function* (t) {
 	t.end()
 }))
 
-test('departures at Kiel Hbf', co(function* (t) {
-	const departures = yield client.departures(kielHbf, {
+test('departures at Kiel Räucherei', co(function* (t) {
+	const kielRaeucherei = '3440091'
+
+	const departures = yield client.departures(kielRaeucherei, {
 		duration: 30, when
 	})
 
@@ -200,7 +202,7 @@ test('departures at Kiel Hbf', co(function* (t) {
 		test: t,
 		departures,
 		validate,
-		id: kielHbf
+		id: kielRaeucherei
 	})
 	t.end()
 }))

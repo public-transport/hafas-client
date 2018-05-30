@@ -12,7 +12,8 @@ const createClient = require('..')
 const dbProfile = require('../p/db')
 const products = require('../p/db/products')
 const {
-	station: createValidateStation
+	station: createValidateStation,
+	journeyLeg: createValidateJourneyLeg
 } = require('./lib/validators')
 const createValidate = require('./lib/validate-fptf-with')
 const testJourneysStationToStation = require('./lib/journeys-station-to-station')
@@ -193,7 +194,15 @@ test('journey leg details', co(function* (t) {
 	t.ok(p.line.name, 'precondition failed')
 	const leg = yield client.journeyLeg(p.id, p.line.name, {when})
 
+	const validateJourneyLeg = createValidateJourneyLeg(cfg)
+	const validate = createValidate(cfg, {
+		journeyLeg: (validate, leg, name) => {
+			if (!leg.direction) leg.direction = 'foo' // todo, see #49
+			validateJourneyLeg(validate, leg, name)
+		}
+	})
 	validate(t, leg, 'journeyLeg', 'leg')
+
 	t.end()
 }))
 

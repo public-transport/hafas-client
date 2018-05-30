@@ -19,7 +19,6 @@ const testJourneysStationToAddress = require('./lib/journeys-station-to-address'
 const testJourneysStationToPoi = require('./lib/journeys-station-to-poi')
 const testEarlierLaterJourneys = require('./lib/earlier-later-journeys')
 const journeysFailsWithNoProduct = require('./lib/journeys-fails-with-no-product')
-const testDepartures = require('./lib/departures')
 const testJourneysWithDetour = require('./lib/journeys-with-detour')
 
 const when = createWhen('Europe/Vienna', 'de-AT')
@@ -221,20 +220,29 @@ test('leg details for Wien Westbahnhof to München Hbf', co(function* (t) {
 	t.end()
 }))
 
-test.skip('departures at Wien Renngasse', co(function* (t) {
+test('departures at Wien Leibenfrostgasse', co(function* (t) {
 	const wienLeibenfrostgasse = '1390469'
-	const departures = yield client.departures(wienLeibenfrostgasse, {
+	const ids = [
+		wienLeibenfrostgasse, // station
+		'904029', // stop "Wien Leibenfrostgasse (Phorusgasse)s"
+		'904030' // stop "Wien Leibenfrostgasse (Ziegelofengasse)"
+	]
+
+	const deps = yield client.departures(wienLeibenfrostgasse, {
 		duration: 15, when
 	})
 
-	// todo: fix this
-	// ÖBB HAFAS data is just too detailed :P
-	yield testDepartures({
-		test: t,
-		departures,
-		validate,
-		id: wienLeibenfrostgasse
-	})
+	validate(t, deps, 'departures', 'departures')
+	t.ok(deps.length > 0, 'must be >0 departures')
+	// todo: move into deps validator
+	t.deepEqual(deps, deps.sort((a, b) => t.when > b.when))
+
+	for (let i = 0; i < deps.length; i++) {
+		const dep = deps[i]
+		const msg = `deps[${i}].station.id is invalid`
+		t.ok(ids.includes(dep.station.id, msg))
+	}
+
 	t.end()
 }))
 
