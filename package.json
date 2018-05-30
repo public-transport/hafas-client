@@ -1,7 +1,7 @@
 {
 	"name": "hafas-client",
 	"description": "JavaScript client for HAFAS public transport APIs.",
-	"version": "2.6.0",
+	"version": "2.7.3",
 	"main": "index.js",
 	"files": [
 		"index.js",
@@ -32,8 +32,11 @@
 		"node": ">=6"
 	},
 	"dependencies": {
+		"@mapbox/polyline": "^1.0.0",
 		"capture-stack-trace": "^1.0.0",
+		"create-hash": "^1.2.0",
 		"fetch-ponyfill": "^6.0.0",
+		"gps-distance": "0.0.4",
 		"lodash": "^4.17.5",
 		"luxon": "^0.5.8",
 		"p-throttle": "^1.1.0",
