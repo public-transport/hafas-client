@@ -1,5 +1,7 @@
 # hafas-client
 
+FOR REACT NATIVE
+
 **A client for HAFAS public transport APIs**. Sort of like [public-transport-enabler](https://github.com/schildbach/public-transport-enabler), but with a smaller scope. It [contains customisations](p) for the following transport networks:
 
 HAFAS endpoint | wrapper library | docs | example code | source code
@@ -27,7 +29,9 @@ There's [a company called HaCon](http://hacon.de) that sells [a public transport
 ## Installing
 
 ```shell
-npm install hafas-client
+npm install https://github.com/guitar9/hafas-client.git
+react-native link react-native-randombytes
+./node_modules/.bin/rn-nodeify --hack --install
 ```
 
 
