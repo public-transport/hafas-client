@@ -14,7 +14,7 @@ const journeysFailsWithNoProduct = (cfg) => {
 	for (let p of products) productsObj[p.id] = false
 
 	t.throws(() => {
-		client.journeys(fromId, toId, {when, products})
+		client.journeys(fromId, toId, {departure: when, products})
 		// silence rejections, we're only interested in exceptions
 		.catch(() => {})
 	})

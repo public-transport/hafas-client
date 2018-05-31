@@ -62,15 +62,18 @@ const createClient = (profile, request = _request) => {
 		to = profile.formatLocation(profile, to, 'to')
 
 		if (('earlierThan' in opt) && ('laterThan' in opt)) {
-			throw new Error('opt.laterThan and opt.laterThan are mutually exclusive.')
+			throw new Error('opt.earlierThan and opt.laterThan are mutually exclusive.')
+		}
+		if (('departure' in opt) && ('arrival' in opt)) {
+			throw new Error('opt.departure and opt.arrival are mutually exclusive.')
 		}
 		let journeysRef = null
 		if ('earlierThan' in opt) {
 			if (!isNonEmptyString(opt.earlierThan)) {
 				throw new Error('opt.earlierThan must be a non-empty string.')
 			}
-			if ('when' in opt) {
-				throw new Error('opt.earlierThan and opt.when are mutually exclusive.')
+			if (('departure' in opt) || ('arrival' in opt)) {
+				throw new Error('opt.earlierThan and opt.departure/opt.arrival are mutually exclusive.')
 			}
 			journeysRef = opt.earlierThan
 		}
@@ -78,8 +81,8 @@ const createClient = (profile, request = _request) => {
 			if (!isNonEmptyString(opt.laterThan)) {
 				throw new Error('opt.laterThan must be a non-empty string.')
 			}
-			if ('when' in opt) {
-				throw new Error('opt.laterThan and opt.when are mutually exclusive.')
+			if (('departure' in opt) || ('arrival' in opt)) {
+				throw new Error('opt.laterThan and opt.departure/opt.arrival are mutually exclusive.')
 			}
 			journeysRef = opt.laterThan
 		}
@@ -97,8 +100,19 @@ const createClient = (profile, request = _request) => {
 			polylines: false // return leg shapes?
 		}, opt)
 		if (opt.via) opt.via = profile.formatLocation(profile, opt.via, 'opt.via')
-		opt.when = new Date(opt.when || Date.now())
-		if (Number.isNaN(+opt.when)) throw new Error('opt.when is invalid')
+
+		if (opt.when !== undefined) {
+			throw new Error('opt.when is not supported anymore. Use opt.departure/opt.arrival.')
+		}
+		let when = new Date(), outFrwd = true
+		if (opt.departure !== undefined && opt.departure !== null) {
+			when = new Date(opt.departure)
+			if (Number.isNaN(+when)) throw new Error('opt.departure is invalid')
+		} else if (opt.arrival !== undefined && opt.arrival !== null) {
+			when = new Date(opt.arrival)
+			if (Number.isNaN(+when)) throw new Error('opt.arrival is invalid')
+			outFrwd = false
+		}
 
 		const filters = [
 			profile.formatProductsFilter(opt.products || {})
@@ -132,10 +146,10 @@ const createClient = (profile, request = _request) => {
 				arrLocL: [to],
 				jnyFltrL: filters,
 				getTariff: !!opt.tickets,
+				outFrwd,
 
 				// todo: what is req.gisFltrL?
 				getPT: true, // todo: what is this?
-				outFrwd: true, // todo: what is this?
 				getIV: false, // todo: walk & bike as alternatives?
 				getPolyline: !!opt.polylines
 			}
@@ -172,7 +186,7 @@ const createClient = (profile, request = _request) => {
 			})
 		}
 
-		return more(opt.when, journeysRef)
+		return more(when, journeysRef)
 	}
 
 	const locations = (query, opt = {}) => {

@@ -111,7 +111,9 @@ const württembergallee = '900000026153'
 
 test('journeys – Spichernstr. to Bismarckstr.', co(function* (t) {
 	const journeys = yield client.journeys(spichernstr, bismarckstr, {
-		results: 3, when, passedStations: true
+		results: 3,
+		departure: when,
+		passedStations: true
 	})
 
 	yield testJourneysStationToStation({
@@ -128,7 +130,8 @@ test('journeys – Spichernstr. to Bismarckstr.', co(function* (t) {
 
 test('journeys – only subway', co(function* (t) {
 	const journeys = yield client.journeys(spichernstr, bismarckstr, {
-		results: 20, when,
+		results: 20,
+		departure: when,
 		products: {
 			suburban: false,
 			subway:   true,
@@ -185,7 +188,7 @@ test('earlier/later journeys', co(function* (t) {
 
 test('journey leg details', co(function* (t) {
 	const journeys = yield client.journeys(spichernstr, amrumerStr, {
-		results: 1, when
+		results: 1, departure: when
 	})
 
 	const p = journeys[0].legs[0]
@@ -205,7 +208,8 @@ test('journeys – station to address', co(function* (t) {
 		longitude: 13.350042
 	}
 	const journeys = yield client.journeys(spichernstr, torfstr, {
-		results: 3, when
+		results: 3,
+		departure: when
 	})
 
 	yield testJourneysStationToAddress({
@@ -227,7 +231,8 @@ test('journeys – station to POI', co(function* (t) {
 		longitude: 13.351686
 	}
 	const journeys = yield client.journeys(spichernstr, atze, {
-		results: 3, when
+		results: 3,
+		departure: when
 	})
 
 	yield testJourneysStationToPoi({
@@ -246,7 +251,7 @@ test('journeys: via works – with detour', co(function* (t) {
 	const journeys = yield client.journeys(westhafen, wedding, {
 		via: württembergallee,
 		results: 1,
-		when,
+		departure: when,
 		passedStations: true
 	})
 

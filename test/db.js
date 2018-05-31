@@ -76,7 +76,7 @@ const regensburgHbf = '8000309'
 
 test('journeys – Berlin Schwedter Str. to München Hbf', co(function* (t) {
 	const journeys = yield client.journeys(blnSchwedterStr, münchenHbf, {
-		results: 3, when, passedStations: true
+		results: 3, departure: when, passedStations: true
 	})
 
 	yield testJourneysStationToStation({
@@ -116,7 +116,8 @@ test('Berlin Schwedter Str. to Torfstraße 17', co(function* (t) {
 		longitude: 13.3491223
 	}
 	const journeys = yield client.journeys(blnSchwedterStr, torfstr, {
-		results: 3, when
+		results: 3,
+		departure: when
 	})
 
 	yield testJourneysStationToAddress({
@@ -138,7 +139,8 @@ test('Berlin Schwedter Str. to ATZE Musiktheater', co(function* (t) {
 		longitude: 13.350437
 	}
 	const journeys = yield client.journeys(blnSchwedterStr, atze, {
-		results: 3, when
+		results: 3,
+		departure: when
 	})
 
 	yield testJourneysStationToPoi({
@@ -157,7 +159,7 @@ test('journeys: via works – with detour', co(function* (t) {
 	const journeys = yield client.journeys(westhafen, wedding, {
 		via: württembergallee,
 		results: 1,
-		when,
+		departure: when,
 		passedStations: true
 	})
 
@@ -186,7 +188,7 @@ test('earlier/later journeys, Jungfernheide -> München Hbf', co(function* (t) {
 
 test('journey leg details', co(function* (t) {
 	const journeys = yield client.journeys(berlinHbf, münchenHbf, {
-		results: 1, when
+		results: 1, departure: when
 	})
 
 	const p = journeys[0].legs[0]

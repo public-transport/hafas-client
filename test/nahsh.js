@@ -67,7 +67,9 @@ const schleswig = '8005362'
 
 test('journeys – Kiel Hbf to Flensburg', co(function* (t) {
 	const journeys = yield client.journeys(kielHbf, flensburg, {
-		results: 3, when, passedStations: true
+		results: 3,
+		departure: when,
+		passedStations: true
 	})
 
 	yield testJourneysStationToStation({
@@ -109,7 +111,8 @@ test('Kiel Hbf to Husum, Zingel 10', co(function* (t) {
 		longitude: 9.050798
 	}
 	const journeys = yield client.journeys(kielHbf, zingel, {
-		results: 3, when
+		results: 3,
+		departure: when
 	})
 
 	yield testJourneysStationToAddress({
@@ -131,7 +134,8 @@ test('Kiel Hbf to Holstentor', co(function* (t) {
 		longitude: 10.679976
 	}
 	const journeys = yield client.journeys(kielHbf, holstentor, {
-		results: 3, when
+		results: 3,
+		departure: when
 	})
 
 	yield testJourneysStationToPoi({
@@ -147,7 +151,9 @@ test('Kiel Hbf to Holstentor', co(function* (t) {
 test('Husum to Lübeck Hbf with stopover at Kiel Hbf', co(function* (t) {
 	const journeys = yield client.journeys(husum, luebeckHbf, {
 		via: kielHbf,
-		results: 1, when, passedStations: true
+		results: 1,
+		departure: when,
+		passedStations: true
 	})
 
 	validate(t, journeys, 'journeys', 'journeys')
@@ -179,7 +185,7 @@ test('earlier/later journeys, Kiel Hbf -> Flensburg', co(function* (t) {
 
 test('journey leg details for Flensburg to Husum', co(function* (t) {
 	const journeys = yield client.journeys(flensburg, husum, {
-		results: 1, when
+		results: 1, departure: when
 	})
 
 	const p = journeys[0].legs[0]

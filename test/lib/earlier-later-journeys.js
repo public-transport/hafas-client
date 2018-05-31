@@ -13,7 +13,7 @@ const testEarlierLaterJourneys = co(function* (cfg) {
 	} = cfg
 
 	const model = yield fetchJourneys(fromId, toId, {
-		results: 3, when
+		results: 3, departure: when
 	})
 
 	// todo: move to journeys validator?
@@ -22,17 +22,31 @@ const testEarlierLaterJourneys = co(function* (cfg) {
 	t.equal(typeof model.laterRef, 'string')
 	t.ok(model.laterRef)
 
-	// when and earlierThan/laterThan should be mutually exclusive
+	// departure/arrival and earlierThan/laterThan should be mutually exclusive
 	t.throws(() => {
 		fetchJourneys(fromId, toId, {
-			when, earlierThan: model.earlierRef
+			departure: when, earlierThan: model.earlierRef
 		})
 		// silence rejections, we're only interested in exceptions
 		.catch(() => {})
 	})
 	t.throws(() => {
 		fetchJourneys(fromId, toId, {
-			when, laterThan: model.laterRef
+			departure: when, laterThan: model.laterRef
+		})
+		// silence rejections, we're only interested in exceptions
+		.catch(() => {})
+	})
+	t.throws(() => {
+		fetchJourneys(fromId, toId, {
+			arrival: when, earlierThan: model.earlierRef
+		})
+		// silence rejections, we're only interested in exceptions
+		.catch(() => {})
+	})
+	t.throws(() => {
+		fetchJourneys(fromId, toId, {
+			arrival: when, laterThan: model.laterRef
 		})
 		// silence rejections, we're only interested in exceptions
 		.catch(() => {})

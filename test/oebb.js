@@ -60,7 +60,9 @@ const wienRenngasse = '1390186'
 
 test.skip('journeys – Salzburg Hbf to Wien Westbahnhof', co(function* (t) {
 	const journeys = yield client.journeys(salzburgHbf, wienFickeystr, {
-		results: 3, when, passedStations: true
+		results: 3,
+		departure: when,
+		passedStations: true
 	})
 
 	yield testJourneysStationToStation({
@@ -101,7 +103,8 @@ test('Salzburg Hbf to 1220 Wien, Wagramer Straße 5', co(function* (t) {
     	longitude: 16.425863
 	}
 	const journeys = yield client.journeys(salzburgHbf, wagramerStr, {
-		results: 3, when
+		results: 3,
+		departure: when
 	})
 
 	yield testJourneysStationToAddress({
@@ -123,7 +126,7 @@ test('Salzburg Hbf to Albertina', co(function* (t) {
     	longitude: 16.368404
 	}
 	const journeys = yield client.journeys(salzburgHbf, albertina, {
-		results: 3, when
+		results: 3, departure: when
 	})
 
 	yield testJourneysStationToPoi({
@@ -146,7 +149,7 @@ test('journeys: via works – with detour', co(function* (t) {
 	const journeys = yield client.journeys(stephansplatz, schottenring, {
 		via: donauinsel,
 		results: 1,
-		when,
+		departure: when,
 		passedStations: true
 	})
 
@@ -170,7 +173,7 @@ test('journeys: via works – without detour', co(function* (t) {
 	const journeys = yield client.journeys(karlsplatz, praterstern, {
 		via: museumsquartier,
 		results: 1,
-		when,
+		departure: when,
 		passedStations: true
 	})
 
@@ -208,7 +211,7 @@ test('earlier/later journeys, Salzburg Hbf -> Wien Westbahnhof', co(function* (t
 
 test('leg details for Wien Westbahnhof to München Hbf', co(function* (t) {
 	const journeys = yield client.journeys(wienWestbahnhof, muenchenHbf, {
-		results: 1, when
+		results: 1, departure: when
 	})
 
 	const p = journeys[0].legs[0]
