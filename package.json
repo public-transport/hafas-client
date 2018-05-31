@@ -58,7 +58,8 @@
 		"tape": "^4.8.0",
 		"tape-promise": "^3.0.0",
 		"validate-fptf": "^1.2.1",
-		"vbb-stations-autocomplete": "^3.1.0"
+		"vbb-stations-autocomplete": "^3.1.0",
+		"rn-nodeify": "github:tradle/rn-nodeify"
 	},
 	"scripts": {
 		"test": "env NODE_ENV=dev node test/index.js",
