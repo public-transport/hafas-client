@@ -1,5 +1,4 @@
 'use strict'
-import { Buffer } from 'buffer'
 
 const _createParseLine = require('../../parse/line')
 const _createParseJourney = require('../../parse/journey')
@@ -7,6 +6,7 @@ const _formatStation = require('../../format/station')
 const createParseBitmask = require('../../parse/products-bitmask')
 const createFormatBitmask = require('../../format/products-bitmask')
 const {bike} = require('../../format/filters')
+import Buffer from "buffer"
 
 const modes = require('./modes')
 const formatLoyaltyCard = require('./loyalty-cards').format
@@ -16,7 +16,7 @@ const formatBitmask = createFormatBitmask(modes)
 const transformReqBody = (body) => {
 	body.client = {id: 'DB', v: '16040000', type: 'IPH', name: 'DB Navigator'}
 	body.ext = 'DB.R15.12.a'
-	body.ver = '1.15'
+	body.ver = '1.16'
 	body.auth = {type: 'AID', aid: 'n91dB8Z77MLdoR0K'}
 
 	return body
@@ -60,8 +60,8 @@ const createParseLine = (profile, operators) => {
 	return parseLineWithMode
 }
 
-const createParseJourney = (profile, stations, lines, remarks) => {
-	const parseJourney = _createParseJourney(profile, stations, lines, remarks)
+const createParseJourney = (profile, stations, lines, remarks, polylines) => {
+	const parseJourney = _createParseJourney(profile, stations, lines, remarks, polylines)
 
 	// todo: j.sotRating, j.conSubscr, j.isSotCon, j.showARSLink, k.sotCtxt
 	// todo: j.conSubscr, j.showARSLink, j.useableTime
@@ -146,7 +146,9 @@ const dbProfile = {
 	parseJourney: createParseJourney,
 
 	formatStation,
-	formatProducts
+	formatProducts,
+
+	journeyLeg: true // todo: #49
 }
 
 module.exports = dbProfile

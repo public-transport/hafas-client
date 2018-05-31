@@ -1,9 +1,3 @@
-For React Native
-
-
-
-
-
 # hafas-client
 
 **A client for HAFAS public transport APIs**. Sort of like [public-transport-enabler](https://github.com/schildbach/public-transport-enabler), but with a smaller scope. It [contains customisations](p) for the following transport networks:
@@ -34,9 +28,6 @@ There's [a company called HaCon](http://hacon.de) that sells [a public transport
 
 ```shell
 npm install hafas-client
-react-native link react-native-randombytes
-./node_modules/.bin/rn-nodeify --hack --install
-
 ```
 
 

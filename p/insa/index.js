@@ -66,7 +66,7 @@ const formatBitmask = createFormatBitmask(products)
 const insaProfile = {
 	locale: 'de-DE',
 	timezone: 'Europe/Berlin',
-	endpoint: 'http://reiseauskunft.insa.de/bin/mgate.exe',
+	endpoint: 'https://reiseauskunft.insa.de/bin/mgate.exe',
 	transformReqBody,
 
 	products: products.allProducts,
