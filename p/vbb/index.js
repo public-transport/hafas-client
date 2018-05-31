@@ -5,7 +5,7 @@ const {to12Digit, to9Digit} = require('vbb-translate-ids')
 const parseLineName = require('vbb-parse-line')
 const parseTicket = require('vbb-parse-ticket')
 const getStations = require('vbb-stations')
-import Buffer from "buffer"
+import {Buffer} from "buffer"
 
 const _createParseLine = require('../../parse/line')
 const _parseLocation = require('../../parse/location')

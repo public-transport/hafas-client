@@ -6,7 +6,7 @@ const _formatStation = require('../../format/station')
 const createParseBitmask = require('../../parse/products-bitmask')
 const createFormatBitmask = require('../../format/products-bitmask')
 const {bike} = require('../../format/filters')
-import Buffer from "buffer"
+import {Buffer} from "buffer"
 
 const modes = require('./modes')
 const formatLoyaltyCard = require('./loyalty-cards').format
