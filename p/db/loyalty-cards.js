@@ -1,5 +1,5 @@
 'use strict'
-
+import 'es6-symbol/implement'
 const c = {
 	NONE: Symbol('no loyaly card'),
 	BAHNCARD: Symbol('Bahncard'),
