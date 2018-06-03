@@ -1,11 +1,5 @@
 'use strict'
 
-const shorten = require('vbb-short-station-name')
-const {to12Digit, to9Digit} = require('vbb-translate-ids')
-const parseLineName = require('vbb-parse-line')
-const parseTicket = require('vbb-parse-ticket')
-const getStations = require('vbb-stations')
-
 const _createParseLine = require('../../parse/line')
 const _parseLocation = require('../../parse/location')
 const _createParseJourney = require('../../parse/journey')
@@ -56,5 +50,3 @@ const cmtaProfile = {
 }
 
 module.exports = cmtaProfile
-
-module.exports = vbbProfile
