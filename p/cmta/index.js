@@ -52,6 +52,7 @@ const cmtaProfile = {
 	transformReqBody,
 	formatProducts,
 	parseProducts: createParseBitmask(modes.allProducts, defaultProducts),
+	radar: true
 }
 
 module.exports = cmtaProfile
