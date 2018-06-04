@@ -221,7 +221,7 @@ const createClient = (profile, request = _request) => {
 		})
 	}
 
-	const location = (station) => {
+	const station = (station) => {
 		if ('object' === typeof station) station = profile.formatStation(station.id)
 		else if ('string' === typeof station) station = profile.formatStation(station)
 		else throw new Error('station must be an object or a string.')
@@ -368,7 +368,7 @@ const createClient = (profile, request = _request) => {
 		})
 	}
 
-	const client = {departures, journeys, locations, location, nearby}
+	const client = {departures, journeys, locations, station, nearby}
 	if (profile.journeyLeg) client.journeyLeg = journeyLeg
 	if (profile.radar) client.radar = radar
 	Object.defineProperty(client, 'profile', {value: profile})
