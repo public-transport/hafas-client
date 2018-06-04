@@ -312,9 +312,9 @@ test('locations named Magdeburg', co(function*(t) {
 	t.end()
 }))
 
-test('location', co(function*(t) {
+test('station', co(function*(t) {
 	const magdeburgBuckau = '8013456'
-	const loc = yield client.location(magdeburgBuckau)
+	const loc = yield client.station(magdeburgBuckau)
 
 	assertValidStation(t, loc)
 	t.equal(loc.id, magdeburgBuckau)

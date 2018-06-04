@@ -367,8 +367,8 @@ test('locations named Jungfernheide', co(function* (t) {
 	t.end()
 }))
 
-test('location', co(function* (t) {
-	const loc = yield client.location(regensburgHbf)
+test('station', co(function* (t) {
+	const loc = yield client.station(regensburgHbf)
 
 	assertValidStation(t, loc)
 	t.equal(loc.id, regensburgHbf)

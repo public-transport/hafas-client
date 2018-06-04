@@ -456,8 +456,8 @@ test('locations', co(function* (t) {
 	t.end()
 }))
 
-test('location', co(function* (t) {
-	const loc = yield client.location(spichernstr)
+test('station', co(function* (t) {
+	const loc = yield client.station(spichernstr)
 
 	assertValidStation(t, loc)
 	t.equal(loc.id, spichernstr)
