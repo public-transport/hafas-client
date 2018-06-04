@@ -1,10 +1,5 @@
 'use strict'
 
-const _createParseLine = require('../../parse/line')
-const _parseLocation = require('../../parse/location')
-const _createParseJourney = require('../../parse/journey')
-const _createParseDeparture = require('../../parse/departure')
-const _formatStation = require('../../format/station')
 const createParseBitmask = require('../../parse/products-bitmask')
 const createFormatBitmask = require('../../format/products-bitmask')
 
@@ -26,8 +21,6 @@ const defaultProducts = {
   rapid: true,
   rail: true
 }
-
-const formatBitmask = createFormatBitmask(modes)
 
 const formatProducts = (products) => {
 	products = Object.assign(Object.create(null), defaultProducts, products)
