@@ -39,6 +39,7 @@ const cmtaProfile = {
 	transformReqBody,
 	formatProducts,
 	parseProducts: createParseBitmask(modes.allProducts, defaultProducts),
+	journeyLeg: true,
 	radar: true
 }
 
