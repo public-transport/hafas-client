@@ -418,8 +418,8 @@ test('locations named Salzburg', co(function* (t) {
 	t.end()
 }))
 
-test('location', co(function* (t) {
-	const loc = yield client.location(grazHbf)
+test('station', co(function* (t) {
+	const loc = yield client.station(grazHbf)
 
 	assertValidStation(t, loc)
 	t.equal(loc.id, grazHbf)
