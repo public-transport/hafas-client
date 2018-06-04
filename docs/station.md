@@ -1,9 +1,9 @@
-# `location(station)`
+# `station(id)`
 
-`station` must be in one of these formats:
+`id` must be in one of these formats:
 
 ```js
-// a station ID, in a format compatible to the profile you use
+// a station ID, in a format compatible with the profile you use
 '900000123456'
 
 // an FPTF `station` object
@@ -29,7 +29,7 @@ const vbbProfile = require('hafas-client/p/vbb')
 
 const client = createClient(vbbProfile)
 
-client.location('900000042101') // U Spichernstr.
+client.station('900000042101') // U Spichernstr.
 .then(console.log)
 .catch(console.error)
 ```
