@@ -23,6 +23,8 @@ const createParseJourneyLeg = (profile, stations, lines, remarks, polylines) => 
 			arrival: arr.toISO()
 		}
 
+		// todo: DRY with parseDeparture
+		// todo: DRY with parseStopover
 		if (pt.dep.dTimeR && pt.dep.dTimeS) {
 			const realtime = profile.parseDateTime(profile, j.date, pt.dep.dTimeR)
 			const planned = profile.parseDateTime(profile, j.date, pt.dep.dTimeS)

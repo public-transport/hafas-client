@@ -30,6 +30,8 @@ const createParseDeparture = (profile, stations, lines, remarks) => {
 			res.delay = Math.round((realtime - planned) / 1000)
 		} else res.delay = null
 
+		// todo: DRY with parseStopover
+		// todo: DRY with parseJourneyLeg
 		if (d.stbStop.aCncl || d.stbStop.dCncl) {
 			res.cancelled = true
 			Object.defineProperty(res, 'canceled', {value: true})
