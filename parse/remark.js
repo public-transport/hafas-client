@@ -3,8 +3,13 @@
 const hints = Object.assign(Object.create(null), {
 	fb: {
 		type: 'hint',
-		code: 'bicycle-con',
+		code: 'bicycle-conveyance',
 		text: 'bicycles conveyed'
+	},
+	nf: {
+		type: 'hint',
+		code: 'no-bicycle-conveyance',
+		text: 'bicycles not conveyed'
 	},
 	k2: {
 		type: 'hint',
@@ -30,6 +35,11 @@ const hints = Object.assign(Object.create(null), {
 		type: 'hint',
 		code: 'barrier-free',
 		text: 'barrier-free'
+	},
+	rg: {
+		type: 'hint',
+		code: 'barrier-free-vehicle',
+		text: 'barrier-free vehicle'
 	},
 	bt: {
 		type: 'hint',
@@ -66,9 +76,18 @@ const hints = Object.assign(Object.create(null), {
 // todo: is passing in profile necessary?
 const parseRemark = (profile, r) => {
 	// todo: U "stop cancelled"?
-	// todo: P "journey cancelled", `r.sIdx`?
 	// todo: C
-	if (t.type === 'L') {
+
+	// todo: find sth more reliable than this
+	if (r.type === 'P' && r.txtN.toLowerCase().trim() === 'journey cancelled') {
+		return {
+			type: 'status',
+			code: 'journey-cancelled',
+			text: r.txtN
+			// todo: `r.sIdx`
+		}
+	}
+	if (r.type === 'L') {
 		return {
 			type: 'status',
 			code: 'alternative-trip',
@@ -76,8 +95,10 @@ const parseRemark = (profile, r) => {
 			journeyId: r.jid
 		}
 	}
-	if (t.type === 'A') return hints[r.code && r.code.trim()] || null
-	if (t.type === 'R') {
+	if (r.type === 'A') {
+		return hints[r.code && r.code.trim().toLowerCase()] || null
+	}
+	if (r.type === 'R') {
 		// todo: how can we identify the individual types?
 		return {
 			type: 'status',
