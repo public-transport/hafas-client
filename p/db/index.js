@@ -1,17 +1,11 @@
 'use strict'
 
-const _createParseLine = require('../../parse/line')
 const _createParseJourney = require('../../parse/journey')
 const _formatStation = require('../../format/station')
-const createParseBitmask = require('../../parse/products-bitmask')
-const createFormatBitmask = require('../../format/products-bitmask')
 const {bike} = require('../../format/filters')
-import {Buffer} from "buffer"
 
-const modes = require('./modes')
+const products = require('./products')
 const formatLoyaltyCard = require('./loyalty-cards').format
-
-const formatBitmask = createFormatBitmask(modes)
 
 const transformReqBody = (body) => {
 	body.client = {id: 'DB', v: '16040000', type: 'IPH', name: 'DB Navigator'}
@@ -38,26 +32,6 @@ const transformJourneysQuery = (query, opt) => {
 	}
 
 	return query
-}
-
-const createParseLine = (profile, operators) => {
-	const parseLine = _createParseLine(profile, operators)
-
-	const parseLineWithMode = (l) => {
-		const res = parseLine(l)
-
-		res.mode = res.product = null
-		if ('class' in res) {
-			const data = modes.bitmasks[parseInt(res.class)]
-			if (data) {
-				res.mode = data.mode
-				res.product = data.product
-			}
-		}
-
-		return res
-	}
-	return parseLineWithMode
 }
 
 const createParseJourney = (profile, stations, lines, remarks, polylines) => {
@@ -104,27 +78,6 @@ const formatStation = (id) => {
 	return _formatStation(id)
 }
 
-const defaultProducts = {
-	suburban: true,
-	subway: true,
-	tram: true,
-	bus: true,
-	ferry: true,
-	national: true,
-	nationalExp: true,
-	regional: true,
-	regionalExp: true,
-	taxi: false
-}
-const formatProducts = (products) => {
-	products = Object.assign(Object.create(null), defaultProducts, products)
-	return {
-		type: 'PROD',
-		mode: 'INC',
-		value: formatBitmask(products) + ''
-	}
-}
-
 // todo: find option for absolute number of results
 
 const dbProfile = {
@@ -138,15 +91,12 @@ const dbProfile = {
 	transformReqBody,
 	transformJourneysQuery,
 
-	products: modes.allProducts,
+	products: products,
 
 	// todo: parseLocation
-	parseLine: createParseLine,
-	parseProducts: createParseBitmask(modes.allProducts, defaultProducts),
 	parseJourney: createParseJourney,
 
 	formatStation,
-	formatProducts,
 
 	journeyLeg: true // todo: #49
 }

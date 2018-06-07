@@ -5,7 +5,9 @@
 const createParseStopover = (profile, stations, lines, remarks, date) => {
 	const parseStopover = (st) => {
 		const res = {
-			station: stations[parseInt(st.locX)] || null
+			station: stations[parseInt(st.locX)] || null,
+			arrival: null,
+			departure: null
 		}
 		if (st.aTimeR || st.aTimeS) {
 			const arr = profile.parseDateTime(profile, date, st.aTimeR || st.aTimeS)

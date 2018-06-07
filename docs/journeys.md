@@ -41,7 +41,6 @@ With `opt`, you can override the default options, which look like this:
 ```js
 {
 	when: new Date(),
-	whenRepresents: 'departure', // use 'arrival' for journeys arriving before `when`
 	earlierThan: null, // ref to get journeys earlier than the last query
 	laterThan: null, // ref to get journeys later than the last query
 	results: 5, // how many journeys?
@@ -189,24 +188,7 @@ The response may look like this:
 				arrival: '2017-12-17T19:17:00.000+01:00',
 				departure: '2017-12-17T19:17:00.000+01:00'
 			} ]
-		} ],
-		origin: {
-			type: 'station',
-			id: '900000003201',
-			name: 'S+U Berlin Hauptbahnhof',
-			location: { /* … */ },
-			products: { /* … */ }
-		},
-		departure: '2017-12-17T19:07:00.000+01:00',
-		destination: {
-			type: 'station',
-			id: '900000024101',
-			name: 'S Charlottenburg',
-			location: { /* … */ },
-			products: { /* … */ }
-		},
-		arrival: '2017-12-17T19:47:00.000+01:00',
-		arrivalDelay: 30
+		} ]
 	},
 	earlierRef: '…', // use with the `earlierThan` option
 	laterRef: '…' // use with the `laterThan` option
@@ -261,16 +243,16 @@ const heinrichHeineStr = '900000100008'
 client.journeys(hbf, heinrichHeineStr)
 .then((journeys) => {
 	const lastJourney = journeys[journeys.length - 1]
-	console.log('departure of last journey', lastJourney.departure)
+	console.log('departure of last journey', lastJourney.legs[0].departure)
 
 	// get later journeys
 	return client.journeys(hbf, heinrichHeineStr, {
 		laterThan: journeys.laterRef
 	})
 })
-.then((laterourneys) => {
-	const firstJourney = laterourneys[laterourneys.length - 1]
-	console.log('departure of first (later) journey', firstJourney.departure)
+.then((laterJourneys) => {
+	const firstJourney = laterourneys[laterJourneys.length - 1]
+	console.log('departure of first (later) journey', firstJourney.legs[0].departure)
 })
 .catch(console.error)
 ```
@@ -280,4 +262,4 @@ departure of last journey 2017-12-17T19:07:00.000+01:00
 departure of first (later) journey 2017-12-17T19:19:00.000+01:00
 ```
 
-If you pass `polylines: true`, each journey leg will have a `polyline` field, containing an encoded shape. You can use e.g. [`@mapbox/polyline`](https://www.npmjs.com/package/@mapbox/polyline) to decode it.
+If you pass `polylines: true`, each journey leg will have a `polyline` field. Refer to [the section in the `journeyLeg()` docs](journey-leg.md#polyline-option) for details.
