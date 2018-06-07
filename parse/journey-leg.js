@@ -1,8 +1,24 @@
 'use strict'
 
 const parseDateTime = require('./date-time')
+const findRemark = require('./find-remark')
 
 const clone = obj => Object.assign({}, obj)
+
+const applyRemarksToStopovers = (stopovers, hints, refs) => {
+	for (let ref of refs) {
+		const remark = findRemark(hints, ref)
+		for (let i = ref.fLocX; i <= ref.tLocX; i++) {
+			const stopover = stopovers[i]
+			if (Array.isArray(stopover.remarks)) {
+				stopover.remarks.push(remark)
+			} else {
+				stopover.remarks = [remark]
+			}
+		}
+		// todo: `ref.tagL`
+	}
+}
 
 const createParseJourneyLeg = (profile, stations, lines, hints, polylines) => {
 	// todo: pt.sDays
@@ -57,7 +73,10 @@ const createParseJourneyLeg = (profile, stations, lines, hints, polylines) => {
 				// filter stations the train passes without stopping, as this doesn't comply with fptf (yet)
 				res.passed = passedStations.filter((x) => !x.passBy)
 
-				// todo: pt.jny.remL, j.msgL
+				// todo: pt.jny.remL
+				if (Array.isArray(j.msgL)) {
+					applyRemarksToStopovers(passedStations, hints, j.msgL)
+				}
 			}
 
 			const freq = pt.jny.freq || {}
