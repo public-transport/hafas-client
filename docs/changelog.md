@@ -1,10 +1,12 @@
 # Changelog
 
+## `2.8.1`
+
+- 769f2e3 send `Accept: application/json`
+
 ## `2.8.0`
 
 - 16c3f01 enable [`journeyLeg()`](journey-leg.md) for [DB](../p/db)
-- deb8829 [`journeys()`](journeys.md): new `whenRepresents` option
-- f3d8304 let the `insa` and `nahsh` profiles use HTTPS
 
 ## `2.7.5`
 
