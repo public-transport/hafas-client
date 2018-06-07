@@ -34,8 +34,8 @@ const transformJourneysQuery = (query, opt) => {
 	return query
 }
 
-const createParseJourney = (profile, stations, lines, remarks, polylines) => {
-	const parseJourney = _createParseJourney(profile, stations, lines, remarks, polylines)
+const createParseJourney = (profile, stations, lines, hints, polylines) => {
+	const parseJourney = _createParseJourney(profile, stations, lines, hints, polylines)
 
 	// todo: j.sotRating, j.conSubscr, j.isSotCon, j.showARSLink, k.sotCtxt
 	// todo: j.conSubscr, j.showARSLink, j.useableTime

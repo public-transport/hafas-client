@@ -74,39 +74,39 @@ const hints = Object.assign(Object.create(null), {
 })
 
 // todo: is passing in profile necessary?
-const parseRemark = (profile, r) => {
+const parseHint = (profile, h) => {
 	// todo: U "stop cancelled"?
 	// todo: C
 
 	// todo: find sth more reliable than this
-	if (r.type === 'P' && r.txtN.toLowerCase().trim() === 'journey cancelled') {
+	if (h.type === 'P' && h.txtN.toLowerCase().trim() === 'journey cancelled') {
 		return {
 			type: 'status',
 			code: 'journey-cancelled',
-			text: r.txtN
-			// todo: `r.sIdx`
+			text: h.txtN
+			// todo: `h.sIdx`
 		}
 	}
-	if (r.type === 'L') {
+	if (h.type === 'L') {
 		return {
 			type: 'status',
 			code: 'alternative-trip',
-			text: r.txtN,
-			journeyId: r.jid
+			text: h.txtN,
+			journeyId: h.jid
 		}
 	}
-	if (r.type === 'A') {
-		return hints[r.code && r.code.trim().toLowerCase()] || null
+	if (h.type === 'A') {
+		return hints[h.code && h.code.trim().toLowerCase()] || null
 	}
-	if (r.type === 'R') {
+	if (h.type === 'R') {
 		// todo: how can we identify the individual types?
 		return {
 			type: 'status',
-			code: r.code,
-			text: r.txtN || ''
+			code: h.code,
+			text: h.txtN || ''
 		}
 	}
 	return null
 }
 
-module.exports = parseRemark
+module.exports = parseHint

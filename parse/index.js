@@ -4,7 +4,7 @@ module.exports = {
 	dateTime: require('./date-time'),
 	location: require('./location'),
 	line: require('./line'),
-	remark: require('./remark'),
+	hint: require('./hint'),
 	operator: require('./operator'),
 	stopover: require('./stopover'),
 	journeyLeg: require('./journey-leg'),
