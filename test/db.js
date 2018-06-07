@@ -56,8 +56,8 @@ const isJungfernheide = (s) => {
 	(s.id === '008011167' || s.id === jungfernh) &&
 	s.name === 'Berlin Jungfernheide' &&
 	s.location &&
-	isRoughlyEqual(s.location.latitude, 52.530408, .0005) &&
-	isRoughlyEqual(s.location.longitude, 13.299424, .0005)
+	isRoughlyEqual(.0005, s.location.latitude, 52.530408) &&
+	isRoughlyEqual(.0005, s.location.longitude, 13.299424)
 }
 
 const assertIsJungfernheide = (t, s) => {
@@ -65,8 +65,8 @@ const assertIsJungfernheide = (t, s) => {
 	t.ok(s.id === '008011167' || s.id === jungfernh, 'id should be 8011167')
 	t.equal(s.name, 'Berlin Jungfernheide')
 	t.ok(s.location)
-	t.ok(isRoughlyEqual(s.location.latitude, 52.530408, .0005))
-	t.ok(isRoughlyEqual(s.location.longitude, 13.299424, .0005))
+	t.ok(isRoughlyEqual(.0005, s.location.latitude, 52.530408))
+	t.ok(isRoughlyEqual(.0005, s.location.longitude, 13.299424))
 }
 
 // todo: DRY with assertValidStationProducts

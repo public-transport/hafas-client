@@ -43,8 +43,8 @@ const isKielHbf = (s) => {
 	(s.id === '8000199') &&
 	s.name === 'Kiel Hbf' &&
 	s.location &&
-	isRoughlyEqual(s.location.latitude, 54.314982, .0005) &&
-	isRoughlyEqual(s.location.longitude, 10.131976, .0005)
+	isRoughlyEqual(.0005, s.location.latitude, 54.314982) &&
+	isRoughlyEqual(.0005, s.location.longitude, 10.131976)
 }
 
 const assertIsKielHbf = (t, s) => {
@@ -52,8 +52,8 @@ const assertIsKielHbf = (t, s) => {
 	t.ok(s.id === '8000199', 'id should be 8000199')
 	t.equal(s.name, 'Kiel Hbf')
 	t.ok(s.location)
-	t.ok(isRoughlyEqual(s.location.latitude, 54.314982, .0005))
-	t.ok(isRoughlyEqual(s.location.longitude, 10.131976, .0005))
+	t.ok(isRoughlyEqual(.0005, s.location.latitude, 54.314982))
+	t.ok(isRoughlyEqual(.0005, s.location.longitude, 10.131976))
 }
 
 // todo: DRY with assertValidStationProducts

@@ -40,8 +40,8 @@ const isMagdeburgHbf = s => {
 		(s.id === '8010224' || s.id === '008010224') &&
 		s.name === 'Magdeburg Hbf' &&
 		s.location &&
-		isRoughlyEqual(s.location.latitude, 52.130352, 0.001) &&
-		isRoughlyEqual(s.location.longitude, 11.626891, 0.001)
+		isRoughlyEqual(.001, s.location.latitude, 52.130352) &&
+		isRoughlyEqual(.001, s.location.longitude, 11.626891)
 	)
 }
 
@@ -50,8 +50,8 @@ const assertIsMagdeburgHbf = (t, s) => {
 	t.ok(s.id === '8010224' || s.id === '008010224', 'id should be 8010224')
 	t.equal(s.name, 'Magdeburg Hbf')
 	t.ok(s.location)
-	t.ok(isRoughlyEqual(s.location.latitude, 52.130352, 0.001))
-	t.ok(isRoughlyEqual(s.location.longitude, 11.626891, 0.001))
+	t.ok(isRoughlyEqual(.001, s.location.latitude, 52.130352))
+	t.ok(isRoughlyEqual(.001, s.location.longitude, 11.626891))
 }
 
 // todo: DRY with assertValidStationProducts
