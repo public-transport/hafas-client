@@ -5,9 +5,9 @@ const findRemark = require('./find-remark')
 
 const clone = obj => Object.assign({}, obj)
 
-const applyRemarksToStopovers = (stopovers, hints, refs) => {
+const applyRemarksToStopovers = (stopovers, hints, warnings, refs) => {
 	for (let ref of refs) {
-		const remark = findRemark(hints, ref)
+		const remark = findRemark(hints, warnings, ref)
 		for (let i = ref.fLocX; i <= ref.tLocX; i++) {
 			const stopover = stopovers[i]
 			if (Array.isArray(stopover.remarks)) {
@@ -20,7 +20,7 @@ const applyRemarksToStopovers = (stopovers, hints, refs) => {
 	}
 }
 
-const createParseJourneyLeg = (profile, stations, lines, hints, polylines) => {
+const createParseJourneyLeg = (profile, stations, lines, hints, warnings, polylines) => {
 	// todo: pt.sDays
 	// todo: pt.dep.dProgType, pt.arr.dProgType
 	// todo: what is pt.jny.dirFlg?
@@ -68,14 +68,14 @@ const createParseJourneyLeg = (profile, stations, lines, hints, polylines) => {
 			if (pt.arr.aPlatfS) res.arrivalPlatform = pt.arr.aPlatfS
 
 			if (passed && pt.jny.stopL) {
-				const parse = profile.parseStopover(profile, stations, lines, hints, j.date)
+				const parse = profile.parseStopover(profile, stations, lines, hints, warnings, j.date)
 				const passedStations = pt.jny.stopL.map(parse)
 				// filter stations the train passes without stopping, as this doesn't comply with fptf (yet)
 				res.passed = passedStations.filter((x) => !x.passBy)
 
 				// todo: pt.jny.remL
 				if (Array.isArray(j.msgL)) {
-					applyRemarksToStopovers(passedStations, hints, j.msgL)
+					applyRemarksToStopovers(passedStations, hints, warnings, j.msgL)
 				}
 			}
 

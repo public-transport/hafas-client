@@ -10,9 +10,8 @@
 // - warnings: notes from `himL` for cancellations, construction, etc
 // - remarks: both "notes" and "warnings"
 
-const findRemark = (hints, ref) => {
-	// todo: `warnings[ref.himX]`
-	return hints[ref.remX] || null
+const findRemark = (hints, warnings, ref) => {
+	return warnings[ref.himX] || hints[ref.remX] || null
 }
 
 module.exports = findRemark

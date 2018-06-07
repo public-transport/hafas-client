@@ -2,8 +2,8 @@
 
 const clone = obj => Object.assign({}, obj)
 
-const createParseJourney = (profile, stations, lines, hints, polylines) => {
-	const parseLeg = profile.parseJourneyLeg(profile, stations, lines, hints, polylines)
+const createParseJourney = (profile, stations, lines, hints, warnings, polylines) => {
+	const parseLeg = profile.parseJourneyLeg(profile, stations, lines, hints, warnings, polylines)
 
 	// todo: c.sDays
 	// todo: c.conSubscr
