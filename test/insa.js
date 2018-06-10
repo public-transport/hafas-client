@@ -217,8 +217,8 @@ test('locations named Magdeburg', co(function*(t) {
 	t.end()
 }))
 
-test('location Magdeburg-Buckau', co(function* (t) {
-	const s = yield client.location(magdeburgBuckau)
+test('station Magdeburg-Buckau', co(function* (t) {
+	const s = yield client.station(magdeburgBuckau)
 
 	validate(t, s, 'station', 'station')
 	t.equal(s.id, magdeburgBuckau)

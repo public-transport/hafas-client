@@ -267,8 +267,8 @@ test('locations named Kiel', co(function* (t) {
 	t.end()
 }))
 
-test('location', co(function* (t) {
-	const s = yield client.location(kielHbf)
+test('station', co(function* (t) {
+	const s = yield client.station(kielHbf)
 
 	validate(t, s, 'station', 'station')
 	t.equal(s.id, kielHbf)

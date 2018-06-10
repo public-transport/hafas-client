@@ -278,8 +278,8 @@ test('locations named Jungfernheide', co(function* (t) {
 	t.end()
 }))
 
-test('location', co(function* (t) {
-	const s = yield client.location(regensburgHbf)
+test('station', co(function* (t) {
+	const s = yield client.station(regensburgHbf)
 
 	validate(t, s, 'station', 'station')
 	t.equal(s.id, regensburgHbf)

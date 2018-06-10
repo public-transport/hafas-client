@@ -303,8 +303,8 @@ test('locations named Salzburg', co(function* (t) {
 	t.end()
 }))
 
-test('location', co(function* (t) {
-	const loc = yield client.location(wienRenngasse)
+test('station', co(function* (t) {
+	const loc = yield client.station(wienRenngasse)
 
 	// todo: find a way to always get products from the API
 	// todo: cfg.stationProductsOptional option

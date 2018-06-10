@@ -342,8 +342,8 @@ test('locations', co(function* (t) {
 	t.end()
 }))
 
-test('location', co(function* (t) {
-	const s = yield client.location(spichernstr)
+test('station', co(function* (t) {
+	const s = yield client.station(spichernstr)
 
 	validate(t, s, 'station', 'station')
 	t.equal(s.id, spichernstr)
