@@ -1,3 +1,5 @@
+'use strict'
+
 // https://github.com/babel/babel/blob/3c8d831fe41f502cbe2459a271d19c7329ffe369/packages/babel-helpers/src/helpers.js#L242-L270
 const co = (fn) => {
 	return function run () {
