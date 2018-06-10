@@ -3,7 +3,7 @@
 const createClient = require('../..')
 const cflProfile = require('.')
 
-const client = createClient(cflProfile)
+const client = createClient(cflProfile, 'hafas-client-example')
 
 // from Mersch to Pfaffenthal-Kirchberg
 // client.journeys('009864348', '008200102', {results: 1})
@@ -24,7 +24,7 @@ client.departures('009864348', { duration: 5 })
 
 // .then(([journey]) => {
 // 	const leg = journey.legs[0]
-// 	return client.journeyLeg(leg.id, leg.line.name)
+// 	return client.trip(leg.id, leg.line.name)
 // })
 
 .then(data => {
