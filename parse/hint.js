@@ -75,23 +75,47 @@ const hints = Object.assign(Object.create(null), {
 
 // todo: is passing in profile necessary?
 const parseHint = (profile, h) => {
-	// todo: U "stop cancelled"?
 	// todo: C
+	// todo: D code: '', txtN: 'Fire services operating close to the tracks'
+
+	const text = h.txtN && h.txtN.trim() || ''
 
 	// todo: find sth more reliable than this
-	if (h.type === 'P' && h.txtN.toLowerCase().trim() === 'journey cancelled') {
+	if (h.type === 'P' && text.toLowerCase() === 'journey cancelled') {
 		return {
 			type: 'status',
 			code: 'journey-cancelled',
-			text: h.txtN
+			text
 			// todo: `h.sIdx`
 		}
 	}
+	if (h.type === 'U' && text.toLowerCase() === 'stop cancelled') {
+		return {
+			type: 'status',
+			code: 'stop-cancelled',
+			text
+		}
+	}
+	// todo:
+	// {
+	//   "type": "U",
+	//   "code": "",
+	//   "icoX": 3,
+	//   "txtN": "entrance and exit not possible"
+	// }
+	if (h.type === 'U') {
+		return {
+			type: 'status',
+			code: null, // todo
+			text
+		}
+	}
+
 	if (h.type === 'L') {
 		return {
 			type: 'status',
 			code: 'alternative-trip',
-			text: h.txtN,
+			text,
 			journeyId: h.jid
 		}
 	}
@@ -103,7 +127,7 @@ const parseHint = (profile, h) => {
 		return {
 			type: 'status',
 			code: h.code,
-			text: h.txtN || ''
+			text
 		}
 	}
 	return null
