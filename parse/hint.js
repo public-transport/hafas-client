@@ -76,9 +76,24 @@ const hints = Object.assign(Object.create(null), {
 // todo: is passing in profile necessary?
 const parseHint = (profile, h) => {
 	// todo: C
-	// todo: D code: '', txtN: 'Fire services operating close to the tracks'
 
 	const text = h.txtN && h.txtN.trim() || ''
+
+	if (h.type === 'M') {
+		return {
+			type: 'status',
+			code: h.code || null,
+			summary: h.txtS && h.txtS.trim() || '',
+			text
+		}
+	}
+	if (h.type === 'D') {
+		return {
+			type: 'status',
+			code: h.code || null,
+			text
+		}
+	}
 
 	// todo: find sth more reliable than this
 	if (h.type === 'P' && text.toLowerCase() === 'journey cancelled') {

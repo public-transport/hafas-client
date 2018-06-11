@@ -26,11 +26,13 @@ const applyRemarks = (leg, hints, warnings, refs) => {
 }
 
 const createParseJourneyLeg = (profile, stations, lines, hints, warnings, polylines) => {
+	// todo: pt.status
 	// todo: pt.sDays
 	// todo: pt.dep.dProgType, pt.arr.dProgType
 	// todo: what is pt.jny.dirFlg?
 	// todo: how does pt.freq work?
 	// todo: what is pt.himL?
+	// todo: pt.planrtTS
 	const parseJourneyLeg = (j, pt, passed = true) => { // j = journey, pt = part
 		const dep = profile.parseDateTime(profile, j.date, pt.dep.dTimeR || pt.dep.dTimeS)
 		const arr = profile.parseDateTime(profile, j.date, pt.arr.aTimeR || pt.arr.aTimeS)
