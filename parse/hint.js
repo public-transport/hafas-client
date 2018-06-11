@@ -70,6 +70,16 @@ const hints = Object.assign(Object.create(null), {
 		type: 'hint',
 		code: 'air-conditioned',
 		text: 'air-conditioned vehicle'
+	},
+	r0: {
+		type: 'hint',
+		code: 'upward-escalator',
+		text: 'upward escalator'
+	},
+	au: {
+		type: 'hint',
+		code: 'elevator',
+		text: 'elevator available'
 	}
 })
 
@@ -121,7 +131,7 @@ const parseHint = (profile, h) => {
 	if (h.type === 'U') {
 		return {
 			type: 'status',
-			code: null, // todo
+			code: h.code || null,
 			text
 		}
 	}
