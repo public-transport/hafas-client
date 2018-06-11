@@ -1,5 +1,7 @@
 'use strict'
 
+const findRemark = require('./find-remark')
+
 // todo: arrivalDelay, departureDelay or only delay ?
 // todo: arrivalPlatform, departurePlatform
 const createParseStopover = (profile, stations, lines, hints, warnings, date) => {
@@ -35,6 +37,14 @@ const createParseStopover = (profile, stations, lines, hints, warnings, date) =>
 				res.departure = res.departureDelay = null
 				const arr = profile.parseDateTime(profile, date, st.dTimeS)
 				res.formerScheduledDeparture = arr.toISO()
+			}
+		}
+
+		if (Array.isArray(st.msgL)) {
+			res.remarks = []
+			for (let ref of st.msgL) {
+				const remark = findRemark(hints, warnings, ref)
+				if (remark) res.remarks.push(remark)
 			}
 		}
 

@@ -1,6 +1,6 @@
 'use strict'
 
-const clone = obj => Object.assign({}, obj)
+const findRemark = require('./find-remark')
 
 const createParseJourney = (profile, stations, lines, hints, warnings, polylines) => {
 	const parseLeg = profile.parseJourneyLeg(profile, stations, lines, hints, warnings, polylines)
@@ -13,6 +13,14 @@ const createParseJourney = (profile, stations, lines, hints, warnings, polylines
 		const res = {
 			type: 'journey',
 			legs
+		}
+
+		if (Array.isArray(j.msgL)) {
+			res.remarks = []
+			for (let ref of j.msgL) {
+				const remark = findRemark(hints, warnings, ref)
+				if (remark) res.remarks.push(remark)
+			}
 		}
 
 		return res

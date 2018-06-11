@@ -5,16 +5,21 @@ const findRemark = require('./find-remark')
 
 const clone = obj => Object.assign({}, obj)
 
-const applyRemarksToStopovers = (stopovers, hints, warnings, refs) => {
+const applyRemarks = (leg, hints, warnings, refs) => {
 	for (let ref of refs) {
 		const remark = findRemark(hints, warnings, ref)
-		for (let i = ref.fLocX; i <= ref.tLocX; i++) {
-			const stopover = stopovers[i]
-			if (Array.isArray(stopover.remarks)) {
-				stopover.remarks.push(remark)
-			} else {
-				stopover.remarks = [remark]
+		if ('number' === typeof ref.fLocX && 'number' === typeof ref.tLocX) {
+			for (let i = ref.fLocX; i <= ref.tLocX; i++) {
+				const stopover = leg.passed[i]
+				if (Array.isArray(stopover.remarks)) {
+					stopover.remarks.push(remark)
+				} else {
+					stopover.remarks = [remark]
+				}
 			}
+		} else {
+			if (Array.isArray(leg.remarks)) leg.remarks.push(remark)
+			else leg.remarks = [remark]
 		}
 		// todo: `ref.tagL`
 	}
@@ -73,9 +78,9 @@ const createParseJourneyLeg = (profile, stations, lines, hints, warnings, polyli
 				// filter stations the train passes without stopping, as this doesn't comply with fptf (yet)
 				res.passed = passedStations.filter((x) => !x.passBy)
 
-				// todo: pt.jny.remL
-				if (Array.isArray(j.msgL)) {
-					applyRemarksToStopovers(passedStations, hints, warnings, j.msgL)
+				// todo: is there a `pt.jny.remL`?
+				if (Array.isArray(pt.jny.msgL)) {
+					applyRemarks(res, hints, warnings, pt.jny.msgL)
 				}
 			}
 
