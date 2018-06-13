@@ -21,8 +21,8 @@ const transformReqBody = (body) => {
 	return body
 }
 
-const parseLocation = (profile, data, l) => {
-	const res = _parseLocation(profile, data, l)
+const parseLocation = (profile, opt, data, l) => {
+	const res = _parseLocation(profile, opt, data, l)
 	// weird fix for empty lines, e.g. IC/EC at Flensburg Hbf
 	if (res.lines) {
 		res.lines = res.lines.filter(x => x.id && x.name)
@@ -36,8 +36,8 @@ const parseLocation = (profile, data, l) => {
 	return res
 }
 
-const createParseJourney = (profile, data) => {
-	const parseJourney = _createParseJourney(profile, data)
+const createParseJourney = (profile, opt, data) => {
+	const parseJourney = _createParseJourney(profile, opt, data)
 
 	const parseJourneyWithTickets = (j) => {
 		const res = parseJourney(j)

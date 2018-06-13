@@ -51,7 +51,7 @@ const createClient = (profile, request = _request) => {
 		})
 		.then((d) => {
 			if (!Array.isArray(d.jnyL)) return [] // todo: throw err?
-			const parse = profile.parseDeparture(profile, {
+			const parse = profile.parseDeparture(profile, opt, {
 				locations: d.locations,
 				lines: d.lines,
 				remarks: d.remarks
@@ -167,7 +167,7 @@ const createClient = (profile, request = _request) => {
 			.then((d) => {
 				if (!Array.isArray(d.outConL)) return []
 
-				const parse = profile.parseJourney(profile, {
+				const parse = profile.parseJourney(profile, opt, {
 					locations: d.locations,
 					lines: d.lines,
 					remarks: d.remarks,
@@ -225,7 +225,7 @@ const createClient = (profile, request = _request) => {
 		.then((d) => {
 			if (!d.match || !Array.isArray(d.match.locL)) return []
 			const parse = profile.parseLocation
-			return d.match.locL.map(loc => parse(profile, {lines: d.lines}, loc))
+			return d.match.locL.map(loc => parse(profile, opt, {lines: d.lines}, loc))
 		})
 	}
 
@@ -245,7 +245,7 @@ const createClient = (profile, request = _request) => {
 				// todo: proper stack trace?
 				throw new Error('invalid response')
 			}
-			return profile.parseLocation(profile, {lines: d.lines}, d.locL[0])
+			return profile.parseLocation(profile, opt, {lines: d.lines}, d.locL[0])
 		})
 	}
 
@@ -287,7 +287,7 @@ const createClient = (profile, request = _request) => {
 		.then((d) => {
 			if (!Array.isArray(d.locL)) return []
 			const parse = profile.parseNearby
-			return d.locL.map(loc => parse(profile, loc))
+			return d.locL.map(loc => parse(profile, opt, loc))
 		})
 	}
 
@@ -317,7 +317,7 @@ const createClient = (profile, request = _request) => {
 			}
 		})
 		.then((d) => {
-			const parse = profile.parseJourneyLeg(profile, {
+			const parse = profile.parseJourneyLeg(profile, opt, {
 				locations: d.locations,
 				lines: d.lines,
 				remarks: d.remarks,
@@ -374,7 +374,7 @@ const createClient = (profile, request = _request) => {
 		.then((d) => {
 			if (!Array.isArray(d.jnyL)) return []
 
-			const parse = profile.parseMovement(profile, {
+			const parse = profile.parseMovement(profile, opt, {
 				locations: d.locations,
 				lines: d.lines,
 				remarks: d.remarks,

@@ -25,10 +25,10 @@ const transformReqBody = (body) => {
 	return body
 }
 
-const parseLocation = (profile, data, l) => {
+const parseLocation = (profile, opt, data, l) => {
 	// ÖBB has some 'stations' **in austria** with no departures/products,
 	// like station entrances, that are actually POIs.
-	const res = _parseLocation(profile, data, l)
+	const res = _parseLocation(profile, opt, data, l)
 	if (
 		res.type === 'station' &&
 		!res.products &&

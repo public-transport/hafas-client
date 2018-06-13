@@ -10,7 +10,7 @@ const createParseMovement = (profile, data) => {
 	// todo: what is m.ani.dirGeo[n]? maybe the speed?
 	// todo: what is m.ani.proc[n]? wut?
 	const parseMovement = (m) => {
-		const pStopover = profile.parseStopover(profile, data, m.date)
+		const pStopover = profile.parseStopover(profile, opt, data, m.date)
 
 		const res = {
 			direction: profile.parseStationName(m.dirTxt),
@@ -38,13 +38,13 @@ const createParseMovement = (profile, data) => {
 			}
 
 			if (m.ani.poly) {
-				const parse = profile.parsePolyline(profile, data)
+				const parse = profile.parsePolyline(profile, opt, data)
 				res.polyline = parse(m.ani.poly)
 			} else if (m.ani.polyG) {
 				let p = m.ani.polyG.polyXL
 				p = Array.isArray(p) && polylines[p[0]]
 				// todo: there can be >1 polyline
-				const parse = profile.parsePolyline(profile, data)
+				const parse = profile.parsePolyline(profile, opt, data)
 				res.polyline = p && parse(p) || null
 			}
 		}

@@ -2,7 +2,7 @@
 
 // todo: arrivalDelay, departureDelay or only delay ?
 // todo: arrivalPlatform, departurePlatform
-const createParseStopover = (profile, {locations, lines, remarks}, date) => {
+const createParseStopover = (profile, opt, {locations, lines, remarks}, date) => {
 	const parseStopover = (st) => {
 		const res = {
 			station: locations[parseInt(st.locX)] || null,

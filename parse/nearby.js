@@ -7,8 +7,8 @@
 // todo: what is s.dur?
 
 // todo: [breaking] change to createParseNearby(profile, data) => (n) => nearby
-const parseNearby = (profile, data, n) => {
-	const res = profile.parseLocation(profile, data, n)
+const parseNearby = (profile, opt, data, n) => {
+	const res = profile.parseLocation(profile, opt, data, n)
 	res.distance = n.dist
 	return res
 }
