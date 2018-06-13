@@ -113,7 +113,7 @@ test('journeys – Spichernstr. to Bismarckstr.', co(function* (t) {
 	const journeys = yield client.journeys(spichernstr, bismarckstr, {
 		results: 3,
 		departure: when,
-		passedStations: true
+		stopovers: true
 	})
 
 	yield testJourneysStationToStation({
@@ -252,7 +252,7 @@ test('journeys: via works – with detour', co(function* (t) {
 		via: württembergallee,
 		results: 1,
 		departure: when,
-		passedStations: true
+		stopovers: true
 	})
 
 	yield testJourneysWithDetour({
