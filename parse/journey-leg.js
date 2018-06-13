@@ -13,7 +13,9 @@ const createParseJourneyLeg = (profile, stations, lines, remarks, polylines) => 
 	// todo: what is pt.jny.dirFlg?
 	// todo: how does pt.freq work?
 	// todo: what is pt.himL?
-	const parseJourneyLeg = (j, pt, passed = true) => { // j = journey, pt = part
+
+	// j = journey, pt = part
+	const parseJourneyLeg = (j, pt, parseStopovers = true) => {
 		const dep = profile.parseDateTime(profile, j.date, pt.dep.dTimeR || pt.dep.dTimeS)
 		const arr = profile.parseDateTime(profile, j.date, pt.arr.aTimeR || pt.arr.aTimeS)
 		const res = {
@@ -56,7 +58,7 @@ const createParseJourneyLeg = (profile, stations, lines, remarks, polylines) => 
 			if (pt.dep.dPlatfS) res.departurePlatform = pt.dep.dPlatfS
 			if (pt.arr.aPlatfS) res.arrivalPlatform = pt.arr.aPlatfS
 
-			if (passed && pt.jny.stopL) {
+			if (parseStopovers && pt.jny.stopL) {
 				const parse = profile.parseStopover(profile, stations, lines, remarks, j.date)
 				const stopovers = pt.jny.stopL.map(parse)
 				// filter stations the train passes without stopping, as this doesn't comply with fptf (yet)

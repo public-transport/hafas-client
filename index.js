@@ -90,7 +90,7 @@ const createClient = (profile, request = _request) => {
 		opt = Object.assign({
 			results: 5, // how many journeys?
 			via: null, // let journeys pass this station?
-			passedStations: false, // return stations on the way?
+			stopovers: false, // return stations on the way?
 			transfers: 5, // maximum of 5 transfers
 			transferTime: 0, // minimum time for a single transfer in minutes
 			// todo: does this work with every endpoint?
@@ -138,7 +138,7 @@ const createClient = (profile, request = _request) => {
 				outDate: profile.formatDate(profile, when),
 				outTime: profile.formatTime(profile, when),
 				ctxScr: journeysRef,
-				getPasslist: !!opt.passedStations,
+				getPasslist: !!opt.stopovers,
 				maxChg: opt.transfers,
 				minChgTime: opt.transferTime,
 				depLocL: [from],
@@ -291,7 +291,7 @@ const createClient = (profile, request = _request) => {
 			throw new Error('lineName must be a non-empty string.')
 		}
 		opt = Object.assign({
-			passedStations: true, // return stations on the way?
+			stopovers: true, // return stations on the way?
 			polyline: false
 		}, opt)
 		opt.when = new Date(opt.when || Date.now())
@@ -318,7 +318,7 @@ const createClient = (profile, request = _request) => {
 				arr: maxBy(d.journey.stopL, 'idx'),
 				jny: d.journey
 			}
-			return parse(d.journey, leg, !!opt.passedStations)
+			return parse(d.journey, leg, !!opt.stopovers)
 		})
 	}
 

@@ -69,7 +69,7 @@ test('journeys – Kiel Hbf to Flensburg', co(function* (t) {
 	const journeys = yield client.journeys(kielHbf, flensburg, {
 		results: 3,
 		departure: when,
-		passedStations: true
+		stopovers: true
 	})
 
 	yield testJourneysStationToStation({
@@ -153,7 +153,7 @@ test('Husum to Lübeck Hbf with stopover at Kiel Hbf', co(function* (t) {
 		via: kielHbf,
 		results: 1,
 		departure: when,
-		passedStations: true
+		stopovers: true
 	})
 
 	validate(t, journeys, 'journeys', 'journeys')

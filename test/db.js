@@ -76,7 +76,9 @@ const regensburgHbf = '8000309'
 
 test('journeys – Berlin Schwedter Str. to München Hbf', co(function* (t) {
 	const journeys = yield client.journeys(blnSchwedterStr, münchenHbf, {
-		results: 3, departure: when, passedStations: true
+		results: 3,
+		departure: when,
+		stopovers: true
 	})
 
 	yield testJourneysStationToStation({
@@ -160,7 +162,7 @@ test('journeys: via works – with detour', co(function* (t) {
 		via: württembergallee,
 		results: 1,
 		departure: when,
-		passedStations: true
+		stopovers: true
 	})
 
 	yield testJourneysWithDetour({

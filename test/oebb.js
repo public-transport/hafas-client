@@ -62,7 +62,7 @@ test.skip('journeys – Salzburg Hbf to Wien Westbahnhof', co(function* (t) {
 	const journeys = yield client.journeys(salzburgHbf, wienFickeystr, {
 		results: 3,
 		departure: when,
-		passedStations: true
+		stopovers: true
 	})
 
 	yield testJourneysStationToStation({
@@ -150,7 +150,7 @@ test('journeys: via works – with detour', co(function* (t) {
 		via: donauinsel,
 		results: 1,
 		departure: when,
-		passedStations: true
+		stopovers: true
 	})
 
 	yield testJourneysWithDetour({
@@ -174,7 +174,7 @@ test('journeys: via works – without detour', co(function* (t) {
 		via: museumsquartier,
 		results: 1,
 		departure: when,
-		passedStations: true
+		stopovers: true
 	})
 
 	validate(t, journeys, 'journeys', 'journeys')

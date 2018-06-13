@@ -44,7 +44,7 @@ test('journeys – Magdeburg Hbf to Magdeburg-Buckau', co(function* (t) {
 	const journeys = yield client.journeys(magdeburgHbf, magdeburgBuckau, {
 		results: 3,
 		departure: when,
-		passedStations: true
+		stopovers: true
 	})
 
 	yield testJourneysStationToStation({
@@ -125,7 +125,7 @@ test('journeys: via works – with detour', co(function* (t) {
 		via: dessau,
 		results: 1,
 		departure: when,
-		passedStations: true
+		stopovers: true
 	})
 
 	yield testJourneysWithDetour({

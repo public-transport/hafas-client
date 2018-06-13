@@ -48,7 +48,7 @@ With `opt`, you can override the default options, which look like this:
 	laterThan: null, // ref to get journeys later than the last query
 	results: 5, // how many journeys?
 	via: null, // let journeys pass this station
-	passedStations: false, // return stations on the way?
+	stopovers: false, // return stations on the way?
 	transfers: 5, // maximum of 5 transfers
 	transferTime: 0, // minimum time for a single transfer in minutes
 	accessibility: 'none', // 'none', 'partial' or 'complete'
@@ -83,7 +83,7 @@ const client = createClient(vbbProfile)
 // Hauptbahnhof to Heinrich-Heine-Str.
 client.journeys('900000003201', '900000100008', {
 	results: 1,
-	passedStations: true
+	stopovers: true
 })
 .then(console.log)
 .catch(console.error)
