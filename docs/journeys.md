@@ -159,7 +159,7 @@ The response may look like this:
 				}
 			},
 			direction: 'S Potsdam Hauptbahnhof',
-			passed: [ {
+			stopovers: [ {
 				station: {
 					type: 'station',
 					id: '900000003201',

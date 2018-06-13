@@ -159,8 +159,8 @@ test('Husum to Lübeck Hbf with stopover at Kiel Hbf', co(function* (t) {
 	validate(t, journeys, 'journeys', 'journeys')
 
 	const leg = journeys[0].legs.some((leg) => {
-		return leg.passed && leg.passed.some((passed) => {
-			return passed.station.id === kielHbf
+		return leg.stopovers && leg.stopovers.some((stopover) => {
+			return stopover.station.id === kielHbf
 		})
 	})
 	t.ok(leg, 'Kiel Hbf is not being passed')
