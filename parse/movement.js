@@ -38,13 +38,13 @@ const createParseMovement = (profile, data) => {
 			}
 
 			if (m.ani.poly) {
-				const parse = profile.parsePolyline(data)
+				const parse = profile.parsePolyline(profile, data)
 				res.polyline = parse(m.ani.poly)
 			} else if (m.ani.polyG) {
 				let p = m.ani.polyG.polyXL
 				p = Array.isArray(p) && polylines[p[0]]
 				// todo: there can be >1 polyline
-				const parse = profile.parsePolyline(data)
+				const parse = profile.parsePolyline(profile, data)
 				res.polyline = p && parse(p) || null
 			}
 		}
