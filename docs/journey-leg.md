@@ -114,7 +114,7 @@ The response looked like this:
 		}
 	},
 	direction: 'S Spandau',
-	passed: [ /* … */ ]
+	stopovers: [ /* … */ ]
 }
 ```
 

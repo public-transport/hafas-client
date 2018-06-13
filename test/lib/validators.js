@@ -171,12 +171,12 @@ const createValidateJourneyLeg = (cfg) => {
 			a.ok(leg.departurePlatform, name + '.departurePlatform must not be empty')
 		}
 
-		if ('passed' in leg) {
-			a.ok(Array.isArray(leg.passed), name + '.passed must be an array')
-			a.ok(leg.passed.length > 0, name + '.passed must not be empty')
+		if ('stopovers' in leg) {
+			a.ok(Array.isArray(leg.stopovers), name + '.stopovers must be an array')
+			a.ok(leg.stopovers.length > 0, name + '.stopovers must not be empty')
 
-			for (let i = 0; i < leg.passed.length; i++) {
-				val.stopover(val, leg.passed[i], name + `.passed[${i}]`)
+			for (let i = 0; i < leg.stopovers.length; i++) {
+				val.stopover(val, leg.stopovers[i], name + `.stopovers[${i}]`)
 			}
 		}
 
