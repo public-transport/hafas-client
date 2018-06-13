@@ -185,6 +185,8 @@ const createValidateJourneyLeg = (cfg) => {
 			a.strictEqual(typeof leg.direction, 'string', msg)
 			a.ok(leg.direction, name + '.direction must not be empty')
 		}
+
+		// todo: validate polyline
 	}
 	return validateJourneyLeg
 }
@@ -277,6 +279,8 @@ const validateMovement = (val, m, name = 'movement') => {
 		anyOf(['location', 'station'], val, f.destination, fName + '.destination')
 		a.strictEqual(typeof f.t, 'number', fName + '.frames must be a number')
 	}
+
+	// todo: validate polyline
 }
 
 const validateMovements = (val, ms, name = 'movements') => {

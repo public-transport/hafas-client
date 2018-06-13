@@ -12,7 +12,7 @@ This guide is about writing such a profile. If you just want to use an already s
 
 ## 0. How do the profiles work?
 
-A profile contains of three things:
+A profile may consist of three things:
 
 - **mandatory details about the HAFAS endpoint**
 	- `endpoint`: The protocol, host and path of the endpoint.

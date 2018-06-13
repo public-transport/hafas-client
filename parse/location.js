@@ -5,8 +5,6 @@ const STATION = 'S'
 const ADDRESS = 'A'
 
 // todo: what is s.rRefL?
-// todo: is passing in profile necessary?
-
 // todo: [breaking] change to createParseLocation(profile, lines) => (l) => loc
 const parseLocation = (profile, l, lines) => {
 	const res = {type: 'location'}

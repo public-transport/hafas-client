@@ -333,6 +333,7 @@ const createClient = (profile, request = _request) => {
 		opt = Object.assign({
 			results: 256, // maximum number of vehicles
 			duration: 30, // compute frames for the next n seconds
+			// todo: what happens with `frames: 0`?
 			frames: 3, // nr of frames to compute
 			products: null, // optionally an object of booleans
 			polylines: false // return a track shape for each vehicle?
