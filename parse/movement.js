@@ -1,6 +1,8 @@
 'use strict'
 
-const createParseMovement = (profile, locations, lines, remarks, polylines = []) => {
+const createParseMovement = (profile, data) => {
+	const {locations, lines, remarks, polylines} = data
+
 	// todo: what is m.dirGeo? maybe the speed?
 	// todo: what is m.stopL?
 	// todo: what is m.proc? wut?
@@ -8,7 +10,7 @@ const createParseMovement = (profile, locations, lines, remarks, polylines = [])
 	// todo: what is m.ani.dirGeo[n]? maybe the speed?
 	// todo: what is m.ani.proc[n]? wut?
 	const parseMovement = (m) => {
-		const pStopover = profile.parseStopover(profile, locations, lines, remarks, m.date)
+		const pStopover = profile.parseStopover(profile, data, m.date)
 
 		const res = {
 			direction: profile.parseStationName(m.dirTxt),
@@ -36,13 +38,13 @@ const createParseMovement = (profile, locations, lines, remarks, polylines = [])
 			}
 
 			if (m.ani.poly) {
-				const parse = profile.parsePolyline(locations)
+				const parse = profile.parsePolyline(data)
 				res.polyline = parse(m.ani.poly)
 			} else if (m.ani.polyG) {
 				let p = m.ani.polyG.polyXL
 				p = Array.isArray(p) && polylines[p[0]]
 				// todo: there can be >1 polyline
-				const parse = profile.parsePolyline(locations)
+				const parse = profile.parsePolyline(data)
 				res.polyline = p && parse(p) || null
 			}
 		}

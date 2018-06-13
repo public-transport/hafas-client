@@ -7,8 +7,8 @@ const ADDRESS = 'A'
 // todo: what is s.rRefL?
 // todo: is passing in profile necessary?
 
-// todo: [breaking] change to createParseLocation(profile, lines) => (l) => loc
-const parseLocation = (profile, l, lines) => {
+// todo: [breaking] change to createParseLocation(profile, data) => (l) => loc
+const parseLocation = (profile, {lines}, l) => {
 	const res = {type: 'location'}
 	if (l.crd) {
 		res.latitude = l.crd.y / 1000000

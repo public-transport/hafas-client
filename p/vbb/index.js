@@ -23,8 +23,8 @@ const transformReqBody = (body) => {
 	return body
 }
 
-const createParseLine = (profile, operators) => {
-	const parseLine = _createParseLine(profile, operators)
+const createParseLine = (profile, data) => {
+	const parseLine = _createParseLine(profile, data)
 
 	const parseLineWithMoreDetails = (l) => {
 		const res = parseLine(l)
@@ -42,8 +42,8 @@ const createParseLine = (profile, operators) => {
 	return parseLineWithMoreDetails
 }
 
-const parseLocation = (profile, l, lines) => {
-	const res = _parseLocation(profile, l, lines)
+const parseLocation = (profile, data, l) => {
+	const res = _parseLocation(profile, data, l)
 
 	if (res.type === 'station') {
 		res.name = shorten(res.name)
@@ -56,8 +56,8 @@ const parseLocation = (profile, l, lines) => {
 	return res
 }
 
-const createParseJourney = (profile, stations, lines, remarks, polylines) => {
-	const parseJourney = _createParseJourney(profile, stations, lines, remarks, polylines)
+const createParseJourney = (profile, data) => {
+	const parseJourney = _createParseJourney(profile, data)
 
 	const parseJourneyWithTickets = (j) => {
 		const res = parseJourney(j)
@@ -86,8 +86,8 @@ const createParseJourney = (profile, stations, lines, remarks, polylines) => {
 	return parseJourneyWithTickets
 }
 
-const createParseDeparture = (profile, stations, lines, remarks) => {
-	const parseDeparture = _createParseDeparture(profile, stations, lines, remarks)
+const createParseDeparture = (profile, data) => {
+	const parseDeparture = _createParseDeparture(profile, data)
 
 	const ringbahnClockwise = /^ringbahn s\s?41$/i
 	const ringbahnAnticlockwise = /^ringbahn s\s?42$/i

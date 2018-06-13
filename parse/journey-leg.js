@@ -4,7 +4,9 @@ const parseDateTime = require('./date-time')
 
 const clone = obj => Object.assign({}, obj)
 
-const createParseJourneyLeg = (profile, stations, lines, remarks, polylines) => {
+const createParseJourneyLeg = (profile, data) => {
+	const {locations, lines, remarks, polylines} = data
+
 	// todo: finish parse/remark.js first
 	const applyRemark = (j, rm) => {}
 
@@ -17,8 +19,8 @@ const createParseJourneyLeg = (profile, stations, lines, remarks, polylines) => 
 		const dep = profile.parseDateTime(profile, j.date, pt.dep.dTimeR || pt.dep.dTimeS)
 		const arr = profile.parseDateTime(profile, j.date, pt.arr.aTimeR || pt.arr.aTimeS)
 		const res = {
-			origin: clone(stations[parseInt(pt.dep.locX)]) || null,
-			destination: clone(stations[parseInt(pt.arr.locX)]),
+			origin: clone(locations[parseInt(pt.dep.locX)]) || null,
+			destination: clone(locations[parseInt(pt.arr.locX)]),
 			departure: dep.toISO(),
 			arrival: arr.toISO()
 		}
@@ -40,7 +42,7 @@ const createParseJourneyLeg = (profile, stations, lines, remarks, polylines) => 
 			let p = pt.jny.polyG.polyXL
 			p = Array.isArray(p) && polylines[p[0]]
 			// todo: there can be >1 polyline
-			const parse = profile.parsePolyline(stations)
+			const parse = profile.parsePolyline(data)
 			res.polyline = p && parse(p) || null
 		}
 
@@ -57,7 +59,7 @@ const createParseJourneyLeg = (profile, stations, lines, remarks, polylines) => 
 			if (pt.arr.aPlatfS) res.arrivalPlatform = pt.arr.aPlatfS
 
 			if (passed && pt.jny.stopL) {
-				const parse = profile.parseStopover(profile, stations, lines, remarks, j.date)
+				const parse = profile.parseStopover(profile, data, j.date)
 				const passedStations = pt.jny.stopL.map(parse)
 				// filter stations the train passes without stopping, as this doesn't comply with fptf (yet)
 				res.passed = passedStations.filter((x) => !x.passBy)

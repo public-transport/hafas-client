@@ -51,7 +51,11 @@ const createClient = (profile, request = _request) => {
 		})
 		.then((d) => {
 			if (!Array.isArray(d.jnyL)) return [] // todo: throw err?
-			const parse = profile.parseDeparture(profile, d.locations, d.lines, d.remarks)
+			const parse = profile.parseDeparture(profile, {
+				locations: d.locations,
+				lines: d.lines,
+				remarks: d.remarks
+			})
 			return d.jnyL.map(parse)
 			.sort((a, b) => new Date(a.when) - new Date(b.when))
 		})
@@ -163,8 +167,12 @@ const createClient = (profile, request = _request) => {
 			.then((d) => {
 				if (!Array.isArray(d.outConL)) return []
 
-				const polylines = opt.polylines && d.common.polyL || []
-				const parse = profile.parseJourney(profile, d.locations, d.lines, d.remarks, polylines)
+				const parse = profile.parseJourney(profile, {
+					locations: d.locations,
+					lines: d.lines,
+					remarks: d.remarks,
+					polylines: opt.polylines && d.common.polyL || []
+				})
 
 				if (!journeys.earlierRef) journeys.earlierRef = d.outCtxScrB
 
@@ -217,7 +225,7 @@ const createClient = (profile, request = _request) => {
 		.then((d) => {
 			if (!d.match || !Array.isArray(d.match.locL)) return []
 			const parse = profile.parseLocation
-			return d.match.locL.map(loc => parse(profile, loc, d.lines))
+			return d.match.locL.map(loc => parse(profile, {lines: d.lines}, loc))
 		})
 	}
 
@@ -237,7 +245,7 @@ const createClient = (profile, request = _request) => {
 				// todo: proper stack trace?
 				throw new Error('invalid response')
 			}
-			return profile.parseLocation(profile, d.locL[0], d.lines)
+			return profile.parseLocation(profile, {lines: d.lines}, d.locL[0])
 		})
 	}
 
@@ -309,8 +317,12 @@ const createClient = (profile, request = _request) => {
 			}
 		})
 		.then((d) => {
-			const polylines = opt.polyline && d.common.polyL || []
-			const parse = profile.parseJourneyLeg(profile, d.locations, d.lines, d.remarks, polylines)
+			const parse = profile.parseJourneyLeg(profile, {
+				locations: d.locations,
+				lines: d.lines,
+				remarks: d.remarks,
+				polylines: opt.polyline && d.common.polyL || []
+			})
 
 			const leg = { // pretend the leg is contained in a journey
 				type: 'JNY',
@@ -362,8 +374,12 @@ const createClient = (profile, request = _request) => {
 		.then((d) => {
 			if (!Array.isArray(d.jnyL)) return []
 
-			const polylines = opt.polyline && d.common.polyL || []
-			const parse = profile.parseMovement(profile, d.locations, d.lines, d.remarks, polylines)
+			const parse = profile.parseMovement(profile, {
+				locations: d.locations,
+				lines: d.lines,
+				remarks: d.remarks,
+				polylines: opt.polyline && d.common.polyL || []
+			})
 			return d.jnyL.map(parse)
 		})
 	}

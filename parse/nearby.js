@@ -6,9 +6,9 @@
 // todo: what is s.wt?
 // todo: what is s.dur?
 
-// todo: [breaking] change to createParseNearby(profile, lines) => (n) => nearby
-const parseNearby = (profile, n, lines) => {
-	const res = profile.parseLocation(profile, n, lines)
+// todo: [breaking] change to createParseNearby(profile, data) => (n) => nearby
+const parseNearby = (profile, data, n) => {
+	const res = profile.parseLocation(profile, data, n)
 	res.distance = n.dist
 	return res
 }
