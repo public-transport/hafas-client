@@ -1,5 +1,7 @@
 'use strict'
 
+const Symbol = require('es6-symbol')
+
 const c = {
 	NONE: Symbol('no loyaly card'),
 	BAHNCARD: Symbol('Bahncard'),

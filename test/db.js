@@ -8,7 +8,7 @@ const isRoughlyEqual = require('is-roughly-equal')
 const co = require('./co')
 const createClient = require('..')
 const dbProfile = require('../p/db')
-const {allProducts} = require('../p/db/modes')
+const allProducts = require('../p/db/products')
 const {
 	assertValidStation,
 	assertValidPoi,
@@ -73,7 +73,7 @@ const assertIsJungfernheide = (t, s) => {
 // todo: DRY with other tests
 const assertValidProducts = (t, p) => {
 	for (let product of allProducts) {
-		product = product.product // wat
+		product = product.id
 		t.equal(typeof p[product], 'boolean', 'product ' + p + ' must be a boolean')
 	}
 }
@@ -101,7 +101,7 @@ const regensburgHbf = '8000309'
 
 test('Berlin Jungfernheide to München Hbf', co(function* (t) {
 	const journeys = yield client.journeys(jungfernh, münchenHbf, {
-		when, passedStations: true
+		departure: when, passedStations: true
 	})
 
 	t.ok(Array.isArray(journeys))
@@ -109,29 +109,9 @@ test('Berlin Jungfernheide to München Hbf', co(function* (t) {
 	for (let journey of journeys) {
 		t.equal(journey.type, 'journey')
 
-		assertValidStation(t, journey.origin)
-		assertValidStationProducts(t, journey.origin.products)
-		if (!(yield findStation(journey.origin.id))) {
-			console.error('unknown station', journey.origin.id, journey.origin.name)
-		}
-		if (journey.origin.products) {
-			assertValidProducts(t, journey.origin.products)
-		}
-		assertValidWhen(t, journey.departure, when)
-
-		assertValidStation(t, journey.destination)
-		assertValidStationProducts(t, journey.origin.products)
-		if (!(yield findStation(journey.origin.id))) {
-			console.error('unknown station', journey.destination.id, journey.destination.name)
-		}
-		if (journey.destination.products) {
-			assertValidProducts(t, journey.destination.products)
-		}
-		assertValidWhen(t, journey.arrival, when)
-
 		t.ok(Array.isArray(journey.legs))
 		t.ok(journey.legs.length > 0, 'no legs')
-		const leg = journey.legs[0]
+		const leg = journey.legs[0] // todo: all legs
 
 		assertValidStation(t, leg.origin)
 		assertValidStationProducts(t, leg.origin.products)
@@ -164,7 +144,7 @@ test('Berlin Jungfernheide to Torfstraße 17', co(function* (t) {
 	const journeys = yield client.journeys(jungfernh, {
 		type: 'location', address: 'Torfstraße 17',
 		latitude: 52.5416823, longitude: 13.3491223
-	}, {when})
+	}, {departure: when})
 
 	t.ok(Array.isArray(journeys))
 	t.ok(journeys.length >= 1, 'no journeys')
@@ -193,7 +173,7 @@ test('Berlin Jungfernheide to ATZE Musiktheater', co(function* (t) {
 	const journeys = yield client.journeys(jungfernh, {
 		type: 'location', id: '991598902', name: 'ATZE Musiktheater',
 		latitude: 52.542417, longitude: 13.350437
-	}, {when})
+	}, {departure: when})
 
 	t.ok(Array.isArray(journeys))
 	t.ok(journeys.length >= 1, 'no journeys')
@@ -227,7 +207,7 @@ test('journeys: via works – with detour', co(function* (t) {
 	const [journey] = yield client.journeys(westhafen, wedding, {
 		via: württembergallee,
 		results: 1,
-		when,
+		departure: when,
 		passedStations: true
 	})
 
@@ -248,7 +228,7 @@ test('journeys: via works – without detour', co(function* (t) {
 	const [journey] = yield client.journeys(ruhleben, zoo, {
 		via: kastanienallee,
 		results: 1,
-		when,
+		departure: when,
 		passedStations: true
 	})
 
@@ -262,7 +242,7 @@ test('journeys: via works – without detour', co(function* (t) {
 
 test('earlier/later journeys, Jungfernheide -> München Hbf', co(function* (t) {
 	const model = yield client.journeys(jungfernh, münchenHbf, {
-		results: 3, when
+		results: 3, departure: when
 	})
 
 	t.equal(typeof model.earlierRef, 'string')
@@ -273,18 +253,18 @@ test('earlier/later journeys, Jungfernheide -> München Hbf', co(function* (t) {
 	// when and earlierThan/laterThan should be mutually exclusive
 	t.throws(() => {
 		client.journeys(jungfernh, münchenHbf, {
-			when, earlierThan: model.earlierRef
+			departure: when, earlierThan: model.earlierRef
 		})
 	})
 	t.throws(() => {
 		client.journeys(jungfernh, münchenHbf, {
-			when, laterThan: model.laterRef
+			departure: when, laterThan: model.laterRef
 		})
 	})
 
 	let earliestDep = Infinity, latestDep = -Infinity
 	for (let j of model) {
-		const dep = +new Date(j.departure)
+		const dep = +new Date(j.legs[0].departure)
 		if (dep < earliestDep) earliestDep = dep
 		else if (dep > latestDep) latestDep = dep
 	}
@@ -295,7 +275,7 @@ test('earlier/later journeys, Jungfernheide -> München Hbf', co(function* (t) {
 		earlierThan: model.earlierRef
 	})
 	for (let j of earlier) {
-		t.ok(new Date(j.departure) < earliestDep)
+		t.ok(new Date(j.legs[0].departure) < earliestDep)
 	}
 
 	const later = yield client.journeys(jungfernh, münchenHbf, {
@@ -304,7 +284,7 @@ test('earlier/later journeys, Jungfernheide -> München Hbf', co(function* (t) {
 		laterThan: model.laterRef
 	})
 	for (let j of later) {
-		t.ok(new Date(j.departure) > latestDep)
+		t.ok(new Date(j.legs[0].departure) > latestDep)
 	}
 
 	t.end()

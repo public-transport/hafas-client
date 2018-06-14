@@ -8,7 +8,7 @@ const validateFptf = require('validate-fptf')
 const co = require('./co')
 const createClient = require('..')
 const insaProfile = require('../p/insa')
-const {allProducts} = require('../p/insa/products')
+const allProducts = require('../p/insa/products')
 const {
 	assertValidStation,
 	assertValidPoi,
@@ -58,7 +58,7 @@ const assertIsMagdeburgHbf = (t, s) => {
 // todo: DRY with other tests
 const assertValidProducts = (t, p) => {
 	for (let product of allProducts) {
-		product = product.product // wat
+		product = product.id
 		t.equal(typeof p[product], 'boolean', 'product ' + p + ' must be a boolean')
 	}
 }
@@ -70,30 +70,16 @@ test('Magdeburg Hbf to Magdeburg-Buckau', co(function*(t) {
 	const magdeburgHbf = '8010224'
 	const magdeburgBuckau = '8013456'
 	const journeys = yield client.journeys(magdeburgHbf, magdeburgBuckau, {
-		when,
+		departure: when,
 		passedStations: true
 	})
 
 	t.ok(Array.isArray(journeys))
 	t.ok(journeys.length > 0, 'no journeys')
 	for (let journey of journeys) {
-		assertValidStation(t, journey.origin)
-		assertValidStationProducts(t, journey.origin.products)
-		if (journey.origin.products) {
-			assertValidProducts(t, journey.origin.products)
-		}
-		assertValidWhen(t, journey.departure, when)
-
-		assertValidStation(t, journey.destination)
-		assertValidStationProducts(t, journey.origin.products)
-		if (journey.destination.products) {
-			assertValidProducts(t, journey.destination.products)
-		}
-		assertValidWhen(t, journey.arrival, when)
-
 		t.ok(Array.isArray(journey.legs))
 		t.ok(journey.legs.length > 0, 'no legs')
-		const leg = journey.legs[0]
+		const leg = journey.legs[0] // todo: all legs
 
 		assertValidStation(t, leg.origin)
 		assertValidStationProducts(t, leg.origin.products)
@@ -124,7 +110,7 @@ test('Magdeburg Hbf to 39104 Magdeburg, Sternstr. 10', co(function*(t) {
 	}
 
 	const journeys = yield client.journeys(magdeburgHbf, sternStr, {
-		when
+		departure: when
 	})
 
 	t.ok(Array.isArray(journeys))
@@ -161,7 +147,7 @@ test('Kloster Unser Lieben Frauen to Magdeburg Hbf', co(function*(t) {
 	}
 	const magdeburgHbf = '8010224'
 	const journeys = yield client.journeys(kloster, magdeburgHbf, {
-		when
+		departure: when
 	})
 
 	t.ok(Array.isArray(journeys))
@@ -199,7 +185,7 @@ test('journeys: via works – with detour', co(function* (t) {
 	const [journey] = yield client.journeys(hasselbachplatzSternstrasse, stendal, {
 		via: dessau,
 		results: 1,
-		when,
+		departure: when,
 		passedStations: true
 	})
 
@@ -222,7 +208,7 @@ test('journeys: via works – without detour', co(function* (t) {
 	const [journey] = yield client.journeys(hasselbachplatzSternstrasse, universitaet, {
 		via: breiterWeg,
 		results: 1,
-		when,
+		departure: when,
 		passedStations: true
 	})
 
@@ -284,7 +270,7 @@ test('journey leg details', co(function* (t) {
 	const magdeburgHbf = '8010224'
 	const magdeburgBuckau = '8013456'
 	const [journey] = yield client.journeys(magdeburgHbf, magdeburgBuckau, {
-		results: 1, when
+		results: 1, departure: when
 	})
 
 	const p = journey.legs[0]
@@ -341,7 +327,7 @@ test('radar', co(function* (t) {
 	const west = 11.600826
 	const south = 52.108486
 	const east = 11.651451
-	const vehicles = yield client.radar(north, west, south, east, {
+	const vehicles = yield client.radar({north, west, south, east}, {
 		duration: 5 * 60, when, results: 10
 	})
 

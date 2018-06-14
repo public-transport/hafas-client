@@ -16,7 +16,12 @@ client.journeys('008010226', '008013456', {results: 1})
 // 	latitude: 52.148842,
 // 	longitude: 11.641705
 // }, {distance: 200})
-// client.radar(52.148364, 11.600826, 52.108486, 11.651451, {results: 10})
+// client.radar({
+// 	north: 52.148364,
+// 	west: 11.600826,
+// 	south: 52.108486,
+// 	east: 11.651451
+// }, {results: 10})
 
 // .then(([journey]) => {
 // 	const leg = journey.legs[0]

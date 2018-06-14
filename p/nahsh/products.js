@@ -1,101 +1,86 @@
 'use strict'
 
-const p = {
-	nationalExp: {
-		bitmask: 1,
+const p = [
+	{
+		id: 'nationalExp',
+		mode: 'train',
+		bitmasks: [1],
 		name: 'High-speed rail',
 		short: 'ICE/HSR',
-		mode: 'train',
-		product: 'nationalExp'
+		default: true
 	},
-	national: {
-		bitmask: 2,
+	{
+		id: 'national',
+		mode: 'train',
+		bitmasks: [2],
 		name: 'InterCity & EuroCity',
 		short: 'IC/EC',
-		mode: 'train',
-		product: 'national'
+		default: true
 	},
-	interregional: { // todo: also includes EN?
-		bitmask: 4,
+	{ // todo: also includes EN?
+		id: 'interregional',
+		mode: 'train',
+		bitmasks: [4],
 		name: 'Interregional',
 		short: 'IR',
-		mode: 'train',
-		product: 'interregional'
+		default: true
 	},
-	regional: {
-		bitmask: 8,
+	{
+		id: 'regional',
+		mode: 'train',
+		bitmasks: [8],
 		name: 'Regional & RegionalExpress',
 		short: 'RB/RE',
-		mode: 'train',
-		product: 'regional'
+		default: true
 	},
-	suburban: {
-		bitmask: 16,
+	{
+		id: 'suburban',
+		mode: 'train',
+		bitmasks: [16],
 		name: 'S-Bahn',
 		short: 'S',
-		mode: 'train',
-		product: 'suburban'
+		default: true
 	},
-	bus: {
-		bitmask: 32,
+	{
+		id: 'bus',
+		mode: 'bus',
+		bitmasks: [32],
 		name: 'Bus',
 		short: 'B',
-		mode: 'bus',
-		product: 'bus'
+		default: true
 	},
-	ferry: {
-		bitmask: 64,
+	{
+		id: 'ferry',
+		mode: 'watercraft',
+		bitmasks: [64],
 		name: 'Ferry',
 		short: 'F',
-		mode: 'watercraft',
-		product: 'ferry'
+		default: true
 	},
-	subway: {
-		bitmask: 128,
+	{
+		id: 'subway',
+		mode: 'train',
+		bitmasks: [128],
 		name: 'U-Bahn',
 		short: 'U',
-		mode: 'train',
-		product: 'subway'
+		default: true
 	},
-	tram: {
-		bitmask: 256,
+	{
+		id: 'tram',
+		mode: 'train',
+		bitmasks: [256],
 		name: 'Tram',
 		short: 'T',
-		mode: 'train',
-		product: 'tram'
+		default: true
 	},
-	onCall: {
-		bitmask: 512,
+	{
+		id: 'onCall',
+		mode: null, // todo
+		bitmasks: [512],
 		name: 'On-call transit',
 		short: 'on-call',
-		mode: null, // todo
-		product: 'onCall'
+		default: true
 	}
-}
-
-p.bitmasks = []
-p.bitmasks[1] = p.nationalExp
-p.bitmasks[2] = p.national
-p.bitmasks[4] = p.interregional
-p.bitmasks[8] = p.regional
-p.bitmasks[16] = p.suburban
-p.bitmasks[32] = p.bus
-p.bitmasks[64] = p.ferry
-p.bitmasks[128] = p.subway
-p.bitmasks[256] = p.tram
-p.bitmasks[512] = p.onCall
-
-p.allProducts = [
-	p.nationalExp,
-	p.national,
-	p.interregional,
-	p.regional,
-	p.suburban,
-	p.bus,
-	p.ferry,
-	p.subway,
-	p.tram,
-	p.onCall
 ]
 
 module.exports = p

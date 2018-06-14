@@ -12,7 +12,7 @@ const validateLineWithoutMode = require('./validate-line-without-mode')
 const co = require('./co')
 const createClient = require('..')
 const nahshProfile = require('../p/nahsh')
-const {allProducts} = require('../p/nahsh/products')
+const allProducts = require('../p/nahsh/products')
 const {
 	assertValidStation,
 	assertValidPoi,
@@ -58,10 +58,9 @@ const assertIsKielHbf = (t, s) => {
 
 // todo: DRY with assertValidStationProducts
 // todo: DRY with other tests
-const assertValidProducts = (t, p) => {
-	for (let product of allProducts) {
-		product = product.product // wat
-		t.equal(typeof p[product], 'boolean', 'product ' + p + ' must be a boolean')
+const assertValidProducts = (t, products) => {
+	for (let p of allProducts) {
+		t.equal(typeof products[p.id], 'boolean', `product ${p.id} must be a boolean`)
 	}
 }
 
@@ -100,7 +99,7 @@ const schleswig = '8005362'
 
 test('Kiel Hbf to Flensburg', co(function* (t) {
 	const journeys = yield client.journeys(kielHbf, flensburg, {
-		when, passedStations: true
+		departure: when, passedStations: true
 	})
 
 	t.ok(Array.isArray(journeys))
@@ -108,31 +107,9 @@ test('Kiel Hbf to Flensburg', co(function* (t) {
 	for (let journey of journeys) {
 		t.equal(journey.type, 'journey')
 
-		assertValidStation(t, journey.origin)
-		assertValidStationProducts(t, journey.origin.products)
-		// todo
-		// if (!(yield findStation(journey.origin.id))) {
-		// 	console.error('unknown station', journey.origin.id, journey.origin.name)
-		// }
-		if (journey.origin.products) {
-			assertValidProducts(t, journey.origin.products)
-		}
-		assertValidWhen(t, journey.departure, when)
-
-		assertValidStation(t, journey.destination)
-		assertValidStationProducts(t, journey.origin.products)
-		// todo
-		// if (!(yield findStation(journey.origin.id))) {
-		// 	console.error('unknown station', journey.destination.id, journey.destination.name)
-		// }
-		if (journey.destination.products) {
-			assertValidProducts(t, journey.destination.products)
-		}
-		assertValidWhen(t, journey.arrival, when)
-
 		t.ok(Array.isArray(journey.legs))
 		t.ok(journey.legs.length > 0, 'no legs')
-		const leg = journey.legs[0]
+		const leg = journey.legs[0] // todo: all legs
 
 		assertValidStation(t, leg.origin)
 		assertValidStationProducts(t, leg.origin.products)
@@ -171,7 +148,7 @@ test('Kiel Hbf to Husum, Zingel 10', co(function* (t) {
 		address: 'Husum, Zingel 10'
 	}
 
-	const journeys = yield client.journeys(kielHbf, zingel, {when})
+	const journeys = yield client.journeys(kielHbf, zingel, {departure: when})
 
 	t.ok(Array.isArray(journeys))
 	t.ok(journeys.length >= 1, 'no journeys')
@@ -208,7 +185,7 @@ test('Holstentor to Kiel Hbf', co(function* (t) {
 		name: 'Hansestadt Lübeck, Holstentor (Denkmal)',
 		id: '970003547'
 	}
-	const journeys = yield client.journeys(holstentor, kielHbf, {when})
+	const journeys = yield client.journeys(holstentor, kielHbf, {departure: when})
 
 	t.ok(Array.isArray(journeys))
 	t.ok(journeys.length >= 1, 'no journeys')
@@ -242,7 +219,7 @@ test('Husum to Lübeck Hbf with stopover at Husum', co(function* (t) {
 	const [journey] = yield client.journeys(husum, luebeckHbf, {
 		via: kielHbf,
 		results: 1,
-		when
+		departure: when
 	})
 
 	const i1 = journey.legs.findIndex(leg => leg.destination.id === kielHbf)
@@ -257,7 +234,7 @@ test('Husum to Lübeck Hbf with stopover at Husum', co(function* (t) {
 
 test('earlier/later journeys, Kiel Hbf -> Flensburg', co(function* (t) {
 	const model = yield client.journeys(kielHbf, flensburg, {
-		results: 3, when
+		results: 3, departure: when
 	})
 
 	t.equal(typeof model.earlierRef, 'string')
@@ -268,18 +245,18 @@ test('earlier/later journeys, Kiel Hbf -> Flensburg', co(function* (t) {
 	// when and earlierThan/laterThan should be mutually exclusive
 	t.throws(() => {
 		client.journeys(kielHbf, flensburg, {
-			when, earlierThan: model.earlierRef
+			departure: when, earlierThan: model.earlierRef
 		})
 	})
 	t.throws(() => {
 		client.journeys(kielHbf, flensburg, {
-			when, laterThan: model.laterRef
+			departure: when, laterThan: model.laterRef
 		})
 	})
 
 	let earliestDep = Infinity, latestDep = -Infinity
 	for (let j of model) {
-		const dep = +new Date(j.departure)
+		const dep = +new Date(j.legs[0].departure)
 		if (dep < earliestDep) earliestDep = dep
 		else if (dep > latestDep) latestDep = dep
 	}
@@ -290,7 +267,7 @@ test('earlier/later journeys, Kiel Hbf -> Flensburg', co(function* (t) {
 		earlierThan: model.earlierRef
 	})
 	for (let j of earlier) {
-		t.ok(new Date(j.departure) < earliestDep)
+		t.ok(new Date(j.legs[0].departure) < earliestDep)
 	}
 
 	const later = yield client.journeys(kielHbf, flensburg, {
@@ -299,7 +276,7 @@ test('earlier/later journeys, Kiel Hbf -> Flensburg', co(function* (t) {
 		laterThan: model.laterRef
 	})
 	for (let j of later) {
-		t.ok(new Date(j.departure) > latestDep)
+		t.ok(new Date(j.legs[0].departure) > latestDep)
 	}
 
 	t.end()
@@ -307,7 +284,7 @@ test('earlier/later journeys, Kiel Hbf -> Flensburg', co(function* (t) {
 
 test('leg details for Flensburg to Husum', co(function* (t) {
 	const journeys = yield client.journeys(flensburg, husum, {
-		results: 1, when
+		results: 1, departure: when
 	})
 
 	const p = journeys[0].legs[0]
@@ -401,9 +378,41 @@ test('location', co(function* (t) {
 	t.end()
 }))
 
-// todo: see #34
-test.skip('radar Kiel', co(function* (t) {
-	const vehicles = yield client.radar(54.4, 10.0, 54.2, 10.2, {
+test('radar Kiel', co(function* (t) {
+	const fakeStation = (s) => {
+		const fake = Object.assign({
+			products: {
+				nationalExp: true,
+				national: false,
+				interregional: true,
+				regional: false,
+				suburban: true,
+				bus: false,
+				ferry: true,
+				subway: false,
+				tram: true,
+				onCall: false
+			}
+		}, s)
+		if (s.name === null) fake.name = 'foo'
+		return fake
+	}
+	const _assertValidStation = (t, s, coordsOptional = false) => {
+		assertValidStation(t, fakeStation(s), coordsOptional)
+	}
+	const _assertValidStopover = (t, s, coordsOptional = false) => {
+		const fake = Object.assign({}, s, {
+			station: fakeStation(s.station)
+		})
+		assertValidStopover(t, fake, coordsOptional)
+	}
+
+	const vehicles = yield client.radar({
+		north: 54.4,
+		west: 10.0,
+		south: 54.2,
+		east: 10.2
+	}, {
 		duration: 5 * 60, when
 	})
 
@@ -424,7 +433,7 @@ test.skip('radar Kiel', co(function* (t) {
 
 		t.ok(Array.isArray(v.nextStops))
 		for (let st of v.nextStops) {
-			assertValidStopover(t, st, true)
+			_assertValidStopover(t, st, true)
 
 			if (st.arrival) {
 				t.equal(typeof st.arrival, 'string')
@@ -441,10 +450,15 @@ test.skip('radar Kiel', co(function* (t) {
 
 		t.ok(Array.isArray(v.frames))
 		for (let f of v.frames) {
-			assertValidStation(t, f.origin, true)
-			assertValidStationProducts(t, f.origin.products)
-			assertValidStation(t, f.destination, true)
-			assertValidStationProducts(t, f.destination.products)
+			// todo: see #34
+			_assertValidStation(t, f.origin, true)
+			if (f.origin.products) {
+				assertValidStationProducts(t, f.origin.products)
+			}
+			_assertValidStation(t, f.destination, true)
+			if (f.destination.products) {
+				assertValidStationProducts(t, f.destination.products)
+			}
 			t.equal(typeof f.t, 'number')
 		}
 	}

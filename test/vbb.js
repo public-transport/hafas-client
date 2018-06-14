@@ -60,7 +60,7 @@ const bismarckstr = '900000024201'
 
 test('journeys – station to station', co(function* (t) {
 	const journeys = yield client.journeys(spichernstr, amrumerStr, {
-		results: 3, when, passedStations: true
+		results: 3, departure: when, passedStations: true
 	})
 
 	t.ok(Array.isArray(journeys))
@@ -69,20 +69,9 @@ test('journeys – station to station', co(function* (t) {
 	for (let journey of journeys) {
 		t.equal(journey.type, 'journey')
 
-		assertValidStation(t, journey.origin)
-		assertValidStationProducts(t, journey.origin.products)
-		t.ok(journey.origin.name.indexOf('(Berlin)') === -1)
-		t.strictEqual(journey.origin.id, spichernstr)
-		assertValidWhen(t, journey.departure, when)
-
-		assertValidStation(t, journey.destination)
-		assertValidStationProducts(t, journey.destination.products)
-		t.strictEqual(journey.destination.id, amrumerStr)
-		assertValidWhen(t, journey.arrival, when)
-
 		t.ok(Array.isArray(journey.legs))
 		t.strictEqual(journey.legs.length, 1)
-		const leg = journey.legs[0]
+		const leg = journey.legs[0] // todo: all legs
 
 		t.equal(typeof leg.id, 'string')
 		t.ok(leg.id)
@@ -119,7 +108,7 @@ test('journeys – station to station', co(function* (t) {
 
 test('journeys – only subway', co(function* (t) {
 	const journeys = yield client.journeys(spichernstr, bismarckstr, {
-		results: 20, when,
+		results: 20, departure: when,
 		products: {
 			suburban: false,
 			subway:   true,
@@ -147,9 +136,10 @@ test('journeys – only subway', co(function* (t) {
 }))
 
 test('journeys – fails with no product', co(function* (t) {
+	t.plan(1)
 	try {
 		client.journeys(spichernstr, bismarckstr, {
-			when,
+			departure: when,
 			products: {
 				suburban: false,
 				subway:   false,
@@ -168,16 +158,18 @@ test('journeys – fails with no product', co(function* (t) {
 	}
 }))
 
-test('journeys – with arrival time', co(function* (t) {
+test('journeys before date/time', co(function* (t) {
 	const journeys = yield client.journeys(spichernstr, bismarckstr, {
-		results: 3,
-		when,
-		whenRepresents: 'arrival'
+		results: 3, arrival: when
 	})
 
-	for (let j of journeys) {
-		const arr = +new Date(j.arrival)
-		t.ok(arr <= when)
+	for (let i = 0; i < journeys.length; i++) {
+		const j = journeys[i]
+		const name = `journeys[${i}]`
+
+		const lastLeg = j.legs[j.legs.length - 1]
+		const arr = +new Date(lastLeg.arrival)
+		t.ok(arr <= when, name + '.arrival is after `when`')
 	}
 
 	t.end()
@@ -185,7 +177,7 @@ test('journeys – with arrival time', co(function* (t) {
 
 test('earlier/later journeys', co(function* (t) {
 	const model = yield client.journeys(spichernstr, bismarckstr, {
-		results: 3, when
+		results: 3, departure: when
 	})
 
 	t.equal(typeof model.earlierRef, 'string')
@@ -193,21 +185,31 @@ test('earlier/later journeys', co(function* (t) {
 	t.equal(typeof model.laterRef, 'string')
 	t.ok(model.laterRef)
 
-	// when and earlierThan/laterThan should be mutually exclusive
+	// departure/arrival and earlierThan/laterThan should be mutually exclusive
 	t.throws(() => {
 		client.journeys(spichernstr, bismarckstr, {
-			when, earlierThan: model.earlierRef
+			departure: when, earlierThan: model.earlierRef
 		})
 	})
 	t.throws(() => {
 		client.journeys(spichernstr, bismarckstr, {
-			when, laterThan: model.laterRef
+			departure: when, laterThan: model.laterRef
+		})
+	})
+	t.throws(() => {
+		client.journeys(spichernstr, bismarckstr, {
+			arrival: when, earlierThan: model.earlierRef
+		})
+	})
+	t.throws(() => {
+		client.journeys(spichernstr, bismarckstr, {
+			arrival: when, laterThan: model.laterRef
 		})
 	})
 
 	let earliestDep = Infinity, latestDep = -Infinity
 	for (let j of model) {
-		const dep = +new Date(j.departure)
+		const dep = +new Date(j.legs[0].departure)
 		if (dep < earliestDep) earliestDep = dep
 		else if (dep > latestDep) latestDep = dep
 	}
@@ -218,7 +220,7 @@ test('earlier/later journeys', co(function* (t) {
 		earlierThan: model.earlierRef
 	})
 	for (let j of earlier) {
-		t.ok(new Date(j.departure) < earliestDep)
+		t.ok(new Date(j.legs[0].departure) < earliestDep)
 	}
 
 	const later = yield client.journeys(spichernstr, bismarckstr, {
@@ -227,7 +229,7 @@ test('earlier/later journeys', co(function* (t) {
 		laterThan: model.laterRef
 	})
 	for (let j of later) {
-		t.ok(new Date(j.departure) > latestDep)
+		t.ok(new Date(j.legs[0].departure) > latestDep)
 	}
 
 	t.end()
@@ -235,7 +237,7 @@ test('earlier/later journeys', co(function* (t) {
 
 test('journey leg details', co(function* (t) {
 	const journeys = yield client.journeys(spichernstr, amrumerStr, {
-		results: 1, when
+		results: 1, departure: when
 	})
 
 	const p = journeys[0].legs[0]
@@ -264,7 +266,7 @@ test('journeys – station to address', co(function* (t) {
 		type: 'location',
 		address: 'Torfstr. 17, Berlin',
 		latitude: 52.541797, longitude: 13.350042
-	}, {results: 1, when})
+	}, {results: 1, departure: when})
 
 	t.ok(Array.isArray(journeys))
 	t.strictEqual(journeys.length, 1)
@@ -293,7 +295,7 @@ test('journeys – station to POI', co(function* (t) {
 		id: '900980720',
 		name: 'Berlin, Atze Musiktheater für Kinder',
 		latitude: 52.543333, longitude: 13.351686
-	}, {results: 1, when})
+	}, {results: 1, departure: when})
 
 	t.ok(Array.isArray(journeys))
 	t.strictEqual(journeys.length, 1)
@@ -324,7 +326,7 @@ test('journeys: via works – with detour', co(function* (t) {
 	const [journey] = yield client.journeys(westhafen, wedding, {
 		via: württembergallee,
 		results: 1,
-		when,
+		departure: when,
 		passedStations: true
 	})
 
@@ -345,7 +347,7 @@ test('journeys: via works – without detour', co(function* (t) {
 	const [journey] = yield client.journeys(ruhleben, zoo, {
 		via: kastanienallee,
 		results: 1,
-		when,
+		departure: when,
 		passedStations: true
 	})
 
@@ -471,7 +473,12 @@ test('location', co(function* (t) {
 
 
 test('radar', co(function* (t) {
-	const vehicles = yield client.radar(52.52411, 13.41002, 52.51942, 13.41709, {
+	const vehicles = yield client.radar({
+		north: 52.52411,
+		west: 13.41002,
+		south: 52.51942,
+		east: 13.41709
+	}, {
 		duration: 5 * 60, when
 	})
 

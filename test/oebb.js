@@ -12,7 +12,7 @@ const validateLineWithoutMode = require('./validate-line-without-mode')
 const co = require('./co')
 const createClient = require('..')
 const oebbProfile = require('../p/oebb')
-const {allProducts} = require('../p/oebb/products')
+const allProducts = require('../p/oebb/products')
 const {
 	assertValidStation,
 	assertValidPoi,
@@ -77,7 +77,7 @@ const assertIsSalzburgHbf = (t, s) => {
 // todo: DRY with other tests
 const assertValidProducts = (t, p) => {
 	for (let product of allProducts) {
-		product = product.product // wat
+		product = product.id
 		t.equal(typeof p[product], 'boolean', 'product ' + p + ' must be a boolean')
 	}
 }
@@ -120,7 +120,7 @@ const grazHbf = '8100173'
 
 test('Salzburg Hbf to Wien Westbahnhof', co(function* (t) {
 	const journeys = yield client.journeys(salzburgHbf, wienWestbahnhof, {
-		when, passedStations: true
+		departure: when, passedStations: true
 	})
 
 	t.ok(Array.isArray(journeys))
@@ -128,31 +128,9 @@ test('Salzburg Hbf to Wien Westbahnhof', co(function* (t) {
 	for (let journey of journeys) {
 		t.equal(journey.type, 'journey')
 
-		assertValidStation(t, journey.origin)
-		assertValidStationProducts(t, journey.origin.products)
-		// todo
-		// if (!(yield findStation(journey.origin.id))) {
-		// 	console.error('unknown station', journey.origin.id, journey.origin.name)
-		// }
-		if (journey.origin.products) {
-			assertValidProducts(t, journey.origin.products)
-		}
-		assertValidWhen(t, journey.departure, when)
-
-		assertValidStation(t, journey.destination)
-		assertValidStationProducts(t, journey.origin.products)
-		// todo
-		// if (!(yield findStation(journey.origin.id))) {
-		// 	console.error('unknown station', journey.destination.id, journey.destination.name)
-		// }
-		if (journey.destination.products) {
-			assertValidProducts(t, journey.destination.products)
-		}
-		assertValidWhen(t, journey.arrival, when)
-
 		t.ok(Array.isArray(journey.legs))
 		t.ok(journey.legs.length > 0, 'no legs')
-		const leg = journey.legs[0]
+		const leg = journey.legs[0] // todo: all legs
 
 		assertValidStation(t, leg.origin)
 		assertValidStationProducts(t, leg.origin.products)
@@ -191,7 +169,7 @@ test('Salzburg Hbf to 1220 Wien, Wagramer Straße 5', co(function* (t) {
     	address: '1220 Wien, Wagramer Straße 5'
 	}
 
-	const journeys = yield client.journeys(salzburgHbf, wagramerStr, {when})
+	const journeys = yield client.journeys(salzburgHbf, wagramerStr, {departure: when})
 
 	t.ok(Array.isArray(journeys))
 	t.ok(journeys.length >= 1, 'no journeys')
@@ -228,7 +206,7 @@ test('Albertina to Salzburg Hbf', co(function* (t) {
     	name: 'Albertina',
     	id: '975900003'
 	}
-	const journeys = yield client.journeys(albertina, salzburgHbf, {when})
+	const journeys = yield client.journeys(albertina, salzburgHbf, {departure: when})
 
 	t.ok(Array.isArray(journeys))
 	t.ok(journeys.length >= 1, 'no journeys')
@@ -268,7 +246,7 @@ test('journeys: via works – with detour', co(function* (t) {
 	const [journey] = yield client.journeys(stephansplatz, schottenring, {
 		via: donauinsel,
 		results: 1,
-		when,
+		departure: when,
 		passedStations: true
 	})
 
@@ -291,7 +269,7 @@ test('journeys: via works – without detour', co(function* (t) {
 	const [journey] = yield client.journeys(karlsplatz, praterstern, {
 		via: museumsquartier,
 		results: 1,
-		when,
+		departure: when,
 		passedStations: true
 	})
 
@@ -305,7 +283,7 @@ test('journeys: via works – without detour', co(function* (t) {
 
 test('earlier/later journeys, Salzburg Hbf -> Wien Westbahnhof', co(function* (t) {
 	const model = yield client.journeys(salzburgHbf, wienWestbahnhof, {
-		results: 3, when
+		results: 3, departure: when
 	})
 
 	t.equal(typeof model.earlierRef, 'string')
@@ -316,18 +294,18 @@ test('earlier/later journeys, Salzburg Hbf -> Wien Westbahnhof', co(function* (t
 	// when and earlierThan/laterThan should be mutually exclusive
 	t.throws(() => {
 		client.journeys(salzburgHbf, wienWestbahnhof, {
-			when, earlierThan: model.earlierRef
+			departure: when, earlierThan: model.earlierRef
 		})
 	})
 	t.throws(() => {
 		client.journeys(salzburgHbf, wienWestbahnhof, {
-			when, laterThan: model.laterRef
+			departure: when, laterThan: model.laterRef
 		})
 	})
 
 	let earliestDep = Infinity, latestDep = -Infinity
 	for (let j of model) {
-		const dep = +new Date(j.departure)
+		const dep = +new Date(j.legs[0].departure)
 		if (dep < earliestDep) earliestDep = dep
 		else if (dep > latestDep) latestDep = dep
 	}
@@ -338,7 +316,7 @@ test('earlier/later journeys, Salzburg Hbf -> Wien Westbahnhof', co(function* (t
 		earlierThan: model.earlierRef
 	})
 	for (let j of earlier) {
-		t.ok(new Date(j.departure) < earliestDep)
+		t.ok(new Date(j.legs[0].departure) < earliestDep)
 	}
 
 	const later = yield client.journeys(salzburgHbf, wienWestbahnhof, {
@@ -347,7 +325,7 @@ test('earlier/later journeys, Salzburg Hbf -> Wien Westbahnhof', co(function* (t
 		laterThan: model.laterRef
 	})
 	for (let j of later) {
-		t.ok(new Date(j.departure) > latestDep)
+		t.ok(new Date(j.legs[0].departure) > latestDep)
 	}
 
 	t.end()
@@ -355,7 +333,7 @@ test('earlier/later journeys, Salzburg Hbf -> Wien Westbahnhof', co(function* (t
 
 test('leg details for Wien Westbahnhof to München Hbf', co(function* (t) {
 	const journeys = yield client.journeys(wienWestbahnhof, muenchenHbf, {
-		results: 1, when
+		results: 1, departure: when
 	})
 
 	const p = journeys[0].legs[0]
@@ -450,7 +428,12 @@ test('location', co(function* (t) {
 }))
 
 test('radar Salzburg', co(function* (t) {
-	const vehicles = yield client.radar(47.827203, 13.001261, 47.773278, 13.07562, {
+	const vehicles = yield client.radar({
+		north: 47.827203,
+		west: 13.001261,
+		south: 47.773278,
+		east: 13.07562
+	}, {
 		duration: 5 * 60, when
 	})
 

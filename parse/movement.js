@@ -35,12 +35,15 @@ const createParseMovement = (profile, locations, lines, remarks, polylines = [])
 				}
 			}
 
-			if (m.ani.poly && m.ani.poly.crdEncYX) {
-				res.polyline = m.ani.poly.crdEncYX
-			} else if (m.ani.polyG && Array.isArray(m.ani.polyG.polyXL)) {
-				let p = m.ani.polyG.polyXL[0]
+			if (m.ani.poly) {
+				const parse = profile.parsePolyline(locations)
+				res.polyline = parse(m.ani.poly)
+			} else if (m.ani.polyG) {
+				let p = m.ani.polyG.polyXL
+				p = Array.isArray(p) && polylines[p[0]]
 				// todo: there can be >1 polyline
-				res.polyline = polylines[p] && polylines[p].crdEncYX || null
+				const parse = profile.parsePolyline(locations)
+				res.polyline = p && parse(p) || null
 			}
 		}
 
