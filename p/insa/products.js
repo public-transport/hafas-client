@@ -1,60 +1,82 @@
 'use strict'
 
-module.exports = [
-	{
-		id: 'nationalExp',
-		mode: 'train',
-		bitmasks: [1],
+// TODO Jannis R.: DRY
+const p = {
+	nationalExp: {
+		bitmask: 1,
 		name: 'InterCityExpress',
 		short: 'ICE',
-		default: true
-	},
-	{
-		id: 'national',
 		mode: 'train',
-		bitmasks: [2],
+		product: 'nationalExp'
+	},
+	national: {
+		bitmask: 2,
 		name: 'InterCity & EuroCity',
 		short: 'IC/EC',
-		default: true
-	},
-	{
-		id: 'regional',
 		mode: 'train',
-		bitmasks: [8],
+		product: 'national'
+	},
+	regional: {
+		bitmask: 8,
 		name: 'RegionalExpress & RegionalBahn',
 		short: 'RE/RB',
-		default: true
-	},
-	{
-		id: 'suburban',
 		mode: 'train',
-		bitmasks: [16],
+		product: 'regional'
+	},
+	suburban: {
+		bitmask: 16,
 		name: 'S-Bahn',
 		short: 'S',
-		default: true
-	},
-	{
-		id: 'tram',
 		mode: 'train',
-		bitmasks: [32],
+		product: 'suburban'
+	},
+	tram: {
+		bitmask: 32,
 		name: 'Tram',
 		short: 'T',
-		default: true
+		mode: 'train',
+		product: 'tram'
 	},
-	{
-		id: 'bus',
-		mode: 'bus',
-		bitmasks: [64, 128],
+	bus: {
+		bitmask: 64+128,
 		name: 'Bus',
 		short: 'B',
-		default: true
+		mode: 'bus',
+		product: 'bus'
 	},
-	{
-		id: 'tourismTrain',
-		mode: 'train',
-		bitmasks: [256],
+	tourismTrain: {
+		bitmask: 256,
 		name: 'Tourism Train',
 		short: 'TT',
-		default: true
+		mode: 'train',
+		product: 'tourismTrain'
+	},
+	unknown: {
+		bitmask: 0,
+		name: 'unknown',
+		short: '?',
+		product: 'unknown'
 	}
+}
+
+p.bitmasks = []
+p.bitmasks[1] = p.nationalExp
+p.bitmasks[2] = p.national
+p.bitmasks[8] = p.regional
+p.bitmasks[16] = p.suburban
+p.bitmasks[32] = p.tram
+p.bitmasks[64] = p.bus
+p.bitmasks[128] = p.bus
+p.bitmasks[256] = p.tourismTrain
+
+p.allProducts = [
+	p.nationalExp,
+	p.national,
+	p.regional,
+	p.suburban,
+	p.tram,
+	p.bus,
+	p.tourismTrain
 ]
+
+module.exports = p

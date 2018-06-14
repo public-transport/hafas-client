@@ -1,84 +1,112 @@
 'use strict'
 
-module.exports = [
-	{
-		id: 'nationalExp',
-		mode: 'train',
-		bitmasks: [1],
+const p = {
+	nationalExp: {
+		bitmask: 1,
 		name: 'InterCityExpress & RailJet',
 		short: 'ICE/RJ',
-		default: true
-	},
-	{
-		id: 'national',
 		mode: 'train',
-		bitmasks: [2, 4],
+		product: 'nationalExp'
+	},
+	national: {
+		bitmask: 2 + 4,
 		name: 'InterCity & EuroCity',
 		short: 'IC/EC',
-		default: true
-	},
-	{
-		id: 'interregional',
 		mode: 'train',
-		bitmasks: [8, 4096],
+		product: 'national'
+	},
+	interregional: {
+		bitmask: 8 + 4096,
 		name: 'Durchgangszug & EuroNight',
 		short: 'D/EN',
-		default: true
-	},
-	{
-		id: 'regional',
 		mode: 'train',
-		bitmasks: [16],
+		product: 'interregional'
+	},
+	regional: {
+		bitmask: 16,
 		name: 'Regional & RegionalExpress',
 		short: 'R/REX',
-		default: true
-	},
-	{
-		id: 'suburban',
 		mode: 'train',
-		bitmasks: [32],
+		product: 'regional'
+	},
+	suburban: {
+		bitmask: 32,
 		name: 'S-Bahn',
 		short: 'S',
-		default: true
+		mode: 'train',
+		product: 'suburban'
 	},
-	{
-		id: 'bus',
-		mode: 'bus',
-		bitmasks: [64],
+	bus: {
+		bitmask: 64,
 		name: 'Bus',
 		short: 'B',
-		default: true
+		mode: 'bus',
+		product: 'bus'
 	},
-	{
-		id: 'ferry',
-		mode: 'watercraft',
-		bitmasks: [128],
+	ferry: {
+		bitmask: 128,
 		name: 'Ferry',
 		short: 'F',
-		default: true
+		mode: 'watercraft',
+		product: 'ferry'
 	},
-	{
-		id: 'subway',
-		mode: 'train',
-		bitmasks: [256],
+	subway: {
+		bitmask: 256,
 		name: 'U-Bahn',
 		short: 'U',
-		default: true
-	},
-	{
-		id: 'tram',
 		mode: 'train',
-		bitmasks: [512],
+		product: 'subway'
+	},
+	tram: {
+		bitmask: 512,
 		name: 'Tram',
 		short: 'T',
-		default: true
+		mode: 'train',
+		product: 'tram'
 	},
-	{
-		id: 'onCall',
-		mode: null, // todo
-		bitmasks: [2048],
+	onCall: {
+		bitmask: 2048,
 		name: 'On-call transit',
 		short: 'on-call',
-		default: true
+		mode: null, // todo
+		product: 'onCall'
+	},
+	unknown: {
+		bitmask: 0,
+		name: 'unknown',
+		short: '?',
+		product: 'unknown'
 	}
+}
+
+p.bitmasks = []
+p.bitmasks[1] = p.nationalExp
+p.bitmasks[2] = p.national
+p.bitmasks[4] = p.national
+p.bitmasks[2+4] = p.national
+p.bitmasks[8] = p.interregional
+p.bitmasks[16] = p.regional
+p.bitmasks[32] = p.suburban
+p.bitmasks[64] = p.bus
+p.bitmasks[128] = p.ferry
+p.bitmasks[256] = p.subway
+p.bitmasks[512] = p.tram
+p.bitmasks[1024] = p.unknown
+p.bitmasks[2048] = p.onCall
+p.bitmasks[4096] = p.interregional
+p.bitmasks[8+4096] = p.interregional
+
+p.allProducts = [
+	p.nationalExp,
+	p.national,
+	p.interregional,
+	p.regional,
+	p.suburban,
+	p.bus,
+	p.ferry,
+	p.subway,
+	p.tram,
+	p.onCall
 ]
+
+module.exports = p

@@ -1,105 +1,64 @@
 {
-  "_from": "hafas-client@next",
-  "_id": "hafas-client@3.0.0-alpha.6",
-  "_inBundle": false,
-  "_integrity": "sha512-cI0Pf+i8elXXO71JwkkwIJZajh2jAVqAxNr0ri+pO0KMrqCxKlIo1vd5H2zQu8E5kMHhgmqPAC8C3J3XbqIHfQ==",
-  "_location": "/hafas-client",
-  "_phantomChildren": {},
-  "_requested": {
-    "type": "tag",
-    "registry": true,
-    "raw": "hafas-client@next",
-    "name": "hafas-client",
-    "escapedName": "hafas-client",
-    "rawSpec": "next",
-    "saveSpec": null,
-    "fetchSpec": "next"
-  },
-  "_requiredBy": [
-    "#USER",
-    "/"
-  ],
-  "_resolved": "https://registry.npmjs.org/hafas-client/-/hafas-client-3.0.0-alpha.6.tgz",
-  "_shasum": "f5e8a5d3f4ddecab0ba67e111fc55e8d8b789107",
-  "_spec": "hafas-client@next",
-  "_where": "/home/t/ws/react/githubForks/aa",
-  "author": {
-    "name": "Jannis R",
-    "email": "mail@jannisr.de"
-  },
-  "bugs": {
-    "url": "https://github.com/public-transport/hafas-client/issues"
-  },
-  "bundleDependencies": false,
-  "contributors": [
-    {
-      "name": "Julius Tens",
-      "email": "mail@juliustens.eu"
-    }
-  ],
-  "dependencies": {
-    "@mapbox/polyline": "^1.0.0",
-    "capture-stack-trace": "^1.0.0",
-    "create-hash": "^1.2.0",
-    "fetch-ponyfill": "^6.0.0",
-    "gps-distance": "0.0.4",
-    "lodash": "^4.17.5",
-    "luxon": "^0.5.8",
-    "p-throttle": "^1.1.0",
-    "pinkie-promise": "^2.0.1",
-    "query-string": "^6.0.0",
-    "slugg": "^1.2.0",
-    "vbb-parse-line": "^0.3.1",
-    "vbb-parse-ticket": "^0.2.1",
-    "vbb-short-station-name": "^0.4.0",
-    "vbb-stations": "^6.2.1",
-    "vbb-translate-ids": "^3.1.0",
-    "node-libs-react-native": "^1.0.2",
-    "es6-symbol": "^3.1.1"
-  },
-  "deprecated": false,
-  "description": "JavaScript client for HAFAS public transport APIs.",
-  "devDependencies": {
-    "db-stations": "^2.3.0",
-    "is-coordinates": "^2.0.2",
-    "is-roughly-equal": "^0.1.0",
-    "tap-spec": "^4.1.1",
-    "tape": "^4.8.0",
-    "tape-promise": "^3.0.0",
-    "validate-fptf": "^1.2.1",
-    "vbb-stations-autocomplete": "^3.1.0"
-  },
-  "engines": {
-    "node": ">=6"
-  },
-  "files": [
-    "index.js",
-    "throttle.js",
-    "lib",
-    "parse",
-    "format",
-    "p",
-    "docs"
-  ],
-  "homepage": "https://github.com/public-transport/hafas-client",
-  "keywords": [
-    "hafas",
-    "public",
-    "transport",
-    "transit",
-    "api",
-    "http"
-  ],
-  "license": "ISC",
-  "main": "index.js",
-  "name": "hafas-client",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/public-transport/hafas-client.git"
-  },
-  "scripts": {
-    "prepublishOnly": "npm test | tap-spec",
-    "test": "env NODE_ENV=dev NODE_DEBUG=hafas-client node test/index.js"
-  },
-  "version": "3.0.0-alpha.6"
+	"name": "hafas-client",
+	"description": "JavaScript client for HAFAS public transport APIs.",
+	"version": "2.8.1",
+	"main": "index.js",
+	"files": [
+		"index.js",
+		"throttle.js",
+		"lib",
+		"parse",
+		"format",
+		"p",
+		"docs"
+	],
+	"author": "Jannis R <mail@jannisr.de>",
+	"contributors": [
+		"Julius Tens <mail@juliustens.eu>"
+	],
+	"homepage": "https://github.com/public-transport/hafas-client",
+	"repository": "public-transport/hafas-client",
+	"bugs": "https://github.com/public-transport/hafas-client/issues",
+	"license": "ISC",
+	"keywords": [
+		"hafas",
+		"public",
+		"transport",
+		"transit",
+		"api",
+		"http"
+	],
+	"engines": {
+		"node": ">=6"
+	},
+	"dependencies": {
+		"capture-stack-trace": "^1.0.0",
+		"create-hash": "^1.2.0",
+		"fetch-ponyfill": "^6.0.0",
+		"lodash": "^4.17.5",
+		"luxon": "^1.2.1",
+		"p-throttle": "^1.1.0",
+		"pinkie-promise": "^2.0.1",
+		"query-string": "^6.0.0",
+		"slugg": "^1.2.0",
+		"vbb-parse-line": "^0.3.1",
+		"vbb-parse-ticket": "^0.2.1",
+		"vbb-short-station-name": "^1.0.1",
+		"vbb-stations": "^6.2.1",
+		"vbb-translate-ids": "^3.1.0"
+	},
+	"devDependencies": {
+		"db-stations": "^2.3.0",
+		"is-coordinates": "^2.0.2",
+		"is-roughly-equal": "^0.1.0",
+		"tap-spec": "^4.1.1",
+		"tape": "^4.8.0",
+		"tape-promise": "^3.0.0",
+		"validate-fptf": "^1.2.1",
+		"vbb-stations-autocomplete": "^3.1.0"
+	},
+	"scripts": {
+		"test": "env NODE_ENV=dev node test/index.js",
+		"prepublishOnly": "npm test | tap-spec"
+	}
 }

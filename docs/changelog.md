@@ -1,5 +1,33 @@
 # Changelog
 
+## `2.8.1`
+
+- 769f2e3 send `Accept: application/json`
+
+## `2.8.0`
+
+- 16c3f01 enable [`journeyLeg()`](journey-leg.md) for [DB](../p/db)
+
+## `2.7.5`
+
+- 908d531 [DB](../p/db) [`journeys()`](journeys.md): fix polylines parsing 🐛
+
+## `2.7.4`
+
+- 709b7b4 update dependencies
+
+## `2.7.3`
+
+- 48f2cef each movement from `radar()` now has a `journeyId` field
+
+## `2.7.2`
+
+- a97e0d3 fix polylines parsing 🐛
+
+## `2.7.1`
+
+- aa480e0 fix polylines parsing 🐛
+
 ## `2.7.0`
 
 - `journeys()`: `polylines` option

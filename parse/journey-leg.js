@@ -23,6 +23,8 @@ const createParseJourneyLeg = (profile, stations, lines, remarks, polylines) => 
 			arrival: arr.toISO()
 		}
 
+		// todo: DRY with parseDeparture
+		// todo: DRY with parseStopover
 		if (pt.dep.dTimeR && pt.dep.dTimeS) {
 			const realtime = profile.parseDateTime(profile, j.date, pt.dep.dTimeR)
 			const planned = profile.parseDateTime(profile, j.date, pt.dep.dTimeS)
@@ -36,10 +38,9 @@ const createParseJourneyLeg = (profile, stations, lines, remarks, polylines) => 
 
 		if (pt.jny && pt.jny.polyG) {
 			let p = pt.jny.polyG.polyXL
-			p = Array.isArray(p) && polylines[p[0]]
+			p = p && polylines[p[0]]
 			// todo: there can be >1 polyline
-			const parse = profile.parsePolyline(stations)
-			res.polyline = p && parse(p) || null
+			res.polyline = p && p.crdEncYX || null
 		}
 
 		if (pt.type === 'WALK') {
@@ -49,7 +50,7 @@ const createParseJourneyLeg = (profile, stations, lines, remarks, polylines) => 
 			// todo: pull `public` value from `profile.products`
 			res.id = pt.jny.jid
 			res.line = lines[parseInt(pt.jny.prodX)] || null
-			res.direction = profile.parseStationName(pt.jny.dirTxt) || null
+			res.direction = profile.parseStationName(pt.jny.dirTxt)
 
 			if (pt.dep.dPlatfS) res.departurePlatform = pt.dep.dPlatfS
 			if (pt.arr.aPlatfS) res.arrivalPlatform = pt.arr.aPlatfS

@@ -2,24 +2,16 @@
 
 const minBy = require('lodash/minBy')
 const maxBy = require('lodash/maxBy')
-const isObj = require('lodash/isObject')
 
-const defaultProfile = require('./lib/default-profile')
-const createParseBitmask = require('./parse/products-bitmask')
-const createFormatProductsFilter = require('./format/products-filter')
 const validateProfile = require('./lib/validate-profile')
+const defaultProfile = require('./lib/default-profile')
 const _request = require('./lib/request')
 
+const isObj = o => o !== null && 'object' === typeof o && !Array.isArray(o)
 const isNonEmptyString = str => 'string' === typeof str && str.length > 0
 
 const createClient = (profile, request = _request) => {
 	profile = Object.assign({}, defaultProfile, profile)
-	if (!profile.parseProducts) {
-		profile.parseProducts = createParseBitmask(profile)
-	}
-	if (!profile.formatProductsFilter) {
-		profile.formatProductsFilter = createFormatProductsFilter(profile)
-	}
 	validateProfile(profile)
 
 	const departures = (station, opt = {}) => {
@@ -31,9 +23,8 @@ const createClient = (profile, request = _request) => {
 			direction: null, // only show departures heading to this station
 			duration:  10 // show departures for the next n minutes
 		}, opt)
-		opt.when = new Date(opt.when || Date.now())
-		if (Number.isNaN(+opt.when)) throw new Error('opt.when is invalid')
-		const products = profile.formatProductsFilter(opt.products || {})
+		opt.when = opt.when || new Date()
+		const products = profile.formatProducts(opt.products || {})
 
 		const dir = opt.direction ? profile.formatStation(opt.direction) : null
 		return request(profile, {
@@ -58,8 +49,8 @@ const createClient = (profile, request = _request) => {
 	}
 
 	const journeys = (from, to, opt = {}) => {
-		from = profile.formatLocation(profile, from, 'from')
-		to = profile.formatLocation(profile, to, 'to')
+		from = profile.formatLocation(profile, from)
+		to = profile.formatLocation(profile, to)
 
 		if (('earlierThan' in opt) && ('laterThan' in opt)) {
 			throw new Error('opt.laterThan and opt.laterThan are mutually exclusive.')
@@ -88,6 +79,7 @@ const createClient = (profile, request = _request) => {
 			results: 5, // how many journeys?
 			via: null, // let journeys pass this station?
 			passedStations: false, // return stations on the way?
+			whenRepresents: 'departure', // use 'arrival' for journeys arriving before `when`
 			transfers: 5, // maximum of 5 transfers
 			transferTime: 0, // minimum time for a single transfer in minutes
 			// todo: does this work with every endpoint?
@@ -96,12 +88,15 @@ const createClient = (profile, request = _request) => {
 			tickets: false, // return tickets?
 			polylines: false // return leg shapes?
 		}, opt)
-		if (opt.via) opt.via = profile.formatLocation(profile, opt.via, 'opt.via')
-		opt.when = new Date(opt.when || Date.now())
-		if (Number.isNaN(+opt.when)) throw new Error('opt.when is invalid')
+		if (opt.via) opt.via = profile.formatLocation(profile, opt.via)
+		opt.when = opt.when || new Date()
+
+		if (opt.whenRepresents !== 'departure' && opt.whenRepresents !== 'arrival') {
+			throw new Error('opt.whenRepresents must be `departure` or `arrival`.')
+		}
 
 		const filters = [
-			profile.formatProductsFilter(opt.products || {})
+			profile.formatProducts(opt.products || {})
 		]
 		if (
 			opt.accessibility &&
@@ -132,10 +127,10 @@ const createClient = (profile, request = _request) => {
 				arrLocL: [to],
 				jnyFltrL: filters,
 				getTariff: !!opt.tickets,
+				outFrwd: opt.whenRepresents !== 'arrival',
 
 				// todo: what is req.gisFltrL?
 				getPT: true, // todo: what is this?
-				outFrwd: true, // todo: what is this?
 				getIV: false, // todo: walk & bike as alternatives?
 				getPolyline: !!opt.polylines
 			}
@@ -149,7 +144,10 @@ const createClient = (profile, request = _request) => {
 			.then((d) => {
 				if (!Array.isArray(d.outConL)) return []
 
-				const polylines = opt.polylines && d.common.polyL || []
+				let polylines = []
+				if (opt.polylines && Array.isArray(d.common.polyL)) {
+					polylines = d.common.polyL
+				}
 				const parse = profile.parseJourney(profile, d.locations, d.lines, d.remarks, polylines)
 
 				if (!journeys.earlierRef) journeys.earlierRef = d.outCtxScrB
@@ -159,11 +157,11 @@ const createClient = (profile, request = _request) => {
 					j = parse(j)
 					journeys.push(j)
 
-					if (journeys.length >= opt.results) { // collected enough
+					if (journeys.length === opt.results) { // collected enough
 						journeys.laterRef = d.outCtxScrF
 						return journeys
 					}
-					const dep = +new Date(j.legs[0].departure)
+					const dep = +new Date(j.departure)
 					if (dep > latestDep) latestDep = dep
 				}
 
@@ -280,8 +278,7 @@ const createClient = (profile, request = _request) => {
 			passedStations: true, // return stations on the way?
 			polyline: false
 		}, opt)
-		opt.when = new Date(opt.when || Date.now())
-		if (Number.isNaN(+opt.when)) throw new Error('opt.when is invalid')
+		opt.when = opt.when || new Date()
 
 		return request(profile, {
 			cfg: {polyEnc: 'GPA'},
@@ -295,7 +292,10 @@ const createClient = (profile, request = _request) => {
 			}
 		})
 		.then((d) => {
-			const polylines = opt.polyline && d.common.polyL || []
+			let polylines = []
+			if (opt.polyline && Array.isArray(d.common.polyL)) {
+				polylines = d.common.polyL
+			}
 			const parse = profile.parseJourneyLeg(profile, d.locations, d.lines, d.remarks, polylines)
 
 			const leg = { // pretend the leg is contained in a journey
@@ -308,13 +308,11 @@ const createClient = (profile, request = _request) => {
 		})
 	}
 
-	const radar = ({north, west, south, east}, opt) => {
+	const radar = (north, west, south, east, opt) => {
 		if ('number' !== typeof north) throw new Error('north must be a number.')
 		if ('number' !== typeof west) throw new Error('west must be a number.')
 		if ('number' !== typeof south) throw new Error('south must be a number.')
 		if ('number' !== typeof east) throw new Error('east must be a number.')
-		if (north <= south) throw new Error('north must be larger than south.')
-		if (east <= west) throw new Error('east must be larger than west.')
 
 		opt = Object.assign({
 			results: 256, // maximum number of vehicles
@@ -323,8 +321,7 @@ const createClient = (profile, request = _request) => {
 			products: null, // optionally an object of booleans
 			polylines: false // return a track shape for each vehicle?
 		}, opt || {})
-		opt.when = new Date(opt.when || Date.now())
-		if (Number.isNaN(+opt.when)) throw new Error('opt.when is invalid')
+		opt.when = opt.when || new Date()
 
 		const durationPerStep = opt.duration / Math.max(opt.frames, 1) * 1000
 		return request(profile, {
@@ -340,7 +337,7 @@ const createClient = (profile, request = _request) => {
 				perStep: Math.round(durationPerStep),
 				ageOfReport: true, // todo: what is this?
 				jnyFltrL: [
-					profile.formatProductsFilter(opt.products || {})
+					profile.formatProducts(opt.products || {})
 				],
 				trainPosMode: 'CALC' // todo: what is this? what about realtime?
 			}
@@ -348,7 +345,10 @@ const createClient = (profile, request = _request) => {
 		.then((d) => {
 			if (!Array.isArray(d.jnyL)) return []
 
-			const polylines = opt.polyline && d.common.polyL || []
+			let polylines = []
+			if (opt.polylines && d.common && Array.isArray(d.common.polyL)) {
+				polylines = d.common.polyL
+			}
 			const parse = profile.parseMovement(profile, d.locations, d.lines, d.remarks, polylines)
 			return d.jnyL.map(parse)
 		})
