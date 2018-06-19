@@ -1,5 +1,23 @@
 # Changelog
 
+## `3.0.0`
+
+This version is not fully backwords-compatible. Check out [the migration guide](migration-to-3.md).
+
+- b7c1ee3 profiles: new products markup ([guide](https://github.com/public-transport/hafas-client/blob/ebe4fa64d871f711ced99d528c0171b180edc135/docs/writing-a-profile.md#3-products))
+- 40b559f `radar(n, w, s, e)` → `radar({n, w, s, e})` 💥
+- 005f3f8 remove `journey.departure`, `journey.arrival`, … 💥
+- 0ef0301 validate `opt.when` 💥
+- 431574b parse polylines using `profile.parsePolyLine` 💥 – [docs for the output format](https://github.com/public-transport/hafas-client/blob/ebe4fa64d871f711ced99d528c0171b180edc135/docs/journey-leg.md#polyline-option)
+- a356a26 throw if 0 products enabled 💥
+- c82ad23 `journeys()`: `opt.when` → `opt.departure`/`opt.arrival` 💥
+- 21c273c `journeys()`/`journeyLeg()`: leg stopovers: parse & expose delays
+- 665bed9 `location(id)` → `station(id)` 💥
+- 6611f26 `journeys()`/`journeyLeg()`: `leg.passed` → `leg.stopovers` 💥
+- ebe4fa6 `journeys()`/`journeyLeg()`: `opt.passedStations` → `opt.stopovers` 💥
+- 3e672ee `journeys()`/`journeyLeg()`: `stopover.station` → `stopover.stop` 💥
+- 021ae45: `journeys()`/`journeyLeg()`: leg stopovers: parse & expose platforms
+
 ## `2.7.0`
 
 - `journeys()`: `polylines` option
