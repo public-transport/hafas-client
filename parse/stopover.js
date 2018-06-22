@@ -1,15 +1,15 @@
 'use strict'
 
-// todo: arrivalDelay, departureDelay or only delay ?
-// todo: arrivalPlatform, departurePlatform
 const createParseStopover = (profile, stations, lines, remarks, date) => {
 	const parseStopover = (st) => {
 		const res = {
 			station: stations[parseInt(st.locX)] || null,
 			arrival: null,
 			arrivalDelay: null,
+			arrivalPlatform: st.aPlatfR || st.aPlatfS || null,
 			departure: null,
-			departureDelay: null
+			departureDelay: null,
+			departurePlatform: st.dPlatfR || st.dPlatfS || null
 		}
 
 		// todo: DRY with parseDeparture
