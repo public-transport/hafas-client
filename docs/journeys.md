@@ -179,7 +179,9 @@ The response may look like this:
 					products: { /* … */ }
 				},
 				arrival: '2017-12-17T19:09:00.000+01:00',
-				departure: '2017-12-17T19:09:00.000+01:00'
+				arrivalPlatform: '1',
+				departure: '2017-12-17T19:09:00.000+01:00',
+				departurePlatform: '1'
 			}, /* … */ {
 				stop: {
 					type: 'station',
@@ -189,7 +191,9 @@ The response may look like this:
 					products: { /* … */ }
 				},
 				arrival: '2017-12-17T19:17:00.000+01:00',
-				departure: '2017-12-17T19:17:00.000+01:00'
+				arrivalPlatform: '5',
+				departure: '2017-12-17T19:17:00.000+01:00',
+				departurePlatform: '5'
 			} ]
 		} ]
 	},
