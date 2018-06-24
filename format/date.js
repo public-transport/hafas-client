@@ -1,12 +1,18 @@
 'use strict'
 
-const {DateTime} = require('luxon')
-
 const formatDate = (profile, when) => {
-	return DateTime.fromMillis(+when, {
-		locale: profile.locale,
-		zone: profile.timezone
-	}).toFormat('yyyyMMdd')
+	let date = new Date(when)
+	var month = String(date.getUTCMonth() + 1); //months from 1-12
+	var day = String(date.getUTCDate());
+	var year = String(date.getUTCFullYear());
+	if(day <10){
+		day = "0"+ day
+	}
+	if(month < 10){
+		month = "0" + month
+	}
+	date = year + month + day
+	return date
 }
 
 module.exports = formatDate
