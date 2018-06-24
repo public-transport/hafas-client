@@ -1,10 +1,10 @@
 'use strict'
 
 const formatTime = (profile, when) => {
-	let time = new Date(when)
-	var hour = String(time.getUTCHours() + 1); //months from 1-12
-	var minute = String(time.getUTCMinutes());
-	var second = String(time.getUTCSeconds());
+	var time = new Date(when)
+	var hour = String(time.getHours()); 
+	var minute = String(time.getMinutes());
+	var second = String(time.getSeconds());
 	if(hour <10){
 		hour = "0"+ hour
 	}
