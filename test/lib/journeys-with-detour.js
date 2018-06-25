@@ -12,7 +12,7 @@ const testJourneysWithDetour = co(function* (cfg) {
 
 	const leg = journeys[0].legs.some((leg) => {
 		return leg.stopovers && leg.stopovers.some((stopover) => {
-			return detourIds.includes(stopover.station.id)
+			return detourIds.includes(stopover.stop.id)
 		})
 	})
 	t.ok(leg, detourIds.join('/') + ' is not being passed')

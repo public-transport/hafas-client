@@ -189,7 +189,7 @@ test('journeys: via works – without detour', co(function* (t) {
 
 	const l2 = journeys[0].legs.some((leg) => {
 		return leg.stopovers && leg.stopovers.some((stopover) => {
-			return stopover.station.id === museumsquartierPassed
+			return stopover.stop.id === museumsquartierPassed
 		})
 	})
 	t.ok(l2, 'Museumsquartier is not being passed')
