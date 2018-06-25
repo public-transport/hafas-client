@@ -86,7 +86,9 @@ const createClient = (profile, request = _request) => {
 			accessibility: 'none', // 'none', 'partial' or 'complete'
 			bike: false, // only bike-friendly journeys
 			tickets: false, // return tickets?
-			polylines: false // return leg shapes?
+			polylines: false, // return leg shapes?
+			// Consider walking to nearby stations at the beginning of a journey?
+			startWithWalking: false
 		}, opt)
 		if (opt.via) opt.via = profile.formatLocation(profile, opt.via)
 		opt.when = opt.when || new Date()
@@ -128,6 +130,7 @@ const createClient = (profile, request = _request) => {
 				jnyFltrL: filters,
 				getTariff: !!opt.tickets,
 				outFrwd: opt.whenRepresents !== 'arrival',
+				ushrp: !!opt.startWithWalking,
 
 				// todo: what is req.gisFltrL?
 				getPT: true, // todo: what is this?
