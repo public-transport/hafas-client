@@ -160,7 +160,7 @@ The response may look like this:
 			},
 			direction: 'S Potsdam Hauptbahnhof',
 			stopovers: [ {
-				station: {
+				stop: {
 					type: 'station',
 					id: '900000003201',
 					name: 'S+U Berlin Hauptbahnhof',
@@ -171,7 +171,7 @@ The response may look like this:
 				departure: null,
 				cancelled: true
 			}, {
-				station: {
+				stop: {
 					type: 'station',
 					id: '900000003102',
 					name: 'S Bellevue',
@@ -181,7 +181,7 @@ The response may look like this:
 				arrival: '2017-12-17T19:09:00.000+01:00',
 				departure: '2017-12-17T19:09:00.000+01:00'
 			}, /* … */ {
-				station: {
+				stop: {
 					type: 'station',
 					id: '900000024101',
 					name: 'S Charlottenburg',
