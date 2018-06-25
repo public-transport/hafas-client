@@ -56,8 +56,8 @@ const parseLocation = (profile, l, lines) => {
 	return res
 }
 
-const createParseJourney = (profile, stations, lines, remarks, polylines) => {
-	const parseJourney = _createParseJourney(profile, stations, lines, remarks, polylines)
+const createParseJourney = (profile, stations, lines, hints, polylines) => {
+	const parseJourney = _createParseJourney(profile, stations, lines, hints, polylines)
 
 	const parseJourneyWithTickets = (j) => {
 		const res = parseJourney(j)
@@ -86,8 +86,8 @@ const createParseJourney = (profile, stations, lines, remarks, polylines) => {
 	return parseJourneyWithTickets
 }
 
-const createParseDeparture = (profile, stations, lines, remarks) => {
-	const parseDeparture = _createParseDeparture(profile, stations, lines, remarks)
+const createParseDeparture = (profile, stations, lines, hints) => {
+	const parseDeparture = _createParseDeparture(profile, stations, lines, hints)
 
 	const ringbahnClockwise = /^ringbahn s\s?41$/i
 	const ringbahnAnticlockwise = /^ringbahn s\s?42$/i

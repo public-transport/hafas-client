@@ -36,8 +36,8 @@ const parseLocation = (profile, l, lines) => {
 	return res
 }
 
-const createParseJourney = (profile, stations, lines, remarks) => {
-	const parseJourney = _createParseJourney(profile, stations, lines, remarks)
+const createParseJourney = (profile, stations, lines, hints) => {
+	const parseJourney = _createParseJourney(profile, stations, lines, hints)
 
 	const parseJourneyWithTickets = (j) => {
 		const res = parseJourney(j)
@@ -78,8 +78,8 @@ const createParseJourney = (profile, stations, lines, remarks) => {
 	return parseJourneyWithTickets
 }
 
-const createParseMovement = (profile, locations, lines, remarks) => {
-	const _parseMovement = _createParseMovement(profile, locations, lines, remarks)
+const createParseMovement = (profile, locations, lines, hints) => {
+	const _parseMovement = _createParseMovement(profile, locations, lines, hints)
 	const parseMovement = (m) => {
 		const res = _parseMovement(m)
 		// filter out empty nextStops entries

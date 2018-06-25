@@ -44,8 +44,8 @@ const parseLocation = (profile, l, lines) => {
 	return res
 }
 
-const createParseMovement = (profile, locations, lines, remarks) => {
-	const _parseMovement = _createParseMovement(profile, locations, lines, remarks)
+const createParseMovement = (profile, locations, lines, hints) => {
+	const _parseMovement = _createParseMovement(profile, locations, lines, hints)
 	const parseMovement = (m) => {
 		const res = _parseMovement(m)
 		// filter out POIs

@@ -1,14 +1,14 @@
 'use strict'
 
+const findRemark = require('./find-remark')
+
 // todos from public-transport/hafas-client#2
 // - stdStop.dPlatfS, stdStop.dPlatfR
 // todo: what is d.jny.dirFlg?
 // todo: d.stbStop.dProgType
 // todo: d.freq, d.freq.jnyL, see https://github.com/public-transport/hafas-client/blob/9203ed1481f08baacca41ac5e3c19bf022f01b0b/parse.js#L115
 
-const createParseDeparture = (profile, stations, lines, remarks) => {
-	const findRemark = rm => remarks[parseInt(rm.remX)] || null
-
+const createParseDeparture = (profile, stations, lines, hints, warnings) => {
 	const parseDeparture = (d) => {
 		const when = profile.parseDateTime(profile, d.date, d.stbStop.dTimeR || d.stbStop.dTimeS)
 		const res = {
@@ -17,7 +17,10 @@ const createParseDeparture = (profile, stations, lines, remarks) => {
 			when: when.toISO(),
 			direction: profile.parseStationName(d.dirTxt),
 			line: lines[parseInt(d.prodX)] || null,
-			remarks: d.remL ? d.remL.map(findRemark) : [],
+			remarks: (d.remL
+				? d.remL.map(ref => findRemark(hints, warnings, ref))
+				: []
+			),
 			trip: +d.jid.split('|')[1] // todo: this seems brittle
 		}
 		// todo: res.trip from rawLine.prodCtx.num?

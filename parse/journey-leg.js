@@ -1,13 +1,32 @@
 'use strict'
 
 const parseDateTime = require('./date-time')
+const findRemark = require('./find-remark')
 
 const clone = obj => Object.assign({}, obj)
 
-const createParseJourneyLeg = (profile, stations, lines, remarks, polylines) => {
-	// todo: finish parse/remark.js first
-	const applyRemark = (j, rm) => {}
+const applyRemarks = (leg, hints, warnings, refs) => {
+	for (let ref of refs) {
+		const remark = findRemark(hints, warnings, ref)
+		if ('number' === typeof ref.fLocX && 'number' === typeof ref.tLocX) {
+			for (let i = ref.fLocX; i <= ref.tLocX; i++) {
+				const stopover = leg.passed[i]
+				if (Array.isArray(stopover.remarks)) {
+					stopover.remarks.push(remark)
+				} else {
+					stopover.remarks = [remark]
+				}
+			}
+		} else {
+			if (Array.isArray(leg.remarks)) leg.remarks.push(remark)
+			else leg.remarks = [remark]
+		}
+		// todo: `ref.tagL`
+	}
+}
 
+const createParseJourneyLeg = (profile, stations, lines, hints, warnings, polylines) => {
+	// todo: pt.status
 	// todo: pt.sDays
 	// todo: pt.dep.dProgType, pt.arr.dProgType
 	// todo: what is pt.jny.dirFlg?
@@ -15,6 +34,7 @@ const createParseJourneyLeg = (profile, stations, lines, remarks, polylines) => 
 	// todo: what is pt.himL?
 
 	// j = journey, pt = part
+	// todo: pt.planrtTS
 	const parseJourneyLeg = (j, pt, parseStopovers = true) => {
 		const dep = profile.parseDateTime(profile, j.date, pt.dep.dTimeR || pt.dep.dTimeS)
 		const arr = profile.parseDateTime(profile, j.date, pt.arr.aTimeR || pt.arr.aTimeS)
@@ -63,9 +83,11 @@ const createParseJourneyLeg = (profile, stations, lines, remarks, polylines) => 
 				const stopovers = pt.jny.stopL.map(parse)
 				// filter stations the train passes without stopping, as this doesn't comply with fptf (yet)
 				res.stopovers = stopovers.filter((x) => !x.passBy)
-			}
-			if (Array.isArray(pt.jny.remL)) {
-				for (let remark of pt.jny.remL) applyRemark(j, remark)
+
+				// todo: is there a `pt.jny.remL`?
+				if (Array.isArray(pt.jny.msgL)) {
+					applyRemarks(res, hints, warnings, pt.jny.msgL)
+				}
 			}
 
 			const freq = pt.jny.freq || {}
