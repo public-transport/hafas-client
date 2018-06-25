@@ -17,6 +17,7 @@ This version is not fully backwords-compatible. Check out [the migration guide](
 - ebe4fa6 `journeys()`/`journeyLeg()`: `opt.passedStations` → `opt.stopovers` 💥
 - 3e672ee `journeys()`/`journeyLeg()`: `stopover.station` → `stopover.stop` 💥
 - 021ae45: `journeys()`/`journeyLeg()`: leg stopovers: parse & expose platforms
+- 85e0bdf `journeys()`: `startWithWalking` option with default `true` ✨
 
 ## `2.7.0`
 
