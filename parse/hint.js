@@ -80,6 +80,16 @@ const hints = Object.assign(Object.create(null), {
 		type: 'hint',
 		code: 'elevator',
 		text: 'elevator available'
+	},
+	ck: {
+		type: 'hint',
+		code: 'komfort-checkin',
+		text: 'Komfort-Checkin available'
+	},
+	it: {
+		type: 'hint',
+		code: 'ice-sprinter',
+		text: 'ICE Sprinter service'
 	}
 })
 
