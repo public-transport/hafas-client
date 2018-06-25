@@ -5,12 +5,21 @@ const findRemark = require('./find-remark')
 
 const clone = obj => Object.assign({}, obj)
 
+const locX = Symbol('locX')
+
 const applyRemarks = (leg, hints, warnings, refs) => {
 	for (let ref of refs) {
 		const remark = findRemark(hints, warnings, ref)
+		if (!remark) continue
+
 		if ('number' === typeof ref.fLocX && 'number' === typeof ref.tLocX) {
-			for (let i = ref.fLocX; i <= ref.tLocX; i++) {
-				const stopover = leg.passed[i]
+			const fromI = leg.stopovers.findIndex(s => s[locX] === ref.fLocX)
+			const toI = leg.stopovers.findIndex(s => s[locX] === ref.tLocX)
+			if (fromI < 0 || toI < 0) continue
+
+			for (let i = fromI; i <= toI; i++) {
+				const stopover = leg.stopovers[i]
+				if (!stopover) continue
 				if (Array.isArray(stopover.remarks)) {
 					stopover.remarks.push(remark)
 				} else {
@@ -79,15 +88,22 @@ const createParseJourneyLeg = (profile, stations, lines, hints, warnings, polyli
 			if (pt.arr.aPlatfS) res.arrivalPlatform = pt.arr.aPlatfS
 
 			if (parseStopovers && pt.jny.stopL) {
-				const parse = profile.parseStopover(profile, stations, lines, remarks, j.date)
-				const stopovers = pt.jny.stopL.map(parse)
-				// filter stations the train passes without stopping, as this doesn't comply with fptf (yet)
-				res.stopovers = stopovers.filter((x) => !x.passBy)
+				const parse = profile.parseStopover(profile, stations, lines, hints, warnings, j.date)
+				const stopL = pt.jny.stopL
+				res.stopovers = stopL.map(parse)
 
 				// todo: is there a `pt.jny.remL`?
 				if (Array.isArray(pt.jny.msgL)) {
+					for (let i = 0; i < stopL.length; i++) {
+						Object.defineProperty(res.stopovers[i], locX, {
+							value: stopL[i].locX
+						})
+					}
 					applyRemarks(res, hints, warnings, pt.jny.msgL)
 				}
+
+				// filter stations the train passes without stopping, as this doesn't comply with fptf (yet)
+				res.stopovers = res.stopovers.filter((x) => !x.passBy)
 			}
 
 			const freq = pt.jny.freq || {}
