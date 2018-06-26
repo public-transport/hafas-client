@@ -151,7 +151,7 @@ const parseHint = (profile, h) => {
 			type: 'status',
 			code: 'alternative-trip',
 			text,
-			journeyId: h.jid
+			tripId: h.jid
 		}
 	}
 	if (h.type === 'A') {

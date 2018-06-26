@@ -14,7 +14,7 @@ const createParseMovement = (profile, opt, data) => {
 
 		const res = {
 			direction: profile.parseStationName(m.dirTxt),
-			journeyId: m.jid || null,
+			tripId: m.jid || null,
 			trip: m.jid && +m.jid.split('|')[1] || null, // todo: this seems brittle
 			line: lines[m.prodX] || null,
 			location: m.pos ? {
