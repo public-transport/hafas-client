@@ -34,7 +34,8 @@ const applyRemarks = (leg, hints, warnings, refs) => {
 	}
 }
 
-const createParseJourneyLeg = (profile, stations, lines, hints, warnings, polylines) => {
+const createParseJourneyLeg = (profile, opt, data) => {
+	const {locations, lines, hints, warnings, polylines} = data
 	// todo: pt.status
 	// todo: pt.sDays
 	// todo: pt.dep.dProgType, pt.arr.dProgType
@@ -48,8 +49,8 @@ const createParseJourneyLeg = (profile, stations, lines, hints, warnings, polyli
 		const dep = profile.parseDateTime(profile, j.date, pt.dep.dTimeR || pt.dep.dTimeS)
 		const arr = profile.parseDateTime(profile, j.date, pt.arr.aTimeR || pt.arr.aTimeS)
 		const res = {
-			origin: clone(stations[parseInt(pt.dep.locX)]) || null,
-			destination: clone(stations[parseInt(pt.arr.locX)]),
+			origin: clone(locations[parseInt(pt.dep.locX)]) || null,
+			destination: clone(locations[parseInt(pt.arr.locX)]),
 			departure: dep.toISO(),
 			arrival: arr.toISO()
 		}
@@ -71,7 +72,7 @@ const createParseJourneyLeg = (profile, stations, lines, hints, warnings, polyli
 			let p = pt.jny.polyG.polyXL
 			p = Array.isArray(p) && polylines[p[0]]
 			// todo: there can be >1 polyline
-			const parse = profile.parsePolyline(stations)
+			const parse = profile.parsePolyline(profile, opt, data)
 			res.polyline = p && parse(p) || null
 		}
 
@@ -88,7 +89,7 @@ const createParseJourneyLeg = (profile, stations, lines, hints, warnings, polyli
 			if (pt.arr.aPlatfS) res.arrivalPlatform = pt.arr.aPlatfS
 
 			if (parseStopovers && pt.jny.stopL) {
-				const parse = profile.parseStopover(profile, stations, lines, hints, warnings, j.date)
+				const parse = profile.parseStopover(profile, opt, data, j.date)
 				const stopL = pt.jny.stopL
 				res.stopovers = stopL.map(parse)
 

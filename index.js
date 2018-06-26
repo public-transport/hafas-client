@@ -36,7 +36,7 @@ const createClient = (profile, request = _request) => {
 		const products = profile.formatProductsFilter(opt.products || {})
 
 		const dir = opt.direction ? profile.formatStation(opt.direction) : null
-		return request(profile, {
+		return request(profile, opt, {
 			meth: 'StationBoard',
 			req: {
 				type: 'DEP',
@@ -51,7 +51,12 @@ const createClient = (profile, request = _request) => {
 		})
 		.then((d) => {
 			if (!Array.isArray(d.jnyL)) return [] // todo: throw err?
-			const parse = profile.parseDeparture(profile, d.locations, d.lines, d.hints, d.warnings)
+			const parse = profile.parseDeparture(profile, opt, {
+				locations: d.locations,
+				lines: d.lines,
+				hints: d.hints,
+				warnings: d.warnings
+			})
 			return d.jnyL.map(parse)
 			.sort((a, b) => new Date(a.when) - new Date(b.when))
 		})
@@ -158,7 +163,7 @@ const createClient = (profile, request = _request) => {
 			}
 			if (profile.journeysNumF) query.numF = opt.results
 
-			return request(profile, {
+			return request(profile, opt, {
 				cfg: {polyEnc: 'GPA'},
 				meth: 'TripSearch',
 				req: profile.transformJourneysQuery(query, opt)
@@ -166,8 +171,13 @@ const createClient = (profile, request = _request) => {
 			.then((d) => {
 				if (!Array.isArray(d.outConL)) return []
 
-				const polylines = opt.polylines && d.common.polyL || []
-				const parse = profile.parseJourney(profile, d.locations, d.lines, d.hints, d.warnings, polylines)
+				const parse = profile.parseJourney(profile, opt, {
+					locations: d.locations,
+					lines: d.lines,
+					hints: d.hints,
+					warnings: d.warnings,
+					polylines: opt.polylines && d.common.polyL || []
+				})
 
 				if (!journeys.earlierRef) journeys.earlierRef = d.outCtxScrB
 
@@ -205,7 +215,7 @@ const createClient = (profile, request = _request) => {
 		}, opt)
 
 		const f = profile.formatLocationFilter(opt.stations, opt.addresses, opt.poi)
-		return request(profile, {
+		return request(profile, opt, {
 			cfg: {polyEnc: 'GPA'},
 			meth: 'LocMatch',
 			req: {input: {
@@ -220,7 +230,7 @@ const createClient = (profile, request = _request) => {
 		.then((d) => {
 			if (!d.match || !Array.isArray(d.match.locL)) return []
 			const parse = profile.parseLocation
-			return d.match.locL.map(loc => parse(profile, loc, d.lines))
+			return d.match.locL.map(loc => parse(profile, opt, {lines: d.lines}, loc))
 		})
 	}
 
@@ -229,7 +239,8 @@ const createClient = (profile, request = _request) => {
 		else if ('string' === typeof station) station = profile.formatStation(station)
 		else throw new Error('station must be an object or a string.')
 
-		return request(profile, {
+		const opt = {}
+		return request(profile, opt, {
 			meth: 'LocDetails',
 			req: {
 				locL: [station]
@@ -240,7 +251,7 @@ const createClient = (profile, request = _request) => {
 				// todo: proper stack trace?
 				throw new Error('invalid response')
 			}
-			return profile.parseLocation(profile, d.locL[0], d.lines)
+			return profile.parseLocation(profile, opt, {lines: d.lines}, d.locL[0])
 		})
 	}
 
@@ -262,7 +273,7 @@ const createClient = (profile, request = _request) => {
 			stations: true, // return stations?
 		}, opt)
 
-		return request(profile, {
+		return request(profile, opt, {
 			cfg: {polyEnc: 'GPA'},
 			meth: 'LocGeoPos',
 			req: {
@@ -282,7 +293,7 @@ const createClient = (profile, request = _request) => {
 		.then((d) => {
 			if (!Array.isArray(d.locL)) return []
 			const parse = profile.parseNearby
-			return d.locL.map(loc => parse(profile, loc))
+			return d.locL.map(loc => parse(profile, opt, d, loc))
 		})
 	}
 
@@ -300,7 +311,7 @@ const createClient = (profile, request = _request) => {
 		opt.when = new Date(opt.when || Date.now())
 		if (Number.isNaN(+opt.when)) throw new Error('opt.when is invalid')
 
-		return request(profile, {
+		return request(profile, opt, {
 			cfg: {polyEnc: 'GPA'},
 			meth: 'JourneyDetails',
 			req: {
@@ -312,8 +323,13 @@ const createClient = (profile, request = _request) => {
 			}
 		})
 		.then((d) => {
-			const polylines = opt.polyline && d.common.polyL || []
-			const parse = profile.parseJourneyLeg(profile, d.locations, d.lines, d.hints, d.warnings, polylines)
+			const parse = profile.parseJourneyLeg(profile, opt, {
+				locations: d.locations,
+				lines: d.lines,
+				hints: d.hints,
+				warnings: d.warnings,
+				polylines: opt.polyline && d.common.polyL || []
+			})
 
 			const leg = { // pretend the leg is contained in a journey
 				type: 'JNY',
@@ -345,7 +361,7 @@ const createClient = (profile, request = _request) => {
 		if (Number.isNaN(+opt.when)) throw new Error('opt.when is invalid')
 
 		const durationPerStep = opt.duration / Math.max(opt.frames, 1) * 1000
-		return request(profile, {
+		return request(profile, opt, {
 			meth: 'JourneyGeoPos',
 			req: {
 				maxJny: opt.results,
@@ -366,8 +382,13 @@ const createClient = (profile, request = _request) => {
 		.then((d) => {
 			if (!Array.isArray(d.jnyL)) return []
 
-			const polylines = opt.polyline && d.common.polyL || []
-			const parse = profile.parseMovement(profile, d.locations, d.lines, d.hints, d.warnings, polylines)
+			const parse = profile.parseMovement(profile, opt, {
+				locations: d.locations,
+				lines: d.lines,
+				hints: d.hints,
+				warnings: d.warnings,
+				polylines: opt.polyline && d.common.polyL || []
+			})
 			return d.jnyL.map(parse)
 		})
 	}

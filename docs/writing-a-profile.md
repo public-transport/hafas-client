@@ -37,8 +37,8 @@ Assuming the endpoint returns all lines names prefixed with `foo `, We can strip
 // get the default line parser
 const createParseLine = require('hafas-client/parse/line')
 
-const createParseLineWithoutFoo = (profile, operators) => {
-	const parseLine = createParseLine(profile, operators)
+const createParseLineWithoutFoo = (profile, opt, data) => {
+	const parseLine = createParseLine(profile, opt, data)
 
 	// wrapper function with additional logic
 	const parseLineWithoutFoo = (l) => {

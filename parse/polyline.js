@@ -3,7 +3,7 @@
 const {toGeoJSON} = require('@mapbox/polyline')
 const distance = require('gps-distance')
 
-const createParsePolyline = (locations) => {
+const createParsePolyline = (profile, opt, {locations}) => {
 	// todo: what is p.delta?
 	// todo: what is p.type?
 	// todo: what is p.crdEncS?

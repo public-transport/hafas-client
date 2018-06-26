@@ -2,7 +2,7 @@
 
 const slugg = require('slugg')
 
-const createParseLine = (profile, operators) => {
+const createParseLine = (profile, opt, {operators}) => {
 	const byBitmask = []
 	for (let product of profile.products) {
 		for (let bitmask of product.bitmasks) {

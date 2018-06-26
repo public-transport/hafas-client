@@ -25,10 +25,10 @@ const transformReqBody = (body) => {
 	return body
 }
 
-const parseLocation = (profile, l, lines) => {
+const parseLocation = (profile, opt, data, l) => {
 	// ÖBB has some 'stations' **in austria** with no departures/products,
 	// like station entrances, that are actually POIs.
-	const res = _parseLocation(profile, l, lines)
+	const res = _parseLocation(profile, opt, data, l)
 	if (
 		res.type === 'station' &&
 		!res.products &&
@@ -44,8 +44,8 @@ const parseLocation = (profile, l, lines) => {
 	return res
 }
 
-const createParseMovement = (profile, locations, lines, hints) => {
-	const _parseMovement = _createParseMovement(profile, locations, lines, hints)
+const createParseMovement = (profile, opt, data) => {
+	const _parseMovement = _createParseMovement(profile, opt, data)
 	const parseMovement = (m) => {
 		const res = _parseMovement(m)
 		// filter out POIs

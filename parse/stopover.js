@@ -3,12 +3,12 @@
 const findRemark = require('./find-remark')
 
 // todo: arrivalDelay, departureDelay or only delay ?
-// todo: arrivalPlatform, departurePlatform
-const createParseStopover = (profile, stations, lines, hints, warnings, date) => {
+const createParseStopover = (profile, opt, data, date) => {
+	const {locations, lines, hints, warnings} = data
+
 	const parseStopover = (st) => {
 		const res = {
-			type: 'stopover',
-			stop: stations[parseInt(st.locX)] || null,
+			stop: locations[parseInt(st.locX)] || null,
 			arrival: null,
 			arrivalDelay: null,
 			arrivalPlatform: st.aPlatfR || st.aPlatfS || null,

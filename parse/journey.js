@@ -2,8 +2,9 @@
 
 const findRemark = require('./find-remark')
 
-const createParseJourney = (profile, stations, lines, hints, warnings, polylines) => {
-	const parseLeg = profile.parseJourneyLeg(profile, stations, lines, hints, warnings, polylines)
+const createParseJourney = (profile, opt, data) => {
+	const parseLeg = profile.parseJourneyLeg(profile, opt, data)
+	const {hints, warnings} = data
 
 	// todo: c.sDays
 	// todo: c.conSubscr
