@@ -234,6 +234,7 @@ const createClient = (profile, request = _request) => {
 		else if ('string' === typeof station) station = profile.formatStation(station)
 		else throw new Error('station must be an object or a string.')
 
+		const opt = {}
 		return request(profile, opt, {
 			meth: 'LocDetails',
 			req: {
@@ -287,7 +288,7 @@ const createClient = (profile, request = _request) => {
 		.then((d) => {
 			if (!Array.isArray(d.locL)) return []
 			const parse = profile.parseNearby
-			return d.locL.map(loc => parse(profile, opt, loc))
+			return d.locL.map(loc => parse(profile, opt, d, loc))
 		})
 	}
 
