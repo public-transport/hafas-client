@@ -22,7 +22,7 @@ const createClient = (profile, request = _request) => {
 	}
 	validateProfile(profile)
 
-	const _stationBoard = (station, type, opt = {}) => {
+	const _stationBoard = (station, type, parser, opt = {}) => {
 		if (isObj(station)) station = profile.formatStation(station.id)
 		else if ('string' === typeof station) station = profile.formatStation(station)
 		else throw new Error('station must be an object or a string.')
@@ -43,7 +43,7 @@ const createClient = (profile, request = _request) => {
 		return request(profile, opt, {
 			meth: 'StationBoard',
 			req: {
-				type: 'DEP',
+				type,
 				date: profile.formatDate(profile, opt.when),
 				time: profile.formatTime(profile, opt.when),
 				stbLoc: station,
@@ -53,13 +53,9 @@ const createClient = (profile, request = _request) => {
 				getPasslist: false
 			}
 		})
-	}
-
-	const departures = (station, opt = {}) => {
-		return _stationBoard(station, 'DEP', opt)
 		.then((d) => {
-			if (!Array.isArray(d.jnyL)) return [] // todo: throw err?
-			const parse = profile.parseDeparture(profile, opt, {
+			if (!Array.isArray(d.jnyL)) return []
+			const parse = parser(profile, opt, {
 				locations: d.locations,
 				lines: d.lines,
 				hints: d.hints,
@@ -68,6 +64,13 @@ const createClient = (profile, request = _request) => {
 			return d.jnyL.map(parse)
 			.sort((a, b) => new Date(a.when) - new Date(b.when))
 		})
+	}
+
+	const departures = (station, opt = {}) => {
+		return _stationBoard(station, 'DEP', profile.parseDeparture, opt)
+	}
+	const arrivals = (station, opt = {}) => {
+		return _stationBoard(station, 'ARR', profile.parseArrival, opt)
 	}
 
 	const journeys = (from, to, opt = {}) => {
@@ -401,7 +404,7 @@ const createClient = (profile, request = _request) => {
 		})
 	}
 
-	const client = {departures, journeys, locations, station, nearby}
+	const client = {departures, arrivals, journeys, locations, station, nearby}
 	if (profile.journeyLeg) client.journeyLeg = journeyLeg
 	if (profile.radar) client.radar = radar
 	Object.defineProperty(client, 'profile', {value: profile})
