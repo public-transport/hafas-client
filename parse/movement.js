@@ -1,6 +1,6 @@
 'use strict'
 
-const createParseMovement = (profile, data) => {
+const createParseMovement = (profile, opt, data) => {
 	const {locations, lines, remarks, polylines} = data
 
 	// todo: what is m.dirGeo? maybe the speed?

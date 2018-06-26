@@ -6,14 +6,14 @@
 // todo: d.stbStop.dProgType
 // todo: d.freq, d.freq.jnyL, see https://github.com/public-transport/hafas-client/blob/9203ed1481f08baacca41ac5e3c19bf022f01b0b/parse.js#L115
 
-const createParseDeparture = (profile, opt, {stations, lines, remarks}) => {
+const createParseDeparture = (profile, opt, {locations, lines, remarks}) => {
 	const findRemark = rm => remarks[parseInt(rm.remX)] || null
 
 	const parseDeparture = (d) => {
 		const when = profile.parseDateTime(profile, d.date, d.stbStop.dTimeR || d.stbStop.dTimeS)
 		const res = {
 			journeyId: d.jid,
-			station: stations[parseInt(d.stbStop.locX)] || null,
+			station: locations[parseInt(d.stbStop.locX)] || null,
 			when: when.toISO(),
 			direction: profile.parseStationName(d.dirTxt),
 			line: lines[parseInt(d.prodX)] || null,
