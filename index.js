@@ -22,10 +22,14 @@ const createClient = (profile, request = _request) => {
 	}
 	validateProfile(profile)
 
-	const departures = (station, opt = {}) => {
+	const _stationBoard = (station, type, opt = {}) => {
 		if (isObj(station)) station = profile.formatStation(station.id)
 		else if ('string' === typeof station) station = profile.formatStation(station)
 		else throw new Error('station must be an object or a string.')
+
+		if ('string' !== typeof type || !type) {
+			throw new Error('type must be a non-empty string.')
+		}
 
 		opt = Object.assign({
 			direction: null, // only show departures heading to this station
@@ -49,6 +53,10 @@ const createClient = (profile, request = _request) => {
 				getPasslist: false
 			}
 		})
+	}
+
+	const departures = (station, opt = {}) => {
+		return _stationBoard(station, 'DEP', opt)
 		.then((d) => {
 			if (!Array.isArray(d.jnyL)) return [] // todo: throw err?
 			const parse = profile.parseDeparture(profile, opt, {
