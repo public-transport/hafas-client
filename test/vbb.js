@@ -26,6 +26,7 @@ const testJourneysStationToPoi = require('./lib/journeys-station-to-poi')
 const testEarlierLaterJourneys = require('./lib/earlier-later-journeys')
 const journeysFailsWithNoProduct = require('./lib/journeys-fails-with-no-product')
 const testDepartures = require('./lib/departures')
+const testArrivals = require('./lib/arrivals')
 const testJourneysWithDetour = require('./lib/journeys-with-detour')
 
 const when = createWhen('Europe/Berlin', 'de-DE')
@@ -300,6 +301,20 @@ test('departures at 7-digit station', co(function* (t) {
 	const eisenach = '8010097' // see derhuerst/vbb-hafas#22
 	yield client.departures(eisenach, {when})
 	t.pass('did not fail')
+	t.end()
+}))
+
+test('arrivals', co(function* (t) {
+	const arrivals = yield client.arrivals(spichernstr, {
+		duration: 5, when
+	})
+
+	yield testArrivals({
+		test: t,
+		arrivals,
+		validate,
+		id: spichernstr
+	})
 	t.end()
 }))
 

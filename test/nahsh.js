@@ -20,6 +20,7 @@ const testJourneysStationToPoi = require('./lib/journeys-station-to-poi')
 const testEarlierLaterJourneys = require('./lib/earlier-later-journeys')
 const journeysFailsWithNoProduct = require('./lib/journeys-fails-with-no-product')
 const testDepartures = require('./lib/departures')
+const testArrivals = require('./lib/arrivals')
 
 const when = createWhen('Europe/Berlin', 'de-DE')
 
@@ -226,6 +227,22 @@ test('departures with station object', co(function* (t) {
 	}, {when})
 
 	validate(t, deps, 'departures', 'departures')
+	t.end()
+}))
+
+test('arrivals at Kiel Räucherei', co(function* (t) {
+	const kielRaeucherei = '3440091'
+
+	const arrivals = yield client.arrivals(kielRaeucherei, {
+		duration: 30, when
+	})
+
+	yield testArrivals({
+		test: t,
+		arrivals,
+		validate,
+		id: kielRaeucherei
+	})
 	t.end()
 }))
 
