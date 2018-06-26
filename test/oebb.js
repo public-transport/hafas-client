@@ -265,6 +265,8 @@ test('departures with station object', co(function* (t) {
 	t.end()
 }))
 
+// todo: arrivals
+
 test('nearby Salzburg Hbf', co(function* (t) {
 	const nearby = yield client.nearby({
 		type: 'location',

@@ -22,6 +22,7 @@ const testJourneysStationToPoi = require('./lib/journeys-station-to-poi')
 const testEarlierLaterJourneys = require('./lib/earlier-later-journeys')
 const journeysFailsWithNoProduct = require('./lib/journeys-fails-with-no-product')
 const testDepartures = require('./lib/departures')
+const testArrivals = require('./lib/arrivals')
 const testJourneysWithDetour = require('./lib/journeys-with-detour')
 
 const isObj = o => o !== null && 'object' === typeof o && !Array.isArray(o)
@@ -237,6 +238,20 @@ test('departures with station object', co(function* (t) {
 	}, {when})
 
 	validate(t, deps, 'departures', 'departures')
+	t.end()
+}))
+
+test('arrivals at Berlin Schwedter Str.', co(function* (t) {
+	const arrivals = yield client.arrivals(blnSchwedterStr, {
+		duration: 5, when
+	})
+
+	yield testArrivals({
+		test: t,
+		arrivals,
+		validate,
+		id: blnSchwedterStr
+	})
 	t.end()
 }))
 
