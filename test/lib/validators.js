@@ -231,8 +231,8 @@ const createValidateDeparture = (cfg) => {
 		a.ok(isObj(dep), name + ' must be an object')
 		// todo: let hafas-client add a .type field
 
-		a.strictEqual(typeof dep.journeyId, 'string', name + '.journeyId must be a string')
-		a.ok(dep.journeyId, name + '.journeyId must not be empty')
+		a.strictEqual(typeof dep.tripId, 'string', name + '.tripId must be a string')
+		a.ok(dep.tripId, name + '.tripId must not be empty')
 		a.strictEqual(typeof dep.trip, 'number', name + '.trip must be a number')
 
 		val.station(val, dep.station, name + '.station')

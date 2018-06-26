@@ -14,7 +14,7 @@ const createParseDeparture = (profile, opt, data) => {
 	const parseDeparture = (d) => {
 		const when = profile.parseDateTime(profile, d.date, d.stbStop.dTimeR || d.stbStop.dTimeS)
 		const res = {
-			journeyId: d.jid,
+			tripId: d.jid,
 			station: locations[parseInt(d.stbStop.locX)] || null,
 			when: when.toISO(),
 			direction: profile.parseStationName(d.dirTxt),

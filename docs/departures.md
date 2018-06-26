@@ -34,7 +34,7 @@ With `opt`, you can override the default options, which look like this:
 
 *Note:* As stated in the [*Friendly Public Transport Format* `1.0.1`](https://github.com/public-transport/friendly-public-transport-format/tree/1.0.1), the `when` field includes the current delay. The `delay` field, if present, expresses how much the former differs from the schedule.
 
-You may pass the `journeyId` field into [`journeyLeg(ref, lineName, [opt])`](journey-leg.md) to get details on the vehicle's journey.
+You may pass the `tripId` field into [`journeyLeg(ref, lineName, [opt])`](journey-leg.md) to get details on the vehicle's journey.
 
 As an example, we're going to use the [VBB profile](../p/vbb):
 
@@ -54,7 +54,7 @@ The response may look like this:
 
 ```js
 [ {
-	journeyId: '1|31431|28|86|17122017',
+	tripId: '1|31431|28|86|17122017',
 	trip: 31431,
 	station: {
 		type: 'station',
@@ -98,7 +98,7 @@ The response may look like this:
 	},
 	direction: 'S Spandau'
 }, {
-	journeyId: '1|30977|8|86|17122017',
+	tripId: '1|30977|8|86|17122017',
 	trip: 30977,
 	station: { /* … */ },
 	when: null,
@@ -121,7 +121,7 @@ The response may look like this:
 	},
 	direction: 'S Westkreuz'
 }, {
-	journeyId: '1|28671|4|86|17122017',
+	tripId: '1|28671|4|86|17122017',
 	trip: 28671,
 	station: {
 		type: 'station',
