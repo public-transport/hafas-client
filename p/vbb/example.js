@@ -8,6 +8,7 @@ const client = createClient(vbbProfile)
 // Hauptbahnhof to Charlottenburg
 client.journeys('900000003201', '900000024101', {results: 1, polylines: true})
 // client.departures('900000013102', {duration: 1})
+// client.arrivals('900000013102', {duration: 10})
 // client.locations('Alexanderplatz', {results: 2})
 // client.station('900000042101') // Spichernstr
 // client.nearby(52.5137344, 13.4744798, {distance: 60})

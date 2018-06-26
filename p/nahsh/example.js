@@ -8,6 +8,7 @@ const client = createClient(nahshProfile)
 // Flensburg Hbf to Kiel Hbf
 client.journeys('8000103', '8000199', {results: 10, tickets: true})
 // client.departures('8000199', {duration: 10})
+// client.arrivals('8000199', {duration: 5})
 // client.journeyLeg('1|30161|5|100|14032018', 'Bus 52')
 // client.locations('Schleswig', {results: 1})
 // client.station('706990') // Kiel Holunderbusch

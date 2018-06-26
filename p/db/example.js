@@ -8,6 +8,7 @@ const client = createClient(dbProfile)
 // Berlin Jungfernheide to München Hbf
 client.journeys('8011167', '8000261', {results: 1, tickets: true})
 // client.departures('8011167', {duration: 1})
+// client.arrivals('8011167', {duration: 10})
 // client.locations('Berlin Jungfernheide')
 // client.locations('Atze Musiktheater', {poi: true, addressses: false, fuzzy: false})
 // client.station('8000309') // Regensburg Hbf
