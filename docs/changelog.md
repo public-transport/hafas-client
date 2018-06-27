@@ -10,6 +10,7 @@ This version is not fully backwords-compatible. Check out [the migration guide](
 - ac9819b `arrivals()` method – [docs](arrivals.md)
 - 21c273c `journeys()`/`journeyLeg()`: leg stopovers: parse & expose delays
 - 021ae45 `journeys()`/`journeyLeg()`: leg stopovers: parse & expose platforms
+- 84bce0c `arrivals()`/`departures()`: parse & expose platforms
 - 85e0bdf `journeys()`: `startWithWalking` option with default `true`
 
 ### breaking changes 💥

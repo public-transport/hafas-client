@@ -243,6 +243,12 @@ const createValidateArrivalOrDeparture = (cfg) => {
 			a.strictEqual(typeof dep.delay, 'number', msg)
 		}
 
+		if (dep.platform !== null) {
+			const msg = name + '.platform must '
+			a.strictEqual(typeof dep.platform, 'string', msg + 'be a string')
+			a.ok(dep.platform, name + 'not be empty')
+		}
+
 		val.line(val, dep.line, name + '.line')
 		a.strictEqual(typeof dep.direction, 'string', name + '.direction must be a string')
 		a.ok(dep.direction, name + '.direction must not be empty')

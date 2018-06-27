@@ -39,6 +39,13 @@ const createParseArrOrDep = (profile, opt, data, prefix) => {
 
 		// todo: DRY with parseStopover
 		// todo: DRY with parseJourneyLeg
+		const pR = d.stbStop[prefix + 'PlatfR']
+		const pP = d.stbStop[prefix + 'PlatfS']
+		res.platform = pR || pP || null
+		// todo: `formerScheduledPlatform`
+
+		// todo: DRY with parseStopover
+		// todo: DRY with parseJourneyLeg
 		if (d.stbStop[prefix + 'Cncl']) {
 			res.cancelled = true
 			Object.defineProperty(res, 'canceled', {value: true})
