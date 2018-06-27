@@ -50,7 +50,7 @@ const createClient = (profile, request = _request) => {
 				dirLoc: dir,
 				jnyFltrL: [products],
 				dur: opt.duration,
-				getPasslist: false
+				getPasslist: false // todo: what is this?
 			}
 		})
 		.then((d) => {
