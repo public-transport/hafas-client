@@ -31,6 +31,10 @@ This version is not fully backwords-compatible. Check out [the migration guide](
 - 8881d8a & b6fbaa5: change parsers signature to `parse…(profile, opt, data)`
 - cabe5fa: option to parse & expose `station.lines`, default off
 
+### bugfixes
+
+- dd0a9b2 `parseStopover`: fix first/last canceled stopovers 🐛
+
 ## `2.7.0`
 
 - `journeys()`: `polylines` option
