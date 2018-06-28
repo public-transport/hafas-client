@@ -19,9 +19,10 @@ const createParseArrOrDep = (profile, opt, data, prefix) => {
 			when: when.toISO(),
 			direction: profile.parseStationName(d.dirTxt),
 			line: lines[parseInt(d.prodX)] || null,
-			remarks: (d.remL
-				? d.remL.map(ref => findRemark(hints, warnings, ref))
-				: []
+			remarks: ([]
+				.concat(d.remL || [], d.msgL || [])
+				.map(ref => findRemark(hints, warnings, ref))
+				.filter(rem => !!rem) // filter unparsable
 			),
 			// todo: res.trip from rawLine.prodCtx.num?
 			trip: +d.jid.split('|')[1] // todo: this seems brittle
