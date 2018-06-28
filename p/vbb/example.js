@@ -11,7 +11,11 @@ client.journeys('900000003201', '900000024101', {results: 1, polylines: true})
 // client.arrivals('900000013102', {duration: 10})
 // client.locations('Alexanderplatz', {results: 2})
 // client.station('900000042101') // Spichernstr
-// client.nearby(52.5137344, 13.4744798, {distance: 60})
+// client.nearby({
+// 	type: 'location',
+// 	latitude: 52.5137344,
+// 	longitude: 13.4744798
+// }, {distance: 60})
 // client.radar({
 // 	north: 52.52411,
 // 	west: 13.41002,
