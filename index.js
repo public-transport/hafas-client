@@ -33,7 +33,8 @@ const createClient = (profile, request = _request) => {
 
 		opt = Object.assign({
 			direction: null, // only show departures heading to this station
-			duration:  10 // show departures for the next n minutes
+			duration: 10, // show departures for the next n minutes
+			stationLines: false // parse & expose lines of the station?
 		}, opt)
 		opt.when = new Date(opt.when || Date.now())
 		if (Number.isNaN(+opt.when)) throw new Error('opt.when is invalid')
@@ -222,7 +223,8 @@ const createClient = (profile, request = _request) => {
 			results: 10, // how many search results?
 			stations: true,
 			addresses: true,
-			poi: true // points of interest
+			poi: true, // points of interest
+			stationLines: false // parse & expose lines of the station?
 		}, opt)
 
 		const f = profile.formatLocationFilter(opt.stations, opt.addresses, opt.poi)
@@ -245,12 +247,14 @@ const createClient = (profile, request = _request) => {
 		})
 	}
 
-	const station = (station) => {
+	const station = (station, opt = {}) => {
 		if ('object' === typeof station) station = profile.formatStation(station.id)
 		else if ('string' === typeof station) station = profile.formatStation(station)
 		else throw new Error('station must be an object or a string.')
 
-		const opt = {}
+		opt = Object.assign({
+			stationLines: false // parse & expose lines of the station?
+		}, opt)
 		return request(profile, opt, {
 			meth: 'LocDetails',
 			req: {
@@ -282,6 +286,7 @@ const createClient = (profile, request = _request) => {
 			distance: null, // maximum walking distance in meters
 			poi: false, // return points of interest?
 			stations: true, // return stations?
+			stationLines: false // parse & expose lines of the station?
 		}, opt)
 
 		return request(profile, opt, {

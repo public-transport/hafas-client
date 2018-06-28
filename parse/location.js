@@ -22,7 +22,11 @@ const parseLocation = (profile, opt, {lines}, l) => {
 
 		if ('pCls' in l) station.products = profile.parseProducts(l.pCls)
 
-		if (Array.isArray(l.pRefL) && Array.isArray(lines)) {
+		if (
+			opt.stationLines &&
+			Array.isArray(l.pRefL) &&
+			Array.isArray(lines)
+		) {
 			station.lines = []
 			for (let pRef of l.pRefL) {
 				const line = lines[pRef]

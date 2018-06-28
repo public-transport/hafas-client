@@ -5,7 +5,7 @@
 - [`departures(station, [opt])`](departures.md) – query the next departures at a station
 - [`arrivals(station, [opt])`](arrivals.md) – query the next arrivals at a station
 - [`locations(query, [opt])`](locations.md) – find stations, POIs and addresses
-- [`station(id)`](station.md) – get details about a station
+- [`station(id, [opt])`](station.md) – get details about a station
 - [`nearby(location, [opt])`](nearby.md) – show stations & POIs around
 - [`radar(north, west, south, east, [opt])`](radar.md) – find all vehicles currently in a certain area
 

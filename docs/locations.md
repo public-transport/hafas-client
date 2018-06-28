@@ -11,6 +11,7 @@ With `opt`, you can override the default options, which look like this:
 	, stations:  true
 	, addresses: true
 	, poi:       true // points of interest
+	, stationLines: false // parse & expose lines of the station?
 }
 ```
 

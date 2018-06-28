@@ -1,4 +1,4 @@
-# `station(id)`
+# `station(id, [opt])`
 
 `id` must be in one of these formats:
 
@@ -18,6 +18,13 @@
 	}
 }
 ```
+
+With `opt`, you can override the default options, which look like this:
+
+```js
+{
+	stationLines: false // parse & expose lines of the station?
+}
 
 ## Response
 

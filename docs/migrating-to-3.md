@@ -47,3 +47,7 @@
 - `parseNearby`
 - `parsePolyline`
 - `parseStopover`
+
+## If you use `station.lines` array anywhere…
+
+…add the `stationLines: true` option to the method call, e.g. `hafas.departures('123', {stationLines: true}). cabe5fa

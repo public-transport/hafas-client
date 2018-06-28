@@ -28,6 +28,7 @@ This version is not fully backwords-compatible. Check out [the migration guide](
 - 3e672ee `journeys()`/`journeyLeg()`: `stopover.station` → `stopover.stop`
 - 2e6aefe journey leg, departure, movement: `journeyId` -> `tripId`
 - 8881d8a & b6fbaa5: change parsers signature to `parse…(profile, opt, data)`
+- cabe5fa: option to parse & expose `station.lines`, default off
 
 ## `2.7.0`
 
