@@ -34,7 +34,8 @@ const createClient = (profile, request = _request) => {
 		opt = Object.assign({
 			direction: null, // only show departures heading to this station
 			duration: 10, // show departures for the next n minutes
-			stationLines: false // parse & expose lines of the station?
+			stationLines: false, // parse & expose lines of the station?
+			remarks: true // parse & expose hints & warnings?
 		}, opt)
 		opt.when = new Date(opt.when || Date.now())
 		if (Number.isNaN(+opt.when)) throw new Error('opt.when is invalid')
@@ -115,6 +116,7 @@ const createClient = (profile, request = _request) => {
 			bike: false, // only bike-friendly journeys
 			tickets: false, // return tickets?
 			polylines: false, // return leg shapes?
+			remarks: true, // parse & expose hints & warnings?
 			// Consider walking to nearby stations at the beginning of a journey?
 			startWithWalking: true
 		}, opt)
@@ -322,7 +324,8 @@ const createClient = (profile, request = _request) => {
 		}
 		opt = Object.assign({
 			stopovers: true, // return stations on the way?
-			polyline: false
+			polyline: false,
+			remarks: true // parse & expose hints & warnings?
 		}, opt)
 		opt.when = new Date(opt.when || Date.now())
 		if (Number.isNaN(+opt.when)) throw new Error('opt.when is invalid')

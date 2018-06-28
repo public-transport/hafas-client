@@ -19,11 +19,7 @@ const createParseArrOrDep = (profile, opt, data, prefix) => {
 			when: when.toISO(),
 			direction: profile.parseStationName(d.dirTxt),
 			line: lines[parseInt(d.prodX)] || null,
-			remarks: ([]
-				.concat(d.remL || [], d.msgL || [])
-				.map(ref => findRemark(hints, warnings, ref))
-				.filter(rem => !!rem) // filter unparsable
-			),
+			remarks: [],
 			// todo: res.trip from rawLine.prodCtx.num?
 			trip: +d.jid.split('|')[1] // todo: this seems brittle
 		}
@@ -54,6 +50,13 @@ const createParseArrOrDep = (profile, opt, data, prefix) => {
 
 			const when = profile.parseDateTime(profile, d.date, tP)
 			res.formerScheduledWhen = when.toISO()
+		}
+
+		if (opt.remarks) {
+			res.remarks = []
+			.concat(d.remL || [], d.msgL || [])
+			.map(ref => findRemark(hints, warnings, ref))
+			.filter(rem => !!rem) // filter unparsable
 		}
 
 		return res

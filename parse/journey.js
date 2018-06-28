@@ -23,7 +23,7 @@ const createParseJourney = (profile, opt, data) => {
 			legs
 		}
 
-		if (Array.isArray(j.msgL)) {
+		if (opt.remarks && Array.isArray(j.msgL)) {
 			res.remarks = []
 			for (let ref of j.msgL) {
 				const remark = findRemark(hints, warnings, ref)

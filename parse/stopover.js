@@ -59,7 +59,7 @@ const createParseStopover = (profile, opt, data, date) => {
 			}
 		}
 
-		if (Array.isArray(st.msgL)) {
+		if (opt.remarks && Array.isArray(st.msgL)) {
 			res.remarks = []
 			for (let ref of st.msgL) {
 				const remark = findRemark(hints, warnings, ref)

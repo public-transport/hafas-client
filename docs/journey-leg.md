@@ -26,7 +26,8 @@ With `opt`, you can override the default options, which look like this:
 {
 	when: new Date(),
 	stopovers: true, // return stations on the way?
-	polyline: false // return a shape for the leg?
+	polyline: false, // return a shape for the leg?
+	remarks: true // parse & expose hints & warnings?
 }
 ```
 

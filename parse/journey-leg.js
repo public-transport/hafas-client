@@ -95,12 +95,13 @@ const createParseJourneyLeg = (profile, opt, data) => {
 				res.stopovers = stopL.map(parse)
 
 				// todo: is there a `pt.jny.remL`?
-				if (Array.isArray(pt.jny.msgL)) {
+				if (opt.remarks && Array.isArray(pt.jny.msgL)) {
 					for (let i = 0; i < stopL.length; i++) {
 						Object.defineProperty(res.stopovers[i], locX, {
 							value: stopL[i].locX
 						})
 					}
+					// todo: apply leg-wide remarks if `parseStopovers` is false
 					applyRemarks(res, hints, warnings, pt.jny.msgL)
 				}
 

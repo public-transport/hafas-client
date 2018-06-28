@@ -65,6 +65,7 @@ With `opt`, you can override the default options, which look like this:
 	},
 	tickets: false, // return tickets? only available with some profiles
 	polylines: false, // return a shape for each leg?
+	remarks: true, // parse & expose hints & warnings?
 	// Consider walking to nearby stations at the beginning of a journey?
 	startWithWalking: true
 }
