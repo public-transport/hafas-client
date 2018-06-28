@@ -12,6 +12,7 @@ This version is not fully backwords-compatible. Check out [the migration guide](
 - 021ae45 `journeys()`/`journeyLeg()`: leg stopovers: parse & expose platforms
 - 84bce0c `arrivals()`/`departures()`: parse & expose platforms
 - 85e0bdf `journeys()`: `startWithWalking` option with default `true`
+- f6ae29c journey legs with `type: 'walking'` now have a `distance` in meters
 
 ### breaking changes 💥
 

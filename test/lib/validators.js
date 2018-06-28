@@ -191,7 +191,13 @@ const createValidateJourneyLeg = (cfg) => {
 			}
 		}
 
-		if (leg.mode !== 'walking') {
+		if (leg.mode === 'walking') {
+			if (leg.distance !== null) {
+				const msg = name + '.distance must be '
+				a.strictEqual(typeof leg.distance, 'number', msg + 'a number')
+				a.ok(leg.distance > 0, msg + '> 0')
+			}
+		} else {
 			const msg = name + '.direction must be a string'
 			a.strictEqual(typeof leg.direction, 'string', msg)
 			a.ok(leg.direction, name + '.direction must not be empty')
