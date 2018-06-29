@@ -8,8 +8,8 @@ This version is not fully backwords-compatible. Check out [the migration guide](
 
 - 0db84ce #61 parse remarks for stopovers and journey legs
 - ac9819b `arrivals()` method – [docs](arrivals.md)
-- 21c273c `journeys()`/`journeyLeg()`: leg stopovers: parse & expose delays
-- 021ae45 `journeys()`/`journeyLeg()`: leg stopovers: parse & expose platforms
+- 21c273c `journeys()`/`trip()`: leg stopovers: parse & expose delays
+- 021ae45 `journeys()`/`trip()`: leg stopovers: parse & expose platforms
 - 84bce0c `arrivals()`/`departures()`: parse & expose platforms
 - 85e0bdf `journeys()`: `startWithWalking` option with default `true`
 - f6ae29c journey legs with `type: 'walking'` now have a `distance` in meters
@@ -24,12 +24,13 @@ This version is not fully backwords-compatible. Check out [the migration guide](
 - a356a26 throw if 0 products enabled
 - c82ad23 `journeys()`: `opt.when` → `opt.departure`/`opt.arrival`
 - 665bed9 rename `location(id)` to `station(id)`
-- 6611f26 `journeys()`/`journeyLeg()`: `leg.passed` → `leg.stopovers`
-- ebe4fa6 `journeys()`/`journeyLeg()`: `opt.passedStations` → `opt.stopovers`
-- 3e672ee `journeys()`/`journeyLeg()`: `stopover.station` → `stopover.stop`
+- 6611f26 `journeys()`/`trip()`: `leg.passed` → `leg.stopovers`
+- ebe4fa6 `journeys()`/`trip()`: `opt.passedStations` → `opt.stopovers`
+- 3e672ee `journeys()`/`trip()`: `stopover.station` → `stopover.stop`
 - 2e6aefe journey leg, departure, movement: `journeyId` -> `tripId`
 - 8881d8a & b6fbaa5: change parsers signature to `parse…(profile, opt, data)`
 - cabe5fa: option to parse & expose `station.lines`, default off
+- c8ff217 rename `journeyLeg()` to `trip()`
 
 ### bugfixes
 

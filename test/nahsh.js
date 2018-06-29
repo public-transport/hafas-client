@@ -184,7 +184,7 @@ test('earlier/later journeys, Kiel Hbf -> Flensburg', co(function* (t) {
 // todo: with detour test
 // todo: without detour test
 
-test('journey leg details for Flensburg to Husum', co(function* (t) {
+test('trip details', co(function* (t) {
 	const journeys = yield client.journeys(flensburg, husum, {
 		results: 1, departure: when
 	})
@@ -192,9 +192,9 @@ test('journey leg details for Flensburg to Husum', co(function* (t) {
 	const p = journeys[0].legs[0]
 	t.ok(p.id, 'precondition failed')
 	t.ok(p.line.name, 'precondition failed')
-	const leg = yield client.journeyLeg(p.id, p.line.name, {when})
+	const trip = yield client.trip(p.id, p.line.name, {when})
 
-	validate(t, leg, 'journeyLeg', 'leg')
+	validate(t, trip, 'journeyLeg', 'trip')
 	t.end()
 }))
 

@@ -315,9 +315,9 @@ const createClient = (profile, request = _request) => {
 		})
 	}
 
-	const journeyLeg = (ref, lineName, opt = {}) => {
-		if (!isNonEmptyString(ref)) {
-			throw new Error('ref must be a non-empty string.')
+	const trip = (id, lineName, opt = {}) => {
+		if (!isNonEmptyString(id)) {
+			throw new Error('id must be a non-empty string.')
 		}
 		if (!isNonEmptyString(lineName)) {
 			throw new Error('lineName must be a non-empty string.')
@@ -335,7 +335,7 @@ const createClient = (profile, request = _request) => {
 			meth: 'JourneyDetails',
 			req: {
 				// todo: getTrainComposition
-				jid: ref,
+				jid: id,
 				name: lineName,
 				date: profile.formatDate(profile, opt.when),
 				getPolyline: !!opt.polyline
@@ -413,7 +413,7 @@ const createClient = (profile, request = _request) => {
 	}
 
 	const client = {departures, arrivals, journeys, locations, station, nearby}
-	if (profile.journeyLeg) client.journeyLeg = journeyLeg
+	if (profile.journeyLeg) client.trip = trip
 	if (profile.radar) client.radar = radar
 	Object.defineProperty(client, 'profile', {value: profile})
 	return client
