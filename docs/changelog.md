@@ -31,6 +31,7 @@ This version is not fully backwords-compatible. Check out [the migration guide](
 - 8881d8a & b6fbaa5: change parsers signature to `parse…(profile, opt, data)`
 - cabe5fa: option to parse & expose `station.lines`, default off
 - c8ff217 rename `journeyLeg()` to `trip()`
+- 8de4447 rename `profile.journeyLeg` to `profile.trip`
 
 ### bugfixes
 

@@ -37,7 +37,7 @@ const insaProfile = {
 
 	products: products,
 
-	journeyLeg: false,
+	trip: false,
 	radar: false
 }
 

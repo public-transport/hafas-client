@@ -71,7 +71,7 @@ const oebbProfile = {
 	parseLocation,
 	parseMovement: createParseMovement,
 
-	journeyLeg: true,
+	trip: true,
 	radar: true
 }
 

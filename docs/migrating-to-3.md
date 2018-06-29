@@ -36,7 +36,8 @@
 
 ## If you use `hafas-client` with a custom profile…
 
-…write your profile in [the new format](writing-a-profile.md). Then, you can pass it into `hafas-client` just like before. #32/b7c1ee3
+- …write your profile in [the new format](writing-a-profile.md). Then, you can pass it into `hafas-client` just like before. #32/b7c1ee3
+- …rename the `profile.journeyLeg` flag to `profile.trip`. 8de4447
 
 ## If you use `hafas-client` with custom parse functions…
 

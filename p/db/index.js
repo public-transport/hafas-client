@@ -102,7 +102,7 @@ const dbProfile = {
 
 	formatStation,
 
-	journeyLeg: true // todo: #49
+	trip: true // todo: #49
 }
 
 module.exports = dbProfile

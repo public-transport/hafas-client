@@ -413,7 +413,7 @@ const createClient = (profile, request = _request) => {
 	}
 
 	const client = {departures, arrivals, journeys, locations, station, nearby}
-	if (profile.journeyLeg) client.trip = trip
+	if (profile.trip) client.trip = trip
 	if (profile.radar) client.radar = radar
 	Object.defineProperty(client, 'profile', {value: profile})
 	return client
