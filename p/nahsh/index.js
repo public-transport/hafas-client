@@ -103,7 +103,7 @@ const nahshProfile = {
 	parseJourney: createParseJourney,
 	parseMovement: createParseMovement,
 
-	journeyLeg: true,
+	trip: true,
 	radar: true // todo: see #34
 }
 

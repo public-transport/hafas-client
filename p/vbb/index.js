@@ -142,7 +142,7 @@ const vbbProfile = {
 	formatStation,
 
 	journeysNumF: false,
-	journeyLeg: true,
+	trip: true,
 	radar: true
 }
 

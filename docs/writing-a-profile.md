@@ -140,7 +140,7 @@ We consider these improvements to be *optional*:
 
 - **Check if the endpoint supports the journey legs call.**
 	- In the app, check if you can query details for the status of a single journey leg. It should load realtime delays and the current progress.
-	- If this feature is supported, add `journeyLeg: true` to the profile.
+	- If this feature is supported, add `trip: true` to the profile.
 - **Check if the endpoint supports the live map call.** Does the app have a "live map" showing all vehicles within an area? If so, add `radar: true` to the profile.
 -  **Consider transforming station & line names** into the formats that's most suitable for *local users*. Some examples:
 	- `M13 (Tram)` -> `M13`. With Berlin context, it is obvious that `M13` is a tram.
