@@ -1,6 +1,10 @@
 # Migrating to `hafas-client@3`
 
-## If you use the `journeys()` or `journeyLeg()` methods…
+## If you use the `journeyLeg()` method…
+
+…change the `journeyLeg(id, lineName)` call to `trip(id, lineName)`. c8ff217
+
+## If you use the `journeys()` or `trip()` methods…
 
 - …instead of `journey.departure`, use `journey.legs[0].departure`. 005f3f8
 - …instead of `journey.arrival`, use `journey.legs[last].arrival`. 005f3f8
@@ -13,7 +17,7 @@
 
 …use `opt.departure` instead. Use `opt.arrival` to get journeys arriving before the specified date+time. This replaces the `opt.when` & `opt.whenRepresents` options from `hafas-client@2`. c82ad23
 
-## If you use the `journeys()` and `opt.polylines` or `journeyLeg()` and `opt.polyline`…
+## If you use the `journeys()` and `opt.polylines` or `trip()` and `opt.polyline`…
 
 …`leg.polyline` will be [parsed for you now](https://github.com/public-transport/hafas-client/blob/f6c824eecb459181ea90ddf41bf1a1e8b64539ec/docs/journey-leg.md#polyline-option).
 

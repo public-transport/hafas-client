@@ -209,7 +209,7 @@ test('earlier/later journeys, Salzburg Hbf -> Wien Westbahnhof', co(function* (t
 	t.end()
 }))
 
-test('leg details for Wien Westbahnhof to München Hbf', co(function* (t) {
+test('trip details', co(function* (t) {
 	const journeys = yield client.journeys(wienWestbahnhof, muenchenHbf, {
 		results: 1, departure: when
 	})
@@ -217,9 +217,9 @@ test('leg details for Wien Westbahnhof to München Hbf', co(function* (t) {
 	const p = journeys[0].legs[0]
 	t.ok(p.id, 'precondition failed')
 	t.ok(p.line.name, 'precondition failed')
-	const leg = yield client.journeyLeg(p.id, p.line.name, {when})
+	const trip = yield client.trip(p.id, p.line.name, {when})
 
-	validate(t, leg, 'journeyLeg', 'leg')
+	validate(t, trip, 'journeyLeg', 'trip')
 	t.end()
 }))
 
