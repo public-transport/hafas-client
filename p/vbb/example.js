@@ -25,7 +25,7 @@ client.journeys('900000003201', '900000024101', {results: 1, polylines: true})
 
 // .then(([journey]) => {
 // 	const leg = journey.legs[0]
-// 	return client.journeyLeg(leg.id, leg.line.name, {polyline: true})
+// 	return client.trip(leg.id, leg.line.name, {polyline: true})
 // })
 .then((data) => {
 	console.log(require('util').inspect(data, {depth: null}))
