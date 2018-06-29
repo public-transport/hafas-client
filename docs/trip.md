@@ -1,8 +1,10 @@
-# `journeyLeg(ref, lineName, [opt])`
+# `trip(id, lineName, [opt])`
 
-This method can be used to refetch information about a leg of a journey. Note that it is not supported by every profile/endpoint.
+This method can be used to refetch information about a trip – a vehicle stopping at a set of stops at specific times.
 
-Let's say you used [`journeys`](journeys.md) and now want to get more up-to-date data about the arrival/departure of a leg. You'd pass in a journey leg `id` like `'1|24983|22|86|18062017'`. `lineName` must be the name of the journey leg's `line.name`. You can get them like this:
+*Note*: This method is not supported by every profile/endpoint.
+
+Let's say you used [`journeys`](journeys.md) and now want to get more up-to-date data about the arrival/departure of a leg. You'd pass in the trip ID from `leg.id`, e.g. `'1|24983|22|86|18062017'`, and the name of the line from `leg.line.name` like this:
 
 ```js
 const createClient = require('hafas-client')
@@ -14,7 +16,7 @@ const client = createClient(vbbProfile)
 client.journeys('900000003201', '900000100008', {results: 1})
 .then(([journey]) => {
 	const leg = journey.legs[0]
-	return client.journeyLeg(leg.id, leg.line.name)
+	return client.trip(leg.id, leg.line.name)
 })
 .then(console.log)
 .catch(console.error)
@@ -26,7 +28,7 @@ With `opt`, you can override the default options, which look like this:
 {
 	when: new Date(),
 	stopovers: true, // return stations on the way?
-	polyline: false, // return a shape for the leg?
+	polyline: false, // return a shape for the trip?
 	remarks: true // parse & expose hints & warnings?
 }
 ```
@@ -43,7 +45,7 @@ const vbbProfile = require('hafas-client/p/vbb')
 
 const client = createClient(vbbProfile)
 
-client.journeyLeg('1|31431|28|86|17122017', 'S9', {when: 1513534689273})
+client.trip('1|31431|28|86|17122017', 'S9', {when: 1513534689273})
 .then(console.log)
 .catch(console.error)
 ```
@@ -121,7 +123,7 @@ The response looked like this:
 
 ### `polyline` option
 
-If you pass `polyline: true`, the leg will have a `polyline` field, containing a [GeoJSON](http://geojson.org) [`FeatureCollection`](https://tools.ietf.org/html/rfc7946#section-3.3) of [`Point`s](https://tools.ietf.org/html/rfc7946#appendix-A.1). Every `Point` next to a station will have `properties` containing the station's metadata.
+If you pass `polyline: true`, the trip will have a `polyline` field, containing a [GeoJSON](http://geojson.org) [`FeatureCollection`](https://tools.ietf.org/html/rfc7946#section-3.3) of [`Point`s](https://tools.ietf.org/html/rfc7946#appendix-A.1). Every `Point` next to a station will have `properties` containing the station's metadata.
 
 We'll look at an example for *U6* from *Alt-Mariendorf* to *Alt-Tegel*, taken from the [VBB profile](../p/vbb):
 
