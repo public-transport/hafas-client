@@ -272,4 +272,4 @@ departure of last journey 2017-12-17T19:07:00.000+01:00
 departure of first (later) journey 2017-12-17T19:19:00.000+01:00
 ```
 
-If you pass `polylines: true`, each journey leg will have a `polyline` field. Refer to [the section in the `journeyLeg()` docs](journey-leg.md#polyline-option) for details.
+If you pass `polylines: true`, each journey leg will have a `polyline` field. Refer to [the section in the `trip()` docs](trip.md#polyline-option) for details.
