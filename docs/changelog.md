@@ -1,5 +1,16 @@
 # Changelog
 
+## `2.9.1`
+
+- a952b08 notes on how to use `hafas-client` with react-native 📝
+- 38a3749 `parseStopover`: fix first/last canceled stopovers 🐛
+
+## `2.9.0`
+
+- 49186ae journey leg passed stations: add `arrivalDelay` & `departureDelay`
+- deb8829 [`journeys()`](journeys.md): new `whenRepresents` option
+- f3d8304 let the `insa` and `nahsh` profiles use HTTPS
+
 ## `2.8.1`
 
 - 769f2e3 send `Accept: application/json`
