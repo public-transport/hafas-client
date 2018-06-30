@@ -4,173 +4,172 @@ const hints = Object.assign(Object.create(null), {
 	fb: {
 		type: 'hint',
 		code: 'bicycle-conveyance',
-		text: 'bicycles conveyed'
+		summary: 'bicycles conveyed'
 	},
 	fr: {
 		type: 'hint',
 		code: 'bicycle-conveyance-reservation',
-		text: 'bicycles conveyed, subject to reservation'
+		summary: 'bicycles conveyed, subject to reservation'
 	},
 	nf: {
 		type: 'hint',
 		code: 'no-bicycle-conveyance',
-		text: 'bicycles not conveyed'
+		summary: 'bicycles not conveyed'
 	},
 	k2: {
 		type: 'hint',
 		code: '2nd-class-only',
-		text: '2. class only'
+		summary: '2. class only'
 	},
 	eh: {
 		type: 'hint',
 		code: 'boarding-ramp',
-		text: 'vehicle-mounted boarding ramp available'
+		summary: 'vehicle-mounted boarding ramp available'
 	},
 	wv: {
 		type: 'hint',
 		code: 'wifi',
-		text: 'WiFi available'
+		summary: 'WiFi available'
 	},
 	wi: {
 		type: 'hint',
 		code: 'wifi',
-		text: 'WiFi available'
+		summary: 'WiFi available'
 	},
 	sn: {
 		type: 'hint',
 		code: 'snacks',
-		text: 'snacks available for purchase'
+		summary: 'snacks available for purchase'
 	},
 	mb: {
 		type: 'hint',
 		code: 'snacks',
-		text: 'snacks available for purchase'
+		summary: 'snacks available for purchase'
 	},
 	mp: {
 		type: 'hint',
 		code: 'snacks',
-		text: 'snacks available for purchase at the seat'
+		summary: 'snacks available for purchase at the seat'
 	},
 	bf: {
 		type: 'hint',
 		code: 'barrier-free',
-		text: 'barrier-free'
+		summary: 'barrier-free'
 	},
 	rg: {
 		type: 'hint',
 		code: 'barrier-free-vehicle',
-		text: 'barrier-free vehicle'
+		summary: 'barrier-free vehicle'
 	},
 	bt: {
 		type: 'hint',
 		code: 'on-board-bistro',
-		text: 'Bordbistro available'
+		summary: 'Bordbistro available'
 	},
 	br: {
 		type: 'hint',
 		code: 'on-board-restaurant',
-		text: 'Bordrestaurant available'
+		summary: 'Bordrestaurant available'
 	},
 	ki: {
 		type: 'hint',
 		code: 'childrens-area',
-		text: `children's area available`
+		summary: `children's area available`
 	},
 	kr: {
 		type: 'hint',
 		code: 'kids-service',
-		text: 'DB Kids Service available'
+		summary: 'DB Kids Service available'
 	},
 	ls: {
 		type: 'hint',
 		code: 'power-sockets',
-		text: 'power sockets available'
+		summary: 'power sockets available'
 	},
 	ev: {
 		type: 'hint',
 		code: 'replacement-service',
-		text: 'replacement service'
+		summary: 'replacement service'
 	},
 	kl: {
 		type: 'hint',
 		code: 'air-conditioned',
-		text: 'air-conditioned vehicle'
+		summary: 'air-conditioned vehicle'
 	},
 	r0: {
 		type: 'hint',
 		code: 'upward-escalator',
-		text: 'upward escalator'
+		summary: 'upward escalator'
 	},
 	au: {
 		type: 'hint',
 		code: 'elevator',
-		text: 'elevator available'
+		summary: 'elevator available'
 	},
 	ck: {
 		type: 'hint',
 		code: 'komfort-checkin',
-		text: 'Komfort-Checkin available'
+		summary: 'Komfort-Checkin available'
 	},
 	it: {
 		type: 'hint',
 		code: 'ice-sprinter',
-		text: 'ICE Sprinter service'
+		summary: 'ICE Sprinter service'
 	},
 	rp: {
 		type: 'hint',
 		code: 'compulsory-reservation',
-		text: 'compulsory seat reservation'
+		summary: 'compulsory seat reservation'
 	},
 	sk: {
 		type: 'hint',
 		code: 'oversize-luggage-forbidden',
-		text: 'oversize luggage not allowed'
+		summary: 'oversize luggage not allowed'
 	},
 	hu: {
 		type: 'hint',
 		code: 'animals-forbidden',
-		text: 'animals not allowed, except guide dogs'
+		summary: 'animals not allowed, except guide dogs'
 	},
 	ik: {
 		type: 'hint',
 		code: 'baby-cot-required',
-		text: 'baby cot/child seat required'
+		summary: 'baby cot/child seat required'
 	},
 	ee: {
 		type: 'hint',
 		code: 'on-board-entertainment',
-		text: 'on-board entertainment available'
+		summary: 'on-board entertainment available'
 	},
 	toilet: {
 		type: 'hint',
 		code: 'toilet',
-		text: 'toilet available'
+		summary: 'toilet available'
 	},
 	iz: {
 		type: 'hint',
 		code: 'intercity-2',
-		text: 'Intercity 2'
+		summary: 'Intercity 2'
 	}
 })
 
+const codesByIcon = Object.assign(Object.create(null), {
+	cancel: 'cancelled'
+})
+
 // todo: is passing in profile necessary?
-const parseHint = (profile, h) => {
+const parseHint = (profile, h, icons) => {
 	// todo: C
 
 	const text = h.txtN && h.txtN.trim() || ''
+	const icon = 'number' === typeof h.icoX && icons[h.icoX] || null
+	const code = h.code || (icon && icon.res && codesByIcon[icon.res]) || null
 
 	if (h.type === 'M') {
 		return {
 			type: 'status',
-			code: h.code || null,
 			summary: h.txtS && h.txtS.trim() || '',
-			text
-		}
-	}
-	if (h.type === 'D') {
-		return {
-			type: 'status',
-			code: h.code || null,
+			code,
 			text
 		}
 	}
@@ -191,21 +190,13 @@ const parseHint = (profile, h) => {
 			text
 		}
 	}
-	// todo:
-	// {
-	//   "type": "U",
-	//   "code": "",
-	//   "icoX": 3,
-	//   "txtN": "entrance and exit not possible"
-	// }
-	if (h.type === 'U') {
+	if (h.type === 'G' && text.toLowerCase() === 'platform change') {
 		return {
 			type: 'status',
-			code: h.code || null,
+			code: 'changed platform',
 			text
 		}
 	}
-
 	if (h.type === 'L') {
 		return {
 			type: 'status',
@@ -215,13 +206,18 @@ const parseHint = (profile, h) => {
 		}
 	}
 	if (h.type === 'A') {
-		return hints[h.code && h.code.trim().toLowerCase()] || null
+		const hint = hints[h.code && h.code.trim().toLowerCase()]
+		if (hint) {
+			return Object.assign({text: h.txtN}, hint)
+		}
+		return null
 	}
-	if (h.type === 'R') {
+
+	if (h.type === 'D' || h.type === 'U' || h.type === 'R' || h.type === 'N') {
 		// todo: how can we identify the individual types?
 		return {
 			type: 'status',
-			code: h.code,
+			code,
 			text
 		}
 	}

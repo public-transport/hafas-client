@@ -4,8 +4,12 @@ const brToNewline = require('br2nl')
 
 const parseDateTime = require('./date-time')
 
+const typesByIcon = Object.assign(Object.create(null), {
+	HimWarn: 'status'
+})
+
 // todo: is passing in profile necessary?
-const parseWarning = (profile, w) => {
+const parseWarning = (profile, w, icons) => {
 	// todo: hid, act, pub, lead, tckr, icoX, fLocX, tLocX, prod, comp,
 	// todo: cat (1, 2), pubChL
 	// pubChL:
@@ -20,8 +24,11 @@ const parseWarning = (profile, w) => {
 	// tDate: '20180713',
 	// tTime: '030000' } ]
 
+	const icon = 'number' === typeof h.icoX && icons[h.icoX] || null
+	const type = icon && icon.res && typesByIcon[icon.res] || 'warning'
+
 	return {
-		type: 'warning',
+		type,
 		summary: brToNewline(w.head),
 		text: brToNewline(w.text),
 		priority: w.prio,
