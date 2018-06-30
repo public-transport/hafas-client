@@ -1,5 +1,11 @@
 # Changelog
 
+## `2.10.0`
+
+- 4da8689 journey legs with `type: 'walking'` now have a `distance` in meters
+- c1bdade `departures()`: parse & expose platforms
+- fccd3d0 `journeys()`: `startWithWalking` option
+
 ## `2.9.1`
 
 - a952b08 notes on how to use `hafas-client` with react-native 📝
