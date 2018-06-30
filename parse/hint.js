@@ -6,6 +6,11 @@ const hints = Object.assign(Object.create(null), {
 		code: 'bicycle-conveyance',
 		text: 'bicycles conveyed'
 	},
+	fr: {
+		type: 'hint',
+		code: 'bicycle-conveyance-reservation',
+		text: 'bicycles conveyed, subject to reservation'
+	},
 	nf: {
 		type: 'hint',
 		code: 'no-bicycle-conveyance',
@@ -26,10 +31,25 @@ const hints = Object.assign(Object.create(null), {
 		code: 'wifi',
 		text: 'WiFi available'
 	},
+	wi: {
+		type: 'hint',
+		code: 'wifi',
+		text: 'WiFi available'
+	},
 	sn: {
 		type: 'hint',
 		code: 'snacks',
 		text: 'snacks available for purchase'
+	},
+	mb: {
+		type: 'hint',
+		code: 'snacks',
+		text: 'snacks available for purchase'
+	},
+	mp: {
+		type: 'hint',
+		code: 'snacks',
+		text: 'snacks available for purchase at the seat'
 	},
 	bf: {
 		type: 'hint',
@@ -55,6 +75,11 @@ const hints = Object.assign(Object.create(null), {
 		type: 'hint',
 		code: 'childrens-area',
 		text: `children's area available`
+	},
+	kr: {
+		type: 'hint',
+		code: 'kids-service',
+		text: 'DB Kids Service available'
 	},
 	ls: {
 		type: 'hint',
@@ -90,6 +115,41 @@ const hints = Object.assign(Object.create(null), {
 		type: 'hint',
 		code: 'ice-sprinter',
 		text: 'ICE Sprinter service'
+	},
+	rp: {
+		type: 'hint',
+		code: 'compulsory-reservation',
+		text: 'compulsory seat reservation'
+	},
+	sk: {
+		type: 'hint',
+		code: 'oversize-luggage-forbidden',
+		text: 'oversize luggage not allowed'
+	},
+	hu: {
+		type: 'hint',
+		code: 'animals-forbidden',
+		text: 'animals not allowed, except guide dogs'
+	},
+	ik: {
+		type: 'hint',
+		code: 'baby-cot-required',
+		text: 'baby cot/child seat required'
+	},
+	ee: {
+		type: 'hint',
+		code: 'on-board-entertainment',
+		text: 'on-board entertainment available'
+	},
+	toilet: {
+		type: 'hint',
+		code: 'toilet',
+		text: 'toilet available'
+	},
+	iz: {
+		type: 'hint',
+		code: 'intercity-2',
+		text: 'Intercity 2'
 	}
 })
 
