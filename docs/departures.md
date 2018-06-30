@@ -75,7 +75,8 @@ The response may look like this:
 		}
 	},
 	when: '2017-12-17T19:32:00.000+01:00',
-	delay: null
+	delay: null,
+	platform: '2',
 	line: {
 		type: 'line',
 		id: '18299',
@@ -143,6 +144,7 @@ The response may look like this:
 	},
 	when: '2017-12-17T19:35:00.000+01:00',
 	delay: 0,
+	platform: null,
 	line: {
 		type: 'line',
 		id: '19494',
