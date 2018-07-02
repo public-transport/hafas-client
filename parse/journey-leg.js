@@ -43,7 +43,7 @@ const createParseJourneyLeg = (profile, stations, lines, remarks, polylines) => 
 			res.polyline = p && p.crdEncYX || null
 		}
 
-		if (pt.type === 'WALK') {
+		if (pt.type === 'WALK' || pt.type === 'TRSF') {
 			res.mode = 'walking'
 			res.public = true
 			res.distance = pt.gis && pt.gis.dist || null
