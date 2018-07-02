@@ -1,5 +1,9 @@
 # Changelog
 
+## `2.10.1`
+
+- 04d550f parse `TRSF` legs as `walking` 🐛
+
 ## `2.10.0`
 
 - 4da8689 journey legs with `type: 'walking'` now have a `distance` in meters
