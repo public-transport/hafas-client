@@ -24,7 +24,7 @@ const parseWarning = (profile, w, icons) => {
 	// tDate: '20180713',
 	// tTime: '030000' } ]
 
-	const icon = 'number' === typeof h.icoX && icons[h.icoX] || null
+	const icon = 'number' === typeof h.icoX && icons[w.icoX] || null
 	const type = icon && icon.res && typesByIcon[icon.res] || 'warning'
 
 	return {
