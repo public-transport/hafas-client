@@ -38,11 +38,10 @@ const createParseJourneyLeg = (profile, opt, data) => {
 	const {locations, lines, hints, warnings, polylines} = data
 	// todo: pt.status
 	// todo: pt.status, pt.isPartCncl
+	// todo: pt.isRchbl, pt.chRatingRT, pt.chgDurR, pt.minChg
 	// todo: pt.sDays
 	// todo: pt.dep.dProgType, pt.arr.dProgType
 	// todo: what is pt.jny.dirFlg?
-	// todo: how does pt.freq work?
-	// todo: what is pt.himL?
 
 	// j = journey, pt = part
 	// todo: pt.planrtTS
@@ -77,7 +76,7 @@ const createParseJourneyLeg = (profile, opt, data) => {
 			res.polyline = p && parse(p) || null
 		}
 
-		if (pt.type === 'WALK') {
+		if (pt.type === 'WALK' || pt.type === 'TRSF') {
 			res.mode = 'walking'
 			res.public = true
 			res.distance = pt.gis && pt.gis.dist || null
