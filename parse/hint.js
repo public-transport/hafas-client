@@ -1,5 +1,7 @@
 'use strict'
 
+const trim = require('lodash/trim')
+
 const hints = Object.assign(Object.create(null), {
 	fb: {
 		type: 'hint',
@@ -25,6 +27,16 @@ const hints = Object.assign(Object.create(null), {
 		type: 'hint',
 		code: 'boarding-ramp',
 		summary: 'vehicle-mounted boarding ramp available'
+	},
+	ro: {
+		type: 'hint',
+		code: 'wheelchairs-space',
+		summary: 'space for wheelchairs'
+	},
+	oa: {
+		type: 'hint',
+		code: 'wheelchairs-space-reservation',
+		summary: 'space for wheelchairs, subject to reservation'
 	},
 	wv: {
 		type: 'hint',
@@ -76,6 +88,11 @@ const hints = Object.assign(Object.create(null), {
 		code: 'childrens-area',
 		summary: `children's area available`
 	},
+	kk: {
+		type: 'hint',
+		code: 'parents-childrens-compartment',
+		summary: `parent-and-children compartment available`
+	},
 	kr: {
 		type: 'hint',
 		code: 'kids-service',
@@ -121,6 +138,21 @@ const hints = Object.assign(Object.create(null), {
 		code: 'compulsory-reservation',
 		summary: 'compulsory seat reservation'
 	},
+	rm: {
+		type: 'hint',
+		code: 'optional-reservation',
+		summary: 'optional seat reservation'
+	},
+	scl: {
+		type: 'hint',
+		code: 'all-2nd-class-seats-reserved',
+		summary: 'all 2nd class seats reserved'
+	},
+	acl: {
+		type: 'hint',
+		code: 'all-seats-reserved',
+		summary: 'all seats reserved'
+	},
 	sk: {
 		type: 'hint',
 		code: 'oversize-luggage-forbidden',
@@ -146,6 +178,11 @@ const hints = Object.assign(Object.create(null), {
 		code: 'toilet',
 		summary: 'toilet available'
 	},
+	oc: {
+		type: 'hint',
+		code: 'wheelchair-accessible-toilet',
+		summary: 'wheelchair-accessible toilet available'
+	},
 	iz: {
 		type: 'hint',
 		code: 'intercity-2',
@@ -160,6 +197,13 @@ const codesByIcon = Object.assign(Object.create(null), {
 // todo: is passing in profile necessary?
 const parseHint = (profile, h, icons) => {
 	// todo: C
+	// todo:
+	// { type: 'Q',
+	//   code: '',
+	//   icoX: 11,
+	//   txtN:
+	//    'RE  3132: Berlin Zoologischer Garten - Brandenburg Hbf: Information. A railway carriage is missing',
+	//   sIdx: 4 }
 
 	const text = h.txtN && h.txtN.trim() || ''
 	const icon = 'number' === typeof h.icoX && icons[h.icoX] || null
@@ -186,7 +230,14 @@ const parseHint = (profile, h, icons) => {
 	if (h.type === 'U' && text.toLowerCase() === 'stop cancelled') {
 		return {
 			type: 'status',
-			code: 'stop-cancelled',
+			code: 'stop-cancelled', // todo: change to stopover-cancelled
+			text
+		}
+	}
+	if (h.type === 'U' && trim(text.toLowerCase(), ' ()') === 'additional stop') {
+		return {
+			type: 'status',
+			code: 'additional-stopover',
 			text
 		}
 	}
@@ -215,12 +266,14 @@ const parseHint = (profile, h, icons) => {
 
 	if (h.type === 'D' || h.type === 'U' || h.type === 'R' || h.type === 'N') {
 		// todo: how can we identify the individual types?
+		// todo: does `D` mean "disturbance"?
 		return {
 			type: 'status',
 			code,
 			text
 		}
 	}
+
 	return null
 }
 
