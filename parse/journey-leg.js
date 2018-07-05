@@ -80,6 +80,7 @@ const createParseJourneyLeg = (profile, opt, data) => {
 			res.mode = 'walking'
 			res.public = true
 			res.distance = pt.gis && pt.gis.dist || null
+			if (pt.type === 'TRSF') res.transfer = true
 		} else if (pt.type === 'JNY') {
 			// todo: pull `public` value from `profile.products`
 			res.id = pt.jny.jid
