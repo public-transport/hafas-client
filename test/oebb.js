@@ -20,6 +20,7 @@ const testJourneysStationToPoi = require('./lib/journeys-station-to-poi')
 const testEarlierLaterJourneys = require('./lib/earlier-later-journeys')
 const journeysFailsWithNoProduct = require('./lib/journeys-fails-with-no-product')
 const testJourneysWithDetour = require('./lib/journeys-with-detour')
+const testDeparturesInDirection = require('./lib/departures-in-direction')
 
 const when = createWhen('Europe/Vienna', 'de-AT')
 
@@ -57,6 +58,8 @@ const wienWestbahnhof = '1291501'
 const klagenfurtHbf = '8100085'
 const muenchenHbf = '8000261'
 const wienRenngasse = '1390186'
+const wienKarlsplatz = '1390461'
+const wienPilgramgasse = '1390562'
 
 test.skip('journeys – Salzburg Hbf to Wien Westbahnhof', co(function* (t) {
 	const journeys = yield client.journeys(salzburgHbf, wienFickeystr, {
@@ -262,6 +265,19 @@ test('departures with station object', co(function* (t) {
 	}, {when})
 
 	validate(t, deps, 'departures', 'departures')
+	t.end()
+}))
+
+test('departures at Karlsplatz in direction of Pilgramgasse', co(function* (t) {
+	yield testDeparturesInDirection({
+		test: t,
+		fetchDepartures: client.departures,
+		fetchTrip: client.trip,
+		id: wienKarlsplatz,
+		directionIds: [wienPilgramgasse, '905002'],
+		when,
+		validate
+	})
 	t.end()
 }))
 

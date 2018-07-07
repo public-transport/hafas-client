@@ -20,6 +20,7 @@ const testJourneysStationToPoi = require('./lib/journeys-station-to-poi')
 const testEarlierLaterJourneys = require('./lib/earlier-later-journeys')
 const journeysFailsWithNoProduct = require('./lib/journeys-fails-with-no-product')
 const testDepartures = require('./lib/departures')
+const testDeparturesInDirection = require('./lib/departures-in-direction')
 const testArrivals = require('./lib/arrivals')
 
 const when = createWhen('Europe/Berlin', 'de-DE')
@@ -65,6 +66,8 @@ const flensburg = '8000103'
 const luebeckHbf = '8000237'
 const husum = '8000181'
 const schleswig = '8005362'
+const ellerbekerMarkt = '9049027'
+const seefischmarkt = '9049245'
 
 test('journeys – Kiel Hbf to Flensburg', co(function* (t) {
 	const journeys = yield client.journeys(kielHbf, flensburg, {
@@ -227,6 +230,19 @@ test('departures with station object', co(function* (t) {
 	}, {when})
 
 	validate(t, deps, 'departures', 'departures')
+	t.end()
+}))
+
+test('departures at Berlin Hbf in direction of Berlin Ostbahnhof', co(function* (t) {
+	yield testDeparturesInDirection({
+		test: t,
+		fetchDepartures: client.departures,
+		fetchTrip: client.trip,
+		id: ellerbekerMarkt,
+		directionIds: [seefischmarkt, '710102'],
+		when,
+		validate
+	})
 	t.end()
 }))
 

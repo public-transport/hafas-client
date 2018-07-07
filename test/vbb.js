@@ -26,6 +26,7 @@ const testJourneysStationToPoi = require('./lib/journeys-station-to-poi')
 const testEarlierLaterJourneys = require('./lib/earlier-later-journeys')
 const journeysFailsWithNoProduct = require('./lib/journeys-fails-with-no-product')
 const testDepartures = require('./lib/departures')
+const testDeparturesInDirection = require('./lib/departures-in-direction')
 const testArrivals = require('./lib/arrivals')
 const testJourneysWithDetour = require('./lib/journeys-with-detour')
 
@@ -294,6 +295,19 @@ test('departures with station object', co(function* (t) {
 	}, {when})
 
 	validate(t, deps, 'departures', 'departures')
+	t.end()
+}))
+
+test('departures at Spichernstr. in direction of Westhafen', co(function* (t) {
+	yield testDeparturesInDirection({
+		test: t,
+		fetchDepartures: client.departures,
+		fetchTrip: client.trip,
+		id: spichernstr,
+		directionIds: [westhafen],
+		when,
+		validate
+	})
 	t.end()
 }))
 

@@ -16,6 +16,7 @@ const testJourneysStationToPoi = require('./lib/journeys-station-to-poi')
 const testEarlierLaterJourneys = require('./lib/earlier-later-journeys')
 const journeysFailsWithNoProduct = require('./lib/journeys-fails-with-no-product')
 const testDepartures = require('./lib/departures')
+const testDeparturesInDirection = require('./lib/departures-in-direction')
 const testArrivals = require('./lib/arrivals')
 const testJourneysWithDetour = require('./lib/journeys-with-detour')
 
@@ -40,6 +41,7 @@ const leiterstr = '7464'
 const hasselbachplatzSternstrasse = '000006545'
 const stendal = '008010334'
 const dessau = '008010077'
+const universitaet = '19686'
 
 test('journeys – Magdeburg Hbf to Magdeburg-Buckau', co(function* (t) {
 	const journeys = yield client.journeys(magdeburgHbf, magdeburgBuckau, {
@@ -193,6 +195,19 @@ test('departures with station object', co(function* (t) {
 	}, {when})
 
 	validate(t, deps, 'departures', 'departures')
+	t.end()
+}))
+
+test('departures at Leiterstr in direction of Universität', co(function* (t) {
+	yield testDeparturesInDirection({
+		test: t,
+		fetchDepartures: client.departures,
+		fetchTrip: client.trip,
+		id: leiterstr,
+		directionIds: [universitaet],
+		when,
+		validate
+	})
 	t.end()
 }))
 

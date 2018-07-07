@@ -22,6 +22,7 @@ const testJourneysStationToPoi = require('./lib/journeys-station-to-poi')
 const testEarlierLaterJourneys = require('./lib/earlier-later-journeys')
 const journeysFailsWithNoProduct = require('./lib/journeys-fails-with-no-product')
 const testDepartures = require('./lib/departures')
+const testDeparturesInDirection = require('./lib/departures-in-direction')
 const testArrivals = require('./lib/arrivals')
 const testJourneysWithDetour = require('./lib/journeys-with-detour')
 
@@ -74,6 +75,7 @@ const westhafen = '008089116'
 const wedding = '008089131'
 const württembergallee = '731084'
 const regensburgHbf = '8000309'
+const blnOstbahnhof = '8010255'
 
 test('journeys – Berlin Schwedter Str. to München Hbf', co(function* (t) {
 	const journeys = yield client.journeys(blnSchwedterStr, münchenHbf, {
@@ -238,6 +240,19 @@ test('departures with station object', co(function* (t) {
 	}, {when})
 
 	validate(t, deps, 'departures', 'departures')
+	t.end()
+}))
+
+test('departures at Berlin Hbf in direction of Berlin Ostbahnhof', co(function* (t) {
+	yield testDeparturesInDirection({
+		test: t,
+		fetchDepartures: client.departures,
+		fetchTrip: client.trip,
+		id: berlinHbf,
+		directionIds: [blnOstbahnhof, '8089185', '732676'],
+		when,
+		validate
+	})
 	t.end()
 }))
 
