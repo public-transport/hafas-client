@@ -104,10 +104,20 @@ const createValidateStopover = (cfg) => {
 			a.strictEqual(typeof s.arrivalPlatform, 'string', msg + 'be a string')
 			a.ok(s.arrivalPlatform, msg + 'not be empty')
 		}
-		if (is(s.departureDelay)) {
+		if (is(s.formerScheduledArrivalPlatform)) {
+			const msg = name + '.formerScheduledArrivalPlatform must '
+			a.strictEqual(typeof s.formerScheduledArrivalPlatform, 'string', msg + 'be a string')
+			a.ok(s.formerScheduledArrivalPlatform, msg + 'not be empty')
+		}
+		if (is(s.departurePlatform)) {
 			const msg = name + '.departurePlatform must '
 			a.strictEqual(typeof s.departurePlatform, 'string', msg + 'be a string')
 			a.ok(s.departurePlatform, msg + 'not be empty')
+		}
+		if (is(s.formerScheduledDeparturePlatform)) {
+			const msg = name + '.formerScheduledDeparturePlatform must '
+			a.strictEqual(typeof s.formerScheduledDeparturePlatform, 'string', msg + 'be a string')
+			a.ok(s.formerScheduledDeparturePlatform, msg + 'not be empty')
 		}
 
 		val.station(val, s.stop, name + '.stop')
