@@ -286,7 +286,6 @@ const parseHint = (profile, h, icons) => {
 
 	const res = _parseHint(profile, h, icons)
 	if (h.txtN) {
-		console.error(h)
 		const text = trim(h.txtN.toLowerCase(), ' ()')
 		if (codesByText[text]) res.code = codesByText[text]
 	}
