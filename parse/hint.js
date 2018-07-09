@@ -1,7 +1,5 @@
 'use strict'
 
-const trim = require('lodash/trim')
-
 const hints = Object.assign(Object.create(null), {
 	fb: {
 		type: 'hint',
@@ -218,36 +216,6 @@ const parseHint = (profile, h, icons) => {
 		}
 	}
 
-	// todo: find sth more reliable than this
-	if (h.type === 'P' && text.toLowerCase() === 'journey cancelled') {
-		return {
-			type: 'status',
-			code: 'journey-cancelled',
-			text
-			// todo: `h.sIdx`
-		}
-	}
-	if (h.type === 'U' && text.toLowerCase() === 'stop cancelled') {
-		return {
-			type: 'status',
-			code: 'stop-cancelled', // todo: change to stopover-cancelled
-			text
-		}
-	}
-	if (h.type === 'U' && trim(text.toLowerCase(), ' ()') === 'additional stop') {
-		return {
-			type: 'status',
-			code: 'additional-stopover',
-			text
-		}
-	}
-	if (h.type === 'G' && text.toLowerCase() === 'platform change') {
-		return {
-			type: 'status',
-			code: 'changed platform',
-			text
-		}
-	}
 	if (h.type === 'L') {
 		return {
 			type: 'status',
@@ -257,11 +225,11 @@ const parseHint = (profile, h, icons) => {
 		}
 	}
 	if (h.type === 'A') {
-		const hint = hints[h.code && h.code.trim().toLowerCase()]
-		if (hint) {
-			return Object.assign({text: h.txtN}, hint)
+		return {
+			type: 'hint',
+			code: h.code || null,
+			text: h.txtN || null
 		}
-		return null
 	}
 
 	if (h.type === 'D' || h.type === 'U' || h.type === 'R' || h.type === 'N') {
