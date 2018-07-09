@@ -39,6 +39,13 @@ const createParseStopover = (profile, opt, data, date) => {
 			res.departureDelay = Math.round((realtime - planned) / 1000)
 		}
 
+		if (st.aPlatfR && st.aPlatfS && st.aPlatfR !== st.aPlatfS) {
+			res.formerScheduledArrivalPlatform = st.aPlatfS
+		}
+		if (st.dPlatfR && st.dPlatfS && st.dPlatfR !== st.dPlatfS) {
+			res.formerScheduledDeparturePlatform = st.dPlatfS
+		}
+
 		// mark stations the train passes without stopping
 		if(st.dInS === false && st.aOutS === false) res.passBy = true
 

@@ -39,7 +39,7 @@ const createParseArrOrDep = (profile, opt, data, prefix) => {
 		const pR = d.stbStop[prefix + 'PlatfR']
 		const pP = d.stbStop[prefix + 'PlatfS']
 		res.platform = pR || pP || null
-		// todo: `formerScheduledPlatform`
+		if (pR && pP && pR !== pP) res.formerScheduledPlatform = pP
 
 		// todo: DRY with parseStopover
 		// todo: DRY with parseJourneyLeg
