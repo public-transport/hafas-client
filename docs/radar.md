@@ -11,7 +11,8 @@ With `opt`, you can override the default options, which look like this:
 	results: 256, // maximum number of vehicles
 	duration: 30, // compute frames for the next n seconds
 	frames: 3, // nr of frames to compute
-	polylines: false // return a track shape for each vehicle?
+	polylines: false, // return a track shape for each vehicle?
+	language: 'en' // language to get results in
 }
 ```
 

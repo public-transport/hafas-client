@@ -11,7 +11,8 @@ With `opt`, you can override the default options, which look like this:
 	distance: null, // maximum walking distance in meters
 	poi:      false, // return points of interest?
 	stations: true, // return stations?
-	stationLines: false // parse & expose lines of the station?
+	stationLines: false, // parse & expose lines of the station?
+	language: 'en' // language to get results in
 }
 ```
 

@@ -23,7 +23,8 @@ With `opt`, you can override the default options, which look like this:
 
 ```js
 {
-	stationLines: false // parse & expose lines of the station?
+	stationLines: false, // parse & expose lines of the station?
+	language: 'en' // language to get results in
 }
 
 ## Response

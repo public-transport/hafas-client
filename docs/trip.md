@@ -29,7 +29,8 @@ With `opt`, you can override the default options, which look like this:
 	when: new Date(),
 	stopovers: true, // return stations on the way?
 	polyline: false, // return a shape for the trip?
-	remarks: true // parse & expose hints & warnings?
+	remarks: true, // parse & expose hints & warnings?
+	language: 'en' // language to get results in
 }
 ```
 
