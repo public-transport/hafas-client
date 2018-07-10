@@ -35,7 +35,10 @@ const createClient = (profile, request = _request) => {
 			direction: null, // only show departures heading to this station
 			duration: 10, // show departures for the next n minutes
 			stationLines: false, // parse & expose lines of the station?
-			remarks: true // parse & expose hints & warnings?
+			remarks: true, // parse & expose hints & warnings?
+			// departures at related stations
+			// e.g. those that belong together on the metro map.
+			includeRelatedStations: true
 		}, opt)
 		opt.when = new Date(opt.when || Date.now())
 		if (Number.isNaN(+opt.when)) throw new Error('opt.when is invalid')
@@ -52,7 +55,8 @@ const createClient = (profile, request = _request) => {
 				dirLoc: dir,
 				jnyFltrL: [products],
 				dur: opt.duration,
-				getPasslist: false // todo: what is this?
+				getPasslist: false, // todo: what is this?
+				stbFltrEquiv: !opt.includeRelatedStations
 			}
 		})
 		.then((d) => {
