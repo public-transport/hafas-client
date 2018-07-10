@@ -45,7 +45,7 @@ const createParseLine = (profile, opt, data) => {
 const parseLocation = (profile, opt, data, l) => {
 	const res = _parseLocation(profile, opt, data, l)
 
-	if (res.type === 'station') {
+	if (res.type === 'stop' || res.type === 'station') {
 		res.name = shorten(res.name)
 		res.id = to12Digit(res.id)
 		if (!res.location.latitude || !res.location.longitude) {
