@@ -46,7 +46,7 @@ The response may look like this:
 
 ```js
 {
-	type: 'station',
+	type: 'stop',
 	id: '900000042101',
 	name: 'U Spichernstr.',
 	location: {

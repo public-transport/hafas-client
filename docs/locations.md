@@ -35,7 +35,7 @@ The response may look like this:
 
 ```js
 [ {
-	type: 'station',
+	type: 'stop',
 	id: '900000100003',
 	name: 'S+U Alexanderplatz',
 	location: {

@@ -69,7 +69,7 @@ The response may look like this:
 	trip: 31463,
 	nextStops: [ {
 		station: {
-			type: 'station',
+			type: 'stop',
 			id: '900000029101',
 			name: 'S Spandau',
 			location: {
@@ -94,14 +94,14 @@ The response may look like this:
 	} /* … */ ],
 	frames: [ {
 		origin: {
-			type: 'station',
+			type: 'stop',
 			id: '900000100003',
 			name: 'S+U Alexanderplatz',
 			location: { /* … */ },
 			products: { /* … */ }
 		},
 		destination: {
-			type: 'station',
+			type: 'stop',
 			id: '900000100004',
 			name: 'S+U Jannowitzbrücke',
 			location: { /* … */ },
