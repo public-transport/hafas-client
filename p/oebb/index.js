@@ -30,7 +30,7 @@ const parseLocation = (profile, opt, data, l) => {
 	// like station entrances, that are actually POIs.
 	const res = _parseLocation(profile, opt, data, l)
 	if (
-		res.type === 'station' &&
+		(res.type === 'station' || res.type === 'stop') &&
 		!res.products &&
 		res.name &&
 		res.id && res.id.length !== 7

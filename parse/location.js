@@ -13,28 +13,28 @@ const parseLocation = (profile, opt, {lines}, l) => {
 	}
 
 	if (l.type === STATION) {
-		const station = {
-			type: 'station',
+		const stop = {
+			type: l.isMainMast ? 'station' : 'stop',
 			id: l.extId,
 			name: l.name ? profile.parseStationName(l.name) : null,
 			location: 'number' === typeof res.latitude ? res : null
 		}
 
-		if ('pCls' in l) station.products = profile.parseProducts(l.pCls)
+		if ('pCls' in l) stop.products = profile.parseProducts(l.pCls)
 
 		if (
 			opt.stationLines &&
 			Array.isArray(l.pRefL) &&
 			Array.isArray(lines)
 		) {
-			station.lines = []
+			stop.lines = []
 			for (let pRef of l.pRefL) {
 				const line = lines[pRef]
-				if (line) station.lines.push(line)
+				if (line) stop.lines.push(line)
 			}
 		}
 
-		return station
+		return stop
 	}
 
 	if (l.type === ADDRESS) res.address = l.name
