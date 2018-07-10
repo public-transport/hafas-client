@@ -39,7 +39,7 @@ The response may look like this:
 
 ```js
 [ {
-	type: 'station',
+	type: 'stop',
 	id: '900000120001',
 	name: 'S+U Frankfurter Allee',
 	location: {
@@ -58,7 +58,7 @@ The response may look like this:
 	},
 	distance: 56
 }, {
-	type: 'station',
+	type: 'stop',
 	id: '900000120540',
 	name: 'Scharnweberstr./Weichselstr.',
 	location: {
@@ -69,7 +69,7 @@ The response may look like this:
 	products: { /* … */ },
 	distance: 330
 }, {
-	type: 'station',
+	type: 'stop',
 	id: '900000160544',
 	name: 'Rathaus Lichtenberg',
 	location: {
