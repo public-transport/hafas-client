@@ -13,6 +13,7 @@ This version is not fully backwords-compatible. Check out [the migration guide](
 - 84bce0c `arrivals()`/`departures()`: parse & expose platforms
 - 85e0bdf `journeys()`: `startWithWalking` option with default `true`
 - f6ae29c journey legs with `type: 'walking'` now have a `distance` in meters
+- 1551943 `arrivals()`/`departures()`: `includeRelatedStations` option with default `true`
 
 ### breaking changes 💥
 

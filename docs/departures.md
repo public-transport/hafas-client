@@ -29,6 +29,9 @@ With `opt`, you can override the default options, which look like this:
 	duration:  10, // show departures for the next n minutes
 	stationLines: false, // parse & expose lines of the station?
 	remarks: true, // parse & expose hints & warnings?
+	// departures at related stations
+	// e.g. those that belong together on the metro map.
+	includeRelatedStations: true,
 	language: 'en' // language to get results in
 }
 ```
