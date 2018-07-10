@@ -27,6 +27,7 @@ const testEarlierLaterJourneys = require('./lib/earlier-later-journeys')
 const journeysFailsWithNoProduct = require('./lib/journeys-fails-with-no-product')
 const testDepartures = require('./lib/departures')
 const testDeparturesInDirection = require('./lib/departures-in-direction')
+const testDeparturesWithoutRelatedStations = require('./lib/departures-without-related-stations')
 const testArrivals = require('./lib/arrivals')
 const testJourneysWithDetour = require('./lib/journeys-with-detour')
 
@@ -315,6 +316,18 @@ test('departures at 7-digit station', co(function* (t) {
 	const eisenach = '8010097' // see derhuerst/vbb-hafas#22
 	yield client.departures(eisenach, {when})
 	t.pass('did not fail')
+	t.end()
+}))
+
+test('departures without related stations', co(function* (t) {
+	yield testDeparturesWithoutRelatedStations({
+		test: t,
+		fetchDepartures: client.departures,
+		id: '900000024101', // Charlottenburg
+		when,
+		products: {bus: false, suburban: false, regional: false},
+		linesOfRelatedStations: ['U7']
+	})
 	t.end()
 }))
 

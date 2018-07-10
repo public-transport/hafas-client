@@ -23,6 +23,7 @@ const testEarlierLaterJourneys = require('./lib/earlier-later-journeys')
 const journeysFailsWithNoProduct = require('./lib/journeys-fails-with-no-product')
 const testDepartures = require('./lib/departures')
 const testDeparturesInDirection = require('./lib/departures-in-direction')
+const testDeparturesWithoutRelatedStations = require('./lib/departures-without-related-stations')
 const testArrivals = require('./lib/arrivals')
 const testJourneysWithDetour = require('./lib/journeys-with-detour')
 
@@ -252,6 +253,18 @@ test('departures at Berlin Hbf in direction of Berlin Ostbahnhof', co(function* 
 		directionIds: [blnOstbahnhof, '8089185', '732676'],
 		when,
 		validate
+	})
+	t.end()
+}))
+
+test('departures without related stations', co(function* (t) {
+	yield testDeparturesWithoutRelatedStations({
+		test: t,
+		fetchDepartures: client.departures,
+		id: '8089051', // Berlin Yorckstr. (S1)
+		when,
+		products: {bus: false},
+		linesOfRelatedStations: ['S 2', 'S 25', 'S 26', 'U 7']
 	})
 	t.end()
 }))
