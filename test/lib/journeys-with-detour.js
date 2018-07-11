@@ -11,9 +11,10 @@ const testJourneysWithDetour = co(function* (cfg) {
 	validate(t, journeys, 'journeys', 'journeys')
 
 	const leg = journeys[0].legs.some((leg) => {
-		return leg.stopovers && leg.stopovers.some((stopover) => {
-			return detourIds.includes(stopover.stop.id)
-		})
+		return leg.stopovers && leg.stopovers.some((st) => (
+			st.stop.station && detourIds.includes(st.stop.station.id) ||
+			detourIds.includes(st.stop.id)
+		))
 	})
 	t.ok(leg, detourIds.join('/') + ' is not being passed')
 })

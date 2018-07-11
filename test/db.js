@@ -317,6 +317,9 @@ test('locations named Jungfernheide', co(function* (t) {
 	t.ok(locations.length <= 10)
 	t.ok(locations.some((l) => {
 		// todo: trim IDs
+		if (l.station) {
+			if (l.station.id === '008011167' || l.station.id === jungfernheide) return true
+		}
 		return l.id === '008011167' || l.id === jungfernheide
 	}), 'Jungfernheide not found')
 
@@ -326,7 +329,7 @@ test('locations named Jungfernheide', co(function* (t) {
 test('station', co(function* (t) {
 	const s = yield client.station(regensburgHbf)
 
-	validate(t, s, 'station', 'station')
+	validate(t, s, ['stop', 'station'], 'station')
 	t.equal(s.id, regensburgHbf)
 
 	t.end()

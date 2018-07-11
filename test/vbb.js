@@ -377,7 +377,7 @@ test('locations', co(function* (t) {
 	validate(t, locations, 'locations', 'locations')
 	t.ok(locations.length <= 20)
 
-	t.ok(locations.find(s => s.type === 'station'))
+	t.ok(locations.find(s => s.type === 'stop' || s.type === 'station'))
 	t.ok(locations.find(s => s.id && s.name)) // POIs
 	t.ok(locations.find(s => !s.name && s.address)) // addresses
 
@@ -387,7 +387,7 @@ test('locations', co(function* (t) {
 test('station', co(function* (t) {
 	const s = yield client.station(spichernstr)
 
-	validate(t, s, 'station', 'station')
+	validate(t, s, ['stop', 'station'], 'station')
 	t.equal(s.id, spichernstr)
 
 	t.end()

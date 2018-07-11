@@ -10,10 +10,12 @@ const testJourneysStationToStation = co(function* (cfg) {
 	for (let i = 0; i < journeys.length; i++) {
 		const j = journeys[i]
 
-		const firstLeg = j.legs[0]
-		const lastLeg = j.legs[j.legs.length - 1]
-		t.strictEqual(firstLeg.origin.id, fromId)
-		t.strictEqual(lastLeg.destination.id, toId)
+		let origin = j.legs[0].origin
+		if (origin.station) origin = origin.station
+		let dest = j.legs[j.legs.length - 1].destination
+		if (dest.station) dest = dest.station
+		t.strictEqual(origin.id, fromId)
+		t.strictEqual(dest.id, toId)
 	}
 })
 
