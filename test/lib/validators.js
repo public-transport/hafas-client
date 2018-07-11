@@ -32,6 +32,16 @@ const createValidateStation = (cfg) => {
 	return validateStation
 }
 
+
+const validateStop = (val, s, name = 'stop') => {
+	// HAFAS doesn't always return the station of a stop. We mock it here
+	// to silence `validate-fptf`.
+	const station = Object.assign({}, s)
+	station.type = 'station'
+	s = Object.assign({station}, s)
+	defaultValidators.stop(val, s, name)
+}
+
 const validatePoi = (val, poi, name = 'location') => {
 	defaultValidators.location(val, poi, name)
 	val.ref(val, poi.id, name + '.id')
@@ -46,7 +56,8 @@ const validateAddress = (val, addr, name = 'location') => {
 
 const validateLocation = (val, loc, name = 'location') => {
 	a.ok(isObj(loc), name + ' must be an object')
-	if (loc.type === 'station') val.station(val, loc, name)
+	if (loc.type === 'stop') val.stop(val, loc, name)
+	else if (loc.type === 'station') val.station(val, loc, name)
 	else if ('id' in loc) validatePoi(val, loc, name)
 	else if (!('name' in loc) && ('address' in loc)) {
 		validateAddress(val, loc, name)
@@ -120,7 +131,7 @@ const createValidateStopover = (cfg) => {
 			a.ok(s.formerScheduledDeparturePlatform, msg + 'not be empty')
 		}
 
-		val.station(val, s.stop, name + '.stop')
+		anyOf(['stop', 'station'], val, s.stop, name + '.stop')
 	}
 	return validateStopover
 }
@@ -251,7 +262,7 @@ const createValidateArrivalOrDeparture = (cfg) => {
 		a.ok(dep.tripId, name + '.tripId must not be empty')
 		a.strictEqual(typeof dep.trip, 'number', name + '.trip must be a number')
 
-		val.station(val, dep.station, name + '.station')
+		anyOf(['stop', 'station'], val, dep.station, name + '.station')
 
 		assertValidWhen(dep.when, cfg.when, name)
 		if (dep.delay !== null) {
@@ -315,8 +326,8 @@ const validateMovement = (val, m, name = 'movement') => {
 		const fName = name + `.frames[${i}]`
 
 		a.ok(isObj(f), fName + ' must be an object')
-		anyOf(['location', 'station'], val, f.origin, fName + '.origin')
-		anyOf(['location', 'station'], val, f.destination, fName + '.destination')
+		anyOf(['location', 'stop', 'station'], val, f.origin, fName + '.origin')
+		anyOf(['location', 'stop', 'station'], val, f.destination, fName + '.destination')
 		a.strictEqual(typeof f.t, 'number', fName + '.frames must be a number')
 	}
 
@@ -333,6 +344,7 @@ const validateMovements = (val, ms, name = 'movements') => {
 
 module.exports = {
 	station: createValidateStation,
+	stop: () => validateStop,
 	location: () => validateLocation,
 	locations: () => validateLocations,
 	poi: () => validatePoi,

@@ -214,13 +214,14 @@ test.skip('locations named Magdeburg', co(function*(t) {
 	validate(t, locations, 'locations', 'locations')
 	t.ok(locations.length <= 20)
 
-	t.ok(locations.find(s => s.type === 'station'))
+	t.ok(locations.find(s => s.type === 'stop' || s.type === 'station'))
 	t.ok(locations.find(s => s.id && s.name)) // POIs
 	t.ok(locations.some((loc) => {
-		return (
-			loc.id === '008010224' || // todo: trim IDs
-			loc.id === bremenHbf
-		)
+		// todo: trim IDs
+		if (l.station) {
+			if (l.station.id === '008010224' || l.station.id === bremenHbf) return true
+		}
+		return l.id === '008010224' || l.id === bremenHbf
 	}))
 
 	t.end()
@@ -229,7 +230,7 @@ test.skip('locations named Magdeburg', co(function*(t) {
 test.skip('station Magdeburg-Buckau', co(function* (t) {
 	const s = yield client.station(bremerhavenHbf)
 
-	validate(t, s, 'station', 'station')
+	validate(t, s, ['stop', 'station'], 'station')
 	t.equal(s.id, bremerhavenHbf)
 
 	t.end()

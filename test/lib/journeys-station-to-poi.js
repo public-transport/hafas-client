@@ -13,17 +13,26 @@ const testJourneysStationToPoi = co(function* (cfg) {
 	for (let i = 0; i < journeys.length; i++) {
 		const j = journeys[i]
 
-		const firstLeg = j.legs[0]
-		t.strictEqual(firstLeg.origin.id, fromId)
+		let o = j.legs[0].origin
+		let oN = `journeys[0].legs[0].destination`
+		if (o.station) {
+			o = o.station
+			oN += '.station'
+		}
+		t.strictEqual(o.id, fromId)
 
-		const d = j.legs[j.legs.length - 1].destination
-		const n = `journeys[0].legs[${i}].destination`
+		let d = j.legs[j.legs.length - 1].destination
+		let dN = `journeys[${i}].legs[${j.legs.length - 1}].destination`
+		if (d.station) {
+			d = d.station
+			dN += '.station'
+		}
 
-		t.strictEqual(d.type, 'location', n + '.type is invalid')
-		t.strictEqual(d.id, id, n + '.id is invalid')
-		t.strictEqual(d.name, name, n + '.name is invalid')
-		t.ok(isRoughlyEqual(.0001, d.latitude, latitude), n + '.latitude is invalid')
-		t.ok(isRoughlyEqual(.0001, d.longitude, longitude), n + '.longitude is invalid')
+		t.strictEqual(d.type, 'location', dN + '.type is invalid')
+		t.strictEqual(d.id, id, dN + '.id is invalid')
+		t.strictEqual(d.name, name, dN + '.name is invalid')
+		t.ok(isRoughlyEqual(.0001, d.latitude, latitude), dN + '.latitude is invalid')
+		t.ok(isRoughlyEqual(.0001, d.longitude, longitude), dN + '.longitude is invalid')
 	}
 })
 

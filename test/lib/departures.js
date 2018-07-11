@@ -8,10 +8,14 @@ const testDepartures = co(function* (cfg) {
 	validate(t, deps, 'departures', 'departures')
 	t.ok(deps.length > 0, 'must be >0 departures')
 	for (let i = 0; i < deps.length; i++) {
-		const dep = deps[i]
-		const name = `deps[${i}]`
+		let station = deps[i].station
+		let name = `deps[${i}].station`
+		if (station.station) {
+			station = station.station
+			name += '.station'
+		}
 
-		t.equal(dep.station.id, id, name + '.station.id is invalid')
+		t.equal(station.id, id, name + '.id is invalid')
 	}
 
 	// todo: move into deps validator

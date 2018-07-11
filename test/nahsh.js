@@ -164,7 +164,8 @@ test('Husum to Lübeck Hbf with stopover at Kiel Hbf', co(function* (t) {
 
 	const leg = journeys[0].legs.some((leg) => {
 		return leg.stopovers && leg.stopovers.some((stopover) => {
-			return stopover.stop.id === kielHbf
+			const s = stopover.stop
+			return s.station && s.station.id === kielHbf || s.id === kielHbf
 		})
 	})
 	t.ok(leg, 'Kiel Hbf is not being passed')
@@ -293,9 +294,9 @@ test('locations named Kiel', co(function* (t) {
 	validate(t, locations, 'locations', 'locations')
 	t.ok(locations.length <= 20)
 
-	t.ok(locations.find(s => s.type === 'station'))
+	t.ok(locations.find(s => s.type === 'stop' || s.type === 'station'))
 	t.ok(locations.find(s => s.id && s.name)) // POIs
-	t.ok(locations.some(l => l.id === kielHbf))
+	t.ok(locations.some(l => l.station && s.station.id === kielHbf || l.id === kielHbf))
 
 	t.end()
 }))
@@ -303,7 +304,7 @@ test('locations named Kiel', co(function* (t) {
 test('station', co(function* (t) {
 	const s = yield client.station(kielHbf)
 
-	validate(t, s, 'station', 'station')
+	validate(t, s, ['stop', 'station'], 'station')
 	t.equal(s.id, kielHbf)
 
 	t.end()

@@ -11,7 +11,8 @@ const createClient = require('..')
 const oebbProfile = require('../p/oebb')
 const products = require('../p/oebb/products')
 const {
-	station: createValidateStation
+	station: createValidateStation,
+	stop: validateStop
 } = require('./lib/validators')
 const createValidate = require('./lib/validate-fptf-with')
 const testJourneysStationToStation = require('./lib/journeys-station-to-station')
@@ -314,9 +315,15 @@ test('locations named Salzburg', co(function* (t) {
 	validate(t, locations, 'locations', 'locations')
 	t.ok(locations.length <= 20)
 
-	t.ok(locations.find(s => s.type === 'station'))
+	t.ok(locations.find(s => s.type === 'stop' || s.type === 'station'))
 	t.ok(locations.find(s => s.id && s.name)) // POIs
-	t.ok(locations.some(s => s.id === '008100002' || s.id === '8100002'))
+	t.ok(locations.some((s) => {
+		// todo: trim IDs
+		if (s.station) {
+			if (s.station.id === '008100002' || s.station.id === '8100002') return true
+		}
+		return s.id === '008100002' || s.id === '8100002'
+	}))
 
 	t.end()
 }))
@@ -329,12 +336,16 @@ test('station', co(function* (t) {
 	const allProducts = products.reduce((acc, p) => (acc[p.id] = true, acc), {})
 	const validateStation = createValidateStation(cfg)
 	const validate = createValidate(cfg, {
+		stop: (validate, s, name) => {
+			const withFakeProducts = Object.assign({products: allProducts}, s)
+			validateStop(validate, withFakeProducts, name)
+		},
 		station: (validate, s, name) => {
 			const withFakeProducts = Object.assign({products: allProducts}, s)
 			validateStation(validate, withFakeProducts, name)
 		}
 	})
-	validate(t, loc, 'station', 'station')
+	validate(t, loc, ['stop', 'station'], 'station')
 
 	t.equal(loc.id, wienRenngasse)
 
