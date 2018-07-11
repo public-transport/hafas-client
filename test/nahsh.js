@@ -61,13 +61,14 @@ const assertValidPrice = (t, p) => {
 const test = tapePromise(tape)
 const client = createClient(nahshProfile)
 
-const kielHbf = '8000199'
-const flensburg = '8000103'
-const luebeckHbf = '8000237'
-const husum = '8000181'
-const schleswig = '8005362'
+const kielHbf = '9049079'
+const flensburg = '9027253'
+const luebeckHbf = '9057819'
+const husum = '9044660'
+const schleswig = '9081683'
 const ellerbekerMarkt = '9049027'
 const seefischmarkt = '9049245'
+const kielRaeucherei = '9049217'
 
 test('journeys – Kiel Hbf to Flensburg', co(function* (t) {
 	const journeys = yield client.journeys(kielHbf, flensburg, {
@@ -132,7 +133,7 @@ test('Kiel Hbf to Husum, Zingel 10', co(function* (t) {
 test('Kiel Hbf to Holstentor', co(function* (t) {
 	const holstentor = {
 		type: 'location',
-		id: '970003547',
+		id: '970004303',
 		name: 'Hansestadt Lübeck, Holstentor (Denkmal)',
 		latitude: 53.866321,
 		longitude: 10.679976
@@ -203,8 +204,6 @@ test('trip details', co(function* (t) {
 }))
 
 test('departures at Kiel Räucherei', co(function* (t) {
-	const kielRaeucherei = '3440091'
-
 	const departures = yield client.departures(kielRaeucherei, {
 		duration: 30, when
 	})
@@ -248,8 +247,6 @@ test('departures at Berlin Hbf in direction of Berlin Ostbahnhof', co(function* 
 }))
 
 test('arrivals at Kiel Räucherei', co(function* (t) {
-	const kielRaeucherei = '3440091'
-
 	const arrivals = yield client.arrivals(kielRaeucherei, {
 		duration: 30, when
 	})
@@ -278,7 +275,7 @@ test('nearby Kiel Hbf', co(function* (t) {
 	t.ok(Array.isArray(nearby))
 	t.equal(nearby.length, 2)
 
-	t.equal(nearby[0].id, kielHbf)
+	t.ok(nearby[0].id === kielHbf || nearby[0].id === '8000199')
 	t.equal(nearby[0].name, 'Kiel Hbf')
 	t.ok(nearby[0].distance >= 0)
 	t.ok(nearby[0].distance <= 100)
