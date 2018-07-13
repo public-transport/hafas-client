@@ -15,7 +15,7 @@ const createParseArrOrDep = (profile, opt, data, prefix) => {
 
 		const res = {
 			tripId: d.jid,
-			station: locations[parseInt(d.stbStop.locX)] || null,
+			stop: locations[parseInt(d.stbStop.locX)] || null,
 			when: when.toISO(),
 			direction: profile.parseStationName(d.dirTxt),
 			line: lines[parseInt(d.prodX)] || null,
