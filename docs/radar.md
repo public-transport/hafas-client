@@ -68,7 +68,7 @@ The response may look like this:
 	direction: 'S Flughafen Berlin-Schönefeld',
 	trip: 31463,
 	nextStops: [ {
-		station: {
+		stop: {
 			type: 'stop',
 			id: '900000029101',
 			name: 'S Spandau',
@@ -140,13 +140,13 @@ The response may look like this:
 	direction: 'Heinersdorf',
 	trip: 26321,
 	nextStops: [ {
-		station: { /* S+U Alexanderplatz/Dircksenstr. */ },
+		stop: { /* S+U Alexanderplatz/Dircksenstr. */ },
 		arrival: null,
 		arrivalDelay: null,
 		departure: '2017-12-17T19:52:00.000+01:00',
 		departureDelay: null
 	}, {
-		station: { /* Memhardstr. */ },
+		stop: { /* Memhardstr. */ },
 		arrival: '2017-12-17T19:54:00.000+01:00',
 		arrivalDelay: null,
 		departure: '2017-12-17T19:54:00.000+01:00',

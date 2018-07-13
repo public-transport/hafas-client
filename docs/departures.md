@@ -62,7 +62,7 @@ The response may look like this:
 [ {
 	tripId: '1|31431|28|86|17122017',
 	trip: 31431,
-	station: {
+	stop: {
 		type: 'station',
 		id: '900000024101',
 		name: 'S Charlottenburg',
@@ -129,25 +129,7 @@ The response may look like this:
 }, {
 	tripId: '1|28671|4|86|17122017',
 	trip: 28671,
-	station: {
-		type: 'station',
-		id: '900000024202',
-		name: 'U Wilmersdorfer Str.',
-		location: {
-			type: 'location',
-			latitude: 52.506415,
-			longitude: 13.306777
-		},
-		products: {
-			suburban: false,
-			subway: true,
-			tram: false,
-			bus: false,
-			ferry: false,
-			express: false,
-			regional: false
-		}
-	},
+	stop: { /* … */ },
 	when: '2017-12-17T19:35:00.000+01:00',
 	delay: 0,
 	line: {
