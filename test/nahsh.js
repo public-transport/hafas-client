@@ -108,14 +108,14 @@ test('journeys – fails with no product', (t) => {
 	t.end()
 })
 
-test('Kiel Hbf to Husum, Zingel 10', co(function* (t) {
-	const zingel = {
+test('Kiel Hbf to Berliner Str. 80, Husum', co(function* (t) {
+	const berlinerStr = {
 		type: 'location',
-		address: 'Husum, Zingel 10',
-		latitude: 54.475359,
-		longitude: 9.050798
+		address: 'Husum, Berliner Straße 80',
+		latitude: 54.488995,
+		longitude: 9.056263
 	}
-	const journeys = yield client.journeys(kielHbf, zingel, {
+	const journeys = yield client.journeys(kielHbf, berlinerStr, {
 		results: 3,
 		departure: when
 	})
@@ -125,7 +125,7 @@ test('Kiel Hbf to Husum, Zingel 10', co(function* (t) {
 		journeys,
 		validate,
 		fromId: kielHbf,
-		to: zingel
+		to: berlinerStr
 	})
 	t.end()
 }))
