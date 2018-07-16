@@ -328,7 +328,7 @@ const createClient = (profile, request = _request) => {
 		}
 		opt = Object.assign({
 			stopovers: true, // return stations on the way?
-			polyline: false,
+			polyline: false, // return a track shape?
 			remarks: true // parse & expose hints & warnings?
 		}, opt)
 		opt.when = new Date(opt.when || Date.now())

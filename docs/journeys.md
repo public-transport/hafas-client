@@ -262,7 +262,7 @@ client.journeys(hbf, heinrichHeineStr)
 	})
 })
 .then((laterJourneys) => {
-	const firstJourney = laterourneys[laterJourneys.length - 1]
+	const firstJourney = laterJourneys[laterJourneys.length - 1]
 	console.log('departure of first (later) journey', firstJourney.legs[0].departure)
 })
 .catch(console.error)

@@ -1,7 +1,7 @@
 'use strict'
 
 const createParseMovement = (profile, opt, data) => {
-	const {locations, lines, hints, warnings, polylines} = data
+	const {locations, lines, polylines} = data
 
 	// todo: what is m.dirGeo? maybe the speed?
 	// todo: what is m.stopL?

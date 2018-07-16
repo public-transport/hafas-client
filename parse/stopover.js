@@ -2,7 +2,6 @@
 
 const findRemark = require('./find-remark')
 
-// todo: arrivalDelay, departureDelay or only delay ?
 const createParseStopover = (profile, opt, data, date) => {
 	const {locations, lines, hints, warnings} = data
 
