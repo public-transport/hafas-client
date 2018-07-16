@@ -54,14 +54,14 @@ The response may look like this:
 	}
 }, { // point of interest
 	type: 'location',
-	name: 'Berlin, Holiday Inn Centre Alexanderplatz****',
 	id: '900980709',
+	name: 'Berlin, Holiday Inn Centre Alexanderplatz****',
 	latitude: 52.523549,
 	longitude: 13.418441
 }, { // point of interest
 	type: 'location',
-	name: 'Berlin, Hotel Agon am Alexanderplatz',
 	id: '900980176',
+	name: 'Berlin, Hotel Agon am Alexanderplatz',
 	latitude: 52.524556,
 	longitude: 13.420266
 } ]

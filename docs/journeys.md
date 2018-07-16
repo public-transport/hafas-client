@@ -99,7 +99,7 @@ The response may look like this:
 [
 	{
 		legs: [ {
-			id: '1|31041|35|86|17122017',
+			id: '1|32615|6|86|10072018',
 			origin: {
 				type: 'station',
 				id: '900000003201',
@@ -119,30 +119,23 @@ The response may look like this:
 					regional: true
 				}
 			},
-			departure: '2017-12-17T19:07:00.000+01:00',
-			departurePlatform: '16',
 			destination: {
 				type: 'station',
-				id: '900000024101',
-				name: 'S Charlottenburg',
+				id: '900000100004',
+				name: 'S+U Jannowitzbrücke',
 				location: {
 					type: 'location',
 					latitude: 52.504806,
 					longitude: 13.303846
 				},
-				products: {
-					suburban: true,
-					subway: false,
-					tram: false,
-					bus: true,
-					ferry: false,
-					express: false,
-					regional: true
-				}
+				products: { /* … */ }
 			},
-			arrival: '2017-12-17T19:47:00.000+01:00',
-			arrivalPlatform: '8',
-			arrivalDelay: 30,
+			departure: '2018-07-10T23:54:00.000+02:00',
+			departureDelay: 60,
+			departurePlatform: '15',
+			arrival: '2018-07-11T00:02:00.000+02:00',
+			arrivalDelay: 60,
+			arrivalPlatform: '3',
 			line: {
 				type: 'line',
 				id: '16845',
@@ -150,19 +143,19 @@ The response may look like this:
 				public: true,
 				mode: 'train',
 				product: 'suburban',
+				operator: {
+					type: 'operator',
+					id: 's-bahn-berlin-gmbh',
+					name: 'S-Bahn Berlin GmbH'
+				},
 				symbol: 'S',
 				nr: 7,
 				metro: false,
 				express: false,
 				night: false,
-				productCode: 0,
-				operator: {
-					type: 'operator',
-					id: 's-bahn-berlin-gmbh',
-					name: 'S-Bahn Berlin GmbH'
-				}
+				productCode: 0
 			},
-			direction: 'S Potsdam Hauptbahnhof',
+			direction: 'S Ahrensfelde',
 			stopovers: [ {
 				stop: {
 					type: 'station',
@@ -173,32 +166,63 @@ The response may look like this:
 				},
 				arrival: null,
 				departure: null,
-				cancelled: true
+				cancelled: true,
+				remarks: [
+					{type: 'hint', code: 'bf', text: 'barrier-free'},
+					{type: 'hint', code: 'FB', text: 'Bicycle conveyance'}
+				]
 			}, {
 				stop: {
 					type: 'station',
-					id: '900000003102',
-					name: 'S Bellevue',
+					id: '900000100001',
+					name: 'S+U Friedrichstr.',
 					location: { /* … */ },
 					products: { /* … */ }
 				},
-				arrival: '2017-12-17T19:09:00.000+01:00',
-				arrivalPlatform: '1',
-				departure: '2017-12-17T19:09:00.000+01:00',
-				departurePlatform: '1'
-			}, /* … */ {
-				stop: {
+				arrival: '2018-07-10T23:56:00.000+02:00',
+				arrivalDelay: 60,
+				arrivalPlatform: null,
+				departure: '2018-07-10T23:57:00.000+02:00',
+				departureDelay: 60,
+				departurePlatform: null,
+				remarks: [ /* … */ ]
+			},
+			/* … */
+			{
 					type: 'station',
-					id: '900000024101',
-					name: 'S Charlottenburg',
+					id: '900000100004',
+					name: 'S+U Jannowitzbrücke',
 					location: { /* … */ },
 					products: { /* … */ }
 				},
-				arrival: '2017-12-17T19:17:00.000+01:00',
-				arrivalPlatform: '5',
-				departure: '2017-12-17T19:17:00.000+01:00',
-				departurePlatform: '5'
+				arrival: '2018-07-11T00:02:00.000+02:00',
+				arrivalDelay: 60,
+				arrivalPlatform: null,
+				departure: '2018-07-11T00:02:00.000+02:00',
+				departureDelay: null,
+				departurePlatform: null,
+				remarks: [ /* … */ ]
 			} ]
+		}, {
+			origin: {
+				type: 'station',
+				id: '900000100004',
+				name: 'S+U Jannowitzbrücke',
+				location: { /* … */ },
+				products: { /* … */ }
+			},
+			destination: {
+				type: 'station',
+				id: '900000100008',
+				name: 'U Heinrich-Heine-Str.',
+				location: { /* … */ },
+				products: { /* … */ }
+			},
+			departure: '2018-07-11T00:01:00.000+02:00',
+			arrival: '2018-07-11T00:10:00.000+02:00',
+			mode: 'walking',
+			public: true,
+			distance: 558
 		} ]
 	},
 	earlierRef: '…', // use with the `earlierThan` option

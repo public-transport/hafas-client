@@ -61,7 +61,6 @@ The response may look like this:
 ```js
 [ {
 	tripId: '1|31431|28|86|17122017',
-	trip: 31431,
 	stop: {
 		type: 'station',
 		id: '900000024101',
@@ -86,10 +85,10 @@ The response may look like this:
 	line: {
 		type: 'line',
 		id: '18299',
-		name: 'S9',
-		public: true,
 		mode: 'train',
 		product: 'suburban',
+		public: true,
+		name: 'S9',
 		symbol: 'S',
 		nr: 9,
 		metro: false,
@@ -102,21 +101,21 @@ The response may look like this:
 			name: 'S-Bahn Berlin GmbH'
 		}
 	},
-	direction: 'S Spandau'
+	direction: 'S Spandau',
+	trip: 31431
 }, {
 	tripId: '1|30977|8|86|17122017',
-	trip: 30977,
-	station: { /* … */ },
+	stop: { /* … */ },
 	when: null,
 	delay: null,
 	cancelled: true,
 	line: {
 		type: 'line',
 		id: '16441',
-		name: 'S5',
-		public: true,
 		mode: 'train',
 		product: 'suburban',
+		public: true,
+		name: 'S5',
 		symbol: 'S',
 		nr: 5,
 		metro: false,
@@ -125,7 +124,8 @@ The response may look like this:
 		productCode: 0,
 		operator: { /* … */ }
 	},
-	direction: 'S Westkreuz'
+	direction: 'S Westkreuz',
+	trip: 30977
 }, {
 	tripId: '1|28671|4|86|17122017',
 	trip: 28671,
@@ -135,10 +135,10 @@ The response may look like this:
 	line: {
 		type: 'line',
 		id: '19494',
-		name: 'U7',
-		public: true,
 		mode: 'train',
 		product: 'subway',
+		public: true,
+		name: 'U7',
 		symbol: 'U',
 		nr: 7,
 		metro: false,
