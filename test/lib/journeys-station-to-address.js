@@ -14,7 +14,8 @@ const testJourneysStationToAddress = co(function* (cfg) {
 		const j = journeys[i]
 
 		const firstLeg = j.legs[0]
-		t.strictEqual(firstLeg.origin.id, fromId)
+		const orig = firstLeg.origin.station || firstLeg.origin
+		t.ok(orig.id, fromId)
 
 		const d = j.legs[j.legs.length - 1].destination
 		const n = `journeys[0].legs[${i}].destination`

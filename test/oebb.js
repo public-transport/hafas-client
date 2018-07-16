@@ -246,8 +246,8 @@ test('departures at Wien Leibenfrostgasse', co(function* (t) {
 
 	for (let i = 0; i < deps.length; i++) {
 		const dep = deps[i]
-		const msg = `deps[${i}].station.id is invalid`
-		t.ok(ids.includes(dep.station.id, msg))
+		const msg = `deps[${i}].stop.id is invalid`
+		t.ok(ids.includes(dep.stop.id, msg))
 	}
 
 	t.end()

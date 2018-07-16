@@ -262,7 +262,7 @@ const createValidateArrivalOrDeparture = (cfg) => {
 		a.ok(dep.tripId, name + '.tripId must not be empty')
 		a.strictEqual(typeof dep.trip, 'number', name + '.trip must be a number')
 
-		anyOf(['stop', 'station'], val, dep.station, name + '.station')
+		anyOf(['stop', 'station'], val, dep.stop, name + '.stop')
 
 		assertValidWhen(dep.when, cfg.when, name)
 		if (dep.delay !== null) {

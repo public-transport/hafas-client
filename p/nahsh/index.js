@@ -84,7 +84,7 @@ const createParseMovement = (profile, opt, data) => {
 		const res = _parseMovement(m)
 		// filter out empty nextStops entries
 		res.nextStops = res.nextStops.filter((f) => {
-			return f.station !== null || f.arrival !== null || f.departure !== null
+			return f.stop !== null || f.arrival !== null || f.departure !== null
 		})
 		return res
 	}

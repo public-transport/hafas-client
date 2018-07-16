@@ -8,14 +8,14 @@ const testArrivals = co(function* (cfg) {
 	validate(t, arrs, 'arrivals', 'arrivals')
 	t.ok(arrs.length > 0, 'must be >0 arrivals')
 	for (let i = 0; i < arrs.length; i++) {
-		let station = arrs[i].station
-		let name = `arrs[${i}].station`
-		if (station.station) {
-			station = station.station
+		let stop = arrs[i].stop
+		let name = `arrs[${i}].stop`
+		if (stop.station) {
+			stop = stop.station
 			name += '.station'
 		}
 
-		t.equal(station.id, id, name + '.id is invalid')
+		t.equal(stop.id, id, name + '.id is invalid')
 	}
 
 	// todo: move into arrivals validator
