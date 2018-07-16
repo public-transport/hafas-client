@@ -17,19 +17,24 @@ const applyRemarks = (leg, hints, warnings, refs) => {
 			const toI = leg.stopovers.findIndex(s => s[locX] === ref.tLocX)
 			if (fromI < 0 || toI < 0) continue
 
-			for (let i = fromI; i <= toI; i++) {
-				const stopover = leg.stopovers[i]
-				if (!stopover) continue
-				if (Array.isArray(stopover.remarks)) {
-					stopover.remarks.push(remark)
-				} else {
-					stopover.remarks = [remark]
+			const wholeLeg = fromI === 0 && toI === (leg.stopovers.length - 1)
+			if (!wholeLeg) {
+				for (let i = fromI; i <= toI; i++) {
+					const stopover = leg.stopovers[i]
+					if (!stopover) continue
+					if (Array.isArray(stopover.remarks)) {
+						stopover.remarks.push(remark)
+					} else {
+						stopover.remarks = [remark]
+					}
 				}
+
+				continue
 			}
-		} else {
-			if (Array.isArray(leg.remarks)) leg.remarks.push(remark)
-			else leg.remarks = [remark]
 		}
+
+		if (Array.isArray(leg.remarks)) leg.remarks.push(remark)
+		else leg.remarks = [remark]
 		// todo: `ref.tagL`
 	}
 }
