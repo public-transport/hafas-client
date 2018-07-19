@@ -1,5 +1,18 @@
 # Migrating to `hafas-client@3`
 
+## New `User-Agent` parameter
+
+Pass an additional `User-Agent` string into `createClient`:
+
+```js
+const createClient = require('hafas-client')
+const dbProfile = require('hafas-client/p/db')
+
+const client = createClient(dbProfile, 'my-awesome-program')
+```
+
+Pick a name that describes your program and – if possible – the website/repo of it.
+
 ## If you use the `journeyLeg()` method…
 
 …change the `journeyLeg(id, lineName)` call to `trip(id, lineName)`. c8ff217

@@ -3,7 +3,7 @@
 const createClient = require('../..')
 const nahshProfile = require('.')
 
-const client = createClient(nahshProfile)
+const client = createClient(nahshProfile, 'hafas-client-example')
 
 // Flensburg Hbf to Kiel Hbf
 client.journeys('8000103', '8000199', {results: 10, tickets: true})

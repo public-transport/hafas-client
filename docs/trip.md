@@ -10,7 +10,7 @@ Let's say you used [`journeys`](journeys.md) and now want to get more up-to-date
 const createClient = require('hafas-client')
 const vbbProfile = require('hafas-client/p/vbb')
 
-const client = createClient(vbbProfile)
+const client = createClient(vbbProfile, 'my-awesome-program')
 
 // Hauptbahnhof to Heinrich-Heine-Str.
 client.journeys('900000003201', '900000100008', {results: 1})

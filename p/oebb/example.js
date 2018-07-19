@@ -3,7 +3,7 @@
 const createClient = require('../..')
 const oebbProfile = require('.')
 
-const client = createClient(oebbProfile)
+const client = createClient(oebbProfile, 'hafas-client-example')
 
 // Wien Westbahnhof to Salzburg Hbf
 client.journeys('1291501', '8100002', {results: 1})

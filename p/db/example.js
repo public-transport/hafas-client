@@ -3,7 +3,7 @@
 const createClient = require('../../')
 const dbProfile = require('.')
 
-const client = createClient(dbProfile)
+const client = createClient(dbProfile, 'hafas-client-example')
 
 // Berlin Jungfernheide to München Hbf
 client.journeys('8011167', '8000261', {results: 1, tickets: true})
