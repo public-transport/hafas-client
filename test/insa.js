@@ -33,7 +33,7 @@ const cfg = {
 const validate = createValidate(cfg, {})
 
 const test = tapePromise(tape)
-const client = createClient(insaProfile)
+const client = createClient(insaProfile, 'public-transport/hafas-client:test')
 
 const magdeburgHbf = '8010224'
 const magdeburgBuckau = '8013456'

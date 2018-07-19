@@ -59,7 +59,7 @@ const assertValidPrice = (t, p) => {
 }
 
 const test = tapePromise(tape)
-const client = createClient(nahshProfile)
+const client = createClient(nahshProfile, 'public-transport/hafas-client:test')
 
 const kielHbf = '9049079'
 const flensburg = '9027253'

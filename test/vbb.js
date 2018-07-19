@@ -103,7 +103,7 @@ const validate = createValidate(cfg, {
 })
 
 const test = tapePromise(tape)
-const client = createClient(vbbProfile)
+const client = createClient(vbbProfile, 'public-transport/hafas-client:test')
 
 const amrumerStr = '900000009101'
 const spichernstr = '900000042101'

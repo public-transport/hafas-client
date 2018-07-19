@@ -30,7 +30,7 @@ const cfg = {
 const validate = createValidate(cfg, {})
 
 const test = tapePromise(tape)
-const client = createClient(vbnProfile)
+const client = createClient(vbnProfile, 'public-transport/hafas-client:test')
 
 const bremenHbf = '8000050'
 const bremerhavenHbf = '8000051'
