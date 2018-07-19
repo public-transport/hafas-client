@@ -50,7 +50,7 @@ const assertValidPrice = (t, p) => {
 }
 
 const test = tapePromise(tape)
-const client = createClient(oebbProfile)
+const client = createClient(oebbProfile, 'public-transport/hafas-client:test')
 
 const salzburgHbf = '8100002'
 const wienFickeystr = '911014'

@@ -66,7 +66,7 @@ const assertValidPrice = (t, p) => {
 }
 
 const test = tapePromise(tape)
-const client = createClient(dbProfile)
+const client = createClient(dbProfile, 'public-transport/hafas-client:test')
 
 const berlinHbf = '8011160'
 const münchenHbf = '8000261'
