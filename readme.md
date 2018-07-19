@@ -47,7 +47,7 @@ const createClient = require('hafas-client')
 const dbProfile = require('hafas-client/p/db')
 
 // create a client with Deutsche Bahn profile
-const client = createClient(dbProfile)
+const client = createClient(dbProfile, 'my-awesome-program')
 
 // Berlin Jungfernheide to München Hbf
 client.journeys('8011167', '8000261', {results: 1})

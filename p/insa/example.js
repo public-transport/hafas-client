@@ -3,7 +3,7 @@
 const createClient = require('../..')
 const insaProfile = require('.')
 
-const client = createClient(insaProfile)
+const client = createClient(insaProfile, 'hafas-client-example')
 
 // from Magdeburg-Neustadt to Magdeburg-Buckau
 client.journeys('008010226', '008013456', {results: 1})

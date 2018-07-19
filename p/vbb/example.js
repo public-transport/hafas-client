@@ -3,7 +3,7 @@
 const createClient = require('../..')
 const vbbProfile = require('.')
 
-const client = createClient(vbbProfile)
+const client = createClient(vbbProfile, 'hafas-client-example')
 
 // Hauptbahnhof to Charlottenburg
 client.journeys('900000003201', '900000024101', {results: 1, polylines: true})

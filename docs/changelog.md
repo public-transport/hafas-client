@@ -19,6 +19,7 @@ This version is not fully backwords-compatible. Check out [the migration guide](
 
 ### breaking changes 💥
 
+- c4935bc new mandatory `User-Agent` parameter
 - b7c1ee3 profiles: new products markup ([guide](https://github.com/public-transport/hafas-client/blob/ebe4fa64d871f711ced99d528c0171b180edc135/docs/writing-a-profile.md#3-products))
 - 40b559f change `radar(n, w, s, e)` signature to `radar({north, west, south, east})`
 - 005f3f8 remove `journey.departure`, `journey.arrival`, …
