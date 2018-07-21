@@ -26,6 +26,7 @@ With `opt`, you can override the default options, which look like this:
 	stationLines: false, // parse & expose lines of the station?
 	language: 'en' // language to get results in
 }
+```
 
 ## Response
 
