@@ -69,7 +69,8 @@ With `opt`, you can override the default options, which look like this:
 	remarks: true, // parse & expose hints & warnings?
 	// Consider walking to nearby stations at the beginning of a journey?
 	startWithWalking: true,
-	language: 'en' // language to get results in
+	language: 'en', // language to get results in
+	scheduledDays: false // parse which days each journey is valid on
 }
 ```
 
@@ -300,3 +301,18 @@ departure of first (later) journey 2017-12-17T19:19:00.000+01:00
 ```
 
 If you pass `polylines: true`, each journey leg will have a `polyline` field. Refer to [the section in the `trip()` docs](trip.md#polyline-option) for details.
+
+If you pass `scheduledDays: true`, each journey will have a `scheduledDays` field looking like this:
+
+```js
+{
+	'2018-01-01': true,
+	'2018-01-02': false,
+	// …
+	'2018-10-12': true,
+	'2018-10-13': true,
+	// …
+	'2019-01-02': false,
+	'2019-01-03': false
+}
+```

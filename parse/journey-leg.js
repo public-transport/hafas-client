@@ -43,7 +43,6 @@ const createParseJourneyLeg = (profile, opt, data) => {
 	const {locations, lines, hints, warnings, polylines} = data
 	// todo: pt.status, pt.isPartCncl
 	// todo: pt.isRchbl, pt.chRatingRT, pt.chgDurR, pt.minChg
-	// todo: pt.sDays
 	// todo: pt.dep.dProgType, pt.arr.dProgType
 	// todo: what is pt.jny.dirFlg?
 
