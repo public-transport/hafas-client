@@ -27,6 +27,10 @@ client.journeys('900000003201', '900000024101', {results: 1, polylines: true})
 // 	const leg = journey.legs[0]
 // 	return client.trip(leg.id, leg.line.name, {polyline: true})
 // })
+
+// .then(([journey]) => {
+// 	return client.refreshJourney(journey.refreshToken, {stopovers: true, remarks: true})
+// })
 .then((data) => {
 	console.log(require('util').inspect(data, {depth: null}))
 })
