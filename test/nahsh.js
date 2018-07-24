@@ -18,6 +18,7 @@ const testJourneysStationToStation = require('./lib/journeys-station-to-station'
 const testJourneysStationToAddress = require('./lib/journeys-station-to-address')
 const testJourneysStationToPoi = require('./lib/journeys-station-to-poi')
 const testEarlierLaterJourneys = require('./lib/earlier-later-journeys')
+const testRefreshJourney = require('./lib/refresh-journey')
 const journeysFailsWithNoProduct = require('./lib/journeys-fails-with-no-product')
 const testDepartures = require('./lib/departures')
 const testDeparturesInDirection = require('./lib/departures-in-direction')
@@ -183,6 +184,19 @@ test('earlier/later journeys, Kiel Hbf -> Flensburg', co(function* (t) {
 		toId: flensburg
 	})
 
+	t.end()
+}))
+
+test('refreshJourney', co(function* (t) {
+	yield testRefreshJourney({
+		test: t,
+		fetchJourneys: client.journeys,
+		refreshJourney: client.refreshJourney,
+		validate,
+		fromId: kielHbf,
+		toId: flensburg,
+		when
+	})
 	t.end()
 }))
 
