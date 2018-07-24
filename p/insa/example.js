@@ -29,6 +29,10 @@ client.journeys('008010226', '008013456', {results: 1})
 // 	return client.trip(leg.id, leg.line.name)
 // })
 
+// .then(([journey]) => {
+// 	return client.refreshJourney(journey.refreshToken, {stopovers: true, remarks: true})
+// })
+
 .then(data => {
 	console.log(require('util').inspect(data, { depth: null }))
 })
