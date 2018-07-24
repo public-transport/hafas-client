@@ -26,7 +26,8 @@ const insaProfile = {
 	products: products,
 
 	trip: true,
-	radar: true
+	radar: true,
+	refreshJourney: false
 }
 
 module.exports = insaProfile;
