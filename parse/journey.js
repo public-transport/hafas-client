@@ -20,7 +20,8 @@ const createParseJourney = (profile, opt, data) => {
 		const legs = j.secL.map(leg => parseLeg(j, leg))
 		const res = {
 			type: 'journey',
-			legs
+			legs,
+			refreshToken: j.ctxRecon || null
 		}
 
 		if (opt.remarks && Array.isArray(j.msgL)) {
