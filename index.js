@@ -454,9 +454,10 @@ const createClient = (profile, request = _request) => {
 		})
 	}
 
-	const client = {departures, arrivals, journeys, refreshJourney, locations, station, nearby}
+	const client = {departures, arrivals, journeys, locations, station, nearby}
 	if (profile.trip) client.trip = trip
 	if (profile.radar) client.radar = radar
+	if (profile.refreshJourney) client.refreshJourney = refreshJourney
 	Object.defineProperty(client, 'profile', {value: profile})
 	return client
 }
