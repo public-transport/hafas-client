@@ -59,7 +59,7 @@ const createClient = (profile, userAgent, request = _request) => {
 				dirLoc: dir,
 				jnyFltrL: [products],
 				dur: opt.duration,
-				getPasslist: false, // todo: what is this?
+				getPasslist: false, // todo
 				stbFltrEquiv: !opt.includeRelatedStations
 			}
 		})
@@ -222,6 +222,44 @@ const createClient = (profile, userAgent, request = _request) => {
 		}
 
 		return more(when, journeysRef)
+	}
+
+	const refreshJourney = (refreshToken, opt = {}) => {
+		if ('string' !== typeof refreshToken || !refreshToken) {
+			new Error('refreshToken must be a non-empty string.')
+		}
+
+		opt = Object.assign({
+			stopovers: false, // return stations on the way?
+			tickets: false, // return tickets?
+			polylines: false, // return leg shapes?
+			remarks: true // parse & expose hints & warnings?
+		}, opt)
+
+		return request(profile, opt, {
+			meth: 'Reconstruction',
+			req: {
+				ctxRecon: refreshToken,
+				getIST: true, // todo: make an option
+				getPasslist: !!opt.stopovers,
+				getPolyline: !!opt.polylines,
+				getTariff: !!opt.tickets
+			}
+		})
+		.then((d) => {
+			if (!Array.isArray(d.outConL) || !d.outConL[0]) {
+				throw new Error('invalid response')
+			}
+
+			const parse = profile.parseJourney(profile, opt, {
+				locations: d.locations,
+				lines: d.lines,
+				hints: d.hints,
+				warnings: d.warnings,
+				polylines: opt.polylines && d.common.polyL || []
+			})
+			return parse(d.outConL[0])
+		})
 	}
 
 	const locations = (query, opt = {}) => {
@@ -420,7 +458,7 @@ const createClient = (profile, userAgent, request = _request) => {
 		})
 	}
 
-	const client = {departures, arrivals, journeys, locations, station, nearby}
+	const client = {departures, arrivals, journeys, refreshJourney, locations, station, nearby}
 	if (profile.trip) client.trip = trip
 	if (profile.radar) client.radar = radar
 	Object.defineProperty(client, 'profile', {value: profile})
