@@ -1,5 +1,9 @@
 # Changelog
 
+## `2.10.2`
+
+- d54c26d randomize `User-Agent`
+
 ## `2.10.1`
 
 - 04d550f parse `TRSF` legs as `walking` 🐛
