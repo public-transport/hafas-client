@@ -8,6 +8,7 @@ This version is not fully backwords-compatible. Check out [the migration guide](
 
 - 0db84ce #61 parse remarks for stopovers and journey legs
 - ac9819b `arrivals()` method – [docs](arrivals.md)
+- 5b754aa `refreshJourney()` method – [docs](refresh-journey.md)
 - 21c273c `journeys()`/`trip()`: leg stopovers: parse & expose delays
 - 021ae45 `journeys()`/`trip()`: leg stopovers: parse & expose platforms
 - 84bce0c `arrivals()`/`departures()`: parse & expose platforms
