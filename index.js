@@ -236,7 +236,7 @@ const createClient = (profile, userAgent, request = _request) => {
 			remarks: true // parse & expose hints & warnings?
 		}, opt)
 
-		return request(profile, opt, {
+		return request(profile, userAgent, opt, {
 			meth: 'Reconstruction',
 			req: {
 				ctxRecon: refreshToken,
