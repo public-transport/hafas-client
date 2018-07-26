@@ -62,6 +62,7 @@
 	},
 	"scripts": {
 		"test": "env NODE_ENV=dev NODE_DEBUG=hafas-client node test/index.js",
-		"prepublishOnly": "npm test | tap-spec"
+		"prepublishOnly": "npm test | tap-spec",
+		"install": "lib/generate-install-id.js >id.json"
 	}
 }
