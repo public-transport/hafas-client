@@ -9,7 +9,7 @@ const createClient = require('hafas-client')
 const vbbProfile = require('hafas-client/p/vbb')
 
 // create a client with VBB profile
-const client = createClient(vbbProfile)
+const client = createClient(vbbProfile, 'my-awesome-program')
 ```
 
 
