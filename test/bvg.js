@@ -1,12 +1,19 @@
 'use strict'
 
+// todo: DRY with vbb tests
+
+const stations = require('vbb-stations-autocomplete')
+const a = require('assert')
+const shorten = require('vbb-short-station-name')
 const tapePromise = require('tape-promise').default
 const tape = require('tape')
+const isRoughlyEqual = require('is-roughly-equal')
 
 const co = require('./lib/co')
 const createClient = require('..')
-const vbbProfile = require('../p/vbb')
-const products = require('../p/vbb/products')
+const bvgProfile = require('../p/bvg')
+const products = require('../p/bvg/products')
+const createValidate = require('./lib/validate-fptf-with')
 const {
 	cfg,
 	validateStation,
@@ -15,7 +22,6 @@ const {
 	validateDeparture,
 	validateMovement
 } = require('./lib/vbb-bvg-validators')
-const createValidate = require('./lib/validate-fptf-with')
 const testJourneysStationToStation = require('./lib/journeys-station-to-station')
 const testJourneysStationToAddress = require('./lib/journeys-station-to-address')
 const testJourneysStationToPoi = require('./lib/journeys-station-to-poi')
@@ -30,6 +36,12 @@ const testJourneysWithDetour = require('./lib/journeys-with-detour')
 
 const when = cfg.when
 
+const validateDirection = (dir, name) => {
+	if (!stations(dir, true, false)[0]) {
+		console.error(name + `: station "${dir}" is unknown`)
+	}
+}
+
 const validate = createValidate(cfg, {
 	station: validateStation,
 	line: validateLine,
@@ -39,7 +51,7 @@ const validate = createValidate(cfg, {
 })
 
 const test = tapePromise(tape)
-const client = createClient(vbbProfile, 'public-transport/hafas-client:test')
+const client = createClient(bvgProfile, 'public-transport/hafas-client:test')
 
 const amrumerStr = '900000009101'
 const spichernstr = '900000042101'
