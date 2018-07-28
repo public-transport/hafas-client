@@ -6,6 +6,7 @@ This version is not fully backwords-compatible. Check out [the migration guide](
 
 ### new features ✨
 
+- 2d3796a BVG profile
 - 0db84ce #61 parse remarks for stopovers and journey legs
 - ac9819b `arrivals()` method – [docs](arrivals.md)
 - 5b754aa `refreshJourney()` method – [docs](refresh-journey.md)
