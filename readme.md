@@ -22,7 +22,7 @@ HAFAS endpoint | wrapper library | docs | example code | source code
 
 There's [a company called HaCon](http://hacon.de) that sells [a public transport management system called HAFAS](https://de.wikipedia.org/wiki/HAFAS). It is [used by companies all over Europe](https://gist.github.com/derhuerst/2b7ed83bfa5f115125a5) to serve routing and departure information for apps. All those endpoints are similar, with the same terms and API routes, but have slightly different options, filters and sets of enabled features.
 
-`hafas-client` contains all logic for communicating with these, as well as serialising from and parsing to [*Friendly Public Transport Format (FPTF)* `1.0.1`](https://github.com/public-transport/friendly-public-transport-format/blob/1.0.1/spec/readme.md). Endpoint-specific customisations (called *profiles* here) increase the quality of the returned data.
+`hafas-client` contains all logic for communicating with these, as well as serialising from and parsing to [*Friendly Public Transport Format (FPTF)* `1.1.1`](https://github.com/public-transport/friendly-public-transport-format/blob/1.1.1/spec/readme.md). Endpoint-specific customisations (called *profiles* here) increase the quality of the returned data.
 
 
 ## Installing
@@ -56,7 +56,7 @@ client.journeys('8011167', '8000261', {results: 1})
 .catch(console.error)
 ```
 
-The returned [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/promise) will resolve with an array of one [*FPTF* `journey`](https://github.com/public-transport/friendly-public-transport-format/blob/1.0.1/spec/readme.md#journey).
+The returned [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/promise) will resolve with an array of one [*FPTF* `journey`](https://github.com/public-transport/friendly-public-transport-format/blob/1.1.1/spec/readme.md#journey).
 
 ```js
 [ {

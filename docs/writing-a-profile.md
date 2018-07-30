@@ -84,7 +84,7 @@ You may want to use the [profile boilerplate code](profile-boilerplate.js).
 
 In `hafas-client`, there's a difference between the `mode` and the `product` field:
 
-- The `mode` field describes the mode of transport in general. [Standardised by the *Friendly Public Transport Format* `1.0.1`](https://github.com/public-transport/friendly-public-transport-format/blob/1.0.1/spec/readme.md#modes), it is on purpose limited to a very small number of possible values, e.g. `train` or `bus`.
+- The `mode` field describes the mode of transport in general. [Standardised by the *Friendly Public Transport Format* `1.1.1`](https://github.com/public-transport/friendly-public-transport-format/blob/1.1.1/spec/readme.md#modes), it is on purpose limited to a very small number of possible values, e.g. `train` or `bus`.
 - The value for `product` relates to how a means of transport "works" *in local context*. Example: Even though [*S-Bahn*](https://en.wikipedia.org/wiki/Berlin_S-Bahn) and [*U-Bahn*](https://en.wikipedia.org/wiki/Berlin_U-Bahn) in Berlin are both `train`s, they have different operators, service patterns, stations and look different. Therefore, they are two distinct `product`s `subway` and `suburban`.
 
 **Specify `product`s that appear in the app** you recorded requests of. For a fictional transit network, this may look like this:
@@ -113,13 +113,13 @@ const products = [
 Let's break this down:
 
 - `id`: A sensible, [camelCased](https://en.wikipedia.org/wiki/Camel_case#Variations_and_synonyms), alphanumeric identifier. Use it for the key in the `products` array as well.
-- `mode`: A [valid *Friendly Public Transport Format* `1.0.1` mode](https://github.com/public-transport/friendly-public-transport-format/blob/1.0.1/spec/readme.md#modes).
+- `mode`: A [valid *Friendly Public Transport Format* `1.1.1` mode](https://github.com/public-transport/friendly-public-transport-format/blob/1.1.1/spec/readme.md#modes).
 - `bitmasks`: HAFAS endpoints work with a [bitmask](https://en.wikipedia.org/wiki/Mask_(computing)#Arguments_to_functions) that toggles the individual products. It should be an array of values that toggle the appropriate bit(s) in the bitmask (see below).
 - `name`: A short, but distinct name for the means of transport, *just precise enough in local context*, and in the local language. In Berlin, `S-Bahn-Schnellzug` would be too much, because everyone knows what `S-Bahn` means.
 - `short`: The shortest possible symbol that identifies the product.
 - `default`: Should the product be used for queries (e.g. journeys) by default?
 
-If you want, you can now **verify that the profile works**; We've prepared [a script](https://runkit.com/derhuerst/hafas-client-profile-example/0.2.0) for that. Alternatively, [submit a Pull Request](https://help.github.com/articles/creating-a-pull-request-from-a-fork/) and we will help you out with testing and improvements.
+If you want, you can now **verify that the profile works**; We've prepared [a script](https://runkit.com/derhuerst/hafas-client-profile-example/0.2.1) for that. Alternatively, [submit a Pull Request](https://help.github.com/articles/creating-a-pull-request-from-a-fork/) and we will help you out with testing and improvements.
 
 ### Finding the right values for the `bitmasks` field
 
@@ -138,7 +138,7 @@ all but product F           30     11110   31 - 2^0        2^0
 
 We consider these improvements to be *optional*:
 
-- **Check if the endpoint supports the journey legs call.**
+- **Check if the endpoint supports the trips call.**
 	- In the app, check if you can query details for the status of a single journey leg. It should load realtime delays and the current progress.
 	- If this feature is supported, add `trip: true` to the profile.
 - **Check if the endpoint supports the live map call.** Does the app have a "live map" showing all vehicles within an area? If so, add `radar: true` to the profile.

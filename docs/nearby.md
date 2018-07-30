@@ -2,7 +2,7 @@
 
 This method can be used to find stations close to a location. Note that it is not supported by every profile/endpoint.
 
-`location` must be an [*FPTF* `location` object](https://github.com/public-transport/friendly-public-transport-format/blob/1.0.1/spec/readme.md#location-objects).
+`location` must be an [*FPTF* `location` object](https://github.com/public-transport/friendly-public-transport-format/blob/1.1.1/spec/readme.md#location-objects).
 
 With `opt`, you can override the default options, which look like this:
 
