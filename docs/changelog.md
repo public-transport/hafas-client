@@ -1,5 +1,9 @@
 # Changelog
 
+## `2.10.3`
+
+- 50bd440 better `User-Agent` randomization
+
 ## `2.10.2`
 
 - d54c26d randomize `User-Agent`
