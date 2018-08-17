@@ -143,10 +143,6 @@ const createClient = (profile, userAgent, request = _request) => {
 			outFrwd = false
 		}
 
-		if (opt.whenRepresents !== 'departure' && opt.whenRepresents !== 'arrival') {
-			throw new Error('opt.whenRepresents must be `departure` or `arrival`.')
-		}
-
 		const filters = [
 			profile.formatProductsFilter(opt.products || {})
 		]
