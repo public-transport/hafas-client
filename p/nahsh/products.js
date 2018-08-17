@@ -75,7 +75,7 @@ const p = [
 	},
 	{
 		id: 'onCall',
-		mode: null, // todo
+		mode: 'bus', // todo: is this correct?
 		bitmasks: [512],
 		name: 'On-call transit',
 		short: 'on-call',
