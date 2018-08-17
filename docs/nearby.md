@@ -2,7 +2,7 @@
 
 This method can be used to find stations close to a location. Note that it is not supported by every profile/endpoint.
 
-`location` must be an [*FPTF* `location` object](https://github.com/public-transport/friendly-public-transport-format/blob/1.0.1/spec/readme.md#location-objects).
+`location` must be an [*FPTF* `location` object](https://github.com/public-transport/friendly-public-transport-format/blob/1.1.1/spec/readme.md#location-objects).
 
 With `opt`, you can override the default options, which look like this:
 
@@ -11,6 +11,8 @@ With `opt`, you can override the default options, which look like this:
 	distance: null, // maximum walking distance in meters
 	poi:      false, // return points of interest?
 	stations: true, // return stations?
+	stationLines: false, // parse & expose lines of the station?
+	language: 'en' // language to get results in
 }
 ```
 
@@ -22,7 +24,7 @@ As an example, we're going to use the [VBB profile](../p/vbb):
 const createClient = require('hafas-client')
 const vbbProfile = require('hafas-client/p/vbb')
 
-const client = createClient(vbbProfile)
+const client = createClient(vbbProfile, 'my-awesome-program')
 
 client.nearby({
 	type: 'location',
@@ -37,7 +39,7 @@ The response may look like this:
 
 ```js
 [ {
-	type: 'station',
+	type: 'stop',
 	id: '900000120001',
 	name: 'S+U Frankfurter Allee',
 	location: {
@@ -56,7 +58,7 @@ The response may look like this:
 	},
 	distance: 56
 }, {
-	type: 'station',
+	type: 'stop',
 	id: '900000120540',
 	name: 'Scharnweberstr./Weichselstr.',
 	location: {
@@ -67,7 +69,7 @@ The response may look like this:
 	products: { /* … */ },
 	distance: 330
 }, {
-	type: 'station',
+	type: 'stop',
 	id: '900000160544',
 	name: 'Rathaus Lichtenberg',
 	location: {

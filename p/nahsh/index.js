@@ -1,10 +1,8 @@
 'use strict'
 
-const createParseBitmask = require('../../parse/products-bitmask')
-const createFormatBitmask = require('../../format/products-bitmask')
-const _createParseLine = require('../../parse/line')
 const _parseLocation = require('../../parse/location')
 const _createParseJourney = require('../../parse/journey')
+const _createParseMovement = require('../../parse/movement')
 
 const products = require('./products')
 
@@ -23,8 +21,8 @@ const transformReqBody = (body) => {
 	return body
 }
 
-const parseLocation = (profile, l, lines) => {
-	const res = _parseLocation(profile, l, lines)
+const parseLocation = (profile, opt, data, l) => {
+	const res = _parseLocation(profile, opt, data, l)
 	// weird fix for empty lines, e.g. IC/EC at Flensburg Hbf
 	if (res.lines) {
 		res.lines = res.lines.filter(x => x.id && x.name)
@@ -38,28 +36,8 @@ const parseLocation = (profile, l, lines) => {
 	return res
 }
 
-const createParseLine = (profile, operators) => {
-	const parseLine = _createParseLine(profile, operators)
-
-	const parseLineWithMode = (l) => {
-		const res = parseLine(l)
-
-		res.mode = res.product = null
-		if ('class' in res) {
-			const data = products.bitmasks[parseInt(res.class)]
-			if (data) {
-				res.mode = data.mode
-				res.product = data.product
-			}
-		}
-
-		return res
-	}
-	return parseLineWithMode
-}
-
-const createParseJourney = (profile, stations, lines, remarks) => {
-	const parseJourney = _createParseJourney(profile, stations, lines, remarks)
+const createParseJourney = (profile, opt, data) => {
+	const parseJourney = _createParseJourney(profile, opt, data)
 
 	const parseJourneyWithTickets = (j) => {
 		const res = parseJourney(j)
@@ -100,26 +78,17 @@ const createParseJourney = (profile, stations, lines, remarks) => {
 	return parseJourneyWithTickets
 }
 
-const defaultProducts = {
-	nationalExp: true,
-	national: true,
-	interregional: true,
-	regional: true,
-	suburban: true,
-	bus: true,
-	ferry: true,
-	subway: true,
-	tram: true,
-	onCall: true
-}
-const formatBitmask = createFormatBitmask(products)
-const formatProducts = (products) => {
-	products = Object.assign(Object.create(null), defaultProducts, products)
-	return {
-		type: 'PROD',
-		mode: 'INC',
-		value: formatBitmask(products) + ''
+const createParseMovement = (profile, opt, data) => {
+	const _parseMovement = _createParseMovement(profile, opt, data)
+	const parseMovement = (m) => {
+		const res = _parseMovement(m)
+		// filter out empty nextStops entries
+		res.nextStops = res.nextStops.filter((f) => {
+			return f.stop !== null || f.arrival !== null || f.departure !== null
+		})
+		return res
 	}
+	return parseMovement
 }
 
 const nahshProfile = {
@@ -128,17 +97,14 @@ const nahshProfile = {
 	endpoint: 'https://nah.sh.hafas.de/bin/mgate.exe',
 	transformReqBody,
 
-	products: products.allProducts,
+	products,
 
-	parseProducts: createParseBitmask(products.allProducts, defaultProducts),
-	parseLine: createParseLine,
 	parseLocation,
 	parseJourney: createParseJourney,
+	parseMovement: createParseMovement,
 
-	formatProducts,
-
-	journeyLeg: true,
-	radar: false // todo: see #34
+	trip: true,
+	radar: true // todo: see #34
 }
 
 module.exports = nahshProfile

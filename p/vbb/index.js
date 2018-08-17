@@ -11,12 +11,8 @@ const _parseLocation = require('../../parse/location')
 const _createParseJourney = require('../../parse/journey')
 const _createParseDeparture = require('../../parse/departure')
 const _formatStation = require('../../format/station')
-const createParseBitmask = require('../../parse/products-bitmask')
-const createFormatBitmask = require('../../format/products-bitmask')
 
-const modes = require('./modes')
-
-const formatBitmask = createFormatBitmask(modes)
+const products = require('./products')
 
 const transformReqBody = (body) => {
 	body.client = {type: 'IPA', id: 'VBB', name: 'vbbPROD', v: '4010300'}
@@ -27,20 +23,11 @@ const transformReqBody = (body) => {
 	return body
 }
 
-const createParseLine = (profile, operators) => {
-	const parseLine = _createParseLine(profile, operators)
+const createParseLine = (profile, opt, data) => {
+	const parseLine = _createParseLine(profile, opt, data)
 
-	const parseLineWithMode = (l) => {
+	const parseLineWithMoreDetails = (l) => {
 		const res = parseLine(l)
-
-		res.mode = res.product = null
-		if ('class' in res) {
-			const data = modes.bitmasks[parseInt(res.class)]
-			if (data) {
-				res.mode = data.mode
-				res.product = data.product
-			}
-		}
 
 		res.name = l.name.replace(/^(bus|tram)\s+/i, '')
 		const details = parseLineName(res.name)
@@ -52,13 +39,13 @@ const createParseLine = (profile, operators) => {
 
 		return res
 	}
-	return parseLineWithMode
+	return parseLineWithMoreDetails
 }
 
-const parseLocation = (profile, l, lines) => {
-	const res = _parseLocation(profile, l, lines)
+const parseLocation = (profile, opt, data, l) => {
+	const res = _parseLocation(profile, opt, data, l)
 
-	if (res.type === 'station') {
+	if (res.type === 'stop' || res.type === 'station') {
 		res.name = shorten(res.name)
 		res.id = to12Digit(res.id)
 		if (!res.location.latitude || !res.location.longitude) {
@@ -69,8 +56,8 @@ const parseLocation = (profile, l, lines) => {
 	return res
 }
 
-const createParseJourney = (profile, stations, lines, remarks, polylines) => {
-	const parseJourney = _createParseJourney(profile, stations, lines, remarks, polylines)
+const createParseJourney = (profile, opt, data) => {
+	const parseJourney = _createParseJourney(profile, opt, data)
 
 	const parseJourneyWithTickets = (j) => {
 		const res = parseJourney(j)
@@ -99,8 +86,8 @@ const createParseJourney = (profile, stations, lines, remarks, polylines) => {
 	return parseJourneyWithTickets
 }
 
-const createParseDeparture = (profile, stations, lines, remarks) => {
-	const parseDeparture = _createParseDeparture(profile, stations, lines, remarks)
+const createParseDeparture = (profile, opt, data) => {
+	const parseDeparture = _createParseDeparture(profile, opt, data)
 
 	const ringbahnClockwise = /^ringbahn s\s?41$/i
 	const ringbahnAnticlockwise = /^ringbahn s\s?42$/i
@@ -132,24 +119,6 @@ const formatStation = (id) => {
 	return _formatStation(id)
 }
 
-const defaultProducts = {
-	suburban: true,
-	subway: true,
-	tram: true,
-	bus: true,
-	ferry: true,
-	express: true,
-	regional: true
-}
-const formatProducts = (products) => {
-	products = Object.assign(Object.create(null), defaultProducts, products)
-	return {
-		type: 'PROD',
-		mode: 'INC',
-		value: formatBitmask(products) + ''
-	}
-}
-
 const vbbProfile = {
 	locale: 'de-DE',
 	timezone: 'Europe/Berlin',
@@ -162,20 +131,18 @@ const vbbProfile = {
 
 	transformReqBody,
 
-	products: modes.allProducts,
+	products: products,
 
 	parseStationName: shorten,
 	parseLocation,
 	parseLine: createParseLine,
-	parseProducts: createParseBitmask(modes.allProducts, defaultProducts),
 	parseJourney: createParseJourney,
 	parseDeparture: createParseDeparture,
 
 	formatStation,
-	formatProducts,
 
 	journeysNumF: false,
-	journeyLeg: true,
+	trip: true,
 	radar: true
 }
 

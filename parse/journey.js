@@ -1,36 +1,35 @@
 'use strict'
 
-const clone = obj => Object.assign({}, obj)
+const findRemark = require('./find-remark')
 
-const createParseJourney = (profile, stations, lines, remarks, polylines) => {
-	const parseLeg = profile.parseJourneyLeg(profile, stations, lines, remarks, polylines)
+const createParseJourney = (profile, opt, data) => {
+	const parseLeg = profile.parseJourneyLeg(profile, opt, data)
+	const {hints, warnings} = data
 
 	// todo: c.sDays
-	// todo: c.dep.dProgType, c.arr.dProgType
 	// todo: c.conSubscr
 	// todo: c.trfRes x vbb-parse-ticket
+	// todo: c.sotRating, c.isSotCon, c.sotCtxt
+	// todo: c.showARSLink
+	// todo: c.useableTime
+	// todo: c.cksum
+	// todo: c.isNotRdbl
+	// todo: c.badSecRefX
+	// todo: c.bfATS, c.bfIOSTS
 	const parseJourney = (j) => {
 		const legs = j.secL.map(leg => parseLeg(j, leg))
 		const res = {
 			type: 'journey',
 			legs,
-			origin: legs[0].origin,
-			destination: legs[legs.length - 1].destination,
-			departure: legs[0].departure,
-			arrival: legs[legs.length - 1].arrival
+			refreshToken: j.ctxRecon || null
 		}
-		if (legs.some(p => p.cancelled)) {
-			res.cancelled = true
-			Object.defineProperty(res, 'canceled', {value: true})
-			res.departure = res.arrival = null
 
-			const firstLeg = j.secL[0]
-			const dep = profile.parseDateTime(profile, j.date, firstLeg.dep.dTimeS)
-			res.formerScheduledDeparture = dep.toISO()
-
-			const lastLeg = j.secL[j.secL.length - 1]
-			const arr = profile.parseDateTime(profile, j.date, lastLeg.arr.aTimeS)
-			res.formerScheduledArrival = arr.toISO()
+		if (opt.remarks && Array.isArray(j.msgL)) {
+			res.remarks = []
+			for (let ref of j.msgL) {
+				const remark = findRemark(hints, warnings, ref)
+				if (remark) res.remarks.push(remark)
+			}
 		}
 
 		return res

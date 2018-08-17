@@ -9,7 +9,7 @@ const createClient = require('hafas-client')
 const nahshProfile = require('hafas-client/p/nahsh')
 
 // create a client with NAH.SH profile
-const client = createClient(nahshProfile)
+const client = createClient(nahshProfile, 'my-awesome-program')
 ```
 
 

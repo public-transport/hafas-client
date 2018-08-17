@@ -1,4 +1,4 @@
-# `radar(north, west, south, east, [opt])`
+# `radar({north, west, south, east}, [opt])`
 
 Use this method to find all vehicles currently in an area. Note that it is not supported by every profile/endpoint.
 
@@ -11,13 +11,14 @@ With `opt`, you can override the default options, which look like this:
 	results: 256, // maximum number of vehicles
 	duration: 30, // compute frames for the next n seconds
 	frames: 3, // nr of frames to compute
-	polylines: false // return a track shape for each vehicle?
+	polylines: false, // return a track shape for each vehicle?
+	language: 'en' // language to get results in
 }
 ```
 
 ## Response
 
-*Note:* As stated in the [*Friendly Public Transport Format* `1.0.1`](https://github.com/public-transport/friendly-public-transport-format/tree/1.0.1), the returned `departure` and `arrival` times include the current delay. The `departureDelay`/`arrivalDelay` fields express how much they differ from the schedule.
+*Note:* As stated in the [*Friendly Public Transport Format* `1.1.1`](https://github.com/public-transport/friendly-public-transport-format/tree/1.1.1), the returned `departure` and `arrival` times include the current delay. The `departureDelay`/`arrivalDelay` fields express how much they differ from the schedule.
 
 As an example, we're going to use the [VBB profile](../p/vbb):
 
@@ -25,9 +26,14 @@ As an example, we're going to use the [VBB profile](../p/vbb):
 const createClient = require('hafas-client')
 const vbbProfile = require('hafas-client/p/vbb')
 
-const client = createClient(vbbProfile)
+const client = createClient(vbbProfile, 'my-awesome-program')
 
-client.radar(52.52411, 13.41002, 52.51942, 13.41709, {results: 5})
+client.radar({
+	north: 52.52411,
+	west: 13.41002,
+	south: 52.51942,
+	east: 13.41709
+}, {results: 5})
 .then(console.log)
 .catch(console.error)
 ```
@@ -62,8 +68,8 @@ The response may look like this:
 	direction: 'S Flughafen Berlin-Schönefeld',
 	trip: 31463,
 	nextStops: [ {
-		station: {
-			type: 'station',
+		stop: {
+			type: 'stop',
 			id: '900000029101',
 			name: 'S Spandau',
 			location: {
@@ -88,14 +94,14 @@ The response may look like this:
 	} /* … */ ],
 	frames: [ {
 		origin: {
-			type: 'station',
+			type: 'stop',
 			id: '900000100003',
 			name: 'S+U Alexanderplatz',
 			location: { /* … */ },
 			products: { /* … */ }
 		},
 		destination: {
-			type: 'station',
+			type: 'stop',
 			id: '900000100004',
 			name: 'S+U Jannowitzbrücke',
 			location: { /* … */ },
@@ -134,13 +140,13 @@ The response may look like this:
 	direction: 'Heinersdorf',
 	trip: 26321,
 	nextStops: [ {
-		station: { /* S+U Alexanderplatz/Dircksenstr. */ },
+		stop: { /* S+U Alexanderplatz/Dircksenstr. */ },
 		arrival: null,
 		arrivalDelay: null,
 		departure: '2017-12-17T19:52:00.000+01:00',
 		departureDelay: null
 	}, {
-		station: { /* Memhardstr. */ },
+		stop: { /* Memhardstr. */ },
 		arrival: '2017-12-17T19:54:00.000+01:00',
 		arrivalDelay: null,
 		departure: '2017-12-17T19:54:00.000+01:00',
@@ -158,4 +164,4 @@ The response may look like this:
 }, /* … */ ]
 ```
 
-If you pass `polylines: true`, each result will have a `polyline` field, containing an encoded shape. You can use e.g. [`@mapbox/polyline`](https://www.npmjs.com/package/@mapbox/polyline) to decode it.
+If you pass `polylines: true`, each movement will have a `polyline` field, as documented in [the corresponding section in the `trip()` docs](trip.md#polyline-option), with the exception that station info is missing.

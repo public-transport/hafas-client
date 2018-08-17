@@ -1,15 +1,19 @@
 'use strict'
 
-// todo: arrivalDelay, departureDelay or only delay ?
-// todo: arrivalPlatform, departurePlatform
-const createParseStopover = (profile, stations, lines, remarks, date) => {
+const findRemark = require('./find-remark')
+
+const createParseStopover = (profile, opt, data, date) => {
+	const {locations, lines, hints, warnings} = data
+
 	const parseStopover = (st) => {
 		const res = {
-			station: stations[parseInt(st.locX)] || null,
+			stop: locations[parseInt(st.locX)] || null,
 			arrival: null,
 			arrivalDelay: null,
+			arrivalPlatform: st.aPlatfR || st.aPlatfS || null,
 			departure: null,
-			departureDelay: null
+			departureDelay: null,
+			departurePlatform: st.dPlatfR || st.dPlatfS || null
 		}
 
 		// todo: DRY with parseDeparture
@@ -34,6 +38,13 @@ const createParseStopover = (profile, stations, lines, remarks, date) => {
 			res.departureDelay = Math.round((realtime - planned) / 1000)
 		}
 
+		if (st.aPlatfR && st.aPlatfS && st.aPlatfR !== st.aPlatfS) {
+			res.formerScheduledArrivalPlatform = st.aPlatfS
+		}
+		if (st.dPlatfR && st.dPlatfS && st.dPlatfR !== st.dPlatfS) {
+			res.formerScheduledDeparturePlatform = st.dPlatfS
+		}
+
 		// mark stations the train passes without stopping
 		if(st.dInS === false && st.aOutS === false) res.passBy = true
 
@@ -55,6 +66,14 @@ const createParseStopover = (profile, stations, lines, remarks, date) => {
 					const arr = profile.parseDateTime(profile, date, st.dTimeS)
 					res.formerScheduledDeparture = arr.toISO()
 				}
+			}
+		}
+
+		if (opt.remarks && Array.isArray(st.msgL)) {
+			res.remarks = []
+			for (let ref of st.msgL) {
+				const remark = findRemark(hints, warnings, ref)
+				if (remark) res.remarks.push(remark)
 			}
 		}
 

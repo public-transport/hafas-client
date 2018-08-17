@@ -9,7 +9,7 @@ const createClient = require('hafas-client')
 const dbProfile = require('hafas-client/p/db')
 
 // create a client with DB profile
-const client = createClient(dbProfile)
+const client = createClient(dbProfile, 'my-awesome-program')
 ```
 
 

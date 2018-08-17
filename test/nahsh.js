@@ -1,69 +1,51 @@
 'use strict'
 
-// todo
-// const getStations = require('db-stations').full
 const tapePromise = require('tape-promise').default
 const tape = require('tape')
 const isRoughlyEqual = require('is-roughly-equal')
-const validateFptf = require('validate-fptf')
 
-const validateLineWithoutMode = require('./validate-line-without-mode')
-
-const co = require('./co')
+const {createWhen} = require('./lib/util')
+const co = require('./lib/co')
 const createClient = require('..')
 const nahshProfile = require('../p/nahsh')
-const {allProducts} = require('../p/nahsh/products')
+const products = require('../p/nahsh/products')
 const {
-	assertValidStation,
-	assertValidPoi,
-	assertValidAddress,
-	assertValidLocation,
-	assertValidStopover,
-	hour, createWhen, assertValidWhen
-} = require('./util.js')
+	line: createValidateLine,
+	station: createValidateStation
+} = require('./lib/validators')
+const createValidate = require('./lib/validate-fptf-with')
+const testJourneysStationToStation = require('./lib/journeys-station-to-station')
+const testJourneysStationToAddress = require('./lib/journeys-station-to-address')
+const testJourneysStationToPoi = require('./lib/journeys-station-to-poi')
+const testEarlierLaterJourneys = require('./lib/earlier-later-journeys')
+const testRefreshJourney = require('./lib/refresh-journey')
+const journeysFailsWithNoProduct = require('./lib/journeys-fails-with-no-product')
+const testDepartures = require('./lib/departures')
+const testDeparturesInDirection = require('./lib/departures-in-direction')
+const testArrivals = require('./lib/arrivals')
 
 const when = createWhen('Europe/Berlin', 'de-DE')
 
-const assertValidStationProducts = (t, p) => {
-	t.ok(p)
-	t.equal(typeof p.nationalExp, 'boolean')
-	t.equal(typeof p.national, 'boolean')
-	t.equal(typeof p.interregional, 'boolean')
-	t.equal(typeof p.regional, 'boolean')
-	t.equal(typeof p.suburban, 'boolean')
-	t.equal(typeof p.bus, 'boolean')
-	t.equal(typeof p.ferry, 'boolean')
-	t.equal(typeof p.subway, 'boolean')
-	t.equal(typeof p.tram, 'boolean')
-	t.equal(typeof p.onCall, 'boolean')
+const cfg = {
+	when,
+	stationCoordsOptional: false,
+	products
 }
 
-const isKielHbf = (s) => {
-	return s.type === 'station' &&
-	(s.id === '8000199') &&
-	s.name === 'Kiel Hbf' &&
-	s.location &&
-	isRoughlyEqual(s.location.latitude, 54.314982, .0005) &&
-	isRoughlyEqual(s.location.longitude, 10.131976, .0005)
-}
-
-const assertIsKielHbf = (t, s) => {
-	t.equal(s.type, 'station')
-	t.ok(s.id === '8000199', 'id should be 8000199')
-	t.equal(s.name, 'Kiel Hbf')
-	t.ok(s.location)
-	t.ok(isRoughlyEqual(s.location.latitude, 54.314982, .0005))
-	t.ok(isRoughlyEqual(s.location.longitude, 10.131976, .0005))
-}
-
-// todo: DRY with assertValidStationProducts
-// todo: DRY with other tests
-const assertValidProducts = (t, p) => {
-	for (let product of allProducts) {
-		product = product.product // wat
-		t.equal(typeof p[product], 'boolean', 'product ' + p + ' must be a boolean')
+const _validateLine = createValidateLine(cfg)
+const validateLine = (validate, l, name) => {
+	if (l && l.product === 'onCall') {
+		// skip line validation
+		// https://github.com/derhuerst/hafas-client/issues/8#issuecomment-355839965
+		l = Object.assign({}, l)
+		l.mode = 'taxi'
 	}
+	_validateLine(validate, l, name)
 }
+
+const validate = createValidate(cfg, {
+	line: validateLine
+})
 
 const assertValidPrice = (t, p) => {
 	t.ok(p)
@@ -77,275 +59,218 @@ const assertValidPrice = (t, p) => {
 	}
 }
 
-const assertValidLine = (t, l) => { // with optional mode
-	const validators = Object.assign({}, validateFptf.defaultValidators, {
-		line: validateLineWithoutMode
-	})
-	const recurse = validateFptf.createRecurse(validators)
-	try {
-		recurse(['line'], l, 'line')
-	} catch (err) {
-		t.ifError(err)
-	}
-}
-
 const test = tapePromise(tape)
-const client = createClient(nahshProfile)
+const client = createClient(nahshProfile, 'public-transport/hafas-client:test')
 
-const kielHbf = '8000199'
-const flensburg = '8000103'
-const luebeckHbf = '8000237'
-const husum = '8000181'
-const schleswig = '8005362'
+const kielHbf = '9049079'
+const flensburg = '9027253'
+const luebeckHbf = '9057819'
+const husum = '9044660'
+const schleswig = '9081683'
+const ellerbekerMarkt = '9049027'
+const seefischmarkt = '9049245'
+const kielRaeucherei = '9049217'
 
-test('Kiel Hbf to Flensburg', co(function* (t) {
+test('journeys – Kiel Hbf to Flensburg', co(function* (t) {
 	const journeys = yield client.journeys(kielHbf, flensburg, {
-		when, passedStations: true
+		results: 3,
+		departure: when,
+		stopovers: true
 	})
 
-	t.ok(Array.isArray(journeys))
-	t.ok(journeys.length > 0, 'no journeys')
-	for (let journey of journeys) {
-		t.equal(journey.type, 'journey')
+	yield testJourneysStationToStation({
+		test: t,
+		journeys,
+		validate,
+		fromId: kielHbf,
+		toId: flensburg
+	})
 
-		assertValidStation(t, journey.origin)
-		assertValidStationProducts(t, journey.origin.products)
-		// todo
-		// if (!(yield findStation(journey.origin.id))) {
-		// 	console.error('unknown station', journey.origin.id, journey.origin.name)
-		// }
-		if (journey.origin.products) {
-			assertValidProducts(t, journey.origin.products)
-		}
-		assertValidWhen(t, journey.departure, when)
-
-		assertValidStation(t, journey.destination)
-		assertValidStationProducts(t, journey.origin.products)
-		// todo
-		// if (!(yield findStation(journey.origin.id))) {
-		// 	console.error('unknown station', journey.destination.id, journey.destination.name)
-		// }
-		if (journey.destination.products) {
-			assertValidProducts(t, journey.destination.products)
-		}
-		assertValidWhen(t, journey.arrival, when)
-
-		t.ok(Array.isArray(journey.legs))
-		t.ok(journey.legs.length > 0, 'no legs')
-		const leg = journey.legs[0]
-
-		assertValidStation(t, leg.origin)
-		assertValidStationProducts(t, leg.origin.products)
-		// todo
-		// if (!(yield findStation(leg.origin.id))) {
-		// 	console.error('unknown station', leg.origin.id, leg.origin.name)
-		// }
-		assertValidWhen(t, leg.departure, when)
-		t.equal(typeof leg.departurePlatform, 'string')
-
-		assertValidStation(t, leg.destination)
-		assertValidStationProducts(t, leg.origin.products)
-		// todo
-		// if (!(yield findStation(leg.destination.id))) {
-		// 	console.error('unknown station', leg.destination.id, leg.destination.name)
-		// }
-		assertValidWhen(t, leg.arrival, when)
-		t.equal(typeof leg.arrivalPlatform, 'string')
-
-		assertValidLine(t, leg.line)
-
-		t.ok(Array.isArray(leg.passed))
-		for (let stopover of leg.passed) assertValidStopover(t, stopover)
-
-		if (journey.price) assertValidPrice(t, journey.price)
+	for (let i = 0; i < journeys.length; i++) {
+		const j = journeys[i]
+		// todo: find a journey where there pricing info is always available
+		if (j.price) assertValidPrice(t, j.price, `journeys[${i}].price`)
 	}
 
 	t.end()
 }))
 
-test('Kiel Hbf to Husum, Zingel 10', co(function* (t) {
-	const zingel = {
+// todo: journeys, only one product
+
+test('journeys – fails with no product', (t) => {
+	journeysFailsWithNoProduct({
+		test: t,
+		fetchJourneys: client.journeys,
+		fromId: kielHbf,
+		toId: flensburg,
+		when,
+		products
+	})
+	t.end()
+})
+
+test('Kiel Hbf to Berliner Str. 80, Husum', co(function* (t) {
+	const berlinerStr = {
 		type: 'location',
-		latitude: 54.475359,
-		longitude: 9.050798,
-		address: 'Husum, Zingel 10'
+		address: 'Husum, Berliner Straße 80',
+		latitude: 54.488995,
+		longitude: 9.056263
 	}
+	const journeys = yield client.journeys(kielHbf, berlinerStr, {
+		results: 3,
+		departure: when
+	})
 
-	const journeys = yield client.journeys(kielHbf, zingel, {when})
-
-	t.ok(Array.isArray(journeys))
-	t.ok(journeys.length >= 1, 'no journeys')
-	const journey = journeys[0]
-	const firstLeg = journey.legs[0]
-	const lastLeg = journey.legs[journey.legs.length - 1]
-
-	assertValidStation(t, firstLeg.origin)
-	assertValidStationProducts(t, firstLeg.origin.products)
-	// todo
-	// if (!(yield findStation(leg.origin.id))) {
-	// 	console.error('unknown station', leg.origin.id, leg.origin.name)
-	// }
-	if (firstLeg.origin.products) assertValidProducts(t, firstLeg.origin.products)
-	assertValidWhen(t, firstLeg.departure, when)
-	assertValidWhen(t, firstLeg.arrival, when)
-	assertValidWhen(t, lastLeg.departure, when)
-	assertValidWhen(t, lastLeg.arrival, when)
-
-	const d = lastLeg.destination
-	assertValidAddress(t, d)
-	t.equal(d.address, 'Husum, Zingel 10')
-	t.ok(isRoughlyEqual(.0001, d.latitude, 54.475359))
-	t.ok(isRoughlyEqual(.0001, d.longitude, 9.050798))
-
+	yield testJourneysStationToAddress({
+		test: t,
+		journeys,
+		validate,
+		fromId: kielHbf,
+		to: berlinerStr
+	})
 	t.end()
 }))
 
-test('Holstentor to Kiel Hbf', co(function* (t) {
+test('Kiel Hbf to Holstentor', co(function* (t) {
 	const holstentor = {
 		type: 'location',
-		latitude: 53.866321,
-		longitude: 10.679976,
+		id: '970004303',
 		name: 'Hansestadt Lübeck, Holstentor (Denkmal)',
-		id: '970003547'
+		latitude: 53.866321,
+		longitude: 10.679976
 	}
-	const journeys = yield client.journeys(holstentor, kielHbf, {when})
+	const journeys = yield client.journeys(kielHbf, holstentor, {
+		results: 3,
+		departure: when
+	})
 
-	t.ok(Array.isArray(journeys))
-	t.ok(journeys.length >= 1, 'no journeys')
-	const journey = journeys[0]
-	const firstLeg = journey.legs[0]
-	const lastLeg = journey.legs[journey.legs.length - 1]
-
-	const o = firstLeg.origin
-	assertValidPoi(t, o)
-	t.equal(o.name, 'Hansestadt Lübeck, Holstentor (Denkmal)')
-	t.ok(isRoughlyEqual(.0001, o.latitude, 53.866321))
-	t.ok(isRoughlyEqual(.0001, o.longitude, 10.679976))
-
-	assertValidWhen(t, firstLeg.departure, when)
-	assertValidWhen(t, firstLeg.arrival, when)
-	assertValidWhen(t, lastLeg.departure, when)
-	assertValidWhen(t, lastLeg.arrival, when)
-
-	assertValidStation(t, lastLeg.destination)
-	assertValidStationProducts(t, lastLeg.destination.products)
-	if (lastLeg.destination.products) assertValidProducts(t, lastLeg.destination.products)
-	// todo
-	// if (!(yield findStation(leg.destination.id))) {
-	// 	console.error('unknown station', leg.destination.id, leg.destination.name)
-	// }
-
+	yield testJourneysStationToPoi({
+		test: t,
+		journeys,
+		validate,
+		fromId: kielHbf,
+		to: holstentor
+	})
 	t.end()
 }))
 
-test('Husum to Lübeck Hbf with stopover at Husum', co(function* (t) {
-	const [journey] = yield client.journeys(husum, luebeckHbf, {
+test('Husum to Lübeck Hbf with stopover at Kiel Hbf', co(function* (t) {
+	const journeys = yield client.journeys(husum, luebeckHbf, {
 		via: kielHbf,
 		results: 1,
-		when
+		departure: when,
+		stopovers: true
 	})
 
-	const i1 = journey.legs.findIndex(leg => leg.destination.id === kielHbf)
-	t.ok(i1 >= 0, 'no leg with Kiel Hbf as destination')
+	validate(t, journeys, 'journeys', 'journeys')
 
-	const i2 = journey.legs.findIndex(leg => leg.origin.id === kielHbf)
-	t.ok(i2 >= 0, 'no leg with Kiel Hbf as origin')
-	t.ok(i2 > i1, 'leg with Kiel Hbf as origin must be after leg to it')
+	const leg = journeys[0].legs.some((leg) => {
+		return leg.stopovers && leg.stopovers.some((stopover) => {
+			const s = stopover.stop
+			return s.station && s.station.id === kielHbf || s.id === kielHbf
+		})
+	})
+	t.ok(leg, 'Kiel Hbf is not being passed')
 
 	t.end()
 }))
 
 test('earlier/later journeys, Kiel Hbf -> Flensburg', co(function* (t) {
-	const model = yield client.journeys(kielHbf, flensburg, {
-		results: 3, when
+	yield testEarlierLaterJourneys({
+		test: t,
+		fetchJourneys: client.journeys,
+		validate,
+		fromId: kielHbf,
+		toId: flensburg
 	})
-
-	t.equal(typeof model.earlierRef, 'string')
-	t.ok(model.earlierRef)
-	t.equal(typeof model.laterRef, 'string')
-	t.ok(model.laterRef)
-
-	// when and earlierThan/laterThan should be mutually exclusive
-	t.throws(() => {
-		client.journeys(kielHbf, flensburg, {
-			when, earlierThan: model.earlierRef
-		})
-	})
-	t.throws(() => {
-		client.journeys(kielHbf, flensburg, {
-			when, laterThan: model.laterRef
-		})
-	})
-
-	let earliestDep = Infinity, latestDep = -Infinity
-	for (let j of model) {
-		const dep = +new Date(j.departure)
-		if (dep < earliestDep) earliestDep = dep
-		else if (dep > latestDep) latestDep = dep
-	}
-
-	const earlier = yield client.journeys(kielHbf, flensburg, {
-		results: 3,
-		// todo: single journey ref?
-		earlierThan: model.earlierRef
-	})
-	for (let j of earlier) {
-		t.ok(new Date(j.departure) < earliestDep)
-	}
-
-	const later = yield client.journeys(kielHbf, flensburg, {
-		results: 3,
-		// todo: single journey ref?
-		laterThan: model.laterRef
-	})
-	for (let j of later) {
-		t.ok(new Date(j.departure) > latestDep)
-	}
 
 	t.end()
 }))
 
-test('leg details for Flensburg to Husum', co(function* (t) {
+test('refreshJourney', co(function* (t) {
+	yield testRefreshJourney({
+		test: t,
+		fetchJourneys: client.journeys,
+		refreshJourney: client.refreshJourney,
+		validate,
+		fromId: kielHbf,
+		toId: flensburg,
+		when
+	})
+	t.end()
+}))
+
+// todo: with detour test
+// todo: without detour test
+
+test('trip details', co(function* (t) {
 	const journeys = yield client.journeys(flensburg, husum, {
-		results: 1, when
+		results: 1, departure: when
 	})
 
 	const p = journeys[0].legs[0]
 	t.ok(p.id, 'precondition failed')
 	t.ok(p.line.name, 'precondition failed')
-	const leg = yield client.journeyLeg(p.id, p.line.name, {when})
+	const trip = yield client.trip(p.id, p.line.name, {when})
 
-	t.equal(typeof leg.id, 'string')
-	t.ok(leg.id)
-
-	assertValidLine(t, leg.line)
-
-	t.equal(typeof leg.direction, 'string')
-	t.ok(leg.direction)
-
-	t.ok(Array.isArray(leg.passed))
-	for (let passed of leg.passed) assertValidStopover(t, passed)
-
+	validate(t, trip, 'journeyLeg', 'trip')
 	t.end()
 }))
 
-test('departures at Kiel Hbf', co(function* (t) {
-	const deps = yield client.departures(kielHbf, {
+test('departures at Kiel Räucherei', co(function* (t) {
+	const departures = yield client.departures(kielRaeucherei, {
 		duration: 30, when
 	})
 
-	t.ok(Array.isArray(deps))
-	for (let dep of deps) {
-		assertValidStation(t, dep.station)
-		assertValidStationProducts(t, dep.station.products)
-		// todo
-		// if (!(yield findStation(dep.station.id))) {
-		// 	console.error('unknown station', dep.station.id, dep.station.name)
-		// }
-		if (dep.station.products) assertValidProducts(t, dep.station.products)
-		assertValidWhen(t, dep.when, when)
-	}
+	yield testDepartures({
+		test: t,
+		departures,
+		validate,
+		id: kielRaeucherei
+	})
+	t.end()
+}))
 
+test('departures with station object', co(function* (t) {
+	const deps = yield client.departures({
+		type: 'station',
+		id: kielHbf,
+		name: 'Kiel Hbf',
+		location: {
+			type: 'location',
+			latitude: 1.23,
+			longitude: 2.34
+		}
+	}, {when})
+
+	validate(t, deps, 'departures', 'departures')
+	t.end()
+}))
+
+test('departures at Berlin Hbf in direction of Berlin Ostbahnhof', co(function* (t) {
+	yield testDeparturesInDirection({
+		test: t,
+		fetchDepartures: client.departures,
+		fetchTrip: client.trip,
+		id: ellerbekerMarkt,
+		directionIds: [seefischmarkt, '710102'],
+		when,
+		validate
+	})
+	t.end()
+}))
+
+test('arrivals at Kiel Räucherei', co(function* (t) {
+	const arrivals = yield client.arrivals(kielRaeucherei, {
+		duration: 30, when
+	})
+
+	yield testArrivals({
+		test: t,
+		arrivals,
+		validate,
+		id: kielRaeucherei
+	})
 	t.end()
 }))
 
@@ -359,94 +284,66 @@ test('nearby Kiel Hbf', co(function* (t) {
 		results: 2, distance: 400
 	})
 
+	validate(t, nearby, 'locations', 'nearby')
+
 	t.ok(Array.isArray(nearby))
 	t.equal(nearby.length, 2)
 
-	assertIsKielHbf(t, nearby[0])
+	t.ok(nearby[0].id === kielHbf || nearby[0].id === '8000199')
+	t.equal(nearby[0].name, 'Kiel Hbf')
 	t.ok(nearby[0].distance >= 0)
 	t.ok(nearby[0].distance <= 100)
-
-	for (let n of nearby) {
-		if (n.type === 'station') assertValidStation(t, n)
-		else assertValidLocation(t, n)
-	}
 
 	t.end()
 }))
 
 test('locations named Kiel', co(function* (t) {
 	const locations = yield client.locations('Kiel', {
-		results: 10
+		results: 20
 	})
 
-	t.ok(Array.isArray(locations))
-	t.ok(locations.length > 0)
-	t.ok(locations.length <= 10)
+	validate(t, locations, 'locations', 'locations')
+	t.ok(locations.length <= 20)
 
-	for (let l of locations) {
-		if (l.type === 'station') assertValidStation(t, l)
-		else assertValidLocation(t, l)
-	}
-	t.ok(locations.some(isKielHbf))
+	t.ok(locations.find(s => s.type === 'stop' || s.type === 'station'))
+	t.ok(locations.find(s => s.id && s.name)) // POIs
+	t.ok(locations.some(l => l.station && s.station.id === kielHbf || l.id === kielHbf))
 
 	t.end()
 }))
 
-test('location', co(function* (t) {
-	const loc = yield client.location(schleswig)
+test('station', co(function* (t) {
+	const s = yield client.station(kielHbf)
 
-	assertValidStation(t, loc)
-	t.equal(loc.id, schleswig)
+	validate(t, s, ['stop', 'station'], 'station')
+	t.equal(s.id, kielHbf)
 
 	t.end()
 }))
 
-// todo: see #34
-test.skip('radar Kiel', co(function* (t) {
-	const vehicles = yield client.radar(54.4, 10.0, 54.2, 10.2, {
+test('radar', co(function* (t) {
+	const vehicles = yield client.radar({
+		north: 54.4,
+		west: 10.0,
+		south: 54.2,
+		east: 10.2
+	}, {
 		duration: 5 * 60, when
 	})
 
-	t.ok(Array.isArray(vehicles))
-	t.ok(vehicles.length > 0)
-	for (let v of vehicles) {
-
-		// todo
-		// t.ok(findStation(v.direction))
-		assertValidLine(t, v.line)
-
-		t.equal(typeof v.location.latitude, 'number')
-		t.ok(v.location.latitude <= 57, 'vehicle is too far away')
-		t.ok(v.location.latitude >= 51, 'vehicle is too far away')
-		t.equal(typeof v.location.longitude, 'number')
-		t.ok(v.location.longitude >= 7, 'vehicle is too far away')
-		t.ok(v.location.longitude <= 13, 'vehicle is too far away')
-
-		t.ok(Array.isArray(v.nextStops))
-		for (let st of v.nextStops) {
-			assertValidStopover(t, st, true)
-
-			if (st.arrival) {
-				t.equal(typeof st.arrival, 'string')
-				const arr = +new Date(st.arrival)
-				// note that this can be an ICE train
-				t.ok(isRoughlyEqual(14 * hour, +when, arr))
-			}
-			if (st.departure) {
-				t.equal(typeof st.departure, 'string')
-				const dep = +new Date(st.departure)
-				t.ok(isRoughlyEqual(14 * hour, +when, dep))
-			}
+	// todo: cfg.stationProductsOptional option
+	const allProducts = products.reduce((acc, p) => (acc[p.id] = true, acc), {})
+	const validateStation = createValidateStation(cfg)
+	const validate = createValidate(cfg, {
+		station: (validate, s, name) => {
+			s = Object.assign({
+				products: allProducts // todo: fix station.products
+			}, s)
+			if (!s.name) s.name = 'foo' // todo, see #34
+			validateStation(validate, s, name)
 		}
+	})
+	validate(t, vehicles, 'movements', 'vehicles')
 
-		t.ok(Array.isArray(v.frames))
-		for (let f of v.frames) {
-			assertValidStation(t, f.origin, true)
-			assertValidStationProducts(t, f.origin.products)
-			assertValidStation(t, f.destination, true)
-			assertValidStationProducts(t, f.destination.products)
-			t.equal(typeof f.t, 'number')
-		}
-	}
 	t.end()
 }))

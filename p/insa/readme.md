@@ -9,7 +9,7 @@ const createClient = require('hafas-client')
 const insaProfile = require('hafas-client/p/insa')
 
 // create a client with INSA profile
-const client = createClient(insaProfile)
+const client = createClient(insaProfile, 'my-awesome-program')
 ```
 
 

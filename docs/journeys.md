@@ -40,13 +40,15 @@ With `opt`, you can override the default options, which look like this:
 
 ```js
 {
-	when: new Date(),
-	whenRepresents: 'departure', // use 'arrival' for journeys arriving before `when`
+	// Use either `departure` or `arrival` to specify a date/time.
+	departure: new Date(),
+	arrival: null,
+
 	earlierThan: null, // ref to get journeys earlier than the last query
 	laterThan: null, // ref to get journeys later than the last query
 	results: 5, // how many journeys?
 	via: null, // let journeys pass this station
-	passedStations: false, // return stations on the way?
+	stopovers: false, // return stations on the way?
 	transfers: 5, // maximum of 5 transfers
 	transferTime: 0, // minimum time for a single transfer in minutes
 	accessibility: 'none', // 'none', 'partial' or 'complete'
@@ -63,14 +65,16 @@ With `opt`, you can override the default options, which look like this:
 	},
 	tickets: false, // return tickets? only available with some profiles
 	polylines: false, // return a shape for each leg?
+	remarks: true, // parse & expose hints & warnings?
 	// Consider walking to nearby stations at the beginning of a journey?
-	startWithWalking: false
+	startWithWalking: true,
+	language: 'en' // language to get results in
 }
 ```
 
 ## Response
 
-*Note:* As stated in the [*Friendly Public Transport Format* `1.0.1`](https://github.com/public-transport/friendly-public-transport-format/tree/1.0.1), the returned `departure` and `arrival` times include the current delay. The `departureDelay`/`arrivalDelay` fields express how much they differ from the schedule.
+*Note:* As stated in the [*Friendly Public Transport Format* `1.1.1`](https://github.com/public-transport/friendly-public-transport-format/tree/1.1.1), the returned `departure` and `arrival` times include the current delay. The `departureDelay`/`arrivalDelay` fields express how much they differ from the schedule.
 
 As an example, we're going to use the [VBB profile](../p/vbb):
 
@@ -78,12 +82,12 @@ As an example, we're going to use the [VBB profile](../p/vbb):
 const createClient = require('hafas-client')
 const vbbProfile = require('hafas-client/p/vbb')
 
-const client = createClient(vbbProfile)
+const client = createClient(vbbProfile, 'my-awesome-program')
 
 // Hauptbahnhof to Heinrich-Heine-Str.
 client.journeys('900000003201', '900000100008', {
 	results: 1,
-	passedStations: true
+	stopovers: true
 })
 .then(console.log)
 .catch(console.error)
@@ -95,7 +99,7 @@ The response may look like this:
 [
 	{
 		legs: [ {
-			id: '1|31041|35|86|17122017',
+			id: '1|32615|6|86|10072018',
 			origin: {
 				type: 'station',
 				id: '900000003201',
@@ -115,30 +119,23 @@ The response may look like this:
 					regional: true
 				}
 			},
-			departure: '2017-12-17T19:07:00.000+01:00',
-			departurePlatform: '16',
 			destination: {
 				type: 'station',
-				id: '900000024101',
-				name: 'S Charlottenburg',
+				id: '900000100004',
+				name: 'S+U Jannowitzbrücke',
 				location: {
 					type: 'location',
 					latitude: 52.504806,
 					longitude: 13.303846
 				},
-				products: {
-					suburban: true,
-					subway: false,
-					tram: false,
-					bus: true,
-					ferry: false,
-					express: false,
-					regional: true
-				}
+				products: { /* … */ }
 			},
-			arrival: '2017-12-17T19:47:00.000+01:00',
-			arrivalPlatform: '8',
-			arrivalDelay: 30,
+			departure: '2018-07-10T23:54:00.000+02:00',
+			departureDelay: 60,
+			departurePlatform: '15',
+			arrival: '2018-07-11T00:02:00.000+02:00',
+			arrivalDelay: 60,
+			arrivalPlatform: '3',
 			line: {
 				type: 'line',
 				id: '16845',
@@ -146,21 +143,21 @@ The response may look like this:
 				public: true,
 				mode: 'train',
 				product: 'suburban',
+				operator: {
+					type: 'operator',
+					id: 's-bahn-berlin-gmbh',
+					name: 'S-Bahn Berlin GmbH'
+				},
 				symbol: 'S',
 				nr: 7,
 				metro: false,
 				express: false,
 				night: false,
-				productCode: 0,
-				operator: {
-					type: 'operator',
-					id: 's-bahn-berlin-gmbh',
-					name: 'S-Bahn Berlin GmbH'
-				}
+				productCode: 0
 			},
-			direction: 'S Potsdam Hauptbahnhof',
-			passed: [ {
-				station: {
+			direction: 'S Ahrensfelde',
+			stopovers: [ {
+				stop: {
 					type: 'station',
 					id: '900000003201',
 					name: 'S+U Berlin Hauptbahnhof',
@@ -169,46 +166,64 @@ The response may look like this:
 				},
 				arrival: null,
 				departure: null,
-				cancelled: true
+				cancelled: true,
+				remarks: [
+					{type: 'hint', code: 'bf', text: 'barrier-free'},
+					{type: 'hint', code: 'FB', text: 'Bicycle conveyance'}
+				]
 			}, {
-				station: {
+				stop: {
 					type: 'station',
-					id: '900000003102',
-					name: 'S Bellevue',
+					id: '900000100001',
+					name: 'S+U Friedrichstr.',
 					location: { /* … */ },
 					products: { /* … */ }
 				},
-				arrival: '2017-12-17T19:09:00.000+01:00',
-				departure: '2017-12-17T19:09:00.000+01:00'
-			}, /* … */ {
-				station: {
+				arrival: '2018-07-10T23:56:00.000+02:00',
+				arrivalDelay: 60,
+				arrivalPlatform: null,
+				departure: '2018-07-10T23:57:00.000+02:00',
+				departureDelay: 60,
+				departurePlatform: null,
+				remarks: [ /* … */ ]
+			},
+			/* … */
+			{
 					type: 'station',
-					id: '900000024101',
-					name: 'S Charlottenburg',
+					id: '900000100004',
+					name: 'S+U Jannowitzbrücke',
 					location: { /* … */ },
 					products: { /* … */ }
 				},
-				arrival: '2017-12-17T19:17:00.000+01:00',
-				departure: '2017-12-17T19:17:00.000+01:00'
+				arrival: '2018-07-11T00:02:00.000+02:00',
+				arrivalDelay: 60,
+				arrivalPlatform: null,
+				departure: '2018-07-11T00:02:00.000+02:00',
+				departureDelay: null,
+				departurePlatform: null,
+				remarks: [ /* … */ ]
 			} ]
-		} ],
-		origin: {
-			type: 'station',
-			id: '900000003201',
-			name: 'S+U Berlin Hauptbahnhof',
-			location: { /* … */ },
-			products: { /* … */ }
-		},
-		departure: '2017-12-17T19:07:00.000+01:00',
-		destination: {
-			type: 'station',
-			id: '900000024101',
-			name: 'S Charlottenburg',
-			location: { /* … */ },
-			products: { /* … */ }
-		},
-		arrival: '2017-12-17T19:47:00.000+01:00',
-		arrivalDelay: 30
+		}, {
+			origin: {
+				type: 'station',
+				id: '900000100004',
+				name: 'S+U Jannowitzbrücke',
+				location: { /* … */ },
+				products: { /* … */ }
+			},
+			destination: {
+				type: 'station',
+				id: '900000100008',
+				name: 'U Heinrich-Heine-Str.',
+				location: { /* … */ },
+				products: { /* … */ }
+			},
+			departure: '2018-07-11T00:01:00.000+02:00',
+			arrival: '2018-07-11T00:10:00.000+02:00',
+			mode: 'walking',
+			public: true,
+			distance: 558
+		} ]
 	},
 	earlierRef: '…', // use with the `earlierThan` option
 	laterRef: '…' // use with the `laterThan` option
@@ -263,16 +278,16 @@ const heinrichHeineStr = '900000100008'
 client.journeys(hbf, heinrichHeineStr)
 .then((journeys) => {
 	const lastJourney = journeys[journeys.length - 1]
-	console.log('departure of last journey', lastJourney.departure)
+	console.log('departure of last journey', lastJourney.legs[0].departure)
 
 	// get later journeys
 	return client.journeys(hbf, heinrichHeineStr, {
 		laterThan: journeys.laterRef
 	})
 })
-.then((laterourneys) => {
-	const firstJourney = laterourneys[laterourneys.length - 1]
-	console.log('departure of first (later) journey', firstJourney.departure)
+.then((laterJourneys) => {
+	const firstJourney = laterJourneys[laterJourneys.length - 1]
+	console.log('departure of first (later) journey', firstJourney.legs[0].departure)
 })
 .catch(console.error)
 ```
@@ -282,4 +297,4 @@ departure of last journey 2017-12-17T19:07:00.000+01:00
 departure of first (later) journey 2017-12-17T19:19:00.000+01:00
 ```
 
-If you pass `polylines: true`, each journey leg will have a `polyline` field, containing an encoded shape. You can use e.g. [`@mapbox/polyline`](https://www.npmjs.com/package/@mapbox/polyline) to decode it.
+If you pass `polylines: true`, each journey leg will have a `polyline` field. Refer to [the section in the `trip()` docs](trip.md#polyline-option) for details.

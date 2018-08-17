@@ -1,5 +1,48 @@
 # Changelog
 
+## `3.0.0`
+
+This version is not fully backwords-compatible. Check out [the migration guide](migrating-to-3.md).
+
+### new features ✨
+
+- 2d3796a BVG profile
+- 0db84ce #61 parse remarks for stopovers and journey legs
+- ac9819b `arrivals()` method – [docs](arrivals.md)
+- 5b754aa `refreshJourney()` method – [docs](refresh-journey.md)
+- 21c273c `journeys()`/`trip()`: leg stopovers: parse & expose delays
+- 021ae45 `journeys()`/`trip()`: leg stopovers: parse & expose platforms
+- 84bce0c `arrivals()`/`departures()`: parse & expose platforms
+- 85e0bdf `journeys()`: `startWithWalking` option with default `true`
+- f6ae29c journey legs with `type: 'walking'` now have a `distance` in meters
+- 0d5a8fa departures, arrivals, stopovers: former scheduled platform(s)
+- 0199749 `language` option with default `en`
+- 1551943 `arrivals()`/`departures()`: `includeRelatedStations` option with default `true`
+
+### breaking changes 💥
+
+- c4935bc new mandatory `User-Agent` parameter
+- b7c1ee3 profiles: new products markup ([guide](https://github.com/public-transport/hafas-client/blob/ebe4fa64d871f711ced99d528c0171b180edc135/docs/writing-a-profile.md#3-products))
+- 40b559f change `radar(n, w, s, e)` signature to `radar({north, west, south, east})`
+- 005f3f8 remove `journey.departure`, `journey.arrival`, …
+- 0ef0301 validate `opt.when`
+- 431574b parse polylines using `profile.parsePolyLine` – [docs for the output format](https://github.com/public-transport/hafas-client/blob/ebe4fa64d871f711ced99d528c0171b180edc135/docs/journey-leg.md#polyline-option)
+- a356a26 throw if 0 products enabled
+- c82ad23 `journeys()`: `opt.when` → `opt.departure`/`opt.arrival`
+- 665bed9 rename `location(id)` to `station(id)`
+- 6611f26 `journeys()`/`trip()`: `leg.passed` → `leg.stopovers`
+- ebe4fa6 `journeys()`/`trip()`: `opt.passedStations` → `opt.stopovers`
+- 3e672ee `journeys()`/`trip()`: `stopover.station` → `stopover.stop`
+- 2e6aefe journey leg, departure, movement: `journeyId` -> `tripId`
+- 8881d8a & b6fbaa5: change parsers signature to `parse…(profile, opt, data)`
+- cabe5fa: option to parse & expose `station.lines`, default off
+- c8ff217 rename `journeyLeg()` to `trip()`
+- 8de4447 rename `profile.journeyLeg` to `profile.trip`
+
+### bugfixes
+
+- dd0a9b2 `parseStopover`: fix first/last canceled stopovers 🐛
+
 ## `2.10.3`
 
 - 50bd440 better `User-Agent` randomization

@@ -1,82 +1,58 @@
 'use strict'
 
-const getStations = require('db-stations').full
+const stations = require('db-stations/full.json')
+const a = require('assert')
 const tapePromise = require('tape-promise').default
 const tape = require('tape')
 const isRoughlyEqual = require('is-roughly-equal')
 
-const co = require('./co')
+const {createWhen} = require('./lib/util')
+const co = require('./lib/co')
 const createClient = require('..')
 const dbProfile = require('../p/db')
-const {allProducts} = require('../p/db/modes')
+const products = require('../p/db/products')
 const {
-	assertValidStation,
-	assertValidPoi,
-	assertValidAddress,
-	assertValidLocation,
-	assertValidLine,
-	assertValidStopover,
-	createWhen, assertValidWhen
-} = require('./util.js')
+	station: createValidateStation,
+	journeyLeg: createValidateJourneyLeg
+} = require('./lib/validators')
+const createValidate = require('./lib/validate-fptf-with')
+const testJourneysStationToStation = require('./lib/journeys-station-to-station')
+const testJourneysStationToAddress = require('./lib/journeys-station-to-address')
+const testJourneysStationToPoi = require('./lib/journeys-station-to-poi')
+const testEarlierLaterJourneys = require('./lib/earlier-later-journeys')
+const testRefreshJourney = require('./lib/refresh-journey')
+const journeysFailsWithNoProduct = require('./lib/journeys-fails-with-no-product')
+const testDepartures = require('./lib/departures')
+const testDeparturesInDirection = require('./lib/departures-in-direction')
+const testDeparturesWithoutRelatedStations = require('./lib/departures-without-related-stations')
+const testArrivals = require('./lib/arrivals')
+const testJourneysWithDetour = require('./lib/journeys-with-detour')
+
+const isObj = o => o !== null && 'object' === typeof o && !Array.isArray(o)
 
 const when = createWhen('Europe/Berlin', 'de-DE')
 
-const assertValidStationProducts = (t, p) => {
-	t.ok(p)
-	t.equal(typeof p.nationalExp, 'boolean')
-	t.equal(typeof p.national, 'boolean')
-	t.equal(typeof p.regionalExp, 'boolean')
-	t.equal(typeof p.regional, 'boolean')
-	t.equal(typeof p.suburban, 'boolean')
-	t.equal(typeof p.bus, 'boolean')
-	t.equal(typeof p.ferry, 'boolean')
-	t.equal(typeof p.subway, 'boolean')
-	t.equal(typeof p.tram, 'boolean')
-	t.equal(typeof p.taxi, 'boolean')
+const cfg = {
+	when,
+	stationCoordsOptional: false,
+	products
 }
 
-const findStation = (id) => new Promise((yay, nay) => {
-	const stations = getStations()
-	stations
-	.once('error', nay)
-	.on('data', (s) => {
-		if (
-			s.id === id ||
-			(s.additionalIds && s.additionalIds.includes(id))
-		) {
-			yay(s)
-			stations.destroy()
-		}
-	})
-	.once('end', yay)
-})
-
-const isJungfernheide = (s) => {
-	return s.type === 'station' &&
-	(s.id === '008011167' || s.id === jungfernh) &&
-	s.name === 'Berlin Jungfernheide' &&
-	s.location &&
-	isRoughlyEqual(s.location.latitude, 52.530408, .0005) &&
-	isRoughlyEqual(s.location.longitude, 13.299424, .0005)
-}
-
-const assertIsJungfernheide = (t, s) => {
-	t.equal(s.type, 'station')
-	t.ok(s.id === '008011167' || s.id === jungfernh, 'id should be 8011167')
-	t.equal(s.name, 'Berlin Jungfernheide')
-	t.ok(s.location)
-	t.ok(isRoughlyEqual(s.location.latitude, 52.530408, .0005))
-	t.ok(isRoughlyEqual(s.location.longitude, 13.299424, .0005))
-}
-
-// todo: DRY with assertValidStationProducts
-// todo: DRY with other tests
-const assertValidProducts = (t, p) => {
-	for (let product of allProducts) {
-		product = product.product // wat
-		t.equal(typeof p[product], 'boolean', 'product ' + p + ' must be a boolean')
+const _validateStation = createValidateStation(cfg)
+const validateStation = (validate, s, name) => {
+	_validateStation(validate, s, name)
+	const match = stations.some(station => (
+		station.id === s.id ||
+		(station.additionalIds && station.additionalIds.includes(s.id))
+	))
+	if (!match) {
+		console.error(name + `.id: unknown ID "${s.id}"`)
 	}
 }
+
+const validate = createValidate(cfg, {
+	station: validateStation
+})
 
 const assertValidPrice = (t, p) => {
 	t.ok(p)
@@ -91,248 +67,185 @@ const assertValidPrice = (t, p) => {
 }
 
 const test = tapePromise(tape)
-const client = createClient(dbProfile)
+const client = createClient(dbProfile, 'public-transport/hafas-client:test')
 
-const jungfernh = '8011167'
 const berlinHbf = '8011160'
 const münchenHbf = '8000261'
-const hannoverHbf = '8000152'
+const jungfernheide = '8011167'
+const blnSchwedterStr = '732652'
+const westhafen = '008089116'
+const wedding = '008089131'
+const württembergallee = '731084'
 const regensburgHbf = '8000309'
+const blnOstbahnhof = '8010255'
 
-test('Berlin Jungfernheide to München Hbf', co(function* (t) {
-	const journeys = yield client.journeys(jungfernh, münchenHbf, {
-		when, passedStations: true
+test('journeys – Berlin Schwedter Str. to München Hbf', co(function* (t) {
+	const journeys = yield client.journeys(blnSchwedterStr, münchenHbf, {
+		results: 3,
+		departure: when,
+		stopovers: true
 	})
 
-	t.ok(Array.isArray(journeys))
-	t.ok(journeys.length > 0, 'no journeys')
+	yield testJourneysStationToStation({
+		test: t,
+		journeys,
+		validate,
+		fromId: blnSchwedterStr,
+		toId: münchenHbf
+	})
+	// todo: find a journey where there pricing info is always available
 	for (let journey of journeys) {
-		t.equal(journey.type, 'journey')
-
-		assertValidStation(t, journey.origin)
-		assertValidStationProducts(t, journey.origin.products)
-		if (!(yield findStation(journey.origin.id))) {
-			console.error('unknown station', journey.origin.id, journey.origin.name)
-		}
-		if (journey.origin.products) {
-			assertValidProducts(t, journey.origin.products)
-		}
-		assertValidWhen(t, journey.departure, when)
-
-		assertValidStation(t, journey.destination)
-		assertValidStationProducts(t, journey.origin.products)
-		if (!(yield findStation(journey.origin.id))) {
-			console.error('unknown station', journey.destination.id, journey.destination.name)
-		}
-		if (journey.destination.products) {
-			assertValidProducts(t, journey.destination.products)
-		}
-		assertValidWhen(t, journey.arrival, when)
-
-		t.ok(Array.isArray(journey.legs))
-		t.ok(journey.legs.length > 0, 'no legs')
-		const leg = journey.legs[0]
-
-		assertValidStation(t, leg.origin)
-		assertValidStationProducts(t, leg.origin.products)
-		if (!(yield findStation(leg.origin.id))) {
-			console.error('unknown station', leg.origin.id, leg.origin.name)
-		}
-		assertValidWhen(t, leg.departure, when)
-		t.equal(typeof leg.departurePlatform, 'string')
-
-		assertValidStation(t, leg.destination)
-		assertValidStationProducts(t, leg.origin.products)
-		if (!(yield findStation(leg.destination.id))) {
-			console.error('unknown station', leg.destination.id, leg.destination.name)
-		}
-		assertValidWhen(t, leg.arrival, when)
-		t.equal(typeof leg.arrivalPlatform, 'string')
-
-		assertValidLine(t, leg.line)
-
-		t.ok(Array.isArray(leg.passed))
-		for (let stopover of leg.passed) assertValidStopover(t, stopover)
-
 		if (journey.price) assertValidPrice(t, journey.price)
 	}
 
 	t.end()
 }))
 
-test('Berlin Jungfernheide to Torfstraße 17', co(function* (t) {
-	const journeys = yield client.journeys(jungfernh, {
-		type: 'location', address: 'Torfstraße 17',
-		latitude: 52.5416823, longitude: 13.3491223
-	}, {when})
+// todo: journeys, only one product
 
-	t.ok(Array.isArray(journeys))
-	t.ok(journeys.length >= 1, 'no journeys')
-	const journey = journeys[0]
-	const leg = journey.legs[journey.legs.length - 1]
+test('journeys – fails with no product', (t) => {
+	journeysFailsWithNoProduct({
+		test: t,
+		fetchJourneys: client.journeys,
+		fromId: blnSchwedterStr,
+		toId: münchenHbf,
+		when,
+		products
+	})
+	t.end()
+})
 
-	assertValidStation(t, leg.origin)
-	assertValidStationProducts(t, leg.origin.products)
-	if (!(yield findStation(leg.origin.id))) {
-		console.error('unknown station', leg.origin.id, leg.origin.name)
+test('Berlin Schwedter Str. to Torfstraße 17', co(function* (t) {
+	const torfstr = {
+		type: 'location',
+		address: 'Torfstraße 17',
+		latitude: 52.5416823,
+		longitude: 13.3491223
 	}
-	if (leg.origin.products) assertValidProducts(t, leg.origin.products)
-	assertValidWhen(t, leg.departure, when)
-	assertValidWhen(t, leg.arrival, when)
+	const journeys = yield client.journeys(blnSchwedterStr, torfstr, {
+		results: 3,
+		departure: when
+	})
 
-	const d = leg.destination
-	assertValidAddress(t, d)
-	t.equal(d.address, 'Torfstraße 17')
-	t.ok(isRoughlyEqual(.0001, d.latitude, 52.5416823))
-	t.ok(isRoughlyEqual(.0001, d.longitude, 13.3491223))
-
+	yield testJourneysStationToAddress({
+		test: t,
+		journeys,
+		validate,
+		fromId: blnSchwedterStr,
+		to: torfstr
+	})
 	t.end()
 }))
 
-test('Berlin Jungfernheide to ATZE Musiktheater', co(function* (t) {
-	const journeys = yield client.journeys(jungfernh, {
-		type: 'location', id: '991598902', name: 'ATZE Musiktheater',
-		latitude: 52.542417, longitude: 13.350437
-	}, {when})
-
-	t.ok(Array.isArray(journeys))
-	t.ok(journeys.length >= 1, 'no journeys')
-	const journey = journeys[0]
-	const leg = journey.legs[journey.legs.length - 1]
-
-	assertValidStation(t, leg.origin)
-	assertValidStationProducts(t, leg.origin.products)
-	if (!(yield findStation(leg.origin.id))) {
-		console.error('unknown station', leg.origin.id, leg.origin.name)
+test('Berlin Schwedter Str. to ATZE Musiktheater', co(function* (t) {
+	const atze = {
+		type: 'location',
+		id: '991598902',
+		name: 'ATZE Musiktheater',
+		latitude: 52.542417,
+		longitude: 13.350437
 	}
-	if (leg.origin.products) assertValidProducts(t, leg.origin.products)
-	assertValidWhen(t, leg.departure, when)
-	assertValidWhen(t, leg.arrival, when)
+	const journeys = yield client.journeys(blnSchwedterStr, atze, {
+		results: 3,
+		departure: when
+	})
 
-	const d = leg.destination
-	assertValidPoi(t, d)
-	t.equal(d.name, 'ATZE Musiktheater')
-	t.ok(isRoughlyEqual(.0001, d.latitude, 52.542399))
-	t.ok(isRoughlyEqual(.0001, d.longitude, 13.350402))
-
+	yield testJourneysStationToPoi({
+		test: t,
+		journeys,
+		validate,
+		fromId: blnSchwedterStr,
+		to: atze
+	})
 	t.end()
 }))
 
 test('journeys: via works – with detour', co(function* (t) {
 	// Going from Westhafen to Wedding via Württembergalle without detour
 	// is currently impossible. We check if the routing engine computes a detour.
-	const westhafen = '008089116'
-	const wedding = '008089131'
-	const württembergallee = '731084'
-	const [journey] = yield client.journeys(westhafen, wedding, {
+	const journeys = yield client.journeys(westhafen, wedding, {
 		via: württembergallee,
 		results: 1,
-		when,
-		passedStations: true
+		departure: when,
+		stopovers: true
 	})
 
-	t.ok(journey)
-
-	const l = journey.legs.some(l => l.passed && l.passed.some(p => p.station.id === württembergallee))
-	t.ok(l, 'Württembergalle is not being passed')
-
+	yield testJourneysWithDetour({
+		test: t,
+		journeys,
+		validate,
+		detourIds: [württembergallee]
+	})
 	t.end()
 }))
 
-test('journeys: via works – without detour', co(function* (t) {
-	// When going from Ruhleben to Zoo via Kastanienallee, there is *no need*
-	// to change trains / no need for a "detour".
-	const ruhleben = '000731058'
-	const zoo = '008010406'
-	const kastanienallee = '730983'
-	const [journey] = yield client.journeys(ruhleben, zoo, {
-		via: kastanienallee,
-		results: 1,
-		when,
-		passedStations: true
-	})
-
-	t.ok(journey)
-
-	const l = journey.legs.some(l => l.passed && l.passed.some(p => p.station.id === kastanienallee))
-	t.ok(l, 'Kastanienallee is not being passed')
-
-	t.end()
-}))
+// todo: without detour
 
 test('earlier/later journeys, Jungfernheide -> München Hbf', co(function* (t) {
-	const model = yield client.journeys(jungfernh, münchenHbf, {
-		results: 3, when
+	yield testEarlierLaterJourneys({
+		test: t,
+		fetchJourneys: client.journeys,
+		validate,
+		fromId: jungfernheide,
+		toId: münchenHbf
 	})
-
-	t.equal(typeof model.earlierRef, 'string')
-	t.ok(model.earlierRef)
-	t.equal(typeof model.laterRef, 'string')
-	t.ok(model.laterRef)
-
-	// when and earlierThan/laterThan should be mutually exclusive
-	t.throws(() => {
-		client.journeys(jungfernh, münchenHbf, {
-			when, earlierThan: model.earlierRef
-		})
-	})
-	t.throws(() => {
-		client.journeys(jungfernh, münchenHbf, {
-			when, laterThan: model.laterRef
-		})
-	})
-
-	let earliestDep = Infinity, latestDep = -Infinity
-	for (let j of model) {
-		const dep = +new Date(j.departure)
-		if (dep < earliestDep) earliestDep = dep
-		else if (dep > latestDep) latestDep = dep
-	}
-
-	const earlier = yield client.journeys(jungfernh, münchenHbf, {
-		results: 3,
-		// todo: single journey ref?
-		earlierThan: model.earlierRef
-	})
-	for (let j of earlier) {
-		t.ok(new Date(j.departure) < earliestDep)
-	}
-
-	const later = yield client.journeys(jungfernh, münchenHbf, {
-		results: 3,
-		// todo: single journey ref?
-		laterThan: model.laterRef
-	})
-	for (let j of later) {
-		t.ok(new Date(j.departure) > latestDep)
-	}
 
 	t.end()
 }))
 
-test('departures at Berlin Jungfernheide', co(function* (t) {
-	const deps = yield client.departures(jungfernh, {
+test('refreshJourney', co(function* (t) {
+	yield testRefreshJourney({
+		test: t,
+		fetchJourneys: client.journeys,
+		refreshJourney: client.refreshJourney,
+		validate,
+		fromId: jungfernheide,
+		toId: münchenHbf,
+		when
+	})
+	t.end()
+}))
+
+test('trip details', co(function* (t) {
+	const journeys = yield client.journeys(berlinHbf, münchenHbf, {
+		results: 1, departure: when
+	})
+
+	const p = journeys[0].legs[0]
+	t.ok(p.id, 'precondition failed')
+	t.ok(p.line.name, 'precondition failed')
+	const trip = yield client.trip(p.id, p.line.name, {when})
+
+	const validateJourneyLeg = createValidateJourneyLeg(cfg)
+	const validate = createValidate(cfg, {
+		journeyLeg: (validate, leg, name) => {
+			if (!leg.direction) leg.direction = 'foo' // todo, see #49
+			validateJourneyLeg(validate, leg, name)
+		}
+	})
+	validate(t, trip, 'journeyLeg', 'trip')
+
+	t.end()
+}))
+
+test('departures at Berlin Schwedter Str.', co(function* (t) {
+	const departures = yield client.departures(blnSchwedterStr, {
 		duration: 5, when
 	})
 
-	t.ok(Array.isArray(deps))
-	for (let dep of deps) {
-		assertValidStation(t, dep.station)
-		assertValidStationProducts(t, dep.station.products)
-		if (!(yield findStation(dep.station.id))) {
-			console.error('unknown station', dep.station.id, dep.station.name)
-		}
-		if (dep.station.products) assertValidProducts(t, dep.station.products)
-		assertValidWhen(t, dep.when, when)
-	}
-
+	yield testDepartures({
+		test: t,
+		departures,
+		validate,
+		id: blnSchwedterStr
+	})
 	t.end()
 }))
 
 test('departures with station object', co(function* (t) {
-	yield client.departures({
+	const deps = yield client.departures({
 		type: 'station',
-		id: jungfernh,
+		id: jungfernheide,
 		name: 'Berlin Jungfernheide',
 		location: {
 			type: 'location',
@@ -341,7 +254,46 @@ test('departures with station object', co(function* (t) {
 		}
 	}, {when})
 
-	t.ok('did not fail')
+	validate(t, deps, 'departures', 'departures')
+	t.end()
+}))
+
+test('departures at Berlin Hbf in direction of Berlin Ostbahnhof', co(function* (t) {
+	yield testDeparturesInDirection({
+		test: t,
+		fetchDepartures: client.departures,
+		fetchTrip: client.trip,
+		id: berlinHbf,
+		directionIds: [blnOstbahnhof, '8089185', '732676'],
+		when,
+		validate
+	})
+	t.end()
+}))
+
+test('departures without related stations', co(function* (t) {
+	yield testDeparturesWithoutRelatedStations({
+		test: t,
+		fetchDepartures: client.departures,
+		id: '8089051', // Berlin Yorckstr. (S1)
+		when,
+		products: {bus: false},
+		linesOfRelatedStations: ['S 2', 'S 25', 'S 26', 'U 7']
+	})
+	t.end()
+}))
+
+test('arrivals at Berlin Schwedter Str.', co(function* (t) {
+	const arrivals = yield client.arrivals(blnSchwedterStr, {
+		duration: 5, when
+	})
+
+	yield testArrivals({
+		test: t,
+		arrivals,
+		validate,
+		id: blnSchwedterStr
+	})
 	t.end()
 }))
 
@@ -354,17 +306,18 @@ test('nearby Berlin Jungfernheide', co(function* (t) {
 		results: 2, distance: 400
 	})
 
-	t.ok(Array.isArray(nearby))
+	validate(t, nearby, 'locations', 'nearby')
+
 	t.equal(nearby.length, 2)
 
-	assertIsJungfernheide(t, nearby[0])
-	t.ok(nearby[0].distance >= 0)
-	t.ok(nearby[0].distance <= 100)
-
-	for (let n of nearby) {
-		if (n.type === 'station') assertValidStation(t, n)
-		else assertValidLocation(t, n)
-	}
+	const s0 = nearby[0]
+	// todo: trim IDs
+	t.ok(s0.id === '008011167' || s0.id === jungfernheide)
+	t.equal(s0.name, 'Berlin Jungfernheide')
+	t.ok(isRoughlyEqual(.0005, s0.location.latitude, 52.530408))
+	t.ok(isRoughlyEqual(.0005, s0.location.longitude, 13.299424))
+	t.ok(s0.distance >= 0)
+	t.ok(s0.distance <= 100)
 
 	t.end()
 }))
@@ -374,29 +327,24 @@ test('locations named Jungfernheide', co(function* (t) {
 		results: 10
 	})
 
-	t.ok(Array.isArray(locations))
-	t.ok(locations.length > 0)
+	validate(t, locations, 'locations', 'locations')
 	t.ok(locations.length <= 10)
-
-	for (let l of locations) {
-		if (l.type === 'station') assertValidStation(t, l)
-		else assertValidLocation(t, l)
-	}
-	t.ok(locations.some(isJungfernheide))
+	t.ok(locations.some((l) => {
+		// todo: trim IDs
+		if (l.station) {
+			if (l.station.id === '008011167' || l.station.id === jungfernheide) return true
+		}
+		return l.id === '008011167' || l.id === jungfernheide
+	}), 'Jungfernheide not found')
 
 	t.end()
 }))
 
-test('location', co(function* (t) {
-	const loc = yield client.location(regensburgHbf)
+test('station', co(function* (t) {
+	const s = yield client.station(regensburgHbf)
 
-	assertValidStation(t, loc)
-	t.equal(loc.id, regensburgHbf)
-
-	t.ok(Array.isArray(loc.lines))
-	if (Array.isArray(loc.lines)) {
-		for (let line of loc.lines) assertValidLine(t, line)
-	}
+	validate(t, s, ['stop', 'station'], 'station')
+	t.equal(s.id, regensburgHbf)
 
 	t.end()
 }))

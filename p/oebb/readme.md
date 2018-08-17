@@ -9,11 +9,11 @@ const createClient = require('hafas-client')
 const oebbProfile = require('hafas-client/p/oebb')
 
 // create a client with ÖBB profile
-const client = createClient(oebbProfile)
+const client = createClient(oebbProfile, 'my-awesome-program')
 ```
 
 
 ## Customisations
 
 - parses *ÖBB*-specific products (such as *RailJet*)
-- parses invalid empty stations from the API as [`location`](https://github.com/public-transport/friendly-public-transport-format/blob/1.0.1/spec/readme.md#location-objects)s
+- parses invalid empty stations from the API as [`location`](https://github.com/public-transport/friendly-public-transport-format/blob/1.1.1/spec/readme.md#location-objects)s

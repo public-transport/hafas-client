@@ -6,12 +6,13 @@ HAFAS endpoint | wrapper library | docs | example code | source code
 ---------------|------------------|------|---------|------------
 [Deutsche Bahn (DB)](https://en.wikipedia.org/wiki/Deutsche_Bahn) | [`db-hafas`](https://github.com/derhuerst/db-hafas) | [docs](p/db/readme.md) | [example code](p/db/example.js) | [src](p/db/index.js)
 [Berlin & Brandenburg public transport (VBB)](https://en.wikipedia.org/wiki/Verkehrsverbund_Berlin-Brandenburg) | [`vbb-hafas`](https://github.com/derhuerst/vbb-hafas) | [docs](p/vbb/readme.md) | [example code](p/vbb/example.js) | [src](p/vbb/index.js)
+[Berlin public transport (BVG)](https://en.wikipedia.org/wiki/Berliner_Verkehrsbetriebe) | – | [docs](p/bvg/readme.md) | [example code](p/bvg/example.js) | [src](p/bvg/index.js)
 [Österreichische Bundesbahnen (ÖBB)](https://en.wikipedia.org/wiki/Austrian_Federal_Railways) | [`oebb-hafas`](https://github.com/juliuste/oebb-hafas) | [docs](p/oebb/readme.md) | [example code](p/oebb/example.js) | [src](p/oebb/index.js)
 [Nahverkehr Sachsen-Anhalt (NASA)](https://de.wikipedia.org/wiki/Nahverkehrsservice_Sachsen-Anhalt)/[INSA](https://insa.de) | [`insa-hafas`](https://github.com/derhuerst/insa-hafas) | [docs](p/insa/readme.md) | [example code](p/insa/example.js) | [src](p/insa/index.js)
 [Nahverkehrsverbund Schleswig-Holstein (NAH.SH)](https://de.wikipedia.org/wiki/Nahverkehrsverbund_Schleswig-Holstein) | [`nahsh-hafas`](https://github.com/juliuste/nahsh-hafas) | [docs](p/nahsh/readme.md) | [example code](p/nahsh/example.js) | [src](p/nahsh/index.js)
 
 [![npm version](https://img.shields.io/npm/v/hafas-client.svg)](https://www.npmjs.com/package/hafas-client)
-[![build status](https://img.shields.io/travis/public-transport/hafas-client.svg)](https://travis-ci.org/public-transport/hafas-client)
+[![build status](https://img.shields.io/travis/public-transport/hafas-client.svg?branch=master)](https://travis-ci.org/public-transport/hafas-client)
 ![ISC-licensed](https://img.shields.io/github/license/public-transport/hafas-client.svg)
 [![chat on gitter](https://badges.gitter.im/public-transport/Lobby.svg)](https://gitter.im/public-transport/Lobby)
 [![support me on Patreon](https://img.shields.io/badge/support%20me-on%20patreon-fa7664.svg)](https://patreon.com/derhuerst)
@@ -21,7 +22,7 @@ HAFAS endpoint | wrapper library | docs | example code | source code
 
 There's [a company called HaCon](http://hacon.de) that sells [a public transport management system called HAFAS](https://de.wikipedia.org/wiki/HAFAS). It is [used by companies all over Europe](https://gist.github.com/derhuerst/2b7ed83bfa5f115125a5) to serve routing and departure information for apps. All those endpoints are similar, with the same terms and API routes, but have slightly different options, filters and sets of enabled features.
 
-`hafas-client` contains all logic for communicating with these, as well as serialising from and parsing to [*Friendly Public Transport Format (FPTF)* `1.0.1`](https://github.com/public-transport/friendly-public-transport-format/blob/1.0.1/spec/readme.md). Endpoint-specific customisations (called *profiles* here) increase the quality of the returned data.
+`hafas-client` contains all logic for communicating with these, as well as serialising from and parsing to [*Friendly Public Transport Format (FPTF)* `1.1.1`](https://github.com/public-transport/friendly-public-transport-format/blob/1.1.1/spec/readme.md). Endpoint-specific customisations (called *profiles* here) increase the quality of the returned data.
 
 
 ## Installing
@@ -47,7 +48,7 @@ const createClient = require('hafas-client')
 const dbProfile = require('hafas-client/p/db')
 
 // create a client with Deutsche Bahn profile
-const client = createClient(dbProfile)
+const client = createClient(dbProfile, 'my-awesome-program')
 
 // Berlin Jungfernheide to München Hbf
 client.journeys('8011167', '8000261', {results: 1})
@@ -55,7 +56,7 @@ client.journeys('8011167', '8000261', {results: 1})
 .catch(console.error)
 ```
 
-The returned [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/promise) will resolve with an array of one [*FPTF* `journey`](https://github.com/public-transport/friendly-public-transport-format/blob/1.0.1/spec/readme.md#journey).
+The returned [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/promise) will resolve with an array of one [*FPTF* `journey`](https://github.com/public-transport/friendly-public-transport-format/blob/1.1.1/spec/readme.md#journey).
 
 ```js
 [ {
@@ -177,7 +178,11 @@ The returned [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript
 - [`vbb-hafas`](https://github.com/derhuerst/vbb-hafas#vbb-hafas) – JavaScript client for Berlin & Brandenburg public transport HAFAS API.
 - [`hafas-departures-in-direction`](https://github.com/derhuerst/hafas-departures-in-direction#hafas-departures-in-direction) – Pass in a HAFAS client, get departures in a certain direction.
 - [`hafas-collect-departures-at`](https://github.com/derhuerst/hafas-collect-departures-at#hafas-collect-departures-at) – Utility to collect departures, using any HAFAS client.
+- [`hafas-monitor-departures`](https://github.com/derhuerst/hafas-monitor-departures#hafas-monitor-departures) – Pass in a HAFAS client, fetch all departures at any set of stations.
 - [`hafas-discover-stations`](https://github.com/derhuerst/hafas-discover-stations#hafas-discover-stations) – Pass in a HAFAS client, discover stations by querying departures.
+- [`hafas-record-delays`](https://github.com/derhuerst/hafas-record-delays#hafas-record-delays) – Record delays from hafas-monitor-departures into a LevelDB.
+- [`hafas-estimate-station-weight`](https://github.com/derhuerst/hafas-estimate-station-weight#hafas-estimate-station-weight) – Pass in a HAFAS client, estimate the importance of a station.
+- [`hafas-client-rpc`](https://github.com/derhuerst/hafas-client-rpc) – Make JSON-RPC calls to `hafas-client` via WebSockets.
 - [`hafas-rest-api`](https://github.com/derhuerst/hafas-rest-api#hafas-rest-api) – Expose a HAFAS client via an HTTP REST API.
 - [List of european long-distance transport operators, available API endpoints, GTFS feeds and client modules.](https://github.com/public-transport/european-transport-operators)
 - [Collection of european transport JavaScript modules.](https://github.com/public-transport/european-transport-modules)

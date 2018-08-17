@@ -5,10 +5,7 @@ const STATION = 'S'
 const ADDRESS = 'A'
 
 // todo: what is s.rRefL?
-// todo: is passing in profile necessary?
-
-// todo: [breaking] change to createParseLocation(profile, lines) => (l) => loc
-const parseLocation = (profile, l, lines) => {
+const parseLocation = (profile, opt, {lines}, l) => {
 	const res = {type: 'location'}
 	if (l.crd) {
 		res.latitude = l.crd.y / 1000000
@@ -16,24 +13,28 @@ const parseLocation = (profile, l, lines) => {
 	}
 
 	if (l.type === STATION) {
-		const station = {
-			type: 'station',
+		const stop = {
+			type: l.isMainMast ? 'station' : 'stop',
 			id: l.extId,
-			name: profile.parseStationName(l.name),
+			name: l.name ? profile.parseStationName(l.name) : null,
 			location: 'number' === typeof res.latitude ? res : null
 		}
 
-		if ('pCls' in l) station.products = profile.parseProducts(l.pCls)
+		if ('pCls' in l) stop.products = profile.parseProducts(l.pCls)
 
-		if (Array.isArray(l.pRefL) && Array.isArray(lines)) {
-			station.lines = []
+		if (
+			opt.stationLines &&
+			Array.isArray(l.pRefL) &&
+			Array.isArray(lines)
+		) {
+			stop.lines = []
 			for (let pRef of l.pRefL) {
 				const line = lines[pRef]
-				if (line) station.lines.push(line)
+				if (line) stop.lines.push(line)
 			}
 		}
 
-		return station
+		return stop
 	}
 
 	if (l.type === ADDRESS) res.address = l.name

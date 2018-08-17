@@ -1,24 +1,61 @@
 'use strict'
 
 const parseDateTime = require('./date-time')
+const findRemark = require('./find-remark')
 
 const clone = obj => Object.assign({}, obj)
 
-const createParseJourneyLeg = (profile, stations, lines, remarks, polylines) => {
-	// todo: finish parse/remark.js first
-	const applyRemark = (j, rm) => {}
+const locX = Symbol('locX')
 
+const applyRemarks = (leg, hints, warnings, refs) => {
+	for (let ref of refs) {
+		const remark = findRemark(hints, warnings, ref)
+		if (!remark) continue
+
+		if ('number' === typeof ref.fLocX && 'number' === typeof ref.tLocX) {
+			const fromI = leg.stopovers.findIndex(s => s[locX] === ref.fLocX)
+			const toI = leg.stopovers.findIndex(s => s[locX] === ref.tLocX)
+			if (fromI < 0 || toI < 0) continue
+
+			const wholeLeg = fromI === 0 && toI === (leg.stopovers.length - 1)
+			if (!wholeLeg) {
+				for (let i = fromI; i <= toI; i++) {
+					const stopover = leg.stopovers[i]
+					if (!stopover) continue
+					if (Array.isArray(stopover.remarks)) {
+						stopover.remarks.push(remark)
+					} else {
+						stopover.remarks = [remark]
+					}
+				}
+
+				continue
+			}
+		}
+
+		if (Array.isArray(leg.remarks)) leg.remarks.push(remark)
+		else leg.remarks = [remark]
+		// todo: `ref.tagL`
+	}
+}
+
+const createParseJourneyLeg = (profile, opt, data) => {
+	const {locations, lines, hints, warnings, polylines} = data
+	// todo: pt.status
+	// todo: pt.status, pt.isPartCncl
+	// todo: pt.isRchbl, pt.chRatingRT, pt.chgDurR, pt.minChg
 	// todo: pt.sDays
 	// todo: pt.dep.dProgType, pt.arr.dProgType
 	// todo: what is pt.jny.dirFlg?
-	// todo: how does pt.freq work?
-	// todo: what is pt.himL?
-	const parseJourneyLeg = (j, pt, passed = true) => { // j = journey, pt = part
+
+	// j = journey, pt = part
+	// todo: pt.planrtTS
+	const parseJourneyLeg = (j, pt, parseStopovers = true) => {
 		const dep = profile.parseDateTime(profile, j.date, pt.dep.dTimeR || pt.dep.dTimeS)
 		const arr = profile.parseDateTime(profile, j.date, pt.arr.aTimeR || pt.arr.aTimeS)
 		const res = {
-			origin: clone(stations[parseInt(pt.dep.locX)]) || null,
-			destination: clone(stations[parseInt(pt.arr.locX)]),
+			origin: clone(locations[parseInt(pt.dep.locX)]) || null,
+			destination: clone(locations[parseInt(pt.arr.locX)]),
 			departure: dep.toISO(),
 			arrival: arr.toISO()
 		}
@@ -38,32 +75,48 @@ const createParseJourneyLeg = (profile, stations, lines, remarks, polylines) => 
 
 		if (pt.jny && pt.jny.polyG) {
 			let p = pt.jny.polyG.polyXL
-			p = p && polylines[p[0]]
+			p = Array.isArray(p) && polylines[p[0]]
 			// todo: there can be >1 polyline
-			res.polyline = p && p.crdEncYX || null
+			const parse = profile.parsePolyline(profile, opt, data)
+			res.polyline = p && parse(p) || null
 		}
 
 		if (pt.type === 'WALK' || pt.type === 'TRSF') {
 			res.mode = 'walking'
 			res.public = true
 			res.distance = pt.gis && pt.gis.dist || null
+			if (pt.type === 'TRSF') res.transfer = true
+
+			if (opt.remarks && Array.isArray(pt.gis.msgL)) {
+				applyRemarks(res, hints, warnings, pt.gis.msgL)
+			}
 		} else if (pt.type === 'JNY') {
 			// todo: pull `public` value from `profile.products`
 			res.id = pt.jny.jid
 			res.line = lines[parseInt(pt.jny.prodX)] || null
-			res.direction = profile.parseStationName(pt.jny.dirTxt)
+			res.direction = profile.parseStationName(pt.jny.dirTxt) || null
 
 			if (pt.dep.dPlatfS) res.departurePlatform = pt.dep.dPlatfS
 			if (pt.arr.aPlatfS) res.arrivalPlatform = pt.arr.aPlatfS
 
-			if (passed && pt.jny.stopL) {
-				const parse = profile.parseStopover(profile, stations, lines, remarks, j.date)
-				const passedStations = pt.jny.stopL.map(parse)
+			if (parseStopovers && pt.jny.stopL) {
+				const parse = profile.parseStopover(profile, opt, data, j.date)
+				const stopL = pt.jny.stopL
+				res.stopovers = stopL.map(parse)
+
+				// todo: is there a `pt.jny.remL`?
+				if (opt.remarks && Array.isArray(pt.jny.msgL)) {
+					for (let i = 0; i < stopL.length; i++) {
+						Object.defineProperty(res.stopovers[i], locX, {
+							value: stopL[i].locX
+						})
+					}
+					// todo: apply leg-wide remarks if `parseStopovers` is false
+					applyRemarks(res, hints, warnings, pt.jny.msgL)
+				}
+
 				// filter stations the train passes without stopping, as this doesn't comply with fptf (yet)
-				res.passed = passedStations.filter((x) => !x.passBy)
-			}
-			if (Array.isArray(pt.jny.remL)) {
-				for (let remark of pt.jny.remL) applyRemark(j, remark)
+				res.stopovers = res.stopovers.filter((x) => !x.passBy)
 			}
 
 			const freq = pt.jny.freq || {}

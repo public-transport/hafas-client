@@ -11,6 +11,8 @@ With `opt`, you can override the default options, which look like this:
 	, stations:  true
 	, addresses: true
 	, poi:       true // points of interest
+	, stationLines: false // parse & expose lines of the station?
+	, language: 'en' // language to get results in
 }
 ```
 
@@ -22,7 +24,7 @@ As an example, we're going to use the [VBB profile](../p/vbb):
 const createClient = require('hafas-client')
 const vbbProfile = require('hafas-client/p/vbb')
 
-const client = createClient(vbbProfile)
+const client = createClient(vbbProfile, 'my-awesome-program')
 
 client.locations('Alexanderplatz', {results: 3})
 .then(console.log)
@@ -33,7 +35,7 @@ The response may look like this:
 
 ```js
 [ {
-	type: 'station',
+	type: 'stop',
 	id: '900000100003',
 	name: 'S+U Alexanderplatz',
 	location: {
@@ -52,14 +54,14 @@ The response may look like this:
 	}
 }, { // point of interest
 	type: 'location',
-	name: 'Berlin, Holiday Inn Centre Alexanderplatz****',
 	id: '900980709',
+	name: 'Berlin, Holiday Inn Centre Alexanderplatz****',
 	latitude: 52.523549,
 	longitude: 13.418441
 }, { // point of interest
 	type: 'location',
-	name: 'Berlin, Hotel Agon am Alexanderplatz',
 	id: '900980176',
+	name: 'Berlin, Hotel Agon am Alexanderplatz',
 	latitude: 52.524556,
 	longitude: 13.420266
 } ]

@@ -1,9 +1,9 @@
-# `location(station)`
+# `station(id, [opt])`
 
-`station` must be in one of these formats:
+`id` must be in one of these formats:
 
 ```js
-// a station ID, in a format compatible to the profile you use
+// a station ID, in a format compatible with the profile you use
 '900000123456'
 
 // an FPTF `station` object
@@ -19,6 +19,15 @@
 }
 ```
 
+With `opt`, you can override the default options, which look like this:
+
+```js
+{
+	stationLines: false, // parse & expose lines of the station?
+	language: 'en' // language to get results in
+}
+```
+
 ## Response
 
 As an example, we're going to use the [VBB profile](../p/vbb):
@@ -27,9 +36,9 @@ As an example, we're going to use the [VBB profile](../p/vbb):
 const createClient = require('hafas-client')
 const vbbProfile = require('hafas-client/p/vbb')
 
-const client = createClient(vbbProfile)
+const client = createClient(vbbProfile, 'my-awesome-program')
 
-client.location('900000042101') // U Spichernstr.
+client.station('900000042101') // U Spichernstr.
 .then(console.log)
 .catch(console.error)
 ```
@@ -38,7 +47,7 @@ The response may look like this:
 
 ```js
 {
-	type: 'station',
+	type: 'stop',
 	id: '900000042101',
 	name: 'U Spichernstr.',
 	location: {
@@ -58,24 +67,26 @@ The response may look like this:
 	lines: [ {
 		type: 'line',
 		id: 'u1',
-		name: 'U1',
-		public: true,
-		class: 2,
-		product: 'subway',
 		mode: 'train',
+		product: 'subway',
+		public: true,
+		name: 'U1',
+		class: 2,
 		symbol: 'U',
 		nr: 1,
 		metro: false,
 		express: false,
-		night: false },
-		// …
-		{ type: 'line',
+		night: false
+	},
+	// …
+	{
+		type: 'line',
 		id: 'n9',
-		name: 'N9',
-		public: true,
-		class: 8,
-		product: 'bus',
 		mode: 'bus',
+		product: 'bus',
+		public: true,
+		name: 'N9',
+		class: 8,
 		symbol: 'N',
 		nr: 9,
 		metro: false,

@@ -23,17 +23,24 @@ With `opt`, you can override the default options, which look like this:
 
 ```js
 {
+	// todo: products
 	when:      new Date(),
 	direction: null, // only show departures heading to this station
-	duration:  10 // show departures for the next n minutes
+	duration:  10, // show departures for the next n minutes
+	stationLines: false, // parse & expose lines of the station?
+	remarks: true, // parse & expose hints & warnings?
+	// departures at related stations
+	// e.g. those that belong together on the metro map.
+	includeRelatedStations: true,
+	language: 'en' // language to get results in
 }
 ```
 
 ## Response
 
-*Note:* As stated in the [*Friendly Public Transport Format* `1.0.1`](https://github.com/public-transport/friendly-public-transport-format/tree/1.0.1), the `when` field includes the current delay. The `delay` field, if present, expresses how much the former differs from the schedule.
+*Note:* As stated in the [*Friendly Public Transport Format* `1.1.1`](https://github.com/public-transport/friendly-public-transport-format/tree/1.1.1), the `when` field includes the current delay. The `delay` field, if present, expresses how much the former differs from the schedule.
 
-You may pass the `journeyId` field into [`journeyLeg(ref, lineName, [opt])`](journey-leg.md) to get details on the vehicle's journey.
+You may pass the `tripId` field into [`trip(id, lineName, [opt])`](trip.md) to get details on the vehicle's trip.
 
 As an example, we're going to use the [VBB profile](../p/vbb):
 
@@ -41,7 +48,7 @@ As an example, we're going to use the [VBB profile](../p/vbb):
 const createClient = require('hafas-client')
 const vbbProfile = require('hafas-client/p/vbb')
 
-const client = createClient(vbbProfile)
+const client = createClient(vbbProfile, 'my-awesome-program')
 
 // S Charlottenburg
 client.departures('900000024101', {duration: 3})
@@ -53,9 +60,8 @@ The response may look like this:
 
 ```js
 [ {
-	journeyId: '1|31431|28|86|17122017',
-	trip: 31431,
-	station: {
+	tripId: '1|31431|28|86|17122017',
+	stop: {
 		type: 'station',
 		id: '900000024101',
 		name: 'S Charlottenburg',
@@ -80,10 +86,10 @@ The response may look like this:
 	line: {
 		type: 'line',
 		id: '18299',
-		name: 'S9',
-		public: true,
 		mode: 'train',
 		product: 'suburban',
+		public: true,
+		name: 'S9',
 		symbol: 'S',
 		nr: 9,
 		metro: false,
@@ -96,21 +102,21 @@ The response may look like this:
 			name: 'S-Bahn Berlin GmbH'
 		}
 	},
-	direction: 'S Spandau'
+	direction: 'S Spandau',
+	trip: 31431
 }, {
-	journeyId: '1|30977|8|86|17122017',
-	trip: 30977,
-	station: { /* … */ },
+	tripId: '1|30977|8|86|17122017',
+	stop: { /* … */ },
 	when: null,
 	delay: null,
 	cancelled: true,
 	line: {
 		type: 'line',
 		id: '16441',
-		name: 'S5',
-		public: true,
 		mode: 'train',
 		product: 'suburban',
+		public: true,
+		name: 'S5',
 		symbol: 'S',
 		nr: 5,
 		metro: false,
@@ -119,39 +125,22 @@ The response may look like this:
 		productCode: 0,
 		operator: { /* … */ }
 	},
-	direction: 'S Westkreuz'
+	direction: 'S Westkreuz',
+	trip: 30977
 }, {
-	journeyId: '1|28671|4|86|17122017',
+	tripId: '1|28671|4|86|17122017',
 	trip: 28671,
-	station: {
-		type: 'station',
-		id: '900000024202',
-		name: 'U Wilmersdorfer Str.',
-		location: {
-			type: 'location',
-			latitude: 52.506415,
-			longitude: 13.306777
-		},
-		products: {
-			suburban: false,
-			subway: true,
-			tram: false,
-			bus: false,
-			ferry: false,
-			express: false,
-			regional: false
-		}
-	},
+	stop: { /* … */ },
 	when: '2017-12-17T19:35:00.000+01:00',
 	delay: 0,
 	platform: null,
 	line: {
 		type: 'line',
 		id: '19494',
-		name: 'U7',
-		public: true,
 		mode: 'train',
 		product: 'subway',
+		public: true,
+		name: 'U7',
 		symbol: 'U',
 		nr: 7,
 		metro: false,
