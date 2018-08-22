@@ -83,8 +83,11 @@ const createValidateLine = (cfg) => {
 	const validateLine = (val, line, name = 'line') => {
 		defaultValidators.line(val, line, name)
 
-		a.strictEqual(typeof line.fahrtNr, 'string', name + ' must be string')
-		a.ok(line.fahrtNr, name + ' must not be empty')
+		const msg = name + '.fahrtNr must be '
+		if (line.fahrtNr !== null) {
+			a.strictEqual(typeof line.fahrtNr, 'string', msg + 'a string')
+			a.ok(line.fahrtNr, msg + ' be empty')
+		}
 
 		a.ok(validLineModes.includes(line.mode), name + '.mode is invalid')
 	}
