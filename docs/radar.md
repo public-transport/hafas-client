@@ -50,6 +50,7 @@ The response may look like this:
 	line: {
 		type: 'line',
 		id: 's9',
+		fahrtNr: '12345',
 		name: 'S9',
 		public: true,
 		mode: 'train',
@@ -122,6 +123,7 @@ The response may look like this:
 	line: {
 		type: 'line',
 		id: 'm2',
+		fahrtNr: '54321',
 		name: 'M2',
 		public: true,
 		mode: 'train',

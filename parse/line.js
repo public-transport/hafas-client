@@ -15,6 +15,7 @@ const createParseLine = (profile, opt, {operators}) => {
 		const res = {
 			type: 'line',
 			id: null,
+			fahrtNr: p.prodCtx && p.prodCtx.num || null,
 			name: p.line || p.name,
 			public: true
 		}

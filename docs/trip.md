@@ -101,6 +101,7 @@ The response looked like this:
 	line: {
 		type: 'line',
 		id: '18299',
+		fahrtNr: '12345',
 		name: 'S9',
 		public: true,
 		mode: 'train',

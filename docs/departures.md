@@ -86,6 +86,7 @@ The response may look like this:
 	line: {
 		type: 'line',
 		id: '18299',
+		fahrtNr: '12345',
 		mode: 'train',
 		product: 'suburban',
 		public: true,
@@ -113,6 +114,7 @@ The response may look like this:
 	line: {
 		type: 'line',
 		id: '16441',
+		fahrtNr: '54321',
 		mode: 'train',
 		product: 'suburban',
 		public: true,
@@ -137,6 +139,7 @@ The response may look like this:
 	line: {
 		type: 'line',
 		id: '19494',
+		fahrtNr: '11111',
 		mode: 'train',
 		product: 'subway',
 		public: true,
