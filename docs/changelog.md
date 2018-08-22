@@ -1,5 +1,9 @@
 # Changelog
 
+## `3.1.0`
+
+- 9257d3a parse `line.fahrtNr`
+
 ## `3.0.0`
 
 This version is not fully backwords-compatible. Check out [the migration guide](migrating-to-3.md).
