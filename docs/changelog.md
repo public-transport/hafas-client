@@ -1,5 +1,9 @@
 # Changelog
 
+## `3.1.1`
+
+- 39cc2f3 fix install on Windows 🐛
+
 ## `3.1.0`
 
 - 9257d3a parse `line.fahrtNr`
