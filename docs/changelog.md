@@ -1,5 +1,9 @@
 # Changelog
 
+## `3.1.2`
+
+- f796337 handle warnings without schedule `sDate`/`eDate`/`lModDate` 🐛
+
 ## `3.1.1`
 
 - 39cc2f3 fix install on Windows 🐛
