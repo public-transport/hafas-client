@@ -1,11 +1,6 @@
 'use strict'
 
-const createParseBitmask = require('../../parse/products-bitmask')
-const createFormatBitmask = require('../../format/products-bitmask')
-
-const modes = require('./modes')
-
-const formatBitmask = createFormatBitmask(modes)
+const products = require('./products')
 
 const transformReqBody = (body) => {
 	body.client = {type: 'WEB', id: 'CMTA', name: 'webapp', l: ''}
@@ -16,29 +11,14 @@ const transformReqBody = (body) => {
 	return body
 }
 
-const defaultProducts = {
-  bus: true,
-  rapid: true,
-  rail: true
-}
-
-const formatProducts = (products) => {
-	products = Object.assign(Object.create(null), defaultProducts, products)
-	return {
-		type: 'PROD',
-		mode: 'INC',
-		value: formatBitmask(products) + ''
-	}
-}
-
 const cmtaProfile = {
 	endpoint: 'https://capmetro.hafas.de/bin/mgate.exe',
 	locale: 'en-US',
 	timezone: 'America/Chicago',
-	products: modes.allProducts,
 	transformReqBody,
-	formatProducts,
-	parseProducts: createParseBitmask(modes.allProducts, defaultProducts),
+
+	products,
+
 	journeyLeg: true,
 	radar: true
 }
