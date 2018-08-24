@@ -9,7 +9,7 @@ const createClient = require('hafas-client')
 const cmtaProfile = require('hafas-client/p/cmta')
 
 // create a client with CMTA profile
-const client = createClient(cmtaProfile)
+const client = createClient(cmtaProfile, 'my-awesome-program')
 ```
 
 
