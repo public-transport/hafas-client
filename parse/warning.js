@@ -27,16 +27,19 @@ const parseWarning = (profile, w, icons) => {
 	const icon = 'number' === typeof w.icoX && icons[w.icoX] || null
 	const type = icon && icon.res && typesByIcon[icon.res] || 'warning'
 
-	return {
+	const res = {
 		type,
 		summary: brToNewline(w.head),
 		text: brToNewline(w.text),
 		priority: w.prio,
-		category: w.cat, // todo: parse to sth meaningful
-		validFrom: parseDateTime(profile, w.sDate, w.sTime).toISO(),
-		validUntil: parseDateTime(profile, w.eDate, w.eTime).toISO(),
-		modified: parseDateTime(profile, w.lModDate, w.lModTime).toISO()
+		category: w.cat || null // todo: parse to sth meaningful
 	}
+
+	if (w.sDate && w.sTime) res.validFrom = parseDateTime(profile, w.sDate, w.sTime).toISO()
+	if (w.eDate && w.eTime) res.validUntil = parseDateTime(profile, w.eDate, w.eTime).toISO()
+	if (w.lModDate && w.lModTime) res.modified = parseDateTime(profile, w.lModDate, w.lModTime).toISO()
+
+	return res
 }
 
 module.exports = parseWarning
