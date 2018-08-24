@@ -3,6 +3,7 @@
 const minBy = require('lodash/minBy')
 const maxBy = require('lodash/maxBy')
 const isObj = require('lodash/isObject')
+const sortBy = require('lodash/sortBy')
 
 const defaultProfile = require('./lib/default-profile')
 const createParseBitmask = require('./parse/products-bitmask')
@@ -11,6 +12,18 @@ const validateProfile = require('./lib/validate-profile')
 const _request = require('./lib/request')
 
 const isNonEmptyString = str => 'string' === typeof str && str.length > 0
+
+const validateLocation = (loc, name = 'location') => {
+	if (!isObj(loc)) {
+		throw new Error(name + ' must be an object.')
+	} else if (loc.type !== 'location') {
+		throw new Error('invalid location object.')
+	} else if ('number' !== typeof loc.latitude) {
+		throw new Error(name + '.latitude must be a number.')
+	} else if ('number' !== typeof loc.longitude) {
+		throw new Error(name + '.longitude must be a number.')
+	}
+}
 
 const createClient = (profile, userAgent, request = _request) => {
 	profile = Object.assign({}, defaultProfile, profile)
@@ -319,15 +332,7 @@ const createClient = (profile, userAgent, request = _request) => {
 	}
 
 	const nearby = (location, opt = {}) => {
-		if (!isObj(location)) {
-			throw new Error('location must be an object.')
-		} else if (location.type !== 'location') {
-			throw new Error('invalid location object.')
-		} else if ('number' !== typeof location.latitude) {
-			throw new Error('location.latitude must be a number.')
-		} else if ('number' !== typeof location.longitude) {
-			throw new Error('location.longitude must be a number.')
-		}
+		validateLocation(location, 'location')
 
 		opt = Object.assign({
 			results: 8, // maximum number of results
@@ -458,10 +463,59 @@ const createClient = (profile, userAgent, request = _request) => {
 		})
 	}
 
+	const reachableFrom = (location, opt = {}) => {
+		validateLocation(location, 'location')
+
+		opt = Object.assign({
+			when: Date.now(),
+			maxTransfers: 5, // maximum of 5 transfers
+			maxDuration: 20, // maximum travel duration in minutes
+			products: {}
+		}, opt)
+		if (Number.isNaN(+opt.when)) throw new Error('opt.when is invalid')
+
+		return request(profile, userAgent, opt, {
+			meth: 'LocGeoReach',
+			req: {
+				loc: profile.formatLocation(profile, location, 'location'),
+				maxDur: opt.maxDuration,
+				maxChg: opt.maxTransfers,
+				date: profile.formatDate(profile, opt.when),
+				time: profile.formatTime(profile, opt.when),
+				period: 120, // todo: what is this?
+				jnyFltrL: [
+					profile.formatProductsFilter(opt.products || {})
+				]
+			}
+		})
+		.then((d) => {
+			if (!Array.isArray(d.posL)) throw new Error('invalid response')
+
+			const byDuration = []
+			let i = 0, lastDuration = NaN
+			for (const pos of sortBy(d.posL, 'dur')) {
+				const loc = d.locations[pos.locX]
+				if (!loc) continue
+				if (pos.dur !== lastDuration) {
+					lastDuration = pos.dur
+					i = byDuration.length
+					byDuration.push({
+						duration: pos.dur,
+						stations: [loc]
+					})
+				} else {
+					byDuration[i].stations.push(loc)
+				}
+			}
+			return byDuration
+		})
+	}
+
 	const client = {departures, arrivals, journeys, locations, station, nearby}
 	if (profile.trip) client.trip = trip
 	if (profile.radar) client.radar = radar
 	if (profile.refreshJourney) client.refreshJourney = refreshJourney
+	if (profile.reachableFrom) client.reachableFrom = reachableFrom
 	Object.defineProperty(client, 'profile', {value: profile})
 	return client
 }
