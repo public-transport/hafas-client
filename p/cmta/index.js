@@ -12,9 +12,9 @@ const transformReqBody = (body) => {
 }
 
 const cmtaProfile = {
-	endpoint: 'https://capmetro.hafas.de/bin/mgate.exe',
 	locale: 'en-US',
 	timezone: 'America/Chicago',
+	endpoint: 'https://capmetro.hafas.cloud/bin/mgate.exe',
 	transformReqBody,
 
 	products,
