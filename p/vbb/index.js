@@ -143,7 +143,8 @@ const vbbProfile = {
 
 	journeysNumF: false,
 	trip: true,
-	radar: true
+	radar: true,
+	reachableFrom: true
 }
 
 module.exports = vbbProfile

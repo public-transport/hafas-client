@@ -72,7 +72,8 @@ const oebbProfile = {
 	parseMovement: createParseMovement,
 
 	trip: true,
-	radar: true
+	radar: true,
+	reachableFrom: true
 }
 
 module.exports = oebbProfile

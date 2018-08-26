@@ -22,6 +22,15 @@ client.journeys('000002370', '000005919', {results: 1, polylines: true})
 // 	south: 30.225378,
 // 	east: -97.786692
 // }, {results: 10})
+// client.reachableFrom({
+// 	type: 'location',
+// 	address: '604 W 9TH ST, Austin, TX 78701',
+// 	latitude: 30.272910,
+// 	longitude: -97.747883
+// }, {
+// 	when: new Date('2018-08-27T10:00:00+0200'),
+// 	maxDuration: 15
+// })
 
 // .then(([journey]) => {
 // 	const leg = journey.legs[0]

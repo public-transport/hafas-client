@@ -22,6 +22,16 @@ client.journeys('1291501', '8100002', {results: 1})
 // 	south: 47.773278,
 // 	east: 13.07562
 // }, {results: 10})
+// client.reachableFrom({
+// 	type: 'location',
+// 	id: '970053039',
+// 	name: 'Graz, BILLA, Hauptplatz',
+// 	latitude: 47.070656,
+// 	longitude: 15.438002
+// }, {
+// 	when: new Date('2018-08-27T10:00:00+0200'),
+// 	maxDuration: 20
+// })
 
 .then((data) => {
 	console.log(require('util').inspect(data, {depth: null}))

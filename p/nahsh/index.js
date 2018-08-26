@@ -104,7 +104,8 @@ const nahshProfile = {
 	parseMovement: createParseMovement,
 
 	trip: true,
-	radar: true // todo: see #34
+	radar: true, // todo: see #34
+	reachableFrom: true
 }
 
 module.exports = nahshProfile

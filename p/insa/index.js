@@ -28,6 +28,7 @@ const insaProfile = {
 	trip: true,
 	radar: true,
 	refreshJourney: false
+	// todo: upgrade to version `1.13` in order to enable `reachableFrom: true`
 }
 
 module.exports = insaProfile;

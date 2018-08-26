@@ -319,7 +319,8 @@ const dbProfile = {
 
 	formatStation,
 
-	trip: true // todo: #49
+	trip: true, // todo: #49
+	reachableFrom: true
 }
 
 module.exports = dbProfile
