@@ -27,7 +27,8 @@ const cmtaProfile = {
 
 	trip: true,
 	radar: true,
-	refreshJourney: true
+	refreshJourney: true,
+	reachableFrom: true
 }
 
 module.exports = cmtaProfile

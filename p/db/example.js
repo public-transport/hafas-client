@@ -17,6 +17,15 @@ client.journeys('8011167', '8000261', {results: 1, tickets: true})
 // 	latitude: 52.4751309,
 // 	longitude: 13.3656537
 // }, {results: 1})
+// client.reachableFrom({
+// 	type: 'location',
+// 	address: '13353 Berlin-Wedding, Torfstr. 17',
+// 	latitude: 52.541797,
+// 	longitude: 13.350042
+// }, {
+// 	when: new Date('2018-08-27T10:00:00+0200'),
+// 	maxDuration: 50
+// })
 
 .then((data) => {
 	console.log(require('util').inspect(data, {depth: null}))

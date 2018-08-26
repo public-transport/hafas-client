@@ -106,7 +106,9 @@ const bvgProfile = {
 	formatStation,
 
 	trip: true,
-	radar: true
+	radar: true,
+	refreshJourney: true,
+	reachableFrom: true
 }
 
 module.exports = bvgProfile

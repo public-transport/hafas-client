@@ -18,6 +18,15 @@ client.journeys('8000103', '8000199', {results: 10, tickets: true})
 // 	longitude: 10.116424
 // }, {distance: 60})
 // client.radar(54.4, 10.0, 54.2, 10.2, {results: 10})
+// client.reachableFrom({
+// 	type: 'location',
+// 	address: 'Husum, Berliner Straße 80',
+// 	latitude: 54.488995,
+// 	longitude: 9.056263
+// }, {
+// 	when: new Date('2018-08-27T10:00:00+0200'),
+// 	maxDuration: 20
+// })
 
 .then((data) => {
 	console.log(require('util').inspect(data, {depth: null}))

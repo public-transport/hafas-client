@@ -22,6 +22,15 @@ client.journeys('900000003201', '900000024101', {results: 1, polylines: true})
 // 	south: 52.51942,
 // 	east: 13.41709
 // }, {results: 10})
+// client.reachableFrom({
+// 	type: 'location',
+// 	address: '13353 Berlin-Wedding, Torfstr. 17',
+// 	latitude: 52.541797,
+// 	longitude: 13.350042
+// }, {
+// 	when: new Date('2018-08-27T10:00:00+0200'),
+// 	maxDuration: 10
+// })
 
 // .then(([journey]) => {
 // 	const leg = journey.legs[0]
