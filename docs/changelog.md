@@ -1,5 +1,9 @@
 # Changelog
 
+## `3.2.0`
+
+- #79 [BVG profile](p/cmta) – Thanks @nickturskyi!
+
 ## `3.1.2`
 
 - f796337 handle warnings without schedule `sDate`/`eDate`/`lModDate` 🐛
