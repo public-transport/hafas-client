@@ -8,13 +8,13 @@ const testReachableFrom = co(function* (cfg) {
 	const {
 		test: t,
 		reachableFrom,
-		loc,
+		address,
 		when,
 		maxDuration,
 		validate
 	} = cfg
 
-	const results = yield reachableFrom(loc, {
+	const results = yield reachableFrom(address, {
 		when, maxDuration
 	})
 

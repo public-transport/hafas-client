@@ -9,7 +9,7 @@
 - [`station(id, [opt])`](station.md) – get details about a station
 - [`nearby(location, [opt])`](nearby.md) – show stations & POIs around
 - [`radar(north, west, south, east, [opt])`](radar.md) – find all vehicles currently in a certain area
-- [`reachableFrom(location, [opt])`](reachable-from.md) – get all stations reachable from a location within `n` minutes
+- [`reachableFrom(address, [opt])`](reachable-from.md) – get all stations reachable from an address within `n` minutes
 
 ## Writing a profile
 

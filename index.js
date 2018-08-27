@@ -463,8 +463,8 @@ const createClient = (profile, userAgent, request = _request) => {
 		})
 	}
 
-	const reachableFrom = (location, opt = {}) => {
-		validateLocation(location, 'location')
+	const reachableFrom = (address, opt = {}) => {
+		validateLocation(address, 'address')
 
 		opt = Object.assign({
 			when: Date.now(),
@@ -477,7 +477,7 @@ const createClient = (profile, userAgent, request = _request) => {
 		return request(profile, userAgent, opt, {
 			meth: 'LocGeoReach',
 			req: {
-				loc: profile.formatLocation(profile, location, 'location'),
+				loc: profile.formatLocation(profile, address, 'address'),
 				maxDur: opt.maxDuration,
 				maxChg: opt.maxTransfers,
 				date: profile.formatDate(profile, opt.when),
