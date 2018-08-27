@@ -27,6 +27,7 @@ const testDeparturesInDirection = require('./lib/departures-in-direction')
 const testDeparturesWithoutRelatedStations = require('./lib/departures-without-related-stations')
 const testArrivals = require('./lib/arrivals')
 const testJourneysWithDetour = require('./lib/journeys-with-detour')
+const testReachableFrom = require('./lib/reachable-from')
 
 const isObj = o => o !== null && 'object' === typeof o && !Array.isArray(o)
 
@@ -346,5 +347,24 @@ test('station', co(function* (t) {
 	validate(t, s, ['stop', 'station'], 'station')
 	t.equal(s.id, regensburgHbf)
 
+	t.end()
+}))
+
+test('reachableFrom', co(function* (t) {
+	const torfstr17 = {
+		type: 'location',
+		address: 'Torfstraße 17',
+		latitude: 52.5416823,
+		longitude: 13.3491223
+	}
+
+	yield testReachableFrom({
+		test: t,
+		reachableFrom: client.reachableFrom,
+		loc: torfstr17,
+		when,
+		maxDuration: 15,
+		validate
+	})
 	t.end()
 }))

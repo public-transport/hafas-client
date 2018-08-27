@@ -20,6 +20,7 @@ const journeysFailsWithNoProduct = require('./lib/journeys-fails-with-no-product
 const testDepartures = require('./lib/departures')
 const testArrivals = require('./lib/arrivals')
 const testJourneysWithDetour = require('./lib/journeys-with-detour')
+const testReachableFrom = require('./lib/reachable-from')
 
 const when = createWhen(cmtaProfile.timezone, cmtaProfile.locale)
 
@@ -258,5 +259,22 @@ test('radar', co(function* (t) {
 	})
 
 	validate(t, vehicles, 'movements', 'vehicles')
+	t.end()
+}))
+
+test('reachableFrom', co(function* (t) {
+	yield testReachableFrom({
+		test: t,
+		reachableFrom: client.reachableFrom,
+		loc: {
+			type: 'location',
+			address: '604 W 9TH ST, Austin, TX 78701',
+			latitude: 30.272910,
+			longitude: -97.747883
+		},
+		when,
+		maxDuration: 15,
+		validate
+	})
 	t.end()
 }))
