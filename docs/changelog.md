@@ -2,7 +2,7 @@
 
 ## `3.2.0`
 
-- #79 [BVG profile](p/cmta) – Thanks @nickturskyi!
+- #79 [CapMetro/CMTA profile](p/cmta) – Thanks @nickturskyi!
 
 ## `3.1.2`
 

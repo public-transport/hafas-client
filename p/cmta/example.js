@@ -14,7 +14,7 @@ client.journeys('000002370', '000005919', {results: 1, polylines: true})
 // client.nearby({
 // 	type: 'location',
 // 	latitude: 30.266222,
-// 	longtitude: -97.746058
+// 	longitude: -97.746058
 // }, {distance: 60})
 // client.radar({
 // 	north: 30.240877,
