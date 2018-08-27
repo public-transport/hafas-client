@@ -23,6 +23,7 @@ const journeysFailsWithNoProduct = require('./lib/journeys-fails-with-no-product
 const testDepartures = require('./lib/departures')
 const testDeparturesInDirection = require('./lib/departures-in-direction')
 const testArrivals = require('./lib/arrivals')
+const testReachableFrom = require('./lib/reachable-from')
 
 const when = createWhen('Europe/Berlin', 'de-DE')
 
@@ -345,5 +346,24 @@ test('radar', co(function* (t) {
 	})
 	validate(t, vehicles, 'movements', 'vehicles')
 
+	t.end()
+}))
+
+test('reachableFrom', co(function* (t) {
+	const berlinerStr = {
+		type: 'location',
+		address: 'Husum, Berliner Straße 80',
+		latitude: 54.488995,
+		longitude: 9.056263
+	}
+
+	yield testReachableFrom({
+		test: t,
+		reachableFrom: client.reachableFrom,
+		loc: berlinerStr,
+		when,
+		maxDuration: 60,
+		validate
+	})
 	t.end()
 }))

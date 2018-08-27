@@ -27,6 +27,7 @@ const testDeparturesInDirection = require('./lib/departures-in-direction')
 const testDeparturesWithoutRelatedStations = require('./lib/departures-without-related-stations')
 const testArrivals = require('./lib/arrivals')
 const testJourneysWithDetour = require('./lib/journeys-with-detour')
+const testReachableFrom = require('./lib/reachable-from')
 
 const when = cfg.when
 
@@ -355,5 +356,24 @@ test('radar', co(function* (t) {
 	})
 
 	validate(t, vehicles, 'movements', 'vehicles')
+	t.end()
+}))
+
+test('reachableFrom', co(function* (t) {
+	const torfstr17 = {
+		type: 'location',
+		address: '13353 Berlin-Wedding, Torfstr. 17',
+		latitude: 52.541797,
+		longitude: 13.350042
+	}
+
+	yield testReachableFrom({
+		test: t,
+		reachableFrom: client.reachableFrom,
+		loc: torfstr17,
+		when,
+		maxDuration: 15,
+		validate
+	})
 	t.end()
 }))
