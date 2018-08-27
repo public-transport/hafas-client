@@ -380,7 +380,7 @@ test('reachableFrom', co(function* (t) {
 	yield testReachableFrom({
 		test: t,
 		reachableFrom: client.reachableFrom,
-		loc: torfstr17,
+		address: torfstr17,
 		when,
 		maxDuration: 15,
 		validate

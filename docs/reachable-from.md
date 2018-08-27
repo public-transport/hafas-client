@@ -1,10 +1,10 @@
-# `reachableFrom(location, [opt])`
+# `reachableFrom(address, [opt])`
 
-This method can be used to compute the area around a location that is reachable within a certain time. This concept is called [isochrone diagram](https://en.wikipedia.org/wiki/Isochrone_map#Transportation_planning).
+This method can be used to get stations reachable within a certain time from an address. This concept is called [isochrone diagram](https://en.wikipedia.org/wiki/Isochrone_map#Transportation_planning).
 
-*Note*: It appears that HAFAS cannot generate actual isochrones, but a list of reachable stations, which you can estimate the isochrone(s) from.
+*Note*: It appears that HAFAS cannot generate actual isochrones, but only the list of reachable stations, which you can estimate the isochrone(s) from.
 
-`location` must be an [*FPTF* `location` object](https://github.com/public-transport/friendly-public-transport-format/blob/1.1.1/spec/readme.md#location-objects).
+`address` must be an [*FPTF* `location` object](https://github.com/public-transport/friendly-public-transport-format/blob/1.1.1/spec/readme.md#location-objects).
 
 With `opt`, you can override the default options, which look like this:
 
@@ -24,7 +24,7 @@ With `opt`, you can override the default options, which look like this:
 
 ## Response
 
-`reachableFrom(loc, [opt])` returns an array, in which each item has a `duration` and an array of [*Friendly Public Transport Format* `1.1.1`](https://github.com/public-transport/friendly-public-transport-format/tree/1.1.1) stations.
+`reachableFrom(address, [opt])` returns an array, in which each item has a `duration` and an array of [*Friendly Public Transport Format* `1.1.1`](https://github.com/public-transport/friendly-public-transport-format/tree/1.1.1) stations.
 
 As an example, we're going to use the [VBB profile](../p/vbb):
 

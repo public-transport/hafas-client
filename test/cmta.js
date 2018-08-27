@@ -266,7 +266,7 @@ test('reachableFrom', co(function* (t) {
 	yield testReachableFrom({
 		test: t,
 		reachableFrom: client.reachableFrom,
-		loc: {
+		address: {
 			type: 'location',
 			address: '604 W 9TH ST, Austin, TX 78701',
 			latitude: 30.272910,
