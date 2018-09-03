@@ -4,6 +4,7 @@ const minBy = require('lodash/minBy')
 const maxBy = require('lodash/maxBy')
 const isObj = require('lodash/isObject')
 const sortBy = require('lodash/sortBy')
+const pRetry = require('p-retry')
 
 const defaultProfile = require('./lib/default-profile')
 const createParseBitmask = require('./parse/products-bitmask')
@@ -474,40 +475,53 @@ const createClient = (profile, userAgent, request = _request) => {
 		}, opt)
 		if (Number.isNaN(+opt.when)) throw new Error('opt.when is invalid')
 
-		return request(profile, userAgent, opt, {
-			meth: 'LocGeoReach',
-			req: {
-				loc: profile.formatLocation(profile, address, 'address'),
-				maxDur: opt.maxDuration,
-				maxChg: opt.maxTransfers,
-				date: profile.formatDate(profile, opt.when),
-				time: profile.formatTime(profile, opt.when),
-				period: 120, // todo: what is this?
-				jnyFltrL: [
-					profile.formatProductsFilter(opt.products || {})
-				]
-			}
-		})
-		.then((d) => {
-			if (!Array.isArray(d.posL)) throw new Error('invalid response')
-
-			const byDuration = []
-			let i = 0, lastDuration = NaN
-			for (const pos of sortBy(d.posL, 'dur')) {
-				const loc = d.locations[pos.locX]
-				if (!loc) continue
-				if (pos.dur !== lastDuration) {
-					lastDuration = pos.dur
-					i = byDuration.length
-					byDuration.push({
-						duration: pos.dur,
-						stations: [loc]
-					})
-				} else {
-					byDuration[i].stations.push(loc)
+		const refetch = () => {
+			return request(profile, userAgent, opt, {
+				meth: 'LocGeoReach',
+				req: {
+					loc: profile.formatLocation(profile, address, 'address'),
+					maxDur: opt.maxDuration,
+					maxChg: opt.maxTransfers,
+					date: profile.formatDate(profile, opt.when),
+					time: profile.formatTime(profile, opt.when),
+					period: 120, // todo: what is this?
+					jnyFltrL: [
+						profile.formatProductsFilter(opt.products || {})
+					]
 				}
-			}
-			return byDuration
+			})
+			.then((d) => {
+				if (!Array.isArray(d.posL)) {
+					console.error('d', d)
+					const err = new Error('invalid response')
+					err.shouldRetry = true
+					throw err
+				}
+
+				const byDuration = []
+				let i = 0, lastDuration = NaN
+				for (const pos of sortBy(d.posL, 'dur')) {
+					const loc = d.locations[pos.locX]
+					if (!loc) continue
+					if (pos.dur !== lastDuration) {
+						lastDuration = pos.dur
+						i = byDuration.length
+						byDuration.push({
+							duration: pos.dur,
+							stations: [loc]
+						})
+					} else {
+						byDuration[i].stations.push(loc)
+					}
+				}
+				return byDuration
+			})
+		}
+
+		return pRetry(refetch, {
+			retries: 3,
+			factor: 2,
+			minTimeout: 2 * 1000
 		})
 	}
 
