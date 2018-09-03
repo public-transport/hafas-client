@@ -260,7 +260,9 @@ const validateJourneys = (val, js, name = 'journeys') => {
 	}
 }
 
-const createValidateArrivalOrDeparture = (cfg) => {
+const createValidateArrivalOrDeparture = (type, cfg) => {
+	if (type !== 'arrival' && type !== 'departure') throw new Error('invalid type')
+
 	const validateArrivalOrDeparture = (val, dep, name = 'arrOrDep') => {
 		a.ok(isObj(dep), name + ' must be an object')
 		// todo: let hafas-client add a .type field
@@ -284,11 +286,17 @@ const createValidateArrivalOrDeparture = (cfg) => {
 		}
 
 		val.line(val, dep.line, name + '.line')
-		a.strictEqual(typeof dep.direction, 'string', name + '.direction must be a string')
-		a.ok(dep.direction, name + '.direction must not be empty')
+		if (type === 'departure') {
+			const n = name + '.direction'
+			a.strictEqual(typeof dep.direction, 'string', n + ' must be a string')
+			a.ok(dep.direction, n + ' must not be empty')
+		}
 	}
 	return validateArrivalOrDeparture
 }
+
+const createValidateArrival = cfg => createValidateArrivalOrDeparture('arrival', cfg)
+const createValidateDeparture = cfg => createValidateArrivalOrDeparture('departure', cfg)
 
 const validateArrivals = (val, deps, name = 'arrivals') => {
 	a.ok(Array.isArray(deps), name + ' must be an array')
@@ -362,8 +370,8 @@ module.exports = {
 	journeyLeg: createValidateJourneyLeg,
 	journey: () => validateJourney,
 	journeys: () => validateJourneys,
-	arrival: createValidateArrivalOrDeparture,
-	departure: createValidateArrivalOrDeparture,
+	arrival: createValidateArrival,
+	departure: createValidateDeparture,
 	departures: () => validateDepartures,
 	arrivals: () => validateArrivals,
 	movement: () => validateMovement,
