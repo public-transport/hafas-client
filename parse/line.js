@@ -12,20 +12,20 @@ const createParseLine = (profile, opt, {operators}) => {
 
 	const parseLine = (p) => {
 		if (!p) return null // todo: handle this upstream
+		const name = p.line || p.nameS || p.name || null
 		const res = {
 			type: 'line',
-			id: null,
+			// This is terrible, but FPTF demands an ID. Let's pray for HAFAS.
+			id: (
+				p.prodCtx && p.prodCtx.lineId && slugg(p.prodCtx.lineId.trim())
+				|| name && slugg(name.trim())
+				|| null
+			),
 			fahrtNr: p.prodCtx && p.prodCtx.num || null,
-			name: p.line || p.name,
+			name,
 			public: true
 		}
-		// todo: what is p.prodCtx && p.prodCtx.num?
 		// todo: what is p.number?
-
-		// This is terrible, but FPTF demands an ID. Let's pray for HaCon to expose an ID.
-		// todo: find a better way
-		if (p.line) res.id = slugg(p.line.trim())
-		else if (p.name) res.id = slugg(p.name.trim())
 
 		if (p.cls) res.class = p.cls
 		if (p.prodCtx && p.prodCtx.catCode !== undefined) {
