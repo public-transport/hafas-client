@@ -1,5 +1,9 @@
 # Changelog
 
+## `3.3.0`
+
+- #80/b36ccda `reachableFrom()` method – [docs](reachable-from.md)
+
 ## `3.2.1`
 
 - 044a5ee `arrivals()`: return a `direction` of `null` :bug:
