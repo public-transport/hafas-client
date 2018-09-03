@@ -1,5 +1,9 @@
 # Changelog
 
+## `3.3.1`
+
+- 035877c `reachableFrom()` retry 🐛
+
 ## `3.3.0`
 
 - #80/b36ccda `reachableFrom()` method – [docs](reachable-from.md)
