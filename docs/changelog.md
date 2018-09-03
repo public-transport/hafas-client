@@ -1,5 +1,10 @@
 # Changelog
 
+## `3.2.1`
+
+- 044a5ee `arrivals()`: return a `direction` of `null` :bug:
+- b37bedb parse `line.id` if possible
+
 ## `3.2.0`
 
 - #79 [CapMetro/CMTA profile](p/cmta) – Thanks @nickturskyi!
