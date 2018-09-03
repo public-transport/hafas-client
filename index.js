@@ -445,7 +445,7 @@ const createClient = (profile, userAgent, request = _request) => {
 			}
 		})
 		.then((d) => {
-			if (!Array.isArray(d.jnyL)) return []
+			if (!Array.isArray(d.jnyL) || d.jnyL.length === 0) return []
 
 			const parse = profile.parseMovement(profile, opt, {
 				locations: d.locations,

@@ -41,7 +41,6 @@ const applyRemarks = (leg, hints, warnings, refs) => {
 
 const createParseJourneyLeg = (profile, opt, data) => {
 	const {locations, lines, hints, warnings, polylines} = data
-	// todo: pt.status
 	// todo: pt.status, pt.isPartCncl
 	// todo: pt.isRchbl, pt.chRatingRT, pt.chgDurR, pt.minChg
 	// todo: pt.sDays
