@@ -61,7 +61,7 @@
 		"vbb-stations-autocomplete": "^3.1.0"
 	},
 	"scripts": {
-		"test": "env NODE_ENV=dev NODE_DEBUG=hafas-client node test/index.js",
+		"test": "env NODE_ENV=dev node test/index.js",
 		"prepublishOnly": "npm test | tap-spec",
 		"install": "node lib/generate-install-id.js >id.json"
 	}
