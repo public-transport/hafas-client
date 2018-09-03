@@ -2,12 +2,15 @@
 
 const findRemark = require('./find-remark')
 
+const ARRIVAL = 'a'
+const DEPARTURE = 'd'
+
 // todo: what is d.jny.dirFlg?
 // todo: d.stbStop.dProgType/d.stbStop.aProgType
 
 const createParseArrOrDep = (profile, opt, data, prefix) => {
 	const {locations, lines, hints, warnings} = data
-	if (prefix !== 'a' && prefix !== 'd') throw new Error('invalid prefix')
+	if (prefix !== ARRIVAL && prefix !== DEPARTURE) throw new Error('invalid prefix')
 
 	const parseArrOrDep = (d) => {
 		const t = d.stbStop[prefix + 'TimeR'] || d.stbStop[prefix + 'TimeS']
@@ -17,7 +20,8 @@ const createParseArrOrDep = (profile, opt, data, prefix) => {
 			tripId: d.jid,
 			stop: locations[parseInt(d.stbStop.locX)] || null,
 			when: when.toISO(),
-			direction: profile.parseStationName(d.dirTxt),
+			// todo: for arrivals, this is the *origin*, not the *direction*
+			direction: prefix === DEPARTURE && profile.parseStationName(d.dirTxt) || null,
 			line: lines[parseInt(d.prodX)] || null,
 			remarks: [],
 			// todo: res.trip from rawLine.prodCtx.num?
