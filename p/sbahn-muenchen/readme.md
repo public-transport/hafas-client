@@ -6,8 +6,8 @@
 
 ```js
 const createClient = require('hafas-client')
-const sMunichProfile = require('hafas-client/p/sbahn-munich')
+const sMuenchenProfile = require('hafas-client/p/sbahn-muenchen')
 
 // create a client with S-Bahn München profile
-const client = createClient(sMunichProfile, 'my-awesome-program')
+const client = createClient(sMuenchenProfile, 'my-awesome-program')
 ```
