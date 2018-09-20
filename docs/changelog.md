@@ -1,5 +1,9 @@
 # Changelog
 
+## `3.4.0`
+
+- #81 [S-Bahn München profile](p/sbahn-muenchen) – Thanks @flori-uni!
+
 ## `3.3.1`
 
 - 035877c `reachableFrom()` retry 🐛
