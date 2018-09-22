@@ -1,5 +1,9 @@
 # Changelog
 
+## `3.4.1`
+
+- 582c9de speed up date+time parsing ⚡️
+
 ## `3.4.0`
 
 - #81 [S-Bahn München profile](p/sbahn-muenchen) – Thanks @flori-uni!
