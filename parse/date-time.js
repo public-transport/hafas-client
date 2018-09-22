@@ -1,6 +1,8 @@
 'use strict'
 
-const {DateTime} = require('luxon')
+const {DateTime, IANAZone} = require('luxon')
+
+const timezones = new WeakMap()
 
 const parseDateTime = (profile, date, time) => {
 	const pDate = [date.substr(-8, 4), date.substr(-4, 2), date.substr(-2, 2)]
@@ -15,9 +17,16 @@ const parseDateTime = (profile, date, time) => {
 
 	const offset = time.length > 6 ? parseInt(time.slice(0, -6)) : 0
 
+	let timezone
+	if (timezones.has(profile)) timezone = timezones.get(profile)
+	else {
+		timezone = new IANAZone(profile.timezone)
+		timezones.set(profile, timezone)
+	}
+
 	const dt = DateTime.fromISO(pDate.join('-') + 'T' + pTime.join(':'), {
 		locale: profile.locale,
-		zone: profile.timezone
+		zone: timezone
 	})
 	return offset > 0 ? dt.plus({days: offset}) : dt
 }
