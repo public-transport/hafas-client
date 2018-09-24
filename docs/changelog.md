@@ -2,6 +2,10 @@
 
 ## `3.4.1`
 
+- ed3ecd7 speed up date+time formatting ⚡️
+
+## `3.4.1`
+
 - 582c9de speed up date+time parsing ⚡️
 
 ## `3.4.0`
