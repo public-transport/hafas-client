@@ -141,7 +141,7 @@ const vbbProfile = {
 
 	formatStation,
 
-	journeysNumF: false,
+	journeysNumF: true,
 	trip: true,
 	radar: true,
 	reachableFrom: true

@@ -169,12 +169,11 @@ const createClient = (profile, userAgent, request = _request) => {
 			filters.push(profile.filters.accessibility[opt.accessibility])
 		}
 
-		// With protocol version `1.16`, the VBB endpoint fails with
+		// With protocol version `1.16`, the VBB endpoint *used to* fail with
 		// `CGI_READ_FAILED` if you pass `numF`, the parameter for the number
 		// of results. To circumvent this, we loop here, collecting journeys
 		// until we have enough.
-		// see https://github.com/public-transport/hafas-client/pull/23#issuecomment-370246163
-		// todo: check if `numF` is supported again, revert this change
+		// todo: revert this change, see https://github.com/public-transport/hafas-client/issues/76#issuecomment-424448449
 		const journeys = []
 		const more = (when, journeysRef) => {
 			const query = {
