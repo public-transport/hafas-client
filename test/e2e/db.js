@@ -2,6 +2,8 @@
 
 const tap = require('tap')
 const isRoughlyEqual = require('is-roughly-equal')
+const maxBy = require('lodash/maxBy')
+const flatMap = require('lodash/flatMap')
 
 const {createWhen} = require('./lib/util')
 const createClient = require('../..')
@@ -27,6 +29,7 @@ const testReachableFrom = require('./lib/reachable-from')
 const testServerInfo = require('./lib/server-info')
 
 const isObj = o => o !== null && 'object' === typeof o && !Array.isArray(o)
+const minute = 60 * 1000
 
 const when = createWhen('Europe/Berlin', 'de-DE')
 
@@ -72,6 +75,8 @@ const blnOstbahnhof = '8010255'
 const blnTiergarten = '8089091'
 const blnJannowitzbrücke = '8089019'
 const potsdamHbf = '8012666'
+const berlinSüdkreuz = '8011113'
+const kölnHbf = '8000207'
 
 tap.test('journeys – Berlin Schwedter Str. to München Hbf', async (t) => {
 	const res = await client.journeys(blnSchwedterStr, münchenHbf, {
@@ -211,6 +216,89 @@ tap.test('refreshJourney', async (t) => {
 		when
 	})
 	t.end()
+})
+
+tap.test('journeysFromTrip – U Mehringdamm to U Naturkundemuseum, reroute to Spittelmarkt.', async (t) => {
+	const blnMehringdamm = '730939'
+	const blnStadtmitte = '732541'
+	const blnNaturkundemuseum = '732539'
+	const blnSpittelmarkt = '732543'
+
+	const isU6Leg = leg => (
+		leg.line && leg.line.name
+		&& leg.line.name.toUpperCase().replace(/\s+/g, '') === 'U6'
+	)
+	const sameStopOrStation = (stopA) => (stopB) => {
+		if (stopA.id && stopB.id && stopA.id === stopB.id) return true
+		const statA = stopA.stat && stopA.stat.id || NaN
+		const statB = stopB.stat && stopB.stat.id || NaN
+		return (statA === statB || stopA.id === statB || stopB.id === statA)
+	}
+	const departureOf = st => +new Date(st.departure || st.scheduledDeparture)
+	const arrivalOf = st => +new Date(st.arrival || st.scheduledArrival)
+
+	// `journeysFromTrip` only supports queries *right now*, so we can't use `when` as in all
+	// other tests. To make the test less brittle, we pick a connection that is served all night. 🙄
+	const when = new Date()
+	const validate = createValidate({...cfg, when})
+
+	const findTripBetween = async (stopAId, stopBId, products = {}) => {
+		const {journeys} = await client.journeys(stopAId, stopBId, {
+			departure: new Date(when - 10 * minute),
+			transfers: 0, products,
+			results: 8, stopovers: false, remarks: false,
+		})
+		for (const j of journeys) {
+			const l = j.legs.find(isU6Leg)
+			if (!l) continue
+			const t = await client.trip(l.tripId, l.line && l.line.name, {
+				stopovers: true, remarks: false
+			})
+
+			const hasStoppedAtA = t.stopovers
+			.filter(st => departureOf(st) < Date.now()) // todo: <= ?
+			.find(sameStopOrStation({id: stopAId}))
+			const willStopAtB = t.stopovers
+			.filter(st => arrivalOf(st) > Date.now()) // todo: >= ?
+			.find(sameStopOrStation({id: stopBId}))
+
+			if (hasStoppedAtA && willStopAtB) {
+				const prevStopover = maxBy(pastStopovers, departureOf)
+				return {trip: t, prevStopover}
+			}
+		}
+		return {trip: null, prevStopover: null}
+	}
+
+	// Find a vehicle from U Mehringdamm to U Stadtmitte (to the north) that is currently
+	// between these two stations.
+	const {trip, prevStopover} = await findTripBetween(blnMehringdamm, blnStadtmitte, {
+		regionalExp: false, regional: false, suburban: false
+	})
+	t.ok(trip, 'precondition failed: trip not found')
+	t.ok(prevStopover, 'precondition failed: previous stopover missing')
+
+	// todo: "Error: Suche aus dem Zug: Vor Abfahrt des Zuges"
+	const newJourneys = await client.journeysFromTrip(trip.id, prevStopover, blnSpittelmarkt, {
+		results: 3, stopovers: true, remarks: false
+	})
+
+	// Validate with fake prices.
+	const withFakePrice = (j) => {
+		const clone = Object.assign({}, j)
+		clone.price = {amount: 123, currency: 'EUR'}
+		return clone
+	}
+	validate(t, newJourneys.map(withFakePrice), 'newJourneys', 'journeysFromTrip')
+
+	for (let i = 0; i < newJourneys.length; i++) {
+		const j = newJourneys[i]
+		const n = `newJourneys[${i}]`
+
+		const legOnTrip = j.legs.find(l => l.tripId === trip.id)
+		t.ok(legOnTrip, n + ': leg with trip ID not found')
+		t.equal(last(legOnTrip.stopovers).stop.id, blnStadtmitte)
+	}
 })
 
 tap.test('trip details', async (t) => {
