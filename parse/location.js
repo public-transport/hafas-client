@@ -4,6 +4,8 @@ const POI = 'P'
 const STATION = 'S'
 const ADDRESS = 'A'
 
+const leadingZeros = /^0+/
+
 // todo: what is s.rRefL?
 const parseLocation = (profile, opt, {lines}, l) => {
 	const res = {type: 'location'}
@@ -15,7 +17,7 @@ const parseLocation = (profile, opt, {lines}, l) => {
 	if (l.type === STATION) {
 		const stop = {
 			type: l.isMainMast ? 'station' : 'stop',
-			id: l.extId,
+			id: (l.extId || '').replace(leadingZeros, ''),
 			name: l.name ? profile.parseStationName(l.name) : null,
 			location: 'number' === typeof res.latitude ? res : null
 		}
@@ -39,7 +41,7 @@ const parseLocation = (profile, opt, {lines}, l) => {
 
 	if (l.type === ADDRESS) res.address = l.name
 	else res.name = l.name
-	if (l.type === POI) res.id = l.extId || null
+	if (l.type === POI) res.id = l.extId && l.extId.replace(leadingZeros, '') || null
 
 	return res
 }

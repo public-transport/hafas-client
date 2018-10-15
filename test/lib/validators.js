@@ -40,11 +40,13 @@ const validateStop = (val, s, name = 'stop') => {
 	station.type = 'station'
 	s = Object.assign({station}, s)
 	defaultValidators.stop(val, s, name)
+	// todo: check if s.id has leading zeros
 }
 
 const validatePoi = (val, poi, name = 'location') => {
 	defaultValidators.location(val, poi, name)
 	val.ref(val, poi.id, name + '.id')
+	// todo: check if s.id has leading zeros
 	a.ok(poi.name, name + '.name must not be empty')
 }
 
