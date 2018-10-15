@@ -14,12 +14,11 @@ const createParseArrOrDep = (profile, opt, data, prefix) => {
 
 	const parseArrOrDep = (d) => {
 		const t = d.stbStop[prefix + 'TimeR'] || d.stbStop[prefix + 'TimeS']
-		const when = profile.parseDateTime(profile, d.date, t)
 
 		const res = {
 			tripId: d.jid,
 			stop: locations[parseInt(d.stbStop.locX)] || null,
-			when: when.toISO(),
+			when: profile.parseDateTime(profile, d.date, t),
 			// todo: for arrivals, this is the *origin*, not the *direction*
 			direction: prefix === DEPARTURE && profile.parseStationName(d.dirTxt) || null,
 			line: lines[parseInt(d.prodX)] || null,
@@ -33,8 +32,8 @@ const createParseArrOrDep = (profile, opt, data, prefix) => {
 		const tR = d.stbStop[prefix + 'TimeR']
 		const tP = d.stbStop[prefix + 'TimeS']
 		if (tR && tP) {
-			const realtime = profile.parseDateTime(profile, d.date, tR)
-			const planned = profile.parseDateTime(profile, d.date, tP)
+			const realtime = profile.parseDateTime(profile, d.date, tR, true)
+			const planned = profile.parseDateTime(profile, d.date, tP, true)
 			res.delay = Math.round((realtime - planned) / 1000)
 		} else res.delay = null
 
@@ -51,9 +50,7 @@ const createParseArrOrDep = (profile, opt, data, prefix) => {
 			res.cancelled = true
 			Object.defineProperty(res, 'canceled', {value: true})
 			res.when = res.delay = null
-
-			const when = profile.parseDateTime(profile, d.date, tP)
-			res.formerScheduledWhen = when.toISO()
+			res.formerScheduledWhen = profile.parseDateTime(profile, d.date, tP)
 		}
 
 		if (opt.remarks) {

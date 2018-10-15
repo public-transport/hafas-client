@@ -5,7 +5,7 @@ const {DateTime, IANAZone} = require('luxon')
 const timezones = new WeakMap()
 
 // todo: change to `(profile) => (date, time) => {}`
-const parseDateTime = (profile, date, time) => {
+const parseDateTime = (profile, date, time, timestamp = false) => {
 	const pDate = [date.substr(-8, 4), date.substr(-4, 2), date.substr(-2, 2)]
 	if (!pDate[0] || !pDate[1] || !pDate[2]) {
 		throw new Error('invalid date format: ' + date)
@@ -25,11 +25,12 @@ const parseDateTime = (profile, date, time) => {
 		timezones.set(profile, timezone)
 	}
 
-	const dt = DateTime.fromISO(pDate.join('-') + 'T' + pTime.join(':'), {
+	let dt = DateTime.fromISO(pDate.join('-') + 'T' + pTime.join(':'), {
 		locale: profile.locale,
 		zone: timezone
 	})
-	return offset > 0 ? dt.plus({days: offset}) : dt
+	if (offset > 0) dt = dt.plus({days: offset})
+	return timestamp ? dt.toMillis() : dt.toISO()
 }
 
 module.exports = parseDateTime
