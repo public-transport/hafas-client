@@ -35,9 +35,10 @@ const parseWarning = (profile, w, icons) => {
 		category: w.cat || null // todo: parse to sth meaningful
 	}
 
-	if (w.sDate && w.sTime) res.validFrom = parseDateTime(profile, w.sDate, w.sTime)
-	if (w.eDate && w.eTime) res.validUntil = parseDateTime(profile, w.eDate, w.eTime)
-	if (w.lModDate && w.lModTime) res.modified = parseDateTime(profile, w.lModDate, w.lModTime)
+	// todo: pass tzOffset to `parseDateTime`
+	if (w.sDate && w.sTime) res.validFrom = parseDateTime(profile, w.sDate, w.sTime, null)
+	if (w.eDate && w.eTime) res.validUntil = parseDateTime(profile, w.eDate, w.eTime, null)
+	if (w.lModDate && w.lModTime) res.modified = parseDateTime(profile, w.lModDate, w.lModTime, null)
 
 	return res
 }
