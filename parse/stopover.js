@@ -19,20 +19,22 @@ const createParseStopover = (profile, opt, data, date) => {
 		// todo: DRY with parseDeparture
 		// todo: DRY with parseJourneyLeg
 		if (st.aTimeR || st.aTimeS) {
-			res.arrival = profile.parseDateTime(profile, date, st.aTimeR || st.aTimeS)
+			const arr = profile.parseDateTime(profile, date, st.aTimeR || st.aTimeS, st.aTZOffset)
+			res.arrival = arr
 		}
 		if (st.aTimeR && st.aTimeS) {
-			const realtime = profile.parseDateTime(profile, date, st.aTimeR, true)
-			const planned = profile.parseDateTime(profile, date, st.aTimeS, true)
+			const realtime = profile.parseDateTime(profile, date, st.aTimeR, st.aTZOffset, true)
+			const planned = profile.parseDateTime(profile, date, st.aTimeS, st.aTZOffset, true)
 			res.arrivalDelay = Math.round((realtime - planned) / 1000)
 		}
 
 		if (st.dTimeR || st.dTimeS) {
-			res.departure = profile.parseDateTime(profile, date, st.dTimeR || st.dTimeS)
+			const dep = profile.parseDateTime(profile, date, st.dTimeR || st.dTimeS, st.dTZOffset)
+			res.departure = dep
 		}
 		if (st.dTimeR && st.dTimeS) {
-			const realtime = profile.parseDateTime(profile, date, st.dTimeR, true)
-			const planned = profile.parseDateTime(profile, date, st.dTimeS, true)
+			const realtime = profile.parseDateTime(profile, date, st.dTimeR, st.dTZOffset, true)
+			const planned = profile.parseDateTime(profile, date, st.dTimeS, st.dTZOffset, true)
 			res.departureDelay = Math.round((realtime - planned) / 1000)
 		}
 
@@ -55,14 +57,16 @@ const createParseStopover = (profile, opt, data, date) => {
 				res.formerArrivalDelay = res.arrivalDelay
 				res.arrival = res.arrivalDelay = null
 				if (st.aTimeS) {
-					res.formerScheduledArrival = profile.parseDateTime(profile, date, st.aTimeS)
+					const arr = profile.parseDateTime(profile, date, st.aTimeS, st.aTZOffset)
+					res.formerScheduledArrival = arr
 				}
 			}
 			if (st.dCncl) {
 				res.formerDepartureDelay = res.departureDelay
 				res.departure = res.departureDelay = null
 				if (st.dTimeS) {
-					res.formerScheduledDeparture = profile.parseDateTime(profile, date, st.dTimeS)
+					const arr = profile.parseDateTime(profile, date, st.dTimeS, st.dTZOffset)
+					res.formerScheduledDeparture = arr
 				}
 			}
 		}
