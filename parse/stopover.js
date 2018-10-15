@@ -19,22 +19,20 @@ const createParseStopover = (profile, opt, data, date) => {
 		// todo: DRY with parseDeparture
 		// todo: DRY with parseJourneyLeg
 		if (st.aTimeR || st.aTimeS) {
-			const arr = profile.parseDateTime(profile, date, st.aTimeR || st.aTimeS)
-			res.arrival = arr.toISO()
+			res.arrival = profile.parseDateTime(profile, date, st.aTimeR || st.aTimeS)
 		}
 		if (st.aTimeR && st.aTimeS) {
-			const realtime = profile.parseDateTime(profile, date, st.aTimeR)
-			const planned = profile.parseDateTime(profile, date, st.aTimeS)
+			const realtime = profile.parseDateTime(profile, date, st.aTimeR, true)
+			const planned = profile.parseDateTime(profile, date, st.aTimeS, true)
 			res.arrivalDelay = Math.round((realtime - planned) / 1000)
 		}
 
 		if (st.dTimeR || st.dTimeS) {
-			const dep = profile.parseDateTime(profile, date, st.dTimeR || st.dTimeS)
-			res.departure = dep.toISO()
+			res.departure = profile.parseDateTime(profile, date, st.dTimeR || st.dTimeS)
 		}
 		if (st.dTimeR && st.dTimeS) {
-			const realtime = profile.parseDateTime(profile, date, st.dTimeR)
-			const planned = profile.parseDateTime(profile, date, st.dTimeS)
+			const realtime = profile.parseDateTime(profile, date, st.dTimeR, true)
+			const planned = profile.parseDateTime(profile, date, st.dTimeS, true)
 			res.departureDelay = Math.round((realtime - planned) / 1000)
 		}
 
@@ -54,17 +52,17 @@ const createParseStopover = (profile, opt, data, date) => {
 			res.cancelled = true
 			Object.defineProperty(res, 'canceled', {value: true})
 			if (st.aCncl) {
+				res.formerArrivalDelay = res.arrivalDelay
 				res.arrival = res.arrivalDelay = null
 				if (st.aTimeS) {
-					const arr = profile.parseDateTime(profile, date, st.aTimeS)
-					res.formerScheduledArrival = arr.toISO()
+					res.formerScheduledArrival = profile.parseDateTime(profile, date, st.aTimeS)
 				}
 			}
 			if (st.dCncl) {
+				res.formerDepartureDelay = res.departureDelay
 				res.departure = res.departureDelay = null
 				if (st.dTimeS) {
-					const arr = profile.parseDateTime(profile, date, st.dTimeS)
-					res.formerScheduledDeparture = arr.toISO()
+					res.formerScheduledDeparture = profile.parseDateTime(profile, date, st.dTimeS)
 				}
 			}
 		}
