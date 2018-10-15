@@ -35,9 +35,9 @@ const parseWarning = (profile, w, icons) => {
 		category: w.cat || null // todo: parse to sth meaningful
 	}
 
-	if (w.sDate && w.sTime) res.validFrom = parseDateTime(profile, w.sDate, w.sTime).toISO()
-	if (w.eDate && w.eTime) res.validUntil = parseDateTime(profile, w.eDate, w.eTime).toISO()
-	if (w.lModDate && w.lModTime) res.modified = parseDateTime(profile, w.lModDate, w.lModTime).toISO()
+	if (w.sDate && w.sTime) res.validFrom = parseDateTime(profile, w.sDate, w.sTime)
+	if (w.eDate && w.eTime) res.validUntil = parseDateTime(profile, w.eDate, w.eTime)
+	if (w.lModDate && w.lModTime) res.modified = parseDateTime(profile, w.lModDate, w.lModTime)
 
 	return res
 }
