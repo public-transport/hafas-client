@@ -1,5 +1,6 @@
 'use strict'
 
+require('./common')
 require('./db')
 require('./vbb')
 require('./bvg')
