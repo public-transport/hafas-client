@@ -241,6 +241,7 @@ const validateJourney = (val, j, name = 'journey') => {
 		id: 'foo' // todo: let hafas-client parse a journey ID
 	}, j)
 	defaultValidators.journey(val, withFakeId, name)
+	// todo: j.refreshToken
 
 	if ('tickets' in j) {
 		a.ok(Array.isArray(j.tickets), name + '.tickets must be an array')

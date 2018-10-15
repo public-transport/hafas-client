@@ -8,6 +8,7 @@ With `opt`, you can override the default options, which look like this:
 
 ```js
 {
+	results: 8, // maximum number of results
 	distance: null, // maximum walking distance in meters
 	poi:      false, // return points of interest?
 	stations: true, // return stations?
