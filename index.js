@@ -378,8 +378,6 @@ const createClient = (profile, userAgent, request = _request) => {
 			polyline: false, // return a track shape?
 			remarks: true // parse & expose hints & warnings?
 		}, opt)
-		opt.when = new Date(opt.when || Date.now())
-		if (Number.isNaN(+opt.when)) throw new Error('opt.when is invalid')
 
 		return request(profile, userAgent, opt, {
 			cfg: {polyEnc: 'GPA'},
@@ -388,7 +386,9 @@ const createClient = (profile, userAgent, request = _request) => {
 				// todo: getTrainComposition
 				jid: id,
 				name: lineName,
-				date: profile.formatDate(profile, opt.when),
+				// HAFAS apparently ignores the date in the trip ID and uses the `date` field.
+				// Thus, it will find a different trip if you pass the wrong date via `opt.when`.
+				// date: profile.formatDate(profile, opt.when),
 				getPolyline: !!opt.polyline
 			}
 		})
