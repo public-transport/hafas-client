@@ -54,20 +54,20 @@ const createParseJourneyLeg = (profile, opt, data) => {
 		const res = {
 			origin: clone(locations[parseInt(pt.dep.locX)]) || null,
 			destination: clone(locations[parseInt(pt.arr.locX)]),
-			departure: dep.toISO(),
-			arrival: arr.toISO()
+			departure: dep,
+			arrival: arr
 		}
 
 		// todo: DRY with parseDeparture
 		// todo: DRY with parseStopover
 		if (pt.dep.dTimeR && pt.dep.dTimeS) {
-			const realtime = profile.parseDateTime(profile, j.date, pt.dep.dTimeR)
-			const planned = profile.parseDateTime(profile, j.date, pt.dep.dTimeS)
+			const realtime = profile.parseDateTime(profile, j.date, pt.dep.dTimeR, true)
+			const planned = profile.parseDateTime(profile, j.date, pt.dep.dTimeS, true)
 			res.departureDelay = Math.round((realtime - planned) / 1000)
 		}
 		if (pt.arr.aTimeR && pt.arr.aTimeS) {
-			const realtime = profile.parseDateTime(profile, j.date, pt.arr.aTimeR)
-			const planned = profile.parseDateTime(profile, j.date, pt.arr.aTimeS)
+			const realtime = profile.parseDateTime(profile, j.date, pt.arr.aTimeR, true)
+			const planned = profile.parseDateTime(profile, j.date, pt.arr.aTimeS, true)
 			res.arrivalDelay = Math.round((realtime - planned) / 1000)
 		}
 
@@ -139,11 +139,10 @@ const createParseJourneyLeg = (profile, opt, data) => {
 						const planned = st0.dTimeS && profile.parseDateTime(profile, j.date, st0.dTimeS)
 						if (st0.dTimeR && planned) {
 							const realtime = profile.parseDateTime(profile, j.date, st0.dTimeR)
-							when = realtime.toISO()
-							delay = Math.round((realtime - planned) / 1000)
-						} else if (planned) when = planned.toISO()
+							when = realtime
+							delay = Math.round((new Date(realtime) - new Date(planned)) / 1000)
+						} else if (planned) when = planned
 					}
-
 					return {
 						tripId: a.jid,
 						line: lines[parseInt(a.prodX)] || null,
@@ -162,13 +161,11 @@ const createParseJourneyLeg = (profile, opt, data) => {
 			Object.defineProperty(res, 'canceled', {value: true})
 			if (pt.arr.aCncl) {
 				res.arrival = res.arrivalPlatform = res.arrivalDelay = null
-				const arr = profile.parseDateTime(profile, j.date, pt.arr.aTimeS)
-				res.formerScheduledArrival = arr.toISO()
+				res.formerScheduledArrival = profile.parseDateTime(profile, j.date, pt.arr.aTimeS)
 			}
 			if (pt.dep.dCncl) {
 				res.departure = res.departurePlatform = res.departureDelay = null
-				const dep = profile.parseDateTime(profile, j.date, pt.dep.dTimeS)
-				res.formerScheduledDeparture = dep.toISO()
+				res.formerScheduledDeparture = profile.parseDateTime(profile, j.date, pt.dep.dTimeS)
 			}
 		}
 
