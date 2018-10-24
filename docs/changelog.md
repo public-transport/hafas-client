@@ -1,5 +1,13 @@
 # Changelog
 
+## `3.4.3`
+
+- 9936466 `p-throttle@2`, `tape-promise@4`
+
+## `3.4.2`
+
+- 2a6b0dc speed up date+time formatting ⚡️
+
 ## `3.4.1`
 
 - ed3ecd7 speed up date+time formatting ⚡️
