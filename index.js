@@ -201,7 +201,6 @@ const createClient = (profile, userAgent, request = _request) => {
 				getPolyline: !!opt.polylines
 			}
 			if (profile.journeysNumF) query.numF = opt.results
-			console.log(profile.transformJourneysQuery(query, opt));
 			return request(profile, userAgent, opt, {
 				cfg: {polyEnc: 'GPA'},
 				meth: 'TripSearch',
