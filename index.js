@@ -138,7 +138,7 @@ const createClient = (profile, userAgent, request = _request) => {
 			bike: false, // only bike-friendly journeys
 			tickets: false, // return tickets?
 			polylines: false, // return leg shapes?
-			remarks: true, // parse & expose hints & warnings?,
+			remarks: true, // parse & expose hints & warnings?
 			walkingSpeed: "normal", // 'slow', 'normal', 'fast'
 			// Consider walking to nearby stations at the beginning of a journey?
 			startWithWalking: true
@@ -170,6 +170,11 @@ const createClient = (profile, userAgent, request = _request) => {
 			filters.push(profile.filters.accessibility[opt.accessibility])
 		}
 
+		const gisFltrL = [{
+			meta: ['slow','normal','fast'].includes(opt.walkingSpeed) ? 'foot_speed_' + opt.walkingSpeed : 'foot_speed_normal',
+			mode: 'FB', 
+			type: 'M'
+		}]
 
 		// With protocol version `1.16`, the VBB endpoint *used to* fail with
 		// `CGI_READ_FAILED` if you pass `numF`, the parameter for the number
@@ -192,8 +197,7 @@ const createClient = (profile, userAgent, request = _request) => {
 				getTariff: !!opt.tickets,
 				outFrwd,
 				ushrp: !!opt.startWithWalking,
-				gisFltrL: [{meta: "foot_speed_" + opt.walkingSpeed, mode: "FB", type: "M"}],
-				// todo: what is req.gisFltrL?
+				gisFltrL,
 				getPT: true, // todo: what is this?
 				getIV: false, // todo: walk & bike as alternatives?
 				getPolyline: !!opt.polylines
