@@ -171,8 +171,6 @@ const createClient = (profile, userAgent, request = _request) => {
 		}
 
 
-		const foot_speed = {meta: "foot_speed_" + opt.walkingSpeed, mode: "FB", type: "M"};
-
 		// With protocol version `1.16`, the VBB endpoint *used to* fail with
 		// `CGI_READ_FAILED` if you pass `numF`, the parameter for the number
 		// of results. To circumvent this, we loop here, collecting journeys
@@ -194,7 +192,7 @@ const createClient = (profile, userAgent, request = _request) => {
 				getTariff: !!opt.tickets,
 				outFrwd,
 				ushrp: !!opt.startWithWalking,
-				gisFltrL: foot_speed ? [foot_speed] : null,
+				gisFltrL: [{meta: "foot_speed_" + opt.walkingSpeed, mode: "FB", type: "M"}],
 				// todo: what is req.gisFltrL?
 				getPT: true, // todo: what is this?
 				getIV: false, // todo: walk & bike as alternatives?
