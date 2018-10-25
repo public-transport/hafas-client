@@ -143,6 +143,7 @@ const createClient = (profile, userAgent, request = _request) => {
 			tickets: false, // return tickets?
 			polylines: false, // return leg shapes?
 			remarks: true, // parse & expose hints & warnings?
+			walkingSpeed: 'normal', // 'slow', 'normal', 'fast'
 			// Consider walking to nearby stations at the beginning of a journey?
 			startWithWalking: true,
 			scheduledDays: false
@@ -174,6 +175,15 @@ const createClient = (profile, userAgent, request = _request) => {
 			filters.push(profile.filters.accessibility[opt.accessibility])
 		}
 
+		if (!['slow','normal','fast'].includes(opt.walkingSpeed)) {
+			throw new Error('opt.walkingSpeed must be one of these values: "slow", "normal", "fast".')
+		}
+		const gisFltrL = [{
+			meta: 'foot_speed_' + opt.walkingSpeed,
+			mode: 'FB',
+			type: 'M'
+		}]
+
 		// With protocol version `1.16`, the VBB endpoint *used to* fail with
 		// `CGI_READ_FAILED` if you pass `numF`, the parameter for the number
 		// of results. To circumvent this, we loop here, collecting journeys
@@ -193,11 +203,11 @@ const createClient = (profile, userAgent, request = _request) => {
 				viaLocL: opt.via ? [{loc: opt.via}] : null,
 				arrLocL: [to],
 				jnyFltrL: filters,
+				gisFltrL,
 				getTariff: !!opt.tickets,
 				outFrwd,
 				ushrp: !!opt.startWithWalking,
 
-				// todo: what is req.gisFltrL?
 				getPT: true, // todo: what is this?
 				getIV: false, // todo: walk & bike as alternatives?
 				getPolyline: !!opt.polylines
