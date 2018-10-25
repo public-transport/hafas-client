@@ -37,7 +37,7 @@ const createClient = (profile, userAgent, request = _request) => {
 	validateProfile(profile)
 
 	if ('string' !== typeof userAgent) {
-		 throw new Error('userAgent must be a string');
+		throw new Error('userAgent must be a string');
 	}
 
 	const _stationBoard = (station, type, parser, opt = {}) => {
