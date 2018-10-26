@@ -139,7 +139,7 @@ const createClient = (profile, userAgent, request = _request) => {
 			tickets: false, // return tickets?
 			polylines: false, // return leg shapes?
 			remarks: true, // parse & expose hints & warnings?
-			walkingSpeed: "normal", // 'slow', 'normal', 'fast'
+			walkingSpeed: 'normal', // 'slow', 'normal', 'fast'
 			// Consider walking to nearby stations at the beginning of a journey?
 			startWithWalking: true
 		}, opt)
@@ -170,8 +170,12 @@ const createClient = (profile, userAgent, request = _request) => {
 			filters.push(profile.filters.accessibility[opt.accessibility])
 		}
 
+		if (!['slow','normal','fast'].includes(opt.walkingSpeed)) {
+			throw new Error('opt.walkingSpeed must be one of these values: "slow","normal","fast"')
+		}
+
 		const gisFltrL = [{
-			meta: ['slow','normal','fast'].includes(opt.walkingSpeed) ? 'foot_speed_' + opt.walkingSpeed : 'foot_speed_normal',
+			meta: 'foot_speed_' + opt.walkingSpeed,
 			mode: 'FB', 
 			type: 'M'
 		}]
