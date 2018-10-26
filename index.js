@@ -171,7 +171,7 @@ const createClient = (profile, userAgent, request = _request) => {
 		}
 
 		if (!['slow','normal','fast'].includes(opt.walkingSpeed)) {
-			throw new Error('opt.walkingSpeed must be one of these values: "slow","normal","fast"')
+			throw new Error('opt.walkingSpeed must be one of these values: "slow", "normal", "fast".')
 		}
 
 		const gisFltrL = [{
