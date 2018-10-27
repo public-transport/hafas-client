@@ -26,7 +26,7 @@ const parseWarning = (profile, w, icons) => {
 	// tTime: '030000' } ]
 
 	const icon = 'number' === typeof w.icoX && icons[w.icoX] || null
-	const type = icon && icon.res && typesByIcon[icon.res] || 'warning'
+	const type = icon && icon.type && typesByIcon[icon.type] || 'warning'
 
 	const res = {
 		id: w.hid || null,

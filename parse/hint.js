@@ -24,7 +24,7 @@ const parseHint = (profile, h, icons) => {
 
 	const text = h.txtN && h.txtN.trim() || ''
 	const icon = 'number' === typeof h.icoX && icons[h.icoX] || null
-	const code = h.code || (icon && icon.res && codesByIcon[icon.res]) || null
+	const code = h.code || (icon && icon.type && codesByIcon[icon.type]) || null
 
 	if (h.type === 'M') {
 		return {
