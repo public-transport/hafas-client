@@ -46,7 +46,7 @@ const createParseArrOrDep = (createParse) => (profile, opt, data) => {
 	const parseWithLoadFactor = (d) => {
 		const result = parse(d)
 		if (d.stbStop.dTrnCmpSX && Array.isArray(d.stbStop.dTrnCmpSX.tcocX)) {
-			const {tcocL} = data.raw.common
+			const {tcocL} = data.common
 			const load = parseLoadFactor(opt, tcocL, d.stbStop.dTrnCmpSX.tcocX)
 			if (load) result.loadFactor = load
 		}
@@ -139,7 +139,7 @@ const createParseJourneyLeg = (profile, opt, data) => {
 	const parseJourneyLegWithLoadFactor = (j, pt, parseStopovers) => {
 		const result = parseJourneyLeg(j, pt, parseStopovers)
 		if (pt.jny && pt.jny.dTrnCmpSX && Array.isArray(pt.jny.dTrnCmpSX.tcocX)) {
-			const {tcocL} = data.raw.common
+			const {tcocL} = data.common
 			const load = parseLoadFactor(opt, tcocL, pt.jny.dTrnCmpSX.tcocX)
 			if (load) result.loadFactor = load
 		}
