@@ -1,5 +1,16 @@
 'use strict'
 
+// todo: move to separate file
+const parseIcon = (i) => {
+	const res = {
+		type: i.res || null,
+		title: i.text || null
+	}
+	if (i.fg) res.fgColor = i.fg
+	if (i.bg) res.bgColor = i.bg
+	return res
+}
+
 const parseCommonData = (profile, opt, raw) => {
 	const res = Object.assign({}, raw)
 	const c = raw.common || {}
@@ -9,7 +20,7 @@ const parseCommonData = (profile, opt, raw) => {
 	}
 
 	res.icons = []
-	if (Array.isArray(c.icoL)) res.icons = c.icoL
+	if (Array.isArray(c.icoL)) res.icons = c.icoL.map(parseIcon)
 
 	res.hints = []
 	if (opt.remarks && Array.isArray(c.remL)) {
