@@ -42,8 +42,8 @@ const createParseJourney = (profile, opt, data) => {
 
 	// todo: j.sotRating, j.conSubscr, j.isSotCon, j.showARSLink, k.sotCtxt
 	// todo: j.conSubscr, j.showARSLink, j.useableTime
-	const parseJourneyWithPrice = (j) => {
-		const res = parseJourney(j)
+	const parseJourneyWithPrice = (journey) => {
+		const res = parseJourney(journey)
 
 		// todo: find cheapest, find discounts
 		// todo: write a parser like vbb-parse-ticket
@@ -55,20 +55,18 @@ const createParseJourney = (profile, opt, data) => {
 		// 	targetCtx: 'D',
 		// 	buttonText: 'To offer selection'
 		// } ]
-		res.price = {amount: null, hint: 'No pricing information available.'}
 		if (
-			j.trfRes &&
-			Array.isArray(j.trfRes.fareSetL) &&
-			j.trfRes.fareSetL[0] &&
-			Array.isArray(j.trfRes.fareSetL[0].fareL) &&
-			j.trfRes.fareSetL[0].fareL[0]
+			journey.trfRes &&
+			Array.isArray(journey.trfRes.fareSetL) &&
+			journey.trfRes.fareSetL[0] &&
+			Array.isArray(journey.trfRes.fareSetL[0].fareL) &&
+			journey.trfRes.fareSetL[0].fareL[0]
 		) {
-			const tariff = j.trfRes.fareSetL[0].fareL[0]
+			const tariff = journey.trfRes.fareSetL[0].fareL[0]
 			if (tariff.prc >= 0) { // wat
 				res.price = {
 					amount: tariff.prc / 100,
-					currency: 'EUR',
-					hint: null
+					currency: 'EUR'
 				}
 			}
 		}
