@@ -206,6 +206,7 @@ const createClient = (profile, userAgent, request = _request) => {
 				getPT: true, // todo: what is this?
 				getIV: false, // todo: walk & bike as alternatives?
 				getPolyline: !!opt.polylines
+				// todo: `getConGroups: false` what is this?
 			}
 			if (profile.journeysNumF) query.numF = opt.results
 

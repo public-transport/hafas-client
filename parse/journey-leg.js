@@ -45,6 +45,8 @@ const createParseJourneyLeg = (profile, opt, data) => {
 	// todo: pt.isRchbl, pt.chRatingRT, pt.chgDurR, pt.minChg
 	// todo: pt.dep.dProgType, pt.arr.dProgType
 	// todo: what is pt.jny.dirFlg?
+	// todo: what is pt.recState?
+	// todo: what is `sty: 'UNDEF'`?
 
 	// j = journey, pt = part
 	// todo: pt.planrtTS
