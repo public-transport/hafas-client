@@ -13,10 +13,10 @@ const _formatStation = require('../../format/station')
 const products = require('./products')
 
 const transformReqBody = (body) => {
-	body.client = {type: 'IPA', id: 'BVG', name: 'FahrInfo', v: '4070700'}
+	body.client = {type: 'IPA', id: 'BVG', name: 'FahrInfo', v: '6020000'}
 	body.ext = 'BVG.1'
-	body.ver = '1.15' // todo: 1.16 with `mic` and `mac` query params
-	body.auth = {type: 'AID', aid: '1Rxs112shyHLatUX4fofnmdxK'}
+	body.ver = '1.21'
+	body.auth = {type: 'AID', aid: 'Mz0YdF9Fgx0Mb9'}
 
 	return body
 }
@@ -105,6 +105,8 @@ const bvgProfile = {
 
 	formatStation,
 
+	departuresGetPasslist: false, // `departures()` method: support for `getPasslist` field?
+	departuresStbFltrEquiv: false, // `departures()` method: support for `stbFltrEquiv` field?
 	trip: true,
 	radar: true,
 	refreshJourney: true,
