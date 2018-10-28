@@ -8,6 +8,7 @@ const getStations = require('vbb-stations')
 const _createParseLine = require('../../parse/line')
 const _parseLocation = require('../../parse/location')
 const _createParseDeparture = require('../../parse/departure')
+const _createParseJourneyLeg = require('../../parse/journey-leg')
 const _formatStation = require('../../format/station')
 
 const products = require('./products')
@@ -74,6 +75,38 @@ const createParseDeparture = (profile, opt, data) => {
 	return parseDepartureRenameRingbahn
 }
 
+const createParseJourneyLeg = (profile, opt, data) => {
+	const _parseJourneyLeg = _createParseJourneyLeg(profile, opt, data)
+	const parseJourneyLeg = (journey, leg, parseStopovers = true) => {
+		if (leg.type === 'KISS') {
+			const icon = data.icons[leg.icoX]
+			if (icon && icon.type === 'prod_berl') {
+				const res = _parseJourneyLeg(journey, {...leg, type: 'WALK'}, parseStopovers)
+				delete res.walking
+
+				const mcp = leg.dep.mcp || {}
+				const mcpData = mcp.mcpData || {}
+				// todo: mcp.lid
+				// todo: mcpData.occupancy, mcpData.type
+				// todo: journey.trfRes.bkgData
+				res.line = {
+					type: 'line',
+					id: null, // todo
+					// todo: fahrtNr?
+					name: mcpData.providerName,
+					public: true,
+					mode: 'taxi',
+					product: 'berlkoenig'
+					// todo: operator
+				}
+				return res
+			}
+		}
+		return _parseJourneyLeg(journey, leg, parseStopovers)
+	}
+	return parseJourneyLeg
+}
+
 const validIBNR = /^\d+$/
 const formatStation = (id) => {
 	if ('string' !== typeof id) throw new Error('station ID must be a string.')
@@ -87,6 +120,18 @@ const formatStation = (id) => {
 	return _formatStation(id)
 }
 
+// use the Berlkönig ride sharing service?
+const requestJourneysWithBerlkoenig = (query, opt) => {
+	if (('numF' in query) && opt.berlkoenig) {
+		// todo: check if this is still true
+		throw new Error('The `berlkoenig` and `results` options are mutually exclusive.')
+	}
+	query.jnyFltrL.push({type: 'GROUP', mode: 'INC', value: 'OEV'})
+	if (opt.berlkoenig) query.jnyFltrL.push({type: 'GROUP', mode: 'INC', value: 'BERLKOENIG'})
+	query.gisFltrL = [{meta: 'foot_speed_normal', type: 'M', mode: 'FB'}]
+	return query
+}
+
 // todo: adapt/extend `vbb-parse-ticket` to support the BVG markup
 
 const bvgProfile = {
@@ -95,6 +140,7 @@ const bvgProfile = {
 	endpoint: 'https://bvg-apps.hafas.de/bin/mgate.exe',
 
 	transformReqBody,
+	transformJourneysQuery: requestJourneysWithBerlkoenig,
 
 	products,
 
@@ -102,6 +148,7 @@ const bvgProfile = {
 	parseLocation,
 	parseLine: createParseLine,
 	parseDeparture: createParseDeparture,
+	parseJourneyLeg: createParseJourneyLeg,
 
 	formatStation,
 

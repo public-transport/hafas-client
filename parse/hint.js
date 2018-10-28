@@ -36,7 +36,7 @@ const parseHint = (profile, h, icons) => {
 			tripId: h.jid
 		}
 	}
-	if (h.type === 'A') {
+	if (h.type === 'A' || h.type === 'I') {
 		return {
 			type: 'hint',
 			code: h.code || null,
