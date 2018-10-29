@@ -55,6 +55,7 @@ const client = createClient(sMunichProfile, 'public-transport/hafas-client:test'
 
 const mittersendling = '8004154'
 const karlTheodorStr = '621790' // Karl-Theodor-Straße
+const lehel = '000624826'
 const poetschnerstr = {
 	type: 'location',
 	address: 'Pötschnerstraße 3, Neuhausen',
@@ -133,6 +134,7 @@ test('Karl-Theodor-Straße to Hofbräuhaus', async (t) => {
 	t.end()
 })
 
+// todo: walkingSpeed "München - Freimann, Gyßlingstraße 78" -> lehel
 // todo: via works – with detour
 // todo: without detour
 

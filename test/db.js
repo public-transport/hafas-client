@@ -188,6 +188,7 @@ test('journeys: via works – with detour', async (t) => {
 	t.end()
 })
 
+// todo: walkingSpeed "Berlin - Charlottenburg, Hallerstraße" -> jungfernheide
 // todo: without detour
 
 test('earlier/later journeys, Jungfernheide -> München Hbf', async (t) => {
