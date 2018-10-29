@@ -44,7 +44,7 @@ const createParseJourney = (profile, opt, data) => {
 	// todo: j.conSubscr, j.showARSLink, j.useableTime
 	const parseJourneyWithPrice = (journey) => {
 		const res = parseJourney(journey)
-
+		res.price = null
 		// todo: find cheapest, find discounts
 		// todo: write a parser like vbb-parse-ticket
 		// [ {
