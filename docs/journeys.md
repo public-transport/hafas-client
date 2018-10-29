@@ -48,7 +48,7 @@ With `opt`, you can override the default options, which look like this:
 	earlierThan: null, // ref to get journeys earlier than the last query
 	laterThan: null, // ref to get journeys later than the last query
 
-	results: 5, // how many journeys?
+	results: null, // number of journeys – `null` means "whatever HAFAS returns"
 	via: null, // let journeys pass this station
 	stopovers: false, // return stations on the way?
 	transfers: -1, // Maximum nr of transfers. Default: Let HAFAS decide.
