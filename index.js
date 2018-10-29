@@ -178,11 +178,14 @@ const createClient = (profile, userAgent, request = _request) => {
 		if (!['slow','normal','fast'].includes(opt.walkingSpeed)) {
 			throw new Error('opt.walkingSpeed must be one of these values: "slow", "normal", "fast".')
 		}
-		const gisFltrL = [{
-			meta: 'foot_speed_' + opt.walkingSpeed,
-			mode: 'FB',
-			type: 'M'
-		}]
+		const gisFltrL = []
+		if (profile.journeysWalkingSpeed) {
+			gisFltrL.push({
+				meta: 'foot_speed_' + opt.walkingSpeed,
+				mode: 'FB',
+				type: 'M'
+			})
+		}
 
 		// With protocol version `1.16`, the VBB endpoint *used to* fail with
 		// `CGI_READ_FAILED` if you pass `numF`, the parameter for the number
