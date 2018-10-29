@@ -128,7 +128,7 @@ const createClient = (profile, userAgent, request = _request) => {
 		}
 
 		opt = Object.assign({
-			results: 5, // how many journeys?
+			results: null, // number of journeys – `null` means "whatever HAFAS returns"
 			via: null, // let journeys pass this station?
 			stopovers: false, // return stations on the way?
 			transfers: 5, // maximum of 5 transfers
@@ -176,7 +176,7 @@ const createClient = (profile, userAgent, request = _request) => {
 
 		const gisFltrL = [{
 			meta: 'foot_speed_' + opt.walkingSpeed,
-			mode: 'FB', 
+			mode: 'FB',
 			type: 'M'
 		}]
 
@@ -207,7 +207,7 @@ const createClient = (profile, userAgent, request = _request) => {
 				getPolyline: !!opt.polylines
 				// todo: `getConGroups: false` what is this?
 			}
-			if (profile.journeysNumF) query.numF = opt.results
+			if (profile.journeysNumF && opt.results !== null) query.numF = opt.results
 			return request(profile, userAgent, opt, {
 				cfg: {polyEnc: 'GPA'},
 				meth: 'TripSearch',
