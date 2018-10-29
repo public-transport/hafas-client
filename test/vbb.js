@@ -18,6 +18,7 @@ const createValidate = require('./lib/validate-fptf-with')
 const testJourneysStationToStation = require('./lib/journeys-station-to-station')
 const testJourneysStationToAddress = require('./lib/journeys-station-to-address')
 const testJourneysStationToPoi = require('./lib/journeys-station-to-poi')
+const testJourneysWalkingSpeed = require('./lib/journeys-walking-speed')
 const testEarlierLaterJourneys = require('./lib/earlier-later-journeys')
 const testRefreshJourney = require('./lib/refresh-journey')
 const journeysFailsWithNoProduct = require('./lib/journeys-fails-with-no-product')
@@ -116,6 +117,27 @@ test('journeys – fails with no product', (t) => {
 		toId: bismarckstr,
 		when,
 		products
+	})
+	t.end()
+})
+
+test('journeys: walkingSpeed', async (t) => {
+	const havelchaussee = {
+		type: 'location',
+		address: 'Havelchaussee',
+		latitude: 52.443576,
+		longitude: 13.198973
+	}
+	const wannsee = '900000053301'
+
+	await testJourneysWalkingSpeed({
+		test: t,
+		journeys: client.journeys,
+		validate,
+		from: havelchaussee,
+		to: wannsee,
+		products: {bus: false},
+		minTimeDifference: 5 * 60 * 1000
 	})
 	t.end()
 })
