@@ -26,6 +26,7 @@ const {
 const testJourneysStationToStation = require('./lib/journeys-station-to-station')
 const testJourneysStationToAddress = require('./lib/journeys-station-to-address')
 const testJourneysStationToPoi = require('./lib/journeys-station-to-poi')
+const testJourneysWalkingSpeed = require('./lib/journeys-walking-speed')
 const testEarlierLaterJourneys = require('./lib/earlier-later-journeys')
 const testLegCycleAlternatives = require('./lib/leg-cycle-alternatives')
 const testRefreshJourney = require('./lib/refresh-journey')
@@ -165,6 +166,27 @@ test('journeys – BerlKönig', async (t) => {
 	t.equal(withBerlkoenig.line.mode, 'taxi')
 	t.equal(withBerlkoenig.line.product, 'berlkoenig')
 	t.end()
+})
+
+// todo: opt.walkingSpeed doesn't seem to work right now
+test.skip('journeys: walkingSpeed', async (t) => {
+	const havelchaussee = {
+		type: 'location',
+		address: 'Havelchaussee',
+		latitude: 52.443576,
+		longitude: 13.198973
+	}
+	const wannsee = '900000053301'
+
+	await testJourneysWalkingSpeed({
+		test: t,
+		journeys: client.journeys,
+		validate,
+		from: havelchaussee,
+		to: wannsee,
+		products: {bus: false},
+		minTimeDifference: 5 * 60 * 1000
+	})
 })
 
 test('earlier/later journeys', async (t) => {

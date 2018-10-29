@@ -119,6 +119,7 @@ test('Domain to Whole Foods Market - North Lamar Blvd', async (t) => {
 	t.end()
 })
 
+// todo: walkingSpeed "2107 MELRIDGE PL" -> 000002148
 // todo: via works – with detour
 // todo: without detour
 
