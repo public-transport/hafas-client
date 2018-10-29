@@ -19,6 +19,7 @@ const createValidate = require('./lib/validate-fptf-with')
 const testJourneysStationToStation = require('./lib/journeys-station-to-station')
 const testJourneysStationToAddress = require('./lib/journeys-station-to-address')
 const testJourneysStationToPoi = require('./lib/journeys-station-to-poi')
+const testJourneysWalkingSpeed = require('./lib/journeys-walking-speed')
 const testEarlierLaterJourneys = require('./lib/earlier-later-journeys')
 const testRefreshJourney = require('./lib/refresh-journey')
 const journeysFailsWithNoProduct = require('./lib/journeys-fails-with-no-product')
@@ -115,6 +116,26 @@ test('journeys – fails with no product', (t) => {
 	})
 	t.end()
 })
+
+test('journeys: walkingSpeed', co(function* (t) {
+	const hallerstr = {
+		type: 'location',
+		address: '10587 Berlin-Charlottenburg, Hallerstr.',
+		latitude: 52.522326,
+		longitude: 13.32356
+	}
+
+	yield testJourneysWalkingSpeed({
+		test: t,
+		journeys: client.journeys,
+		validate,
+		from: hallerstr,
+		to: bismarckstr,
+		products: {bus: false},
+		difference: 5 * 60 * 1000
+	})
+	t.end()
+}))
 
 test('earlier/later journeys', co(function* (t) {
 	yield testEarlierLaterJourneys({

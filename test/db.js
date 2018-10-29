@@ -180,6 +180,7 @@ test('journeys: via works – with detour', co(function* (t) {
 	t.end()
 }))
 
+// todo: walkingSpeed "Berlin - Charlottenburg, Hallerstraße" -> jungfernheide
 // todo: without detour
 
 test('earlier/later journeys, Jungfernheide -> München Hbf', co(function* (t) {
