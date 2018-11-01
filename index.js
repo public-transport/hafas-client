@@ -470,7 +470,7 @@ const createClient = (profile, userAgent, request = _request) => {
 		opt = Object.assign({
 			when: Date.now(),
 			maxTransfers: 5, // maximum of 5 transfers
-			maxDuration: 20, // maximum travel duration in minutes
+			maxDuration: 20, // maximum travel duration in minutes, pass `null` for infinite
 			products: {}
 		}, opt)
 		if (Number.isNaN(+opt.when)) throw new Error('opt.when is invalid')
@@ -480,7 +480,7 @@ const createClient = (profile, userAgent, request = _request) => {
 				meth: 'LocGeoReach',
 				req: {
 					loc: profile.formatLocation(profile, address, 'address'),
-					maxDur: opt.maxDuration,
+					maxDur: opt.maxDuration === null ? -1 : opt.maxDuration,
 					maxChg: opt.maxTransfers,
 					date: profile.formatDate(profile, opt.when),
 					time: profile.formatTime(profile, opt.when),

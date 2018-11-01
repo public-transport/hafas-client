@@ -12,7 +12,7 @@ With `opt`, you can override the default options, which look like this:
 {
 	when: new Date(),
 	maxTransfers: 5, // maximum of 5 transfers
-	maxDuration: 20, // maximum travel duration in minutes
+	maxDuration: 20, // maximum travel duration in minutes, pass `null` for infinite
 	products: {
 		// These entries may vary from profile to profile!
 		suburban: true,
