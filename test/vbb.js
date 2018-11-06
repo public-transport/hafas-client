@@ -132,7 +132,7 @@ test('journeys: walkingSpeed', co(function* (t) {
 		from: hallerstr,
 		to: bismarckstr,
 		products: {bus: false},
-		difference: 5 * 60 * 1000
+		minTimeDifference: 5 * 60 * 1000
 	})
 	t.end()
 }))

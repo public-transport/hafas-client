@@ -5,7 +5,7 @@ const isRoughlyEqual = require('is-roughly-equal')
 const co = require('./co')
 
 const testJourneysWalkingSpeed = co(function* (cfg) {
-	const {test: t, journeys, validate, from, to, products, difference: dT} = cfg
+	const {test: t, journeys, validate, from, to, products, minTimeDifference} = cfg
 
 	const [journeyWithFastWalking] = yield journeys(from, to, {
 		results: 1, products, walkingSpeed: 'fast'
@@ -24,8 +24,7 @@ const testJourneysWalkingSpeed = co(function* (cfg) {
 	t.ok(isRoughlyEqual(100, fastDist, slowDist), 'precondition failed')
 	const fastDur = new Date(legWithFastWalking.arrival) - new Date(legWithFastWalking.departure)
 	const slowDur = new Date(legWithSlowWalking.arrival) - new Date(legWithSlowWalking.departure)
-	// console.error(fastDur / 1000 / 60, slowDur / 1000 / 60)
-	t.notOk(isRoughlyEqual(dT, fastDur, slowDur), 'walkingSpeed not applied')
+	t.notOk(isRoughlyEqual(minTimeDifference, fastDur, slowDur), 'walkingSpeed not applied')
 	t.end()
 })
 
