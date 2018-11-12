@@ -219,6 +219,7 @@ HAFAS endpoint | wrapper library | docs | example code | source code
 [*Nordhessischer Verkehrsverbund (NVV)*](https://en.wikipedia.org/wiki/Nordhessischer_Verkehrsverbund) ([Hesse](https://en.wikipedia.org/wiki/Hesse)) | - | [docs](p/nvv/readme.md) | [example code](p/nvv/example.js) | [src](p/nvv/index.js)
 *DB Busradar NRW* ([DB Regio Bus](https://en.wikipedia.org/wiki/DB_Regio#Bus_division_(DB_Regio_Bus))) | - | [docs](p/db-busradar-nrw/readme.md) | [example code](p/db-busradar-nrw/example.js) | [src](p/db-busradar-nrw/index.js)
 [Verkehrsverbund Süd-Niedersachsen (VSN)](https://de.wikipedia.org/wiki/Verkehrsverbund_S%C3%BCd-Niedersachsen) | - | [docs](p/vsn/readme.md) | [example code](p/vsn/example.js) | [src](p/vsn/index.js)
+[Ingolstädter Verkehrsgesellschaft (INVG)](https://de.wikipedia.org/wiki/Ingolstädter_Verkehrsgesellschaft) | - | [docs](p/invg/readme.md) | [example code](p/invg/example.js) | [src](p/invg/index.js)
 
 There are also libraries that use `hafas-client` and pass their own profile in:
 
