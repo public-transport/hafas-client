@@ -1,5 +1,10 @@
 # Changelog
 
+## `3.5.0`
+
+- 9d96902 `readableFrom()`: max `opt.maxDuration` optional
+- 02e0e51 parse scheduled days of a `journey`
+
 ## `3.4.3`
 
 - 9936466 `p-throttle@2`, `tape-promise@4`
