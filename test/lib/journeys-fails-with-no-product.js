@@ -10,14 +10,14 @@ const journeysFailsWithNoProduct = (cfg) => {
 		products
 	} = cfg
 
-	const productsObj = Object.create(null)
-	for (let p of products) productsObj[p.id] = false
+	const noProducts = Object.create(null)
+	for (let p of products) noProducts[p.id] = false
 
 	t.throws(() => {
-		client.journeys(fromId, toId, {departure: when, products})
+		fetchJourneys(fromId, toId, {departure: when, products: noProducts})
 		// silence rejections, we're only interested in exceptions
 		.catch(() => {})
-	})
+	}, 'no products used')
 }
 
 module.exports = journeysFailsWithNoProduct

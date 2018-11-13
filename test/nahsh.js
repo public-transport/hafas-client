@@ -306,9 +306,9 @@ test('locations named Kiel', co(function* (t) {
 	validate(t, locations, 'locations', 'locations')
 	t.ok(locations.length <= 20)
 
-	t.ok(locations.find(s => s.type === 'stop' || s.type === 'station'))
-	t.ok(locations.find(s => s.id && s.name)) // POIs
-	t.ok(locations.some(l => l.station && s.station.id === kielHbf || l.id === kielHbf))
+	t.ok(locations.find(l => l.type === 'stop' || l.type === 'station'))
+	t.ok(locations.find(l => l.id && l.name)) // POIs
+	t.ok(locations.some(l => l.station && l.station.id === kielHbf || l.id === kielHbf))
 
 	t.end()
 }))

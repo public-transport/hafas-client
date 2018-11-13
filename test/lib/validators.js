@@ -332,7 +332,7 @@ const validateMovement = (val, m, name = 'movement') => {
 	a.ok(Array.isArray(m.nextStops), name + '.nextStops must be an array')
 	for (let i = 0; i < m.nextStops.length; i++) {
 		const st = m.nextStops[i]
-		val.stopover(val, m.nextStops[i], name + `.nextStops[${i}]`)
+		val.stopover(val, st, name + `.nextStops[${i}]`)
 	}
 
 	a.ok(Array.isArray(m.frames), name + '.frames must be an array')

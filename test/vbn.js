@@ -230,7 +230,7 @@ test.skip('locations named Magdeburg', co(function*(t) {
 
 	t.ok(locations.find(s => s.type === 'stop' || s.type === 'station'))
 	t.ok(locations.find(s => s.id && s.name)) // POIs
-	t.ok(locations.some((loc) => {
+	t.ok(locations.some((l) => {
 		// todo: trim IDs
 		if (l.station) {
 			if (l.station.id === '008010224' || l.station.id === bremenHbf) return true
