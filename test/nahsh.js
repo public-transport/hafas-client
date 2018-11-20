@@ -182,7 +182,8 @@ test('earlier/later journeys, Kiel Hbf -> Flensburg', co(function* (t) {
 		fetchJourneys: client.journeys,
 		validate,
 		fromId: kielHbf,
-		toId: flensburg
+		toId: flensburg,
+		when
 	})
 
 	t.end()

@@ -141,7 +141,8 @@ test.skip('earlier/later journeys', co(function* (t) {
 		fetchJourneys: client.journeys,
 		validate,
 		fromId: bremenHbf,
-		toId: bremerhavenHbf
+		toId: bremerhavenHbf,
+		when
 	})
 
 	t.end()

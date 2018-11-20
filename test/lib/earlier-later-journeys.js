@@ -8,7 +8,7 @@ const testEarlierLaterJourneys = co(function* (cfg) {
 		fetchJourneys,
 		fromId,
 		toId,
-		when,
+		when
 		// todo: validate
 	} = cfg
 

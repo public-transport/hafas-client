@@ -208,7 +208,8 @@ test('earlier/later journeys, Salzburg Hbf -> Wien Westbahnhof', co(function* (t
 		fetchJourneys: client.journeys,
 		validate,
 		fromId: salzburgHbf,
-		toId: wienWestbahnhof
+		toId: wienWestbahnhof,
+		when
 	})
 
 	t.end()

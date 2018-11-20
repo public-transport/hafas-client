@@ -122,7 +122,8 @@ test('earlier/later journeys', co(function* (t) {
 		fetchJourneys: client.journeys,
 		validate,
 		fromId: spichernstr,
-		toId: bismarckstr
+		toId: bismarckstr,
+		when
 	})
 
 	t.end()
