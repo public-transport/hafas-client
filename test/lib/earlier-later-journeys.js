@@ -66,7 +66,9 @@ const testEarlierLaterJourneys = co(function* (cfg) {
 		earlierThan: model.earlierRef
 	})
 	for (let j of earlier) {
-		t.ok(new Date(j.legs[0].departure) < earliestDep)
+		const firstLeg = j.legs[0]
+		const dep = new Date(firstLeg.departure || firstLeg.formerScheduledDeparture)
+		t.ok(dep < earliestDep)
 	}
 
 	const later = yield fetchJourneys(fromId, toId, {
@@ -75,7 +77,9 @@ const testEarlierLaterJourneys = co(function* (cfg) {
 		laterThan: model.laterRef
 	})
 	for (let j of later) {
-		t.ok(new Date(j.legs[0].departure) > latestDep)
+		const firstLeg = j.legs[0]
+		const dep = new Date(firstLeg.departure || firstLeg.formerScheduledDeparture)
+		t.ok(dep > latestDep)
 	}
 })
 
