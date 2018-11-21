@@ -338,8 +338,8 @@ test('locations named Salzburg', async (t) => {
 	t.end()
 })
 
-test('station', async (t) => {
-	const loc = await client.station(wienRenngasse)
+test('stop', async (t) => {
+	const loc = await client.stop(wienRenngasse)
 
 	// todo: find a way to always get products from the API
 	// todo: cfg.stationProductsOptional option
@@ -355,7 +355,7 @@ test('station', async (t) => {
 			validateStation(validate, withFakeProducts, name)
 		}
 	})
-	validate(t, loc, ['stop', 'station'], 'station')
+	validate(t, loc, ['stop', 'station'], 'stop')
 
 	t.equal(loc.id, wienRenngasse)
 

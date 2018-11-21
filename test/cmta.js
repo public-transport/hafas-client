@@ -240,7 +240,7 @@ test('locations named "Capitol"', async (t) => {
 })
 
 test('station Domain', async (t) => {
-	const s = await client.station(domain)
+	const s = await client.stop(domain)
 
 	validate(t, s, ['stop', 'station'], 'station')
 	t.equal(s.id, domain)

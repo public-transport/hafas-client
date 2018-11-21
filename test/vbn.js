@@ -240,7 +240,7 @@ test.skip('locations named Magdeburg', async (t) => {
 })
 
 test.skip('station Magdeburg-Buckau', async (t) => {
-	const s = await client.station(bremerhavenHbf)
+	const s = await client.stop(bremerhavenHbf)
 
 	validate(t, s, ['stop', 'station'], 'station')
 	t.equal(s.id, bremerhavenHbf)
