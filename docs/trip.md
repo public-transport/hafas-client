@@ -4,7 +4,7 @@ This method can be used to refetch information about a trip – a vehicle stopp
 
 *Note*: This method is not supported by every profile/endpoint.
 
-Let's say you used [`journeys`](journeys.md) and now want to get more up-to-date data about the arrival/departure of a leg. You'd pass in the trip ID from `leg.id`, e.g. `'1|24983|22|86|18062017'`, and the name of the line from `leg.line.name` like this:
+Let's say you used [`journeys`](journeys.md) and now want to get more up-to-date data about the arrival/departure of a leg. You'd pass in the trip ID from `leg.tripId`, e.g. `'1|24983|22|86|18062017'`, and the name of the line from `leg.line.name` like this:
 
 ```js
 const createClient = require('hafas-client')
@@ -16,7 +16,7 @@ const client = createClient(vbbProfile, 'my-awesome-program')
 client.journeys('900000003201', '900000100008', {results: 1})
 .then(([journey]) => {
 	const leg = journey.legs[0]
-	return client.trip(leg.id, leg.line.name)
+	return client.trip(leg.tripId, leg.line.name)
 })
 .then(console.log)
 .catch(console.error)

@@ -34,7 +34,7 @@ client.journeys('000002370', '000005919', {results: 1, polylines: true})
 
 // .then(([journey]) => {
 // 	const leg = journey.legs[0]
-// 	return client.trip(leg.id, leg.line.name, {polyline: true})
+// 	return client.trip(leg.tripId, leg.line.name, {polyline: true})
 // })
 // .then(([journey]) => {
 // 	return client.refreshJourney(journey.refreshToken, {stopovers: true, remarks: true})
