@@ -305,7 +305,11 @@ const validateJourneys = (val, js, name = 'journeys') => {
 }
 
 const validateTrip = (val, trip, name = 'trip') => {
-	val.journeyLeg(val, trip, name)
+	const withFakeTripId = Object.assign({
+		tripId: trip.id
+	}, trip)
+	delete withFakeTripId.id
+	val.journeyLeg(val, withFakeTripId, name)
 }
 
 const createValidateArrivalOrDeparture = (type, cfg) => {
