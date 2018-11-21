@@ -23,7 +23,7 @@ const createParseMovement = (profile, opt, data) => {
 	const parseMovement = (m) => {
 		const res = _parseMovement(m)
 		// filter out empty stopovers
-		res.nextStops = res.nextStops.filter(st => !!st.stop)
+		res.nextStopovers = res.nextStopovers.filter(st => !!st.stop)
 		return res
 	}
 	return parseMovement
