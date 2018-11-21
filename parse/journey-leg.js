@@ -90,7 +90,7 @@ const createParseJourneyLeg = (profile, opt, data) => {
 			}
 		} else if (pt.type === 'JNY') {
 			// todo: pull `public` value from `profile.products`
-			res.id = pt.jny.jid
+			res.tripId = pt.jny.jid
 			res.line = lines[parseInt(pt.jny.prodX)] || null
 			res.direction = profile.parseStationName(pt.jny.dirTxt) || null
 

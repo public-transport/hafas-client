@@ -411,13 +411,16 @@ const createClient = (profile, userAgent, request = _request) => {
 				polylines: opt.polyline && d.common.polyL || []
 			})
 
-			const leg = { // pretend the leg is contained in a journey
+			const rawLeg = { // pretend the leg is contained in a journey
 				type: 'JNY',
 				dep: minBy(d.journey.stopL, 'idx'),
 				arr: maxBy(d.journey.stopL, 'idx'),
 				jny: d.journey
 			}
-			return parse(d.journey, leg, !!opt.stopovers)
+			const trip = parse(d.journey, rawLeg, !!opt.stopovers)
+			trip.id = trip.tripId
+			delete trip.tripId
+			return trip
 		})
 	}
 
