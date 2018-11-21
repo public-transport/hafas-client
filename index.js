@@ -318,18 +318,18 @@ const createClient = (profile, userAgent, request = _request) => {
 		})
 	}
 
-	const station = (station, opt = {}) => {
-		if ('object' === typeof station) station = profile.formatStation(station.id)
-		else if ('string' === typeof station) station = profile.formatStation(station)
-		else throw new Error('station must be an object or a string.')
+	const stop = (stop, opt = {}) => {
+		if ('object' === typeof stop) stop = profile.formatStation(stop.id)
+		else if ('string' === typeof stop) stop = profile.formatStation(stop)
+		else throw new Error('stop must be an object or a string.')
 
 		opt = Object.assign({
-			stationLines: false // parse & expose lines of the station?
+			stationLines: false // parse & expose lines of the stop/station?
 		}, opt)
 		return request(profile, userAgent, opt, {
 			meth: 'LocDetails',
 			req: {
-				locL: [station]
+				locL: [stop]
 			}
 		})
 		.then((d) => {
@@ -534,7 +534,7 @@ const createClient = (profile, userAgent, request = _request) => {
 		})
 	}
 
-	const client = {departures, arrivals, journeys, locations, station, nearby}
+	const client = {departures, arrivals, journeys, locations, stop, nearby}
 	if (profile.trip) client.trip = trip
 	if (profile.radar) client.radar = radar
 	if (profile.refreshJourney) client.refreshJourney = refreshJourney
