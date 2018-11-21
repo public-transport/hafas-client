@@ -101,7 +101,7 @@ The response may look like this:
 [
 	{
 		legs: [ {
-			id: '1|32615|6|86|10072018',
+			tripId: '1|32615|6|86|10072018',
 			origin: {
 				type: 'station',
 				id: '900000003201',
