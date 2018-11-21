@@ -1,8 +1,6 @@
 'use strict'
 
-const co = require('./co')
-
-const testDepartures = co(function* (cfg) {
+const testDepartures = async (cfg) => {
 	const {test: t, departures: deps, validate, id} = cfg
 
 	validate(t, deps, 'departures', 'departures')
@@ -20,6 +18,6 @@ const testDepartures = co(function* (cfg) {
 
 	// todo: move into deps validator
 	t.deepEqual(deps, deps.sort((a, b) => t.when > b.when))
-})
+}
 
 module.exports = testDepartures

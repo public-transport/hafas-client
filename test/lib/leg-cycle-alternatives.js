@@ -2,10 +2,9 @@
 
 const isRoughlyEqual = require('is-roughly-equal')
 
-const co = require('./co')
 const {hour} = require('./util')
 
-const testLegCycleAlternatives = co(function* (cfg) {
+const testLegCycleAlternatives = async (cfg) => {
 	const {
 		test: t,
 		fetchJourneys,
@@ -15,7 +14,7 @@ const testLegCycleAlternatives = co(function* (cfg) {
 
 	// Apparently HAFAS doesn't return the leg cycle or alternatives more
 	// than ~2 hours in advance. This is why we don't pass `when` here.
-	const journeys = yield fetchJourneys(fromId, toId, {results: 3})
+	const journeys = await fetchJourneys(fromId, toId, {results: 3})
 
 	for (let i = 0; i < journeys.length; i++) {
 		const journey = journeys[i]
@@ -42,6 +41,6 @@ const testLegCycleAlternatives = co(function* (cfg) {
 			}
 		}
 	}
-})
+}
 
 module.exports = testLegCycleAlternatives

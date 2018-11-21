@@ -5,7 +5,6 @@ const tape = require('tape')
 const isRoughlyEqual = require('is-roughly-equal')
 
 const {createWhen} = require('./lib/util')
-const co = require('./lib/co')
 const createClient = require('..')
 const vbnProfile = require('../p/vbn')
 const products = require('../p/vbn/products')
@@ -36,14 +35,14 @@ const client = createClient(vbnProfile, 'public-transport/hafas-client:test')
 const bremenHbf = '8000050'
 const bremerhavenHbf = '8000051'
 
-test.only('journeys – Bremen Hbf to Bremerhaven Hbf', co(function* (t) {
-	const journeys = yield client.journeys(bremenHbf, bremerhavenHbf, {
+test.only('journeys – Bremen Hbf to Bremerhaven Hbf', async (t) => {
+	const journeys = await client.journeys(bremenHbf, bremerhavenHbf, {
 		results: 3,
 		departure: when,
 		stopovers: true
 	})
 
-	yield testJourneysStationToStation({
+	await testJourneysStationToStation({
 		test: t,
 		journeys,
 		validate,
@@ -51,7 +50,7 @@ test.only('journeys – Bremen Hbf to Bremerhaven Hbf', co(function* (t) {
 		toId: bremerhavenHbf
 	})
 	t.end()
-}))
+})
 
 // todo: journeys, only one product
 
@@ -75,12 +74,12 @@ test.skip('Magdeburg Hbf to 39104 Magdeburg, Sternstr. 10', co(function*(t) {
 		longitude: 11.422332
 	}
 
-	const journeys = yield client.journeys(bremenHbf, sternStr, {
+	const journeys = await client.journeys(bremenHbf, sternStr, {
 		results: 3,
 		departure: when
 	})
 
-	yield testJourneysStationToAddress({
+	await testJourneysStationToAddress({
 		test: t,
 		journeys,
 		validate,
@@ -88,7 +87,7 @@ test.skip('Magdeburg Hbf to 39104 Magdeburg, Sternstr. 10', co(function*(t) {
 		to: sternStr
 	})
 	t.end()
-}))
+})
 
 test.skip('Magdeburg Hbf to Kloster Unser Lieben Frauen', co(function*(t) {
 	const kloster = {
@@ -98,12 +97,12 @@ test.skip('Magdeburg Hbf to Kloster Unser Lieben Frauen', co(function*(t) {
 		latitude: 52.127601,
 		longitude: 11.636437
 	}
-	const journeys = yield client.journeys(bremenHbf, kloster, {
+	const journeys = await client.journeys(bremenHbf, kloster, {
 		results: 3,
 		departure: when
 	})
 
-	yield testJourneysStationToPoi({
+	await testJourneysStationToPoi({
 		test: t,
 		journeys,
 		validate,
@@ -111,32 +110,32 @@ test.skip('Magdeburg Hbf to Kloster Unser Lieben Frauen', co(function*(t) {
 		to: kloster
 	})
 	t.end()
-}))
+})
 
-test.skip('journeys: via works – with detour', co(function* (t) {
+test.skip('journeys: via works – with detour', async (t) => {
 	// Going from Magdeburg, Hasselbachplatz (Sternstr.) (Tram/Bus) to Stendal
 	// via Dessau without detour is currently impossible. We check if the routing
 	// engine computes a detour.
-	const journeys = yield client.journeys(hasselbachplatzSternstrasse, stendal, {
+	const journeys = await client.journeys(hasselbachplatzSternstrasse, stendal, {
 		via: dessau,
 		results: 1,
 		departure: when,
 		stopovers: true
 	})
 
-	yield testJourneysWithDetour({
+	await testJourneysWithDetour({
 		test: t,
 		journeys,
 		validate,
 		detourIds: ['8010077', dessau] // todo: trim IDs
 	})
 	t.end()
-}))
+})
 
 // todo: without detour
 
-test.skip('earlier/later journeys', co(function* (t) {
-	yield testEarlierLaterJourneys({
+test.skip('earlier/later journeys', async (t) => {
+	await testEarlierLaterJourneys({
 		test: t,
 		fetchJourneys: client.journeys,
 		validate,
@@ -146,10 +145,10 @@ test.skip('earlier/later journeys', co(function* (t) {
 	})
 
 	t.end()
-}))
+})
 
-test.skip('refreshJourney', co(function* (t) {
-	yield testRefreshJourney({
+test.skip('refreshJourney', async (t) => {
+	await testRefreshJourney({
 		test: t,
 		fetchJourneys: client.journeys,
 		refreshJourney: client.refreshJourney,
@@ -159,39 +158,39 @@ test.skip('refreshJourney', co(function* (t) {
 		when
 	})
 	t.end()
-}))
+})
 
-test.skip('trip details', co(function* (t) {
-	const journeys = yield client.journeys(bremenHbf, bremerhavenHbf, {
+test.skip('trip details', async (t) => {
+	const journeys = await client.journeys(bremenHbf, bremerhavenHbf, {
 		results: 1, departure: when
 	})
 
 	const p = journeys[0].legs[0]
 	t.ok(p.tripId, 'precondition failed')
 	t.ok(p.line.name, 'precondition failed')
-	const trip = yield client.trip(p.tripId, p.line.name, {when})
+	const trip = await client.trip(p.tripId, p.line.name, {when})
 
 	validate(t, trip, 'journeyLeg', 'trip')
 	t.end()
-}))
+})
 
 test.skip('departures at Magdeburg Leiterstr.', co(function*(t) {
-	const departures = yield client.departures(leiterstr, {
+	const departures = await client.departures(leiterstr, {
 		duration: 5, when,
-		stopovers: false
+		stopovers: true
 	})
 
-	yield testDepartures({
+	await testDepartures({
 		test: t,
 		departures,
 		validate,
 		id: leiterstr
 	})
 	t.end()
-}))
+})
 
-test.skip('departures with station object', co(function* (t) {
-	const deps = yield client.departures({
+test.skip('departures with station object', async (t) => {
+	const deps = await client.departures({
 		type: 'station',
 		id: bremenHbf,
 		name: 'Magdeburg Hbf',
@@ -204,27 +203,27 @@ test.skip('departures with station object', co(function* (t) {
 
 	validate(t, deps, 'departures', 'departures')
 	t.end()
-}))
+})
 
 test.skip('arrivals at Magdeburg Leiterstr.', co(function*(t) {
-	const arrivals = yield client.arrivals(leiterstr, {
+	const arrivals = await client.arrivals(leiterstr, {
 		duration: 5, when,
 		stopovers: true
 	})
 
-	yield testArrivals({
+	await testArrivals({
 		test: t,
 		arrivals,
 		validate,
 		id: leiterstr
 	})
 	t.end()
-}))
+})
 
 // todo: nearby
 
 test.skip('locations named Magdeburg', co(function*(t) {
-	const locations = yield client.locations('Magdeburg', {
+	const locations = await client.locations('Magdeburg', {
 		results: 20
 	})
 
@@ -242,19 +241,19 @@ test.skip('locations named Magdeburg', co(function*(t) {
 	}))
 
 	t.end()
-}))
+})
 
-test.skip('station Magdeburg-Buckau', co(function* (t) {
-	const s = yield client.station(bremerhavenHbf)
+test.skip('station Magdeburg-Buckau', async (t) => {
+	const s = await client.station(bremerhavenHbf)
 
 	validate(t, s, ['stop', 'station'], 'station')
 	t.equal(s.id, bremerhavenHbf)
 
 	t.end()
-}))
+})
 
-test.skip('radar', co(function* (t) {
-	const vehicles = yield client.radar({
+test.skip('radar', async (t) => {
+	const vehicles = await client.radar({
 		north: 52.148364,
 		west: 11.600826,
 		south: 52.108486,
@@ -270,4 +269,4 @@ test.skip('radar', co(function* (t) {
 	validate(t, vehicles, 'movements', 'vehicles')
 
 	t.end()
-}))
+})

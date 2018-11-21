@@ -6,7 +6,6 @@ const isRoughlyEqual = require('is-roughly-equal')
 const validateLine = require('validate-fptf/line')
 
 const {createWhen} = require('./lib/util')
-const co = require('./lib/co')
 const createClient = require('..')
 const oebbProfile = require('../p/oebb')
 const products = require('../p/oebb/products')
@@ -63,14 +62,14 @@ const wienRenngasse = '1390186'
 const wienKarlsplatz = '1390461'
 const wienPilgramgasse = '1390562'
 
-test.skip('journeys – Salzburg Hbf to Wien Westbahnhof', co(function* (t) {
-	const journeys = yield client.journeys(salzburgHbf, wienFickeystr, {
+test.skip('journeys – Salzburg Hbf to Wien Westbahnhof', async (t) => {
+	const journeys = await client.journeys(salzburgHbf, wienFickeystr, {
 		results: 3,
 		departure: when,
 		stopovers: true
 	})
 
-	yield testJourneysStationToStation({
+	await testJourneysStationToStation({
 		test: t,
 		journeys,
 		validate,
@@ -84,7 +83,7 @@ test.skip('journeys – Salzburg Hbf to Wien Westbahnhof', co(function* (t) {
 	}
 
 	t.end()
-}))
+})
 
 // todo: journeys, only one product
 
@@ -100,19 +99,19 @@ test('journeys – fails with no product', (t) => {
 	t.end()
 })
 
-test('Salzburg Hbf to 1220 Wien, Wagramer Straße 5', co(function* (t) {
+test('Salzburg Hbf to 1220 Wien, Wagramer Straße 5', async (t) => {
 	const wagramerStr = {
 		type: 'location',
     	address: '1220 Wien, Wagramer Straße 5',
     	latitude: 48.236216,
     	longitude: 16.425863
 	}
-	const journeys = yield client.journeys(salzburgHbf, wagramerStr, {
+	const journeys = await client.journeys(salzburgHbf, wagramerStr, {
 		results: 3,
 		departure: when
 	})
 
-	yield testJourneysStationToAddress({
+	await testJourneysStationToAddress({
 		test: t,
 		journeys,
 		validate,
@@ -120,9 +119,9 @@ test('Salzburg Hbf to 1220 Wien, Wagramer Straße 5', co(function* (t) {
 		to: wagramerStr
 	})
 	t.end()
-}))
+})
 
-test('Salzburg Hbf to Albertina', co(function* (t) {
+test('Salzburg Hbf to Albertina', async (t) => {
 	const albertina = {
 		type: 'location',
     	id: '975900003',
@@ -130,11 +129,11 @@ test('Salzburg Hbf to Albertina', co(function* (t) {
     	latitude: 48.204699,
     	longitude: 16.368404
 	}
-	const journeys = yield client.journeys(salzburgHbf, albertina, {
+	const journeys = await client.journeys(salzburgHbf, albertina, {
 		results: 3, departure: when
 	})
 
-	yield testJourneysStationToPoi({
+	await testJourneysStationToPoi({
 		test: t,
 		journeys,
 		validate,
@@ -142,32 +141,32 @@ test('Salzburg Hbf to Albertina', co(function* (t) {
 		to: albertina
 	})
 	t.end()
-}))
+})
 
-test('journeys: via works – with detour', co(function* (t) {
+test('journeys: via works – with detour', async (t) => {
 	// Going from Stephansplatz to Schottenring via Donauinsel without detour
 	// is currently impossible. We check if the routing engine computes a detour.
 	const stephansplatz = '001390167'
 	const schottenring = '001390163'
 	const donauinsel = '001392277'
 	const donauinselPassed = '922001'
-	const journeys = yield client.journeys(stephansplatz, schottenring, {
+	const journeys = await client.journeys(stephansplatz, schottenring, {
 		via: donauinsel,
 		results: 1,
 		departure: when,
 		stopovers: true
 	})
 
-	yield testJourneysWithDetour({
+	await testJourneysWithDetour({
 		test: t,
 		journeys,
 		validate,
 		detourIds: [donauinsel, donauinselPassed]
 	})
 	t.end()
-}))
+})
 
-test('journeys: via works – without detour', co(function* (t) {
+test('journeys: via works – without detour', async (t) => {
 	// When going from Karlsplatz to Praterstern via Museumsquartier, there is
 	// *no need* to change trains / no need for a "detour".
 	const karlsplatz = '001390461'
@@ -175,7 +174,7 @@ test('journeys: via works – without detour', co(function* (t) {
 	const museumsquartier = '001390171'
 	const museumsquartierPassed = '901014'
 
-	const journeys = yield client.journeys(karlsplatz, praterstern, {
+	const journeys = await client.journeys(karlsplatz, praterstern, {
 		via: museumsquartier,
 		results: 1,
 		departure: when,
@@ -200,10 +199,10 @@ test('journeys: via works – without detour', co(function* (t) {
 	t.ok(l2, 'Museumsquartier is not being passed')
 
 	t.end()
-}))
+})
 
-test('earlier/later journeys, Salzburg Hbf -> Wien Westbahnhof', co(function* (t) {
-	yield testEarlierLaterJourneys({
+test('earlier/later journeys, Salzburg Hbf -> Wien Westbahnhof', async (t) => {
+	await testEarlierLaterJourneys({
 		test: t,
 		fetchJourneys: client.journeys,
 		validate,
@@ -213,10 +212,10 @@ test('earlier/later journeys, Salzburg Hbf -> Wien Westbahnhof', co(function* (t
 	})
 
 	t.end()
-}))
+})
 
-test('refreshJourney', co(function* (t) {
-	yield testRefreshJourney({
+test('refreshJourney', async (t) => {
+	await testRefreshJourney({
 		test: t,
 		fetchJourneys: client.journeys,
 		refreshJourney: client.refreshJourney,
@@ -226,23 +225,23 @@ test('refreshJourney', co(function* (t) {
 		when
 	})
 	t.end()
-}))
+})
 
-test('trip details', co(function* (t) {
-	const journeys = yield client.journeys(wienWestbahnhof, muenchenHbf, {
+test('trip details', async (t) => {
+	const journeys = await client.journeys(wienWestbahnhof, muenchenHbf, {
 		results: 1, departure: when
 	})
 
 	const p = journeys[0].legs[0]
 	t.ok(p.id, 'precondition failed')
 	t.ok(p.line.name, 'precondition failed')
-	const trip = yield client.trip(p.id, p.line.name, {when})
+	const trip = await client.trip(p.id, p.line.name, {when})
 
 	validate(t, trip, 'journeyLeg', 'trip')
 	t.end()
-}))
+})
 
-test('departures at Wien Leibenfrostgasse', co(function* (t) {
+test('departures at Wien Leibenfrostgasse', async (t) => {
 	const wienLeibenfrostgasse = '1390469'
 	const ids = [
 		wienLeibenfrostgasse, // station
@@ -250,7 +249,7 @@ test('departures at Wien Leibenfrostgasse', co(function* (t) {
 		'904030' // stop "Wien Leibenfrostgasse (Ziegelofengasse)"
 	]
 
-	const deps = yield client.departures(wienLeibenfrostgasse, {
+	const deps = await client.departures(wienLeibenfrostgasse, {
 		duration: 15, when,
 		stopovers: true
 	})
@@ -266,10 +265,10 @@ test('departures at Wien Leibenfrostgasse', co(function* (t) {
 	}
 
 	t.end()
-}))
+})
 
-test('departures with station object', co(function* (t) {
-	const deps = yield client.departures({
+test('departures with station object', async (t) => {
+	const deps = await client.departures({
 		type: 'station',
 		id: salzburgHbf,
 		name: 'Salzburg Hbf',
@@ -282,10 +281,10 @@ test('departures with station object', co(function* (t) {
 
 	validate(t, deps, 'departures', 'departures')
 	t.end()
-}))
+})
 
-test('departures at Karlsplatz in direction of Pilgramgasse', co(function* (t) {
-	yield testDeparturesInDirection({
+test('departures at Karlsplatz in direction of Pilgramgasse', async (t) => {
+	await testDeparturesInDirection({
 		test: t,
 		fetchDepartures: client.departures,
 		fetchTrip: client.trip,
@@ -295,12 +294,12 @@ test('departures at Karlsplatz in direction of Pilgramgasse', co(function* (t) {
 		validate
 	})
 	t.end()
-}))
+})
 
 // todo: arrivals
 
-test('nearby Salzburg Hbf', co(function* (t) {
-	const nearby = yield client.nearby({
+test('nearby Salzburg Hbf', async (t) => {
+	const nearby = await client.nearby({
 		type: 'location',
 		longitude: 13.045604,
 		latitude: 47.812851
@@ -320,10 +319,10 @@ test('nearby Salzburg Hbf', co(function* (t) {
 	t.ok(s.distance <= 100)
 
 	t.end()
-}))
+})
 
-test('locations named Salzburg', co(function* (t) {
-	const locations = yield client.locations('Salzburg', {
+test('locations named Salzburg', async (t) => {
+	const locations = await client.locations('Salzburg', {
 		results: 20
 	})
 
@@ -341,10 +340,10 @@ test('locations named Salzburg', co(function* (t) {
 	}))
 
 	t.end()
-}))
+})
 
-test('station', co(function* (t) {
-	const loc = yield client.station(wienRenngasse)
+test('station', async (t) => {
+	const loc = await client.station(wienRenngasse)
 
 	// todo: find a way to always get products from the API
 	// todo: cfg.stationProductsOptional option
@@ -365,10 +364,10 @@ test('station', co(function* (t) {
 	t.equal(loc.id, wienRenngasse)
 
 	t.end()
-}))
+})
 
-test('radar Salzburg', co(function* (t) {
-	let vehicles = yield client.radar({
+test('radar Salzburg', async (t) => {
+	let vehicles = await client.radar({
 		north: 47.827203,
 		west: 13.001261,
 		south: 47.773278,
@@ -394,4 +393,4 @@ test('radar Salzburg', co(function* (t) {
 	validate(t, vehicles, 'movements', 'vehicles')
 
 	t.end()
-}))
+})

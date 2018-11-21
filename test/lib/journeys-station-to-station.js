@@ -1,8 +1,6 @@
 'use strict'
 
-const co = require('./co')
-
-const testJourneysStationToStation = co(function* (cfg) {
+const testJourneysStationToStation = async (cfg) => {
 	const {test: t, journeys, validate, fromId, toId} = cfg
 
 	validate(t, journeys, 'journeys', 'journeys')
@@ -17,6 +15,6 @@ const testJourneysStationToStation = co(function* (cfg) {
 		t.strictEqual(origin.id, fromId)
 		t.strictEqual(dest.id, toId)
 	}
-})
+}
 
 module.exports = testJourneysStationToStation

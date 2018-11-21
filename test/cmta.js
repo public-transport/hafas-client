@@ -5,7 +5,6 @@ const tapePromise = require('tape-promise').default
 const tape = require('tape')
 
 const {createWhen} = require('./lib/util')
-const co = require('./lib/co')
 const createClient = require('..')
 const cmtaProfile = require('../p/cmta')
 const products = require('../p/cmta/products')
@@ -56,14 +55,14 @@ const broadieOaks = '2370'
 const domain = '5919'
 const capitol591 = '591'
 
-test('journeys – Broadie Oaks to Domain', co(function* (t) {
-	const journeys = yield client.journeys(broadieOaks, domain, {
+test('journeys – Broadie Oaks to Domain', async (t) => {
+	const journeys = await client.journeys(broadieOaks, domain, {
 		results: 3,
 		departure: when,
 		stopovers: true
 	})
 
-	yield testJourneysStationToStation({
+	await testJourneysStationToStation({
 		test: t,
 		journeys,
 		validate,
@@ -71,7 +70,7 @@ test('journeys – Broadie Oaks to Domain', co(function* (t) {
 		toId: domain
 	})
 	t.end()
-}))
+})
 
 // todo: journeys, only one product
 
@@ -87,7 +86,7 @@ test('journeys – fails with no product', (t) => {
 	t.end()
 })
 
-test('Domain to 1104 Elm Street, Austin, TX 78703', co(function*(t) {
+test('Domain to 1104 Elm Street, Austin, TX 78703', async (t) => {
 	const someAddress = {
 		type: 'location',
 		address: '1104 ELM ST, Austin, TX 78703',
@@ -95,12 +94,12 @@ test('Domain to 1104 Elm Street, Austin, TX 78703', co(function*(t) {
 		longitude: -97.758292
 	}
 
-	const journeys = yield client.journeys(domain, someAddress, {
+	const journeys = await client.journeys(domain, someAddress, {
 		results: 3,
 		departure: when
 	})
 
-	yield testJourneysStationToAddress({
+	await testJourneysStationToAddress({
 		test: t,
 		journeys,
 		validate,
@@ -108,9 +107,9 @@ test('Domain to 1104 Elm Street, Austin, TX 78703', co(function*(t) {
 		to: someAddress
 	})
 	t.end()
-}))
+})
 
-test('Domain to Whole Foods Market - North Lamar Blvd', co(function*(t) {
+test('Domain to Whole Foods Market - North Lamar Blvd', async (t) => {
 	const wholeFoodsMarket = {
 		type: 'location',
 		id: '9845477',
@@ -118,12 +117,12 @@ test('Domain to Whole Foods Market - North Lamar Blvd', co(function*(t) {
 		latitude: 30.270653,
 		longitude: -97.753564
 	}
-	const journeys = yield client.journeys(domain, wholeFoodsMarket, {
+	const journeys = await client.journeys(domain, wholeFoodsMarket, {
 		results: 3,
 		departure: when
 	})
 
-	yield testJourneysStationToPoi({
+	await testJourneysStationToPoi({
 		test: t,
 		journeys,
 		validate,
@@ -131,13 +130,13 @@ test('Domain to Whole Foods Market - North Lamar Blvd', co(function*(t) {
 		to: wholeFoodsMarket
 	})
 	t.end()
-}))
+})
 
 // todo: via works – with detour
 // todo: without detour
 
-test('earlier/later journeys', co(function* (t) {
-	yield testEarlierLaterJourneys({
+test('earlier/later journeys', async (t) => {
+	await testEarlierLaterJourneys({
 		test: t,
 		fetchJourneys: client.journeys,
 		validate,
@@ -147,10 +146,10 @@ test('earlier/later journeys', co(function* (t) {
 	})
 
 	t.end()
-}))
+})
 
-test('refreshJourney', co(function* (t) {
-	yield testRefreshJourney({
+test('refreshJourney', async (t) => {
+	await testRefreshJourney({
 		test: t,
 		fetchJourneys: client.journeys,
 		refreshJourney: client.refreshJourney,
@@ -160,39 +159,39 @@ test('refreshJourney', co(function* (t) {
 		when
 	})
 	t.end()
-}))
+})
 
-test('trip details', co(function* (t) {
-	const journeys = yield client.journeys(broadieOaks, domain, {
+test('trip details', async (t) => {
+	const journeys = await client.journeys(broadieOaks, domain, {
 		results: 1, departure: when
 	})
 
 	const p = journeys[0].legs[0]
 	t.ok(p.id, 'precondition failed')
 	t.ok(p.line.name, 'precondition failed')
-	const trip = yield client.trip(p.id, p.line.name, {when})
+	const trip = await client.trip(p.id, p.line.name, {when})
 
 	validate(t, trip, 'journeyLeg', 'trip')
 	t.end()
-}))
+})
 
-test('departures at Broadie Oaks', co(function*(t) {
-	const departures = yield client.departures(broadieOaks, {
+test('departures at Broadie Oaks', async (t) => {
+	const departures = await client.departures(broadieOaks, {
 		duration: 10, when,
 		stopovers: true
 	})
 
-	yield testDepartures({
+	await testDepartures({
 		test: t,
 		departures,
 		validate,
 		id: broadieOaks
 	})
 	t.end()
-}))
+})
 
-test('departures with station object', co(function* (t) {
-	const deps = yield client.departures({
+test('departures with station object', async (t) => {
+	const deps = await client.departures({
 		type: 'station',
 		id: broadieOaks,
 		name: 'Magdeburg Hbf',
@@ -205,26 +204,26 @@ test('departures with station object', co(function* (t) {
 
 	validate(t, deps, 'departures', 'departures')
 	t.end()
-}))
+})
 
-test('arrivals at Broadie Oaks', co(function*(t) {
-	const arrivals = yield client.arrivals(broadieOaks, {
+test('arrivals at Broadie Oaks', async (t) => {
+	const arrivals = await client.arrivals(broadieOaks, {
 		duration: 10, when
 	})
 
-	yield testArrivals({
+	await testArrivals({
 		test: t,
 		arrivals,
 		validate,
 		id: broadieOaks
 	})
 	t.end()
-}))
+})
 
 // todo: nearby
 
-test('locations named "Capitol"', co(function*(t) {
-	const locations = yield client.locations('Capitol', {
+test('locations named "Capitol"', async (t) => {
+	const locations = await client.locations('Capitol', {
 		results: 10
 	})
 
@@ -239,19 +238,19 @@ test('locations named "Capitol"', co(function*(t) {
 	}))
 
 	t.end()
-}))
+})
 
-test('station Domain', co(function* (t) {
-	const s = yield client.station(domain)
+test('station Domain', async (t) => {
+	const s = await client.station(domain)
 
 	validate(t, s, ['stop', 'station'], 'station')
 	t.equal(s.id, domain)
 
 	t.end()
-}))
+})
 
-test('radar', co(function* (t) {
-	const vehicles = yield client.radar({
+test('radar', async (t) => {
+	const vehicles = await client.radar({
 		north: 30.240877,
 		west: -97.804588,
 		south: 30.225378,
@@ -262,10 +261,10 @@ test('radar', co(function* (t) {
 
 	validate(t, vehicles, 'movements', 'vehicles')
 	t.end()
-}))
+})
 
-test('reachableFrom', co(function* (t) {
-	yield testReachableFrom({
+test('reachableFrom', async (t) => {
+	await testReachableFrom({
 		test: t,
 		reachableFrom: client.reachableFrom,
 		address: {
@@ -279,4 +278,4 @@ test('reachableFrom', co(function* (t) {
 		validate
 	})
 	t.end()
-}))
+})

@@ -7,7 +7,6 @@ const tape = require('tape')
 const isRoughlyEqual = require('is-roughly-equal')
 
 const {createWhen} = require('./lib/util')
-const co = require('./lib/co')
 const createClient = require('..')
 const dbProfile = require('../p/db')
 const products = require('../p/db/products')
@@ -83,14 +82,14 @@ const blnOstbahnhof = '8010255'
 const blnTiergarten = '8089091'
 const blnJannowitzbrücke = '8089019'
 
-test('journeys – Berlin Schwedter Str. to München Hbf', co(function* (t) {
-	const journeys = yield client.journeys(blnSchwedterStr, münchenHbf, {
+test('journeys – Berlin Schwedter Str. to München Hbf', async (t) => {
+	const journeys = await client.journeys(blnSchwedterStr, münchenHbf, {
 		results: 3,
 		departure: when,
 		stopovers: true
 	})
 
-	yield testJourneysStationToStation({
+	await testJourneysStationToStation({
 		test: t,
 		journeys,
 		validate,
@@ -103,7 +102,7 @@ test('journeys – Berlin Schwedter Str. to München Hbf', co(function* (t) {
 	}
 
 	t.end()
-}))
+})
 
 // todo: journeys, only one product
 
@@ -119,19 +118,19 @@ test('journeys – fails with no product', (t) => {
 	t.end()
 })
 
-test('Berlin Schwedter Str. to Torfstraße 17', co(function* (t) {
+test('Berlin Schwedter Str. to Torfstraße 17', async (t) => {
 	const torfstr = {
 		type: 'location',
 		address: 'Torfstraße 17',
 		latitude: 52.5416823,
 		longitude: 13.3491223
 	}
-	const journeys = yield client.journeys(blnSchwedterStr, torfstr, {
+	const journeys = await client.journeys(blnSchwedterStr, torfstr, {
 		results: 3,
 		departure: when
 	})
 
-	yield testJourneysStationToAddress({
+	await testJourneysStationToAddress({
 		test: t,
 		journeys,
 		validate,
@@ -139,9 +138,9 @@ test('Berlin Schwedter Str. to Torfstraße 17', co(function* (t) {
 		to: torfstr
 	})
 	t.end()
-}))
+})
 
-test('Berlin Schwedter Str. to ATZE Musiktheater', co(function* (t) {
+test('Berlin Schwedter Str. to ATZE Musiktheater', async (t) => {
 	const atze = {
 		type: 'location',
 		id: '991598902',
@@ -149,12 +148,12 @@ test('Berlin Schwedter Str. to ATZE Musiktheater', co(function* (t) {
 		latitude: 52.542417,
 		longitude: 13.350437
 	}
-	const journeys = yield client.journeys(blnSchwedterStr, atze, {
+	const journeys = await client.journeys(blnSchwedterStr, atze, {
 		results: 3,
 		departure: when
 	})
 
-	yield testJourneysStationToPoi({
+	await testJourneysStationToPoi({
 		test: t,
 		journeys,
 		validate,
@@ -162,31 +161,31 @@ test('Berlin Schwedter Str. to ATZE Musiktheater', co(function* (t) {
 		to: atze
 	})
 	t.end()
-}))
+})
 
-test('journeys: via works – with detour', co(function* (t) {
+test('journeys: via works – with detour', async (t) => {
 	// Going from Westhafen to Wedding via Württembergalle without detour
 	// is currently impossible. We check if the routing engine computes a detour.
-	const journeys = yield client.journeys(westhafen, wedding, {
+	const journeys = await client.journeys(westhafen, wedding, {
 		via: württembergallee,
 		results: 1,
 		departure: when,
 		stopovers: true
 	})
 
-	yield testJourneysWithDetour({
+	await testJourneysWithDetour({
 		test: t,
 		journeys,
 		validate,
 		detourIds: [württembergallee]
 	})
 	t.end()
-}))
+})
 
 // todo: without detour
 
-test('earlier/later journeys, Jungfernheide -> München Hbf', co(function* (t) {
-	yield testEarlierLaterJourneys({
+test('earlier/later journeys, Jungfernheide -> München Hbf', async (t) => {
+	await testEarlierLaterJourneys({
 		test: t,
 		fetchJourneys: client.journeys,
 		validate,
@@ -196,20 +195,20 @@ test('earlier/later journeys, Jungfernheide -> München Hbf', co(function* (t) {
 	})
 
 	t.end()
-}))
+})
 
-test('journeys – leg cycle & alternatives', co(function* (t) {
-	yield testLegCycleAlternatives({
+test('journeys – leg cycle & alternatives', async (t) => {
+	await testLegCycleAlternatives({
 		test: t,
 		fetchJourneys: client.journeys,
 		fromId: blnTiergarten,
 		toId: blnJannowitzbrücke
 	})
 	t.end()
-}))
+})
 
-test('refreshJourney', co(function* (t) {
-	yield testRefreshJourney({
+test('refreshJourney', async (t) => {
+	await testRefreshJourney({
 		test: t,
 		fetchJourneys: client.journeys,
 		refreshJourney: client.refreshJourney,
@@ -219,17 +218,17 @@ test('refreshJourney', co(function* (t) {
 		when
 	})
 	t.end()
-}))
+})
 
-test('trip details', co(function* (t) {
-	const journeys = yield client.journeys(berlinHbf, münchenHbf, {
+test('trip details', async (t) => {
+	const journeys = await client.journeys(berlinHbf, münchenHbf, {
 		results: 1, departure: when
 	})
 
 	const p = journeys[0].legs[0]
 	t.ok(p.id, 'precondition failed')
 	t.ok(p.line.name, 'precondition failed')
-	const trip = yield client.trip(p.id, p.line.name, {when})
+	const trip = await client.trip(p.id, p.line.name, {when})
 
 	const validateJourneyLeg = createValidateJourneyLeg(cfg)
 	const validate = createValidate(cfg, {
@@ -241,25 +240,25 @@ test('trip details', co(function* (t) {
 	validate(t, trip, 'journeyLeg', 'trip')
 
 	t.end()
-}))
+})
 
-test('departures at Berlin Schwedter Str.', co(function* (t) {
-	const departures = yield client.departures(blnSchwedterStr, {
+test('departures at Berlin Schwedter Str.', async (t) => {
+	const departures = await client.departures(blnSchwedterStr, {
 		duration: 5, when,
 		stopovers: true
 	})
 
-	yield testDepartures({
+	await testDepartures({
 		test: t,
 		departures,
 		validate,
 		id: blnSchwedterStr
 	})
 	t.end()
-}))
+})
 
-test('departures with station object', co(function* (t) {
-	const deps = yield client.departures({
+test('departures with station object', async (t) => {
+	const deps = await client.departures({
 		type: 'station',
 		id: jungfernheide,
 		name: 'Berlin Jungfernheide',
@@ -272,10 +271,10 @@ test('departures with station object', co(function* (t) {
 
 	validate(t, deps, 'departures', 'departures')
 	t.end()
-}))
+})
 
-test('departures at Berlin Hbf in direction of Berlin Ostbahnhof', co(function* (t) {
-	yield testDeparturesInDirection({
+test('departures at Berlin Hbf in direction of Berlin Ostbahnhof', async (t) => {
+	await testDeparturesInDirection({
 		test: t,
 		fetchDepartures: client.departures,
 		fetchTrip: client.trip,
@@ -285,10 +284,10 @@ test('departures at Berlin Hbf in direction of Berlin Ostbahnhof', co(function* 
 		validate
 	})
 	t.end()
-}))
+})
 
-test('departures without related stations', co(function* (t) {
-	yield testDeparturesWithoutRelatedStations({
+test('departures without related stations', async (t) => {
+	await testDeparturesWithoutRelatedStations({
 		test: t,
 		fetchDepartures: client.departures,
 		id: '8089051', // Berlin Yorckstr. (S1)
@@ -297,25 +296,25 @@ test('departures without related stations', co(function* (t) {
 		linesOfRelatedStations: ['S 2', 'S 25', 'S 26', 'U 7']
 	})
 	t.end()
-}))
+})
 
-test('arrivals at Berlin Schwedter Str.', co(function* (t) {
-	const arrivals = yield client.arrivals(blnSchwedterStr, {
+test('arrivals at Berlin Schwedter Str.', async (t) => {
+	const arrivals = await client.arrivals(blnSchwedterStr, {
 		duration: 5, when,
 		stopovers: true
 	})
 
-	yield testArrivals({
+	await testArrivals({
 		test: t,
 		arrivals,
 		validate,
 		id: blnSchwedterStr
 	})
 	t.end()
-}))
+})
 
-test('nearby Berlin Jungfernheide', co(function* (t) {
-	const nearby = yield client.nearby({
+test('nearby Berlin Jungfernheide', async (t) => {
+	const nearby = await client.nearby({
 		type: 'location',
 		latitude: 52.530273,
 		longitude: 13.299433
@@ -337,10 +336,10 @@ test('nearby Berlin Jungfernheide', co(function* (t) {
 	t.ok(s0.distance <= 100)
 
 	t.end()
-}))
+})
 
-test('locations named Jungfernheide', co(function* (t) {
-	const locations = yield client.locations('Jungfernheide', {
+test('locations named Jungfernheide', async (t) => {
+	const locations = await client.locations('Jungfernheide', {
 		results: 10
 	})
 
@@ -355,18 +354,18 @@ test('locations named Jungfernheide', co(function* (t) {
 	}), 'Jungfernheide not found')
 
 	t.end()
-}))
+})
 
-test('station', co(function* (t) {
-	const s = yield client.station(regensburgHbf)
+test('station', async (t) => {
+	const s = await client.station(regensburgHbf)
 
 	validate(t, s, ['stop', 'station'], 'station')
 	t.equal(s.id, regensburgHbf)
 
 	t.end()
-}))
+})
 
-test('reachableFrom', co(function* (t) {
+test('reachableFrom', async (t) => {
 	const torfstr17 = {
 		type: 'location',
 		address: 'Torfstraße 17',
@@ -374,7 +373,7 @@ test('reachableFrom', co(function* (t) {
 		longitude: 13.3491223
 	}
 
-	yield testReachableFrom({
+	await testReachableFrom({
 		test: t,
 		reachableFrom: client.reachableFrom,
 		address: torfstr17,
@@ -383,4 +382,4 @@ test('reachableFrom', co(function* (t) {
 		validate
 	})
 	t.end()
-}))
+})
