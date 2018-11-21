@@ -26,7 +26,7 @@ client.journeys('008010226', '008013456', {results: 1})
 
 // .then(([journey]) => {
 // 	const leg = journey.legs[0]
-// 	return client.trip(leg.id, leg.line.name)
+// 	return client.trip(leg.tripId, leg.line.name)
 // })
 
 // .then(([journey]) => {
