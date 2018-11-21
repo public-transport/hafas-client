@@ -5,7 +5,6 @@ const tape = require('tape')
 const isRoughlyEqual = require('is-roughly-equal')
 
 const { createWhen } = require('./lib/util')
-const co = require('./lib/co')
 const createClient = require('..')
 const saarfahrplanProfile = require('../p/saarfahrplan')
 const products = require('../p/saarfahrplan/products')
@@ -84,13 +83,13 @@ test('journeys – fails with no product', (t) => {
 	t.end()
 })
 
-test('Saarbrücken Hbf to Neunkirchen, Thomas-Mann-Straße 1', co(function * (t) {
-	const journeys = yield client.journeys(saarbrueckenHbf, thomasMannStr, {
+test('Saarbrücken Hbf to Neunkirchen, Thomas-Mann-Straße 1', async (t) => {
+	const journeys = await client.journeys(saarbrueckenHbf, thomasMannStr, {
 		results: 3,
 		departure: when
 	})
 
-	yield testJourneysStationToAddress({
+	await testJourneysStationToAddress({
 		test: t,
 		journeys,
 		validate,
@@ -98,9 +97,9 @@ test('Saarbrücken Hbf to Neunkirchen, Thomas-Mann-Straße 1', co(function * (t)
 		to: thomasMannStr
 	})
 	t.end()
-}))
+})
 
-test('Saarbrücken Hbf to Schlossberghöhlen', co(function * (t) {
+test('Saarbrücken Hbf to Schlossberghöhlen', async (t) => {
 	const schlossberghoehlen = {
 		type: 'location',
 		latitude: 49.32071,
@@ -108,11 +107,11 @@ test('Saarbrücken Hbf to Schlossberghöhlen', co(function * (t) {
 		name: 'Homburg, Schlossberghöhlen',
 		id: '9000185'
 	}
-	const journeys = yield client.journeys(saarbrueckenHbf, schlossberghoehlen, {
+	const journeys = await client.journeys(saarbrueckenHbf, schlossberghoehlen, {
 		results: 3, departure: when
 	})
 
-	yield testJourneysStationToPoi({
+	await testJourneysStationToPoi({
 		test: t,
 		journeys,
 		validate,
@@ -120,32 +119,32 @@ test('Saarbrücken Hbf to Schlossberghöhlen', co(function * (t) {
 		to: schlossberghoehlen
 	})
 	t.end()
-}))
+})
 
-test.skip('journeys: via works – with detour', co(function* (t) {
+test.skip('journeys: via works – with detour', async (t) => {
 	// Going from Stephansplatz to Schottenring via Donauinsel without detour
 	// is currently impossible. We check if the routing engine computes a detour.
 	const stephansplatz = '1390167'
 	const schottenring = '1390163'
 	const donauinsel = '1392277'
 	const donauinselPassed = '922001'
-	const journeys = yield client.journeys(stephansplatz, schottenring, {
+	const journeys = await client.journeys(stephansplatz, schottenring, {
 		via: donauinsel,
 		results: 1,
 		departure: when,
 		stopovers: true
 	})
 
-	yield testJourneysWithDetour({
+	await testJourneysWithDetour({
 		test: t,
 		journeys,
 		validate,
 		detourIds: [donauinsel, donauinselPassed]
 	})
 	t.end()
-}))
+})
 
-test.skip('journeys: via works – without detour', co(function* (t) {
+test.skip('journeys: via works – without detour', async (t) => {
 	// When going from Karlsplatz to Praterstern via Museumsquartier, there is
 	// *no need* to change trains / no need for a "detour".
 	const karlsplatz = '1390461'
@@ -153,7 +152,7 @@ test.skip('journeys: via works – without detour', co(function* (t) {
 	const museumsquartier = '1390171'
 	const museumsquartierPassed = '901014'
 
-	const journeys = yield client.journeys(karlsplatz, praterstern, {
+	const journeys = await client.journeys(karlsplatz, praterstern, {
 		via: museumsquartier,
 		results: 1,
 		departure: when,
@@ -178,10 +177,10 @@ test.skip('journeys: via works – without detour', co(function* (t) {
 	t.ok(l2, 'Museumsquartier is not being passed')
 
 	t.end()
-}))
+})
 
-test('earlier/later journeys, Saarbrücken Hbf -> Saarlouis Hbf', co(function * (t) {
-	yield testEarlierLaterJourneys({
+test('earlier/later journeys, Saarbrücken Hbf -> Saarlouis Hbf', async (t) => {
+	await testEarlierLaterJourneys({
 		test: t,
 		fetchJourneys: client.journeys,
 		validate,
@@ -191,24 +190,24 @@ test('earlier/later journeys, Saarbrücken Hbf -> Saarlouis Hbf', co(function * 
 	})
 
 	t.end()
-}))
+})
 
-test('trip details', co(function * (t) {
-	const journeys = yield client.journeys(saarlouisHbf, metzVille, {
+test('trip details', async (t) => {
+	const journeys = await client.journeys(saarlouisHbf, metzVille, {
 		results: 1, departure: when
 	})
 
 	const p = journeys[0].legs[0]
 	t.ok(p.id, 'precondition failed')
 	t.ok(p.line.name, 'precondition failed')
-	const trip = yield client.trip(p.id, p.line.name, { when })
+	const trip = await client.trip(p.id, p.line.name, { when })
 
 	validate(t, trip, 'journeyLeg', 'trip')
 	t.end()
-}))
+})
 
-test('departures', co(function* (t) {
-	const departures = yield client.departures(saarbrueckenUhlandstr, {
+test('departures', async (t) => {
+	const departures = await client.departures(saarbrueckenUhlandstr, {
 		duration: 5, when
 	})
 
@@ -228,10 +227,10 @@ test('departures', co(function* (t) {
 	// todo: move into deps validator
 	t.deepEqual(departures, departures.sort((a, b) => t.when > b.when))
 	t.end()
-}))
+})
 
-test('departures with stop object', co(function* (t) {
-	const deps = yield client.departures({
+test('departures with stop object', async (t) => {
+	const deps = await client.departures({
 		type: 'stop',
 		id: '8000323',
 		name: 'Saarbrücken Hbf',
@@ -244,11 +243,11 @@ test('departures with stop object', co(function* (t) {
 
 	validate(t, deps, 'departures', 'departures')
 	t.end()
-}))
+})
 
-test('departures at Karlsplatz in direction of Pilgramgasse', co(function* (t) {
+test('departures at Karlsplatz in direction of Pilgramgasse', async (t) => {
 	const saarbrueckenLandwehrplatz = '10606'
-	yield testDeparturesInDirection({
+	await testDeparturesInDirection({
 		test: t,
 		fetchDepartures: client.departures,
 		fetchTrip: client.trip,
@@ -258,12 +257,12 @@ test('departures at Karlsplatz in direction of Pilgramgasse', co(function* (t) {
 		validate
 	})
 	t.end()
-}))
+})
 
 // todo: arrivals
 
-test('nearby Saarbrücken Hbf', co(function * (t) {
-	const nearby = yield client.nearby({
+test('nearby Saarbrücken Hbf', async (t) => {
+	const nearby = await client.nearby({
 		type: 'location',
 		latitude: 49.241066,
 		longitude: 6.991019
@@ -283,10 +282,10 @@ test('nearby Saarbrücken Hbf', co(function * (t) {
 	t.ok(s.distance <= 100)
 
 	t.end()
-}))
+})
 
-test('locations named Saarbrücken', co(function * (t) {
-	const locations = yield client.locations('Saarbrücken', {
+test('locations named Saarbrücken', async (t) => {
+	const locations = await client.locations('Saarbrücken', {
 		results: 20
 	})
 
@@ -300,19 +299,19 @@ test('locations named Saarbrücken', co(function * (t) {
 	}))
 
 	t.end()
-}))
+})
 
-test('station', co(function* (t) {
-	const s = yield client.station(saarbrueckenUhlandstr)
+test('station', async (t) => {
+	const s = await client.station(saarbrueckenUhlandstr)
 
 	validate(t, s, ['stop', 'station'], 'station')
 	t.equal(s.id, saarbrueckenUhlandstr)
 
 	t.end()
-}))
+})
 
-test('radar', co(function* (t) {
-	const vehicles = yield client.radar({
+test('radar', async (t) => {
+	const vehicles = await client.radar({
 		north: 49.27,
 		west: 6.97,
 		south: 49.22,
@@ -323,4 +322,4 @@ test('radar', co(function* (t) {
 
 	validate(t, vehicles, 'movements', 'vehicles')
 	t.end()
-}))
+})
