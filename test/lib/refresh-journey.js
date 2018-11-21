@@ -1,7 +1,5 @@
 'use strict'
 
-const co = require('./co')
-
 const simplify = j => j.legs.map(l => {
 	let departure = null
 	if (l.departure) {
@@ -22,7 +20,7 @@ const simplify = j => j.legs.map(l => {
 	}
 })
 
-const testRefreshJourney = co(function* (cfg) {
+const testRefreshJourney = async (cfg) => {
 	const {
 		test: t,
 		fetchJourneys,
@@ -33,7 +31,7 @@ const testRefreshJourney = co(function* (cfg) {
 		// todo: validate
 	} = cfg
 
-	const [model] = yield fetchJourneys(fromId, toId, {
+	const [model] = await fetchJourneys(fromId, toId, {
 		results: 1, departure: when,
 		stopovers: false
 	})
@@ -42,10 +40,10 @@ const testRefreshJourney = co(function* (cfg) {
 	t.equal(typeof model.refreshToken, 'string')
 	t.ok(model.refreshToken)
 
-	const refreshed = yield refreshJourney(model.refreshToken, {
+	const refreshed = await refreshJourney(model.refreshToken, {
 		stopovers: false
 	})
 	t.deepEqual(simplify(refreshed), simplify(model))
-})
+}
 
 module.exports = testRefreshJourney

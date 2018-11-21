@@ -2,9 +2,7 @@
 
 const isRoughlyEqual = require('is-roughly-equal')
 
-const co = require('./co')
-
-const testJourneysStationToAddress = co(function* (cfg) {
+const testJourneysStationToAddress = async (cfg) => {
 	const {test: t, journeys, validate, fromId} = cfg
 	const {address, latitude, longitude} = cfg.to
 
@@ -25,6 +23,6 @@ const testJourneysStationToAddress = co(function* (cfg) {
 		t.ok(isRoughlyEqual(.0001, d.latitude, latitude), n + '.latitude is invalid')
 		t.ok(isRoughlyEqual(.0001, d.longitude, longitude), n + '.longitude is invalid')
 	}
-})
+}
 
 module.exports = testJourneysStationToAddress

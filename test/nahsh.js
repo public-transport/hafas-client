@@ -5,7 +5,6 @@ const tape = require('tape')
 const isRoughlyEqual = require('is-roughly-equal')
 
 const {createWhen} = require('./lib/util')
-const co = require('./lib/co')
 const createClient = require('..')
 const nahshProfile = require('../p/nahsh')
 const products = require('../p/nahsh/products')
@@ -76,14 +75,14 @@ const ellerbekerMarkt = '9049027'
 const seefischmarkt = '9049245'
 const kielRaeucherei = '9049217'
 
-test('journeys – Kiel Hbf to Flensburg', co(function* (t) {
-	const journeys = yield client.journeys(kielHbf, flensburg, {
+test('journeys – Kiel Hbf to Flensburg', async (t) => {
+	const journeys = await client.journeys(kielHbf, flensburg, {
 		results: 3,
 		departure: when,
 		stopovers: true
 	})
 
-	yield testJourneysStationToStation({
+	await testJourneysStationToStation({
 		test: t,
 		journeys,
 		validate,
@@ -98,7 +97,7 @@ test('journeys – Kiel Hbf to Flensburg', co(function* (t) {
 	}
 
 	t.end()
-}))
+})
 
 // todo: journeys, only one product
 
@@ -114,19 +113,19 @@ test('journeys – fails with no product', (t) => {
 	t.end()
 })
 
-test('Kiel Hbf to Berliner Str. 80, Husum', co(function* (t) {
+test('Kiel Hbf to Berliner Str. 80, Husum', async (t) => {
 	const berlinerStr = {
 		type: 'location',
 		address: 'Husum, Berliner Straße 80',
 		latitude: 54.488995,
 		longitude: 9.056263
 	}
-	const journeys = yield client.journeys(kielHbf, berlinerStr, {
+	const journeys = await client.journeys(kielHbf, berlinerStr, {
 		results: 3,
 		departure: when
 	})
 
-	yield testJourneysStationToAddress({
+	await testJourneysStationToAddress({
 		test: t,
 		journeys,
 		validate,
@@ -134,9 +133,9 @@ test('Kiel Hbf to Berliner Str. 80, Husum', co(function* (t) {
 		to: berlinerStr
 	})
 	t.end()
-}))
+})
 
-test('Kiel Hbf to Holstentor', co(function* (t) {
+test('Kiel Hbf to Holstentor', async (t) => {
 	const holstentor = {
 		type: 'location',
 		id: '970003118',
@@ -144,12 +143,12 @@ test('Kiel Hbf to Holstentor', co(function* (t) {
 		latitude: 53.866321,
 		longitude: 10.679976
 	}
-	const journeys = yield client.journeys(kielHbf, holstentor, {
+	const journeys = await client.journeys(kielHbf, holstentor, {
 		results: 3,
 		departure: when
 	})
 
-	yield testJourneysStationToPoi({
+	await testJourneysStationToPoi({
 		test: t,
 		journeys,
 		validate,
@@ -157,10 +156,10 @@ test('Kiel Hbf to Holstentor', co(function* (t) {
 		to: holstentor
 	})
 	t.end()
-}))
+})
 
-test('Husum to Lübeck Hbf with stopover at Kiel Hbf', co(function* (t) {
-	const journeys = yield client.journeys(husum, luebeckHbf, {
+test('Husum to Lübeck Hbf with stopover at Kiel Hbf', async (t) => {
+	const journeys = await client.journeys(husum, luebeckHbf, {
 		via: kielHbf,
 		results: 1,
 		departure: when,
@@ -178,10 +177,10 @@ test('Husum to Lübeck Hbf with stopover at Kiel Hbf', co(function* (t) {
 	t.ok(leg, 'Kiel Hbf is not being passed')
 
 	t.end()
-}))
+})
 
-test('earlier/later journeys, Kiel Hbf -> Flensburg', co(function* (t) {
-	yield testEarlierLaterJourneys({
+test('earlier/later journeys, Kiel Hbf -> Flensburg', async (t) => {
+	await testEarlierLaterJourneys({
 		test: t,
 		fetchJourneys: client.journeys,
 		validate,
@@ -191,10 +190,10 @@ test('earlier/later journeys, Kiel Hbf -> Flensburg', co(function* (t) {
 	})
 
 	t.end()
-}))
+})
 
-test('refreshJourney', co(function* (t) {
-	yield testRefreshJourney({
+test('refreshJourney', async (t) => {
+	await testRefreshJourney({
 		test: t,
 		fetchJourneys: client.journeys,
 		refreshJourney: client.refreshJourney,
@@ -204,42 +203,42 @@ test('refreshJourney', co(function* (t) {
 		when
 	})
 	t.end()
-}))
+})
 
 // todo: with detour test
 // todo: without detour test
 
-test('trip details', co(function* (t) {
-	const journeys = yield client.journeys(flensburg, husum, {
+test('trip details', async (t) => {
+	const journeys = await client.journeys(flensburg, husum, {
 		results: 1, departure: when
 	})
 
 	const p = journeys[0].legs[0]
 	t.ok(p.id, 'precondition failed')
 	t.ok(p.line.name, 'precondition failed')
-	const trip = yield client.trip(p.id, p.line.name, {when})
+	const trip = await client.trip(p.id, p.line.name, {when})
 
 	validate(t, trip, 'journeyLeg', 'trip')
 	t.end()
-}))
+})
 
-test('departures at Kiel Räucherei', co(function* (t) {
-	const departures = yield client.departures(kielRaeucherei, {
+test('departures at Kiel Räucherei', async (t) => {
+	const departures = await client.departures(kielRaeucherei, {
 		duration: 30, when,
 		stopovers: true
 	})
 
-	yield testDepartures({
+	await testDepartures({
 		test: t,
 		departures,
 		validate,
 		id: kielRaeucherei
 	})
 	t.end()
-}))
+})
 
-test('departures with station object', co(function* (t) {
-	const deps = yield client.departures({
+test('departures with station object', async (t) => {
+	const deps = await client.departures({
 		type: 'station',
 		id: kielHbf,
 		name: 'Kiel Hbf',
@@ -252,10 +251,10 @@ test('departures with station object', co(function* (t) {
 
 	validate(t, deps, 'departures', 'departures')
 	t.end()
-}))
+})
 
-test('departures at Berlin Hbf in direction of Berlin Ostbahnhof', co(function* (t) {
-	yield testDeparturesInDirection({
+test('departures at Berlin Hbf in direction of Berlin Ostbahnhof', async (t) => {
+	await testDeparturesInDirection({
 		test: t,
 		fetchDepartures: client.departures,
 		fetchTrip: client.trip,
@@ -265,29 +264,29 @@ test('departures at Berlin Hbf in direction of Berlin Ostbahnhof', co(function* 
 		validate
 	})
 	t.end()
-}))
+})
 
-test('arrivals at Kiel Räucherei', co(function* (t) {
-	const arrivals = yield client.arrivals(kielRaeucherei, {
+test('arrivals at Kiel Räucherei', async (t) => {
+	const arrivals = await client.arrivals(kielRaeucherei, {
 		duration: 30, when
 	})
 
-	yield testArrivals({
+	await testArrivals({
 		test: t,
 		arrivals,
 		validate,
 		id: kielRaeucherei
 	})
 	t.end()
-}))
+})
 
-test('nearby Kiel Hbf', co(function* (t) {
+test('nearby Kiel Hbf', async (t) => {
 	const kielHbfPosition = {
 		type: 'location',
 		latitude: 54.314982,
 		longitude: 10.131976
 	}
-	const nearby = yield client.nearby(kielHbfPosition, {
+	const nearby = await client.nearby(kielHbfPosition, {
 		results: 2, distance: 400
 	})
 
@@ -302,11 +301,11 @@ test('nearby Kiel Hbf', co(function* (t) {
 	t.ok(nearby[0].distance <= 100)
 
 	t.end()
-}))
+})
 
-test('locations named "Kiel Rathaus"', co(function* (t) {
+test('locations named "Kiel Rathaus"', async (t) => {
 	const kielRathaus = '9049200'
-	const locations = yield client.locations('Kiel Rathaus', {
+	const locations = await client.locations('Kiel Rathaus', {
 		results: 15
 	})
 
@@ -318,19 +317,19 @@ test('locations named "Kiel Rathaus"', co(function* (t) {
 	t.ok(locations.some(l => l.station && l.station.id === kielRathaus || l.id === kielRathaus))
 
 	t.end()
-}))
+})
 
-test('station', co(function* (t) {
-	const s = yield client.station(kielHbf)
+test('station', async (t) => {
+	const s = await client.station(kielHbf)
 
 	validate(t, s, ['stop', 'station'], 'station')
 	t.equal(s.id, kielHbf)
 
 	t.end()
-}))
+})
 
-test('radar', co(function* (t) {
-	const vehicles = yield client.radar({
+test('radar', async (t) => {
+	const vehicles = await client.radar({
 		north: 54.4,
 		west: 10.0,
 		south: 54.2,
@@ -354,9 +353,9 @@ test('radar', co(function* (t) {
 	validate(t, vehicles, 'movements', 'vehicles')
 
 	t.end()
-}))
+})
 
-test('reachableFrom', co(function* (t) {
+test('reachableFrom', async (t) => {
 	const berlinerStr = {
 		type: 'location',
 		address: 'Husum, Berliner Straße 80',
@@ -364,7 +363,7 @@ test('reachableFrom', co(function* (t) {
 		longitude: 9.056263
 	}
 
-	yield testReachableFrom({
+	await testReachableFrom({
 		test: t,
 		reachableFrom: client.reachableFrom,
 		address: berlinerStr,
@@ -373,4 +372,4 @@ test('reachableFrom', co(function* (t) {
 		validate
 	})
 	t.end()
-}))
+})
