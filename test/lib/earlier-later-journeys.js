@@ -1,8 +1,6 @@
 'use strict'
 
-const co = require('./co')
-
-const testEarlierLaterJourneys = co(function* (cfg) {
+const testEarlierLaterJourneys = async (cfg) => {
 	const {
 		test: t,
 		fetchJourneys,
@@ -12,7 +10,7 @@ const testEarlierLaterJourneys = co(function* (cfg) {
 		// todo: validate
 	} = cfg
 
-	const model = yield fetchJourneys(fromId, toId, {
+	const model = await fetchJourneys(fromId, toId, {
 		results: 3, departure: when
 	})
 
@@ -60,7 +58,7 @@ const testEarlierLaterJourneys = co(function* (cfg) {
 		else if (dep > latestDep) latestDep = dep
 	}
 
-	const earlier = yield fetchJourneys(fromId, toId, {
+	const earlier = await fetchJourneys(fromId, toId, {
 		results: 3,
 		// todo: single journey ref?
 		earlierThan: model.earlierRef
@@ -71,7 +69,7 @@ const testEarlierLaterJourneys = co(function* (cfg) {
 		t.ok(dep < earliestDep)
 	}
 
-	const later = yield fetchJourneys(fromId, toId, {
+	const later = await fetchJourneys(fromId, toId, {
 		results: 3,
 		// todo: single journey ref?
 		laterThan: model.laterRef
@@ -81,6 +79,6 @@ const testEarlierLaterJourneys = co(function* (cfg) {
 		const dep = new Date(firstLeg.departure || firstLeg.formerScheduledDeparture)
 		t.ok(dep > latestDep)
 	}
-})
+}
 
 module.exports = testEarlierLaterJourneys

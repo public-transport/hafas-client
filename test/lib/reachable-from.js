@@ -2,9 +2,7 @@
 
 const isPlainObject = require('lodash/isPlainObject')
 
-const co = require('./co')
-
-const testReachableFrom = co(function* (cfg) {
+const testReachableFrom = async (cfg) => {
 	const {
 		test: t,
 		reachableFrom,
@@ -14,7 +12,7 @@ const testReachableFrom = co(function* (cfg) {
 		validate
 	} = cfg
 
-	const results = yield reachableFrom(address, {
+	const results = await reachableFrom(address, {
 		when, maxDuration
 	})
 
@@ -39,6 +37,6 @@ const testReachableFrom = co(function* (cfg) {
 
 	const sorted = results.sort((a, b) => a.duration - b.duration)
 	t.deepEqual(results, sorted, 'results must be sorted by res.duration')
-})
+}
 
 module.exports = testReachableFrom

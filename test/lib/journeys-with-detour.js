@@ -1,8 +1,6 @@
 'use strict'
 
-const co = require('./co')
-
-const testJourneysWithDetour = co(function* (cfg) {
+const testJourneysWithDetour = async (cfg) => {
 	const {test: t, journeys, validate, detourIds} = cfg
 
 	// We assume that going from A to B via C *without* detour is currently
@@ -17,6 +15,6 @@ const testJourneysWithDetour = co(function* (cfg) {
 		))
 	})
 	t.ok(leg, detourIds.join('/') + ' is not being passed')
-})
+}
 
 module.exports = testJourneysWithDetour
