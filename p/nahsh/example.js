@@ -11,7 +11,7 @@ client.journeys('8000103', '8000199', {results: 10, tickets: true})
 // client.arrivals('8000199', {duration: 5, stationLines: true})
 // client.trip('1|30161|5|100|14032018', 'Bus 52')
 // client.locations('Schleswig', {results: 1})
-// client.station('706990') // Kiel Holunderbusch
+// client.stop('706990') // Kiel Holunderbusch
 // client.nearby({
 // 	type: 'location',
 // 	latitude: 54.295691,

@@ -1,12 +1,12 @@
-# `station(id, [opt])`
+# `stop(id, [opt])`
 
 `id` must be in one of these formats:
 
 ```js
-// a station ID, in a format compatible with the profile you use
+// a stop/station ID, in a format compatible with the profile you use
 '900000123456'
 
-// an FPTF `station` object
+// an FPTF `stop`/`station` object
 {
 	type: 'station',
 	id: '900000123456',
@@ -23,7 +23,7 @@ With `opt`, you can override the default options, which look like this:
 
 ```js
 {
-	stationLines: false, // parse & expose lines of the station?
+	stationLines: false, // parse & expose lines of the stop/station?
 	language: 'en' // language to get results in
 }
 ```
@@ -38,7 +38,7 @@ const vbbProfile = require('hafas-client/p/vbb')
 
 const client = createClient(vbbProfile, 'my-awesome-program')
 
-client.station('900000042101') // U Spichernstr.
+client.stop('900000042101') // U Spichernstr.
 .then(console.log)
 .catch(console.error)
 ```

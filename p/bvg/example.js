@@ -10,7 +10,7 @@ client.journeys('900000003201', '900000024101', {results: 1, polylines: true})
 // client.departures('900000013102', {duration: 1})
 // client.arrivals('900000013102', {duration: 10, stationLines: true})
 // client.locations('Alexanderplatz', {results: 2})
-// client.station('900000042101', {stationLines: true}) // Spichernstr
+// client.stop('900000042101', {stationLines: true}) // Spichernstr
 // client.nearby({
 // 	type: 'location',
 // 	latitude: 52.5137344,
