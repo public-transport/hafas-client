@@ -403,10 +403,10 @@ const createValidateMovement = (cfg) => {
 			a.ok(m.location.longitude >= minLongitude, lName + '.longitude is too small')
 		}
 
-		a.ok(Array.isArray(m.nextStops), name + '.nextStops must be an array')
-		for (let i = 0; i < m.nextStops.length; i++) {
-			const st = m.nextStops[i]
-			val.stopover(val, st, name + `.nextStops[${i}]`)
+		a.ok(Array.isArray(m.nextStopovers), name + '.nextStopovers must be an array')
+		for (let i = 0; i < m.nextStopovers.length; i++) {
+			const st = m.nextStopovers[i]
+			val.stopover(val, st, name + `.nextStopovers[${i}]`)
 		}
 
 		a.ok(Array.isArray(m.frames), name + '.frames must be an array')
