@@ -226,9 +226,9 @@ test('trip details', async (t) => {
 	})
 
 	const p = journeys[0].legs[0]
-	t.ok(p.id, 'precondition failed')
+	t.ok(p.tripId, 'precondition failed')
 	t.ok(p.line.name, 'precondition failed')
-	const trip = await client.trip(p.id, p.line.name, {when})
+	const trip = await client.trip(p.tripId, p.line.name, {when})
 
 	const validateTrip = createValidateTrip(cfg)
 	const validate = createValidate(cfg, {
