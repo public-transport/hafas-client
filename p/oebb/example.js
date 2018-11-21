@@ -10,7 +10,7 @@ client.journeys('1291501', '8100002', {results: 1})
 // client.departures('8100002', {duration: 1})
 // client.arrivals('8100002', {duration: 10, stationLines: true})
 // client.locations('Salzburg', {results: 2})
-// client.station('8100173') // Graz Hbf
+// client.stop('8100173') // Graz Hbf
 // client.nearby({
 // 	type: 'location',
 // 	latitude: 47.812851,

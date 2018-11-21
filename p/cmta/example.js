@@ -10,7 +10,7 @@ client.journeys('000002370', '000005919', {results: 1, polylines: true})
 // client.departures('000002370', {duration: 1})
 // client.arrivals('000002370', {duration: 10, stationLines: true})
 // client.locations('Westgate', {results: 2})
-// client.station('000005534') // Downtown light rail station
+// client.stop('000005534') // Downtown light rail station
 // client.nearby({
 // 	type: 'location',
 // 	latitude: 30.266222,

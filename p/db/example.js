@@ -11,7 +11,7 @@ client.journeys('8011167', '8000261', {results: 1, tickets: true})
 // client.arrivals('8011167', {duration: 10, stationLines: true})
 // client.locations('Berlin Jungfernheide')
 // client.locations('Atze Musiktheater', {poi: true, addressses: false, fuzzy: false})
-// client.station('8000309') // Regensburg Hbf
+// client.stop('8000309') // Regensburg Hbf
 // client.nearby({
 // 	type: 'location',
 // 	latitude: 52.4751309,
