@@ -319,10 +319,10 @@ test('locations named "Kiel Rathaus"', async (t) => {
 	t.end()
 })
 
-test('station', async (t) => {
-	const s = await client.station(kielHbf)
+test('stop', async (t) => {
+	const s = await client.stop(kielHbf)
 
-	validate(t, s, ['stop', 'station'], 'station')
+	validate(t, s, ['stop', 'station'], 'stop')
 	t.equal(s.id, kielHbf)
 
 	t.end()

@@ -356,10 +356,10 @@ test('locations named Jungfernheide', async (t) => {
 	t.end()
 })
 
-test('station', async (t) => {
-	const s = await client.station(regensburgHbf)
+test('stop', async (t) => {
+	const s = await client.stop(regensburgHbf)
 
-	validate(t, s, ['stop', 'station'], 'station')
+	validate(t, s, ['stop', 'station'], 'stop')
 	t.equal(s.id, regensburgHbf)
 
 	t.end()
