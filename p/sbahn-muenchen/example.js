@@ -10,7 +10,7 @@ const client = createClient(vbbProfile, 'hafas-client-example')
 client.departures('8004154', {duration: 5})
 // client.arrivals('8004154', {duration: 10, stationLines: true})
 // client.locations('mittersendling', {results: 5})
-// client.station('8004154', {stationLines: true}) // Mittersendling
+// client.stop('8004154', {stationLines: true}) // Mittersendling
 // client.nearby({
 // 	type: 'location',
 // 	latitude: 48.153858,
