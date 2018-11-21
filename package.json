@@ -29,7 +29,7 @@
 		"http"
 	],
 	"engines": {
-		"node": ">=6"
+		"node": ">=8.3.0"
 	},
 	"dependencies": {
 		"@mapbox/polyline": "^1.0.0",
