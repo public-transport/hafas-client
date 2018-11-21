@@ -170,7 +170,7 @@ test.skip('trip details', async (t) => {
 	t.ok(p.line.name, 'precondition failed')
 	const trip = await client.trip(p.tripId, p.line.name, {when})
 
-	validate(t, trip, 'journeyLeg', 'trip')
+	validate(t, trip, 'trip', 'trip')
 	t.end()
 })
 
