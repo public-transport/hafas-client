@@ -11,7 +11,7 @@ client.journeys('008010226', '008013456', {results: 1})
 // client.arrivals('8010226', {duration: 10, stationLines: true})
 // client.locations('Magdeburg Hbf', {results: 2})
 // client.locations('Kunstmuseum Kloster Unser Lieben Frauen Magdeburg', {results: 2})
-// client.station('008010226') // Magdeburg-Neustadt
+// client.stop('008010226') // Magdeburg-Neustadt
 // client.nearby({
 // 	type: 'location',
 // 	latitude: 52.148842,
