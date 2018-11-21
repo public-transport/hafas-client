@@ -68,7 +68,7 @@ The response may look like this:
 	},
 	direction: 'S Flughafen Berlin-Schönefeld',
 	trip: 31463,
-	nextStops: [ {
+	nextStopovers: [ {
 		stop: {
 			type: 'stop',
 			id: '900000029101',
@@ -141,7 +141,7 @@ The response may look like this:
 	},
 	direction: 'Heinersdorf',
 	trip: 26321,
-	nextStops: [ {
+	nextStopovers: [ {
 		stop: { /* S+U Alexanderplatz/Dircksenstr. */ },
 		arrival: null,
 		arrivalDelay: null,

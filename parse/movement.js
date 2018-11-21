@@ -22,7 +22,7 @@ const createParseMovement = (profile, opt, data) => {
 				latitude: m.pos.y / 1000000,
 				longitude: m.pos.x / 1000000
 			} : null,
-			nextStops: m.stopL.map(pStopover),
+			nextStopovers: m.stopL.map(pStopover),
 			frames: []
 		}
 
