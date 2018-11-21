@@ -228,6 +228,9 @@ const createValidateJourneyLeg = (cfg) => {
 				a.ok(leg.distance > 0, msg + '> 0')
 			}
 		} else {
+			a.strictEqual(typeof leg.tripId, 'string', name + '.tripId must be a string')
+			a.ok(leg.tripId, name + '.tripId must not be empty')
+
 			const msg = name + '.direction must be a string'
 			a.strictEqual(typeof leg.direction, 'string', msg)
 			a.ok(leg.direction, name + '.direction must not be empty')
@@ -299,6 +302,10 @@ const validateJourneys = (val, js, name = 'journeys') => {
 	for (let i = 0; i < js.length; i++) {
 		val.journey(val, js[i], name + `[${i}]`)
 	}
+}
+
+const validateTrip = (val, trip, name = 'trip') => {
+	val.journeyLeg(val, trip, name)
 }
 
 const createValidateArrivalOrDeparture = (type, cfg) => {
@@ -447,6 +454,7 @@ module.exports = {
 	journeyLeg: createValidateJourneyLeg,
 	journey: () => validateJourney,
 	journeys: () => validateJourneys,
+	trip: () => validateTrip,
 	arrival: createValidateArrival,
 	departure: createValidateDeparture,
 	departures: () => validateDepartures,

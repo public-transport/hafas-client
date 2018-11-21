@@ -12,7 +12,7 @@ const dbProfile = require('../p/db')
 const products = require('../p/db/products')
 const {
 	station: createValidateStation,
-	journeyLeg: createValidateJourneyLeg
+	trip: createValidateTrip
 } = require('./lib/validators')
 const createValidate = require('./lib/validate-fptf-with')
 const testJourneysStationToStation = require('./lib/journeys-station-to-station')
@@ -230,14 +230,15 @@ test('trip details', async (t) => {
 	t.ok(p.line.name, 'precondition failed')
 	const trip = await client.trip(p.id, p.line.name, {when})
 
-	const validateJourneyLeg = createValidateJourneyLeg(cfg)
+	const validateTrip = createValidateTrip(cfg)
 	const validate = createValidate(cfg, {
-		journeyLeg: (validate, leg, name) => {
-			if (!leg.direction) leg.direction = 'foo' // todo, see #49
-			validateJourneyLeg(validate, leg, name)
+		trip: (validate, trip, name) => {
+			trip = Object.assign({}, trip)
+			if (!trip.direction) trip.direction = 'foo' // todo, see #49
+			validateTrip(validate, trip, name)
 		}
 	})
-	validate(t, trip, 'journeyLeg', 'trip')
+	validate(t, trip, 'trip', 'trip')
 
 	t.end()
 })
