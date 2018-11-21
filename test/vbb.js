@@ -338,10 +338,10 @@ test('locations', async (t) => {
 	t.end()
 })
 
-test('station', async (t) => {
-	const s = await client.station(spichernstr)
+test('stop', async (t) => {
+	const s = await client.stop(spichernstr)
 
-	validate(t, s, ['stop', 'station'], 'station')
+	validate(t, s, ['stop', 'station'], 'stop')
 	t.equal(s.id, spichernstr)
 
 	t.end()

@@ -239,7 +239,7 @@ test('locations named "Nationaltheater"', async (t) => {
 })
 
 test('station Karl-Theodor-Straße', async (t) => {
-	const s = await client.station(karlTheodorStr)
+	const s = await client.stop(karlTheodorStr)
 
 	validate(t, s, ['stop', 'station'], 'station')
 	t.equal(s.id, karlTheodorStr)

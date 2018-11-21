@@ -250,7 +250,7 @@ test('locations named Magdeburg', async (t) => {
 })
 
 test('station Magdeburg-Buckau', async (t) => {
-	const s = await client.station(magdeburgBuckau)
+	const s = await client.stop(magdeburgBuckau)
 
 	validate(t, s, ['stop', 'station'], 'station')
 	t.equal(s.id, magdeburgBuckau)
