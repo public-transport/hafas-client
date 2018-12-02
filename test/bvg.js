@@ -60,6 +60,10 @@ const bismarckstr = '900000024201'
 const westhafen = '900000001201'
 const wedding = '900000009104'
 const württembergallee = '900000026153'
+const tiergarten = '900000003103'
+const jannowitzbrücke = '900000100004'
+
+const hour = 60 * 60 * 1000
 
 test('journeys – Spichernstr. to Bismarckstr.', co(function* (t) {
 	const journeys = yield client.journeys(spichernstr, bismarckstr, {
@@ -135,6 +139,42 @@ test('earlier/later journeys', co(function* (t) {
 		toId: bismarckstr,
 		when
 	})
+
+	t.end()
+}))
+
+test('journeys – leg cycle & alternatives', co(function* (t) {
+	// Apparently the BVG endpoint only returns alternatives for S-Bahn legs,
+	// not for U-Bahn legs. It also won't return the cycle or alternatives
+	// more than ~2 hours in advance. This is why we don't pass `when` here.
+	const journeys = yield client.journeys(tiergarten, jannowitzbrücke, {
+		results: 3
+	})
+
+	for (let i = 0; i < journeys.length; i++) {
+		const journey = journeys[i]
+		for (let j = 0; j < journey.legs.length; j++) {
+			const leg = journey.legs[j]
+			if (!leg.line) continue
+			const name = `journeys[${i}].legs[${j}]`
+
+			t.ok(leg.cycle, name + '.cycle is missing')
+			t.equal(typeof leg.cycle.min, 'number', name + '.cycle.min is not a number')
+			t.equal(typeof leg.cycle.max, 'number', name + '.cycle.max is not a number')
+			t.equal(typeof leg.cycle.nr, 'number', name + '.cycle.nr is not a number')
+
+			const lW = +new Date(leg.departure)
+			t.ok(Array.isArray(leg.alternatives), name + '.alternatives must be an array')
+			for (let k = 0; k < leg.alternatives.length; k++) {
+				const a = leg.alternatives[k]
+				const n = name + `.alternatives[${k}]`
+
+				let aW = +new Date(a.when)
+				if ('number' === typeof a.delay) aW -= a.delay * 1000
+				t.ok(isRoughlyEqual(2 * hour, aW, lW), n + '.when seems invalid')
+			}
+		}
+	}
 
 	t.end()
 }))
