@@ -43,6 +43,15 @@ const createParseJourney = (profile, opt, data) => {
 			refreshToken: j.ctxRecon || null
 		}
 
+		const freq = j.freq || {}
+		if (freq.minC || freq.maxC) {
+			res.cycle = {}
+			if (freq.minC) res.cycle.min = freq.minC * 60
+			if (freq.maxC) res.cycle.max = freq.maxC * 60
+			// nr of connections in this frequency, from now on
+			if (freq.numC) res.cycle.nr = freq.numC
+		}
+
 		if (opt.remarks && Array.isArray(j.msgL)) {
 			res.remarks = []
 			for (let ref of j.msgL) {
