@@ -26,6 +26,7 @@ const testJourneysStationToStation = require('./lib/journeys-station-to-station'
 const testJourneysStationToAddress = require('./lib/journeys-station-to-address')
 const testJourneysStationToPoi = require('./lib/journeys-station-to-poi')
 const testEarlierLaterJourneys = require('./lib/earlier-later-journeys')
+const testLegCycleAlternatives = require('./lib/leg-cycle-alternatives')
 const testRefreshJourney = require('./lib/refresh-journey')
 const journeysFailsWithNoProduct = require('./lib/journeys-fails-with-no-product')
 const testDepartures = require('./lib/departures')
@@ -144,38 +145,12 @@ test('earlier/later journeys', co(function* (t) {
 }))
 
 test('journeys – leg cycle & alternatives', co(function* (t) {
-	// Apparently the BVG endpoint only returns alternatives for S-Bahn legs,
-	// not for U-Bahn legs. It also won't return the cycle or alternatives
-	// more than ~2 hours in advance. This is why we don't pass `when` here.
-	const journeys = yield client.journeys(tiergarten, jannowitzbrücke, {
-		results: 3
+	yield testLegCycleAlternatives({
+		test: t,
+		fetchJourneys: client.journeys,
+		fromId: tiergarten,
+		toId: jannowitzbrücke
 	})
-
-	for (let i = 0; i < journeys.length; i++) {
-		const journey = journeys[i]
-		for (let j = 0; j < journey.legs.length; j++) {
-			const leg = journey.legs[j]
-			if (!leg.line) continue
-			const name = `journeys[${i}].legs[${j}]`
-
-			t.ok(leg.cycle, name + '.cycle is missing')
-			t.equal(typeof leg.cycle.min, 'number', name + '.cycle.min is not a number')
-			t.equal(typeof leg.cycle.max, 'number', name + '.cycle.max is not a number')
-			t.equal(typeof leg.cycle.nr, 'number', name + '.cycle.nr is not a number')
-
-			const lW = +new Date(leg.departure)
-			t.ok(Array.isArray(leg.alternatives), name + '.alternatives must be an array')
-			for (let k = 0; k < leg.alternatives.length; k++) {
-				const a = leg.alternatives[k]
-				const n = name + `.alternatives[${k}]`
-
-				let aW = +new Date(a.when)
-				if ('number' === typeof a.delay) aW -= a.delay * 1000
-				t.ok(isRoughlyEqual(2 * hour, aW, lW), n + '.when seems invalid')
-			}
-		}
-	}
-
 	t.end()
 }))
 
