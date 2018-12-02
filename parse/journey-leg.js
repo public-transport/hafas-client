@@ -118,13 +118,16 @@ const createParseJourneyLeg = (profile, opt, data) => {
 			}
 
 			const freq = pt.jny.freq || {}
+			// todo: expose `res.cycle` even if only one field exists (breaking)
 			if (freq.minC && freq.maxC) {
-				// todo: what is freq.numC?
 				res.cycle = {
 					min: freq.minC * 60,
 					max: freq.maxC * 60
 				}
+				// nr of connections in this frequency, from now on
+				if (freq.numC) res.cycle.nr = freq.numC
 			}
+
 			if (freq.jnyL) {
 				const parseAlternative = (a) => {
 					const t = a.stopL[0].dTimeR || a.stopL[0].dTimeS
