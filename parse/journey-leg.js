@@ -130,12 +130,25 @@ const createParseJourneyLeg = (profile, opt, data) => {
 
 			if (freq.jnyL) {
 				const parseAlternative = (a) => {
-					const t = a.stopL[0].dTimeR || a.stopL[0].dTimeS
-					const when = profile.parseDateTime(profile, j.date, t)
-					// todo: expose a.stopL[0]
+					// todo: parse this just like a `leg` (breaking)
+					// todo: parse `a.stopL`, `a.ctxRecon`, `a.msgL`
+					const st0 = a.stopL[0]
+
+					let when = null, delay = null
+					if (st0) {
+						const planned = st0.dTimeS && profile.parseDateTime(profile, j.date, st0.dTimeS)
+						if (st0.dTimeR && planned) {
+							const realtime = profile.parseDateTime(profile, j.date, st0.dTimeR)
+							when = realtime.toISO()
+							delay = Math.round((realtime - planned) / 1000)
+						} else if (planned) when = planned.toISO()
+					}
+
 					return {
+						tripId: a.jid,
 						line: lines[parseInt(a.prodX)] || null,
-						when: when.toISO()
+						direction: a.dirTxt || null,
+						when, delay
 					}
 				}
 				res.alternatives = freq.jnyL.map(parseAlternative)
