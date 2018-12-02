@@ -231,6 +231,44 @@ const createValidateJourneyLeg = (cfg) => {
 			a.ok(leg.direction, name + '.direction must not be empty')
 		}
 
+		if ('cycle' in leg) {
+			a.ok(isObj(leg.cycle), name + '.cycle must be an object')
+			if (('min' in leg.cycle) && leg.cycle.min !== null) {
+				a.strictEqual(typeof leg.cycle.min, 'number', name + '.cycle.min must be a number')
+				a.ok(leg.cycle.min > 0, name + '.cycle.min must be >0')
+			}
+			if (('max' in leg.cycle) && leg.cycle.max !== null) {
+				a.strictEqual(typeof leg.cycle.max, 'number', name + '.cycle.max must be a number')
+				a.ok(leg.cycle.max > 0, name + '.cycle.max must be >0')
+			}
+			if (('nr' in leg.cycle) && leg.cycle.nr !== null) {
+				a.strictEqual(typeof leg.cycle.nr, 'number', name + '.cycle.nr must be a number')
+				a.ok(leg.cycle.nr > 0, name + '.cycle.nr must be >0')
+			}
+		}
+
+		if ('alternatives' in leg) {
+			const as = leg.alternatives
+			a.ok(Array.isArray(as), name + '.alternatives must be an array')
+			for (let i = 0; i < as.length; i++) {
+				const alt = leg.alternatives[i]
+				const n = name + `.alternatives[${i}]`
+
+				a.ok(isObj(alt), n + ' must be an object')
+				// todo: when, delay
+				val.line(val, alt.line, n + '.line')
+				if (alt.direction !== null) {
+					a.strictEqual(typeof alt.direction, 'string', n + '.direction must be a string')
+					a.ok(alt.direction, n + '.direction must not be empty')
+				}
+
+				assertValidWhen(alt.when, cfg.when, n + '.when')
+				if (alt.delay !== null) {
+					a.strictEqual(typeof alt.delay, 'number', n + '.delay must be a number')
+				}
+			}
+		}
+
 		// todo: validate polyline
 	}
 	return validateJourneyLeg
