@@ -20,6 +20,7 @@ const testJourneysStationToStation = require('./lib/journeys-station-to-station'
 const testJourneysStationToAddress = require('./lib/journeys-station-to-address')
 const testJourneysStationToPoi = require('./lib/journeys-station-to-poi')
 const testEarlierLaterJourneys = require('./lib/earlier-later-journeys')
+const testLegCycleAlternatives = require('./lib/leg-cycle-alternatives')
 const testRefreshJourney = require('./lib/refresh-journey')
 const journeysFailsWithNoProduct = require('./lib/journeys-fails-with-no-product')
 const testDepartures = require('./lib/departures')
@@ -79,6 +80,8 @@ const wedding = '008089131'
 const württembergallee = '731084'
 const regensburgHbf = '8000309'
 const blnOstbahnhof = '8010255'
+const blnTiergarten = '8089091'
+const blnJannowitzbrücke = '8089019'
 
 test('journeys – Berlin Schwedter Str. to München Hbf', co(function* (t) {
 	const journeys = yield client.journeys(blnSchwedterStr, münchenHbf, {
@@ -192,6 +195,16 @@ test('earlier/later journeys, Jungfernheide -> München Hbf', co(function* (t) {
 		when
 	})
 
+	t.end()
+}))
+
+test('journeys – leg cycle & alternatives', co(function* (t) {
+	yield testLegCycleAlternatives({
+		test: t,
+		fetchJourneys: client.journeys,
+		fromId: blnTiergarten,
+		toId: blnJannowitzbrücke
+	})
 	t.end()
 }))
 
