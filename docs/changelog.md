@@ -1,8 +1,14 @@
 # Changelog
 
+## `3.6.0`
+
+- 4b56f66 parse `journey.cycle` if returned by HAFAS
+- 17b8f14 `journeyLeg.cycle`: parse `nr` field if returned by HAFAS
+- 8fac5fc `journeyLeg.alternatives`: parse `direction`, `delay`, `tripId`
+
 ## `3.5.0`
 
-- 9d96902 `readableFrom()`: max `opt.maxDuration` optional
+- 9d96902 `readableFrom()`: make `opt.maxDuration` optional
 - 02e0e51 parse scheduled days of a `journey`
 
 ## `3.4.3`
