@@ -107,7 +107,7 @@ test('journeys – only subway', co(function* (t) {
 		for (let j = 0; j < journey.legs.length; j++) {
 			const leg = journey.legs[j]
 
-			const name = `journeys[${i}].legs[${i}].line`
+			const name = `journeys[${i}].legs[${j}].line`
 			if (leg.line) {
 				t.equal(leg.line.mode, 'train', name + '.mode is invalid')
 				t.equal(leg.line.product, 'subway', name + '.product is invalid')

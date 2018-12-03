@@ -98,11 +98,11 @@ const createValidateStopover = (cfg) => {
 	const validateStopover = (val, s, name = 'stopover') => {
 		if (is(s.arrival)) {
 			val.date(val, s.arrival, name + '.arrival')
-			assertValidWhen(s.arrival, cfg.when, name)
+			assertValidWhen(s.arrival, cfg.when, name + '.arrival')
 		}
 		if (is(s.departure)) {
 			val.date(val, s.departure, name + '.departure')
-			assertValidWhen(s.departure, cfg.when, name)
+			assertValidWhen(s.departure, cfg.when, name + '.departure')
 		}
 		if (!is(s.arrival) && !is(s.departure)) {
 			a.fail(name + ' contains neither arrival nor departure')
@@ -312,7 +312,7 @@ const createValidateArrivalOrDeparture = (type, cfg) => {
 
 		anyOf(['stop', 'station'], val, dep.stop, name + '.stop')
 
-		assertValidWhen(dep.when, cfg.when, name)
+		assertValidWhen(dep.when, cfg.when, name + '.when')
 		if (dep.delay !== null) {
 			const msg = name + '.delay must be a number'
 			a.strictEqual(typeof dep.delay, 'number', msg)
