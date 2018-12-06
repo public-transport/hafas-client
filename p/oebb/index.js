@@ -53,7 +53,7 @@ const createParseMovement = (profile, opt, data) => {
 		res.nextStops = res.nextStops.filter(s => {
 			if (s.station) {
 				s = s.station
-				if (s.type === 'stop' || s.type === 'station')
+				if (s.station.type === 'stop' || s.station.type === 'station') return true
 			}
 			return s.type === 'stop' || s.type === 'station'
 		})
