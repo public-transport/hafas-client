@@ -50,7 +50,13 @@ const createParseMovement = (profile, opt, data) => {
 		const res = _parseMovement(m)
 		// filter out POIs
 		// todo: make use of them, as some of them specify fare zones
-		res.nextStops = res.nextStops.filter(s => s.type === 'station')
+		res.nextStops = res.nextStops.filter(s => {
+			if (s.station) {
+				s = s.station
+				if (s.type === 'stop' || s.type === 'station')
+			}
+			return s.type === 'stop' || s.type === 'station'
+		})
 		res.frames = res.frames.filter((f) => {
 			return f.origin.type !== 'location' && f.destination.type !== 'location'
 		})
