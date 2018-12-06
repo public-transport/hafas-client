@@ -3,9 +3,9 @@
 const products = require('./products')
 
 const transformReqBody = (body) => {
-	body.client = {type: 'IPA', id: 'DB-REGIO-MVV', name: 'RegioNavigator', v: '1000030'}
+	body.client = {type: 'IPH', id: 'DB-REGIO-MVV', name: 'MuenchenNavigator', v: '5010100'}
 	body.ext = 'DB.R15.12.a'
-	body.ver = '1.15'
+	body.ver = '1.18'
 	body.auth = {type: 'AID', aid: 'd491MVVhz9ZZts23'}
 
 	return body
