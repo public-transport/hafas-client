@@ -373,8 +373,7 @@ test('radar Salzburg', co(function* (t) {
 		south: 47.773278,
 		east: 13.07562
 	}, {
-		duration: 5 * 60,
-		// when
+		duration: 5 * 60, when
 	})
 
 	// todo: find a way to always get frames from the API
