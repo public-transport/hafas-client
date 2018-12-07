@@ -291,7 +291,7 @@ const createClient = (profile, userAgent, request = _request) => {
 		}
 		opt = Object.assign({
 			fuzzy: true, // find only exact matches?
-			results: 10, // how many search results?
+			results: 5, // how many search results?
 			stations: true,
 			addresses: true,
 			poi: true, // points of interest

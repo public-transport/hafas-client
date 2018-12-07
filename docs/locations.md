@@ -7,7 +7,7 @@ With `opt`, you can override the default options, which look like this:
 ```js
 {
 	  fuzzy:     true // find only exact matches?
-	, results:   10 // how many search results?
+	, results:   5 // how many search results?
 	, stations:  true
 	, addresses: true
 	, poi:       true // points of interest
