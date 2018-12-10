@@ -1,5 +1,21 @@
 # Changelog
 
+## `4.0.0`
+
+This version is not fully backwords-compatible. Check out [the migration guide](migrating-to-4.md).
+
+### new features ✨
+
+- todo
+
+### breaking changes 💥
+
+- todo
+
+### bugfixes
+
+- todo
+
 ## `3.8.0`
 
 - 5d0096c `departures()`: profile flag for `getPasslist` & `stbFilterEquiv`
