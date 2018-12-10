@@ -44,6 +44,6 @@ client.departures('8004154', {duration: 5})
 // })
 
 .then((data) => {
-	console.log(require('util').inspect(data, {depth: null}))
+	console.log(require('util').inspect(data, {depth: null, colors: true}))
 })
 .catch(console.error)

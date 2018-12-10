@@ -41,6 +41,6 @@ client.journeys('900000003201', '900000024101', {results: 1, polylines: true})
 // 	return client.refreshJourney(journey.refreshToken, {stopovers: true, remarks: true})
 // })
 .then((data) => {
-	console.log(require('util').inspect(data, {depth: null}))
+	console.log(require('util').inspect(data, {depth: null, colors: true}))
 })
 .catch(console.error)

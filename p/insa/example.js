@@ -34,6 +34,6 @@ client.journeys('008010226', '008013456', {results: 1})
 // })
 
 .then(data => {
-	console.log(require('util').inspect(data, { depth: null }))
+	console.log(require('util').inspect(data, {depth: null, colors: true}))
 })
 .catch(console.error)
