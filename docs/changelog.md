@@ -1,5 +1,21 @@
 # Changelog
 
+## `4.0.0`
+
+This version is not fully backwords-compatible. Check out [the migration guide](migrating-to-4.md).
+
+### new features ✨
+
+- todo
+
+### breaking changes 💥
+
+- todo
+
+### bugfixes
+
+- todo
+
 ## `3.10.0`
 
 - d797333/1e16a10 [DB](../p/db): parse additional line names
