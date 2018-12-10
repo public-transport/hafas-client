@@ -11,6 +11,11 @@
 - [`radar(north, west, south, east, [opt])`](radar.md) – find all vehicles currently in a certain area
 - [`reachableFrom(address, [opt])`](reachable-from.md) – get all stations reachable from an address within `n` minutes
 
+## Migrating from an old `hafas-client` version
+
+- [`2` → `3` migration guide](migrating-to-3.md)
+- [`3` → `4` migration guide](migrating-to-4.md)
+
 ## Throttling requests
 
 There's opt-in support for throttling requests to the endpoint.

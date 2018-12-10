@@ -1,5 +1,38 @@
 # Changelog
 
+## `4.0.0`
+
+This version is not fully backwords-compatible. Check out [the migration guide](migrating-to-4.md).
+
+### breaking changes 💥
+
+- 1e13cf1/b99ceb2 `parseLocation`: strip leading zeros from IDs
+- a9fd9ff `parseDateTime`: return ISO string/timestamp
+- ca1105f `parseDateTime`: parse timezone offset if given
+- bf3c4c5 require Node `>=8.3.0`
+- bbff1f4 `movement.nextStops` -> `movement.nextStopovers`
+- bad0af8/8b87868/2e12206 rename `station(id)` -> `stop(id)`
+- 96ff59d/0daa1c5/88c78c2 `leg.id` -> `leg.tripId`
+- 3bc2eff `locations()`: default `opt.results` to `5`
+- a1ffad3/cb535cd `parseLine`: remove `line.class` & `line.productCode`
+- fcc53b5/b2b2d11/a1c40ad `journeys()`: return object with `journeys`, `earlierRef`, `laterRef`
+- 61e7d14 `journeys()`: default `opt.transfers` to `-1`
+- d7e439b debugging: `NODE_DEBUG` -> `DEBUG`
+- 8f9b22e `locations()`, `nearby()`: `opt.stations` -> `opt.stops`
+- a972dad `departures()`/`arrivals()`, `locations()`, `nearby()`, `stop()`: `opt.stationLines` -> `opt.linesOfStops`
+- 0e1fcb0/0e1fcb0 `leg.mode: 'walking'` -> `leg.walking: true`
+- 567cc98 DB, INSA, Nah.SH, ÖBB: `nationalExp` -> `nationalExpress`
+- 9c44995 remove `arrival.trip`/`departure.trip` & `movement.trip`
+- eb3ffba/eab850e mark POIs objects with `poi: true`
+- 748f8ce `createThrottledClient` -> `withThrottling`
+- fbde6a1 `createClientWithRetry` -> `withRetrying`
+- 1646173 throw `Error`s -> `TypeError`s
+- 7e39a2f/3b0740d `formerScheduled…` -> `scheduled…`
+
+### bugfixes 🐛
+
+- fcc2a23 ÖBB `journeys()`: fix `opt.results`
+
 ## `3.10.1`
 
 - dafc96a update CMTA credentials
