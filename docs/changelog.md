@@ -1,5 +1,10 @@
 # Changelog
 
+## `3.6.1`
+
+- b809281 fix error parsing 🐛
+- bcbc366/ae2007c/e1f1d0d ÖBB `radar()`: fix filtering of `movement.nextStops` 🐛
+
 ## `3.6.0`
 
 - 4b56f66 parse `journey.cycle` if returned by HAFAS
