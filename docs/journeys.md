@@ -155,8 +155,7 @@ The response may look like this:
 				nr: 7,
 				metro: false,
 				express: false,
-				night: false,
-				productCode: 0
+				night: false
 			},
 			direction: 'S Ahrensfelde',
 			stopovers: [ {

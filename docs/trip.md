@@ -110,7 +110,6 @@ The response looked like this:
 		metro: false,
 		express: false,
 		night: false,
-		productCode: 0,
 		operator: {
 			type: 'operator',
 			id: 's-bahn-berlin-gmbh',
