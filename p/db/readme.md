@@ -19,3 +19,13 @@ const client = createClient(dbProfile, 'my-awesome-program')
 - supports [their loyalty cards](https://en.wikipedia.org/wiki/Deutsche_Bahn#Tickets) with `journey()`
 - parses *DB*-specific products (such as *InterCity-Express*)
 - exposes the cheapest ticket price for a `journey`
+
+## Using the `loyaltyCard` option
+
+```js
+const {data: loyaltyCards} = require('hafas-client/p/db/loyalty-cards')
+
+hafas.journeys(from, to, {
+	loyaltyCard: {type: data.BAHNCARD, discount: 25}
+})
+```
