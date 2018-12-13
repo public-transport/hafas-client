@@ -426,7 +426,7 @@ const createClient = (profile, userAgent, request = _request) => {
 			// todo: what happens with `frames: 0`?
 			frames: 3, // nr of frames to compute
 			products: null, // optionally an object of booleans
-			polylines: false // return a track shape for each vehicle?
+			polylines: true // return a track shape for each vehicle?
 		}, opt || {})
 		opt.when = new Date(opt.when || Date.now())
 		if (Number.isNaN(+opt.when)) throw new Error('opt.when is invalid')
@@ -458,7 +458,7 @@ const createClient = (profile, userAgent, request = _request) => {
 				lines: d.lines,
 				hints: d.hints,
 				warnings: d.warnings,
-				polylines: opt.polyline && d.common.polyL || []
+				polylines: opt.polylines && d.common.polyL || []
 			})
 			return d.jnyL.map(parse)
 		})
