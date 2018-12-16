@@ -1,5 +1,10 @@
 # Changelog
 
+## `3.6.2`
+
+- 5beff47 `radar()`: fix `polylines` option 🐛
+- 48424cf `p-throttle` as normal dependency 🐛
+
 ## `3.6.1`
 
 - b809281 fix error parsing 🐛
