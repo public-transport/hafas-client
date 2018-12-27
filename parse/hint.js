@@ -44,7 +44,7 @@ const parseHint = (profile, h, icons) => {
 		}
 	}
 
-	if (h.type === 'D' || h.type === 'U' || h.type === 'R' || h.type === 'N') {
+	if (h.type === 'D' || h.type === 'U' || h.type === 'R' || h.type === 'N' || h.type === 'Y') {
 		// todo: how can we identify the individual types?
 		// todo: does `D` mean "disturbance"?
 		return {
