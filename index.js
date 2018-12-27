@@ -54,6 +54,7 @@ const createClient = (profile, userAgent, request = _request) => {
 			duration: 10, // show departures for the next n minutes
 			stationLines: false, // parse & expose lines of the station?
 			remarks: true, // parse & expose hints & warnings?
+			stopovers: false, // fetch & parse previous/next stopovers?
 			// departures at related stations
 			// e.g. those that belong together on the metro map.
 			includeRelatedStations: true
@@ -73,7 +74,7 @@ const createClient = (profile, userAgent, request = _request) => {
 				dirLoc: dir,
 				jnyFltrL: [products],
 				dur: opt.duration,
-				getPasslist: false, // todo
+				getPasslist: !!opt.stopovers,
 				stbFltrEquiv: !opt.includeRelatedStations
 			}
 		})
