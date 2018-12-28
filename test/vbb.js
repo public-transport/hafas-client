@@ -224,7 +224,8 @@ test('journeys: via works – with detour', co(function* (t) {
 
 test('departures', co(function* (t) {
 	const departures = yield client.departures(spichernstr, {
-		duration: 5, when
+		duration: 5, when,
+		stopovers: true
 	})
 
 	yield testDepartures({
@@ -286,7 +287,8 @@ test('departures without related stations', co(function* (t) {
 
 test('arrivals', co(function* (t) {
 	const arrivals = yield client.arrivals(spichernstr, {
-		duration: 5, when
+		duration: 5, when,
+		stopovers: true
 	})
 
 	yield testArrivals({

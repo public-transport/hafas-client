@@ -251,7 +251,8 @@ test('departures at Wien Leibenfrostgasse', co(function* (t) {
 	]
 
 	const deps = yield client.departures(wienLeibenfrostgasse, {
-		duration: 15, when
+		duration: 15, when,
+		stopovers: true
 	})
 
 	validate(t, deps, 'departures', 'departures')

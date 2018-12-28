@@ -178,7 +178,8 @@ test('trip details', co(function* (t) {
 
 test('departures at Broadie Oaks', co(function*(t) {
 	const departures = yield client.departures(broadieOaks, {
-		duration: 10, when
+		duration: 10, when,
+		stopovers: true
 	})
 
 	yield testDepartures({

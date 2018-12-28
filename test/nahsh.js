@@ -221,7 +221,8 @@ test('trip details', co(function* (t) {
 
 test('departures at Kiel Räucherei', co(function* (t) {
 	const departures = yield client.departures(kielRaeucherei, {
-		duration: 30, when
+		duration: 30, when,
+		stopovers: true
 	})
 
 	yield testDepartures({

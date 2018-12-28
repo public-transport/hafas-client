@@ -171,7 +171,8 @@ test('trip details', co(function* (t) {
 
 test('departures at Magdeburg Leiterstr.', co(function*(t) {
 	const departures = yield client.departures(leiterstr, {
-		duration: 5, when
+		duration: 5, when,
+		stopovers: true
 	})
 
 	yield testDepartures({

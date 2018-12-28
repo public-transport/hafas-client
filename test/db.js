@@ -245,7 +245,8 @@ test('trip details', co(function* (t) {
 
 test('departures at Berlin Schwedter Str.', co(function* (t) {
 	const departures = yield client.departures(blnSchwedterStr, {
-		duration: 5, when
+		duration: 5, when,
+		stopovers: true
 	})
 
 	yield testDepartures({
@@ -300,7 +301,8 @@ test('departures without related stations', co(function* (t) {
 
 test('arrivals at Berlin Schwedter Str.', co(function* (t) {
 	const arrivals = yield client.arrivals(blnSchwedterStr, {
-		duration: 5, when
+		duration: 5, when,
+		stopovers: true
 	})
 
 	yield testArrivals({

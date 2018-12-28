@@ -249,7 +249,8 @@ test('journeys: via works – with detour', co(function* (t) {
 
 test('departures', co(function* (t) {
 	const departures = yield client.departures(spichernstr, {
-		duration: 5, when
+		duration: 5, when,
+		stopovers: true
 	})
 
 	yield testDepartures({

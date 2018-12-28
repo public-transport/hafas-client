@@ -334,8 +334,32 @@ const createValidateArrivalOrDeparture = (type, cfg) => {
 	return validateArrivalOrDeparture
 }
 
-const createValidateArrival = cfg => createValidateArrivalOrDeparture('arrival', cfg)
-const createValidateDeparture = cfg => createValidateArrivalOrDeparture('departure', cfg)
+const createValidateArrival = (cfg) => {
+	const validate = createValidateArrivalOrDeparture('arrival', cfg)
+	return (val, arr, name = 'arrival') => {
+		validate(val, arr, name)
+		if ('previousStopovers' in arr) {
+			const n = name + '.previousStopovers'
+			a.ok(Array.isArray(arr.previousStopovers), n + ' must be an array')
+			for (let i = 0; i < arr.previousStopovers.length; i++) {
+				val.stopover(val, arr.previousStopovers[i], n + `[${i}]`)
+			}
+		}
+	}
+}
+const createValidateDeparture = (cfg) => {
+	const validate = createValidateArrivalOrDeparture('departure', cfg)
+	return (val, dep, name = 'departure') => {
+		validate(val, dep, name)
+		if ('nextStopovers' in dep) {
+			const n = name + '.nextStopovers'
+			a.ok(Array.isArray(dep.nextStopovers), n + ' must be an array')
+			for (let i = 0; i < dep.nextStopovers.length; i++) {
+				val.stopover(val, dep.nextStopovers[i], n + `[${i}]`)
+			}
+		}
+	}
+}
 
 const validateArrivals = (val, deps, name = 'arrivals') => {
 	a.ok(Array.isArray(deps), name + ' must be an array')

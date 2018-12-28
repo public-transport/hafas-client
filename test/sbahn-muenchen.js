@@ -174,7 +174,8 @@ test('trip details', co(function* (t) {
 
 test('departures at Karl-Theodor-Straße', co(function*(t) {
 	const departures = yield client.departures(karlTheodorStr, {
-		duration: 10, when
+		duration: 10, when,
+		stopovers: true
 	})
 
 	yield testDepartures({
@@ -204,7 +205,8 @@ test('departures with station object', co(function* (t) {
 
 test('arrivals at Karl-Theodor-Straße', co(function*(t) {
 	const arrivals = yield client.arrivals(karlTheodorStr, {
-		duration: 10, when
+		duration: 10, when,
+		stopovers: true
 	})
 
 	yield testArrivals({

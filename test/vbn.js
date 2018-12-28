@@ -177,7 +177,8 @@ test.skip('trip details', co(function* (t) {
 
 test.skip('departures at Magdeburg Leiterstr.', co(function*(t) {
 	const departures = yield client.departures(leiterstr, {
-		duration: 5, when
+		duration: 5, when,
+		stopovers: false
 	})
 
 	yield testDepartures({
@@ -207,7 +208,8 @@ test.skip('departures with station object', co(function* (t) {
 
 test.skip('arrivals at Magdeburg Leiterstr.', co(function*(t) {
 	const arrivals = yield client.arrivals(leiterstr, {
-		duration: 5, when
+		duration: 5, when,
+		stopovers: true
 	})
 
 	yield testArrivals({
