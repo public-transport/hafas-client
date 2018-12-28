@@ -1,5 +1,9 @@
 # Changelog
 
+## `3.6.3`
+
+- cb2d298 `stop`s/`station`s: default `id` of `null` 🐛
+
 ## `3.6.2`
 
 - 5beff47 `radar()`: fix `polylines` option 🐛
