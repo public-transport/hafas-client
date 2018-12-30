@@ -1,5 +1,6 @@
 'use strict'
 
+const _createParseMovement = require('../../parse/movement')
 const products = require('./products')
 
 const transformReqBody = (body) => {
@@ -29,6 +30,8 @@ const saarfahrplanProfile = {
 
 	products: products,
 
+	departuresGetPasslist: false,
+	departuresStbFltrEquiv: false,
 	trip: true,
 	radar: true,
 	reachableFrom: true
