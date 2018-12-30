@@ -49,6 +49,13 @@ const createClient = (profile, userAgent, request = _request) => {
 			throw new Error('type must be a non-empty string.')
 		}
 
+		if (!profile.departuresGetPasslist && ('stopovers' in opt)) {
+			throw new Error('opt.stopovers is not supported by this endpoint')
+		}
+		if (!profile.departuresStbFltrEquiv && ('includeRelatedStations' in opt)) {
+			throw new Error('opt.includeRelatedStations is not supported by this endpoint')
+		}
+
 		opt = Object.assign({
 			direction: null, // only show departures heading to this station
 			duration: 10, // show departures for the next n minutes
@@ -64,19 +71,20 @@ const createClient = (profile, userAgent, request = _request) => {
 		const products = profile.formatProductsFilter(opt.products || {})
 
 		const dir = opt.direction ? profile.formatStation(opt.direction) : null
+		const req = {
+			type,
+			date: profile.formatDate(profile, opt.when),
+			time: profile.formatTime(profile, opt.when),
+			stbLoc: station,
+			dirLoc: dir,
+			jnyFltrL: [products],
+			dur: opt.duration
+		}
+		if (profile.departuresGetPasslist) req.getPasslist = !!opt.stopovers
+		if (profile.departuresStbFltrEquiv) req.stbFltrEquiv = !opt.includeRelatedStations
 		return request(profile, userAgent, opt, {
 			meth: 'StationBoard',
-			req: {
-				type,
-				date: profile.formatDate(profile, opt.when),
-				time: profile.formatTime(profile, opt.when),
-				stbLoc: station,
-				dirLoc: dir,
-				jnyFltrL: [products],
-				dur: opt.duration,
-				getPasslist: !!opt.stopovers,
-				stbFltrEquiv: !opt.includeRelatedStations
-			}
+			req
 		})
 		.then((d) => {
 			if (!Array.isArray(d.jnyL)) return []
