@@ -11,7 +11,7 @@ const {
 	line: createValidateLine,
 	journeyLeg: createValidateJourneyLeg,
 	departure: createValidateDeparture,
-	movement: _validateMovement
+	movement: createValidateMovement
 } = require('./validators')
 
 const when = createWhen('Europe/Berlin', 'de-DE')
@@ -72,6 +72,7 @@ const validateDeparture = (validate, dep, name) => {
 	validateDirection(dep.direction, name + '.direction')
 }
 
+const _validateMovement = createValidateMovement(cfg)
 const validateMovement = (validate, m, name) => {
 	_validateMovement(validate, m, name)
 	validateDirection(m.direction, name + '.direction')

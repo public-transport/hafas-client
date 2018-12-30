@@ -376,40 +376,52 @@ const validateDepartures = (val, deps, name = 'departures') => {
 	}
 }
 
-const validateMovement = (val, m, name = 'movement') => {
-	a.ok(isObj(m), name + ' must be an object')
-	// todo: let hafas-client add a .type field
+const createValidateMovement = (cfg) => {
+	const { maxLatitude, minLatitude, maxLongitude, minLongitude } = cfg
+	const validateMovement = (val, m, name = 'movement') => {
+		a.ok(isObj(m), name + ' must be an object')
+		// todo: let hafas-client add a .type field
 
-	val.line(val, m.line, name + '.line')
-	a.strictEqual(typeof m.direction, 'string', name + '.direction must be a string')
-	a.ok(m.direction, name + '.direction must not be empty')
+		val.line(val, m.line, name + '.line')
+		a.strictEqual(typeof m.direction, 'string', name + '.direction must be a string')
+		a.ok(m.direction, name + '.direction must not be empty')
 
-	const lName = name + '.location'
-	val.location(val, m.location, lName)
-	a.ok(m.location.latitude <= 55, lName + '.latitude is too small')
-	a.ok(m.location.latitude >= 45, lName + '.latitude is too large')
-	a.ok(m.location.longitude >= 9, lName + '.longitude is too small')
-	a.ok(m.location.longitude <= 15, lName + '.longitude is too small')
+		const lName = name + '.location'
+		val.location(val, m.location, lName)
+		if ('number' === typeof maxLatitude) {
+			a.ok(m.location.latitude <= maxLatitude, lName + '.latitude is too large')
+		}
+		if ('number' === typeof minLatitude) {
+			a.ok(m.location.latitude >= minLatitude, lName + '.latitude is too small')
+		}
+		if ('number' === typeof maxLongitude) {
+			a.ok(m.location.longitude <= maxLongitude, lName + '.longitude is too large')
+		}
+		if ('number' === typeof minLongitude) {
+			a.ok(m.location.longitude >= minLongitude, lName + '.longitude is too small')
+		}
 
-	a.ok(Array.isArray(m.nextStops), name + '.nextStops must be an array')
-	for (let i = 0; i < m.nextStops.length; i++) {
-		const st = m.nextStops[i]
-		val.stopover(val, st, name + `.nextStops[${i}]`)
+		a.ok(Array.isArray(m.nextStops), name + '.nextStops must be an array')
+		for (let i = 0; i < m.nextStops.length; i++) {
+			const st = m.nextStops[i]
+			val.stopover(val, st, name + `.nextStops[${i}]`)
+		}
+
+		a.ok(Array.isArray(m.frames), name + '.frames must be an array')
+		a.ok(m.frames.length > 0, name + '.frames must not be empty')
+		for (let i = 0; i < m.frames.length; i++) {
+			const f = m.frames[i]
+			const fName = name + `.frames[${i}]`
+
+			a.ok(isObj(f), fName + ' must be an object')
+			anyOf(['location', 'stop', 'station'], val, f.origin, fName + '.origin')
+			anyOf(['location', 'stop', 'station'], val, f.destination, fName + '.destination')
+			a.strictEqual(typeof f.t, 'number', fName + '.frames must be a number')
+		}
+
+		// todo: validate polyline
 	}
-
-	a.ok(Array.isArray(m.frames), name + '.frames must be an array')
-	a.ok(m.frames.length > 0, name + '.frames must not be empty')
-	for (let i = 0; i < m.frames.length; i++) {
-		const f = m.frames[i]
-		const fName = name + `.frames[${i}]`
-
-		a.ok(isObj(f), fName + ' must be an object')
-		anyOf(['location', 'stop', 'station'], val, f.origin, fName + '.origin')
-		anyOf(['location', 'stop', 'station'], val, f.destination, fName + '.destination')
-		a.strictEqual(typeof f.t, 'number', fName + '.frames must be a number')
-	}
-
-	// todo: validate polyline
+	return validateMovement
 }
 
 const validateMovements = (val, ms, name = 'movements') => {
@@ -437,6 +449,6 @@ module.exports = {
 	departure: createValidateDeparture,
 	departures: () => validateDepartures,
 	arrivals: () => validateArrivals,
-	movement: () => validateMovement,
+	movement: createValidateMovement,
 	movements: () => validateMovements
 }
