@@ -21,6 +21,7 @@ const testEarlierLaterJourneys = require('./lib/earlier-later-journeys')
 const testRefreshJourney = require('./lib/refresh-journey')
 const journeysFailsWithNoProduct = require('./lib/journeys-fails-with-no-product')
 const testJourneysWithDetour = require('./lib/journeys-with-detour')
+const testDepartures = require('./lib/departures')
 const testDeparturesInDirection = require('./lib/departures-in-direction')
 
 const when = createWhen('Europe/Berlin', 'de-DE')
@@ -55,12 +56,18 @@ const test = tapePromise(tape)
 const client = createClient(saarfahrplanProfile, 'public-transport/hafas-client:test')
 
 const saarbrueckenHbf = '8000323'
+// This seems to be the bus/tram stop. 🙄
+const hauptbahnhofSaarbruecken = '10600'
 const saarlouisHbf = '8005247'
-const wien = '1190100'
 const metzVille = '8700019'
-const wienRenngasse = '1390186'
-const wienKarlsplatz = '1390461'
-const wienPilgramgasse = '1390562'
+const saarbrueckenUhlandstr = '10609'
+
+const thomasMannStr = {
+	type: 'location',
+	address: 'Neunkirchen, Thomas-Mann-Straße 1',
+	latitude: 49.348307,
+	longitude: 7.183613
+}
 
 // @todo prices/tickets
 // @todo journeys, only one product
@@ -78,12 +85,6 @@ test('journeys – fails with no product', (t) => {
 })
 
 test('Saarbrücken Hbf to Neunkirchen, Thomas-Mann-Straße 1', co(function * (t) {
-	const thomasMannStr = {
-		type: 'location',
-		latitude: 49.348307,
-		longitude: 7.183613,
-		address: 'Neunkirchen, Thomas-Mann-Straße 1'
-	}
 	const journeys = yield client.journeys(saarbrueckenHbf, thomasMannStr, {
 		results: 3,
 		departure: when
@@ -121,63 +122,63 @@ test('Saarbrücken Hbf to Schlossberghöhlen', co(function * (t) {
 	t.end()
 }))
 
-// test.skip('journeys: via works – with detour', co(function* (t) {
-// 	// Going from Stephansplatz to Schottenring via Donauinsel without detour
-// 	// is currently impossible. We check if the routing engine computes a detour.
-// 	const stephansplatz = '001390167'
-// 	const schottenring = '001390163'
-// 	const donauinsel = '001392277'
-// 	const donauinselPassed = '922001'
-// 	const journeys = yield client.journeys(stephansplatz, schottenring, {
-// 		via: donauinsel,
-// 		results: 1,
-// 		departure: when,
-// 		stopovers: true
-// 	})
+test.skip('journeys: via works – with detour', co(function* (t) {
+	// Going from Stephansplatz to Schottenring via Donauinsel without detour
+	// is currently impossible. We check if the routing engine computes a detour.
+	const stephansplatz = '001390167'
+	const schottenring = '001390163'
+	const donauinsel = '001392277'
+	const donauinselPassed = '922001'
+	const journeys = yield client.journeys(stephansplatz, schottenring, {
+		via: donauinsel,
+		results: 1,
+		departure: when,
+		stopovers: true
+	})
 
-// 	yield testJourneysWithDetour({
-// 		test: t,
-// 		journeys,
-// 		validate,
-// 		detourIds: [donauinsel, donauinselPassed]
-// 	})
-// 	t.end()
-// }))
+	yield testJourneysWithDetour({
+		test: t,
+		journeys,
+		validate,
+		detourIds: [donauinsel, donauinselPassed]
+	})
+	t.end()
+}))
 
-// test.skip('journeys: via works – without detour', co(function* (t) {
-// 	// When going from Karlsplatz to Praterstern via Museumsquartier, there is
-// 	// *no need* to change trains / no need for a "detour".
-// 	const karlsplatz = '001390461'
-// 	const praterstern = '001290201'
-// 	const museumsquartier = '001390171'
-// 	const museumsquartierPassed = '901014'
+test.skip('journeys: via works – without detour', co(function* (t) {
+	// When going from Karlsplatz to Praterstern via Museumsquartier, there is
+	// *no need* to change trains / no need for a "detour".
+	const karlsplatz = '001390461'
+	const praterstern = '001290201'
+	const museumsquartier = '001390171'
+	const museumsquartierPassed = '901014'
 
-// 	const journeys = yield client.journeys(karlsplatz, praterstern, {
-// 		via: museumsquartier,
-// 		results: 1,
-// 		departure: when,
-// 		stopovers: true
-// 	})
+	const journeys = yield client.journeys(karlsplatz, praterstern, {
+		via: museumsquartier,
+		results: 1,
+		departure: when,
+		stopovers: true
+	})
 
-// 	validate(t, journeys, 'journeys', 'journeys')
+	validate(t, journeys, 'journeys', 'journeys')
 
-// 	const l1 = journeys[0].legs.some((leg) => {
-// 		return (
-// 			leg.destination.id === museumsquartier ||
-// 			leg.destination.id === museumsquartierPassed
-// 		)
-// 	})
-// 	t.notOk(l1, 'transfer at Museumsquartier')
+	const l1 = journeys[0].legs.some((leg) => {
+		return (
+			leg.destination.id === museumsquartier ||
+			leg.destination.id === museumsquartierPassed
+		)
+	})
+	t.notOk(l1, 'transfer at Museumsquartier')
 
-// 	const l2 = journeys[0].legs.some((leg) => {
-// 		return leg.stopovers && leg.stopovers.some((stopover) => {
-// 			return stopover.stop.id === museumsquartierPassed
-// 		})
-// 	})
-// 	t.ok(l2, 'Museumsquartier is not being passed')
+	const l2 = journeys[0].legs.some((leg) => {
+		return leg.stopovers && leg.stopovers.some((stopover) => {
+			return stopover.stop.id === museumsquartierPassed
+		})
+	})
+	t.ok(l2, 'Museumsquartier is not being passed')
 
-// 	t.end()
-// }))
+	t.end()
+}))
 
 test('earlier/later journeys, Saarbrücken Hbf -> Saarlouis Hbf', co(function * (t) {
 	yield testEarlierLaterJourneys({
@@ -206,59 +207,58 @@ test('trip details', co(function * (t) {
 	t.end()
 }))
 
-// test.skip('departures at Wien Leibenfrostgasse', co(function* (t) {
-// 	const wienLeibenfrostgasse = '1390469'
-// 	const ids = [
-// 		wienLeibenfrostgasse, // station
-// 		'904029', // stop "Wien Leibenfrostgasse (Phorusgasse)s"
-// 		'904030' // stop "Wien Leibenfrostgasse (Ziegelofengasse)"
-// 	]
+test('departures', co(function* (t) {
+	const departures = yield client.departures(saarbrueckenUhlandstr, {
+		duration: 5, when
+	})
 
-// 	const deps = yield client.departures(wienLeibenfrostgasse, {
-// 		duration: 15, when
-// 	})
+	validate(t, departures, 'departures', 'departures')
+	t.ok(departures.length > 0, 'must be >0 departures')
+	for (let i = 0; i < departures.length; i++) {
+		let stop = departures[i].stop
+		let name = `departures[${i}].stop`
+		if (stop.station) {
+			stop = stop.station
+			name += '.station'
+		}
 
-// 	validate(t, deps, 'departures', 'departures')
-// 	t.ok(deps.length > 0, 'must be >0 departures')
-// 	// todo: move into deps validator
-// 	t.deepEqual(deps, deps.sort((a, b) => t.when > b.when))
+		t.equal(stop.id, saarbrueckenUhlandstr, name + '.id is invalid')
+	}
 
-// 	for (let i = 0; i < deps.length; i++) {
-// 		const dep = deps[i]
-// 		t.ok(ids.includes(dep.stop.id), `deps[${i}].stop.id ("${dep.stop.id}") is invalid`)
-// 	}
+	// todo: move into deps validator
+	t.deepEqual(departures, departures.sort((a, b) => t.when > b.when))
+	t.end()
+}))
 
-// 	t.end()
-// }))
+test('departures with stop object', co(function* (t) {
+	const deps = yield client.departures({
+		type: 'stop',
+		id: '8000323',
+		name: 'Saarbrücken Hbf',
+		location: {
+			type: 'location',
+			latitude: 49.241066,
+			longitude: 6.991019
+		}
+	}, {when})
 
-// test('departures with stop object', co(function* (t) {
-// 	const deps = yield client.departures({
-// 		type: 'stop',
-// 		id: '8000323',
-// 		name: 'Saarbrücken Hbf',
-// 		location: {
-// 			type: 'location',
-// 			latitude: 49.241066,
-// 			longitude: 6.991019
-// 		}
-// 	}, {when})
+	validate(t, deps, 'departures', 'departures')
+	t.end()
+}))
 
-// 	validate(t, deps, 'departures', 'departures')
-// 	t.end()
-// }))
-
-// test.skip('departures at Karlsplatz in direction of Pilgramgasse', co(function* (t) {
-// 	yield testDeparturesInDirection({
-// 		test: t,
-// 		fetchDepartures: client.departures,
-// 		fetchTrip: client.trip,
-// 		id: wienKarlsplatz,
-// 		directionIds: [wienPilgramgasse, '905002'],
-// 		when,
-// 		validate
-// 	})
-// 	t.end()
-// }))
+test('departures at Karlsplatz in direction of Pilgramgasse', co(function* (t) {
+	const saarbrueckenLandwehrplatz = '10606'
+	yield testDeparturesInDirection({
+		test: t,
+		fetchDepartures: client.departures,
+		fetchTrip: client.trip,
+		id: saarbrueckenUhlandstr,
+		directionIds: [saarbrueckenLandwehrplatz],
+		when,
+		validate
+	})
+	t.end()
+}))
 
 // todo: arrivals
 
@@ -306,33 +306,17 @@ test('locations named Saarbrücken', co(function * (t) {
 	t.end()
 }))
 
-// test.skip('station', co(function* (t) {
-// 	const loc = yield client.station(wienRenngasse)
+test('station', co(function* (t) {
+	const s = yield client.station(saarbrueckenUhlandstr)
 
-// 	// todo: find a way to always get products from the API
-// 	// todo: cfg.stationProductsOptional option
-// 	const allProducts = products.reduce((acc, p) => (acc[p.id] = true, acc), {})
-// 	const validateStation = createValidateStation(cfg)
-// 	const validate = createValidate(cfg, {
-// 		stop: (validate, s, name) => {
-// 			const withFakeProducts = Object.assign({products: allProducts}, s)
-// 			validateStop(validate, withFakeProducts, name)
-// 		},
-// 		station: (validate, s, name) => {
-// 			const withFakeProducts = Object.assign({products: allProducts}, s)
-// 			validateStation(validate, withFakeProducts, name)
-// 		}
-// 	})
-// 	validate(t, loc, ['stop', 'station'], 'station')
+	validate(t, s, ['stop', 'station'], 'station')
+	t.equal(s.id, saarbrueckenUhlandstr)
 
-// 	t.equal(loc.id, wienRenngasse)
+	t.end()
+}))
 
-// 	t.end()
-// }))
-
-// @todo filter empty nextStops, then reenable this test and see if it works
-test.skip('radar Saarbrücken', co(function * (t) {
-	let vehicles = yield client.radar({
+test('radar', co(function* (t) {
+	const vehicles = yield client.radar({
 		north: 49.27,
 		west: 6.97,
 		south: 49.22,
@@ -341,20 +325,6 @@ test.skip('radar Saarbrücken', co(function * (t) {
 		duration: 5 * 60, when
 	})
 
-	// todo: find a way to always get frames from the API
-	vehicles = vehicles.filter(m => m.frames && m.frames.length > 0)
-
-	// todo: find a way to always get products from the API
-	// todo: cfg.stationProductsOptional option
-	const allProducts = products.reduce((acc, p) => (acc[p.id] = true, acc), {})
-	const validateStation = createValidateStation(cfg)
-	const validate = createValidate(cfg, {
-		station: (validate, s, name) => {
-			const withFakeProducts = Object.assign({ products: allProducts }, s)
-			validateStation(validate, withFakeProducts, name)
-		}
-	})
 	validate(t, vehicles, 'movements', 'vehicles')
-
 	t.end()
 }))
