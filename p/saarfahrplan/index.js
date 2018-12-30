@@ -18,6 +18,17 @@ const transformReqBody = (body) => {
 	return body
 }
 
+const createParseMovement = (profile, opt, data) => {
+	const _parseMovement = _createParseMovement(profile, opt, data)
+	const parseMovement = (m) => {
+		const res = _parseMovement(m)
+		// filter out empty stopovers
+		res.nextStops = res.nextStops.filter(st => !!st.stop)
+		return res
+	}
+	return parseMovement
+}
+
 const saarfahrplanProfile = {
 	locale: 'de-DE',
 	timezone: 'Europe/Berlin',
@@ -29,6 +40,8 @@ const saarfahrplanProfile = {
 	addMicMac: true,
 
 	products: products,
+
+	parseMovement: createParseMovement,
 
 	departuresGetPasslist: false,
 	departuresStbFltrEquiv: false,
