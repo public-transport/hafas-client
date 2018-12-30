@@ -1,9 +1,9 @@
 'use strict'
 
 const createClient = require('../..')
-const oebbProfile = require('.')
+const saarfahrplanProfile = require('.')
 
-const client = createClient(oebbProfile, 'hafas-client-example')
+const client = createClient(saarfahrplanProfile, 'hafas-client-example')
 
 client.journeys('15541', '10609', {results: 1})
 // .then(([journey]) => {
