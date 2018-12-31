@@ -5,7 +5,7 @@ module.exports = [
 		id: 'nationalExpress',
 		mode: 'train',
 		bitmasks: [8192],
-		name: 'Hochgeschwindigkeitszeit',
+		name: 'Hochgeschwindigkeitszug',
 		short: 'ICE',
 		default: true
 	},
