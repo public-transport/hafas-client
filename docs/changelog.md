@@ -1,5 +1,10 @@
 # Changelog
 
+## `3.8.0`
+
+- 5d0096c `departures()`: profile flag for `getPasslist` & `stbFilterEquiv`
+- #99 [Saarfahrplan profile](p/saarfahrplan) – Thanks @ialokim & @juliuste!
+
 ## `3.7.0`
 
 - e867dac/f097022 `opt.stopovers`, `departure.nextStopovers`/`arrival.previousStopovers`
