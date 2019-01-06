@@ -185,6 +185,7 @@ const createClient = (profile, userAgent, request = _request) => {
 		// until we have enough.
 		// todo: revert this change, see https://github.com/public-transport/hafas-client/issues/76#issuecomment-424448449
 		const journeys = []
+		let earlierRef, laterRef
 		const more = (when, journeysRef) => {
 			const query = {
 				outDate: profile.formatDate(profile, when),
@@ -224,7 +225,7 @@ const createClient = (profile, userAgent, request = _request) => {
 					polylines: opt.polylines && d.common.polyL || []
 				})
 
-				if (!journeys.earlierRef) journeys.earlierRef = d.outCtxScrB
+				if (!earlierRef) earlierRef = d.outCtxScrB
 
 				let latestDep = -Infinity
 				for (let j of d.outConL) {
@@ -232,8 +233,12 @@ const createClient = (profile, userAgent, request = _request) => {
 					journeys.push(j)
 
 					if (journeys.length >= opt.results) { // collected enough
-						journeys.laterRef = d.outCtxScrF
-						return journeys
+						laterRef = d.outCtxScrF
+						return {
+							earlierRef,
+							laterRef,
+							journeys
+						}
 					}
 					const dep = +new Date(j.legs[0].departure)
 					if (dep > latestDep) latestDep = dep
