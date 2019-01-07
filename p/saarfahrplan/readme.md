@@ -1,4 +1,4 @@
-# Saarfahrplan profile for `hafas-client`
+# Saarfahrplan/VGS profile for `hafas-client`
 
 *Saarfahrplan* is the public transport information system in [Saarland](https://en.wikipedia.org/wiki/Saarland). This profile adds *Saarfahrplan*-specific customizations to `hafas-client`.
 

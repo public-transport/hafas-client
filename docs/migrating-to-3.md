@@ -22,7 +22,6 @@ Pick a name that describes your program and – if possible – the website/repo
 - …instead of `journey.departure`, use `journey.legs[0].departure`. 005f3f8
 - …instead of `journey.arrival`, use `journey.legs[last].arrival`. 005f3f8
 - …rename `opt.passedStations` to `opt.stopovers`. ebe4fa6
-- …rename `leg.journeyId` to `leg.tripId`. 2e6aefe
 - …rename `leg.passed` to `leg.stopovers`. 6611f26
 - …rename `leg.stopovers[].station` to `leg.stopovers[].stop`. 3e672ee
 
