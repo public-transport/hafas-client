@@ -3,6 +3,7 @@
 const trim = require('lodash/trim')
 
 const _createParseJourney = require('../../parse/journey')
+const _createParseLine = require('../../parse/line')
 const _parseHint = require('../../parse/hint')
 const _formatStation = require('../../format/station')
 const {bike} = require('../../format/filters')
@@ -12,7 +13,7 @@ const formatLoyaltyCard = require('./loyalty-cards').format
 
 const transformReqBody = (body) => {
 	body.client = {id: 'DB', v: '16040000', type: 'IPH', name: 'DB Navigator'}
-	body.ext = 'DB.R15.12.a'
+	body.ext = 'DB.R18.06.a'
 	body.ver = '1.16'
 	body.auth = {type: 'AID', aid: 'n91dB8Z77MLdoR0K'}
 
@@ -35,6 +36,16 @@ const transformJourneysQuery = (query, opt) => {
 	}
 
 	return query
+}
+
+const createParseLine = (profile, opt, data) => {
+	const parseLine = _createParseLine(profile, opt, data)
+	const parseLineWithAdditionalName = (l) => {
+		const res = parseLine(l)
+		if (l.addName) res.additionalName = l.addName
+		return res
+	}
+	return parseLineWithAdditionalName
 }
 
 const createParseJourney = (profile, opt, data) => {
@@ -315,6 +326,7 @@ const dbProfile = {
 
 	// todo: parseLocation
 	parseJourney: createParseJourney,
+	parseLine: createParseLine,
 	parseHint,
 
 	formatStation,
