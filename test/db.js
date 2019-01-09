@@ -82,6 +82,7 @@ const regensburgHbf = '8000309'
 const blnOstbahnhof = '8010255'
 const blnTiergarten = '8089091'
 const blnJannowitzbrücke = '8089019'
+const potsdamHbf = '8012666'
 
 test('journeys – Berlin Schwedter Str. to München Hbf', co(function* (t) {
 	const journeys = yield client.journeys(blnSchwedterStr, münchenHbf, {
@@ -363,6 +364,15 @@ test('station', co(function* (t) {
 	validate(t, s, ['stop', 'station'], 'station')
 	t.equal(s.id, regensburgHbf)
 
+	t.end()
+}))
+
+test('line with additionalName', co(function* (t) {
+	const departures = yield client.departures(potsdamHbf, {
+		duration: 12 * 60, // 12 minutes
+		products: {bus: false, suburban: false, tram: false}
+	})
+	t.ok(departures.some(d => d.line && d.line.additionalName))
 	t.end()
 }))
 
