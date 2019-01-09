@@ -135,7 +135,7 @@ test('Kiel Hbf to Berliner Str. 80, Husum', co(function* (t) {
 test('Kiel Hbf to Holstentor', co(function* (t) {
 	const holstentor = {
 		type: 'location',
-		id: '970004303',
+		id: '970003118',
 		name: 'Hansestadt Lübeck, Holstentor (Denkmal)',
 		latitude: 53.866321,
 		longitude: 10.679976

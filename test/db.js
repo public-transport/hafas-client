@@ -198,7 +198,7 @@ test('earlier/later journeys, Jungfernheide -> München Hbf', co(function* (t) {
 	t.end()
 }))
 
-test('journeys – leg cycle & alternatives', co(function* (t) {
+test.skip('journeys – leg cycle & alternatives', co(function* (t) {
 	yield testLegCycleAlternatives({
 		test: t,
 		fetchJourneys: client.journeys,

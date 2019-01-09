@@ -144,7 +144,7 @@ test('earlier/later journeys', co(function* (t) {
 	t.end()
 }))
 
-test('journeys – leg cycle & alternatives', co(function* (t) {
+test.skip('journeys – leg cycle & alternatives', co(function* (t) {
 	yield testLegCycleAlternatives({
 		test: t,
 		fetchJourneys: client.journeys,
