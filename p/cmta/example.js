@@ -32,11 +32,13 @@ client.journeys('000002370', '000005919', {results: 1, polylines: true})
 // 	maxDuration: 15
 // })
 
-// .then(([journey]) => {
+// .then(({journeys}) => {
+// 	const [journey] = journeys
 // 	const leg = journey.legs[0]
 // 	return client.trip(leg.tripId, leg.line.name, {polyline: true})
 // })
-// .then(([journey]) => {
+// .then(({journeys}) => {
+// 	const [journey] = journeys
 // 	return client.refreshJourney(journey.refreshToken, {stopovers: true, remarks: true})
 // })
 

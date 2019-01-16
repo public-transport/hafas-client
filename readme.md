@@ -60,82 +60,103 @@ client.journeys('8011167', '8000261', {results: 1})
 .catch(console.error)
 ```
 
-The returned [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/promise) will resolve with an array of one [*FPTF* `journey`](https://github.com/public-transport/friendly-public-transport-format/blob/1.2.0/spec/readme.md#journey).
+The returned [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/promise) will resolve with an object with an array `journeys` that contains one [*FPTF* `journey`](https://github.com/public-transport/friendly-public-transport-format/blob/1.2.0/spec/readme.md#journey).
 
 ```js
-[ {
-	legs: [ {
-		id: '1|100067|48|81|17122017',
+{
+	journeys: [ {
+		legs: [ {
+			id: '1|100067|48|81|17122017',
+			origin: {
+				type: 'station',
+				id: '8089100',
+				name: 'Berlin Jungfernheide (S)',
+				location: {
+					type: 'location',
+					latitude: 52.530291,
+					longitude: 13.299451
+				},
+				products: { /* … */ }
+			},
+			departure: '2017-12-17T17:05:00.000+01:00',
+			departurePlatform: '5',
+			destination: {
+				type: 'station',
+				id: '8089118',
+				name: 'Berlin Beusselstraße',
+				location: { /* … */ },
+				products: { /* … */ }
+			},
+			arrival: '2017-12-17T17:08:00.000+01:00',
+			arrivalPlatform: '1',
+			line: {
+				type: 'line',
+				id: '41172',
+				name: 'S 41',
+				public: true,
+				mode: 'train',
+				product: 'suburban',
+				operator: {
+					type: 'operator',
+					id: 's-bahn-berlin-gmbh',
+					name: 'S-Bahn Berlin GmbH'
+				}
+			},
+			direction: 'Ringbahn ->'
+		}, /* … */ {
+			origin: {
+				type: 'station',
+				id: '730749',
+				name: 'Berlin Hauptbahnhof (S+U), Berlin',
+				location: {
+					type: 'location',
+					latitude: 52.526461,
+					longitude: 13.369378
+				},
+				products: { /* … */ }
+			},
+			departure: '2017-12-17T17:25:00.000+01:00',
+			destination: {
+				type: 'station',
+				id: '8098160',
+				name: 'Berlin Hbf (tief)',
+				location: { /* … */ },
+				products: { /* … */ }
+			},
+			arrival: '2017-12-17T17:33:00.000+01:00',
+			mode: 'walking',
+			public: true
+		}, {
+			id: '1|70906|0|81|17122017',
+			origin: {
+				type: 'station',
+				id: '8098160',
+				name: 'Berlin Hbf (tief)',
+				location: { /* … */ },
+				products: { /* … */ }
+			},
+			departure: '2017-12-17T17:37:00.000+01:00',
+			departurePlatform: '1',
+			destination: {
+				type: 'station',
+				id: '8000261',
+				name: 'München Hbf',
+				location: { /* … */ },
+				products: { /* … */ }
+			},
+			arrival: '2017-12-17T22:45:00.000+01:00',
+			arrivalPlatform: '13',
+			line: { /* … */ },
+			direction: 'München Hbf'
+		} ],
 		origin: {
 			type: 'station',
 			id: '8089100',
 			name: 'Berlin Jungfernheide (S)',
-			location: {
-				type: 'location',
-				latitude: 52.530291,
-				longitude: 13.299451
-			},
+			location: { /* … */ },
 			products: { /* … */ }
 		},
 		departure: '2017-12-17T17:05:00.000+01:00',
-		departurePlatform: '5',
-		destination: {
-			type: 'station',
-			id: '8089118',
-			name: 'Berlin Beusselstraße',
-			location: { /* … */ },
-			products: { /* … */ }
-		},
-		arrival: '2017-12-17T17:08:00.000+01:00',
-		arrivalPlatform: '1',
-		line: {
-			type: 'line',
-			id: '41172',
-			name: 'S 41',
-			public: true,
-			mode: 'train',
-			product: 'suburban',
-			operator: {
-				type: 'operator',
-				id: 's-bahn-berlin-gmbh',
-				name: 'S-Bahn Berlin GmbH'
-			}
-		},
-		direction: 'Ringbahn ->'
-	}, /* … */ {
-		origin: {
-			type: 'station',
-			id: '730749',
-			name: 'Berlin Hauptbahnhof (S+U), Berlin',
-			location: {
-				type: 'location',
-				latitude: 52.526461,
-				longitude: 13.369378
-			},
-			products: { /* … */ }
-		},
-		departure: '2017-12-17T17:25:00.000+01:00',
-		destination: {
-			type: 'station',
-			id: '8098160',
-			name: 'Berlin Hbf (tief)',
-			location: { /* … */ },
-			products: { /* … */ }
-		},
-		arrival: '2017-12-17T17:33:00.000+01:00',
-		mode: 'walking',
-		public: true
-	}, {
-		id: '1|70906|0|81|17122017',
-		origin: {
-			type: 'station',
-			id: '8098160',
-			name: 'Berlin Hbf (tief)',
-			location: { /* … */ },
-			products: { /* … */ }
-		},
-		departure: '2017-12-17T17:37:00.000+01:00',
-		departurePlatform: '1',
 		destination: {
 			type: 'station',
 			id: '8000261',
@@ -144,31 +165,14 @@ The returned [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript
 			products: { /* … */ }
 		},
 		arrival: '2017-12-17T22:45:00.000+01:00',
-		arrivalPlatform: '13',
-		line: { /* … */ },
-		direction: 'München Hbf'
+		price: {
+			amount: null,
+			hint: 'No pricing information available.'
+		}
 	} ],
-	origin: {
-		type: 'station',
-		id: '8089100',
-		name: 'Berlin Jungfernheide (S)',
-		location: { /* … */ },
-		products: { /* … */ }
-	},
-	departure: '2017-12-17T17:05:00.000+01:00',
-	destination: {
-		type: 'station',
-		id: '8000261',
-		name: 'München Hbf',
-		location: { /* … */ },
-		products: { /* … */ }
-	},
-	arrival: '2017-12-17T22:45:00.000+01:00',
-	price: {
-		amount: null,
-		hint: 'No pricing information available.'
-	}
-} ]
+	earlierRef: /* … */,
+	laterRef: /* … */
+}
 ```
 
 

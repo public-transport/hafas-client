@@ -6,11 +6,13 @@ const saarfahrplanProfile = require('.')
 const client = createClient(saarfahrplanProfile, 'hafas-client-example')
 
 client.journeys('15541', '10609', {results: 1})
-// .then(([journey]) => {
+// .then(({journeys}) => {
+// 	const [journey] = journeys
 // 	const leg = journey.legs[0]
 // 	return client.trip(leg.id, leg.line.name, {polyline: true})
 // })
-// .then(([journey]) => {
+// .then(({journeys}) => {
+// 	const [journey] = journeys
 // 	return client.refreshJourney(journey.refreshToken, {stopovers: true, remarks: true})
 // })
 
