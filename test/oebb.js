@@ -151,9 +151,9 @@ test('Salzburg Hbf to Albertina', co(function* (t) {
 test('journeys: via works – with detour', co(function* (t) {
 	// Going from Stephansplatz to Schottenring via Donauinsel without detour
 	// is currently impossible. We check if the routing engine computes a detour.
-	const stephansplatz = '001390167'
-	const schottenring = '001390163'
-	const donauinsel = '001392277'
+	const stephansplatz = '1390167'
+	const schottenring = '1390163'
+	const donauinsel = '1392277'
 	const donauinselPassed = '922001'
 	const journeys = yield client.journeys(stephansplatz, schottenring, {
 		via: donauinsel,
@@ -174,9 +174,9 @@ test('journeys: via works – with detour', co(function* (t) {
 test('journeys: via works – without detour', co(function* (t) {
 	// When going from Karlsplatz to Praterstern via Museumsquartier, there is
 	// *no need* to change trains / no need for a "detour".
-	const karlsplatz = '001390461'
-	const praterstern = '001290201'
-	const museumsquartier = '001390171'
+	const karlsplatz = '1390461'
+	const praterstern = '1290201'
+	const museumsquartier = '1390171'
 	const museumsquartierPassed = '901014'
 
 	const journeys = yield client.journeys(karlsplatz, praterstern, {
@@ -316,7 +316,7 @@ test('nearby Salzburg Hbf', co(function* (t) {
 	t.equal(nearby.length, 5)
 
 	const s = nearby[0]
-	t.ok(s.id === '008100002' || s.id === '8100002', 'id should be 8100002')
+	t.equal(s.id, salzburgHbf, 'id should be ' + salzburgHbf)
 	t.equal(s.name, 'Salzburg Hbf')
 	t.ok(isRoughlyEqual(.0005, s.location.latitude, 47.812851))
 	t.ok(isRoughlyEqual(.0005, s.location.longitude, 13.045604))
@@ -337,11 +337,7 @@ test('locations named Salzburg', co(function* (t) {
 	t.ok(locations.find(s => s.type === 'stop' || s.type === 'station'))
 	t.ok(locations.find(s => s.id && s.name)) // POIs
 	t.ok(locations.some((s) => {
-		// todo: trim IDs
-		if (s.station) {
-			if (s.station.id === '008100002' || s.station.id === '8100002') return true
-		}
-		return s.id === '008100002' || s.id === '8100002'
+		return s.station && s.station.id === salzburgHbf || s.id === salzburgHbf
 	}))
 
 	t.end()

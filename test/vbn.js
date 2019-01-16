@@ -132,7 +132,7 @@ test.skip('journeys: via works – with detour', co(function* (t) {
 		test: t,
 		journeys,
 		validate,
-		detourIds: ['8010077', dessau] // todo: trim IDs
+		detourIds: [dessau]
 	})
 	t.end()
 }))
@@ -238,11 +238,7 @@ test.skip('locations named Magdeburg', co(function*(t) {
 	t.ok(locations.find(s => s.type === 'stop' || s.type === 'station'))
 	t.ok(locations.find(s => s.id && s.name)) // POIs
 	t.ok(locations.some((l) => {
-		// todo: trim IDs
-		if (l.station) {
-			if (l.station.id === '008010224' || l.station.id === bremenHbf) return true
-		}
-		return l.id === '008010224' || l.id === bremenHbf
+		return l.station && l.station.id === bremenHbf || l.id === bremenHbf
 	}))
 
 	t.end()
