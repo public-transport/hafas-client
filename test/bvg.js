@@ -66,7 +66,7 @@ const jannowitzbrücke = '900000100004'
 const hour = 60 * 60 * 1000
 
 test('journeys – Spichernstr. to Bismarckstr.', async (t) => {
-	const journeys = await client.journeys(spichernstr, bismarckstr, {
+	const res = await client.journeys(spichernstr, bismarckstr, {
 		results: 3,
 		departure: when,
 		stopovers: true
@@ -74,7 +74,7 @@ test('journeys – Spichernstr. to Bismarckstr.', async (t) => {
 
 	await testJourneysStationToStation({
 		test: t,
-		journeys,
+		res,
 		validate,
 		fromId: spichernstr,
 		toId: bismarckstr
@@ -85,7 +85,7 @@ test('journeys – Spichernstr. to Bismarckstr.', async (t) => {
 })
 
 test('journeys – only subway', async (t) => {
-	const journeys = await client.journeys(spichernstr, bismarckstr, {
+	const res = await client.journeys(spichernstr, bismarckstr, {
 		results: 20,
 		departure: when,
 		products: {
@@ -99,14 +99,15 @@ test('journeys – only subway', async (t) => {
 		}
 	})
 
-	validate(t, journeys, 'journeys', 'journeys')
-	t.ok(journeys.length > 1)
-	for (let i = 0; i < journeys.length; i++) {
-		const journey = journeys[i]
+	validate(t, res, 'journeysResult', 'res')
+
+	t.ok(res.journeys.length > 1)
+	for (let i = 0; i < res.journeys.length; i++) {
+		const journey = res.journeys[i]
 		for (let j = 0; j < journey.legs.length; j++) {
 			const leg = journey.legs[j]
 
-			const name = `journeys[${i}].legs[${j}].line`
+			const name = `res.journeys[${i}].legs[${j}].line`
 			if (leg.line) {
 				t.equal(leg.line.mode, 'train', name + '.mode is invalid')
 				t.equal(leg.line.product, 'subway', name + '.product is invalid')
@@ -166,11 +167,11 @@ test('refreshJourney', async (t) => {
 })
 
 test('trip details', async (t) => {
-	const journeys = await client.journeys(spichernstr, amrumerStr, {
+	const res = await client.journeys(spichernstr, amrumerStr, {
 		results: 1, departure: when
 	})
 
-	const p = journeys[0].legs[0]
+	const p = res.journeys[0].legs[0]
 	t.ok(p.tripId, 'precondition failed')
 	t.ok(p.line.name, 'precondition failed')
 	const trip = await client.trip(p.tripId, p.line.name, {when})
@@ -186,14 +187,14 @@ test('journeys – station to address', async (t) => {
 		latitude: 52.541797,
 		longitude: 13.350042
 	}
-	const journeys = await client.journeys(spichernstr, torfstr, {
+	const res = await client.journeys(spichernstr, torfstr, {
 		results: 3,
 		departure: when
 	})
 
 	await testJourneysStationToAddress({
 		test: t,
-		journeys,
+		res,
 		validate,
 		fromId: spichernstr,
 		to: torfstr
@@ -209,14 +210,14 @@ test('journeys – station to POI', async (t) => {
 		latitude: 52.543333,
 		longitude: 13.351686
 	}
-	const journeys = await client.journeys(spichernstr, atze, {
+	const res = await client.journeys(spichernstr, atze, {
 		results: 3,
 		departure: when
 	})
 
 	await testJourneysStationToPoi({
 		test: t,
-		journeys,
+		res,
 		validate,
 		fromId: spichernstr,
 		to: atze
@@ -227,7 +228,7 @@ test('journeys – station to POI', async (t) => {
 test('journeys: via works – with detour', async (t) => {
 	// Going from Westhafen to Wedding via Württembergalle without detour
 	// is currently impossible. We check if the routing engine computes a detour.
-	const journeys = await client.journeys(westhafen, wedding, {
+	const res = await client.journeys(westhafen, wedding, {
 		via: württembergallee,
 		results: 1,
 		departure: when,
@@ -236,7 +237,7 @@ test('journeys: via works – with detour', async (t) => {
 
 	await testJourneysWithDetour({
 		test: t,
-		journeys,
+		res,
 		validate,
 		detourIds: [württembergallee]
 	})

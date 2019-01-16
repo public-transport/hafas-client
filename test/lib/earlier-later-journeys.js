@@ -51,7 +51,7 @@ const testEarlierLaterJourneys = async (cfg) => {
 	})
 
 	let earliestDep = Infinity, latestDep = -Infinity
-	for (let j of model) {
+	for (let j of model.journeys) {
 		if (j.legs[0].departure === null) continue
 		const dep = +new Date(j.legs[0].departure)
 		if (dep < earliestDep) earliestDep = dep
@@ -63,7 +63,7 @@ const testEarlierLaterJourneys = async (cfg) => {
 		// todo: single journey ref?
 		earlierThan: model.earlierRef
 	})
-	for (let j of earlier) {
+	for (let j of earlier.journeys) {
 		const firstLeg = j.legs[0]
 		const dep = new Date(firstLeg.departure || firstLeg.formerScheduledDeparture)
 		t.ok(dep < earliestDep)
@@ -74,7 +74,7 @@ const testEarlierLaterJourneys = async (cfg) => {
 		// todo: single journey ref?
 		laterThan: model.laterRef
 	})
-	for (let j of later) {
+	for (let j of later.journeys) {
 		const firstLeg = j.legs[0]
 		const dep = new Date(firstLeg.departure || firstLeg.formerScheduledDeparture)
 		t.ok(dep > latestDep)

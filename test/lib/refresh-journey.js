@@ -31,10 +31,11 @@ const testRefreshJourney = async (cfg) => {
 		// todo: validate
 	} = cfg
 
-	const [model] = await fetchJourneys(fromId, toId, {
+	const modelRes = await fetchJourneys(fromId, toId, {
 		results: 1, departure: when,
 		stopovers: false
 	})
+	const [model] = modelRes.journeys
 
 	// todo: move to journeys validator?
 	t.equal(typeof model.refreshToken, 'string')

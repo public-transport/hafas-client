@@ -1,12 +1,13 @@
 'use strict'
 
 const testJourneysWithDetour = async (cfg) => {
-	const {test: t, journeys, validate, detourIds} = cfg
+	const {test: t, res, validate, detourIds} = cfg
 
 	// We assume that going from A to B via C *without* detour is currently
 	// impossible. We check if the routing engine computes a detour.
 
-	validate(t, journeys, 'journeys', 'journeys')
+	validate(t, res, 'journeysResult', 'res')
+	const {journeys} = res
 
 	const leg = journeys[0].legs.some((leg) => {
 		return leg.stopovers && leg.stopovers.some((st) => (

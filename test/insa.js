@@ -47,7 +47,7 @@ const dessau = '8010077'
 const universitaet = '19686'
 
 test('journeys – Magdeburg Hbf to Magdeburg-Buckau', async (t) => {
-	const journeys = await client.journeys(magdeburgHbf, magdeburgBuckau, {
+	const res = await client.journeys(magdeburgHbf, magdeburgBuckau, {
 		results: 3,
 		departure: when,
 		stopovers: true
@@ -55,7 +55,7 @@ test('journeys – Magdeburg Hbf to Magdeburg-Buckau', async (t) => {
 
 	await testJourneysStationToStation({
 		test: t,
-		journeys,
+		res,
 		validate,
 		fromId: magdeburgHbf,
 		toId: magdeburgBuckau
@@ -85,14 +85,14 @@ test('Magdeburg Hbf to 39104 Magdeburg, Sternstr. 10', async (t) => {
 		longitude: 11.422332
 	}
 
-	const journeys = await client.journeys(magdeburgHbf, sternStr, {
+	const res = await client.journeys(magdeburgHbf, sternStr, {
 		results: 3,
 		departure: when
 	})
 
 	await testJourneysStationToAddress({
 		test: t,
-		journeys,
+		res,
 		validate,
 		fromId: magdeburgHbf,
 		to: sternStr
@@ -108,14 +108,14 @@ test('Magdeburg Hbf to Kloster Unser Lieben Frauen', async (t) => {
 		latitude: 52.127601,
 		longitude: 11.636437
 	}
-	const journeys = await client.journeys(magdeburgHbf, kloster, {
+	const res = await client.journeys(magdeburgHbf, kloster, {
 		results: 3,
 		departure: when
 	})
 
 	await testJourneysStationToPoi({
 		test: t,
-		journeys,
+		res,
 		validate,
 		fromId: magdeburgHbf,
 		to: kloster
@@ -127,7 +127,7 @@ test('journeys: via works – with detour', async (t) => {
 	// Going from Magdeburg, Hasselbachplatz (Sternstr.) (Tram/Bus) to Stendal
 	// via Dessau without detour is currently impossible. We check if the routing
 	// engine computes a detour.
-	const journeys = await client.journeys(hasselbachplatzSternstrasse, stendal, {
+	const res = await client.journeys(hasselbachplatzSternstrasse, stendal, {
 		via: dessau,
 		results: 1,
 		departure: when,
@@ -136,7 +136,7 @@ test('journeys: via works – with detour', async (t) => {
 
 	await testJourneysWithDetour({
 		test: t,
-		journeys,
+		res,
 		validate,
 		detourIds: [dessau]
 	})
@@ -159,11 +159,11 @@ test('earlier/later journeys', async (t) => {
 })
 
 test('trip details', async (t) => {
-	const journeys = await client.journeys(magdeburgHbf, magdeburgBuckau, {
+	const res = await client.journeys(magdeburgHbf, magdeburgBuckau, {
 		results: 1, departure: when
 	})
 
-	const p = journeys[0].legs[0]
+	const p = res.journeys[0].legs[0]
 	t.ok(p.tripId, 'precondition failed')
 	t.ok(p.line.name, 'precondition failed')
 	const trip = await client.trip(p.tripId, p.line.name, {when})
