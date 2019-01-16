@@ -3,10 +3,12 @@
 const isRoughlyEqual = require('is-roughly-equal')
 
 const testJourneysStationToAddress = async (cfg) => {
-	const {test: t, journeys, validate, fromId} = cfg
+	const {test: t, res, validate, fromId} = cfg
 	const {address, latitude, longitude} = cfg.to
 
-	validate(t, journeys, 'journeys', 'journeys')
+	validate(t, res, 'journeysResult', 'res')
+	const {journeys} = res
+
 	t.strictEqual(journeys.length, 3)
 	for (let i = 0; i < journeys.length; i++) {
 		const j = journeys[i]
@@ -16,7 +18,7 @@ const testJourneysStationToAddress = async (cfg) => {
 		t.ok(orig.id, fromId)
 
 		const d = j.legs[j.legs.length - 1].destination
-		const n = `journeys[0].legs[${i}].destination`
+		const n = `res.journeys[0].legs[${i}].destination`
 
 		t.strictEqual(d.type, 'location', n + '.type is invalid')
 		t.strictEqual(d.address, address, n + '.address is invalid')

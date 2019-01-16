@@ -63,7 +63,7 @@ const wienKarlsplatz = '1390461'
 const wienPilgramgasse = '1390562'
 
 test.skip('journeys – Salzburg Hbf to Wien Westbahnhof', async (t) => {
-	const journeys = await client.journeys(salzburgHbf, wienFickeystr, {
+	const res = await client.journeys(salzburgHbf, wienFickeystr, {
 		results: 3,
 		departure: when,
 		stopovers: true
@@ -71,15 +71,15 @@ test.skip('journeys – Salzburg Hbf to Wien Westbahnhof', async (t) => {
 
 	await testJourneysStationToStation({
 		test: t,
-		journeys,
+		res,
 		validate,
 		fromId: salzburgHbf,
 		toId: wienFickeystr
 	})
 
-	for (let i = 0; i < journeys.length; i++) {
-		const j = journeys[i]
-		if (j.price) assertValidPrice(t, j.price, `journeys[${i}].price`)
+	for (let i = 0; i < res.journeys.length; i++) {
+		const j = res.journeys[i]
+		if (j.price) assertValidPrice(t, j.price, `res.journeys[${i}].price`)
 	}
 
 	t.end()
@@ -106,14 +106,14 @@ test('Salzburg Hbf to 1220 Wien, Wagramer Straße 5', async (t) => {
     	latitude: 48.236216,
     	longitude: 16.425863
 	}
-	const journeys = await client.journeys(salzburgHbf, wagramerStr, {
+	const res = await client.journeys(salzburgHbf, wagramerStr, {
 		results: 3,
 		departure: when
 	})
 
 	await testJourneysStationToAddress({
 		test: t,
-		journeys,
+		res,
 		validate,
 		fromId: salzburgHbf,
 		to: wagramerStr
@@ -129,13 +129,13 @@ test('Salzburg Hbf to Albertina', async (t) => {
     	latitude: 48.204699,
     	longitude: 16.368404
 	}
-	const journeys = await client.journeys(salzburgHbf, albertina, {
+	const res = await client.journeys(salzburgHbf, albertina, {
 		results: 3, departure: when
 	})
 
 	await testJourneysStationToPoi({
 		test: t,
-		journeys,
+		res,
 		validate,
 		fromId: salzburgHbf,
 		to: albertina
@@ -150,7 +150,7 @@ test('journeys: via works – with detour', async (t) => {
 	const schottenring = '1390163'
 	const donauinsel = '1392277'
 	const donauinselPassed = '922001'
-	const journeys = await client.journeys(stephansplatz, schottenring, {
+	const res = await client.journeys(stephansplatz, schottenring, {
 		via: donauinsel,
 		results: 1,
 		departure: when,
@@ -159,7 +159,7 @@ test('journeys: via works – with detour', async (t) => {
 
 	await testJourneysWithDetour({
 		test: t,
-		journeys,
+		res,
 		validate,
 		detourIds: [donauinsel, donauinselPassed]
 	})
@@ -174,16 +174,16 @@ test('journeys: via works – without detour', async (t) => {
 	const museumsquartier = '1390171'
 	const museumsquartierPassed = '901014'
 
-	const journeys = await client.journeys(karlsplatz, praterstern, {
+	const res = await client.journeys(karlsplatz, praterstern, {
 		via: museumsquartier,
 		results: 1,
 		departure: when,
 		stopovers: true
 	})
 
-	validate(t, journeys, 'journeys', 'journeys')
+	validate(t, res, 'journeysResult', 'res')
 
-	const l1 = journeys[0].legs.some((leg) => {
+	const l1 = res.journeys[0].legs.some((leg) => {
 		return (
 			leg.destination.id === museumsquartier ||
 			leg.destination.id === museumsquartierPassed
@@ -191,7 +191,7 @@ test('journeys: via works – without detour', async (t) => {
 	})
 	t.notOk(l1, 'transfer at Museumsquartier')
 
-	const l2 = journeys[0].legs.some((leg) => {
+	const l2 = res.journeys[0].legs.some((leg) => {
 		return leg.stopovers && leg.stopovers.some((stopover) => {
 			return stopover.stop.id === museumsquartierPassed
 		})
@@ -228,11 +228,11 @@ test('refreshJourney', async (t) => {
 })
 
 test('trip details', async (t) => {
-	const journeys = await client.journeys(wienWestbahnhof, muenchenHbf, {
+	const res = await client.journeys(wienWestbahnhof, muenchenHbf, {
 		results: 1, departure: when
 	})
 
-	const p = journeys[0].legs[0]
+	const p = res.journeys[0].legs[0]
 	t.ok(p.tripId, 'precondition failed')
 	t.ok(p.line.name, 'precondition failed')
 	const trip = await client.trip(p.tripId, p.line.name, {when})

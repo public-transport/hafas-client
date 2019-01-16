@@ -59,7 +59,7 @@ const poetschnerstr = {
 }
 
 test('journeys – Mittersendling to Karl-Theodor-Straße', async (t) => {
-	const journeys = await client.journeys(mittersendling, karlTheodorStr, {
+	const res = await client.journeys(mittersendling, karlTheodorStr, {
 		results: 3,
 		departure: when,
 		stopovers: true
@@ -67,7 +67,7 @@ test('journeys – Mittersendling to Karl-Theodor-Straße', async (t) => {
 
 	await testJourneysStationToStation({
 		test: t,
-		journeys,
+		res,
 		validate,
 		fromId: mittersendling,
 		toId: karlTheodorStr
@@ -90,14 +90,14 @@ test('journeys – fails with no product', (t) => {
 })
 
 test('Karl-Theodor-Straße to Pötschnerstraße 3, Neuhausen', async (t) => {
-	const journeys = await client.journeys(karlTheodorStr, poetschnerstr, {
+	const res = await client.journeys(karlTheodorStr, poetschnerstr, {
 		results: 3,
 		departure: when
 	})
 
 	await testJourneysStationToAddress({
 		test: t,
-		journeys,
+		res,
 		validate,
 		fromId: karlTheodorStr,
 		to: poetschnerstr
@@ -113,14 +113,14 @@ test('Karl-Theodor-Straße to Hofbräuhaus', async (t) => {
 		latitude: 48.137739,
 		longitude: 11.579823
 	}
-	const journeys = await client.journeys(karlTheodorStr, hofbraeuhaus, {
+	const res = await client.journeys(karlTheodorStr, hofbraeuhaus, {
 		results: 3,
 		departure: when
 	})
 
 	await testJourneysStationToPoi({
 		test: t,
-		journeys,
+		res,
 		validate,
 		fromId: karlTheodorStr,
 		to: hofbraeuhaus
@@ -158,11 +158,11 @@ test('refreshJourney', async (t) => {
 })
 
 test('trip details', async (t) => {
-	const journeys = await client.journeys(mittersendling, karlTheodorStr, {
+	const res = await client.journeys(mittersendling, karlTheodorStr, {
 		results: 1, departure: when
 	})
 
-	const p = journeys[0].legs.find(leg => leg.line)
+	const p = res.journeys[0].legs.find(leg => leg.line)
 	t.ok(p.tripId, 'precondition failed')
 	t.ok(p.line.name, 'precondition failed')
 	const trip = await client.trip(p.tripId, p.line.name, {when})

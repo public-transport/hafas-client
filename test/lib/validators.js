@@ -304,6 +304,12 @@ const validateJourneys = (val, js, name = 'journeys') => {
 	}
 }
 
+const validateJourneysResult = (val, res, name = 'journeysResult') => {
+	a.ok(isObj(res), name + ' must be an object')
+	// todo: `earlierRef`, `laterRef`
+	val.journeys(val, res.journeys, name + '.journeys')
+}
+
 const validateTrip = (val, trip, name = 'trip') => {
 	const withFakeTripId = Object.assign({
 		tripId: trip.id
@@ -458,6 +464,7 @@ module.exports = {
 	journeyLeg: createValidateJourneyLeg,
 	journey: () => validateJourney,
 	journeys: () => validateJourneys,
+	journeysResult: () => validateJourneysResult,
 	trip: () => validateTrip,
 	arrival: createValidateArrival,
 	departure: createValidateDeparture,

@@ -72,7 +72,7 @@ const seefischmarkt = '9049245'
 const kielRaeucherei = '9049217'
 
 test('journeys – Kiel Hbf to Flensburg', async (t) => {
-	const journeys = await client.journeys(kielHbf, flensburg, {
+	const res = await client.journeys(kielHbf, flensburg, {
 		results: 3,
 		departure: when,
 		stopovers: true
@@ -80,16 +80,16 @@ test('journeys – Kiel Hbf to Flensburg', async (t) => {
 
 	await testJourneysStationToStation({
 		test: t,
-		journeys,
+		res,
 		validate,
 		fromId: kielHbf,
 		toId: flensburg
 	})
 
-	for (let i = 0; i < journeys.length; i++) {
-		const j = journeys[i]
+	for (let i = 0; i < res.journeys.length; i++) {
+		const j = res.journeys[i]
 		// todo: find a journey where there pricing info is always available
-		if (j.price) assertValidPrice(t, j.price, `journeys[${i}].price`)
+		if (j.price) assertValidPrice(t, j.price, `res.journeys[${i}].price`)
 	}
 
 	t.end()
@@ -116,14 +116,14 @@ test('Kiel Hbf to Berliner Str. 80, Husum', async (t) => {
 		latitude: 54.488995,
 		longitude: 9.056263
 	}
-	const journeys = await client.journeys(kielHbf, berlinerStr, {
+	const res = await client.journeys(kielHbf, berlinerStr, {
 		results: 3,
 		departure: when
 	})
 
 	await testJourneysStationToAddress({
 		test: t,
-		journeys,
+		res,
 		validate,
 		fromId: kielHbf,
 		to: berlinerStr
@@ -139,14 +139,14 @@ test('Kiel Hbf to Holstentor', async (t) => {
 		latitude: 53.866321,
 		longitude: 10.679976
 	}
-	const journeys = await client.journeys(kielHbf, holstentor, {
+	const res = await client.journeys(kielHbf, holstentor, {
 		results: 3,
 		departure: when
 	})
 
 	await testJourneysStationToPoi({
 		test: t,
-		journeys,
+		res,
 		validate,
 		fromId: kielHbf,
 		to: holstentor
@@ -155,16 +155,16 @@ test('Kiel Hbf to Holstentor', async (t) => {
 })
 
 test('Husum to Lübeck Hbf with stopover at Kiel Hbf', async (t) => {
-	const journeys = await client.journeys(husum, luebeckHbf, {
+	const res = await client.journeys(husum, luebeckHbf, {
 		via: kielHbf,
 		results: 1,
 		departure: when,
 		stopovers: true
 	})
 
-	validate(t, journeys, 'journeys', 'journeys')
+	validate(t, res, 'journeysResult', 'res')
 
-	const leg = journeys[0].legs.some((leg) => {
+	const leg = res.journeys[0].legs.some((leg) => {
 		return leg.stopovers && leg.stopovers.some((stopover) => {
 			const s = stopover.stop
 			return s.station && s.station.id === kielHbf || s.id === kielHbf
@@ -205,11 +205,11 @@ test('refreshJourney', async (t) => {
 // todo: without detour test
 
 test('trip details', async (t) => {
-	const journeys = await client.journeys(flensburg, husum, {
+	const res = await client.journeys(flensburg, husum, {
 		results: 1, departure: when
 	})
 
-	const p = journeys[0].legs[0]
+	const p = res.journeys[0].legs[0]
 	t.ok(p.tripId, 'precondition failed')
 	t.ok(p.line.name, 'precondition failed')
 	const trip = await client.trip(p.tripId, p.line.name, {when})
