@@ -42,7 +42,7 @@ const domain = '5919'
 const capitol591 = '591'
 
 test('journeys – Broadie Oaks to Domain', async (t) => {
-	const journeys = await client.journeys(broadieOaks, domain, {
+	const res = await client.journeys(broadieOaks, domain, {
 		results: 3,
 		departure: when,
 		stopovers: true
@@ -50,7 +50,7 @@ test('journeys – Broadie Oaks to Domain', async (t) => {
 
 	await testJourneysStationToStation({
 		test: t,
-		journeys,
+		res,
 		validate,
 		fromId: broadieOaks,
 		toId: domain
@@ -80,14 +80,14 @@ test('Domain to 1104 Elm Street, Austin, TX 78703', async (t) => {
 		longitude: -97.758292
 	}
 
-	const journeys = await client.journeys(domain, someAddress, {
+	const res = await client.journeys(domain, someAddress, {
 		results: 3,
 		departure: when
 	})
 
 	await testJourneysStationToAddress({
 		test: t,
-		journeys,
+		res,
 		validate,
 		fromId: domain,
 		to: someAddress
@@ -103,14 +103,14 @@ test('Domain to Whole Foods Market - North Lamar Blvd', async (t) => {
 		latitude: 30.270653,
 		longitude: -97.753564
 	}
-	const journeys = await client.journeys(domain, wholeFoodsMarket, {
+	const res = await client.journeys(domain, wholeFoodsMarket, {
 		results: 3,
 		departure: when
 	})
 
 	await testJourneysStationToPoi({
 		test: t,
-		journeys,
+		res,
 		validate,
 		fromId: domain,
 		to: wholeFoodsMarket
@@ -148,11 +148,11 @@ test('refreshJourney', async (t) => {
 })
 
 test('trip details', async (t) => {
-	const journeys = await client.journeys(broadieOaks, domain, {
+	const res = await client.journeys(broadieOaks, domain, {
 		results: 1, departure: when
 	})
 
-	const p = journeys[0].legs[0]
+	const p = res.journeys[0].legs[0]
 	t.ok(p.tripId, 'precondition failed')
 	t.ok(p.line.name, 'precondition failed')
 	const trip = await client.trip(p.tripId, p.line.name, {when})

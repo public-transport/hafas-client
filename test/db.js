@@ -88,7 +88,7 @@ const blnJannowitzbrücke = '8089019'
 const potsdamHbf = '8012666'
 
 test('journeys – Berlin Schwedter Str. to München Hbf', async (t) => {
-	const journeys = await client.journeys(blnSchwedterStr, münchenHbf, {
+	const res = await client.journeys(blnSchwedterStr, münchenHbf, {
 		results: 3,
 		departure: when,
 		stopovers: true
@@ -96,13 +96,13 @@ test('journeys – Berlin Schwedter Str. to München Hbf', async (t) => {
 
 	await testJourneysStationToStation({
 		test: t,
-		journeys,
+		res,
 		validate,
 		fromId: blnSchwedterStr,
 		toId: münchenHbf
 	})
 	// todo: find a journey where there pricing info is always available
-	for (let journey of journeys) {
+	for (let journey of res.journeys) {
 		if (journey.price) assertValidPrice(t, journey.price)
 	}
 
@@ -130,14 +130,14 @@ test('Berlin Schwedter Str. to Torfstraße 17', async (t) => {
 		latitude: 52.5416823,
 		longitude: 13.3491223
 	}
-	const journeys = await client.journeys(blnSchwedterStr, torfstr, {
+	const res = await client.journeys(blnSchwedterStr, torfstr, {
 		results: 3,
 		departure: when
 	})
 
 	await testJourneysStationToAddress({
 		test: t,
-		journeys,
+		res,
 		validate,
 		fromId: blnSchwedterStr,
 		to: torfstr
@@ -153,14 +153,14 @@ test('Berlin Schwedter Str. to ATZE Musiktheater', async (t) => {
 		latitude: 52.542417,
 		longitude: 13.350437
 	}
-	const journeys = await client.journeys(blnSchwedterStr, atze, {
+	const res = await client.journeys(blnSchwedterStr, atze, {
 		results: 3,
 		departure: when
 	})
 
 	await testJourneysStationToPoi({
 		test: t,
-		journeys,
+		res,
 		validate,
 		fromId: blnSchwedterStr,
 		to: atze
@@ -171,7 +171,7 @@ test('Berlin Schwedter Str. to ATZE Musiktheater', async (t) => {
 test('journeys: via works – with detour', async (t) => {
 	// Going from Westhafen to Wedding via Württembergalle without detour
 	// is currently impossible. We check if the routing engine computes a detour.
-	const journeys = await client.journeys(westhafen, wedding, {
+	const res = await client.journeys(westhafen, wedding, {
 		via: württembergallee,
 		results: 1,
 		departure: when,
@@ -180,7 +180,7 @@ test('journeys: via works – with detour', async (t) => {
 
 	await testJourneysWithDetour({
 		test: t,
-		journeys,
+		res,
 		validate,
 		detourIds: [württembergallee]
 	})
@@ -226,11 +226,11 @@ test('refreshJourney', async (t) => {
 })
 
 test('trip details', async (t) => {
-	const journeys = await client.journeys(berlinHbf, münchenHbf, {
+	const res = await client.journeys(berlinHbf, münchenHbf, {
 		results: 1, departure: when
 	})
 
-	const p = journeys[0].legs[0]
+	const p = res.journeys[0].legs[0]
 	t.ok(p.tripId, 'precondition failed')
 	t.ok(p.line.name, 'precondition failed')
 	const trip = await client.trip(p.tripId, p.line.name, {when})

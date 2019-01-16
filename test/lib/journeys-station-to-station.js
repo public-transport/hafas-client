@@ -1,9 +1,11 @@
 'use strict'
 
 const testJourneysStationToStation = async (cfg) => {
-	const {test: t, journeys, validate, fromId, toId} = cfg
+	const {test: t, res, validate, fromId, toId} = cfg
 
-	validate(t, journeys, 'journeys', 'journeys')
+	validate(t, res, 'journeysResult', 'res')
+	const {journeys} = res
+
 	t.strictEqual(journeys.length, 3)
 	for (let i = 0; i < journeys.length; i++) {
 		const j = journeys[i]

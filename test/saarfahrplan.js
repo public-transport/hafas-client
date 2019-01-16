@@ -84,14 +84,14 @@ test('journeys – fails with no product', (t) => {
 })
 
 test('Saarbrücken Hbf to Neunkirchen, Thomas-Mann-Straße 1', async (t) => {
-	const journeys = await client.journeys(saarbrueckenHbf, thomasMannStr, {
+	const res = await client.journeys(saarbrueckenHbf, thomasMannStr, {
 		results: 3,
 		departure: when
 	})
 
 	await testJourneysStationToAddress({
 		test: t,
-		journeys,
+		res,
 		validate,
 		fromId: saarbrueckenHbf,
 		to: thomasMannStr
@@ -107,13 +107,13 @@ test('Saarbrücken Hbf to Schlossberghöhlen', async (t) => {
 		name: 'Homburg, Schlossberghöhlen',
 		id: '9000185'
 	}
-	const journeys = await client.journeys(saarbrueckenHbf, schlossberghoehlen, {
+	const res = await client.journeys(saarbrueckenHbf, schlossberghoehlen, {
 		results: 3, departure: when
 	})
 
 	await testJourneysStationToPoi({
 		test: t,
-		journeys,
+		res,
 		validate,
 		fromId: saarbrueckenHbf,
 		to: schlossberghoehlen
@@ -128,7 +128,7 @@ test.skip('journeys: via works – with detour', async (t) => {
 	const schottenring = '1390163'
 	const donauinsel = '1392277'
 	const donauinselPassed = '922001'
-	const journeys = await client.journeys(stephansplatz, schottenring, {
+	const res = await client.journeys(stephansplatz, schottenring, {
 		via: donauinsel,
 		results: 1,
 		departure: when,
@@ -137,7 +137,7 @@ test.skip('journeys: via works – with detour', async (t) => {
 
 	await testJourneysWithDetour({
 		test: t,
-		journeys,
+		res,
 		validate,
 		detourIds: [donauinsel, donauinselPassed]
 	})
@@ -152,16 +152,16 @@ test.skip('journeys: via works – without detour', async (t) => {
 	const museumsquartier = '1390171'
 	const museumsquartierPassed = '901014'
 
-	const journeys = await client.journeys(karlsplatz, praterstern, {
+	const res = await client.journeys(karlsplatz, praterstern, {
 		via: museumsquartier,
 		results: 1,
 		departure: when,
 		stopovers: true
 	})
 
-	validate(t, journeys, 'journeys', 'journeys')
+	validate(t, res, 'journeysResult', 'res')
 
-	const l1 = journeys[0].legs.some((leg) => {
+	const l1 = res.journeys[0].legs.some((leg) => {
 		return (
 			leg.destination.id === museumsquartier ||
 			leg.destination.id === museumsquartierPassed
@@ -169,7 +169,7 @@ test.skip('journeys: via works – without detour', async (t) => {
 	})
 	t.notOk(l1, 'transfer at Museumsquartier')
 
-	const l2 = journeys[0].legs.some((leg) => {
+	const l2 = res.journeys[0].legs.some((leg) => {
 		return leg.stopovers && leg.stopovers.some((stopover) => {
 			return stopover.stop.id === museumsquartierPassed
 		})
@@ -193,11 +193,11 @@ test('earlier/later journeys, Saarbrücken Hbf -> Saarlouis Hbf', async (t) => {
 })
 
 test('trip details', async (t) => {
-	const journeys = await client.journeys(saarlouisHbf, metzVille, {
+	const res = await client.journeys(saarlouisHbf, metzVille, {
 		results: 1, departure: when
 	})
 
-	const p = journeys[0].legs[0]
+	const p = res.journeys[0].legs[0]
 	t.ok(p.tripId, 'precondition failed')
 	t.ok(p.line.name, 'precondition failed')
 	const trip = await client.trip(p.tripId, p.line.name, { when })
