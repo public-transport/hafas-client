@@ -95,11 +95,11 @@ client.journeys('900000003201', '900000100008', {
 .catch(console.error)
 ```
 
-The response may look like this:
+The `Promise` returned by `journeys()` will resolve with an object with the `journeys` & `earlierRef`/`laterRef` fields. It might look like this:
 
 ```js
-[
-	{
+{
+	journeys: [ {
 		legs: [ {
 			tripId: '1|32615|6|86|10072018',
 			origin: {
@@ -226,10 +226,10 @@ The response may look like this:
 			public: true,
 			distance: 558
 		} ]
-	},
+	} ],
 	earlierRef: '…', // use with the `earlierThan` option
 	laterRef: '…' // use with the `laterThan` option
-]
+}
 ```
 
 Some [profiles](../p) are able to parse the ticket information, if returned by the API. For example, if you pass `tickets: true` with the [VBB profile](../p/vbb), each `journey` will have a tickets array that looks like this:
@@ -271,25 +271,25 @@ Some [profiles](../p) are able to parse the ticket information, if returned by t
 
 If a journey leg has been cancelled, a `cancelled: true` will be added. Also, `departure`/`departureDelay`/`departurePlatform` and `arrival`/`arrivalDelay`/`arrivalPlatform` will be `null`.
 
-To get more journeys earlier/later than the current set of results, pass `journeys.earlierRef`/`journeys.laterRef` into `opt.earlierThan`/`opt.laterThan`. For example, query *later* journeys as follows:
+To get more journeys earlier/later than the current set of results, pass `earlierRef`/`laterRef` into `opt.earlierThan`/`opt.laterThan`. For example, query *later* journeys as follows:
 
 ```js
 const hbf = '900000003201'
 const heinrichHeineStr = '900000100008'
 
 client.journeys(hbf, heinrichHeineStr)
-.then((journeys) => {
-	const lastJourney = journeys[journeys.length - 1]
+.then((res) => {
+	const lastJourney = res.journeys[res.journeys.length - 1]
 	console.log('departure of last journey', lastJourney.legs[0].departure)
 
 	// get later journeys
 	return client.journeys(hbf, heinrichHeineStr, {
-		laterThan: journeys.laterRef
+		laterThan: res.laterRef
 	})
 })
-.then((laterJourneys) => {
-	const firstJourney = laterJourneys[laterJourneys.length - 1]
-	console.log('departure of first (later) journey', firstJourney.legs[0].departure)
+.then((laterRes) => {
+	const firstLaterJourney = laterRes.journeys[laterRes.journeys.length - 1]
+	console.log('departure of first (later) journey', firstLaterJourney.legs[0].departure)
 })
 .catch(console.error)
 ```
