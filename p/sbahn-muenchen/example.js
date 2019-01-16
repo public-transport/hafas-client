@@ -32,12 +32,14 @@ client.departures('8004154', {duration: 5})
 // 	maxDuration: 20
 // })
 
-// .then(([journey]) => {
+// .then(({journeys}) => {
+// 	const [journey] = journeys
 // 	const leg = journey.legs.find(leg => leg.line)
 // 	return client.trip(leg.tripId, leg.line.name, {polyline: true})
 // })
 
-// .then(([journey]) => {
+// .then(({journeys}) => {
+// 	const [journey] = journeys
 // 	return client.refreshJourney(journey.refreshToken, {
 // 		stopovers: true, remarks: true
 // 	})

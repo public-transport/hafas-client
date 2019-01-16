@@ -24,12 +24,14 @@ client.journeys('008010226', '008013456', {results: 1})
 // 	east: 11.651451
 // }, {results: 10})
 
-// .then(([journey]) => {
+// .then(({journeys}) => {
+// 	const [journey] = journeys
 // 	const leg = journey.legs[0]
 // 	return client.trip(leg.tripId, leg.line.name)
 // })
 
-// .then(([journey]) => {
+// .then(({journeys}) => {
+// 	const [journey] = journeys
 // 	return client.refreshJourney(journey.refreshToken, {stopovers: true, remarks: true})
 // })
 
