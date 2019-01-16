@@ -220,8 +220,7 @@ test('locations named "Capitol"', co(function*(t) {
 	t.ok(locations.find(s => s.type === 'stop' || s.type === 'station'))
 	t.ok(locations.find(s => s.id && s.name)) // POIs
 	t.ok(locations.some((l) => {
-		const trim = str => str && str.replace(/^0+/, '')
-		return l.station && trim(l.station.id) === capitol591 || trim(l.id) === capitol591
+		return l.station && l.station.id === capitol591 || l.id === capitol591
 	}))
 
 	t.end()
