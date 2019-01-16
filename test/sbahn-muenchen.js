@@ -232,8 +232,7 @@ test('locations named "Nationaltheater"', co(function*(t) {
 	t.ok(locations.find(s => s.type === 'stop' || s.type === 'station'))
 	t.ok(locations.find(s => s.id && s.name)) // POIs
 	t.ok(locations.some((l) => {
-		const trim = str => str && str.replace(/^0+/, '')
-		return l.station && trim(l.station.id) === nationaltheater || trim(l.id) === nationaltheater
+		return l.station && l.station.id === nationaltheater || l.id === nationaltheater
 	}))
 
 	t.end()

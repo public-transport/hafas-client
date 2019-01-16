@@ -38,9 +38,9 @@ const client = createClient(insaProfile, 'public-transport/hafas-client:test')
 const magdeburgHbf = '8010224'
 const magdeburgBuckau = '8013456'
 const leiterstr = '7464'
-const hasselbachplatzSternstrasse = '000006545'
-const stendal = '008010334'
-const dessau = '008010077'
+const hasselbachplatzSternstrasse = '6545'
+const stendal = '8010334'
+const dessau = '8010077'
 const universitaet = '19686'
 
 test('journeys – Magdeburg Hbf to Magdeburg-Buckau', co(function* (t) {
@@ -135,7 +135,7 @@ test('journeys: via works – with detour', co(function* (t) {
 		test: t,
 		journeys,
 		validate,
-		detourIds: ['8010077', dessau] // todo: trim IDs
+		detourIds: [dessau]
 	})
 	t.end()
 }))
@@ -240,11 +240,7 @@ test('locations named Magdeburg', co(function*(t) {
 	t.ok(locations.find(s => s.type === 'stop' || s.type === 'station'))
 	t.ok(locations.find(s => s.id && s.name)) // POIs
 	t.ok(locations.some((l) => {
-		// todo: trim IDs
-		if (l.station) {
-			if (l.station.id === '008010224' || l.station.id === magdeburgHbf) return true
-		}
-		return l.id === '008010224' || l.id === magdeburgHbf
+		return l.station && l.station.id === magdeburgHbf || l.id === magdeburgHbf
 	}))
 
 	t.end()

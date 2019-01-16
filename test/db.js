@@ -75,8 +75,8 @@ const berlinHbf = '8011160'
 const münchenHbf = '8000261'
 const jungfernheide = '8011167'
 const blnSchwedterStr = '732652'
-const westhafen = '008089116'
-const wedding = '008089131'
+const westhafen = '8089116'
+const wedding = '8089131'
 const württembergallee = '731084'
 const regensburgHbf = '8000309'
 const blnOstbahnhof = '8010255'
@@ -329,8 +329,7 @@ test('nearby Berlin Jungfernheide', co(function* (t) {
 	t.equal(nearby.length, 2)
 
 	const s0 = nearby[0]
-	// todo: trim IDs
-	t.ok(s0.id === '008011167' || s0.id === jungfernheide)
+	t.equal(s0.id, jungfernheide)
 	t.equal(s0.name, 'Berlin Jungfernheide')
 	t.ok(isRoughlyEqual(.0005, s0.location.latitude, 52.530408))
 	t.ok(isRoughlyEqual(.0005, s0.location.longitude, 13.299424))
@@ -348,11 +347,7 @@ test('locations named Jungfernheide', co(function* (t) {
 	validate(t, locations, 'locations', 'locations')
 	t.ok(locations.length <= 10)
 	t.ok(locations.some((l) => {
-		// todo: trim IDs
-		if (l.station) {
-			if (l.station.id === '008011167' || l.station.id === jungfernheide) return true
-		}
-		return l.id === '008011167' || l.id === jungfernheide
+		return l.station && l.station.id === jungfernheide || l.id === jungfernheide
 	}), 'Jungfernheide not found')
 
 	t.end()
