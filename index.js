@@ -140,7 +140,7 @@ const createClient = (profile, userAgent, request = _request) => {
 			results: 5, // how many journeys?
 			via: null, // let journeys pass this station?
 			stopovers: false, // return stations on the way?
-			transfers: 5, // maximum of 5 transfers
+			transfers: -1, // maximum of 5 transfers
 			transferTime: 0, // minimum time for a single transfer in minutes
 			// todo: does this work with every endpoint?
 			accessibility: 'none', // 'none', 'partial' or 'complete'
