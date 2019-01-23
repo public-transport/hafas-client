@@ -1,8 +1,8 @@
 'use strict'
 
-const formatLocationFilter = (stations, addresses, poi) => {
-	if (stations && addresses && poi) return 'ALL'
-	return (stations ? 'S' : '') + (addresses ? 'A' : '') + (poi ? 'P' : '')
+const formatLocationFilter = (stops, addresses, poi) => {
+	if (stops && addresses && poi) return 'ALL'
+	return (stops ? 'S' : '') + (addresses ? 'A' : '') + (poi ? 'P' : '')
 }
 
 module.exports = formatLocationFilter

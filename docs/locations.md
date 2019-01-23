@@ -8,7 +8,7 @@ With `opt`, you can override the default options, which look like this:
 {
 	  fuzzy:     true // find only exact matches?
 	, results:   5 // how many search results?
-	, stations:  true
+	, stops:     true // return stops/stations?
 	, addresses: true
 	, poi:       true // points of interest
 	, stationLines: false // parse & expose lines of the station?
