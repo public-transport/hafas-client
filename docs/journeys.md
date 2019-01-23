@@ -50,7 +50,7 @@ With `opt`, you can override the default options, which look like this:
 	results: 5, // how many journeys?
 	via: null, // let journeys pass this station
 	stopovers: false, // return stations on the way?
-	transfers: 5, // maximum of 5 transfers
+	transfers: -1, // Maximum nr of transfers. Default: Let HAFAS decide.
 	transferTime: 0, // minimum time for a single transfer in minutes
 	accessibility: 'none', // 'none', 'partial' or 'complete'
 	bike: false, // only bike-friendly journeys
