@@ -297,13 +297,13 @@ const createClient = (profile, userAgent, request = _request) => {
 		opt = Object.assign({
 			fuzzy: true, // find only exact matches?
 			results: 5, // how many search results?
-			stations: true,
+			stops: true, // return stops/stations?
 			addresses: true,
 			poi: true, // points of interest
 			stationLines: false // parse & expose lines of the station?
 		}, opt)
 
-		const f = profile.formatLocationFilter(opt.stations, opt.addresses, opt.poi)
+		const f = profile.formatLocationFilter(opt.stops, opt.addresses, opt.poi)
 		return request(profile, userAgent, opt, {
 			cfg: {polyEnc: 'GPA'},
 			meth: 'LocMatch',
@@ -353,7 +353,7 @@ const createClient = (profile, userAgent, request = _request) => {
 			results: 8, // maximum number of results
 			distance: null, // maximum walking distance in meters
 			poi: false, // return points of interest?
-			stations: true, // return stations?
+			stops: true, // return stops/stations?
 			stationLines: false // parse & expose lines of the station?
 		}, opt)
 
@@ -370,7 +370,7 @@ const createClient = (profile, userAgent, request = _request) => {
 					minDist: 0
 				},
 				getPOIs: !!opt.poi,
-				getStops: !!opt.stations,
+				getStops: !!opt.stops,
 				maxLoc: opt.results
 			}
 		})
