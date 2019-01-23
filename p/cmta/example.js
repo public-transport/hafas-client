@@ -8,7 +8,7 @@ const client = createClient(cmtaProfile, 'hafas-client-example')
 // Broadie Oaks to Domain
 client.journeys('000002370', '000005919', {results: 1, polylines: true})
 // client.departures('000002370', {duration: 1})
-// client.arrivals('000002370', {duration: 10, stationLines: true})
+// client.arrivals('000002370', {duration: 10, linesOfStops: true})
 // client.locations('Westgate', {results: 2})
 // client.stop('000005534') // Downtown light rail station
 // client.nearby({
