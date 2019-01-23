@@ -59,7 +59,7 @@ const createClient = (profile, userAgent, request = _request) => {
 		opt = Object.assign({
 			direction: null, // only show departures heading to this station
 			duration: 10, // show departures for the next n minutes
-			stationLines: false, // parse & expose lines of the station?
+			linesOfStops: false, // parse & expose lines at the stop/station?
 			remarks: true, // parse & expose hints & warnings?
 			stopovers: false, // fetch & parse previous/next stopovers?
 			// departures at related stations
@@ -300,7 +300,7 @@ const createClient = (profile, userAgent, request = _request) => {
 			stops: true, // return stops/stations?
 			addresses: true,
 			poi: true, // points of interest
-			stationLines: false // parse & expose lines of the station?
+			linesOfStops: false // parse & expose lines at each stop/station?
 		}, opt)
 
 		const f = profile.formatLocationFilter(opt.stops, opt.addresses, opt.poi)
@@ -329,7 +329,7 @@ const createClient = (profile, userAgent, request = _request) => {
 		else throw new Error('stop must be an object or a string.')
 
 		opt = Object.assign({
-			stationLines: false // parse & expose lines of the stop/station?
+			linesOfStops: false // parse & expose lines at the stop/station?
 		}, opt)
 		return request(profile, userAgent, opt, {
 			meth: 'LocDetails',
@@ -354,7 +354,7 @@ const createClient = (profile, userAgent, request = _request) => {
 			distance: null, // maximum walking distance in meters
 			poi: false, // return points of interest?
 			stops: true, // return stops/stations?
-			stationLines: false // parse & expose lines of the station?
+			linesOfStops: false // parse & expose lines at each stop/station?
 		}, opt)
 
 		return request(profile, userAgent, opt, {

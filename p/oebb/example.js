@@ -8,7 +8,7 @@ const client = createClient(oebbProfile, 'hafas-client-example')
 // Wien Westbahnhof to Salzburg Hbf
 client.journeys('1291501', '8100002', {results: 1})
 // client.departures('8100002', {duration: 1})
-// client.arrivals('8100002', {duration: 10, stationLines: true})
+// client.arrivals('8100002', {duration: 10, linesOfStops: true})
 // client.locations('Salzburg', {results: 2})
 // client.stop('8100173') // Graz Hbf
 // client.nearby({
