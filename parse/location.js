@@ -25,7 +25,7 @@ const parseLocation = (profile, opt, {lines}, l) => {
 		if ('pCls' in l) stop.products = profile.parseProducts(l.pCls)
 
 		if (
-			opt.stationLines &&
+			opt.linesOfStops &&
 			Array.isArray(l.pRefL) &&
 			Array.isArray(lines)
 		) {

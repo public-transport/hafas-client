@@ -17,7 +17,7 @@ client.journeys('15541', '10609', {results: 1})
 // })
 
 // client.departures('15541', {duration: 1})
-// client.arrivals('15541', {duration: 10, stationLines: true})
+// client.arrivals('15541', {duration: 10, linesOfStops: true})
 // client.locations('uhlandstr', {results: 2})
 // client.station('10609') // Uhlandstr., Saarbrücken
 // client.nearby({
