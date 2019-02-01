@@ -23,9 +23,7 @@ const createParseArrOrDep = (profile, opt, data, prefix) => {
 			// todo: for arrivals, this is the *origin*, not the *direction*
 			direction: prefix === DEPARTURE && profile.parseStationName(d.dirTxt) || null,
 			line: lines[parseInt(d.prodX)] || null,
-			remarks: [],
-			// todo: res.trip from rawLine.prodCtx.num?
-			trip: +d.jid.split('|')[1] // todo: this seems brittle
+			remarks: []
 		}
 
 		// todo: DRY with parseStopover
