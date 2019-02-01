@@ -6,7 +6,7 @@ const testJourneysStationToStation = async (cfg) => {
 	validate(t, res, 'journeysResult', 'res')
 	const {journeys} = res
 
-	t.strictEqual(journeys.length, 3)
+	t.strictEqual(journeys.length, 4)
 	for (let i = 0; i < journeys.length; i++) {
 		const j = journeys[i]
 

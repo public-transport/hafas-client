@@ -54,7 +54,7 @@ test('journeys – Spichernstr. to Bismarckstr.', async (t) => {
 		id: spichernstr,
 		name: 'U Spichernstr.'
 	}, bismarckstr, {
-		results: 3,
+		results: 4,
 		departure: when,
 		stopovers: true
 	})

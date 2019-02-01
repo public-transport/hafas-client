@@ -64,7 +64,7 @@ const poetschnerstr = {
 
 test('journeys – Mittersendling to Karl-Theodor-Straße', async (t) => {
 	const res = await client.journeys(mittersendling, karlTheodorStr, {
-		results: 3,
+		results: 4,
 		departure: when,
 		stopovers: true
 	})

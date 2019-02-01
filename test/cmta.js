@@ -43,7 +43,7 @@ const capitol591 = '591'
 
 test('journeys – Broadie Oaks to Domain', async (t) => {
 	const res = await client.journeys(broadieOaks, domain, {
-		results: 3,
+		results: 4,
 		departure: when,
 		stopovers: true
 	})
