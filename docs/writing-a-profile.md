@@ -1,6 +1,6 @@
 # Writing a profile
 
-**Per endpoint, `hafas-client` has an endpoint-specific customisation called *profile*** which may for example do the following:
+**Per HAFAS endpoint, `hafas-client` has an endpoint-specific customisation called *profile***, which may for example do the following:
 
 - handle the additional requirements of the endpoint (e.g. authentication),
 - extract additional information from the data provided by the endpoint,
@@ -18,7 +18,7 @@ A profile may consist of three things:
 	- `endpoint`: The protocol, host and path of the endpoint.
 	- `locale`: The [BCP 47](https://en.wikipedia.org/wiki/IETF_language_tag) [locale](https://en.wikipedia.org/wiki/Locale_(computer_software)) of your endpoint (or the area that your endpoint covers).
 	- `timezone`: An [IANA-time-zone](https://www.iana.org/time-zones)-compatible [timezone](https://en.wikipedia.org/wiki/Time_zone) of your endpoint.
-- **flags indicating that features are supported by the endpoint** – e.g. `journeyRef`
+- **flags indicating which features are supported by the endpoint** – e.g. `trip`
 - **methods overriding the [default profile](../lib/default-profile.js)**
 
 As an example, let's say we have an [Austrian](https://en.wikipedia.org/wiki/Austria) endpoint:
@@ -31,7 +31,7 @@ const myProfile = {
 }
 ```
 
-Assuming the endpoint returns all lines names prefixed with `foo `, We can strip them like this:
+Assuming their HAFAS endpoint returns all lines names prefixed with `foo `, We can strip them like this:
 
 ```js
 // get the default line parser
@@ -64,10 +64,12 @@ If you pass this profile into `hafas-client`, the `parseLine` method will overri
 	- *Note*: This method does not work if the app uses [public key pinning](https://en.wikipedia.org/wiki/HTTP_Public_Key_Pinning). In this case (the app won't be able to query data), please [create an issue](https://github.com/public-transport/hafas-client/issues/new), so we can discuss other techniques.
 3. **Record requests of the app.**
 	- [There's a video showing this step](https://stuff.jannisr.de/how-to-record-hafas-requests.mp4).
-	- Make sure to cover all relevant sections of the app, e.g. "journeys", "departures", "live map". Better record more than less; You will regret not having enough information later on.
+	- Make sure to cover all relevant sections of the app, e.g. "journeys", "departures", "live map". Better record more than less!
 	- To help others in the future, post the requests (in their entirety!) on GitHub, e.g. in as format like [this](https://gist.github.com/derhuerst/5fa86ed5aec63645e5ae37e23e555886). This will also let us help you if you have any questions.
 
 ## 2. Basic profile
+
+You may want to start with the [profile boilerplate](profile-boilerplate.js).
 
 - **Identify the `endpoint`.** The protocol, host and path of the endpoint, *but not* the query string.
 	- *Note*: **`hafas-client` for now only supports the interface providing JSON** (generated from XML), which is being used by the corresponding iOS/Android apps. It supports neither the JSONP, nor the XML, nor the HTML interface. If the endpoint does not end in `mgate.exe`, it mostly likely won't work.
@@ -78,11 +80,9 @@ If you pass this profile into `hafas-client`, the `parseLine` method will overri
 	- Add a function `transformReqBody(body)` to your profile, which assigns them to `body`.
 	- Some profiles have a `checksum` parameter (like [here](https://gist.github.com/derhuerst/2a735268bd82a0a6779633f15dceba33#file-journey-details-1-http-L1)) or two `mic` & `mac` parameters (like [here](https://gist.github.com/derhuerst/5fa86ed5aec63645e5ae37e23e555886#file-1-http-L1)). If you see one of them in your requests, jump to [*Appendix A: checksum, mic, mac*](#appendix-a-checksum-mic-mac). Unfortunately, this is necessary to get the profile working.
 
-You may want to use the [profile boilerplate code](profile-boilerplate.js).
-
 ## 3. Products
 
-In `hafas-client`, there's a difference between the `mode` and the `product` field:
+In `hafas-client`, there's a distinction between the `mode` and the `product` fields:
 
 - The `mode` field describes the mode of transport in general. [Standardised by the *Friendly Public Transport Format* `1.2.0`](https://github.com/public-transport/friendly-public-transport-format/blob/1.2.0/spec/readme.md#modes), it is on purpose limited to a very small number of possible values, e.g. `train` or `bus`.
 - The value for `product` relates to how a means of transport "works" *in local context*. Example: Even though [*S-Bahn*](https://en.wikipedia.org/wiki/Berlin_S-Bahn) and [*U-Bahn*](https://en.wikipedia.org/wiki/Berlin_U-Bahn) in Berlin are both `train`s, they have different operators, service patterns, stations and look different. Therefore, they are two distinct `product`s `subway` and `suburban`.
