@@ -1,21 +1,21 @@
 'use strict'
+// Refer to the the ./writing-a-profile.md guide.
 
-// see the ./writing-a-profile.md guide
 const products = [
 	{
-		id: 'nationalExp',
+		id: 'commuterTrain',
 		mode: 'train',
-		bitmasks: [1],
-		name: 'InterCityExpress',
-		short: 'ICE',
+		bitmasks: [16],
+		name: 'ACME Commuter Rail',
+		short: 'CR',
 		default: true
 	},
 	{
-		id: 'national',
+		id: 'metro',
 		mode: 'train',
-		bitmasks: [2],
-		name: 'InterCity & EuroCity',
-		short: 'IC/EC',
+		bitmasks: [8],
+		name: 'Foo Bar Metro',
+		short: 'M',
 		default: true
 	}
 ]
