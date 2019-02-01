@@ -80,8 +80,8 @@ const createParseJourneyLeg = (profile, opt, data) => {
 		}
 
 		if (pt.type === 'WALK' || pt.type === 'TRSF') {
-			res.mode = 'walking'
 			res.public = true
+			res.walking = true
 			res.distance = pt.gis && pt.gis.dist || null
 			if (pt.type === 'TRSF') res.transfer = true
 
