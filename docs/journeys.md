@@ -222,8 +222,8 @@ The `Promise` returned by `journeys()` will resolve with an object with the `jou
 			},
 			departure: '2018-07-11T00:01:00.000+02:00',
 			arrival: '2018-07-11T00:10:00.000+02:00',
-			mode: 'walking',
 			public: true,
+			walking: true,
 			distance: 558
 		} ]
 	} ],

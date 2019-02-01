@@ -124,8 +124,8 @@ The returned [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript
 				products: { /* … */ }
 			},
 			arrival: '2017-12-17T17:33:00.000+01:00',
-			mode: 'walking',
-			public: true
+			public: true,
+			walking: true
 		}, {
 			id: '1|70906|0|81|17122017',
 			origin: {

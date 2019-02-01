@@ -221,7 +221,11 @@ const createValidateJourneyLeg = (cfg) => {
 			}
 		}
 
-		if (leg.mode === 'walking') {
+		// todo: leg.public
+		if ('walking' in leg) {
+			a.strictEqual(typeof leg.walking, 'boolean', name + '.walking must be a boolean')
+		}
+		if (leg.walking) {
 			if (leg.distance !== null) {
 				const msg = name + '.distance must be '
 				a.strictEqual(typeof leg.distance, 'number', msg + 'a number')
