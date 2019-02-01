@@ -61,9 +61,7 @@ const validateLine = (validate, l, name) => {
 const _validateJourneyLeg = createValidateJourneyLeg(cfg)
 const validateJourneyLeg = (validate, l, name) => {
 	_validateJourneyLeg(validate, l, name)
-	if (l.mode !== 'walking') {
-		validateDirection(l.direction, name + '.direction')
-	}
+	if (!l.walking) validateDirection(l.direction, name + '.direction')
 }
 
 const _validateDeparture = createValidateDeparture(cfg)
