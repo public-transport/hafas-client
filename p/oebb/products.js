@@ -2,7 +2,7 @@
 
 module.exports = [
 	{
-		id: 'nationalExp',
+		id: 'nationalExpress',
 		mode: 'train',
 		bitmasks: [1],
 		name: 'InterCityExpress & RailJet',
