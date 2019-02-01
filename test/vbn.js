@@ -41,7 +41,7 @@ const bremerhavenHbf = '8000051'
 
 test.only('journeys – Bremen Hbf to Bremerhaven Hbf', async (t) => {
 	const res = await client.journeys(bremenHbf, bremerhavenHbf, {
-		results: 3,
+		results: 4,
 		departure: when,
 		stopovers: true
 	})

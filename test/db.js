@@ -89,7 +89,7 @@ const potsdamHbf = '8012666'
 
 test('journeys – Berlin Schwedter Str. to München Hbf', async (t) => {
 	const res = await client.journeys(blnSchwedterStr, münchenHbf, {
-		results: 3,
+		results: 4,
 		departure: when,
 		stopovers: true
 	})

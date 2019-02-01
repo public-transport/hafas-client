@@ -77,7 +77,7 @@ const kielRaeucherei = '9049217'
 
 test('journeys – Kiel Hbf to Flensburg', async (t) => {
 	const res = await client.journeys(kielHbf, flensburg, {
-		results: 3,
+		results: 4,
 		departure: when,
 		stopovers: true
 	})
