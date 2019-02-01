@@ -67,7 +67,7 @@ const hour = 60 * 60 * 1000
 
 test('journeys – Spichernstr. to Bismarckstr.', async (t) => {
 	const res = await client.journeys(spichernstr, bismarckstr, {
-		results: 3,
+		results: 4,
 		departure: when,
 		stopovers: true
 	})

@@ -64,7 +64,7 @@ const wienPilgramgasse = '1390562'
 
 test.skip('journeys – Salzburg Hbf to Wien Westbahnhof', async (t) => {
 	const res = await client.journeys(salzburgHbf, wienFickeystr, {
-		results: 3,
+		results: 4,
 		departure: when,
 		stopovers: true
 	})

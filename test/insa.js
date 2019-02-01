@@ -44,7 +44,7 @@ const universitaet = '19686'
 
 test('journeys – Magdeburg Hbf to Magdeburg-Buckau', async (t) => {
 	const res = await client.journeys(magdeburgHbf, magdeburgBuckau, {
-		results: 3,
+		results: 4,
 		departure: when,
 		stopovers: true
 	})
