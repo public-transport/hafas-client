@@ -331,7 +331,6 @@ const createValidateArrivalOrDeparture = (type, cfg) => {
 
 		a.strictEqual(typeof dep.tripId, 'string', name + '.tripId must be a string')
 		a.ok(dep.tripId, name + '.tripId must not be empty')
-		a.strictEqual(typeof dep.trip, 'number', name + '.trip must be a number')
 
 		anyOf(['stop', 'station'], val, dep.stop, name + '.stop')
 
