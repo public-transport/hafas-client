@@ -1,5 +1,7 @@
 'use strict'
 
+const {parse} = require('qs')
+
 const POI = 'P'
 const STATION = 'S'
 const ADDRESS = 'A'
@@ -14,10 +16,13 @@ const parseLocation = (profile, opt, {lines}, l) => {
 		res.longitude = l.crd.x / 1000000
 	}
 
+	const lid = parse(l.lid, {delimiter: '@'})
+	const id = (l.extId || lid.L || '').replace(leadingZeros, '') || null
+
 	if (l.type === STATION) {
 		const stop = {
 			type: l.isMainMast ? 'station' : 'stop',
-			id: (l.extId || '').replace(leadingZeros, ''),
+			id,
 			name: l.name ? profile.parseStationName(l.name) : null,
 			location: 'number' === typeof res.latitude ? res : null
 		}
@@ -41,7 +46,7 @@ const parseLocation = (profile, opt, {lines}, l) => {
 
 	if (l.type === ADDRESS) res.address = l.name
 	else res.name = l.name
-	if (l.type === POI) res.id = l.extId && l.extId.replace(leadingZeros, '') || null
+	if (l.type === POI) res.id = id
 
 	return res
 }

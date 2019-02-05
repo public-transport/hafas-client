@@ -44,7 +44,7 @@
 		"p-retry": "^2.0.0",
 		"p-throttle": "^2.1.0",
 		"pinkie-promise": "^2.0.1",
-		"query-string": "^6.0.0",
+		"qs": "^6.6.0",
 		"slugg": "^1.2.0",
 		"vbb-parse-line": "^0.3.1",
 		"vbb-parse-ticket": "^0.2.1",
