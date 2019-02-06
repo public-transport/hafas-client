@@ -50,7 +50,11 @@ const wedding = '900000009104'
 const württembergallee = '900000026153'
 
 test('journeys – Spichernstr. to Bismarckstr.', co(function* (t) {
-	const journeys = yield client.journeys(spichernstr, bismarckstr, {
+	const journeys = yield client.journeys({
+		type: 'stop',
+		id: spichernstr,
+		name: 'U Spichernstr.'
+	}, bismarckstr, {
 		results: 3,
 		departure: when,
 		stopovers: true
