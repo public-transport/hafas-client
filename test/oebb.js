@@ -323,7 +323,8 @@ test('nearby Salzburg Hbf', async (t) => {
 })
 
 test('locations named Salzburg', async (t) => {
-	const locations = await client.locations('Salzburg', {
+	const salzburgVolksgarten = '591161'
+	const locations = await client.locations('Salzburg volksgarten', {
 		results: 20
 	})
 
@@ -333,7 +334,7 @@ test('locations named Salzburg', async (t) => {
 	t.ok(locations.find(s => s.type === 'stop' || s.type === 'station'))
 	t.ok(locations.find(s => s.poi)) // POIs
 	t.ok(locations.some((s) => {
-		return s.station && s.station.id === salzburgHbf || s.id === salzburgHbf
+		return s.station && s.station.id === salzburgVolksgarten || s.id === salzburgVolksgarten
 	}))
 
 	t.end()
