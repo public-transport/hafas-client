@@ -186,6 +186,7 @@ test('journeys – station to POI', async (t) => {
 	const atze = {
 		type: 'location',
 		id: '900980720',
+		poi: true,
 		name: 'Berlin, Atze Musiktheater für Kinder',
 		latitude: 52.543333,
 		longitude: 13.351686
@@ -337,7 +338,7 @@ test('locations', async (t) => {
 	t.ok(locations.length <= 20)
 
 	t.ok(locations.find(s => s.type === 'stop' || s.type === 'station'))
-	t.ok(locations.find(s => s.id && s.name)) // POIs
+	t.ok(locations.find(s => s.poi)) // POIs
 	t.ok(locations.find(s => !s.name && s.address)) // addresses
 
 	t.end()

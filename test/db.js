@@ -149,6 +149,7 @@ test('Berlin Schwedter Str. to ATZE Musiktheater', async (t) => {
 	const atze = {
 		type: 'location',
 		id: '991598902',
+		poi: true,
 		name: 'ATZE Musiktheater',
 		latitude: 52.542417,
 		longitude: 13.350437

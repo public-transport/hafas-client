@@ -22,6 +22,7 @@
 {
 	type: 'location',
 	id: '123',
+	poi: true,
 	name: 'foo restaurant',
 	latitude: 1.23,
 	longitude: 3.21

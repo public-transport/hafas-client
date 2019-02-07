@@ -128,10 +128,11 @@ test('Salzburg Hbf to 1220 Wien, Wagramer Straße 5', async (t) => {
 test('Salzburg Hbf to Albertina', async (t) => {
 	const albertina = {
 		type: 'location',
-    	id: '975900003',
-    	name: 'Albertina',
-    	latitude: 48.204699,
-    	longitude: 16.368404
+		id: '975900003',
+		poi: true,
+		name: 'Albertina',
+		latitude: 48.204699,
+		longitude: 16.368404
 	}
 	const res = await client.journeys(salzburgHbf, albertina, {
 		results: 3, departure: when
@@ -334,7 +335,7 @@ test('locations named Salzburg', async (t) => {
 	t.ok(locations.length <= 20)
 
 	t.ok(locations.find(s => s.type === 'stop' || s.type === 'station'))
-	t.ok(locations.find(s => s.id && s.name)) // POIs
+	t.ok(locations.find(s => s.poi)) // POIs
 	t.ok(locations.some((s) => {
 		return s.station && s.station.id === salzburgHbf || s.id === salzburgHbf
 	}))
