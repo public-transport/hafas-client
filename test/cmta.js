@@ -113,6 +113,7 @@ test('Domain to Whole Foods Market - North Lamar Blvd', async (t) => {
 	const wholeFoodsMarket = {
 		type: 'location',
 		id: '9845477',
+		poi: true,
 		name: 'Whole Foods Market - N Lamar Blvd',
 		latitude: 30.270653,
 		longitude: -97.753564
@@ -231,7 +232,7 @@ test('locations named "Capitol"', async (t) => {
 	t.ok(locations.length <= 10)
 
 	t.ok(locations.find(s => s.type === 'stop' || s.type === 'station'))
-	t.ok(locations.find(s => s.id && s.name)) // POIs
+	t.ok(locations.find(s => s.poi)) // POIs
 	t.ok(locations.some((l) => {
 		return l.station && l.station.id === capitol591 || l.id === capitol591
 	}))
