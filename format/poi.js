@@ -9,9 +9,10 @@ const formatPoi = (p) => {
 	}
 
 	return {
+		type: 'P', // POI
 		name: p.name,
 		lid: formatLocationIdentifier({
-			A: '4', // POI
+			A: '4', // POI?
 			O: p.name,
 			L: p.id,
 			X: formatCoord(p.longitude),

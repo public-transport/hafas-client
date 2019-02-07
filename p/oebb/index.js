@@ -38,6 +38,7 @@ const parseLocation = (profile, opt, data, l) => {
 		return Object.assign({
 			type: 'location',
 			id: res.id,
+			poi: true,
 			name: res.name
 		}, res.location)
 	}
