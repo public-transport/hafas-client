@@ -246,7 +246,7 @@ test('departures with stop object', async (t) => {
 	t.end()
 })
 
-test('departures at Karlsplatz in direction of Pilgramgasse', async (t) => {
+test('departures at Uhlandstr., Saarbrücken in direction of Landwehrplatz', async (t) => {
 	const saarbrueckenLandwehrplatz = '10606'
 	await testDeparturesInDirection({
 		test: t,
@@ -286,7 +286,8 @@ test('nearby Saarbrücken Hbf', async (t) => {
 })
 
 test('locations named Saarbrücken', async (t) => {
-	const locations = await client.locations('Saarbrücken', {
+	const aufDerWerthBürgerpark = '10204'
+	const locations = await client.locations('bürgerpark', {
 		results: 20
 	})
 
@@ -296,7 +297,7 @@ test('locations named Saarbrücken', async (t) => {
 	t.ok(locations.find(s => s.type === 'stop' || s.type === 'station'))
 	t.ok(locations.find(s => s.poi)) // POIs
 	t.ok(locations.some((s) => {
-		return s.station && s.station.id === saarbrueckenHbf || s.id === saarbrueckenHbf
+		return s.station && s.station.id === aufDerWerthBürgerpark || s.id === aufDerWerthBürgerpark
 	}))
 
 	t.end()
