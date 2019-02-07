@@ -9,13 +9,14 @@ const formatAddress = (a) => {
 	}
 
 	const data = {
-		A: '2', // address
+		A: '2', // address?
 		O: a.address,
 		X: formatCoord(a.longitude),
 		Y: formatCoord(a.latitude)
 	}
 	if (a.id) data.L = a.id
 	return {
+		type: 'A', // address
 		name: a.address,
 		lid: formatLocationIdentifier(data)
 	}

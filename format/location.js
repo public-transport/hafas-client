@@ -6,7 +6,7 @@ const formatLocation = (profile, l, name = 'location') => {
 		if (l.type === 'station' || l.type === 'stop') {
 			return profile.formatStation(l.id)
 		}
-		if ('string' === typeof l.id) return profile.formatPoi(l)
+		if (l.poi) return profile.formatPoi(l)
 		if ('string' === typeof l.address) return profile.formatAddress(l)
 		if (!l.type) throw new Error(`missing ${name}.type`)
 		throw new Error(`invalid ${name}.type: ${l.type}`)
