@@ -113,6 +113,7 @@ test('Karl-Theodor-Straße to Hofbräuhaus', async (t) => {
 	const hofbraeuhaus = {
 		type: 'location',
 		id: '970006201',
+		poi: true,
 		name: 'München, Hofbräuhaus',
 		latitude: 48.137739,
 		longitude: 11.579823
@@ -233,7 +234,7 @@ test('locations named "Nationaltheater"', async (t) => {
 	t.ok(locations.length <= 10)
 
 	t.ok(locations.find(s => s.type === 'stop' || s.type === 'station'))
-	t.ok(locations.find(s => s.id && s.name)) // POIs
+	t.ok(locations.find(s => s.poi)) // POIs
 	t.ok(locations.some((l) => {
 		return l.station && l.station.id === nationaltheater || l.id === nationaltheater
 	}))

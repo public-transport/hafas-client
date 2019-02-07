@@ -139,6 +139,7 @@ test('Kiel Hbf to Holstentor', async (t) => {
 	const holstentor = {
 		type: 'location',
 		id: '970003118',
+		poi: true,
 		name: 'Hansestadt Lübeck, Holstentor (Denkmal)',
 		latitude: 53.866321,
 		longitude: 10.679976
@@ -313,7 +314,7 @@ test('locations named "Kiel Rathaus"', async (t) => {
 	t.ok(locations.length <= 15)
 
 	t.ok(locations.find(l => l.type === 'stop' || l.type === 'station'))
-	t.ok(locations.find(l => l.id && l.name)) // POIs
+	t.ok(locations.find(l => l.poi)) // POIs
 	t.ok(locations.some(l => l.station && l.station.id === kielRathaus || l.id === kielRathaus))
 
 	t.end()

@@ -47,6 +47,8 @@ const validatePoi = (val, poi, name = 'location') => {
 	defaultValidators.location(val, poi, name)
 	val.ref(val, poi.id, name + '.id')
 	// todo: check if s.id has leading zeros
+	a.strictEqual(poi.poi, true, name + '.poi must be true')
+	a.strictEqual(typeof poi.name, 'string', name + '.name must be a string')
 	a.ok(poi.name, name + '.name must not be empty')
 }
 
@@ -60,7 +62,7 @@ const validateLocation = (val, loc, name = 'location') => {
 	a.ok(isObj(loc), name + ' must be an object')
 	if (loc.type === 'stop') val.stop(val, loc, name)
 	else if (loc.type === 'station') val.station(val, loc, name)
-	else if ('id' in loc) validatePoi(val, loc, name)
+	else if (loc.poi) validatePoi(val, loc, name)
 	else if (!('name' in loc) && ('address' in loc)) {
 		validateAddress(val, loc, name)
 	} else defaultValidators.location(val, loc, name)

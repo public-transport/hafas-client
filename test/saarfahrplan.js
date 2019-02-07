@@ -102,10 +102,11 @@ test('Saarbrücken Hbf to Neunkirchen, Thomas-Mann-Straße 1', async (t) => {
 test('Saarbrücken Hbf to Schlossberghöhlen', async (t) => {
 	const schlossberghoehlen = {
 		type: 'location',
-		latitude: 49.32071,
-		longitude: 7.343764,
+		id: '9000185',
+		poi: true,
 		name: 'Homburg, Schlossberghöhlen',
-		id: '9000185'
+		latitude: 49.32071,
+		longitude: 7.343764
 	}
 	const res = await client.journeys(saarbrueckenHbf, schlossberghoehlen, {
 		results: 3, departure: when
@@ -293,7 +294,7 @@ test('locations named Saarbrücken', async (t) => {
 	t.ok(locations.length <= 20)
 
 	t.ok(locations.find(s => s.type === 'stop' || s.type === 'station'))
-	t.ok(locations.find(s => s.id && s.name)) // POIs
+	t.ok(locations.find(s => s.poi)) // POIs
 	t.ok(locations.some((s) => {
 		return s.station && s.station.id === saarbrueckenHbf || s.id === saarbrueckenHbf
 	}))

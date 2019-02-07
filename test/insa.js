@@ -104,6 +104,7 @@ test('Magdeburg Hbf to Kloster Unser Lieben Frauen', async (t) => {
 	const kloster = {
 		type: 'location',
 		id: '970012223',
+		poi: true,
 		name: 'Magdeburg, Kloster Unser Lieben Frauen (Denkmal)',
 		latitude: 52.127601,
 		longitude: 11.636437
@@ -242,7 +243,7 @@ test('locations named Magdeburg', async (t) => {
 	t.ok(locations.length <= 20)
 
 	t.ok(locations.find(s => s.type === 'stop' || s.type === 'station'))
-	t.ok(locations.find(s => s.id && s.name)) // POIs
+	t.ok(locations.find(s => s.poi)) // POIs
 	t.ok(locations.some((l) => {
 		return l.station && l.station.id === nordpark || l.id === nordpark
 	}))
