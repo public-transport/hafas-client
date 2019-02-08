@@ -11,6 +11,58 @@
 - [`radar(north, west, south, east, [opt])`](radar.md) – find all vehicles currently in a certain area
 - [`reachableFrom(address, [opt])`](reachable-from.md) – get all stations reachable from an address within `n` minutes
 
+## Throttling requests
+
+There's opt-in support for throttling requests to the endpoint.
+
+```js
+const createThrottledClient = require('hafas-client/throttle')
+const dbProfile = require('hafas-client/p/db')
+
+// create a throttled HAFAS client with Deutsche Bahn profile
+const client = createThrottledClient(dbProfile, 'my-awesome-program')
+
+// Berlin Jungfernheide to München Hbf
+client.journeys('8011167', '8000261', {results: 1})
+.then(console.log)
+.catch(console.error)
+```
+
+You can pass custom values for the nr of requests (`limit`) per interval into `createThrottledClient`:
+
+```js
+// 2 requests per second
+const client = createThrottledClient(dbProfile, 'my-awesome-program', 2, 1000)
+```
+
+## Retrying failed requests
+
+There's opt-in support for retrying failed requests to the endpoint.
+
+```js
+const createClientWithRetry = require('hafas-client/retry')
+const dbProfile = require('hafas-client/p/db')
+
+// create a client with Deutsche Bahn profile that will retry on HAFAS errors
+const client = createClientWithRetry(dbProfile, 'my-awesome-program')
+
+// Berlin Jungfernheide to München Hbf
+client.journeys('8011167', '8000261', {results: 1})
+.then(console.log)
+.catch(console.error)
+```
+
+You can pass custom options into `createClientWithRetry`. They will be passed into [`retry`](https://github.com/tim-kos/node-retry#tutorial).
+
+```js
+// retry 2 times, after 10 seconds & 30 seconds
+const client = createClientWithRetry(dbProfile, 'my-awesome-program', {
+	retries: 2,
+	minTimeout: 10 * 1000,
+	factor: 3
+})
+```
+
 ## Writing a profile
 
 Check [the guide](writing-a-profile.md).
