@@ -2,14 +2,14 @@
 
 const test = require('tape')
 
-const createClientWithRetry = require('../retry')
+const withRetrying = require('../retry')
+const createClient = require('..')
 const vbbProfile = require('../p/vbb')
-const _request = require('../lib/request')
 
 const userAgent = 'public-transport/hafas-client:test'
 const spichernstr = '900000042101'
 
-test('retry works', (t) => {
+test('withRetrying works', (t) => {
 	// for the first 3 calls, return different kinds of errors
 	let calls = 0
 	const failingRequest = (profile, userAgent, opt, data) => {
@@ -28,12 +28,13 @@ test('retry works', (t) => {
 		return Promise.resolve([])
 	}
 
-	const client = createClientWithRetry(vbbProfile, userAgent, {
+	const createRetryingClient = withRetrying(createClient, {
 		retries: 3,
 		minTimeout: 100,
 		factor: 2,
 		randomize: false
-	}, failingRequest)
+	})
+	const client = createRetryingClient(vbbProfile, userAgent, failingRequest)
 
 	t.plan(1 + 4)
 	client.departures(spichernstr, {duration: 1})
