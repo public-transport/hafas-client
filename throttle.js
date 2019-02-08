@@ -2,12 +2,14 @@
 
 const throttle = require('p-throttle')
 
-const request = require('./lib/request')
-const createClient = require('.')
+const _request = require('./lib/request')
 
-const createThrottledClient = (profile, userAgent, limit = 5, interval = 1000) => {
-	const throttledRequest = throttle(request, limit, interval)
-	return createClient(profile, userAgent, throttledRequest)
+const withThrottling = (createClient, limit = 5, interval = 1000) => {
+	const createThrottledClient = (profile, userAgent, request = _request) => {
+		const throttledRequest = throttle(request, limit, interval)
+		return createClient(profile, userAgent, throttledRequest)
+	}
+	return createThrottledClient
 }
 
-module.exports = createThrottledClient
+module.exports = withThrottling
