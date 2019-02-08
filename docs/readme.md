@@ -43,11 +43,13 @@ const client = createThrottledClient(dbProfile, 'my-awesome-program')
 There's opt-in support for retrying failed requests to the endpoint.
 
 ```js
-const createClientWithRetry = require('hafas-client/retry')
+const withRetrying = require('hafas-client/retry')
+const createClient = require('hafas-client')
 const dbProfile = require('hafas-client/p/db')
 
 // create a client with Deutsche Bahn profile that will retry on HAFAS errors
-const client = createClientWithRetry(dbProfile, 'my-awesome-program')
+const createRetryingClient = withRetrying(createClient)
+const client = createRetryingClient(dbProfile, 'my-awesome-program')
 
 // Berlin Jungfernheide to München Hbf
 client.journeys('8011167', '8000261', {results: 1})
@@ -55,15 +57,16 @@ client.journeys('8011167', '8000261', {results: 1})
 .catch(console.error)
 ```
 
-You can pass custom options into `createClientWithRetry`. They will be passed into [`retry`](https://github.com/tim-kos/node-retry#tutorial).
+You can pass custom options into `withRetrying`. They will be passed into [`retry`](https://github.com/tim-kos/node-retry#tutorial).
 
 ```js
 // retry 2 times, after 10 seconds & 30 seconds
-const client = createClientWithRetry(dbProfile, 'my-awesome-program', {
+const createRetryingClient = withRetrying(createClient, {
 	retries: 2,
 	minTimeout: 10 * 1000,
 	factor: 3
 })
+const client = createRetryingClient(dbProfile, 'my-awesome-program')
 ```
 
 ## Writing a profile
