@@ -2,7 +2,7 @@
 
 const retry = require('p-retry')
 
-const request = require('./lib/request')
+const _request = require('./lib/request')
 const createClient = require('.')
 
 const defaultRetryOpts = {
@@ -11,7 +11,7 @@ const defaultRetryOpts = {
 	minTimeout: 5 * 1000
 }
 
-const createClientWithRetry = (profile, userAgent, retryOpts = defaultRetryOpts) => {
+const createClientWithRetry = (profile, userAgent, retryOpts = defaultRetryOpts, request = _request) => {
 	const requestWithRetry = (profile, userAgent, opt, data) => {
 		const attempt = () => {
 			return request(profile, userAgent, opt, data)
