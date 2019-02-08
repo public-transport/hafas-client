@@ -1,5 +1,13 @@
 # Changelog
 
+## `3.9.0`
+
+- b0f786c support for retrying failed requests ✨ – [docs](readme.md#retrying-failed-requests)
+
+## `3.8.1`
+
+- 3f58d84 handle `stop` objects as input 🐛
+
 ## `3.8.0`
 
 - 5d0096c `departures()`: profile flag for `getPasslist` & `stbFilterEquiv`
