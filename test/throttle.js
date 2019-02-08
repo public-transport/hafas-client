@@ -2,13 +2,14 @@
 
 const test = require('tape')
 
-const createThrottledClient = require('../throttle')
+const withThrottling = require('../throttle')
+const createClient = require('..')
 const vbbProfile = require('../p/vbb')
 
 const userAgent = 'public-transport/hafas-client:test'
 const spichernstr = '900000042101'
 
-test('throttle works', (t) => {
+test('withThrottling works', (t) => {
 	let calls = 0
 	const transformReqBody = (body) => {
 		calls++
@@ -16,7 +17,8 @@ test('throttle works', (t) => {
 	}
 	const mockProfile = Object.assign({}, vbbProfile, {transformReqBody})
 
-	const client = createThrottledClient(mockProfile, userAgent, 2, 1000)
+	const createThrottlingClient = withThrottling(createClient, 2, 1000)
+	const client = createThrottlingClient(mockProfile, userAgent)
 	for (let i = 0; i < 10; i++) client.departures(spichernstr, {duration: 1})
 
 	t.plan(3)
