@@ -1,5 +1,9 @@
 # Changelog
 
+## `3.9.1`
+
+- a145fea extend default retrying options 🐛
+
 ## `3.9.0`
 
 - b0f786c support for retrying failed requests ✨ – [docs](readme.md#retrying-failed-requests)
