@@ -16,10 +16,12 @@
 There's opt-in support for throttling requests to the endpoint.
 
 ```js
-const createThrottledClient = require('hafas-client/throttle')
+const withThrottling = require('hafas-client/throttle')
+const createClient = require('hafas-client')
 const dbProfile = require('hafas-client/p/db')
 
 // create a throttled HAFAS client with Deutsche Bahn profile
+const createThrottledClient = withThrottling(createClient)
 const client = createThrottledClient(dbProfile, 'my-awesome-program')
 
 // Berlin Jungfernheide to München Hbf
@@ -28,11 +30,12 @@ client.journeys('8011167', '8000261', {results: 1})
 .catch(console.error)
 ```
 
-You can pass custom values for the nr of requests (`limit`) per interval into `createThrottledClient`:
+You can pass custom values for the nr of requests (`limit`) per interval into `withThrottling`:
 
 ```js
 // 2 requests per second
-const client = createThrottledClient(dbProfile, 'my-awesome-program', 2, 1000)
+const createThrottledClient = withThrottling(createClient, 2, 1000)
+const client = createThrottledClient(dbProfile, 'my-awesome-program')
 ```
 
 ## Retrying failed requests
