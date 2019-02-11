@@ -42,7 +42,13 @@ const createParseLine = (profile, opt, data) => {
 	const parseLine = _createParseLine(profile, opt, data)
 	const parseLineWithAdditionalName = (l) => {
 		const res = parseLine(l)
-		if (l.addName) res.additionalName = l.addName
+		if (l.nameS && ['bus', 'tram', 'ferry'].includes(res.product)) {
+			res.name = l.nameS
+		}
+		if (l.addName) {
+			res.additionalName = res.name
+			res.name = l.addName
+		}
 		return res
 	}
 	return parseLineWithAdditionalName
