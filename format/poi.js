@@ -5,7 +5,7 @@ const formatCoord = require('./coord')
 
 const formatPoi = (p) => {
 	if (p.type !== 'location' || !p.latitude || !p.longitude || !p.id || !p.name) {
-		throw new Error('invalid POI')
+		throw new TypeError('invalid POI')
 	}
 
 	return {
