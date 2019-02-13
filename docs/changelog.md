@@ -1,5 +1,9 @@
 # Changelog
 
+## `3.10.0`
+
+- d797333/1e16a10 [DB](../p/db): parse additional line names
+
 ## `3.9.1`
 
 - a145fea extend default retrying options 🐛
