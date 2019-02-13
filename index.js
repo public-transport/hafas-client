@@ -16,13 +16,13 @@ const isNonEmptyString = str => 'string' === typeof str && str.length > 0
 
 const validateLocation = (loc, name = 'location') => {
 	if (!isObj(loc)) {
-		throw new Error(name + ' must be an object.')
+		throw new TypeError(name + ' must be an object.')
 	} else if (loc.type !== 'location') {
-		throw new Error('invalid location object.')
+		throw new TypeError('invalid location object.')
 	} else if ('number' !== typeof loc.latitude) {
-		throw new Error(name + '.latitude must be a number.')
+		throw new TypeError(name + '.latitude must be a number.')
 	} else if ('number' !== typeof loc.longitude) {
-		throw new Error(name + '.longitude must be a number.')
+		throw new TypeError(name + '.longitude must be a number.')
 	}
 }
 
@@ -37,16 +37,16 @@ const createClient = (profile, userAgent, request = _request) => {
 	validateProfile(profile)
 
 	if ('string' !== typeof userAgent) {
-		throw new Error('userAgent must be a string');
+		throw new TypeError('userAgent must be a string');
 	}
 
 	const _stationBoard = (station, type, parser, opt = {}) => {
 		if (isObj(station)) station = profile.formatStation(station.id)
 		else if ('string' === typeof station) station = profile.formatStation(station)
-		else throw new Error('station must be an object or a string.')
+		else throw new TypeError('station must be an object or a string.')
 
 		if ('string' !== typeof type || !type) {
-			throw new Error('type must be a non-empty string.')
+			throw new TypeError('type must be a non-empty string.')
 		}
 
 		if (!profile.departuresGetPasslist && ('stopovers' in opt)) {
@@ -111,27 +111,27 @@ const createClient = (profile, userAgent, request = _request) => {
 		to = profile.formatLocation(profile, to, 'to')
 
 		if (('earlierThan' in opt) && ('laterThan' in opt)) {
-			throw new Error('opt.earlierThan and opt.laterThan are mutually exclusive.')
+			throw new TypeError('opt.earlierThan and opt.laterThan are mutually exclusive.')
 		}
 		if (('departure' in opt) && ('arrival' in opt)) {
-			throw new Error('opt.departure and opt.arrival are mutually exclusive.')
+			throw new TypeError('opt.departure and opt.arrival are mutually exclusive.')
 		}
 		let journeysRef = null
 		if ('earlierThan' in opt) {
 			if (!isNonEmptyString(opt.earlierThan)) {
-				throw new Error('opt.earlierThan must be a non-empty string.')
+				throw new TypeError('opt.earlierThan must be a non-empty string.')
 			}
 			if (('departure' in opt) || ('arrival' in opt)) {
-				throw new Error('opt.earlierThan and opt.departure/opt.arrival are mutually exclusive.')
+				throw new TypeError('opt.earlierThan and opt.departure/opt.arrival are mutually exclusive.')
 			}
 			journeysRef = opt.earlierThan
 		}
 		if ('laterThan' in opt) {
 			if (!isNonEmptyString(opt.laterThan)) {
-				throw new Error('opt.laterThan must be a non-empty string.')
+				throw new TypeError('opt.laterThan must be a non-empty string.')
 			}
 			if (('departure' in opt) || ('arrival' in opt)) {
-				throw new Error('opt.laterThan and opt.departure/opt.arrival are mutually exclusive.')
+				throw new TypeError('opt.laterThan and opt.departure/opt.arrival are mutually exclusive.')
 			}
 			journeysRef = opt.laterThan
 		}
@@ -160,10 +160,10 @@ const createClient = (profile, userAgent, request = _request) => {
 		let when = new Date(), outFrwd = true
 		if (opt.departure !== undefined && opt.departure !== null) {
 			when = new Date(opt.departure)
-			if (Number.isNaN(+when)) throw new Error('opt.departure is invalid')
+			if (Number.isNaN(+when)) throw new TypeError('opt.departure is invalid')
 		} else if (opt.arrival !== undefined && opt.arrival !== null) {
 			when = new Date(opt.arrival)
-			if (Number.isNaN(+when)) throw new Error('opt.arrival is invalid')
+			if (Number.isNaN(+when)) throw new TypeError('opt.arrival is invalid')
 			outFrwd = false
 		}
 
@@ -254,7 +254,7 @@ const createClient = (profile, userAgent, request = _request) => {
 
 	const refreshJourney = (refreshToken, opt = {}) => {
 		if ('string' !== typeof refreshToken || !refreshToken) {
-			new Error('refreshToken must be a non-empty string.')
+			new TypeError('refreshToken must be a non-empty string.')
 		}
 
 		opt = Object.assign({
@@ -292,7 +292,7 @@ const createClient = (profile, userAgent, request = _request) => {
 
 	const locations = (query, opt = {}) => {
 		if (!isNonEmptyString(query)) {
-			throw new Error('query must be a non-empty string.')
+			throw new TypeError('query must be a non-empty string.')
 		}
 		opt = Object.assign({
 			fuzzy: true, // find only exact matches?
@@ -326,7 +326,7 @@ const createClient = (profile, userAgent, request = _request) => {
 	const stop = (stop, opt = {}) => {
 		if ('object' === typeof stop) stop = profile.formatStation(stop.id)
 		else if ('string' === typeof stop) stop = profile.formatStation(stop)
-		else throw new Error('stop must be an object or a string.')
+		else throw new TypeError('stop must be an object or a string.')
 
 		opt = Object.assign({
 			linesOfStops: false // parse & expose lines at the stop/station?
@@ -383,10 +383,10 @@ const createClient = (profile, userAgent, request = _request) => {
 
 	const trip = (id, lineName, opt = {}) => {
 		if (!isNonEmptyString(id)) {
-			throw new Error('id must be a non-empty string.')
+			throw new TypeError('id must be a non-empty string.')
 		}
 		if (!isNonEmptyString(lineName)) {
-			throw new Error('lineName must be a non-empty string.')
+			throw new TypeError('lineName must be a non-empty string.')
 		}
 		opt = Object.assign({
 			stopovers: true, // return stations on the way?
@@ -430,10 +430,10 @@ const createClient = (profile, userAgent, request = _request) => {
 	}
 
 	const radar = ({north, west, south, east}, opt) => {
-		if ('number' !== typeof north) throw new Error('north must be a number.')
-		if ('number' !== typeof west) throw new Error('west must be a number.')
-		if ('number' !== typeof south) throw new Error('south must be a number.')
-		if ('number' !== typeof east) throw new Error('east must be a number.')
+		if ('number' !== typeof north) throw new TypeError('north must be a number.')
+		if ('number' !== typeof west) throw new TypeError('west must be a number.')
+		if ('number' !== typeof south) throw new TypeError('south must be a number.')
+		if ('number' !== typeof east) throw new TypeError('east must be a number.')
 		if (north <= south) throw new Error('north must be larger than south.')
 		if (east <= west) throw new Error('east must be larger than west.')
 
@@ -446,7 +446,7 @@ const createClient = (profile, userAgent, request = _request) => {
 			polylines: true // return a track shape for each vehicle?
 		}, opt || {})
 		opt.when = new Date(opt.when || Date.now())
-		if (Number.isNaN(+opt.when)) throw new Error('opt.when is invalid')
+		if (Number.isNaN(+opt.when)) throw new TypeError('opt.when is invalid')
 
 		const durationPerStep = opt.duration / Math.max(opt.frames, 1) * 1000
 		return request(profile, userAgent, opt, {
@@ -490,7 +490,7 @@ const createClient = (profile, userAgent, request = _request) => {
 			maxDuration: 20, // maximum travel duration in minutes, pass `null` for infinite
 			products: {}
 		}, opt)
-		if (Number.isNaN(+opt.when)) throw new Error('opt.when is invalid')
+		if (Number.isNaN(+opt.when)) throw new TypeError('opt.when is invalid')
 
 		const refetch = () => {
 			return request(profile, userAgent, opt, {

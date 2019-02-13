@@ -8,10 +8,10 @@ const formatLocation = (profile, l, name = 'location') => {
 		}
 		if (l.poi) return profile.formatPoi(l)
 		if ('string' === typeof l.address) return profile.formatAddress(l)
-		if (!l.type) throw new Error(`missing ${name}.type`)
-		throw new Error(`invalid ${name}.type: ${l.type}`)
+		if (!l.type) throw new TypeError(`missing ${name}.type`)
+		throw new TypeError(`invalid ${name}.type: ${l.type}`)
 	}
-	throw new Error(name + ': valid station, address or poi required.')
+	throw new TypeError(name + ': valid station, address or poi required.')
 }
 
 module.exports = formatLocation
