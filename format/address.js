@@ -5,7 +5,7 @@ const formatCoord = require('./coord')
 
 const formatAddress = (a) => {
 	if (a.type !== 'location' || !a.latitude || !a.longitude || !a.address) {
-		throw new Error('invalid address')
+		throw new TypeError('invalid address')
 	}
 
 	const data = {
