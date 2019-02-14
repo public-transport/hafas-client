@@ -162,12 +162,12 @@ const createParseJourneyLeg = (profile, opt, data) => {
 			if (pt.arr.aCncl) {
 				res.arrival = res.arrivalPlatform = res.arrivalDelay = null
 				const arr = profile.parseDateTime(profile, j.date, pt.arr.aTimeS, pt.arr.aTZOffset)
-				res.formerScheduledArrival = arr
+				res.scheduledArrival = arr
 			}
 			if (pt.dep.dCncl) {
 				res.departure = res.departurePlatform = res.departureDelay = null
 				const dep = profile.parseDateTime(profile, j.date, pt.dep.dTimeS, pt.dep.dTZOffset)
-				res.formerScheduledDeparture = dep
+				res.scheduledDeparture = dep
 			}
 		}
 
