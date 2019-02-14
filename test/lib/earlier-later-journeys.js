@@ -65,7 +65,7 @@ const testEarlierLaterJourneys = async (cfg) => {
 	})
 	for (let j of earlier.journeys) {
 		const firstLeg = j.legs[0]
-		const dep = new Date(firstLeg.departure || firstLeg.formerScheduledDeparture)
+		const dep = new Date(firstLeg.departure || firstLeg.scheduledDeparture)
 		t.ok(dep < earliestDep)
 	}
 
@@ -76,7 +76,7 @@ const testEarlierLaterJourneys = async (cfg) => {
 	})
 	for (let j of later.journeys) {
 		const firstLeg = j.legs[0]
-		const dep = new Date(firstLeg.departure || firstLeg.formerScheduledDeparture)
+		const dep = new Date(firstLeg.departure || firstLeg.scheduledDeparture)
 		t.ok(dep > latestDep)
 	}
 }
