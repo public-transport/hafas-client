@@ -41,7 +41,7 @@ const createParseArrOrDep = (profile, opt, data, prefix) => {
 		const pR = d.stbStop[prefix + 'PlatfR']
 		const pP = d.stbStop[prefix + 'PlatfS']
 		res.platform = pR || pP || null
-		if (pR && pP && pR !== pP) res.formerScheduledPlatform = pP
+		if (pR && pP && pR !== pP) res.scheduledPlatform = pP
 
 		// todo: DRY with parseStopover
 		// todo: DRY with parseJourneyLeg
@@ -49,7 +49,7 @@ const createParseArrOrDep = (profile, opt, data, prefix) => {
 			res.cancelled = true
 			Object.defineProperty(res, 'canceled', {value: true})
 			res.when = res.delay = null
-			res.formerScheduledWhen = profile.parseDateTime(profile, d.date, tP, tz)
+			res.scheduledWhen = profile.parseDateTime(profile, d.date, tP, tz)
 		}
 
 		if (opt.remarks) {

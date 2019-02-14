@@ -39,10 +39,10 @@ const createParseStopover = (profile, opt, data, date) => {
 		}
 
 		if (st.aPlatfR && st.aPlatfS && st.aPlatfR !== st.aPlatfS) {
-			res.formerScheduledArrivalPlatform = st.aPlatfS
+			res.scheduledArrivalPlatform = st.aPlatfS
 		}
 		if (st.dPlatfR && st.dPlatfS && st.dPlatfR !== st.dPlatfS) {
-			res.formerScheduledDeparturePlatform = st.dPlatfS
+			res.scheduledDeparturePlatform = st.dPlatfS
 		}
 
 		// mark stations the train passes without stopping
@@ -58,7 +58,7 @@ const createParseStopover = (profile, opt, data, date) => {
 				res.arrival = res.arrivalDelay = null
 				if (st.aTimeS) {
 					const arr = profile.parseDateTime(profile, date, st.aTimeS, st.aTZOffset)
-					res.formerScheduledArrival = arr
+					res.scheduledArrival = arr
 				}
 			}
 			if (st.dCncl) {
@@ -66,7 +66,7 @@ const createParseStopover = (profile, opt, data, date) => {
 				res.departure = res.departureDelay = null
 				if (st.dTimeS) {
 					const arr = profile.parseDateTime(profile, date, st.dTimeS, st.dTZOffset)
-					res.formerScheduledDeparture = arr
+					res.scheduledDeparture = arr
 				}
 			}
 		}
