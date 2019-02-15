@@ -27,7 +27,11 @@ const when = createWhen(sMunichProfile.timezone, sMunichProfile.locale)
 const cfg = {
 	when,
 	stationCoordsOptional: false,
-	products
+	products,
+	minLatitude: 48,
+	maxLatitude: 48.3,
+	minLongitude: 11.3,
+	maxLongitude: 11.8
 }
 
 const validateMovement = (val, m, name = 'movement') => {

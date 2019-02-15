@@ -27,7 +27,11 @@ const when = createWhen('Europe/Berlin', 'de-DE')
 const cfg = {
 	when,
 	stationCoordsOptional: false,
-	products
+	products,
+	minLatitude: 50.7,
+	maxLatitude: 53.2,
+	minLongitude: 10.25,
+	maxLongitude: 13.4
 }
 
 const validate = createValidate(cfg, {})
@@ -230,7 +234,8 @@ test('arrivals at Magdeburg Leiterstr.', co(function*(t) {
 // todo: nearby
 
 test('locations named Magdeburg', co(function*(t) {
-	const locations = yield client.locations('Magdeburg', {
+	const nordpark = '7480'
+	const locations = yield client.locations('nordpark', {
 		results: 20
 	})
 
@@ -242,9 +247,9 @@ test('locations named Magdeburg', co(function*(t) {
 	t.ok(locations.some((l) => {
 		// todo: trim IDs
 		if (l.station) {
-			if (l.station.id === '008010224' || l.station.id === magdeburgHbf) return true
+			if (l.station.id === '000007480' || l.station.id === nordpark) return true
 		}
-		return l.id === '008010224' || l.id === magdeburgHbf
+		return l.id === '000007480' || l.id === nordpark
 	}))
 
 	t.end()

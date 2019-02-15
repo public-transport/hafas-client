@@ -30,7 +30,11 @@ const when = createWhen('Europe/Berlin', 'de-DE')
 const cfg = {
 	when,
 	stationCoordsOptional: false,
-	products
+	products,
+	maxLatitude: 55.15,
+	minLongitude: 7.5,
+	minLatitude: 53.15,
+	maxLongitude: 11.6
 }
 
 const _validateLine = createValidateLine(cfg)
@@ -300,17 +304,18 @@ test('nearby Kiel Hbf', co(function* (t) {
 	t.end()
 }))
 
-test('locations named Kiel', co(function* (t) {
-	const locations = yield client.locations('Kiel', {
-		results: 20
+test('locations named "Kiel Rathaus"', co(function* (t) {
+	const kielRathaus = '9049200'
+	const locations = yield client.locations('Kiel Rathaus', {
+		results: 15
 	})
 
 	validate(t, locations, 'locations', 'locations')
-	t.ok(locations.length <= 20)
+	t.ok(locations.length <= 15)
 
 	t.ok(locations.find(l => l.type === 'stop' || l.type === 'station'))
 	t.ok(locations.find(l => l.id && l.name)) // POIs
-	t.ok(locations.some(l => l.station && l.station.id === kielHbf || l.id === kielHbf))
+	t.ok(locations.some(l => l.station && l.station.id === kielRathaus || l.id === kielRathaus))
 
 	t.end()
 }))

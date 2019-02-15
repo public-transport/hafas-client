@@ -29,7 +29,11 @@ const when = createWhen('Europe/Vienna', 'de-AT')
 const cfg = {
 	when,
 	stationCoordsOptional: false,
-	products
+	products,
+	minLatitude: 45.992803,
+	maxLatitude: 49.453517,
+	minLongitude: 8.787557,
+	maxLongitude: 17.491275
 }
 
 // todo validateDirection: search list of stations for direction

@@ -9,7 +9,6 @@ const co = require('./lib/co')
 const createClient = require('..')
 const cmtaProfile = require('../p/cmta')
 const products = require('../p/cmta/products')
-const {movement: _validateMovement} = require('./lib/validators')
 const createValidate = require('./lib/validate-fptf-with')
 const testJourneysStationToStation = require('./lib/journeys-station-to-station')
 const testJourneysStationToAddress = require('./lib/journeys-station-to-address')
@@ -27,27 +26,14 @@ const when = createWhen(cmtaProfile.timezone, cmtaProfile.locale)
 const cfg = {
 	when,
 	stationCoordsOptional: false,
-	products
+	products,
+	minLatitude: 26,
+	maxLatitude: 33,
+	minLongitude: -100,
+	maxLongitude: -95
 }
 
-const validateMovement = (val, m, name = 'movement') => {
-	// todo: fix this upstream
-	const withFakeLocation = Object.assign({}, m)
-	withFakeLocation.location = Object.assign({}, m.location, {
-		latitude: 50,
-		longitude: 12
-	})
-	_validateMovement(val, withFakeLocation, name)
-
-	assert.ok(m.location.latitude <= 33, name + '.location.latitude is too small')
-	assert.ok(m.location.latitude >= 26, name + '.location.latitude is too large')
-	assert.ok(m.location.longitude >= -100, name + '.location.longitude is too small')
-	assert.ok(m.location.longitude <= -95, name + '.location.longitude is too small')
-}
-
-const validate = createValidate(cfg, {
-	movement: validateMovement
-})
+const validate = createValidate(cfg)
 
 const test = tapePromise(tape)
 const client = createClient(cmtaProfile, 'public-transport/hafas-client:test')

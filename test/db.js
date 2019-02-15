@@ -37,7 +37,11 @@ const when = createWhen('Europe/Berlin', 'de-DE')
 const cfg = {
 	when,
 	stationCoordsOptional: false,
-	products
+	products,
+	minLatitude: 46.673100,
+	maxLatitude: 55.030671,
+	minLongitude: 6.896517,
+	maxLongitude: 16.180237
 }
 
 const _validateStation = createValidateStation(cfg)
