@@ -22,15 +22,6 @@ const parseCommonData = (profile, opt, raw) => {
 	res.icons = []
 	if (Array.isArray(c.icoL)) res.icons = c.icoL.map(parseIcon)
 
-	res.hints = []
-	if (opt.remarks && Array.isArray(c.remL)) {
-		res.hints = c.remL.map(hint => profile.parseHint(profile, hint, res.icons))
-	}
-	res.warnings = []
-	if (opt.remarks && Array.isArray(c.himL)) {
-		res.warnings = c.himL.map(w => profile.parseWarning(profile, w, res.icons))
-	}
-
 	if (Array.isArray(c.prodL)) {
 		const parse = profile.parseLine(profile, opt, res)
 		res.lines = c.prodL.map(parse)
@@ -48,6 +39,15 @@ const parseCommonData = (profile, opt, raw) => {
 				loc.station.type = 'station'
 			} else if (raw.isMainMast) loc.type = 'station'
 		}
+	}
+
+	res.hints = []
+	if (opt.remarks && Array.isArray(c.remL)) {
+		res.hints = c.remL.map(hint => profile.parseHint(profile, hint, {...c, ...res}))
+	}
+	res.warnings = []
+	if (opt.remarks && Array.isArray(c.himL)) {
+		res.warnings = c.himL.map(w => profile.parseWarning(profile, w, {...c, ...res}))
 	}
 
 	res.polylines = []
