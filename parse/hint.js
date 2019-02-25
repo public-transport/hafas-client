@@ -12,7 +12,8 @@ const codesByIcon = Object.assign(Object.create(null), {
 // "tagL": [
 // 	"RES_JNY_DTL" // only shown in journey detail
 // ]
-const parseHint = (profile, h, icons) => {
+const parseHint = (profile, h, data) => {
+	const icons = data.icoL || []
 	// todo: C
 	// todo:
 	// { type: 'Q',
