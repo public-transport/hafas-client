@@ -5,7 +5,8 @@ const codesByIcon = Object.assign(Object.create(null), {
 })
 
 // todo: is passing in profile necessary?
-const parseHint = (profile, h, icons) => {
+const parseHint = (profile, h, data) => {
+	const icons = data.icoL || []
 	// todo: C
 	// todo:
 	// { type: 'Q',
