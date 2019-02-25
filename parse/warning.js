@@ -9,9 +9,9 @@ const typesByIcon = Object.assign(Object.create(null), {
 })
 
 // todo: is passing in profile necessary?
-const parseWarning = (profile, w, icons) => {
-	// todo: pass `d`/`d.common` in, parse `w.fLocX`/`w.tLocX`/`w.icoX`
-	// todo: hid, act, pub, lead, tckr, comp,
+const parseWarning = (profile, w, data) => {
+	const icons = data.icoL || []
+	// todo: hid, act, pub, lead, tckr, icoX, fLocX, tLocX, prod, comp,
 	// todo: cat (1, 2), pubChL
 	// pubChL:
 	// [ { name: 'timetable',
