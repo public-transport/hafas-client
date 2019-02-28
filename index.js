@@ -501,7 +501,6 @@ const createClient = (profile, userAgent, request = _request) => {
 			})
 			.then((d) => {
 				if (!Array.isArray(d.posL)) {
-					console.error('d', d)
 					const err = new Error('invalid response')
 					err.shouldRetry = true
 					throw err
