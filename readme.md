@@ -15,8 +15,8 @@ HAFAS endpoint | wrapper library | docs | example code | source code
 *Saarfahrplan*/VGS ([Saarland](https://en.wikipedia.org/wiki/Saarland)) | - | [docs](p/saarfahrplan/readme.md) | [example code](p/saarfahrplan/example.js) | [src](p/saarfahrplan/index.js)
 
 [![npm version](https://img.shields.io/npm/v/hafas-client.svg)](https://www.npmjs.com/package/hafas-client)
-[![build status](https://img.shields.io/travis/public-transport/hafas-client.svg?branch=master)](https://travis-ci.org/public-transport/hafas-client)
-[![Windows build status](https://img.shields.io/appveyor/ci/public-transport/hafas-client.svg?branch=master)](https://ci.appveyor.com/project/public-transport/hafas-client)
+[![build status](https://img.shields.io/travis/public-transport/hafas-client.svg?branch=3)](https://travis-ci.org/public-transport/hafas-client)
+[![Windows build status](https://img.shields.io/appveyor/ci/public-transport/hafas-client.svg?branch=3)](https://ci.appveyor.com/project/public-transport/hafas-client)
 ![ISC-licensed](https://img.shields.io/github/license/public-transport/hafas-client.svg)
 [![chat on gitter](https://badges.gitter.im/public-transport/Lobby.svg)](https://gitter.im/public-transport/Lobby)
 [![support me on Patreon](https://img.shields.io/badge/support%20me-on%20patreon-fa7664.svg)](https://patreon.com/derhuerst)
@@ -37,7 +37,7 @@ npm install hafas-client
 
 ### with [react-native](https://facebook.github.io/react-native/)
 
-`hafas-client` as well its dependencies use [Node-builtin modules](https://nodejs.org/dist/latest/docs/api/) and [Node globals](https://nodejs.org/api/globals.html). To be able to use it within react-native, follow [the instructions at `node-libs-react-native`](https://github.com/parshap/node-libs-react-native/blob/master/README.md#usage).
+`hafas-client` as well its dependencies use [Node-builtin modules](https://nodejs.org/dist/latest/docs/api/) and [Node globals](https://nodejs.org/api/globals.html). To be able to use it within react-native, follow [the instructions at `node-libs-react-native`](https://github.com/parshap/node-libs-react-native/blob/3/README.md#usage).
 
 
 ## API

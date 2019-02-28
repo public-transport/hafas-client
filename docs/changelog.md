@@ -1,5 +1,10 @@
 # Changelog
 
+## `3.10.1`
+
+- dafc96a update CMTA credentials
+- 46e7729 remove `console.error` call 🐛
+
 ## `3.10.0`
 
 - d797333/1e16a10 [DB](../p/db): parse additional line names
