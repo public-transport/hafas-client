@@ -232,18 +232,15 @@ const createClient = (profile, userAgent, request = _request) => {
 					j = parse(j)
 					journeys.push(j)
 
-					if (journeys.length >= opt.results) { // collected enough
+					if (opt.results !== null && journeys.length >= opt.results) { // collected enough
 						laterRef = d.outCtxScrF
-						return {
-							earlierRef,
-							laterRef,
-							journeys
-						}
+						return {earlierRef, laterRef, journeys}
 					}
 					const dep = +new Date(j.legs[0].departure)
 					if (dep > latestDep) latestDep = dep
 				}
 
+				if (opt.results === null) return {earlierRef, laterRef, journeys}
 				const when = new Date(latestDep)
 				return more(when, d.outCtxScrF) // otherwise continue
 			})
