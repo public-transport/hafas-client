@@ -100,6 +100,7 @@ const createParseJourney = (profile, opt, data) => {
 	const parseJourneyWithPrice = (j) => {
 		const res = parseJourney(j)
 
+		res.price = null
 		// todo: find cheapest, find discounts
 		// todo: write a parser like vbb-parse-ticket
 		// [ {
@@ -110,7 +111,6 @@ const createParseJourney = (profile, opt, data) => {
 		// 	targetCtx: 'D',
 		// 	buttonText: 'To offer selection'
 		// } ]
-		res.price = {amount: null, hint: 'No pricing information available.'}
 		if (
 			j.trfRes &&
 			Array.isArray(j.trfRes.fareSetL) &&
