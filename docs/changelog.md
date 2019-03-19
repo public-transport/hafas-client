@@ -1,5 +1,9 @@
 # Changelog
 
+## `4.0.1`
+
+- 5d49fd0 `parseDateTime`: fix `tzOffset` & `daysOffset` 🐛
+
 ## `4.0.0`
 
 This version is not fully backwords-compatible. Check out [the migration guide](migrating-to-4.md).
