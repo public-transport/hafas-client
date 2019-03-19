@@ -42,5 +42,9 @@ test('parseDateTime: works', (t) => {
 	assert(['20190318', '02131910', null, false], '2019-03-20T13:19:10.000+01:00')
 	assert(['20190318', '02131910', null, true], +new Date('2019-03-20T13:19:10.000+01:00'))
 
+	// manual timezone offset day offset
+	assert(['20190318', '02131910', 150, false], '2019-03-20T13:19:10.000+02:30')
+	assert(['20190318', '02131910', 150, true], +new Date('2019-03-20T13:19:10.000+02:30'))
+
 	t.end()
 })
