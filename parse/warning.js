@@ -1,6 +1,6 @@
 'use strict'
 
-const brToNewline = require('br2nl')
+const brToNewline = require('@derhuerst/br2nl')
 
 const parseDateTime = require('./date-time')
 
