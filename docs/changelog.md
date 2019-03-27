@@ -2,6 +2,10 @@
 
 ## `4.0.1`
 
+- 133cee9 `parseWarning`: expose `warning.id` 🐛
+
+## `4.0.1`
+
 - 5d49fd0 `parseDateTime`: fix `tzOffset` & `daysOffset` 🐛
 
 ## `4.0.0`
