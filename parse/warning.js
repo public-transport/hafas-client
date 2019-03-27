@@ -28,9 +28,10 @@ const parseWarning = (profile, w, icons) => {
 	const type = icon && icon.res && typesByIcon[icon.res] || 'warning'
 
 	const res = {
+		id: w.hid || null,
 		type,
-		summary: brToNewline(w.head),
-		text: brToNewline(w.text),
+		summary: brToNewline(w.head), // todo: decode HTML entities
+		text: brToNewline(w.text), // todo: decode HTML entities
 		priority: w.prio,
 		category: w.cat || null // todo: parse to sth meaningful
 	}
