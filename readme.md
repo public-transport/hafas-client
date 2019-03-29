@@ -15,6 +15,7 @@ HAFAS endpoint | wrapper library | docs | example code | source code
 *Saarfahrplan*/VGS ([Saarland](https://en.wikipedia.org/wiki/Saarland)) | - | [docs](p/saarfahrplan/readme.md) | [example code](p/saarfahrplan/example.js) | [src](p/saarfahrplan/index.js)
 [Société Nationale des Chemins de Fer Luxembourgeois (CFL)](https://en.wikipedia.org/wiki/Société_Nationale_des_Chemins_de_Fer_Luxembourgeois) | - | [docs](p/cfl/readme.md) | [example code](p/cfl/example.js) | [src](p/cfl/index.js)
 [Hamburg public transport (HVV)](https://en.wikipedia.org/wiki/Hamburger_Verkehrsverbund) | - | [docs](p/hvv/readme.md) | [example code](p/hvv/example.js) | [src](p/hvv/index.js)
+[*Nordhessischer Verkehrsverbund (NVV)*](https://en.wikipedia.org/wiki/Nordhessischer_Verkehrsverbund) ([Hesse](https://en.wikipedia.org/wiki/Hesse)) | - | [docs](p/nvv/readme.md) | [example code](p/nvv/example.js) | [src](p/nvv/index.js)
 
 There are also client libraries that use the library, but contain their own customisations:
 
