@@ -2,28 +2,18 @@
 
 const createParseBitmask = (profile) => {
 	const defaultProducts = {}
-	let withBitmask = []
-	for (let product of profile.products) {
-		defaultProducts[product.id] = false
-		for (let bitmask of product.bitmasks) {
-			withBitmask.push([bitmask, product])
-		}
-	}
-	withBitmask.sort((a, b) => b[0] - a[0]) // descending
+	for (let product of profile.products) defaultProducts[product.id] = false
 
 	const parseBitmask = (bitmask) => {
 		const res = Object.assign({}, defaultProducts)
 
-		for (let [pBitmask, product] of withBitmask) {
-			if ((pBitmask & bitmask) > 0) {
-				res[product.id] = true
-				bitmask -= pBitmask
-			}
-			else{
-				res[product.id] = false
-			}
-		}
+		const bits = bitmask.toString(2).split('').map(i => parseInt(i)).reverse()
+		for (let i = 0; i < bits.length; i++) {
+			if (!bits[i]) continue // ignore `0`
 
+			const product = profile.products.find(p => p.bitmasks.includes(Math.pow(2, i)))
+			if (product) res[product.id] = true
+		}
 		return res
 	}
 	return parseBitmask
