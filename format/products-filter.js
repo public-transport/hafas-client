@@ -21,7 +21,7 @@ const createFormatProductsFilter = (profile) => {
 			if (!hasProp(filter, product) || filter[product] !== true) continue
 			if (!byProduct[product]) throw new TypeError('unknown product ' + product)
 			products++
-			for (let bitmask of byProduct[product].bitmasks) res += bitmask
+			for (let bitmask of byProduct[product].bitmasks) res = res ^ bitmask
 		}
 		if (products === 0) throw new Error('no products used')
 
