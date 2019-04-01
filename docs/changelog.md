@@ -1,6 +1,10 @@
 # Changelog
 
-## `4.0.1`
+## `4.0.3`
+
+- 6aa57d4 `parseJourneyLeg`/`parseMovement`/`parseArrival`/`parseDeparture`: handle missing `dirTxt` 🐛
+
+## `4.0.2`
 
 - 133cee9 `parseWarning`: expose `warning.id` 🐛
 

@@ -14,6 +14,12 @@ HAFAS endpoint | wrapper library | docs | example code | source code
 [*S-Bahn München*](https://en.wikipedia.org/wiki/Munich_S-Bahn) | - | [docs](p/sbahn-muenchen/readme.md) | [example code](p/sbahn-muenchen/example.js) | [src](p/sbahn-muenchen/index.js)
 *Saarfahrplan*/VGS ([Saarland](https://en.wikipedia.org/wiki/Saarland)) | - | [docs](p/saarfahrplan/readme.md) | [example code](p/saarfahrplan/example.js) | [src](p/saarfahrplan/index.js)
 
+There are also client libraries that use the library, but contain their own customisations:
+
+HAFAS endpoint | library
+---------------|--------
+[Betriebsstellen & disturbances in the German rail network](https://strecken.info/) | [`db-netz-hafas`](https://github.com/derhuerst/db-netz-hafas)
+
 [![npm version](https://img.shields.io/npm/v/hafas-client.svg)](https://www.npmjs.com/package/hafas-client)
 [![build status](https://img.shields.io/travis/public-transport/hafas-client.svg?branch=3)](https://travis-ci.org/public-transport/hafas-client)
 [![Windows build status](https://img.shields.io/appveyor/ci/public-transport/hafas-client.svg?branch=3)](https://ci.appveyor.com/project/public-transport/hafas-client)
