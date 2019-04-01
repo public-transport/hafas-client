@@ -13,7 +13,7 @@ const createParseMovement = (profile, opt, data) => {
 		const pStopover = profile.parseStopover(profile, opt, data, m.date)
 
 		const res = {
-			direction: profile.parseStationName(m.dirTxt),
+			direction: m.dirTxt ? profile.parseStationName(m.dirTxt) : null,
 			tripId: m.jid || null,
 			line: lines[m.prodX] || null,
 			location: m.pos ? {

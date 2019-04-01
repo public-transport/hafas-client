@@ -92,7 +92,7 @@ const createParseJourneyLeg = (profile, opt, data) => {
 			// todo: pull `public` value from `profile.products`
 			res.tripId = pt.jny.jid
 			res.line = lines[parseInt(pt.jny.prodX)] || null
-			res.direction = profile.parseStationName(pt.jny.dirTxt) || null
+			res.direction = pt.jny.dirTxt && profile.parseStationName(pt.jny.dirTxt) || null
 
 			if (pt.dep.dPlatfS) res.departurePlatform = pt.dep.dPlatfS
 			if (pt.arr.aPlatfS) res.arrivalPlatform = pt.arr.aPlatfS

@@ -21,7 +21,7 @@ const createParseArrOrDep = (profile, opt, data, prefix) => {
 			stop: locations[parseInt(d.stbStop.locX)] || null,
 			when: profile.parseDateTime(profile, d.date, t, tz),
 			// todo: for arrivals, this is the *origin*, not the *direction*
-			direction: prefix === DEPARTURE && profile.parseStationName(d.dirTxt) || null,
+			direction: prefix === DEPARTURE && d.dirTxt && profile.parseStationName(d.dirTxt) || null,
 			line: lines[parseInt(d.prodX)] || null,
 			remarks: []
 		}
