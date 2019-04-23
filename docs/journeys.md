@@ -133,10 +133,10 @@ The `Promise` returned by `journeys()` will resolve with an object with the `jou
 				},
 				products: { /* … */ }
 			},
-			departure: '2018-07-10T23:54:00.000+02:00',
+			departure: '2018-07-10T23:54:00+02:00',
 			departureDelay: 60,
 			departurePlatform: '15',
-			arrival: '2018-07-11T00:02:00.000+02:00',
+			arrival: '2018-07-11T00:02:00+02:00',
 			arrivalDelay: 60,
 			arrivalPlatform: '3',
 			line: {
@@ -182,10 +182,10 @@ The `Promise` returned by `journeys()` will resolve with an object with the `jou
 					location: { /* … */ },
 					products: { /* … */ }
 				},
-				arrival: '2018-07-10T23:56:00.000+02:00',
+				arrival: '2018-07-10T23:56:00+02:00',
 				arrivalDelay: 60,
 				arrivalPlatform: null,
-				departure: '2018-07-10T23:57:00.000+02:00',
+				departure: '2018-07-10T23:57:00+02:00',
 				departureDelay: 60,
 				departurePlatform: null,
 				remarks: [ /* … */ ]
@@ -198,10 +198,10 @@ The `Promise` returned by `journeys()` will resolve with an object with the `jou
 					location: { /* … */ },
 					products: { /* … */ }
 				},
-				arrival: '2018-07-11T00:02:00.000+02:00',
+				arrival: '2018-07-11T00:02:00+02:00',
 				arrivalDelay: 60,
 				arrivalPlatform: null,
-				departure: '2018-07-11T00:02:00.000+02:00',
+				departure: '2018-07-11T00:02:00+02:00',
 				departureDelay: null,
 				departurePlatform: null,
 				remarks: [ /* … */ ]
@@ -221,8 +221,8 @@ The `Promise` returned by `journeys()` will resolve with an object with the `jou
 				location: { /* … */ },
 				products: { /* … */ }
 			},
-			departure: '2018-07-11T00:01:00.000+02:00',
-			arrival: '2018-07-11T00:10:00.000+02:00',
+			departure: '2018-07-11T00:01:00+02:00',
+			arrival: '2018-07-11T00:10:00+02:00',
 			public: true,
 			walking: true,
 			distance: 558
@@ -296,8 +296,8 @@ client.journeys(hbf, heinrichHeineStr)
 ```
 
 ```
-departure of last journey 2017-12-17T19:07:00.000+01:00
-departure of first (later) journey 2017-12-17T19:19:00.000+01:00
+departure of last journey 2017-12-17T19:07:00+01:00
+departure of first (later) journey 2017-12-17T19:19:00+01:00
 ```
 
 If you pass `polylines: true`, each journey leg will have a `polyline` field. Refer to [the section in the `trip()` docs](trip.md#polyline-option) for details.

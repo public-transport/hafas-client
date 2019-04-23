@@ -81,7 +81,7 @@ The response may look like this:
 			regional: true
 		}
 	},
-	when: '2017-12-17T19:32:00.000+01:00',
+	when: '2017-12-17T19:32:00+01:00',
 	delay: null,
 	platform: '2',
 	line: {
@@ -132,7 +132,7 @@ The response may look like this:
 	tripId: '1|28671|4|86|17122017',
 	trip: 28671,
 	stop: { /* … */ },
-	when: '2017-12-17T19:35:00.000+01:00',
+	when: '2017-12-17T19:35:00+01:00',
 	delay: 0,
 	platform: null,
 	line: {

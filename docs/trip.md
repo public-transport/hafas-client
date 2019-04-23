@@ -74,7 +74,7 @@ The response looked like this:
 			regional: true
 		}
 	},
-	departure: '2017-12-17T18:37:00.000+01:00',
+	departure: '2017-12-17T18:37:00+01:00',
 	departurePlatform: '13',
 	destination: {
 		type: 'station',
@@ -95,7 +95,7 @@ The response looked like this:
 			regional: true
 		}
 	},
-	arrival: '2017-12-17T19:49:00.000+01:00',
+	arrival: '2017-12-17T19:49:00+01:00',
 	arrivalPlatform: '2',
 	line: {
 		type: 'line',

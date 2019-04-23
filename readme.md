@@ -84,7 +84,7 @@ The returned [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript
 				},
 				products: { /* … */ }
 			},
-			departure: '2017-12-17T17:05:00.000+01:00',
+			departure: '2017-12-17T17:05:00+01:00',
 			departurePlatform: '5',
 			destination: {
 				type: 'station',
@@ -93,7 +93,7 @@ The returned [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript
 				location: { /* … */ },
 				products: { /* … */ }
 			},
-			arrival: '2017-12-17T17:08:00.000+01:00',
+			arrival: '2017-12-17T17:08:00+01:00',
 			arrivalPlatform: '1',
 			line: {
 				type: 'line',
@@ -121,7 +121,7 @@ The returned [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript
 				},
 				products: { /* … */ }
 			},
-			departure: '2017-12-17T17:25:00.000+01:00',
+			departure: '2017-12-17T17:25:00+01:00',
 			destination: {
 				type: 'station',
 				id: '8098160',
@@ -129,7 +129,7 @@ The returned [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript
 				location: { /* … */ },
 				products: { /* … */ }
 			},
-			arrival: '2017-12-17T17:33:00.000+01:00',
+			arrival: '2017-12-17T17:33:00+01:00',
 			public: true,
 			walking: true
 		}, {
@@ -141,7 +141,7 @@ The returned [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript
 				location: { /* … */ },
 				products: { /* … */ }
 			},
-			departure: '2017-12-17T17:37:00.000+01:00',
+			departure: '2017-12-17T17:37:00+01:00',
 			departurePlatform: '1',
 			destination: {
 				type: 'station',
@@ -150,7 +150,7 @@ The returned [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript
 				location: { /* … */ },
 				products: { /* … */ }
 			},
-			arrival: '2017-12-17T22:45:00.000+01:00',
+			arrival: '2017-12-17T22:45:00+01:00',
 			arrivalPlatform: '13',
 			line: { /* … */ },
 			direction: 'München Hbf'
@@ -162,7 +162,7 @@ The returned [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript
 			location: { /* … */ },
 			products: { /* … */ }
 		},
-		departure: '2017-12-17T17:05:00.000+01:00',
+		departure: '2017-12-17T17:05:00+01:00',
 		destination: {
 			type: 'station',
 			id: '8000261',
@@ -170,7 +170,7 @@ The returned [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript
 			location: { /* … */ },
 			products: { /* … */ }
 		},
-		arrival: '2017-12-17T22:45:00.000+01:00',
+		arrival: '2017-12-17T22:45:00+01:00',
 		price: {
 			amount: null,
 			hint: 'No pricing information available.'
