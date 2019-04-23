@@ -33,7 +33,7 @@ const parseDateTime = (profile, date, time, tzOffset = null, timestamp = false) 
 		zone: timezone
 	})
 	if (daysOffset > 0) dt = dt.plus({days: daysOffset})
-	return timestamp ? dt.toMillis() : dt.toISO()
+	return timestamp ? dt.toMillis() : dt.toISO({suppressMilliseconds: true})
 }
 
 module.exports = parseDateTime
