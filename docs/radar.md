@@ -90,7 +90,7 @@ The response may look like this:
 		},
 		arrival: null,
 		arrivalDelay: null,
-		departure: '2017-12-17T19:16:00.000+01:00',
+		departure: '2017-12-17T19:16:00+01:00',
 		departureDelay: null
 	} /* … */ ],
 	frames: [ {
@@ -145,13 +145,13 @@ The response may look like this:
 		stop: { /* S+U Alexanderplatz/Dircksenstr. */ },
 		arrival: null,
 		arrivalDelay: null,
-		departure: '2017-12-17T19:52:00.000+01:00',
+		departure: '2017-12-17T19:52:00+01:00',
 		departureDelay: null
 	}, {
 		stop: { /* Memhardstr. */ },
-		arrival: '2017-12-17T19:54:00.000+01:00',
+		arrival: '2017-12-17T19:54:00+01:00',
 		arrivalDelay: null,
-		departure: '2017-12-17T19:54:00.000+01:00',
+		departure: '2017-12-17T19:54:00+01:00',
 		departureDelay: null
 	}, /* … */ ],
 	frames: [ {
