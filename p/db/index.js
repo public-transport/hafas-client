@@ -2,7 +2,10 @@
 
 const trim = require('lodash/trim')
 
+const _createParseArrival = require('../../parse/arrival')
+const _createParseDeparture = require('../../parse/departure')
 const _createParseJourney = require('../../parse/journey')
+const _createParseJourneyLeg = require('../../parse/journey-leg')
 const _createParseLine = require('../../parse/line')
 const _parseHint = require('../../parse/hint')
 const _formatStation = require('../../format/station')
@@ -13,12 +16,42 @@ const formatLoyaltyCard = require('./loyalty-cards').format
 
 const transformReqBody = (body) => {
 	body.client = {id: 'DB', v: '16040000', type: 'IPH', name: 'DB Navigator'}
-	body.ext = 'DB.R18.06.a'
+	body.ext = 'DB.R19.04.a'
 	body.ver = '1.16'
 	body.auth = {type: 'AID', aid: 'n91dB8Z77MLdoR0K'}
 
 	return body
 }
+
+// https://www.bahn.de/p/view/service/buchung/auslastungsinformation.shtml
+const loadFactors = []
+loadFactors[1] = 'low-to-medium'
+loadFactors[2] = 'high'
+loadFactors[3] = 'very-high'
+loadFactors[4] = 'exceptionally-high'
+
+const parseLoadFactor = (opt, tcocL, tcocX) => {
+	const cls = opt.firstClass ? 'FIRST' : 'SECOND'
+	const load = tcocX.map(i => tcocL[i]).find(lf => lf.c === cls)
+	return load && loadFactors[load.r] || null
+}
+
+const createParseArrOrDep = (createParse) => (profile, opt, data) => {
+	const parse = createParse(profile, opt, data)
+	const parseWithLoadFactor = (d) => {
+		const result = parse(d)
+		if (d.stbStop.dTrnCmpSX && Array.isArray(d.stbStop.dTrnCmpSX.tcocX)) {
+			const {tcocL} = data.raw.common
+			const load = parseLoadFactor(opt, tcocL, d.stbStop.dTrnCmpSX.tcocX)
+			if (load) result.loadFactor = load
+		}
+		return result
+	}
+	return parseWithLoadFactor
+}
+
+const createParseArrival = createParseArrOrDep(_createParseArrival)
+const createParseDeparture = createParseArrOrDep(_createParseDeparture)
 
 const transformJourneysQuery = (query, opt) => {
 	const filters = query.jnyFltrL
@@ -94,6 +127,20 @@ const createParseJourney = (profile, opt, data) => {
 	}
 
 	return parseJourneyWithPrice
+}
+
+const createParseJourneyLeg = (profile, opt, data) => {
+	const parseJourneyLeg = _createParseJourneyLeg(profile, opt, data)
+	const parseJourneyLegWithLoadFactor = (j, pt, parseStopovers) => {
+		const result = parseJourneyLeg(j, pt, parseStopovers)
+		if (pt.jny && pt.jny.dTrnCmpSX && Array.isArray(pt.jny.dTrnCmpSX.tcocX)) {
+			const {tcocL} = data.raw.common
+			const load = parseLoadFactor(opt, tcocL, pt.jny.dTrnCmpSX.tcocX)
+			if (load) result.loadFactor = load
+		}
+		return result
+	}
+	return parseJourneyLegWithLoadFactor
 }
 
 const hintsByCode = Object.assign(Object.create(null), {
@@ -332,7 +379,10 @@ const dbProfile = {
 
 	// todo: parseLocation
 	parseJourney: createParseJourney,
+	parseJourneyLeg: createParseJourneyLeg,
 	parseLine: createParseLine,
+	parseArrival: createParseArrival,
+	parseDeparture: createParseDeparture,
 	parseHint,
 
 	formatStation,
