@@ -71,6 +71,7 @@ const test = tapePromise(tape)
 const client = createClient(cflProfile, 'public-transport/hafas-client:test')
 
 const ettelbruck = '9258199'
+const mersch = '9864348'
 const luxembourg = '9217081'
 
 test('journeys – Ettelbruck to Luxembourg', async (t) => {
@@ -226,8 +227,8 @@ test('departures with station object', async (t) => {
 
 // todo: nearby
 
-test('locations named Ettelbruck', async (t) => {
-	const locations = await client.locations('Ettelbruck', {
+test('locations named Mersch', async (t) => {
+	const locations = await client.locations('Mersch', {
 		results: 20
 	})
 
@@ -237,18 +238,18 @@ test('locations named Ettelbruck', async (t) => {
 	t.ok(locations.find(s => s.type === 'stop' || s.type === 'station'))
 	t.ok(locations.find(s => s.poi))
 	t.ok(locations.some((loc) => {
-		if (loc.station && loc.station.id === ettelbruck) return true
-		return loc.id === ettelbruck
+		if (loc.station && loc.station.id === mersch) return true
+		return loc.id === mersch
 	}))
 
 	t.end()
 })
 
-test('stop Ettelbruck', async (t) => {
-	const s = await client.stop(ettelbruck)
+test('stop Mersch', async (t) => {
+	const s = await client.stop(mersch)
 
 	validate(t, s, ['stop', 'station'], 'stop')
-	t.equal(s.id, ettelbruck)
+	t.equal(s.id, mersch)
 
 	t.end()
 })
