@@ -3,8 +3,40 @@
 const Ajv = require('ajv')
 const omit = require('lodash/omit')
 const createClient = require('..')
+const vbbProfile = require('../p/vbb')
+const bvgProfile = require('../p/bvg')
+const dbProfile = require('../p/db')
+const journeysSchema = require('./journeys.schema.json')
+// todo: https://github.com/epoberezkin/ajv#formats
+// todo: https://github.com/epoberezkin/ajv#combining-schemas-with-ref
 
-const tasks = []
+const fetchJourneys = (from, to) => (client) => {
+	return client.journeys(from, to, {
+		results: 3, tickets: true, stopovers: true, remarks: true, polylines: true
+	})
+}
+const tasks = [
+	[
+		vbbProfile,
+		fetchJourneys('900000175013', '900000087171'), // Risaer Str. to TXL
+		journeysSchema
+	],
+	[
+		bvgProfile,
+		fetchJourneys('900000175013', '900000087171'), // Risaer Str. to TXL
+		journeysSchema
+	],
+	[
+		dbProfile,
+		// Siegessäule Berlin to München Hbf
+		c => c.journeys({
+			type: 'location', id: '991668043', poi: true,
+			name: 'Berlin, Siegessäule (Tourismus)',
+			latitude: 52.515189, longitude: 13.350123
+		}, '8000261', journeysOpts),
+		journeysSchema
+	]
+]
 
 const userAgent = 'hafas-client find-unknown-fields'
 const fetchResponse = (profile, query) => {
