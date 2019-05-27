@@ -10,7 +10,8 @@ const typesByIcon = Object.assign(Object.create(null), {
 
 // todo: is passing in profile necessary?
 const parseWarning = (profile, w, icons) => {
-	// todo: hid, act, pub, lead, tckr, icoX, fLocX, tLocX, prod, comp,
+	// todo: pass `d`/`d.common` in, parse `w.fLocX`/`w.tLocX`/`w.icoX`
+	// todo: hid, act, pub, lead, tckr, comp,
 	// todo: cat (1, 2), pubChL
 	// pubChL:
 	// [ { name: 'timetable',
@@ -35,6 +36,7 @@ const parseWarning = (profile, w, icons) => {
 		priority: w.prio,
 		category: w.cat || null // todo: parse to sth meaningful
 	}
+	if ('prod' in w) res.products = client.profile.parseProducts(61442)
 
 	// todo: pass tzOffset to `parseDateTime`
 	if (w.sDate && w.sTime) res.validFrom = parseDateTime(profile, w.sDate, w.sTime, null)
