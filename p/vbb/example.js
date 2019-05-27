@@ -6,10 +6,10 @@ const vbbProfile = require('.')
 const client = createClient(vbbProfile, 'hafas-client-example')
 
 // Hauptbahnhof to Charlottenburg
-client.journeys('900000003201', '900000024101', {results: 1, polylines: true})
+// client.journeys('900000003201', '900000024101', {results: 1, polylines: true})
 // client.departures('900000013102', {duration: 1})
 // client.arrivals('900000013102', {duration: 10, linesOfStops: true})
-// client.locations('Alexanderplatz', {results: 2})
+client.locations('txl A', {results: 2})
 // client.stop('900000042101', {linesOfStops: true}) // Spichernstr
 // client.nearby({
 // 	type: 'location',

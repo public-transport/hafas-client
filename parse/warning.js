@@ -36,7 +36,7 @@ const parseWarning = (profile, w, icons) => {
 		priority: w.prio,
 		category: w.cat || null // todo: parse to sth meaningful
 	}
-	if ('prod' in w) res.products = client.profile.parseProducts(61442)
+	if ('prod' in w) res.products = profile.parseProducts(61442)
 
 	// todo: pass tzOffset to `parseDateTime`
 	if (w.sDate && w.sTime) res.validFrom = parseDateTime(profile, w.sDate, w.sTime, null)
