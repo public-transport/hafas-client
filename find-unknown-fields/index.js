@@ -7,23 +7,25 @@ const vbbProfile = require('../p/vbb')
 const bvgProfile = require('../p/bvg')
 const dbProfile = require('../p/db')
 const journeysSchema = require('./journeys.schema.json')
+const departuresSchema = require('./departures.schema.json')
 // todo: https://github.com/epoberezkin/ajv#formats
 // todo: https://github.com/epoberezkin/ajv#combining-schemas-with-ref
 
-const fetchJourneys = (from, to) => (client) => {
-	return client.journeys(from, to, {
-		results: 3, tickets: true, stopovers: true, remarks: true, polylines: true
-	})
+const journeysOpts = {
+	results: 3, tickets: true, stopovers: true, remarks: true, polylines: true
+}
+const departuresOpts = {
+	duration: 10, linesOfStops: true, remarks: true, stopovers: true, includeRelatedStations: true
 }
 const tasks = [
 	[
 		vbbProfile,
-		fetchJourneys('900000175013', '900000087171'), // Risaer Str. to TXL
+		c => c.journeys('900000175013', '900000087171', journeysOpts), // Risaer Str. to TXL
 		journeysSchema
 	],
 	[
 		bvgProfile,
-		fetchJourneys('900000175013', '900000087171'), // Risaer Str. to TXL
+		c => c.journeys('900000175013', '900000087171', journeysOpts), // Risaer Str. to TXL
 		journeysSchema
 	],
 	[
@@ -35,7 +37,17 @@ const tasks = [
 			latitude: 52.515189, longitude: 13.350123
 		}, '8000261', journeysOpts),
 		journeysSchema
-	]
+	],
+	[
+		vbbProfile,
+		client => client.departures('900000230999', departuresOpts), // S Potsdam Hbf
+		departuresSchema
+	],
+	[
+		bvgProfile,
+		client => client.departures('900000078101', departuresOpts), // U Hermannplatz
+		departuresSchema
+	],
 ]
 
 const userAgent = 'hafas-client find-unknown-fields'

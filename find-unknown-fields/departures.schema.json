@@ -1,0 +1,654 @@
+{
+	"title": "departures response",
+	"type": "object",
+	"properties": {
+		"ver": {
+			"type": "string"
+		},
+		"ext": {
+			"type": "string"
+		},
+		"lang": {
+			"type": "string"
+		},
+		"id": {
+			"type": "string"
+		},
+		"svcResL": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"meth": {
+						"type": "string"
+					},
+					"err": {
+						"type": "string"
+					},
+					"res": {
+						"type": "object",
+						"properties": {
+							"common": {
+								"type": "object",
+								"properties": {
+									"locL": {
+										"type": "array",
+										"items": {
+											"type": "object",
+											"properties": {
+												"lid": {
+													"type": "string"
+												},
+												"type": {
+													"type": "string"
+												},
+												"name": {
+													"type": "string"
+												},
+												"icoX": {
+													"type": "number"
+												},
+												"extId": {
+													"type": "string"
+												},
+												"state": {
+													"type": "string"
+												},
+												"crd": {
+													"type": "object",
+													"properties": {
+														"x": {
+															"type": "number"
+														},
+														"y": {
+															"type": "number"
+														},
+														"type": {
+															"type": "string"
+														},
+														"layerX": {
+															"type": "number"
+														},
+														"crdSysX": {
+															"type": "number"
+														}
+													}
+												},
+												"pCls": {
+													"type": "number"
+												},
+												"pRefL": {
+													"type": "array",
+													"items": {
+														"type": "number"
+													}
+												},
+												"msgL": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"type": {
+																"type": "string"
+															},
+															"remX": {
+																"type": "number"
+															},
+															"tagL": {
+																"type": "array",
+																"items": {
+																	"type": "string"
+																}
+															}
+														},
+														"required": [
+															"type",
+															"remX",
+															"tagL"
+														]
+													}
+												}
+											},
+											"required": [
+												"lid",
+												"type",
+												"name",
+												"icoX",
+												"extId",
+												"state",
+												"crd",
+												"pCls",
+												"pRefL",
+												"msgL"
+											]
+										}
+									},
+									"prodL": {
+										"type": "array",
+										"items": {
+											"type": "object",
+											"properties": {
+												"pid": {
+													"type": "string"
+												},
+												"name": {
+													"type": "string"
+												},
+												"nameS": {
+													"type": "string"
+												},
+												"number": {
+													"type": "string"
+												},
+												"icoX": {
+													"type": "number"
+												},
+												"cls": {
+													"type": "number"
+												},
+												"oprX": {
+													"type": "number"
+												},
+												"prodCtx": {
+													"type": "object",
+													"properties": {
+														"name": {
+															"type": "string"
+														},
+														"num": {
+															"type": "string"
+														},
+														"line": {
+															"type": "string"
+														},
+														"matchId": {
+															"type": "string"
+														},
+														"catOut": {
+															"type": "string"
+														},
+														"catOutS": {
+															"type": "string"
+														},
+														"catOutL": {
+															"type": "string"
+														},
+														"catIn": {
+															"type": "string"
+														},
+														"catCode": {
+															"type": "string"
+														},
+														"admin": {
+															"type": "string"
+														},
+														"lineId": {
+															"type": "string"
+														}
+													}
+												},
+												"himIdL": {
+													"type": "array",
+													"items": {
+														"type": "string"
+													}
+												}
+											},
+											"required": [
+												"name",
+												"icoX",
+												"cls",
+												"nameS",
+												"prodCtx",
+												"pid",
+												"number",
+												"oprX",
+												"himIdL"
+											]
+										}
+									},
+									"polyL": {
+										"type": "array",
+										"items": {}
+									},
+									"layerL": {
+										"type": "array",
+										"items": {
+											"type": "object",
+											"properties": {
+												"id": {
+													"type": "string"
+												},
+												"name": {
+													"type": "string"
+												},
+												"index": {
+													"type": "number"
+												},
+												"annoCnt": {
+													"type": "number"
+												}
+											}
+										}
+									},
+									"crdSysL": {
+										"type": "array",
+										"items": {
+											"type": "object",
+											"properties": {
+												"id": {
+													"type": "string"
+												},
+												"index": {
+													"type": "number"
+												},
+												"type": {
+													"type": "string"
+												},
+												"dim": {
+													"type": "number"
+												}
+											}
+										}
+									},
+									"opL": {
+										"type": "array",
+										"items": {
+											"type": "object",
+											"properties": {
+												"name": {
+													"type": "string"
+												},
+												"icoX": {
+													"type": "number"
+												},
+												"id": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"name",
+												"icoX",
+												"id"
+											]
+										}
+									},
+									"remL": {
+										"type": "array",
+										"items": {
+											"type": "object",
+											"properties": {
+												"type": {
+													"type": "string"
+												},
+												"code": {
+													"type": "string"
+												},
+												"prio": {
+													"type": "number"
+												},
+												"icoX": {
+													"type": "number"
+												},
+												"txtN": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"type",
+												"code",
+												"prio",
+												"icoX",
+												"txtN"
+											]
+										}
+									},
+									"icoL": {
+										"type": "array",
+										"items": {
+											"type": "object",
+											"properties": {
+												"res": {
+													"type": "string"
+												},
+												"fg": {
+													"type": "object",
+													"properties": {
+														"r": {
+															"type": "number"
+														},
+														"g": {
+															"type": "number"
+														},
+														"b": {
+															"type": "number"
+														},
+														"a": {
+															"type": "number"
+														}
+													}
+												},
+												"bg": {
+													"type": "object",
+													"properties": {
+														"r": {
+															"type": "number"
+														},
+														"g": {
+															"type": "number"
+														},
+														"b": {
+															"type": "number"
+														},
+														"a": {
+															"type": "number"
+														}
+													}
+												},
+												"txt": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"res",
+												"fg",
+												"bg",
+												"txt"
+											]
+										}
+									},
+									"himL": {
+										"type": "array",
+										"items": {
+											"type": "object",
+											"properties": {
+												"hid": {
+													"type": "string"
+												},
+												"act": {
+													"type": "boolean"
+												},
+												"pub": {
+													"type": "string"
+												},
+												"head": {
+													"type": "string"
+												},
+												"lead": {
+													"type": "string"
+												},
+												"text": {
+													"type": "string"
+												},
+												"tckr": {
+													"type": "string"
+												},
+												"icoX": {
+													"type": "number"
+												},
+												"prio": {
+													"type": "number"
+												},
+												"fLocX": {
+													"type": "number"
+												},
+												"prod": {
+													"type": "number"
+												},
+												"lModDate": {
+													"type": "string"
+												},
+												"lModTime": {
+													"type": "string"
+												},
+												"sDate": {
+													"type": "string"
+												},
+												"sTime": {
+													"type": "string"
+												},
+												"eDate": {
+													"type": "string"
+												},
+												"eTime": {
+													"type": "string"
+												},
+												"cat": {
+													"type": "number"
+												},
+												"pubChL": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"name": {
+																"type": "string"
+															},
+															"fDate": {
+																"type": "string"
+															},
+															"fTime": {
+																"type": "string"
+															},
+															"tDate": {
+																"type": "string"
+															},
+															"tTime": {
+																"type": "string"
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							},
+							"type": {
+								"type": "string"
+							},
+							"jnyL": {
+								"type": "array",
+								"items": {
+									"type": "object",
+									"properties": {
+										"jid": {
+											"type": "string"
+										},
+										"date": {
+											"type": "string"
+										},
+										"prodX": {
+											"type": "number"
+										},
+										"dirTxt": {
+											"type": "string"
+										},
+										"status": {
+											"type": "string"
+										},
+										"isRchbl": {
+											"type": "boolean"
+										},
+										"stbStop": {
+											"type": "object",
+											"properties": {
+												"locX": {
+													"type": "number"
+												},
+												"idx": {
+													"type": "number"
+												},
+												"dProdX": {
+													"type": "number"
+												},
+												"dPlatfS": {
+													"type": "string"
+												},
+												"dInR": {
+													"type": "boolean"
+												},
+												"dTimeS": {
+													"type": "string"
+												},
+												"type": {
+													"type": "string"
+												},
+												"dTimeR": {
+													"type": "string"
+												},
+												"dProgType": {
+													"type": "string"
+												},
+												"dPlatfR": {
+													"type": "string"
+												}
+											}
+										},
+										"stopL": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"locX": {
+														"type": "number"
+													},
+													"idx": {
+														"type": "number"
+													},
+													"dPlatfS": {
+														"type": "string"
+													},
+													"dInR": {
+														"type": "boolean"
+													},
+													"dTimeS": {
+														"type": "string"
+													},
+													"isImp": {
+														"type": "boolean"
+													},
+													"type": {
+														"type": "string"
+													},
+													"aOutR": {
+														"type": "boolean"
+													},
+													"aTimeS": {
+														"type": "string"
+													},
+													"dTimeR": {
+														"type": "string"
+													},
+													"dProgType": {
+														"type": "string"
+													},
+													"dPlatfR": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"locX",
+													"idx",
+													"isImp",
+													"type",
+													"aOutR",
+													"aTimeS",
+													"dPlatfS",
+													"dInR",
+													"dTimeS",
+													"dTimeR",
+													"dProgType",
+													"dPlatfR"
+												]
+											}
+										},
+										"msgL": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"type": {
+														"type": "string"
+													},
+													"remX": {
+														"type": "number"
+													},
+													"fLocX": {
+														"type": "number"
+													},
+													"tLocX": {
+														"type": "number"
+													},
+													"tagL": {
+														"type": "array",
+														"items": {
+															"type": "string"
+														}
+													},
+													"himX": {
+														"type": "number"
+													}
+												},
+												"required": [
+													"type",
+													"remX",
+													"fLocX",
+													"tLocX",
+													"tagL",
+													"himX"
+												]
+											}
+										},
+										"subscr": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"jid",
+										"date",
+										"prodX",
+										"dirTxt",
+										"status",
+										"isRchbl",
+										"stbStop",
+										"stopL",
+										"msgL",
+										"subscr"
+									]
+								}
+							},
+							"fpB": {
+								"type": "string"
+							},
+							"fpE": {
+								"type": "string"
+							},
+							"planrtTS": {
+								"type": "string"
+							},
+							"sD": {
+								"type": "string"
+							},
+							"sT": {
+								"type": "string"
+							}
+						}
+					}
+				},
+				"required": [
+					"meth",
+					"err",
+					"res"
+				]
+			}
+		}
+	},
+	"required": [
+		"ver",
+		"ext",
+		"lang",
+		"id",
+		"svcResL"
+	]
+}
