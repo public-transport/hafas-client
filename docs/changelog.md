@@ -1,5 +1,12 @@
 # Changelog
 
+## `4.1.0`
+
+- 831bcaf ISO date+time: suppress milliseconds if 0
+- 3e01303/75432fc CFG profile
+- 820f2ab `parseWarning`: parse products
+- 3ab099b/57c7186 HVV profile
+
 ## `4.0.3`
 
 - 6aa57d4 `parseJourneyLeg`/`parseMovement`/`parseArrival`/`parseDeparture`: handle missing `dirTxt` 🐛
