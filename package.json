@@ -53,6 +53,7 @@
 		"vbb-translate-ids": "^3.1.0"
 	},
 	"devDependencies": {
+		"ajv": "^6.10.0",
 		"db-stations": "^2.3.0",
 		"is-coordinates": "^2.0.2",
 		"is-roughly-equal": "^0.1.0",
@@ -64,6 +65,7 @@
 	},
 	"scripts": {
 		"test": "env NODE_ENV=dev node test/index.js",
+		"find-unknown-fields": "node find-unknown-fields/index.js",
 		"prepublishOnly": "npm test | tap-spec",
 		"install": "node lib/generate-install-id.js >id.json"
 	}
