@@ -1,5 +1,10 @@
 # Changelog
 
+## `4.1.1`
+
+- 875ea18 parse scheduled/actual platform information on legs, fixes #116 🐛
+- f92e933 [DB](../p/db) departures/arrivals: parse load factor #112
+
 ## `4.1.0`
 
 - 831bcaf ISO date+time: suppress milliseconds if 0
