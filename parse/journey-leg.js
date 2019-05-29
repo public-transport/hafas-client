@@ -94,8 +94,15 @@ const createParseJourneyLeg = (profile, opt, data) => {
 			res.line = lines[parseInt(pt.jny.prodX)] || null
 			res.direction = pt.jny.dirTxt && profile.parseStationName(pt.jny.dirTxt) || null
 
-			if (pt.dep.dPlatfS) res.departurePlatform = pt.dep.dPlatfS
-			if (pt.arr.aPlatfS) res.arrivalPlatform = pt.arr.aPlatfS
+			res.arrivalPlatform = pt.arr.aPlatfR ||pt.arr.aPlatfS || null
+			if (pt.arr.aPlatfR && pt.arr.aPlatfS && pt.arr.aPlatfR !== pt.arr.aPlatfS) {
+				res.scheduledArrivalPlatform = pt.arr.aPlatfS
+			}
+
+			res.departurePlatform = pt.dep.dPlatfR || pt.dep.dPlatfS || null
+			if (pt.dep.dPlatfR && pt.dep.dPlatfS && pt.dep.dPlatfR !== pt.dep.dPlatfS) {
+				res.scheduledDeparturePlatform = pt.dep.dPlatfS
+			}
 
 			if (parseStopovers && pt.jny.stopL) {
 				const parse = profile.parseStopover(profile, opt, data, j.date)
