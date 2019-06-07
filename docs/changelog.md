@@ -1,5 +1,9 @@
 # Changelog
 
+## `4.2.0`
+
+- 6da1e80 add `leg.reachable`
+
 ## `4.1.1`
 
 - 875ea18 parse scheduled/actual platform information on legs, fixes #116 🐛
