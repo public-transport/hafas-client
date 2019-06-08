@@ -1,5 +1,9 @@
 # Changelog
 
+## `4.2.1`
+
+- 9078d2d fix `leg.reachable`, which was breaking all walking legs 🐛
+
 ## `4.2.0`
 
 - 6da1e80 add `leg.reachable`
