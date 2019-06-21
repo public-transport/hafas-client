@@ -5,6 +5,13 @@ const codesByIcon = Object.assign(Object.create(null), {
 })
 
 // todo: is passing in profile necessary?
+// todo: pass in tag list from hint reference, e.g.:
+// "tagL": [
+// 	"RES_JNY_H3" // H3 = level 3 heading? shown on overview
+// ]
+// "tagL": [
+// 	"RES_JNY_DTL" // only shown in journey detail
+// ]
 const parseHint = (profile, h, icons) => {
 	// todo: C
 	// todo:

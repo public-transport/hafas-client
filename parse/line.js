@@ -12,7 +12,7 @@ const createParseLine = (profile, opt, {operators}) => {
 
 	const parseLine = (p) => {
 		if (!p) return null // todo: handle this upstream
-		const name = p.line || p.name || null
+		const name = p.line || p.addName || p.name || null // wtf
 		const res = {
 			type: 'line',
 			// This is terrible, but FPTF demands an ID. Let's pray for HAFAS.
@@ -21,6 +21,7 @@ const createParseLine = (profile, opt, {operators}) => {
 				|| name && slugg(name.trim())
 				|| null
 			),
+			// todo: what is p.prodCtx.matchId? use as `id`? expose it.
 			fahrtNr: p.prodCtx && p.prodCtx.num || null,
 			name,
 			public: true
