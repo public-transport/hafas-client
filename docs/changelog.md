@@ -1,5 +1,10 @@
 # Changelog
 
+## `4.2.2`
+
+- 64f797e `parseProductsBitmask`: fix bitmask handling 🐛
+- 707fd29 `p-retry@4`, `p-throttle@3`
+
 ## `4.2.1`
 
 - 9078d2d fix `leg.reachable`, which was breaking all walking legs 🐛
