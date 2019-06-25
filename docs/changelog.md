@@ -1,5 +1,10 @@
 # Changelog
 
+## `4.3.0`
+
+- 1e0182f `parseLint`: use `addName`
+- d0f7ca1 follow HTTP redirects, accept `br` encoding
+
 ## `4.2.2`
 
 - 64f797e `parseProductsBitmask`: fix bitmask handling 🐛
