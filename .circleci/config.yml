@@ -1,0 +1,65 @@
+version: 2.1
+commands:
+  install-and-unit-test:
+    steps:
+      - checkout
+      - run: npm install
+      - run: npm run test-unit
+  install-and-integration-test:
+    steps:
+      - checkout
+      - run: npm install
+      - run: npm run test-integration
+  install-and-e2e-test:
+    steps:
+      - checkout
+      - run: npm install
+      - run: npm run test-e2e
+jobs:
+  unit-test-10:
+    docker:
+      - image: circleci/node:10
+    steps:
+      - install-and-unit-test
+  unit-test-lts:
+    docker:
+      - image: circleci/node:lts
+    steps:
+      - install-and-unit-test
+  unit-test-latest:
+    docker:
+      - image: circleci/node:latest
+    steps:
+      - install-and-unit-test
+  integration-test-10:
+    docker:
+      - image: circleci/node:10
+    steps:
+      - install-and-integration-test
+  integration-test-lts:
+    docker:
+      - image: circleci/node:lts
+    steps:
+      - install-and-integration-test
+  integration-test-latest:
+    docker:
+      - image: circleci/node:latest
+    steps:
+      - install-and-integration-test
+  e2e-test-10:
+    docker:
+      - image: circleci/node:10
+    steps:
+      - install-and-e2e-test
+workflows:
+  test:
+    jobs:
+      - unit-test-10
+      - unit-test-lts
+      - unit-test-latest
+      - integration-test-10
+      - integration-test-lts
+      - integration-test-latest
+      - e2e-test-10:
+          requires:
+            - unit-test-10
