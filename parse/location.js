@@ -30,6 +30,7 @@ const parseLocation = (profile, opt, {lines}, l) => {
 		}
 
 		if ('pCls' in l) stop.products = profile.parseProducts(l.pCls)
+		if ('meta' in l) stop.isMeta = !!l.meta
 
 		if (
 			opt.linesOfStops &&
