@@ -1,5 +1,9 @@
 # Changelog
 
+## `4.4.0`
+
+- e46d6cd `parseLocation`: expose `stop.isMeta`
+
 ## `4.3.0`
 
 - 1e0182f `parseLint`: use `addName`
