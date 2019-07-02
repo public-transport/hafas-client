@@ -1,0 +1,14 @@
+{
+	"private": true,
+	"name": "debug-cli",
+	"version": "1.0.0",
+	"bin": {
+		"hafas-client-debug-cli": "./cli.js"
+	},
+	"author": "Jannis R <mail@jannisr.de>",
+	"license": "ISC",
+	"dependencies": {
+		"cli-native": "^1.0.0",
+		"mri": "^1.1.4"
+	}
+}
