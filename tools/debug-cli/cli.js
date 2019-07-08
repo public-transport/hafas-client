@@ -3,7 +3,7 @@
 
 const mri = require('mri')
 const {join} = require('path')
-const createClient = require('..')
+const createClient = require('../..')
 
 const showError = (err) => {
 	console.error(err)
@@ -39,7 +39,7 @@ const parseArgs = [
 
 const argv = mri(process.argv.slice(2))
 
-const profile = require(join('../p', argv._[0]))
+const profile = require(join('../../p', argv._[0]))
 const client = createClient(profile, 'hafas-client debug CLI')
 
 const fnName = argv._[1]
