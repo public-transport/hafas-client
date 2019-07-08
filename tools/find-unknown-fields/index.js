@@ -2,10 +2,10 @@
 
 const Ajv = require('ajv')
 const omit = require('lodash/omit')
-const createClient = require('..')
-const vbbProfile = require('../p/vbb')
-const bvgProfile = require('../p/bvg')
-const dbProfile = require('../p/db')
+const createClient = require('../..')
+const vbbProfile = require('../../p/vbb')
+const bvgProfile = require('../../p/bvg')
+const dbProfile = require('../../p/db')
 const journeysSchema = require('./journeys.schema.json')
 const departuresSchema = require('./departures.schema.json')
 // todo: https://github.com/epoberezkin/ajv#formats
