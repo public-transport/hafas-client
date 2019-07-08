@@ -1,7 +1,7 @@
 {
 	"name": "hafas-client",
 	"description": "Client for HAFAS public transport APIs.",
-	"version": "4.4.0",
+	"version": "4.5.0",
 	"main": "index.js",
 	"files": [
 		"index.js",
@@ -17,7 +17,7 @@
 	"contributors": [
 		"Julius Tens <mail@juliustens.eu>"
 	],
-	"homepage": "https://github.com/public-transport/hafas-client/tree/4.3.0",
+	"homepage": "https://github.com/public-transport/hafas-client/tree/4.5.0",
 	"repository": "public-transport/hafas-client",
 	"bugs": "https://github.com/public-transport/hafas-client/issues",
 	"license": "ISC",

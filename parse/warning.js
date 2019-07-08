@@ -38,7 +38,6 @@ const parseWarning = (profile, w, icons) => {
 	}
 	if ('prod' in w) res.products = profile.parseProducts(61442)
 
-	// todo: pass tzOffset to `parseDateTime`
 	if (w.sDate && w.sTime) res.validFrom = parseDateTime(profile, w.sDate, w.sTime, null)
 	if (w.eDate && w.eTime) res.validUntil = parseDateTime(profile, w.eDate, w.eTime, null)
 	if (w.lModDate && w.lModTime) res.modified = parseDateTime(profile, w.lModDate, w.lModTime, null)

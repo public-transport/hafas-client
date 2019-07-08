@@ -19,7 +19,7 @@ module.exports = [
 		default: true
 	},
 	{
-		id: 'regionalExp',
+		id: 'regionalExp', // todo: rename
 		mode: 'train',
 		bitmasks: [4],
 		name: 'RegionalExpress & InterRegio',

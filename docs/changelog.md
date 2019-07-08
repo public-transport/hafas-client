@@ -1,5 +1,9 @@
 # Changelog
 
+## `4.5.0`
+
+- b144dd5/b57c212 return nice error messages & error codes
+
 ## `4.4.0`
 
 - e46d6cd `parseLocation`: expose `stop.isMeta`
