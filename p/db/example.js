@@ -26,6 +26,12 @@ client.journeys('8011167', '8000261', {results: 1, tickets: true})
 // 	when: new Date('2018-08-27T10:00:00+0200'),
 // 	maxDuration: 50
 // })
+// client.radar({
+// 	north: 52.52411,
+// 	west: 13.41002,
+// 	south: 52.51942,
+// 	east: 13.41709
+// }, {results: 10})
 
 .then((data) => {
 	console.log(require('util').inspect(data, {depth: null, colors: true}))
