@@ -1,5 +1,10 @@
 # Changelog
 
+## `4.5.1`
+
+- bd7d5bb `parseWarning`: handle missing `summary`/`text` 🐛
+- 92c842b DB: enable `radar()`
+
 ## `4.5.0`
 
 - b144dd5/b57c212 return nice error messages & error codes
