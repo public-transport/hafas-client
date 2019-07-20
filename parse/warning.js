@@ -31,8 +31,8 @@ const parseWarning = (profile, w, icons) => {
 	const res = {
 		id: w.hid || null,
 		type,
-		summary: brToNewline(w.head), // todo: decode HTML entities
-		text: brToNewline(w.text), // todo: decode HTML entities
+		summary: w.head ? brToNewline(w.head) : null, // todo: decode HTML entities
+		text: w.text ? brToNewline(w.text) : null, // todo: decode HTML entities
 		priority: w.prio,
 		category: w.cat || null // todo: parse to sth meaningful
 	}
