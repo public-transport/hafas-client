@@ -29,8 +29,8 @@ const parseWarning = (profile, w, icons) => {
 
 	const res = {
 		type,
-		summary: brToNewline(w.head),
-		text: brToNewline(w.text),
+		summary: w.head ? brToNewline(w.head) : null,
+		text: w.text ? brToNewline(w.text) : null,
 		priority: w.prio,
 		category: w.cat || null // todo: parse to sth meaningful
 	}
