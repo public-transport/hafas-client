@@ -1,5 +1,9 @@
 # Changelog
 
+## `3.10.2`
+
+- 1babfbf `parseWarning`: handle missing summary/text 🐛
+
 ## `3.10.1`
 
 - dafc96a update CMTA credentials
