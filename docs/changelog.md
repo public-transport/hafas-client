@@ -1,5 +1,9 @@
 # Changelog
 
+## `4.5.2`
+
+- 2e88e96 install-unique client ID via `postinstall` step -> generate process-unique ID
+
 ## `4.5.1`
 
 - bd7d5bb `parseWarning`: handle missing `summary`/`text` 🐛
