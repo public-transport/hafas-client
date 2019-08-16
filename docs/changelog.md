@@ -1,5 +1,9 @@
 # Changelog
 
+## `4.6.0`
+
+- 73ca349/19c3ee6 NVV profile
+
 ## `4.5.2`
 
 - 2e88e96 install-unique client ID via `postinstall` step -> generate process-unique ID
