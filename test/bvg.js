@@ -285,8 +285,7 @@ test('journeys: via works – with detour', async (t) => {
 
 test('departures', async (t) => {
 	const departures = await client.departures(spichernstr, {
-		duration: 5, when,
-		stopovers: true
+		duration: 5, when
 	})
 
 	await testDepartures({
@@ -334,7 +333,8 @@ test('departures at 7-digit station', async (t) => {
 	t.end()
 })
 
-test('departures without related stations', async (t) => {
+// todo: `opt.includeRelatedStations` is currently not supported by BVG
+test.skip('departures without related stations', async (t) => {
 	await testDeparturesWithoutRelatedStations({
 		test: t,
 		fetchDepartures: client.departures,
