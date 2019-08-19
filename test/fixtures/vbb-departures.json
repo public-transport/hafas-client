@@ -1,0 +1,1344 @@
+{
+	"common": {
+		"locL": [
+			{
+				"lid": "A=1@O=S+U Jannowitzbrücke (Berlin)@X=13418027@Y=52515503@U=86@L=900100004@",
+				"type": "S",
+				"name": "S+U Jannowitzbrücke (Berlin)",
+				"icoX": 2,
+				"extId": "900100004",
+				"state": "F",
+				"crd": {
+					"x": 13418027,
+					"y": 52515503,
+					"type": "WGS84",
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"pCls": 11,
+				"pRefL": [
+					1,
+					2,
+					3,
+					4,
+					5,
+					6,
+					7,
+					8,
+					9,
+					10,
+					11
+				]
+			},
+			{
+				"lid": "A=1@O=S+U Hermannstr. (Berlin)@X=13431700@Y=52467177@U=86@L=900079221@",
+				"type": "S",
+				"name": "S+U Hermannstr. (Berlin)",
+				"icoX": 2,
+				"extId": "900079221",
+				"state": "F",
+				"crd": {
+					"x": 13431700,
+					"y": 52467177,
+					"type": "WGS84",
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"pCls": 11
+			},
+			{
+				"lid": "A=1@O=U Heinrich-Heine-Str. (Berlin)@X=13416167@Y=52510856@U=86@L=900100008@",
+				"type": "S",
+				"name": "U Heinrich-Heine-Str. (Berlin)",
+				"icoX": 0,
+				"extId": "900100008",
+				"state": "F",
+				"crd": {
+					"x": 13416167,
+					"y": 52510856,
+					"type": "WGS84",
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"pCls": 10
+			},
+			{
+				"lid": "A=1@O=U Moritzplatz (Berlin)@X=13410944@Y=52503737@U=86@L=900013101@",
+				"type": "S",
+				"name": "U Moritzplatz (Berlin)",
+				"icoX": 0,
+				"extId": "900013101",
+				"state": "F",
+				"crd": {
+					"x": 13410944,
+					"y": 52503737,
+					"type": "WGS84",
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"pCls": 10
+			},
+			{
+				"lid": "A=1@O=U Kottbusser Tor (Berlin)@X=13417749@Y=52499044@U=86@L=900013102@",
+				"type": "S",
+				"name": "U Kottbusser Tor (Berlin)",
+				"icoX": 0,
+				"extId": "900013102",
+				"state": "F",
+				"crd": {
+					"x": 13417749,
+					"y": 52499044,
+					"type": "WGS84",
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"pCls": 10
+			},
+			{
+				"lid": "A=1@O=U Schönleinstr. (Berlin)@X=13422243@Y=52493183@U=86@L=900016201@",
+				"type": "S",
+				"name": "U Schönleinstr. (Berlin)",
+				"icoX": 0,
+				"extId": "900016201",
+				"state": "F",
+				"crd": {
+					"x": 13422243,
+					"y": 52493183,
+					"type": "WGS84",
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"pCls": 10
+			},
+			{
+				"lid": "A=1@O=U Hermannplatz (Berlin)@X=13424724@Y=52486954@U=86@L=900078101@",
+				"type": "S",
+				"name": "U Hermannplatz (Berlin)",
+				"icoX": 0,
+				"extId": "900078101",
+				"state": "F",
+				"crd": {
+					"x": 13424724,
+					"y": 52486954,
+					"type": "WGS84",
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"pCls": 2
+			},
+			{
+				"lid": "A=1@O=U Boddinstr. (Berlin)@X=13425785@Y=52479744@U=86@L=900079202@",
+				"type": "S",
+				"name": "U Boddinstr. (Berlin)",
+				"icoX": 0,
+				"extId": "900079202",
+				"state": "F",
+				"crd": {
+					"x": 13425785,
+					"y": 52479744,
+					"type": "WGS84",
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"pCls": 10
+			},
+			{
+				"lid": "A=1@O=U Leinestr. (Berlin)@X=13428401@Y=52472877@U=86@L=900079201@",
+				"type": "S",
+				"name": "U Leinestr. (Berlin)",
+				"icoX": 0,
+				"extId": "900079201",
+				"state": "F",
+				"crd": {
+					"x": 13428401,
+					"y": 52472877,
+					"type": "WGS84",
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"pCls": 10
+			},
+			{
+				"lid": "A=1@O=U Paracelsus-Bad (Berlin)@X=13347534@Y=52574536@U=86@L=900085104@",
+				"type": "S",
+				"name": "U Paracelsus-Bad (Berlin)",
+				"icoX": 0,
+				"extId": "900085104",
+				"state": "F",
+				"crd": {
+					"x": 13347534,
+					"y": 52574536,
+					"type": "WGS84",
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"pCls": 10
+			},
+			{
+				"lid": "A=1@O=S+U Alexanderplatz (Berlin) [U8]@X=13412121@Y=52521616@U=86@L=900100705@",
+				"type": "S",
+				"name": "S+U Alexanderplatz (Berlin) [U8]",
+				"icoX": 0,
+				"extId": "900100705",
+				"state": "F",
+				"crd": {
+					"x": 13412121,
+					"y": 52521616,
+					"type": "WGS84",
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"pCls": 2
+			},
+			{
+				"lid": "A=1@O=U Weinmeisterstr. (Berlin)@X=13405308@Y=52525374@U=86@L=900100051@",
+				"type": "S",
+				"name": "U Weinmeisterstr. (Berlin)",
+				"icoX": 0,
+				"extId": "900100051",
+				"state": "F",
+				"crd": {
+					"x": 13405308,
+					"y": 52525374,
+					"type": "WGS84",
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"pCls": 14
+			},
+			{
+				"lid": "A=1@O=U Rosenthaler Platz (Berlin)@X=13401397@Y=52529778@U=86@L=900100023@",
+				"type": "S",
+				"name": "U Rosenthaler Platz (Berlin)",
+				"icoX": 0,
+				"extId": "900100023",
+				"state": "F",
+				"crd": {
+					"x": 13401397,
+					"y": 52529778,
+					"type": "WGS84",
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"pCls": 14
+			},
+			{
+				"lid": "A=1@O=U Bernauer Str. (Berlin)@X=13396229@Y=52537994@U=86@L=900007110@",
+				"type": "S",
+				"name": "U Bernauer Str. (Berlin)",
+				"icoX": 0,
+				"extId": "900007110",
+				"state": "F",
+				"crd": {
+					"x": 13396229,
+					"y": 52537994,
+					"type": "WGS84",
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"pCls": 14
+			},
+			{
+				"lid": "A=1@O=U Voltastr. (Berlin)@X=13393154@Y=52541932@U=86@L=900007103@",
+				"type": "S",
+				"name": "U Voltastr. (Berlin)",
+				"icoX": 0,
+				"extId": "900007103",
+				"state": "F",
+				"crd": {
+					"x": 13393154,
+					"y": 52541932,
+					"type": "WGS84",
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"pCls": 10
+			},
+			{
+				"lid": "A=1@O=S+U Gesundbrunnen Bhf (Berlin)@X=13388372@Y=52548638@U=86@L=900007102@",
+				"type": "S",
+				"name": "S+U Gesundbrunnen Bhf (Berlin)",
+				"icoX": 6,
+				"extId": "900007102",
+				"state": "F",
+				"crd": {
+					"x": 13388372,
+					"y": 52548638,
+					"type": "WGS84",
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"pCls": 107
+			},
+			{
+				"lid": "A=1@O=U Pankstr. (Berlin)@X=13381837@Y=52552251@U=86@L=900009203@",
+				"type": "S",
+				"name": "U Pankstr. (Berlin)",
+				"icoX": 0,
+				"extId": "900009203",
+				"state": "F",
+				"crd": {
+					"x": 13381837,
+					"y": 52552251,
+					"type": "WGS84",
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"pCls": 10
+			},
+			{
+				"lid": "A=1@O=U Osloer Str. (Berlin)@X=13373279@Y=52557105@U=86@L=900009202@",
+				"type": "S",
+				"name": "U Osloer Str. (Berlin)",
+				"icoX": 0,
+				"extId": "900009202",
+				"state": "F",
+				"crd": {
+					"x": 13373279,
+					"y": 52557105,
+					"type": "WGS84",
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"pCls": 14
+			},
+			{
+				"lid": "A=1@O=U Franz-Neumann-Platz (Am Schäfersee) (Berlin)@X=13364281@Y=52563856@U=86@L=900085202@",
+				"type": "S",
+				"name": "U Franz-Neumann-Platz (Am Schäfersee) (Berlin)",
+				"icoX": 0,
+				"extId": "900085202",
+				"state": "F",
+				"crd": {
+					"x": 13364281,
+					"y": 52563856,
+					"type": "WGS84",
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"pCls": 10
+			},
+			{
+				"lid": "A=1@O=U Residenzstr. (Berlin)@X=13360631@Y=52570841@U=86@L=900085203@",
+				"type": "S",
+				"name": "U Residenzstr. (Berlin)",
+				"icoX": 0,
+				"extId": "900085203",
+				"state": "F",
+				"crd": {
+					"x": 13360631,
+					"y": 52570841,
+					"type": "WGS84",
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"pCls": 10
+			},
+			{
+				"lid": "A=1@O=S Spandau Bhf (Berlin)@X=13197477@Y=52534794@U=86@L=900029101@",
+				"type": "S",
+				"name": "S Spandau Bhf (Berlin)",
+				"icoX": 6,
+				"extId": "900029101",
+				"state": "F",
+				"crd": {
+					"x": 13197477,
+					"y": 52534794,
+					"type": "WGS84",
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"pCls": 97
+			},
+			{
+				"lid": "A=1@O=S+U Alexanderplatz Bhf (Berlin)@X=13411267@Y=52521508@U=86@L=900100003@",
+				"type": "S",
+				"name": "S+U Alexanderplatz Bhf (Berlin)",
+				"icoX": 8,
+				"extId": "900100003",
+				"state": "F",
+				"crd": {
+					"x": 13411267,
+					"y": 52521508,
+					"type": "WGS84",
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"pCls": 73
+			},
+			{
+				"lid": "A=1@O=S Hackescher Markt (Berlin)@X=13402359@Y=52522605@U=86@L=900100002@",
+				"type": "S",
+				"name": "S Hackescher Markt (Berlin)",
+				"icoX": 2,
+				"extId": "900100002",
+				"state": "F",
+				"crd": {
+					"x": 13402359,
+					"y": 52522605,
+					"type": "WGS84",
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"pCls": 13
+			},
+			{
+				"lid": "A=1@O=S+U Friedrichstr. Bhf (Berlin)@X=13387149@Y=52520268@U=86@L=900100001@",
+				"type": "S",
+				"name": "S+U Friedrichstr. Bhf (Berlin)",
+				"icoX": 8,
+				"extId": "900100001",
+				"state": "F",
+				"crd": {
+					"x": 13387149,
+					"y": 52520268,
+					"type": "WGS84",
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"pCls": 79
+			},
+			{
+				"lid": "A=1@O=S+U Berlin Hauptbahnhof@X=13368928@Y=52525850@U=86@L=900003201@",
+				"type": "S",
+				"name": "S+U Berlin Hauptbahnhof",
+				"icoX": 6,
+				"extId": "900003201",
+				"state": "F",
+				"crd": {
+					"x": 13368928,
+					"y": 52525850,
+					"type": "WGS84",
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"pCls": 111
+			},
+			{
+				"lid": "A=1@O=S Bellevue (Berlin)@X=13347102@Y=52519953@U=86@L=900003102@",
+				"type": "S",
+				"name": "S Bellevue (Berlin)",
+				"icoX": 2,
+				"extId": "900003102",
+				"state": "F",
+				"crd": {
+					"x": 13348073,
+					"y": 52520016,
+					"type": "WGS84",
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"pCls": 1
+			},
+			{
+				"lid": "A=1@O=S Tiergarten (Berlin)@X=13336244@Y=52513957@U=86@L=900003103@",
+				"type": "S",
+				"name": "S Tiergarten (Berlin)",
+				"icoX": 2,
+				"extId": "900003103",
+				"state": "F",
+				"crd": {
+					"x": 13336244,
+					"y": 52513957,
+					"type": "WGS84",
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"pCls": 9
+			},
+			{
+				"lid": "A=1@O=S+U Zoologischer Garten Bhf (Berlin)@X=13332711@Y=52506919@U=86@L=900023201@",
+				"type": "S",
+				"name": "S+U Zoologischer Garten Bhf (Berlin)",
+				"icoX": 6,
+				"extId": "900023201",
+				"state": "F",
+				"crd": {
+					"x": 13332711,
+					"y": 52506919,
+					"type": "WGS84",
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"pCls": 107
+			},
+			{
+				"lid": "A=1@O=S Savignyplatz (Berlin)@X=13319002@Y=52505220@U=86@L=900024203@",
+				"type": "S",
+				"name": "S Savignyplatz (Berlin)",
+				"icoX": 2,
+				"extId": "900024203",
+				"state": "F",
+				"crd": {
+					"x": 13319002,
+					"y": 52505220,
+					"type": "WGS84",
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"pCls": 1
+			},
+			{
+				"lid": "A=1@O=S Charlottenburg Bhf (Berlin)@X=13303846@Y=52504806@U=86@L=900024101@",
+				"type": "S",
+				"name": "S Charlottenburg Bhf (Berlin)",
+				"icoX": 6,
+				"extId": "900024101",
+				"state": "F",
+				"crd": {
+					"x": 13303846,
+					"y": 52504806,
+					"type": "WGS84",
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"pCls": 105
+			},
+			{
+				"lid": "A=1@O=S Westkreuz (Berlin)@X=13283036@Y=52501148@U=86@L=900024102@",
+				"type": "S",
+				"name": "S Westkreuz (Berlin)",
+				"icoX": 2,
+				"extId": "900024102",
+				"state": "F",
+				"crd": {
+					"x": 13283036,
+					"y": 52501148,
+					"type": "WGS84",
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"pCls": 9
+			},
+			{
+				"lid": "A=1@O=S Messe Süd (Berlin)@X=13270451@Y=52498774@U=86@L=900025423@",
+				"type": "S",
+				"name": "S Messe Süd (Berlin)",
+				"icoX": 2,
+				"extId": "900025423",
+				"state": "F",
+				"crd": {
+					"x": 13270451,
+					"y": 52498774,
+					"type": "WGS84",
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"pCls": 9
+			},
+			{
+				"lid": "A=1@O=S Heerstr. (Berlin)@X=13258514@Y=52508276@U=86@L=900026105@",
+				"type": "S",
+				"name": "S Heerstr. (Berlin)",
+				"icoX": 2,
+				"extId": "900026105",
+				"state": "F",
+				"crd": {
+					"x": 13258514,
+					"y": 52508276,
+					"type": "WGS84",
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"pCls": 9
+			},
+			{
+				"lid": "A=1@O=S Olympiastadion (Berlin)@X=13241111@Y=52511135@U=86@L=900025321@",
+				"type": "S",
+				"name": "S Olympiastadion (Berlin)",
+				"icoX": 2,
+				"extId": "900025321",
+				"state": "F",
+				"crd": {
+					"x": 13242810,
+					"y": 52511296,
+					"type": "WGS84",
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"pCls": 1
+			},
+			{
+				"lid": "A=1@O=S Pichelsberg (Berlin)@X=13227195@Y=52510263@U=86@L=900025424@",
+				"type": "S",
+				"name": "S Pichelsberg (Berlin)",
+				"icoX": 2,
+				"extId": "900025424",
+				"state": "F",
+				"crd": {
+					"x": 13227195,
+					"y": 52510263,
+					"type": "WGS84",
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"pCls": 1
+			},
+			{
+				"lid": "A=1@O=S Stresow (Berlin)@X=13209127@Y=52532502@U=86@L=900030202@",
+				"type": "S",
+				"name": "S Stresow (Berlin)",
+				"icoX": 2,
+				"extId": "900030202",
+				"state": "F",
+				"crd": {
+					"x": 13209127,
+					"y": 52532502,
+					"type": "WGS84",
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"pCls": 9
+			}
+		],
+		"prodL": [
+			{
+				"pid": "L::1::U::B3041857784::U_3041857784_U8::*",
+				"name": "U8",
+				"nameS": "U8",
+				"number": "U8",
+				"icoX": 0,
+				"cls": 2,
+				"oprX": 0,
+				"prodCtx": {
+					"name": "      U8",
+					"num": "19869",
+					"line": "U8",
+					"matchId": "U8",
+					"catOut": "U       ",
+					"catOutS": "U",
+					"catOutL": "U       ",
+					"catIn": "U",
+					"catCode": "1",
+					"admin": "BVU---"
+				},
+				"himIdL": [
+					"HIM_FREETEXT_16107"
+				]
+			},
+			{
+				"name": "S3",
+				"nameS": "S3",
+				"icoX": 2,
+				"cls": 1,
+				"prodCtx": {
+					"lineId": "S3"
+				}
+			},
+			{
+				"name": "S5",
+				"nameS": "S5",
+				"icoX": 2,
+				"cls": 1,
+				"prodCtx": {
+					"lineId": "S5"
+				}
+			},
+			{
+				"name": "S7",
+				"nameS": "S7",
+				"icoX": 2,
+				"cls": 1,
+				"prodCtx": {
+					"lineId": "S7"
+				}
+			},
+			{
+				"name": "S9",
+				"nameS": "S9",
+				"icoX": 2,
+				"cls": 1,
+				"prodCtx": {
+					"lineId": "S9"
+				}
+			},
+			{
+				"name": "S75",
+				"nameS": "S75",
+				"icoX": 2,
+				"cls": 1,
+				"prodCtx": {
+					"lineId": "S75"
+				}
+			},
+			{
+				"name": "U8",
+				"nameS": "U8",
+				"icoX": 0,
+				"cls": 2,
+				"prodCtx": {
+					"lineId": "U8"
+				}
+			},
+			{
+				"name": "248",
+				"nameS": "248",
+				"icoX": 3,
+				"cls": 8,
+				"prodCtx": {
+					"lineId": "248"
+				}
+			},
+			{
+				"name": "300",
+				"nameS": "300",
+				"icoX": 3,
+				"cls": 8,
+				"prodCtx": {
+					"lineId": "300"
+				}
+			},
+			{
+				"name": "N8",
+				"nameS": "N8",
+				"icoX": 3,
+				"cls": 8,
+				"prodCtx": {
+					"lineId": "N8"
+				}
+			},
+			{
+				"name": "N40",
+				"nameS": "N40",
+				"icoX": 3,
+				"cls": 8,
+				"prodCtx": {
+					"lineId": "N40"
+				}
+			},
+			{
+				"name": "N65",
+				"nameS": "N65",
+				"icoX": 3,
+				"cls": 8,
+				"prodCtx": {
+					"lineId": "N65"
+				}
+			},
+			{
+				"pid": "L::1::U::B3041857784::U_3041857784_U8::*",
+				"name": "U8",
+				"nameS": "U8",
+				"number": "U8",
+				"icoX": 0,
+				"cls": 2,
+				"oprX": 0,
+				"prodCtx": {
+					"name": "      U8",
+					"num": "19453",
+					"line": "U8",
+					"matchId": "U8",
+					"catOut": "U       ",
+					"catOutS": "U",
+					"catOutL": "U       ",
+					"catIn": "U",
+					"catCode": "1",
+					"admin": "BVU---"
+				},
+				"himIdL": [
+					"HIM_FREETEXT_16107"
+				]
+			},
+			{
+				"pid": "L::0::S::B1090519025::S_1090519025_S9::*",
+				"name": "S9",
+				"nameS": "S9",
+				"number": "S9",
+				"icoX": 2,
+				"cls": 1,
+				"oprX": 1,
+				"prodCtx": {
+					"name": "      S9",
+					"num": "27739",
+					"line": "S9",
+					"matchId": "9126",
+					"catOut": "S       ",
+					"catOutS": "S-7",
+					"catOutL": "S       ",
+					"catIn": "S-7",
+					"catCode": "0",
+					"admin": "DBS---"
+				},
+				"himIdL": [
+					"HIM_FREETEXT_61404",
+					"HIM_FREETEXT_61407",
+					"HIM_FREETEXT_61693",
+					"HIM_FREETEXT_61291",
+					"HIM_FREETEXT_59423",
+					"HIM_FREETEXT_59430",
+					"HIM_FREETEXT_59776",
+					"HIM_FREETEXT_61537",
+					"HIM_FREETEXT_61346",
+					"HIM_FREETEXT_61344",
+					"HIM_FREETEXT_59778",
+					"HIM_FREETEXT_60039",
+					"HIM_FREETEXT_59429",
+					"HIM_FREETEXT_62265"
+				]
+			}
+		],
+		"polyL": [],
+		"layerL": [
+			{
+				"id": "standard",
+				"name": "standard",
+				"index": 0,
+				"annoCnt": 0
+			}
+		],
+		"crdSysL": [
+			{
+				"id": "standard",
+				"index": 0,
+				"type": "WGS84",
+				"dim": 2
+			}
+		],
+		"opL": [
+			{
+				"name": "Berliner Verkehrsbetriebe",
+				"icoX": 1,
+				"id": "Berliner Verkehrsbetriebe"
+			},
+			{
+				"name": "S-Bahn Berlin GmbH",
+				"icoX": 7,
+				"id": "S-Bahn Berlin GmbH"
+			}
+		],
+		"remL": [
+			{
+				"type": "A",
+				"code": "bf",
+				"prio": 2,
+				"icoX": 4,
+				"txtN": "barrier-free"
+			},
+			{
+				"type": "A",
+				"code": "FB",
+				"prio": 350,
+				"icoX": 5,
+				"txtN": "Bicycle conveyance"
+			}
+		],
+		"icoL": [
+			{
+				"res": "prod_sub_t",
+				"fg": {
+					"r": 255,
+					"g": 255,
+					"b": 255,
+					"a": 255
+				},
+				"bg": {
+					"r": 0,
+					"g": 51,
+					"b": 153,
+					"a": 255
+				}
+			},
+			{
+				"res": "BVG",
+				"txt": "Berliner Verkehrsbetriebe"
+			},
+			{
+				"res": "prod_comm_t",
+				"fg": {
+					"r": 255,
+					"g": 255,
+					"b": 255,
+					"a": 255
+				},
+				"bg": {
+					"r": 55,
+					"g": 135,
+					"b": 74,
+					"a": 255
+				}
+			},
+			{
+				"res": "prod_bus_t",
+				"fg": {
+					"r": 255,
+					"g": 255,
+					"b": 255,
+					"a": 255
+				},
+				"bg": {
+					"r": 153,
+					"g": 51,
+					"b": 153,
+					"a": 255
+				}
+			},
+			{
+				"res": "INFO"
+			},
+			{
+				"res": "attr_bike"
+			},
+			{
+				"res": "prod_ic",
+				"fg": {
+					"r": 255,
+					"g": 255,
+					"b": 255,
+					"a": 255
+				},
+				"bg": {
+					"r": 125,
+					"g": 129,
+					"b": 133,
+					"a": 255
+				}
+			},
+			{
+				"res": "DBS",
+				"txt": "S-Bahn Berlin GmbH"
+			},
+			{
+				"res": "prod_reg",
+				"fg": {
+					"r": 255,
+					"g": 255,
+					"b": 255,
+					"a": 255
+				},
+				"bg": {
+					"r": 226,
+					"g": 0,
+					"b": 25,
+					"a": 255
+				}
+			}
+		]
+	},
+	"type": "DEP",
+	"jnyL": [
+		{
+			"jid": "1|31015|8|86|19082019",
+			"date": "20190819",
+			"prodX": 0,
+			"dirTxt": "S+U Hermannstr. (Berlin)",
+			"status": "P",
+			"isRchbl": true,
+			"stbStop": {
+				"locX": 0,
+				"idx": 15,
+				"dProdX": 0,
+				"dInR": true,
+				"dTimeS": "203000",
+				"dTimeR": "203000",
+				"dProgType": "PROGNOSED",
+				"type": "N"
+			},
+			"stopL": [
+				{
+					"locX": 0,
+					"idx": 15,
+					"dInR": true,
+					"dTimeS": "203000",
+					"dTimeR": "203000",
+					"dProgType": "PROGNOSED",
+					"type": "N"
+				},
+				{
+					"locX": 2,
+					"idx": 16,
+					"aOutR": true,
+					"aTimeS": "203100",
+					"type": "N"
+				},
+				{
+					"locX": 3,
+					"idx": 17,
+					"aOutR": true,
+					"aTimeS": "203300",
+					"type": "N"
+				},
+				{
+					"locX": 4,
+					"idx": 18,
+					"aOutR": true,
+					"aTimeS": "203500",
+					"type": "N"
+				},
+				{
+					"locX": 5,
+					"idx": 19,
+					"aOutR": true,
+					"aTimeS": "203600",
+					"type": "N"
+				},
+				{
+					"locX": 6,
+					"idx": 20,
+					"aOutR": true,
+					"aTimeS": "203800",
+					"type": "N"
+				},
+				{
+					"locX": 7,
+					"idx": 21,
+					"aOutR": true,
+					"aTimeS": "204000",
+					"type": "N"
+				},
+				{
+					"locX": 8,
+					"idx": 22,
+					"aOutR": true,
+					"aTimeS": "204100",
+					"type": "N"
+				},
+				{
+					"locX": 1,
+					"idx": 23,
+					"aOutR": true,
+					"aTimeS": "204200",
+					"type": "N"
+				}
+			],
+			"msgL": [
+				{
+					"type": "REM",
+					"remX": 0,
+					"fLocX": 0,
+					"tLocX": 1,
+					"tagL": [
+						"RES_JNY_DTL_H3"
+					]
+				},
+				{
+					"type": "REM",
+					"remX": 1,
+					"fLocX": 0,
+					"tLocX": 1,
+					"tagL": [
+						"RES_JNY_DTL"
+					]
+				}
+			],
+			"subscr": "F"
+		},
+		{
+			"jid": "1|31067|4|86|19082019",
+			"date": "20190819",
+			"prodX": 12,
+			"dirTxt": "U Paracelsus-Bad (Berlin)",
+			"status": "P",
+			"isRchbl": true,
+			"stbStop": {
+				"locX": 0,
+				"idx": 8,
+				"dProdX": 12,
+				"dInR": true,
+				"dTimeS": "203000",
+				"dTimeR": "203000",
+				"dProgType": "PROGNOSED",
+				"type": "N"
+			},
+			"stopL": [
+				{
+					"locX": 0,
+					"idx": 8,
+					"dInR": true,
+					"dTimeS": "203000",
+					"dTimeR": "203000",
+					"dProgType": "PROGNOSED",
+					"isImp": true,
+					"type": "N"
+				},
+				{
+					"locX": 10,
+					"idx": 9,
+					"aOutR": true,
+					"aTimeS": "203200",
+					"isImp": true,
+					"type": "N"
+				},
+				{
+					"locX": 11,
+					"idx": 10,
+					"aOutR": true,
+					"aTimeS": "203400",
+					"isImp": true,
+					"type": "N"
+				},
+				{
+					"locX": 12,
+					"idx": 11,
+					"aOutR": true,
+					"aTimeS": "203500",
+					"isImp": true,
+					"type": "N"
+				},
+				{
+					"locX": 13,
+					"idx": 12,
+					"aOutR": true,
+					"aTimeS": "203700",
+					"isImp": true,
+					"type": "N"
+				},
+				{
+					"locX": 14,
+					"idx": 13,
+					"aOutR": true,
+					"aTimeS": "203800",
+					"type": "N"
+				},
+				{
+					"locX": 15,
+					"idx": 14,
+					"aOutR": true,
+					"aTimeS": "204000",
+					"isImp": true,
+					"type": "N"
+				},
+				{
+					"locX": 16,
+					"idx": 15,
+					"aOutR": true,
+					"aTimeS": "204100",
+					"isImp": true,
+					"type": "N"
+				},
+				{
+					"locX": 17,
+					"idx": 16,
+					"aOutR": true,
+					"aTimeS": "204300",
+					"isImp": true,
+					"type": "N"
+				},
+				{
+					"locX": 18,
+					"idx": 17,
+					"aOutR": true,
+					"aTimeS": "204500",
+					"type": "N"
+				},
+				{
+					"locX": 19,
+					"idx": 18,
+					"aOutR": true,
+					"aTimeS": "204600",
+					"isImp": true,
+					"type": "N"
+				},
+				{
+					"locX": 9,
+					"idx": 19,
+					"aOutR": true,
+					"aTimeS": "204700",
+					"isImp": true,
+					"type": "N"
+				}
+			],
+			"msgL": [
+				{
+					"type": "REM",
+					"remX": 0,
+					"fLocX": 0,
+					"tLocX": 9,
+					"tagL": [
+						"RES_JNY_DTL_H3"
+					]
+				},
+				{
+					"type": "REM",
+					"remX": 1,
+					"fLocX": 0,
+					"tLocX": 9,
+					"tagL": [
+						"RES_JNY_DTL"
+					]
+				}
+			],
+			"subscr": "F"
+		},
+		{
+			"jid": "1|35835|39|86|19082019",
+			"date": "20190819",
+			"prodX": 13,
+			"dirTxt": "S Spandau Bhf (Berlin)",
+			"status": "P",
+			"isRchbl": true,
+			"stbStop": {
+				"locX": 0,
+				"idx": 11,
+				"dProdX": 13,
+				"dPlatfS": "4",
+				"dPlatfR": "4",
+				"dInR": true,
+				"dTimeS": "203100",
+				"dTimeR": "203100",
+				"dProgType": "PROGNOSED",
+				"type": "N"
+			},
+			"stopL": [
+				{
+					"locX": 0,
+					"idx": 11,
+					"dPlatfS": "4",
+					"dPlatfR": "4",
+					"dInR": true,
+					"dTimeS": "203100",
+					"dTimeR": "203100",
+					"dProgType": "PROGNOSED",
+					"isImp": true,
+					"type": "N"
+				},
+				{
+					"locX": 21,
+					"idx": 12,
+					"aOutR": true,
+					"aTimeS": "203200",
+					"isImp": true,
+					"type": "N"
+				},
+				{
+					"locX": 22,
+					"idx": 13,
+					"aOutR": true,
+					"aTimeS": "203400",
+					"isImp": true,
+					"type": "N"
+				},
+				{
+					"locX": 23,
+					"idx": 14,
+					"aOutR": true,
+					"aTimeS": "203600",
+					"isImp": true,
+					"type": "N"
+				},
+				{
+					"locX": 24,
+					"idx": 15,
+					"aOutR": true,
+					"aTimeS": "203900",
+					"isImp": true,
+					"type": "N"
+				},
+				{
+					"locX": 25,
+					"idx": 16,
+					"aOutR": true,
+					"aTimeS": "204200",
+					"type": "N"
+				},
+				{
+					"locX": 26,
+					"idx": 17,
+					"aOutR": true,
+					"aTimeS": "204400",
+					"type": "N"
+				},
+				{
+					"locX": 27,
+					"idx": 18,
+					"aOutR": true,
+					"aTimeS": "204600",
+					"isImp": true,
+					"type": "N"
+				},
+				{
+					"locX": 28,
+					"idx": 19,
+					"aOutR": true,
+					"aTimeS": "204800",
+					"type": "N"
+				},
+				{
+					"locX": 29,
+					"idx": 20,
+					"aOutR": true,
+					"aTimeS": "205000",
+					"isImp": true,
+					"type": "N"
+				},
+				{
+					"locX": 30,
+					"idx": 21,
+					"aOutR": true,
+					"aTimeS": "205200",
+					"isImp": true,
+					"type": "N"
+				},
+				{
+					"locX": 31,
+					"idx": 22,
+					"aOutR": true,
+					"aTimeS": "205400",
+					"type": "N"
+				},
+				{
+					"locX": 32,
+					"idx": 23,
+					"aOutR": true,
+					"aTimeS": "205700",
+					"isImp": true,
+					"type": "N"
+				},
+				{
+					"locX": 33,
+					"idx": 24,
+					"aOutR": true,
+					"aTimeS": "205900",
+					"type": "N"
+				},
+				{
+					"locX": 34,
+					"idx": 25,
+					"aOutR": true,
+					"aTimeS": "210100",
+					"type": "N"
+				},
+				{
+					"locX": 35,
+					"idx": 26,
+					"aOutR": true,
+					"aTimeS": "210500",
+					"type": "N"
+				},
+				{
+					"locX": 20,
+					"idx": 27,
+					"aOutR": true,
+					"aTimeS": "210700",
+					"isImp": true,
+					"type": "N"
+				}
+			],
+			"msgL": [
+				{
+					"type": "REM",
+					"remX": 0,
+					"fLocX": 0,
+					"tLocX": 20,
+					"tagL": [
+						"RES_JNY_DTL_H3"
+					]
+				},
+				{
+					"type": "REM",
+					"remX": 1,
+					"fLocX": 0,
+					"tLocX": 20,
+					"tagL": [
+						"RES_JNY_DTL"
+					]
+				}
+			],
+			"subscr": "F"
+		}
+	],
+	"fpB": "20190811",
+	"fpE": "20191214",
+	"planrtTS": "1566237984",
+	"sD": "20190819",
+	"sT": "200650"
+}
