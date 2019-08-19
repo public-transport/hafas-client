@@ -1,0 +1,1233 @@
+{
+	"common": {
+		"locL": [
+			{
+				"lid": "A=4@O=Berlin, Bodemuseum@X=13395231@Y=52521769@U=104@L=900980968@",
+				"type": "P",
+				"name": "Berlin, Bodemuseum",
+				"icoX": 0,
+				"extId": "900980968",
+				"state": "F",
+				"crd": {
+					"x": 13395231,
+					"y": 52521769,
+					"layerX": 0,
+					"crdSysX": 0
+				}
+			},
+			{
+				"lid": "A=1@O=S Südkreuz Bhf (Berlin)@X=13365575@Y=52475465@U=86@L=900058101@",
+				"type": "S",
+				"name": "S Südkreuz Bhf (Berlin)",
+				"icoX": 1,
+				"extId": "900058101",
+				"state": "F",
+				"crd": {
+					"x": 13365575,
+					"y": 52475465,
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"pCls": 105
+			},
+			{
+				"lid": "A=1@O=S Oranienburger Str. (Berlin)@X=13393064@Y=52525158@U=86@L=900100007@",
+				"type": "S",
+				"name": "S Oranienburger Str. (Berlin)",
+				"icoX": 1,
+				"extId": "900100007",
+				"state": "F",
+				"crd": {
+					"x": 13393064,
+					"y": 52525158,
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"pCls": 5
+			},
+			{
+				"lid": "A=1@O=S+U Friedrichstr. Bhf (Berlin)@X=13387149@Y=52520268@U=86@L=900100001@",
+				"type": "S",
+				"name": "S+U Friedrichstr. Bhf (Berlin)",
+				"icoX": 1,
+				"extId": "900100001",
+				"state": "F",
+				"crd": {
+					"x": 13387149,
+					"y": 52520268,
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"pCls": 79
+			},
+			{
+				"lid": "A=1@O=S+U Brandenburger Tor (Berlin)@X=13381936@Y=52516510@U=86@L=900100025@",
+				"type": "S",
+				"name": "S+U Brandenburger Tor (Berlin)",
+				"icoX": 1,
+				"extId": "900100025",
+				"state": "F",
+				"crd": {
+					"x": 13381936,
+					"y": 52516510,
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"pCls": 11
+			},
+			{
+				"lid": "A=1@O=S+U Potsdamer Platz Bhf (Berlin)@X=13376452@Y=52509337@U=86@L=900100020@",
+				"type": "S",
+				"name": "S+U Potsdamer Platz Bhf (Berlin)",
+				"icoX": 1,
+				"extId": "900100020",
+				"state": "F",
+				"crd": {
+					"x": 13376452,
+					"y": 52509337,
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"pCls": 65
+			},
+			{
+				"lid": "A=1@O=S Anhalter Bahnhof (Berlin)@X=13382080@Y=52504537@U=86@L=900012101@",
+				"type": "S",
+				"name": "S Anhalter Bahnhof (Berlin)",
+				"icoX": 1,
+				"extId": "900012101",
+				"state": "F",
+				"crd": {
+					"x": 13382080,
+					"y": 52504537,
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"pCls": 9
+			},
+			{
+				"lid": "A=1@O=S+U Yorckstr. S2 S25 S26 U7 (Berlin)@X=13372227@Y=52492320@U=86@L=900058103@",
+				"type": "S",
+				"name": "S+U Yorckstr. S2 S25 S26 U7 (Berlin)",
+				"icoX": 1,
+				"extId": "900058103",
+				"state": "F",
+				"crd": {
+					"x": 13372227,
+					"y": 52492320,
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"pCls": 9
+			}
+		],
+		"prodL": [
+			{
+				"name": "Walk",
+				"icoX": 2
+			},
+			{
+				"name": "S2",
+				"nameS": "S2",
+				"number": "S2",
+				"icoX": 1,
+				"cls": 1,
+				"oprX": 0,
+				"prodCtx": {
+					"name": "      S2",
+					"num": "14825",
+					"line": "S2",
+					"matchId": "2073",
+					"catOut": "S       ",
+					"catOutS": "S-5",
+					"catOutL": "S       ",
+					"catIn": "S-5",
+					"catCode": "0",
+					"admin": "DBS---"
+				}
+			},
+			{
+				"name": "S2",
+				"nameS": "S2",
+				"number": "S2",
+				"icoX": 1,
+				"cls": 1,
+				"oprX": 1,
+				"prodCtx": {
+					"name": "      S2",
+					"num": "14825",
+					"line": "S2",
+					"matchId": "2073",
+					"catOut": "S       ",
+					"catOutS": "S-5",
+					"catOutL": "S       ",
+					"catIn": "S-5",
+					"catCode": "0",
+					"admin": "DBS---"
+				}
+			}
+		],
+		"polyL": [
+			{
+				"delta": true,
+				"dim": 2,
+				"crdEncYX": "gyq_IsyvpA??nMbGfCpHh@xHh@fC`AjB`DxD`A_C??k@~CtCbExJ{@nA`@jBhBr@hBNxAJxK??N^f@bQZpB`A|BlOjB`QxAtCA\\p@xBqAdYs_@??Kt@pU`M|DjBzBnDnC|ItCbHfFtHbDdB`GxAvMd@??A^nVh@zJ`C|`Are@Vi@hBcA",
+				"crdEncS": "NNNNLNKNNNNNNLNKNNNKNKNLLMNNNNNKNMKNNLNNNMNNNNN",
+				"crdEncF": "???????????????????????????????????????????????",
+				"ppLocRefL": [
+					{
+						"ppIdx": 0,
+						"locX": 2
+					},
+					{
+						"ppIdx": 8,
+						"locX": 3
+					},
+					{
+						"ppIdx": 17,
+						"locX": 4
+					},
+					{
+						"ppIdx": 26,
+						"locX": 5
+					},
+					{
+						"ppIdx": 28,
+						"locX": 6
+					},
+					{
+						"ppIdx": 39,
+						"locX": 7
+					},
+					{
+						"ppIdx": 46,
+						"locX": 1
+					}
+				]
+			}
+		],
+		"layerL": [
+			{
+				"id": "standard",
+				"name": "standard",
+				"index": 0,
+				"annoCnt": 0
+			}
+		],
+		"crdSysL": [
+			{
+				"id": "standard",
+				"index": 0,
+				"type": "WGS84"
+			}
+		],
+		"opL": [
+			{
+				"name": "S-Bahn Berlin GmbH",
+				"icoX": 3
+			},
+			{
+				"name": "S-Bahn Berlin GmbH",
+				"icoX": 3,
+				"id": "S-Bahn Berlin GmbH"
+			}
+		],
+		"remL": [
+			{
+				"type": "A",
+				"code": "bf",
+				"prio": 2,
+				"icoX": 4,
+				"txtN": "barrier-free"
+			},
+			{
+				"type": "A",
+				"code": "FB",
+				"prio": 350,
+				"icoX": 5,
+				"txtN": "Bicycle conveyance"
+			}
+		],
+		"icoL": [
+			{
+				"res": "POI"
+			},
+			{
+				"res": "prod_comm_t"
+			},
+			{
+				"res": "prod_walk",
+				"fg": {
+					"r": 255,
+					"g": 255,
+					"b": 255
+				},
+				"bg": {
+					"r": 238,
+					"g": 211,
+					"b": 21
+				}
+			},
+			{
+				"res": "DBS",
+				"txt": "S-Bahn Berlin GmbH"
+			},
+			{
+				"res": "attr_info"
+			},
+			{
+				"res": "attr_bike"
+			}
+		]
+	},
+	"outConL": [
+		{
+			"cid": "C-0",
+			"date": "20190818",
+			"dur": "002300",
+			"chg": 0,
+			"sDays": {
+				"sDaysR": "daily",
+				"sDaysI": "not 28. Oct until 13. Dec 2019",
+				"sDaysB": "FFFFFFFFFFFFFFFFFFFC000000000004"
+			},
+			"dep": {
+				"locX": 0,
+				"dInR": true,
+				"dTimeS": "140600",
+				"type": "N"
+			},
+			"arr": {
+				"locX": 1,
+				"idx": 19,
+				"aPlatfS": "1",
+				"aPlatfR": "1",
+				"aOutR": true,
+				"aTimeS": "142900",
+				"aTimeR": "142900",
+				"aProgType": "PROGNOSED",
+				"type": "N"
+			},
+			"secL": [
+				{
+					"type": "WALK",
+					"icoX": 2,
+					"dep": {
+						"locX": 0,
+						"dInR": true,
+						"dTimeS": "140600",
+						"type": "N"
+					},
+					"arr": {
+						"locX": 2,
+						"aOutR": true,
+						"aTimeS": "141600",
+						"type": "N"
+					},
+					"gis": {
+						"dist": 568,
+						"durS": "001000",
+						"ctx": "G|1|G@F|A=4@O=Berlin, Bodemuseum@X=13395231@Y=52521769@U=104@L=900980968@|A=1@O=S Oranienburger Str. (Berlin)@X=13393064@Y=52525158@U=86@L=900100007@|18082019|140600|141600|bf|ft@0@2000@120@-1@100@1@1000@0@@@@@false@0@-1@$f@$f@$f@$f@$f@$§bt@0@2000@120@-1@100@1@1000@0@@@@@false@0@-1@$f@$f@$f@$f@$f@$§tf@$f@$f@$f@$f@$f@$§|",
+						"gisPrvr": "E",
+						"getDescr": true,
+						"getPoly": true
+					}
+				},
+				{
+					"type": "JNY",
+					"icoX": 1,
+					"dep": {
+						"locX": 2,
+						"idx": 13,
+						"dProdX": 1,
+						"dPlatfS": "1",
+						"dPlatfR": "1",
+						"dInR": true,
+						"dTimeS": "141600",
+						"dTimeR": "141600",
+						"dProgType": "PROGNOSED",
+						"type": "N"
+					},
+					"arr": {
+						"locX": 1,
+						"idx": 19,
+						"aPlatfS": "1",
+						"aPlatfR": "1",
+						"aOutR": true,
+						"aTimeS": "142900",
+						"aTimeR": "142900",
+						"aProgType": "PROGNOSED",
+						"type": "N"
+					},
+					"jny": {
+						"jid": "1|32794|20|86|18082019",
+						"prodX": 2,
+						"dirTxt": "S Blankenfelde (TF) Bhf",
+						"status": "P",
+						"isRchbl": true,
+						"stopL": [
+							{
+								"locX": 2,
+								"idx": 13,
+								"dProdX": 2,
+								"dPlatfS": "1",
+								"dPlatfR": "1",
+								"dInR": true,
+								"dTimeS": "141600",
+								"dTimeR": "141600",
+								"dProgType": "PROGNOSED",
+								"dDirTxt": "S Blankenfelde (TF) Bhf",
+								"dDirFlg": "2",
+								"type": "N"
+							},
+							{
+								"locX": 3,
+								"idx": 14,
+								"aProdX": 2,
+								"aPlatfS": "11",
+								"aPlatfR": "11",
+								"aOutR": true,
+								"aTimeS": "141800",
+								"aTimeR": "141800",
+								"aProgType": "PROGNOSED",
+								"dProdX": 2,
+								"dPlatfS": "11",
+								"dPlatfR": "11",
+								"dInR": true,
+								"dTimeS": "141800",
+								"dTimeR": "141800",
+								"dProgType": "PROGNOSED",
+								"type": "N"
+							},
+							{
+								"locX": 4,
+								"idx": 15,
+								"aProdX": 2,
+								"aPlatfS": "1",
+								"aPlatfR": "1",
+								"aOutR": true,
+								"aTimeS": "141900",
+								"aTimeR": "141900",
+								"aProgType": "PROGNOSED",
+								"dProdX": 2,
+								"dPlatfS": "1",
+								"dPlatfR": "1",
+								"dInR": true,
+								"dTimeS": "142000",
+								"dTimeR": "142000",
+								"dProgType": "PROGNOSED",
+								"type": "N"
+							},
+							{
+								"locX": 5,
+								"idx": 16,
+								"aProdX": 2,
+								"aPlatfS": "11",
+								"aPlatfR": "11",
+								"aOutR": true,
+								"aTimeS": "142100",
+								"aTimeR": "142100",
+								"aProgType": "PROGNOSED",
+								"dProdX": 2,
+								"dPlatfS": "11",
+								"dPlatfR": "11",
+								"dInR": true,
+								"dTimeS": "142200",
+								"dTimeR": "142200",
+								"dProgType": "PROGNOSED",
+								"type": "N"
+							},
+							{
+								"locX": 6,
+								"idx": 17,
+								"aProdX": 2,
+								"aPlatfS": "2",
+								"aPlatfR": "2",
+								"aOutR": true,
+								"aTimeS": "142400",
+								"aTimeR": "142400",
+								"aProgType": "PROGNOSED",
+								"dProdX": 2,
+								"dPlatfS": "2",
+								"dPlatfR": "2",
+								"dInR": true,
+								"dTimeS": "142400",
+								"dTimeR": "142400",
+								"dProgType": "PROGNOSED",
+								"type": "N"
+							},
+							{
+								"locX": 7,
+								"idx": 18,
+								"aProdX": 2,
+								"aPlatfS": "1",
+								"aPlatfR": "1",
+								"aOutR": true,
+								"aTimeS": "142600",
+								"aTimeR": "142600",
+								"aProgType": "PROGNOSED",
+								"dProdX": 2,
+								"dPlatfS": "1",
+								"dPlatfR": "1",
+								"dInR": true,
+								"dTimeS": "142700",
+								"dTimeR": "142700",
+								"dProgType": "PROGNOSED",
+								"type": "N"
+							},
+							{
+								"locX": 1,
+								"idx": 19,
+								"aProdX": 2,
+								"aPlatfS": "1",
+								"aPlatfR": "1",
+								"aOutR": true,
+								"aTimeS": "142900",
+								"aTimeR": "142900",
+								"aProgType": "PROGNOSED",
+								"type": "N"
+							}
+						],
+						"polyG": {
+							"polyXL": [
+								0
+							],
+							"layerX": 0,
+							"crdSysX": 0
+						},
+						"freq": {
+							"minC": 5,
+							"maxC": 10,
+							"numC": 19
+						},
+						"ctxRecon": "T$A=1@O=S Oranienburger Str. (Berlin)@L=900100007@a=128@$A=1@O=S Südkreuz Bhf (Berlin)@L=900058101@a=128@$201908181416$201908181429$      S2$$1$",
+						"msgL": [
+							{
+								"type": "REM",
+								"remX": 0,
+								"fLocX": 2,
+								"tLocX": 1,
+								"tagL": [
+									"RES_JNY_DTL_H3"
+								]
+							},
+							{
+								"type": "REM",
+								"remX": 1,
+								"fLocX": 2,
+								"tLocX": 1,
+								"tagL": [
+									"RES_JNY_DTL"
+								]
+							}
+						],
+						"subscr": "F",
+						"prodL": [
+							{
+								"prodX": 2,
+								"fLocX": 2,
+								"tLocX": 1,
+								"fIdx": 13,
+								"tIdx": 19
+							}
+						]
+					}
+				}
+			],
+			"ctxRecon": "¶HKI¶G@F$A=4@O=Berlin, Bodemuseum@X=13395231@Y=52521769@L=900980968@a=128@$A=1@O=S Oranienburger Str. (Berlin)@L=900100007@a=128@$201908181406$201908181416$$$1$§T$A=1@O=S Oranienburger Str. (Berlin)@L=900100007@a=128@$A=1@O=S Südkreuz Bhf (Berlin)@L=900058101@a=128@$201908181416$201908181429$      S2$$1$¶GP¶ft@0@2000@120@-1@100@1@1000@0@@@@@false@0@-1@$f@$f@$f@$f@$f@$§bt@0@2000@120@-1@100@1@1000@0@@@@@false@0@-1@$f@$f@$f@$f@$f@$§tf@$f@$f@$f@$f@$f@$§",
+			"freq": {
+				"minC": 5
+			},
+			"trfRes": {
+				"fareSetL": [
+					{
+						"desc": "Tickets für die Verbindung S Oranienburger Str. (Berlin) (5555) - S Südkreuz Bhf (Berlin) (5555)",
+						"fareL": [
+							{
+								"name": "Berlin Tarifgebiet A-B: Einzelfahrausweis",
+								"ticketL": [
+									{
+										"name": "Regeltarif",
+										"prc": 280,
+										"cur": "EUR",
+										"extCont": {
+											"content": {
+												"type": "LIB_TARIFF",
+												"content": "MC0="
+											}
+										}
+									},
+									{
+										"name": "Ermäßigungstarif",
+										"prc": 170,
+										"cur": "EUR",
+										"extCont": {
+											"content": {
+												"type": "LIB_TARIFF",
+												"content": "MS0="
+											}
+										}
+									},
+									{
+										"name": "Fahrrad",
+										"prc": 190,
+										"cur": "EUR",
+										"extCont": {
+											"content": {
+												"type": "LIB_TARIFF",
+												"content": "Mi0="
+											}
+										}
+									}
+								]
+							},
+							{
+								"name": "Berlin Tarifgebiet A-B: Tageskarte",
+								"ticketL": [
+									{
+										"name": "Regeltarif",
+										"prc": 700,
+										"cur": "EUR",
+										"extCont": {
+											"content": {
+												"type": "LIB_TARIFF",
+												"content": "My0="
+											}
+										}
+									},
+									{
+										"name": "Ermäßigungstarif",
+										"prc": 470,
+										"cur": "EUR",
+										"extCont": {
+											"content": {
+												"type": "LIB_TARIFF",
+												"content": "NC0="
+											}
+										}
+									},
+									{
+										"name": "Fahrrad",
+										"prc": 480,
+										"cur": "EUR",
+										"extCont": {
+											"content": {
+												"type": "LIB_TARIFF",
+												"content": "NS0="
+											}
+										}
+									}
+								]
+							},
+							{
+								"name": "Berlin Tarifgebiet A-B: Kleingruppen-",
+								"ticketL": [
+									{
+										"name": "Tageskarte",
+										"prc": 1990,
+										"cur": "EUR",
+										"extCont": {
+											"content": {
+												"type": "LIB_TARIFF",
+												"content": "Ni0="
+											}
+										}
+									}
+								]
+							},
+							{
+								"name": "Berlin Tarifgebiet A-B: Gruppentageskarte",
+								"ticketL": [
+									{
+										"name": "Schüler",
+										"prc": 330,
+										"cur": "EUR",
+										"extCont": {
+											"content": {
+												"type": "LIB_TARIFF",
+												"content": "Ny0="
+											}
+										}
+									}
+								]
+							},
+							{
+								"name": "Berlin Tarifgebiet A-B: 4-Fahrten-Karte",
+								"ticketL": [
+									{
+										"name": "Regeltarif",
+										"prc": 900,
+										"cur": "EUR",
+										"extCont": {
+											"content": {
+												"type": "LIB_TARIFF",
+												"content": "OC0="
+											}
+										}
+									},
+									{
+										"name": "Ermäßigungstarif",
+										"prc": 560,
+										"cur": "EUR",
+										"extCont": {
+											"content": {
+												"type": "LIB_TARIFF",
+												"content": "OS0="
+											}
+										}
+									}
+								]
+							}
+						]
+					}
+				],
+				"bkgData": {
+					"common": {
+						"FEL": [
+							{
+								"ID": [
+									"900100007"
+								],
+								"ON": [
+									"S Oranienburger Str. (Berlin)"
+								]
+							},
+							{
+								"ID": [
+									""
+								]
+							},
+							{
+								"ID": [
+									"Berlin Tarifgebiet A-B"
+								]
+							},
+							{
+								"ID": [
+									"Einzelfahrausweis Regeltarif"
+								]
+							},
+							{
+								"ID": [
+									"Berlin Tarifgebiet A-B"
+								]
+							},
+							{
+								"ID": [
+									"Einzelfahrausweis Ermäßigungstarif"
+								]
+							},
+							{
+								"ID": [
+									"Berlin Tarifgebiet A-B"
+								]
+							},
+							{
+								"ID": [
+									"Einzelfahrausweis Fahrrad"
+								]
+							},
+							{
+								"ID": [
+									"Berlin Tarifgebiet A-B"
+								]
+							},
+							{
+								"ID": [
+									"Tageskarte Regeltarif"
+								]
+							},
+							{
+								"ID": [
+									"Berlin Tarifgebiet A-B"
+								]
+							},
+							{
+								"ID": [
+									"Tageskarte Ermäßigungstarif"
+								]
+							},
+							{
+								"ID": [
+									"Berlin Tarifgebiet A-B"
+								]
+							},
+							{
+								"ID": [
+									"Tageskarte Fahrrad"
+								]
+							},
+							{
+								"ID": [
+									"Berlin Tarifgebiet A-B"
+								]
+							},
+							{
+								"ID": [
+									"Kleingruppen- Tageskarte"
+								]
+							},
+							{
+								"ID": [
+									"Berlin Tarifgebiet A-B"
+								]
+							},
+							{
+								"ID": [
+									"Gruppentageskarte Schüler"
+								]
+							},
+							{
+								"ID": [
+									"Berlin Tarifgebiet A-B"
+								]
+							},
+							{
+								"ID": [
+									"4-Fahrten-Karte Regeltarif"
+								]
+							},
+							{
+								"ID": [
+									"Berlin Tarifgebiet A-B"
+								]
+							},
+							{
+								"ID": [
+									"4-Fahrten-Karte Ermäßigungstarif"
+								]
+							}
+						]
+					},
+					"BOG": {
+						"BOL": [
+							{
+								"P": "0-",
+								"VT": "BVG-2",
+								"FS": "VBB",
+								"DV": 1,
+								"PRC": {
+									"CUR": "EUR",
+									"AMT": 280
+								},
+								"PRD": 3,
+								"LVL": 2,
+								"SV": {
+									"OS": 0
+								},
+								"TV": {
+									"BD": "20190818",
+									"BT": "141600"
+								}
+							},
+							{
+								"P": "1-",
+								"VT": "BVG-2",
+								"FS": "VBB",
+								"DV": 1,
+								"PRC": {
+									"CUR": "EUR",
+									"AMT": 170
+								},
+								"PRD": 5,
+								"LVL": 4,
+								"SV": {
+									"OS": 0
+								},
+								"TV": {
+									"BD": "20190818",
+									"BT": "141600"
+								}
+							},
+							{
+								"P": "2-",
+								"VT": "BVG-2",
+								"FS": "VBB",
+								"DV": 1,
+								"PRC": {
+									"CUR": "EUR",
+									"AMT": 190
+								},
+								"PRD": 7,
+								"LVL": 6,
+								"SV": {
+									"OS": 0
+								},
+								"TV": {
+									"BD": "20190818",
+									"BT": "141600"
+								}
+							},
+							{
+								"P": "3-",
+								"VT": "BVG-2",
+								"FS": "VBB",
+								"DV": 1,
+								"PRC": {
+									"CUR": "EUR",
+									"AMT": 700
+								},
+								"PRD": 9,
+								"LVL": 8,
+								"SV": {
+									"OS": 0
+								},
+								"TV": {
+									"BD": "20190818",
+									"BT": "141600"
+								}
+							},
+							{
+								"P": "4-",
+								"VT": "BVG-2",
+								"FS": "VBB",
+								"DV": 1,
+								"PRC": {
+									"CUR": "EUR",
+									"AMT": 470
+								},
+								"PRD": 11,
+								"LVL": 10,
+								"SV": {
+									"OS": 0
+								},
+								"TV": {
+									"BD": "20190818",
+									"BT": "141600"
+								}
+							},
+							{
+								"P": "5-",
+								"VT": "BVG-2",
+								"FS": "VBB",
+								"DV": 1,
+								"PRC": {
+									"CUR": "EUR",
+									"AMT": 480
+								},
+								"PRD": 13,
+								"LVL": 12,
+								"SV": {
+									"OS": 0
+								},
+								"TV": {
+									"BD": "20190818",
+									"BT": "141600"
+								}
+							},
+							{
+								"P": "6-",
+								"VT": "BVG-2",
+								"FS": "VBB",
+								"DV": 1,
+								"PRC": {
+									"CUR": "EUR",
+									"AMT": 1990
+								},
+								"PRD": 15,
+								"LVL": 14,
+								"SV": {
+									"OS": 0
+								},
+								"TV": {
+									"BD": "20190818",
+									"BT": "141600"
+								}
+							},
+							{
+								"P": "7-",
+								"VT": "BVG-2",
+								"FS": "VBB",
+								"DV": 1,
+								"PRC": {
+									"CUR": "EUR",
+									"AMT": 330
+								},
+								"PRD": 17,
+								"LVL": 16,
+								"SV": {
+									"OS": 0
+								},
+								"TV": {
+									"BD": "20190818",
+									"BT": "141600"
+								}
+							},
+							{
+								"P": "8-",
+								"VT": "BVG-2",
+								"FS": "VBB",
+								"DV": 1,
+								"PRC": {
+									"CUR": "EUR",
+									"AMT": 900
+								},
+								"PRD": 19,
+								"LVL": 18,
+								"SV": {
+									"OS": 0
+								},
+								"TV": {
+									"BD": "20190818",
+									"BT": "141600"
+								}
+							},
+							{
+								"P": "9-",
+								"VT": "BVG-2",
+								"FS": "VBB",
+								"DV": 1,
+								"PRC": {
+									"CUR": "EUR",
+									"AMT": 560
+								},
+								"PRD": 21,
+								"LVL": 20,
+								"SV": {
+									"OS": 0
+								},
+								"TV": {
+									"BD": "20190818",
+									"BT": "141600"
+								}
+							}
+						],
+						"OPT": false,
+						"ALT": true,
+						"SEQ": false
+					}
+				}
+			},
+			"ovwTrfRefL": [
+				{
+					"type": "T",
+					"fareSetX": 0,
+					"fareX": 0,
+					"ticketX": 0
+				},
+				{
+					"type": "T",
+					"fareSetX": 0,
+					"fareX": 0,
+					"ticketX": 1
+				}
+			],
+			"conSubscr": "U",
+			"recState": "U",
+			"cksum": "fb41d706_3",
+			"cksumDti": "d7a28dcc_3"
+		}
+	],
+	"outCtxScrB": "1|OB|MT#11#13806#13806#13829#13829#0#0#165#13806#1#-2147483638#0#1#2|PDH#a420b7483aaf6af6ac22c06958a33a13|RD#18082019|RT#140618",
+	"outCtxScrF": "1|OF|MT#11#13806#13806#13829#13829#0#0#165#13806#1#-2147483638#0#1#2|PDH#a420b7483aaf6af6ac22c06958a33a13|RD#18082019|RT#140618",
+	"retCtxScrF": "1|OF|MT#11#13806#13806#13829#13829#0#0#165#13806#1#-2147483638#0#1#2|PDH#a420b7483aaf6af6ac22c06958a33a13|RD#18082019|RT#140618",
+	"fpB": "20190811",
+	"fpE": "20191214",
+	"planrtTS": "1566129966",
+	"outConGrpL": [
+		{
+			"name": "Local public transport",
+			"grpid": "pt_only",
+			"conScoringL": [
+				{
+					"type": "DT",
+					"conScoreL": [
+						{
+							"score": 9175318980626219000,
+							"conRefL": [
+								0
+							]
+						}
+					],
+					"name": "Departure"
+				},
+				{
+					"type": "AT",
+					"conScoreL": [
+						{
+							"score": 9175217825556464000,
+							"conRefL": [
+								0
+							]
+						}
+					],
+					"name": "Arrival"
+				},
+				{
+					"type": "TI",
+					"conScoreL": [
+						{
+							"score": 9223270858871538000,
+							"conRefL": [
+								0
+							]
+						}
+					],
+					"name": "Duration"
+				}
+			],
+			"initScoringType": "DT",
+			"requests": [
+				{
+					"id": "OEV",
+					"autosend": true
+				},
+				{
+					"id": "BERLKOENIG",
+					"autosend": true
+				}
+			],
+			"scrollable": true
+		},
+		{
+			"name": "Car",
+			"grpid": "car_only",
+			"conScoringL": [
+				{
+					"type": "DT",
+					"name": "Departure"
+				},
+				{
+					"type": "AT",
+					"name": "Arrival"
+				},
+				{
+					"type": "TI",
+					"name": "Duration"
+				}
+			],
+			"initScoringType": "DT",
+			"requests": [
+				{
+					"id": "CAR",
+					"autosend": false
+				},
+				{
+					"id": "TAXI",
+					"autosend": false
+				}
+			],
+			"scrollable": false
+		},
+		{
+			"name": "Bike",
+			"grpid": "bike_only",
+			"conScoringL": [
+				{
+					"type": "DT",
+					"name": "Departure"
+				},
+				{
+					"type": "AT",
+					"name": "Arrival"
+				},
+				{
+					"type": "TI",
+					"name": "Duration"
+				}
+			],
+			"initScoringType": "DT",
+			"requests": [
+				{
+					"id": "BIKE",
+					"autosend": false
+				}
+			],
+			"scrollable": false
+		},
+		{
+			"name": "Walk",
+			"grpid": "foot_only",
+			"conScoringL": [
+				{
+					"type": "DT",
+					"name": "Departure"
+				},
+				{
+					"type": "AT",
+					"name": "Arrival"
+				},
+				{
+					"type": "TI",
+					"name": "Duration"
+				}
+			],
+			"initScoringType": "DT",
+			"requests": [
+				{
+					"id": "WALK",
+					"autosend": false
+				}
+			],
+			"scrollable": false
+		},
+		{
+			"name": "Car & Local public transport",
+			"grpid": "car_ride",
+			"conScoringL": [
+				{
+					"type": "DT",
+					"name": "Departure"
+				},
+				{
+					"type": "AT",
+					"name": "Arrival"
+				},
+				{
+					"type": "TI",
+					"name": "Duration"
+				}
+			],
+			"initScoringType": "DT",
+			"requests": [
+				{
+					"id": "CAR_OEV_WALK",
+					"autosend": false
+				},
+				{
+					"id": "TAXI_OEV_TAXI",
+					"autosend": false
+				},
+				{
+					"id": "WALK_OEV_TAXI",
+					"autosend": false
+				},
+				{
+					"id": "TAXI_OEV_WALK",
+					"autosend": false
+				}
+			],
+			"scrollable": false
+		},
+		{
+			"name": "Bicycle & Local public transport",
+			"grpid": "bike_ride",
+			"conScoringL": [
+				{
+					"type": "DT",
+					"name": "Departure"
+				},
+				{
+					"type": "AT",
+					"name": "Arrival"
+				},
+				{
+					"type": "TI",
+					"name": "Duration"
+				}
+			],
+			"initScoringType": "DT",
+			"requests": [
+				{
+					"id": "BIKE_OEV_WALK",
+					"autosend": false
+				},
+				{
+					"id": "BIKE_OEV_BIKE",
+					"autosend": false
+				}
+			],
+			"scrollable": false
+		}
+	]
+}
