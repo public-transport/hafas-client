@@ -1,5 +1,9 @@
 'use strict'
 
+require('./bvg-journey')
+require('./vbb-departures')
+require('./bvg-radar')
+
 require('./common')
 require('./db')
 require('./vbb')
@@ -13,5 +17,6 @@ require('./sbahn-muenchen')
 require('./saarfahrplan')
 require('./cfl')
 require('./hvv')
+
 require('./throttle')
 require('./retry')

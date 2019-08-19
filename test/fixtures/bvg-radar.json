@@ -1,0 +1,1332 @@
+{
+	"common": {
+		"locL": [
+			{
+				"lid": "A=1@O=S Hackescher Markt (Berlin)@X=13402359@Y=52522605@U=86@L=900100002@",
+				"type": "S",
+				"name": "S Hackescher Markt (Berlin)",
+				"icoX": 1,
+				"extId": "900100002",
+				"state": "F",
+				"crd": {
+					"x": 13402359,
+					"y": 52522605,
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"pCls": 13
+			},
+			{
+				"lid": "A=1@O=S+U Alexanderplatz Bhf/Gontardstr. (Berlin)@X=13411250@Y=52521059@U=86@L=900100026@",
+				"type": "S",
+				"name": "S+U Alexanderplatz Bhf/Gontardstr. (Berlin)",
+				"icoX": 0,
+				"extId": "900100026",
+				"state": "F",
+				"crd": {
+					"x": 13411250,
+					"y": 52521059,
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"pCls": 4
+			},
+			{
+				"lid": "A=1@O=U Alexanderplatz (Berlin) [Tram]@X=13414495@Y=52522389@U=86@L=900100005@",
+				"type": "S",
+				"name": "U Alexanderplatz (Berlin) [Tram]",
+				"icoX": 0,
+				"extId": "900100005",
+				"state": "F",
+				"crd": {
+					"x": 13414495,
+					"y": 52522389,
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"pCls": 4
+			},
+			{
+				"lid": "A=1@O=Zingster Str. (Berlin)@X=13495164@Y=52572360@U=86@L=900151003@",
+				"type": "S",
+				"name": "Zingster Str. (Berlin)",
+				"icoX": 0,
+				"extId": "900151003",
+				"state": "F",
+				"crd": {
+					"x": 13495164,
+					"y": 52572360,
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"pCls": 4
+			},
+			{
+				"lid": "A=1@O=S Flughafen Berlin-Schönefeld Bhf@X=13513520@Y=52390796@U=86@L=900260005@",
+				"type": "S",
+				"name": "S Flughafen Berlin-Schönefeld Bhf",
+				"icoX": 1,
+				"extId": "900260005",
+				"state": "F",
+				"crd": {
+					"x": 13513520,
+					"y": 52390796,
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"pCls": 73
+			},
+			{
+				"lid": "A=1@O=S+U Alexanderplatz Bhf (Berlin)@X=13411267@Y=52521508@U=86@L=900100003@",
+				"type": "S",
+				"name": "S+U Alexanderplatz Bhf (Berlin)",
+				"icoX": 1,
+				"extId": "900100003",
+				"state": "F",
+				"crd": {
+					"x": 13411267,
+					"y": 52521508,
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"pCls": 73
+			},
+			{
+				"lid": "A=1@O=S Spandau Bhf (Berlin)@X=13197477@Y=52534794@U=86@L=900029101@",
+				"type": "S",
+				"name": "S Spandau Bhf (Berlin)",
+				"icoX": 1,
+				"extId": "900029101",
+				"state": "F",
+				"crd": {
+					"x": 13197477,
+					"y": 52534794,
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"pCls": 97
+			},
+			{
+				"lid": "A=1@O=U Paracelsus-Bad (Berlin)@X=13347534@Y=52574536@U=86@L=900085104@",
+				"type": "S",
+				"name": "U Paracelsus-Bad (Berlin)",
+				"icoX": 2,
+				"extId": "900085104",
+				"state": "F",
+				"crd": {
+					"x": 13347534,
+					"y": 52574536,
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"pCls": 10
+			},
+			{
+				"lid": "A=1@O=S+U Alexanderplatz (Berlin) [U8]@X=13412121@Y=52521616@U=86@L=900100705@",
+				"type": "S",
+				"name": "S+U Alexanderplatz (Berlin) [U8]",
+				"icoX": 2,
+				"extId": "900100705",
+				"state": "F",
+				"crd": {
+					"x": 13412121,
+					"y": 52521616,
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"pCls": 2
+			},
+			{
+				"lid": "A=1@O=S+U Jannowitzbrücke (Berlin)@X=13418027@Y=52515503@U=86@L=900100004@",
+				"type": "S",
+				"name": "S+U Jannowitzbrücke (Berlin)",
+				"icoX": 1,
+				"extId": "900100004",
+				"state": "F",
+				"crd": {
+					"x": 13418027,
+					"y": 52515503,
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"pCls": 11
+			},
+			{
+				"lid": "A=1@O=S+U Hermannstr. (Berlin)@X=13431700@Y=52467177@U=86@L=900079221@",
+				"type": "S",
+				"name": "S+U Hermannstr. (Berlin)",
+				"icoX": 1,
+				"extId": "900079221",
+				"state": "F",
+				"crd": {
+					"x": 13431700,
+					"y": 52467177,
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"pCls": 11
+			},
+			{
+				"lid": "A=1@O=U Kaulsdorf-Nord (Berlin)@X=13588759@Y=52521436@U=86@L=900175004@",
+				"type": "S",
+				"name": "U Kaulsdorf-Nord (Berlin)",
+				"icoX": 2,
+				"extId": "900175004",
+				"state": "F",
+				"crd": {
+					"x": 13588759,
+					"y": 52521436,
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"pCls": 10
+			},
+			{
+				"lid": "A=1@O=U Schillingstr. (Berlin)@X=13421893@Y=52520313@U=86@L=900100017@",
+				"type": "S",
+				"name": "U Schillingstr. (Berlin)",
+				"icoX": 2,
+				"extId": "900100017",
+				"state": "F",
+				"crd": {
+					"x": 13421893,
+					"y": 52520313,
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"pCls": 10
+			},
+			{
+				"lid": "A=1@O=S+U Alexanderplatz (Berlin) [U5]@X=13413110@Y=52521607@U=86@L=900100704@",
+				"type": "S",
+				"name": "S+U Alexanderplatz (Berlin) [U5]",
+				"icoX": 2,
+				"extId": "900100704",
+				"state": "F",
+				"crd": {
+					"x": 13413110,
+					"y": 52521607,
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"pCls": 2
+			},
+			{
+				"lid": "A=1@O=U Theodor-Heuss-Platz (Berlin)@X=13272977@Y=52509795@U=86@L=900026201@",
+				"type": "S",
+				"name": "U Theodor-Heuss-Platz (Berlin)",
+				"icoX": 2,
+				"extId": "900026201",
+				"state": "F",
+				"crd": {
+					"x": 13272977,
+					"y": 52509795,
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"pCls": 10
+			},
+			{
+				"lid": "A=1@O=U Klosterstr. (Berlin)@X=13412454@Y=52517229@U=86@L=900100015@",
+				"type": "S",
+				"name": "U Klosterstr. (Berlin)",
+				"icoX": 2,
+				"extId": "900100015",
+				"state": "F",
+				"crd": {
+					"x": 13412454,
+					"y": 52517229,
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"pCls": 2
+			},
+			{
+				"lid": "A=1@O=S+U Alexanderplatz (Berlin) [U2]@X=13413596@Y=52522075@U=86@L=900100703@",
+				"type": "S",
+				"name": "S+U Alexanderplatz (Berlin) [U2]",
+				"icoX": 2,
+				"extId": "900100703",
+				"state": "F",
+				"crd": {
+					"x": 13413596,
+					"y": 52522075,
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"pCls": 2
+			},
+			{
+				"lid": "A=1@O=S+U Pankow (Berlin)@X=13412283@Y=52567281@U=86@L=900130002@",
+				"type": "S",
+				"name": "S+U Pankow (Berlin)",
+				"icoX": 1,
+				"extId": "900130002",
+				"state": "F",
+				"crd": {
+					"x": 13412283,
+					"y": 52567281,
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"pCls": 15
+			},
+			{
+				"lid": "A=1@O=Mollstr./Otto-Braun-Str. (Berlin)@X=13419942@Y=52525185@U=86@L=900100040@",
+				"type": "S",
+				"name": "Mollstr./Otto-Braun-Str. (Berlin)",
+				"icoX": 0,
+				"extId": "900100040",
+				"state": "F",
+				"crd": {
+					"x": 13419942,
+					"y": 52525185,
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"pCls": 12
+			},
+			{
+				"lid": "A=1@O=Riesaer Str. (Berlin)@X=13624186@Y=52529401@U=86@L=900175013@",
+				"type": "S",
+				"name": "Riesaer Str. (Berlin)",
+				"icoX": 0,
+				"extId": "900175013",
+				"state": "F",
+				"crd": {
+					"x": 13624186,
+					"y": 52529401,
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"pCls": 12
+			},
+			{
+				"lid": "A=1@O=Spandauer Str./Marienkirche (Berlin)@X=13404822@Y=52520025@U=86@L=900100515@",
+				"type": "S",
+				"name": "Spandauer Str./Marienkirche (Berlin)",
+				"icoX": 0,
+				"extId": "900100515",
+				"state": "F",
+				"crd": {
+					"x": 13404822,
+					"y": 52520025,
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"pCls": 12
+			},
+			{
+				"lid": "A=1@O=Lüneburger Str. (Berlin)@X=13361647@Y=52523135@U=86@L=900003259@",
+				"type": "S",
+				"name": "Lüneburger Str. (Berlin)",
+				"icoX": 3,
+				"extId": "900003259",
+				"state": "F",
+				"crd": {
+					"x": 13362070,
+					"y": 52523315,
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"pCls": 4
+			}
+		],
+		"prodL": [
+			{
+				"name": "M4",
+				"nameS": "M4",
+				"icoX": 0,
+				"cls": 4
+			},
+			{
+				"name": "S9",
+				"nameS": "S9",
+				"icoX": 1,
+				"cls": 1
+			},
+			{
+				"name": "U8",
+				"nameS": "U8",
+				"icoX": 2,
+				"cls": 2
+			},
+			{
+				"name": "U5",
+				"nameS": "U5",
+				"icoX": 2,
+				"cls": 2
+			},
+			{
+				"name": "U2",
+				"nameS": "U2",
+				"icoX": 2,
+				"cls": 2
+			},
+			{
+				"name": "M6",
+				"nameS": "M6",
+				"icoX": 0,
+				"cls": 4
+			},
+			{
+				"name": "M5",
+				"nameS": "M5",
+				"icoX": 0,
+				"cls": 4
+			}
+		],
+		"polyL": [
+			{
+				"delta": true,
+				"dim": 2,
+				"crdEncYX": "efq_Iaa{pAUa@Wa@CE",
+				"crdEncS": "NNNN",
+				"crdEncF": "????"
+			},
+			{
+				"delta": true,
+				"dim": 2,
+				"crdEncYX": "wdq_IcizpA_DpI{BlJOzK",
+				"crdEncS": "NNNN",
+				"crdEncF": "????"
+			},
+			{
+				"delta": true,
+				"dim": 2,
+				"crdEncYX": "__q_IatzpA^i@jBcCbBmC",
+				"crdEncS": "NNNN",
+				"crdEncF": "????"
+			},
+			{
+				"delta": true,
+				"dim": 2,
+				"crdEncYX": "sfq_Iee{pA`@fBh@~Ah@bB",
+				"crdEncS": "NNNN",
+				"crdEncF": "????"
+			},
+			{
+				"delta": true,
+				"dim": 2,
+				"crdEncYX": "iyp_ImyzpA{@{CaBwAmBf@",
+				"crdEncS": "NNNN",
+				"crdEncF": "????"
+			},
+			{
+				"delta": true,
+				"dim": 2,
+				"crdEncYX": "wgq_Ikc{pACEq@w@m@w@",
+				"crdEncS": "NNNN",
+				"crdEncF": "????"
+			},
+			{
+				"delta": true,
+				"dim": 2,
+				"crdEncYX": "aaq_I}izpAw@zAcAnB{@rB",
+				"crdEncS": "NNNN",
+				"crdEncF": "????"
+			},
+			{
+				"delta": true,
+				"dim": 2,
+				"crdEncYX": "iqq_Ian{pAvAhBvAjBvAhB",
+				"crdEncS": "NNNN",
+				"crdEncF": "????"
+			}
+		],
+		"layerL": [
+			{
+				"id": "standard",
+				"name": "standard",
+				"index": 0,
+				"annoCnt": 0
+			}
+		],
+		"crdSysL": [
+			{
+				"id": "standard",
+				"index": 0,
+				"type": "WGS84"
+			}
+		],
+		"opL": [],
+		"remL": [],
+		"icoL": [
+			{
+				"res": "prod_tram_t"
+			},
+			{
+				"res": "prod_comm_t"
+			},
+			{
+				"res": "prod_sub_t"
+			},
+			{
+				"res": "STA"
+			}
+		]
+	},
+	"date": "20190819",
+	"time": "203304",
+	"jnyL": [
+		{
+			"jid": "1|57637|1|86|19082019",
+			"date": "20190819",
+			"prodX": 0,
+			"dirTxt": "Hohenschönhausen, Zingster Str.",
+			"dirGeo": 3,
+			"stopL": [
+				{
+					"locX": 0,
+					"dInS": true,
+					"dInR": true,
+					"dTimeS": "202600"
+				},
+				{
+					"locX": 1,
+					"aOutS": true,
+					"aOutR": true,
+					"aTimeS": "202900",
+					"aTimeR": "203000",
+					"dInS": true,
+					"dInR": true,
+					"dTimeS": "202900",
+					"dTimeR": "203000"
+				},
+				{
+					"locX": 2,
+					"aOutS": true,
+					"aOutR": true,
+					"aTimeS": "203100",
+					"aTimeR": "203400",
+					"dInS": true,
+					"dInR": true,
+					"dTimeS": "203100",
+					"dTimeR": "203400"
+				},
+				{
+					"locX": 3,
+					"aOutS": true,
+					"aOutR": true,
+					"aTimeS": "205800",
+					"aTimeR": "210100"
+				}
+			],
+			"proc": 80,
+			"pos": {
+				"x": 13414728,
+				"y": 52522110
+			},
+			"ani": {
+				"mSec": [
+					0,
+					10000,
+					20000,
+					30000
+				],
+				"proc": [
+					80,
+					84,
+					88,
+					93
+				],
+				"procAbs": [
+					280,
+					284,
+					288,
+					293
+				],
+				"fLocX": [
+					1,
+					1,
+					1,
+					1
+				],
+				"tLocX": [
+					2,
+					2,
+					2,
+					2
+				],
+				"dirGeo": [
+					4,
+					4,
+					5,
+					-1
+				],
+				"stcOutputX": [
+					-1,
+					-1,
+					-1,
+					-1
+				],
+				"polyG": {
+					"polyXL": [
+						0
+					]
+				},
+				"state": [
+					"O",
+					"O",
+					"O",
+					"O"
+				]
+			},
+			"isBase": false
+		},
+		{
+			"jid": "1|35835|39|86|19082019",
+			"date": "20190819",
+			"prodX": 1,
+			"dirTxt": "S Spandau Bhf (Berlin)",
+			"dirGeo": 14,
+			"stopL": [
+				{
+					"locX": 4,
+					"dPlatfS": "13",
+					"dPlatfR": "13",
+					"dInS": true,
+					"dInR": true,
+					"dTimeS": "195700",
+					"dTimeR": "195700"
+				},
+				{
+					"locX": 5,
+					"aPlatfS": "4",
+					"aPlatfR": "4",
+					"aOutS": true,
+					"aOutR": true,
+					"aTimeS": "203200",
+					"aTimeR": "203200",
+					"dPlatfS": "4",
+					"dPlatfR": "4",
+					"dInS": true,
+					"dInR": true,
+					"dTimeS": "203300",
+					"dTimeR": "203300"
+				},
+				{
+					"locX": 0,
+					"aPlatfS": "4",
+					"aPlatfR": "4",
+					"aOutS": true,
+					"aOutR": true,
+					"aTimeS": "203400",
+					"aTimeR": "203400",
+					"dPlatfS": "4",
+					"dPlatfR": "4",
+					"dInS": true,
+					"dInR": true,
+					"dTimeS": "203500",
+					"dTimeR": "203500"
+				},
+				{
+					"locX": 6,
+					"aPlatfS": "2",
+					"aPlatfR": "2",
+					"aOutS": true,
+					"aOutR": true,
+					"aTimeS": "210700",
+					"aTimeR": "210700"
+				}
+			],
+			"proc": 8,
+			"pos": {
+				"x": 13410899,
+				"y": 52521877
+			},
+			"ani": {
+				"mSec": [
+					0,
+					10000,
+					20000,
+					30000
+				],
+				"proc": [
+					8,
+					28,
+					47,
+					68
+				],
+				"procAbs": [
+					1208,
+					1228,
+					1247,
+					1268
+				],
+				"fLocX": [
+					5,
+					5,
+					5,
+					5
+				],
+				"tLocX": [
+					0,
+					0,
+					0,
+					0
+				],
+				"dirGeo": [
+					12,
+					13,
+					15,
+					17
+				],
+				"stcOutputX": [
+					-1,
+					-1,
+					-1,
+					-1
+				],
+				"polyG": {
+					"polyXL": [
+						1
+					]
+				},
+				"state": [
+					"O",
+					"O",
+					"O",
+					"O"
+				]
+			},
+			"isBase": false
+		},
+		{
+			"jid": "1|31029|0|86|19082019",
+			"date": "20190819",
+			"prodX": 2,
+			"dirTxt": "S+U Hermannstr. (Berlin)",
+			"dirGeo": 26,
+			"stopL": [
+				{
+					"locX": 7,
+					"dInS": true,
+					"dInR": true,
+					"dTimeS": "201700",
+					"dTimeR": "201700"
+				},
+				{
+					"locX": 8,
+					"aOutS": true,
+					"aOutR": true,
+					"aTimeS": "203300",
+					"aTimeR": "203300",
+					"dInS": true,
+					"dInR": true,
+					"dTimeS": "203300",
+					"dTimeR": "203300"
+				},
+				{
+					"locX": 9,
+					"aOutS": true,
+					"aOutR": true,
+					"aTimeS": "203500",
+					"aTimeR": "203500",
+					"dInS": true,
+					"dInR": true,
+					"dTimeS": "203500",
+					"dTimeR": "203500"
+				},
+				{
+					"locX": 10,
+					"aOutS": true,
+					"aOutR": true,
+					"aTimeS": "204700",
+					"aTimeR": "204700"
+				}
+			],
+			"proc": 3,
+			"pos": {
+				"x": 13412652,
+				"y": 52520960
+			},
+			"ani": {
+				"mSec": [
+					0,
+					10000,
+					20000,
+					30000
+				],
+				"proc": [
+					3,
+					12,
+					21,
+					30
+				],
+				"procAbs": [
+					1003,
+					1012,
+					1021,
+					1030
+				],
+				"fLocX": [
+					8,
+					8,
+					8,
+					8
+				],
+				"tLocX": [
+					9,
+					9,
+					9,
+					9
+				],
+				"dirGeo": [
+					27,
+					27,
+					27,
+					27
+				],
+				"stcOutputX": [
+					-1,
+					-1,
+					-1,
+					-1
+				],
+				"polyG": {
+					"polyXL": [
+						2
+					]
+				},
+				"state": [
+					"O",
+					"O",
+					"O",
+					"O"
+				]
+			},
+			"isBase": false
+		},
+		{
+			"jid": "1|30336|6|86|19082019",
+			"date": "20190819",
+			"prodX": 3,
+			"dirTxt": "S+U Alexanderplatz",
+			"dirGeo": 14,
+			"stopL": [
+				{
+					"locX": 11,
+					"dInS": true,
+					"dInR": true,
+					"dTimeS": "200800",
+					"dTimeR": "200800"
+				},
+				{
+					"locX": 12,
+					"aOutS": true,
+					"aOutR": true,
+					"aTimeS": "203200",
+					"aTimeR": "203100",
+					"dInS": true,
+					"dInR": true,
+					"dTimeS": "203200",
+					"dTimeR": "203100"
+				},
+				{
+					"locX": 13,
+					"aOutS": true,
+					"aOutR": true,
+					"aTimeS": "203400",
+					"aTimeR": "203400"
+				},
+				{
+					"locX": 13,
+					"aOutS": true,
+					"aOutR": true,
+					"aTimeS": "203400",
+					"aTimeR": "203400"
+				}
+			],
+			"proc": 72,
+			"pos": {
+				"x": 13415394,
+				"y": 52522182
+			},
+			"ani": {
+				"mSec": [
+					0,
+					10000,
+					20000,
+					30000
+				],
+				"proc": [
+					72,
+					78,
+					84,
+					90
+				],
+				"procAbs": [
+					1372,
+					1378,
+					1384,
+					1390
+				],
+				"fLocX": [
+					12,
+					12,
+					12,
+					12
+				],
+				"tLocX": [
+					13,
+					13,
+					13,
+					13
+				],
+				"dirGeo": [
+					18,
+					19,
+					19,
+					19
+				],
+				"stcOutputX": [
+					-1,
+					-1,
+					-1,
+					-1
+				],
+				"polyG": {
+					"polyXL": [
+						3
+					]
+				},
+				"state": [
+					"O",
+					"O",
+					"O",
+					"O"
+				]
+			},
+			"isBase": false
+		},
+		{
+			"jid": "1|30095|5|86|19082019",
+			"date": "20190819",
+			"prodX": 4,
+			"dirTxt": "S+U Pankow (Berlin)",
+			"dirGeo": 7,
+			"stopL": [
+				{
+					"locX": 14,
+					"dInS": true,
+					"dInR": true,
+					"dTimeS": "200400",
+					"dTimeR": "200400"
+				},
+				{
+					"locX": 15,
+					"aOutS": true,
+					"aOutR": true,
+					"aTimeS": "203100",
+					"aTimeR": "203200",
+					"dInS": true,
+					"dInR": true,
+					"dTimeS": "203100",
+					"dTimeR": "203200"
+				},
+				{
+					"locX": 16,
+					"aOutS": true,
+					"aOutR": true,
+					"aTimeS": "203300",
+					"aTimeR": "203400",
+					"dInS": true,
+					"dInR": true,
+					"dTimeS": "203300",
+					"dTimeR": "203400"
+				},
+				{
+					"locX": 17,
+					"aOutS": true,
+					"aOutR": true,
+					"aTimeS": "204500",
+					"aTimeR": "204600"
+				}
+			],
+			"proc": 58,
+			"pos": {
+				"x": 13413506,
+				"y": 52520043
+			},
+			"ani": {
+				"mSec": [
+					0,
+					10000,
+					20000,
+					30000
+				],
+				"proc": [
+					58,
+					67,
+					76,
+					85
+				],
+				"procAbs": [
+					1858,
+					1867,
+					1876,
+					1885
+				],
+				"fLocX": [
+					15,
+					15,
+					15,
+					15
+				],
+				"tLocX": [
+					16,
+					16,
+					16,
+					16
+				],
+				"dirGeo": [
+					2,
+					5,
+					9,
+					10
+				],
+				"stcOutputX": [
+					-1,
+					-1,
+					-1,
+					-1
+				],
+				"polyG": {
+					"polyXL": [
+						4
+					]
+				},
+				"state": [
+					"O",
+					"O",
+					"O",
+					"O"
+				]
+			},
+			"isBase": false
+		},
+		{
+			"jid": "1|29455|8|86|19082019",
+			"date": "20190819",
+			"prodX": 5,
+			"dirTxt": "Hellersdorf, Riesaer Str.",
+			"dirGeo": 3,
+			"stopL": [
+				{
+					"locX": 0,
+					"dInS": true,
+					"dInR": true,
+					"dTimeS": "202500"
+				},
+				{
+					"locX": 2,
+					"aOutS": true,
+					"aOutR": true,
+					"aTimeS": "203000",
+					"aTimeR": "203300",
+					"dInS": true,
+					"dInR": true,
+					"dTimeS": "203000",
+					"dTimeR": "203300"
+				},
+				{
+					"locX": 18,
+					"aOutS": true,
+					"aOutR": true,
+					"aTimeS": "203300",
+					"aTimeR": "203600",
+					"dInS": true,
+					"dInR": true,
+					"dTimeS": "203300",
+					"dTimeR": "203600"
+				},
+				{
+					"locX": 19,
+					"aOutS": true,
+					"aOutR": true,
+					"aTimeS": "211900",
+					"aTimeR": "212200"
+				}
+			],
+			"proc": 2,
+			"pos": {
+				"x": 13415097,
+				"y": 52522353
+			},
+			"ani": {
+				"mSec": [
+					0,
+					10000,
+					20000,
+					30000
+				],
+				"proc": [
+					2,
+					8,
+					14,
+					20
+				],
+				"procAbs": [
+					302,
+					308,
+					314,
+					320
+				],
+				"fLocX": [
+					2,
+					2,
+					2,
+					2
+				],
+				"tLocX": [
+					18,
+					18,
+					18,
+					18
+				],
+				"dirGeo": [
+					5,
+					5,
+					4,
+					5
+				],
+				"stcOutputX": [
+					-1,
+					-1,
+					-1,
+					-1
+				],
+				"polyG": {
+					"polyXL": [
+						5
+					]
+				},
+				"state": [
+					"O",
+					"O",
+					"O",
+					"O"
+				]
+			},
+			"isBase": false
+		},
+		{
+			"jid": "1|29362|4|86|19082019",
+			"date": "20190819",
+			"prodX": 5,
+			"dirTxt": "S Hackescher Markt",
+			"dirGeo": 17,
+			"stopL": [
+				{
+					"locX": 19,
+					"dInS": true,
+					"dInR": true,
+					"dTimeS": "193900",
+					"dTimeR": "193900"
+				},
+				{
+					"locX": 1,
+					"aOutS": true,
+					"aOutR": true,
+					"aTimeS": "203000",
+					"aTimeR": "203300",
+					"dInS": true,
+					"dInR": true,
+					"dTimeS": "203000",
+					"dTimeR": "203300"
+				},
+				{
+					"locX": 20,
+					"aOutS": true,
+					"aOutR": true,
+					"aTimeS": "203200",
+					"aTimeR": "203500",
+					"dInS": true,
+					"dInR": true,
+					"dTimeS": "203200",
+					"dTimeR": "203500"
+				},
+				{
+					"locX": 0,
+					"aOutS": true,
+					"aOutR": true,
+					"aTimeS": "203300",
+					"aTimeR": "203600"
+				}
+			],
+			"proc": 3,
+			"pos": {
+				"x": 13411034,
+				"y": 52521283
+			},
+			"ani": {
+				"mSec": [
+					0,
+					10000,
+					20000,
+					30000
+				],
+				"proc": [
+					3,
+					12,
+					21,
+					30
+				],
+				"procAbs": [
+					3603,
+					3612,
+					3621,
+					3630
+				],
+				"fLocX": [
+					1,
+					1,
+					1,
+					1
+				],
+				"tLocX": [
+					20,
+					20,
+					20,
+					20
+				],
+				"dirGeo": [
+					11,
+					11,
+					12,
+					17
+				],
+				"stcOutputX": [
+					-1,
+					-1,
+					-1,
+					-1
+				],
+				"polyG": {
+					"polyXL": [
+						6
+					]
+				},
+				"state": [
+					"O",
+					"O",
+					"O",
+					"O"
+				]
+			},
+			"isBase": false
+		},
+		{
+			"jid": "1|29174|2|86|19082019",
+			"date": "20190819",
+			"prodX": 6,
+			"dirTxt": "S+U Hauptbahnhof",
+			"dirGeo": 19,
+			"stopL": [
+				{
+					"locX": 3,
+					"dInS": true,
+					"dInR": true,
+					"dTimeS": "195900",
+					"dTimeR": "195900"
+				},
+				{
+					"locX": 18,
+					"aOutS": true,
+					"aOutR": true,
+					"aTimeS": "203000",
+					"aTimeR": "203200",
+					"dInS": true,
+					"dInR": true,
+					"dTimeS": "203000",
+					"dTimeR": "203200"
+				},
+				{
+					"locX": 2,
+					"aOutS": true,
+					"aOutR": true,
+					"aTimeS": "203300",
+					"aTimeR": "203400",
+					"dInS": true,
+					"dInR": true,
+					"dTimeS": "203300",
+					"dTimeR": "203400"
+				},
+				{
+					"locX": 21,
+					"aOutS": true,
+					"aOutR": true,
+					"aTimeS": "205400",
+					"aTimeR": "205500"
+				}
+			],
+			"proc": 58,
+			"pos": {
+				"x": 13416814,
+				"y": 52523890
+			},
+			"ani": {
+				"mSec": [
+					0,
+					10000,
+					20000,
+					30000
+				],
+				"proc": [
+					58,
+					67,
+					76,
+					85
+				],
+				"procAbs": [
+					2258,
+					2267,
+					2276,
+					2285
+				],
+				"fLocX": [
+					18,
+					18,
+					18,
+					18
+				],
+				"tLocX": [
+					2,
+					2,
+					2,
+					2
+				],
+				"dirGeo": [
+					20,
+					20,
+					20,
+					20
+				],
+				"stcOutputX": [
+					-1,
+					-1,
+					-1,
+					-1
+				],
+				"polyG": {
+					"polyXL": [
+						7
+					]
+				},
+				"state": [
+					"O",
+					"O",
+					"O",
+					"O"
+				]
+			},
+			"isBase": false
+		}
+	],
+	"layerX": 0,
+	"crdSysX": 0,
+	"fpB": "20190811",
+	"fpE": "20191214",
+	"planrtTS": "1566239555"
+}
