@@ -106,7 +106,7 @@ const transformReqBody = (body) => {
 const dbbusradarnrwProfile = {
 	locale: 'de-DE',
 	timezone: 'Europe/Berlin',
-	endpoint: 'http://db-regio.hafas.de/bin/hci/mgate.exe',
+	endpoint: 'https://db-regio.hafas.de/bin/hci/mgate.exe',
 	transformReqBody,
 
 	products: products,
