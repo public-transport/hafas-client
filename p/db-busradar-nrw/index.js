@@ -4,7 +4,7 @@
 // so the bitmasks had to be determined by querying some stations and looking at the results..
 const products = [
 	{
-		id: 'nationalExpress',
+		id: 'national-express',
 		mode: 'train',
 		bitmasks: [1],
 		name: 'InterCityExpress',
@@ -19,15 +19,17 @@ const products = [
 		short: 'IC/EC',
 		default: true
 	},
-	// 4: not always used, could not be confirmed..
+	// todo: not always true when a station has RE stopping at it
+	// maybe something else?
 	{
-		id: 'regionalExp',
+		id: 'regional-express',
 		mode: 'train',
 		bitmasks: [4],
 		name: 'Regionalexpress',
 		short: 'RE',
 		default: true
 	},
+	// todo: also used for replacement service incl. S-Bahn replacement
 	{
 		id: 'regional',
 		mode: 'train',
@@ -36,7 +38,6 @@ const products = [
 		short: 'RB/RE',
 		default: true
 	},
-	// 16: often appears together with 8 even when there are only S-Bahn trains at the station
 	{
 		id: 'suburban',
 		mode: 'train',
@@ -53,7 +54,6 @@ const products = [
 		short: 'Bus',
 		default: true
 	},
-	// 64, 128, 256: could not be confirmed
 	{
 		id: 'ferry',
 		mode: 'watercraft',
@@ -62,22 +62,7 @@ const products = [
 		short: 'F',
 		default: true
 	},
-	{
-		id: 'subway',
-		mode: 'train',
-		bitmasks: [128],
-		name: 'U-Bahn',
-		short: 'U',
-		default: true
-	},
-	{
-		id: 'tram',
-		mode: 'train',
-		bitmasks: [256],
-		name: 'Tram',
-		short: 'T',
-		default: true
-	},
+	// todo: are `128` & `256` unused?
 	{
 		id: 'taxi',
 		mode: 'taxi',
