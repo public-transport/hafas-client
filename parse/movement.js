@@ -1,7 +1,7 @@
 'use strict'
 
 const createParseMovement = (profile, opt, data) => {
-	const {locations, lines, polylines} = data
+	const {locations, polylines} = data
 
 	// todo: what is m.dirGeo? maybe the speed?
 	// todo: what is m.stopL?
@@ -15,7 +15,7 @@ const createParseMovement = (profile, opt, data) => {
 		const res = {
 			direction: m.dirTxt ? profile.parseStationName(m.dirTxt) : null,
 			tripId: m.jid || null,
-			line: lines[m.prodX] || null,
+			line: m.line || null,
 			location: m.pos ? {
 				type: 'location',
 				latitude: m.pos.y / 1000000,

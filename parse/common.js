@@ -33,6 +33,14 @@ const parseCommonData = (profile, opt, res) => {
 	if (Array.isArray(c.prodL)) {
 		const parse = profile.parseLine(profile, opt, res)
 		res.lines = c.prodL.map(parse)
+
+		resolveIdxRefs(res, '**.prodX', res.lines, 'line')
+		findIdxRefs(res, '**.pRefL', (idxs, parent) => {
+			parent.lines = idxs.filter(idx => !!res.lines[idx]).map(idx => res.lines[idx])
+		})
+		// todo
+		// resolveIdxRefs(res, '**.dep.dProdX', res.lines, 'departureLine')
+		// resolveIdxRefs(res, '**.arr.aProdX', res.lines, 'arrivalLine')
 	}
 
 	res.locations = []
