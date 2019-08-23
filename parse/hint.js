@@ -12,12 +12,11 @@ const codesByIcon = Object.assign(Object.create(null), {
 // "tagL": [
 // 	"RES_JNY_DTL" // only shown in journey detail
 // ]
-const parseHint = (profile, h, data) => {
-	const icons = data.icoL || []
+const parseHint = (profile, h, _) => {
 	// todo: C
 
 	const text = h.txtN && h.txtN.trim() || ''
-	const icon = 'number' === typeof h.icoX && icons[h.icoX] || null
+	const icon = h.icon || null
 	const code = h.code || (icon && icon.type && codesByIcon[icon.type]) || null
 
 	if (h.type === 'M') {
