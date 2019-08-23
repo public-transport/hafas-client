@@ -40,7 +40,7 @@ const applyRemarks = (leg, hints, warnings, refs) => {
 }
 
 const createParseJourneyLeg = (profile, opt, data) => {
-	const {locations, lines, hints, warnings, polylines} = data
+	const {locations, hints, warnings, polylines} = data
 	// todo: pt.status, pt.isPartCncl
 	// todo: pt.isRchbl, pt.chRatingRT, pt.chgDurR, pt.minChg
 	// todo: pt.dep.dProgType, pt.arr.dProgType
@@ -100,7 +100,7 @@ const createParseJourneyLeg = (profile, opt, data) => {
 		} else if (pt.type === 'JNY') {
 			// todo: pull `public` value from `profile.products`
 			res.tripId = pt.jny.jid
-			res.line = lines[parseInt(pt.jny.prodX)] || null
+			res.line = pt.jny.line || null
 			res.direction = pt.jny.dirTxt && profile.parseStationName(pt.jny.dirTxt) || null
 
 			res.arrivalPlatform = pt.arr.aPlatfR ||pt.arr.aPlatfS || null
@@ -161,7 +161,7 @@ const createParseJourneyLeg = (profile, opt, data) => {
 					}
 					return {
 						tripId: a.jid,
-						line: lines[parseInt(a.prodX)] || null,
+						line: a.line || null,
 						direction: a.dirTxt || null,
 						when, delay
 					}
