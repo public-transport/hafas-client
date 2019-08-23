@@ -29,7 +29,7 @@ const parseMsgEvent = (profile, data) => (e) => {
 
 const parseWarning = (profile, w, data) => {
 	const icons = data.icoL || []
-	// todo: act, pub, lead, tckr, fLocX, tLocX, prod, comp,
+	// todo: act, pub, lead, tckr, prod, comp,
 	// todo: cat (1, 2), pubChL, rRefL, impactL
 	// pubChL:
 	// [ { name: 'timetable',
