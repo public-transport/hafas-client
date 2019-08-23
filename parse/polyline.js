@@ -3,7 +3,7 @@
 const {toGeoJSON} = require('@mapbox/polyline')
 const distance = require('gps-distance')
 
-const createParsePolyline = (profile, opt, {locations}) => {
+const createParsePolyline = (profile, opt, _) => {
 	// todo: what is p.delta?
 	// todo: what is p.type?
 	// todo: what is p.crdEncS?
@@ -24,8 +24,7 @@ const createParsePolyline = (profile, opt, {locations}) => {
 		if (Array.isArray(p.ppLocRefL)) {
 			for (let ref of p.ppLocRefL) {
 				const p = res[ref.ppIdx]
-				const loc = locations[ref.locX]
-				if (p && loc) p.properties = loc
+				if (p && ref.location) p.properties = ref.location
 			}
 
 			// Often there is one more point right next to each point at a station.
