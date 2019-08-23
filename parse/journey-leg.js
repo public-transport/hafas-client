@@ -14,24 +14,19 @@ const applyRemarks = (leg, refs) => {
 	for (let [remark, ref] of findRemarks(refs)) {
 		const {fromLocation, toLocation} = ref
 
-		if (ref.fromLocation && ref.toLocation) {
-			const fromI = leg.stopovers.findIndex(s => s.stop === fromLocation)
-			const toI = leg.stopovers.findIndex(s => s.stop === toLocation)
-			if (fromI < 0 || toI < 0) continue
+		const fromI = fromLocation ? leg.stopovers.findIndex(s => s.stop === fromLocation) : -1
+		const toI = toLocation ? leg.stopovers.findIndex(s => s.stop === toLocation) : -1
+		if (fromI < 0 || toI < 0) continue
 
-			const wholeLeg = fromI === 0 && toI === (leg.stopovers.length - 1)
-			if (!wholeLeg) {
-				for (let i = fromI; i <= toI; i++) {
-					const stopover = leg.stopovers[i]
-					if (!stopover) continue
-					addRemark(stopover, remark)
-				}
-
-				continue
+		const wholeLeg = fromI === 0 && toI === (leg.stopovers.length - 1)
+		if (wholeLeg) addRemark(leg, remark)
+		else {
+			for (let i = fromI; i <= toI; i++) {
+				const stopover = leg.stopovers[i]
+				if (stopover) addRemark(stopover, remark)
 			}
 		}
 
-		addRemark(leg, remark)
 		// todo: `ref.tagL`
 	}
 }
