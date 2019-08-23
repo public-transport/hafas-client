@@ -1,5 +1,8 @@
 'use strict'
 
+const get = require('lodash/get')
+const {findIdxRefs, resolveIdxRefs} = require('../lib/resolve-idx-refs')
+
 // todo: move to separate file
 const parseIcon = (i) => {
 	const res = {
@@ -11,13 +14,13 @@ const parseIcon = (i) => {
 	return res
 }
 
-const parseCommonData = (profile, opt, raw) => {
-	const res = Object.assign({}, raw)
-	const c = raw.common || {}
+const parseCommonData = (profile, opt, res) => {
+	const c = res.common || {}
 
 	res.operators = []
 	if (Array.isArray(c.opL)) {
 		res.operators = c.opL.map(op => profile.parseOperator(profile, op))
+		resolveIdxRefs(res, '**.oprX', res.operators, 'operator')
 	}
 
 	res.icons = []
