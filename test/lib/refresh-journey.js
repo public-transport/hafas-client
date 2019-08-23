@@ -1,21 +1,11 @@
 'use strict'
 
 const simplify = j => j.legs.map(l => {
-	let departure = null
-	if (l.departure) {
-		departure = +new Date(l.departure)
-		if ('number' === typeof l.departureDelay) departure -= l.departureDelay * 1000
-	}
-	let arrival = null
-	if (l.arrival) {
-		arrival = +new Date(l.arrival)
-		if ('number' === typeof l.arrivalDelay) arrival -= l.arrivalDelay * 1000
-	}
 	return {
 		origin: l.origin,
 		destination: l.destination,
-		scheduledDeparture: departure,
-		scheduledArrival: arrival,
+		departure: l.plannedDeparture || l.departure,
+		arrival: l.plannedArrival || l.arrival,
 		line: l.line
 	}
 })

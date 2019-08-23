@@ -100,6 +100,13 @@ const createValidateLine = (cfg) => {
 
 const createValidateStopover = (cfg) => {
 	const validateStopover = (val, s, name = 'stopover') => {
+		if (
+			!is(s.arrival) && !is(s.departure) &&
+			!is(s.plannedArrival) && !is(s.plannedDeparture)
+		) {
+			a.fail(name + ' contains neither (planned)arrival nor (planned)departure')
+		}
+
 		if (is(s.arrival)) {
 			val.date(val, s.arrival, name + '.arrival')
 			assertValidWhen(s.arrival, cfg.when, name + '.arrival')
@@ -108,17 +115,26 @@ const createValidateStopover = (cfg) => {
 			val.date(val, s.departure, name + '.departure')
 			assertValidWhen(s.departure, cfg.when, name + '.departure')
 		}
-		if (!is(s.arrival) && !is(s.departure)) {
-			a.fail(name + ' contains neither arrival nor departure')
+		if (is(s.plannedArrival)) {
+			val.date(val, s.plannedArrival, name + '.plannedArrival')
+			assertValidWhen(s.plannedArrival, cfg.when, name + '.plannedArrival')
+		}
+		if (is(s.plannedDeparture)) {
+			val.date(val, s.plannedDeparture, name + '.plannedDeparture')
+			assertValidWhen(s.plannedDeparture, cfg.when, name + '.plannedDeparture')
 		}
 
 		if (is(s.arrivalDelay)) {
 			const msg = name + '.arrivalDelay must be a number'
 			a.strictEqual(typeof s.arrivalDelay, 'number', msg)
+			const d = new Date(s.arrival) - new Date(s.plannedArrival)
+			a.strictEqual(Math.round(d / 1000), s.arrivalDelay)
 		}
 		if (is(s.departureDelay)) {
 			const msg = name + '.departureDelay must be a number'
 			a.strictEqual(typeof s.departureDelay, 'number', msg)
+			const d = new Date(s.departure) - new Date(s.plannedDeparture)
+			a.strictEqual(Math.round(d / 1000), s.departureDelay)
 		}
 
 		if (is(s.arrivalPlatform)) {
