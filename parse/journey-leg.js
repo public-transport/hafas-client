@@ -37,7 +37,6 @@ const applyRemarks = (leg, refs) => {
 }
 
 const createParseJourneyLeg = (profile, opt, data) => {
-	const {polylines} = data
 	// todo: pt.status, pt.isPartCncl
 	// todo: pt.isRchbl, pt.chRatingRT, pt.chgDurR, pt.minChg
 	// todo: pt.dep.dProgType, pt.arr.dProgType
@@ -76,12 +75,8 @@ const createParseJourneyLeg = (profile, opt, data) => {
 			res.arrivalDelay = Math.round((realtime - planned) / 1000)
 		}
 
-		if (pt.jny && pt.jny.polyG) {
-			let p = pt.jny.polyG.polyXL
-			p = Array.isArray(p) && polylines[p[0]]
-			// todo: there can be >1 polyline
-			const parse = profile.parsePolyline(profile, opt, data)
-			res.polyline = p && parse(p) || null
+		if (pt.jny && pt.jny.polyline) {
+			res.polyline = pt.jny.polyline || null
 		}
 
 		if (pt.type === 'WALK' || pt.type === 'TRSF') {

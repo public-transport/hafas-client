@@ -1,8 +1,6 @@
 'use strict'
 
 const createParseMovement = (profile, opt, data) => {
-	const {polylines} = data
-
 	// todo: what is m.dirGeo? maybe the speed?
 	// todo: what is m.stopL?
 	// todo: what is m.proc? wut?
@@ -41,12 +39,8 @@ const createParseMovement = (profile, opt, data) => {
 				if (m.ani.poly) {
 					const parse = profile.parsePolyline(profile, opt, data)
 					res.polyline = parse(m.ani.poly)
-				} else if (m.ani.polyG) {
-					let p = m.ani.polyG.polyXL
-					p = Array.isArray(p) && polylines[p[0]]
-					// todo: there can be >1 polyline
-					const parse = profile.parsePolyline(profile, opt, data)
-					res.polyline = p && parse(p) || null
+				} else if (m.ani.polyline) {
+					res.polyline = m.ani.polyline
 				}
 			}
 		}

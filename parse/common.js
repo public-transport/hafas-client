@@ -81,7 +81,17 @@ const parseCommonData = (profile, opt, res) => {
 	}
 
 	res.polylines = []
-	if (opt.polylines && Array.isArray(c.polyL)) res.polylines = c.polyL
+	if (opt.polylines && Array.isArray(c.polyL)) {
+		const parse = profile.parsePolyline(profile, opt, res)
+		res.polylines = c.polyL.map(parse)
+		// todo: **.ani.poly -> parsePolyline()
+
+		findIdxRefs(res, '**.polyG.polyXL', (idxs, _, path) => {
+			const idx = idxs.find(idx => !!res.polylines[idx]) // find any given polyline
+			const jny = get(res, path.slice(0, -2))
+			jny.polyline = res.polylines[idx]
+		})
+	}
 
 	return res
 }
