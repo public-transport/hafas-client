@@ -1,40 +1,27 @@
 'use strict'
 
+const parseWhen = require('./when')
 const findRemarks = require('./find-remarks')
 
 const createParseStopover = (profile, opt, data, date) => {
 	const parseStopover = (st) => {
+		const arr = parseWhen(profile, date, st.aTimeS, st.aTimeR, st.aTZOffset, st.aCncl)
+		const dep = parseWhen(profile, date, st.dTimeS, st.dTimeR, st.dTZOffset, st.dCncl)
+
 		const res = {
 			stop: st.location || null,
-			arrival: null,
-			arrivalDelay: null,
+			arrival: arr.when,
+			plannedArrival: arr.plannedWhen,
+			arrivalDelay: arr.delay,
 			arrivalPlatform: st.aPlatfR || st.aPlatfS || null,
-			departure: null,
-			departureDelay: null,
+			departure: dep.when,
+			plannedDeparture: dep.plannedWhen,
+			departureDelay: dep.delay,
 			departurePlatform: st.dPlatfR || st.dPlatfS || null
 		}
 
-		// todo: DRY with parseDeparture
-		// todo: DRY with parseJourneyLeg
-		if (st.aTimeR || st.aTimeS) {
-			const arr = profile.parseDateTime(profile, date, st.aTimeR || st.aTimeS, st.aTZOffset)
-			res.arrival = arr
-		}
-		if (st.aTimeR && st.aTimeS) {
-			const realtime = profile.parseDateTime(profile, date, st.aTimeR, st.aTZOffset, true)
-			const planned = profile.parseDateTime(profile, date, st.aTimeS, st.aTZOffset, true)
-			res.arrivalDelay = Math.round((realtime - planned) / 1000)
-		}
-
-		if (st.dTimeR || st.dTimeS) {
-			const dep = profile.parseDateTime(profile, date, st.dTimeR || st.dTimeS, st.dTZOffset)
-			res.departure = dep
-		}
-		if (st.dTimeR && st.dTimeS) {
-			const realtime = profile.parseDateTime(profile, date, st.dTimeR, st.dTZOffset, true)
-			const planned = profile.parseDateTime(profile, date, st.dTimeS, st.dTZOffset, true)
-			res.departureDelay = Math.round((realtime - planned) / 1000)
-		}
+		if (arr.prognosedWhen) res.prognosedArrival = arr.prognosedWhen
+		if (dep.prognosedWhen) res.prognosedDeparture = dep.prognosedWhen
 
 		if (st.aPlatfR && st.aPlatfS && st.aPlatfR !== st.aPlatfS) {
 			res.scheduledArrivalPlatform = st.aPlatfS
@@ -46,27 +33,9 @@ const createParseStopover = (profile, opt, data, date) => {
 		// mark stations the train passes without stopping
 		if(st.dInS === false && st.aOutS === false) res.passBy = true
 
-		// todo: DRY with parseDeparture
-		// todo: DRY with parseJourneyLeg
 		if (st.aCncl || st.dCncl) {
 			res.cancelled = true
 			Object.defineProperty(res, 'canceled', {value: true})
-			if (st.aCncl) {
-				res.formerArrivalDelay = res.arrivalDelay
-				res.arrival = res.arrivalDelay = null
-				if (st.aTimeS) {
-					const arr = profile.parseDateTime(profile, date, st.aTimeS, st.aTZOffset)
-					res.scheduledArrival = arr
-				}
-			}
-			if (st.dCncl) {
-				res.formerDepartureDelay = res.departureDelay
-				res.departure = res.departureDelay = null
-				if (st.dTimeS) {
-					const arr = profile.parseDateTime(profile, date, st.dTimeS, st.dTZOffset)
-					res.scheduledDeparture = arr
-				}
-			}
 		}
 
 		if (opt.remarks && Array.isArray(st.msgL)) {

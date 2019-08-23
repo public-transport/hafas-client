@@ -1,6 +1,6 @@
 'use strict'
 
-const parseDateTime = require('./date-time')
+const parseWhen = require('./when')
 const findRemarks = require('./find-remarks')
 
 const clone = obj => Object.assign({}, obj)
@@ -44,30 +44,25 @@ const createParseJourneyLeg = (profile, opt, data) => {
 	// j = journey, pt = part
 	// todo: pt.planrtTS
 	const parseJourneyLeg = (j, pt, parseStopovers = true) => {
-		const dep = profile.parseDateTime(profile, j.date, pt.dep.dTimeR || pt.dep.dTimeS, pt.dep.dTZOffset)
-		const arr = profile.parseDateTime(profile, j.date, pt.arr.aTimeR || pt.arr.aTimeS, pt.arr.aTZOffset)
 		const res = {
 			origin: clone(pt.dep.location) || null,
-			destination: clone(pt.arr.location),
-			departure: dep,
-			arrival: arr
+			destination: clone(pt.arr.location)
 		}
+
+		const arr = parseWhen(profile, j.date, pt.arr.aTimeS, pt.arr.aTimeR, pt.arr.aTZOffset, pt.arr.aCncl)
+		res.arrival = arr.when
+		res.plannedArrival = arr.plannedWhen
+		res.arrivalDelay = arr.delay
+		if (arr.prognosedWhen) res.prognosedArrival = arr.prognosedWhen
+
+		const dep = parseWhen(profile, j.date, pt.dep.dTimeS, pt.dep.dTimeR, pt.dep.dTZOffset, pt.dep.dCncl)
+		res.departure = dep.when
+		res.plannedDeparture = dep.plannedWhen
+		res.departureDelay = dep.delay
+		if (dep.prognosedWhen) res.prognosedDeparture = dep.prognosedWhen
 
 		if (pt.jny) {
 			res.reachable = !!pt.jny.isRchbl
-		}
-
-		// todo: DRY with parseDeparture
-		// todo: DRY with parseStopover
-		if (pt.dep.dTimeR && pt.dep.dTimeS) {
-			const realtime = profile.parseDateTime(profile, j.date, pt.dep.dTimeR, pt.dep.dTZOffset, true)
-			const planned = profile.parseDateTime(profile, j.date, pt.dep.dTimeS, pt.dep.dTZOffset, true)
-			res.departureDelay = Math.round((realtime - planned) / 1000)
-		}
-		if (pt.arr.aTimeR && pt.arr.aTimeS) {
-			const realtime = profile.parseDateTime(profile, j.date, pt.arr.aTimeR, pt.dep.aTZOffset, true)
-			const planned = profile.parseDateTime(profile, j.date, pt.arr.aTimeS, pt.dep.aTZOffset, true)
-			res.arrivalDelay = Math.round((realtime - planned) / 1000)
 		}
 
 		if (pt.jny && pt.jny.polyline) {
@@ -129,43 +124,21 @@ const createParseJourneyLeg = (profile, opt, data) => {
 				const parseAlternative = (a) => {
 					// todo: parse this just like a `leg` (breaking)
 					// todo: parse `a.stopL`, `a.ctxRecon`, `a.msgL`
-					const st0 = a.stopL[0]
-
-					let when = null, delay = null
-					if (st0) {
-						const planned = st0.dTimeS && profile.parseDateTime(profile, j.date, st0.dTimeS, st0.dTZOffset)
-						if (st0.dTimeR && planned) {
-							const realtime = profile.parseDateTime(profile, j.date, st0.dTimeR, st0.dTZOffset)
-							when = realtime
-							delay = Math.round((new Date(realtime) - new Date(planned)) / 1000)
-						} else if (planned) when = planned
-					}
+					const st0 = a.stopL[0] || {}
 					return {
 						tripId: a.jid,
 						line: a.line || null,
 						direction: a.dirTxt || null,
-						when, delay
+						...parseWhen(profile, j.date, st0.dTimeS, st0.dTimeR, st0.dTZOffset, st0.dCncl)
 					}
 				}
 				res.alternatives = freq.jnyL.map(parseAlternative)
 			}
 		}
 
-		// todo: DRY with parseDeparture
-		// todo: DRY with parseStopover
 		if (pt.arr.aCncl || pt.dep.dCncl) {
 			res.cancelled = true
 			Object.defineProperty(res, 'canceled', {value: true})
-			if (pt.arr.aCncl) {
-				res.arrival = res.arrivalPlatform = res.arrivalDelay = null
-				const arr = profile.parseDateTime(profile, j.date, pt.arr.aTimeS, pt.arr.aTZOffset)
-				res.scheduledArrival = arr
-			}
-			if (pt.dep.dCncl) {
-				res.departure = res.departurePlatform = res.departureDelay = null
-				const dep = profile.parseDateTime(profile, j.date, pt.dep.dTimeS, pt.dep.dTZOffset)
-				res.scheduledDeparture = dep
-			}
 		}
 
 		return res

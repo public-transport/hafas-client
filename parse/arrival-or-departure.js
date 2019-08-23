@@ -1,5 +1,6 @@
 'use strict'
 
+const parseWhen = require('./when')
 const findRemarks = require('./find-remarks')
 
 const ARRIVAL = 'a'
@@ -12,13 +13,15 @@ const createParseArrOrDep = (profile, opt, data, prefix) => {
 	if (prefix !== ARRIVAL && prefix !== DEPARTURE) throw new Error('invalid prefix')
 
 	const parseArrOrDep = (d) => {
-		const t = d.stbStop[prefix + 'TimeR'] || d.stbStop[prefix + 'TimeS']
-		const tz = d.stbStop[prefix + 'TZOffset'] || null
+		const tPlanned = d.stbStop[prefix + 'TimeS']
+		const tPrognosed = d.stbStop[prefix + 'TimeR']
+		const tzOffset = d.stbStop[prefix + 'TZOffset'] || null
+		const cancelled = !!d.stbStop[prefix + 'Cncl']
 
 		const res = {
 			tripId: d.jid,
 			stop: d.stbStop.location || null,
-			when: profile.parseDateTime(profile, d.date, t, tz),
+			...parseWhen(profile, d.date, tPlanned, tPrognosed, tzOffset, cancelled)
 			// todo: for arrivals, this is the *origin*, not the *direction*
 			direction: prefix === DEPARTURE && d.dirTxt && profile.parseStationName(d.dirTxt) || null,
 			line: d.line || null,
@@ -27,28 +30,14 @@ const createParseArrOrDep = (profile, opt, data, prefix) => {
 
 		// todo: DRY with parseStopover
 		// todo: DRY with parseJourneyLeg
-		const tR = d.stbStop[prefix + 'TimeR']
-		const tP = d.stbStop[prefix + 'TimeS']
-		if (tR && tP) {
-			const realtime = profile.parseDateTime(profile, d.date, tR, tz, true)
-			const planned = profile.parseDateTime(profile, d.date, tP, tz, true)
-			res.delay = Math.round((realtime - planned) / 1000)
-		} else res.delay = null
-
-		// todo: DRY with parseStopover
-		// todo: DRY with parseJourneyLeg
 		const pR = d.stbStop[prefix + 'PlatfR']
 		const pP = d.stbStop[prefix + 'PlatfS']
 		res.platform = pR || pP || null
 		if (pR && pP && pR !== pP) res.scheduledPlatform = pP
 
-		// todo: DRY with parseStopover
-		// todo: DRY with parseJourneyLeg
-		if (d.stbStop[prefix + 'Cncl']) {
+		if (cancelled) {
 			res.cancelled = true
 			Object.defineProperty(res, 'canceled', {value: true})
-			res.when = res.delay = null
-			res.scheduledWhen = profile.parseDateTime(profile, d.date, tP, tz)
 		}
 
 		if (opt.remarks) {
