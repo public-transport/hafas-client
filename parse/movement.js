@@ -1,7 +1,7 @@
 'use strict'
 
 const createParseMovement = (profile, opt, data) => {
-	const {locations, polylines} = data
+	const {polylines} = data
 
 	// todo: what is m.dirGeo? maybe the speed?
 	// todo: what is m.stopL?
@@ -30,8 +30,8 @@ const createParseMovement = (profile, opt, data) => {
 			if (Array.isArray(m.ani.mSec)) {
 				for (let i = 0; i < m.ani.mSec.length; i++) {
 					res.frames.push({
-						origin: locations[m.ani.fLocX[i]] || null,
-						destination: locations[m.ani.tLocX[i]] || null,
+						origin: m.ani.fromLocations[i] || null,
+						destination: m.ani.toLocations[i] || null,
 						t: m.ani.mSec[i]
 					})
 				}

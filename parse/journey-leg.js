@@ -5,16 +5,15 @@ const findRemark = require('./find-remark')
 
 const clone = obj => Object.assign({}, obj)
 
-const locX = Symbol('locX')
-
 const applyRemarks = (leg, hints, warnings, refs) => {
 	for (let ref of refs) {
 		const remark = findRemark(hints, warnings, ref)
 		if (!remark) continue
+		const {fromLocation, toLocation} = ref
 
-		if ('number' === typeof ref.fLocX && 'number' === typeof ref.tLocX) {
-			const fromI = leg.stopovers.findIndex(s => s[locX] === ref.fLocX)
-			const toI = leg.stopovers.findIndex(s => s[locX] === ref.tLocX)
+		if (ref.fromLocation && ref.toLocation) {
+			const fromI = leg.stopovers.findIndex(s => s.stop === fromLocation)
+			const toI = leg.stopovers.findIndex(s => s.stop === toLocation)
 			if (fromI < 0 || toI < 0) continue
 
 			const wholeLeg = fromI === 0 && toI === (leg.stopovers.length - 1)
@@ -40,7 +39,7 @@ const applyRemarks = (leg, hints, warnings, refs) => {
 }
 
 const createParseJourneyLeg = (profile, opt, data) => {
-	const {locations, hints, warnings, polylines} = data
+	const {hints, warnings, polylines} = data
 	// todo: pt.status, pt.isPartCncl
 	// todo: pt.isRchbl, pt.chRatingRT, pt.chgDurR, pt.minChg
 	// todo: pt.dep.dProgType, pt.arr.dProgType
@@ -56,8 +55,8 @@ const createParseJourneyLeg = (profile, opt, data) => {
 		const dep = profile.parseDateTime(profile, j.date, pt.dep.dTimeR || pt.dep.dTimeS, pt.dep.dTZOffset)
 		const arr = profile.parseDateTime(profile, j.date, pt.arr.aTimeR || pt.arr.aTimeS, pt.arr.aTZOffset)
 		const res = {
-			origin: clone(locations[parseInt(pt.dep.locX)]) || null,
-			destination: clone(locations[parseInt(pt.arr.locX)]),
+			origin: clone(pt.dep.location) || null,
+			destination: clone(pt.arr.location),
 			departure: dep,
 			arrival: arr
 		}
@@ -119,12 +118,6 @@ const createParseJourneyLeg = (profile, opt, data) => {
 				res.stopovers = stopL.map(parse)
 
 				if (opt.remarks && Array.isArray(pt.jny.msgL)) {
-					for (let i = 0; i < stopL.length; i++) {
-						Object.defineProperty(res.stopovers[i], locX, {
-							value: stopL[i].locX
-						})
-					}
-					// todo: parse `pt.dep.msgL` & `pt.arr.msgL`
 					// todo: apply leg-wide remarks if `parseStopovers` is false
 					applyRemarks(res, hints, warnings, pt.jny.msgL)
 				}
