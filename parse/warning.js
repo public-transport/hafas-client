@@ -11,8 +11,7 @@ const typesByIcon = Object.assign(Object.create(null), {
 
 const parseMsgEdge = (profile, data) => (e) => {
 	const res = omit(e, ['icoX', 'fLocX', 'tLocX'])
-	const icons = data.icoL || []
-	res.icon = 'number' === typeof e.icoX && icons[e.icoX] || null
+	res.icon = e.icon || null
 	res.fromLoc = 'number' === typeof e.fLocX && data.locations[e.fLocX] || null
 	res.toLoc = 'number' === typeof e.tLocX && data.locations[e.tLocX] || null
 	return res
@@ -28,7 +27,6 @@ const parseMsgEvent = (profile, data) => (e) => {
 }
 
 const parseWarning = (profile, w, data) => {
-	const icons = data.icoL || []
 	// todo: act, pub, lead, tckr, prod, comp,
 	// todo: cat (1, 2), pubChL, rRefL, impactL
 	// pubChL:
@@ -48,7 +46,7 @@ const parseWarning = (profile, w, data) => {
 	// tDate: '20190225',
 	// tTime: '120000' }
 
-	const icon = 'number' === typeof w.icoX && icons[w.icoX] || null
+	const icon = w.icon || null
 	const type = icon && icon.type && typesByIcon[icon.type] || 'warning'
 
 	const res = {
