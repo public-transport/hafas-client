@@ -10,6 +10,7 @@ const createParseLine = (profile, opt, {operators}) => {
 		}
 	}
 
+	// todo: p.himIdL
 	const parseLine = (p) => {
 		if (!p) return null // todo: handle this upstream
 		const name = p.line || p.addName || p.name || null // wtf

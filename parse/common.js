@@ -15,6 +15,7 @@ const parseCommonData = (profile, opt, raw) => {
 	const res = Object.assign({}, raw)
 	const c = raw.common || {}
 
+	res.operators = []
 	if (Array.isArray(c.opL)) {
 		res.operators = c.opL.map(op => profile.parseOperator(profile, op))
 	}
@@ -22,11 +23,13 @@ const parseCommonData = (profile, opt, raw) => {
 	res.icons = []
 	if (Array.isArray(c.icoL)) res.icons = c.icoL.map(parseIcon)
 
+	res.lines = []
 	if (Array.isArray(c.prodL)) {
 		const parse = profile.parseLine(profile, opt, res)
 		res.lines = c.prodL.map(parse)
 	}
 
+	res.locations = []
 	if (Array.isArray(c.locL)) {
 		const parse = loc => profile.parseLocation(profile, opt, res, loc)
 		res.locations = c.locL.map(parse)
