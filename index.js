@@ -231,6 +231,7 @@ const createClient = (profile, userAgent, request = _request) => {
 			})
 			.then((d) => {
 				if (!Array.isArray(d.outConL)) return []
+				// todo: outConGrpL
 
 				const parse = profile.parseJourney(profile, opt, d)
 
