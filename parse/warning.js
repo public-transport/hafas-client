@@ -9,17 +9,23 @@ const typesByIcon = Object.assign(Object.create(null), {
 	HimWarn: 'status'
 })
 
-const parseMsgEdge = (profile, data) => (e) => {
-	const res = omit(e, ['icoX', 'fLocX', 'tLocX'])
+const parseMsgEdge = (profile) => (e) => {
+	const res = omit(e, [
+		'icoX',
+		'fLocX', 'fromLocation',
+		'tLocX', 'toLocation'
+	])
 	res.icon = e.icon || null
-	res.fromLoc = 'number' === typeof e.fLocX && data.locations[e.fLocX] || null
-	res.toLoc = 'number' === typeof e.tLocX && data.locations[e.tLocX] || null
+	// todo: rename `Loc` -> `Location` [breaking]
+	res.fromLoc = e.fromLocation || null
+	res.toLoc = e.toLocation || null
 	return res
 }
-const parseMsgEvent = (profile, data) => (e) => {
+const parseMsgEvent = (profile) => (e) => {
 	return {
-		fromLoc: 'number' === typeof e.fLocX && data.locations[e.fLocX] || null,
-		toLoc: 'number' === typeof e.tLocX && data.locations[e.tLocX] || null,
+		// todo: rename `Loc` -> `Location` [breaking]
+		fromLoc: e.fromLocation || null,
+		toLoc: e.toLocation || null,
 		start: parseDateTime(profile, e.fDate, e.fTime, null),
 		end: parseDateTime(profile, e.tDate, e.tTime, null),
 		sections: e.sectionNums || [] // todo: parse
@@ -64,13 +70,13 @@ const parseWarning = (profile, w, data) => {
 		res.edges = w.edgeRefL
 		.map(i => data.himMsgEdgeL[i])
 		.filter(e => !!e)
-		.map(parseMsgEdge(profile, data))
+		.map(parseMsgEdge(profile))
 	}
 	if (w.eventRefL && data.himMsgEventL) {
 		res.events = w.eventRefL
 		.map(i => data.himMsgEventL[i])
 		.filter(e => !!e)
-		.map(parseMsgEvent(profile, data))
+		.map(parseMsgEvent(profile))
 	}
 
 	if (w.sDate && w.sTime) res.validFrom = parseDateTime(profile, w.sDate, w.sTime, null)

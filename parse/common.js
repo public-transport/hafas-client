@@ -56,6 +56,17 @@ const parseCommonData = (profile, opt, res) => {
 				loc.station.type = 'station'
 			} else if (raw.isMainMast) loc.type = 'station'
 		}
+
+		// todo: correct props?
+		resolveIdxRefs(res, '**.locX', res.locations, 'location')
+		findIdxRefs(res, '**.ani.fLocX', (idxs, parent) => {
+			parent.fromLocations = idxs.map(idx => res.locations[idx])
+		})
+		findIdxRefs(res, '**.ani.tLocX', (idxs, parent) => {
+			parent.toLocations = idxs.map(idx => res.locations[idx])
+		})
+		resolveIdxRefs(res, '**.fLocX', res.locations, 'fromLocation')
+		resolveIdxRefs(res, '**.tLocX', res.locations, 'toLocation')
 	}
 
 	res.hints = []

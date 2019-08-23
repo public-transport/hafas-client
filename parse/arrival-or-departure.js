@@ -9,7 +9,7 @@ const DEPARTURE = 'd'
 // todo: d.stbStop.dProgType/d.stbStop.aProgType
 
 const createParseArrOrDep = (profile, opt, data, prefix) => {
-	const {locations, hints, warnings} = data
+	const {hints, warnings} = data
 	if (prefix !== ARRIVAL && prefix !== DEPARTURE) throw new Error('invalid prefix')
 
 	const parseArrOrDep = (d) => {
@@ -18,7 +18,7 @@ const createParseArrOrDep = (profile, opt, data, prefix) => {
 
 		const res = {
 			tripId: d.jid,
-			stop: locations[parseInt(d.stbStop.locX)] || null,
+			stop: d.stbStop.location || null,
 			when: profile.parseDateTime(profile, d.date, t, tz),
 			// todo: for arrivals, this is the *origin*, not the *direction*
 			direction: prefix === DEPARTURE && d.dirTxt && profile.parseStationName(d.dirTxt) || null,

@@ -3,11 +3,11 @@
 const findRemark = require('./find-remark')
 
 const createParseStopover = (profile, opt, data, date) => {
-	const {locations, lines, hints, warnings} = data
+	const {hints, warnings} = data
 
 	const parseStopover = (st) => {
 		const res = {
-			stop: locations[parseInt(st.locX)] || null,
+			stop: st.location || null,
 			arrival: null,
 			arrivalDelay: null,
 			arrivalPlatform: st.aPlatfR || st.aPlatfS || null,
