@@ -41,6 +41,7 @@
 		"gps-distance": "0.0.4",
 		"lodash": "^4.17.5",
 		"luxon": "^1.3.0",
+		"object-scan": "^10.0.9",
 		"p-retry": "^4.1.0",
 		"p-throttle": "^3.1.0",
 		"pinkie-promise": "^2.0.1",
