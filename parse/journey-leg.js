@@ -1,14 +1,17 @@
 'use strict'
 
 const parseDateTime = require('./date-time')
-const findRemark = require('./find-remark')
+const findRemarks = require('./find-remarks')
 
 const clone = obj => Object.assign({}, obj)
 
-const applyRemarks = (leg, hints, warnings, refs) => {
-	for (let ref of refs) {
-		const remark = findRemark(hints, warnings, ref)
-		if (!remark) continue
+const addRemark = (stopoverOrLeg, remark) => {
+	if (!Array.isArray(stopoverOrLeg.remarks)) stopoverOrLeg.remarks = []
+	stopoverOrLeg.remarks.push(remark)
+}
+
+const applyRemarks = (leg, refs) => {
+	for (let [remark, ref] of findRemarks(refs)) {
 		const {fromLocation, toLocation} = ref
 
 		if (ref.fromLocation && ref.toLocation) {
@@ -21,25 +24,20 @@ const applyRemarks = (leg, hints, warnings, refs) => {
 				for (let i = fromI; i <= toI; i++) {
 					const stopover = leg.stopovers[i]
 					if (!stopover) continue
-					if (Array.isArray(stopover.remarks)) {
-						stopover.remarks.push(remark)
-					} else {
-						stopover.remarks = [remark]
-					}
+					addRemark(stopover, remark)
 				}
 
 				continue
 			}
 		}
 
-		if (Array.isArray(leg.remarks)) leg.remarks.push(remark)
-		else leg.remarks = [remark]
+		addRemark(leg, remark)
 		// todo: `ref.tagL`
 	}
 }
 
 const createParseJourneyLeg = (profile, opt, data) => {
-	const {hints, warnings, polylines} = data
+	const {polylines} = data
 	// todo: pt.status, pt.isPartCncl
 	// todo: pt.isRchbl, pt.chRatingRT, pt.chgDurR, pt.minChg
 	// todo: pt.dep.dProgType, pt.arr.dProgType
@@ -94,7 +92,7 @@ const createParseJourneyLeg = (profile, opt, data) => {
 
 			// https://gist.github.com/derhuerst/426d4b95aeae701843b1e9c23105b8d4#file-tripsearch-2018-12-05-http-L4207-L4229
 			if (opt.remarks && Array.isArray(pt.gis.msgL)) {
-				applyRemarks(res, hints, warnings, pt.gis.msgL)
+				applyRemarks(res, pt.gis.msgL)
 			}
 		} else if (pt.type === 'JNY') {
 			// todo: pull `public` value from `profile.products`
@@ -119,7 +117,7 @@ const createParseJourneyLeg = (profile, opt, data) => {
 
 				if (opt.remarks && Array.isArray(pt.jny.msgL)) {
 					// todo: apply leg-wide remarks if `parseStopovers` is false
-					applyRemarks(res, hints, warnings, pt.jny.msgL)
+					applyRemarks(res, pt.jny.msgL)
 				}
 
 				// filter stations the train passes without stopping, as this doesn't comply with fptf (yet)

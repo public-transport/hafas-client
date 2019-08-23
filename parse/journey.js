@@ -1,7 +1,7 @@
 'use strict'
 
 const {DateTime} = require('luxon')
-const findRemark = require('./find-remark')
+const findRemarks = require('./find-remarks')
 
 const parseScheduledDays = (sDaysB, profile) => {
 	sDaysB = Buffer.from(sDaysB, 'hex')
@@ -24,8 +24,6 @@ const parseScheduledDays = (sDaysB, profile) => {
 
 const createParseJourney = (profile, opt, data) => {
 	const parseLeg = profile.parseJourneyLeg(profile, opt, data)
-	const {hints, warnings} = data
-
 	// todo: c.conSubscr
 	// todo: c.trfRes x vbb-parse-ticket
 	// todo: c.sotRating, c.isSotCon, c.sotCtxt
@@ -53,11 +51,7 @@ const createParseJourney = (profile, opt, data) => {
 		}
 
 		if (opt.remarks && Array.isArray(j.msgL)) {
-			res.remarks = []
-			for (let ref of j.msgL) {
-				const remark = findRemark(hints, warnings, ref)
-				if (remark) res.remarks.push(remark)
-			}
+			res.remarks = findRemarks(j.msgL).map(([remark]) => remark)
 		}
 
 		if (opt.scheduledDays) {
