@@ -72,10 +72,12 @@ const parseCommonData = (profile, opt, res) => {
 	res.hints = []
 	if (opt.remarks && Array.isArray(c.remL)) {
 		res.hints = c.remL.map(hint => profile.parseHint(profile, hint, {...c, ...res}))
+		resolveIdxRefs(res, '**.remX', res.hints, 'hint')
 	}
 	res.warnings = []
 	if (opt.remarks && Array.isArray(c.himL)) {
 		res.warnings = c.himL.map(w => profile.parseWarning(profile, w, {...c, ...res}))
+		resolveIdxRefs(res, '**.himX', res.warnings, 'warning')
 	}
 
 	res.polylines = []
