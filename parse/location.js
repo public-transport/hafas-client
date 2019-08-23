@@ -9,7 +9,7 @@ const ADDRESS = 'A'
 const leadingZeros = /^0+/
 
 // todo: what is s.rRefL?
-const parseLocation = (profile, opt, {lines}, l) => {
+const parseLocation = (profile, opt, _, l) => {
 	const lid = parse(l.lid, {delimiter: '@'})
 	const res = {
 		type: 'location',
@@ -32,16 +32,8 @@ const parseLocation = (profile, opt, {lines}, l) => {
 		if ('pCls' in l) stop.products = profile.parseProducts(l.pCls)
 		if ('meta' in l) stop.isMeta = !!l.meta
 
-		if (
-			opt.linesOfStops &&
-			Array.isArray(l.pRefL) &&
-			Array.isArray(lines)
-		) {
-			stop.lines = []
-			for (let pRef of l.pRefL) {
-				const line = lines[pRef]
-				if (line) stop.lines.push(line)
-			}
+		if (opt.linesOfStops && Array.isArray(l.lines)) {
+			stop.lines = l.lines
 		}
 
 		return stop
