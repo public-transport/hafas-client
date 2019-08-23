@@ -1,6 +1,6 @@
 'use strict'
 
-const findRemark = require('./find-remark')
+const findRemarks = require('./find-remarks')
 
 const ARRIVAL = 'a'
 const DEPARTURE = 'd'
@@ -9,7 +9,6 @@ const DEPARTURE = 'd'
 // todo: d.stbStop.dProgType/d.stbStop.aProgType
 
 const createParseArrOrDep = (profile, opt, data, prefix) => {
-	const {hints, warnings} = data
 	if (prefix !== ARRIVAL && prefix !== DEPARTURE) throw new Error('invalid prefix')
 
 	const parseArrOrDep = (d) => {
@@ -53,10 +52,10 @@ const createParseArrOrDep = (profile, opt, data, prefix) => {
 		}
 
 		if (opt.remarks) {
-			res.remarks = []
-			.concat(d.remL || [], d.msgL || [])
-			.map(ref => findRemark(hints, warnings, ref))
-			.filter(rem => !!rem) // filter unparsable
+			res.remarks = findRemarks([
+				...(d.remL || []),
+				...(d.msgL || [])
+			]).map(([remark]) => remark)
 		}
 
    		if (opt.stopovers && d.stopL) {

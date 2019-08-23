@@ -1,10 +1,8 @@
 'use strict'
 
-const findRemark = require('./find-remark')
+const findRemarks = require('./find-remarks')
 
 const createParseStopover = (profile, opt, data, date) => {
-	const {hints, warnings} = data
-
 	const parseStopover = (st) => {
 		const res = {
 			stop: st.location || null,
@@ -72,11 +70,7 @@ const createParseStopover = (profile, opt, data, date) => {
 		}
 
 		if (opt.remarks && Array.isArray(st.msgL)) {
-			res.remarks = []
-			for (let ref of st.msgL) {
-				const remark = findRemark(hints, warnings, ref)
-				if (remark) res.remarks.push(remark)
-			}
+			res.remarks = findRemarks(st.msgL).map(([remark]) => remark)
 		}
 
 		return res
