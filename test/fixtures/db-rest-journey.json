@@ -1,0 +1,184 @@
+{
+	"Trip": [
+		{
+			"Eco": {},
+			"ServiceDays": [
+				{
+					"planningPeriodBegin": "2018-12-09",
+					"planningPeriodEnd": "2019-12-14",
+					"sDaysR": "täglich",
+					"sDaysB": "FFFFFFFFFFFFFFFFFFFFFF0001FFFC000000000000000007FFFFFFFFC0FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE0"
+				}
+			],
+			"LegList": {
+				"Leg": [
+					{
+						"Origin": {
+							"name": "Hildesheim Hbf",
+							"type": "ST",
+							"id": "A=1@O=Hildesheim Hbf@X=9953495@Y=52160627@U=80@L=8000169@",
+							"extId": "8000169",
+							"lon": 9.953495,
+							"lat": 52.160627,
+							"routeIdx": 6,
+							"prognosisType": "PROGNOSED",
+							"time": "17:44:00",
+							"date": "2019-08-23",
+							"tz": 120,
+							"track": "3",
+							"rtTime": "17:45:00",
+							"rtDate": "2019-08-23",
+							"rtTz": 120,
+							"rtBoarding": true
+						},
+						"Destination": {
+							"name": "Hannover Hbf",
+							"type": "ST",
+							"id": "A=1@O=Hannover Hbf@X=9741017@Y=52376764@U=80@L=8000152@",
+							"extId": "8000152",
+							"lon": 9.741017,
+							"lat": 52.376764,
+							"routeIdx": 8,
+							"prognosisType": "PROGNOSED",
+							"time": "18:10:00",
+							"date": "2019-08-23",
+							"tz": 120,
+							"track": "2",
+							"rtTime": "18:11:00",
+							"rtDate": "2019-08-23",
+							"rtTz": 120,
+							"rtAlighting": true
+						},
+						"Notes": {
+							"Note": [
+								{
+									"value": "Fahrradmitnahme begrenzt möglich",
+									"key": "FB",
+									"type": "A",
+									"priority": 260,
+									"routeIdxFrom": 6,
+									"routeIdxTo": 8
+								},
+								{
+									"value": "Rollstuhlstellplatz",
+									"key": "RO",
+									"type": "A",
+									"priority": 560,
+									"routeIdxFrom": 6,
+									"routeIdxTo": 8
+								}
+							]
+						},
+						"JourneyDetailRef": {
+							"ref": "1|272481|0|80|23082019"
+						},
+						"JourneyStatus": "P",
+						"Product": {
+							"name": "erx83476",
+							"num": "83476",
+							"catOut": "erx",
+							"catIn": "DPN",
+							"catCode": "3",
+							"catOutS": "DPN",
+							"catOutL": "erixx",
+							"operatorCode": "DPN",
+							"operator": "erixx",
+							"admin": "X2____"
+						},
+						"Polyline": {
+							"crd": [
+								9.953495,
+								52.160627,
+								9.842595,
+								52.232604,
+								9.741017,
+								52.376764
+							],
+							"delta": false,
+							"dim": 2,
+							"type": "WGS84",
+							"crdEncS": "NNN"
+						},
+						"Stops": {
+							"Stop": [
+								{
+									"name": "Hildesheim Hbf",
+									"id": "A=1@O=Hildesheim Hbf@X=9953495@Y=52160627@U=80@L=8000169@",
+									"extId": "8000169",
+									"routeIdx": 6,
+									"lon": 9.953495,
+									"lat": 52.160627,
+									"depPrognosisType": "PROGNOSED",
+									"depTime": "17:44:00",
+									"depDate": "2019-08-23",
+									"depTz": 120,
+									"depTrack": "3",
+									"rtDepTime": "17:45:00",
+									"rtDepDate": "2019-08-23",
+									"rtBoarding": true
+								},
+								{
+									"name": "Sarstedt",
+									"id": "A=1@O=Sarstedt@X=9842595@Y=52232604@U=80@L=8005292@",
+									"extId": "8005292",
+									"routeIdx": 7,
+									"lon": 9.842595,
+									"lat": 52.232604,
+									"arrPrognosisType": "PROGNOSED",
+									"depPrognosisType": "PROGNOSED",
+									"depTime": "17:56:00",
+									"depDate": "2019-08-23",
+									"depTz": 120,
+									"arrTime": "17:56:00",
+									"arrDate": "2019-08-23",
+									"arrTz": 120,
+									"arrTrack": "1",
+									"depTrack": "1",
+									"rtDepTime": "17:57:00",
+									"rtDepDate": "2019-08-23",
+									"rtArrTime": "17:57:00",
+									"rtArrDate": "2019-08-23",
+									"rtAlighting": true,
+									"rtBoarding": true
+								},
+								{
+									"name": "Hannover Hbf",
+									"id": "A=1@O=Hannover Hbf@X=9741017@Y=52376764@U=80@L=8000152@",
+									"extId": "8000152",
+									"routeIdx": 8,
+									"lon": 9.741017,
+									"lat": 52.376764,
+									"arrPrognosisType": "PROGNOSED",
+									"arrTime": "18:10:00",
+									"arrDate": "2019-08-23",
+									"arrTz": 120,
+									"arrTrack": "2",
+									"rtArrTime": "18:11:00",
+									"rtArrDate": "2019-08-23",
+									"rtAlighting": true
+								}
+							]
+						},
+						"idx": 0,
+						"name": "erx83476",
+						"number": "83476",
+						"category": "DPN",
+						"type": "JNY",
+						"reachable": true,
+						"direction": "Hannover Hbf"
+					}
+				]
+			},
+			"idx": 0,
+			"tripId": "C-0",
+			"ctxRecon": "T$A=1@O=Hildesheim Hbf@L=8000169@a=128@$A=1@O=Hannover Hbf@L=8000152@a=128@$201908231744$201908231810$erx83476$$1$",
+			"duration": "PT26M",
+			"checksum": "d3b9a458_3"
+		}
+	],
+	"scrB": "1|OB|MTµ11µ374024µ374024µ374050µ374050µ0µ0µ165µ374018µ1µ-2147482610µ0µ1µ2|PDHµ3abb7e01fc6c29145882f2d490780e90|RDµ23082019|RTµ173813",
+	"scrF": "1|OF|MTµ11µ374024µ374024µ374050µ374050µ0µ0µ165µ374018µ1µ-2147482610µ0µ1µ2|PDHµ3abb7e01fc6c29145882f2d490780e90|RDµ23082019|RTµ173813",
+	"serverVersion": "1.14",
+	"dialectVersion": "1.23",
+	"requestId": "1566574693925"
+}
