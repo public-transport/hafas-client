@@ -24,7 +24,10 @@ const parseCommonData = (profile, opt, res) => {
 	}
 
 	res.icons = []
-	if (Array.isArray(c.icoL)) res.icons = c.icoL.map(parseIcon)
+	if (Array.isArray(c.icoL)) {
+		res.icons = c.icoL.map(parseIcon)
+		resolveIdxRefs(res, '**.icoX', res.icons, 'icon')
+	}
 
 	res.lines = []
 	if (Array.isArray(c.prodL)) {
