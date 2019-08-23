@@ -31,8 +31,12 @@ module.exports = {
 				regional: false
 			}
 		},
-		departure: '2019-08-18T14:06:00+02:00',
-		arrival: '2019-08-18T14:16:00+02:00',
+		arrival: null,
+		plannedArrival: '2019-08-18T14:16:00+02:00',
+		arrivalDelay: null,
+		departure: null,
+		plannedDeparture: '2019-08-18T14:06:00+02:00',
+		departureDelay: null,
 		public: true,
 		walking: true,
 		distance: 568
@@ -77,11 +81,13 @@ module.exports = {
 				regional: true
 			}
 		},
-		departure: '2019-08-18T14:16:00+02:00',
 		arrival: '2019-08-18T14:29:00+02:00',
-		reachable: true,
-		departureDelay: 0,
+		plannedArrival: '2019-08-18T14:29:00+02:00',
 		arrivalDelay: 0,
+		departure: '2019-08-18T14:16:00+02:00',
+		plannedDeparture: '2019-08-18T14:16:00+02:00',
+		departureDelay: 0,
+		reachable: true,
 		polyline: {
 			type: 'FeatureCollection',
 			features: [
@@ -727,9 +733,11 @@ module.exports = {
 				}
 			},
 			arrival: null,
+			plannedArrival: null,
 			arrivalDelay: null,
 			arrivalPlatform: null,
 			departure: '2019-08-18T14:16:00+02:00',
+			plannedDeparture: '2019-08-18T14:16:00+02:00',
 			departureDelay: 0,
 			departurePlatform: '1'
 		},
@@ -755,9 +763,11 @@ module.exports = {
 				}
 			},
 			arrival: '2019-08-18T14:18:00+02:00',
+			plannedArrival: '2019-08-18T14:18:00+02:00',
 			arrivalDelay: 0,
 			arrivalPlatform: '11',
 			departure: '2019-08-18T14:18:00+02:00',
+			plannedDeparture: '2019-08-18T14:18:00+02:00',
 			departureDelay: 0,
 			departurePlatform: '11'
 		},
@@ -783,9 +793,11 @@ module.exports = {
 				}
 			},
 			arrival: '2019-08-18T14:19:00+02:00',
+			plannedArrival: '2019-08-18T14:19:00+02:00',
 			arrivalDelay: 0,
 			arrivalPlatform: '1',
 			departure: '2019-08-18T14:20:00+02:00',
+			plannedDeparture: '2019-08-18T14:20:00+02:00',
 			departureDelay: 0,
 			departurePlatform: '1'
 		},
@@ -811,9 +823,11 @@ module.exports = {
 				}
 			},
 			arrival: '2019-08-18T14:21:00+02:00',
+			plannedArrival: '2019-08-18T14:21:00+02:00',
 			arrivalDelay: 0,
 			arrivalPlatform: '11',
 			departure: '2019-08-18T14:22:00+02:00',
+			plannedDeparture: '2019-08-18T14:22:00+02:00',
 			departureDelay: 0,
 			departurePlatform: '11'
 		},
@@ -839,9 +853,11 @@ module.exports = {
 				}
 			},
 			arrival: '2019-08-18T14:24:00+02:00',
+			plannedArrival: '2019-08-18T14:24:00+02:00',
 			arrivalDelay: 0,
 			arrivalPlatform: '2',
 			departure: '2019-08-18T14:24:00+02:00',
+			plannedDeparture: '2019-08-18T14:24:00+02:00',
 			departureDelay: 0,
 			departurePlatform: '2'
 		},
@@ -867,9 +883,11 @@ module.exports = {
 				}
 			},
 			arrival: '2019-08-18T14:26:00+02:00',
+			plannedArrival: '2019-08-18T14:26:00+02:00',
 			arrivalDelay: 0,
 			arrivalPlatform: '1',
 			departure: '2019-08-18T14:27:00+02:00',
+			plannedDeparture: '2019-08-18T14:27:00+02:00',
 			departureDelay: 0,
 			departurePlatform: '1'
 		},
@@ -895,9 +913,11 @@ module.exports = {
 				}
 			},
 			arrival: '2019-08-18T14:29:00+02:00',
+			plannedArrival: '2019-08-18T14:29:00+02:00',
 			arrivalDelay: 0,
 			arrivalPlatform: '1',
 			departure: null,
+			plannedDeparture: null,
 			departureDelay: null,
 			departurePlatform: null
 		}],
