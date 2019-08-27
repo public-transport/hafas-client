@@ -142,20 +142,20 @@ const createValidateStopover = (cfg) => {
 			a.strictEqual(typeof s.arrivalPlatform, 'string', msg + 'be a string')
 			a.ok(s.arrivalPlatform, msg + 'not be empty')
 		}
-		if (is(s.scheduledArrivalPlatform)) {
-			const msg = name + '.scheduledArrivalPlatform must '
-			a.strictEqual(typeof s.scheduledArrivalPlatform, 'string', msg + 'be a string')
-			a.ok(s.scheduledArrivalPlatform, msg + 'not be empty')
+		if (is(s.plannedArrivalPlatform)) {
+			const msg = name + '.plannedArrivalPlatform must '
+			a.strictEqual(typeof s.plannedArrivalPlatform, 'string', msg + 'be a string')
+			a.ok(s.plannedArrivalPlatform, msg + 'not be empty')
 		}
 		if (is(s.departurePlatform)) {
 			const msg = name + '.departurePlatform must '
 			a.strictEqual(typeof s.departurePlatform, 'string', msg + 'be a string')
 			a.ok(s.departurePlatform, msg + 'not be empty')
 		}
-		if (is(s.scheduledDeparturePlatform)) {
-			const msg = name + '.scheduledDeparturePlatform must '
-			a.strictEqual(typeof s.scheduledDeparturePlatform, 'string', msg + 'be a string')
-			a.ok(s.scheduledDeparturePlatform, msg + 'not be empty')
+		if (is(s.plannedDeparturePlatform)) {
+			const msg = name + '.plannedDeparturePlatform must '
+			a.strictEqual(typeof s.plannedDeparturePlatform, 'string', msg + 'be a string')
+			a.ok(s.plannedDeparturePlatform, msg + 'not be empty')
 		}
 
 		anyOf(['stop', 'station'], val, s.stop, name + '.stop')

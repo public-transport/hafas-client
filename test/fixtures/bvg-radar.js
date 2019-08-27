@@ -49,10 +49,12 @@ module.exports = [
 				plannedArrival: null,
 				arrivalDelay: null,
 				arrivalPlatform: null,
+				plannedArrivalPlatform: null,
 				departure: null,
 				plannedDeparture: '2019-08-19T20:26:00+02:00',
 				departureDelay: null,
-				departurePlatform: null
+				departurePlatform: null,
+				plannedDeparturePlatform: null
 			},
 			{
 				stop: {
@@ -79,10 +81,12 @@ module.exports = [
 				plannedArrival: '2019-08-19T20:29:00+02:00',
 				arrivalDelay: 60,
 				arrivalPlatform: null,
+				plannedArrivalPlatform: null,
 				departure: '2019-08-19T20:30:00+02:00',
 				plannedDeparture: '2019-08-19T20:29:00+02:00',
 				departureDelay: 60,
-				departurePlatform: null
+				departurePlatform: null,
+				plannedDeparturePlatform: null
 			},
 			{
 				stop: {
@@ -109,10 +113,12 @@ module.exports = [
 				plannedArrival: '2019-08-19T20:31:00+02:00',
 				arrivalDelay: 180,
 				arrivalPlatform: null,
+				plannedArrivalPlatform: null,
 				departure: '2019-08-19T20:34:00+02:00',
 				plannedDeparture: '2019-08-19T20:31:00+02:00',
 				departureDelay: 180,
-				departurePlatform: null
+				departurePlatform: null,
+				plannedDeparturePlatform: null
 			},
 			{
 				stop: {
@@ -139,10 +145,12 @@ module.exports = [
 				plannedArrival: '2019-08-19T20:58:00+02:00',
 				arrivalDelay: 180,
 				arrivalPlatform: null,
+				plannedArrivalPlatform: null,
 				departure: null,
 				plannedDeparture: null,
 				departureDelay: null,
-				departurePlatform: null
+				departurePlatform: null,
+				plannedDeparturePlatform: null
 			}
 		],
 		frames: [
@@ -417,10 +425,12 @@ module.exports = [
 				plannedArrival: null,
 				arrivalDelay: null,
 				arrivalPlatform: null,
+				plannedArrivalPlatform: null,
 				departure: '2019-08-19T19:57:00+02:00',
 				plannedDeparture: '2019-08-19T19:57:00+02:00',
 				departureDelay: 0,
-				departurePlatform: '13'
+				departurePlatform: '13',
+				plannedDeparturePlatform: '13'
 			},
 			{
 				stop: {
@@ -447,10 +457,12 @@ module.exports = [
 				plannedArrival: '2019-08-19T20:32:00+02:00',
 				arrivalDelay: 0,
 				arrivalPlatform: '4',
+				plannedArrivalPlatform: '4',
 				departure: '2019-08-19T20:33:00+02:00',
 				plannedDeparture: '2019-08-19T20:33:00+02:00',
 				departureDelay: 0,
-				departurePlatform: '4'
+				departurePlatform: '4',
+				plannedDeparturePlatform: '4'
 			},
 			{
 				stop: {
@@ -477,10 +489,12 @@ module.exports = [
 				plannedArrival: '2019-08-19T20:34:00+02:00',
 				arrivalDelay: 0,
 				arrivalPlatform: '4',
+				plannedArrivalPlatform: '4',
 				departure: '2019-08-19T20:35:00+02:00',
 				plannedDeparture: '2019-08-19T20:35:00+02:00',
 				departureDelay: 0,
-				departurePlatform: '4'
+				departurePlatform: '4',
+				plannedDeparturePlatform: '4'
 			},
 			{
 				stop: {
@@ -507,10 +521,12 @@ module.exports = [
 				plannedArrival: '2019-08-19T21:07:00+02:00',
 				arrivalDelay: 0,
 				arrivalPlatform: '2',
+				plannedArrivalPlatform: '2',
 				departure: null,
 				plannedDeparture: null,
 				departureDelay: null,
-				departurePlatform: null
+				departurePlatform: null,
+				plannedDeparturePlatform: null
 			}
 		],
 		frames: [
@@ -785,10 +801,12 @@ module.exports = [
 				plannedArrival: null,
 				arrivalDelay: null,
 				arrivalPlatform: null,
+				plannedArrivalPlatform: null,
 				departure: '2019-08-19T20:17:00+02:00',
 				plannedDeparture: '2019-08-19T20:17:00+02:00',
 				departureDelay: 0,
-				departurePlatform: null
+				departurePlatform: null,
+				plannedDeparturePlatform: null
 			},
 			{
 				stop: {
@@ -815,10 +833,12 @@ module.exports = [
 				plannedArrival: '2019-08-19T20:33:00+02:00',
 				arrivalDelay: 0,
 				arrivalPlatform: null,
+				plannedArrivalPlatform: null,
 				departure: '2019-08-19T20:33:00+02:00',
 				plannedDeparture: '2019-08-19T20:33:00+02:00',
 				departureDelay: 0,
-				departurePlatform: null
+				departurePlatform: null,
+				plannedDeparturePlatform: null
 			},
 			{
 				stop: {
@@ -845,10 +865,12 @@ module.exports = [
 				plannedArrival: '2019-08-19T20:35:00+02:00',
 				arrivalDelay: 0,
 				arrivalPlatform: null,
+				plannedArrivalPlatform: null,
 				departure: '2019-08-19T20:35:00+02:00',
 				plannedDeparture: '2019-08-19T20:35:00+02:00',
 				departureDelay: 0,
-				departurePlatform: null
+				departurePlatform: null,
+				plannedDeparturePlatform: null
 			},
 			{
 				stop: {
@@ -875,10 +897,12 @@ module.exports = [
 				plannedArrival: '2019-08-19T20:47:00+02:00',
 				arrivalDelay: 0,
 				arrivalPlatform: null,
+				plannedArrivalPlatform: null,
 				departure: null,
 				plannedDeparture: null,
 				departureDelay: null,
-				departurePlatform: null
+				departurePlatform: null,
+				plannedDeparturePlatform: null
 			}
 		],
 		frames: [
@@ -1153,10 +1177,12 @@ module.exports = [
 				plannedArrival: null,
 				arrivalDelay: null,
 				arrivalPlatform: null,
+				plannedArrivalPlatform: null,
 				departure: '2019-08-19T20:08:00+02:00',
 				plannedDeparture: '2019-08-19T20:08:00+02:00',
 				departureDelay: 0,
-				departurePlatform: null
+				departurePlatform: null,
+				plannedDeparturePlatform: null
 			},
 			{
 				stop: {
@@ -1183,10 +1209,12 @@ module.exports = [
 				plannedArrival: '2019-08-19T20:32:00+02:00',
 				arrivalDelay: -60,
 				arrivalPlatform: null,
+				plannedArrivalPlatform: null,
 				departure: '2019-08-19T20:31:00+02:00',
 				plannedDeparture: '2019-08-19T20:32:00+02:00',
 				departureDelay: -60,
-				departurePlatform: null
+				departurePlatform: null,
+				plannedDeparturePlatform: null
 			},
 			{
 				stop: {
@@ -1213,10 +1241,12 @@ module.exports = [
 				plannedArrival: '2019-08-19T20:34:00+02:00',
 				arrivalDelay: 0,
 				arrivalPlatform: null,
+				plannedArrivalPlatform: null,
 				departure: null,
 				plannedDeparture: null,
 				departureDelay: null,
-				departurePlatform: null
+				departurePlatform: null,
+				plannedDeparturePlatform: null
 			},
 			{
 				stop: {
@@ -1243,10 +1273,12 @@ module.exports = [
 				plannedArrival: '2019-08-19T20:34:00+02:00',
 				arrivalDelay: 0,
 				arrivalPlatform: null,
+				plannedArrivalPlatform: null,
 				departure: null,
 				plannedDeparture: null,
 				departureDelay: null,
-				departurePlatform: null
+				departurePlatform: null,
+				plannedDeparturePlatform: null
 			}
 		],
 		frames: [
@@ -1521,10 +1553,12 @@ module.exports = [
 				plannedArrival: null,
 				arrivalDelay: null,
 				arrivalPlatform: null,
+				plannedArrivalPlatform: null,
 				departure: '2019-08-19T20:04:00+02:00',
 				plannedDeparture: '2019-08-19T20:04:00+02:00',
 				departureDelay: 0,
-				departurePlatform: null
+				departurePlatform: null,
+				plannedDeparturePlatform: null
 			},
 			{
 				stop: {
@@ -1551,10 +1585,12 @@ module.exports = [
 				plannedArrival: '2019-08-19T20:31:00+02:00',
 				arrivalDelay: 60,
 				arrivalPlatform: null,
+				plannedArrivalPlatform: null,
 				departure: '2019-08-19T20:32:00+02:00',
 				plannedDeparture: '2019-08-19T20:31:00+02:00',
 				departureDelay: 60,
-				departurePlatform: null
+				departurePlatform: null,
+				plannedDeparturePlatform: null
 			},
 			{
 				stop: {
@@ -1581,10 +1617,12 @@ module.exports = [
 				plannedArrival: '2019-08-19T20:33:00+02:00',
 				arrivalDelay: 60,
 				arrivalPlatform: null,
+				plannedArrivalPlatform: null,
 				departure: '2019-08-19T20:34:00+02:00',
 				plannedDeparture: '2019-08-19T20:33:00+02:00',
 				departureDelay: 60,
-				departurePlatform: null
+				departurePlatform: null,
+				plannedDeparturePlatform: null
 			},
 			{
 				stop: {
@@ -1611,10 +1649,12 @@ module.exports = [
 				plannedArrival: '2019-08-19T20:45:00+02:00',
 				arrivalDelay: 60,
 				arrivalPlatform: null,
+				plannedArrivalPlatform: null,
 				departure: null,
 				plannedDeparture: null,
 				departureDelay: null,
-				departurePlatform: null
+				departurePlatform: null,
+				plannedDeparturePlatform: null
 			}
 		],
 		frames: [
@@ -1889,10 +1929,12 @@ module.exports = [
 				plannedArrival: null,
 				arrivalDelay: null,
 				arrivalPlatform: null,
+				plannedArrivalPlatform: null,
 				departure: null,
 				plannedDeparture: '2019-08-19T20:25:00+02:00',
 				departureDelay: null,
-				departurePlatform: null
+				departurePlatform: null,
+				plannedDeparturePlatform: null
 			},
 			{
 				stop: {
@@ -1919,10 +1961,12 @@ module.exports = [
 				plannedArrival: '2019-08-19T20:30:00+02:00',
 				arrivalDelay: 180,
 				arrivalPlatform: null,
+				plannedArrivalPlatform: null,
 				departure: '2019-08-19T20:33:00+02:00',
 				plannedDeparture: '2019-08-19T20:30:00+02:00',
 				departureDelay: 180,
-				departurePlatform: null
+				departurePlatform: null,
+				plannedDeparturePlatform: null
 			},
 			{
 				stop: {
@@ -1949,10 +1993,12 @@ module.exports = [
 				plannedArrival: '2019-08-19T20:33:00+02:00',
 				arrivalDelay: 180,
 				arrivalPlatform: null,
+				plannedArrivalPlatform: null,
 				departure: '2019-08-19T20:36:00+02:00',
 				plannedDeparture: '2019-08-19T20:33:00+02:00',
 				departureDelay: 180,
-				departurePlatform: null
+				departurePlatform: null,
+				plannedDeparturePlatform: null
 			},
 			{
 				stop: {
@@ -1979,10 +2025,12 @@ module.exports = [
 				plannedArrival: '2019-08-19T21:19:00+02:00',
 				arrivalDelay: 180,
 				arrivalPlatform: null,
+				plannedArrivalPlatform: null,
 				departure: null,
 				plannedDeparture: null,
 				departureDelay: null,
-				departurePlatform: null
+				departurePlatform: null,
+				plannedDeparturePlatform: null
 			}
 		],
 		frames: [
@@ -2257,10 +2305,12 @@ module.exports = [
 				plannedArrival: null,
 				arrivalDelay: null,
 				arrivalPlatform: null,
+				plannedArrivalPlatform: null,
 				departure: '2019-08-19T19:39:00+02:00',
 				plannedDeparture: '2019-08-19T19:39:00+02:00',
 				departureDelay: 0,
-				departurePlatform: null
+				departurePlatform: null,
+				plannedDeparturePlatform: null
 			},
 			{
 				stop: {
@@ -2287,10 +2337,12 @@ module.exports = [
 				plannedArrival: '2019-08-19T20:30:00+02:00',
 				arrivalDelay: 180,
 				arrivalPlatform: null,
+				plannedArrivalPlatform: null,
 				departure: '2019-08-19T20:33:00+02:00',
 				plannedDeparture: '2019-08-19T20:30:00+02:00',
 				departureDelay: 180,
-				departurePlatform: null
+				departurePlatform: null,
+				plannedDeparturePlatform: null
 			},
 			{
 				stop: {
@@ -2317,10 +2369,12 @@ module.exports = [
 				plannedArrival: '2019-08-19T20:32:00+02:00',
 				arrivalDelay: 180,
 				arrivalPlatform: null,
+				plannedArrivalPlatform: null,
 				departure: '2019-08-19T20:35:00+02:00',
 				plannedDeparture: '2019-08-19T20:32:00+02:00',
 				departureDelay: 180,
-				departurePlatform: null
+				departurePlatform: null,
+				plannedDeparturePlatform: null
 			},
 			{
 				stop: {
@@ -2347,10 +2401,12 @@ module.exports = [
 				plannedArrival: '2019-08-19T20:33:00+02:00',
 				arrivalDelay: 180,
 				arrivalPlatform: null,
+				plannedArrivalPlatform: null,
 				departure: null,
 				plannedDeparture: null,
 				departureDelay: null,
-				departurePlatform: null
+				departurePlatform: null,
+				plannedDeparturePlatform: null
 			}
 		],
 		frames: [
@@ -2625,10 +2681,12 @@ module.exports = [
 				plannedArrival: null,
 				arrivalDelay: null,
 				arrivalPlatform: null,
+				plannedArrivalPlatform: null,
 				departure: '2019-08-19T19:59:00+02:00',
 				plannedDeparture: '2019-08-19T19:59:00+02:00',
 				departureDelay: 0,
-				departurePlatform: null
+				departurePlatform: null,
+				plannedDeparturePlatform: null
 			},
 			{
 				stop: {
@@ -2655,10 +2713,12 @@ module.exports = [
 				plannedArrival: '2019-08-19T20:30:00+02:00',
 				arrivalDelay: 120,
 				arrivalPlatform: null,
+				plannedArrivalPlatform: null,
 				departure: '2019-08-19T20:32:00+02:00',
 				plannedDeparture: '2019-08-19T20:30:00+02:00',
 				departureDelay: 120,
-				departurePlatform: null
+				departurePlatform: null,
+				plannedDeparturePlatform: null
 			},
 			{
 				stop: {
@@ -2685,10 +2745,12 @@ module.exports = [
 				plannedArrival: '2019-08-19T20:33:00+02:00',
 				arrivalDelay: 60,
 				arrivalPlatform: null,
+				plannedArrivalPlatform: null,
 				departure: '2019-08-19T20:34:00+02:00',
 				plannedDeparture: '2019-08-19T20:33:00+02:00',
 				departureDelay: 60,
-				departurePlatform: null
+				departurePlatform: null,
+				plannedDeparturePlatform: null
 			},
 			{
 				stop: {
@@ -2715,10 +2777,12 @@ module.exports = [
 				plannedArrival: '2019-08-19T20:54:00+02:00',
 				arrivalDelay: 60,
 				arrivalPlatform: null,
+				plannedArrivalPlatform: null,
 				departure: null,
 				plannedDeparture: null,
 				departureDelay: null,
-				departurePlatform: null
+				departurePlatform: null,
+				plannedDeparturePlatform: null
 			}
 		],
 		frames: [
