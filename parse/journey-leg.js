@@ -1,6 +1,7 @@
 'use strict'
 
 const parseWhen = require('./when')
+const parsePlatform = require('./platform')
 const findRemarks = require('./find-remarks')
 
 const clone = obj => Object.assign({}, obj)
@@ -85,15 +86,15 @@ const createParseJourneyLeg = (profile, opt, data) => {
 			res.line = pt.jny.line || null
 			res.direction = pt.jny.dirTxt && profile.parseStationName(pt.jny.dirTxt) || null
 
-			res.arrivalPlatform = pt.arr.aPlatfR ||pt.arr.aPlatfS || null
-			if (pt.arr.aPlatfR && pt.arr.aPlatfS && pt.arr.aPlatfR !== pt.arr.aPlatfS) {
-				res.scheduledArrivalPlatform = pt.arr.aPlatfS
-			}
+			const arrPl = parsePlatform(profile, pt.arr.aPlatfS, pt.arr.aPlatfR, pt.arr.aCncl)
+			res.arrivalPlatform = arrPl.platform
+			res.plannedArrivalPlatform = arrPl.plannedPlatform
+			if (arrPl.prognosedPlatform) res.prognosedArrivalPlatform = arrPl.prognosedPlatform
 
-			res.departurePlatform = pt.dep.dPlatfR || pt.dep.dPlatfS || null
-			if (pt.dep.dPlatfR && pt.dep.dPlatfS && pt.dep.dPlatfR !== pt.dep.dPlatfS) {
-				res.scheduledDeparturePlatform = pt.dep.dPlatfS
-			}
+			const depPl = parsePlatform(profile, pt.dep.dPlatfS, pt.dep.dPlatfR, pt.dep.dCncl)
+			res.departurePlatform = depPl.platform
+			res.plannedDeparturePlatform = depPl.plannedPlatform
+			if (depPl.prognosedPlatform) res.prognosedDeparturePlatform = depPl.prognosedPlatform
 
 			if (parseStopovers && pt.jny.stopL) {
 				const parse = profile.parseStopover(profile, opt, data, j.date)

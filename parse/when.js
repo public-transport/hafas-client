@@ -17,7 +17,7 @@ const parseWhen = (profile, date, timeS, timeR, tzOffset, cncl = false) => {
 		return {
 			when: null,
 			plannedWhen: planned,
-			prognosedWhen: when,
+			prognosedWhen: prognosed,
 			delay
 		}
 	}
