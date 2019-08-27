@@ -1,6 +1,7 @@
 'use strict'
 
 const parseWhen = require('./when')
+const parsePlatform = require('./platform')
 const findRemarks = require('./find-remarks')
 
 const ARRIVAL = 'a'
@@ -21,19 +22,13 @@ const createParseArrOrDep = (profile, opt, data, prefix) => {
 		const res = {
 			tripId: d.jid,
 			stop: d.stbStop.location || null,
-			...parseWhen(profile, d.date, tPlanned, tPrognosed, tzOffset, cancelled)
+			...parseWhen(profile, d.date, tPlanned, tPrognosed, tzOffset, cancelled),
+			...parsePlatform(profile, d.stbStop[prefix + 'PlatfS'], d.stbStop[prefix + 'PlatfR'], cancelled),
 			// todo: for arrivals, this is the *origin*, not the *direction*
 			direction: prefix === DEPARTURE && d.dirTxt && profile.parseStationName(d.dirTxt) || null,
 			line: d.line || null,
 			remarks: []
 		}
-
-		// todo: DRY with parseStopover
-		// todo: DRY with parseJourneyLeg
-		const pR = d.stbStop[prefix + 'PlatfR']
-		const pP = d.stbStop[prefix + 'PlatfS']
-		res.platform = pR || pP || null
-		if (pR && pP && pR !== pP) res.scheduledPlatform = pP
 
 		if (cancelled) {
 			res.cancelled = true
