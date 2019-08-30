@@ -21,6 +21,7 @@ const createParseMovement = (profile, opt, data) => {
 				latitude: m.pos.y / 1000000,
 				longitude: m.pos.x / 1000000
 			} : null,
+			// todo: stopL[0] is the first of the trip! -> filter out
 			nextStopovers: m.stopL.map(pStopover),
 			frames: []
 		}

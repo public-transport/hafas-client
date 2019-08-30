@@ -143,6 +143,10 @@ const createParseJourneyLeg = (profile, opt, data) => {
 	return parseJourneyLegWithLoadFactor
 }
 
+// todo:
+// [ { type: 'hint',
+//     code: 'P5',
+//     text: 'Es gilt ein besonderer Fahrpreis' }
 const hintsByCode = Object.assign(Object.create(null), {
 	fb: {
 		type: 'hint',

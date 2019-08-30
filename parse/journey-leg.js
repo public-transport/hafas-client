@@ -45,6 +45,10 @@ const createParseJourneyLeg = (profile, opt, data) => {
 	// todo: pt.isRchbl, pt.chRatingRT, pt.chgDurR, pt.minChg
 	// todo: pt.dep.dProgType, pt.arr.dProgType
 	// todo: what is pt.jny.dirFlg?
+	// todo: what is pt.recState?
+	// todo: what is `sty: 'UNDEF'`?
+	// todo: pt.prodL
+	// todo: pt.parJnyL (list of coupled trains)
 
 	// j = journey, pt = part
 	// todo: pt.planrtTS
@@ -89,6 +93,7 @@ const createParseJourneyLeg = (profile, opt, data) => {
 			res.distance = pt.gis && pt.gis.dist || null
 			if (pt.type === 'TRSF') res.transfer = true
 
+			// https://gist.github.com/derhuerst/426d4b95aeae701843b1e9c23105b8d4#file-tripsearch-2018-12-05-http-L4207-L4229
 			if (opt.remarks && Array.isArray(pt.gis.msgL)) {
 				applyRemarks(res, hints, warnings, pt.gis.msgL)
 			}
@@ -120,6 +125,7 @@ const createParseJourneyLeg = (profile, opt, data) => {
 							value: stopL[i].locX
 						})
 					}
+					// todo: parse `pt.dep.msgL` & `pt.arr.msgL`
 					// todo: apply leg-wide remarks if `parseStopovers` is false
 					applyRemarks(res, hints, warnings, pt.jny.msgL)
 				}
