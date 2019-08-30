@@ -6,9 +6,9 @@ const tape = require('tape')
 const isRoughlyEqual = require('is-roughly-equal')
 
 const {createWhen} = require('./lib/util')
-const createClient = require('..')
-const cflProfile = require('../p/cfl')
-const products = require('../p/cfl/products')
+const createClient = require('../..')
+const cflProfile = require('../../p/cfl')
+const products = require('../../p/cfl/products')
 const {
 	line: createValidateLine,
 	journeyLeg: createValidateJourneyLeg,

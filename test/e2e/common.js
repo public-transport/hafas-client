@@ -2,9 +2,9 @@
 
 const test = require('tape')
 
-const createClient = require('..')
-const vbbProfile = require('../p/vbb')
-const parseDateTime = require('../parse/date-time')
+const createClient = require('../..')
+const vbbProfile = require('../../p/vbb')
+const parseDateTime = require('../../parse/date-time')
 
 // todo: use a mock profile
 const client = createClient(vbbProfile, 'public-transport/hafas-client:test')
