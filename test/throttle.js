@@ -26,5 +26,3 @@ test('withThrottling works', (t) => {
 	setTimeout(() => t.equal(calls, 4), 1500)
 	setTimeout(() => t.equal(calls, 6), 2500)
 })
-
-// todo

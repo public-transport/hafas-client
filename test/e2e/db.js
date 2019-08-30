@@ -7,9 +7,9 @@ const tape = require('tape')
 const isRoughlyEqual = require('is-roughly-equal')
 
 const {createWhen} = require('./lib/util')
-const createClient = require('..')
-const dbProfile = require('../p/db')
-const products = require('../p/db/products')
+const createClient = require('../..')
+const dbProfile = require('../../p/db')
+const products = require('../../p/db/products')
 const {
 	station: createValidateStation,
 	trip: createValidateTrip

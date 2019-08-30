@@ -5,9 +5,9 @@ const tapePromise = require('tape-promise').default
 const tape = require('tape')
 
 const {createWhen} = require('./lib/util')
-const createClient = require('..')
-const cmtaProfile = require('../p/cmta')
-const products = require('../p/cmta/products')
+const createClient = require('../..')
+const cmtaProfile = require('../../p/cmta')
+const products = require('../../p/cmta/products')
 const createValidate = require('./lib/validate-fptf-with')
 const testJourneysStationToStation = require('./lib/journeys-station-to-station')
 const testJourneysStationToAddress = require('./lib/journeys-station-to-address')
