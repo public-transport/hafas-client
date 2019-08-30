@@ -3,17 +3,6 @@
 const get = require('lodash/get')
 const findInTree = require('../lib/find-in-tree')
 
-// todo: move to separate file
-const parseIcon = (i) => {
-	const res = {
-		type: i.res || null,
-		title: i.text || null
-	}
-	if (i.fg) res.fgColor = i.fg
-	if (i.bg) res.bgColor = i.bg
-	return res
-}
-
 const parseCommonData = (profile, opt, res) => {
 	const c = res.common || {}
 
@@ -27,7 +16,7 @@ const parseCommonData = (profile, opt, res) => {
 
 	res.icons = []
 	if (Array.isArray(c.icoL)) {
-		res.icons = c.icoL.map(parseIcon)
+		res.icons = c.icoL.map(icon => profile.parseIcon(profile, icon))
 		findInTree(res, '**.icoX', (idx, parent) => {
 			if ('number' === typeof idx) parent.icon = res.icons[idx]
 		})
