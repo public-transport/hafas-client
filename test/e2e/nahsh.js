@@ -5,9 +5,9 @@ const tape = require('tape')
 const isRoughlyEqual = require('is-roughly-equal')
 
 const {createWhen} = require('./lib/util')
-const createClient = require('..')
-const nahshProfile = require('../p/nahsh')
-const products = require('../p/nahsh/products')
+const createClient = require('../..')
+const nahshProfile = require('../../p/nahsh')
+const products = require('../../p/nahsh/products')
 const {
 	line: createValidateLine,
 	station: createValidateStation

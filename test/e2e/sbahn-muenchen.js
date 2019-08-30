@@ -5,9 +5,9 @@ const tapePromise = require('tape-promise').default
 const tape = require('tape')
 
 const {createWhen} = require('./lib/util')
-const createClient = require('..')
-const sMunichProfile = require('../p/sbahn-muenchen')
-const products = require('../p/sbahn-muenchen/products')
+const createClient = require('../..')
+const sMunichProfile = require('../../p/sbahn-muenchen')
+const products = require('../../p/sbahn-muenchen/products')
 const {movement: _validateMovement} = require('./lib/validators')
 const createValidate = require('./lib/validate-fptf-with')
 const testJourneysStationToStation = require('./lib/journeys-station-to-station')

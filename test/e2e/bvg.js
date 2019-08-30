@@ -1,11 +1,20 @@
 'use strict'
 
+// todo: DRY with vbb tests
+
+const stations = require('vbb-stations-autocomplete')
+const a = require('assert')
+const shorten = require('vbb-short-station-name')
 const tapePromise = require('tape-promise').default
 const tape = require('tape')
+const isRoughlyEqual = require('is-roughly-equal')
+const {DateTime} = require('luxon')
+const flatMap = require('lodash/flatMap')
 
-const createClient = require('..')
-const vbbProfile = require('../p/vbb')
-const products = require('../p/vbb/products')
+const createClient = require('../..')
+const bvgProfile = require('../../p/bvg')
+const products = require('../../p/bvg/products')
+const createValidate = require('./lib/validate-fptf-with')
 const {
 	cfg,
 	validateStation,
@@ -14,12 +23,12 @@ const {
 	validateDeparture,
 	validateMovement
 } = require('./lib/vbb-bvg-validators')
-const createValidate = require('./lib/validate-fptf-with')
 const testJourneysStationToStation = require('./lib/journeys-station-to-station')
 const testJourneysStationToAddress = require('./lib/journeys-station-to-address')
 const testJourneysStationToPoi = require('./lib/journeys-station-to-poi')
 const testJourneysWalkingSpeed = require('./lib/journeys-walking-speed')
 const testEarlierLaterJourneys = require('./lib/earlier-later-journeys')
+const testLegCycleAlternatives = require('./lib/leg-cycle-alternatives')
 const testRefreshJourney = require('./lib/refresh-journey')
 const journeysFailsWithNoProduct = require('./lib/journeys-fails-with-no-product')
 const testDepartures = require('./lib/departures')
@@ -31,6 +40,12 @@ const testReachableFrom = require('./lib/reachable-from')
 
 const when = cfg.when
 
+const validateDirection = (dir, name) => {
+	if (!stations(dir, true, false)[0]) {
+		console.error(name + `: station "${dir}" is unknown`)
+	}
+}
+
 const validate = createValidate(cfg, {
 	station: validateStation,
 	line: validateLine,
@@ -40,7 +55,7 @@ const validate = createValidate(cfg, {
 })
 
 const test = tapePromise(tape)
-const client = createClient(vbbProfile, 'public-transport/hafas-client:test')
+const client = createClient(bvgProfile, 'public-transport/hafas-client:test')
 
 const amrumerStr = '900000009101'
 const spichernstr = '900000042101'
@@ -48,13 +63,13 @@ const bismarckstr = '900000024201'
 const westhafen = '900000001201'
 const wedding = '900000009104'
 const württembergallee = '900000026153'
+const tiergarten = '900000003103'
+const jannowitzbrücke = '900000100004'
+
+const hour = 60 * 60 * 1000
 
 test('journeys – Spichernstr. to Bismarckstr.', async (t) => {
-	const res = await client.journeys({
-		type: 'stop',
-		id: spichernstr,
-		name: 'U Spichernstr.'
-	}, bismarckstr, {
+	const res = await client.journeys(spichernstr, bismarckstr, {
 		results: 4,
 		departure: when,
 		stopovers: true
@@ -95,7 +110,7 @@ test('journeys – only subway', async (t) => {
 		for (let j = 0; j < journey.legs.length; j++) {
 			const leg = journey.legs[j]
 
-			const name = `res.journeys[${i}].legs[${i}].line`
+			const name = `res.journeys[${i}].legs[${j}].line`
 			if (leg.line) {
 				t.equal(leg.line.mode, 'train', name + '.mode is invalid')
 				t.equal(leg.line.product, 'subway', name + '.product is invalid')
@@ -106,8 +121,6 @@ test('journeys – only subway', async (t) => {
 
 	t.end()
 })
-
-// todo: journeys – with arrival time
 
 test('journeys – fails with no product', (t) => {
 	journeysFailsWithNoProduct({
@@ -121,7 +134,42 @@ test('journeys – fails with no product', (t) => {
 	t.end()
 })
 
-test('journeys: walkingSpeed', async (t) => {
+test('journeys – BerlKönig', async (t) => {
+	const when = DateTime.fromMillis(Date.now(), {
+		zone: 'Europe/Berlin',
+		locale: 'de-De',
+	}).startOf('day').plus({days: 1, hours: 18}).toISO()
+
+	const {journeys} = await client.journeys({
+		type: 'location',
+		address: '12101 Berlin-Tempelhof, Peter-Str.r-Weg 1',
+		latitude: 52.476283,
+		longitude: 13.384947
+	}, {
+		type: 'location',
+		id: '900981505',
+		poi: true,
+		name: 'Berlin, Tempelhofer Park Eingang Oderstr.',
+		latitude: 52.476688,
+		longitude: 13.41872
+	}, {
+		berlkoenig: true,
+		departure: when
+	})
+
+	const withBerlkoenig = flatMap(journeys, j => j.legs)
+	.find(l => l.line && l.line.product === 'berlkoenig')
+	t.ok(withBerlkoenig, 'journey with BerlKönig not found')
+
+	t.ok(withBerlkoenig.line)
+	t.equal(withBerlkoenig.line.public, true)
+	t.equal(withBerlkoenig.line.mode, 'taxi')
+	t.equal(withBerlkoenig.line.product, 'berlkoenig')
+	t.end()
+})
+
+// todo: opt.walkingSpeed doesn't seem to work right now
+test.skip('journeys: walkingSpeed', async (t) => {
 	const havelchaussee = {
 		type: 'location',
 		address: 'Havelchaussee',
@@ -139,7 +187,6 @@ test('journeys: walkingSpeed', async (t) => {
 		products: {bus: false},
 		minTimeDifference: 5 * 60 * 1000
 	})
-	t.end()
 })
 
 test('earlier/later journeys', async (t) => {
@@ -155,6 +202,15 @@ test('earlier/later journeys', async (t) => {
 	t.end()
 })
 
+test.skip('journeys – leg cycle & alternatives', async (t) => {
+	await testLegCycleAlternatives({
+		test: t,
+		fetchJourneys: client.journeys,
+		fromId: tiergarten,
+		toId: jannowitzbrücke
+	})
+	t.end()
+})
 test('refreshJourney', async (t) => {
 	await testRefreshJourney({
 		test: t,
@@ -251,8 +307,7 @@ test('journeys: via works – with detour', async (t) => {
 
 test('departures', async (t) => {
 	const departures = await client.departures(spichernstr, {
-		duration: 5, when,
-		stopovers: true
+		duration: 5, when
 	})
 
 	await testDepartures({
@@ -300,7 +355,8 @@ test('departures at 7-digit station', async (t) => {
 	t.end()
 })
 
-test('departures without related stations', async (t) => {
+// todo: `opt.includeRelatedStations` is currently not supported by BVG
+test.skip('departures without related stations', async (t) => {
 	await testDeparturesWithoutRelatedStations({
 		test: t,
 		fetchDepartures: client.departures,
@@ -314,8 +370,7 @@ test('departures without related stations', async (t) => {
 
 test('arrivals', async (t) => {
 	const arrivals = await client.arrivals(spichernstr, {
-		duration: 5, when,
-		stopovers: true
+		duration: 5, when
 	})
 
 	await testArrivals({

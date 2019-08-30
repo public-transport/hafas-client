@@ -5,21 +5,19 @@ const tape = require('tape')
 const isRoughlyEqual = require('is-roughly-equal')
 
 const {createWhen} = require('./lib/util')
-const createClient = require('..')
-const insaProfile = require('../p/insa')
-const products = require('../p/insa/products')
+const createClient = require('../..')
+const vbnProfile = require('../../p/vbn')
+const products = require('../../p/vbn/products')
 const createValidate = require('./lib/validate-fptf-with')
 const testJourneysStationToStation = require('./lib/journeys-station-to-station')
 const testJourneysStationToAddress = require('./lib/journeys-station-to-address')
 const testJourneysStationToPoi = require('./lib/journeys-station-to-poi')
 const testEarlierLaterJourneys = require('./lib/earlier-later-journeys')
+const testRefreshJourney = require('./lib/refresh-journey')
 const journeysFailsWithNoProduct = require('./lib/journeys-fails-with-no-product')
 const testDepartures = require('./lib/departures')
-const testDeparturesInDirection = require('./lib/departures-in-direction')
 const testArrivals = require('./lib/arrivals')
 const testJourneysWithDetour = require('./lib/journeys-with-detour')
-
-const isObj = o => o !== null && 'object' === typeof o && !Array.isArray(o)
 
 const when = createWhen('Europe/Berlin', 'de-DE')
 
@@ -27,27 +25,22 @@ const cfg = {
 	when,
 	stationCoordsOptional: false,
 	products,
-	minLatitude: 50.7,
-	maxLatitude: 53.2,
-	minLongitude: 10.25,
-	maxLongitude: 13.4
+	minLatitude: 52.559311,
+	maxLatitude: 53.948075,
+	minLongitude: 7.622917,
+	maxLongitude: 9.984605
 }
 
 const validate = createValidate(cfg, {})
 
 const test = tapePromise(tape)
-const client = createClient(insaProfile, 'public-transport/hafas-client:test')
+const client = createClient(vbnProfile, 'public-transport/hafas-client:test')
 
-const magdeburgHbf = '8010224'
-const magdeburgBuckau = '8013456'
-const leiterstr = '7464'
-const hasselbachplatzSternstrasse = '6545'
-const stendal = '8010334'
-const dessau = '8010077'
-const universitaet = '19686'
+const bremenHbf = '8000050'
+const bremerhavenHbf = '8000051'
 
-test('journeys – Magdeburg Hbf to Magdeburg-Buckau', async (t) => {
-	const res = await client.journeys(magdeburgHbf, magdeburgBuckau, {
+test.only('journeys – Bremen Hbf to Bremerhaven Hbf', async (t) => {
+	const res = await client.journeys(bremenHbf, bremerhavenHbf, {
 		results: 4,
 		departure: when,
 		stopovers: true
@@ -57,27 +50,27 @@ test('journeys – Magdeburg Hbf to Magdeburg-Buckau', async (t) => {
 		test: t,
 		res,
 		validate,
-		fromId: magdeburgHbf,
-		toId: magdeburgBuckau
+		fromId: bremenHbf,
+		toId: bremerhavenHbf
 	})
 	t.end()
 })
 
 // todo: journeys, only one product
 
-test('journeys – fails with no product', (t) => {
+test.skip('journeys – fails with no product', (t) => {
 	journeysFailsWithNoProduct({
 		test: t,
 		fetchJourneys: client.journeys,
-		fromId: magdeburgHbf,
-		toId: magdeburgBuckau,
+		fromId: bremenHbf,
+		toId: bremerhavenHbf,
 		when,
 		products
 	})
 	t.end()
 })
 
-test('Magdeburg Hbf to 39104 Magdeburg, Sternstr. 10', async (t) => {
+test.skip('Magdeburg Hbf to 39104 Magdeburg, Sternstr. 10', async (t) => {
 	const sternStr = {
 		type: 'location',
 		address: 'Magdeburg - Altenstadt, Sternstraße 10',
@@ -85,7 +78,7 @@ test('Magdeburg Hbf to 39104 Magdeburg, Sternstr. 10', async (t) => {
 		longitude: 11.422332
 	}
 
-	const res = await client.journeys(magdeburgHbf, sternStr, {
+	const res = await client.journeys(bremenHbf, sternStr, {
 		results: 3,
 		departure: when
 	})
@@ -94,13 +87,13 @@ test('Magdeburg Hbf to 39104 Magdeburg, Sternstr. 10', async (t) => {
 		test: t,
 		res,
 		validate,
-		fromId: magdeburgHbf,
+		fromId: bremenHbf,
 		to: sternStr
 	})
 	t.end()
 })
 
-test('Magdeburg Hbf to Kloster Unser Lieben Frauen', async (t) => {
+test.skip('Magdeburg Hbf to Kloster Unser Lieben Frauen', async (t) => {
 	const kloster = {
 		type: 'location',
 		id: '970012223',
@@ -109,7 +102,7 @@ test('Magdeburg Hbf to Kloster Unser Lieben Frauen', async (t) => {
 		latitude: 52.127601,
 		longitude: 11.636437
 	}
-	const res = await client.journeys(magdeburgHbf, kloster, {
+	const res = await client.journeys(bremenHbf, kloster, {
 		results: 3,
 		departure: when
 	})
@@ -118,13 +111,13 @@ test('Magdeburg Hbf to Kloster Unser Lieben Frauen', async (t) => {
 		test: t,
 		res,
 		validate,
-		fromId: magdeburgHbf,
+		fromId: bremenHbf,
 		to: kloster
 	})
 	t.end()
 })
 
-test('journeys: via works – with detour', async (t) => {
+test.skip('journeys: via works – with detour', async (t) => {
 	// Going from Magdeburg, Hasselbachplatz (Sternstr.) (Tram/Bus) to Stendal
 	// via Dessau without detour is currently impossible. We check if the routing
 	// engine computes a detour.
@@ -146,21 +139,34 @@ test('journeys: via works – with detour', async (t) => {
 
 // todo: without detour
 
-test('earlier/later journeys', async (t) => {
+test.skip('earlier/later journeys', async (t) => {
 	await testEarlierLaterJourneys({
 		test: t,
 		fetchJourneys: client.journeys,
 		validate,
-		fromId: magdeburgHbf,
-		toId: magdeburgBuckau,
+		fromId: bremenHbf,
+		toId: bremerhavenHbf,
 		when
 	})
 
 	t.end()
 })
 
-test('trip details', async (t) => {
-	const res = await client.journeys(magdeburgHbf, magdeburgBuckau, {
+test.skip('refreshJourney', async (t) => {
+	await testRefreshJourney({
+		test: t,
+		fetchJourneys: client.journeys,
+		refreshJourney: client.refreshJourney,
+		validate,
+		fromId: bremenHbf,
+		toId: bremerhavenHbf,
+		when
+	})
+	t.end()
+})
+
+test.skip('trip details', async (t) => {
+	const res = await client.journeys(bremenHbf, bremerhavenHbf, {
 		results: 1, departure: when
 	})
 
@@ -173,7 +179,7 @@ test('trip details', async (t) => {
 	t.end()
 })
 
-test('departures at Magdeburg Leiterstr.', async (t) => {
+test.skip('departures at Magdeburg Leiterstr.', async (t) => {
 	const departures = await client.departures(leiterstr, {
 		duration: 5, when,
 		stopovers: true
@@ -188,10 +194,10 @@ test('departures at Magdeburg Leiterstr.', async (t) => {
 	t.end()
 })
 
-test('departures with station object', async (t) => {
+test.skip('departures with station object', async (t) => {
 	const deps = await client.departures({
 		type: 'station',
-		id: magdeburgHbf,
+		id: bremenHbf,
 		name: 'Magdeburg Hbf',
 		location: {
 			type: 'location',
@@ -204,22 +210,10 @@ test('departures with station object', async (t) => {
 	t.end()
 })
 
-test('departures at Leiterstr in direction of Universität', async (t) => {
-	await testDeparturesInDirection({
-		test: t,
-		fetchDepartures: client.departures,
-		fetchTrip: client.trip,
-		id: leiterstr,
-		directionIds: [universitaet],
-		when,
-		validate
-	})
-	t.end()
-})
-
-test('arrivals at Magdeburg Leiterstr.', async (t) => {
+test.skip('arrivals at Magdeburg Leiterstr.', async (t) => {
 	const arrivals = await client.arrivals(leiterstr, {
-		duration: 5, when
+		duration: 5, when,
+		stopovers: true
 	})
 
 	await testArrivals({
@@ -233,9 +227,8 @@ test('arrivals at Magdeburg Leiterstr.', async (t) => {
 
 // todo: nearby
 
-test('locations named Magdeburg', async (t) => {
-	const nordpark = '7480'
-	const locations = await client.locations('nordpark', {
+test.skip('locations named Magdeburg', async (t) => {
+	const locations = await client.locations('Magdeburg', {
 		results: 20
 	})
 
@@ -245,22 +238,22 @@ test('locations named Magdeburg', async (t) => {
 	t.ok(locations.find(s => s.type === 'stop' || s.type === 'station'))
 	t.ok(locations.find(s => s.poi)) // POIs
 	t.ok(locations.some((l) => {
-		return l.station && l.station.id === nordpark || l.id === nordpark
+		return l.station && l.station.id === bremenHbf || l.id === bremenHbf
 	}))
 
 	t.end()
 })
 
-test('station Magdeburg-Buckau', async (t) => {
-	const s = await client.stop(magdeburgBuckau)
+test.skip('station Magdeburg-Buckau', async (t) => {
+	const s = await client.stop(bremerhavenHbf)
 
 	validate(t, s, ['stop', 'station'], 'station')
-	t.equal(s.id, magdeburgBuckau)
+	t.equal(s.id, bremerhavenHbf)
 
 	t.end()
 })
 
-test('radar', async (t) => {
+test.skip('radar', async (t) => {
 	const vehicles = await client.radar({
 		north: 52.148364,
 		west: 11.600826,

@@ -5,9 +5,9 @@ const tape = require('tape')
 const isRoughlyEqual = require('is-roughly-equal')
 
 const { createWhen } = require('./lib/util')
-const createClient = require('..')
-const saarfahrplanProfile = require('../p/saarfahrplan')
-const products = require('../p/saarfahrplan/products')
+const createClient = require('../..')
+const saarfahrplanProfile = require('../../p/saarfahrplan')
+const products = require('../../p/saarfahrplan/products')
 const {
 	station: createValidateStation,
 	stop: validateStop

@@ -5,12 +5,11 @@ const tape = require('tape')
 const isRoughlyEqual = require('is-roughly-equal')
 
 const {createWhen} = require('./lib/util')
-const createClient = require('..')
-const dbBusradarNrwProfile = require('../p/db-busradar-nrw')
+const createClient = require('../..')
+const dbBusradarNrwProfile = require('../../p/db-busradar-nrw')
 const createValidate = require('./lib/validate-fptf-with')
 const testDepartures = require('./lib/departures')
 const testArrivals = require('./lib/arrivals')
-// const testJourneysWithDetour = require('./lib/journeys-with-detour')
 
 const isObj = o => o !== null && 'object' === typeof o && !Array.isArray(o)
 

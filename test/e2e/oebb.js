@@ -6,9 +6,9 @@ const isRoughlyEqual = require('is-roughly-equal')
 const validateLine = require('validate-fptf/line')
 
 const {createWhen} = require('./lib/util')
-const createClient = require('..')
-const oebbProfile = require('../p/oebb')
-const products = require('../p/oebb/products')
+const createClient = require('../..')
+const oebbProfile = require('../../p/oebb')
+const products = require('../../p/oebb/products')
 const {
 	station: createValidateStation,
 	stop: validateStop

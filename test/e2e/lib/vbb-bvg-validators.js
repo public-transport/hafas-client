@@ -3,7 +3,7 @@
 const stations = require('vbb-stations-autocomplete')
 const a = require('assert')
 const shorten = require('vbb-short-station-name')
-const products = require('../../p/bvg/products')
+const products = require('../../../p/bvg/products')
 
 const {createWhen} = require('./util')
 const {
