@@ -1,7 +1,7 @@
 'use strict'
 
 const get = require('lodash/get')
-const {findIdxRefs, resolveIdxRefs} = require('../lib/resolve-idx-refs')
+const findInTree = require('../lib/find-in-tree')
 
 // todo: move to separate file
 const parseIcon = (i) => {
@@ -20,13 +20,17 @@ const parseCommonData = (profile, opt, res) => {
 	res.operators = []
 	if (Array.isArray(c.opL)) {
 		res.operators = c.opL.map(op => profile.parseOperator(profile, op))
-		resolveIdxRefs(res, '**.oprX', res.operators, 'operator')
+		findInTree(res, '**.oprX', (idx, parent) => {
+			if ('number' === typeof idx) parent.operator = res.operators[idx]
+		})
 	}
 
 	res.icons = []
 	if (Array.isArray(c.icoL)) {
 		res.icons = c.icoL.map(parseIcon)
-		resolveIdxRefs(res, '**.icoX', res.icons, 'icon')
+		findInTree(res, '**.icoX', (idx, parent) => {
+			if ('number' === typeof idx) parent.icon = res.icons[idx]
+		})
 	}
 
 	res.lines = []
@@ -34,13 +38,15 @@ const parseCommonData = (profile, opt, res) => {
 		const parse = profile.parseLine(profile, opt, res)
 		res.lines = c.prodL.map(parse)
 
-		resolveIdxRefs(res, '**.prodX', res.lines, 'line')
-		findIdxRefs(res, '**.pRefL', (idxs, parent) => {
+		findInTree(res, '**.prodX', (idx, parent) => {
+			if ('number' === typeof idx) parent.line = res.lines[idx]
+		})
+		findInTree(res, '**.pRefL', (idxs, parent) => {
 			parent.lines = idxs.filter(idx => !!res.lines[idx]).map(idx => res.lines[idx])
 		})
 		// todo
-		// resolveIdxRefs(res, '**.dep.dProdX', res.lines, 'departureLine')
-		// resolveIdxRefs(res, '**.arr.aProdX', res.lines, 'arrivalLine')
+		// **.dep.dProdX: departureLine -> res.lines[idx]
+		// **.arr.aProdX: arrivalLine -> res.lines[idx]
 	}
 
 	res.locations = []
@@ -58,26 +64,36 @@ const parseCommonData = (profile, opt, res) => {
 		}
 
 		// todo: correct props?
-		resolveIdxRefs(res, '**.locX', res.locations, 'location')
-		findIdxRefs(res, '**.ani.fLocX', (idxs, parent) => {
+		findInTree(res, '**.locX', (idx, parent) => {
+			if ('number' === typeof idx) parent.location = res.locations[idx]
+		})
+		findInTree(res, '**.ani.fLocX', (idxs, parent) => {
 			parent.fromLocations = idxs.map(idx => res.locations[idx])
 		})
-		findIdxRefs(res, '**.ani.tLocX', (idxs, parent) => {
+		findInTree(res, '**.ani.tLocX', (idxs, parent) => {
 			parent.toLocations = idxs.map(idx => res.locations[idx])
 		})
-		resolveIdxRefs(res, '**.fLocX', res.locations, 'fromLocation')
-		resolveIdxRefs(res, '**.tLocX', res.locations, 'toLocation')
+		findInTree(res, '**.fLocX', (idx, parent) => {
+			if ('number' === typeof idx) parent.fromLocation = res.locations[idx]
+		})
+		findInTree(res, '**.tLocX', (idx, parent) => {
+			if ('number' === typeof idx) parent.toLocation = res.locations[idx]
+		})
 	}
 
 	res.hints = []
 	if (opt.remarks && Array.isArray(c.remL)) {
 		res.hints = c.remL.map(hint => profile.parseHint(profile, hint, {...c, ...res}))
-		resolveIdxRefs(res, '**.remX', res.hints, 'hint')
+		findInTree(res, '**.remX', (idx, parent) => {
+			if ('number' === typeof idx) parent.hint = res.hints[idx]
+		})
 	}
 	res.warnings = []
 	if (opt.remarks && Array.isArray(c.himL)) {
 		res.warnings = c.himL.map(w => profile.parseWarning(profile, w, {...c, ...res}))
-		resolveIdxRefs(res, '**.himX', res.warnings, 'warning')
+		findInTree(res, '**.himX', (idx, parent) => {
+			if ('number' === typeof idx) parent.warning = res.warnings[idx]
+		})
 	}
 
 	res.polylines = []
@@ -86,7 +102,7 @@ const parseCommonData = (profile, opt, res) => {
 		res.polylines = c.polyL.map(parse)
 		// todo: **.ani.poly -> parsePolyline()
 
-		findIdxRefs(res, '**.polyG.polyXL', (idxs, _, path) => {
+		findInTree(res, '**.polyG.polyXL', (idxs, _, path) => {
 			const idx = idxs.find(idx => !!res.polylines[idx]) // find any given polyline
 			const jny = get(res, path.slice(0, -2))
 			jny.polyline = res.polylines[idx]
