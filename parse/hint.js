@@ -12,6 +12,7 @@ const codesByIcon = Object.assign(Object.create(null), {
 // "tagL": [
 // 	"RES_JNY_DTL" // only shown in journey detail
 // ]
+// todo: https://github.com/public-transport/hafas-client/issues/5
 const parseHint = (profile, h, _) => {
 	// todo: C
 
@@ -39,8 +40,8 @@ const parseHint = (profile, h, _) => {
 	if (h.type === 'A' || h.type === 'I') {
 		return {
 			type: 'hint',
-			code: h.code || null,
-			text: h.txtN || null
+			code,
+			text
 		}
 	}
 
