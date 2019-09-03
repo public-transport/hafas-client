@@ -3,8 +3,6 @@
 const brToNewline = require('@derhuerst/br2nl')
 const omit = require('lodash/omit')
 
-const parseDateTime = require('./date-time')
-
 const typesByIcon = Object.assign(Object.create(null), {
 	HimWarn: 'status'
 })
@@ -26,8 +24,8 @@ const parseMsgEvent = (profile) => (e) => {
 		// todo: rename `Loc` -> `Location` [breaking]
 		fromLoc: e.fromLocation || null,
 		toLoc: e.toLocation || null,
-		start: parseDateTime(profile, e.fDate, e.fTime, null),
-		end: parseDateTime(profile, e.tDate, e.tTime, null),
+		start: profile.parseDateTime(profile, e.fDate, e.fTime, null),
+		end: profile.parseDateTime(profile, e.tDate, e.tTime, null),
 		sections: e.sectionNums || [] // todo: parse
 	}
 }
@@ -60,7 +58,7 @@ const parseWarning = (profile, w, data) => {
 		type,
 		summary: w.head ? brToNewline(w.head) : null, // todo: decode HTML entities?
 		text: w.text ? brToNewline(w.text) : null, // todo: decode HTML entities?
-		icon,
+		icon, // todo: parse icon
 		priority: w.prio,
 		category: w.cat || null // todo: parse to sth meaningful
 	}
@@ -79,9 +77,9 @@ const parseWarning = (profile, w, data) => {
 		.map(parseMsgEvent(profile))
 	}
 
-	if (w.sDate && w.sTime) res.validFrom = parseDateTime(profile, w.sDate, w.sTime, null)
-	if (w.eDate && w.eTime) res.validUntil = parseDateTime(profile, w.eDate, w.eTime, null)
-	if (w.lModDate && w.lModTime) res.modified = parseDateTime(profile, w.lModDate, w.lModTime, null)
+	if (w.sDate && w.sTime) res.validFrom = profile.parseDateTime(profile, w.sDate, w.sTime, null)
+	if (w.eDate && w.eTime) res.validUntil = profile.parseDateTime(profile, w.eDate, w.eTime, null)
+	if (w.lModDate && w.lModTime) res.modified = profile.parseDateTime(profile, w.lModDate, w.lModTime, null)
 
 	return res
 }
