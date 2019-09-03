@@ -5,6 +5,7 @@
 	"type": "module",
 	"main": "index.js",
 	"files": [
+		"rest-exe.js",
 		"index.js",
 		"throttle.js",
 		"retry.js",
