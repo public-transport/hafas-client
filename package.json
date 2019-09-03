@@ -65,7 +65,7 @@
 	},
 	"scripts": {
 		"e2e-test": "env NODE_ENV=dev node test/e2e/index.js | tap-spec",
-		"test": "npm run e2e-test",
-		"prepublishOnly": "npm test"
+		"test": "env NODE_ENV=dev node test/index.js | tap-spec",
+		"prepublishOnly": "npm test && npm run e2e-test"
 	}
 }
