@@ -26,7 +26,11 @@ const validateLocation = (loc, name = 'location') => {
 	}
 }
 
-const createClient = (profile, userAgent, request = _request) => {
+const defaults = {
+	request: _request
+}
+
+const createClient = (profile, userAgent, opt = {}) => {
 	profile = Object.assign({}, defaultProfile, profile)
 	if (!profile.parseProducts) {
 		profile.parseProducts = createParseBitmask(profile)
@@ -39,6 +43,10 @@ const createClient = (profile, userAgent, request = _request) => {
 	if ('string' !== typeof userAgent) {
 		throw new TypeError('userAgent must be a string');
 	}
+
+	const {
+		request
+	} = Object.assign({}, defaults, opt)
 
 	const _stationBoard = (station, type, parser, opt = {}) => {
 		if (isObj(station)) station = profile.formatStation(station.id)

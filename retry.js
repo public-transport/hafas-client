@@ -13,7 +13,9 @@ const retryDefaults = {
 const withRetrying = (createClient, retryOpts = {}) => {
 	retryOpts = Object.assign({}, retryDefaults, retryOpts)
 
-	const createRetryingClient = (profile, userAgent, request = _request) => {
+	const createRetryingClient = (profile, userAgent, opt = {}) => {
+		const request = 'request' in opt ? opt.request : _request
+
 		const retryingRequest = (profile, userAgent, opt, data) => {
 			const attempt = () => {
 				return request(profile, userAgent, opt, data)
@@ -30,7 +32,10 @@ const withRetrying = (createClient, retryOpts = {}) => {
 			return retry(attempt, retryOpts)
 		}
 
-		return createClient(profile, userAgent, retryingRequest)
+		return createClient(profile, userAgent, {
+			...opt,
+			request: retryingRequest
+		})
 	}
 	return createRetryingClient
 }
