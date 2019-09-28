@@ -9,6 +9,7 @@ const vbbProfile = require('../p/vbb')
 const userAgent = 'public-transport/hafas-client:test'
 const spichernstr = '900000042101'
 
+// todo: mock request()
 test('withThrottling works', (t) => {
 	let calls = 0
 	const transformReqBody = (body) => {
@@ -26,5 +27,3 @@ test('withThrottling works', (t) => {
 	setTimeout(() => t.equal(calls, 4), 1500)
 	setTimeout(() => t.equal(calls, 6), 2500)
 })
-
-// todo

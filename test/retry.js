@@ -34,7 +34,9 @@ test('withRetrying works', (t) => {
 		factor: 2,
 		randomize: false
 	})
-	const client = createRetryingClient(vbbProfile, userAgent, failingRequest)
+	const client = createRetryingClient(vbbProfile, userAgent, {
+		request: failingRequest
+	})
 
 	t.plan(1 + 4)
 	client.departures(spichernstr, {duration: 1})
