@@ -3,12 +3,13 @@
 // todo: https://gist.github.com/anonymous/a5fc856bc80ae7364721943243f934f4#file-haf_config_base-properties-L5
 // todo: https://gist.github.com/anonymous/a5fc856bc80ae7364721943243f934f4#file-haf_config_base-properties-L47-L234
 
-const _parseLocation = require('../../parse/location')
-const _createParseMovement = require('../../parse/movement')
+const {parseHook} = require('../../lib/profile-hooks')
 
+const _parseLocation = require('../../parse/location')
+const _parseMovement = require('../../parse/movement')
 const products = require('./products')
 
-const transformReqBody = (body) => {
+const transformReqBody = (ctx, body) => {
 	// todo: necessary headers?
 	body.client = {
 		type: 'IPA',
@@ -25,46 +26,40 @@ const transformReqBody = (body) => {
 	return body
 }
 
-const parseLocation = (profile, opt, data, l) => {
-	// ÖBB has some 'stations' **in austria** with no departures/products,
-	// like station entrances, that are actually POIs.
-	const res = _parseLocation(profile, opt, data, l)
+// ÖBB has some 'stations' **in austria** with no departures/products,
+// like station entrances, that are actually POIs.
+const fixWeirdPOIs = ({parsed}) => {
 	if (
-		(res.type === 'station' || res.type === 'stop') &&
-		!res.products &&
-		res.name &&
-		res.id && res.id.length !== 7
+		(parsed.type === 'station' || parsed.type === 'stop') &&
+		!parsed.products &&
+		parsed.name &&
+		parsed.id && parsed.id.length !== 7
 	) {
 		return Object.assign({
 			type: 'location',
-			id: res.id,
+			id: parsed.id,
 			poi: true,
-			name: res.name
-		}, res.location)
+			name: parsed.name
+		}, parsed.location)
 	}
-	return res
+	return parsed
 }
 
-const createParseMovement = (profile, opt, data) => {
-	const _parseMovement = _createParseMovement(profile, opt, data)
-	const parseMovement = (m) => {
-		const res = _parseMovement(m)
-		// filter out POIs
-		// todo: make use of them, as some of them specify fare zones
-		res.nextStopovers = res.nextStopovers.filter(st => {
-			const s = st.stop || {}
-			if (s.station) {
-				s = s.station
-				if (s.station.type === 'stop' || s.station.type === 'station') return true
-			}
-			return s.type === 'stop' || s.type === 'station'
-		})
-		res.frames = res.frames.filter((f) => {
-			return f.origin.type !== 'location' && f.destination.type !== 'location'
-		})
-		return res
-	}
-	return parseMovement
+const fixMovement = ({parsed}, m) => {
+	// filter out POIs
+	// todo: make use of them, as some of them specify fare zones
+	parsed.nextStopovers = parsed.nextStopovers.filter(st => {
+		const s = st.stop || {}
+		if (s.station) {
+			s = s.station
+			if (s.station.type === 'stop' || s.station.type === 'station') return true
+		}
+		return s.type === 'stop' || s.type === 'station'
+	})
+	parsed.frames = parsed.frames.filter((f) => {
+		return f.origin.type !== 'location' && f.destination.type !== 'location'
+	})
+	return parsed
 }
 
 const oebbProfile = {
@@ -76,8 +71,8 @@ const oebbProfile = {
 
 	products: products,
 
-	parseLocation,
-	parseMovement: createParseMovement,
+	parseLocation: parseHook(_parseLocation, fixWeirdPOIs),
+	parseMovement: parseHook(_parseMovement, fixMovement),
 
 	journeysNumF: false,
 	trip: true,

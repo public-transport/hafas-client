@@ -2,7 +2,7 @@
 
 const products = require('./products')
 
-const transformReqBody = (body) => {
+const transformReqBody = (ctx, body) => {
 	body.client = {type: 'IPH', id: 'DB-REGIO-MVV', name: 'MuenchenNavigator', v: '5010100'}
 	body.ext = 'DB.R15.12.a'
 	body.ver = '1.18'

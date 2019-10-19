@@ -1,12 +1,13 @@
 'use strict'
 
 const trim = require('lodash/trim')
+const {parseHook} = require('../../lib/profile-hooks')
 
-const _createParseArrival = require('../../parse/arrival')
-const _createParseDeparture = require('../../parse/departure')
-const _createParseJourney = require('../../parse/journey')
-const _createParseJourneyLeg = require('../../parse/journey-leg')
-const _createParseLine = require('../../parse/line')
+const _parseJourney = require('../../parse/journey')
+const _parseJourneyLeg = require('../../parse/journey-leg')
+const _parseLine = require('../../parse/line')
+const _parseArrival = require('../../parse/arrival')
+const _parseDeparture = require('../../parse/departure')
 const _parseHint = require('../../parse/hint')
 const _formatStation = require('../../format/station')
 const {bike} = require('../../format/filters')
@@ -14,7 +15,7 @@ const {bike} = require('../../format/filters')
 const products = require('./products')
 const formatLoyaltyCard = require('./loyalty-cards').format
 
-const transformReqBody = (body) => {
+const transformReqBody = (ctx, body) => {
 	body.client = {id: 'DB', v: '16040000', type: 'IPH', name: 'DB Navigator'}
 	body.ext = 'DB.R19.04.a'
 	body.ver = '1.16'
@@ -36,24 +37,15 @@ const parseLoadFactor = (opt, tcocL, tcocX) => {
 	return load && loadFactors[load.r] || null
 }
 
-const createParseArrOrDep = (createParse) => (profile, opt, data) => {
-	const parse = createParse(profile, opt, data)
-	const parseWithLoadFactor = (d) => {
-		const result = parse(d)
-		if (d.stbStop.dTrnCmpSX && Array.isArray(d.stbStop.dTrnCmpSX.tcocX)) {
-			const {tcocL} = data.common
-			const load = parseLoadFactor(opt, tcocL, d.stbStop.dTrnCmpSX.tcocX)
-			if (load) result.loadFactor = load
-		}
-		return result
+const parseArrOrDepWithLoadFactor = ({parsed, res, opt}, d) => {
+	if (d.stbStop.dTrnCmpSX && Array.isArray(d.stbStop.dTrnCmpSX.tcocX)) {
+		const load = parseLoadFactor(opt, res.tcocL, d.stbStop.dTrnCmpSX.tcocX)
+		if (load) parsed.loadFactor = load
 	}
-	return parseWithLoadFactor
+	return parsed
 }
 
-const createParseArrival = createParseArrOrDep(_createParseArrival)
-const createParseDeparture = createParseArrOrDep(_createParseDeparture)
-
-const transformJourneysQuery = (query, opt) => {
+const transformJourneysQuery = ({opt}, query) => {
 	const filters = query.jnyFltrL
 	if (opt.bike) filters.push(bike)
 
@@ -71,76 +63,58 @@ const transformJourneysQuery = (query, opt) => {
 	return query
 }
 
-const createParseLine = (profile, opt, data) => {
-	const parseLine = _createParseLine(profile, opt, data)
-	const parseLineWithAdditionalName = (l) => {
-		const res = parseLine(l)
-		if (l.nameS && ['bus', 'tram', 'ferry'].includes(res.product)) {
-			res.name = l.nameS
-		}
-		if (l.addName) {
-			res.additionalName = res.name
-			res.name = l.addName
-		}
-		return res
+const parseLineWithAdditionalName = ({parsed}, l) => {
+	if (l.nameS && ['bus', 'tram', 'ferry'].includes(l.product)) {
+		parsed.name = l.nameS
 	}
-	return parseLineWithAdditionalName
+	if (l.addName) {
+		parsed.additionalName = parsed.name
+		parsed.name = l.addName
+	}
+	return parsed
 }
 
-const createParseJourney = (profile, opt, data) => {
-	const parseJourney = _createParseJourney(profile, opt, data)
-
-	// todo: j.sotRating, j.conSubscr, j.isSotCon, j.showARSLink, k.sotCtxt
-	// todo: j.conSubscr, j.showARSLink, j.useableTime
-	const parseJourneyWithPrice = (j) => {
-		const res = parseJourney(j)
-
-		res.price = null
-		// todo: find cheapest, find discounts
-		// todo: write a parser like vbb-parse-ticket
-		// [ {
-		// 	prc: 15000,
-		// 	isFromPrice: true,
-		// 	isBookable: true,
-		// 	isUpsell: false,
-		// 	targetCtx: 'D',
-		// 	buttonText: 'To offer selection'
-		// } ]
-		if (
-			j.trfRes &&
-			Array.isArray(j.trfRes.fareSetL) &&
-			j.trfRes.fareSetL[0] &&
-			Array.isArray(j.trfRes.fareSetL[0].fareL) &&
-			j.trfRes.fareSetL[0].fareL[0]
-		) {
-			const tariff = j.trfRes.fareSetL[0].fareL[0]
-			if (tariff.prc >= 0) { // wat
-				res.price = {
-					amount: tariff.prc / 100,
-					currency: 'EUR',
-					hint: null
-				}
+// todo: sotRating, conSubscr, isSotCon, showARSLink, sotCtxt
+// todo: conSubscr, showARSLink, useableTime
+const parseJourneyWithPrice = ({parsed}, raw) => {
+	parsed.price = null
+	// todo: find cheapest, find discounts
+	// todo: write a parser like vbb-parse-ticket
+	// [ {
+	// 	prc: 15000,
+	// 	isFromPrice: true,
+	// 	isBookable: true,
+	// 	isUpsell: false,
+	// 	targetCtx: 'D',
+	// 	buttonText: 'To offer selection'
+	// } ]
+	if (
+		raw.trfRes &&
+		Array.isArray(raw.trfRes.fareSetL) &&
+		raw.trfRes.fareSetL[0] &&
+		Array.isArray(raw.trfRes.fareSetL[0].fareL) &&
+		raw.trfRes.fareSetL[0].fareL[0]
+	) {
+		const tariff = raw.trfRes.fareSetL[0].fareL[0]
+		if (tariff.prc >= 0) { // wat
+			parsed.price = {
+				amount: tariff.prc / 100,
+				currency: 'EUR',
+				hint: null
 			}
 		}
-
-		return res
 	}
 
-	return parseJourneyWithPrice
+	return parsed
 }
 
-const createParseJourneyLeg = (profile, opt, data) => {
-	const parseJourneyLeg = _createParseJourneyLeg(profile, opt, data)
-	const parseJourneyLegWithLoadFactor = (j, pt, parseStopovers) => {
-		const result = parseJourneyLeg(j, pt, parseStopovers)
-		if (pt.jny && pt.jny.dTrnCmpSX && Array.isArray(pt.jny.dTrnCmpSX.tcocX)) {
-			const {tcocL} = data.common
-			const load = parseLoadFactor(opt, tcocL, pt.jny.dTrnCmpSX.tcocX)
-			if (load) result.loadFactor = load
-		}
-		return result
+const parseJourneyLegWithLoadFactor = ({parsed, res, opt}, raw) => {
+	const tcocX = raw.jny && raw.jny.dTrnCmpSX && raw.jny.dTrnCmpSX.tcocX
+	if (Array.isArray(tcocX) && Array.isArray(res.tcocL)) {
+		const load = parseLoadFactor(opt, res.tcocL, tcocX)
+		if (load) parsed.loadFactor = load
 	}
-	return parseJourneyLegWithLoadFactor
+	return parsed
 }
 
 // todo:
@@ -344,20 +318,20 @@ const codesByText = Object.assign(Object.create(null), {
 	'platform change': 'changed platform', // todo: use dash, German variant
 })
 
-const parseHint = (profile, h, icons) => {
-	if (h.type === 'A') {
-		const hint = hintsByCode[h.code && h.code.trim().toLowerCase()]
+const parseHintByCode = ({parsed}, raw) => {
+	if (raw.type === 'A') {
+		const hint = hintsByCode[raw.code && raw.code.trim().toLowerCase()]
 		if (hint) {
-			return Object.assign({text: h.txtN}, hint)
+			return Object.assign({text: raw.txtN}, hint)
 		}
 	}
 
-	const res = _parseHint(profile, h, icons)
-	if (res && h.txtN) {
-		const text = trim(h.txtN.toLowerCase(), ' ()')
-		if (codesByText[text]) res.code = codesByText[text]
+	if (parsed && raw.txtN) {
+		const text = trim(raw.txtN.toLowerCase(), ' ()')
+		if (codesByText[text]) parsed.code = codesByText[text]
 	}
-	return res
+
+	return parsed
 }
 
 const isIBNR = /^\d{6,}$/
@@ -382,12 +356,12 @@ const dbProfile = {
 	products: products,
 
 	// todo: parseLocation
-	parseJourney: createParseJourney,
-	parseJourneyLeg: createParseJourneyLeg,
-	parseLine: createParseLine,
-	parseArrival: createParseArrival,
-	parseDeparture: createParseDeparture,
-	parseHint,
+	parseJourney: parseHook(_parseJourney, parseJourneyWithPrice),
+	parseJourneyLeg: parseHook(_parseJourneyLeg, parseJourneyLegWithLoadFactor),
+	parseLine: parseHook(_parseLine, parseLineWithAdditionalName),
+	parseArrival: parseHook(_parseArrival, parseArrOrDepWithLoadFactor),
+	parseDeparture: parseHook(_parseDeparture, parseArrOrDepWithLoadFactor),
+	parseHint: parseHook(_parseHint, parseHintByCode),
 
 	formatStation,
 
