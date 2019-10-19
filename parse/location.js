@@ -9,7 +9,9 @@ const ADDRESS = 'A'
 const leadingZeros = /^0+/
 
 // todo: what is s.rRefL?
-const parseLocation = (profile, opt, _, l) => {
+const parseLocation = (ctx, l) => {
+	const {profile, opt} = ctx
+
 	const lid = parse(l.lid, {delimiter: '@'})
 	const res = {
 		type: 'location',
@@ -29,7 +31,7 @@ const parseLocation = (profile, opt, _, l) => {
 			location: 'number' === typeof res.latitude ? res : null
 		}
 
-		if ('pCls' in l) stop.products = profile.parseProducts(l.pCls)
+		if ('pCls' in l) stop.products = profile.parseProductsBitmask(ctx, l.pCls)
 		if ('meta' in l) stop.isMeta = !!l.meta
 
 		if (opt.linesOfStops && Array.isArray(l.lines)) {

@@ -2,7 +2,7 @@
 
 const slugg = require('slugg')
 
-const parseOperator = (profile, a) => {
+const parseOperator = (ctx, a) => {
 	const name = a.name && a.name.trim()
 	if (!name) return null
 	return {

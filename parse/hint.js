@@ -4,7 +4,6 @@ const codesByIcon = Object.assign(Object.create(null), {
 	cancel: 'cancelled'
 })
 
-// todo: is passing in profile necessary?
 // todo: pass in tag list from hint reference, e.g.:
 // "tagL": [
 // 	"RES_JNY_H3" // H3 = level 3 heading? shown on overview
@@ -13,7 +12,7 @@ const codesByIcon = Object.assign(Object.create(null), {
 // 	"RES_JNY_DTL" // only shown in journey detail
 // ]
 // todo: https://github.com/public-transport/hafas-client/issues/5
-const parseHint = (profile, h, _) => {
+const parseHint = (ctx, h) => {
 	// todo: C
 	// todo:
 	// { type: 'Q',

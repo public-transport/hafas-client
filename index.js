@@ -7,7 +7,6 @@ const sortBy = require('lodash/sortBy')
 const pRetry = require('p-retry')
 
 const defaultProfile = require('./lib/default-profile')
-const createParseBitmask = require('./parse/products-bitmask')
 const createFormatProductsFilter = require('./format/products-filter')
 const validateProfile = require('./lib/validate-profile')
 const _request = require('./lib/request')
@@ -28,9 +27,6 @@ const validateLocation = (loc, name = 'location') => {
 
 const createClient = (profile, userAgent, request = _request) => {
 	profile = Object.assign({}, defaultProfile, profile)
-	if (!profile.parseProducts) {
-		profile.parseProducts = createParseBitmask(profile)
-	}
 	if (!profile.formatProductsFilter) {
 		profile.formatProductsFilter = createFormatProductsFilter(profile)
 	}

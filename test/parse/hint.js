@@ -3,7 +3,11 @@
 const test = require('tape')
 const parse = require('../../parse/hint')
 
-const profile = {}
+const ctx = {
+	data: {},
+	opt: {},
+	profile: {}
+}
 
 test('parses hints correctly', (t) => {
 	const input = {
@@ -18,20 +22,20 @@ test('parses hints correctly', (t) => {
 		text: 'some text'
 	}
 
-	t.deepEqual(parse(profile, input), expected)
-	t.deepEqual(parse(profile, {
+	t.deepEqual(parse(ctx, input), expected)
+	t.deepEqual(parse(ctx, {
 		...input, type: 'I'
 	}), expected)
 
 	// alternative trip
-	t.deepEqual(parse(profile, {
+	t.deepEqual(parse(ctx, {
 		...input, type: 'L', jid: 'trip id'
 	}), {
 		...expected, type: 'status', code: 'alternative-trip', tripId: 'trip id'
 	})
 
 	// type: M
-	t.deepEqual(parse(profile, {
+	t.deepEqual(parse(ctx, {
 		...input, type: 'M', txtS: 'some summary'
 	}), {
 		...expected, type: 'status', summary: 'some summary'
@@ -39,18 +43,18 @@ test('parses hints correctly', (t) => {
 
 	// type: D
 	for (const type of ['D', 'U', 'R', 'N', 'Y']) {
-		t.deepEqual(parse(profile, {...input, type}), {
+		t.deepEqual(parse(ctx, {...input, type}), {
 			...expected, type: 'status'
 		})
 	}
 
 	// .code via .icon
-	t.deepEqual(parse(profile, {
+	t.deepEqual(parse(ctx, {
 		...input, code: null, icon: {type: 'cancel'}
 	}), {...expected, code: 'cancelled'})
 
 	// invalid
-	t.equal(parse(profile, {...input, type: 'X'}), null)
+	t.equal(parse(ctx, {...input, type: 'X'}), null)
 
 	t.end()
 })

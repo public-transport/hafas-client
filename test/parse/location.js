@@ -6,10 +6,15 @@ const parse = require('../../parse/location')
 
 const profile = {
 	parseStationName: name => name.toLowerCase(),
-	parseProducts: bitmask => [bitmask]
+	parseProductsBitmask: (_, bitmask) => [bitmask]
 }
-const opt = {
-	linesOfStops: false
+
+const ctx = {
+	data: {},
+	opt: {
+		linesOfStops: false
+	},
+	profile
 }
 
 test('parses an address correctly', (t) => {
@@ -20,7 +25,7 @@ test('parses an address correctly', (t) => {
 		crd: {x: 13418027, y: 52515503}
 	}
 
-	const address = parse(profile, opt, null, input)
+	const address = parse(ctx, input)
 	t.deepEqual(address, {
 		type: 'location',
 		id: 'some id',
@@ -40,7 +45,7 @@ test('parses a POI correctly', (t) => {
 		crd: {x: 13418027, y: 52515503}
 	}
 
-	const poi = parse(profile, opt, null, input)
+	const poi = parse(ctx, input)
 	t.deepEqual(poi, {
 		type: 'location',
 		poi: true,
@@ -50,10 +55,10 @@ test('parses a POI correctly', (t) => {
 		longitude: 13.418027
 	})
 
-	const withExtId = parse(profile, opt, null, {...input, extId: 'some ext id'})
+	const withExtId = parse(ctx, {...input, extId: 'some ext id'})
 	t.equal(withExtId.id, 'some ext id')
 
-	const withLeadingZero = parse(profile, opt, null, {...input, extId: '00some ext id'})
+	const withLeadingZero = parse(ctx, {...input, extId: '00some ext id'})
 	t.equal(withLeadingZero.id, 'some ext id')
 
 	t.end()
@@ -68,7 +73,7 @@ test('parses a stop correctly', (t) => {
 		pCls: 123
 	}
 
-	const stop = parse(profile, opt, null, input)
+	const stop = parse(ctx, input)
 	t.deepEqual(stop, {
 		type: 'stop',
 		id: 'foo stop',
@@ -82,17 +87,20 @@ test('parses a stop correctly', (t) => {
 		products: [123]
 	})
 
-	const withoutLoc = parse(profile, opt, null, omit(input, ['crd']))
+	const withoutLoc = parse(ctx, omit(input, ['crd']))
 	t.equal(withoutLoc.location, null)
 
-	const mainMast = parse(profile, opt, null, {...input, isMainMast: true})
+	const mainMast = parse(ctx, {...input, isMainMast: true})
 	t.equal(mainMast.type, 'station')
 
-	const meta = parse(profile, opt, null, {...input, meta: 1})
+	const meta = parse(ctx, {...input, meta: 1})
 	t.equal(meta.isMeta, true)
 
 	const lineA = {id: 'a'}
-	const withLines = parse(profile, {...opt, linesOfStops: true}, null, {
+	const withLines = parse({
+		...ctx,
+		opt: {...ctx.opt, linesOfStops: true}
+	}, {
 		...input, lines: [lineA]
 	})
 	t.deepEqual(withLines.lines, [lineA])

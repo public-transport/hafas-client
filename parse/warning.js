@@ -7,7 +7,7 @@ const typesByIcon = Object.assign(Object.create(null), {
 	HimWarn: 'status'
 })
 
-const parseMsgEdge = (profile) => (e) => {
+const parseMsgEdge = (ctx) => (e) => {
 	const res = omit(e, [
 		'icoX',
 		'fLocX', 'fromLocation',
@@ -19,7 +19,7 @@ const parseMsgEdge = (profile) => (e) => {
 	res.toLoc = e.toLocation || null
 	return res
 }
-const parseMsgEvent = (profile) => (e) => {
+const parseMsgEvent = ({profile}) => (e) => {
 	return {
 		// todo: rename `Loc` -> `Location` [breaking]
 		fromLoc: e.fromLocation || null,
@@ -30,7 +30,9 @@ const parseMsgEvent = (profile) => (e) => {
 	}
 }
 
-const parseWarning = (profile, w, data) => {
+const parseWarning = (ctx, w) => {
+	const {profile, res: resp} = ctx
+
 	// todo: act, pub, lead, tckr, prod, comp,
 	// todo: cat (1, 2), pubChL, rRefL, impactL
 	// pubChL:
@@ -62,19 +64,19 @@ const parseWarning = (profile, w, data) => {
 		priority: w.prio,
 		category: w.cat || null // todo: parse to sth meaningful
 	}
-	if ('prod' in w) res.products = profile.parseProducts(w.prod)
+	if ('prod' in w) res.products = profile.parseProductsBitmask(ctx, w.prod)
 
-	if (w.edgeRefL && data.himMsgEdgeL) {
+	if (w.edgeRefL && resp.common && resp.common.himMsgEdgeL) {
 		res.edges = w.edgeRefL
-		.map(i => data.himMsgEdgeL[i])
+		.map(i => resp.common.himMsgEdgeL[i])
 		.filter(e => !!e)
-		.map(parseMsgEdge(profile))
+		.map(parseMsgEdge(ctx))
 	}
-	if (w.eventRefL && data.himMsgEventL) {
+	if (w.eventRefL && resp.common && resp.common.himMsgEventL) {
 		res.events = w.eventRefL
-		.map(i => data.himMsgEventL[i])
+		.map(i => resp.common.himMsgEventL[i])
 		.filter(e => !!e)
-		.map(parseMsgEvent(profile))
+		.map(parseMsgEvent(ctx))
 	}
 
 	if (w.sDate && w.sTime) res.validFrom = profile.parseDateTime(profile, w.sDate, w.sTime, null)

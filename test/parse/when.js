@@ -4,10 +4,15 @@ const test = require('tape')
 const parse = require('../../parse/when')
 
 const profile = {
-	parseDateTime: (profile, date, time, tzOffset, timestamp = false) => {
+	parseDateTime: ({profile}, date, time, tzOffset, timestamp = false) => {
 		if (timestamp) return ((date + '' + time) - tzOffset * 60) * 1000
 		return date + ':' + time
 	}
+}
+const ctx = {
+	data: {},
+	opt: {},
+	profile
 }
 
 test('parseWhen works correctly', (t) => {
@@ -21,15 +26,15 @@ test('parseWhen works correctly', (t) => {
 		delay: 130 // seconds
 	}
 
-	t.deepEqual(parse(profile, date, timeS, timeR, tzOffset), expected)
+	t.deepEqual(parse(ctx, date, timeS, timeR, tzOffset), expected)
 
 	// no realtime data
-	t.deepEqual(parse(profile, date, timeS, null, tzOffset), {
+	t.deepEqual(parse(ctx, date, timeS, null, tzOffset), {
 		...expected, when: null, delay: null
 	})
 
 	// cancelled
-	t.deepEqual(parse(profile, date, timeS, timeR, tzOffset, true), {
+	t.deepEqual(parse(ctx, date, timeS, timeR, tzOffset, true), {
 		...expected,
 		when: null,
 		prognosedWhen: expected.when
