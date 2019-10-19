@@ -1,6 +1,6 @@
 'use strict'
 
-const parsePlatform = (profile, platfS, platfR, cncl = false) => {
+const parsePlatform = (ctx, platfS, platfR, cncl = false) => {
 	let planned = platfS || null
 	let prognosed = platfR || null
 

@@ -4,8 +4,13 @@ const test = require('tape')
 const parse = require('../../parse/warning')
 
 const profile = {
-	parseProducts: bitmask => [bitmask],
+	parseProductsBitmask: (_, bitmask) => [bitmask],
 	parseDateTime: (_, date, time) => date + ':' + time
+}
+const ctx = {
+	data: {},
+	opt: {},
+	profile
 }
 
 test('parses warnings correctly', (t) => {
@@ -27,26 +32,26 @@ test('parses warnings correctly', (t) => {
 		category: 1
 	}
 
-	t.deepEqual(parse(profile, input), expected)
+	t.deepEqual(parse(ctx, input), expected)
 
 	// without basic fields
-	t.deepEqual(parse(profile, {...input, hid: null}), {...expected, id: null})
-	t.deepEqual(parse(profile, {...input, head: null}), {...expected, summary: null})
-	t.deepEqual(parse(profile, {...input, text: null}), {...expected, text: null})
-	t.deepEqual(parse(profile, {...input, cat: null}), {...expected, category: null})
+	t.deepEqual(parse(ctx, {...input, hid: null}), {...expected, id: null})
+	t.deepEqual(parse(ctx, {...input, head: null}), {...expected, summary: null})
+	t.deepEqual(parse(ctx, {...input, text: null}), {...expected, text: null})
+	t.deepEqual(parse(ctx, {...input, cat: null}), {...expected, category: null})
 
 	// without icon
-	t.deepEqual(parse(profile, {...input, icon: null}), {
+	t.deepEqual(parse(ctx, {...input, icon: null}), {
 		...expected, type: 'warning', icon: null
 	})
 
 	// with products
-	t.deepEqual(parse(profile, {...input, prod: 123}), {
+	t.deepEqual(parse(ctx, {...input, prod: 123}), {
 		...expected, products: [123]
 	})
 
 	// validFrom, validUntil, modified
-	t.deepEqual(parse(profile, {
+	t.deepEqual(parse(ctx, {
 		...input,
 		sDate: '20190101', sTime: '094020',
 		eDate: '20190101', eTime: '114020',
