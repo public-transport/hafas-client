@@ -2,7 +2,7 @@
 
 const products = require('./products')
 
-const transformReqBody = (body) => {
+const transformReqBody = (ctx, body) => {
 	body.client = {
 		type: 'IPH',
 		id: 'NVV',
