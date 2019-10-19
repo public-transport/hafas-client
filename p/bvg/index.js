@@ -4,16 +4,17 @@ const shorten = require('vbb-short-station-name')
 const {to12Digit, to9Digit} = require('vbb-translate-ids')
 const parseLineName = require('vbb-parse-line')
 const getStations = require('vbb-stations')
+const {parseHook} = require('../../lib/profile-hooks')
 
-const _createParseLine = require('../../parse/line')
+const _parseLine = require('../../parse/line')
 const _parseLocation = require('../../parse/location')
-const _createParseDeparture = require('../../parse/departure')
-const _createParseJourneyLeg = require('../../parse/journey-leg')
+const _parseDeparture = require('../../parse/departure')
+const _parseJourneyLeg = require('../../parse/journey-leg')
 const _formatStation = require('../../format/station')
 
 const products = require('./products')
 
-const transformReqBody = (body) => {
+const transformReqBody = (ctx, body) => {
 	body.client = {type: 'IPA', id: 'BVG', name: 'FahrInfo', v: '6020000'}
 	body.ext = 'BVG.1'
 	body.ver = '1.21'
@@ -22,89 +23,72 @@ const transformReqBody = (body) => {
 	return body
 }
 
-const createParseLine = (profile, opt, data) => {
-	const parseLine = _createParseLine(profile, opt, data)
+const parseLineWithMoreDetails = ({parsed}, p) => {
+	parsed.name = p.name.replace(/^(bus|tram)\s+/i, '')
+	const details = parseLineName(parsed.name)
+	parsed.symbol = details.symbol
+	parsed.nr = details.nr
+	parsed.metro = details.metro
+	parsed.express = details.express
+	parsed.night = details.night
 
-	const parseLineWithMoreDetails = (l) => {
-		const res = parseLine(l)
-
-		res.name = l.name.replace(/^(bus|tram)\s+/i, '')
-		const details = parseLineName(res.name)
-		res.symbol = details.symbol
-		res.nr = details.nr
-		res.metro = details.metro
-		res.express = details.express
-		res.night = details.night
-
-		return res
-	}
-	return parseLineWithMoreDetails
+	return parsed
 }
 
-const parseLocation = (profile, opt, data, l) => {
-	const res = _parseLocation(profile, opt, data, l)
-
-	if (res.type === 'stop' || res.type === 'station') {
-		res.name = shorten(res.name)
-		res.id = to12Digit(res.id)
-		if (!res.location.latitude || !res.location.longitude) {
-			const [s] = getStations(res.id)
-			if (s) Object.assign(res.location, s.location)
+const parseLocation = ({parsed}, l) => {
+	if (parsed.type === 'stop' || parsed.type === 'station') {
+		parsed.name = shorten(parsed.name)
+		parsed.id = to12Digit(parsed.id)
+		if (!parsed.location.latitude || !parsed.location.longitude) {
+			const [s] = getStations(parsed.id)
+			if (s) Object.assign(parsed.location, s.location)
 		}
 	}
-	return res
+	return parsed
 }
 
-const createParseDeparture = (profile, opt, data) => {
-	const parseDeparture = _createParseDeparture(profile, opt, data)
-
-	const ringbahnClockwise = /^ringbahn s\s?41$/i
-	const ringbahnAnticlockwise = /^ringbahn s\s?42$/i
-	const parseDepartureRenameRingbahn = (j) => {
-		const res = parseDeparture(j)
-
-		if (res.line && res.line.product === 'suburban') {
-			const d = res.direction && res.direction.trim()
-			if (ringbahnClockwise.test(d)) res.direction = 'Ringbahn S41 ⟳'
-			else if (ringbahnAnticlockwise.test(d)) res.direction = 'Ringbahn S42 ⟲'
+const ringbahnClockwise = /^ringbahn s\s?41$/i
+const ringbahnAnticlockwise = /^ringbahn s\s?42$/i
+const parseDepartureRenameRingbahn = ({parsed}) => {
+	if (parsed.line && parsed.line.product === 'suburban') {
+		const d = parsed.direction && parsed.direction.trim()
+		if (ringbahnClockwise.test(d)) {
+			parsed.direction = 'Ringbahn S41 ⟳'
+		} else if (ringbahnAnticlockwise.test(d)) {
+			parsed.direction = 'Ringbahn S42 ⟲'
 		}
-
-		return res
 	}
-
-	return parseDepartureRenameRingbahn
+	return parsed
 }
 
-const createParseJourneyLeg = (profile, opt, data) => {
-	const _parseJourneyLeg = _createParseJourneyLeg(profile, opt, data)
-	const parseJourneyLeg = (journey, leg, parseStopovers = true) => {
-		if (leg.type === 'KISS') {
-			const icon = data.icons[leg.icoX]
-			if (icon && icon.type === 'prod_berl') {
-				const res = _parseJourneyLeg(journey, {...leg, type: 'WALK'}, parseStopovers)
-				delete res.walking
+const parseJourneyLegWithBerlkönig = (ctx, leg, date) => {
+	if (leg.type === 'KISS') {
+		const icon = ctx.common.icons[leg.icoX]
+		if (icon && icon.type === 'prod_berl') {
+			const res = _parseJourneyLeg(ctx, {
+				...leg, type: 'WALK'
+			}, date)
+			delete res.walking
 
-				const mcp = leg.dep.mcp || {}
-				const mcpData = mcp.mcpData || {}
-				// todo: mcp.lid
-				// todo: mcpData.occupancy, mcpData.type
-				// todo: journey.trfRes.bkgData
-				res.line = {
-					type: 'line',
-					id: null, // todo
-					// todo: fahrtNr?
-					name: mcpData.providerName,
-					public: true,
-					mode: 'taxi',
-					product: 'berlkoenig'
-					// todo: operator
-				}
-				return res
+			const mcp = leg.dep.mcp || {}
+			const mcpData = mcp.mcpData || {}
+			// todo: mcp.lid
+			// todo: mcpData.occupancy, mcpData.type
+			// todo: journey.trfRes.bkgData
+			res.line = {
+				type: 'line',
+				id: null, // todo
+				// todo: fahrtNr?
+				name: mcpData.providerName,
+				public: true,
+				mode: 'taxi',
+				product: 'berlkoenig'
+				// todo: operator
 			}
+			return res
 		}
-		return _parseJourneyLeg(journey, leg, parseStopovers)
 	}
-	return parseJourneyLeg
+	return _parseJourneyLeg(ctx, leg, date)
 }
 
 const validIBNR = /^\d+$/
@@ -121,7 +105,7 @@ const formatStation = (id) => {
 }
 
 // use the Berlkönig ride sharing service?
-const requestJourneysWithBerlkoenig = (query, opt) => {
+const requestJourneysWithBerlkoenig = ({opt}, query) => {
 	if (('numF' in query) && opt.berlkoenig) {
 		// todo: check if this is still true
 		throw new Error('The `berlkoenig` and `results` options are mutually exclusive.')
@@ -144,11 +128,11 @@ const bvgProfile = {
 
 	products,
 
-	parseStationName: shorten,
-	parseLocation,
-	parseLine: createParseLine,
-	parseDeparture: createParseDeparture,
-	parseJourneyLeg: createParseJourneyLeg,
+	parseLine: parseHook(_parseLine, parseLineWithMoreDetails),
+	parseLocation: parseHook(_parseLocation, parseLocation),
+	parseStationName: (ctx, name) => shorten(name),
+	parseDeparture: parseHook(_parseDeparture, parseDepartureRenameRingbahn),
+	parseJourneyLeg: parseJourneyLegWithBerlkönig,
 
 	formatStation,
 

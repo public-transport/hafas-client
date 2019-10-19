@@ -1,14 +1,15 @@
 'use strict'
 
-const _parseLocation = require('../../parse/location')
-const _createParseJourney = require('../../parse/journey')
-const _createParseMovement = require('../../parse/movement')
+const {parseHook} = require('../../lib/profile-hooks')
 
+const _parseLocation = require('../../parse/location')
+const _parseJourney = require('../../parse/journey')
+const _parseMovement = require('../../parse/movement')
 const products = require('./products')
 
 // todo: journey prices
 
-const transformReqBody = (body) => {
+const transformReqBody = (ctx, body) => {
 	body.client = {
 		id: 'NAHSH',
 		name: 'NAHSHPROD',
@@ -21,74 +22,60 @@ const transformReqBody = (body) => {
 	return body
 }
 
-const parseLocation = (profile, opt, data, l) => {
-	const res = _parseLocation(profile, opt, data, l)
+const fixLocation = ({parsed}, l) => {
 	// weird fix for empty lines, e.g. IC/EC at Flensburg Hbf
-	if (res.lines) {
-		res.lines = res.lines.filter(x => x.id && x.name)
+	if (parsed.lines) {
+		parsed.lines = parsed.lines.filter(x => x.id && x.name)
 	}
 
 	// remove leading zeroes, todo
-	if (res.id && res.id.length > 0) {
-		res.id = res.id.replace(/^0+/, '')
+	if (parsed.id && parsed.id.length > 0) {
+		parsed.id = parsed.id.replace(/^0+/, '')
 	}
 
-	return res
+	return parsed
 }
 
-const createParseJourney = (profile, opt, data) => {
-	const parseJourney = _createParseJourney(profile, opt, data)
+const parseJourneyWithTickets = ({parsed}, j) => {
+	if (
+		j.trfRes &&
+		Array.isArray(j.trfRes.fareSetL) &&
+		j.trfRes.fareSetL.length > 0
+	) {
+		parsed.tickets = []
 
-	const parseJourneyWithTickets = (j) => {
-		const res = parseJourney(j)
-
-		if (
-			j.trfRes &&
-			Array.isArray(j.trfRes.fareSetL) &&
-			j.trfRes.fareSetL.length > 0
-		) {
-			res.tickets = []
-
-			for (let t of j.trfRes.fareSetL) {
-				const tariff = t.desc
-				if (!tariff || !Array.isArray(t.fareL)) continue
-				for (let v of t.fareL) {
-					const variant = v.name
-					if(!variant) continue
-					const ticket = {
-						name: [tariff, variant].join(' - '),
-						tariff,
-						variant
-					}
-					if (v.prc && Number.isInteger(v.prc) && v.cur) {
-						ticket.amount = v.prc/100
-						ticket.currency = v.cur
-					} else {
-						ticket.amount = null
-						ticket.hint = 'No pricing information available.'
-					}
-					res.tickets.push(ticket)
+		for (let t of j.trfRes.fareSetL) {
+			const tariff = t.desc
+			if (!tariff || !Array.isArray(t.fareL)) continue
+			for (let v of t.fareL) {
+				const variant = v.name
+				if(!variant) continue
+				const ticket = {
+					name: [tariff, variant].join(' - '),
+					tariff,
+					variant
 				}
+				if (v.prc && Number.isInteger(v.prc) && v.cur) {
+					ticket.amount = v.prc/100
+					ticket.currency = v.cur
+				} else {
+					ticket.amount = null
+					ticket.hint = 'No pricing information available.'
+				}
+				parsed.tickets.push(ticket)
 			}
 		}
-
-		return res
 	}
 
-	return parseJourneyWithTickets
+	return parsed
 }
 
-const createParseMovement = (profile, opt, data) => {
-	const _parseMovement = _createParseMovement(profile, opt, data)
-	const parseMovement = (m) => {
-		const res = _parseMovement(m)
-		// filter out empty nextStopovers entries
-		res.nextStopovers = res.nextStopovers.filter((f) => {
-			return f.stop !== null || f.arrival !== null || f.departure !== null
-		})
-		return res
-	}
-	return parseMovement
+const fixMovement = ({parsed}, m) => {
+	// filter out empty nextStopovers entries
+	parsed.nextStopovers = parsed.nextStopovers.filter((f) => {
+		return f.stop !== null || f.arrival !== null || f.departure !== null
+	})
+	return parsed
 }
 
 const nahshProfile = {
@@ -99,9 +86,9 @@ const nahshProfile = {
 
 	products,
 
-	parseLocation,
-	parseJourney: createParseJourney,
-	parseMovement: createParseMovement,
+	parseLocation: parseHook(_parseLocation, fixLocation),
+	parseJourney: parseHook(_parseJourney, parseJourneyWithTickets),
+	parseMovement: parseHook(_parseMovement, fixMovement),
 
 	trip: true,
 	radar: true, // todo: see #34

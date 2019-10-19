@@ -1,9 +1,11 @@
 'use strict'
 
-const _createParseMovement = require('../../parse/movement')
+const {parseHook} = require('../../lib/profile-hooks')
+
+const _parseMovement = require('../../parse/movement')
 const products = require('./products')
 
-const transformReqBody = (body) => {
+const transformReqBody = (ctx, body) => {
 	body.client = {
 		type: 'AND',
 		id: 'ZPS-SAAR',
@@ -18,15 +20,10 @@ const transformReqBody = (body) => {
 	return body
 }
 
-const createParseMovement = (profile, opt, data) => {
-	const _parseMovement = _createParseMovement(profile, opt, data)
-	const parseMovement = (m) => {
-		const res = _parseMovement(m)
-		// filter out empty stopovers
-		res.nextStopovers = res.nextStopovers.filter(st => !!st.stop)
-		return res
-	}
-	return parseMovement
+const fixMovement = ({parsed}, m) => {
+	// filter out empty stopovers
+	parsed.nextStopovers = parsed.nextStopovers.filter(st => !!st.stop)
+	return parsed
 }
 
 const saarfahrplanProfile = {
@@ -41,7 +38,7 @@ const saarfahrplanProfile = {
 
 	products: products,
 
-	parseMovement: createParseMovement,
+	parseMovement: parseHook(_parseMovement, fixMovement),
 
 	departuresGetPasslist: false,
 	departuresStbFltrEquiv: false,

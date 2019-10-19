@@ -5,16 +5,17 @@ const {to12Digit, to9Digit} = require('vbb-translate-ids')
 const parseLineName = require('vbb-parse-line')
 const parseTicket = require('vbb-parse-ticket')
 const getStations = require('vbb-stations')
+const {parseHook} = require('../../lib/profile-hooks')
 
-const _createParseLine = require('../../parse/line')
+const _parseLine = require('../../parse/line')
 const _parseLocation = require('../../parse/location')
-const _createParseJourney = require('../../parse/journey')
-const _createParseDeparture = require('../../parse/departure')
+const _parseJourney = require('../../parse/journey')
+const _parseDeparture = require('../../parse/departure')
 const _formatStation = require('../../format/station')
 
 const products = require('./products')
 
-const transformReqBody = (body) => {
+const transformReqBody = (ctx, body) => {
 	body.client = {type: 'IPA', id: 'VBB', name: 'vbbPROD', v: '4010300'}
 	body.ext = 'VBB.1'
 	body.ver = '1.16'
@@ -23,87 +24,64 @@ const transformReqBody = (body) => {
 	return body
 }
 
-const createParseLine = (profile, opt, data) => {
-	const parseLine = _createParseLine(profile, opt, data)
+const parseLineWithMoreDetails = ({parsed}, p) => {
+	parsed.name = p.name.replace(/^(bus|tram)\s+/i, '')
+	const details = parseLineName(parsed.name)
+	parsed.symbol = details.symbol
+	parsed.nr = details.nr
+	parsed.metro = details.metro
+	parsed.express = details.express
+	parsed.night = details.night
 
-	const parseLineWithMoreDetails = (l) => {
-		const res = parseLine(l)
-
-		res.name = l.name.replace(/^(bus|tram)\s+/i, '')
-		const details = parseLineName(res.name)
-		res.symbol = details.symbol
-		res.nr = details.nr
-		res.metro = details.metro
-		res.express = details.express
-		res.night = details.night
-
-		return res
-	}
-	return parseLineWithMoreDetails
+	return parsed
 }
 
-const parseLocation = (profile, opt, data, l) => {
-	const res = _parseLocation(profile, opt, data, l)
-
-	if (res.type === 'stop' || res.type === 'station') {
-		res.name = shorten(res.name)
-		res.id = to12Digit(res.id)
-		if (!res.location.latitude || !res.location.longitude) {
-			const [s] = getStations(res.id)
-			if (s) Object.assign(res.location, s.location)
+const parseLocation = ({parsed}, l) => {
+	if (parsed.type === 'stop' || parsed.type === 'station') {
+		parsed.name = shorten(parsed.name)
+		parsed.id = to12Digit(parsed.id)
+		if (!parsed.location.latitude || !parsed.location.longitude) {
+			const [s] = getStations(parsed.id)
+			if (s) Object.assign(parsed.location, s.location)
 		}
 	}
-	return res
+	return parsed
 }
 
-const createParseJourney = (profile, opt, data) => {
-	const parseJourney = _createParseJourney(profile, opt, data)
-
-	const parseJourneyWithTickets = (j) => {
-		const res = parseJourney(j)
-
-		if (
-			j.trfRes &&
-			Array.isArray(j.trfRes.fareSetL) &&
-			j.trfRes.fareSetL[0] &&
-			Array.isArray(j.trfRes.fareSetL[0].fareL)
-		) {
-			res.tickets = []
-			const sets = j.trfRes.fareSetL[0].fareL
-			for (let s of sets) {
-				if (!Array.isArray(s.ticketL) || s.ticketL.length === 0) continue
-				for (let t of s.ticketL) {
-					const ticket = parseTicket(t)
-					ticket.name = s.name + ' – ' + ticket.name
-					res.tickets.push(ticket)
-				}
+const parseJourneyWithTickets = ({parsed}, j) => {
+	if (
+		j.trfRes &&
+		Array.isArray(j.trfRes.fareSetL) &&
+		j.trfRes.fareSetL[0] &&
+		Array.isArray(j.trfRes.fareSetL[0].fareL)
+	) {
+		parsed.tickets = []
+		const sets = j.trfRes.fareSetL[0].fareL
+		for (let s of sets) {
+			if (!Array.isArray(s.ticketL) || s.ticketL.length === 0) continue
+			for (let t of s.ticketL) {
+				const ticket = parseTicket(t)
+				ticket.name = s.name + ' – ' + ticket.name
+				parsed.tickets.push(ticket)
 			}
 		}
-
-		return res
 	}
 
-	return parseJourneyWithTickets
+	return parsed
 }
 
-const createParseDeparture = (profile, opt, data) => {
-	const parseDeparture = _createParseDeparture(profile, opt, data)
-
-	const ringbahnClockwise = /^ringbahn s\s?41$/i
-	const ringbahnAnticlockwise = /^ringbahn s\s?42$/i
-	const parseDepartureRenameRingbahn = (j) => {
-		const res = parseDeparture(j)
-
-		if (res.line && res.line.product === 'suburban') {
-			const d = res.direction && res.direction.trim()
-			if (ringbahnClockwise.test(d)) res.direction = 'Ringbahn S41 ⟳'
-			else if (ringbahnAnticlockwise.test(d)) res.direction = 'Ringbahn S42 ⟲'
+const ringbahnClockwise = /^ringbahn s\s?41$/i
+const ringbahnAnticlockwise = /^ringbahn s\s?42$/i
+const parseDepartureRenameRingbahn = ({parsed}) => {
+	if (parsed.line && parsed.line.product === 'suburban') {
+		const d = parsed.direction && parsed.direction.trim()
+		if (ringbahnClockwise.test(d)) {
+			parsed.direction = 'Ringbahn S41 ⟳'
+		} else if (ringbahnAnticlockwise.test(d)) {
+			parsed.direction = 'Ringbahn S42 ⟲'
 		}
-
-		return res
 	}
-
-	return parseDepartureRenameRingbahn
+	return parsed
 }
 
 const validIBNR = /^\d+$/
@@ -133,11 +111,11 @@ const vbbProfile = {
 
 	products: products,
 
-	parseStationName: shorten,
-	parseLocation,
-	parseLine: createParseLine,
-	parseJourney: createParseJourney,
-	parseDeparture: createParseDeparture,
+	parseLine: parseHook(_parseLine, parseLineWithMoreDetails),
+	parseLocation: parseHook(_parseLocation, parseLocation),
+	parseStationName: (ctx, name) => shorten(name),
+	parseJourney: parseHook(_parseJourney, parseJourneyWithTickets),
+	parseDeparture: parseHook(_parseDeparture, parseDepartureRenameRingbahn),
 
 	formatStation,
 
