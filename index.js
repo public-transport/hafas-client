@@ -36,7 +36,7 @@ const createClient = (profile, userAgent, request = _request) => {
 		throw new TypeError('userAgent must be a string');
 	}
 
-	const _stationBoard = (station, type, parser, opt = {}) => {
+	const _stationBoard = (station, type, parse, opt = {}) => {
 		if (isObj(station)) station = profile.formatStation(station.id)
 		else if ('string' === typeof station) station = profile.formatStation(station)
 		else throw new TypeError('station must be an object or a string.')
@@ -78,15 +78,17 @@ const createClient = (profile, userAgent, request = _request) => {
 		}
 		if (profile.departuresGetPasslist) req.getPasslist = !!opt.stopovers
 		if (profile.departuresStbFltrEquiv) req.stbFltrEquiv = !opt.includeRelatedStations
-		return request(profile, userAgent, opt, {
+
+		return request({profile, opt}, userAgent, {
 			meth: 'StationBoard',
 			req
 		})
-		.then((d) => {
-			if (!Array.isArray(d.jnyL)) return []
-			const parse = parser(profile, opt, d)
-			return d.jnyL.map(parse)
-			.sort((a, b) => new Date(a.when) - new Date(b.when))
+		.then(({res, common}) => {
+			if (!Array.isArray(res.jnyL)) return []
+
+			const ctx = {profile, opt, common, res}
+			return res.jnyL.map(res => parse(ctx, res))
+			.sort((a, b) => new Date(a.when) - new Date(b.when)) // todo
 		})
 	}
 
@@ -214,35 +216,35 @@ const createClient = (profile, userAgent, request = _request) => {
 			}
 			if (profile.journeysNumF && opt.results !== null) query.numF = opt.results
 
-			return request(profile, userAgent, opt, {
+			return request({profile, opt}, userAgent, {
 				cfg: {polyEnc: 'GPA'},
 				meth: 'TripSearch',
-				req: profile.transformJourneysQuery(query, opt)
+				req: profile.transformJourneysQuery({profile, opt}, query)
 			})
-			.then((d) => {
-				if (!Array.isArray(d.outConL)) return []
+			.then(({res, common}) => {
+				if (!Array.isArray(res.outConL)) return []
 				// todo: outConGrpL
 
-				const parse = profile.parseJourney(profile, opt, d)
+				const ctx = {profile, opt, common, res}
 
-				if (!earlierRef) earlierRef = d.outCtxScrB
+				if (!earlierRef) earlierRef = res.outCtxScrB
 
 				let latestDep = -Infinity
-				for (let j of d.outConL) {
-					j = parse(j)
-					journeys.push(j)
+				for (const rawJourney of res.outConL) {
+					const journey = profile.parseJourney(ctx, rawJourney)
+					journeys.push(journey)
 
 					if (opt.results !== null && journeys.length >= opt.results) { // collected enough
-						laterRef = d.outCtxScrF
+						laterRef = res.outCtxScrF
 						return {earlierRef, laterRef, journeys}
 					}
-					const dep = +new Date(j.legs[0].departure)
+					const dep = +new Date(journey.legs[0].departure) // todo
 					if (dep > latestDep) latestDep = dep
 				}
 
 				if (opt.results === null) return {earlierRef, laterRef, journeys}
 				const when = new Date(latestDep)
-				return more(when, d.outCtxScrF) // otherwise continue
+				return more(when, res.outCtxScrF) // otherwise continue
 			})
 		}
 
@@ -261,7 +263,7 @@ const createClient = (profile, userAgent, request = _request) => {
 			remarks: true // parse & expose hints & warnings?
 		}, opt)
 
-		return request(profile, userAgent, opt, {
+		return request({profile, opt}, userAgent, {
 			meth: 'Reconstruction',
 			req: {
 				ctxRecon: refreshToken,
@@ -271,13 +273,13 @@ const createClient = (profile, userAgent, request = _request) => {
 				getTariff: !!opt.tickets
 			}
 		})
-		.then((d) => {
-			if (!Array.isArray(d.outConL) || !d.outConL[0]) {
+		.then(({res, common}) => {
+			if (!Array.isArray(res.outConL) || !res.outConL[0]) {
 				throw new Error('invalid response')
 			}
 
-			const parse = profile.parseJourney(profile, opt, d)
-			return parse(d.outConL[0])
+			const ctx = {profile, opt, common, res}
+			return profile.parseJourney(ctx, d.outConL[0])
 		})
 	}
 
@@ -295,7 +297,7 @@ const createClient = (profile, userAgent, request = _request) => {
 		}, opt)
 
 		const f = profile.formatLocationFilter(opt.stops, opt.addresses, opt.poi)
-		return request(profile, userAgent, opt, {
+		return request({profile, opt}, userAgent, {
 			cfg: {polyEnc: 'GPA'},
 			meth: 'LocMatch',
 			req: {input: {
@@ -307,10 +309,11 @@ const createClient = (profile, userAgent, request = _request) => {
 				field: 'S' // todo: what is this?
 			}}
 		})
-		.then((d) => {
-			if (!d.match || !Array.isArray(d.match.locL)) return []
-			const parse = profile.parseLocation
-			return d.match.locL.map(loc => parse(profile, opt, d, loc))
+		.then(({res, common}) => {
+			if (!res.match || !Array.isArray(res.match.locL)) return []
+
+			const ctx = {profile, opt, common, res}
+			return res.match.locL.map(loc => profile.parseLocation(ctx, loc))
 		})
 	}
 
@@ -322,18 +325,20 @@ const createClient = (profile, userAgent, request = _request) => {
 		opt = Object.assign({
 			linesOfStops: false // parse & expose lines at the stop/station?
 		}, opt)
-		return request(profile, userAgent, opt, {
+		return request({profile, opt}, userAgent, {
 			meth: 'LocDetails',
 			req: {
 				locL: [stop]
 			}
 		})
-		.then((d) => {
-			if (!d || !Array.isArray(d.locL) || !d.locL[0]) {
+		.then(({res, common}) => {
+			if (!res || !Array.isArray(res.locL) || !res.locL[0]) {
 				// todo: proper stack trace?
 				throw new Error('invalid response')
 			}
-			return profile.parseLocation(profile, opt, d, d.locL[0])
+
+			const ctx = {profile, opt, res, common}
+			return profile.parseLocation(ctx, res.locL[0])
 		})
 	}
 
@@ -348,7 +353,7 @@ const createClient = (profile, userAgent, request = _request) => {
 			linesOfStops: false // parse & expose lines at each stop/station?
 		}, opt)
 
-		return request(profile, userAgent, opt, {
+		return request({profile, opt}, userAgent, {
 			cfg: {polyEnc: 'GPA'},
 			meth: 'LocGeoPos',
 			req: {
@@ -365,10 +370,11 @@ const createClient = (profile, userAgent, request = _request) => {
 				maxLoc: opt.results
 			}
 		})
-		.then((d) => {
-			if (!Array.isArray(d.locL)) return []
-			const parse = profile.parseNearby
-			return d.locL.map(loc => parse(profile, opt, d, loc))
+		.then(({common, res}) => {
+			if (!Array.isArray(res.locL)) return []
+
+			const ctx = {profile, opt, common, res}
+			return res.locL.map(loc => profile.parseNearby(ctx, loc))
 		})
 	}
 
@@ -385,7 +391,7 @@ const createClient = (profile, userAgent, request = _request) => {
 			remarks: true // parse & expose hints & warnings?
 		}, opt)
 
-		return request(profile, userAgent, opt, {
+		return request({profile, opt}, userAgent, {
 			cfg: {polyEnc: 'GPA'},
 			meth: 'JourneyDetails',
 			req: {
@@ -398,16 +404,16 @@ const createClient = (profile, userAgent, request = _request) => {
 				getPolyline: !!opt.polyline
 			}
 		})
-		.then((d) => {
-			const parse = profile.parseJourneyLeg(profile, opt, d)
+		.then(({common, res}) => {
+			const ctx = {profile, opt, common, res}
 
 			const rawLeg = { // pretend the leg is contained in a journey
 				type: 'JNY',
-				dep: minBy(d.journey.stopL, 'idx'),
-				arr: maxBy(d.journey.stopL, 'idx'),
-				jny: d.journey
+				dep: minBy(res.journey.stopL, 'idx'),
+				arr: maxBy(res.journey.stopL, 'idx'),
+				jny: res.journey
 			}
-			const trip = parse(d.journey, rawLeg, !!opt.stopovers)
+			const trip = profile.parseJourneyLeg(ctx)(rawLeg, res.journey.date)
 			trip.id = trip.tripId
 			delete trip.tripId
 			return trip
@@ -434,7 +440,7 @@ const createClient = (profile, userAgent, request = _request) => {
 		if (Number.isNaN(+opt.when)) throw new TypeError('opt.when is invalid')
 
 		const durationPerStep = opt.duration / Math.max(opt.frames, 1) * 1000
-		return request(profile, userAgent, opt, {
+		return request({profile, opt}, userAgent, {
 			meth: 'JourneyGeoPos',
 			req: {
 				maxJny: opt.results,
@@ -452,11 +458,11 @@ const createClient = (profile, userAgent, request = _request) => {
 				trainPosMode: 'CALC' // todo: what is this? what about realtime?
 			}
 		})
-		.then((d) => {
-			if (!Array.isArray(d.jnyL) || d.jnyL.length === 0) return []
+		.then(({res, common}) => {
+			if (!Array.isArray(res.jnyL)) return []
 
-			const parse = profile.parseMovement(profile, opt, d)
-			return d.jnyL.map(parse)
+			const ctx = {profile, opt, common, res}
+			return res.jnyL.map(m => profile.parseMovement(ctx, m))
 		})
 	}
 
@@ -472,7 +478,7 @@ const createClient = (profile, userAgent, request = _request) => {
 		if (Number.isNaN(+opt.when)) throw new TypeError('opt.when is invalid')
 
 		const refetch = () => {
-			return request(profile, userAgent, opt, {
+			return request({profile, opt}, userAgent, {
 				meth: 'LocGeoReach',
 				req: {
 					loc: profile.formatLocation(profile, address, 'address'),
@@ -486,8 +492,8 @@ const createClient = (profile, userAgent, request = _request) => {
 					]
 				}
 			})
-			.then((d) => {
-				if (!Array.isArray(d.posL)) {
+			.then(({res, common}) => {
+				if (!Array.isArray(res.posL)) {
 					const err = new Error('invalid response')
 					err.shouldRetry = true
 					throw err
@@ -495,8 +501,8 @@ const createClient = (profile, userAgent, request = _request) => {
 
 				const byDuration = []
 				let i = 0, lastDuration = NaN
-				for (const pos of sortBy(d.posL, 'dur')) {
-					const loc = d.locations[pos.locX]
+				for (const pos of sortBy(res.posL, 'dur')) {
+					const loc = common.locations[pos.locX]
 					if (!loc) continue
 					if (pos.dur !== lastDuration) {
 						lastDuration = pos.dur
