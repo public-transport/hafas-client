@@ -3,8 +3,6 @@
 const createParseArrOrDep = require('./arrival-or-departure')
 
 const ARRIVAL = 'a'
-const createParseArrival = (profile, opt, data) => {
-	return createParseArrOrDep(profile, opt, data, ARRIVAL)
-}
+const parseArrival = createParseArrOrDep(ARRIVAL)
 
-module.exports = createParseArrival
+module.exports = parseArrival

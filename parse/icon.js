@@ -1,6 +1,6 @@
 'use strict'
 
-const parseIcon = (profile, i) => {
+const parseIcon = (ctx, i) => {
 	const res = {
 		type: i.res || null,
 		title: i.text || i.txt || i.txtS || null

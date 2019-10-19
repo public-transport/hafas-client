@@ -22,47 +22,44 @@ const parseScheduledDays = (sDaysB, year, profile) => {
 	return res
 }
 
-const createParseJourney = (profile, opt, data) => {
-	const parseLeg = profile.parseJourneyLeg(profile, opt, data)
-	// todo: c.conSubscr
-	// todo: c.trfRes x vbb-parse-ticket
-	// todo: c.sotRating, c.isSotCon, c.sotCtxt
-	// todo: c.showARSLink
-	// todo: c.useableTime
-	// todo: c.cksum
-	// todo: c.isNotRdbl
-	// todo: c.badSecRefX
-	// todo: c.bfATS, c.bfIOSTS
-	const parseJourney = (j) => {
-		const legs = j.secL.map(leg => parseLeg(j, leg))
-		const res = {
-			type: 'journey',
-			legs,
-			refreshToken: j.ctxRecon || null
-		}
+// todo: c.conSubscr
+// todo: c.trfRes x vbb-parse-ticket
+// todo: c.sotRating, c.isSotCon, c.sotCtxt
+// todo: c.showARSLink
+// todo: c.useableTime
+// todo: c.cksum
+// todo: c.isNotRdbl
+// todo: c.badSecRefX
+// todo: c.bfATS, c.bfIOSTS
+const parseJourney = (ctx, j) => { // j = raw jouney
+	const {profile, opt} = ctx
 
-		const freq = j.freq || {}
-		if (freq.minC || freq.maxC) {
-			res.cycle = {}
-			if (freq.minC) res.cycle.min = freq.minC * 60
-			if (freq.maxC) res.cycle.max = freq.maxC * 60
-			// nr of connections in this frequency, from now on
-			if (freq.numC) res.cycle.nr = freq.numC
-		}
-
-		if (opt.remarks && Array.isArray(j.msgL)) {
-			res.remarks = findRemarks(j.msgL).map(([remark]) => remark)
-		}
-
-		if (opt.scheduledDays) {
-			const year = parseInt(j.date.slice(0, 4))
-			res.scheduledDays = parseScheduledDays(j.sDays.sDaysB, year, profile)
-		}
-
-		return res
+	const legs = j.secL.map(l => profile.parseJourneyLeg(ctx, l, j.date))
+	const res = {
+		type: 'journey',
+		legs,
+		refreshToken: j.ctxRecon || null
 	}
 
-	return parseJourney
+	const freq = j.freq || {}
+	if (freq.minC || freq.maxC) {
+		res.cycle = {}
+		if (freq.minC) res.cycle.min = freq.minC * 60
+		if (freq.maxC) res.cycle.max = freq.maxC * 60
+		// nr of connections in this frequency, from now on
+		if (freq.numC) res.cycle.nr = freq.numC
+	}
+
+	if (opt.remarks && Array.isArray(j.msgL)) {
+		res.remarks = findRemarks(j.msgL).map(([remark]) => remark)
+	}
+
+	if (opt.scheduledDays) {
+		const year = parseInt(j.date.slice(0, 4))
+		res.scheduledDays = parseScheduledDays(j.sDays.sDaysB, year, profile)
+	}
+
+	return res
 }
 
-module.exports = createParseJourney
+module.exports = parseJourney
