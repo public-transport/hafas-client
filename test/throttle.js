@@ -11,9 +11,9 @@ const spichernstr = '900000042101'
 
 test('withThrottling works', (t) => {
 	let calls = 0
-	const transformReqBody = (body) => {
+	const transformReqBody = (ctx, body) => {
 		calls++
-		return vbbProfile.transformReqBody(body)
+		return vbbProfile.transformReqBody(ctx, body)
 	}
 	const mockProfile = Object.assign({}, vbbProfile, {transformReqBody})
 

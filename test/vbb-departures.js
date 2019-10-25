@@ -5,7 +5,7 @@ const tape = require('tape')
 
 const createClient = require('..')
 const rawProfile = require('../p/vbb')
-const raw = require('./fixtures/vbb-departures.json')
+const res = require('./fixtures/vbb-departures.json')
 const expected = require('./fixtures/vbb-departures.js')
 
 const test = tapePromise(tape)
@@ -24,9 +24,9 @@ const opt = {
 }
 
 test('parses a departure correctly (VBB)', (t) => {
-	const common = profile.parseCommon(profile, opt, raw)
-	const parseDeparture = profile.parseDeparture(profile, opt, common)
-	const departures = raw.jnyL.map(parseDeparture)
+	const common = profile.parseCommon({profile, opt, res})
+	const ctx = {profile, opt, common, res}
+	const departures = res.jnyL.map(d => profile.parseDeparture(ctx, d))
 
 	t.deepEqual(departures, expected)
 	t.end()

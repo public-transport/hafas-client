@@ -5,7 +5,7 @@ const tape = require('tape')
 
 const createClient = require('..')
 const rawProfile = require('../p/bvg')
-const raw = require('./fixtures/bvg-journey.json')
+const res = require('./fixtures/bvg-journey.json')
 const expected = require('./fixtures/bvg-journey.js')
 
 const test = tapePromise(tape)
@@ -31,9 +31,9 @@ const opt = {
 }
 
 test('parses a journey correctly (BVG)', (t) => {
-	const common = profile.parseCommon(profile, opt, raw)
-	const parseJourney = profile.parseJourney(profile, opt, common)
-	const journey = parseJourney(common.outConL[0])
+	const common = profile.parseCommon({profile, opt, res})
+	const ctx = {profile, opt, common, res}
+	const journey = profile.parseJourney(ctx, res.outConL[0])
 
 	t.deepEqual(journey, expected)
 	t.end()
