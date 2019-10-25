@@ -1,28 +1,39 @@
 'use strict'
 
-const test = require('tape')
+const tapePromise = require('tape-promise').default
+const tape = require('tape')
 
 const withThrottling = require('../throttle')
 const createClient = require('..')
 const vbbProfile = require('../p/vbb')
+const depsRes = require('./fixtures/vbb-departures.json')
 
-const userAgent = 'public-transport/hafas-client:test'
+const ua = 'public-transport/hafas-client:test'
 const spichernstr = '900000042101'
 
-// todo: mock request()
-test('withThrottling works', (t) => {
-	let calls = 0
-	const transformReqBody = (ctx, body) => {
-		calls++
-		return vbbProfile.transformReqBody(ctx, body)
-	}
-	const mockProfile = Object.assign({}, vbbProfile, {transformReqBody})
+const test = tapePromise(tape)
 
-	const createThrottlingClient = withThrottling(createClient, 2, 1000)
-	const client = createThrottlingClient(mockProfile, userAgent)
-	for (let i = 0; i < 10; i++) client.departures(spichernstr, {duration: 1})
+test('withThrottling works', async (t) => {
+	const ctx = {profile: vbbProfile, opt: {}}
+
+	let calls = 0
+	const mockedRequest = async (ctx, _, reqData) => {
+		calls++
+		return {
+			res: depsRes,
+			common: ctx.profile.parseCommon({...ctx, res: depsRes})
+		}
+	}
+
+	const createThrottledClient = withThrottling(createClient, 2, 1000)
+	const client = createThrottledClient(vbbProfile, ua, mockedRequest)
 
 	t.plan(3)
+	for (let i = 0; i < 10; i++) {
+		const p = client.departures(spichernstr, {duration: 1})
+		p.catch(() => {})
+	}
+
 	setTimeout(() => t.equal(calls, 2), 500)
 	setTimeout(() => t.equal(calls, 4), 1500)
 	setTimeout(() => t.equal(calls, 6), 2500)
