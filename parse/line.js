@@ -2,10 +2,11 @@
 
 const slugg = require('slugg')
 
-const parseLine = ({profile}, p) => {
+const parseLine = ({parsed, profile}, p) => {
 	if (!p) return null // todo: handle this upstream
 	const name = p.line || p.addName || p.name || null // wtf
 	const res = {
+		...parsed,
 		type: 'line',
 		// This is terrible, but FPTF demands an ID. Let's pray for HAFAS.
 		id: (

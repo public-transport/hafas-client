@@ -1,7 +1,8 @@
 'use strict'
 
-const parseIcon = (ctx, i) => {
+const parseIcon = ({parsed}, i) => {
 	const res = {
+		...parsed,
 		type: i.res || null,
 		title: i.text || i.txt || i.txtS || null
 	}

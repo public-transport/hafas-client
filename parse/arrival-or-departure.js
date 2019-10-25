@@ -12,7 +12,7 @@ const createParseArrOrDep = (prefix) => {
 	if (prefix !== ARRIVAL && prefix !== DEPARTURE) throw new Error('invalid prefix')
 
 	const parseArrOrDep = (ctx, d) => { // d = raw arrival/departure
-		const {profile, opt} = ctx
+		const {parsed, profile, opt} = ctx
 
 		const tPlanned = d.stbStop[prefix + 'TimeS']
 		const tPrognosed = d.stbStop[prefix + 'TimeR']
@@ -22,12 +22,13 @@ const createParseArrOrDep = (prefix) => {
 		const plPrognosed = d.stbStop[prefix + 'PlatfR']
 
 		const res = {
+			...parsed,
 			tripId: d.jid,
 			stop: d.stbStop.location || null,
 			...profile.parseWhen(ctx, d.date, tPlanned, tPrognosed, tzOffset, cancelled),
 			...profile.parsePlatform(ctx, plPlanned, plPrognosed, cancelled),
 			// todo: for arrivals, this is the *origin*, not the *direction*
-			direction: prefix === DEPARTURE && d.dirTxt && profile.parseStationName(d.dirTxt) || null,
+			direction: prefix === DEPARTURE && d.dirTxt && profile.parseStationName(ctx, d.dirTxt) || null,
 			line: d.line || null,
 			remarks: []
 		}

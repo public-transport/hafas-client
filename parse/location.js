@@ -10,10 +10,11 @@ const leadingZeros = /^0+/
 
 // todo: what is s.rRefL?
 const parseLocation = (ctx, l) => {
-	const {profile, opt} = ctx
+	const {parsed, profile, opt} = ctx
 
 	const lid = parse(l.lid, {delimiter: '@'})
 	const res = {
+		...parsed,
 		type: 'location',
 		id: (l.extId || lid.L || '').replace(leadingZeros, '') || null
 	}
@@ -27,7 +28,7 @@ const parseLocation = (ctx, l) => {
 		const stop = {
 			type: l.isMainMast ? 'station' : 'stop',
 			id: res.id,
-			name: l.name ? profile.parseStationName(l.name) : null,
+			name: l.name ? profile.parseStationName(ctx, l.name) : null,
 			location: 'number' === typeof res.latitude ? res : null
 		}
 

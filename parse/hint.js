@@ -12,7 +12,7 @@ const codesByIcon = Object.assign(Object.create(null), {
 // 	"RES_JNY_DTL" // only shown in journey detail
 // ]
 // todo: https://github.com/public-transport/hafas-client/issues/5
-const parseHint = (ctx, h) => {
+const parseHint = ({parsed}, h) => {
 	// todo: C
 	// todo:
 	// { type: 'Q',
@@ -28,6 +28,7 @@ const parseHint = (ctx, h) => {
 
 	if (h.type === 'M') {
 		return {
+			...parsed,
 			type: 'status',
 			summary: h.txtS && h.txtS.trim() || '',
 			code,
@@ -37,6 +38,7 @@ const parseHint = (ctx, h) => {
 
 	if (h.type === 'L') {
 		return {
+			...parsed,
 			type: 'status',
 			code: 'alternative-trip',
 			text,
@@ -45,6 +47,7 @@ const parseHint = (ctx, h) => {
 	}
 	if (h.type === 'A' || h.type === 'I') {
 		return {
+			...parsed,
 			type: 'hint',
 			code,
 			text
@@ -55,6 +58,7 @@ const parseHint = (ctx, h) => {
 		// todo: how can we identify the individual types?
 		// todo: does `D` mean "disturbance"?
 		return {
+			...parsed,
 			type: 'status',
 			code,
 			text

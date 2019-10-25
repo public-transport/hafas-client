@@ -5,7 +5,7 @@ const omit = require('lodash/omit')
 const parse = require('../../parse/location')
 
 const profile = {
-	parseStationName: name => name.toLowerCase(),
+	parseStationName: (_, name) => name.toLowerCase(),
 	parseProductsBitmask: (_, bitmask) => [bitmask]
 }
 

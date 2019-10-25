@@ -41,9 +41,10 @@ const applyRemarks = (leg, refs) => {
 // todo: pt.planrtTS
 
 const parseJourneyLeg = (ctx, pt, date) => { // pt = raw leg
-	const {profile, opt} = ctx
+	const {parsed, profile, opt} = ctx
 
 	const res = {
+		...parsed,
 		origin: clone(pt.dep.location) || null,
 		destination: clone(pt.arr.location)
 	}
@@ -82,7 +83,7 @@ const parseJourneyLeg = (ctx, pt, date) => { // pt = raw leg
 		// todo: pull `public` value from `profile.products`
 		res.tripId = pt.jny.jid
 		res.line = pt.jny.line || null
-		res.direction = pt.jny.dirTxt && profile.parseStationName(pt.jny.dirTxt) || null
+		res.direction = pt.jny.dirTxt && profile.parseStationName(ctx, pt.jny.dirTxt) || null
 
 		const arrPl = profile.parsePlatform(ctx, pt.arr.aPlatfS, pt.arr.aPlatfR, pt.arr.aCncl)
 		res.arrivalPlatform = arrPl.platform

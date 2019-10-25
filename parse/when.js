@@ -1,7 +1,8 @@
 'use strict'
 
 const parseWhen = (ctx, date, timeS, timeR, tzOffset, cncl = false) => {
-	const parse = ctx.profile.parseDateTime
+	const {parsed, profile} = ctx
+	const parse = profile.parseDateTime
 
 	let planned = timeS ? parse(ctx, date, timeS, tzOffset, false) : null
 	let prognosed = timeR ? parse(ctx, date, timeR, tzOffset, false) : null
@@ -15,6 +16,7 @@ const parseWhen = (ctx, date, timeS, timeR, tzOffset, cncl = false) => {
 
 	if (cncl) {
 		return {
+			...parsed,
 			when: null,
 			plannedWhen: planned,
 			prognosedWhen: prognosed,
@@ -22,6 +24,7 @@ const parseWhen = (ctx, date, timeS, timeR, tzOffset, cncl = false) => {
 		}
 	}
 	return {
+		...parsed,
 		when: prognosed,
 		plannedWhen: planned,
 		delay

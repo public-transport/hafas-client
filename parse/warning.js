@@ -31,7 +31,7 @@ const parseMsgEvent = ({profile}) => (e) => {
 }
 
 const parseWarning = (ctx, w) => {
-	const {profile, res: resp} = ctx
+	const {parsed, profile, res: resp} = ctx
 
 	// todo: act, pub, lead, tckr, prod, comp,
 	// todo: cat (1, 2), pubChL, rRefL, impactL
@@ -56,6 +56,7 @@ const parseWarning = (ctx, w) => {
 	const type = icon && icon.type && typesByIcon[icon.type] || 'warning'
 
 	const res = {
+		...parsed,
 		id: w.hid || null,
 		type,
 		summary: w.head ? brToNewline(w.head) : null, // todo: decode HTML entities?

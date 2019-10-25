@@ -7,10 +7,11 @@
 // todo: what is m.ani.dirGeo[n]? maybe the speed?
 // todo: what is m.ani.proc[n]? wut?
 const parseMovement = (ctx, m) => { // m = raw movement
-	const {profile, opt} = ctx
+	const {parsed, profile, opt} = ctx
 
 	const res = {
-		direction: m.dirTxt ? profile.parseStationName(m.dirTxt) : null,
+		...parsed,
+		direction: m.dirTxt ? profile.parseStationName(ctx, m.dirTxt) : null,
 		tripId: m.jid || null,
 		line: m.line || null,
 		location: m.pos ? {
