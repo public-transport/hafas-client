@@ -1,5 +1,10 @@
 # Changelog
 
+## `4.6.1`
+
+- 43b4a6e handle `H_UNKNOWN` error
+- 1cc453b parseArrOrDep, parseLocation: bugfixes 🐛
+
 ## `4.6.0`
 
 - 73ca349/19c3ee6 NVV profile
