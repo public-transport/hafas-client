@@ -26,7 +26,7 @@ const parseLocation = (profile, opt, {lines}, l) => {
 			type: l.isMainMast ? 'station' : 'stop',
 			id: res.id,
 			name: l.name ? profile.parseStationName(l.name) : null,
-			location: 'number' === typeof res.latitude ? res : null
+			location: 'number' === typeof res.latitude ? res : null // todo: remove `.id`
 		}
 
 		if ('pCls' in l) stop.products = profile.parseProducts(l.pCls)

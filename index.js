@@ -57,7 +57,8 @@ const createClient = (profile, userAgent, request = _request) => {
 		}
 
 		opt = Object.assign({
-			direction: null, // only show departures heading to this station
+			// todo: for arrivals(), this is actually a station it *has already* stopped by
+			direction: null, // only show departures stopping by this station
 			duration: 10, // show departures for the next n minutes
 			linesOfStops: false, // parse & expose lines at the stop/station?
 			remarks: true, // parse & expose hints & warnings?
@@ -201,6 +202,8 @@ const createClient = (profile, userAgent, request = _request) => {
 				jnyFltrL: filters,
 				getTariff: !!opt.tickets,
 				outFrwd,
+				// todo: this is actually "take additional stations nearby the given start and destination station into account"
+				// see rest.exe docs
 				ushrp: !!opt.startWithWalking,
 
 				// todo: what is req.gisFltrL?
