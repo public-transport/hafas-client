@@ -3,8 +3,8 @@
 const tapePromise = require('tape-promise').default
 const tape = require('tape')
 
-const withThrottling = require('../throttle')
 const createClient = require('..')
+const withThrottling = require('../throttle')
 const vbbProfile = require('../p/vbb')
 const depsRes = require('./fixtures/vbb-departures.json')
 
@@ -14,10 +14,8 @@ const spichernstr = '900000042101'
 const test = tapePromise(tape)
 
 test('withThrottling works', async (t) => {
-	const ctx = {profile: vbbProfile, opt: {}}
-
 	let calls = 0
-	const mockedRequest = async (ctx, _, reqData) => {
+	const mockedRequest = async (ctx, userAgent, reqData) => {
 		calls++
 		return {
 			res: depsRes,
@@ -25,8 +23,11 @@ test('withThrottling works', async (t) => {
 		}
 	}
 
-	const createThrottledClient = withThrottling(createClient, 2, 1000)
-	const client = createThrottledClient(vbbProfile, ua, mockedRequest)
+	const profile = withThrottling({
+		...vbbProfile,
+		request: mockedRequest
+	}, 2, 1000)
+	const client = createClient(profile, ua)
 
 	t.plan(3)
 	for (let i = 0; i < 10; i++) {

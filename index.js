@@ -9,7 +9,6 @@ const pRetry = require('p-retry')
 const defaultProfile = require('./lib/default-profile')
 const createFormatProductsFilter = require('./format/products-filter')
 const validateProfile = require('./lib/validate-profile')
-const _request = require('./lib/request')
 
 const isNonEmptyString = str => 'string' === typeof str && str.length > 0
 
@@ -25,10 +24,6 @@ const validateLocation = (loc, name = 'location') => {
 	}
 }
 
-const defaults = {
-	request: _request
-}
-
 const createClient = (profile, userAgent, opt = {}) => {
 	profile = Object.assign({}, defaultProfile, profile)
 	if (!profile.formatProductsFilter) {
@@ -39,10 +34,6 @@ const createClient = (profile, userAgent, opt = {}) => {
 	if ('string' !== typeof userAgent) {
 		throw new TypeError('userAgent must be a string');
 	}
-
-	const {
-		request
-	} = Object.assign({}, defaults, opt)
 
 	const _stationBoard = (station, type, parse, opt = {}) => {
 		if (isObj(station)) station = profile.formatStation(station.id)
@@ -88,7 +79,7 @@ const createClient = (profile, userAgent, opt = {}) => {
 		if (profile.departuresGetPasslist) req.getPasslist = !!opt.stopovers
 		if (profile.departuresStbFltrEquiv) req.stbFltrEquiv = !opt.includeRelatedStations
 
-		return request({profile, opt}, userAgent, {
+		return profile.request({profile, opt}, userAgent, {
 			meth: 'StationBoard',
 			req
 		})
@@ -227,7 +218,7 @@ const createClient = (profile, userAgent, opt = {}) => {
 			}
 			if (profile.journeysNumF && opt.results !== null) query.numF = opt.results
 
-			return request({profile, opt}, userAgent, {
+			return profile.request({profile, opt}, userAgent, {
 				cfg: {polyEnc: 'GPA'},
 				meth: 'TripSearch',
 				req: profile.transformJourneysQuery({profile, opt}, query)
@@ -274,7 +265,7 @@ const createClient = (profile, userAgent, opt = {}) => {
 			remarks: true // parse & expose hints & warnings?
 		}, opt)
 
-		return request({profile, opt}, userAgent, {
+		return profile.request({profile, opt}, userAgent, {
 			meth: 'Reconstruction',
 			req: {
 				ctxRecon: refreshToken,
@@ -308,7 +299,7 @@ const createClient = (profile, userAgent, opt = {}) => {
 		}, opt)
 
 		const f = profile.formatLocationFilter(opt.stops, opt.addresses, opt.poi)
-		return request({profile, opt}, userAgent, {
+		return profile.request({profile, opt}, userAgent, {
 			cfg: {polyEnc: 'GPA'},
 			meth: 'LocMatch',
 			req: {input: {
@@ -336,7 +327,7 @@ const createClient = (profile, userAgent, opt = {}) => {
 		opt = Object.assign({
 			linesOfStops: false // parse & expose lines at the stop/station?
 		}, opt)
-		return request({profile, opt}, userAgent, {
+		return profile.request({profile, opt}, userAgent, {
 			meth: 'LocDetails',
 			req: {
 				locL: [stop]
@@ -364,7 +355,7 @@ const createClient = (profile, userAgent, opt = {}) => {
 			linesOfStops: false // parse & expose lines at each stop/station?
 		}, opt)
 
-		return request({profile, opt}, userAgent, {
+		return profile.request({profile, opt}, userAgent, {
 			cfg: {polyEnc: 'GPA'},
 			meth: 'LocGeoPos',
 			req: {
@@ -402,7 +393,7 @@ const createClient = (profile, userAgent, opt = {}) => {
 			remarks: true // parse & expose hints & warnings?
 		}, opt)
 
-		return request({profile, opt}, userAgent, {
+		return profile.request({profile, opt}, userAgent, {
 			cfg: {polyEnc: 'GPA'},
 			meth: 'JourneyDetails',
 			req: {
@@ -451,7 +442,7 @@ const createClient = (profile, userAgent, opt = {}) => {
 		if (Number.isNaN(+opt.when)) throw new TypeError('opt.when is invalid')
 
 		const durationPerStep = opt.duration / Math.max(opt.frames, 1) * 1000
-		return request({profile, opt}, userAgent, {
+		return profile.request({profile, opt}, userAgent, {
 			meth: 'JourneyGeoPos',
 			req: {
 				maxJny: opt.results,
@@ -489,7 +480,7 @@ const createClient = (profile, userAgent, opt = {}) => {
 		if (Number.isNaN(+opt.when)) throw new TypeError('opt.when is invalid')
 
 		const refetch = () => {
-			return request({profile, opt}, userAgent, {
+			return profile.request({profile, opt}, userAgent, {
 				meth: 'LocGeoReach',
 				req: {
 					loc: profile.formatLocation(profile, address, 'address'),
