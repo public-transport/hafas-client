@@ -60,25 +60,10 @@ const createClient = (profile, userAgent, opt = {}) => {
 		}, opt)
 		opt.when = new Date(opt.when || Date.now())
 		if (Number.isNaN(+opt.when)) throw new Error('opt.when is invalid')
-		const products = profile.formatProductsFilter({profile}, opt.products || {})
 
-		const dir = opt.direction ? profile.formatStation(opt.direction) : null
-		const req = {
-			type,
-			date: profile.formatDate(profile, opt.when),
-			time: profile.formatTime(profile, opt.when),
-			stbLoc: station,
-			dirLoc: dir,
-			jnyFltrL: [products],
-			dur: opt.duration
-		}
-		if (profile.departuresGetPasslist) req.getPasslist = !!opt.stopovers
-		if (profile.departuresStbFltrEquiv) req.stbFltrEquiv = !opt.includeRelatedStations
+		const req = profile.formatStationBoardReq({profile, opt}, station, type)
 
-		return profile.request({profile, opt}, userAgent, {
-			meth: 'StationBoard',
-			req
-		})
+		return profile.request({profile, opt}, userAgent, req)
 		.then(({res, common}) => {
 			if (!Array.isArray(res.jnyL)) return []
 
@@ -294,19 +279,9 @@ const createClient = (profile, userAgent, opt = {}) => {
 			linesOfStops: false // parse & expose lines at each stop/station?
 		}, opt)
 
-		const f = profile.formatLocationFilter(opt.stops, opt.addresses, opt.poi)
-		return profile.request({profile, opt}, userAgent, {
-			cfg: {polyEnc: 'GPA'},
-			meth: 'LocMatch',
-			req: {input: {
-				loc: {
-					type: f,
-					name: opt.fuzzy ? query + '?' : query
-				},
-				maxLoc: opt.results,
-				field: 'S' // todo: what is this?
-			}}
-		})
+		const req = profile.formatLocationsReq({profile, opt}, query)
+
+		return profile.request({profile, opt}, userAgent, req)
 		.then(({res, common}) => {
 			if (!res.match || !Array.isArray(res.match.locL)) return []
 
@@ -323,12 +298,10 @@ const createClient = (profile, userAgent, opt = {}) => {
 		opt = Object.assign({
 			linesOfStops: false // parse & expose lines at the stop/station?
 		}, opt)
-		return profile.request({profile, opt}, userAgent, {
-			meth: 'LocDetails',
-			req: {
-				locL: [stop]
-			}
-		})
+
+		const req = profile.formatStopReq({profile, opt}, stop)
+
+		return profile.request({profile, opt}, userAgent, req)
 		.then(({res, common}) => {
 			if (!res || !Array.isArray(res.locL) || !res.locL[0]) {
 				// todo: proper stack trace?
@@ -351,23 +324,9 @@ const createClient = (profile, userAgent, opt = {}) => {
 			linesOfStops: false // parse & expose lines at each stop/station?
 		}, opt)
 
-		return profile.request({profile, opt}, userAgent, {
-			cfg: {polyEnc: 'GPA'},
-			meth: 'LocGeoPos',
-			req: {
-				ring: {
-					cCrd: {
-						x: profile.formatCoord(location.longitude),
-						y: profile.formatCoord(location.latitude)
-					},
-					maxDist: opt.distance || -1,
-					minDist: 0
-				},
-				getPOIs: !!opt.poi,
-				getStops: !!opt.stops,
-				maxLoc: opt.results
-			}
-		})
+		const req = profile.formatNearbyReq({profile, opt}, location)
+
+		return profile.request({profile, opt}, userAgent, req)
 		.then(({common, res}) => {
 			if (!Array.isArray(res.locL)) return []
 
@@ -389,19 +348,9 @@ const createClient = (profile, userAgent, opt = {}) => {
 			remarks: true // parse & expose hints & warnings?
 		}, opt)
 
-		return profile.request({profile, opt}, userAgent, {
-			cfg: {polyEnc: 'GPA'},
-			meth: 'JourneyDetails',
-			req: {
-				// todo: getTrainComposition
-				jid: id,
-				name: lineName,
-				// HAFAS apparently ignores the date in the trip ID and uses the `date` field.
-				// Thus, it will find a different trip if you pass the wrong date via `opt.when`.
-				// date: profile.formatDate(profile, opt.when),
-				getPolyline: !!opt.polyline
-			}
-		})
+		const req = profile.formatTripReq({profile, opt}, id, lineName)
+
+		return profile.request({profile, opt}, userAgent, req)
 		.then(({common, res}) => {
 			const ctx = {profile, opt, common, res}
 
@@ -437,25 +386,9 @@ const createClient = (profile, userAgent, opt = {}) => {
 		opt.when = new Date(opt.when || Date.now())
 		if (Number.isNaN(+opt.when)) throw new TypeError('opt.when is invalid')
 
-		const durationPerStep = opt.duration / Math.max(opt.frames, 1) * 1000
-		return profile.request({profile, opt}, userAgent, {
-			meth: 'JourneyGeoPos',
-			req: {
-				maxJny: opt.results,
-				onlyRT: false, // todo: does this mean "only realtime"?
-				date: profile.formatDate(profile, opt.when),
-				time: profile.formatTime(profile, opt.when),
-				// todo: would a ring work here as well?
-				rect: profile.formatRectangle(profile, north, west, south, east),
-				perSize: opt.duration * 1000,
-				perStep: Math.round(durationPerStep),
-				ageOfReport: true, // todo: what is this?
-				jnyFltrL: [
-					profile.formatProductsFilter({profile}, opt.products || {})
-				],
-				trainPosMode: 'CALC' // todo: what is this? what about realtime?
-			}
-		})
+		const req = profile.formatRadarReq({profile, opt}, north, west, south, east)
+
+		return profile.request({profile, opt}, userAgent, req)
 		.then(({res, common}) => {
 			if (!Array.isArray(res.jnyL)) return []
 
@@ -475,21 +408,10 @@ const createClient = (profile, userAgent, opt = {}) => {
 		}, opt)
 		if (Number.isNaN(+opt.when)) throw new TypeError('opt.when is invalid')
 
+		const req = profile.formatReachableFromReq({profile, opt}, address)
+
 		const refetch = () => {
-			return profile.request({profile, opt}, userAgent, {
-				meth: 'LocGeoReach',
-				req: {
-					loc: profile.formatLocation(profile, address, 'address'),
-					maxDur: opt.maxDuration === null ? -1 : opt.maxDuration,
-					maxChg: opt.maxTransfers,
-					date: profile.formatDate(profile, opt.when),
-					time: profile.formatTime(profile, opt.when),
-					period: 120, // todo: what is this?
-					jnyFltrL: [
-						profile.formatProductsFilter({profile}, opt.products || {})
-					]
-				}
-			})
+			return profile.request({profile, opt}, userAgent, req)
 			.then(({res, common}) => {
 				if (!Array.isArray(res.posL)) {
 					const err = new Error('invalid response')
