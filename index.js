@@ -7,7 +7,6 @@ const sortBy = require('lodash/sortBy')
 const pRetry = require('p-retry')
 
 const defaultProfile = require('./lib/default-profile')
-const createFormatProductsFilter = require('./format/products-filter')
 const validateProfile = require('./lib/validate-profile')
 
 const isNonEmptyString = str => 'string' === typeof str && str.length > 0
@@ -26,9 +25,6 @@ const validateLocation = (loc, name = 'location') => {
 
 const createClient = (profile, userAgent, opt = {}) => {
 	profile = Object.assign({}, defaultProfile, profile)
-	if (!profile.formatProductsFilter) {
-		profile.formatProductsFilter = createFormatProductsFilter(profile)
-	}
 	validateProfile(profile)
 
 	if ('string' !== typeof userAgent) {
@@ -64,7 +60,7 @@ const createClient = (profile, userAgent, opt = {}) => {
 		}, opt)
 		opt.when = new Date(opt.when || Date.now())
 		if (Number.isNaN(+opt.when)) throw new Error('opt.when is invalid')
-		const products = profile.formatProductsFilter(opt.products || {})
+		const products = profile.formatProductsFilter({profile}, opt.products || {})
 
 		const dir = opt.direction ? profile.formatStation(opt.direction) : null
 		const req = {
@@ -165,7 +161,7 @@ const createClient = (profile, userAgent, opt = {}) => {
 		}
 
 		const filters = [
-			profile.formatProductsFilter(opt.products || {})
+			profile.formatProductsFilter({profile}, opt.products || {})
 		]
 		if (
 			opt.accessibility &&
@@ -458,7 +454,7 @@ const createClient = (profile, userAgent, opt = {}) => {
 				perStep: Math.round(durationPerStep),
 				ageOfReport: true, // todo: what is this?
 				jnyFltrL: [
-					profile.formatProductsFilter(opt.products || {})
+					profile.formatProductsFilter({profile}, opt.products || {})
 				],
 				trainPosMode: 'CALC' // todo: what is this? what about realtime?
 			}
@@ -493,7 +489,7 @@ const createClient = (profile, userAgent, opt = {}) => {
 					time: profile.formatTime(profile, opt.when),
 					period: 120, // todo: what is this?
 					jnyFltrL: [
-						profile.formatProductsFilter(opt.products || {})
+						profile.formatProductsFilter({profile}, opt.products || {})
 					]
 				}
 			})
