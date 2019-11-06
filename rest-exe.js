@@ -8,10 +8,31 @@ const {stringify} = require('qs')
 const {parse: parseContentType} = require('content-type')
 const randomizeUserAgent = require('./lib/randomize-user-agent')
 const {byErrorCode} = require('./lib/rest-exe-errors')
+const parseWhen = require('./parse-rest/when')
+const parseLine = require('./parse-rest/line')
+const parsePolyline = require('./parse-rest/polyline')
+const parseHint = require('./parse-rest/hint')
+const parseLocation = require('./parse-rest/location')
+const formatDate = require('./format-rest/date')
+const formatTime = require('./format-rest/time')
+const defaultProfile = require('./lib/default-profile')
+const dbMgateProfile = require('./p/db')
 
 const isNonEmptyString = str => 'string' === typeof str && str.length > 0
 
 const createRestClient = (profile, token, userAgent) => {
+	profile = {
+		...defaultProfile,
+		...dbMgateProfile,
+		parseWhen,
+		parseLine,
+		parsePolyline,
+		parseHint,
+		parseLocation,
+		formatDate,
+		formatTime,
+		...profile
+	}
 	if (!isNonEmptyString(profile.endpoint)) throw new Error('missing profile.endpoint')
 	if (!isNonEmptyString(token)) throw new Error('missing token')
 	if (!isNonEmptyString(userAgent)) throw new Error('missing userAgent')
