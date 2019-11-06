@@ -14,7 +14,9 @@ const parseWhen = require('./parse-rest/when')
 const parseLine = require('./parse-rest/line')
 const parsePolyline = require('./parse-rest/polyline')
 const parseHint = require('./parse-rest/hint')
+const parseStopover = require('./parse-rest/stopover')
 const parseLocation = require('./parse-rest/location')
+const parseArrivalOrDeparture = require('./parse-rest/arrival-or-departure')
 const formatDate = require('./format-rest/date')
 const formatTime = require('./format-rest/time')
 const defaultProfile = require('./lib/default-profile')
@@ -37,6 +39,8 @@ const createRestClient = (profile, token, userAgent) => {
 		parseLine,
 		parsePolyline,
 		parseHint,
+		parseStopover,
+		parseArrivalOrDeparture,
 		parseLocation,
 		formatDate,
 		formatTime,
@@ -175,8 +179,70 @@ const createRestClient = (profile, token, userAgent) => {
 		}, [])
 	}
 
+	const _stationBoard = async (method, stop, opt) => {
+		const stopId = 'string' === typeof stop ? stop : stop.id
+		if ('string' !== typeof stopId) {
+			throw new TypeError('stop must be a stop object or a string.')
+		}
+
+		opt = {
+			// todo: for arrivals(), this is actually a station it *has already* stopped by
+			direction: null, // only show arrivals/departures stopping by this station
+			duration: 10, // show arrivals/departures for the next n minutes
+			results: null, // number of arrivals/departures – `null` means "whatever HAFAS returns"
+			products: {}, // enabled/disable certain products to search for
+			remarks: true, // parse & expose hints & warnings?
+			// arrivals/departures at related stations
+			// e.g. those that belong together on the metro map.
+			includeRelatedStations: true,
+			...opt
+		}
+
+		const query = {
+			extId: stopId,
+			duration: opt.duration,
+			products: profile.formatProductsBitmask(profile)(opt.products || {}),
+			filterEquiv: opt.includeRelatedStations ? 0 : 1, // filterEquiv is reversed!
+			rtMode: 'FULL' // todo: make customisable?, see https://pastebin.com/qZ9WS3Cx
+			// todo: operators, lines, attributes
+		}
+
+		if (opt.direction) {
+			const id = 'string' === typeof opt.direction ? opt.direction : opt.direction.id
+			if ('string' !== typeof id) {
+				throw new TypeError('opt.direction must be a stop object or a string.')
+			}
+			query.direction = id
+		}
+		if (opt.results !== null) query.maxJourneys = opt.results
+
+		const when = new Date('when' in opt ? opt.when : Date.now())
+		if (Number.isNaN(+when)) throw new Error('opt.when is invalid')
+		query.date = profile.formatDate(profile, when)
+		query.time = profile.formatTime(profile, when)
+
+		return await request(method, query)
+	}
+
+	const departures = async (stop, opt = {}) => {
+		const res = await _stationBoard('departureBoard', stop, opt)
+		const results = res.departureAndMessage || []
+
+		const parse = profile.parseArrivalOrDeparture(profile, opt, {}, 'departure')
+		return results.map(result => parse(result.Departure))
+	}
+
+	const arrivals = async (stop, opt = {}) => {
+		const res = await _stationBoard('arrivalBoard', stop, opt)
+		const results = res.arrivalAndMessage || []
+
+		const parse = profile.parseArrivalOrDeparture(profile, opt, {}, 'arrival')
+		return results.map(result => parse(result.Arrival))
+	}
+
 	return {
-		locations, nearby
+		locations, nearby,
+		departures, arrivals
 	}
 }
 
