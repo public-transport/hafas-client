@@ -62,8 +62,70 @@ const createRestClient = (profile, token, userAgent) => {
 		.filter(loc => !!loc)
 	}
 
+	const _stationBoard = async (method, stop, opt) => {
+		const stopId = 'string' === typeof stop ? stop : stop.id
+		if ('string' !== typeof stopId) {
+			throw new TypeError('stop must be a stop object or a string.')
+		}
+
+		opt = {
+			// todo: for arrivals(), this is actually a station it *has already* stopped by
+			direction: null, // only show arrivals/departures stopping by this station
+			duration: 10, // show arrivals/departures for the next n minutes
+			results: null, // number of arrivals/departures – `null` means "whatever HAFAS returns"
+			products: {}, // enabled/disable certain products to search for
+			remarks: true, // parse & expose hints & warnings?
+			// arrivals/departures at related stations
+			// e.g. those that belong together on the metro map.
+			includeRelatedStations: true,
+			...opt
+		}
+
+		const query = {
+			extId: stopId,
+			duration: opt.duration,
+			products: profile.formatProductsBitmask({profile, opt}, opt.products || {}),
+			filterEquiv: opt.includeRelatedStations ? 0 : 1, // filterEquiv is reversed!
+			rtMode: 'FULL' // todo: make customisable?, see https://pastebin.com/qZ9WS3Cx
+			// todo: operators, lines, attributes
+		}
+
+		if (opt.direction) {
+			const id = 'string' === typeof opt.direction ? opt.direction : opt.direction.id
+			if ('string' !== typeof id) {
+				throw new TypeError('opt.direction must be a stop object or a string.')
+			}
+			query.direction = id
+		}
+		if (opt.results !== null) query.maxJourneys = opt.results
+
+		const when = new Date('when' in opt ? opt.when : Date.now())
+		if (Number.isNaN(+when)) throw new Error('opt.when is invalid')
+		query.date = profile.formatDate({profile, opt}, when)
+		query.time = profile.formatTime({profile, opt}, when)
+
+		return await profile.request({profile, opt, token}, userAgent, method, query)
+	}
+
+	const departures = async (stop, opt = {}) => {
+		const {res} = await _stationBoard('departureBoard', stop, opt)
+		const ctx = {profile, opt, res}
+
+		const results = ctx.res.Departure || []
+		return results.map(dep => profile.parseArrival(ctx, dep))
+	}
+
+	const arrivals = async (stop, opt = {}) => {
+		const {res} = await _stationBoard('arrivalBoard', stop, opt)
+		const ctx = {profile, opt, res}
+
+		const results = ctx.res.Arrival || []
+		return results.map(arr => profile.parseDeparture(ctx, arr))
+	}
+
 	const client = {
 		locations, nearby,
+		departures, arrivals,
 	}
 	Object.defineProperty(client, 'profile', {value: profile})
 	return client
