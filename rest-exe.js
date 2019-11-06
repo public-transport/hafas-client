@@ -94,6 +94,9 @@ const createRestClient = (profile, token, userAgent) => {
 			throw err
 		}
 
+		// todo: sometimes it returns a body without any data
+		// e.g. `location.nearbystops` with an invalid `type`
+
 		unwrapNested(body, '**.ServiceDays[0]', 'serviceDays')
 		unwrapNested(body, '**.LegList.Leg', 'legs')
 		unwrapNested(body, '**.Notes.Note', 'notes')
@@ -104,7 +107,77 @@ const createRestClient = (profile, token, userAgent) => {
 		return body
 	}
 
-	return {}
+	const opt = {
+		scheduledDays: false,
+		polylines: false,
+		stopovers: true,
+
+		linesOfStops: true
+	}
+
+	const parseLocationsResult = (l) => {
+		if (l.StopLocation) {
+			return parseLocation(profile, opt, {}, {
+				type: 'ST', ...l.StopLocation
+			})
+		}
+		if (l.CoordLocation) {
+			return parseLocation(profile, opt, {}, {
+				type: 'ADR', ...l.CoordLocation
+			})
+		}
+		return null
+	}
+
+	const locations = async (query, opt = {}) => {
+		if (!isNonEmptyString(query)) {
+			throw new TypeError('query must be a non-empty string.')
+		}
+		opt = {
+			fuzzy: true, // find only exact matches?
+			results: 5, // how many search results?
+			stops: true, // return stops/stations?
+			addresses: true,
+			poi: true, // points of interest
+			linesOfStops: false, // parse & expose lines at each stop/station?
+			...opt
+		}
+
+		const res = await request('location.name', opt, {
+			input: opt.fuzzy ? query + '?' : query,
+			maxNo: 3, // todo: opt.results
+			type: profile.formatLocationFilter(opt.stops, opt.addresses, opt.poi)
+			// todo: `products` with bitmask
+			// todo: coordLong, coordLat, radius
+			// todo: refineId
+		})
+
+		return res.stopLocationOrCoordLocation
+		.map(parseLocationsResult)
+		.filter(loc => !!loc)
+	}
+
+	const nearby = async (location) => {
+		const res = await request('location.nearbystops', opt, {
+			originCoordLat: location.latitude,
+			originCoordLong: location.longitude,
+			// r: 2000, // radius
+			// maxNo: 5, // todo: opt.results
+			type: 'SP', // todo: S/P/SP
+			// todo: `products` with bitmask
+		})
+
+		return res.stopLocationOrCoordLocation.reduce((locs, l) => {
+			const loc = parseLocationsResult(l)
+			if (!loc) return locs
+			loc.distance = l.dist
+			return [...locs, loc]
+		}, [])
+	}
+
+	return {
+		locations, nearby
+	}
 }
 
 module.exports = createRestClient
