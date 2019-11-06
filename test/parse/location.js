@@ -109,6 +109,21 @@ tap.test('parses a stop correctly', (t) => {
 	t.end()
 })
 
+tap.test('falls back to the ID within `lid`', (t) => {
+	const address = parse(ctx, {
+		type: 'A',
+		lid: 'A=2@O=Kiel - Vorstadt, Rathausplatz@X=10134160@Y=54322587@U=101@b=980670026@B=1@p=1566898558@',
+		name: 'Kiel - Vorstadt, Rathausplatz',
+		crd: {
+			x: 10134160,
+			y: 54322587
+		},
+	})
+	t.ok(address)
+	t.equal(address.id, '980670026')
+	t.end()
+})
+
 tap.test('falls back to coordinates from `lid`', (t) => {
 	const {location} = parse(ctx, {
 		type: 'S',
