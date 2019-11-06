@@ -2,12 +2,14 @@
 
 const DEBUG = process.env.DEBUG === 'hafas-client'
 
+const get = require('lodash/get')
 const Promise = require('pinkie-promise')
 const {fetch} = require('fetch-ponyfill')({Promise})
 const {stringify} = require('qs')
 const {parse: parseContentType} = require('content-type')
 const randomizeUserAgent = require('./lib/randomize-user-agent')
 const {byErrorCode} = require('./lib/rest-exe-errors')
+const findInTree = require('./lib/find-in-tree')
 const parseWhen = require('./parse-rest/when')
 const parseLine = require('./parse-rest/line')
 const parsePolyline = require('./parse-rest/polyline')
@@ -19,6 +21,13 @@ const defaultProfile = require('./lib/default-profile')
 const dbMgateProfile = require('./p/db')
 
 const isNonEmptyString = str => 'string' === typeof str && str.length > 0
+
+const unwrapNested = (tree, selector, prop) => {
+	findInTree(tree, selector, (item, parent, path) => {
+		const grandParent = get(tree, path.slice(0, -2), tree)
+		grandParent[prop] = item
+	})
+}
 
 const createRestClient = (profile, token, userAgent) => {
 	profile = {
@@ -85,6 +94,13 @@ const createRestClient = (profile, token, userAgent) => {
 			throw err
 		}
 
+		unwrapNested(body, '**.ServiceDays[0]', 'serviceDays')
+		unwrapNested(body, '**.LegList.Leg', 'legs')
+		unwrapNested(body, '**.Notes.Note', 'notes')
+		unwrapNested(body, '**.JourneyDetailRef.ref', 'ref')
+		unwrapNested(body, '**.Stops.Stop', 'stops')
+		unwrapNested(body, '**.Names.Name', 'products')
+		unwrapNested(body, '**.Directions.Direction', 'directions')
 		return body
 	}
 
