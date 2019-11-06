@@ -46,6 +46,7 @@
 		"object-scan": "^10.0.9",
 		"p-retry": "^4.1.0",
 		"p-throttle": "^3.1.0",
+		"parse-iso-duration": "^1.1.0",
 		"pinkie-promise": "^2.0.1",
 		"qs": "^6.6.0",
 		"slugg": "^1.2.0",

@@ -14,9 +14,12 @@ const parseWhen = require('./parse-rest/when')
 const parseLine = require('./parse-rest/line')
 const parsePolyline = require('./parse-rest/polyline')
 const parseHint = require('./parse-rest/hint')
+const parseJourney = require('./parse-rest/journey')
+const parseJourneyLeg = require('./parse-rest/journey-leg')
 const parseStopover = require('./parse-rest/stopover')
 const parseLocation = require('./parse-rest/location')
 const parseArrivalOrDeparture = require('./parse-rest/arrival-or-departure')
+const parseTrip = require('./parse-rest/trip')
 const formatDate = require('./format-rest/date')
 const formatTime = require('./format-rest/time')
 const defaultProfile = require('./lib/default-profile')
@@ -39,6 +42,8 @@ const createRestClient = (profile, token, userAgent) => {
 		parseLine,
 		parsePolyline,
 		parseHint,
+		parseJourney,
+		parseJourneyLeg,
 		parseStopover,
 		parseArrivalOrDeparture,
 		parseLocation,
@@ -240,9 +245,113 @@ const createRestClient = (profile, token, userAgent) => {
 		return results.map(result => parse(result.Arrival))
 	}
 
+	const journeys = async (origin, destination, opt = {}) => {
+		opt = {
+			results: null, // number of journeys – `null` means "whatever HAFAS returns"
+			// via: null, // let journeys pass this station?
+			stopovers: false, // return stations on the way?
+			transfers: -1, // maximum of 5 transfers
+			transferTime: null, // minimum time for a single transfer in minutes
+			// // todo: does this work with every endpoint?
+			// accessibility: 'none', // 'none', 'partial' or 'complete'
+			// bike: false, // only bike-friendly journeys
+			// tickets: false, // return tickets?
+			polylines: false, // return leg shapes?
+			// remarks: true, // parse & expose hints & warnings?
+			// walkingSpeed: 'normal', // 'slow', 'normal', 'fast'
+			// // Consider walking to nearby stations at the beginning of a journey?
+			startWithWalking: true,
+			// scheduledDays: false
+			...opt
+		}
+
+		// todo:
+		// - context via opt.earlierThan/opt.laterThan
+		// - originCoordLat/originCoordLong, destCoordLat/destCoordLong
+		// - via or viaId & viaWaitTime, avoid or avoidId
+		// - changeTimePercent, maxChangeTime?, addChangeTime?
+		// - numB
+		// - products, operators, attributes, sattributes, lines, ivOnly, mobilityProfile?
+		// - trainFilter, groupFilter, blockingList
+		// - bikeCarriage, bikeCarriageType, sleepingCar, couchetteCoach
+		// - avoidPaths, originBike, originCar, originTaxi, originPark, originMeta
+		// - destBike, destCar, destTaxi, destPark, destMeta
+		// - totalBike, totalCar, totalTaxi, totalPark, totalMeta
+		// - baim (https://www.eltis.org/discover/case-studies/baim-information-people-reduced-mobility-field-public-transport-frankfurt-de)
+		// 		hcp_0 – Do not filter.
+		// 			Results: baim_1, baim_2, baim_3, baim_4
+		// 		hcp_1 – Boarding and alighting possible.
+		// 			Results: baim_1
+		// 		hcp_2 – Boarding and alighting possible with the help of the crew.
+		// 			Results: baim_1, baim_2
+		// 		hcp_3 – Boarding and alighting requires advance notification.
+		// 			Results: baim_1, baim_2, baim_3
+		// 		Result values baim_info and baim_rsv are not filterable and will be returned if present.
+		// - eco, ecoCmp, ecoParams
+		// - economic
+		// - withICTAlternatives
+		const query = {
+			originId: profile.formatLocation(profile, origin, 'origin').lid,
+			destId: profile.formatLocation(profile, destination, 'destination').lid,
+			poly: opt.polylines ? 1 : 0,
+			passlist: opt.stopovers ? 1 : 0,
+			showPassingPoints: 1, // return pass-by stopovers
+			eco: 0,
+			originWalk: opt.startWithWalking ? 1 : 0,
+			destWalk: 1,
+			rtMode: 'FULL', // todo: make customisable?, see https://pastebin.com/qZ9WS3Cx
+			// "take additional stations nearby the given start and destination station into account"
+			ushrp: 1,
+			// "Disables search optimization in relation of duration."
+			includeEarlier: 1 // todo: make customisable?
+		}
+		if (opt.transferTime !== null) query.minChangeTime = opt.transferTime
+		if (opt.transfers >= 0) query.maxChange = opt.transfers
+		if (opt.results !== null) query.numF = opt.results // todo: what about numB?
+
+		let when
+		if (opt.departure !== undefined && opt.departure !== null) {
+			when = new Date(opt.departure)
+			if (Number.isNaN(+when)) throw new TypeError('opt.departure is invalid')
+		} else if (opt.arrival !== undefined && opt.arrival !== null) {
+			when = new Date(opt.arrival)
+			if (Number.isNaN(+when)) throw new TypeError('opt.arrival is invalid')
+			query.searchForArrival = 1
+		}
+		if (when) {
+			query.date = profile.formatDate(profile, when)
+			query.time = profile.formatTime(profile, when)
+		}
+
+		const res = await request('trip', opt, query)
+		return res.Trip.map(parseJourney(profile, opt))
+	}
+
+	const tripAlternatives = async (tripCtx, origin, destination) => {
+		// todo
+		const res = await request('trip.alternatives', opt, {
+			ctx: 'T$A=1@O=Hildesheim Hbf@L=8000169@a=128@$A=1@O=Hannover Hbf@L=8000152@a=128@$201909031844$201909031910$erx83478$$1$',
+			originId: 'A=1@O=Sarstedt@X=9842595@Y=52232604@U=80@L=8005292@',
+			destId: 'A=1@O=Hannover Hbf@X=9741017@Y=52376764@U=80@L=8000152@',
+			// todo: operators, products, poly
+		})
+
+		return res.Trip.map(parseJourney(profile, opt))
+	}
+
+	const trip = async (id) => {
+		const res = await request('journeyDetail', opt, {
+			id,
+			// todo: date, poly, showPassingPoints, rtMode
+		})
+
+		return parseTrip(profile, opt, {})(res)
+	}
+
 	return {
 		locations, nearby,
-		departures, arrivals
+		departures, arrivals,
+		journeys, trip, tripAlternatives
 	}
 }
 
