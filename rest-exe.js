@@ -13,10 +13,6 @@ const createRestClient = (profile, token, userAgent) => {
 	if (!isNonEmptyString(token)) throw new Error('missing token')
 	if (!isNonEmptyString(userAgent)) throw new Error('missing userAgent')
 
-	const request = async (method, opt, query = {}) => {
-		// todo
-	}
-
 	const client = {
 	}
 	Object.defineProperty(client, 'profile', {value: profile})
