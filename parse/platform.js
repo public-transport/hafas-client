@@ -12,7 +12,7 @@ const parsePlatform = (profile, platfS, platfR, cncl = false) => {
 		}
 	}
 	return {
-		platform: prognosed,
+		platform: prognosed || planned,
 		plannedPlatform: planned
 	}
 }
