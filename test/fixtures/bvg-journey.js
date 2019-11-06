@@ -31,10 +31,10 @@ module.exports = {
 				regional: false
 			}
 		},
-		arrival: null,
+		arrival: '2019-08-18T14:16:00+02:00',
 		plannedArrival: '2019-08-18T14:16:00+02:00',
 		arrivalDelay: null,
-		departure: null,
+		departure: '2019-08-18T14:06:00+02:00',
 		plannedDeparture: '2019-08-18T14:06:00+02:00',
 		departureDelay: null,
 		public: true,

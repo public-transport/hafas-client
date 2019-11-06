@@ -123,6 +123,12 @@ const createValidateStopover = (cfg) => {
 			val.date(val, s.plannedDeparture, name + '.plannedDeparture')
 			assertValidWhen(s.plannedDeparture, cfg.when, name + '.plannedDeparture')
 		}
+		if (is(s.plannedArrival) && !is(s.arrival)) {
+			a.fail(name + ' has .plannedArrival but not .arrival')
+		}
+		if (is(s.plannedDeparture) && !is(s.departure)) {
+			a.fail(name + ' has .plannedDeparture but not .departure')
+		}
 
 		if (is(s.arrivalDelay)) {
 			const msg = name + '.arrivalDelay must be a number'
@@ -156,6 +162,12 @@ const createValidateStopover = (cfg) => {
 			const msg = name + '.plannedDeparturePlatform must '
 			a.strictEqual(typeof s.plannedDeparturePlatform, 'string', msg + 'be a string')
 			a.ok(s.plannedDeparturePlatform, msg + 'not be empty')
+		}
+		if (is(s.plannedArrivalPlatform) && !is(s.arrivalPlatform)) {
+			a.fail(name + ' has .plannedArrivalPlatform but not .arrivalPlatform')
+		}
+		if (is(s.plannedDeparturePlatform) && !is(s.departurePlatform)) {
+			a.fail(name + ' has .plannedDeparturePlatform but not .departurePlatform')
 		}
 
 		anyOf(['stop', 'station'], val, s.stop, name + '.stop')
