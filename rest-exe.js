@@ -348,6 +348,45 @@ const createRestClient = (profile, token, userAgent) => {
 		return parseTrip(profile, opt, {})(res)
 	}
 
+	// todo: fails with 404
+	// const tripHistory = async (tripId) => {
+	// 	const res = await request('rtarchive', opt, {
+	// 		id: tripId,
+	// 		date: profile.formatDate(profile, opt.when || Date.now())
+	// 	})
+	// 	return res
+	// }
+
+	// todo: fails with 404
+	// const radar = async (bbox) => {
+	// 	const res = await request('journeyPos', opt, {
+	// 		llLat: bbox.south,
+	// 		llLon: bbox.west,
+	// 		urLat: bbox.north,
+	// 		urLon: bbox.east,
+	// 		// todo: operators, products, attributes, lines, jid, infotexts
+	// 		// todo: maxJny, time
+	// 		date: profile.formatDate(profile, opt.when || Date.now())
+	// 	})
+	// 	return res
+	// }
+
+	// todo: fails with 404
+	// const remarks = async () => {
+	// 	const res = await request('himSearch', opt, {
+	// 		// todo: dateB, dateE, timeB, timeE, himIds, operators, categories
+	// 		// todo: channels, companies, metas, himcategory, poly, searchmode
+	// 		// todo: minprio, maxprio
+	// 	})
+	// 	return res
+	// }
+
+	// todo: fails with 404
+	// const dataInfo = async () => {
+	// 	const res = await request('datainfo', opt)
+	// 	return res
+	// }
+
 	return {
 		locations, nearby,
 		departures, arrivals,
