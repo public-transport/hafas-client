@@ -4,9 +4,9 @@ import {parseLine as parse} from '../../parse/line.js'
 
 const profile = {
 	products: [
-		{id: 'train', bitmasks: [1]},
-		{id: 'ferry', bitmasks: [2]},
-		{id: 'bus', bitmasks: [4, 8]}
+		{id: 'train', mode: 'train', bitmasks: [1]},
+		{id: 'ferry', mode: 'watercraft', bitmasks: [2]},
+		{id: 'bus', mode: 'bus', bitmasks: [4, 8]}
 	]
 }
 const ctx = {
@@ -18,6 +18,7 @@ const ctx = {
 tap.test('parses lines correctly', (t) => {
 	const input = {
 		line: 'foo line',
+		cls: 2,
 		prodCtx: {
 			lineId: 'Foo ',
 			num: 123,
@@ -28,6 +29,8 @@ tap.test('parses lines correctly', (t) => {
 	const expected = {
 		type: 'line',
 		id: 'foo',
+		mode: 'watercraft',
+		product: 'ferry',
 		fahrtNr: 123,
 		name: 'foo line',
 		public: true,
@@ -41,6 +44,10 @@ tap.test('parses lines correctly', (t) => {
 	}), expected)
 	t.same(parse(ctx, {
 		...input, line: null, name: input.line
+	}), expected)
+	// prodCtx.catCode instead of cls
+	t.same(parse(ctx, {
+		...input, cls: null, prodCtx: {...input.prodCtx, catCode: input.cls},
 	}), expected)
 
 	// no prodCtx.lineId
