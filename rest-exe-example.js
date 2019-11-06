@@ -13,6 +13,9 @@ const {
 	locations, nearby,
 	departures, arrivals,
 	journeys, trip, tripAlternatives
+	// tripHistory,
+	// radar,
+	// remarks, dataInfo
 } = createClient(profile, TOKEN, 'hafas-client example')
 
 const berlinOstkreuz = '8011162'
@@ -30,6 +33,7 @@ const somewhereInBerlin = {type: 'location', address: 'foo', latitude: 52.51072,
 // .then(journeys => journeys.flatMap(j => [...j.legs, '---']))
 // .then(([journey]) => journey.legs.map(l => l.tripId).find(tripId => !!tripId))
 // .then(trip)
+// .then(tripHistory)
 // tripAlternatives()
 
 locations('leopoldplatz ber')
@@ -41,6 +45,14 @@ locations('leopoldplatz ber')
 // arrivals(berlinYorckstrS1, {
 // 	remarks: true
 // })
+// radar({
+// 	north: 52.52411,
+// 	west: 13.41002,
+// 	south: 52.51942,
+// 	east: 13.41709
+// })
+// remarks()
+// dataInfo()
 
 .then(data => console.log(require('util').inspect(data, {depth: null, colors: true})))
 .catch((err) => {
