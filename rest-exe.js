@@ -230,6 +230,53 @@ const createRestClient = (profile, token, userAgent) => {
 		return profile.parseTrip(ctx, ctx.res)
 	}
 
+	// todo: fails with 404
+	// const tripHistory = async (tripId, opt = {}) => {
+	// 	const {res} = await profile.request({profile, opt, token}, userAgent, 'rtarchive', {
+	// 		id: tripId,
+	// 		date: profile.formatDate(profile, opt.when || Date.now())
+	// 	})
+	// 	const ctx = {profile, opt, res}
+
+	// 	return ctx.res
+	// }
+
+	// todo: fails with 404
+	// const radar = async (bbox, opt = {}) => {
+	// 	const {res} = await profile.request({profile, opt, token}, userAgent, 'journeyPos', {
+	// 		llLat: bbox.south,
+	// 		llLon: bbox.west,
+	// 		urLat: bbox.north,
+	// 		urLon: bbox.east,
+	// 		// todo: operators, products, attributes, lines, jid, infotexts
+	// 		// todo: maxJny, time
+	// 		date: profile.formatDate(profile, opt.when || Date.now())
+	// 	})
+	// 	const ctx = {profile, opt, res}
+
+	// 	return ctx.res
+	// }
+
+	// todo: fails with 404
+	// const remarks = async (opt = {}) => {
+	// 	const {res} = await profile.request({profile, opt, token}, userAgent, 'himSearch', {
+	// 		// todo: dateB, dateE, timeB, timeE, himIds, operators, categories
+	// 		// todo: channels, companies, metas, himcategory, poly, searchmode
+	// 		// todo: minprio, maxprio
+	// 	})
+	// 	const ctx = {profile, opt, res}
+
+	// 	return ctx.res
+	// }
+
+	// todo: fails with 404
+	// const dataInfo = async (opt = {}) => {
+	// 	const {res} = await profile.request({profile, opt, token}, userAgent, 'datainfo')
+	// 	const ctx = {profile, opt, res}
+
+	// 	return ctx.res
+	// }
+
 	const client = {
 		locations, nearby,
 		departures, arrivals,
