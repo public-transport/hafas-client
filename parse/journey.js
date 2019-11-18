@@ -32,9 +32,9 @@ const parseScheduledDays = (sDaysB, profile) => {
 // todo: c.badSecRefX
 // todo: c.bfATS, c.bfIOSTS
 const parseJourney = (ctx, j) => { // j = raw jouney
-	const {parsed, profile, opt} = ctx
+	const {parse, parsed, profile, opt} = ctx
 
-	const legs = j.secL.map(l => profile.parseJourneyLeg(ctx, l, j.date))
+	const legs = j.secL.map(l => parse('journeyLeg', l, j.date))
 	const res = {
 		...parsed,
 		type: 'journey',

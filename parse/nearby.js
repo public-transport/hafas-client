@@ -7,11 +7,11 @@
 // todo: what is s.dur?
 
 const parseNearby = (ctx, n) => { // n = raw nearby location
-	const {parsed, profile} = ctx
+	const {parsed, parse} = ctx
 
 	const res = {
 		...parsed,
-		...profile.parseLocation(ctx, n)
+		...parse('location', n)
 	}
 	res.distance = n.dist
 	return res

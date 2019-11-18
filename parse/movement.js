@@ -7,11 +7,11 @@
 // todo: what is m.ani.dirGeo[n]? maybe the speed?
 // todo: what is m.ani.proc[n]? wut?
 const parseMovement = (ctx, m) => { // m = raw movement
-	const {parsed, profile, opt} = ctx
+	const {parsed, parse, opt} = ctx
 
 	const res = {
 		...parsed,
-		direction: m.dirTxt ? profile.parseStationName(ctx, m.dirTxt) : null,
+		direction: m.dirTxt ? parse('stationName', m.dirTxt) : null,
 		tripId: m.jid || null,
 		line: m.line || null,
 		location: m.pos ? {
@@ -20,7 +20,7 @@ const parseMovement = (ctx, m) => { // m = raw movement
 			longitude: m.pos.x / 1000000
 		} : null,
 		// todo: stopL[0] is the first of the trip! -> filter out
-		nextStopovers: m.stopL.map(s => profile.parseStopover(ctx, s, m.date)),
+		nextStopovers: m.stopL.map(s => parse('stopover', s, m.date)),
 		frames: []
 	}
 
@@ -37,7 +37,7 @@ const parseMovement = (ctx, m) => { // m = raw movement
 
 		if (opt.polylines) {
 			if (m.ani.poly) {
-				res.polyline = profile.parsePolyline(ctx, m.ani.poly)
+				res.polyline = parse('polyline', m.ani.poly)
 			} else if (m.ani.polyline) {
 				res.polyline = m.ani.polyline
 			}

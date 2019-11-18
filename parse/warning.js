@@ -24,8 +24,8 @@ const parseMsgEvent = ({profile}) => (e) => {
 		// todo: rename `Loc` -> `Location` [breaking]
 		fromLoc: e.fromLocation || null,
 		toLoc: e.toLocation || null,
-		start: profile.parseDateTime(profile, e.fDate, e.fTime, null),
-		end: profile.parseDateTime(profile, e.tDate, e.tTime, null),
+		start: parse('dateTime', file, e.fDate, e.fTime, null),
+		end: parse('dateTime', file, e.tDate, e.tTime, null),
 		sections: e.sectionNums || [] // todo: parse
 	}
 }
@@ -65,7 +65,7 @@ const parseWarning = (ctx, w) => {
 		priority: w.prio,
 		category: w.cat || null // todo: parse to sth meaningful
 	}
-	if ('prod' in w) res.products = profile.parseProductsBitmask(ctx, w.prod)
+	if ('prod' in w) res.products = parse('productsBitmask', w.prod)
 
 	if (w.edgeRefL && resp.common && resp.common.himMsgEdgeL) {
 		res.edges = w.edgeRefL
@@ -80,9 +80,9 @@ const parseWarning = (ctx, w) => {
 		.map(parseMsgEvent(ctx))
 	}
 
-	if (w.sDate && w.sTime) res.validFrom = profile.parseDateTime(profile, w.sDate, w.sTime, null)
-	if (w.eDate && w.eTime) res.validUntil = profile.parseDateTime(profile, w.eDate, w.eTime, null)
-	if (w.lModDate && w.lModTime) res.modified = profile.parseDateTime(profile, w.lModDate, w.lModTime, null)
+	if (w.sDate && w.sTime) res.validFrom = parse('dateTime', file, w.sDate, w.sTime, null)
+	if (w.eDate && w.eTime) res.validUntil = parse('dateTime', file, w.eDate, w.eTime, null)
+	if (w.lModDate && w.lModTime) res.modified = parse('dateTime', file, w.lModDate, w.lModTime, null)
 
 	return res
 }

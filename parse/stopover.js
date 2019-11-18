@@ -3,12 +3,12 @@
 const findRemarks = require('./find-remarks')
 
 const parseStopover = (ctx, st, date) => { // st = raw stopover
-	const {parsed, profile, opt} = ctx
+	const {parsed, parse, opt} = ctx
 
-	const arr = profile.parseWhen(ctx, date, st.aTimeS, st.aTimeR, st.aTZOffset, st.aCncl)
-	const arrPl = profile.parsePlatform(ctx, st.aPlatfS, st.aPlatfR, st.aCncl)
-	const dep = profile.parseWhen(ctx, date, st.dTimeS, st.dTimeR, st.dTZOffset, st.dCncl)
-	const depPl = profile.parsePlatform(ctx, st.dPlatfS, st.dPlatfR, st.dCncl)
+	const arr = parse('when', date, st.aTimeS, st.aTimeR, st.aTZOffset, st.aCncl)
+	const arrPl = parse('platform', st.aPlatfS, st.aPlatfR, st.aCncl)
+	const dep = parse('when', date, st.dTimeS, st.dTimeR, st.dTZOffset, st.dCncl)
+	const depPl = parse('platform', st.dPlatfS, st.dPlatfR, st.dCncl)
 
 	const res = {
 		...parsed,

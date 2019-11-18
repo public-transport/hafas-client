@@ -8,6 +8,7 @@ const pRetry = require('p-retry')
 
 const defaultProfile = require('./lib/default-profile')
 const validateProfile = require('./lib/validate-profile')
+const createParse = require('./lib/create-parse')
 
 const isNonEmptyString = str => 'string' === typeof str && str.length > 0
 
@@ -62,11 +63,14 @@ const createClient = (profile, userAgent) => {
 
 		const req = profile.formatStationBoardReq({profile, opt}, station, type)
 
-		return profile.request({profile, opt}, userAgent, req)
+		const ctx = {profile, opt}
+		ctx.parse = createParse(ctx)
+		return profile.request(ctx, userAgent, req)
 		.then(({res, common}) => {
 			if (!Array.isArray(res.jnyL)) return []
 
 			const ctx = {profile, opt, common, res}
+			ctx.parse = createParse(ctx)
 			return res.jnyL.map(res => parse(ctx, res))
 			.sort((a, b) => new Date(a.when) - new Date(b.when)) // todo
 		})
@@ -206,12 +210,13 @@ const createClient = (profile, userAgent) => {
 				// todo: outConGrpL
 
 				const ctx = {profile, opt, common, res}
+				ctx.parse = createParse(ctx)
 
 				if (!earlierRef) earlierRef = res.outCtxScrB
 
 				let latestDep = -Infinity
 				for (const rawJourney of res.outConL) {
-					const journey = profile.parseJourney(ctx, rawJourney)
+					const journey = ctx.parse('journey', rawJourney)
 					journeys.push(journey)
 
 					if (opt.results !== null && journeys.length >= opt.results) { // collected enough
@@ -259,7 +264,8 @@ const createClient = (profile, userAgent) => {
 			}
 
 			const ctx = {profile, opt, common, res}
-			return profile.parseJourney(ctx, d.outConL[0])
+			ctx.parse = createParse(ctx)
+			return ctx.parse('journey', d.outConL[0])
 		})
 	}
 
@@ -283,7 +289,8 @@ const createClient = (profile, userAgent) => {
 			if (!res.match || !Array.isArray(res.match.locL)) return []
 
 			const ctx = {profile, opt, common, res}
-			return res.match.locL.map(loc => profile.parseLocation(ctx, loc))
+			ctx.parse = createParse(ctx)
+			return res.match.locL.map(loc => ctx.parse('location', loc))
 		})
 	}
 
@@ -306,7 +313,8 @@ const createClient = (profile, userAgent) => {
 			}
 
 			const ctx = {profile, opt, res, common}
-			return profile.parseLocation(ctx, res.locL[0])
+			ctx.parse = createParse(ctx)
+			return ctx.parse('location', res.locL[0])
 		})
 	}
 
@@ -328,7 +336,8 @@ const createClient = (profile, userAgent) => {
 			if (!Array.isArray(res.locL)) return []
 
 			const ctx = {profile, opt, common, res}
-			return res.locL.map(loc => profile.parseNearby(ctx, loc))
+			ctx.parse = createParse(ctx)
+			return res.locL.map(loc => ctx.parse('nearby', loc))
 		})
 	}
 
@@ -350,6 +359,7 @@ const createClient = (profile, userAgent) => {
 		return profile.request({profile, opt}, userAgent, req)
 		.then(({common, res}) => {
 			const ctx = {profile, opt, common, res}
+			ctx.parse = createParse(ctx)
 
 			const rawLeg = { // pretend the leg is contained in a journey
 				type: 'JNY',
@@ -357,7 +367,7 @@ const createClient = (profile, userAgent) => {
 				arr: maxBy(res.journey.stopL, 'idx'),
 				jny: res.journey
 			}
-			const trip = profile.parseJourneyLeg(ctx)(rawLeg, res.journey.date)
+			const trip = ctx.parse('journeyLeg', rawLeg, res.journey.date)
 			trip.id = trip.tripId
 			delete trip.tripId
 			return trip
@@ -390,7 +400,8 @@ const createClient = (profile, userAgent) => {
 			if (!Array.isArray(res.jnyL)) return []
 
 			const ctx = {profile, opt, common, res}
-			return res.jnyL.map(m => profile.parseMovement(ctx, m))
+			ctx.parse = createParse(ctx)
+			return res.jnyL.map(m => ctx.parse('movement', m))
 		})
 	}
 

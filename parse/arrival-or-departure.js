@@ -12,7 +12,7 @@ const createParseArrOrDep = (prefix) => {
 	if (prefix !== ARRIVAL && prefix !== DEPARTURE) throw new Error('invalid prefix')
 
 	const parseArrOrDep = (ctx, d) => { // d = raw arrival/departure
-		const {parsed, profile, opt} = ctx
+		const {parsed, parse, opt} = ctx
 
 		const tPlanned = d.stbStop[prefix + 'TimeS']
 		const tPrognosed = d.stbStop[prefix + 'TimeR']
@@ -25,10 +25,10 @@ const createParseArrOrDep = (prefix) => {
 			...parsed,
 			tripId: d.jid,
 			stop: d.stbStop.location || null,
-			...profile.parseWhen(ctx, d.date, tPlanned, tPrognosed, tzOffset, cancelled),
-			...profile.parsePlatform(ctx, plPlanned, plPrognosed, cancelled),
+			...parse('when', d.date, tPlanned, tPrognosed, tzOffset, cancelled),
+			...parse('platform', plPlanned, plPrognosed, cancelled),
 			// todo: for arrivals, this is the *origin*, not the *direction*
-			direction: prefix === DEPARTURE && d.dirTxt && profile.parseStationName(ctx, d.dirTxt) || null,
+			direction: prefix === DEPARTURE && d.dirTxt && parse('stationName', d.dirTxt) || null,
 			line: d.line || null,
 			remarks: []
 		}
@@ -48,7 +48,7 @@ const createParseArrOrDep = (prefix) => {
    		if (opt.stopovers && d.stopL) {
   			// Filter stations the train passes without stopping, as this doesn't comply with FPTF (yet).
   			const stopovers = d.stopL
-  			.map(st => profile.parseStopover(ctx, st, d.date))
+  			.map(st => parse('stopover', st, d.date))
   			.filter(st => !st.passBy)
   			if (prefix === ARRIVAL) res.previousStopovers = stopovers
 			else if (prefix === DEPARTURE) res.nextStopovers = stopovers

@@ -1,6 +1,6 @@
 'use strict'
 
-const {parse} = require('qs')
+const {parse: parseQueryString} = require('qs')
 
 const POI = 'P'
 const STATION = 'S'
@@ -10,9 +10,9 @@ const leadingZeros = /^0+/
 
 // todo: what is s.rRefL?
 const parseLocation = (ctx, l) => {
-	const {parsed, profile, opt} = ctx
+	const {parsed, parse, profile, opt} = ctx
 
-	const lid = parse(l.lid, {delimiter: '@'})
+	const lid = parseQueryString(l.lid, {delimiter: '@'})
 	const res = {
 		...parsed,
 		type: 'location',
@@ -28,11 +28,11 @@ const parseLocation = (ctx, l) => {
 		const stop = {
 			type: l.isMainMast ? 'station' : 'stop',
 			id: res.id,
-			name: l.name ? profile.parseStationName(ctx, l.name) : null,
+			name: l.name ? parse('stationName', l.name) : null,
 			location: 'number' === typeof res.latitude ? res : null
 		}
 
-		if ('pCls' in l) stop.products = profile.parseProductsBitmask(ctx, l.pCls)
+		if ('pCls' in l) stop.products = parse('productsBitmask', l.pCls)
 		if ('meta' in l) stop.isMeta = !!l.meta
 
 		if (opt.linesOfStops && Array.isArray(l.lines)) {

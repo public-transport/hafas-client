@@ -41,7 +41,7 @@ const applyRemarks = (leg, refs) => {
 // todo: pt.planrtTS
 
 const parseJourneyLeg = (ctx, pt, date) => { // pt = raw leg
-	const {parsed, profile, opt} = ctx
+	const {parsed, parse, opt} = ctx
 
 	const res = {
 		...parsed,
@@ -49,13 +49,13 @@ const parseJourneyLeg = (ctx, pt, date) => { // pt = raw leg
 		destination: clone(pt.arr.location)
 	}
 
-	const arr = profile.parseWhen(ctx, date, pt.arr.aTimeS, pt.arr.aTimeR, pt.arr.aTZOffset, pt.arr.aCncl)
+	const arr = parse('when', date, pt.arr.aTimeS, pt.arr.aTimeR, pt.arr.aTZOffset, pt.arr.aCncl)
 	res.arrival = arr.when
 	res.plannedArrival = arr.plannedWhen
 	res.arrivalDelay = arr.delay
 	if (arr.prognosedWhen) res.prognosedArrival = arr.prognosedWhen
 
-	const dep = profile.parseWhen(ctx, date, pt.dep.dTimeS, pt.dep.dTimeR, pt.dep.dTZOffset, pt.dep.dCncl)
+	const dep = parse('when', date, pt.dep.dTimeS, pt.dep.dTimeR, pt.dep.dTZOffset, pt.dep.dCncl)
 	res.departure = dep.when
 	res.plannedDeparture = dep.plannedWhen
 	res.departureDelay = dep.delay
@@ -83,21 +83,21 @@ const parseJourneyLeg = (ctx, pt, date) => { // pt = raw leg
 		// todo: pull `public` value from `profile.products`
 		res.tripId = pt.jny.jid
 		res.line = pt.jny.line || null
-		res.direction = pt.jny.dirTxt && profile.parseStationName(ctx, pt.jny.dirTxt) || null
+		res.direction = pt.jny.dirTxt && parse('stationName', pt.jny.dirTxt) || null
 
-		const arrPl = profile.parsePlatform(ctx, pt.arr.aPlatfS, pt.arr.aPlatfR, pt.arr.aCncl)
+		const arrPl = parse('platform', pt.arr.aPlatfS, pt.arr.aPlatfR, pt.arr.aCncl)
 		res.arrivalPlatform = arrPl.platform
 		res.plannedArrivalPlatform = arrPl.plannedPlatform
 		if (arrPl.prognosedPlatform) res.prognosedArrivalPlatform = arrPl.prognosedPlatform
 
-		const depPl = profile.parsePlatform(ctx, pt.dep.dPlatfS, pt.dep.dPlatfR, pt.dep.dCncl)
+		const depPl = parse('platform', pt.dep.dPlatfS, pt.dep.dPlatfR, pt.dep.dCncl)
 		res.departurePlatform = depPl.platform
 		res.plannedDeparturePlatform = depPl.plannedPlatform
 		if (depPl.prognosedPlatform) res.prognosedDeparturePlatform = depPl.prognosedPlatform
 
 		if (opt.stopovers && pt.jny.stopL) {
 			const stopL = pt.jny.stopL
-			res.stopovers = stopL.map(s => profile.parseStopover(ctx, s, date))
+			res.stopovers = stopL.map(s => parse('stopover', s, date))
 
 			if (opt.remarks && Array.isArray(pt.jny.msgL)) {
 				// todo: apply leg-wide remarks if `opt.stopovers` is false
@@ -128,7 +128,7 @@ const parseJourneyLeg = (ctx, pt, date) => { // pt = raw leg
 					tripId: a.jid,
 					line: a.line || null,
 					direction: a.dirTxt || null,
-					...profile.parseWhen(ctx, date, st0.dTimeS, st0.dTimeR, st0.dTZOffset, st0.dCncl)
+					...parse('when', date, st0.dTimeS, st0.dTimeR, st0.dTZOffset, st0.dCncl)
 				}
 			}
 			res.alternatives = freq.jnyL.map(parseAlternative)
