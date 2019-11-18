@@ -1,5 +1,9 @@
 # Changelog
 
+## `4.6.2`
+
+- 105c18b DB: always use `rtMode: HYBRID`
+
 ## `4.6.1`
 
 - 43b4a6e handle `H_UNKNOWN` error
