@@ -15,6 +15,11 @@ const products = require('./products')
 const formatLoyaltyCard = require('./loyalty-cards').format
 
 const transformReqBody = (body) => {
+	const req = body.svcReqL[0] || {}
+
+	// see https://pastebin.com/qZ9WS3Cx
+	req.cfg = {...req.cfg, rtMode: 'HYBRID'} // todo: use `REALTIME`?
+
 	body.client = {id: 'DB', v: '16040000', type: 'IPH', name: 'DB Navigator'}
 	body.ext = 'DB.R19.04.a'
 	body.ver = '1.16'
