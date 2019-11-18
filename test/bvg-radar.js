@@ -5,6 +5,7 @@ const tape = require('tape')
 
 const createClient = require('..')
 const rawProfile = require('../p/bvg')
+const createParse = require('../lib/create-parse')
 const res = require('./fixtures/bvg-radar.json')
 const expected = require('./fixtures/bvg-radar.js')
 
@@ -23,9 +24,11 @@ const opt = {
 }
 
 test('parses a radar() response correctly (BVG)', (t) => {
-	const common = profile.parseCommon({profile, opt, res})
-	const ctx = {profile, opt, common, res}
-	const movements = res.jnyL.map(m => profile.parseMovement(ctx, m))
+	const ctx = {profile, opt, res}
+	ctx.parse = createParse(ctx)
+	ctx.common = ctx.parse('common')
+
+	const movements = res.jnyL.map(m => ctx.parse('movement', m))
 
 	t.deepEqual(movements, expected)
 	t.end()
