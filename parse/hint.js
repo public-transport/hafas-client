@@ -14,13 +14,6 @@ const codesByIcon = Object.assign(Object.create(null), {
 // ]
 const parseHint = (profile, h, icons) => {
 	// todo: C
-	// todo:
-	// { type: 'Q',
-	//   code: '',
-	//   icoX: 11,
-	//   txtN:
-	//    'RE  3132: Berlin Zoologischer Garten - Brandenburg Hbf: Information. A railway carriage is missing',
-	//   sIdx: 4 }
 
 	const text = h.txtN && h.txtN.trim() || ''
 	const icon = 'number' === typeof h.icoX && icons[h.icoX] || null
@@ -51,7 +44,10 @@ const parseHint = (profile, h, icons) => {
 		}
 	}
 
-	if (h.type === 'D' || h.type === 'U' || h.type === 'R' || h.type === 'N' || h.type === 'Y') {
+	if (
+		h.type === 'D' || h.type === 'U' || h.type === 'R' || h.type === 'N' ||
+		h.type === 'Y' || h.type === 'Q'
+	) {
 		// todo: how can we identify the individual types?
 		// todo: does `D` mean "disturbance"?
 		return {
