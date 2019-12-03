@@ -1,0 +1,1481 @@
+{
+	"title": "journeys response",
+	"type": "object",
+	"properties": {
+		"ver": {
+			"type": "string"
+		},
+		"ext": {
+			"type": "string"
+		},
+		"lang": {
+			"type": "string"
+		},
+		"id": {
+			"type": "string"
+		},
+		"svcResL": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"meth": {
+						"type": "string"
+					},
+					"err": {
+						"type": "string"
+					},
+					"res": {
+						"type": "object",
+						"properties": {
+							"common": {
+								"type": "object",
+								"properties": {
+									"locL": {
+										"type": "array",
+										"items": {
+											"type": "object",
+											"properties": {
+												"lid": {
+													"type": "string"
+												},
+												"type": {
+													"type": "string"
+												},
+												"name": {
+													"type": "string"
+												},
+												"icoX": {
+													"type": "number"
+												},
+												"extId": {
+													"type": "string"
+												},
+												"state": {
+													"type": "string"
+												},
+												"crd": {
+													"type": "object",
+													"properties": {
+														"x": {
+															"type": "number"
+														},
+														"y": {
+															"type": "number"
+														},
+														"type": {
+															"type": "string"
+														},
+														"layerX": {
+															"type": "number"
+														},
+														"crdSysX": {
+															"type": "number"
+														},
+														"z": {
+															"type": "number"
+														}
+													}
+												},
+												"pCls": {
+													"type": "number"
+												},
+												"mMastLocX": {
+													"type": "number"
+												},
+												"entry": {
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"lid",
+												"type",
+												"name",
+												"icoX",
+												"extId",
+												"state",
+												"crd",
+												"pCls",
+												"mMastLocX",
+												"entry"
+											]
+										}
+									},
+									"prodL": {
+										"type": "array",
+										"items": {
+											"type": "object",
+											"properties": {
+												"pid": {
+													"type": "string"
+												},
+												"name": {
+													"type": "string"
+												},
+												"nameS": {
+													"type": "string"
+												},
+												"number": {
+													"type": "string"
+												},
+												"icoX": {
+													"type": "number"
+												},
+												"cls": {
+													"type": "number"
+												},
+												"oprX": {
+													"type": "number"
+												},
+												"prodCtx": {
+													"type": "object",
+													"properties": {
+														"name": {
+															"type": "string"
+														},
+														"num": {
+															"type": "string"
+														},
+														"line": {
+															"type": "string"
+														},
+														"matchId": {
+															"type": "string"
+														},
+														"catOut": {
+															"type": "string"
+														},
+														"catOutS": {
+															"type": "string"
+														},
+														"catOutL": {
+															"type": "string"
+														},
+														"catIn": {
+															"type": "string"
+														},
+														"catCode": {
+															"type": "string"
+														},
+														"admin": {
+															"type": "string"
+														}
+													}
+												},
+												"himIdL": {
+													"type": "array",
+													"items": {
+														"type": "string"
+													}
+												}
+											},
+											"required": [
+												"pid",
+												"name",
+												"nameS",
+												"number",
+												"icoX",
+												"cls",
+												"oprX",
+												"prodCtx",
+												"himIdL"
+											]
+										}
+									},
+									"polyL": {
+										"type": "array",
+										"items": {
+											"type": "object",
+											"properties": {
+												"delta": {
+													"type": "boolean"
+												},
+												"dim": {
+													"type": "number"
+												},
+												"type": {
+													"type": "string"
+												},
+												"crdEncYX": {
+													"type": "string"
+												},
+												"crdEncS": {
+													"type": "string"
+												},
+												"crdEncF": {
+													"type": "string"
+												},
+												"ppLocRefL": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"ppIdx": {
+																"type": "number"
+															},
+															"locX": {
+																"type": "number"
+															}
+														},
+														"required": [
+															"ppIdx",
+															"locX"
+														]
+													}
+												},
+												"crdEncZ": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"delta",
+												"dim",
+												"type",
+												"crdEncYX",
+												"crdEncS",
+												"crdEncF",
+												"ppLocRefL",
+												"crdEncZ"
+											]
+										}
+									},
+									"layerL": {
+										"type": "array",
+										"items": {
+											"type": "object",
+											"properties": {
+												"id": {
+													"type": "string"
+												},
+												"name": {
+													"type": "string"
+												},
+												"index": {
+													"type": "number"
+												},
+												"annoCnt": {
+													"type": "number"
+												}
+											},
+											"required": [
+												"id",
+												"name",
+												"index",
+												"annoCnt"
+											]
+										}
+									},
+									"crdSysL": {
+										"type": "array",
+										"items": {
+											"type": "object",
+											"properties": {
+												"id": {
+													"type": "string"
+												},
+												"index": {
+													"type": "number"
+												},
+												"type": {
+													"type": "string"
+												},
+												"dim": {
+													"type": "number"
+												}
+											},
+											"required": [
+												"id",
+												"index",
+												"type",
+												"dim"
+											]
+										}
+									},
+									"opL": {
+										"type": "array",
+										"items": {
+											"type": "object",
+											"properties": {
+												"name": {
+													"type": "string"
+												},
+												"icoX": {
+													"type": "number"
+												},
+												"id": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"name",
+												"icoX",
+												"id"
+											]
+										}
+									},
+									"remL": {
+										"type": "array",
+										"items": {
+											"type": "object",
+											"properties": {
+												"type": {
+													"type": "string"
+												},
+												"code": {
+													"type": "string"
+												},
+												"prio": {
+													"type": "number"
+												},
+												"icoX": {
+													"type": "number"
+												},
+												"txtN": {
+													"type": "string"
+												},
+												"sIdx": {
+													"type": "number"
+												}
+											},
+											"required": [
+												"type",
+												"code",
+												"prio",
+												"icoX",
+												"txtN"
+											]
+										}
+									},
+									"himL": {
+										"type": "array",
+										"items": {
+											"type": "object",
+											"properties": {
+												"hid": {
+													"type": "string"
+												},
+												"act": {
+													"type": "boolean"
+												},
+												"pub": {
+													"type": "string"
+												},
+												"head": {
+													"type": "string"
+												},
+												"lead": {
+													"type": "string"
+												},
+												"text": {
+													"type": "string"
+												},
+												"tckr": {
+													"type": "string"
+												},
+												"icoX": {
+													"type": "number"
+												},
+												"prio": {
+													"type": "number"
+												},
+												"fLocX": {
+													"type": "number"
+												},
+												"prod": {
+													"type": "number"
+												},
+												"lModDate": {
+													"type": "string"
+												},
+												"lModTime": {
+													"type": "string"
+												},
+												"sDate": {
+													"type": "string"
+												},
+												"sTime": {
+													"type": "string"
+												},
+												"eDate": {
+													"type": "string"
+												},
+												"eTime": {
+													"type": "string"
+												},
+												"comp": {
+													"type": "string"
+												},
+												"cat": {
+													"type": "number"
+												},
+												"pubChL": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"name": {
+																"type": "string"
+															},
+															"fDate": {
+																"type": "string"
+															},
+															"fTime": {
+																"type": "string"
+															},
+															"tDate": {
+																"type": "string"
+															},
+															"tTime": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"name",
+															"fDate",
+															"fTime",
+															"tDate",
+															"tTime"
+														]
+													}
+												}
+											},
+											"required": [
+												"hid",
+												"act",
+												"pub",
+												"head",
+												"lead",
+												"text",
+												"tckr",
+												"icoX",
+												"prio",
+												"fLocX",
+												"prod",
+												"lModDate",
+												"lModTime",
+												"sDate",
+												"sTime",
+												"eDate",
+												"eTime",
+												"comp",
+												"cat",
+												"pubChL"
+											]
+										}
+									},
+									"icoL": {
+										"type": "array",
+										"items": {
+											"type": "object",
+											"properties": {
+												"res": {
+													"type": "string"
+												},
+												"fg": {
+													"type": "object",
+													"properties": {
+														"r": {
+															"type": "number"
+														},
+														"g": {
+															"type": "number"
+														},
+														"b": {
+															"type": "number"
+														},
+														"a": {
+															"type": "number"
+														}
+													}
+												},
+												"bg": {
+													"type": "object",
+													"properties": {
+														"r": {
+															"type": "number"
+														},
+														"g": {
+															"type": "number"
+														},
+														"b": {
+															"type": "number"
+														},
+														"a": {
+															"type": "number"
+														}
+													}
+												},
+												"txt": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"res",
+												"fg",
+												"bg",
+												"txt"
+											]
+										}
+									},
+									"tcocL": {
+										"type": "array",
+										"items": {
+											"type": "object",
+											"properties": {
+												"c": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"c"
+											]
+										}
+									}
+								}
+							},
+							"outConL": {
+								"type": "array",
+								"items": {
+									"type": "object",
+									"properties": {
+										"cid": {
+											"type": "string"
+										},
+										"date": {
+											"type": "string"
+										},
+										"dur": {
+											"type": "string"
+										},
+										"chg": {
+											"type": "number"
+										},
+										"sDays": {
+											"type": "object",
+											"properties": {
+												"sDaysR": {
+													"type": "string"
+												},
+												"sDaysI": {
+													"type": "string"
+												},
+												"sDaysB": {
+													"type": "string"
+												}
+											}
+										},
+										"dep": {
+											"type": "object",
+											"properties": {
+												"locX": {
+													"type": "number"
+												},
+												"idx": {
+													"type": "number"
+												},
+												"dProdX": {
+													"type": "number"
+												},
+												"dInR": {
+													"type": "boolean"
+												},
+												"dTimeS": {
+													"type": "string"
+												},
+												"dTimeR": {
+													"type": "string"
+												},
+												"dProgType": {
+													"type": "string"
+												},
+												"type": {
+													"type": "string"
+												}
+											}
+										},
+										"arr": {
+											"type": "object",
+											"properties": {
+												"locX": {
+													"type": "number"
+												},
+												"idx": {
+													"type": "number"
+												},
+												"aOutR": {
+													"type": "boolean"
+												},
+												"aTimeS": {
+													"type": "string"
+												},
+												"aProgType": {
+													"type": "string"
+												},
+												"type": {
+													"type": "string"
+												},
+												"aTimeR": {
+													"type": "string"
+												},
+												"aProdX": {
+													"type": "number"
+												},
+												"aPlatfS": {
+													"type": "string"
+												},
+												"aTZOffset": {
+													"type": "number"
+												}
+											}
+										},
+										"secL": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"type": {
+														"type": "string"
+													},
+													"icoX": {
+														"type": "number"
+													},
+													"dep": {
+														"type": "object",
+														"properties": {
+															"locX": {
+																"type": "number"
+															},
+															"idx": {
+																"type": "number"
+															},
+															"dProdX": {
+																"type": "number"
+															},
+															"dInR": {
+																"type": "boolean"
+															},
+															"dTimeS": {
+																"type": "string"
+															},
+															"dTimeR": {
+																"type": "string"
+															},
+															"dProgType": {
+																"type": "string"
+															},
+															"type": {
+																"type": "string"
+															},
+															"dPlatfS": {
+																"type": "string"
+															},
+															"dPlatfR": {
+																"type": "string"
+															},
+															"dCncl": {
+																"type": "boolean"
+															},
+															"msgL": {
+																"type": "array",
+																"items": {
+																	"type": "object",
+																	"properties": {
+																		"type": {
+																			"type": "string"
+																		},
+																		"remX": {
+																			"type": "number"
+																		},
+																		"tagL": {
+																			"type": "array",
+																			"items": {
+																				"type": "string"
+																			}
+																		},
+																		"txtC": {
+																			"type": "object",
+																			"properties": {
+																				"r": {
+																					"type": "number"
+																				},
+																				"g": {
+																					"type": "number"
+																				},
+																				"b": {
+																					"type": "number"
+																				},
+																				"a": {
+																					"type": "number"
+																				}
+																			}
+																		},
+																		"prio": {
+																			"type": "number"
+																		},
+																		"fIdx": {
+																			"type": "number"
+																		},
+																		"tIdx": {
+																			"type": "number"
+																		}
+																	},
+																	"required": [
+																		"type",
+																		"remX",
+																		"tagL"
+																	]
+																}
+															},
+															"dTZOffset": {
+																"type": "number"
+															},
+															"dTrnCmpSX": {
+																"type": "object",
+																"properties": {
+																	"tcocX": {
+																		"type": "array",
+																		"items": {
+																			"type": "number"
+																		}
+																	},
+																	"tcM": {
+																		"type": "number"
+																	}
+																}
+															}
+														}
+													},
+													"arr": {
+														"type": "object",
+														"properties": {
+															"locX": {
+																"type": "number"
+															},
+															"idx": {
+																"type": "number"
+															},
+															"aOutR": {
+																"type": "boolean"
+															},
+															"aTimeS": {
+																"type": "string"
+															},
+															"aTimeR": {
+																"type": "string"
+															},
+															"aProgType": {
+																"type": "string"
+															},
+															"type": {
+																"type": "string"
+															},
+															"aProdX": {
+																"type": "number"
+															},
+															"aPlatfS": {
+																"type": "string"
+															},
+															"aPlatfR": {
+																"type": "string"
+															},
+															"aCncl": {
+																"type": "boolean"
+															},
+															"msgL": {
+																"type": "array",
+																"items": {
+																	"type": "object",
+																	"properties": {
+																		"type": {
+																			"type": "string"
+																		},
+																		"remX": {
+																			"type": "number"
+																		},
+																		"tagL": {
+																			"type": "array",
+																			"items": {
+																				"type": "string"
+																			}
+																		}
+																	}
+																}
+															},
+															"aTZOffset": {
+																"type": "number"
+															},
+															"aTrnCmpSX": {
+																"type": "object",
+																"properties": {
+																	"tcM": {
+																		"type": "number"
+																	}
+																}
+															}
+														}
+													},
+													"jny": {
+														"type": "object",
+														"properties": {
+															"jid": {
+																"type": "string"
+															},
+															"prodX": {
+																"type": "number"
+															},
+															"dirTxt": {
+																"type": "string"
+															},
+															"status": {
+																"type": "string"
+															},
+															"isRchbl": {
+																"type": "boolean"
+															},
+															"stopL": {
+																"type": "array",
+																"items": {
+																	"type": "object",
+																	"properties": {
+																		"locX": {
+																			"type": "number"
+																		},
+																		"idx": {
+																			"type": "number"
+																		},
+																		"dProdX": {
+																			"type": "number"
+																		},
+																		"dInR": {
+																			"type": "boolean"
+																		},
+																		"dTimeS": {
+																			"type": "string"
+																		},
+																		"dTimeR": {
+																			"type": "string"
+																		},
+																		"dProgType": {
+																			"type": "string"
+																		},
+																		"dDirTxt": {
+																			"type": "string"
+																		},
+																		"dDirFlg": {
+																			"type": "string"
+																		},
+																		"type": {
+																			"type": "string"
+																		},
+																		"aProdX": {
+																			"type": "number"
+																		},
+																		"aOutR": {
+																			"type": "boolean"
+																		},
+																		"aTimeS": {
+																			"type": "string"
+																		},
+																		"aTimeR": {
+																			"type": "string"
+																		},
+																		"aProgType": {
+																			"type": "string"
+																		},
+																		"dCncl": {
+																			"type": "boolean"
+																		},
+																		"msgL": {
+																			"type": "array",
+																			"items": {
+																				"type": "object",
+																				"properties": {
+																					"type": {
+																						"type": "string"
+																					},
+																					"remX": {
+																						"type": "number"
+																					},
+																					"tagL": {
+																						"type": "array",
+																						"items": {
+																							"type": "string"
+																						}
+																					},
+																					"txtC": {
+																						"type": "object",
+																						"properties": {
+																							"r": {
+																								"type": "number"
+																							},
+																							"g": {
+																								"type": "number"
+																							},
+																							"b": {
+																								"type": "number"
+																							},
+																							"a": {
+																								"type": "number"
+																							}
+																						}
+																					},
+																					"prio": {
+																						"type": "number"
+																					},
+																					"fIdx": {
+																						"type": "number"
+																					},
+																					"tIdx": {
+																						"type": "number"
+																					}
+																				},
+																				"required": [
+																					"type",
+																					"remX",
+																					"tagL"
+																				]
+																			}
+																		},
+																		"aCncl": {
+																			"type": "boolean"
+																		},
+																		"dTZOffset": {
+																			"type": "number"
+																		},
+																		"aTZOffset": {
+																			"type": "number"
+																		},
+																		"dPlatfS": {
+																			"type": "string"
+																		},
+																		"aPlatfS": {
+																			"type": "string"
+																		},
+																		"dTrnCmpSX": {
+																			"type": "object",
+																			"properties": {
+																				"tcocX": {
+																					"type": "array",
+																					"items": {
+																						"type": "number"
+																					}
+																				}
+																			}
+																		}
+																	},
+																	"required": [
+																		"locX",
+																		"idx",
+																		"dProdX",
+																		"dInR",
+																		"dTimeS",
+																		"dTimeR",
+																		"dProgType",
+																		"type",
+																		"aProdX",
+																		"aOutR",
+																		"aTimeS",
+																		"aTimeR",
+																		"aProgType",
+																		"dDirTxt",
+																		"dDirFlg",
+																		"dCncl",
+																		"msgL",
+																		"aCncl",
+																		"dTZOffset",
+																		"aTZOffset",
+																		"dPlatfS",
+																		"aPlatfS",
+																		"dTrnCmpSX"
+																	]
+																}
+															},
+															"polyG": {
+																"type": "object",
+																"properties": {
+																	"polyXL": {
+																		"type": "array",
+																		"items": {
+																			"type": "number"
+																		}
+																	},
+																	"layerX": {
+																		"type": "number"
+																	},
+																	"crdSysX": {
+																		"type": "number"
+																	}
+																}
+															},
+															"freq": {
+																"type": "object",
+																"properties": {
+																	"minC": {
+																		"type": "number"
+																	},
+																	"maxC": {
+																		"type": "number"
+																	},
+																	"numC": {
+																		"type": "number"
+																	},
+																	"jnyL": {
+																		"type": "array",
+																		"items": {
+																			"type": "object",
+																			"properties": {
+																				"jid": {
+																					"type": "string"
+																				},
+																				"prodX": {
+																					"type": "number"
+																				},
+																				"dirTxt": {
+																					"type": "string"
+																				},
+																				"stopL": {
+																					"type": "array",
+																					"items": {
+																						"type": "object",
+																						"properties": {
+																							"locX": {
+																								"type": "number"
+																							},
+																							"idx": {
+																								"type": "number"
+																							},
+																							"dProdX": {
+																								"type": "number"
+																							},
+																							"dTimeS": {
+																								"type": "string"
+																							},
+																							"dDirTxt": {
+																								"type": "string"
+																							},
+																							"dDirFlg": {
+																								"type": "string"
+																							},
+																							"type": {
+																								"type": "string"
+																							},
+																							"aProdX": {
+																								"type": "number"
+																							},
+																							"aTimeS": {
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"locX",
+																							"idx",
+																							"type",
+																							"dProdX",
+																							"dTimeS",
+																							"dDirTxt",
+																							"dDirFlg",
+																							"aProdX",
+																							"aTimeS"
+																						]
+																					}
+																				},
+																				"ctxRecon": {
+																					"type": "string"
+																				},
+																				"msgL": {
+																					"type": "array",
+																					"items": {
+																						"type": "object",
+																						"properties": {
+																							"type": {
+																								"type": "string"
+																							},
+																							"remX": {
+																								"type": "number"
+																							},
+																							"fLocX": {
+																								"type": "number"
+																							},
+																							"tLocX": {
+																								"type": "number"
+																							},
+																							"tagL": {
+																								"type": "array",
+																								"items": {
+																									"type": "string"
+																								}
+																							}
+																						},
+																						"required": [
+																							"type",
+																							"remX",
+																							"fLocX",
+																							"tLocX",
+																							"tagL"
+																						]
+																					}
+																				},
+																				"subscr": {
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"jid",
+																				"prodX",
+																				"dirTxt",
+																				"stopL",
+																				"ctxRecon",
+																				"msgL",
+																				"subscr"
+																			]
+																		}
+																	}
+																}
+															},
+															"ctxRecon": {
+																"type": "string"
+															},
+															"msgL": {
+																"type": "array",
+																"items": {
+																	"type": "object",
+																	"properties": {
+																		"type": {
+																			"type": "string"
+																		},
+																		"remX": {
+																			"type": "number"
+																		},
+																		"fLocX": {
+																			"type": "number"
+																		},
+																		"tLocX": {
+																			"type": "number"
+																		},
+																		"tagL": {
+																			"type": "array",
+																			"items": {
+																				"type": "string"
+																			}
+																		},
+																		"himX": {
+																			"type": "number"
+																		},
+																		"fIdx": {
+																			"type": "number"
+																		},
+																		"tIdx": {
+																			"type": "number"
+																		}
+																	},
+																	"required": [
+																		"type",
+																		"remX",
+																		"fLocX",
+																		"tLocX",
+																		"tagL",
+																		"himX",
+																		"fIdx",
+																		"tIdx"
+																	]
+																}
+															},
+															"subscr": {
+																"type": "string"
+															},
+															"isCncl": {
+																"type": "boolean"
+															},
+															"chgDurR": {
+																"type": "number"
+															}
+														}
+													},
+													"minChg": {
+														"type": "string"
+													},
+													"gis": {
+														"type": "object",
+														"properties": {
+															"dist": {
+																"type": "number"
+															},
+															"durS": {
+																"type": "string"
+															},
+															"ctx": {
+																"type": "string"
+															},
+															"dirGeo": {
+																"type": "number"
+															},
+															"polyG": {
+																"type": "object",
+																"properties": {
+																	"polyXL": {
+																		"type": "array",
+																		"items": {
+																			"type": "number"
+																		}
+																	},
+																	"layerX": {
+																		"type": "number"
+																	},
+																	"crdSysX": {
+																		"type": "number"
+																	}
+																}
+															},
+															"gisPrvr": {
+																"type": "string"
+															}
+														}
+													},
+													"resState": {
+														"type": "string"
+													},
+													"resRecommendation": {
+														"type": "string"
+													},
+													"hide": {
+														"type": "boolean"
+													}
+												},
+												"required": [
+													"type",
+													"icoX",
+													"dep",
+													"arr",
+													"jny",
+													"minChg",
+													"gis",
+													"resState",
+													"resRecommendation",
+													"hide"
+												]
+											}
+										},
+										"ctxRecon": {
+											"type": "string"
+										},
+										"freq": {
+											"type": "object",
+											"properties": {
+												"minC": {
+													"type": "number"
+												}
+											}
+										},
+										"conSubscr": {
+											"type": "string"
+										},
+										"cksum": {
+											"type": "string"
+										},
+										"isNotRdbl": {
+											"type": "boolean"
+										},
+										"badSecRefX": {
+											"type": "number"
+										},
+										"msgL": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"type": {
+														"type": "string"
+													},
+													"remX": {
+														"type": "number"
+													},
+													"tagL": {
+														"type": "array",
+														"items": {
+															"type": "string"
+														}
+													}
+												},
+												"required": [
+													"type",
+													"remX",
+													"tagL"
+												]
+											}
+										},
+										"trfRes": {
+											"type": "object",
+											"properties": {
+												"statusCode": {
+													"type": "string"
+												},
+												"fareSetL": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"fareL": {
+																"type": "array",
+																"items": {
+																	"type": "object",
+																	"properties": {
+																		"prc": {
+																			"type": "number"
+																		},
+																		"isFromPrice": {
+																			"type": "boolean"
+																		},
+																		"isBookable": {
+																			"type": "boolean"
+																		},
+																		"isUpsell": {
+																			"type": "boolean"
+																		},
+																		"targetCtx": {
+																			"type": "string"
+																		},
+																		"addHint": {
+																			"type": "string"
+																		},
+																		"buttonText": {
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"prc",
+																		"isFromPrice",
+																		"isBookable",
+																		"isUpsell",
+																		"targetCtx",
+																		"buttonText"
+																	]
+																}
+															}
+														},
+														"required": [
+															"fareL"
+														]
+													}
+												}
+											}
+										},
+										"resState": {
+											"type": "string"
+										},
+										"resRecommendation": {
+											"type": "string"
+										},
+										"recState": {
+											"type": "string"
+										},
+										"sotRating": {
+											"type": "number"
+										},
+										"isSotCon": {
+											"type": "boolean"
+										},
+										"showARSLink": {
+											"type": "boolean"
+										},
+										"sotCtxt": {
+											"type": "object",
+											"properties": {
+												"calcDate": {
+													"type": "string"
+												},
+												"locMode": {
+													"type": "string"
+												},
+												"reqMode": {
+													"type": "string"
+												},
+												"calcTime": {
+													"type": "string"
+												}
+											}
+										}
+									},
+									"required": [
+										"cid",
+										"date",
+										"dur",
+										"chg",
+										"sDays",
+										"dep",
+										"arr",
+										"secL",
+										"ctxRecon",
+										"freq",
+										"conSubscr",
+										"cksum",
+										"isNotRdbl",
+										"badSecRefX",
+										"msgL",
+										"trfRes",
+										"resState",
+										"resRecommendation",
+										"recState",
+										"sotRating",
+										"isSotCon",
+										"showARSLink",
+										"sotCtxt"
+									]
+								}
+							},
+							"outCtxScrB": {
+								"type": "string"
+							},
+							"outCtxScrF": {
+								"type": "string"
+							},
+							"retCtxScrF": {
+								"type": "string"
+							},
+							"fpB": {
+								"type": "string"
+							},
+							"fpE": {
+								"type": "string"
+							},
+							"planrtTS": {
+								"type": "string"
+							},
+							"bfATS": {
+								"type": "number"
+							},
+							"bfIOSTS": {
+								"type": "number"
+							}
+						}
+					}
+				},
+				"required": [
+					"meth",
+					"err",
+					"res"
+				]
+			}
+		},
+		"cInfo": {
+			"type": "object",
+			"properties": {
+				"code": {
+					"type": "string"
+				},
+				"url": {
+					"type": "string"
+				},
+				"msg": {
+					"type": "string"
+				}
+			}
+		}
+	},
+	"required": [
+		"ver",
+		"ext",
+		"lang",
+		"id",
+		"svcResL"
+	]
+}

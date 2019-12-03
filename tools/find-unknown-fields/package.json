@@ -1,0 +1,9 @@
+{
+	"private": true,
+	"name": "find-unknown-fields",
+	"version": "1.0.0",
+	"main": "index.js",
+	"dependencies": {
+		"ajv": "^6.10.1"
+	}
+}
