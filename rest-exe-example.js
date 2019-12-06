@@ -6,7 +6,7 @@ const TOKEN = process.env.TOKEN
 if (!TOKEN) throw new Error('missing TOKEN env var')
 
 const profile = {
-	endpoint: 'https://dbrest-rt.hafas.de/openapi/1.23/'
+	endpoint: 'https://demo.hafas.de/db-vendo/restproxy/'
 }
 
 const {
@@ -23,9 +23,10 @@ const berlinSchönefeld = '8010109'
 const berlinWestkreuz = '8089047'
 const berlinMesseSüd = '8089328'
 const berlinYorckstrS1 = '8089051'
+const frankfurtHbf = '8000105'
 const somewhereInBerlin = {type: 'location', address: 'foo', latitude: 52.51072, longitude: 13.37793}
 
-// journeys(berlinOstkreuz, '8000261', {
+// journeys('8000150', berlinOstkreuz, {
 // 	results: 3,
 // 	stopovers: true,
 // 	remarks: true
@@ -35,8 +36,9 @@ const somewhereInBerlin = {type: 'location', address: 'foo', latitude: 52.51072,
 // .then(trip)
 // .then(tripHistory)
 // tripAlternatives()
+// trip('1|406543|0|80|2122019')
 
-locations('leopoldplatz ber')
+// locations('hanau hbf')
 // nearby({type: 'location', latitude: 52.4751309, longitude: 13.3656537})
 // departures(berlinYorckstrS1, {
 // 	remarks: true
@@ -54,7 +56,8 @@ locations('leopoldplatz ber')
 // remarks()
 // dataInfo()
 
-.then(data => console.log(require('util').inspect(data, {depth: null, colors: true})))
+// .then(data => console.log(require('util').inspect(data, {depth: null, colors: true})))
+.then(data => console.log(JSON.stringify(data)))
 .catch((err) => {
 	console.error(err)
 	process.exit(1)
