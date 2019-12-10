@@ -1,27 +1,6 @@
 # hafas-client
 
-**A client for HAFAS public transport APIs**. Sort of like [public-transport-enabler](https://github.com/schildbach/public-transport-enabler), but with a smaller scope. It [contains customisations](p) for the following transport networks:
-
-HAFAS endpoint | wrapper library | docs | example code | source code
----------------|------------------|------|---------|------------
-[Deutsche Bahn (DB)](https://en.wikipedia.org/wiki/Deutsche_Bahn) | [`db-hafas`](https://github.com/derhuerst/db-hafas) | [docs](p/db/readme.md) | [example code](p/db/example.js) | [src](p/db/index.js)
-[Berlin & Brandenburg public transport (VBB)](https://en.wikipedia.org/wiki/Verkehrsverbund_Berlin-Brandenburg) | [`vbb-hafas`](https://github.com/derhuerst/vbb-hafas) | [docs](p/vbb/readme.md) | [example code](p/vbb/example.js) | [src](p/vbb/index.js)
-[Berlin public transport (BVG)](https://en.wikipedia.org/wiki/Berliner_Verkehrsbetriebe) | [`bvg-hafas`](https://github.com/derhuerst/bvg-hafas) | [docs](p/bvg/readme.md) | [example code](p/bvg/example.js) | [src](p/bvg/index.js)
-[Österreichische Bundesbahnen (ÖBB)](https://en.wikipedia.org/wiki/Austrian_Federal_Railways) | [`oebb-hafas`](https://github.com/juliuste/oebb-hafas) | [docs](p/oebb/readme.md) | [example code](p/oebb/example.js) | [src](p/oebb/index.js)
-[Nahverkehr Sachsen-Anhalt (NASA)](https://de.wikipedia.org/wiki/Nahverkehrsservice_Sachsen-Anhalt)/[INSA](https://insa.de) | [`insa-hafas`](https://github.com/derhuerst/insa-hafas) | [docs](p/insa/readme.md) | [example code](p/insa/example.js) | [src](p/insa/index.js)
-[Nahverkehrsverbund Schleswig-Holstein (NAH.SH)](https://de.wikipedia.org/wiki/Nahverkehrsverbund_Schleswig-Holstein) | [`nahsh-hafas`](https://github.com/juliuste/nahsh-hafas) | [docs](p/nahsh/readme.md) | [example code](p/nahsh/example.js) | [src](p/nahsh/index.js)
-[Austin, Texas (CMTA/*CapMetro*)](https://en.wikipedia.org/wiki/Capital_Metropolitan_Transportation_Authority) | - | [docs](p/cmta/readme.md) | [example code](p/cmta/example.js) | [src](p/cmta/index.js)
-[*S-Bahn München*](https://en.wikipedia.org/wiki/Munich_S-Bahn) | - | [docs](p/sbahn-muenchen/readme.md) | [example code](p/sbahn-muenchen/example.js) | [src](p/sbahn-muenchen/index.js)
-*Saarfahrplan*/VGS ([Saarland](https://en.wikipedia.org/wiki/Saarland)) | - | [docs](p/saarfahrplan/readme.md) | [example code](p/saarfahrplan/example.js) | [src](p/saarfahrplan/index.js)
-[Société Nationale des Chemins de Fer Luxembourgeois (CFL)](https://en.wikipedia.org/wiki/Société_Nationale_des_Chemins_de_Fer_Luxembourgeois) | - | [docs](p/cfl/readme.md) | [example code](p/cfl/example.js) | [src](p/cfl/index.js)
-[Hamburg public transport (HVV)](https://en.wikipedia.org/wiki/Hamburger_Verkehrsverbund) | - | [docs](p/hvv/readme.md) | [example code](p/hvv/example.js) | [src](p/hvv/index.js)
-[*Nordhessischer Verkehrsverbund (NVV)*](https://en.wikipedia.org/wiki/Nordhessischer_Verkehrsverbund) ([Hesse](https://en.wikipedia.org/wiki/Hesse)) | - | [docs](p/nvv/readme.md) | [example code](p/nvv/example.js) | [src](p/nvv/index.js)
-
-There are also client libraries that use the library, but contain their own customisations:
-
-HAFAS endpoint | library
----------------|--------
-[Betriebsstellen & disturbances in the German rail network](https://strecken.info/) | [`db-netz-hafas`](https://github.com/derhuerst/db-netz-hafas)
+**A client for HAFAS public transport APIs**. Sort of like [public-transport-enabler](https://github.com/schildbach/public-transport-enabler), but with a smaller scope. It [contains customisations](p) for [several public transportation networks](#supported-networksendpoints)
 
 [![npm version](https://img.shields.io/npm/v/hafas-client.svg)](https://www.npmjs.com/package/hafas-client)
 [![build status](https://img.shields.io/travis/public-transport/hafas-client.svg?branch=3)](https://travis-ci.org/public-transport/hafas-client)
@@ -48,55 +27,49 @@ npm install hafas-client
 `hafas-client` as well its dependencies use [Node-builtin modules](https://nodejs.org/dist/latest/docs/api/) and [Node globals](https://nodejs.org/api/globals.html). To be able to use it within react-native, follow [the instructions at `node-libs-react-native`](https://github.com/parshap/node-libs-react-native/blob/3/README.md#usage).
 
 
-## API
-
-[API documentation](docs/readme.md)
-
-
 ## Usage
 
 ```js
 const createClient = require('hafas-client')
 const dbProfile = require('hafas-client/p/db')
 
-// create a client with Deutsche Bahn profile
+// create a client with the Deutsche Bahn profile
 const client = createClient(dbProfile, 'my-awesome-program')
 
 // Berlin Jungfernheide to München Hbf
 client.journeys('8011167', '8000261', {results: 1})
-.then(console.log)
-.catch(console.error)
+.then(console.log).catch(console.error)
 ```
 
-The returned [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/promise) will resolve with an object with an array `journeys` that contains one [*FPTF* `journey`](https://github.com/public-transport/friendly-public-transport-format/blob/1.2.0/spec/readme.md#journey).
+`journeys()` returns a [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/promise) that will resolve with an object with an array `journeys` that contains one [*FPTF* `journey`](https://github.com/public-transport/friendly-public-transport-format/blob/1.2.0/spec/readme.md#journey).
 
 ```js
 {
 	journeys: [ {
+		origin: {
+			type: 'station',
+			id: '8089100',
+			name: 'Berlin Jungfernheide (S)',
+			location: { /* … */ },
+			products: { /* … */ }
+		},
+		departure: '2019-12-17T17:05:30+01:00',
+		departureDelay: 30,
+		departurePlatform: '5',
+
+		destination: {
+			type: 'station',
+			id: '8000261',
+			name: 'München Hbf',
+			location: { /* … */ },
+			products: { /* … */ }
+		},
+		arrival: '2019-12-17T22:44:00+01:00',
+		arrivalDelay: -60,
+		arrivalPlatform: '11A',
+
 		legs: [ {
 			id: '1|100067|48|81|17122017',
-			origin: {
-				type: 'station',
-				id: '8089100',
-				name: 'Berlin Jungfernheide (S)',
-				location: {
-					type: 'location',
-					latitude: 52.530291,
-					longitude: 13.299451
-				},
-				products: { /* … */ }
-			},
-			departure: '2017-12-17T17:05:00+01:00',
-			departurePlatform: '5',
-			destination: {
-				type: 'station',
-				id: '8089118',
-				name: 'Berlin Beusselstraße',
-				location: { /* … */ },
-				products: { /* … */ }
-			},
-			arrival: '2017-12-17T17:08:00+01:00',
-			arrivalPlatform: '1',
 			line: {
 				type: 'line',
 				id: '41172',
@@ -110,78 +83,120 @@ The returned [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript
 					name: 'S-Bahn Berlin GmbH'
 				}
 			},
-			direction: 'Ringbahn ->'
-		}, /* … */ {
+			direction: 'Ringbahn ->',
+
 			origin: {
 				type: 'station',
-				id: '730749',
-				name: 'Berlin Hauptbahnhof (S+U), Berlin',
+				id: '8089100',
+				name: 'Berlin Jungfernheide (S)',
 				location: {
 					type: 'location',
-					latitude: 52.526461,
-					longitude: 13.369378
+					latitude: 52.530291,
+					longitude: 13.299451
 				},
 				products: { /* … */ }
 			},
-			departure: '2017-12-17T17:25:00+01:00',
+			departure: '2019-12-17T17:05:30+01:00',
+			departureDelay: 30,
+			departurePlatform: '5',
+
+			destination: {
+				type: 'station',
+				id: '8089118',
+				name: 'Berlin Beusselstraße'
+				/* … */
+			},
+			arrival: '2019-12-17T17:08:00+01:00',
+			arrivalDelay: null,
+			arrivalPlatform: '2a-b'
+		},
+		/* more legs… */
+		{
+			walking: true,
+			public: true,
+
+			origin: {
+				type: 'station',
+				id: '730749',
+				name: 'Berlin Hauptbahnhof (S+U), Berlin'
+				/* … */
+			},
+			departure: '2019-12-17T17:25:00+01:00',
+			departureDelay: null,
+
 			destination: {
 				type: 'station',
 				id: '8098160',
-				name: 'Berlin Hbf (tief)',
-				location: { /* … */ },
-				products: { /* … */ }
+				name: 'Berlin Hbf (tief)'
+				/* … */
 			},
-			arrival: '2017-12-17T17:33:00+01:00',
-			public: true,
-			walking: true
+			arrival: '2019-12-17T17:33:00+01:00',
+			arrivalDelay: null
 		}, {
 			id: '1|70906|0|81|17122017',
+			line: { /* … */ },
+			direction: 'München Hbf',
+
 			origin: {
 				type: 'station',
 				id: '8098160',
-				name: 'Berlin Hbf (tief)',
-				location: { /* … */ },
-				products: { /* … */ }
+				name: 'Berlin Hbf (tief)'
+				/* … */
 			},
-			departure: '2017-12-17T17:37:00+01:00',
+			departure: '2019-12-17T17:35:00+01:00',
+			departureDelay: -120,
 			departurePlatform: '1',
+
 			destination: {
 				type: 'station',
 				id: '8000261',
 				name: 'München Hbf',
-				location: { /* … */ },
-				products: { /* … */ }
+				/* … */
 			},
-			arrival: '2017-12-17T22:45:00+01:00',
-			arrivalPlatform: '13',
-			line: { /* … */ },
-			direction: 'München Hbf'
+			arrival: '2019-12-17T22:44:00+01:00',
+			arrivalDelay: -60,
+			arrivalPlatform: '11A'
 		} ],
-		origin: {
-			type: 'station',
-			id: '8089100',
-			name: 'Berlin Jungfernheide (S)',
-			location: { /* … */ },
-			products: { /* … */ }
-		},
-		departure: '2017-12-17T17:05:00+01:00',
-		destination: {
-			type: 'station',
-			id: '8000261',
-			name: 'München Hbf',
-			location: { /* … */ },
-			products: { /* … */ }
-		},
-		arrival: '2017-12-17T22:45:00+01:00',
 		price: {
 			amount: null,
 			hint: 'No pricing information available.'
 		}
-	} ],
-	earlierRef: /* … */,
-	laterRef: /* … */
+		/* … */
+	} ]
+	/* … */
 }
 ```
+
+
+## API
+
+[API documentation](docs/readme.md)
+
+
+## supported networks/endpoints
+
+`hafas-client` has built-in customisations (called "profiles") for these public transportation networks:
+
+HAFAS endpoint | wrapper library | docs | example code | source code
+---------------|------------------|------|---------|------------
+[Deutsche Bahn (DB)](https://en.wikipedia.org/wiki/Deutsche_Bahn) | [`db-hafas`](https://github.com/derhuerst/db-hafas) | [docs](p/db/readme.md) | [example code](p/db/example.js) | [src](p/db/index.js)
+[Berlin & Brandenburg public transport (VBB)](https://en.wikipedia.org/wiki/Verkehrsverbund_Berlin-Brandenburg) | [`vbb-hafas`](https://github.com/derhuerst/vbb-hafas) | [docs](p/vbb/readme.md) | [example code](p/vbb/example.js) | [src](p/vbb/index.js)
+[Berlin public transport (BVG)](https://en.wikipedia.org/wiki/Berliner_Verkehrsbetriebe) | [`bvg-hafas`](https://github.com/derhuerst/bvg-hafas) | [docs](p/bvg/readme.md) | [example code](p/bvg/example.js) | [src](p/bvg/index.js)
+[Österreichische Bundesbahnen (ÖBB)](https://en.wikipedia.org/wiki/Austrian_Federal_Railways) | [`oebb-hafas`](https://github.com/juliuste/oebb-hafas) | [docs](p/oebb/readme.md) | [example code](p/oebb/example.js) | [src](p/oebb/index.js)
+[Nahverkehr Sachsen-Anhalt (NASA)](https://de.wikipedia.org/wiki/Nahverkehrsservice_Sachsen-Anhalt)/[INSA](https://insa.de) | [`insa-hafas`](https://github.com/derhuerst/insa-hafas) | [docs](p/insa/readme.md) | [example code](p/insa/example.js) | [src](p/insa/index.js)
+[Nahverkehrsverbund Schleswig-Holstein (NAH.SH)](https://de.wikipedia.org/wiki/Nahverkehrsverbund_Schleswig-Holstein) | [`nahsh-hafas`](https://github.com/juliuste/nahsh-hafas) | [docs](p/nahsh/readme.md) | [example code](p/nahsh/example.js) | [src](p/nahsh/index.js)
+[Austin, Texas (CMTA/*CapMetro*)](https://en.wikipedia.org/wiki/Capital_Metropolitan_Transportation_Authority) | - | [docs](p/cmta/readme.md) | [example code](p/cmta/example.js) | [src](p/cmta/index.js)
+[*S-Bahn München*](https://en.wikipedia.org/wiki/Munich_S-Bahn) | - | [docs](p/sbahn-muenchen/readme.md) | [example code](p/sbahn-muenchen/example.js) | [src](p/sbahn-muenchen/index.js)
+*Saarfahrplan*/VGS ([Saarland](https://en.wikipedia.org/wiki/Saarland)) | - | [docs](p/saarfahrplan/readme.md) | [example code](p/saarfahrplan/example.js) | [src](p/saarfahrplan/index.js)
+[Société Nationale des Chemins de Fer Luxembourgeois (CFL)](https://en.wikipedia.org/wiki/Société_Nationale_des_Chemins_de_Fer_Luxembourgeois) | - | [docs](p/cfl/readme.md) | [example code](p/cfl/example.js) | [src](p/cfl/index.js)
+[Hamburg public transport (HVV)](https://en.wikipedia.org/wiki/Hamburger_Verkehrsverbund) | - | [docs](p/hvv/readme.md) | [example code](p/hvv/example.js) | [src](p/hvv/index.js)
+[*Nordhessischer Verkehrsverbund (NVV)*](https://en.wikipedia.org/wiki/Nordhessischer_Verkehrsverbund) ([Hesse](https://en.wikipedia.org/wiki/Hesse)) | - | [docs](p/nvv/readme.md) | [example code](p/nvv/example.js) | [src](p/nvv/index.js)
+
+There are also libraries that use `hafas-client` and pass their own profile in:
+
+HAFAS endpoint | library
+---------------|--------
+[Betriebsstellen & disturbances in the German rail network](https://strecken.info/) | [`db-netz-hafas`](https://github.com/derhuerst/db-netz-hafas)
 
 
 ## Related
