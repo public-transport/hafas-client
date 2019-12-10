@@ -13,8 +13,8 @@
 
 ## Migrating from an old `hafas-client` version
 
-- [`2` → `3` migration guide](migrating-to-3.md)
 - [`3` → `4` migration guide](migrating-to-4.md)
+- [`4` → `5` migration guide](migrating-to-5.md)
 
 ## Throttling requests
 
