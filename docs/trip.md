@@ -75,7 +75,11 @@ The response looked like this:
 		}
 	},
 	departure: '2017-12-17T18:37:00+01:00',
+	plannedDeparture: '2017-12-17T18:37:00+01:00',
+	departureDelay: null,
 	departurePlatform: '13',
+	plannedDeparturePlatform: '13',
+
 	destination: {
 		type: 'station',
 		id: '900000029101',
@@ -95,8 +99,11 @@ The response looked like this:
 			regional: true
 		}
 	},
-	arrival: '2017-12-17T19:49:00+01:00',
-	arrivalPlatform: '2',
+	arrival: '2017-12-17T19:50:30+01:00',
+	plannedArrival: '2017-12-17T19:49:00+01:00',
+	arrivalDelay: 90,
+	arrivalPlatform: '3a',
+	plannedArrivalPlatform: '2',
 	line: {
 		type: 'line',
 		id: '18299',
