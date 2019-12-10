@@ -1,5 +1,58 @@
 # Migrating to `hafas-client@5`
 
+## new fields for departure/arrival time & delays
+
+An arrival/departure now looks like this:
+
+```js
+{
+  when: null, // realtime/prognosed
+  plannedWhen: '2019-10-10T10:10+10:00',
+  platform: '3', // realtime/prognosed
+  plannedPlatform: '4'
+}
+```
+
+A stopover/journey leg now will look like this:
+
+```js
+{
+  arrival: null, // realtime/prognosed
+  plannedArrival: '2019-10-10T10:10+10:00',
+  arrivalDelay: null,
+  arrivalPlatform: '3', // realtime/prognosed
+  plannedArrivalPlatform: '4',
+
+  departure: '2019-10-10T10:12+10:00', // realtime/prognosed
+  plannedDeparture: '2019-10-10T10:10+10:00',
+  departureDelay: 120, // seconds
+  departurePlatform: null, // realtime/prognosed
+  plannedDeparturePlatform: null
+}
+```
+
+If the same stopover/journey leg is `cancelled: true`, it will look like this:
+
+```js
+{
+  arrival: null,
+  prognosedArrival: null,
+  plannedArrival: '2019-10-10T10:10+10:00',
+  arrivalDelay: null,
+  arrivalPlatform: null,
+  prognosedArrivalPlatform: '3',
+  plannedArrivalPlatform: '4',
+
+  departure: null,
+  prognosedDeparture: '2019-10-10T10:12+10:00',
+  plannedDeparture: '2019-10-10T10:10+10:00',
+  departureDelay: 120, // seconds
+  departurePlatform: null,
+  prognosedDeparturePlatform: null,
+  plannedDeparturePlatform: null
+}
+```
+
 ## If you use `journeys()`…
 
 …with the `walkingSpeed` option and a custom profile, add `journeysWalkingSpeed` to your profile. 937583e

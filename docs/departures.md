@@ -62,28 +62,8 @@ The response may look like this:
 ```js
 [ {
 	tripId: '1|31431|28|86|17122017',
-	stop: {
-		type: 'station',
-		id: '900000024101',
-		name: 'S Charlottenburg',
-		location: {
-			type: 'location',
-			latitude: 52.504806,
-			longitude: 13.303846
-		},
-		products: {
-			suburban: true,
-			subway: false,
-			tram: false,
-			bus: true,
-			ferry: false,
-			express: false,
-			regional: true
-		}
-	},
-	when: '2017-12-17T19:32:00+01:00',
-	delay: null,
-	platform: '2',
+	trip: 31431,
+	direction: 'S Spandau',
 	line: {
 		type: 'line',
 		id: '18299',
@@ -103,14 +83,37 @@ The response may look like this:
 			name: 'S-Bahn Berlin GmbH'
 		}
 	},
-	direction: 'S Spandau',
-	trip: 31431
-}, {
-	tripId: '1|30977|8|86|17122017',
-	stop: { /* … */ },
-	when: null,
+
+	stop: {
+		type: 'station',
+		id: '900000024101',
+		name: 'S Charlottenburg',
+		location: {
+			type: 'location',
+			latitude: 52.504806,
+			longitude: 13.303846
+		},
+		products: {
+			suburban: true,
+			subway: false,
+			tram: false,
+			bus: true,
+			ferry: false,
+			express: false,
+			regional: true
+		}
+	},
+
+	when: '2017-12-17T19:32:00+01:00',
+	plannedWhen: '2017-12-17T19:32:00+01:00',
 	delay: null,
+	platform: '2',
+	plannedPlatform: '2'
+}, {
 	cancelled: true,
+	tripId: '1|30977|8|86|17122017',
+	trip: 30977,
+	direction: 'S Westkreuz',
 	line: {
 		type: 'line',
 		id: '16441',
@@ -126,15 +129,19 @@ The response may look like this:
 		night: false,
 		operator: { /* … */ }
 	},
-	direction: 'S Westkreuz',
-	trip: 30977
+
+	stop: { /* … */ },
+
+	when: null,
+	plannedWhen: '2017-12-17T19:33:00+01:00'
+	delay: null,
+	platform: null,
+	plannedPlatform: '2',
+	prognosedPlatform: '2'
 }, {
 	tripId: '1|28671|4|86|17122017',
 	trip: 28671,
-	stop: { /* … */ },
-	when: '2017-12-17T19:35:00+01:00',
-	delay: 0,
-	platform: null,
+	direction: 'U Rudow',
 	line: {
 		type: 'line',
 		id: '19494',
@@ -150,6 +157,13 @@ The response may look like this:
 		night: false,
 		operator: { /* … */ }
 	},
-	direction: 'U Rudow'
+
+	stop: { /* … */ },
+
+	when: '2017-12-17T19:35:00+01:00',
+	plannedWhen: '2017-12-17T19:35:00+01:00',
+	delay: 0,
+	platform: null,
+	plannedPlatform: null
 } ]
 ```

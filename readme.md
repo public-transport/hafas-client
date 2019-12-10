@@ -53,9 +53,11 @@ client.journeys('8011167', '8000261', {results: 1})
 			location: { /* … */ },
 			products: { /* … */ }
 		},
-		departure: '2019-12-17T17:05:30+01:00',
+		departure: '2017-12-19T17:05:30+01:00',
+		plannedDeparture: '2017-12-19T17:05:00+01:00',
 		departureDelay: 30,
 		departurePlatform: '5',
+		plannedDeparturePlatform: '5',
 
 		destination: {
 			type: 'station',
@@ -64,9 +66,11 @@ client.journeys('8011167', '8000261', {results: 1})
 			location: { /* … */ },
 			products: { /* … */ }
 		},
-		arrival: '2019-12-17T22:44:00+01:00',
+		arrival: '2017-12-19T22:44:00+01:00',
+		plannedArrival: '2017-12-19T22:45:00+01:00',
 		arrivalDelay: -60,
 		arrivalPlatform: '11A',
+		plannedArrivalPlatform: '13',
 
 		legs: [ {
 			id: '1|100067|48|81|17122017',
@@ -96,9 +100,11 @@ client.journeys('8011167', '8000261', {results: 1})
 				},
 				products: { /* … */ }
 			},
-			departure: '2019-12-17T17:05:30+01:00',
+			departure: '2017-12-19T17:05:30+01:00',
+			plannedDeparture: '2017-12-19T17:05:00+01:00',
 			departureDelay: 30,
 			departurePlatform: '5',
+			plannedDeparturePlatform: '5',
 
 			destination: {
 				type: 'station',
@@ -106,9 +112,11 @@ client.journeys('8011167', '8000261', {results: 1})
 				name: 'Berlin Beusselstraße'
 				/* … */
 			},
-			arrival: '2019-12-17T17:08:00+01:00',
+			arrival: '2017-12-19T17:08:00+01:00',
+			plannedArrival: '2017-12-19T17:08:00+01:00',
 			arrivalDelay: null,
-			arrivalPlatform: '2a-b'
+			arrivalPlatform: '2a-b',
+			plannedArrivalPlatform: '1'
 		},
 		/* more legs… */
 		{
@@ -121,7 +129,8 @@ client.journeys('8011167', '8000261', {results: 1})
 				name: 'Berlin Hauptbahnhof (S+U), Berlin'
 				/* … */
 			},
-			departure: '2019-12-17T17:25:00+01:00',
+			plannedDeparture: '2017-12-19T17:25:00+01:00',
+			prognosedDeparture: null,
 			departureDelay: null,
 
 			destination: {
@@ -130,7 +139,8 @@ client.journeys('8011167', '8000261', {results: 1})
 				name: 'Berlin Hbf (tief)'
 				/* … */
 			},
-			arrival: '2019-12-17T17:33:00+01:00',
+			arrival: '2017-12-19T17:33:00+01:00',
+			plannedArrival: '2017-12-19T17:33:00+01:00',
 			arrivalDelay: null
 		}, {
 			id: '1|70906|0|81|17122017',
@@ -143,9 +153,11 @@ client.journeys('8011167', '8000261', {results: 1})
 				name: 'Berlin Hbf (tief)'
 				/* … */
 			},
-			departure: '2019-12-17T17:35:00+01:00',
+			departure: '2017-12-19T17:35:00+01:00',
+			plannedDeparture: '2017-12-19T17:37:00+01:00',
 			departureDelay: -120,
 			departurePlatform: '1',
+			plannedDeparturePlatform: '1',
 
 			destination: {
 				type: 'station',
@@ -153,9 +165,11 @@ client.journeys('8011167', '8000261', {results: 1})
 				name: 'München Hbf',
 				/* … */
 			},
-			arrival: '2019-12-17T22:44:00+01:00',
+			arrival: '2017-12-19T22:44:00+01:00',
+			plannedArrival: '2017-12-19T22:45:00+01:00',
 			arrivalDelay: -60,
-			arrivalPlatform: '11A'
+			arrivalPlatform: '11A',
+			plannedArrivalPlatform: '13'
 		} ],
 		price: {
 			amount: null,
