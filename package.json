@@ -47,21 +47,21 @@
 		"pinkie-promise": "^2.0.1",
 		"qs": "^6.6.0",
 		"slugg": "^1.2.0",
-		"vbb-parse-line": "^0.3.1",
+		"vbb-parse-line": "^1.0.0",
 		"vbb-parse-ticket": "^0.2.1",
 		"vbb-short-station-name": "^1.0.1",
-		"vbb-stations": "^6.2.1",
+		"vbb-stations": "^7.1.0",
 		"vbb-translate-ids": "^3.1.0"
 	},
 	"devDependencies": {
-		"db-stations": "^2.3.0",
+		"db-stations": "^3.0.0",
 		"is-coordinates": "^2.0.2",
 		"is-roughly-equal": "^0.1.0",
 		"tap-spec": "^5.0.0",
 		"tape": "^4.8.0",
 		"tape-promise": "^4.0.0",
-		"validate-fptf": "^2.0.1",
-		"vbb-stations-autocomplete": "^3.1.0"
+		"validate-fptf": "^3.0.0",
+		"vbb-stations-autocomplete": "^4.1.0"
 	},
 	"scripts": {
 		"test": "env NODE_ENV=dev node test/index.js",
