@@ -55,6 +55,7 @@ The response looked like this:
 ```js
 {
 	id: '1|31431|28|86|17122017',
+
 	origin: {
 		type: 'station',
 		id: '900000260005',

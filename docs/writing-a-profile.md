@@ -1,14 +1,14 @@
 # Writing a profile
 
-**Per HAFAS endpoint, `hafas-client` has an endpoint-specific customisation called *profile***, which may for example do the following:
+**Per HAFAS endpoint, `hafas-client` has an endpoint-specific customisation called *profile*.** A profile may, for example, do the following:
 
 - handle the additional requirements of the endpoint (e.g. authentication),
 - extract additional information from the data provided by the endpoint,
 - guard against triggering bugs of certain endpoints (e.g. time limits).
 
-This guide is about writing such a profile. If you just want to use an already supported endpoint, refer to the [API documentation](readme.md) instead.
+This guide is about writing such a profile. If you just want to use an already supported endpoint, refer to the [main readme](../readme.md) instead.
 
-*Note*: **If you get stuck, ask for help by [creating an issue](https://github.com/public-transport/hafas-client/issues/new)!** We want to help people expand the scope of this library.
+*Note*: **If you get stuck, ask for help by [creating an issue](https://github.com/public-transport/hafas-client/issues/new)**; We're happy to help you expand the scope of this library!
 
 ## 0. How do the profiles work?
 
@@ -21,7 +21,7 @@ A profile may consist of three things:
 - **flags indicating which features are supported by the endpoint** – e.g. `trip`
 - **methods overriding the [default profile](../lib/default-profile.js)**
 
-As an example, let's say we have an [Austrian](https://en.wikipedia.org/wiki/Austria) endpoint:
+Let's use a fictional endpoint for [Austria](https://en.wikipedia.org/wiki/Austria) as an example:
 
 ```js
 const myProfile = {
@@ -31,7 +31,7 @@ const myProfile = {
 }
 ```
 
-Assuming their HAFAS endpoint returns all lines names prefixed with `foo `, We can strip them like this:
+Assuming their HAFAS endpoint returns all line names prefixed with `foo `, we can adapt our profile to clean them:
 
 ```js
 // get the default line parser
