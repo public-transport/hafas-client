@@ -47,6 +47,7 @@ The response may look like this:
 		latitude: 52.521508,
 		longitude: 13.411267
 	},
+
 	line: {
 		type: 'line',
 		id: 's9',
@@ -68,6 +69,7 @@ The response may look like this:
 	},
 	direction: 'S Flughafen Berlin-Schönefeld',
 	trip: 31463,
+
 	nextStopovers: [ {
 		stop: {
 			type: 'stop',

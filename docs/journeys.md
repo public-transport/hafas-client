@@ -334,7 +334,7 @@ departure of first (later) journey 2017-12-17T19:19:00+01:00
 
 If you pass `polylines: true`, each journey leg will have a `polyline` field. Refer to [the section in the `trip()` docs](trip.md#polyline-option) for details.
 
-If you pass `scheduledDays: true`, each journey will have a `scheduledDays` field looking like this:
+If you pass `scheduledDays: true`, each journey will have a `scheduledDays` object looking like this:
 
 ```js
 {
