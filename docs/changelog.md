@@ -4,54 +4,96 @@
 
 - 105c18b DB: always use `rtMode: HYBRID`
 
+[🏷 `4.6.2`](https://github.com/public-transport/hafas-client/releases/tag/4.6.2), 2019-11-18
+
 ## `4.6.1`
 
 - 43b4a6e handle `H_UNKNOWN` error
 - 1cc453b parseArrOrDep, parseLocation: bugfixes 🐛
 
+[🏷 `4.6.1`](https://github.com/public-transport/hafas-client/releases/tag/4.6.1), 2019-10-28
+
+## `3.10.3`
+
+- c9ceeca put deprecation note
+
+[🏷 `3.10.3`](https://github.com/public-transport/hafas-client/releases/tag/3.10.3), 2019-10-28
+
+## `2.10.4`
+
+- 096f8a0 put deprecation note
+
+[🏷 `2.10.4`](https://github.com/public-transport/hafas-client/releases/tag/2.10.4), 2019-10-28
+
 ## `4.6.0`
 
 - 73ca349/19c3ee6 NVV profile
 
+[🏷 `4.6.0`](https://github.com/public-transport/hafas-client/releases/tag/4.6.0), 2019-08-16
+
 ## `4.5.2`
 
 - 2e88e96 install-unique client ID via `postinstall` step -> generate process-unique ID
+
+[🏷 `4.5.2`](https://github.com/public-transport/hafas-client/releases/tag/4.5.2), 2019-08-16
+
+## `3.10.2`
+
+- 1babfbf `parseWarning`: handle missing summary/text 🐛
+
+[🏷 `3.10.2`](https://github.com/public-transport/hafas-client/releases/tag/3.10.2), 2019-08-12
 
 ## `4.5.1`
 
 - bd7d5bb `parseWarning`: handle missing `summary`/`text` 🐛
 - 92c842b DB: enable `radar()`
 
+[🏷 `4.5.1`](https://github.com/public-transport/hafas-client/releases/tag/4.5.1), 2019-07-20
+
 ## `4.5.0`
 
 - b144dd5/b57c212 return nice error messages & error codes
 
+[🏷 `4.5.0`](https://github.com/public-transport/hafas-client/releases/tag/4.5.0), 2019-07-08
+
 ## `4.4.0`
 
 - e46d6cd `parseLocation`: expose `stop.isMeta`
+
+[🏷 `4.4.0`](https://github.com/public-transport/hafas-client/releases/tag/4.4.0), 2019-06-30
 
 ## `4.3.0`
 
 - 1e0182f `parseLint`: use `addName`
 - d0f7ca1 follow HTTP redirects, accept `br` encoding
 
+[🏷 `4.3.0`](https://github.com/public-transport/hafas-client/releases/tag/4.3.0), 2019-06-25
+
 ## `4.2.2`
 
 - 64f797e `parseProductsBitmask`: fix bitmask handling 🐛
 - 707fd29 `p-retry@4`, `p-throttle@3`
 
+[🏷 `4.2.2`](https://github.com/public-transport/hafas-client/releases/tag/4.2.2), 2019-06-25
+
 ## `4.2.1`
 
 - 9078d2d fix `leg.reachable`, which was breaking all walking legs 🐛
+
+[🏷 `4.2.1`](https://github.com/public-transport/hafas-client/releases/tag/4.2.1), 2019-06-08
 
 ## `4.2.0`
 
 - 6da1e80 add `leg.reachable`
 
+[🏷 `4.2.0`](https://github.com/public-transport/hafas-client/releases/tag/4.2.0), 2019-06-07
+
 ## `4.1.1`
 
 - 875ea18 parse scheduled/actual platform information on legs, fixes #116 🐛
 - f92e933 [DB](../p/db) departures/arrivals: parse load factor #112
+
+[🏷 `4.1.1`](https://github.com/public-transport/hafas-client/releases/tag/4.1.1), 2019-05-29
 
 ## `4.1.0`
 
@@ -60,17 +102,25 @@
 - 820f2ab `parseWarning`: parse products
 - 3ab099b/57c7186 HVV profile
 
+[🏷 `4.1.0`](https://github.com/public-transport/hafas-client/releases/tag/4.1.0), 2019-05-27
+
 ## `4.0.3`
 
 - 6aa57d4 `parseJourneyLeg`/`parseMovement`/`parseArrival`/`parseDeparture`: handle missing `dirTxt` 🐛
+
+[🏷 `4.0.3`](https://github.com/public-transport/hafas-client/releases/tag/4.0.3), 2019-04-01
 
 ## `4.0.2`
 
 - 133cee9 `parseWarning`: expose `warning.id` 🐛
 
+[🏷 `4.0.2`](https://github.com/public-transport/hafas-client/releases/tag/4.0.2), 2019-03-27
+
 ## `4.0.1`
 
 - 5d49fd0 `parseDateTime`: fix `tzOffset` & `daysOffset` 🐛
+
+[🏷 `4.0.1`](https://github.com/public-transport/hafas-client/releases/tag/4.0.1), 2019-03-19
 
 ## `4.0.0`
 
@@ -105,49 +155,71 @@ This version is not fully backwords-compatible. Check out [the migration guide](
 
 - fcc2a23 ÖBB `journeys()`: fix `opt.results`
 
+[🏷 `4.0.0`](https://github.com/public-transport/hafas-client/releases/tag/4.0.0), 2019-02-28
+
 ## `3.10.1`
 
 - dafc96a update CMTA credentials
 - 46e7729 remove `console.error` call 🐛
 
+[🏷 `3.10.1`](https://github.com/public-transport/hafas-client/releases/tag/3.10.1), 2019-02-28
+
 ## `3.10.0`
 
 - d797333/1e16a10 [DB](../p/db): parse additional line names
+
+[🏷 `3.10.0`](https://github.com/public-transport/hafas-client/releases/tag/3.10.0), 2019-02-13
 
 ## `3.9.1`
 
 - a145fea extend default retrying options 🐛
 
+[🏷 `3.9.1`](https://github.com/public-transport/hafas-client/releases/tag/3.9.1), 2019-02-08
+
 ## `3.9.0`
 
 - b0f786c support for retrying failed requests ✨ – [docs](readme.md#retrying-failed-requests)
 
+[🏷 `3.9.0`](https://github.com/public-transport/hafas-client/releases/tag/3.9.0), 2019-02-08
+
 ## `3.8.1`
 
 - 3f58d84 handle `stop` objects as input 🐛
+
+[🏷 `3.8.1`](https://github.com/public-transport/hafas-client/releases/tag/3.8.1), 2019-02-06
 
 ## `3.8.0`
 
 - 5d0096c `departures()`: profile flag for `getPasslist` & `stbFilterEquiv`
 - #99 [Saarfahrplan profile](p/saarfahrplan) – Thanks @ialokim & @juliuste!
 
+[🏷 `3.8.0`](https://github.com/public-transport/hafas-client/releases/tag/3.8.0), 2018-12-31
+
 ## `3.7.0`
 
 - e867dac/f097022 `opt.stopovers`, `departure.nextStopovers`/`arrival.previousStopovers`
 
+[🏷 `3.7.0`](https://github.com/public-transport/hafas-client/releases/tag/3.7.0), 2018-12-28
+
 ## `3.6.3`
 
 - cb2d298 `stop`s/`station`s: default `id` of `null` 🐛
+
+[🏷 `3.6.3`](https://github.com/public-transport/hafas-client/releases/tag/3.6.3), 2018-12-28
 
 ## `3.6.2`
 
 - 5beff47 `radar()`: fix `polylines` option 🐛
 - 48424cf `p-throttle` as normal dependency 🐛
 
+[🏷 `3.6.2`](https://github.com/public-transport/hafas-client/releases/tag/3.6.2), 2018-12-16
+
 ## `3.6.1`
 
 - b809281 fix error parsing 🐛
 - bcbc366/ae2007c/e1f1d0d ÖBB `radar()`: fix filtering of `movement.nextStops` 🐛
+
+[🏷 `3.6.1`](https://github.com/public-transport/hafas-client/releases/tag/3.6.1), 2018-12-10
 
 ## `3.6.0`
 
@@ -155,59 +227,81 @@ This version is not fully backwords-compatible. Check out [the migration guide](
 - 17b8f14 `journeyLeg.cycle`: parse `nr` field if returned by HAFAS
 - 8fac5fc `journeyLeg.alternatives`: parse `direction`, `delay`, `tripId`
 
+[🏷 `3.6.0`](https://github.com/public-transport/hafas-client/releases/tag/3.6.0), 2018-12-03
+
 ## `3.5.0`
 
 - 9d96902 `readableFrom()`: make `opt.maxDuration` optional
 - 02e0e51 parse scheduled days of a `journey`
 
+[🏷 `3.5.0`](https://github.com/public-transport/hafas-client/releases/tag/3.5.0), 2018-11-13
+
 ## `3.4.3`
 
 - 9936466 `p-throttle@2`, `tape-promise@4`
+
+[🏷 `3.4.3`](https://github.com/public-transport/hafas-client/releases/tag/3.4.3), 2018-10-24
 
 ## `3.4.2`
 
 - 2a6b0dc speed up date+time formatting ⚡️
 
-## `3.4.1`
-
-- ed3ecd7 speed up date+time formatting ⚡️
+[🏷 `3.4.2`](https://github.com/public-transport/hafas-client/releases/tag/3.4.2), 2018-09-24
 
 ## `3.4.1`
 
 - 582c9de speed up date+time parsing ⚡️
 
+[🏷 `3.4.1`](https://github.com/public-transport/hafas-client/releases/tag/3.4.1), 2018-09-22
+
 ## `3.4.0`
 
 - #81 [S-Bahn München profile](p/sbahn-muenchen) – Thanks @flori-uni!
+
+[🏷 `3.4.0`](https://github.com/public-transport/hafas-client/releases/tag/3.4.0), 2018-09-20
 
 ## `3.3.1`
 
 - 035877c `reachableFrom()` retry 🐛
 
+[🏷 `3.3.1`](https://github.com/public-transport/hafas-client/releases/tag/3.3.1), 2018-09-03
+
 ## `3.3.0`
 
 - #80/b36ccda `reachableFrom()` method – [docs](reachable-from.md)
+
+[🏷 `3.3.0`](https://github.com/public-transport/hafas-client/releases/tag/3.3.0), 2018-09-03
 
 ## `3.2.1`
 
 - 044a5ee `arrivals()`: return a `direction` of `null` :bug:
 - b37bedb parse `line.id` if possible
 
+[🏷 `3.2.1`](https://github.com/public-transport/hafas-client/releases/tag/3.2.1), 2018-09-03
+
 ## `3.2.0`
 
 - #79 [CapMetro/CMTA profile](p/cmta) – Thanks @nickturskyi!
+
+[🏷 `3.2.0`](https://github.com/public-transport/hafas-client/releases/tag/3.2.0), 2018-08-26
 
 ## `3.1.2`
 
 - f796337 handle warnings without schedule `sDate`/`eDate`/`lModDate` 🐛
 
+[🏷 `3.1.2`](https://github.com/public-transport/hafas-client/releases/tag/3.1.2), 2018-08-24
+
 ## `3.1.1`
 
 - 39cc2f3 fix install on Windows 🐛
 
+[🏷 `3.1.1`](https://github.com/public-transport/hafas-client/releases/tag/3.1.1), 2018-08-23
+
 ## `3.1.0`
 
 - 9257d3a parse `line.fahrtNr`
+
+[🏷 `3.1.0`](https://github.com/public-transport/hafas-client/releases/tag/3.1.0), 2018-08-22
 
 ## `3.0.0`
 
@@ -252,23 +346,33 @@ This version is not fully backwords-compatible. Check out [the migration guide](
 
 - dd0a9b2 `parseStopover`: fix first/last canceled stopovers 🐛
 
+[🏷 `3.0.0`](https://github.com/public-transport/hafas-client/releases/tag/3.0.0), 2018-08-17
+
 ## `2.10.3`
 
 - 50bd440 better `User-Agent` randomization
+
+[🏷 `2.10.3`](https://github.com/public-transport/hafas-client/releases/tag/2.10.3), 2018-08-08
 
 ## `2.10.2`
 
 - d54c26d randomize `User-Agent`
 
+[🏷 `2.10.2`](https://github.com/public-transport/hafas-client/releases/tag/2.10.2), 2018-07-25
+
 ## `2.10.1`
 
 - 04d550f parse `TRSF` legs as `walking` 🐛
+
+[🏷 `2.10.1`](https://github.com/public-transport/hafas-client/releases/tag/2.10.1), 2018-07-02
 
 ## `2.10.0`
 
 - 4da8689 journey legs with `type: 'walking'` now have a `distance` in meters
 - c1bdade `departures()`: parse & expose platforms
 - fccd3d0 `journeys()`: `startWithWalking` option
+
+[🏷 `2.10.0`](https://github.com/public-transport/hafas-client/releases/tag/2.10.0), 2018-06-30
 
 ## `2.9.1`
 
@@ -281,33 +385,49 @@ This version is not fully backwords-compatible. Check out [the migration guide](
 - deb8829 [`journeys()`](journeys.md): new `whenRepresents` option
 - f3d8304 let the `insa` and `nahsh` profiles use HTTPS
 
+[🏷 `2.9.0`](https://github.com/public-transport/hafas-client/releases/tag/2.9.0), 2018-06-20
+
 ## `2.8.1`
 
 - 769f2e3 send `Accept: application/json`
+
+[🏷 `2.8.1`](https://github.com/public-transport/hafas-client/releases/tag/2.8.1), 2018-06-07
 
 ## `2.8.0`
 
 - 16c3f01 enable [`journeyLeg()`](journey-leg.md) for [DB](../p/db)
 
+[🏷 `2.8.0`](https://github.com/public-transport/hafas-client/releases/tag/2.8.0), 2018-05-24
+
 ## `2.7.5`
 
 - 908d531 [DB](../p/db) [`journeys()`](journeys.md): fix polylines parsing 🐛
+
+[🏷 `2.7.5`](https://github.com/public-transport/hafas-client/releases/tag/2.7.5), 2018-05-24
 
 ## `2.7.4`
 
 - 709b7b4 update dependencies
 
+[🏷 `2.7.4`](https://github.com/public-transport/hafas-client/releases/tag/2.7.4), 2018-05-24
+
 ## `2.7.3`
 
 - 48f2cef each movement from `radar()` now has a `journeyId` field
+
+[🏷 `2.7.3`](https://github.com/public-transport/hafas-client/releases/tag/2.7.3), 2018-05-21
 
 ## `2.7.2`
 
 - a97e0d3 fix polylines parsing 🐛
 
+[🏷 `2.7.2`](https://github.com/public-transport/hafas-client/releases/tag/2.7.2), 2018-05-16
+
 ## `2.7.1`
 
 - aa480e0 fix polylines parsing 🐛
+
+[🏷 `2.7.1`](https://github.com/public-transport/hafas-client/releases/tag/2.7.1), 2018-05-16
 
 ## `2.7.0`
 
@@ -315,31 +435,45 @@ This version is not fully backwords-compatible. Check out [the migration guide](
 - `journeyLeg()`: `polyline` option
 - `radar()`: `polylines` option
 
+[🏷 `2.7.0`](https://github.com/public-transport/hafas-client/releases/tag/2.7.0), 2018-05-15
+
 ## `2.6.0`
 
 - 5d10d76 journey legs: parse cycle
 
+[🏷 `2.6.0`](https://github.com/public-transport/hafas-client/releases/tag/2.6.0), 2018-04-29
+
 ## `2.5.3`
 
 - d676b84 fix parsing for journey leg alternatives 🐛
+
+[🏷 `2.5.3`](https://github.com/public-transport/hafas-client/releases/tag/2.5.3), 2018-04-29
 
 ## `2.5.2`
 
 - 16e6dd6 departure docs: fix method 📝
 - c60213a DB: tram mode should be `train` 🐛
 
+[🏷 `2.5.2`](https://github.com/public-transport/hafas-client/releases/tag/2.5.2), 2018-04-24
+
 ## `2.5.1`
 
 - afc0124 fix stopover parsing 🐛
+
+[🏷 `2.5.1`](https://github.com/public-transport/hafas-client/releases/tag/2.5.1), 2018-04-05
 
 ## `2.5.0`
 
 - new [Schleswig-Holstein (NAH.SH)](https://de.wikipedia.org/wiki/Nahverkehrsverbund_Schleswig-Holstein) [profile](../p/nahsh)
 - new [*writing a profile* guide](./writing-a-profile.md)
 
+[🏷 `2.5.0`](https://github.com/public-transport/hafas-client/releases/tag/2.5.0), 2018-03-18
+
 ## `2.4.2`
 
 - `parseStopover`: expose canceled arrivals & departures 🐛
+
+[🏷 `2.4.2`](https://github.com/public-transport/hafas-client/releases/tag/2.4.2), 2018-03-17
 
 ## `2.4.1`
 
@@ -347,8 +481,12 @@ This version is not fully backwords-compatible. Check out [the migration guide](
 - `parseMovement`: use `parseStopover` 🐛
 - `parseStopover`: use `parseStationName` 🐛
 
+[🏷 `2.4.1`](https://github.com/public-transport/hafas-client/releases/tag/2.4.1), 2018-03-17
+
 ## `2.4.0`
 
 - new [Nahverkehr Sachsen-Anhalt (NASA)](https://de.wikipedia.org/wiki/Nahverkehrsservice_Sachsen-Anhalt)/[INSA](https://insa.de) profile
 - new `earlierRef`/`laterRef` feature to query earlier/later journeys (pagination)
 - former scheduled date & time for canceled departures & journeys
+
+[🏷 `2.4.0`](https://github.com/public-transport/hafas-client/releases/tag/2.4.0), 2018-03-14
