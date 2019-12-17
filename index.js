@@ -361,6 +361,29 @@ const createClient = (profile, userAgent, opt = {}) => {
 		})
 	}
 
+	const tripsByName = (lineNameOrFahrtNr, opt = {}) => {
+		if (!isNonEmptyString(lineNameOrFahrtNr)) {
+			throw new TypeError('lineNameOrFahrtNr must be a non-empty string.')
+		}
+		opt = Object.assign({
+		}, opt)
+		opt.when = new Date(opt.when || Date.now())
+
+		return profile.request({profile, opt}, userAgent, {
+			cfg: {polyEnc: 'GPA'},
+			meth: 'JourneyMatch',
+			req: {
+				input: lineNameOrFahrtNr,
+				date: profile.formatDate(profile, opt.when),
+				// todo: there are probably more options
+			}
+		})
+		.then(({res, common}) => {
+			const ctx = {profile, opt, common, res}
+			return res.jnyL.map(t => profile.parseTrip(ctx, t))
+		})
+	}
+
 	const radar = ({north, west, south, east}, opt) => {
 		if ('number' !== typeof north) throw new TypeError('north must be a number.')
 		if ('number' !== typeof west) throw new TypeError('west must be a number.')
@@ -449,6 +472,7 @@ const createClient = (profile, userAgent, opt = {}) => {
 	if (profile.radar) client.radar = radar
 	if (profile.refreshJourney) client.refreshJourney = refreshJourney
 	if (profile.reachableFrom) client.reachableFrom = reachableFrom
+	if (profile.tripsByName) client.tripsByName = tripsByName
 	Object.defineProperty(client, 'profile', {value: profile})
 	return client
 }

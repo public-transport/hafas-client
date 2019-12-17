@@ -3,6 +3,7 @@
 - [`journeys(from, to, [opt])`](journeys.md) – get journeys between locations
 - [`refreshJourney(refreshToken, [opt])`](refresh-journey.md) – fetch up-to-date/more details of a `journey`
 - [`trip(id, lineName, [opt])`](trip.md) – get details for a trip
+- [`tripsByName(lineNameOrFahrtNr, [opt])`](trips-by-name.md) – get all trips matching a name
 - [`departures(station, [opt])`](departures.md) – query the next departures at a station
 - [`arrivals(station, [opt])`](arrivals.md) – query the next arrivals at a station
 - [`locations(query, [opt])`](locations.md) – find stations, POIs and addresses
