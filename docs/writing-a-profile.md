@@ -69,6 +69,8 @@ If you pass this profile into `hafas-client`, the `parseLine` method will overri
 
 ## 2. Basic profile
 
+*Note:* You should have read the [general documentation on `mgate.exe` APIs](hafas-mgate-api.md) to make sense of the terminology used below.
+
 You may want to start with the [profile boilerplate](profile-boilerplate.js).
 
 - **Identify the `endpoint`.** The protocol, host and path of the endpoint, *but not* the query string.

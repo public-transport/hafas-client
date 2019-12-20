@@ -77,3 +77,7 @@ const client = createRetryingClient(dbProfile, 'my-awesome-program')
 ## Writing a profile
 
 Check [the guide](writing-a-profile.md).
+
+## General documentation for `mgate.exe` APIs
+
+[`hafas-mgate-api.md`](hafas-mgate-api.md)
