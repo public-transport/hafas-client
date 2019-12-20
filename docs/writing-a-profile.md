@@ -80,7 +80,7 @@ You may want to start with the [profile boilerplate](profile-boilerplate.js).
 - **Copy the authentication** and other meta fields, namely `ver`, `ext`, `client` and `lang`.
 	- You can find these fields in the root of each request JSON. Check [a VBB request](https://gist.github.com/derhuerst/5fa86ed5aec63645e5ae37e23e555886#file-1-http-L13-L22) and [the corresponding VBB profile](https://github.com/public-transport/hafas-client/blob/6e61097687a37b60d53e767f2711466b80c5142c/p/vbb/index.js#L22-L29) for an example.
 	- Add a function `transformReqBody(body)` to your profile, which assigns them to `body`.
-	- Some profiles have a `checksum` parameter (like [here](https://gist.github.com/derhuerst/2a735268bd82a0a6779633f15dceba33#file-journey-details-1-http-L1)) or two `mic` & `mac` parameters (like [here](https://gist.github.com/derhuerst/5fa86ed5aec63645e5ae37e23e555886#file-1-http-L1)). If you see one of them in your requests, jump to [*Appendix A: checksum, mic, mac*](#appendix-a-checksum-mic-mac). Unfortunately, this is necessary to get the profile working.
+	- Some profiles have a `checksum` parameter (like [here](https://gist.github.com/derhuerst/2a735268bd82a0a6779633f15dceba33#file-journey-details-1-http-L1)) or two `mic` & `mac` parameters (like [here](https://gist.github.com/derhuerst/5fa86ed5aec63645e5ae37e23e555886#file-1-http-L1)). If you see one of them in your requests, jump to the [*Authentication* section of the `mgate.exe` docs](hafas-mgate-api.md#authentication). Unfortunately, this is necessary to get the profile working.
 
 ## 3. Products
 
@@ -149,23 +149,3 @@ We consider these improvements to be *optional*:
 	- `Berlin Jungfernheide Bhf` -> `Berlin Jungfernheide`. With local context, it's obvious that *Jungfernheide* is a train station.
 - **Check if the endpoint has non-obvious limitations** and let use know about these. Examples:
 	- Some endpoints have a time limit, after which they won't return more departures, but silently discard them.
-
----
-
-## Appendix A: `checksum`, `mic`, `mac`
-
-As far as we know, there are three different types of authentication used among HAFAS deployments.
-
-### unprotected endpoints
-
-You can just query these, as long as you send a formally correct request.
-
-### endpoints using the `checksum` query parameter
-
-`checksum` is a [message authentication code](https://en.wikipedia.org/wiki/Message_authentication_code): `hafas-client` will compute it by [hashing](https://en.wikipedia.org/wiki/Hash_function) the request body and a secret *salt*. **This secret can be read from the config file inside the app bundle.** There is no guide for this yet, so please [open an issue](https://github.com/public-transport/hafas-client/issues/new) instead.
-
-### endpoints using the `mic` & `mac` query parameters
-
-`mic` is a [message integrity code](https://en.wikipedia.org/wiki/Message_authentication_code), the [hash](https://en.wikipedia.org/wiki/Hash_function) of the request body.
-
-`mac` is a [message authentication code](https://en.wikipedia.org/wiki/Message_authentication_code), the hash of `mic` and a secret *salt*. **This secret can be read from the config file inside the app bundle.** There is no guide for this yet, so please [open an issue](https://github.com/public-transport/hafas-client/issues/new) instead.

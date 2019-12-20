@@ -60,6 +60,30 @@ In many aspects, the API looks and feels like [RPCs](https://en.wikipedia.org/wi
 
 For working code, check out [`request()`](lib/request.js).
 
+## Authentication
+
+There are three known types of authentication used among `mgate.exe` endpoints.
+
+For working code, check out [`hafas-client`'s `request()`](lib/request.js), [`public-transport-enabler`'s Java implementation](https://github.com/schildbach/public-transport-enabler/blob/69614c87af627e2feafc576882f2ccccdbf4b7e6/src/de/schildbach/pte/AbstractHafasClientInterfaceProvider.java#L845-L860), [`TripKit`'s Swift implementation](https://github.com/alexander-albers/tripkit/blob/724b6cd8c258c9c61e7443c81e914618b79393cb/TripKit/AbstractHafasClientInterfaceProvider.swift#L1473-L1495) or [`marudor.de`'s TypeScript implementation](https://github.com/marudor/BahnhofsAbfahrten/blob/cf64d53c6902981ec529d3952253b2c83bff9221/src/server/HAFAS/profiles.ts#L30-L54).
+
+### unprotected endpoints
+
+You can just query these, as long as you send a formally correct request.
+
+### endpoints using the `checksum` query parameter
+
+`checksum` is a [message authentication code](https://en.wikipedia.org/wiki/Message_authentication_code): You can compute it by [hashing](https://en.wikipedia.org/wiki/Hash_function) the request body and a secret *salt*.
+
+This secret can be read from the config file inside the accompanying client app. There is no guide for this yet, so please [open an issue](https://github.com/public-transport/hafas-client/issues/new).
+
+### endpoints using the `mic` & `mac` query parameters
+
+`mic` is a [message integrity code](https://en.wikipedia.org/wiki/Message_authentication_code), the [hash](https://en.wikipedia.org/wiki/Hash_function) of the request body.
+
+`mac` is a [message authentication code](https://en.wikipedia.org/wiki/Message_authentication_code), the hash of `mic` and a secret *salt*.
+
+This secret can be read from the config file inside the accompanying client app. There is no guide for this yet, so please [open an issue](https://github.com/public-transport/hafas-client/issues/new).
+
 ## API responses
 
 A minimal valid response looks like this:
