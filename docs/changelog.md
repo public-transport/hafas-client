@@ -1,5 +1,12 @@
 # Changelog
 
+## `4.7.0`
+
+- fceaf86 parse `Q` hints
+- c883d96 documentation for `mgate.exe` endpoints
+
+[🏷 `4.7.0`](https://github.com/public-transport/hafas-client/releases/tag/4.7.0), 2019-12-26
+
 ## `4.6.2`
 
 - 105c18b DB: always use `rtMode: HYBRID`
