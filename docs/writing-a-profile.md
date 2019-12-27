@@ -35,24 +35,32 @@ Assuming their HAFAS endpoint returns all line names prefixed with `foo `, we ca
 
 ```js
 // get the default line parser
-const createParseLine = require('hafas-client/parse/line')
+const parseLine = require('hafas-client/parse/line')
 
-const createParseLineWithoutFoo = (profile, opt, data) => {
-	const parseLine = createParseLine(profile, opt, data)
-
-	// wrapper function with additional logic
-	const parseLineWithoutFoo = (l) => {
-		const line = parseLine(l)
-		line.name = line.name.replace(/foo /g, '')
-		return line
-	}
-	return parseLineWithoutFoo
+// wrapper function with additional logic
+const parseLineWithoutFoo = (ctx, rawLine) => {
+	const line = parseLine(ctx, rawLine)
+	line.name = line.name.replace(/foo /g, '')
+	return line
 }
 
-profile.parseLine = createParseLineWithoutFoo
+myProfile.parseLine = parseLineWithoutFoo
 ```
 
 If you pass this profile into `hafas-client`, the `parseLine` method will override [the default one](../parse/line.js).
+
+You can also use the `parseHook` helper to reduce boilerplate:
+
+```js
+const {parseHook} = require('hafas-client/lib/profile-hooks')
+
+const removeFoo = (ctx, rawLine) => ({
+	...ctx.parsed,
+	name: line.name.replace(/foo /g, '')
+})
+
+myProfile.parseLine = parseHook(parseLine, removeFoo)
+```
 
 ## 1. Setup
 
