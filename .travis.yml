@@ -11,3 +11,5 @@ jobs:
     - name: e2e-test
       script: npm run e2e-test
       node_js: '8'
+  allow_failures:
+    - name: e2e-test
