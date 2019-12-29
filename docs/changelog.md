@@ -1,5 +1,11 @@
 # Changelog
 
+## `4.8.0`
+
+- 56dee66/46eadcf/1611635 add [*DB Busradar NRW* profile](../p/db-busradar-nrw)
+
+[🏷 `4.8.0`](https://github.com/public-transport/hafas-client/releases/tag/4.8.0), 2019-12-29
+
 ## `4.7.0`
 
 - fceaf86 parse `Q` hints
