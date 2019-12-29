@@ -95,6 +95,7 @@ const dbBusradarNrwProfile = {
 
 	products: products,
 
+	journeysOutFrwd: false,
 	trip: true,
 	radar: true
 }

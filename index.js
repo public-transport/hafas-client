@@ -164,6 +164,9 @@ const createClient = (profile, userAgent, request = _request) => {
 			when = new Date(opt.departure)
 			if (Number.isNaN(+when)) throw new TypeError('opt.departure is invalid')
 		} else if (opt.arrival !== undefined && opt.arrival !== null) {
+			if (!profile.journeysOutFrwd) {
+				throw new Error('opt.arrival is unsupported')
+			}
 			when = new Date(opt.arrival)
 			if (Number.isNaN(+when)) throw new TypeError('opt.arrival is invalid')
 			outFrwd = false
@@ -201,7 +204,6 @@ const createClient = (profile, userAgent, request = _request) => {
 				arrLocL: [to],
 				jnyFltrL: filters,
 				getTariff: !!opt.tickets,
-				outFrwd,
 				// todo: this is actually "take additional stations nearby the given start and destination station into account"
 				// see rest.exe docs
 				ushrp: !!opt.startWithWalking,
@@ -212,6 +214,7 @@ const createClient = (profile, userAgent, request = _request) => {
 				getPolyline: !!opt.polylines
 			}
 			if (profile.journeysNumF) query.numF = opt.results
+			if (profile.journeysOutFrwd) query.outFrwd = outFrwd
 
 			return request(profile, userAgent, opt, {
 				cfg: {polyEnc: 'GPA'},
