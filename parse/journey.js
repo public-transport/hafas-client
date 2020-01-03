@@ -3,13 +3,13 @@
 const {DateTime} = require('luxon')
 const findRemarks = require('./find-remarks')
 
-const parseScheduledDays = (sDaysB, profile) => {
+const parseScheduledDays = (sDaysB, year, profile) => {
 	sDaysB = Buffer.from(sDaysB, 'hex')
 	const res = Object.create(null)
 
 	let d = DateTime.fromObject({
 		zone: profile.timezone, locale: profile.locale,
-		year: new Date().getFullYear(),
+		year, // Expected to be in the correct tz offset!
 		month: 1, day: 1,
 		hour: 0, minute: 0, second: 0, millisecond: 0
 	})
@@ -55,7 +55,8 @@ const createParseJourney = (profile, opt, data) => {
 		}
 
 		if (opt.scheduledDays) {
-			res.scheduledDays = parseScheduledDays(j.sDays.sDaysB, profile)
+			const year = parseInt(j.date.slice(0, 4))
+			res.scheduledDays = parseScheduledDays(j.sDays.sDaysB, year, profile)
 		}
 
 		return res
