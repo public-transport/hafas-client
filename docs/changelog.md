@@ -1,5 +1,38 @@
 # Changelog
 
+## `5.0.0`
+
+Note that this version is not backwords-compatible with `4.*`. Check out [the migration guide](migrating-to-5.md).
+
+### breaking changes 💥
+
+- 2f8f82f require Node `>=10`
+- 29a2cf3/2b9280e add `plannedArrival`/`plannedDeparture`/`plannedWhen`, `scheduled*` -> `planned*`/`prognosed*`
+- 938a6f2/2d1d482 add `plannedArrivalPlatform`/`plannedDeparturePlatform`/`plannedPlatform`, `scheduled*` -> `planned*`/`prognosed*`
+- 35e44d4 `parseWarning()`/`parseHint()`: change signature to `(profile, raw, data) => …`
+- 4162328 `createClient()`: change signature to `(profile, userAgent, opt = {}) => …`
+- fb7a565/252ce5b/9fc6664/2cfee22/e2567ef change parse fns signature to `({profile, opt, res, common}) => (rawData) => …`
+- baff692 `journeys()`: don't request nr of results by default
+- b8496be DB `journeys()`: let `journey.price` default to `null`
+- 6d5c608 call `request()` via `profile`
+
+### features
+
+- f8210c5/9c47a39/0c145d3/9a89cd0 `journeys()`: add `walkingSpeed` option
+- a40006f/1afe4ca BVG: support *BerlKönig*, add E2E test
+- 352fa2e parse more warning fields
+- 8b2a5a8 `parseIcon()`: use `.txt` & `.txtS` as text fallback
+- 39a6267 request formatters (e.g. `formatTripReq()`) via `profile`
+
+### bugfixes 🐛
+
+- 5ea22f7 `parseHint()`: parse `.code` & `.text` properly
+- 29d7bd4 `parseJourney()`: fix `journey.scheduledDays` year
+- 9a6bc2d `parseWarning()`: call `parseDateTime()` via `profile`
+- 7b7293e `request()`: use *transformed* `req`
+
+[🏷 `5.0.0`](https://github.com/public-transport/hafas-client/releases/tag/5.0.0), 2020-01-05
+
 ## `4.8.0`
 
 - 56dee66/46eadcf/1611635 add [*DB Busradar NRW* profile](../p/db-busradar-nrw)
