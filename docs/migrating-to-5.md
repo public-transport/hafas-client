@@ -1,5 +1,9 @@
 # Migrating to `hafas-client@5`
 
+## If you use Node `8` ("Carbon")…
+
+…migrate to Node `10` ("Dubnium"), sorry. [Node `8` is out of maintenance now](https://nodejs.org/en/about/releases/).
+
 ## new fields for departure/arrival time & delays
 
 An arrival/departure now looks like this:
