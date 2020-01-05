@@ -73,7 +73,7 @@ const products = [
 	}
 ]
 
-const transformReqBody = (body) => {
+const transformReqBody = (_, body) => {
 	body.client = {
 		id: 'DB-REGIO',
 		name: 'DB Busradar NRW',
