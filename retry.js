@@ -1,6 +1,7 @@
 'use strict'
 
 const retry = require('p-retry')
+const defaultProfile = require('./lib/default-profile')
 
 const retryDefaults = {
 	retries: 3,
@@ -10,7 +11,8 @@ const retryDefaults = {
 
 const withRetrying = (profile, retryOpts = {}) => {
 	retryOpts = Object.assign({}, retryDefaults, retryOpts)
-	const {request} = profile
+	// https://github.com/public-transport/hafas-client/issues/76#issuecomment-574408717
+	const {request} = {...defaultProfile, ...profile}
 
 	const retryingRequest = (...args) => {
 		const attempt = () => {
