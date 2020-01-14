@@ -1,5 +1,11 @@
 # Changelog
 
+## `5.0.1`
+
+- 51b1e68 `throttle.js`, `retry.js`: use default profile 🐛
+
+[🏷 `5.0.1`](https://github.com/public-transport/hafas-client/releases/tag/5.0.1), 2020-01-15
+
 ## `5.0.0`
 
 Note that this version is not backwords-compatible with `4.*`. Check out [the migration guide](migrating-to-5.md).
