@@ -1,5 +1,11 @@
 # Changelog
 
+## `5.0.2`
+
+- e049aa3 `parseWarning()`: fix `parseMsgEvent()` 🐛
+
+[🏷 `5.0.2`](https://github.com/public-transport/hafas-client/releases/tag/5.0.2), 2020-01-15
+
 ## `5.0.1`
 
 - 51b1e68 `throttle.js`, `retry.js`: use default profile 🐛
