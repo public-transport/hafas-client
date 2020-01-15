@@ -19,7 +19,8 @@ const parseMsgEdge = (ctx) => (e) => {
 	res.toLoc = e.toLocation || null
 	return res
 }
-const parseMsgEvent = ({profile}) => (e) => {
+const parseMsgEvent = (ctx) => (e) => {
+	const {profile} = ctx // todo: test that covers this
 	return {
 		// todo: rename `Loc` -> `Location` [breaking]
 		fromLoc: e.fromLocation || null,
