@@ -51,7 +51,7 @@
 		"vbb-parse-ticket": "^0.2.1",
 		"vbb-short-station-name": "^1.0.1",
 		"vbb-stations": "^7.1.0",
-		"vbb-translate-ids": "^3.1.0"
+		"vbb-translate-ids": "^4.0.0"
 	},
 	"devDependencies": {
 		"db-stations": "^3.0.0",
