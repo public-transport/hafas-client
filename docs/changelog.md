@@ -1,5 +1,17 @@
 # Changelog
 
+## `4.8.1`
+
+- 7573e4b `vbb-translate-ids@4` 🐛
+
+[🏷 `4.8.1`](https://github.com/public-transport/hafas-client/releases/tag/4.8.1), 2020-01-29
+
+## `4.6.3`
+
+- db90afe `vbb-translate-ids@4` 🐛
+
+[🏷 `4.6.3`](https://github.com/public-transport/hafas-client/releases/tag/4.6.3), 2020-01-29
+
 ## `4.8.0`
 
 - 56dee66/46eadcf/1611635 add [*DB Busradar NRW* profile](../p/db-busradar-nrw)
