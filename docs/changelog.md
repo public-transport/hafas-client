@@ -1,5 +1,12 @@
 # Changelog
 
+## `5.0.3`
+
+- 8c6a8d8 `findInTree`: improved performance ⚡️
+- c080f32 `vbb-translate-ids@4` 🐛
+
+[🏷 `5.0.3`](https://github.com/public-transport/hafas-client/releases/tag/5.0.3), 2020-01-29
+
 ## `5.0.2`
 
 - e049aa3 `parseWarning()`: fix `parseMsgEvent()` 🐛
