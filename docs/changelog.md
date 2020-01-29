@@ -1,5 +1,9 @@
 # Changelog
 
+## `4.6.3`
+
+- db90afe `vbb-translate-ids@4` 🐛
+
 ## `4.6.2`
 
 - 105c18b DB: always use `rtMode: HYBRID`
