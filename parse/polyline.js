@@ -1,6 +1,6 @@
 'use strict'
 
-const {toGeoJSON} = require('@mapbox/polyline')
+const {decode} = require('google-polyline')
 const distance = require('gps-distance')
 
 // todo: what is p.delta?
@@ -8,15 +8,15 @@ const distance = require('gps-distance')
 // todo: what is p.crdEncS?
 // todo: what is p.crdEncF?
 const parsePolyline = (ctx, p) => { // p = raw polyline
-	const shape = toGeoJSON(p.crdEncYX)
-	if (shape.coordinates.length === 0) return null
+	const points = decode(p.crdEncYX)
+	if (points.length === 0) return null
 
-	const res = shape.coordinates.map(crd => ({
+	const res = points.map(([lat, lon]) => ({
 		type: 'Feature',
 		properties: {},
 		geometry: {
 			type: 'Point',
-			coordinates: crd
+			coordinates: [lon, lat]
 		}
 	}))
 
