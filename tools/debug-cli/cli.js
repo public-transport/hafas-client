@@ -11,30 +11,34 @@ const showError = (err) => {
 }
 
 const toString = val => val + ''
-const parseJSON = val => JSON.parse(val)
+const parseJsObject = val => {
+	const res = eval(`(${val})`)
+	return res && 'object' === typeof res ? res : {}
+}
+
 const parseArgs = [
 	['departures', 0, toString],
-	['departures', 1, parseJSON],
+	['departures', 1, parseJsObject],
 	['arrivals', 0, toString],
-	['arrivals', 1, parseJSON],
+	['arrivals', 1, parseJsObject],
 	['journeys', 0, toString],
 	['journeys', 1, toString],
-	['journeys', 2, parseJSON],
+	['journeys', 2, parseJsObject],
 	['refreshJourney', 0, toString],
-	['refreshJourney', 1, parseJSON],
+	['refreshJourney', 1, parseJsObject],
 	['locations', 0, toString],
-	['locations', 1, parseJSON],
+	['locations', 1, parseJsObject],
 	['stop', 0, toString],
-	['stop', 1, parseJSON],
-	['nearby', 0, parseJSON],
-	['nearby', 1, parseJSON],
+	['stop', 1, parseJsObject],
+	['nearby', 0, parseJsObject],
+	['nearby', 1, parseJsObject],
 	['trip', 0, toString],
 	['trip', 1, toString],
-	['trip', 2, parseJSON],
-	['radar', 0, parseJSON],
-	['radar', 1, parseJSON],
-	['reachableFrom', 0, parseJSON],
-	['reachableFrom', 1, parseJSON]
+	['trip', 2, parseJsObject],
+	['radar', 0, parseJsObject],
+	['radar', 1, parseJsObject],
+	['reachableFrom', 0, parseJsObject],
+	['reachableFrom', 1, parseJsObject]
 ]
 
 const argv = mri(process.argv.slice(2))
