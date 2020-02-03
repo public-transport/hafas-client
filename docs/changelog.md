@@ -1,5 +1,13 @@
 # Changelog
 
+## `5.0.4`
+
+- db9287f [`@mapbox/polyline`](https://www.npmjs.com/package/@mapbox/polyline) -> [`google-polyline`](https://www.npmjs.com/package/google-polyline)
+- 9b0e55c VBB: accept station IDs with an unknown length 🐛
+- ea4912a debug CLI: accept JS objects
+
+[🏷 `5.0.4`](https://github.com/public-transport/hafas-client/releases/tag/5.0.4), 2020-02-03
+
 ## `5.0.3`
 
 - 8c6a8d8 `findInTree`: improved performance ⚡️
