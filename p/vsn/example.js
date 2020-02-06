@@ -5,9 +5,9 @@ const vsnProfile = require('.')
 
 const client = createClient(vsnProfile, 'hafas-client-example')
 
-// client.journeys('9033961', '5900', {results: 1, polylines: true})
+// client.journeys('9033961', '9033962', {results: 1, polylines: true})
 // client.departures('9033961', {duration: 1})
-// client.arrivals('116', {duration: 10, linesOfStops: true})
+// client.arrivals('9033961', {duration: 10, linesOfStops: true})
 client.locations('jugendherberge', {results: 2})
 // client.stop('9033961', {linesOfStops: true})
 // client.nearby({

@@ -3,9 +3,10 @@
 const products = require('./products')
 
 const transformReqBody = (ctx, body) => {
-	body.client = {type: 'IPA', id: 'VSN', name: 'vsn', v: '5030100'}
+	body.client = {type: 'IPA', id: 'VSN', name: 'vsn', v: '5030100', os: 'iOS 13.3'}
 	body.ver = '1.24'
 	body.auth = {type: 'AID', aid: 'Mpf5UPC0DmzV8jkg'}
+	body.lang = 'de'
 
 	return body
 }
@@ -27,7 +28,10 @@ const vsnProfile = {
 	trip: true,
 	radar: true,
 	refreshJourney: true,
-	reachableFrom: true
+	reachableFrom: true,
+
+	departuresGetPasslist: false,
+	departuresStbFltrEquiv: false
 }
 
 module.exports = vsnProfile

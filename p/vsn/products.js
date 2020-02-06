@@ -7,7 +7,7 @@ module.exports = [
 		bitmasks: [1],
 		name: 'InterCityExpress',
 		short: 'ICE',
-		default: false
+		default: true
 	},
 	{
 		id: 'national',
@@ -15,7 +15,7 @@ module.exports = [
 		bitmasks: [2],
 		name: 'Fernzug',
 		short: 'IC/EC/CNL',
-		default: false
+		default: true
 	},
 	{
 		id: 'regionalExpress',
