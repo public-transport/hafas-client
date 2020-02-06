@@ -1,28 +1,22 @@
 'use strict'
 
-const parseScheduledDays = require('../parse/scheduled-days')
+const parseJourney = (ctx, j) => { // j = journey
+	const {profile, opt} = ctx
 
-const createParseJourney = (profile, opt) => {
-	const parseLeg = profile.parseJourneyLeg(profile, opt)
-
-	const parseJourney = (j) => {
-		const legs = j.legs.map(leg => parseLeg(j, leg))
-		const res = {
-			type: 'journey',
-			legs,
-			// todo: refreshToken
-			// todo: cycle
-			// todo: remarks?
-		}
-
-		if (opt.scheduledDays && j.serviceDays) {
-			res.scheduledDays = parseScheduledDays(profile, j.serviceDays.sDaysB)
-		}
-
-		return res
+	const res = {
+		type: 'journey',
+		legs: j.legs.map(leg => profile.parseJourneyLeg(ctx, leg)),
+		// todo: refreshToken
+		// todo: cycle
+		// todo: remarks?
 	}
 
-	return parseJourney
+	if (opt.scheduledDays && j.serviceDays) {
+		// todo: year
+		res.scheduledDays = profile.parseScheduledDays(ctx, j.serviceDays.sDaysB, year)
+	}
+
+	return res
 }
 
-module.exports = createParseJourney
+module.exports = parseJourney
