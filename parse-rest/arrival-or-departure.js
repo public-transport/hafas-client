@@ -3,8 +3,10 @@
 // todo: d.JourneyStatus
 // todo: d.prognosisType
 
-const createParseArrOrDep = (profile, opt, data, type) => {
-	const parseArrOrDep = (d) => {
+const createParseArrOrDep = (type) => {
+	const parseArrOrDep = (ctx, d) => {
+		const {profile, opt} = ctx
+
 		const product = {
 			name: d.name,
 			number: d.trainNumber,
@@ -14,16 +16,17 @@ const createParseArrOrDep = (profile, opt, data, type) => {
 
 		const res = {
 			tripId: d.JourneyDetailRef && d.JourneyDetailRef.ref || null,
-			stop: profile.parseLocation(profile, opt, data, {
+			stop: profile.parseLocation(ctx, {
 				type: d.type,
 				name: d.stop,
 				id: d.stopid,
 				extId: d.stopExtId
 			}),
-			line: profile.parseLine(profile, opt, data)(product) || null,
+			line: profile.parseLine(ctx, product) || null,
 			direction: type === 'departure' && d.direction || null, // todo: arrivals
 			// todo: is there `d.rtDate` & `d.tz` & `d.rtTz`?
-			...profile.parseWhen(profile, d.date, null, d.time, d.rtTime, null, !!d.cancelled),
+			...profile.parseWhen(ctx, d.date, null, d.time, d.rtTime, null, !!d.cancelled),
+			// todo: use profile.parsePlatform
 			platform: d.track || null
 		}
 

@@ -113,7 +113,8 @@ const createRestClient = (profile, token, userAgent) => {
 		unwrapNested(body, '**.Stops.Stop', 'stops')
 		unwrapNested(body, '**.Names.Name', 'products')
 		unwrapNested(body, '**.Directions.Direction', 'directions')
-		return body
+
+		return {profile, opt, res: body}
 	}
 
 	const opt = {
@@ -124,14 +125,14 @@ const createRestClient = (profile, token, userAgent) => {
 		linesOfStops: true
 	}
 
-	const parseLocationsResult = (l) => {
+	const parseLocationsResult = (l, ctx) => {
 		if (l.StopLocation) {
-			return parseLocation(profile, opt, {}, {
+			return profile.parseLocation(ctx, {
 				type: 'ST', ...l.StopLocation
 			})
 		}
 		if (l.CoordLocation) {
-			return parseLocation(profile, opt, {}, {
+			return profile.parseLocation(ctx, {
 				type: 'ADR', ...l.CoordLocation
 			})
 		}
@@ -152,7 +153,7 @@ const createRestClient = (profile, token, userAgent) => {
 			...opt
 		}
 
-		const res = await request('location.name', opt, {
+		const ctx = await request('location.name', opt, {
 			input: opt.fuzzy ? query + '?' : query,
 			maxNo: 3, // todo: opt.results
 			type: profile.formatLocationFilter(opt.stops, opt.addresses, opt.poi)
@@ -161,13 +162,13 @@ const createRestClient = (profile, token, userAgent) => {
 			// todo: refineId
 		})
 
-		return res.stopLocationOrCoordLocation
-		.map(parseLocationsResult)
+		return ctx.res.stopLocationOrCoordLocation
+		.map(l => parseLocationsResult(l, ctx))
 		.filter(loc => !!loc)
 	}
 
 	const nearby = async (location) => {
-		const res = await request('location.nearbystops', opt, {
+		const ctx = await request('location.nearbystops', opt, {
 			originCoordLat: location.latitude,
 			originCoordLong: location.longitude,
 			// r: 2000, // radius
@@ -176,12 +177,13 @@ const createRestClient = (profile, token, userAgent) => {
 			// todo: `products` with bitmask
 		})
 
-		return res.stopLocationOrCoordLocation.reduce((locs, l) => {
-			const loc = parseLocationsResult(l)
-			if (!loc) return locs
-			loc.distance = l.dist
-			return [...locs, loc]
-		}, [])
+		return ctx.res.stopLocationOrCoordLocation
+		.map((l) => {
+			const loc = parseLocationsResult(l, ctx)
+			if (loc) loc.distance = l.dist
+			return loc
+		})
+		.filter(loc => !!loc)
 	}
 
 	const _stationBoard = async (method, stop, opt) => {
@@ -206,7 +208,7 @@ const createRestClient = (profile, token, userAgent) => {
 		const query = {
 			extId: stopId,
 			duration: opt.duration,
-			products: profile.formatProductsBitmask(profile)(opt.products || {}),
+			products: profile.formatProductsBitmask({profile, opt}, opt.products || {}),
 			filterEquiv: opt.includeRelatedStations ? 0 : 1, // filterEquiv is reversed!
 			rtMode: 'FULL' // todo: make customisable?, see https://pastebin.com/qZ9WS3Cx
 			// todo: operators, lines, attributes
@@ -223,26 +225,26 @@ const createRestClient = (profile, token, userAgent) => {
 
 		const when = new Date('when' in opt ? opt.when : Date.now())
 		if (Number.isNaN(+when)) throw new Error('opt.when is invalid')
-		query.date = profile.formatDate(profile, when)
-		query.time = profile.formatTime(profile, when)
+		query.date = profile.formatDate({profile, opt}, when)
+		query.time = profile.formatTime({profile, opt}, when)
 
 		return await request(method, query)
 	}
 
 	const departures = async (stop, opt = {}) => {
-		const res = await _stationBoard('departureBoard', stop, opt)
-		const results = res.departureAndMessage || []
+		const ctx = await _stationBoard('departureBoard', stop, opt)
+		const results = ctx.res.departureAndMessage || []
 
-		const parse = profile.parseArrivalOrDeparture(profile, opt, {}, 'departure')
-		return results.map(result => parse(result.Departure))
+		const parse = profile.parseArrivalOrDeparture('departure')
+		return results.map(result => parse(ctx, result.Departure))
 	}
 
 	const arrivals = async (stop, opt = {}) => {
-		const res = await _stationBoard('arrivalBoard', stop, opt)
-		const results = res.arrivalAndMessage || []
+		const ctx = await _stationBoard('arrivalBoard', stop, opt)
+		const results = ctx.res.arrivalAndMessage || []
 
-		const parse = profile.parseArrivalOrDeparture(profile, opt, {}, 'arrival')
-		return results.map(result => parse(result.Arrival))
+		const parse = profile.parseArrivalOrDeparture('arrival')
+		return results.map(result => parse(ctx, result.Arrival))
 	}
 
 	const journeys = async (origin, destination, opt = {}) => {
@@ -319,72 +321,72 @@ const createRestClient = (profile, token, userAgent) => {
 			query.searchForArrival = 1
 		}
 		if (when) {
-			query.date = profile.formatDate(profile, when)
-			query.time = profile.formatTime(profile, when)
+			query.date = profile.formatDate({profile, opt}, when)
+			query.time = profile.formatTime({profile, opt}, when)
 		}
 
-		const res = await request('trip', opt, query)
-		return res.Trip.map(parseJourney(profile, opt))
+		const ctx = await request('trip', opt, query)
+		return ctx.res.Trip.map(t => profile.parseJourney(ctx, t))
 	}
 
 	const tripAlternatives = async (tripCtx, origin, destination) => {
 		// todo
-		const res = await request('trip.alternatives', opt, {
+		const ctx = await request('trip.alternatives', opt, {
 			ctx: 'T$A=1@O=Hildesheim Hbf@L=8000169@a=128@$A=1@O=Hannover Hbf@L=8000152@a=128@$201909031844$201909031910$erx83478$$1$',
 			originId: 'A=1@O=Sarstedt@X=9842595@Y=52232604@U=80@L=8005292@',
 			destId: 'A=1@O=Hannover Hbf@X=9741017@Y=52376764@U=80@L=8000152@',
 			// todo: operators, products, poly
 		})
 
-		return res.Trip.map(parseJourney(profile, opt))
+		return ctx.res.Trip.map(t => profile.parseJourney(ctx, t))
 	}
 
 	const trip = async (id) => {
-		const res = await request('journeyDetail', opt, {
+		const ctx = await request('journeyDetail', opt, {
 			id,
 			// todo: date, poly, showPassingPoints, rtMode
 		})
 
-		return parseTrip(profile, opt, {})(res)
+		return profile.parseTrip(ctx, ctx.res)
 	}
 
 	// todo: fails with 404
 	// const tripHistory = async (tripId) => {
-	// 	const res = await request('rtarchive', opt, {
+	// 	const ctx = await request('rtarchive', opt, {
 	// 		id: tripId,
-	// 		date: profile.formatDate(profile, opt.when || Date.now())
+	// 		date: profile.formatDate({profile, opt}, opt.when || Date.now())
 	// 	})
-	// 	return res
+	// 	return ctx.res
 	// }
 
 	// todo: fails with 404
 	// const radar = async (bbox) => {
-	// 	const res = await request('journeyPos', opt, {
+	// 	const ctx = await request('journeyPos', opt, {
 	// 		llLat: bbox.south,
 	// 		llLon: bbox.west,
 	// 		urLat: bbox.north,
 	// 		urLon: bbox.east,
 	// 		// todo: operators, products, attributes, lines, jid, infotexts
 	// 		// todo: maxJny, time
-	// 		date: profile.formatDate(profile, opt.when || Date.now())
+	// 		date: profile.formatDate({profile, opt}, opt.when || Date.now())
 	// 	})
-	// 	return res
+	// 	return ctx.res
 	// }
 
 	// todo: fails with 404
 	// const remarks = async () => {
-	// 	const res = await request('himSearch', opt, {
+	// 	const ctx = await request('himSearch', opt, {
 	// 		// todo: dateB, dateE, timeB, timeE, himIds, operators, categories
 	// 		// todo: channels, companies, metas, himcategory, poly, searchmode
 	// 		// todo: minprio, maxprio
 	// 	})
-	// 	return res
+	// 	return ctx.res
 	// }
 
 	// todo: fails with 404
 	// const dataInfo = async () => {
-	// 	const res = await request('datainfo', opt)
-	// 	return res
+	// 	const ctx = await request('datainfo', opt)
+	// 	return ctx.res
 	// }
 
 	return {
