@@ -11,6 +11,21 @@ const transformReqBody = (ctx, body) => {
 	return body
 }
 
+const formatRefreshJourneyReq = (ctx, refreshToken) => {
+	const {profile, opt} = ctx
+
+	return {
+		meth: 'Reconstruction',
+		req: {
+			outReconL: [{ctx: refreshToken}],
+			getIST: true, // todo: make an option
+			getPasslist: !!opt.stopovers,
+			getPolyline: !!opt.polylines,
+			getTariff: !!opt.tickets
+		}
+	}
+}
+
 const vsnProfile = {
 	locale: 'de-DE',
 	timezone: 'Europe/Berlin',
@@ -22,6 +37,7 @@ const vsnProfile = {
 	addMicMac: true,
 
 	transformReqBody,
+	formatRefreshJourneyReq,
 
 	products: products,
 

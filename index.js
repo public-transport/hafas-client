@@ -249,16 +249,9 @@ const createClient = (profile, userAgent, opt = {}) => {
 			remarks: true // parse & expose hints & warnings?
 		}, opt)
 
-		return profile.request({profile, opt}, userAgent, {
-			meth: 'Reconstruction',
-			req: {
-				ctxRecon: refreshToken,
-				getIST: true, // todo: make an option
-				getPasslist: !!opt.stopovers,
-				getPolyline: !!opt.polylines,
-				getTariff: !!opt.tickets
-			}
-		})
+		const req = profile.formatRefreshJourneyReq({profile, opt}, refreshToken)
+
+		return profile.request({profile, opt}, userAgent, req)
 		.then(({res, common}) => {
 			if (!Array.isArray(res.outConL) || !res.outConL[0]) {
 				throw new Error('invalid response')
