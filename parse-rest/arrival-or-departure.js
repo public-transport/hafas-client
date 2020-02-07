@@ -31,7 +31,7 @@ const createParseArrOrDep = (type) => {
 		}
 
 		if (opt.remarks && Array.isArray(d.notes)) {
-			res.hints = d.notes.map(h => profile.parseHint(profile, h, data))
+			res.hints = d.notes.map(h => profile.parseHint(ctx, h))
 		}
 
 		return res

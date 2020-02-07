@@ -3,12 +3,12 @@
 const parseStopover = (ctx, st) => {
 	const {profile} = ctx
 
-	const arr = profile.parseWhen(ctx, st.arrDate, st.rtArrDate, st.arrTime, st.rtArrTime, st.arrTz, !st.rtAlighting)
+	const arr = profile.parseWhen(ctx, st.arrDate, st.rtArrDate, st.arrTime, st.rtArrTime, st.arrTz, st.rtAlighting === false)
 	// todo: is there a `st.rtArrTrack`?
-	const arrPl = profile.parsePlatform(ctx, st.arrTrack, null, !st.rtAlighting)
-	const dep = profile.parseWhen(ctx, st.depDate, st.rtDepDate, st.depTime, st.rtDepTime, st.depTz, !st.rtBoarding)
+	const arrPl = profile.parsePlatform(ctx, st.arrTrack, null, st.rtAlighting === false)
+	const dep = profile.parseWhen(ctx, st.depDate, st.rtDepDate, st.depTime, st.rtDepTime, st.depTz, st.rtBoarding === false)
 	// todo: is there a `st.rtDepTrack`?
-	const depPl = profile.parsePlatform(ctx, st.depTrack, null, !st.rtBoarding)
+	const depPl = profile.parsePlatform(ctx, st.depTrack, null, st.rtBoarding === false)
 
 	const res = {
 		stop: profile.parseLocation(ctx, st) || null,

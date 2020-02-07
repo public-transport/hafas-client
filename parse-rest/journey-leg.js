@@ -1,6 +1,7 @@
 'use strict'
 
 const parseIsoDuration = require('parse-iso-duration')
+const sortBy = require('lodash/sortBy')
 
 const parseJourneyLeg = (ctx, l) => { // l = leg
 	const {profile, opt} = ctx
@@ -14,14 +15,14 @@ const parseJourneyLeg = (ctx, l) => { // l = leg
 	}
 
 	// todo: does `dest.rtAlighting` actually if the arrival is cancelled?
-	const arr = profile.parseWhen(ctx, dest.date, dest.rtDate, dest.time, dest.rtTime, dest.rtTz, !dest.rtAlighting)
+	const arr = profile.parseWhen(ctx, dest.date, dest.rtDate, dest.time, dest.rtTime, dest.rtTz, dest.rtAlighting === false)
 	res.arrival = arr.when
 	res.plannedArrival = arr.plannedWhen
 	res.arrivalDelay = arr.delay
 	if (arr.prognosedWhen) res.prognosedArrival = arr.prognosedWhen
 
 	// todo: does `orig.rtBoarding` actually if the departure is cancelled?
-	const dep = profile.parseWhen(ctx, orig.date, orig.rtDate, orig.time, orig.rtTime, orig.tz, !orig.rtBoarding)
+	const dep = profile.parseWhen(ctx, orig.date, orig.rtDate, orig.time, orig.rtTime, orig.tz, orig.rtBoarding === false)
 	res.departure = dep.when
 	res.plannedDeparture = dep.plannedWhen
 	res.departureDelay = dep.delay
@@ -62,7 +63,8 @@ const parseJourneyLeg = (ctx, l) => { // l = leg
 		res.direction = l.direction && profile.parseStationName(ctx, l.direction) || null
 
 		if (opt.stopovers && l.stops) {
-			res.stopovers = l.stops.map(st => profile.parseStopover(ctx, st))
+			res.stopovers = sortBy(l.stops, 'routeIdx')
+			.map(st => profile.parseStopover(ctx, st))
 		}
 	}
 

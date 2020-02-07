@@ -4,12 +4,18 @@ const {parse} = require('qs')
 
 const leadingZeros = /^0+/
 
+const parseNr = nr => parseFloat(nr.slice(0, 2) + '.' + nr.slice(2))
+
 const parseLocation = (ctx, l) => {
 	const {profile, opt} = ctx
 
 	const id = parse(l.id, {delimiter: '@'})
-	const latitude = 'number' === typeof l.lat ? l.lat : (id.Y ? id.Y / 100000 : null)
-	const longitude = 'number' === typeof l.long ? l.long : (id.X ? id.X / 100000 : null)
+	const latitude = 'number' === typeof l.lat ?
+		l.lat :
+		(id.Y ? parseNr(id.Y) : null)
+	const longitude = 'number' === typeof l.lon ?
+		l.lon :
+		(id.X ? parseNr(id.X) : null)
 
 	const res = {
 		type: 'location',
@@ -17,7 +23,9 @@ const parseLocation = (ctx, l) => {
 		latitude, longitude
 	}
 
-	if (l.type === 'S' || l.type === 'ST') {
+	// todo: l.notes https://github.com/public-transport/hafas-client/issues/130
+
+	if (l.type === 'S' || l.type === 'ST' || id.A === '1') {
 		const stop = {
 			type: 'stop',
 			id: res.id,

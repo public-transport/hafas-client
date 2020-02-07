@@ -228,7 +228,7 @@ const createRestClient = (profile, token, userAgent) => {
 		query.date = profile.formatDate({profile, opt}, when)
 		query.time = profile.formatTime({profile, opt}, when)
 
-		return await request(method, query)
+		return await request(method, opt, query)
 	}
 
 	const departures = async (stop, opt = {}) => {
