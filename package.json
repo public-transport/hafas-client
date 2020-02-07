@@ -15,7 +15,8 @@
 	],
 	"author": "Jannis R <mail@jannisr.de>",
 	"contributors": [
-		"Julius Tens <mail@juliustens.eu>"
+		"Julius Tens <mail@juliustens.eu>",
+		"n0emis <n0emis@noemis.me>"
 	],
 	"homepage": "https://github.com/public-transport/hafas-client/tree/5.0.4",
 	"repository": "public-transport/hafas-client",
