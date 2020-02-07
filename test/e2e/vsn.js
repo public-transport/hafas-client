@@ -19,7 +19,6 @@ const testJourneysStationToStation = require('./lib/journeys-station-to-station'
 const testJourneysStationToAddress = require('./lib/journeys-station-to-address')
 const testJourneysStationToPoi = require('./lib/journeys-station-to-poi')
 const testEarlierLaterJourneys = require('./lib/earlier-later-journeys')
-const journeysFailsWithNoProduct = require('./lib/journeys-fails-with-no-product')
 const testDepartures = require('./lib/departures')
 const testArrivals = require('./lib/arrivals')
 
@@ -28,44 +27,13 @@ const when = createWhen('Europe/Berlin', 'de-DE')
 const cfg = {
 	when,
 	products,
-	minLatitude: 47.24,
-	maxLatitude: 52.9,
-	minLongitude: -0.63,
-	maxLongitude: 14.07
+	minLatitude: 51,
+	maxLatitude: 53,
+	minLongitude: 9.2,
+	maxLongitude: 10.7
 }
 
-const _validateLine = createValidateLine(cfg)
-const validateLine = (validate, l, name) => {
-	if (!l.direction) l = Object.assign({}, l, {direction: 'foo'})
-	_validateLine(validate, l, name)
-}
-
-const _validateJourneyLeg = createValidateJourneyLeg(cfg)
-const validateJourneyLeg = (validate, l, name) => {
-	if (!l.direction) l = Object.assign({}, l, {direction: 'foo'})
-	_validateJourneyLeg(validate, l, name)
-}
-
-const validateMovement = (val, m, name = 'movement') => {
-	// todo: fix this upstream
-	const withFakeLocation = Object.assign({}, m)
-	withFakeLocation.location = Object.assign({}, m.location, {
-		latitude: 50,
-		longitude: 12
-	})
-	_validateMovement(val, withFakeLocation, name)
-
-	assert.ok(m.location.latitude <= 55, name + '.location.latitude is too small')
-	assert.ok(m.location.latitude >= 45, name + '.location.latitude is too large')
-	assert.ok(m.location.longitude >= 1, name + '.location.longitude is too small')
-	assert.ok(m.location.longitude <= 11, name + '.location.longitude is too small')
-}
-
-const validate = createValidate(cfg, {
-	line: validateLine,
-	journeyLeg: validateJourneyLeg,
-	movement: validateMovement
-})
+const validate = createValidate(cfg)
 
 const test = tapePromise(tape)
 const client = createClient(vsnProfile, 'public-transport/hafas-client:test')
@@ -91,20 +59,6 @@ test('journeys – Kornmarkt to Ewaldstraße', async (t) => {
 	t.end()
 })
 
-// todo: journeys, only one product
-
-test('journeys – fails with no product', (t) => {
-	journeysFailsWithNoProduct({
-		test: t,
-		fetchJourneys: client.journeys,
-		fromId: kornmarkt,
-		toId: ewaldstrasse,
-		when,
-		products
-	})
-	t.end()
-})
-
 test('Ewaldstraße to 37083 Göttingen, Schulweg 22', async (t) => {
 	const schulweg = {
 		type: 'location',
@@ -125,9 +79,6 @@ test('Ewaldstraße to 37083 Göttingen, Schulweg 22', async (t) => {
 	})
 	t.end()
 })
-
-// todo: journeys: via works – with detour
-// todo: without detour
 
 test('earlier/later journeys', async (t) => {
 	await testEarlierLaterJourneys({
@@ -198,8 +149,6 @@ test('departures with station object', async (t) => {
 	validate(t, deps, 'departures', 'departures')
 	t.end()
 })
-
-// todo: nearby
 
 test('locations named Jugendherberge', async (t) => {
 	const locations = await client.locations('Jugendherberge', {
