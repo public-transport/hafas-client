@@ -17,14 +17,20 @@ const parseLine = (ctx, p) => { // p = line
 	// todo: what is p.catCode?
 
 	// todo: ICEs seem to have a catCode of 0
-	const catCode = parseInt(p.catCode)
-	if (!Number.isNaN(catCode)) {
-		const product = profile.products.find(p => p.bitmasks.includes(catCode))
+	const cls = parseInt(p.cls)
+	if (!Number.isNaN(cls)) {
+		const product = profile.products.find(p => p.bitmasks.includes(cls))
 		res.mode = product && product.mode || null
 		res.product = product && product.id || null
 	}
 
-	if (p.operator) res.operator = p.operator
+	if (p.operator) {
+		res.operator = {
+			type: 'operator',
+			id: slugg(p.operator.trim()),
+			name: p.operator.trim()
+		}
+	}
 
 	return res
 }

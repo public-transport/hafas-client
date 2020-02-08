@@ -47,6 +47,7 @@ const createRestClient = (profile, token, userAgent) => {
 		parseStopover,
 		parseArrivalOrDeparture,
 		parseLocation,
+		parseTrip,
 		formatDate,
 		formatTime,
 		...profile
@@ -117,14 +118,6 @@ const createRestClient = (profile, token, userAgent) => {
 		return {profile, opt, res: body}
 	}
 
-	const opt = {
-		scheduledDays: false,
-		polylines: false,
-		stopovers: true,
-
-		linesOfStops: true
-	}
-
 	const parseLocationsResult = (l, ctx) => {
 		if (l.StopLocation) {
 			return profile.parseLocation(ctx, {
@@ -167,7 +160,7 @@ const createRestClient = (profile, token, userAgent) => {
 		.filter(loc => !!loc)
 	}
 
-	const nearby = async (location) => {
+	const nearby = async (location, opt = {}) => {
 		const ctx = await request('location.nearbystops', opt, {
 			originCoordLat: location.latitude,
 			originCoordLong: location.longitude,
@@ -341,7 +334,7 @@ const createRestClient = (profile, token, userAgent) => {
 		return ctx.res.Trip.map(t => profile.parseJourney(ctx, t))
 	}
 
-	const trip = async (id) => {
+	const trip = async (id, opt = {}) => {
 		const ctx = await request('journeyDetail', opt, {
 			id,
 			// todo: date, poly, showPassingPoints, rtMode
@@ -389,11 +382,13 @@ const createRestClient = (profile, token, userAgent) => {
 	// 	return ctx.res
 	// }
 
-	return {
+	const client = {
 		locations, nearby,
 		departures, arrivals,
 		journeys, trip, tripAlternatives
 	}
+	Object.defineProperty(client, 'profile', {value: profile})
+	return client
 }
 
 module.exports = createRestClient

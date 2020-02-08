@@ -123,11 +123,11 @@ const createValidateStopover = (cfg) => {
 			val.date(val, s.plannedDeparture, name + '.plannedDeparture')
 			assertValidWhen(s.plannedDeparture, cfg.when, name + '.plannedDeparture')
 		}
-		if (is(s.plannedArrival) && !is(s.arrival)) {
-			a.fail(name + ' has .plannedArrival but not .arrival')
+		if (is(s.plannedArrival) && !is(s.arrival) && s.cancelled !== true) {
+			a.fail(name + ' is not cancelled, and has .plannedArrival but not .arrival')
 		}
-		if (is(s.plannedDeparture) && !is(s.departure)) {
-			a.fail(name + ' has .plannedDeparture but not .departure')
+		if (is(s.plannedDeparture) && !is(s.departure) && s.cancelled !== true) {
+			a.fail(name + ' is not cancelled, and has .plannedDeparture but not .departure, ')
 		}
 
 		if (is(s.arrivalDelay)) {

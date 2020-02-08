@@ -8,6 +8,8 @@ const ADDRESS = 'A'
 
 const leadingZeros = /^0+/
 
+const parseNr = nr => parseFloat(nr.slice(0, 2) + '.' + nr.slice(2))
+
 // todo: what is s.rRefL?
 const parseLocation = (ctx, l) => {
 	const {profile, opt} = ctx
@@ -15,12 +17,18 @@ const parseLocation = (ctx, l) => {
 	const lid = parse(l.lid, {delimiter: '@'})
 	const res = {
 		type: 'location',
-		id: (l.extId || lid.L || lid.b || '').replace(leadingZeros, '') || null
-	}
+		id: (l.extId || lid.L || lid.b || '').replace(leadingZeros, '') || null,
 
-	if (l.crd) {
-		res.latitude = l.crd.y / 1000000
-		res.longitude = l.crd.x / 1000000
+		latitude: (
+			l.crd && 'number' === typeof l.crd.y
+			? parseNr(l.crd.y + '')
+			: (lid.Y ? parseNr(lid.Y) : null)
+		),
+		longitude: (
+			l.crd && 'number' === typeof l.crd.x
+			? parseNr(l.crd.x + '')
+			: (lid.X ? parseNr(lid.X) : null)
+		),
 	}
 
 	if (l.type === STATION) {

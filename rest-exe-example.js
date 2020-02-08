@@ -26,11 +26,11 @@ const berlinYorckstrS1 = '8089051'
 const frankfurtHbf = '8000105'
 const somewhereInBerlin = {type: 'location', address: 'foo', latitude: 52.51072, longitude: 13.37793}
 
-// journeys('8000150', berlinOstkreuz, {
-// 	results: 3,
-// 	stopovers: true,
-// 	remarks: true
-// })
+journeys('8000150', berlinOstkreuz, {
+	results: 3,
+	stopovers: true,
+	remarks: true
+})
 // .then(journeys => journeys.flatMap(j => [...j.legs, '---']))
 // .then(([journey]) => journey.legs.map(l => l.tripId).find(tripId => !!tripId))
 // .then(trip)
