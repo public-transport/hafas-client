@@ -1,5 +1,13 @@
 # Changelog
 
+## `5.1.0`
+
+- 542a9ee/1c67350/738354d add [*VSN* profile](../p/vsn)
+- dfff999 `request()`: add resonse ID to error objects
+- c1beb28 `Error` -> `TypeError`
+
+[🏷 `5.1.0`](https://github.com/public-transport/hafas-client/releases/tag/5.1.0), 2020-02-08
+
 ## `5.0.4`
 
 - db9287f [`@mapbox/polyline`](https://www.npmjs.com/package/@mapbox/polyline) -> [`google-polyline`](https://www.npmjs.com/package/google-polyline)
