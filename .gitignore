@@ -8,3 +8,5 @@ npm-debug.log
 package-lock.json
 
 /id.json
+
+/benchmark/index.html
