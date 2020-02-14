@@ -56,6 +56,8 @@
 		"vbb-translate-ids": "^4.0.0"
 	},
 	"devDependencies": {
+		"0x": "^4.9.1",
+		"benchmark": "^2.1.4",
 		"db-stations": "^3.0.0",
 		"is-coordinates": "^2.0.2",
 		"is-roughly-equal": "^0.1.0",
@@ -68,6 +70,8 @@
 	"scripts": {
 		"e2e-test": "env NODE_ENV=dev node test/e2e/index.js | tap-spec",
 		"test": "env NODE_ENV=dev node test/index.js | tap-spec",
+		"benchmark": "NODE_ENV=production node benchmark/index.js",
+		"benchmark:profile": "NODE_ENV=production 0x -s -F benchmark/index.html benchmark/index.js",
 		"prepublishOnly": "npm test && npm run e2e-test"
 	}
 }
