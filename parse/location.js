@@ -1,6 +1,7 @@
 'use strict'
 
 const {parse} = require('qs')
+const get = require('lodash/get')
 
 const POI = 'P'
 const STATION = 'S'
@@ -30,15 +31,37 @@ const parseLocation = (ctx, l) => {
 	}
 
 	if (l.type === STATION) {
+		// todo: https://github.com/public-transport/hafas-client/issues/151
+		const locL = get(ctx.res, ['common', 'locL'], [])
+
+		const mMastLocX = 'mMastLocX' in l ? l.mMastLocX : NaN
+		const subStops = (l.stopLocL || [])
+		.filter(locX => locX !== mMastLocX)
+		.map(locX => locL[locX])
+		.filter(s => !!s)
+		.map(s => profile.parseLocation(ctx, s))
+		.filter(stop => !!stop)
+
 		const stop = {
 			type: l.isMainMast ? 'station' : 'stop',
 			id: res.id,
 			name: l.name || lid.O ? profile.parseStationName(ctx, l.name || lid.O) : null,
 			location: 'number' === typeof res.latitude ? res : null // todo: remove `.id`
 		}
+		if (opt.subStops && subStops.length > 0) stop.stops = subStops
 
 		if ('pCls' in l) stop.products = profile.parseProductsBitmask(ctx, l.pCls)
 		if ('meta' in l) stop.isMeta = !!l.meta
+
+		if (opt.entrances) {
+			const entrances = (l.entryLocL || [])
+			.map(locX => locL[locX])
+			.filter(l => !!l)
+			.map(l => profile.parseLocation(ctx, l))
+			.filter(loc => !!loc)
+			.map(loc => loc.location)
+			if (entrances.length > 0) stop.entrances = entrances
+		}
 
 		if (opt.linesOfStops && Array.isArray(l.lines)) {
 			stop.lines = l.lines

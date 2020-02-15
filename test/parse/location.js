@@ -5,6 +5,7 @@ const omit = require('lodash/omit')
 const parse = require('../../parse/location')
 
 const profile = {
+	parseLocation: parse,
 	parseStationName: (_, name) => name.toLowerCase(),
 	parseProductsBitmask: (_, bitmask) => [bitmask]
 }
@@ -12,7 +13,9 @@ const profile = {
 const ctx = {
 	data: {},
 	opt: {
-		linesOfStops: false
+		linesOfStops: false,
+		subStops: true,
+		entrances: true,
 	},
 	profile
 }
@@ -64,16 +67,16 @@ test('parses a POI correctly', (t) => {
 	t.end()
 })
 
-test('parses a stop correctly', (t) => {
-	const input = {
-		type: 'S',
-		name: 'Foo bus stop',
-		lid: 'a=b@L=foo%20stop',
-		crd: {x: 13418027, y: 52515503},
-		pCls: 123
-	}
+const fooBusStop = {
+	type: 'S',
+	name: 'Foo bus stop',
+	lid: 'a=b@L=foo%20stop',
+	crd: {x: 13418027, y: 52515503},
+	pCls: 123
+}
 
-	const stop = parse(ctx, input)
+test('parses a stop correctly', (t) => {
+	const stop = parse(ctx, fooBusStop)
 	t.deepEqual(stop, {
 		type: 'stop',
 		id: 'foo stop',
@@ -87,13 +90,13 @@ test('parses a stop correctly', (t) => {
 		products: [123]
 	})
 
-	const withoutLoc = parse(ctx, omit(input, ['crd']))
+	const withoutLoc = parse(ctx, omit(fooBusStop, ['crd']))
 	t.equal(withoutLoc.location, null)
 
-	const mainMast = parse(ctx, {...input, isMainMast: true})
+	const mainMast = parse(ctx, {...fooBusStop, isMainMast: true})
 	t.equal(mainMast.type, 'station')
 
-	const meta = parse(ctx, {...input, meta: 1})
+	const meta = parse(ctx, {...fooBusStop, meta: 1})
 	t.equal(meta.isMeta, true)
 
 	const lineA = {id: 'a'}
@@ -101,7 +104,7 @@ test('parses a stop correctly', (t) => {
 		...ctx,
 		opt: {...ctx.opt, linesOfStops: true}
 	}, {
-		...input, lines: [lineA]
+		...fooBusStop, lines: [lineA]
 	})
 	t.deepEqual(withLines.lines, [lineA])
 
@@ -117,5 +120,62 @@ test('falls back to coordinates from `lid`', (t) => {
 	t.ok(location)
 	t.equal(location.latitude, 23.456789)
 	t.equal(location.longitude, 12.345678)
+	t.end()
+})
+
+test('handles recursive references properly', (t) => {
+	const southernInput = {
+		type: 'S',
+		name: 'Southern Platform',
+		lid: 'a=b@L=southern-platform',
+		crd: {x: 22222222, y: 11111111},
+		// This doesn't make sense semantically, but we test if
+		// `parseLocation` falls into an endless recursive loop.
+		stopLocL: [1]
+	}
+	const northernInput = {
+		type: 'S',
+		name: 'Northern Platform',
+		lid: 'a=b@L=northern-platform',
+		crd: {x: 44444444, y: 33333333}
+	}
+	const common = {locL: [southernInput, northernInput]}
+	const _ctx = {...ctx, res: {common}}
+
+	const northernExpected = {
+		type: 'stop',
+		id: 'northern-platform',
+		name: 'northern platform', // lower-cased!
+		location: {
+			type: 'location',
+			id: 'northern-platform',
+			latitude: 33.333333, longitude: 44.444444
+		}
+	}
+	const southernExpected = {
+		type: 'stop',
+		id: 'southern-platform',
+		name: 'southern platform', // lower-cased!
+		location: {
+			type: 'location',
+			id: 'southern-platform',
+			latitude: 11.111111, longitude: 22.222222
+		},
+		stops: [northernExpected]
+	}
+
+	const {entrances} = parse(_ctx, {
+		...fooBusStop,
+		entryLocL: [0]
+	})
+	t.deepEqual(entrances, [southernExpected.location])
+
+	const {type, stops} = parse(_ctx, {
+		...fooBusStop,
+		stopLocL: [0]
+	})
+	t.equal(type, 'stop')
+	t.deepEqual(stops, [southernExpected])
+
 	t.end()
 })

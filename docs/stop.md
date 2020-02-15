@@ -95,3 +95,13 @@ The response may look like this:
 	} ]
 }
 ```
+
+If the endpoint returns a list of entrances for a station, the resulting station object will have an `entrances` array looking similar to this:
+
+```js
+[
+	{type: 'location', latitude: 47.411069, longitude: 10.277412},
+	{type: 'location', latitude: 47.410493, longitude: 10.277223},
+	{type: 'location', latitude: 47.410754, longitude: 10.278023}
+]
+```
