@@ -112,4 +112,13 @@ const parseLocation = (ctx, l) => {
 	return res
 }
 
-module.exports = parseLocation
+// We use a "visitied list" to prevent endless recursion.
+const seen = Symbol('parseLocation seen items')
+const parseLocationWithoutCycles = (ctx, l, ...args) => {
+	if (ctx[seen] && ctx[seen].includes(l)) return null
+
+	const newSeen = ctx[seen] ? [...ctx[seen], l] : [l]
+	return parseLocation({...ctx, [seen]: newSeen}, l, ...args)
+}
+
+module.exports = parseLocationWithoutCycles

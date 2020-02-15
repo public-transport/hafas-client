@@ -137,7 +137,10 @@ test('handles recursive references properly', (t) => {
 		type: 'S',
 		name: 'Northern Platform',
 		lid: 'a=b@L=northern-platform',
-		crd: {x: 44444444, y: 33333333}
+		crd: {x: 44444444, y: 33333333},
+		// This doesn't make sense semantically, but we test if
+		// `parseLocation` falls into an endless recursive loop.
+		entryLocL: [0]
 	}
 	const common = {locL: [southernInput, northernInput]}
 	const _ctx = {...ctx, res: {common}}
