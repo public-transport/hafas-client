@@ -49,6 +49,19 @@ const parseCommonData = (_ctx) => {
 		// **.arr.aProdX: arrivalLine -> common.lines[idx]
 	}
 
+	common.hints = []
+	if (Array.isArray(c.remL)) {
+		common.hints = c.remL.map(hint => profile.parseHint(ctx, hint))
+		matches['**.remX'].forEach(([idx, parents]) => {
+			if ('number' === typeof idx) parents[0].hint = common.hints[idx]
+		})
+		matches['**.rRefL'].forEach(([idxs, parents]) => {
+			parents[0].hints = idxs
+			.filter(idx => !!common.hints[idx])
+			.map(idx => common.hints[idx])
+		})
+	}
+
 	common.locations = []
 	if (Array.isArray(c.locL)) {
 		common.locations = c.locL.map(loc => profile.parseLocation(ctx, loc))
@@ -80,18 +93,6 @@ const parseCommonData = (_ctx) => {
 		})
 	}
 
-	common.hints = []
-	if (Array.isArray(c.remL)) {
-		common.hints = c.remL.map(hint => profile.parseHint(ctx, hint))
-		matches['**.remX'].forEach(([idx, parents]) => {
-			if ('number' === typeof idx) parents[0].hint = common.hints[idx]
-		})
-		matches['**.rRefL'].forEach(([idxs, parents]) => {
-			parents[0].hints = idxs
-			.filter(idx => !!common.hints[idx])
-			.map(idx => common.hints[idx])
-		})
-	}
 	common.warnings = []
 	if (Array.isArray(c.himL)) {
 		common.warnings = c.himL.map(w => profile.parseWarning(ctx, w))
