@@ -14,6 +14,8 @@ const {profile} = client
 
 const opt = {
 	linesOfStops: false, // parse & expose lines at the stop/station?
+	subStops: true,
+	entrances: true,
 	remarks: true,
 }
 
