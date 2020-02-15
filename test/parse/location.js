@@ -156,7 +156,7 @@ test('handles recursive references properly', (t) => {
 		}
 	}
 	const southernExpected = {
-		type: 'stop',
+		type: 'station',
 		id: 'southern-platform',
 		name: 'southern platform', // lower-cased!
 		location: {
@@ -177,7 +177,7 @@ test('handles recursive references properly', (t) => {
 		...fooBusStop,
 		stopLocL: [0]
 	})
-	t.equal(type, 'stop')
+	t.equal(type, 'station')
 	t.deepEqual(stops, [southernExpected])
 
 	t.end()
