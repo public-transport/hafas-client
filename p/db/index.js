@@ -1,6 +1,9 @@
 'use strict'
 
 const trim = require('lodash/trim')
+const uniqBy = require('lodash/uniqBy')
+const slugg = require('slugg')
+const without = require('lodash/without')
 const {parseHook} = require('../../lib/profile-hooks')
 
 const _parseJourney = require('../../parse/journey')
@@ -9,6 +12,7 @@ const _parseLine = require('../../parse/line')
 const _parseArrival = require('../../parse/arrival')
 const _parseDeparture = require('../../parse/departure')
 const _parseHint = require('../../parse/hint')
+const _parseLocation = require('../../parse/location')
 const _formatStation = require('../../format/station')
 const {bike} = require('../../format/filters')
 
@@ -23,10 +27,99 @@ const transformReqBody = (ctx, body) => {
 
 	body.client = {id: 'DB', v: '16040000', type: 'IPH', name: 'DB Navigator'}
 	body.ext = 'DB.R19.04.a'
-	body.ver = '1.16'
+	body.ver = '1.15'
 	body.auth = {type: 'AID', aid: 'n91dB8Z77MLdoR0K'}
 
 	return body
+}
+
+const slices = (n, arr) => {
+	const initialState = {slices: [], count: Infinity}
+	return arr.reduce(({slices, count}, item) => {
+		if (count >= n) {
+			slices.push([item])
+			count = 1
+		} else {
+			slices[slices.length - 1].push(item)
+			count++
+		}
+		return {slices, count}
+	}, initialState).slices
+}
+
+const parseGrid = (g) => {
+	// todo: g.type, e.g. `S`
+	return {
+		title: g.title,
+		rows: slices(g.nCols, g.itemL.map(item => item.msgL[0]))
+	}
+}
+
+const ausstattungKeys = Object.assign(Object.create(null), {
+	'3-s-zentrale': '3SZentrale',
+	'parkplatze': 'parkingLots',
+	'fahrrad-stellplatze': 'bicycleParkingRacks',
+	'opnv-anbindung': 'localPublicTransport',
+	'wc': 'toilets',
+	'schliessfacher': 'lockers',
+	'reisebedarf': 'travelShop',
+	'stufenfreier-zugang': 'stepFreeAccess',
+	'ein-umsteigehilfe': 'boardingAid',
+	'taxi-am-bahnhof': 'taxis'
+})
+const parseAusstattungVal = (val) => {
+	val = val.toLowerCase()
+	return val === 'ja' ? true : (val === 'nein' ? false : val)
+}
+
+const parseAusstattungGrid = (g) => {
+	// filter duplicate hint rows
+	const rows = uniqBy(g.rows, ([key, val]) => key + ':' + val)
+
+	const res = {raw: rows}
+	for (let [key, val] of rows) {
+		key = ausstattungKeys[slugg(key)]
+		if (key) res[key] = parseAusstattungVal(val)
+	}
+	return res
+}
+
+const parseReisezentrumÖffnungszeiten = (g) => {
+	const res = {}
+	for (const [dayOfWeek, val] of g.rows) res[dayOfWeek] = val
+	res.raw = g.rows
+	return res
+}
+
+const parseLocWithDetails = ({parsed, common}, l) => {
+	if (!parsed) return parsed
+	if (parsed.type !== 'stop' && parsed.type !== 'station') return parsed
+
+	if (Array.isArray(l.gridL)) {
+		const resolveCell = cell => 'hint' in cell ? cell.hint.text : cell
+		const resolveCells = grid => ({
+			...grid,
+			rows: grid.rows.map(row => row.map(resolveCell))
+		})
+
+		let grids = l.gridL
+		.map(grid => parseGrid(grid, common))
+		.map(resolveCells)
+
+		const ausstattung = grids.find(g => slugg(g.title) === 'ausstattung')
+		if (ausstattung) {
+			parsed.facilities = parseAusstattungGrid(ausstattung)
+		}
+		const öffnungszeiten = grids.find(g => slugg(g.title) === 'offnungszeiten-reisezentrum')
+		if (öffnungszeiten) {
+			parsed.reisezentrumOpeningHours = parseReisezentrumÖffnungszeiten(öffnungszeiten)
+		}
+
+		grids = without(grids, ausstattung, öffnungszeiten)
+		if (grids.length > 0) parsed.grids = grids
+	}
+
+	return parsed
 }
 
 // https://www.bahn.de/p/view/service/buchung/auslastungsinformation.shtml
@@ -324,6 +417,11 @@ const codesByText = Object.assign(Object.create(null), {
 })
 
 const parseHintByCode = ({parsed}, raw) => {
+	// plain-text hints used e.g. for stop metadata
+	if (raw.type === 'K') {
+		return {type: 'hint', text: raw.txtN}
+	}
+
 	if (raw.type === 'A') {
 		const hint = hintsByCode[raw.code && raw.code.trim().toLowerCase()]
 		if (hint) {
@@ -360,7 +458,7 @@ const dbProfile = {
 
 	products: products,
 
-	// todo: parseLocation
+	parseLocation: parseHook(_parseLocation, parseLocWithDetails),
 	parseJourney: parseHook(_parseJourney, parseJourneyWithPrice),
 	parseJourneyLeg: parseHook(_parseJourneyLeg, parseJourneyLegWithLoadFactor),
 	parseLine: parseHook(_parseLine, parseLineWithAdditionalName),
