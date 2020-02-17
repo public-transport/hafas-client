@@ -1,6 +1,6 @@
 # hafas-client
 
-**A client for HAFAS public transport APIs**. Sort of like [public-transport-enabler](https://github.com/schildbach/public-transport-enabler), but with a smaller scope. It [contains customisations](p) for [several public transportation networks](#supported-networksendpoints)
+**A client for the "mobile APIs" of [HAFAS](https://de.wikipedia.org/wiki/HAFAS) public transport management systems**.
 
 [![npm version](https://img.shields.io/npm/v/hafas-client.svg)](https://www.npmjs.com/package/hafas-client)
 [![build status](https://img.shields.io/travis/public-transport/hafas-client.svg?branch=3)](https://travis-ci.org/public-transport/hafas-client)
@@ -11,9 +11,13 @@
 
 ## Background
 
-There's [a company called HaCon](https://hacon.de) that sells [a public transport management system called HAFAS](https://de.wikipedia.org/wiki/HAFAS). It is [used by companies all over Europe](https://gist.github.com/derhuerst/2b7ed83bfa5f115125a5) to serve routing and departure information for apps. All those endpoints are similar, with the same terms and API routes, but have slightly different options, filters and sets of enabled features.
+[A company called HaCon](https://hacon.de) sells [a public transport management system called HAFAS](https://de.wikipedia.org/wiki/HAFAS). It is [used by public transport providers across Europe](https://gist.github.com/derhuerst/2b7ed83bfa5f115125a5) to provide routing and departure information to their customers.
 
-`hafas-client` contains all logic for communicating with these, as well as serialising from and parsing to [*Friendly Public Transport Format (FPTF)* `1.2.0`](https://github.com/public-transport/friendly-public-transport-format/blob/1.2.0/spec/readme.md). Endpoint-specific customisations (called *profiles* here) increase the quality of the returned data.
+Most customers get their own, **separate HAFAS deployments**; They all use the same terminology and API calls, but have slightly different versions, configurations and sets of enabled features. Using [endpoint-specific customisations that we call *profiles*](p), **`hafas-client` abstracts most of these differences away, and supports additional features in some cases**. Check the [*supported networks/endpoints* list](#supported-networksendpoints) for more info.
+
+*Note:* Currently, **`hafas-client` only supports "mobile API" endpoints**, which are designed for and used by the respective official mobile app(s); These endpoints almost always have `mgate.exe` in the URL. This library *does not* support "open API" endpoints (often they have `rest-proxy` or `openapi` in the URL) yet, but [#134](https://github.com/public-transport/hafas-client/pull/134) contains work in progress.
+
+Strictly speaking, permission is necessary to use `hafas-client` with a HAFAS "mobile" endpoint. It merely tries to remove the *technical* barrier of accessing the data, in order to kick-start an ecosystem or apps and services that would eventually rely on [*openly available* data](https://opendatahandbook.org/solutions/en/Public-Transport-Data/).
 
 
 ## Installing
@@ -29,19 +33,25 @@ npm install hafas-client
 
 ## Usage
 
+The main entry point of this library is a function `createClient(profile, userAgent)`. Pass in a [profile](p) and an expressive name for your program.
+
 ```js
 const createClient = require('hafas-client')
 const dbProfile = require('hafas-client/p/db')
 
 // create a client with the Deutsche Bahn profile
 const client = createClient(dbProfile, 'my-awesome-program')
+```
 
+You can now use the `client` object to query the HAFAS endpoint configured in the [`db` profile](p/db):
+
+```js
 // Berlin Jungfernheide to München Hbf
 client.journeys('8011167', '8000261', {results: 1})
 .then(console.log).catch(console.error)
 ```
 
-`journeys()` returns a [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/promise) that will resolve with an object with an array `journeys` that contains one [*FPTF* `journey`](https://github.com/public-transport/friendly-public-transport-format/blob/1.2.0/spec/readme.md#journey).
+`journeys()` returns a [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/promise) that will resolve with an object with an array `journeys` that contains one [*Friendly Public Transport Format* (*FPTF*) `1.2.1` `journey`](https://github.com/public-transport/friendly-public-transport-format/blob/1.2.1/spec/readme.md#journey).
 
 ```js
 {
@@ -181,6 +191,8 @@ client.journeys('8011167', '8000261', {results: 1})
 }
 ```
 
+Each of the [profiles](p) has more detailed example code.
+
 
 ## API
 
@@ -189,7 +201,7 @@ client.journeys('8011167', '8000261', {results: 1})
 
 ## supported networks/endpoints
 
-`hafas-client` has built-in customisations (called "profiles") for these public transportation networks:
+`hafas-client` has [built-in customisations called *profiles*](p) for these public transportation networks:
 
 HAFAS endpoint | wrapper library | docs | example code | source code
 ---------------|------------------|------|---------|------------
