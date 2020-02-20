@@ -1,6 +1,5 @@
 'use strict'
 
-const get = require('lodash/get')
 const Scanner = require('../lib/scanner')
 
 const parseCommonData = (_ctx) => {
