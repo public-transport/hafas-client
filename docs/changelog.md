@@ -1,5 +1,13 @@
 # Changelog
 
+## `5.1.1`
+
+- 8cb7d80 improve `findInTree` performance (#152) ⚡️
+- 940519b make readme more helpful 📝
+- 9522e92 `object-scan@11`
+
+[🏷 `5.1.1`](https://github.com/public-transport/hafas-client/releases/tag/5.1.1), 2020-02-22
+
 ## `5.1.0`
 
 - 542a9ee/1c67350/738354d add [*VSN* profile](../p/vsn)
