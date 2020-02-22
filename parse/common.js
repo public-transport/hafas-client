@@ -1,11 +1,11 @@
 'use strict'
 
-const Scanner = require('../lib/scanner')
+const findInTree = require('../lib/find-in-tree')
 
 const parseCommonData = (_ctx) => {
 	const {profile, opt, res} = _ctx
 	const c = res.common || {}
-	const matches = Scanner(res, [
+	const matches = findInTree(res, [
 		'**.oprX', '**.icoX', '**.prodX', '**.pRefL', '**.locX',
 		'**.ani.fLocX', '**.ani.tLocX', '**.fLocX', '**.tLocX',
 		'**.remX', '**.himX', '**.polyG.polyXL'
