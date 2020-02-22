@@ -1,11 +1,15 @@
 'use strict'
 
-const get = require('lodash/get')
 const findInTree = require('../lib/find-in-tree')
 
 const parseCommonData = (_ctx) => {
 	const {profile, opt, res} = _ctx
 	const c = res.common || {}
+	const matches = findInTree(res, [
+		'**.oprX', '**.icoX', '**.prodX', '**.pRefL', '**.locX',
+		'**.ani.fLocX', '**.ani.tLocX', '**.fLocX', '**.tLocX',
+		'**.remX', '**.himX', '**.polyG.polyXL'
+	]);
 
 	const common = {}
 	const ctx = {..._ctx, common}
@@ -13,16 +17,16 @@ const parseCommonData = (_ctx) => {
 	common.operators = []
 	if (Array.isArray(c.opL)) {
 		common.operators = c.opL.map(op => profile.parseOperator(ctx, op))
-		findInTree(res, '**.oprX', (idx, parent) => {
-			if ('number' === typeof idx) parent.operator = common.operators[idx]
+		matches['**.oprX'].forEach(([idx, parents]) => {
+			if ('number' === typeof idx) parents[0].operator = common.operators[idx]
 		})
 	}
 
 	common.icons = []
 	if (Array.isArray(c.icoL)) {
 		common.icons = c.icoL.map(icon => profile.parseIcon(ctx, icon))
-		findInTree(res, '**.icoX', (idx, parent) => {
-			if ('number' === typeof idx) parent.icon = common.icons[idx]
+		matches['**.icoX'].forEach(([idx, parents]) => {
+			if ('number' === typeof idx) parents[0].icon = common.icons[idx]
 		})
 	}
 
@@ -30,11 +34,11 @@ const parseCommonData = (_ctx) => {
 	if (Array.isArray(c.prodL)) {
 		common.lines = c.prodL.map(l => profile.parseLine(ctx, l))
 
-		findInTree(res, '**.prodX', (idx, parent) => {
-			if ('number' === typeof idx) parent.line = common.lines[idx]
+		matches['**.prodX'].forEach(([idx, parents]) => {
+			if ('number' === typeof idx) parents[0].line = common.lines[idx]
 		})
-		findInTree(res, '**.pRefL', (idxs, parent) => {
-			parent.lines = idxs.filter(idx => !!common.lines[idx]).map(idx => common.lines[idx])
+		matches['**.pRefL'].forEach(([idxs, parents]) => {
+			parents[0].lines = idxs.filter(idx => !!common.lines[idx]).map(idx => common.lines[idx])
 		})
 		// todo
 		// **.dep.dProdX: departureLine -> common.lines[idx]
@@ -55,35 +59,35 @@ const parseCommonData = (_ctx) => {
 		}
 
 		// todo: correct props?
-		findInTree(res, '**.locX', (idx, parent) => {
-			if ('number' === typeof idx) parent.location = common.locations[idx]
+		matches['**.locX'].forEach(([idx, parents]) => {
+			if ('number' === typeof idx) parents[0].location = common.locations[idx]
 		})
-		findInTree(res, '**.ani.fLocX', (idxs, parent) => {
-			parent.fromLocations = idxs.map(idx => common.locations[idx])
+		matches['**.ani.fLocX'].forEach(([idxs, parents]) => {
+			parents[0].fromLocations = idxs.map(idx => common.locations[idx])
 		})
-		findInTree(res, '**.ani.tLocX', (idxs, parent) => {
-			parent.toLocations = idxs.map(idx => common.locations[idx])
+		matches['**.ani.tLocX'].forEach(([idxs, parents]) => {
+			parents[0].toLocations = idxs.map(idx => common.locations[idx])
 		})
-		findInTree(res, '**.fLocX', (idx, parent) => {
-			if ('number' === typeof idx) parent.fromLocation = common.locations[idx]
+		matches['**.fLocX'].forEach(([idx, parents]) => {
+			if ('number' === typeof idx) parents[0].fromLocation = common.locations[idx]
 		})
-		findInTree(res, '**.tLocX', (idx, parent) => {
-			if ('number' === typeof idx) parent.toLocation = common.locations[idx]
+		matches['**.tLocX'].forEach(([idx, parents]) => {
+			if ('number' === typeof idx) parents[0].toLocation = common.locations[idx]
 		})
 	}
 
 	common.hints = []
 	if (opt.remarks && Array.isArray(c.remL)) {
 		common.hints = c.remL.map(hint => profile.parseHint(ctx, hint))
-		findInTree(res, '**.remX', (idx, parent) => {
-			if ('number' === typeof idx) parent.hint = common.hints[idx]
+		matches['**.remX'].forEach(([idx, parents]) => {
+			if ('number' === typeof idx) parents[0].hint = common.hints[idx]
 		})
 	}
 	common.warnings = []
 	if (opt.remarks && Array.isArray(c.himL)) {
 		common.warnings = c.himL.map(w => profile.parseWarning(ctx, w))
-		findInTree(res, '**.himX', (idx, parent) => {
-			if ('number' === typeof idx) parent.warning = common.warnings[idx]
+		matches['**.himX'].forEach(([idx, parents]) => {
+			if ('number' === typeof idx) parents[0].warning = common.warnings[idx]
 		})
 	}
 
@@ -92,10 +96,9 @@ const parseCommonData = (_ctx) => {
 		common.polylines = c.polyL.map(p => profile.parsePolyline(ctx, p))
 		// todo: **.ani.poly -> parsePolyline()
 
-		findInTree(res, '**.polyG.polyXL', (idxs, _, path) => {
+		matches['**.polyG.polyXL'].forEach(([idxs, parents]) => {
 			const idx = idxs.find(idx => !!common.polylines[idx]) // find any given polyline
-			const jny = get(res, path.slice(0, -2))
-			jny.polyline = common.polylines[idx]
+			parents[1].polyline = common.polylines[idx]
 		})
 	}
 
