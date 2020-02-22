@@ -5,7 +5,7 @@ const Scanner = require('../lib/scanner')
 const parseCommonData = (_ctx) => {
 	const {profile, opt, res} = _ctx
 	const c = res.common || {}
-	const scanner = Scanner(res, [
+	const matches = Scanner(res, [
 		'**.oprX', '**.icoX', '**.prodX', '**.pRefL', '**.locX',
 		'**.ani.fLocX', '**.ani.tLocX', '**.fLocX', '**.tLocX',
 		'**.remX', '**.himX', '**.polyG.polyXL'
@@ -17,7 +17,7 @@ const parseCommonData = (_ctx) => {
 	common.operators = []
 	if (Array.isArray(c.opL)) {
 		common.operators = c.opL.map(op => profile.parseOperator(ctx, op))
-		scanner('**.oprX', (idx, parents) => {
+		matches['**.oprX'].forEach(([idx, parents]) => {
 			if ('number' === typeof idx) parents[0].operator = common.operators[idx]
 		})
 	}
@@ -25,7 +25,7 @@ const parseCommonData = (_ctx) => {
 	common.icons = []
 	if (Array.isArray(c.icoL)) {
 		common.icons = c.icoL.map(icon => profile.parseIcon(ctx, icon))
-		scanner('**.icoX', (idx, parents) => {
+		matches['**.icoX'].forEach(([idx, parents]) => {
 			if ('number' === typeof idx) parents[0].icon = common.icons[idx]
 		})
 	}
@@ -34,10 +34,10 @@ const parseCommonData = (_ctx) => {
 	if (Array.isArray(c.prodL)) {
 		common.lines = c.prodL.map(l => profile.parseLine(ctx, l))
 
-		scanner('**.prodX', (idx, parents) => {
+		matches['**.prodX'].forEach(([idx, parents]) => {
 			if ('number' === typeof idx) parents[0].line = common.lines[idx]
 		})
-		scanner('**.pRefL', (idxs, parents) => {
+		matches['**.pRefL'].forEach(([idxs, parents]) => {
 			parents[0].lines = idxs.filter(idx => !!common.lines[idx]).map(idx => common.lines[idx])
 		})
 		// todo
@@ -59,19 +59,19 @@ const parseCommonData = (_ctx) => {
 		}
 
 		// todo: correct props?
-		scanner('**.locX', (idx, parents) => {
+		matches['**.locX'].forEach(([idx, parents]) => {
 			if ('number' === typeof idx) parents[0].location = common.locations[idx]
 		})
-		scanner('**.ani.fLocX', (idxs, parents) => {
+		matches['**.ani.fLocX'].forEach(([idxs, parents]) => {
 			parents[0].fromLocations = idxs.map(idx => common.locations[idx])
 		})
-		scanner('**.ani.tLocX', (idxs, parents) => {
+		matches['**.ani.tLocX'].forEach(([idxs, parents]) => {
 			parents[0].toLocations = idxs.map(idx => common.locations[idx])
 		})
-		scanner('**.fLocX', (idx, parents) => {
+		matches['**.fLocX'].forEach(([idx, parents]) => {
 			if ('number' === typeof idx) parents[0].fromLocation = common.locations[idx]
 		})
-		scanner('**.tLocX', (idx, parents) => {
+		matches['**.tLocX'].forEach(([idx, parents]) => {
 			if ('number' === typeof idx) parents[0].toLocation = common.locations[idx]
 		})
 	}
@@ -79,14 +79,14 @@ const parseCommonData = (_ctx) => {
 	common.hints = []
 	if (opt.remarks && Array.isArray(c.remL)) {
 		common.hints = c.remL.map(hint => profile.parseHint(ctx, hint))
-		scanner('**.remX', (idx, parents) => {
+		matches['**.remX'].forEach(([idx, parents]) => {
 			if ('number' === typeof idx) parents[0].hint = common.hints[idx]
 		})
 	}
 	common.warnings = []
 	if (opt.remarks && Array.isArray(c.himL)) {
 		common.warnings = c.himL.map(w => profile.parseWarning(ctx, w))
-		scanner('**.himX', (idx, parents) => {
+		matches['**.himX'].forEach(([idx, parents]) => {
 			if ('number' === typeof idx) parents[0].warning = common.warnings[idx]
 		})
 	}
@@ -96,7 +96,7 @@ const parseCommonData = (_ctx) => {
 		common.polylines = c.polyL.map(p => profile.parsePolyline(ctx, p))
 		// todo: **.ani.poly -> parsePolyline()
 
-		scanner('**.polyG.polyXL', (idxs, parents) => {
+		matches['**.polyG.polyXL'].forEach(([idxs, parents]) => {
 			const idx = idxs.find(idx => !!common.polylines[idx]) // find any given polyline
 			parents[1].polyline = common.polylines[idx]
 		})
