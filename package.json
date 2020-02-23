@@ -61,6 +61,7 @@
 		"db-stations": "^3.0.0",
 		"is-coordinates": "^2.0.2",
 		"is-roughly-equal": "^0.1.0",
+		"lodash.clonedeep": "4.5.0",
 		"tap-spec": "^5.0.0",
 		"tape": "^4.8.0",
 		"tape-promise": "^4.0.0",
