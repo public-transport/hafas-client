@@ -1,5 +1,6 @@
 'use strict'
 
+const cloneDeep = require('lodash/cloneDeep')
 const {Suite} = require('benchmark')
 
 const createClient = require('..')
@@ -15,7 +16,7 @@ suite
 
 .add('parse 1200 departures', () => {
 	const opt = {remarks: true}
-	const res = manyDepartures
+	const res = cloneDeep(manyDepartures)
 
 	const common = profile.parseCommon({profile, opt, res})
 	const ctx = {profile, opt, common, res}
@@ -24,7 +25,7 @@ suite
 
 .add('parse 45 departures', () => {
 	const opt = {remarks: true}
-	const res = mediumDepartures
+	const res = cloneDeep(mediumDepartures)
 
 	const common = profile.parseCommon({profile, opt, res})
 	const ctx = {profile, opt, common, res}
