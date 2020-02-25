@@ -115,8 +115,8 @@ const parseJourneyWithPrice = ({parsed}, raw) => {
 
 const parseJourneyLegWithLoadFactor = ({parsed, res, opt}, raw) => {
 	const tcocX = raw.jny && raw.jny.dTrnCmpSX && raw.jny.dTrnCmpSX.tcocX
-	if (Array.isArray(tcocX) && Array.isArray(res.tcocL)) {
-		const load = parseLoadFactor(opt, res.tcocL, tcocX)
+	if (Array.isArray(tcocX) && Array.isArray(res.common.tcocL)) {
+		const load = parseLoadFactor(opt, res.common.tcocL, tcocX)
 		if (load) parsed.loadFactor = load
 	}
 	return parsed
