@@ -107,13 +107,25 @@ const createRestClient = (profile, token, userAgent) => {
 		// todo: sometimes it returns a body without any data
 		// e.g. `location.nearbystops` with an invalid `type`
 
-		unwrapNested(body, '**.ServiceDays[0]', 'serviceDays')
-		unwrapNested(body, '**.LegList.Leg', 'legs')
-		unwrapNested(body, '**.Notes.Note', 'notes')
-		unwrapNested(body, '**.JourneyDetailRef.ref', 'ref')
-		unwrapNested(body, '**.Stops.Stop', 'stops')
-		unwrapNested(body, '**.Names.Name', 'products')
-		unwrapNested(body, '**.Directions.Direction', 'directions')
+		const mapping = {
+			'**.ServiceDays[0]': 'serviceDays',
+			'**.LegList.Leg': 'legs',
+			'**.Notes.Note': 'notes',
+			'**.JourneyDetailRef.ref': 'ref',
+			'**.Stops.Stop': 'stops',
+			'**.Names.Name': 'products',
+			'**.Directions.Direction': 'directions',
+		}
+
+		const allMatches = findInTree(body, Object.keys(mapping))
+		for (const [needle, matches] of Object.entries(allMatches)) {
+			const newKey = mapping[needle]
+
+			for (const [item, parents] of matches) {
+				const grandParent = parents[1]
+				grandParent[newKey] = item
+			}
+		}
 
 		return {profile, opt, res: body}
 	}
