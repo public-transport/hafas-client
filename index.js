@@ -111,7 +111,7 @@ const createClient = (profile, userAgent, opt = {}) => {
 		}
 
 		opt = Object.assign({
-			results: null, // number of journeys – `null` means "whatever HAFAS returns"
+			results: null, // number of journeys – `null` means "whatever HAFAS returns"
 			via: null, // let journeys pass this station?
 			stopovers: false, // return stations on the way?
 			transfers: -1, // maximum of 5 transfers

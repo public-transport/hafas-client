@@ -14,8 +14,6 @@
         "ecmaVersion": 2018
     },
     "rules": {
-        "no-irregular-whitespace": "off",
-        "no-mixed-spaces-and-tabs": "off",
         "no-unused-vars": [
             "error",
             {
