@@ -57,7 +57,7 @@ const parseJourneyLeg = (ctx, l) => { // l = leg
 		res.tripId = l.JourneyDetailRef && l.JourneyDetailRef.ref || null
 
 		// todo: is it num instead of number?
-		const product = {name: l.name, number: l.number, ...l.Product}
+		const product = {name: l.name, number: l.number, ...(l.Product[0] || {})}
 		res.line = profile.parseLine(ctx, product) || null
 
 		res.direction = l.direction && profile.parseStationName(ctx, l.direction) || null
