@@ -5,7 +5,9 @@ node_js:
   - 'lts/*'
   - '10'
 cache: npm
-script: npm run lint && npm test
+script:
+  - npm run lint
+  - npm test
 jobs:
   include:
     - name: e2e-test
