@@ -12,6 +12,7 @@ const transformReqBody = (ctx, body) => {
 }
 
 const formatRefreshJourneyReq = (ctx, refreshToken) => {
+	// eslint-disable-next-line no-unused-vars
 	const {profile, opt} = ctx
 
 	return {

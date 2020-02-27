@@ -1,7 +1,5 @@
 'use strict'
 
-const parseWhen = require('./when')
-const parsePlatform = require('./platform')
 const findRemarks = require('./find-remarks')
 
 const parseStopover = (ctx, st, date) => { // st = raw stopover
