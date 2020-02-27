@@ -27,7 +27,7 @@ const parseLocation = (ctx, l) => {
 		const stop = {
 			type: l.isMainMast ? 'station' : 'stop',
 			id: res.id,
-			name: l.name || id.O ? profile.parseStationName(ctx, l.name || id.O) : null,
+			name: l.name || lid.O ? profile.parseStationName(ctx, l.name || lid.O) : null,
 			location: 'number' === typeof res.latitude ? res : null // todo: remove `.id`
 		}
 

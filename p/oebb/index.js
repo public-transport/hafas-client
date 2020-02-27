@@ -49,11 +49,8 @@ const fixMovement = ({parsed}, m) => {
 	// filter out POIs
 	// todo: make use of them, as some of them specify fare zones
 	parsed.nextStopovers = parsed.nextStopovers.filter(st => {
-		const s = st.stop || {}
-		if (s.station) {
-			s = s.station
-			if (s.station.type === 'stop' || s.station.type === 'station') return true
-		}
+		let s = st.stop || {}
+		if (s.station) s = s.station
 		return s.type === 'stop' || s.type === 'station'
 	})
 	parsed.frames = parsed.frames.filter((f) => {
