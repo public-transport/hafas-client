@@ -44,14 +44,14 @@ const createParseArrOrDep = (prefix) => {
 			]).map(([remark]) => remark)
 		}
 
-   		if (opt.stopovers && Array.isArray(d.stopL)) {
-  			// Filter stations the train passes without stopping, as this doesn't comply with FPTF (yet).
-  			const stopovers = d.stopL
-  			.map(st => profile.parseStopover(ctx, st, d.date))
-  			.filter(st => !st.passBy)
-  			if (prefix === ARRIVAL) res.previousStopovers = stopovers
+		if (opt.stopovers && Array.isArray(d.stopL)) {
+			// Filter stations the train passes without stopping, as this doesn't comply with FPTF (yet).
+			const stopovers = d.stopL
+			.map(st => profile.parseStopover(ctx, st, d.date))
+			.filter(st => !st.passBy)
+			if (prefix === ARRIVAL) res.previousStopovers = stopovers
 			else if (prefix === DEPARTURE) res.nextStopovers = stopovers
-  		}
+		}
 
 		return res
 	}
