@@ -223,6 +223,7 @@ HAFAS endpoint | wrapper library | docs | example code | source code
 [Verkehrsverbund Süd-Niedersachsen (VSN)](https://de.wikipedia.org/wiki/Verkehrsverbund_S%C3%BCd-Niedersachsen) | - | [docs](p/vsn/readme.md) | [example code](p/vsn/example.js) | [src](p/vsn/index.js)
 [Ingolstädter Verkehrsgesellschaft (INVG)](https://de.wikipedia.org/wiki/Ingolstädter_Verkehrsgesellschaft) | - | [docs](p/invg/readme.md) | [example code](p/invg/example.js) | [src](p/invg/index.js)
 [Verkehrsverbund Bremen/Niedersachsen (VBN)](https://de.wikipedia.org/wiki/Verkehrsverbund_Bremen/Niedersachsen) | - | [docs](p/vbn/readme.md) | [example code](p/vbn/example.js) | [src](p/vbn/index.js)
+[Rostocker Straßenbahn AG (RSAG)](https://de.wikipedia.org/wiki/Rostocker_Straßenbahn_AG) | - | [docs](p/rsag/readme.md) | [example code](p/rsag/example.js) | [src](p/rsag/index.js)
 
 There are also libraries that use `hafas-client` and pass their own profile in:
 
