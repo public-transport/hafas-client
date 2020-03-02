@@ -1,5 +1,13 @@
 # Changelog
 
+## `5.1.2`
+
+- e5abe3d DB: fix journey leg loadFactor parsing 🐛
+- bc30309 fix undefined variables 🐛
+- db94a62/c072a70/df010fc/9874292 add linting
+
+[🏷 `5.1.2`](https://github.com/public-transport/hafas-client/releases/tag/5.1.2), 2020-03-02
+
 ## `5.1.1`
 
 - 8cb7d80 improve `findInTree` performance (#152) ⚡️
