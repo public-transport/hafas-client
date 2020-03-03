@@ -191,6 +191,7 @@ module.exports = [
 			fahrtNr: '19869',
 			name: 'U8',
 			public: true,
+			adminCode: 'BVU',
 			mode: 'train',
 			product: 'subway',
 			operator: {
@@ -854,6 +855,7 @@ module.exports = [
 			fahrtNr: '19453',
 			name: 'U8',
 			public: true,
+			adminCode: 'BVU',
 			mode: 'train',
 			product: 'subway',
 			operator: {
@@ -1612,6 +1614,7 @@ module.exports = [
 			fahrtNr: '27739',
 			name: 'S9',
 			public: true,
+			adminCode: 'DBS',
 			mode: 'train',
 			product: 'suburban',
 			operator: {
