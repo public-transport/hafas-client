@@ -21,6 +21,10 @@ const parseLine = ({profile}, p) => {
 	// todo: what is p.number?
 	// todo: what is p.prodCtx.catCode?
 
+	if (p.prodCtx && 'string' === typeof p.prodCtx.admin) {
+		res.adminCode = p.prodCtx.admin.replace(/-+$/, '')
+	}
+
 	if ('cls' in p) {
 		// todo: use profile.products.find() for this
 		const byBitmask = []

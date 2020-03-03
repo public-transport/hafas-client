@@ -702,6 +702,7 @@ module.exports = {
 				id: 's-bahn-berlin-gmbh',
 				name: 'S-Bahn Berlin GmbH'
 			},
+			adminCode: 'DBS',
 			symbol: 'S',
 			nr: 2,
 			metro: false,
