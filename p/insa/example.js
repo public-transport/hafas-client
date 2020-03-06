@@ -5,6 +5,13 @@ const insaProfile = require('.')
 
 const client = createClient(insaProfile, 'hafas-client-example')
 
+const hellestr1 = {
+	type: 'location',
+	id: '980801263',
+	address: 'Magdeburg - Leipziger Straße, Hellestraße 1',
+	latitude: 52.116706, longitude: 11.621821
+}
+
 // from Magdeburg-Neustadt to Magdeburg-Buckau
 client.journeys('008010226', '008013456', {results: 1})
 // client.departures('008010226', { duration: 5 })
@@ -12,17 +19,14 @@ client.journeys('008010226', '008013456', {results: 1})
 // client.locations('Magdeburg Hbf', {results: 2})
 // client.locations('Kunstmuseum Kloster Unser Lieben Frauen Magdeburg', {results: 2})
 // client.stop('008010226') // Magdeburg-Neustadt
-// client.nearby({
-// 	type: 'location',
-// 	latitude: 52.148842,
-// 	longitude: 11.641705
-// }, {distance: 200})
+// client.nearby(hellestr1)
 // client.radar({
 // 	north: 52.148364,
 // 	west: 11.600826,
 // 	south: 52.108486,
 // 	east: 11.651451
 // }, {results: 10})
+// client.reachableFrom(hellestr1, {maxDuration: 10})
 
 // .then(({journeys}) => {
 // 	const [journey] = journeys

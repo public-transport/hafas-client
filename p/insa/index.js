@@ -10,8 +10,8 @@ const transformReqBody = (ctx, body) => {
 		name: 'nasaPROD',
 		os: 'iPhone OS 11.2.5'
 	}
-	body.ver = '1.11'
-	body.auth = {aid: "nasa-apps"}
+	body.ver = '1.21'
+	body.auth = {type: 'AID', aid: "nasa-apps"}
 	body.lang = 'en' // todo: `de`?
 
 	return body
@@ -27,8 +27,8 @@ const insaProfile = {
 
 	trip: true,
 	radar: true,
-	refreshJourney: false
-	// todo: upgrade to version `1.13` in order to enable `reachableFrom: true`
+	refreshJourney: false,
+	reachableFrom: true,
 }
 
 module.exports = insaProfile;
