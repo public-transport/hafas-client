@@ -38,8 +38,21 @@ const parseLocation = (ctx, l) => {
 			stop.lines = l.lines
 		}
 
-		const hints = l.hints || []
+		const locHints = (l.remarkRefs || [])
+		.filter(ref => !!ref.hint && Array.isArray(ref.tagL))
+		.filter(({tagL}) => (
+			tagL.includes('RES_LOC') ||
+			tagL.find(t => t.slice(0, 8) === 'RES_LOC_') // e.g. `RES_LOC_H3`
+		))
+		.map(ref => ref.hint)
+		const hints = [
+			...(l.hints || []),
+			...locHints,
+		]
 		const byType = type => hints.find(h => h.type === type)
+
+		const transitAuthority = (byType('transit-authority') || {}).text
+		if (transitAuthority) stop.transitAuthority = transitAuthority
 
 		const dhid = (byType('stop-dhid') || {}).text
 		if (dhid) {

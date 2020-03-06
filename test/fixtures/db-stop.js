@@ -3,6 +3,10 @@
 module.exports = {
 	type: 'stop',
 	id: '8011155',
+	ids: {
+		dhid: 'de:11000:900100003',
+		VBB: '900100003'
+	},
 	name: 'Berlin Alexanderplatz',
 	location: {
 		type: 'location',
@@ -21,5 +25,6 @@ module.exports = {
 		subway: true,
 		tram: true,
 		taxi: false
-	}
+	},
+	transitAuthority: 'VBB',
 }
