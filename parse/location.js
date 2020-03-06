@@ -38,6 +38,27 @@ const parseLocation = (ctx, l) => {
 			stop.lines = l.lines
 		}
 
+		const hints = l.hints || []
+		const byType = type => hints.find(h => h.type === type)
+
+		const dhid = (byType('stop-dhid') || {}).text
+		if (dhid) {
+			if (!stop.ids) stop.ids = {}
+			stop.ids.dhid = dhid
+		}
+
+		const otherIds = hints
+		.filter(h => h.type === 'foreign-id')
+		.filter(h => 'string' === typeof h.text && h.text.includes(':'))
+		.map(({text}) => {
+			const i = text.indexOf(':')
+			return [text.slice(0, i), text.slice(i + 1)]
+		})
+		if (otherIds.length > 0) {
+			if (!stop.ids) stop.ids = {}
+			for (const [src, id] of otherIds) stop.ids[src] = id
+		}
+
 		return stop
 	}
 
