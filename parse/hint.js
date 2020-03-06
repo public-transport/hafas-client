@@ -5,10 +5,12 @@ const codesByIcon = Object.assign(Object.create(null), {
 })
 
 const linkTypesByCode = Object.assign(Object.create(null), {
+	BB: 'stop-website',
 	// IFOPT-based DHID
 	// https://wiki.openstreetmap.org/wiki/DE:Key:ref:IFOPT
 	// https://trid.trb.org/view/1435440
 	IF: 'stop-dhid',
+	OZ: 'transit-authority',
 	// todo: `{type: 'I',code: 'TD',icoX: 1,txtN: '8010224'}`
 	// todo: `{type: 'I',code: 'TE',icoX: 1,txtN: '8024001'}`
 })
@@ -27,6 +29,9 @@ const parseHint = (ctx, h) => {
 	if (h.type === 'I' && h.code && h.txtN) {
 		if (h.code in linkTypesByCode) {
 			return {type: linkTypesByCode[h.code], text: h.txtN}
+		}
+		if (h.code === 'TW' && h.txtN[0] === '$') {
+			return {type: 'local-fare-zone', text: h.txtN.slice(1)}
 		}
 		if (h.code === 'TW' && h.txtN[0] === '#') {
 			return {type: 'foreign-id', text: h.txtN.slice(1)}

@@ -1,5 +1,6 @@
 'use strict'
 
+const omit = require('lodash/omit')
 const findInTree = require('../lib/find-in-tree')
 
 const parseCommonData = (_ctx) => {
@@ -9,6 +10,7 @@ const parseCommonData = (_ctx) => {
 		'**.oprX', '**.icoX', '**.prodX', '**.pRefL', '**.locX',
 		'**.ani.fLocX', '**.ani.tLocX', '**.fLocX', '**.tLocX',
 		'**.remX', '**.himX', '**.polyG.polyXL', '**.rRefL',
+		'**.msgL',
 	]);
 
 	const common = {}
@@ -89,12 +91,28 @@ const parseCommonData = (_ctx) => {
 		})
 	}
 	common.warnings = []
-	if (opt.remarks && Array.isArray(c.himL)) {
+	if (Array.isArray(c.himL)) {
 		common.warnings = c.himL.map(w => profile.parseWarning(ctx, w))
 		matches['**.himX'].forEach(([idx, parents]) => {
 			if ('number' === typeof idx) parents[0].warning = common.warnings[idx]
 		})
 	}
+
+	// resolve .msgL[] references
+	const parseRemarkRef = (ref) => {
+		if (ref.type === 'REM' && ref.hint) {
+			return omit(ref, ['type', 'remX'])
+		}
+		if (ref.type === 'HIM' && ref.warning) {
+			return omit(ref, ['type', 'himX'])
+		}
+		return null
+	}
+	matches['**.msgL'].forEach(([refs, parents]) => {
+		parents[0].remarkRefs = refs
+		.map(parseRemarkRef)
+		.filter(ref => ref !== null)
+	})
 
 	common.polylines = []
 	if (opt.polylines && Array.isArray(c.polyL)) {
