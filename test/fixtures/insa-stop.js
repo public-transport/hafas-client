@@ -3,6 +3,9 @@
 module.exports = {
 	type: 'stop',
 	id: '7341',
+	ids: {
+		dhid: 'de:15003:7341',
+	},
 	name: 'Magdeburg, S-Bahnhof SKET Industriepark',
 	location: {
 		type: 'location',
