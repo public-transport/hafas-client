@@ -1,5 +1,15 @@
 # Changelog
 
+## `5.2.0`
+
+- 1b03b2e INSA: protocol version `1.21`, enable [`reachableFrom()`](reachable-from.md)
+- 2a24137/3ea9380 `parseLocation()`: parse foreign stop IDs
+- 3ea9380 `parseLocation()`: parse fare zone, transit authority
+- 8c7f164 `parseLine()`: expose admin code
+- b9d5c85 add DB & INSA `stop()` tests
+
+[🏷 `5.2.0`](https://github.com/public-transport/hafas-client/releases/tag/5.2.0), 2020-03-08
+
 ## `5.1.2`
 
 - e5abe3d DB: fix journey leg loadFactor parsing 🐛
