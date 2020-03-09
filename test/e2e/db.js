@@ -26,6 +26,7 @@ const testDeparturesWithoutRelatedStations = require('./lib/departures-without-r
 const testArrivals = require('./lib/arrivals')
 const testJourneysWithDetour = require('./lib/journeys-with-detour')
 const testReachableFrom = require('./lib/reachable-from')
+const testServerInfo = require('./lib/server-info')
 
 const stations = []
 const pStations = new Promise((resolve, reject) => {
@@ -450,4 +451,11 @@ test('reachableFrom', async (t) => {
 		validate
 	})
 	t.end()
+})
+
+test('serverInfo works', async (t) => {
+	await testServerInfo({
+		test: t,
+		fetchServerInfo: client.serverInfo,
+	})
 })

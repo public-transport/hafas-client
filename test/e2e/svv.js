@@ -10,6 +10,7 @@ const testJourneysStationToStation = require('./lib/journeys-station-to-station'
 const testRefreshJourney = require('./lib/refresh-journey')
 const testArrivals = require('./lib/arrivals')
 const testReachableFrom = require('./lib/reachable-from')
+const testServerInfo = require('./lib/server-info')
 
 const when = createWhen(svvProfile.timezone, svvProfile.locale)
 
@@ -93,4 +94,11 @@ test('reachableFrom', async (t) => {
 		validate
 	})
 	t.end()
+})
+
+test('serverInfo works', async (t) => {
+	await testServerInfo({
+		test: t,
+		fetchServerInfo: client.serverInfo,
+	})
 })

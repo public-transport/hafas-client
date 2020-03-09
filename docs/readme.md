@@ -11,6 +11,7 @@
 - [`nearby(location, [opt])`](nearby.md) – show stations & POIs around
 - [`radar(north, west, south, east, [opt])`](radar.md) – find all vehicles currently in a certain area
 - [`reachableFrom(address, [opt])`](reachable-from.md) – get all stations reachable from an address within `n` minutes
+- [`serverInfo([opt])`](server-info.md) – fetch meta information from HAFAS
 
 ## Migrating from an old `hafas-client` version
 
