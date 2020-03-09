@@ -14,8 +14,13 @@ const parseTrip = (ctx, t) => { // t = raw trip
 		arr: maxBy(t.stopL, 'idx') || last(t.stopL),
 		jny: t,
 	}
-	const trip = profile.parseJourneyLeg(ctx, fakeLeg, t.date)
 
+	// todo: this breaks if the trip starts on a different day
+	// how does HAFAS do this?
+	const today = () => profile.formatDate(profile, Date.now())
+	const date = t.date || today()
+
+	const trip = profile.parseJourneyLeg(ctx, fakeLeg, date)
 	trip.id = trip.tripId
 	delete trip.tripId
 
