@@ -38,7 +38,8 @@ const parseArgs = [
 	['radar', 0, parseJsObject],
 	['radar', 1, parseJsObject],
 	['reachableFrom', 0, parseJsObject],
-	['reachableFrom', 1, parseJsObject]
+	['reachableFrom', 1, parseJsObject],
+	['serverInfo', 0, parseJsObject],
 ]
 
 const argv = mri(process.argv.slice(2))

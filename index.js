@@ -468,7 +468,34 @@ const createClient = (profile, userAgent, opt = {}) => {
 		})
 	}
 
-	const client = {departures, arrivals, journeys, locations, stop, nearby}
+	const serverInfo = async (opt = {}) => {
+		const {res, common} = await profile.request({profile, opt}, userAgent, {
+			meth: 'ServerInfo',
+			req: {}
+		})
+
+		const ctx = {profile, opt, common, res}
+		return {
+			timetableStart: res.fpB || null,
+			timetableEnd: res.fpE || null,
+			serverTime: res.sD && res.sT
+				? profile.parseDateTime(ctx, res.sD, res.sT)
+				: null,
+			realtimeDataUpdatedAt: res.planrtTS
+				? parseInt(res.planrtTS)
+				: null,
+		}
+	}
+
+	const client = {
+		departures,
+		arrivals,
+		journeys,
+		locations,
+		stop,
+		nearby,
+		serverInfo,
+	}
 	if (profile.trip) client.trip = trip
 	if (profile.radar) client.radar = radar
 	if (profile.refreshJourney) client.refreshJourney = refreshJourney
