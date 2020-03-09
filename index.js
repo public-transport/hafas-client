@@ -56,6 +56,7 @@ const createClient = (profile, userAgent, opt = {}) => {
 		opt = Object.assign({
 			// todo: for arrivals(), this is actually a station it *has already* stopped by
 			direction: null, // only show departures stopping by this station
+			line: null, // filter by line ID
 			duration: 10, // show departures for the next n minutes
 			results: null, // max. number of results; `null` means "whatever HAFAS wants"
 			subStops: true, // parse & expose sub-stops of stations?
