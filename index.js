@@ -3,6 +3,7 @@
 const isObj = require('lodash/isObject')
 const sortBy = require('lodash/sortBy')
 const pRetry = require('p-retry')
+const omit = require('lodash/omit')
 
 const defaultProfile = require('./lib/default-profile')
 const validateProfile = require('./lib/validate-profile')
@@ -502,6 +503,34 @@ const createClient = (profile, userAgent, opt = {}) => {
 		return res.msgL.map(w => profile.parseWarning(ctx, w))
 	}
 
+	const lines = async (query, opt = {}) => {
+		if (!isNonEmptyString(query)) {
+			throw new TypeError('query must be a non-empty string.')
+		}
+
+		const req = profile.formatLinesReq({profile, opt}, query)
+		const {
+			res, common,
+		} = await profile.request({profile, opt}, userAgent, req)
+
+		if (!Array.isArray(res.lineL)) return []
+		const ctx = {profile, opt, common, res}
+		return res.lineL.map(l => {
+			const parseDirRef = i => (res.common.dirL[i] || {}).txt || null
+			return {
+				...omit(l.line, ['id', 'fahrtNr']),
+				id: l.lineId,
+				// todo: what is locX?
+				directions: Array.isArray(l.dirRefL)
+					? l.dirRefL.map(parseDirRef)
+					: null,
+				trips: Array.isArray(l.jnyL)
+					? l.jnyL.map(t => profile.parseTrip(ctx, t))
+					: null,
+			}
+		})
+	}
+
 	const serverInfo = async (opt = {}) => {
 		const {res, common} = await profile.request({profile, opt}, userAgent, {
 			meth: 'ServerInfo',
@@ -528,6 +557,7 @@ const createClient = (profile, userAgent, opt = {}) => {
 		locations,
 		stop,
 		nearby,
+		lines,
 		serverInfo,
 	}
 	if (profile.trip) client.trip = trip

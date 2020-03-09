@@ -40,6 +40,8 @@ const parseArgs = [
 	['reachableFrom', 0, parseJsObject],
 	['reachableFrom', 1, parseJsObject],
 	['remarks', 0, parseJsObject],
+	['lines', 0, toString],
+	['lines', 1, parseJsObject],
 	['serverInfo', 0, parseJsObject],
 ]
 

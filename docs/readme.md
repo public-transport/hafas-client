@@ -12,6 +12,7 @@
 - [`radar(north, west, south, east, [opt])`](radar.md) – find all vehicles currently in a certain area
 - [`reachableFrom(address, [opt])`](reachable-from.md) – get all stations reachable from an address within `n` minutes
 - [`remarks([opt])`](remarks.md) – get all remarks
+- [`lines(query, [opt])`](lines.md) – get all lines matching a name
 - [`serverInfo([opt])`](server-info.md) – fetch meta information from HAFAS
 
 ## Migrating from an old `hafas-client` version
