@@ -14,6 +14,7 @@ require('./vbb-departures')
 require('./bvg-radar')
 require('./oebb-trip')
 require('./rejseplanen-trip')
+require('./vsn-remarks')
 require('./db-netz-remarks')
 require('./vsn-departures')
 
