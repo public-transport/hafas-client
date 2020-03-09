@@ -1,0 +1,13 @@
+{
+	"private": true,
+	"name": "find-highest-endpoint-version",
+	"version": "1.0.0",
+	"bin": {
+		"hafas-client-find-highest-endpoint-version": "./cli.js"
+	},
+	"author": "Jannis R <mail@jannisr.de>",
+	"license": "ISC",
+	"dependencies": {
+		"mri": "^1.1.4"
+	}
+}
