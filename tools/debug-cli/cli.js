@@ -39,6 +39,7 @@ const parseArgs = [
 	['radar', 1, parseJsObject],
 	['reachableFrom', 0, parseJsObject],
 	['reachableFrom', 1, parseJsObject],
+	['remarks', 0, parseJsObject],
 	['serverInfo', 0, parseJsObject],
 ]
 

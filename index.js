@@ -22,6 +22,12 @@ const validateLocation = (loc, name = 'location') => {
 	}
 }
 
+const validateWhen = (when, name = 'when') => {
+	if (Number.isNaN(+when)) {
+		throw new TypeError(name + ' is invalid')
+	}
+}
+
 const createClient = (profile, userAgent, opt = {}) => {
 	profile = Object.assign({}, defaultProfile, profile)
 	validateProfile(profile)
@@ -468,6 +474,34 @@ const createClient = (profile, userAgent, opt = {}) => {
 		})
 	}
 
+	const remarks = async (opt = {}) => {
+		opt = {
+			results: 100, // maximum number of remarks
+			// filter by time
+			from: Date.now(),
+			to: null,
+			products: null, // filter by affected products
+			...opt
+		}
+
+		if (opt.from !== null) {
+			opt.from = new Date(opt.from)
+			validateWhen(opt.from, 'opt.from')
+		}
+		if (opt.to !== null) {
+			opt.to = new Date(opt.to)
+			validateWhen(opt.to, 'opt.to')
+		}
+
+		const req = profile.formatRemarksReq({profile, opt})
+		const {
+			res, common,
+		} = await profile.request({profile, opt}, userAgent, req)
+
+		const ctx = {profile, opt, common, res}
+		return res.msgL.map(w => profile.parseWarning(ctx, w))
+	}
+
 	const serverInfo = async (opt = {}) => {
 		const {res, common} = await profile.request({profile, opt}, userAgent, {
 			meth: 'ServerInfo',
@@ -494,6 +528,7 @@ const createClient = (profile, userAgent, opt = {}) => {
 		locations,
 		stop,
 		nearby,
+		remarks,
 		serverInfo,
 	}
 	if (profile.trip) client.trip = trip

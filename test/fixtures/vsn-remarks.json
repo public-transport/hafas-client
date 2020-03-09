@@ -1,0 +1,346 @@
+{
+	"common": {
+		"locL": [
+			{
+				"lid": "A=1@O=Bremen Vereinsstraße@X=8606263@Y=53176363@U=80@L=9014254@",
+				"type": "S",
+				"name": "Bremen Vereinsstraße",
+				"icoX": 1,
+				"extId": "9014254",
+				"state": "F",
+				"crd": {
+					"x": 8606263,
+					"y": 53176363,
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"meta": true,
+				"pCls": 32,
+				"isMainMast": true
+			}
+		],
+		"prodL": [
+			{
+				"pid": "L::5::Bus::B1477578485::VOSRVM_X15::*",
+				"name": "Bus X15"
+			},
+			{
+				"pid": "L::5::Bus::B2667014228::de:VBN-VSN:554::*",
+				"name": "Bus 554"
+			},
+			{
+				"pid": "L::5::Bus::B2667014228::de:VBN-VSN:556::*",
+				"name": "Bus 556"
+			},
+			{
+				"pid": "L::5::Bus::B2667014228::de:VBN-VSN:509::*",
+				"name": "Bus 509"
+			},
+			{
+				"pid": "L::5::Bus::B3542973073::de:VBN:91::*",
+				"name": "Bus 91"
+			},
+			{
+				"pid": "L::5::Bus::B3542973073::de:VBN:92::*",
+				"name": "Bus 92"
+			},
+			{
+				"pid": "L::5::Bus::B3542973073::de:VBN:94::*",
+				"name": "Bus 94"
+			},
+			{
+				"pid": "L::5::Bus::B3542973073::de:VBN:N7::*",
+				"name": "Bus N7"
+			}
+		],
+		"polyL": [],
+		"layerL": [
+			{
+				"id": "standard",
+				"name": "standard",
+				"index": 0,
+				"annoCnt": 0
+			}
+		],
+		"crdSysL": [
+			{
+				"id": "standard",
+				"index": 0,
+				"type": "WGS84"
+			}
+		],
+		"opL": [],
+		"remL": [],
+		"icoL": [
+			{
+				"res": "HIM0"
+			},
+			{
+				"res": "prod_bus",
+				"fg": {
+					"r": 255,
+					"g": 255,
+					"b": 255
+				},
+				"bg": {
+					"r": 0,
+					"g": 92,
+					"b": 169
+				}
+			}
+		],
+		"himMsgEdgeL": [
+			{
+				"icoCrd": {
+					"x": 7875575,
+					"y": 52201492
+				}
+			},
+			{
+				"icoCrd": {
+					"x": 9395422,
+					"y": 51748714
+				}
+			},
+			{
+				"icoCrd": {
+					"x": 9435051,
+					"y": 51783147
+				}
+			}
+		],
+		"himMsgEventL": [
+			{
+				"fDate": "20200203",
+				"fTime": "111100",
+				"tDate": "20201213",
+				"tTime": "000000"
+			},
+			{
+				"fDate": "20191215",
+				"fTime": "000000",
+				"tDate": "20201212",
+				"tTime": "235900"
+			},
+			{
+				"fDate": "20200221",
+				"fTime": "113100",
+				"tDate": "20200630",
+				"tTime": "235900"
+			},
+			{
+				"fDate": "20200221",
+				"fTime": "110100",
+				"tDate": "20200630",
+				"tTime": "235900"
+			}
+		],
+		"himMsgCatL": [
+			{
+				"id": 0
+			}
+		]
+	},
+	"msgL": [
+		{
+			"hid": "HIM_FREETEXT_14164",
+			"act": true,
+			"head": "Hinweis zum Flughafenbus X15",
+			"lead": "Der Flughafenbus X15 ist eine Linie der Regionalverkehr Münsterland GmbH (RVM). Es gilt der Westfalentarif. Infos gibt es online unter www.rvm-online.de sowie telefonisch unter der Rufnummer 0180 650 40 30.",
+			"text": "Der Flughafenbus X15 ist eine Linie der Regionalverkehr Münsterland GmbH (RVM). Es gilt der Westfalentarif. Infos gibt es online unter www.rvm-online.de sowie telefonisch unter der Rufnummer 0180 650 40 30.",
+			"icoX": 0,
+			"prio": 6,
+			"prod": 16383,
+			"affProdRefL": [
+				0
+			],
+			"lModDate": "20200203",
+			"lModTime": "112429",
+			"sDate": "20200203",
+			"sTime": "111100",
+			"eDate": "20201213",
+			"eTime": "000000",
+			"sDaily": "000000",
+			"eDaily": "235900",
+			"comp": "VOS",
+			"catRefL": [
+				0
+			],
+			"pubChL": [
+				{
+					"name": "timetable",
+					"fDate": "20200203",
+					"fTime": "111100",
+					"tDate": "20201231",
+					"tTime": "235900"
+				}
+			],
+			"edgeRefL": [
+				0
+			],
+			"eventRefL": [
+				0
+			]
+		},
+		{
+			"hid": "HIM_FREETEXT_9156",
+			"act": true,
+			"head": "Sperrung Weserbrücke Lauenförde-Beverungen",
+			"text": "Aufgrund der Sperrung können die Haltestellen in Beverungen nicht bedient werden.<br><a href=\"http://www.vsninfo.de/de/verkehrsbehinderungen/landkreis-holzminden/554-556-sperrung-weserbruecke-lauenfoerde-beverungen\" target=\"_blank\" rel=\"noopener\">Lauenförde-Beverungen</a><br><a href=\"http://weserems.hafas.de/pdf/1558512346653_HOL_556_beide_FPL_Baustelle%20Beverungen.pdf\" target=\"_blank\" rel=\"noopener\">Baustellenfahrplan Linie 556</a>",
+			"icoX": 0,
+			"prio": 6,
+			"prod": 16383,
+			"affProdRefL": [
+				1,
+				2
+			],
+			"lModDate": "20191209",
+			"lModTime": "135514",
+			"sDate": "20191215",
+			"sTime": "000000",
+			"eDate": "20201212",
+			"eTime": "235900",
+			"sDaily": "000000",
+			"eDaily": "235900",
+			"comp": "VSN",
+			"catRefL": [
+				0
+			],
+			"pubChL": [
+				{
+					"name": "timetable",
+					"fDate": "20190522",
+					"fTime": "100100",
+					"tDate": "20201212",
+					"tTime": "235900"
+				}
+			],
+			"edgeRefL": [
+				1
+			],
+			"eventRefL": [
+				1
+			]
+		},
+		{
+			"hid": "HIM_FREETEXT_9155",
+			"act": true,
+			"head": "Sperrung Weserbrücke Lauenförde-Beverungen",
+			"text": "Aufgrund der Sperrung können die Haltestellen in Beverungen nicht bedient werden.<br><a href=\"http://www.vsninfo.de/de/verkehrsbehinderungen/landkreis-holzminden/554-556-sperrung-weserbruecke-lauenfoerde-beverungen\" target=\"_blank\" rel=\"noopener\">Lauenförde-Beverungen</a><br><a href=\"http://weserems.hafas.de/pdf/1558512267592_HOL_554_beide_FPL_Baustelle%20Beverungen.pdf\" target=\"_blank\" rel=\"noopener\">Baustellenfahrplan Linie 554</a>",
+			"icoX": 0,
+			"prio": 6,
+			"prod": 16383,
+			"affProdRefL": [
+				3,
+				1,
+				2
+			],
+			"lModDate": "20191209",
+			"lModTime": "135545",
+			"sDate": "20191215",
+			"sTime": "000000",
+			"eDate": "20201212",
+			"eTime": "235900",
+			"sDaily": "000000",
+			"eDaily": "235900",
+			"comp": "VSN",
+			"catRefL": [
+				0
+			],
+			"pubChL": [
+				{
+					"name": "timetable",
+					"fDate": "20190522",
+					"fTime": "100100",
+					"tDate": "20201212",
+					"tTime": "235900"
+				}
+			],
+			"edgeRefL": [
+				2
+			],
+			"eventRefL": [
+				1
+			]
+		},
+		{
+			"hid": "HIM_FREETEXT_14527",
+			"act": true,
+			"head": "Verlegung einer Stromleitung in der Lindenstraße (Umleitung verschoben)",
+			"text": "Betrifft die Linien 91, 92, 94, N7<br /><br />Beginn der Umleitung verschoben auf voraussichtlich 16. März bis Juni 2020<br /><br />Die Bauarbeiten sollten ursprünglich bereits am 2. März beginnen. Ab diesem Datum wurde auch die Umleitung der Buslinien geplant. Bitte beachten Sie, dass die Fahrpläne an den Haltestellen sowie die Fahrplanauskunft im Internet ab 2. März den Bauplan anzeigen, obwohl die Busse bis zum Beginn der Bauarbeiten noch in der regulären Linienführung fahren.<br /><br />Umleitung ab Baubeginn:<br />Die Linien 91, 92, 94 und N7 werden in Richtung Vegesack zwischen (H) Bf Blumenthal und (H) Bremer Vulkan über die Straßen Zur Westpier und Am Werfttor umgeleitet.<br /><br />Haltestellenänderungen in Richtung Vegesack:<br />(H) Wätjens Park &gt; verlegt vor die Kreuzung Lüssumer Str./Zur Westpier<br />(H) Margaretenallee &gt; entfällt <br />",
+			"icoX": 0,
+			"prio": 6,
+			"prod": 32,
+			"affProdRefL": [
+				4,
+				5,
+				6,
+				7
+			],
+			"lModDate": "20200221",
+			"lModTime": "113447",
+			"sDate": "20200221",
+			"sTime": "113100",
+			"eDate": "20200630",
+			"eTime": "235900",
+			"sDaily": "000000",
+			"eDaily": "235900",
+			"comp": "BSAG",
+			"catRefL": [
+				0
+			],
+			"pubChL": [
+				{
+					"name": "TIMETABLE",
+					"fDate": "20200221",
+					"fTime": "113100",
+					"tDate": "20200630",
+					"tTime": "235900"
+				}
+			],
+			"eventRefL": [
+				2
+			]
+		},
+		{
+			"hid": "HIM_FREETEXT_14525",
+			"act": true,
+			"head": "Verlegung einer Stromleitung in der Lindenstraße",
+			"text": "Betrifft die Linien 91, 92, 94, N7<br /><br />Beginn der Umleitung verschoben auf voraussichtlich 16. März bis Juni 2020<br /><br />Die Bauarbeiten sollten ursprünglich bereits am 2. März beginnen. Ab diesem Datum wurde auch die Umleitung der Buslinien geplant. Bitte beachten Sie, dass die Fahrpläne an den Haltestellen sowie die Fahrplanauskunft im Internet ab 2. März den Bauplan anzeigen, obwohl die Busse bis zum Beginn der Bauarbeiten noch in der regulären Linienführung fahren.<br /><br />Umleitung ab Baubeginn:<br />Die Linien 91, 92, 94 und N7 werden in Richtung Vegesack zwischen (H) Bf Blumenthal und (H) Bremer Vulkan über die Straßen Zur Westpier und Am Werfttor umgeleitet.<br /><br />Haltestellenänderungen in Richtung Vegesack:<br />(H) Wätjens Park &gt; verlegt vor die Kreuzung Lüssumer Str./Zur Westpier<br />(H) Margaretenallee &gt; entfällt <br />",
+			"icoX": 0,
+			"prio": 6,
+			"tLocX": 0,
+			"prod": 32,
+			"affProdRefL": [
+				4,
+				5,
+				6,
+				7
+			],
+			"lModDate": "20200221",
+			"lModTime": "133105",
+			"sDate": "20200221",
+			"sTime": "110100",
+			"eDate": "20200630",
+			"eTime": "235900",
+			"sDaily": "000000",
+			"eDaily": "235900",
+			"comp": "BSAG",
+			"catRefL": [
+				0
+			],
+			"pubChL": [
+				{
+					"name": "timetable",
+					"fDate": "20200221",
+					"fTime": "110100",
+					"tDate": "20200630",
+					"tTime": "235900"
+				}
+			],
+			"eventRefL": [
+				3
+			]
+		}
+	]
+}
