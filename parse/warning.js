@@ -32,11 +32,12 @@ const parseMsgEvent = (ctx) => (e) => {
 }
 
 const parseWarning = (ctx, w) => {
-	const {profile, res: resp} = ctx
+	const {profile, res: resp, common} = ctx
 
-	// todo: act, pub, lead, tckr, prod, comp,
-	// todo: cat (1, 2), pubChL, rRefL, impactL
-	// pubChL:
+	// todo: https://github.com/marudor/BahnhofsAbfahrten/blob/46a74957d68edc15713112df44e1a25150f5a178/src/types/HAFAS/HimSearch.ts#L31-L53
+	// todo: act, pub, lead, tckr
+	// todo: cat (1, 2), pubChL, rRefL/hints, impactL
+	// todo: pubChL
 	// [ { name: 'timetable',
 	// fDate: '20180606',
 	// fTime: '073000',
@@ -52,6 +53,7 @@ const parseWarning = (ctx, w) => {
 	// fTime: '000000',
 	// tDate: '20190225',
 	// tTime: '120000' }
+	// todo: w.regionRefL & res.common.himMsgRegionL
 
 	const icon = w.icon || null
 	const type = icon && icon.type && typesByIcon[icon.type] || 'warning'
@@ -63,9 +65,18 @@ const parseWarning = (ctx, w) => {
 		text: w.text ? brToNewline(w.text) : null, // todo: decode HTML entities?
 		icon, // todo: parse icon
 		priority: w.prio,
-		category: w.cat || null // todo: parse to sth meaningful
 	}
 	if ('prod' in w) res.products = profile.parseProductsBitmask(ctx, w.prod)
+	if ('comp' in w) res.company = w.comp || null
+
+	// todo: parse to sth meaningful
+	if ('cat' in w) res.category = w.cat
+	if (w.catRefL && resp.common && resp.common.himMsgCatL) {
+		res.categories = w.catRefL
+		.map(i => resp.common.himMsgCatL[i])
+		.filter(e => !!e)
+		.map(cat => cat.id)
+	}
 
 	if (w.edgeRefL && resp.common && resp.common.himMsgEdgeL) {
 		res.edges = w.edgeRefL
@@ -79,6 +90,14 @@ const parseWarning = (ctx, w) => {
 		.filter(e => !!e)
 		.map(parseMsgEvent(ctx))
 	}
+
+	if (w.affProdRefL) {
+		res.affectedLines = w.affProdRefL
+		.map(i => common.lines[i])
+		.filter(l => !!l)
+	}
+	if (w.fromLocations) res.fromStops = w.fromLocations
+	if (w.toLocations) res.toStops = w.toLocations
 
 	if (w.sDate && w.sTime) res.validFrom = profile.parseDateTime(ctx, w.sDate, w.sTime, null)
 	if (w.eDate && w.eTime) res.validUntil = profile.parseDateTime(ctx, w.eDate, w.eTime, null)
