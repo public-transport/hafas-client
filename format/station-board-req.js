@@ -3,15 +3,20 @@
 const formatStationBoardReq = (ctx, station, type) => {
 	const {profile, opt} = ctx
 
+	const jnyFltrL = [
+		profile.formatProductsFilter(ctx, opt.products || {})
+	]
+	if (opt.line !== null) {
+		jnyFltrL.push({type: 'LINEID', mode: 'INC', value: opt.line})
+	}
+
 	const req = {
 		type,
 		date: profile.formatDate(profile, opt.when),
 		time: profile.formatTime(profile, opt.when),
 		stbLoc: station,
 		dirLoc: opt.direction ? profile.formatStation(opt.direction) : null,
-		jnyFltrL: [
-			profile.formatProductsFilter(ctx, opt.products || {})
-		],
+		jnyFltrL,
 		dur: opt.duration
 	}
 	if (opt.results !== null) {
