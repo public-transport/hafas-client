@@ -1,5 +1,16 @@
 # Changelog
 
+## `5.3.0`
+
+- 1c790e1/299b5ac add [*INVG* profile](../p/invg)
+- d5116c2/c2b15fa add [*PKP* profile](../p/pkp)
+- 682f9f9/8540f5f add [*VBN* profile](../p/vbn)
+- 3a9e548/0ea2c01 add [*RMV* profile](../p/rmv)
+- 84637b2/522248b add [*RSAG* profile](../p/rsag)
+- 86ddf2c add [*VMT* profile](../p/vmt)
+
+[🏷 `5.3.0`](https://github.com/public-transport/hafas-client/releases/tag/5.3.0), 2020-03-12
+
 ## `5.2.0`
 
 - 1b03b2e INSA: protocol version `1.21`, enable [`reachableFrom()`](reachable-from.md)
