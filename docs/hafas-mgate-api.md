@@ -157,3 +157,4 @@ todo: generic server error
 
 - [@Nakaner's `strecken.info` API docs](https://github.com/Nakaner/bahnstoerungen/tree/62a72b1e0f0255668500b438187ff65aef39242a/api-doc/db-strecken-info)
 - [unfinished HAFAS glossary](https://gist.github.com/derhuerst/74b703e2a0fc64e4a0fa8fbb1f3a61b4)
+- [various `mgate.exe` HTTP traffic recordings](https://gist.github.com/search?q=post+mgate.exe&ref=searchresults)

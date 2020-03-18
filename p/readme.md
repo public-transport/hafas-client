@@ -13,3 +13,5 @@ const client = createClient(dbProfile)
 
 // use it to query data…
 ```
+
+If you want to write a profile for an endpoint, check out the [*writing a profile* guide](../docs/writing-a-profile.md).

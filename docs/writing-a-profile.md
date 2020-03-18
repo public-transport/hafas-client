@@ -147,12 +147,11 @@ all but product F           30     11110   31 - 2^0        2^0
 ## 4. Additional info
 
 We consider these improvements to be *optional*:
-
-- **Check if the endpoint supports the trips call.**
-	- In the app, check if you can query details for the status of a single journey leg. It should load realtime delays and the current progress.
+- **Check if the endpoint supports the `trip()` call.**
+	- In the app, check if you can re-fetch details for the status of a single journey leg. It should load realtime delays and the current progress.
 	- If this feature is supported, add `trip: true` to the profile.
 - **Check if the endpoint supports the live map call.** Does the app have a "live map" showing all vehicles within an area? If so, add `radar: true` to the profile.
--  **Consider transforming station & line names** into the formats that's most suitable for *local users*. Some examples:
+-  **Consider transforming station & line names** into the formats that's most suitable for *local users*. This is just an optimal optimisation that makes it easier for users of the profile to use the data. Some examples:
 	- `M13 (Tram)` -> `M13`. With Berlin context, it is obvious that `M13` is a tram.
 	- `Berlin Jungfernheide Bhf` -> `Berlin Jungfernheide`. With local context, it's obvious that *Jungfernheide* is a train station.
 - **Check if the endpoint has non-obvious limitations** and let use know about these. Examples:
