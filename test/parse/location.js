@@ -107,3 +107,15 @@ test('parses a stop correctly', (t) => {
 
 	t.end()
 })
+
+test('falls back to coordinates from `lid`', (t) => {
+	const {location} = parse(ctx, {
+		type: 'S',
+		name: 'foo',
+		lid: 'a=b@L=foo@X=12345678@Y=23456789'
+	})
+	t.ok(location)
+	t.equal(location.latitude, 23.456789)
+	t.equal(location.longitude, 12.345678)
+	t.end()
+})

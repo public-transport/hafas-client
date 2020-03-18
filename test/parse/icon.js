@@ -66,5 +66,11 @@ test('parses icons correctly', (t) => {
 		fgColor: {r: 255, g: 255, b: 255, a: 255},
 		bgColor: {r: 0, g: 51, b: 153, a: 255}
 	})
+
+	const empty = {
+		"res": "Empty"
+	}
+	t.equal(parse(ctx, empty), null)
+
 	t.end()
 })

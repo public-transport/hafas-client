@@ -1,7 +1,8 @@
 'use strict'
 
 const codesByIcon = Object.assign(Object.create(null), {
-	cancel: 'cancelled'
+	cancel: 'cancelled',
+	himWarn: 'disturbance',
 })
 
 const linkTypesByCode = Object.assign(Object.create(null), {
@@ -29,7 +30,8 @@ const parseHint = (ctx, h) => {
 
 	if (h.type === 'I' && h.code && h.txtN) {
 		if (h.code in linkTypesByCode) {
-			return {type: linkTypesByCode[h.code], text: h.txtN}
+			const text = h.txtN === 'NULL' ? null : h.txtN
+			return {type: linkTypesByCode[h.code], text}
 		}
 		if (h.code === 'TW' && h.txtN[0] === '$') {
 			return {type: 'local-fare-zone', text: h.txtN.slice(1)}
@@ -70,7 +72,7 @@ const parseHint = (ctx, h) => {
 
 	if (
 		h.type === 'D' || h.type === 'U' || h.type === 'R' || h.type === 'N' ||
-		h.type === 'Y' || h.type === 'Q'
+		h.type === 'Y' || h.type === 'Q' || h.type === 'P'
 	) {
 		// todo: how can we identify the individual types?
 		// todo: does `D` mean "disturbance"?

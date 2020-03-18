@@ -24,6 +24,9 @@ const parseLocation = (ctx, l) => {
 	if (l.crd) {
 		res.latitude = l.crd.y / 1000000
 		res.longitude = l.crd.x / 1000000
+	} else if (('X' in lid) && ('Y' in lid)) {
+		res.latitude = lid.Y / 1000000
+		res.longitude = lid.X / 1000000
 	}
 
 	if (l.type === STATION) {
@@ -70,6 +73,7 @@ const parseLocation = (ctx, l) => {
 			const i = text.indexOf(':')
 			return [text.slice(0, i), text.slice(i + 1)]
 		})
+		.filter(([src]) => src !== 'NULL')
 		if (otherIds.length > 0) {
 			if (!stop.ids) stop.ids = {}
 			for (const [src, id] of otherIds) stop.ids[src] = id
