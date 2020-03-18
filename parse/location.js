@@ -53,6 +53,14 @@ const parseLocation = (ctx, l) => {
 		if ('pCls' in l) stop.products = profile.parseProductsBitmask(ctx, l.pCls)
 		if ('meta' in l) stop.isMeta = !!l.meta
 
+		const mMastLoc = locL[mMastLocX]
+		if (mMastLoc) {
+			stop.station = {
+				...profile.parseLocation(ctx, mMastLoc),
+				type: 'station', // todo: this should be handled differently
+			}
+		}
+
 		if (opt.entrances) {
 			const entrances = (l.entryLocL || [])
 			.map(locX => locL[locX])

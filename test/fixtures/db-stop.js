@@ -52,13 +52,9 @@ const reisezentrumOpeningHours = {
 	],
 }
 
-module.exports = {
+const station = {
 	type: 'station',
 	id: '8011155',
-	ids: {
-		dhid: 'de:11000:900100003',
-		VBB: '900100003',
-	},
 	name: 'Berlin Alexanderplatz',
 	location: {
 		type: 'location',
@@ -78,6 +74,17 @@ module.exports = {
 		tram: true,
 		taxi: false
 	},
+	transitAuthority: 'VBB',
+	ids: {
+		dhid: 'de:11000:900100003',
+		VBB: '900100003',
+	},
+	facilities,
+	reisezentrumOpeningHours,
+}
+
+module.exports = {
+	...station,
 	stops: [{
 		type: 'stop',
 		id: '372948',
@@ -104,6 +111,7 @@ module.exports = {
 			tram: true,
 			taxi: false
 		},
+		station,
 		transitAuthority: 'VBB',
 		facilities,
 		reisezentrumOpeningHours,
@@ -133,6 +141,7 @@ module.exports = {
 			tram: true,
 			taxi: false
 		},
+		station,
 		transitAuthority: 'VBB',
 		facilities,
 		reisezentrumOpeningHours,
@@ -162,6 +171,7 @@ module.exports = {
 			tram: true,
 			taxi: false
 		},
+		station,
 		transitAuthority: 'VBB',
 		facilities,
 		reisezentrumOpeningHours,
@@ -191,6 +201,7 @@ module.exports = {
 			tram: true,
 			taxi: false
 		},
+		station,
 		transitAuthority: 'VBB',
 		facilities,
 		reisezentrumOpeningHours,
@@ -220,6 +231,7 @@ module.exports = {
 			tram: true,
 			taxi: false
 		},
+		station,
 		transitAuthority: 'VBB',
 		facilities
 	}, {
@@ -248,6 +260,7 @@ module.exports = {
 			tram: true,
 			taxi: false
 		},
+		station,
 		transitAuthority: 'VBB',
 		facilities,
 		reisezentrumOpeningHours,
@@ -277,6 +290,7 @@ module.exports = {
 			tram: true,
 			taxi: false
 		},
+		station,
 		transitAuthority: 'VBB',
 		facilities,
 		reisezentrumOpeningHours,
@@ -306,6 +320,7 @@ module.exports = {
 			tram: true,
 			taxi: false
 		},
+		station,
 		transitAuthority: 'VBB',
 		facilities
 	}, {
@@ -334,6 +349,7 @@ module.exports = {
 			tram: true,
 			taxi: false
 		},
+		station,
 		transitAuthority: 'VBB',
 		facilities,
 		reisezentrumOpeningHours,
@@ -363,6 +379,7 @@ module.exports = {
 			tram: true,
 			taxi: false
 		},
+		station,
 		transitAuthority: 'VBB',
 		facilities
 	}, {
@@ -391,6 +408,7 @@ module.exports = {
 			tram: true,
 			taxi: false
 		},
+		station,
 		transitAuthority: 'VBB',
 		facilities
 	}, {
@@ -420,6 +438,7 @@ module.exports = {
 			taxi: false
 		},
 		transitAuthority: 'VBB',
+		station,
 		facilities,
 		reisezentrumOpeningHours,
 	}, {
@@ -449,7 +468,6 @@ module.exports = {
 		},
 		transitAuthority: 'VBB',
 	}],
-	transitAuthority: 'VBB',
 	entrances: [{
 		type: 'location', id: '608011155',
 		latitude: 52.521814, longitude: 13.411456
@@ -634,6 +652,4 @@ module.exports = {
 		type: 'location', id: '610728659',
 		latitude: 52.522317, longitude: 13.412895
 	}],
-	facilities,
-	reisezentrumOpeningHours,
 }
