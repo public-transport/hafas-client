@@ -1,5 +1,8 @@
 'use strict'
 
+const {parseHook} = require('../../lib/profile-hooks')
+
+const parseLocation = require('../../parse/location')
 const products = require('./products')
 
 const transformReqBody = (ctx, body) => {
@@ -10,6 +13,13 @@ const transformReqBody = (ctx, body) => {
 	return body
 }
 
+const trimStopName = ({parsed}, l) => {
+	if (parsed.type === 'stop' || parsed.type === 'station' && parsed.name) {
+		parsed.name = parsed.name.replace(/(^-|-$)/g, '')
+	}
+	return parsed
+}
+
 const pkpProfile = {
 	locale: 'pl-PL',
 	timezone: 'Europe/Warsaw',
@@ -18,6 +28,8 @@ const pkpProfile = {
 	transformReqBody,
 
 	products,
+
+	parseLocation: parseHook(parseLocation, trimStopName),
 
 	trip: true,
 	radar: true,
