@@ -8,7 +8,10 @@ const ADDRESS = 'A'
 
 const leadingZeros = /^0+/
 
-// todo: what is s.rRefL?
+// todo: what is l.wt? is it "weight"?
+// 	- `6733` for 8013074 with p/vmt
+// 	- `3933` for 8012092 with p/vmt
+// 	- `2062` for 8010168 with p/vmt
 const parseLocation = (ctx, l) => {
 	const {profile, opt} = ctx
 

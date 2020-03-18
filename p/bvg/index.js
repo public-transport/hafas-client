@@ -23,6 +23,7 @@ const transformReqBody = (ctx, body) => {
 	return body
 }
 
+// todo: https://m.tagesspiegel.de/berlin/fahrerlebnis-wie-im-regionalexpress-so-faehrt-es-sich-in-der-neuen-express-s-bahn/25338674.html
 const parseLineWithMoreDetails = ({parsed}, p) => {
 	parsed.name = p.name.replace(/^(bus|tram)\s+/i, '')
 	const details = parseLineName(parsed.name)

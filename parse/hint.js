@@ -23,6 +23,7 @@ const linkTypesByCode = Object.assign(Object.create(null), {
 // 	"RES_JNY_DTL" // only shown in journey detail
 // ]
 // todo: https://github.com/public-transport/hafas-client/issues/5
+// todo: expose h.type somehow
 const parseHint = (ctx, h) => {
 	// todo: C
 

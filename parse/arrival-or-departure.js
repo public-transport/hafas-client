@@ -7,6 +7,7 @@ const DEPARTURE = 'd'
 
 // todo: what is d.jny.dirFlg?
 // todo: d.stbStop.dProgType/d.stbStop.aProgType
+// todo: d.stbStop.dProdX/aProdX can be different than d.prodX
 
 const createParseArrOrDep = (prefix) => {
 	if (prefix !== ARRIVAL && prefix !== DEPARTURE) throw new Error('invalid prefix')

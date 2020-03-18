@@ -1,5 +1,6 @@
 'use strict'
 
+// todo: generate from https://reiseauskunft.bahn.de/addons/fachkonfig-utf8.cfg ?
 const c = {
 	NONE: Symbol('no loyaly card'),
 	BAHNCARD: Symbol('Bahncard'),

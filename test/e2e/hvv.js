@@ -18,8 +18,6 @@ const testDepartures = require('./lib/departures')
 const testDeparturesInDirection = require('./lib/departures-in-direction')
 const testArrivals = require('./lib/arrivals')
 
-const isObj = o => o !== null && 'object' === typeof o && !Array.isArray(o)
-
 const when = createWhen('Europe/Berlin', 'de-DE')
 
 const cfg = {
