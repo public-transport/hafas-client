@@ -60,7 +60,7 @@ const parseJourneyLeg = (ctx, pt, date) => { // pt = raw leg
 	res.departureDelay = dep.delay
 	if (dep.prognosedWhen) res.prognosedDeparture = dep.prognosedWhen
 
-	if (pt.jny) {
+	if (pt.jny && ('isRchbl' in pt.jny)) {
 		res.reachable = !!pt.jny.isRchbl
 	}
 
