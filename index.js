@@ -175,7 +175,7 @@ const createClient = (profile, userAgent, opt = {}) => {
 		// until we have enough.
 		// todo: revert this change, see https://github.com/public-transport/hafas-client/issues/76#issuecomment-424448449
 		const journeys = []
-		let earlierRef, laterRef
+		let earlierRef = null, laterRef = null
 		const more = (when, journeysRef) => {
 			const query = {
 				outDate: profile.formatDate(profile, when),
