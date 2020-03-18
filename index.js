@@ -53,6 +53,8 @@ const createClient = (profile, userAgent, opt = {}) => {
 			direction: null, // only show departures stopping by this station
 			duration: 10, // show departures for the next n minutes
 			results: null, // max. number of results; `null` means "whatever HAFAS wants"
+			subStops: true, // parse & expose sub-stops of stations?
+			entrances: true, // parse & expose entrances of stops/stations?
 			linesOfStops: false, // parse & expose lines at the stop/station?
 			remarks: true, // parse & expose hints & warnings?
 			stopovers: false, // fetch & parse previous/next stopovers?
@@ -126,6 +128,8 @@ const createClient = (profile, userAgent, opt = {}) => {
 			startWithWalking: true,
 			tickets: false, // return tickets?
 			polylines: false, // return leg shapes?
+			subStops: true, // parse & expose sub-stops of stations?
+			entrances: true, // parse & expose entrances of stops/stations?
 			remarks: true, // parse & expose hints & warnings?
 			scheduledDays: false
 		}, opt)
@@ -249,6 +253,8 @@ const createClient = (profile, userAgent, opt = {}) => {
 			stopovers: false, // return stations on the way?
 			tickets: false, // return tickets?
 			polylines: false, // return leg shapes?
+			subStops: true, // parse & expose sub-stops of stations?
+			entrances: true, // parse & expose entrances of stops/stations?
 			remarks: true // parse & expose hints & warnings?
 		}, opt)
 
@@ -279,6 +285,8 @@ const createClient = (profile, userAgent, opt = {}) => {
 			stops: true, // return stops/stations?
 			addresses: true,
 			poi: true, // points of interest
+			subStops: true, // parse & expose sub-stops of stations?
+			entrances: true, // parse & expose entrances of stops/stations?
 			linesOfStops: false // parse & expose lines at each stop/station?
 		}, opt)
 
@@ -300,6 +308,8 @@ const createClient = (profile, userAgent, opt = {}) => {
 
 		opt = Object.assign({
 			linesOfStops: false, // parse & expose lines at the stop/station?
+			subStops: true, // parse & expose sub-stops of stations?
+			entrances: true, // parse & expose entrances of stops/stations?
 			remarks: true, // parse & expose hints & warnings?
 		}, opt)
 
@@ -331,6 +341,8 @@ const createClient = (profile, userAgent, opt = {}) => {
 			distance: null, // maximum walking distance in meters
 			poi: false, // return points of interest?
 			stops: true, // return stops/stations?
+			subStops: true, // parse & expose sub-stops of stations?
+			entrances: true, // parse & expose entrances of stops/stations?
 			linesOfStops: false // parse & expose lines at each stop/station?
 		}, opt)
 
@@ -355,6 +367,8 @@ const createClient = (profile, userAgent, opt = {}) => {
 		opt = Object.assign({
 			stopovers: true, // return stations on the way?
 			polyline: false, // return a track shape?
+			subStops: true, // parse & expose sub-stops of stations?
+			entrances: true, // parse & expose entrances of stops/stations?
 			remarks: true // parse & expose hints & warnings?
 		}, opt)
 
@@ -391,7 +405,9 @@ const createClient = (profile, userAgent, opt = {}) => {
 			// todo: what happens with `frames: 0`?
 			frames: 3, // nr of frames to compute
 			products: null, // optionally an object of booleans
-			polylines: true // return a track shape for each vehicle?
+			polylines: true, // return a track shape for each vehicle?
+			subStops: true, // parse & expose sub-stops of stations?
+			entrances: true, // parse & expose entrances of stops/stations?
 		}, opt || {})
 		opt.when = new Date(opt.when || Date.now())
 		if (Number.isNaN(+opt.when)) throw new TypeError('opt.when is invalid')
@@ -414,7 +430,9 @@ const createClient = (profile, userAgent, opt = {}) => {
 			when: Date.now(),
 			maxTransfers: 5, // maximum of 5 transfers
 			maxDuration: 20, // maximum travel duration in minutes, pass `null` for infinite
-			products: {}
+			products: {},
+			subStops: true, // parse & expose sub-stops of stations?
+			entrances: true, // parse & expose entrances of stops/stations?
 		}, opt)
 		if (Number.isNaN(+opt.when)) throw new TypeError('opt.when is invalid')
 

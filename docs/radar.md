@@ -12,6 +12,8 @@ With `opt`, you can override the default options, which look like this:
 	duration: 30, // compute frames for the next n seconds
 	frames: 3, // nr of frames to compute
 	polylines: true, // return a track shape for each vehicle?
+	subStops: true, // parse & expose sub-stops of stations?
+	entrances: true, // parse & expose entrances of stops/stations?
 	language: 'en' // language to get results in
 }
 ```

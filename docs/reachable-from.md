@@ -18,7 +18,9 @@ With `opt`, you can override the default options, which look like this:
 		suburban: true,
 		subway: true
 		// …
-	}
+	},
+	subStops: true, // parse & expose sub-stops of stations?
+	entrances: true, // parse & expose entrances of stops/stations?
 }
 ```
 

@@ -11,6 +11,8 @@ With `opt`, you can override the default options, which look like this:
 	, stops:     true // return stops/stations?
 	, addresses: true
 	, poi:       true // points of interest
+	, subStops: true // parse & expose sub-stops of stations?
+	, entrances: true // parse & expose entrances of stops/stations?
 	, linesOfStops: false // parse & expose lines at each stop/station?
 	, language: 'en' // language to get results in
 }

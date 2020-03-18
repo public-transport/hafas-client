@@ -70,6 +70,8 @@ With `opt`, you can override the default options, which look like this:
 	},
 	tickets: false, // return tickets? only available with some profiles
 	polylines: false, // return a shape for each leg?
+	subStops: true, // parse & expose sub-stops of stations?
+	entrances: true, // parse & expose entrances of stops/stations?
 	remarks: true, // parse & expose hints & warnings?
 	scheduledDays: false, // parse which days each journey is valid on
 	language: 'en', // language to get results in

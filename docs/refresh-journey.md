@@ -9,6 +9,8 @@ With `opt`, you can override the default options, which look like this:
 	stopovers: false, // return stations on the way?
 	polylines: false, // return a shape for each leg?
 	tickets: false, // return tickets? only available with some profiles
+	subStops: true, // parse & expose sub-stops of stations?
+	entrances: true, // parse & expose entrances of stops/stations?
 	remarks: true, // parse & expose hints & warnings?
 	language: 'en' // language to get results in
 }

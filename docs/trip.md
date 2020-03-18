@@ -28,6 +28,8 @@ With `opt`, you can override the default options, which look like this:
 {
 	stopovers: true, // return stations on the way?
 	polyline: false, // return a shape for the trip?
+	subStops: true, // parse & expose sub-stops of stations?
+	entrances: true, // parse & expose entrances of stops/stations?
 	remarks: true, // parse & expose hints & warnings?
 	language: 'en' // language to get results in
 }
