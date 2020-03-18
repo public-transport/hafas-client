@@ -1,5 +1,16 @@
 # Changelog
 
+## `5.3.1`
+
+- 916ac30 PKP: trim `-` from stop names
+- a939090 INSA: `ver` `1.21` -> `1.18` 🐛
+- 2cb6a0c `parseIcon()`, `parseHint()`, `parseLocation()`: handle more edge cases 🐛
+- 0dceb41 `parseJourneyLeg()`: parse isRchbl correctly 🐛
+- 78487d9 `journeys()`: default `earlierRef` & `laterRef` to `null` 🐛
+- cda96b6 improve docs 📝
+
+[🏷 `5.3.1`](https://github.com/public-transport/hafas-client/releases/tag/5.3.1), 2020-03-18
+
 ## `5.3.0`
 
 - 1c790e1/299b5ac add [*INVG* profile](../p/invg)
