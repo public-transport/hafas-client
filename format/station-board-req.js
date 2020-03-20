@@ -14,6 +14,9 @@ const formatStationBoardReq = (ctx, station, type) => {
 		],
 		dur: opt.duration
 	}
+	if (opt.results !== null) {
+		req.maxJny = opt.results === Infinity ? 10000 : opt.results
+	}
 	if (profile.departuresGetPasslist) req.getPasslist = !!opt.stopovers
 	if (profile.departuresStbFltrEquiv) req.stbFltrEquiv = !opt.includeRelatedStations
 
