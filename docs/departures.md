@@ -27,6 +27,7 @@ With `opt`, you can override the default options, which look like this:
 	when:      new Date(),
 	direction: null, // only show departures heading to this station
 	duration:  10, // show departures for the next n minutes
+	results: null, // max. number of results; `null` means "whatever HAFAS wants"
 	linesOfStops: false, // parse & expose lines at the stop/station?
 	remarks: true, // parse & expose hints & warnings?
 	stopovers: false, // fetch & parse previous/next stopovers?
