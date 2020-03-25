@@ -51,7 +51,7 @@ const createClient = (profile, userAgent, opt = {}) => {
 			// todo: for arrivals(), this is actually a station it *has already* stopped by
 			direction: null, // only show departures stopping by this station
 			duration: 10, // show departures for the next n minutes
-			results: 50, // max. number of results – `null` means "whatever HAFAS wants"
+			results: null, // max. number of results; `null` means "whatever HAFAS wants"
 			linesOfStops: false, // parse & expose lines at the stop/station?
 			remarks: true, // parse & expose hints & warnings?
 			stopovers: false, // fetch & parse previous/next stopovers?
