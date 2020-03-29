@@ -1,5 +1,12 @@
 # Changelog
 
+## `5.4.0`
+
+- 01b3693/17031f3/7d3107e add [*SNCB*/*NMBS* profile](../p/sncb)
+- ae74bb4 `departures()`/`arrivals()`: add `results` option
+
+[🏷 `5.4.0`](https://github.com/public-transport/hafas-client/releases/tag/5.4.0), 2020-03-29
+
 ## `5.3.1`
 
 - 916ac30 PKP: trim `-` from stop names
