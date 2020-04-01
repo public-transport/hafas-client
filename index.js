@@ -256,7 +256,11 @@ const createClient = (profile, userAgent, opt = {}) => {
 		return profile.request({profile, opt}, userAgent, req)
 		.then(({res, common}) => {
 			if (!Array.isArray(res.outConL) || !res.outConL[0]) {
-				throw new Error('invalid response')
+				const err = new Error('invalid response')
+				// technically this is not a HAFAS error
+				// todo: find a different flag with decent DX
+				err.isHafasError = true
+				throw err
 			}
 
 			const ctx = {profile, opt, common, res}
@@ -303,7 +307,11 @@ const createClient = (profile, userAgent, opt = {}) => {
 		.then(({res, common}) => {
 			if (!res || !Array.isArray(res.locL) || !res.locL[0]) {
 				// todo: proper stack trace?
-				throw new Error('invalid response')
+				const err = new Error('invalid response')
+				// technically this is not a HAFAS error
+				// todo: find a different flag with decent DX
+				err.isHafasError = true
+				throw err
 			}
 
 			const ctx = {profile, opt, res, common}
