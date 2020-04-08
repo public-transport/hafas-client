@@ -1,17 +1,19 @@
 'use strict'
 
 const omit = require('lodash/omit')
-const findInTree = require('../lib/find-in-tree')
+const FindInTree = require('../lib/find-in-tree');
+
+const findInTree = FindInTree([
+	'**.oprX', '**.icoX', '**.prodX', '**.pRefL', '**.locX',
+	'**.ani.fLocX', '**.ani.tLocX', '**.fLocX', '**.tLocX',
+	'**.remX', '**.himX', '**.polyG.polyXL', '**.rRefL',
+	'**.msgL',
+]);
 
 const parseCommonData = (_ctx) => {
 	const {profile, opt, res} = _ctx
 	const c = res.common || {}
-	const matches = findInTree(res, [
-		'**.oprX', '**.icoX', '**.prodX', '**.pRefL', '**.locX',
-		'**.ani.fLocX', '**.ani.tLocX', '**.fLocX', '**.tLocX',
-		'**.remX', '**.himX', '**.polyG.polyXL', '**.rRefL',
-		'**.msgL',
-	]);
+	const matches = findInTree(res);
 
 	const common = {}
 	const ctx = {..._ctx, common}
