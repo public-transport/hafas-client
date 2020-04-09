@@ -1,5 +1,14 @@
 # Changelog
 
+## `5.5.0`
+
+- fa3146d/9c4189a add [*SVV* profile](../p/svv)
+- e032ec1 "invalid response" error: add `isHafasError: true` flag
+- 0699d4d `departures()`/`arrivals()`: let `results` option default to `null`
+- 1b01331 use `object-scan@13` ⚡️
+
+[🏷 `5.5.0`](https://github.com/public-transport/hafas-client/releases/tag/5.5.0), 2020-04-09
+
 ## `5.4.0`
 
 - 01b3693/17031f3/7d3107e add [*SNCB*/*NMBS* profile](../p/sncb)
