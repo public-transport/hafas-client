@@ -18,7 +18,7 @@ const opt = {
 	frames: 3,
 	products: null,
 	polylines: true,
-	departure: '2019-08-19T21:00:00+02:00',
+	when: '2019-08-19T21:00:00+02:00',
 	products: {}
 }
 

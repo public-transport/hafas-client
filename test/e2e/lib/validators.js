@@ -217,11 +217,18 @@ const validateTicket = (val, ti, name = 'ticket') => {
 
 const createValidateJourneyLeg = (cfg) => {
 	const validateJourneyLeg = (val, leg, name = 'journeyLeg') => {
-		const withFakeScheduleAndOperator = Object.assign({
+		const fakeLeg = Object.assign({
 			schedule: 'foo', // todo: let hafas-client parse a schedule ID
 			operator: 'bar' // todo: let hafas-client parse the operator
 		}, leg)
-		defaultValidators.journeyLeg(val, withFakeScheduleAndOperator, name)
+		if (leg.cancelled) {
+			// FPTF doesn't support cancelled journey legs yet.
+			// see https://github.com/public-transport/friendly-public-transport-format/issues/27
+			// todo: remove once this is resolved upstream
+			fakeLeg.departure = leg.formerScheduledDeparture
+			fakeLeg.arrival = leg.formerScheduledArrival
+		}
+		defaultValidators.journeyLeg(val, fakeLeg, name)
 
 		if (leg.arrival !== null) {
 			assertValidWhen(leg.arrival, cfg.when, name + '.arrival')

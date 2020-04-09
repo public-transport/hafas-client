@@ -169,7 +169,7 @@ test('trip details', async (t) => {
 		results: 1, departure: when
 	})
 
-	const p = res.journeys[0].legs.find(leg => leg.line)
+	const p = res.journeys[0].legs.find(l => !l.walking)
 	t.ok(p.tripId, 'precondition failed')
 	t.ok(p.line.name, 'precondition failed')
 	const trip = await client.trip(p.tripId, p.line.name, {when})

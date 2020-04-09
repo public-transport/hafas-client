@@ -20,7 +20,7 @@ const assertValidWhen = (actual, expected, name) => {
 	const ts = +new Date(actual)
 	a.ok(!Number.isNaN(ts), name + ' is not parsable by Date')
 	// the timestamps might be from long-distance trains
-	a.ok(isRoughlyEqual(day, +expected, ts), name + ' is out of range')
+	a.ok(isRoughlyEqual(day + 6 * hour, +expected, ts), name + ' is out of range')
 }
 
 module.exports = {
