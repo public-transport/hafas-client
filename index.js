@@ -8,6 +8,7 @@ const pRetry = require('p-retry')
 
 const defaultProfile = require('./lib/default-profile')
 const validateProfile = require('./lib/validate-profile')
+const {INVALID_REQUEST} = require('./lib/errors')
 
 const isNonEmptyString = str => 'string' === typeof str && str.length > 0
 
@@ -241,7 +242,7 @@ const createClient = (profile, userAgent, opt = {}) => {
 
 	const refreshJourney = (refreshToken, opt = {}) => {
 		if ('string' !== typeof refreshToken || !refreshToken) {
-			new TypeError('refreshToken must be a non-empty string.')
+			throw new TypeError('refreshToken must be a non-empty string.')
 		}
 
 		opt = Object.assign({
@@ -307,10 +308,12 @@ const createClient = (profile, userAgent, opt = {}) => {
 		.then(({res, common}) => {
 			if (!res || !Array.isArray(res.locL) || !res.locL[0]) {
 				// todo: proper stack trace?
-				const err = new Error('invalid response')
+				// todo: DRY with lib/request.js
+				const err = new Error('response has no stop')
 				// technically this is not a HAFAS error
 				// todo: find a different flag with decent DX
 				err.isHafasError = true
+				err.code = INVALID_REQUEST
 				throw err
 			}
 
