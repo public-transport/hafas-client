@@ -6,7 +6,7 @@
 [![build status](https://img.shields.io/travis/public-transport/hafas-client.svg?branch=3)](https://travis-ci.org/public-transport/hafas-client)
 ![ISC-licensed](https://img.shields.io/github/license/public-transport/hafas-client.svg)
 [![chat on gitter](https://badges.gitter.im/public-transport/Lobby.svg)](https://gitter.im/public-transport/Lobby)
-[![support Jannis on Patreon](https://img.shields.io/badge/support%20Jannis-on%20patreon-fa7664.svg)](https://github.com/sponsors/derhuerst)
+[![support Jannis via GitHub Sponsors](https://img.shields.io/badge/support%20Jannis-donate-fa7664.svg)](https://github.com/sponsors/derhuerst)
 
 
 ## Background
@@ -205,13 +205,13 @@ Each of the [profiles](p) has more detailed example code.
 
 HAFAS endpoint | wrapper library | docs | example code | source code
 ---------------|------------------|------|---------|------------
-[Deutsche Bahn (DB)](https://en.wikipedia.org/wiki/Deutsche_Bahn) | [`db-hafas`](https://github.com/derhuerst/db-hafas) | [docs](p/db/readme.md) | [example code](p/db/example.js) | [src](p/db/index.js)
+[Deutsche Bahn (DB)](https://en.wikipedia.org/wiki/Deutsche_Bahn) | [`db-hafas`](https://github.com/public-transport/db-hafas) | [docs](p/db/readme.md) | [example code](p/db/example.js) | [src](p/db/index.js)
 [Polskie Koleje Państwowe (PKP)](https://en.wikipedia.org/wiki/Polish_State_Railways) | [`pkp-hafas`](https://github.com/juliuste/pkp-hafas) | [docs](p/pkp/readme.md) | [example code](p/pkp/example.js) | [src](p/pkp/index.js)
 [Belgian National Railways (SNCB/NMBS)](https://en.wikipedia.org/wiki/National_Railway_Company_of_Belgium) | - | [docs](p/sncb/readme.md) | [example code](p/sncb/example.js) | [src](p/sncb/index.js)
-[Berlin & Brandenburg public transport (VBB)](https://en.wikipedia.org/wiki/Verkehrsverbund_Berlin-Brandenburg) | [`vbb-hafas`](https://github.com/derhuerst/vbb-hafas) | [docs](p/vbb/readme.md) | [example code](p/vbb/example.js) | [src](p/vbb/index.js)
-[Berlin public transport (BVG)](https://en.wikipedia.org/wiki/Berliner_Verkehrsbetriebe) | [`bvg-hafas`](https://github.com/derhuerst/bvg-hafas) | [docs](p/bvg/readme.md) | [example code](p/bvg/example.js) | [src](p/bvg/index.js)
+[Berlin & Brandenburg public transport (VBB)](https://en.wikipedia.org/wiki/Verkehrsverbund_Berlin-Brandenburg) | [`vbb-hafas`](https://github.com/public-transport/vbb-hafas) | [docs](p/vbb/readme.md) | [example code](p/vbb/example.js) | [src](p/vbb/index.js)
+[Berlin public transport (BVG)](https://en.wikipedia.org/wiki/Berliner_Verkehrsbetriebe) | [`bvg-hafas`](https://github.com/public-transport/bvg-hafas) | [docs](p/bvg/readme.md) | [example code](p/bvg/example.js) | [src](p/bvg/index.js)
 [Österreichische Bundesbahnen (ÖBB)](https://en.wikipedia.org/wiki/Austrian_Federal_Railways) | [`oebb-hafas`](https://github.com/juliuste/oebb-hafas) | [docs](p/oebb/readme.md) | [example code](p/oebb/example.js) | [src](p/oebb/index.js)
-[Nahverkehr Sachsen-Anhalt (NASA)](https://de.wikipedia.org/wiki/Nahverkehrsservice_Sachsen-Anhalt)/[INSA](https://insa.de) | [`insa-hafas`](https://github.com/derhuerst/insa-hafas) | [docs](p/insa/readme.md) | [example code](p/insa/example.js) | [src](p/insa/index.js)
+[Nahverkehr Sachsen-Anhalt (NASA)](https://de.wikipedia.org/wiki/Nahverkehrsservice_Sachsen-Anhalt)/[INSA](https://insa.de) | [`insa-hafas`](https://github.com/public-transport/insa-hafas) | [docs](p/insa/readme.md) | [example code](p/insa/example.js) | [src](p/insa/index.js)
 [Nahverkehrsverbund Schleswig-Holstein (NAH.SH)](https://de.wikipedia.org/wiki/Nahverkehrsverbund_Schleswig-Holstein) | [`nahsh-hafas`](https://github.com/juliuste/nahsh-hafas) | [docs](p/nahsh/readme.md) | [example code](p/nahsh/example.js) | [src](p/nahsh/index.js)
 [Rhein-Main-Verkehrsverbund (RMV)](https://en.wikipedia.org/wiki/Rhein-Main-Verkehrsverbund) | - | [docs](p/rmv/readme.md) | [example code](p/rmv/example.js) | [src](p/rmv/index.js)
 [Austin, Texas (CMTA/*CapMetro*)](https://en.wikipedia.org/wiki/Capital_Metropolitan_Transportation_Authority) | - | [docs](p/cmta/readme.md) | [example code](p/cmta/example.js) | [src](p/cmta/index.js)
@@ -240,17 +240,16 @@ HAFAS endpoint | library
 - [`public-transport-enabler`](https://github.com/schildbach/public-transport-enabler) – Unleash public transport data in your Java project.
 - [`TripKit`](https://github.com/alexander-albers/tripkit) – Swift library for querying data from public transport providers.
 - [*Friendly Public Transport Format*](https://github.com/public-transport/friendly-public-transport-format#friendly-public-transport-format-fptf) – A format for APIs, libraries and datasets containing and working with public transport data.
-- [`db-hafas`](https://github.com/derhuerst/db-hafas#db-hafas) – JavaScript client for the DB HAFAS API.
-- [`vbb-hafas`](https://github.com/derhuerst/vbb-hafas#vbb-hafas) – JavaScript client for Berlin & Brandenburg public transport HAFAS API.
-- [`observe-hafas-client`](https://github.com/derhuerst/observe-hafas-client) – Observe all departures/arrivals/etc. returned by `hafas-client`.
-- [`cached-hafas-client`](https://github.com/derhuerst/cached-hafas-client) – Pass in a `hafas-client` instance, cache data from it.
+- [`observe-hafas-client`](https://github.com/public-transport/observe-hafas-client) – Observe all departures/arrivals/etc. returned by `hafas-client`.
+- [`cached-hafas-client`](https://github.com/public-transport/cached-hafas-client) – Pass in a `hafas-client` instance, cache data from it.
 - [`hafas-client-rpc`](https://github.com/derhuerst/hafas-client-rpc) – Make JSON-RPC calls to `hafas-client` via WebSockets & stdio.
-- [`hafas-client-health-check`](https://github.com/derhuerst/hafas-client-health-check) – Check if a `hafas-client` instance and its endpoint work.
-- [`hafas-rest-api`](https://github.com/derhuerst/hafas-rest-api#hafas-rest-api) – Expose a HAFAS client via an HTTP REST API.
+- [`hafas-client-health-check`](https://github.com/public-transport/hafas-client-health-check) – Check if a `hafas-client` instance and its endpoint work.
+- [`hafas-rest-api`](https://github.com/public-transport/hafas-rest-api#hafas-rest-api) – Expose a HAFAS client via an HTTP REST API.
 - [List of european long-distance transport operators, available API endpoints, GTFS feeds and client modules.](https://github.com/public-transport/european-transport-operators)
 - [Collection of european transport JavaScript modules.](https://github.com/public-transport/european-transport-modules)
 - [`hafas-find-stations`](https://github.com/derhuerst/hafas-find-stations#hafas-find-stations) – Given a HAFAS client, find all stations in a bounding box.
-- [`hafas-collect-departures-at`](https://github.com/derhuerst/hafas-collect-departures-at#hafas-collect-departures-at) – Utility to collect departures, using any HAFAS client.
+- [`hafas-collect-departures-at`](https://github.com/public-transport/hafas-collect-departures-at#hafas-collect-departures-at) – Utility to collect departures, using any HAFAS client.
+- [`find-hafas-data-in-another-hafas`](https://github.com/derhuerst/find-hafas-data-in-another-hafas#find-hafas-data-in-another-hafas) – Find data from one HAFAS endpoint in the data of another HAFAS endpoint.
 - [`hafas-monitor-trips`](https://github.com/derhuerst/hafas-monitor-trips#hafas-monitor-trips) – Using a HAFAS client, watch all trips in a bounding box.
 - [`hafas-monitor-departures`](https://github.com/derhuerst/hafas-monitor-departures#hafas-monitor-departures) – Pass in a HAFAS client, fetch all departures at any set of stations.
 - [`hafas-record-delays`](https://github.com/derhuerst/hafas-record-delays#hafas-record-delays) – Record delays from `hafas-monitor-departures` into a LevelDB.
