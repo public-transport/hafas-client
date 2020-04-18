@@ -1,0 +1,572 @@
+{
+	"common": {
+		"locL": [
+			{
+				"lid": "A=1@O=Köln Hbf@X=6958730@Y=50943029@U=80@L=8000207@",
+				"type": "S",
+				"name": "Köln Hbf",
+				"icoX": 0,
+				"extId": "8000207",
+				"state": "F",
+				"crd": {
+					"x": 6959197,
+					"y": 50942823,
+					"z": 0,
+					"type": "WGS84",
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"pCls": 319
+			},
+			{
+				"lid": "A=1@O=Nürnberg Hbf@X=11082989@Y=49445615@U=80@L=8000284@",
+				"type": "S",
+				"name": "Nürnberg Hbf",
+				"icoX": 0,
+				"extId": "8000284",
+				"state": "F",
+				"crd": {
+					"x": 11082270,
+					"y": 49445435,
+					"z": 0,
+					"type": "WGS84",
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"pCls": 443
+			},
+			{
+				"lid": "A=1@O=Köln Messe/Deutz Gl.11-12@X=6974065@Y=50941717@U=80@L=8073368@",
+				"type": "S",
+				"name": "Köln Messe/Deutz Gl.11-12",
+				"icoX": 0,
+				"extId": "8073368",
+				"state": "F",
+				"crd": {
+					"x": 6975162,
+					"y": 50940602,
+					"z": 0,
+					"type": "WGS84",
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"pCls": 319,
+				"entry": true,
+				"mMastLocX": 3
+			},
+			{
+				"lid": "A=1@O=Köln Messe/Deutz@X=6975000@Y=50940872@U=80@L=8003368@",
+				"type": "S",
+				"name": "Köln Messe/Deutz",
+				"icoX": 0,
+				"extId": "8003368",
+				"state": "F",
+				"crd": {
+					"x": 6974578,
+					"y": 50940989,
+					"z": 0,
+					"type": "WGS84",
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"pCls": 319
+			}
+		],
+		"prodL": [
+			{
+				"name": "ICE 827",
+				"number": "827",
+				"icoX": 0,
+				"cls": 1,
+				"oprX": 0,
+				"prodCtx": {
+					"name": "ICE  827",
+					"num": "827",
+					"matchId": "41",
+					"catOut": "ICE",
+					"catOutS": "ICE",
+					"catOutL": "Intercity-Express",
+					"catIn": "ICE",
+					"catCode": "0",
+					"admin": "80____"
+				}
+			},
+			{
+				"name": "ICE 521",
+				"number": "521",
+				"icoX": 0,
+				"cls": 1,
+				"oprX": 0,
+				"prodCtx": {
+					"name": "ICE  521",
+					"num": "521",
+					"matchId": "41",
+					"catOut": "ICE",
+					"catOutS": "ICE",
+					"catOutL": "Intercity-Express",
+					"catIn": "ICE",
+					"catCode": "0",
+					"admin": "80____"
+				}
+			},
+			{
+				"name": "ICE 523",
+				"number": "523",
+				"icoX": 0,
+				"cls": 1,
+				"oprX": 0,
+				"prodCtx": {
+					"name": "ICE  523",
+					"num": "523",
+					"matchId": "41",
+					"catOut": "ICE",
+					"catOutS": "ICE",
+					"catOutL": "Intercity-Express",
+					"catIn": "ICE",
+					"catCode": "0",
+					"admin": "80____"
+				}
+			}
+		],
+		"polyL": [],
+		"layerL": [
+			{
+				"id": "standard",
+				"name": "standard",
+				"index": 0,
+				"annoCnt": 0
+			}
+		],
+		"crdSysL": [
+			{
+				"id": "standard",
+				"index": 0,
+				"type": "WGS84",
+				"dim": 3
+			}
+		],
+		"opL": [
+			{
+				"name": "DB Fernverkehr AG",
+				"icoX": 1
+			}
+		],
+		"remL": [
+			{
+				"type": "A",
+				"code": "CK",
+				"prio": 200,
+				"icoX": 2,
+				"txtN": "Komfort Check-in möglich (Infos unter bahn.de/kci)"
+			},
+			{
+				"type": "A",
+				"code": "Q1",
+				"prio": 1,
+				"icoX": 2,
+				"txtN": "From Köln Hbf within 3min by S, RB, RE during the day approx. all 5min"
+			}
+		],
+		"icoL": [
+			{
+				"res": "ICE"
+			},
+			{
+				"res": "D",
+				"txt": "DB Fernverkehr AG"
+			},
+			{
+				"res": "attr_info"
+			},
+			{
+				"res": "DEVI"
+			}
+		]
+	},
+	"outConL": [
+		{
+			"cid": "C-0",
+			"date": "20200411",
+			"dur": "034000",
+			"chg": 0,
+			"sDays": {
+				"sDaysR": "Mo - Sa",
+				"sDaysI": "not 13., 27. Apr, 11., 12., 25. May, 1. Jun",
+				"sDaysB": "7ECDBBF7EFDFBF7EFDFBF7EFDFBF7E7DF9F7E3DF9F3EFDFBF7EFDFBF7EFDFBF7EFDFBF7EFDFBF7EFDFBF7EFDFBF0"
+			},
+			"dep": {
+				"locX": 0,
+				"idx": 0,
+				"dProdX": 0,
+				"dPlatfS": "4 A-C",
+				"dInR": true,
+				"dTimeS": "031900",
+				"dProgType": "PROGNOSED",
+				"dTZOffset": 120,
+				"type": "N"
+			},
+			"arr": {
+				"locX": 1,
+				"idx": 9,
+				"aPlatfS": "9",
+				"aOutR": true,
+				"aTimeS": "065900",
+				"aProgType": "PROGNOSED",
+				"aTZOffset": 120,
+				"type": "N"
+			},
+			"secL": [
+				{
+					"type": "JNY",
+					"icoX": 0,
+					"dep": {
+						"locX": 0,
+						"idx": 0,
+						"dProdX": 0,
+						"dPlatfS": "4 A-C",
+						"dInR": true,
+						"dTimeS": "031900",
+						"dProgType": "PROGNOSED",
+						"dTrnCmpSX": {
+							"tcM": 1
+						},
+						"dTZOffset": 120,
+						"type": "N"
+					},
+					"arr": {
+						"locX": 1,
+						"idx": 9,
+						"aPlatfS": "9",
+						"aOutR": true,
+						"aTimeS": "065900",
+						"aProgType": "PROGNOSED",
+						"aTZOffset": 120,
+						"type": "N"
+					},
+					"jny": {
+						"jid": "1|304103|0|80|11042020",
+						"prodX": 0,
+						"dirTxt": "München Hbf",
+						"status": "P",
+						"isRchbl": true,
+						"ctxRecon": "T$A=1@O=Köln Hbf@L=8000207@a=128@$A=1@O=Nürnberg Hbf@L=8000284@a=128@$202004110319$202004110659$ICE  827$$1$",
+						"msgL": [
+							{
+								"type": "REM",
+								"remX": 0,
+								"fLocX": 0,
+								"tLocX": 1,
+								"fIdx": 0,
+								"tIdx": 9,
+								"tagL": [
+									"RES_JNY_DTL"
+								]
+							}
+						],
+						"subscr": "F"
+					},
+					"resState": "N",
+					"resRecommendation": "N"
+				}
+			],
+			"ctxRecon": "¶HKI¶T$A=1@O=Köln Hbf@L=8000207@a=128@$A=1@O=Nürnberg Hbf@L=8000284@a=128@$202004110319$202004110659$ICE  827$$1$",
+			"trfRes": {
+				"statusCode": "OK",
+				"fareSetL": [
+					{
+						"fareL": [
+							{
+								"prc": 7790,
+								"isFromPrice": true,
+								"isBookable": true,
+								"isUpsell": false,
+								"targetCtx": "D",
+								"buttonText": "Continue to booking"
+							}
+						]
+					}
+				]
+			},
+			"conSubscr": "F",
+			"resState": "N",
+			"resRecommendation": "N",
+			"recState": "U",
+			"sotRating": 0,
+			"isSotCon": false,
+			"showARSLink": false,
+			"sotCtxt": {
+				"cnLocX": 0,
+				"calcDate": "20200410",
+				"jid": "1|304103|0|80|-1",
+				"locMode": "FROM_START",
+				"pLocX": 0,
+				"reqMode": "UNKNOWN",
+				"sectX": 0,
+				"calcTime": "203323"
+			},
+			"cksum": "2981a370_3"
+		},
+		{
+			"cid": "C-1",
+			"date": "20200411",
+			"dur": "033700",
+			"chg": 0,
+			"sDays": {
+				"sDaysR": "daily",
+				"sDaysI": "not 27. Apr, 25. May, 7. Jun",
+				"sDaysB": "7FFFFFFFFFFFFFFFFFFFE7CF9FFFFFFFFDFFFFFFDFFEFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0"
+			},
+			"dep": {
+				"locX": 0,
+				"idx": 0,
+				"dProdX": 1,
+				"dPlatfS": "5 A-C",
+				"dInR": true,
+				"dTimeS": "042200",
+				"dProgType": "PROGNOSED",
+				"dTZOffset": 120,
+				"type": "N"
+			},
+			"arr": {
+				"locX": 1,
+				"idx": 9,
+				"aPlatfS": "9",
+				"aOutR": true,
+				"aTimeS": "075900",
+				"aProgType": "PROGNOSED",
+				"aTZOffset": 120,
+				"type": "N"
+			},
+			"secL": [
+				{
+					"type": "JNY",
+					"icoX": 0,
+					"dep": {
+						"locX": 0,
+						"idx": 0,
+						"dProdX": 1,
+						"dPlatfS": "5 A-C",
+						"dInR": true,
+						"dTimeS": "042200",
+						"dProgType": "PROGNOSED",
+						"dTZOffset": 120,
+						"type": "N"
+					},
+					"arr": {
+						"locX": 1,
+						"idx": 9,
+						"aPlatfS": "9",
+						"aOutR": true,
+						"aTimeS": "075900",
+						"aProgType": "PROGNOSED",
+						"aTZOffset": 120,
+						"type": "N"
+					},
+					"jny": {
+						"jid": "1|300959|0|80|11042020",
+						"prodX": 1,
+						"dirTxt": "München Hbf",
+						"status": "P",
+						"isRchbl": true,
+						"ctxRecon": "T$A=1@O=Köln Hbf@L=8000207@a=128@$A=1@O=Nürnberg Hbf@L=8000284@a=128@$202004110422$202004110759$ICE  521$$1$",
+						"msgL": [
+							{
+								"type": "REM",
+								"remX": 0,
+								"fLocX": 0,
+								"tLocX": 1,
+								"fIdx": 0,
+								"tIdx": 9,
+								"tagL": [
+									"RES_JNY_DTL"
+								]
+							}
+						],
+						"subscr": "F"
+					},
+					"resState": "N",
+					"resRecommendation": "N"
+				}
+			],
+			"ctxRecon": "¶HKI¶T$A=1@O=Köln Hbf@L=8000207@a=128@$A=1@O=Nürnberg Hbf@L=8000284@a=128@$202004110422$202004110759$ICE  521$$1$",
+			"trfRes": {
+				"statusCode": "OK",
+				"fareSetL": [
+					{
+						"fareL": [
+							{
+								"prc": 4990,
+								"isFromPrice": true,
+								"isBookable": true,
+								"isUpsell": false,
+								"targetCtx": "D",
+								"buttonText": "Continue to booking"
+							}
+						]
+					}
+				]
+			},
+			"conSubscr": "F",
+			"resState": "N",
+			"resRecommendation": "N",
+			"recState": "U",
+			"sotRating": 0,
+			"isSotCon": false,
+			"showARSLink": false,
+			"sotCtxt": {
+				"cnLocX": 0,
+				"calcDate": "20200410",
+				"jid": "1|300959|0|80|-1",
+				"locMode": "FROM_START",
+				"pLocX": 0,
+				"reqMode": "UNKNOWN",
+				"sectX": 0,
+				"calcTime": "203323"
+			},
+			"cksum": "68a08a04_3"
+		},
+		{
+			"cid": "C-2",
+			"date": "20200411",
+			"dur": "034100",
+			"chg": 0,
+			"sDays": {
+				"sDaysR": "Mo - Sa",
+				"sDaysI": "not 13. Apr, 1. Jun",
+				"sDaysB": "7ECDBBF7EFDFBF7EFDFBE7CF9FBF7E7DFBF7EFDFBF3EFDFBF7EFDFBF7EFDFBF7EFDFBF7EFDFBF7EFDFBF7EFDFBF0"
+			},
+			"dep": {
+				"locX": 0,
+				"dInR": true,
+				"dTimeS": "051700",
+				"dTZOffset": 120,
+				"type": "N"
+			},
+			"arr": {
+				"locX": 1,
+				"idx": 14,
+				"aPlatfS": "9",
+				"aOutR": true,
+				"aTimeS": "090100",
+				"aProgType": "PROGNOSED",
+				"aTZOffset": 120,
+				"type": "N"
+			},
+			"secL": [
+				{
+					"type": "DEVI",
+					"icoX": 3,
+					"dep": {
+						"locX": 0,
+						"dInR": true,
+						"dTimeS": "051700",
+						"dTZOffset": 120,
+						"type": "N"
+					},
+					"arr": {
+						"locX": 2,
+						"aOutR": true,
+						"aTimeS": "052000",
+						"aTZOffset": 120,
+						"type": "N"
+					},
+					"resState": "N",
+					"resRecommendation": "N"
+				},
+				{
+					"type": "JNY",
+					"icoX": 0,
+					"dep": {
+						"locX": 2,
+						"idx": 5,
+						"dProdX": 2,
+						"dPlatfS": "11",
+						"dInR": true,
+						"dTimeS": "052000",
+						"dProgType": "PROGNOSED",
+						"dTZOffset": 120,
+						"type": "N"
+					},
+					"arr": {
+						"locX": 1,
+						"idx": 14,
+						"aPlatfS": "9",
+						"aOutR": true,
+						"aTimeS": "090100",
+						"aProgType": "PROGNOSED",
+						"aTZOffset": 120,
+						"type": "N"
+					},
+					"jny": {
+						"jid": "1|301001|0|80|11042020",
+						"prodX": 2,
+						"dirTxt": "München Hbf",
+						"status": "P",
+						"isRchbl": true,
+						"ctxRecon": "T$A=1@O=Köln Messe/Deutz Gl.11-12@L=8073368@a=128@$A=1@O=Nürnberg Hbf@L=8000284@a=128@$202004110520$202004110901$ICE  523$$1$",
+						"msgL": [
+							{
+								"type": "REM",
+								"remX": 0,
+								"fLocX": 2,
+								"tLocX": 1,
+								"fIdx": 5,
+								"tIdx": 14,
+								"tagL": [
+									"RES_JNY_DTL"
+								]
+							}
+						],
+						"subscr": "F"
+					},
+					"resState": "N",
+					"resRecommendation": "N"
+				}
+			],
+			"ctxRecon": "¶HKI¶D$A=1@O=Köln Hbf@L=8000207@a=128@$A=1@O=Köln Messe/Deutz Gl.11-12@L=8073368@a=128@$202004110517$202004110520$$$1$§T$A=1@O=Köln Messe/Deutz Gl.11-12@L=8073368@a=128@$A=1@O=Nürnberg Hbf@L=8000284@a=128@$202004110520$202004110901$ICE  523$$1$",
+			"trfRes": {
+				"statusCode": "OK",
+				"fareSetL": [
+					{
+						"fareL": [
+							{
+								"prc": 4990,
+								"isFromPrice": true,
+								"isBookable": true,
+								"isUpsell": false,
+								"targetCtx": "D",
+								"buttonText": "Continue to booking"
+							}
+						]
+					}
+				]
+			},
+			"conSubscr": "F",
+			"resState": "N",
+			"resRecommendation": "N",
+			"recState": "U",
+			"sotRating": 0,
+			"isSotCon": false,
+			"showARSLink": false,
+			"sotCtxt": {
+				"cnLocX": 2,
+				"calcDate": "20200410",
+				"jid": "1|301001|0|80|-1",
+				"locMode": "FROM_START",
+				"pLocX": 2,
+				"reqMode": "UNKNOWN",
+				"sectX": 1,
+				"calcTime": "203323"
+			},
+			"cksum": "faac8940_3"
+		}
+	],
+	"outCtxScrB": "1|OB|MT#11#172999#172999#173219#173219#0#0#5#172589#1#-2147482606#0#1#2|PDH#fbb83c5f2c5e367d766f8d0b4cc73c0a|RD#10042020|RT#202923",
+	"outCtxScrF": "1|OF|MT#11#173120#173120#173341#173341#0#0#485#173063#3#-2147482606#0#1#2|PDH#fbb83c5f2c5e367d766f8d0b4cc73c0a|RD#10042020|RT#202923",
+	"retCtxScrF": "1|OF|MT#11#173120#173120#173341#173341#0#0#485#173063#3#-2147482606#0#1#2|PDH#fbb83c5f2c5e367d766f8d0b4cc73c0a|RD#10042020|RT#202923",
+	"fpB": "20191215",
+	"fpE": "20201212",
+	"bfATS": -1,
+	"bfIOSTS": -1,
+	"planrtTS": "1586543549"
+}
