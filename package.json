@@ -61,8 +61,7 @@
 		"is-coordinates": "^2.0.2",
 		"is-roughly-equal": "^0.1.0",
 		"tap-spec": "^5.0.0",
-		"tape": "^4.8.0",
-		"tape-promise": "^4.0.0",
+		"tape": "^5.0.0",
 		"validate-fptf": "^3.0.0",
 		"vbb-stations-autocomplete": "^4.1.0"
 	},

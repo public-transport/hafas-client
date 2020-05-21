@@ -695,6 +695,7 @@ module.exports = {
 			fahrtNr: '14825',
 			name: 'S2',
 			public: true,
+			adminCode: 'DBS',
 			mode: 'train',
 			product: 'suburban',
 			operator: {
@@ -702,7 +703,6 @@ module.exports = {
 				id: 's-bahn-berlin-gmbh',
 				name: 'S-Bahn Berlin GmbH'
 			},
-			adminCode: 'DBS',
 			symbol: 'S',
 			nr: 2,
 			metro: false,
@@ -960,7 +960,7 @@ module.exports = {
 	cycle: {
 		min: 300
 	},
-	scheduledDays: {
+	scheduledDays: Object.assign(Object.create(null), {
 		'2019-01-01': true,
 		'2019-01-02': true,
 		'2019-01-03': true,
@@ -1089,5 +1089,5 @@ module.exports = {
 		'2019-05-06': true,
 		'2019-05-07': false,
 		'2019-05-08': false
-	}
+	}),
 }

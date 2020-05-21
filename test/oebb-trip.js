@@ -1,14 +1,12 @@
 'use strict'
 
-const tapePromise = require('tape-promise').default
-const tape = require('tape')
+const test = require('tape')
 
 const createClient = require('..')
 const rawProfile = require('../p/oebb')
 const res = require('./fixtures/oebb-trip.json')
 const expected = require('./fixtures/oebb-trip.js')
 
-const test = tapePromise(tape)
 const client = createClient(rawProfile, 'public-transport/hafas-client:test')
 const {profile} = client
 

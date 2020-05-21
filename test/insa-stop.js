@@ -1,14 +1,12 @@
 'use strict'
 
-const tapePromise = require('tape-promise').default
-const tape = require('tape')
+const test = require('tape')
 
 const createClient = require('..')
 const rawProfile = require('../p/insa')
 const res = require('./fixtures/insa-stop.json')
 const expected = require('./fixtures/insa-stop.js')
 
-const test = tapePromise(tape)
 const client = createClient(rawProfile, 'public-transport/hafas-client:test')
 const {profile} = client
 

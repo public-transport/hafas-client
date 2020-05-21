@@ -1,14 +1,11 @@
 'use strict'
 
-const assert = require('assert')
-const tapePromise = require('tape-promise').default
-const tape = require('tape')
-
 const {createWhen} = require('./lib/util')
 const createClient = require('../..')
 const vbnProfile = require('../../p/vbn')
 const products = require('../../p/vbn/products')
 const createValidate = require('./lib/validate-fptf-with')
+const {test} = require('./lib/util')
 const testJourneysStationToStation = require('./lib/journeys-station-to-station')
 const testRefreshJourney = require('./lib/refresh-journey')
 const testArrivals = require('./lib/arrivals')
@@ -28,7 +25,6 @@ const cfg = {
 
 const validate = createValidate(cfg)
 
-const test = tapePromise(tape)
 const client = createClient(vbnProfile, 'public-transport/hafas-client:test')
 
 const oldenburg = '8000291'

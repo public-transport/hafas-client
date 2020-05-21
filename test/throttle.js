@@ -1,7 +1,6 @@
 'use strict'
 
-const tapePromise = require('tape-promise').default
-const tape = require('tape')
+const test = require('tape')
 
 const createClient = require('..')
 const withThrottling = require('../throttle')
@@ -11,9 +10,7 @@ const depsRes = require('./fixtures/vbb-departures.json')
 const ua = 'public-transport/hafas-client:test'
 const spichernstr = '900000042101'
 
-const test = tapePromise(tape)
-
-test('withThrottling works', async (t) => {
+test('withThrottling works', {timeout: 2600}, (t) => {
 	let calls = 0
 	const mockedRequest = async (ctx, userAgent, reqData) => {
 		calls++

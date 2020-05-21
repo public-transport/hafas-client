@@ -1,8 +1,5 @@
 'use strict'
 
-const tapePromise = require('tape-promise').default
-const tape = require('tape')
-
 const createClient = require('../..')
 const vbbProfile = require('../../p/vbb')
 const products = require('../../p/vbb/products')
@@ -15,6 +12,7 @@ const {
 	validateMovement
 } = require('./lib/vbb-bvg-validators')
 const createValidate = require('./lib/validate-fptf-with')
+const {test} = require('./lib/util')
 const testJourneysStationToStation = require('./lib/journeys-station-to-station')
 const testJourneysStationToAddress = require('./lib/journeys-station-to-address')
 const testJourneysStationToPoi = require('./lib/journeys-station-to-poi')
@@ -39,7 +37,6 @@ const validate = createValidate(cfg, {
 	movement: validateMovement
 })
 
-const test = tapePromise(tape)
 const client = createClient(vbbProfile, 'public-transport/hafas-client:test')
 
 const amrumerStr = '900000009101'
@@ -139,7 +136,6 @@ test('journeys: walkingSpeed', async (t) => {
 		products: {bus: false},
 		minTimeDifference: 5 * 60 * 1000
 	})
-	t.end()
 })
 
 test('earlier/later journeys', async (t) => {
