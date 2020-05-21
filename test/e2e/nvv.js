@@ -97,11 +97,11 @@ test('Kassel Scheidemannplatz to Heckerstraße 2', async (t) => {
 test('Kassel Scheidemannplatz to Grimmwelt', async (t) => {
 	const grimmwelt = {
 		type: 'location',
-		id: '2099669',
+		id: '1500490',
 		poi: true,
 		name: 'Grimmwelt Kassel',
-		latitude: 51.309304,
-		longitude: 9.489292
+		latitude: 51.309313,
+		longitude: 9.489283,
 	}
 	const res = await client.journeys(scheidemannplatz, grimmwelt, {
 		results: 3,

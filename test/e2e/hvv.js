@@ -98,7 +98,7 @@ test('Hamburg Tiefstack to Gilbertstr. 30, Hamburg', async (t) => {
 test('Hamburg Tiefstack to Hamburger Meile', async (t) => {
 	const meile = {
 		type: 'location',
-		id: '980001825',
+		id: '980001829',
 		poi: true,
 		name: 'Hamburger Meile',
 		latitude: 53.572455,

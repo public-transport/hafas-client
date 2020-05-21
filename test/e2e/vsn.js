@@ -143,8 +143,8 @@ test('departures with station object', async (t) => {
 	t.end()
 })
 
-test('locations named Jugendherberge', async (t) => {
-	const locations = await client.locations('Jugendherberge', {
+test('locations named Botanischer Garten', async (t) => {
+	const locations = await client.locations('Botanischer Garten', {
 		results: 20
 	})
 
@@ -153,10 +153,6 @@ test('locations named Jugendherberge', async (t) => {
 
 	t.ok(locations.find(s => s.type === 'stop' || s.type === 'station'))
 	t.ok(locations.find(s => s.poi))
-	t.ok(locations.some((loc) => {
-		if (loc.station && loc.station.id === jugendherberge) return true
-		return loc.id === jugendherberge
-	}))
 
 	t.end()
 })
