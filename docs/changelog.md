@@ -1,5 +1,12 @@
 # Changelog
 
+## `5.6.0`
+
+- 07c77f8/76e3102/1abafb5/d92eb15/0251e31 parse stop/station entrances & sub-stops (#153)
+- 9e75f42/0251e31/322004b DB: parse *Reisezentrum* opening hours & station facilities (#153)
+
+[🏷 `5.6.0`](https://github.com/public-transport/hafas-client/releases/tag/5.6.0), 2020-05-21
+
 ## `5.5.1`
 
 - 3c888a0 `refreshJourney()`: actually throw the error 🐛, add error code
