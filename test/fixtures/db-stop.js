@@ -11,26 +11,6 @@ const facilities = {
 	stepFreeAccess: true,
 	boardingAid: 'ja, um voranmeldung unter 01806 512 512* wird gebeten',
 	taxis: true,
-	raw: [
-		['DB Information', '06:00 - 22:30'],
-		['3-S-Zentrale', '030/2971055'],
-		['Parkplätze', 'Ja'],
-		['Fahrrad-Stellplätze', 'Ja'],
-		['ÖPNV-Anbindung', 'Ja'],
-		['WC', 'Ja'],
-		['Schließfächer', 'Ja'],
-		['Reisebedarf', 'Nein'],
-		['Stufenfreier Zugang', 'Ja'],
-		[
-			'Ein-/ Umsteigehilfe',
-			'Ja, um Voranmeldung unter 01806 512 512* wird gebeten'
-		],
-		['Taxi am Bahnhof', 'Ja'],
-		[
-			'Hinweis',
-			'*20 ct/Anruf aus dem Festnetz, Tarif bei Mobilfunk max. 60 ct/Anruf, täglich von 6:00 bis 22:00 Uhr für Sie erreichbar.'
-		]
-	],
 }
 
 const reisezentrumOpeningHours = {

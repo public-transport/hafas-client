@@ -76,7 +76,8 @@ const parseAusstattungGrid = (g) => {
 	// filter duplicate hint rows
 	const rows = uniqBy(g.rows, ([key, val]) => key + ':' + val)
 
-	const res = {raw: rows}
+	const res = {}
+	Object.defineProperty(res, 'raw', {value: rows})
 	for (let [key, val] of rows) {
 		key = ausstattungKeys[slugg(key)]
 		if (key) res[key] = parseAusstattungVal(val)
