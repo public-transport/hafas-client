@@ -1,5 +1,13 @@
 # Changelog
 
+## `5.5.1`
+
+- 3c888a0 `refreshJourney()`: actually throw the error 🐛, add error code
+- e02a20b readme: update links 📝
+- b302ba7 minor readme/documentation tweaks 📝
+
+[🏷 `5.5.1`](https://github.com/public-transport/hafas-client/releases/tag/5.5.1), 2020-05-21
+
 ## `5.5.0`
 
 - fa3146d/9c4189a add [*SVV* profile](../p/svv)
