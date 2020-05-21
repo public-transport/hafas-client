@@ -10,9 +10,14 @@ const hour = 60 * 60 * 1000
 const day = 24 * hour
 const week = 7 * day
 
+const T_MOCK = 1592225430 * 1000
+
 // next Monday 10 am
 const createWhen = (timezone, locale) => {
-	return DateTime.fromMillis(Date.now(), {
+	const t = process.env.VCR_MODE && !process.env.VCR_OFF
+		? T_MOCK
+		: Date.now()
+	return DateTime.fromMillis(t, {
 		zone: timezone,
 		locale,
 	}).startOf('week').plus({weeks: 1, hours: 10}).toJSDate()

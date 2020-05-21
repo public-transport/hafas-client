@@ -133,6 +133,7 @@ test('journeys: walkingSpeed', async (t) => {
 		validate,
 		from: havelchaussee,
 		to: wannsee,
+		when,
 		products: {bus: false},
 		minTimeDifference: 5 * 60 * 1000
 	})
