@@ -1,14 +1,11 @@
 'use strict'
 
-const assert = require('assert')
-const tapePromise = require('tape-promise').default
-const tape = require('tape')
-
 const {createWhen} = require('./lib/util')
 const createClient = require('../..')
 const rsagProfile = require('../../p/rsag')
 const products = require('../../p/rsag/products')
 const createValidate = require('./lib/validate-fptf-with')
+const {test} = require('./lib/util')
 const testJourneysStationToStation = require('./lib/journeys-station-to-station')
 const testEarlierLaterJourneys = require('./lib/earlier-later-journeys')
 const testRefreshJourney = require('./lib/refresh-journey')
@@ -29,7 +26,6 @@ const cfg = {
 
 const validate = createValidate(cfg)
 
-const test = tapePromise(tape)
 const client = createClient(rsagProfile, 'public-transport/hafas-client:test')
 
 const sternwarte = '704956'

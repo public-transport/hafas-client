@@ -1,9 +1,6 @@
 'use strict'
 
 const {full: readStations} = require('db-stations')
-const a = require('assert')
-const tapePromise = require('tape-promise').default
-const tape = require('tape')
 const isRoughlyEqual = require('is-roughly-equal')
 
 const {createWhen} = require('./lib/util')
@@ -15,6 +12,7 @@ const {
 	trip: createValidateTrip
 } = require('./lib/validators')
 const createValidate = require('./lib/validate-fptf-with')
+const {test} = require('./lib/util')
 const testJourneysStationToStation = require('./lib/journeys-station-to-station')
 const testJourneysStationToAddress = require('./lib/journeys-station-to-address')
 const testJourneysStationToPoi = require('./lib/journeys-station-to-poi')
@@ -79,7 +77,6 @@ const assertValidPrice = (t, p) => {
 	}
 }
 
-const test = tapePromise(tape)
 const client = createClient(dbProfile, 'public-transport/hafas-client:test')
 
 const berlinHbf = '8011160'

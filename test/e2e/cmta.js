@@ -1,14 +1,11 @@
 'use strict'
 
-const assert = require('assert')
-const tapePromise = require('tape-promise').default
-const tape = require('tape')
-
 const {createWhen} = require('./lib/util')
 const createClient = require('../..')
 const cmtaProfile = require('../../p/cmta')
 const products = require('../../p/cmta/products')
 const createValidate = require('./lib/validate-fptf-with')
+const {test} = require('./lib/util')
 const testJourneysStationToStation = require('./lib/journeys-station-to-station')
 const testJourneysStationToAddress = require('./lib/journeys-station-to-address')
 const testJourneysStationToPoi = require('./lib/journeys-station-to-poi')
@@ -34,7 +31,6 @@ const cfg = {
 
 const validate = createValidate(cfg)
 
-const test = tapePromise(tape)
 const client = createClient(cmtaProfile, 'public-transport/hafas-client:test')
 
 const broadieOaks = '2370'

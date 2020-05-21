@@ -1,14 +1,12 @@
 'use strict'
 
-const tapePromise = require('tape-promise').default
-const tape = require('tape')
+const test = require('tape')
 
 const createClient = require('..')
 const rawProfile = require('../p/bvg')
 const res = require('./fixtures/bvg-journey.json')
 const expected = require('./fixtures/bvg-journey.js')
 
-const test = tapePromise(tape)
 const client = createClient(rawProfile, 'public-transport/hafas-client:test')
 const {profile} = client
 

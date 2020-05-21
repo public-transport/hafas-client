@@ -1,13 +1,12 @@
 'use strict'
 
-const tapePromise = require('tape-promise').default
-const tape = require('tape')
 const isRoughlyEqual = require('is-roughly-equal')
 
 const {createWhen} = require('./lib/util')
 const createClient = require('../..')
 const dbBusradarNrwProfile = require('../../p/db-busradar-nrw')
 const createValidate = require('./lib/validate-fptf-with')
+const {test} = require('./lib/util')
 const testDepartures = require('./lib/departures')
 const testArrivals = require('./lib/arrivals')
 
@@ -27,7 +26,6 @@ const cfg = {
 
 const validate = createValidate(cfg, {})
 
-const test = tapePromise(tape)
 const client = createClient(dbBusradarNrwProfile, 'public-transport/hafas-client:test')
 
 const hagenBauhaus = '3307002'

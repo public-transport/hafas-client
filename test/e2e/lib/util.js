@@ -3,6 +3,7 @@
 const isRoughlyEqual = require('is-roughly-equal')
 const {DateTime} = require('luxon')
 const a = require('assert')
+const tape = require('tape')
 
 const hour = 60 * 60 * 1000
 const day = 24 * hour
@@ -23,6 +24,9 @@ const assertValidWhen = (actual, expected, name) => {
 	a.ok(isRoughlyEqual(day + 6 * hour, +expected, ts), name + ' is out of range')
 }
 
+const test = tape
+
 module.exports = {
-	hour, createWhen, assertValidWhen
+	hour, createWhen, assertValidWhen,
+	test,
 }

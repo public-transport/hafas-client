@@ -1,9 +1,5 @@
 'use strict'
 
-const assert = require('assert')
-const tapePromise = require('tape-promise').default
-const tape = require('tape')
-
 const { createWhen } = require('./lib/util')
 const createClient = require('../..')
 const pkpProfile = require('../../p/pkp')
@@ -14,6 +10,7 @@ const {
 	movement: _validateMovement
 } = require('./lib/validators')
 const createValidate = require('./lib/validate-fptf-with')
+const {test} = require('./lib/util')
 const testJourneysStationToStation = require('./lib/journeys-station-to-station')
 const testArrivals = require('./lib/arrivals')
 const testReachableFrom = require('./lib/reachable-from')
@@ -53,7 +50,6 @@ const validate = createValidate(cfg, {
 	movement: validateMovement
 })
 
-const test = tapePromise(tape)
 const client = createClient(pkpProfile, 'public-transport/hafas-client:test')
 
 const wrocławGł = '5100069'

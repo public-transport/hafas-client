@@ -1,14 +1,11 @@
 'use strict'
 
-const assert = require('assert')
-const tapePromise = require('tape-promise').default
-const tape = require('tape')
-
 const {createWhen} = require('./lib/util')
 const createClient = require('../..')
 const svvProfile = require('../../p/svv')
 const products = require('../../p/svv/products')
 const createValidate = require('./lib/validate-fptf-with')
+const {test} = require('./lib/util')
 const testJourneysStationToStation = require('./lib/journeys-station-to-station')
 const testRefreshJourney = require('./lib/refresh-journey')
 const testArrivals = require('./lib/arrivals')
@@ -28,7 +25,6 @@ const cfg = {
 
 const validate = createValidate(cfg)
 
-const test = tapePromise(tape)
 const client = createClient(svvProfile, 'public-transport/hafas-client:test')
 
 const sam = '455086100'

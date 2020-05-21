@@ -1,7 +1,5 @@
 'use strict'
 
-const tapePromise = require('tape-promise').default
-const tape = require('tape')
 const isRoughlyEqual = require('is-roughly-equal')
 
 const {createWhen} = require('./lib/util')
@@ -9,6 +7,7 @@ const createClient = require('../..')
 const hvvProfile = require('../../p/hvv')
 const products = require('../../p/hvv/products')
 const createValidate = require('./lib/validate-fptf-with')
+const {test} = require('./lib/util')
 const testJourneysStationToStation = require('./lib/journeys-station-to-station')
 const journeysFailsWithNoProduct = require('./lib/journeys-fails-with-no-product')
 const testJourneysStationToAddress = require('./lib/journeys-station-to-address')
@@ -32,7 +31,6 @@ const cfg = {
 
 const validate = createValidate(cfg, {})
 
-const test = tapePromise(tape)
 const client = createClient(hvvProfile, 'public-transport/hafas-client:test')
 
 const tiefstack = '4117'

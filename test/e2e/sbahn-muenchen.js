@@ -1,15 +1,12 @@
 'use strict'
 
-const assert = require('assert')
-const tapePromise = require('tape-promise').default
-const tape = require('tape')
-
 const {createWhen} = require('./lib/util')
 const createClient = require('../..')
 const sMunichProfile = require('../../p/sbahn-muenchen')
 const products = require('../../p/sbahn-muenchen/products')
 const {movement: _validateMovement} = require('./lib/validators')
 const createValidate = require('./lib/validate-fptf-with')
+const {test} = require('./lib/util')
 const testJourneysStationToStation = require('./lib/journeys-station-to-station')
 const testJourneysStationToAddress = require('./lib/journeys-station-to-address')
 const testJourneysStationToPoi = require('./lib/journeys-station-to-poi')
@@ -50,7 +47,6 @@ const validate = createValidate(cfg, {
 	movement: validateMovement
 })
 
-const test = tapePromise(tape)
 const client = createClient(sMunichProfile, 'public-transport/hafas-client:test')
 
 const mittersendling = '8004154'
