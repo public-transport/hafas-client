@@ -136,7 +136,7 @@ test('Kiel Hbf to Berliner Str. 80, Husum', async (t) => {
 test('Kiel Hbf to Holstentor', async (t) => {
 	const holstentor = {
 		type: 'location',
-		id: '970003118',
+		id: '970003168',
 		poi: true,
 		name: 'Hansestadt Lübeck, Holstentor (Denkmal)',
 		latitude: 53.866321,

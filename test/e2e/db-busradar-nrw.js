@@ -131,6 +131,10 @@ test('radar', async (t) => {
 		duration: 5 * 60, when, results: 10
 	})
 
+	const validate = createValidate({
+		...cfg,
+		stationCoordsOptional: true,
+	}, {})
 	validate(t, vehicles, 'movements', 'vehicles')
 	t.end()
 })

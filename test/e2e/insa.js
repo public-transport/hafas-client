@@ -6,6 +6,10 @@ const {createWhen} = require('./lib/util')
 const createClient = require('../..')
 const insaProfile = require('../../p/insa')
 const products = require('../../p/insa/products')
+const {
+	movement: createValidateMovement,
+	journeyLeg: createValidateJourneyLeg,
+} = require('./lib/validators')
 const createValidate = require('./lib/validate-fptf-with')
 const {test} = require('./lib/util')
 const testJourneysStationToStation = require('./lib/journeys-station-to-station')
@@ -32,7 +36,18 @@ const cfg = {
 	maxLongitude: 13.4
 }
 
-const validate = createValidate(cfg, {})
+const withFakeDirection = (validate) => (val, item, name) => {
+	validate(val, {
+		...item,
+		direction: item.direction === null ? 'foo' : item.direction,
+	}, name)
+}
+const validators = {
+	movement: withFakeDirection(createValidateMovement(cfg)),
+	journeyLeg: withFakeDirection(createValidateJourneyLeg(cfg)),
+}
+
+const validate = createValidate(cfg, validators)
 
 const client = createClient(insaProfile, 'public-transport/hafas-client:test')
 
@@ -271,7 +286,7 @@ test('radar', async (t) => {
 	const customCfg = Object.assign({}, cfg, {
 		stationCoordsOptional: true, // see #28
 	})
-	const validate = createValidate(customCfg, {})
+	const validate = createValidate(customCfg, validators)
 	validate(t, vehicles, 'movements', 'vehicles')
 
 	t.end()

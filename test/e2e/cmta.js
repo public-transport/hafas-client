@@ -94,7 +94,7 @@ test('Domain to 1104 Elm Street, Austin, TX 78703', async (t) => {
 test('Domain to Whole Foods Market - North Lamar Blvd', async (t) => {
 	const wholeFoodsMarket = {
 		type: 'location',
-		id: '9845565', // or `9871373`
+		id: '9830561', // or `9855367`
 		poi: true,
 		name: 'Whole Foods Market - N Lamar Blvd',
 		latitude: 30.270653,

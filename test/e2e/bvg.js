@@ -131,7 +131,8 @@ test('journeys – fails with no product', (t) => {
 	t.end()
 })
 
-test('journeys – BerlKönig', async (t) => {
+// BerlKönig for public use is suspended during COVID-19.
+test.skip('journeys – BerlKönig', async (t) => {
 	const when = DateTime.fromMillis(Date.now(), {
 		zone: 'Europe/Berlin',
 		locale: 'de-De',

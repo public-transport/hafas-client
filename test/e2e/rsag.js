@@ -43,8 +43,8 @@ test('journeys – Platz der Jugend to Weißes Kreuz', async (t) => {
 		test: t,
 		res,
 		validate,
-		fromId: sternwarte,
-		toId: weißesKreuz
+		fromIds: [sternwarte, sternwarte2],
+		toId: weißesKreuz,
 	})
 	t.end()
 })

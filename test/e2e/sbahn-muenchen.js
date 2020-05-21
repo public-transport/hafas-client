@@ -174,8 +174,9 @@ test('trip details', async (t) => {
 	t.end()
 })
 
-test('departures at Karl-Theodor-Straße', async (t) => {
-	const departures = await client.departures(karlTheodorStr, {
+test('departures at Dietlindenstraße', async (t) => {
+	const dietlindenstr = '624391'
+	const departures = await client.departures(dietlindenstr, {
 		duration: 10, when,
 		stopovers: true
 	})
@@ -184,7 +185,7 @@ test('departures at Karl-Theodor-Straße', async (t) => {
 		test: t,
 		departures,
 		validate,
-		id: karlTheodorStr
+		id: dietlindenstr
 	})
 	t.end()
 })
