@@ -57,18 +57,22 @@
 	},
 	"devDependencies": {
 		"db-stations": "^3.0.0",
-		"eslint": "^6.8.0",
+		"eslint": "^7.0.0",
 		"is-coordinates": "^2.0.2",
 		"is-roughly-equal": "^0.1.0",
+		"replayer": "^2.2.3",
 		"tap-spec": "^5.0.0",
 		"tape": "^5.0.0",
 		"validate-fptf": "^3.0.0",
 		"vbb-stations-autocomplete": "^4.1.0"
 	},
 	"scripts": {
-		"e2e-test": "env NODE_ENV=dev node test/e2e/index.js | tap-spec",
 		"lint": "eslint .",
-		"test": "env NODE_ENV=dev node test/index.js | tap-spec",
-		"prepublishOnly": "npm test && npm run e2e-test"
+		"test-unit": "node test/index.js | tap-spec",
+		"test-integration": "VCR_MODE=playback node test/e2e/index.js | tap-spec",
+		"test-integration:record": "VCR_MODE=record node test/e2e/index.js | tap-spec",
+		"test-e2e": "VCR_OFF=true node test/e2e/index.js | tap-spec",
+		"test": "npm run test-unit && npm run test-integration",
+		"prepublishOnly": "npm run lint && npm test"
 	}
 }
