@@ -7,11 +7,11 @@ node_js:
 cache: npm
 script:
   - npm run lint
-  - npm test
+  - npm run test
 jobs:
   include:
-    - name: e2e-test
-      script: npm run e2e-test
+    - name: test-e2e
+      script: npm run test-e2e
       node_js: '10'
   allow_failures:
-    - name: e2e-test
+    - name: test-e2e
