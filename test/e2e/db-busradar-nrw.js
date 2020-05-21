@@ -49,7 +49,7 @@ test('departures at Hagen Bauhaus', async (t) => {
 
 test('trip details', async (t) => {
 	const deps = await client.departures(hagenBauhaus, {
-		results: 1, duration: 120, departure: when
+		results: 1, duration: 120, when
 	})
 
 	const p = deps[0] || {}

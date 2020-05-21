@@ -407,6 +407,7 @@ test('stop', async (t) => {
 
 test('line with additionalName', async (t) => {
 	const departures = await client.departures(potsdamHbf, {
+		when,
 		duration: 12 * 60, // 12 minutes
 		products: {bus: false, suburban: false, tram: false}
 	})

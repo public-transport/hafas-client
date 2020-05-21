@@ -136,7 +136,8 @@ test('earlier/later journeys', async (t) => {
 		fetchJourneys: client.journeys,
 		validate,
 		fromId: ingolstadtHbf,
-		toId: telemannstr
+		toId: telemannstr,
+		when,
 	})
 
 	t.end()
