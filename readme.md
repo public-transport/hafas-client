@@ -3,7 +3,7 @@
 **A client for the "mobile APIs" of [HAFAS](https://de.wikipedia.org/wiki/HAFAS) public transport management systems**.
 
 [![npm version](https://img.shields.io/npm/v/hafas-client.svg)](https://www.npmjs.com/package/hafas-client)
-[![build status](https://img.shields.io/travis/public-transport/hafas-client.svg?branch=3)](https://travis-ci.org/public-transport/hafas-client)
+[![build status](https://img.shields.io/travis/public-transport/hafas-client.svg?branch=5)](https://travis-ci.org/public-transport/hafas-client)
 ![ISC-licensed](https://img.shields.io/github/license/public-transport/hafas-client.svg)
 [![chat on gitter](https://badges.gitter.im/public-transport/Lobby.svg)](https://gitter.im/public-transport/Lobby)
 [![support Jannis via GitHub Sponsors](https://img.shields.io/badge/support%20Jannis-donate-fa7664.svg)](https://github.com/sponsors/derhuerst)

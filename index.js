@@ -121,12 +121,12 @@ const createClient = (profile, userAgent, opt = {}) => {
 			// todo: does this work with every endpoint?
 			accessibility: 'none', // 'none', 'partial' or 'complete'
 			bike: false, // only bike-friendly journeys
-			tickets: false, // return tickets?
-			polylines: false, // return leg shapes?
-			remarks: true, // parse & expose hints & warnings?
 			walkingSpeed: 'normal', // 'slow', 'normal', 'fast'
 			// Consider walking to nearby stations at the beginning of a journey?
 			startWithWalking: true,
+			tickets: false, // return tickets?
+			polylines: false, // return leg shapes?
+			remarks: true, // parse & expose hints & warnings?
 			scheduledDays: false
 		}, opt)
 		if (opt.via) opt.via = profile.formatLocation(profile, opt.via, 'opt.via')
@@ -299,7 +299,8 @@ const createClient = (profile, userAgent, opt = {}) => {
 		else throw new TypeError('stop must be an object or a string.')
 
 		opt = Object.assign({
-			linesOfStops: false // parse & expose lines at the stop/station?
+			linesOfStops: false, // parse & expose lines at the stop/station?
+			remarks: true, // parse & expose hints & warnings?
 		}, opt)
 
 		const req = profile.formatStopReq({profile, opt}, stop)
