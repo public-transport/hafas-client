@@ -13,16 +13,12 @@ const create = (cfg, customValidators = {}) => {
 	Object.assign(val, customValidators)
 
 	const validateFptfWith = (t, item, allowedTypes, name) => {
-		try {
-			if ('string' === typeof allowedTypes) {
-				val[allowedTypes](val, item, name)
-			} else {
-				anyOf(allowedTypes, val, item, name)
-			}
-			t.pass(name + ' is valid')
-		} catch (err) {
-			t.ifError(err) // todo: improve error logging
+		if ('string' === typeof allowedTypes) {
+			val[allowedTypes](val, item, name)
+		} else {
+			anyOf(allowedTypes, val, item, name)
 		}
+		t.pass(name + ' is valid')
 	}
 	return validateFptfWith
 }
