@@ -1,6 +1,7 @@
 'use strict'
 
 const isRoughlyEqual = require('is-roughly-equal')
+const {AssertionError} = require('assert')
 const {DateTime} = require('luxon')
 const a = require('assert')
 const {join} = require('path')
@@ -27,7 +28,15 @@ const assertValidWhen = (actual, expected, name) => {
 	const ts = +new Date(actual)
 	a.ok(!Number.isNaN(ts), name + ' is not parsable by Date')
 	// the timestamps might be from long-distance trains
-	a.ok(isRoughlyEqual(day + 6 * hour, +expected, ts), name + ' is out of range')
+	const delta = day + 6 * hour
+	if (!isRoughlyEqual(delta, +expected, ts)) {
+		throw new AssertionError({
+			message: name + ' is out of range',
+			actual: ts,
+			expected: `${expected - delta} - ${+expected + delta}`,
+			operator: 'isRoughlyEqual',
+		})
+	}
 }
 
 // HTTP request mocking
