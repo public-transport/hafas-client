@@ -265,3 +265,5 @@ HAFAS endpoint | library
 If you **have a question**, **found a bug** or want to **propose a feature**, have a look at [the issues page](https://github.com/public-transport/hafas-client/issues).
 
 This project needs help! Check the [list of "help wanted" Issues](https://github.com/public-transport/hafas-client/issues?q=is%3Aopen+is%3Aissue+label%3A%22help+wanted%22).
+
+If you're contributing code, please read the [contribution guidelines](contributing.md).
