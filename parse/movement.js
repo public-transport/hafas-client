@@ -19,7 +19,11 @@ const parseMovement = (ctx, m) => { // m = raw movement
 			longitude: m.pos.x / 1000000
 		} : null,
 		// todo: stopL[0] is the first of the trip! -> filter out
-		nextStopovers: m.stopL.map(s => profile.parseStopover(ctx, s, m.date)),
+		nextStopovers: (
+			m.stopL
+			.filter(s => !!s.location)
+			.map(s => profile.parseStopover(ctx, s, m.date))
+		),
 		frames: []
 	}
 
