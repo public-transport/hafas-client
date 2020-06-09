@@ -1,0 +1,296 @@
+{
+	"common": {
+		"locL": [
+			{
+				"lid": "A=1@O=Jungfernheide Bahnhof (S+U), Berlin@X=13300781@Y=52530866@U=80@L=730985@",
+				"type": "S",
+				"name": "Jungfernheide Bahnhof (S+U), Berlin",
+				"icoX": 2,
+				"extId": "730985",
+				"state": "F",
+				"crd": {
+					"x": 13300781,
+					"y": 52530866,
+					"type": "WGS84",
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"pCls": 184,
+				"pRefL": [
+					1,
+					2,
+					3,
+					4,
+					5
+				],
+				"mMastLocX": 1
+			},
+			{
+				"lid": "A=1@O=Berlin Jungfernheide@X=13299433@Y=52530273@U=80@L=8011167@",
+				"type": "S",
+				"name": "Berlin Jungfernheide",
+				"icoX": 2,
+				"extId": "8011167",
+				"state": "F",
+				"crd": {
+					"x": 13299451,
+					"y": 52530291,
+					"z": 0,
+					"type": "WGS84",
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"pCls": 184,
+				"pRefL": [
+					6,
+					7,
+					8,
+					9,
+					10,
+					11,
+					12,
+					13,
+					14,
+					15,
+					1,
+					2,
+					16,
+					3,
+					4,
+					5
+				]
+			}
+		],
+		"prodL": [
+			{
+				"name": "U 7",
+				"nameS": "7",
+				"number": "7",
+				"icoX": 0,
+				"cls": 128,
+				"oprX": 0,
+				"prodCtx": {
+					"name": "U      7",
+					"num": "19245",
+					"line": "7",
+					"lineId": "7_vbbBVU_7",
+					"matchId": "",
+					"catOut": "U",
+					"catOutS": "U",
+					"catOutL": "U-Bahn",
+					"catIn": "U",
+					"catCode": "7",
+					"admin": "vbbBVU"
+				}
+			},
+			{
+				"name": "Bus N7",
+				"nameS": "N7",
+				"icoX": 2,
+				"cls": 32,
+				"prodCtx": {
+					"lineId": "5_vbbBVB_N7"
+				}
+			},
+			{
+				"name": "Bus X9",
+				"nameS": "X9",
+				"icoX": 2,
+				"cls": 32,
+				"prodCtx": {
+					"lineId": "5_vbbBVB_X9"
+				}
+			},
+			{
+				"name": "Bus M21",
+				"nameS": "M21",
+				"icoX": 2,
+				"cls": 32,
+				"prodCtx": {
+					"lineId": "5_vbbBVB_M21"
+				}
+			},
+			{
+				"name": "Bus M27",
+				"nameS": "M27",
+				"icoX": 2,
+				"cls": 32,
+				"prodCtx": {
+					"lineId": "5_vbbBVB_M27"
+				}
+			},
+			{
+				"name": "U 7",
+				"nameS": "7",
+				"icoX": 0,
+				"cls": 128,
+				"prodCtx": {
+					"lineId": "7_vbbBVU_7"
+				}
+			},
+			{
+				"name": "Bus RE6",
+				"nameS": "RE6",
+				"icoX": 2,
+				"cls": 8,
+				"prodCtx": {
+					"lineId": "3_BB_____RE6"
+				}
+			},
+			{
+				"name": "Bus SEV",
+				"nameS": "SEV",
+				"icoX": 2,
+				"cls": 8,
+				"prodCtx": {
+					"lineId": "3_08_____SEV!!1491900!!5842741"
+				}
+			},
+			{
+				"name": "RB",
+				"icoX": 3,
+				"cls": 8
+			},
+			{
+				"name": "RE",
+				"icoX": 4,
+				"cls": 8
+			},
+			{
+				"name": "RE",
+				"icoX": 5,
+				"cls": 8
+			},
+			{
+				"name": "S 2",
+				"nameS": "2",
+				"icoX": 6,
+				"cls": 16,
+				"prodCtx": {
+					"lineId": "4_08_____2"
+				}
+			},
+			{
+				"name": "S 25",
+				"nameS": "25",
+				"icoX": 6,
+				"cls": 16,
+				"prodCtx": {
+					"lineId": "4_08_____25"
+				}
+			},
+			{
+				"name": "S 41",
+				"nameS": "41",
+				"icoX": 6,
+				"cls": 16,
+				"prodCtx": {
+					"lineId": "4_08_____41"
+				}
+			},
+			{
+				"name": "S 42",
+				"nameS": "42",
+				"icoX": 6,
+				"cls": 16,
+				"prodCtx": {
+					"lineId": "4_08_____42"
+				}
+			},
+			{
+				"name": "S 46",
+				"nameS": "46",
+				"icoX": 6,
+				"cls": 16,
+				"prodCtx": {
+					"lineId": "4_08_____46"
+				}
+			},
+			{
+				"name": "Bus 109",
+				"nameS": "109",
+				"icoX": 2,
+				"cls": 32,
+				"prodCtx": {
+					"lineId": "5_vbbBVB_109"
+				}
+			}
+		],
+		"polyL": [],
+		"layerL": [
+			{
+				"id": "standard",
+				"name": "standard",
+				"index": 0,
+				"annoCnt": 0
+			}
+		],
+		"crdSysL": [
+			{
+				"id": "standard",
+				"index": 0,
+				"type": "WGS84",
+				"dim": 3
+			}
+		],
+		"opL": [
+			{
+				"name": "Nahreisezug",
+				"icoX": 1
+			}
+		],
+		"remL": [],
+		"icoL": [
+			{
+				"res": "U"
+			},
+			{
+				"res": "DPN",
+				"txt": "Nahreisezug"
+			},
+			{
+				"res": "Bus"
+			},
+			{
+				"res": "RB"
+			},
+			{
+				"res": "DPN"
+			},
+			{
+				"res": "RE"
+			},
+			{
+				"res": "S"
+			}
+		]
+	},
+	"type": "ARR",
+	"jnyL": [
+		{
+			"jid": "1|1144239|52|80|9062020",
+			"date": "20200609",
+			"prodX": 0,
+			"dirTxt": "Rathaus Spandau (S+U), Berlin",
+			"status": "P",
+			"isRchbl": true,
+			"stbStop": {
+				"locX": 0,
+				"idx": 9,
+				"aProdX": 0,
+				"aOutR": true,
+				"aTimeS": "170400",
+				"aTimeR": "172100",
+				"aProgType": "PROGNOSED",
+				"aTZOffset": 120,
+				"type": "N"
+			},
+			"subscr": "F"
+		}
+	],
+	"fpB": "20191215",
+	"fpE": "20201212",
+	"planrtTS": "1591715437",
+	"sD": "20200609",
+	"sT": "171108"
+}
