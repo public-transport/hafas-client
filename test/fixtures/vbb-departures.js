@@ -185,6 +185,7 @@ module.exports = [
 		platform: null,
 		plannedPlatform: null,
 		direction: 'S+U Hermannstr.',
+		provenance: null,
 		line: {
 			type: 'line',
 			id: 'u8',
@@ -849,6 +850,7 @@ module.exports = [
 		platform: null,
 		plannedPlatform: null,
 		direction: 'U Paracelsus-Bad',
+		provenance: null,
 		line: {
 			type: 'line',
 			id: 'u8',
@@ -1608,6 +1610,7 @@ module.exports = [
 		platform: '4',
 		plannedPlatform: '4',
 		direction: 'S Spandau',
+		provenance: null,
 		line: {
 			type: 'line',
 			id: 's9',
