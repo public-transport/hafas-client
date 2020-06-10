@@ -353,7 +353,8 @@ const createClient = (profile, userAgent, opt = {}) => {
 			if (!Array.isArray(res.locL)) return []
 
 			const ctx = {profile, opt, common, res}
-			return res.locL.map(loc => profile.parseNearby(ctx, loc))
+			const results = res.locL.map(loc => profile.parseNearby(ctx, loc))
+			return Number.isInteger(opt.results) ? results.slice(0, opt.results) : results
 		})
 	}
 
