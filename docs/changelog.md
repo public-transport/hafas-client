@@ -1,5 +1,14 @@
 # Changelog
 
+## `5.6.1`
+
+- 542aa8c parse `DEVI` journey legs (#175)
+- 3ca4a0c/57fc610 `arrivals()`: add `provenance` field (#180)
+- ee94c65 ÖBB: improve `onCall` product name
+- a8a9303 `nearby()`: return at most `opt.results` results
+
+[🏷 `5.6.1`](https://github.com/public-transport/hafas-client/releases/tag/5.6.1), 2020-06-10
+
 ## `5.6.0`
 
 - 07c77f8/76e3102/1abafb5/d92eb15/0251e31 parse stop/station entrances & sub-stops (#153)

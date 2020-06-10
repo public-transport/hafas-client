@@ -33,7 +33,7 @@ npm install hafas-client
 
 ## Usage
 
-The main entry point of this library is a function `createClient(profile, userAgent)`. Pass in a [profile](p) and an expressive name for your program.
+Pick the [profile](p) for a HAFAS endpoint that covers the area you want to get data for. Pass the profile and an expressive name for your program into the `createClient` entry point of this library:
 
 ```js
 const createClient = require('hafas-client')
@@ -237,6 +237,8 @@ HAFAS endpoint | library
 
 ## Related
 
+- [`*.transport.rest`](https://transport.rest/) – Public APIs wrapping some HAFAS endpoints.
+- [`BahnhofsAbfahrten`](https://github.com/marudor/BahnhofsAbfahrten) a.k.a. [`marudor.de`](https://marudor.de/) – A very detailed public transport website for Germany. Uses HAFAS underneath, [has an API](https://docs.marudor.de).
 - [`public-transport-enabler`](https://github.com/schildbach/public-transport-enabler) – Unleash public transport data in your Java project.
 - [`TripKit`](https://github.com/alexander-albers/tripkit) – Swift library for querying data from public transport providers.
 - [*Friendly Public Transport Format*](https://github.com/public-transport/friendly-public-transport-format#friendly-public-transport-format-fptf) – A format for APIs, libraries and datasets containing and working with public transport data.
