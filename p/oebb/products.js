@@ -77,8 +77,8 @@ module.exports = [
 		id: 'onCall',
 		mode: null, // todo
 		bitmasks: [2048],
-		name: 'On-call transit',
-		short: 'on-call',
+		name: 'on-call transit, lifts, etc',
+		short: 'on-call/lift',
 		default: true
 	}
 ]
