@@ -1,7 +1,5 @@
 'use strict'
 
-const minBy = require('lodash/minBy')
-const maxBy = require('lodash/maxBy')
 const isObj = require('lodash/isObject')
 const sortBy = require('lodash/sortBy')
 const pRetry = require('p-retry')
@@ -378,17 +376,7 @@ const createClient = (profile, userAgent, opt = {}) => {
 		return profile.request({profile, opt}, userAgent, req)
 		.then(({common, res}) => {
 			const ctx = {profile, opt, common, res}
-
-			const rawLeg = { // pretend the leg is contained in a journey
-				type: 'JNY',
-				dep: minBy(res.journey.stopL, 'idx'),
-				arr: maxBy(res.journey.stopL, 'idx'),
-				jny: res.journey
-			}
-			const trip = profile.parseJourneyLeg(ctx, rawLeg, res.journey.date)
-			trip.id = trip.tripId
-			delete trip.tripId
-			return trip
+			return profile.parseTrip(ctx, res.journey)
 		})
 	}
 
