@@ -118,7 +118,7 @@ const parseCommonData = (_ctx) => {
 	})
 
 	common.polylines = []
-	if (opt.polylines && Array.isArray(c.polyL)) {
+	if ((opt.polylines || opt.polyline) && Array.isArray(c.polyL)) {
 		common.polylines = c.polyL.map(p => profile.parsePolyline(ctx, p))
 		// todo: **.ani.poly -> parsePolyline()
 
