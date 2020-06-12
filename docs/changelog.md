@@ -2,6 +2,14 @@
 
 ## `5.6.1`
 
+- de896b1 `parseCommon`: respect `opt.polyline` 🐛
+- fc2e214 ÖBB: add `trip()` test ✅
+- dce42bf move trip parsing into `parse/trip`
+
+[🏷 `5.6.1`](https://github.com/public-transport/hafas-client/releases/tag/5.6.1), 2020-06-13
+
+## `5.6.1`
+
 - 542aa8c parse `DEVI` journey legs (#175)
 - 3ca4a0c/57fc610 `arrivals()`: add `provenance` field (#180)
 - ee94c65 ÖBB: improve `onCall` product name
