@@ -1,0 +1,36 @@
+{
+  "statusCode": 200,
+  "headers": {
+    "date": "Mon, 15 Jun 2020 12:59:20 GMT",
+    "server": "Apache",
+    "content-length": "8276",
+    "keep-alive": "timeout=5",
+    "connection": "Keep-Alive",
+    "content-type": "application/json; charset=utf-8"
+  },
+  "url": "http://fahrplan.oebb.at/bin/mgate.exe",
+  "time": 1282,
+  "request": {
+    "method": "POST",
+    "headers": {
+      "Content-Type": [
+        "application/json"
+      ],
+      "Accept-Encoding": [
+        "gzip, br, deflate"
+      ],
+      "Accept": [
+        "application/json"
+      ],
+      "user-agent": [
+        "public-transport/hafas-clifd7237424f17ent:test"
+      ],
+      "Content-Length": [
+        "409"
+      ],
+      "Connection": [
+        "close"
+      ]
+    }
+  }
+}

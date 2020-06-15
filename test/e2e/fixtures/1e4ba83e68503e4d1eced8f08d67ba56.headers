@@ -1,0 +1,35 @@
+{
+  "statusCode": 200,
+  "headers": {
+    "content-type": "application/json; charset=utf-8",
+    "date": "Mon, 15 Jun 2020 12:56:45 GMT",
+    "server": "Apache",
+    "content-length": "1264",
+    "connection": "Close"
+  },
+  "url": "https://reiseauskunft.bahn.de/bin/mgate.exe?checksum=6527ea222766fe2e4c988e43753fd026",
+  "time": 229,
+  "request": {
+    "method": "POST",
+    "headers": {
+      "Content-Type": [
+        "application/json"
+      ],
+      "Accept-Encoding": [
+        "gzip, br, deflate"
+      ],
+      "Accept": [
+        "application/json"
+      ],
+      "user-agent": [
+        "public-851c3ec6b269transport/hafas-client:test"
+      ],
+      "Content-Length": [
+        "445"
+      ],
+      "Connection": [
+        "close"
+      ]
+    }
+  }
+}
