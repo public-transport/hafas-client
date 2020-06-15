@@ -1,0 +1,38 @@
+{
+  "statusCode": 200,
+  "headers": {
+    "date": "Mon, 15 Jun 2020 13:13:22 GMT",
+    "server": "Apache",
+    "content-length": "1338",
+    "connection": "close",
+    "content-type": "application/json; charset=utf-8",
+    "set-cookie": [
+      "MOBIL8019=mobil32; path=/"
+    ]
+  },
+  "url": "https://mobil.rozklad-pkp.pl:8019/bin/mgate.exe",
+  "time": 613,
+  "request": {
+    "method": "POST",
+    "headers": {
+      "Content-Type": [
+        "application/json"
+      ],
+      "Accept-Encoding": [
+        "gzip, br, deflate"
+      ],
+      "Accept": [
+        "application/json"
+      ],
+      "user-agent": [
+        "public-transport/hafas-client75f75b19fdc0:test"
+      ],
+      "Content-Length": [
+        "284"
+      ],
+      "Connection": [
+        "close"
+      ]
+    }
+  }
+}

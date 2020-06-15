@@ -1,0 +1,36 @@
+{
+  "statusCode": 200,
+  "headers": {
+    "date": "Mon, 15 Jun 2020 12:57:35 GMT",
+    "server": "Apache",
+    "vary": "User-Agent",
+    "content-length": "1764",
+    "connection": "close",
+    "content-type": "application/json; charset=utf-8"
+  },
+  "url": "https://fahrinfo.vbb.de/bin/mgate.exe?mic=9392d7d65c8c44b056cc3c46f4950a56&mac=5e8be163966f9233caebc25ab27b9103",
+  "time": 507,
+  "request": {
+    "method": "POST",
+    "headers": {
+      "Content-Type": [
+        "application/json"
+      ],
+      "Accept-Encoding": [
+        "gzip, br, deflate"
+      ],
+      "Accept": [
+        "application/json"
+      ],
+      "user-agent": [
+        "public-transport/hafas-client4704a630b87a:test"
+      ],
+      "Content-Length": [
+        "695"
+      ],
+      "Connection": [
+        "close"
+      ]
+    }
+  }
+}
