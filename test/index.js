@@ -12,6 +12,7 @@ require('./db-arrivals')
 require('./vbb-departures')
 require('./bvg-radar')
 require('./oebb-trip')
+require('./rejseplanen-trip')
 require('./db-netz-remarks')
 require('./vsn-departures')
 
