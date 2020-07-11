@@ -1,0 +1,207 @@
+{
+	"common": {
+		"locL": [
+			{
+				"lid": "A=1@O=Aalborg St.@X=9917044@Y=57043037@U=86@L=8600020@",
+				"type": "S",
+				"name": "Aalborg St.",
+				"icoX": 2,
+				"extId": "8600020",
+				"state": "F",
+				"crd": {
+					"x": 9917044,
+					"y": 57043037,
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"pCls": 239
+			},
+			{
+				"lid": "A=1@O=Hobro St.@X=9782790@Y=56643539@U=86@L=8600032@",
+				"type": "S",
+				"name": "Hobro St.",
+				"icoX": 2,
+				"extId": "8600032",
+				"state": "F",
+				"crd": {
+					"x": 9782790,
+					"y": 56643539,
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"pCls": 303
+			}
+		],
+		"prodL": [
+			{
+				"name": "Replacement bus RØD",
+				"nameS": "RØD",
+				"number": "RØD",
+				"icoX": 0,
+				"cls": 8,
+				"oprX": 0,
+				"prodCtx": {
+					"name": "Replacement bus RØD",
+					"num": "20002",
+					"line": "RØD",
+					"matchId": "RØD",
+					"catOut": "Togbus  ",
+					"catOutS": "018",
+					"catOutL": "Replacement bus",
+					"catIn": "018",
+					"catCode": "3",
+					"admin": "000001"
+				}
+			}
+		],
+		"polyL": [],
+		"layerL": [
+			{
+				"id": "standard",
+				"name": "standard",
+				"index": 0,
+				"annoCnt": 0
+			}
+		],
+		"crdSysL": [
+			{
+				"id": "standard",
+				"index": 0,
+				"type": "WGS84"
+			}
+		],
+		"opL": [
+			{
+				"name": "DSB",
+				"icoX": 1
+			}
+		],
+		"remL": [
+			{
+				"type": "I",
+				"code": "NO",
+				"icoX": 3,
+				"txtN": "Vi kører med Togbusser på denne tur, som derfor varer længere end normalt. Tiderne, du ser i Rejseplanen, er kun vejledende. Togbusserne kører i pendulfart mellem stationerne. Det skyldes akutte driftsforstyrrelser. I Togbussen kan du ikke tage din cykel med."
+			},
+			{
+				"type": "R",
+				"code": "text.realtime.journey.additional.service",
+				"icoX": 4,
+				"txtN": "Extra bus or train"
+			}
+		],
+		"icoL": [
+			{
+				"res": "prod_gen",
+				"fg": {
+					"r": 255,
+					"g": 255,
+					"b": 255
+				},
+				"bg": {
+					"r": 80,
+					"g": 183,
+					"b": 72
+				}
+			},
+			{
+				"res": "DSB",
+				"txt": "DSB"
+			},
+			{
+				"res": "prod_ic",
+				"fg": {
+					"r": 255,
+					"g": 255,
+					"b": 255
+				},
+				"bg": {
+					"r": 239,
+					"g": 65,
+					"b": 48
+				}
+			},
+			{
+				"res": "INFO"
+			},
+			{
+				"res": "rt_warn"
+			}
+		]
+	},
+	"journey": {
+		"jid": "1|51255|0|86|13072020",
+		"date": "20200713",
+		"prodX": 0,
+		"status": "A",
+		"isRchbl": true,
+		"stopL": [
+			{
+				"locX": 0,
+				"idx": 0,
+				"dProdX": 0,
+				"dInR": true,
+				"dTimeS": "103500",
+				"dProgType": "PROGNOSED",
+				"type": "N"
+			},
+			{
+				"locX": 1,
+				"idx": 1,
+				"aProdX": 0,
+				"aOutR": true,
+				"aTimeS": "112500",
+				"aProgType": "PROGNOSED",
+				"type": "N"
+			}
+		],
+		"sDaysL": [
+			{
+				"sDaysR": "not every day",
+				"sDaysI": "13. Jul",
+				"sDaysB": "10000000000000000000",
+				"fLocX": 0,
+				"tLocX": 1,
+				"fLocIdx": 0,
+				"tLocIdx": 1
+			}
+		],
+		"msgL": [
+			{
+				"type": "REM",
+				"remX": 0,
+				"dspl": "U",
+				"fLocX": 0,
+				"tLocX": 1,
+				"tagL": [
+					"RES_JNY_DTL"
+				],
+				"sort": 684195840,
+				"persist": false
+			},
+			{
+				"type": "REM",
+				"remX": 1,
+				"dspl": "U",
+				"tagL": [
+					"RES_JNY_H3"
+				],
+				"sort": 13107200,
+				"persist": false
+			}
+		],
+		"subscr": "F",
+		"prodL": [
+			{
+				"prodX": 0,
+				"fLocX": 0,
+				"tLocX": 1,
+				"fIdx": 0,
+				"tIdx": 1
+			}
+		]
+	},
+	"fpB": "20200710",
+	"fpE": "20200923",
+	"planrtTS": "1594478912"
+}
