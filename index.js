@@ -220,6 +220,7 @@ const createClient = (profile, userAgent, opt = {}) => {
 			earlierRef: res.outCtxScrB,
 			laterRef: res.outCtxScrF,
 			journeys,
+			realtimeDataFrom: res.planrtTS ? parseInt(res.planrtTS) : null,
 		}
 	}
 
