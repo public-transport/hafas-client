@@ -20,10 +20,10 @@ const when = createWhen('Europe/Berlin', 'de-DE')
 const cfg = {
 	when,
 	products,
-	minLatitude: 51,
-	maxLatitude: 53,
-	minLongitude: 9.2,
-	maxLongitude: 10.7
+	minLatitude: 50,
+	maxLatitude: 54.5,
+	minLongitude: 6.5,
+	maxLongitude: 11.5,
 }
 
 const validate = createValidate(cfg)

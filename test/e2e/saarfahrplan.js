@@ -143,40 +143,7 @@ test.skip('journeys: via works – with detour', async (t) => {
 	t.end()
 })
 
-test.skip('journeys: via works – without detour', async (t) => {
-	// When going from Karlsplatz to Praterstern via Museumsquartier, there is
-	// *no need* to change trains / no need for a "detour".
-	const karlsplatz = '1390461'
-	const praterstern = '1290201'
-	const museumsquartier = '1390171'
-	const museumsquartierPassed = '901014'
-
-	const res = await client.journeys(karlsplatz, praterstern, {
-		via: museumsquartier,
-		results: 1,
-		departure: when,
-		stopovers: true
-	})
-
-	validate(t, res, 'journeysResult', 'res')
-
-	const l1 = res.journeys[0].legs.some((leg) => {
-		return (
-			leg.destination.id === museumsquartier ||
-			leg.destination.id === museumsquartierPassed
-		)
-	})
-	t.notOk(l1, 'transfer at Museumsquartier')
-
-	const l2 = res.journeys[0].legs.some((leg) => {
-		return leg.stopovers && leg.stopovers.some((stopover) => {
-			return stopover.stop.id === museumsquartierPassed
-		})
-	})
-	t.ok(l2, 'Museumsquartier is not being passed')
-
-	t.end()
-})
+// todo: journeys: via works – without detour
 
 test('earlier/later journeys, Saarbrücken Hbf -> Saarlouis Hbf', async (t) => {
 	await testEarlierLaterJourneys({

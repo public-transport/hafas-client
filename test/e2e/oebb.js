@@ -285,12 +285,16 @@ test('departures with station object', async (t) => {
 })
 
 test('departures at Karlsplatz in direction of Pilgramgasse', async (t) => {
+	const subStops = (await client.stop(wienPilgramgasse, {
+		subStops: true, entrances: false,
+	})).stops || []
+
 	await testDeparturesInDirection({
 		test: t,
 		fetchDepartures: client.departures,
 		fetchTrip: client.trip,
 		id: wienKarlsplatz,
-		directionIds: [wienPilgramgasse, '905002'],
+		directionIds: [wienPilgramgasse, ...subStops.map(s => s.id)],
 		when,
 		validate
 	})
