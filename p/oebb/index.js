@@ -71,7 +71,6 @@ const oebbProfile = {
 	parseLocation: parseHook(_parseLocation, fixWeirdPOIs),
 	parseMovement: parseHook(_parseMovement, fixMovement),
 
-	journeysNumF: false,
 	trip: true,
 	radar: true,
 	reachableFrom: true

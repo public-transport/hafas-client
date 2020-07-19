@@ -82,7 +82,7 @@ const createClient = (profile, userAgent, opt = {}) => {
 		return _stationBoard(station, 'ARR', profile.parseArrival, opt)
 	}
 
-	const journeys = (from, to, opt = {}) => {
+	const journeys = async (from, to, opt = {}) => {
 		from = profile.formatLocation(profile, from, 'from')
 		to = profile.formatLocation(profile, to, 'to')
 
@@ -173,75 +173,54 @@ const createClient = (profile, userAgent, opt = {}) => {
 			})
 		}
 
-		// With protocol version `1.16`, the VBB endpoint *used to* fail with
-		// `CGI_READ_FAILED` if you pass `numF`, the parameter for the number
-		// of results. To circumvent this, we loop here, collecting journeys
-		// until we have enough.
-		// todo: revert this change, see https://github.com/public-transport/hafas-client/issues/76#issuecomment-424448449
-		const journeys = []
-		let earlierRef = null, laterRef = null
-		const more = (when, journeysRef) => {
-			const query = {
-				getPasslist: !!opt.stopovers,
-				maxChg: opt.transfers,
-				minChgTime: opt.transferTime,
-				depLocL: [from],
-				viaLocL: opt.via ? [{loc: opt.via}] : null,
-				arrLocL: [to],
-				jnyFltrL: filters,
-				gisFltrL,
-				getTariff: !!opt.tickets,
-				// todo: this is actually "take additional stations nearby the given start and destination station into account"
-				// see rest.exe docs
-				ushrp: !!opt.startWithWalking,
+		const query = {
+			getPasslist: !!opt.stopovers,
+			maxChg: opt.transfers,
+			minChgTime: opt.transferTime,
+			depLocL: [from],
+			viaLocL: opt.via ? [{loc: opt.via}] : null,
+			arrLocL: [to],
+			jnyFltrL: filters,
+			gisFltrL,
+			getTariff: !!opt.tickets,
+			// todo: this is actually "take additional stations nearby the given start and destination station into account"
+			// see rest.exe docs
+			ushrp: !!opt.startWithWalking,
 
-				getPT: true, // todo: what is this?
-				getIV: false, // todo: walk & bike as alternatives?
-				getPolyline: !!opt.polylines
-				// todo: `getConGroups: false` what is this?
-				// todo: what is getEco, fwrd?
-			}
-			if (journeysRef) query.ctxScr = journeysRef
-			else {
-				query.outDate = profile.formatDate(profile, when)
-				query.outTime = profile.formatTime(profile, when)
-			}
-			if (profile.journeysNumF && opt.results !== null) query.numF = opt.results
-			if (profile.journeysOutFrwd) query.outFrwd = outFrwd
-
-			return profile.request({profile, opt}, userAgent, {
-				cfg: {polyEnc: 'GPA'},
-				meth: 'TripSearch',
-				req: profile.transformJourneysQuery({profile, opt}, query)
-			})
-			.then(({res, common}) => {
-				if (!Array.isArray(res.outConL)) return []
-				// todo: outConGrpL
-
-				const ctx = {profile, opt, common, res}
-
-				if (!earlierRef) earlierRef = res.outCtxScrB
-
-				let latestDep = -Infinity
-				for (const rawJourney of res.outConL) {
-					const journey = profile.parseJourney(ctx, rawJourney)
-					journeys.push(journey)
-
-					if (opt.results !== null && journeys.length >= opt.results) { // collected enough
-						laterRef = res.outCtxScrF
-						return {earlierRef, laterRef, journeys}
-					}
-					const dep = +new Date(journey.legs[0].departure) // todo
-					if (dep > latestDep) latestDep = dep
-				}
-
-				if (opt.results === null) return {earlierRef, laterRef, journeys}
-				const when = new Date(latestDep)
-				return more(when, res.outCtxScrF) // otherwise continue
-			})
+			getPT: true, // todo: what is this?
+			getIV: false, // todo: walk & bike as alternatives?
+			getPolyline: !!opt.polylines
+			// todo: `getConGroups: false` what is this?
+			// todo: what is getEco, fwrd?
 		}
+		if (journeysRef) query.ctxScr = journeysRef
+		else {
+			query.outDate = profile.formatDate(profile, when)
+			query.outTime = profile.formatTime(profile, when)
+		}
+		if (profile.journeysNumF && opt.results !== null) query.numF = opt.results
+		if (profile.journeysOutFrwd) query.outFrwd = outFrwd
 
-		return more(when, journeysRef)
+		const {
+			res, common,
+		} = await profile.request({profile, opt}, userAgent, {
+			cfg: {polyEnc: 'GPA'},
+			meth: 'TripSearch',
+			req: profile.transformJourneysQuery({profile, opt}, query)
+		})
+
+		if (!Array.isArray(res.outConL)) return []
+		// todo: outConGrpL
+
+		const ctx = {profile, opt, common, res}
+		const journeys = res.outConL
+		.map(j => profile.parseJourney(ctx, j))
+
+		return {
+			earlierRef: res.outCtxScrB,
+			laterRef: res.outCtxScrF,
+			journeys,
+		}
 	}
 
 	const refreshJourney = (refreshToken, opt = {}) => {

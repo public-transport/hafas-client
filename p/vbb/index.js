@@ -119,7 +119,6 @@ const vbbProfile = {
 
 	formatStation,
 
-	journeysNumF: true,
 	journeysWalkingSpeed: true,
 	trip: true,
 	radar: true,
