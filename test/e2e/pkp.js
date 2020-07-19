@@ -69,7 +69,7 @@ const filharmonia = {
 	poi: true
 }
 
-test('journeys – Wrocław Główny to Kraków Główny', async (t) => {
+test.skip('journeys – Wrocław Główny to Kraków Główny', async (t) => {
 	const res = await client.journeys(wrocławGł, krakówGł, {
 		results: 4,
 		departure: when,
@@ -89,7 +89,7 @@ test('journeys – Wrocław Główny to Kraków Główny', async (t) => {
 // todo: via works – with detour
 // todo: without detour
 
-test('trip details', async (t) => {
+test.skip('trip details', async (t) => {
 	const res = await client.journeys(wrocławGł, krakówGł, {
 		results: 1, departure: when
 	})
@@ -103,7 +103,7 @@ test('trip details', async (t) => {
 	t.end()
 })
 
-test('arrivals at Kraków Główny', async (t) => {
+test.skip('arrivals at Kraków Główny', async (t) => {
 	const arrivals = await client.arrivals(krakówGł, {
 		duration: 10, when
 	})
@@ -116,7 +116,7 @@ test('arrivals at Kraków Główny', async (t) => {
 	t.end()
 })
 
-test('nearby', async (t) => {
+test.skip('nearby', async (t) => {
 	const nearby = await client.nearby(dworcowa100, { distance: 500 })
 
 	validate(t, nearby, 'locations', 'nearby')
@@ -127,7 +127,7 @@ test('nearby', async (t) => {
 	t.end()
 })
 
-test('radar', async (t) => {
+test.skip('radar', async (t) => {
 	const vehicles = await client.radar({
 		north: 48.74453,
 		west: 11.42733,
@@ -141,7 +141,7 @@ test('radar', async (t) => {
 	t.end()
 })
 
-test('reachableFrom', async (t) => {
+test.skip('reachableFrom', async (t) => {
 	await testReachableFrom({
 		test: t,
 		reachableFrom: client.reachableFrom,
