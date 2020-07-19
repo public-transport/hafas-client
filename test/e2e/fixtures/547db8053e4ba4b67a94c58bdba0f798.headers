@@ -1,0 +1,36 @@
+{
+  "statusCode": 200,
+  "headers": {
+    "date": "Tue, 18 Aug 2020 00:25:21 GMT",
+    "server": "Apache",
+    "content-length": "9807",
+    "keep-alive": "timeout=5, max=60",
+    "connection": "Keep-Alive",
+    "content-type": "application/json; charset=utf-8"
+  },
+  "url": "https://fahrplan.salzburg-verkehr.at/bin/mgate.exe",
+  "time": 673,
+  "request": {
+    "method": "POST",
+    "headers": {
+      "Content-Type": [
+        "application/json"
+      ],
+      "Accept-Encoding": [
+        "gzip, br, deflate"
+      ],
+      "Accept": [
+        "application/json"
+      ],
+      "user-agent": [
+        "pub450a03437c18lic-transport/hafas-client:test"
+      ],
+      "Content-Length": [
+        "632"
+      ],
+      "Connection": [
+        "close"
+      ]
+    }
+  }
+}

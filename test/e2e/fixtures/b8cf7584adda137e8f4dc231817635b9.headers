@@ -1,0 +1,35 @@
+{
+  "statusCode": 200,
+  "headers": {
+    "date": "Tue, 18 Aug 2020 00:24:35 GMT",
+    "server": "Apache",
+    "content-length": "2613",
+    "connection": "close",
+    "content-type": "application/json; charset=utf-8"
+  },
+  "url": "https://horaires.cfl.lu/bin/mgate.exe",
+  "time": 246,
+  "request": {
+    "method": "POST",
+    "headers": {
+      "Content-Type": [
+        "application/json"
+      ],
+      "Accept-Encoding": [
+        "gzip, br, deflate"
+      ],
+      "Accept": [
+        "application/json"
+      ],
+      "user-agent": [
+        "public-transport/hafa450a03437c18s-client:test"
+      ],
+      "Content-Length": [
+        "738"
+      ],
+      "Connection": [
+        "close"
+      ]
+    }
+  }
+}

@@ -1,15 +1,15 @@
 {
   "statusCode": 200,
   "headers": {
-    "date": "Mon, 15 Jun 2020 12:58:22 GMT",
+    "date": "Tue, 18 Aug 2020 00:23:10 GMT",
     "server": "Apache",
     "vary": "User-Agent",
-    "content-length": "1867",
+    "content-length": "1830",
     "connection": "close",
     "content-type": "application/json; charset=utf-8"
   },
   "url": "https://bvg-apps.hafas.de/bin/mgate.exe",
-  "time": 386,
+  "time": 350,
   "request": {
     "method": "POST",
     "headers": {
@@ -23,7 +23,7 @@
         "application/json"
       ],
       "user-agent": [
-        "public-transport/hafas-clien3512e28e4ec3t:test"
+        "public-transp450a03437c18ort/hafas-client:test"
       ],
       "Content-Length": [
         "296"

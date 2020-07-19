@@ -1,0 +1,35 @@
+{
+  "statusCode": 200,
+  "headers": {
+    "date": "Tue, 18 Aug 2020 00:25:05 GMT",
+    "content-length": "5006",
+    "connection": "close",
+    "content-type": "application/json; charset=utf-8",
+    "strict-transport-security": "max-age=63072000; includeSubDomains"
+  },
+  "url": "https://www.rmv.de/auskunft/bin/jp/mgate.exe",
+  "time": 274,
+  "request": {
+    "method": "POST",
+    "headers": {
+      "Content-Type": [
+        "application/json"
+      ],
+      "Accept-Encoding": [
+        "gzip, br, deflate"
+      ],
+      "Accept": [
+        "application/json"
+      ],
+      "user-agent": [
+        "public-transport/hafas-client:te450a03437c18st"
+      ],
+      "Content-Length": [
+        "395"
+      ],
+      "Connection": [
+        "close"
+      ]
+    }
+  }
+}
