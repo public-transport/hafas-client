@@ -9,7 +9,7 @@ const testJourneysStationToAddress = async (cfg) => {
 	validate(t, res, 'journeysResult', 'res')
 	const {journeys} = res
 
-	t.strictEqual(journeys.length, 3)
+	t.ok(journeys.length >= 3, 'journeys must have >=3 items')
 	for (let i = 0; i < journeys.length; i++) {
 		const j = journeys[i]
 
