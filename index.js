@@ -82,7 +82,7 @@ const createClient = (profile, userAgent, opt = {}) => {
 		return _stationBoard(station, 'ARR', profile.parseArrival, opt)
 	}
 
-	const journeys = async (from, to, opt = {}) => {
+	const journeys = (from, to, opt = {}) => {
 		from = profile.formatLocation(profile, from, 'from')
 		to = profile.formatLocation(profile, to, 'to')
 
@@ -198,30 +198,29 @@ const createClient = (profile, userAgent, opt = {}) => {
 			query.outDate = profile.formatDate(profile, when)
 			query.outTime = profile.formatTime(profile, when)
 		}
-		if (profile.journeysNumF && opt.results !== null) query.numF = opt.results
+		if (opt.results !== null) query.numF = opt.results
 		if (profile.journeysOutFrwd) query.outFrwd = outFrwd
 
-		const {
-			res, common,
-		} = await profile.request({profile, opt}, userAgent, {
+		return profile.request({profile, opt}, userAgent, {
 			cfg: {polyEnc: 'GPA'},
 			meth: 'TripSearch',
 			req: profile.transformJourneysQuery({profile, opt}, query)
 		})
+		.then(({res, common}) => {
+			if (!Array.isArray(res.outConL)) return []
+			// todo: outConGrpL
 
-		if (!Array.isArray(res.outConL)) return []
-		// todo: outConGrpL
+			const ctx = {profile, opt, common, res}
+			const journeys = res.outConL
+			.map(j => profile.parseJourney(ctx, j))
 
-		const ctx = {profile, opt, common, res}
-		const journeys = res.outConL
-		.map(j => profile.parseJourney(ctx, j))
-
-		return {
-			earlierRef: res.outCtxScrB,
-			laterRef: res.outCtxScrF,
-			journeys,
-			realtimeDataFrom: res.planrtTS ? parseInt(res.planrtTS) : null,
-		}
+			return {
+				earlierRef: res.outCtxScrB,
+				laterRef: res.outCtxScrF,
+				journeys,
+				realtimeDataFrom: res.planrtTS ? parseInt(res.planrtTS) : null,
+			}
+		})
 	}
 
 	const refreshJourney = (refreshToken, opt = {}) => {
