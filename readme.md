@@ -227,6 +227,7 @@ HAFAS endpoint | wrapper library | docs | example code | source code
 [Rostocker Straßenbahn AG (RSAG)](https://de.wikipedia.org/wiki/Rostocker_Straßenbahn_AG) | - | [docs](p/rsag/readme.md) | [example code](p/rsag/example.js) | [src](p/rsag/index.js)
 [Verkehrsverbund Mittelthüringen (VMT)](https://en.wikipedia.org/wiki/Verkehrsverbund_Mittelthüringen) | - | [docs](p/vmt/readme.md) | [example code](p/vmt/example.js) | [src](p/vmt/index.js)
 [Salzburg public transport (SVV)](https://de.wikipedia.org/wiki/Salzburger_Verkehrsverbund) | - | [docs](p/svv/readme.md) | [example code](p/svv/example.js) | [src](p/svv/index.js)
+[Zürich public transport (ZVV)](https://en.wikipedia.org/wiki/Zürcher_Verkehrsverbund) | - | [docs](p/zvv/readme.md) | [example code](p/zvv/example.js) | [src](p/zvv/index.js)
 
 There are also libraries that use `hafas-client` and pass their own profile in:
 
