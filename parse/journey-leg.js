@@ -66,6 +66,8 @@ const parseJourneyLeg = (ctx, pt, date) => { // pt = raw leg
 
 	if (pt.jny && pt.jny.polyline) {
 		res.polyline = pt.jny.polyline || null
+	} else if (pt.jny && pt.jny.poly) {
+		res.polyline = profile.parsePolyline(ctx, pt.jny.poly)
 	}
 
 	if (pt.type === 'WALK' || pt.type === 'TRSF' || pt.type === 'DEVI') {
