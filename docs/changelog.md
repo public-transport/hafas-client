@@ -1,12 +1,22 @@
 # Changelog
 
-## `5.6.1`
+## `5.6.3`
+
+- 71db75d `journeys()`: expose realtime data timestamp
+- d2314e0 `journeys()`: don't send `outDate`/`outTime` & `ctxScr`
+- f9bfd69 `parseJourneyLeg`: parse `jny.poly` 🐛
+- 51f4a66/2c04e2f `journeys()`: remove collection of results
+- 6b27517 `parseMovement`: skip invalid `stopL[]` items 🐛
+
+[🏷 `5.6.3`](https://github.com/public-transport/hafas-client/releases/tag/5.6.3), 2020-07-26
+
+## `5.6.2`
 
 - de896b1 `parseCommon`: respect `opt.polyline` 🐛
 - fc2e214 ÖBB: add `trip()` test ✅
 - dce42bf move trip parsing into `parse/trip`
 
-[🏷 `5.6.1`](https://github.com/public-transport/hafas-client/releases/tag/5.6.1), 2020-06-13
+[🏷 `5.6.2`](https://github.com/public-transport/hafas-client/releases/tag/5.6.2), 2020-06-13
 
 ## `5.6.1`
 
