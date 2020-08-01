@@ -116,7 +116,7 @@ const createClient = (profile, userAgent, opt = {}) => {
 			results: null, // number of journeys – `null` means "whatever HAFAS returns"
 			via: null, // let journeys pass this station?
 			stopovers: false, // return stations on the way?
-			transfers: -1, // maximum of 5 transfers
+			transfers: -1, // maximum nr of transfers
 			transferTime: 0, // minimum time for a single transfer in minutes
 			// todo: does this work with every endpoint?
 			accessibility: 'none', // 'none', 'partial' or 'complete'

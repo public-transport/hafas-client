@@ -242,6 +242,7 @@ HAFAS endpoint | library
 - [`BahnhofsAbfahrten`](https://github.com/marudor/BahnhofsAbfahrten) a.k.a. [`marudor.de`](https://marudor.de/) – A very detailed public transport website for Germany. Uses HAFAS underneath, [has an API](https://docs.marudor.de).
 - [`public-transport-enabler`](https://github.com/schildbach/public-transport-enabler) – Unleash public transport data in your Java project.
 - [`TripKit`](https://github.com/alexander-albers/tripkit) – Swift library for querying data from public transport providers.
+- [`pyhafas`](https://github.com/n0emis/pyhafas) – A python client for HaFAS public transport APIs.
 - [*Friendly Public Transport Format*](https://github.com/public-transport/friendly-public-transport-format#friendly-public-transport-format-fptf) – A format for APIs, libraries and datasets containing and working with public transport data.
 - [`observe-hafas-client`](https://github.com/public-transport/observe-hafas-client) – Observe all departures/arrivals/etc. returned by `hafas-client`.
 - [`cached-hafas-client`](https://github.com/public-transport/cached-hafas-client) – Pass in a `hafas-client` instance, cache data from it.

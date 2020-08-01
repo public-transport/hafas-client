@@ -1,5 +1,12 @@
 # Changelog
 
+## `5.7.0`
+
+- b2b1b75/3f4c05d/097557c add [*ZVV* profile](../p/zvv)
+- 4fc4c3b fix `H9360` error message 🐛
+
+[🏷 `5.7.0`](https://github.com/public-transport/hafas-client/releases/tag/5.7.0), 2020-08-01
+
 ## `5.6.3`
 
 - 71db75d `journeys()`: expose realtime data timestamp
