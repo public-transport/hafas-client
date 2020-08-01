@@ -6,9 +6,9 @@ const parseStopover = (ctx, st, date) => { // st = raw stopover
 	const {profile, opt} = ctx
 
 	const arr = profile.parseWhen(ctx, date, st.aTimeS, st.aTimeR, st.aTZOffset, st.aCncl)
-	const arrPl = profile.parsePlatform(ctx, st.aPlatfS, st.aPlatfR, st.aCncl)
+	const arrPl = profile.parsePlatform(ctx, st.aPlatfS || (st.aPltfS && st.aPltfS.txt) || null, st.aPlatfR || (st.aPltfR && st.aPltfR.txt) || null, st.aCncl)
 	const dep = profile.parseWhen(ctx, date, st.dTimeS, st.dTimeR, st.dTZOffset, st.dCncl)
-	const depPl = profile.parsePlatform(ctx, st.dPlatfS, st.dPlatfR, st.dCncl)
+	const depPl = profile.parsePlatform(ctx, st.dPlatfS || (st.dPltfS && st.dPltfS.txt) || null, st.dPlatfR || (st.dPltfR && st.dPltfR.txt) || null, st.dCncl)
 
 	const res = {
 		stop: st.location || null,

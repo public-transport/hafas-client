@@ -89,13 +89,12 @@ const parseJourneyLeg = (ctx, pt, date) => { // pt = raw leg
 		res.tripId = pt.jny.jid
 		res.line = pt.jny.line || null
 		res.direction = pt.jny.dirTxt && profile.parseStationName(ctx, pt.jny.dirTxt) || null
-
-		const arrPl = profile.parsePlatform(ctx, pt.arr.aPlatfS, pt.arr.aPlatfR, pt.arr.aCncl)
+		const arrPl = profile.parsePlatform(ctx, pt.arr.aPlatfS || (pt.arr.aPltfS !== undefined ? pt.arr.aPltfS.txt : null), pt.arr.aPlatfR || (pt.arr.aPltfR !== undefined ? pt.arr.aPltfR.txt : null), pt.arr.aCncl)
 		res.arrivalPlatform = arrPl.platform
 		res.plannedArrivalPlatform = arrPl.plannedPlatform
 		if (arrPl.prognosedPlatform) res.prognosedArrivalPlatform = arrPl.prognosedPlatform
 
-		const depPl = profile.parsePlatform(ctx, pt.dep.dPlatfS, pt.dep.dPlatfR, pt.dep.dCncl)
+		const depPl = profile.parsePlatform(ctx, pt.dep.dPlatfS || (pt.dep.dPltfS !== undefined ? pt.dep.dPltfS.txt : null), pt.dep.dPlatfR || (pt.dep.dPltfR !== undefined ? pt.dep.dPltfR.txt : null), pt.dep.dCncl)
 		res.departurePlatform = depPl.platform
 		res.plannedDeparturePlatform = depPl.plannedPlatform
 		if (depPl.prognosedPlatform) res.prognosedDeparturePlatform = depPl.prognosedPlatform

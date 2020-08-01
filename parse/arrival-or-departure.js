@@ -19,8 +19,8 @@ const createParseArrOrDep = (prefix) => {
 		const tPrognosed = d.stbStop[prefix + 'TimeR']
 		const tzOffset = d.stbStop[prefix + 'TZOffset'] || null
 		const cancelled = !!d.stbStop[prefix + 'Cncl']
-		const plPlanned = d.stbStop[prefix + 'PlatfS']
-		const plPrognosed = d.stbStop[prefix + 'PlatfR']
+		const plPlanned = d.stbStop[prefix + 'PlatfS'] || (d.stbStop[prefix + 'PltfS'] && d.stbStop[prefix + 'PltfS'].txt) || null
+		const plPrognosed = d.stbStop[prefix + 'PlatfR'] || (d.stbStop[prefix + 'PltfR'] && d.stbStop[prefix + 'PltfR'].txt) || null
 
 		const res = {
 			tripId: d.jid,
