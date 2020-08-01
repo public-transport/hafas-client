@@ -13,6 +13,7 @@ require('./vbb-departures')
 require('./bvg-radar')
 require('./oebb-trip')
 require('./db-netz-remarks')
+require('./vsn-departures')
 
 require('./throttle')
 require('./retry')
