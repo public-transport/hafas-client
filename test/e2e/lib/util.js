@@ -11,7 +11,7 @@ const hour = 60 * 60 * 1000
 const day = 24 * hour
 const week = 7 * day
 
-const T_MOCK = 1592225430 * 1000
+const T_MOCK = 1597651200 * 1000
 
 // next Monday 10 am
 const createWhen = (timezone, locale) => {
