@@ -5,7 +5,7 @@ const products = require('./products')
 const transformReqBody = (ctx, body) => {
 	body.client = {type: 'IPH', id: 'DB-REGIO-MVV', name: 'MuenchenNavigator', v: '5010100'}
 	body.ext = 'DB.R15.12.a'
-	body.ver = '1.18'
+	body.ver = '1.21'
 	body.auth = {type: 'AID', aid: 'd491MVVhz9ZZts23'}
 
 	return body
@@ -22,6 +22,8 @@ const sBahnMunichProfile = {
 
 	products,
 
+	departuresGetPasslist: false,
+	departuresStbFltrEquiv: false,
 	trip: true,
 	radar: true,
 	refreshJourney: true,
