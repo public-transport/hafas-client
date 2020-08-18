@@ -447,17 +447,18 @@ const createValidateMovement = (cfg) => {
 
 		const lName = name + '.location'
 		val.location(val, m.location, lName)
+		const s = `${m.location.latitude}|${m.location.longitude} ${m.line && m.line.name}`
 		if ('number' === typeof maxLatitude) {
-			a.ok(m.location.latitude <= maxLatitude, lName + '.latitude is too large')
+			a.ok(m.location.latitude <= maxLatitude, lName + '.latitude is too large: ' + s)
 		}
 		if ('number' === typeof minLatitude) {
-			a.ok(m.location.latitude >= minLatitude, lName + '.latitude is too small')
+			a.ok(m.location.latitude >= minLatitude, lName + '.latitude is too small: ' + s)
 		}
 		if ('number' === typeof maxLongitude) {
-			a.ok(m.location.longitude <= maxLongitude, lName + '.longitude is too large')
+			a.ok(m.location.longitude <= maxLongitude, lName + '.longitude is too large: ' + s)
 		}
 		if ('number' === typeof minLongitude) {
-			a.ok(m.location.longitude >= minLongitude, lName + '.longitude is too small')
+			a.ok(m.location.longitude >= minLongitude, lName + '.longitude is too small: ' + s)
 		}
 
 		a.ok(Array.isArray(m.nextStopovers), name + '.nextStopovers must be an array')
