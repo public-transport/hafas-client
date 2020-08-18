@@ -123,10 +123,10 @@ const createValidateStopover = (cfg) => {
 			val.date(val, s.plannedDeparture, name + '.plannedDeparture')
 			assertValidWhen(s.plannedDeparture, cfg.when, name + '.plannedDeparture')
 		}
-		if (is(s.plannedArrival) && !is(s.arrival)) {
+		if (is(s.plannedArrival) && !is(s.arrival) && !s.cancelled) {
 			a.fail(name + ' has .plannedArrival but not .arrival')
 		}
-		if (is(s.plannedDeparture) && !is(s.departure)) {
+		if (is(s.plannedDeparture) && !is(s.departure) && !s.cancelled) {
 			a.fail(name + ' has .plannedDeparture but not .departure')
 		}
 
@@ -225,8 +225,8 @@ const createValidateJourneyLeg = (cfg) => {
 			// FPTF doesn't support cancelled journey legs yet.
 			// see https://github.com/public-transport/friendly-public-transport-format/issues/27
 			// todo: remove once this is resolved upstream
-			fakeLeg.departure = leg.formerScheduledDeparture
-			fakeLeg.arrival = leg.formerScheduledArrival
+			fakeLeg.departure = leg.plannedDeparture
+			fakeLeg.arrival = leg.plannedArrival
 		}
 		defaultValidators.journeyLeg(val, fakeLeg, name)
 
@@ -272,9 +272,11 @@ const createValidateJourneyLeg = (cfg) => {
 			a.strictEqual(typeof leg.tripId, 'string', name + '.tripId must be a string')
 			a.ok(leg.tripId, name + '.tripId must not be empty')
 
-			const msg = name + '.direction must be a string'
-			a.strictEqual(typeof leg.direction, 'string', msg)
-			a.ok(leg.direction, name + '.direction must not be empty')
+			if (!leg.cancelled) {
+				const msg = name + '.direction must be a string'
+				a.strictEqual(typeof leg.direction, 'string', msg)
+				a.ok(leg.direction, name + '.direction must not be empty')
+			}
 		}
 
 		if ('cycle' in leg) {
