@@ -178,7 +178,6 @@ test('departures at Dietlindenstraße', async (t) => {
 	const dietlindenstr = '624391'
 	const departures = await client.departures(dietlindenstr, {
 		duration: 10, when,
-		stopovers: true
 	})
 
 	await testDepartures({
@@ -209,7 +208,6 @@ test('departures with station object', async (t) => {
 test('arrivals at Karl-Theodor-Straße', async (t) => {
 	const arrivals = await client.arrivals(karlTheodorStr, {
 		duration: 10, when,
-		stopovers: true
 	})
 
 	await testArrivals({
