@@ -28,7 +28,7 @@ module.exports = [
 	{
 		id: 's-bahn',
 		mode: 'train',
-		bitmasks: [16],
+		bitmasks: [8],
 		name: 'S-Bahn',
 		short: 'S',
 		default: true
@@ -36,7 +36,7 @@ module.exports = [
 	{
 		id: 'u-bahn',
 		mode: 'train',
-		bitmasks: [32],
+		bitmasks: [16],
 		name: 'U-Bahn',
 		short: 'U',
 		default: true
@@ -44,7 +44,7 @@ module.exports = [
 	{
 		id: 'tram',
 		mode: 'train',
-		bitmasks: [64],
+		bitmasks: [32],
 		name: 'Straßenbahn',
 		short: 'Tram',
 		default: true
@@ -52,7 +52,7 @@ module.exports = [
 	{
 		id: 'bus',
 		mode: 'bus',
-		bitmasks: [128],
+		bitmasks: [64, 128],
 		name: 'Bus',
 		short: 'Bus',
 		default: true
