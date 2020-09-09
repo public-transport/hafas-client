@@ -1,5 +1,11 @@
 # Changelog
 
+## `5.7.1`
+
+- 2612494 fix platform parsing with some profiles 🐛 (by [em0lar](https://em0lar.de))
+
+[🏷 `5.7.1`](https://github.com/public-transport/hafas-client/releases/tag/5.7.1), 2020-09-09
+
 ## `5.7.0`
 
 - b2b1b75/3f4c05d/097557c add [*ZVV* profile](../p/zvv)
