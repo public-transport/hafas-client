@@ -48,17 +48,17 @@ const parseJourneyLeg = (ctx, pt, date) => { // pt = raw leg
 		destination: clone(pt.arr.location)
 	}
 
-	const arr = profile.parseWhen(ctx, date, pt.arr.aTimeS, pt.arr.aTimeR, pt.arr.aTZOffset, pt.arr.aCncl)
-	res.arrival = arr.when
-	res.plannedArrival = arr.plannedWhen
-	res.arrivalDelay = arr.delay
-	if (arr.prognosedWhen) res.prognosedArrival = arr.prognosedWhen
-
 	const dep = profile.parseWhen(ctx, date, pt.dep.dTimeS, pt.dep.dTimeR, pt.dep.dTZOffset, pt.dep.dCncl)
 	res.departure = dep.when
 	res.plannedDeparture = dep.plannedWhen
 	res.departureDelay = dep.delay
 	if (dep.prognosedWhen) res.prognosedDeparture = dep.prognosedWhen
+
+	const arr = profile.parseWhen(ctx, date, pt.arr.aTimeS, pt.arr.aTimeR, pt.arr.aTZOffset, pt.arr.aCncl)
+	res.arrival = arr.when
+	res.plannedArrival = arr.plannedWhen
+	res.arrivalDelay = arr.delay
+	if (arr.prognosedWhen) res.prognosedArrival = arr.prognosedWhen
 
 	if (pt.jny && ('isRchbl' in pt.jny)) {
 		res.reachable = !!pt.jny.isRchbl
