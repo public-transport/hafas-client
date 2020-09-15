@@ -1,5 +1,16 @@
 # Changelog
 
+## `5.8.0`
+
+- 4d06057/82de740/c17bd5a add [*Rejseplanen* profile](../p/rejseplanen)
+- 9848dfa RMV: fix product bitmasks 🐛 (by [Adwirawien](https://github.com/Adwirawien))
+- 25fb25c `parseLeg`: use remarks without `fIdx`/`tIdx` 🐛
+- 68aaad1 *S-Bahn München*: switch to `1.21` protocol
+- a621fd6 minor tweaks
+- 2d139c8/c9f8cc6/b2a3ce4/e6f25a6/c17bd5a improve/update E2E & integration tests ✅
+
+[🏷 `5.8.0`](https://github.com/public-transport/hafas-client/releases/tag/5.8.0), 2020-09-15
+
 ## `5.7.1`
 
 - 2612494 fix platform parsing with some profiles 🐛 (by [em0lar](https://em0lar.de))
