@@ -92,7 +92,8 @@ const nahshProfile = {
 
 	trip: true,
 	radar: true, // todo: see #34
-	reachableFrom: true
+	reachableFrom: true,
+	remarks: false, // seems like ver >= 1.20 is required
 }
 
 module.exports = nahshProfile

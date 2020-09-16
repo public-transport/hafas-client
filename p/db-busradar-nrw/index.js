@@ -97,7 +97,8 @@ const dbBusradarNrwProfile = {
 
 	journeysOutFrwd: false,
 	trip: true,
-	radar: true
+	radar: true,
+	remarks: false, // seems like ver >= 1.20 is required
 }
 
 module.exports = dbBusradarNrwProfile

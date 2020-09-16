@@ -32,7 +32,8 @@ const invgProfile = {
 
 	trip: true,
 	radar: true,
-	refreshJourney: true
+	refreshJourney: true,
+	remarks: false, // seems like ver >= 1.20 is required
 }
 
 module.exports = invgProfile
