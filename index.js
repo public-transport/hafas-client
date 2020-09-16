@@ -557,7 +557,6 @@ const createClient = (profile, userAgent, opt = {}) => {
 		locations,
 		stop,
 		nearby,
-		lines,
 		serverInfo,
 	}
 	if (profile.trip) client.trip = trip
@@ -566,6 +565,7 @@ const createClient = (profile, userAgent, opt = {}) => {
 	if (profile.reachableFrom) client.reachableFrom = reachableFrom
 	if (profile.tripsByName) client.tripsByName = tripsByName
 	if (profile.remarks !== false) client.remarks = remarks
+	if (profile.lines !== false) client.lines = lines
 	Object.defineProperty(client, 'profile', {value: profile})
 	return client
 }
