@@ -29,6 +29,7 @@ const insaProfile = {
 	radar: true,
 	refreshJourney: false,
 	reachableFrom: true,
+	remarks: false, // seems like ver >= 1.20 is required
 }
 
 module.exports = insaProfile;

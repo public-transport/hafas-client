@@ -26,8 +26,9 @@ const cflProfile = {
 	products: products,
 
 	trip: true,
-	radar: true
+	radar: true,
 	// todo: reachableFrom?
+	remarks: false, // seems like ver >= 1.20 is required
 }
 
 module.exports = cflProfile;
