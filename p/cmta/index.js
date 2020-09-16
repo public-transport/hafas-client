@@ -28,6 +28,7 @@ const cmtaProfile = {
 	refreshJourney: true,
 	reachableFrom: true,
 	remarks: false, // seems like ver >= 1.20 is required
+	lines: false, // seems like ver >= 1.16 is required
 }
 
 module.exports = cmtaProfile
