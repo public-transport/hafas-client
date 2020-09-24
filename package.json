@@ -17,7 +17,7 @@
 	"contributors": [
 		"Julius Tens <mail@juliustens.eu>"
 	],
-	"homepage": "https://github.com/public-transport/hafas-client/tree/4.8.1",
+	"homepage": "https://github.com/public-transport/hafas-client/tree/4",
 	"repository": "public-transport/hafas-client",
 	"bugs": "https://github.com/public-transport/hafas-client/issues",
 	"license": "ISC",
