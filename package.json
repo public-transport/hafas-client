@@ -1,7 +1,7 @@
 {
 	"name": "hafas-client",
 	"description": "Client for HAFAS public transport APIs.",
-	"version": "5.8.0",
+	"version": "5.9.0",
 	"main": "index.js",
 	"files": [
 		"index.js",
@@ -20,7 +20,7 @@
 		"em0lar <hello@em0lar.de>",
 		"Adrian Böhme <hannsadrian@gmail.com> (https://github.com/Adwirawien)"
 	],
-	"homepage": "https://github.com/public-transport/hafas-client/tree/5.8.0",
+	"homepage": "https://github.com/public-transport/hafas-client/tree/5.9.0",
 	"repository": "public-transport/hafas-client",
 	"bugs": "https://github.com/public-transport/hafas-client/issues",
 	"funding": "https://github.com/sponsors/derhuerst",

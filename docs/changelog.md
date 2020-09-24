@@ -1,5 +1,12 @@
 # Changelog
 
+## `5.9.0`
+
+- 8ed218f add [*Irish Rail* profile](../p/irish-rail)
+- de86391 support HTTP proxies via `HTTPS_PROXY` & `HTTP_PROXY` environment variables
+
+[🏷 `5.9.0`](https://github.com/public-transport/hafas-client/releases/tag/5.9.0), 2020-09-24
+
 ## `5.8.0`
 
 - 4d06057/82de740/c17bd5a add [*Rejseplanen* profile](../p/rejseplanen)
