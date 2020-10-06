@@ -197,8 +197,8 @@ const createRestClient = (profile, token, userAgent) => {
 			query.searchForArrival = 1
 		}
 		if (when) {
-			query.date = profile.formatDate({profile, opt}, when)
-			query.time = profile.formatTime({profile, opt}, when)
+			query.date = profile.formatDate(profile, when)
+			query.time = profile.formatTime(profile, when)
 		}
 
 		const {res} = await profile.request({profile, opt, token}, userAgent, 'trip', query)
@@ -207,10 +207,33 @@ const createRestClient = (profile, token, userAgent) => {
 		return ctx.res.Trip.map(t => profile.parseJourney(ctx, t))
 	}
 
+	const tripAlternatives = async (tripCtx, origin, destination, opt = {}) => {
+		// todo
+		const {res} = await profile.request({profile, opt, token}, userAgent, 'trip.alternatives', {
+			ctx: 'T$A=1@O=Hildesheim Hbf@L=8000169@a=128@$A=1@O=Hannover Hbf@L=8000152@a=128@$201909031844$201909031910$erx83478$$1$',
+			originId: 'A=1@O=Sarstedt@X=9842595@Y=52232604@U=80@L=8005292@',
+			destId: 'A=1@O=Hannover Hbf@X=9741017@Y=52376764@U=80@L=8000152@',
+			// todo: operators, products, poly
+		})
+		const ctx = {profile, opt, res}
+
+		return ctx.res.Trip.map(t => profile.parseJourney(ctx, t))
+	}
+
+	const trip = async (id, opt = {}) => {
+		const {res} = await profile.request({profile, opt, token}, userAgent, 'journeyDetail', {
+			id,
+			// todo: date, poly, showPassingPoints, rtMode
+		})
+		const ctx = {profile, opt, res}
+
+		return profile.parseTrip(ctx, ctx.res)
+	}
+
 	const client = {
 		locations, nearby,
 		departures, arrivals,
-		journeys,
+		journeys, trip, tripAlternatives,
 	}
 	Object.defineProperty(client, 'profile', {value: profile})
 	return client
