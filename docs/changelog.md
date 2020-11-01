@@ -1,5 +1,13 @@
 # Changelog
 
+## `5.10.0`
+
+- 013ab2d add [*mobiliteit.lu* (Luxembourg) profile](../p/mobiliteit-lu)
+- 11ca3b1 add [`tripsByName()` method](trips-by-name.md)
+- 92fb29d `parseTrip`: handle `stopL[]` items without `idx` 🐛
+
+[🏷 `5.10.0`](https://github.com/public-transport/hafas-client/releases/tag/5.10.0), 2020-11-01
+
 ## `5.9.0`
 
 - 8ed218f add [*Irish Rail* profile](../p/irish-rail)
