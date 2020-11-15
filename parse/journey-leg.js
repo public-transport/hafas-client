@@ -13,19 +13,22 @@ const applyRemarks = (leg, refs) => {
 	for (let [remark, ref] of findRemarks(refs)) {
 		const {fromLocation, toLocation} = ref
 
-		let fromI = 0, toI = leg.stopovers.length - 1
-		// this fails if `s.stop` is a new object (not reference-equal)
-		// todo: do this index- or ID-based
-		if (fromLocation) {
-			fromI = leg.stopovers.findIndex(s => s.stop === fromLocation)
-			if (fromI < 0) continue
-		}
-		if (toLocation) {
-			toI = leg.stopovers.findIndex(s => s.stop === toLocation)
-			if (toI < 0) continue
+		let wholeLeg = true, fromI = 0, toI = 0
+		if (Array.isArray(leg.stopovers)) {
+			toI = leg.stopovers.length - 1
+			// this fails if `s.stop` is a new object (not reference-equal)
+			// todo: do this index- or ID-based
+			if (fromLocation) {
+				fromI = leg.stopovers.findIndex(s => s.stop === fromLocation)
+				if (fromI < 0) continue
+			}
+			if (toLocation) {
+				toI = leg.stopovers.findIndex(s => s.stop === toLocation)
+				if (toI < 0) continue
+			}
+			wholeLeg = fromI === 0 && toI === (leg.stopovers.length - 1)
 		}
 
-		const wholeLeg = fromI === 0 && toI === (leg.stopovers.length - 1)
 		if (wholeLeg) addRemark(leg, remark)
 		else {
 			for (let i = fromI; i <= toI; i++) {
