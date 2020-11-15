@@ -1,0 +1,25 @@
+{
+  "url": "https://bvg-apps.hafas.de/bin/mgate.exe",
+  "method": "POST",
+  "headers": {
+    "Content-Type": [
+      "application/json"
+    ],
+    "Accept-Encoding": [
+      "gzip, br, deflate"
+    ],
+    "Accept": [
+      "application/json"
+    ],
+    "user-agent": [
+      "public-transport/hafas-clf96918853695ient:test"
+    ],
+    "Content-Length": [
+      "386"
+    ],
+    "Connection": [
+      "close"
+    ]
+  },
+  "body": "{\"lang\":\"en\",\"svcReqL\":[{\"cfg\":{\"polyEnc\":\"GPA\"},\"meth\":\"LocGeoPos\",\"req\":{\"ring\":{\"cCrd\":{\"x\":13331041,\"y\":52487345},\"maxDist\":200,\"minDist\":0},\"locFltrL\":[{\"type\":\"PROD\",\"mode\":\"INC\",\"value\":\"127\"}],\"getPOIs\":false,\"getStops\":true,\"maxLoc\":8}}],\"client\":{\"type\":\"IPA\",\"id\":\"BVG\",\"name\":\"FahrInfo\",\"v\":\"6020000\"},\"ext\":\"BVG.1\",\"ver\":\"1.21\",\"auth\":{\"type\":\"AID\",\"aid\":\"Mz0YdF9Fgx0Mb9\"}}"
+}

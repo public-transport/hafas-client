@@ -15,6 +15,9 @@ const nearbyReq = (ctx, location) => {
 				maxDist: opt.distance || -1,
 				minDist: 0
 			},
+			locFltrL: [
+				profile.formatProductsFilter(ctx, opt.products || {}),
+			],
 			getPOIs: !!opt.poi,
 			getStops: !!opt.stops,
 			maxLoc: opt.results
