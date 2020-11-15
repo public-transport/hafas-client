@@ -374,6 +374,7 @@ const createClient = (profile, userAgent, opt = {}) => {
 			meth: 'JourneyMatch',
 			req: {
 				input: lineNameOrFahrtNr,
+				// todo: date seems to be ignored
 				date: profile.formatDate(profile, opt.when),
 				// todo: there are probably more options
 			}

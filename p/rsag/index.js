@@ -11,7 +11,7 @@ const transformReqBody = (ctx, body) => {
 	return body
 }
 
-const hvvProfile = {
+const rsagProfile = {
 	locale: 'de-DE',
 	timezone: 'Europe/Berlin',
 	endpoint: 'https://fahrplan.rsag-online.de/bin/mgate.exe',
@@ -30,4 +30,4 @@ const hvvProfile = {
 	departuresStbFltrEquiv: false,
 }
 
-module.exports = hvvProfile
+module.exports = rsagProfile

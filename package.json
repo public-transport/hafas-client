@@ -23,7 +23,9 @@
 	"homepage": "https://github.com/public-transport/hafas-client/tree/5.10.0",
 	"repository": "public-transport/hafas-client",
 	"bugs": "https://github.com/public-transport/hafas-client/issues",
-	"funding": "https://github.com/sponsors/derhuerst",
+	"funding": {
+		"url": "https://github.com/sponsors/derhuerst"
+	},
 	"license": "ISC",
 	"keywords": [
 		"hafas",

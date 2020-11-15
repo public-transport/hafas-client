@@ -70,7 +70,7 @@ The response may look like this:
 		}
 	},
 	direction: 'S Flughafen Berlin-Schönefeld',
-	trip: 31463,
+	trip: 31463, // todo: outdated, should be tripId!
 
 	nextStopovers: [ {
 		stop: {
