@@ -1,5 +1,12 @@
 # Changelog
 
+## `5.10.1`
+
+- 6d4f29a `nearby()`: support `opt.products`
+- 66ff661 `parseJourneyLeg` → `applyRemarks`: handle legs without `stopovers[]` 🐛
+
+[🏷 `5.10.1`](https://github.com/public-transport/hafas-client/releases/tag/5.10.1), 2020-11-15
+
 ## `5.10.0`
 
 - 013ab2d add [*mobiliteit.lu* (Luxembourg) profile](../p/mobiliteit-lu)
