@@ -206,6 +206,7 @@ Each of the [profiles](p) has more detailed example code.
 HAFAS endpoint | wrapper library | docs | example code | source code
 ---------------|------------------|------|---------|------------
 [Deutsche Bahn (DB)](https://en.wikipedia.org/wiki/Deutsche_Bahn) | [`db-hafas`](https://github.com/public-transport/db-hafas) | [docs](p/db/readme.md) | [example code](p/db/example.js) | [src](p/db/index.js)
+[Swiss Railways (SBB)](https://en.wikipedia.org/wiki/Swiss_Federal_Railways) | - | [docs](p/sbb/readme.md) | [example code](p/sbb/example.js) | [src](p/sbb/index.js)
 [Polskie Koleje Państwowe (PKP)](https://en.wikipedia.org/wiki/Polish_State_Railways) | [`pkp-hafas`](https://github.com/juliuste/pkp-hafas) | [docs](p/pkp/readme.md) | [example code](p/pkp/example.js) | [src](p/pkp/index.js)
 [Belgian National Railways (SNCB/NMBS)](https://en.wikipedia.org/wiki/National_Railway_Company_of_Belgium) | - | [docs](p/sncb/readme.md) | [example code](p/sncb/example.js) | [src](p/sncb/index.js)
 [*Iarnród Éireann* (Irish Rail)](https://en.wikipedia.org/wiki/Iarnród_Éireann) | - | [docs](p/irish-rail/readme.md) | [example code](p/irish-rail/example.js) | [src](p/irish-rail/index.js)
