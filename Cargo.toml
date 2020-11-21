@@ -1,0 +1,23 @@
+[package]
+name = "hafas_client"
+version = "6.0.0"
+authors = [
+	"Jannis R <mail@jannisr.de>",
+	"Julius Tens <mail@juliustens.eu>",
+	"n0emis <n0emis@noemis.me>",
+	"em0lar <hello@em0lar.de>",
+	"Adrian Böhme <hannsadrian@gmail.com> (https://github.com/Adwirawien)"
+]
+edition = "2018"
+description = "Client for HAFAS public transport APIs."
+repository = "https://github.com/public-transport/hafas-client.git"
+license = "ISC"
+keywords = ["hafas", "public", "transport", "transit", "api", "http"]
+categories = ["api-bindings"]
+# todo: exclude
+publish = false # todo: remove
+
+[dependencies]
+
+[badges]
+travis-ci = { repository = "public-transport/hafas-client" }
