@@ -12,7 +12,7 @@ module.exports = [
 	{
 		id: 'national-train',
 		mode: 'train',
-		bitmasks: [6],
+		bitmasks: [2, 4],
 		name: 'national train (IC/RE/IRE)',
 		short: 'IC/RE/IRE',
 		default: true
