@@ -4,14 +4,13 @@ const products = require('./products')
 
 const transformReqBody = (ctx, body) => {
 	body.client = {
-		type: 'IPH',
-		id: 'HAFAS',
-		v: '4000200',
-		name: 'mobiliteit.luPROD',
-		os: 'iPhone OS 9.3.5',
+		type: 'WEB',
+		id: 'MMILUX',
+		name: 'webapp',
+		l: 'vs_webapp',
 	}
-	body.ver = '1.15'
-	body.auth = {aid: 'Aqf9kNqJLjxFx6vv'}
+	body.ver = '1.25'
+	body.auth = {type: 'AID', aid: 'SkC81GuwuzL4e0'}
 	body.lang = 'de'
 
 	return body
@@ -20,7 +19,7 @@ const transformReqBody = (ctx, body) => {
 const mobiliteitLuProfile = {
 	locale: 'de-LU',
 	timezone: 'Europe/Luxembourg',
-	endpoint: 'https://travelplanner.mobiliteit.lu/hafas/mgate.exe',
+	endpoint: 'https://cdt.hafas.de/bin/mgate.exe',
 	transformReqBody,
 
 	products: products,
@@ -28,6 +27,11 @@ const mobiliteitLuProfile = {
 	trip: true,
 	radar: true,
 	reachableFrom: true,
+
+	// Version 1.25 doesn't seem to support getPasslist & stbFltrEquiv
+	// for departures()/arrivals().
+	departuresGetPasslist: false,
+	departuresStbFltrEquiv: false,
 }
 
 module.exports = mobiliteitLuProfile;
