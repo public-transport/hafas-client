@@ -1,5 +1,11 @@
 # Changelog
 
+## `5.11.0`
+
+- 259fcd7 add [*VRN* (south-west Germany) profile](../p/vrn)
+
+[🏷 `5.11.0`](https://github.com/public-transport/hafas-client/releases/tag/5.11.0), 2020-11-26
+
 ## `5.10.1`
 
 - 6d4f29a `nearby()`: support `opt.products`
