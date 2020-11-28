@@ -29,6 +29,7 @@ const hvvProfile = {
 	refreshJourney: true,
 	reachableFrom: true,
 	remarks: false, // seems like ver >= 1.20 is required
+	lines: false, // fails with `FAIL` "HCI Service: request failed"
 }
 
 module.exports = hvvProfile
