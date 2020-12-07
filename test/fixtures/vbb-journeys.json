@@ -1,0 +1,2574 @@
+{
+	"common": {
+		"locL": [
+			{
+				"lid": "A=1@O=U Spichernstr. (Berlin)@X=13330616@Y=52496581@U=86@L=900042101@",
+				"type": "S",
+				"name": "U Spichernstr. (Berlin)",
+				"icoX": 0,
+				"extId": "900042101",
+				"state": "F",
+				"crd": {
+					"x": 13330616,
+					"y": 52496581,
+					"type": "WGS84",
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"pCls": 10
+			},
+			{
+				"lid": "A=1@O=Eberswalde, Hauptbahnhof@X=13797031@Y=52833668@U=86@L=900350127@",
+				"type": "S",
+				"name": "Eberswalde, Hauptbahnhof",
+				"icoX": 0,
+				"extId": "900350127",
+				"state": "F",
+				"crd": {
+					"x": 13797031,
+					"y": 52833668,
+					"type": "WGS84",
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"pCls": 104
+			},
+			{
+				"lid": "A=1@O=S+U Westhafen (Berlin)@X=13343839@Y=52536179@U=86@L=900001201@",
+				"type": "S",
+				"name": "S+U Westhafen (Berlin)",
+				"icoX": 0,
+				"extId": "900001201",
+				"state": "F",
+				"crd": {
+					"x": 13343839,
+					"y": 52536179,
+					"type": "WGS84",
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"pCls": 11
+			},
+			{
+				"lid": "A=1@O=S+U Gesundbrunnen Bhf (Berlin)@X=13388372@Y=52548638@U=86@L=900007102@",
+				"type": "S",
+				"name": "S+U Gesundbrunnen Bhf (Berlin)",
+				"icoX": 0,
+				"extId": "900007102",
+				"state": "F",
+				"crd": {
+					"x": 13388372,
+					"y": 52548638,
+					"type": "WGS84",
+					"layerX": 0,
+					"crdSysX": 0
+				},
+				"pCls": 107
+			}
+		],
+		"prodL": [
+			{
+				"pid": "L::1::U::B3041857784::U_3041857784_U9::*",
+				"name": "U9",
+				"nameS": "U9",
+				"number": "U9",
+				"icoX": 1,
+				"cls": 2,
+				"oprX": 0,
+				"prodCtx": {
+					"name": "      U9",
+					"num": "24005",
+					"line": "U9",
+					"matchId": "U9",
+					"catOut": "U       ",
+					"catOutS": "U",
+					"catOutL": "U       ",
+					"catIn": "U",
+					"catCode": "1",
+					"admin": "BVU---"
+				},
+				"himIdL": [
+					"HIM_FREETEXT_75748"
+				]
+			},
+			{
+				"pid": "L::1::U::B3041857784::U_3041857784_U9::*",
+				"name": "U9",
+				"nameS": "U9",
+				"number": "U9",
+				"icoX": 1,
+				"cls": 2,
+				"oprX": 1,
+				"prodCtx": {
+					"name": "      U9",
+					"num": "24005",
+					"line": "U9",
+					"matchId": "U9",
+					"catOut": "U       ",
+					"catOutS": "U",
+					"catOutL": "U       ",
+					"catIn": "U",
+					"catCode": "1",
+					"admin": "BVU---"
+				},
+				"himIdL": [
+					"HIM_FREETEXT_75748"
+				]
+			},
+			{
+				"pid": "L::0::S::B1090519025::S_1090519025_S41::*",
+				"name": "S41",
+				"nameS": "S41",
+				"number": "S41",
+				"icoX": 6,
+				"cls": 1,
+				"oprX": 2,
+				"prodCtx": {
+					"name": "     S41",
+					"num": "2568",
+					"line": "S41",
+					"matchId": "41138",
+					"catOut": "S       ",
+					"catOutS": "S-3",
+					"catOutL": "S       ",
+					"catIn": "S-3",
+					"catCode": "0",
+					"admin": "DBS---"
+				},
+				"himIdL": [
+					"HIM_FREETEXT_101321"
+				]
+			},
+			{
+				"pid": "L::0::S::B1090519025::S_1090519025_S41::*",
+				"name": "S41",
+				"nameS": "S41",
+				"number": "S41",
+				"icoX": 6,
+				"cls": 1,
+				"oprX": 3,
+				"prodCtx": {
+					"name": "     S41",
+					"num": "2568",
+					"line": "S41",
+					"matchId": "41138",
+					"catOut": "S       ",
+					"catOutS": "S-3",
+					"catOutL": "S       ",
+					"catIn": "S-3",
+					"catCode": "0",
+					"admin": "DBS---"
+				},
+				"himIdL": [
+					"HIM_FREETEXT_101321"
+				]
+			},
+			{
+				"pid": "L::5::ICE::B0002373722::ICE_0002373722::*",
+				"name": "ICE 1710",
+				"number": "1710",
+				"icoX": 8,
+				"cls": 32,
+				"oprX": 4,
+				"prodCtx": {
+					"name": "ICE 1710",
+					"num": "1710",
+					"matchId": "1710",
+					"catOut": "ICE     ",
+					"catOutS": "ICE",
+					"catOutL": "ICE     ",
+					"catIn": "ICE",
+					"catCode": "5",
+					"admin": "N80---"
+				},
+				"himIdL": [
+					"HIM_FREETEXT_102210",
+					"HIM_FREETEXT_104228",
+					"HIM_FREETEXT_102211",
+					"HIM_FREETEXT_103712",
+					"HIM_FREETEXT_102909",
+					"HIM_FREETEXT_102924",
+					"HIM_FREETEXT_102925",
+					"HIM_FREETEXT_102170",
+					"HIM_FREETEXT_102181",
+					"HIM_FREETEXT_103247",
+					"HIM_FREETEXT_103248",
+					"HIM_FREETEXT_104047",
+					"HIM_FREETEXT_102209",
+					"HIM_FREETEXT_102387",
+					"HIM_FREETEXT_102895",
+					"HIM_FREETEXT_104229",
+					"HIM_FREETEXT_103713",
+					"HIM_FREETEXT_102908",
+					"HIM_FREETEXT_103717",
+					"HIM_FREETEXT_103718",
+					"HIM_FREETEXT_102178",
+					"HIM_FREETEXT_104049",
+					"HIM_FREETEXT_102896",
+					"HIM_FREETEXT_102897",
+					"HIM_FREETEXT_102898",
+					"HIM_FREETEXT_102899",
+					"HIM_FREETEXT_102901",
+					"HIM_FREETEXT_102557",
+					"HIM_FREETEXT_102558",
+					"HIM_FREETEXT_102570",
+					"HIM_FREETEXT_102572",
+					"HIM_FREETEXT_102573",
+					"HIM_FREETEXT_102575",
+					"HIM_FREETEXT_102576",
+					"HIM_FREETEXT_102584",
+					"HIM_FREETEXT_102903",
+					"HIM_FREETEXT_102599",
+					"HIM_FREETEXT_102600",
+					"HIM_FREETEXT_102603",
+					"HIM_FREETEXT_102617",
+					"HIM_FREETEXT_102904",
+					"HIM_FREETEXT_102905",
+					"HIM_FREETEXT_102907",
+					"HIM_FREETEXT_102914",
+					"HIM_FREETEXT_102917",
+					"HIM_FREETEXT_102918",
+					"HIM_FREETEXT_102921",
+					"HIM_FREETEXT_102928",
+					"HIM_FREETEXT_102774",
+					"HIM_FREETEXT_103737",
+					"HIM_FREETEXT_104306",
+					"HIM_FREETEXT_104308",
+					"HIM_FREETEXT_104310",
+					"HIM_FREETEXT_104311",
+					"HIM_FREETEXT_104050",
+					"HIM_FREETEXT_102776",
+					"HIM_FREETEXT_102936",
+					"HIM_FREETEXT_102937",
+					"HIM_FREETEXT_102938",
+					"HIM_FREETEXT_102939",
+					"HIM_FREETEXT_102940",
+					"HIM_FREETEXT_102947",
+					"HIM_FREETEXT_102954",
+					"HIM_FREETEXT_102516",
+					"HIM_FREETEXT_102551",
+					"HIM_FREETEXT_102556",
+					"HIM_FREETEXT_102566",
+					"HIM_FREETEXT_102961",
+					"HIM_FREETEXT_102569",
+					"HIM_FREETEXT_102578",
+					"HIM_FREETEXT_102579",
+					"HIM_FREETEXT_102580",
+					"HIM_FREETEXT_102585",
+					"HIM_FREETEXT_102962",
+					"HIM_FREETEXT_102963",
+					"HIM_FREETEXT_102596",
+					"HIM_FREETEXT_102604",
+					"HIM_FREETEXT_102615",
+					"HIM_FREETEXT_102616",
+					"HIM_FREETEXT_102964",
+					"HIM_FREETEXT_104009",
+					"HIM_FREETEXT_102628",
+					"HIM_FREETEXT_104046",
+					"HIM_FREETEXT_104307",
+					"HIM_FREETEXT_102552",
+					"HIM_FREETEXT_102553",
+					"HIM_FREETEXT_102560",
+					"HIM_FREETEXT_102563",
+					"HIM_FREETEXT_102571",
+					"HIM_FREETEXT_102577",
+					"HIM_FREETEXT_102581",
+					"HIM_FREETEXT_102362",
+					"HIM_FREETEXT_104319",
+					"HIM_FREETEXT_102588",
+					"HIM_FREETEXT_102941",
+					"HIM_FREETEXT_102517",
+					"HIM_FREETEXT_102593",
+					"HIM_FREETEXT_102606",
+					"HIM_FREETEXT_102607",
+					"HIM_FREETEXT_102608",
+					"HIM_FREETEXT_102611",
+					"HIM_FREETEXT_102612",
+					"HIM_FREETEXT_102623",
+					"HIM_FREETEXT_102949",
+					"HIM_FREETEXT_103740",
+					"HIM_FREETEXT_102950",
+					"HIM_FREETEXT_102335",
+					"HIM_FREETEXT_103745",
+					"HIM_FREETEXT_102951",
+					"HIM_FREETEXT_102337",
+					"HIM_FREETEXT_102952",
+					"HIM_FREETEXT_102953",
+					"HIM_FREETEXT_102965",
+					"HIM_FREETEXT_104318",
+					"HIM_FREETEXT_104321",
+					"HIM_FREETEXT_102966",
+					"HIM_FREETEXT_103746",
+					"HIM_FREETEXT_102968",
+					"HIM_FREETEXT_102969",
+					"HIM_FREETEXT_102345",
+					"HIM_FREETEXT_102633",
+					"HIM_FREETEXT_102640",
+					"HIM_FREETEXT_102641",
+					"HIM_FREETEXT_102656",
+					"HIM_FREETEXT_102660",
+					"HIM_FREETEXT_102357",
+					"HIM_FREETEXT_102687",
+					"HIM_FREETEXT_103752",
+					"HIM_FREETEXT_102334",
+					"HIM_FREETEXT_102631",
+					"HIM_FREETEXT_102635",
+					"HIM_FREETEXT_102638",
+					"HIM_FREETEXT_102639",
+					"HIM_FREETEXT_102643",
+					"HIM_FREETEXT_102645",
+					"HIM_FREETEXT_102649",
+					"HIM_FREETEXT_102650",
+					"HIM_FREETEXT_102971",
+					"HIM_FREETEXT_102972",
+					"HIM_FREETEXT_102653",
+					"HIM_FREETEXT_102663",
+					"HIM_FREETEXT_102974",
+					"HIM_FREETEXT_103418",
+					"HIM_FREETEXT_102835",
+					"HIM_FREETEXT_104010",
+					"HIM_FREETEXT_104017",
+					"HIM_FREETEXT_102632",
+					"HIM_FREETEXT_102634",
+					"HIM_FREETEXT_102636",
+					"HIM_FREETEXT_102637",
+					"HIM_FREETEXT_102644",
+					"HIM_FREETEXT_102657",
+					"HIM_FREETEXT_102658",
+					"HIM_FREETEXT_102665",
+					"HIM_FREETEXT_102666",
+					"HIM_FREETEXT_102833",
+					"HIM_FREETEXT_102664",
+					"HIM_FREETEXT_102817",
+					"HIM_FREETEXT_103187",
+					"HIM_FREETEXT_103194",
+					"HIM_FREETEXT_103188",
+					"HIM_FREETEXT_102466",
+					"HIM_FREETEXT_103189",
+					"HIM_FREETEXT_103190",
+					"HIM_FREETEXT_103193",
+					"HIM_FREETEXT_103425",
+					"HIM_FREETEXT_102289",
+					"HIM_FREETEXT_103191",
+					"HIM_FREETEXT_103192",
+					"HIM_FREETEXT_103430",
+					"HIM_FREETEXT_102287",
+					"HIM_FREETEXT_101034",
+					"HIM_FREETEXT_103195",
+					"HIM_FREETEXT_103428",
+					"HIM_FREETEXT_102144",
+					"HIM_FREETEXT_103462",
+					"HIM_FREETEXT_103463",
+					"HIM_FREETEXT_103220",
+					"HIM_FREETEXT_103674",
+					"HIM_FREETEXT_103702",
+					"HIM_FREETEXT_103677",
+					"HIM_FREETEXT_103701",
+					"HIM_FREETEXT_102870",
+					"HIM_FREETEXT_102871",
+					"HIM_FREETEXT_102714",
+					"HIM_FREETEXT_102715",
+					"HIM_FREETEXT_103227",
+					"HIM_FREETEXT_103239",
+					"HIM_FREETEXT_102850",
+					"HIM_FREETEXT_102851",
+					"HIM_FREETEXT_102856",
+					"HIM_FREETEXT_102857",
+					"HIM_FREETEXT_102858",
+					"HIM_FREETEXT_102859",
+					"HIM_FREETEXT_102860",
+					"HIM_FREETEXT_102862",
+					"HIM_FREETEXT_102849",
+					"HIM_FREETEXT_102854",
+					"HIM_FREETEXT_102869",
+					"HIM_FREETEXT_102881",
+					"HIM_FREETEXT_102882",
+					"HIM_FREETEXT_102883",
+					"HIM_FREETEXT_102884"
+				]
+			},
+			{
+				"pid": "L::5::IC::B0002373722::IC_0002373722::*",
+				"name": "IC 2457",
+				"number": "2457",
+				"icoX": 8,
+				"cls": 32,
+				"oprX": 4,
+				"prodCtx": {
+					"name": "IC 2457 ",
+					"num": "2457",
+					"matchId": "2457",
+					"catOut": "IC      ",
+					"catOutS": "IC",
+					"catOutL": "IC      ",
+					"catIn": "IC",
+					"catCode": "5",
+					"admin": "N80---"
+				},
+				"himIdL": [
+					"HIM_FREETEXT_102210",
+					"HIM_FREETEXT_103055",
+					"HIM_FREETEXT_103057",
+					"HIM_FREETEXT_103061",
+					"HIM_FREETEXT_103062",
+					"HIM_FREETEXT_103063",
+					"HIM_FREETEXT_102182",
+					"HIM_FREETEXT_102396",
+					"HIM_FREETEXT_103244",
+					"HIM_FREETEXT_102206",
+					"HIM_FREETEXT_102207",
+					"HIM_FREETEXT_102209",
+					"HIM_FREETEXT_102212",
+					"HIM_FREETEXT_102381",
+					"HIM_FREETEXT_102383",
+					"HIM_FREETEXT_102385",
+					"HIM_FREETEXT_102386",
+					"HIM_FREETEXT_102931",
+					"HIM_FREETEXT_102179",
+					"HIM_FREETEXT_102395",
+					"HIM_FREETEXT_102397",
+					"HIM_FREETEXT_102398",
+					"HIM_FREETEXT_102399",
+					"HIM_FREETEXT_102400",
+					"HIM_FREETEXT_101181",
+					"HIM_FREETEXT_101182",
+					"HIM_FREETEXT_104235",
+					"HIM_FREETEXT_102180",
+					"HIM_FREETEXT_102550",
+					"HIM_FREETEXT_102555",
+					"HIM_FREETEXT_102559",
+					"HIM_FREETEXT_102562",
+					"HIM_FREETEXT_102582",
+					"HIM_FREETEXT_103047",
+					"HIM_FREETEXT_102600",
+					"HIM_FREETEXT_102601",
+					"HIM_FREETEXT_102602",
+					"HIM_FREETEXT_102603",
+					"HIM_FREETEXT_103052",
+					"HIM_FREETEXT_103053",
+					"HIM_FREETEXT_103060",
+					"HIM_FREETEXT_104309",
+					"HIM_FREETEXT_103049",
+					"HIM_FREETEXT_103905",
+					"HIM_FREETEXT_103906",
+					"HIM_FREETEXT_103907",
+					"HIM_FREETEXT_102554",
+					"HIM_FREETEXT_102567",
+					"HIM_FREETEXT_102583",
+					"HIM_FREETEXT_103910",
+					"HIM_FREETEXT_102552",
+					"HIM_FREETEXT_102561",
+					"HIM_FREETEXT_104305",
+					"HIM_FREETEXT_102586",
+					"HIM_FREETEXT_102587",
+					"HIM_FREETEXT_104317",
+					"HIM_FREETEXT_104320",
+					"HIM_FREETEXT_104322",
+					"HIM_FREETEXT_102457",
+					"HIM_FREETEXT_102748",
+					"HIM_FREETEXT_102605",
+					"HIM_FREETEXT_102607",
+					"HIM_FREETEXT_102610",
+					"HIM_FREETEXT_102613",
+					"HIM_FREETEXT_102614",
+					"HIM_FREETEXT_103048",
+					"HIM_FREETEXT_103050",
+					"HIM_FREETEXT_103051",
+					"HIM_FREETEXT_103054",
+					"HIM_FREETEXT_104312",
+					"HIM_FREETEXT_103059",
+					"HIM_FREETEXT_102629",
+					"HIM_FREETEXT_102642",
+					"HIM_FREETEXT_102647",
+					"HIM_FREETEXT_102365",
+					"HIM_FREETEXT_103901",
+					"HIM_FREETEXT_101204",
+					"HIM_FREETEXT_103908",
+					"HIM_FREETEXT_103911",
+					"HIM_FREETEXT_102985",
+					"HIM_FREETEXT_103002",
+					"HIM_FREETEXT_103411",
+					"HIM_FREETEXT_103410",
+					"HIM_FREETEXT_103413",
+					"HIM_FREETEXT_101205",
+					"HIM_FREETEXT_101206",
+					"HIM_FREETEXT_101207",
+					"HIM_FREETEXT_103414",
+					"HIM_FREETEXT_102655",
+					"HIM_FREETEXT_102454",
+					"HIM_FREETEXT_103415",
+					"HIM_FREETEXT_102674",
+					"HIM_FREETEXT_103417",
+					"HIM_FREETEXT_102677",
+					"HIM_FREETEXT_102678",
+					"HIM_FREETEXT_101143",
+					"HIM_FREETEXT_103902",
+					"HIM_FREETEXT_103903",
+					"HIM_FREETEXT_103904",
+					"HIM_FREETEXT_103909",
+					"HIM_FREETEXT_103338",
+					"HIM_FREETEXT_103347",
+					"HIM_FREETEXT_103348",
+					"HIM_FREETEXT_102646",
+					"HIM_FREETEXT_102659",
+					"HIM_FREETEXT_102661",
+					"HIM_FREETEXT_102662",
+					"HIM_FREETEXT_102458",
+					"HIM_FREETEXT_103548",
+					"HIM_FREETEXT_103333",
+					"HIM_FREETEXT_102808",
+					"HIM_FREETEXT_103334",
+					"HIM_FREETEXT_103337",
+					"HIM_FREETEXT_103349",
+					"HIM_FREETEXT_101025",
+					"HIM_FREETEXT_101151",
+					"HIM_FREETEXT_103416",
+					"HIM_FREETEXT_103419",
+					"HIM_FREETEXT_102671",
+					"HIM_FREETEXT_103551",
+					"HIM_FREETEXT_102672",
+					"HIM_FREETEXT_102679",
+					"HIM_FREETEXT_103335",
+					"HIM_FREETEXT_103336",
+					"HIM_FREETEXT_103344",
+					"HIM_FREETEXT_103345",
+					"HIM_FREETEXT_103346",
+					"HIM_FREETEXT_102688",
+					"HIM_FREETEXT_102292",
+					"HIM_FREETEXT_103426",
+					"HIM_FREETEXT_102279",
+					"HIM_FREETEXT_102145",
+					"HIM_FREETEXT_103427",
+					"HIM_FREETEXT_102708",
+					"HIM_FREETEXT_102142",
+					"HIM_FREETEXT_102143",
+					"HIM_FREETEXT_102286",
+					"HIM_FREETEXT_103197",
+					"HIM_FREETEXT_102707",
+					"HIM_FREETEXT_102725",
+					"HIM_FREETEXT_102709",
+					"HIM_FREETEXT_102712",
+					"HIM_FREETEXT_102716",
+					"HIM_FREETEXT_102721",
+					"HIM_FREETEXT_102726",
+					"HIM_FREETEXT_102877",
+					"HIM_FREETEXT_102846",
+					"HIM_FREETEXT_102847",
+					"HIM_FREETEXT_102853",
+					"HIM_FREETEXT_102861",
+					"HIM_FREETEXT_102848"
+				]
+			},
+			{
+				"pid": "L::5::IC::B0002373722::IC_0002373722::*",
+				"name": "IC 2055",
+				"number": "2055",
+				"icoX": 8,
+				"cls": 32,
+				"oprX": 4,
+				"prodCtx": {
+					"name": "IC 2055 ",
+					"num": "2055",
+					"matchId": "2055",
+					"catOut": "IC      ",
+					"catOutS": "IC",
+					"catOutL": "IC      ",
+					"catIn": "IC",
+					"catCode": "5",
+					"admin": "N80---"
+				},
+				"himIdL": [
+					"HIM_FREETEXT_102210",
+					"HIM_FREETEXT_103055",
+					"HIM_FREETEXT_103057",
+					"HIM_FREETEXT_103061",
+					"HIM_FREETEXT_103062",
+					"HIM_FREETEXT_103063",
+					"HIM_FREETEXT_102182",
+					"HIM_FREETEXT_102396",
+					"HIM_FREETEXT_103244",
+					"HIM_FREETEXT_102206",
+					"HIM_FREETEXT_102207",
+					"HIM_FREETEXT_102209",
+					"HIM_FREETEXT_102212",
+					"HIM_FREETEXT_102381",
+					"HIM_FREETEXT_102383",
+					"HIM_FREETEXT_102385",
+					"HIM_FREETEXT_102386",
+					"HIM_FREETEXT_102931",
+					"HIM_FREETEXT_102179",
+					"HIM_FREETEXT_102395",
+					"HIM_FREETEXT_102397",
+					"HIM_FREETEXT_102398",
+					"HIM_FREETEXT_102399",
+					"HIM_FREETEXT_102400",
+					"HIM_FREETEXT_101181",
+					"HIM_FREETEXT_101182",
+					"HIM_FREETEXT_104235",
+					"HIM_FREETEXT_102180",
+					"HIM_FREETEXT_102550",
+					"HIM_FREETEXT_102555",
+					"HIM_FREETEXT_102559",
+					"HIM_FREETEXT_102562",
+					"HIM_FREETEXT_102582",
+					"HIM_FREETEXT_103047",
+					"HIM_FREETEXT_102600",
+					"HIM_FREETEXT_102601",
+					"HIM_FREETEXT_102602",
+					"HIM_FREETEXT_102603",
+					"HIM_FREETEXT_103052",
+					"HIM_FREETEXT_103053",
+					"HIM_FREETEXT_103060",
+					"HIM_FREETEXT_104309",
+					"HIM_FREETEXT_103049",
+					"HIM_FREETEXT_103905",
+					"HIM_FREETEXT_103906",
+					"HIM_FREETEXT_103907",
+					"HIM_FREETEXT_102554",
+					"HIM_FREETEXT_102567",
+					"HIM_FREETEXT_102583",
+					"HIM_FREETEXT_103910",
+					"HIM_FREETEXT_102552",
+					"HIM_FREETEXT_102561",
+					"HIM_FREETEXT_104305",
+					"HIM_FREETEXT_102586",
+					"HIM_FREETEXT_102587",
+					"HIM_FREETEXT_104317",
+					"HIM_FREETEXT_104320",
+					"HIM_FREETEXT_104322",
+					"HIM_FREETEXT_102457",
+					"HIM_FREETEXT_102748",
+					"HIM_FREETEXT_102605",
+					"HIM_FREETEXT_102607",
+					"HIM_FREETEXT_102610",
+					"HIM_FREETEXT_102613",
+					"HIM_FREETEXT_102614",
+					"HIM_FREETEXT_103048",
+					"HIM_FREETEXT_103050",
+					"HIM_FREETEXT_103051",
+					"HIM_FREETEXT_103054",
+					"HIM_FREETEXT_104312",
+					"HIM_FREETEXT_103059",
+					"HIM_FREETEXT_102629",
+					"HIM_FREETEXT_102642",
+					"HIM_FREETEXT_102647",
+					"HIM_FREETEXT_102365",
+					"HIM_FREETEXT_103901",
+					"HIM_FREETEXT_101204",
+					"HIM_FREETEXT_103908",
+					"HIM_FREETEXT_103911",
+					"HIM_FREETEXT_102985",
+					"HIM_FREETEXT_103002",
+					"HIM_FREETEXT_103411",
+					"HIM_FREETEXT_103410",
+					"HIM_FREETEXT_103413",
+					"HIM_FREETEXT_101205",
+					"HIM_FREETEXT_101206",
+					"HIM_FREETEXT_101207",
+					"HIM_FREETEXT_103414",
+					"HIM_FREETEXT_102655",
+					"HIM_FREETEXT_102454",
+					"HIM_FREETEXT_103415",
+					"HIM_FREETEXT_102674",
+					"HIM_FREETEXT_103417",
+					"HIM_FREETEXT_102677",
+					"HIM_FREETEXT_102678",
+					"HIM_FREETEXT_101143",
+					"HIM_FREETEXT_103902",
+					"HIM_FREETEXT_103903",
+					"HIM_FREETEXT_103904",
+					"HIM_FREETEXT_103909",
+					"HIM_FREETEXT_103338",
+					"HIM_FREETEXT_103347",
+					"HIM_FREETEXT_103348",
+					"HIM_FREETEXT_102646",
+					"HIM_FREETEXT_102659",
+					"HIM_FREETEXT_102661",
+					"HIM_FREETEXT_102662",
+					"HIM_FREETEXT_102458",
+					"HIM_FREETEXT_103548",
+					"HIM_FREETEXT_103333",
+					"HIM_FREETEXT_102808",
+					"HIM_FREETEXT_103334",
+					"HIM_FREETEXT_103337",
+					"HIM_FREETEXT_103349",
+					"HIM_FREETEXT_101025",
+					"HIM_FREETEXT_101151",
+					"HIM_FREETEXT_103416",
+					"HIM_FREETEXT_103419",
+					"HIM_FREETEXT_102671",
+					"HIM_FREETEXT_103551",
+					"HIM_FREETEXT_102672",
+					"HIM_FREETEXT_102679",
+					"HIM_FREETEXT_103335",
+					"HIM_FREETEXT_103336",
+					"HIM_FREETEXT_103344",
+					"HIM_FREETEXT_103345",
+					"HIM_FREETEXT_103346",
+					"HIM_FREETEXT_102688",
+					"HIM_FREETEXT_102292",
+					"HIM_FREETEXT_103426",
+					"HIM_FREETEXT_102279",
+					"HIM_FREETEXT_102145",
+					"HIM_FREETEXT_103427",
+					"HIM_FREETEXT_102708",
+					"HIM_FREETEXT_102142",
+					"HIM_FREETEXT_102143",
+					"HIM_FREETEXT_102286",
+					"HIM_FREETEXT_103197",
+					"HIM_FREETEXT_102707",
+					"HIM_FREETEXT_102725",
+					"HIM_FREETEXT_102709",
+					"HIM_FREETEXT_102712",
+					"HIM_FREETEXT_102716",
+					"HIM_FREETEXT_102721",
+					"HIM_FREETEXT_102726",
+					"HIM_FREETEXT_102877",
+					"HIM_FREETEXT_102846",
+					"HIM_FREETEXT_102847",
+					"HIM_FREETEXT_102853",
+					"HIM_FREETEXT_102861",
+					"HIM_FREETEXT_102848"
+				]
+			},
+			{
+				"pid": "L::1::U::B3041857784::U_3041857784_U9::*",
+				"name": "U9",
+				"nameS": "U9",
+				"number": "U9",
+				"icoX": 1,
+				"cls": 2,
+				"oprX": 0,
+				"prodCtx": {
+					"name": "      U9",
+					"num": "24006",
+					"line": "U9",
+					"matchId": "U9",
+					"catOut": "U       ",
+					"catOutS": "U",
+					"catOutL": "U       ",
+					"catIn": "U",
+					"catCode": "1",
+					"admin": "BVU---"
+				},
+				"himIdL": [
+					"HIM_FREETEXT_75748"
+				]
+			},
+			{
+				"pid": "L::1::U::B3041857784::U_3041857784_U9::*",
+				"name": "U9",
+				"nameS": "U9",
+				"number": "U9",
+				"icoX": 1,
+				"cls": 2,
+				"oprX": 1,
+				"prodCtx": {
+					"name": "      U9",
+					"num": "24006",
+					"line": "U9",
+					"matchId": "U9",
+					"catOut": "U       ",
+					"catOutS": "U",
+					"catOutL": "U       ",
+					"catIn": "U",
+					"catCode": "1",
+					"admin": "BVU---"
+				},
+				"himIdL": [
+					"HIM_FREETEXT_75748"
+				]
+			},
+			{
+				"pid": "L::0::S::B1090519025::S_1090519025_S41::*",
+				"name": "S41",
+				"nameS": "S41",
+				"number": "S41",
+				"icoX": 6,
+				"cls": 1,
+				"oprX": 2,
+				"prodCtx": {
+					"name": "     S41",
+					"num": "2723",
+					"line": "S41",
+					"matchId": "41634",
+					"catOut": "S       ",
+					"catOutS": "S-3",
+					"catOutL": "S       ",
+					"catIn": "S-3",
+					"catCode": "0",
+					"admin": "DBS---"
+				},
+				"himIdL": [
+					"HIM_FREETEXT_101321"
+				]
+			},
+			{
+				"pid": "L::0::S::B1090519025::S_1090519025_S41::*",
+				"name": "S41",
+				"nameS": "S41",
+				"number": "S41",
+				"icoX": 6,
+				"cls": 1,
+				"oprX": 3,
+				"prodCtx": {
+					"name": "     S41",
+					"num": "2723",
+					"line": "S41",
+					"matchId": "41634",
+					"catOut": "S       ",
+					"catOutS": "S-3",
+					"catOutL": "S       ",
+					"catIn": "S-3",
+					"catCode": "0",
+					"admin": "DBS---"
+				},
+				"himIdL": [
+					"HIM_FREETEXT_101321"
+				]
+			},
+			{
+				"pid": "L::6::RE::B0002373722::RE_0002373722_RE3::*",
+				"name": "RE3",
+				"nameS": "RE3",
+				"number": "RE3",
+				"icoX": 13,
+				"cls": 64,
+				"oprX": 4,
+				"prodCtx": {
+					"name": "     RE3",
+					"num": "22",
+					"line": "RE3",
+					"matchId": "3312",
+					"catOut": "RE      ",
+					"catOutS": "RE",
+					"catOutL": "RE      ",
+					"catIn": "RE",
+					"catCode": "6",
+					"admin": "800158"
+				},
+				"himIdL": [
+					"HIM_FREETEXT_104042",
+					"HIM_FREETEXT_104147",
+					"HIM_FREETEXT_104043",
+					"HIM_FREETEXT_96520",
+					"HIM_FREETEXT_96502",
+					"HIM_FREETEXT_96504",
+					"HIM_FREETEXT_96506",
+					"HIM_FREETEXT_96510",
+					"HIM_FREETEXT_96512",
+					"HIM_FREETEXT_104324",
+					"HIM_FREETEXT_104346",
+					"HIM_FREETEXT_104347"
+				]
+			},
+			{
+				"pid": "L::6::RE::B0002373722::RE_0002373722_RE66::*",
+				"name": "RE66",
+				"nameS": "RE66",
+				"number": "RE66",
+				"icoX": 13,
+				"cls": 64,
+				"oprX": 4,
+				"prodCtx": {
+					"name": "    RE66",
+					"num": "46",
+					"line": "RE66",
+					"matchId": "5804",
+					"catOut": "RE      ",
+					"catOutS": "RE",
+					"catOutL": "RE      ",
+					"catIn": "RE",
+					"catCode": "6",
+					"admin": "800151"
+				},
+				"himIdL": [
+					"HIM_FREETEXT_98366",
+					"HIM_FREETEXT_103275"
+				]
+			},
+			{
+				"pid": "L::6::RE::B0002373722::RE_0002373722_RE3::*",
+				"name": "RE3",
+				"nameS": "RE3",
+				"number": "RE3",
+				"icoX": 13,
+				"cls": 64,
+				"oprX": 4,
+				"prodCtx": {
+					"name": "     RE3",
+					"num": "372",
+					"line": "RE3",
+					"matchId": "3350",
+					"catOut": "RE      ",
+					"catOutS": "RE",
+					"catOutL": "RE      ",
+					"catIn": "RE",
+					"catCode": "6",
+					"admin": "800158"
+				},
+				"himIdL": [
+					"HIM_FREETEXT_104042",
+					"HIM_FREETEXT_104147",
+					"HIM_FREETEXT_104043",
+					"HIM_FREETEXT_96520",
+					"HIM_FREETEXT_96502",
+					"HIM_FREETEXT_96504",
+					"HIM_FREETEXT_96506",
+					"HIM_FREETEXT_96510",
+					"HIM_FREETEXT_96512",
+					"HIM_FREETEXT_104324",
+					"HIM_FREETEXT_104346",
+					"HIM_FREETEXT_104347"
+				]
+			},
+			{
+				"pid": "L::6::RE::B0002373722::RE_0002373722_RE3::*",
+				"name": "RE3",
+				"nameS": "RE3",
+				"number": "RE3",
+				"icoX": 13,
+				"cls": 64,
+				"oprX": 4,
+				"prodCtx": {
+					"name": "     RE3",
+					"num": "377",
+					"line": "RE3",
+					"matchId": "3330",
+					"catOut": "RE      ",
+					"catOutS": "RE",
+					"catOutL": "RE      ",
+					"catIn": "RE",
+					"catCode": "6",
+					"admin": "800158"
+				},
+				"himIdL": [
+					"HIM_FREETEXT_104042",
+					"HIM_FREETEXT_104147",
+					"HIM_FREETEXT_104043",
+					"HIM_FREETEXT_96520",
+					"HIM_FREETEXT_96502",
+					"HIM_FREETEXT_96504",
+					"HIM_FREETEXT_96506",
+					"HIM_FREETEXT_96510",
+					"HIM_FREETEXT_96512",
+					"HIM_FREETEXT_104324",
+					"HIM_FREETEXT_104346",
+					"HIM_FREETEXT_104347"
+				]
+			},
+			{
+				"pid": "L::6::RE::B0002373722::RE_0002373722_RE3::*",
+				"name": "RE3",
+				"nameS": "RE3",
+				"number": "RE3",
+				"icoX": 13,
+				"cls": 64,
+				"oprX": 4,
+				"prodCtx": {
+					"name": "     RE3",
+					"num": "386",
+					"line": "RE3",
+					"matchId": "3314",
+					"catOut": "RE      ",
+					"catOutS": "RE",
+					"catOutL": "RE      ",
+					"catIn": "RE",
+					"catCode": "6",
+					"admin": "800158"
+				},
+				"himIdL": [
+					"HIM_FREETEXT_104042",
+					"HIM_FREETEXT_104147",
+					"HIM_FREETEXT_104043",
+					"HIM_FREETEXT_96520",
+					"HIM_FREETEXT_96502",
+					"HIM_FREETEXT_96504",
+					"HIM_FREETEXT_96506",
+					"HIM_FREETEXT_96510",
+					"HIM_FREETEXT_96512",
+					"HIM_FREETEXT_104324",
+					"HIM_FREETEXT_104346",
+					"HIM_FREETEXT_104347"
+				]
+			},
+			{
+				"pid": "L::6::RE::B0002373722::RE_0002373722_RE66::*",
+				"name": "RE66",
+				"nameS": "RE66",
+				"number": "RE66",
+				"icoX": 13,
+				"cls": 64,
+				"oprX": 4,
+				"prodCtx": {
+					"name": "    RE66",
+					"num": "47",
+					"line": "RE66",
+					"matchId": "5802",
+					"catOut": "RE      ",
+					"catOutS": "RE",
+					"catOutL": "RE      ",
+					"catIn": "RE",
+					"catCode": "6",
+					"admin": "800151"
+				},
+				"himIdL": [
+					"HIM_FREETEXT_98366",
+					"HIM_FREETEXT_103275"
+				]
+			}
+		],
+		"polyL": [],
+		"layerL": [
+			{
+				"id": "standard",
+				"name": "standard",
+				"index": 0,
+				"annoCnt": 0
+			}
+		],
+		"crdSysL": [
+			{
+				"id": "standard",
+				"index": 0,
+				"type": "WGS84",
+				"dim": 2
+			}
+		],
+		"opL": [
+			{
+				"name": "Berliner Verkehrsbetriebe",
+				"icoX": 2
+			},
+			{
+				"name": "Berliner Verkehrsbetriebe",
+				"url": "https://www.bvg.de/",
+				"icoX": 2,
+				"id": "796"
+			},
+			{
+				"name": "S-Bahn Berlin GmbH",
+				"icoX": 7
+			},
+			{
+				"name": "S-Bahn Berlin GmbH",
+				"url": "https://www.s-bahn-berlin.de/",
+				"icoX": 7,
+				"id": "1"
+			},
+			{
+				"name": "DB Regio AG",
+				"url": "https://www.bahn.de/brandenburg",
+				"icoX": 9,
+				"id": "108"
+			}
+		],
+		"remL": [
+			{
+				"type": "A",
+				"code": "OPERATOR",
+				"icoX": 3,
+				"txtS": "BVG",
+				"txtN": "BVG",
+				"txtL": "Berliner Verkehrsbetriebe"
+			},
+			{
+				"type": "A",
+				"code": "bf",
+				"prio": 2,
+				"icoX": 3,
+				"txtN": "barrier-free"
+			},
+			{
+				"type": "A",
+				"code": "FB",
+				"prio": 350,
+				"icoX": 4,
+				"txtN": "Bicycle conveyance"
+			},
+			{
+				"type": "A",
+				"code": "OPERATOR",
+				"icoX": 3,
+				"txtS": "DBS",
+				"txtN": "DBS",
+				"txtL": "S-Bahn Berlin GmbH"
+			},
+			{
+				"type": "A",
+				"code": "OPERATOR",
+				"icoX": 3,
+				"txtS": "DB",
+				"txtN": "DB Regio",
+				"txtL": "DB Regio AG"
+			},
+			{
+				"type": "A",
+				"code": "VG",
+				"prio": 2,
+				"icoX": 3,
+				"txtN": "VBB single, collective and season tickets are recognised (S+U Gesundbrunnen Bhf (Berlin))"
+			},
+			{
+				"type": "A",
+				"code": "VG",
+				"prio": 2,
+				"icoX": 3,
+				"txtN": "VBB single, collective and season tickets are recognised (Eberswalde, Hauptbahnhof)"
+			},
+			{
+				"type": "A",
+				"code": "CK",
+				"prio": 200,
+				"icoX": 3,
+				"txtN": "Komfort Check-in möglich (Infos unter bahn.de/kci)"
+			},
+			{
+				"type": "A",
+				"code": "FR",
+				"prio": 260,
+				"icoX": 4,
+				"txtN": "Bicycles conveyed - subject to reservation"
+			},
+			{
+				"type": "A",
+				"code": "kh",
+				"prio": 450,
+				"icoX": 3,
+				"txtN": "Bordrestaurant"
+			},
+			{
+				"type": "A",
+				"code": "KG",
+				"prio": 640,
+				"icoX": 3,
+				"txtN": "No food or beverages"
+			},
+			{
+				"type": "R",
+				"code": "text.realtime.connection.alternative.summary",
+				"icoX": 10,
+				"txtN": "Journey suggestion according to current traffic."
+			},
+			{
+				"type": "R",
+				"code": "text.realtime.connection.alternative.detail",
+				"icoX": 10,
+				"txtN": "Journey suggestion according to current traffic situation. Please note the current real-time information."
+			},
+			{
+				"type": "R",
+				"code": "text.realtime.stop.cancelled",
+				"icoX": 11,
+				"txtN": "Stop cancelled"
+			},
+			{
+				"type": "R",
+				"code": "text.realtime.journey.cancelled",
+				"icoX": 12,
+				"txtN": "S41: Cancelled"
+			},
+			{
+				"type": "A",
+				"code": "ko",
+				"prio": 200,
+				"icoX": 3,
+				"txtN": "Pflicht zur Bedeckung von Mund und Nase"
+			},
+			{
+				"type": "A",
+				"code": "SN",
+				"prio": 450,
+				"icoX": 3,
+				"txtN": "SnackPoint/Snacks on board the train"
+			},
+			{
+				"type": "A",
+				"code": "km",
+				"prio": 560,
+				"icoX": 3,
+				"txtN": "vehicle-mounted accessaid"
+			},
+			{
+				"type": "H",
+				"code": "wagenstand_v2",
+				"prio": 2,
+				"icoX": 3,
+				"txtN": "For further information see trip details"
+			},
+			{
+				"type": "R",
+				"code": "text.realtime.connection.cancelled",
+				"icoX": 12,
+				"txtN": "A section of this itinerary is cancelled or unusable."
+			}
+		],
+		"himL": [
+			{
+				"hid": "96404",
+				"act": true,
+				"pub": "",
+				"head": "Together against corona: Keep distance, cover mouth and nose!",
+				"lead": "",
+				"text": "In vehicles, at stops and stations. Don´t risk a fine of at least 50 euros!<br><a href=\"https://www.vbb.de/corona\" target=\"_blank\" rel=\"noopener\">Further information (in German language)</a>",
+				"tckr": "",
+				"icoX": 5,
+				"prio": 100,
+				"prod": 65535,
+				"lModDate": "20201104",
+				"lModTime": "112250",
+				"sDate": "20200826",
+				"sTime": "000000",
+				"eDate": "20221231",
+				"eTime": "000000",
+				"comp": "VBB",
+				"cat": 0,
+				"pubChL": [
+					{
+						"name": "TIMETABLE",
+						"fDate": "20200826",
+						"fTime": "000000",
+						"tDate": "20221231",
+						"tTime": "000000"
+					}
+				]
+			}
+		],
+		"icoL": [
+			{
+				"res": "STA"
+			},
+			{
+				"res": "prod_sub_t",
+				"fg": {
+					"r": 255,
+					"g": 255,
+					"b": 255,
+					"a": 255
+				},
+				"bg": {
+					"r": 0,
+					"g": 51,
+					"b": 153,
+					"a": 255
+				}
+			},
+			{
+				"res": "BVG",
+				"txt": "Berliner Verkehrsbetriebe"
+			},
+			{
+				"res": "INFO"
+			},
+			{
+				"res": "attr_bike_r"
+			},
+			{
+				"res": "HIM0"
+			},
+			{
+				"res": "prod_comm_t",
+				"fg": {
+					"r": 255,
+					"g": 255,
+					"b": 255,
+					"a": 255
+				},
+				"bg": {
+					"r": 55,
+					"g": 135,
+					"b": 74,
+					"a": 255
+				}
+			},
+			{
+				"res": "DBS",
+				"txt": "S-Bahn Berlin GmbH"
+			},
+			{
+				"res": "prod_ic",
+				"fg": {
+					"r": 255,
+					"g": 255,
+					"b": 255,
+					"a": 255
+				},
+				"bg": {
+					"r": 125,
+					"g": 129,
+					"b": 133,
+					"a": 255
+				}
+			},
+			{
+				"res": "DB",
+				"txt": "DB Regio AG"
+			},
+			{
+				"res": "rt_other"
+			},
+			{
+				"res": "rt_scancel"
+			},
+			{
+				"res": "rt_cancel"
+			},
+			{
+				"res": "prod_reg",
+				"fg": {
+					"r": 255,
+					"g": 255,
+					"b": 255,
+					"a": 255
+				},
+				"bg": {
+					"r": 226,
+					"g": 0,
+					"b": 25,
+					"a": 255
+				}
+			}
+		]
+	},
+	"outConL": [
+		{
+			"cid": "C-0",
+			"date": "20201207",
+			"dur": "005000",
+			"chg": 2,
+			"sDays": {
+				"sDaysR": "not every day",
+				"sDaysI": "7. Dec",
+				"sDaysB": "00800000000000000000000000000000000000000000000000"
+			},
+			"isAlt": true,
+			"dep": {
+				"locX": 0,
+				"idx": 7,
+				"dProdX": 0,
+				"dInR": true,
+				"dTimeS": "140800",
+				"dTimeR": "140800",
+				"dProgType": "PROGNOSED",
+				"type": "N"
+			},
+			"arr": {
+				"locX": 1,
+				"idx": 13,
+				"aPlatfS": "3",
+				"aPlatfR": "3",
+				"aOutR": true,
+				"aTimeS": "141700",
+				"aTimeR": "145800",
+				"aProgType": "PROGNOSED",
+				"type": "N"
+			},
+			"secL": [
+				{
+					"type": "JNY",
+					"icoX": 1,
+					"dep": {
+						"locX": 0,
+						"idx": 7,
+						"dProdX": 0,
+						"dInR": true,
+						"dTimeS": "140800",
+						"dTimeR": "140800",
+						"dProgType": "PROGNOSED",
+						"type": "N"
+					},
+					"arr": {
+						"locX": 2,
+						"idx": 13,
+						"aOutR": true,
+						"aTimeS": "141600",
+						"aTimeR": "141600",
+						"aProgType": "PROGNOSED",
+						"type": "N"
+					},
+					"jny": {
+						"jid": "1|35066|1|86|7122020",
+						"prodX": 1,
+						"dirTxt": "U Osloer Str. (Berlin)",
+						"dirFlg": "2",
+						"status": "P",
+						"isRchbl": true,
+						"freq": {
+							"minC": 4,
+							"maxC": 5,
+							"numC": 26
+						},
+						"ctxRecon": "T$A=1@O=U Spichernstr. (Berlin)@L=900042101@a=128@$A=1@O=S+U Westhafen (Berlin)@L=900001201@a=128@$202012071408$202012071416$      U9$$1$$$$",
+						"msgL": [
+							{
+								"type": "REM",
+								"remX": 0,
+								"fLocX": 0,
+								"tLocX": 2,
+								"tagL": [
+									"RES_JNY_DTL"
+								]
+							},
+							{
+								"type": "REM",
+								"remX": 1,
+								"fLocX": 0,
+								"tLocX": 2,
+								"tagL": [
+									"RES_JNY_DTL_H3"
+								]
+							},
+							{
+								"type": "REM",
+								"remX": 2,
+								"fLocX": 0,
+								"tLocX": 2,
+								"tagL": [
+									"RES_JNY_DTL"
+								]
+							},
+							{
+								"type": "HIM",
+								"himX": 0,
+								"fLocX": 0,
+								"tagL": [
+									"RES_GLB_HDR_H3",
+									"SUM_GLB_HDR_H3"
+								]
+							}
+						],
+						"subscr": "F"
+					},
+					"minChg": "000300"
+				},
+				{
+					"type": "JNY",
+					"icoX": 6,
+					"dep": {
+						"locX": 2,
+						"idx": 12,
+						"dProdX": 2,
+						"dPlatfS": "1",
+						"dPlatfR": "1",
+						"dInR": true,
+						"dTimeS": "142000",
+						"dTimeR": "142000",
+						"dProgType": "CALCULATED",
+						"type": "N"
+					},
+					"arr": {
+						"locX": 3,
+						"idx": 14,
+						"aPlatfS": "3",
+						"aPlatfR": "3",
+						"aOutR": true,
+						"aTimeS": "142500",
+						"aTimeR": "142500",
+						"aProgType": "CALCULATED",
+						"type": "N"
+					},
+					"jny": {
+						"jid": "1|66441|25|86|7122020",
+						"prodX": 3,
+						"dirTxt": "Ringbahn S 41",
+						"dirFlg": "1",
+						"status": "P",
+						"isRchbl": true,
+						"freq": {
+							"minC": 5,
+							"maxC": 10,
+							"numC": 24
+						},
+						"ctxRecon": "T$A=1@O=S+U Westhafen (Berlin)@L=900001201@a=128@$A=1@O=S+U Gesundbrunnen Bhf (Berlin)@L=900007102@a=128@$202012071420$202012071425$     S41$$1$$$$",
+						"msgL": [
+							{
+								"type": "REM",
+								"remX": 3,
+								"fLocX": 2,
+								"tLocX": 3,
+								"tagL": [
+									"RES_JNY_DTL"
+								]
+							},
+							{
+								"type": "REM",
+								"remX": 1,
+								"fLocX": 2,
+								"tLocX": 3,
+								"tagL": [
+									"RES_JNY_DTL_H3"
+								]
+							},
+							{
+								"type": "REM",
+								"remX": 2,
+								"fLocX": 2,
+								"tLocX": 3,
+								"tagL": [
+									"RES_JNY_DTL"
+								]
+							},
+							{
+								"type": "HIM",
+								"himX": 0,
+								"fLocX": 2,
+								"tagL": [
+									"RES_GLB_HDR_H3",
+									"SUM_GLB_HDR_H3"
+								]
+							}
+						],
+						"subscr": "F"
+					},
+					"minChg": "000500"
+				},
+				{
+					"type": "JNY",
+					"icoX": 8,
+					"dep": {
+						"locX": 3,
+						"idx": 12,
+						"dPlatfS": "10",
+						"dPlatfR": "10",
+						"dInR": true,
+						"dTimeS": "135200",
+						"dTimeR": "143400",
+						"dProgType": "PROGNOSED",
+						"type": "N"
+					},
+					"arr": {
+						"locX": 1,
+						"idx": 13,
+						"aPlatfS": "3",
+						"aPlatfR": "3",
+						"aOutR": true,
+						"aTimeS": "141700",
+						"aTimeR": "145800",
+						"aProgType": "PROGNOSED",
+						"type": "N"
+					},
+					"jny": {
+						"jid": "1|43248|0|86|7122020",
+						"prodX": 4,
+						"dirTxt": "Ostseebad Binz, Bahnhof",
+						"dirFlg": "2",
+						"status": "P",
+						"isRedir": true,
+						"isRchbl": true,
+						"freq": {
+							"minC": 120,
+							"maxC": 150,
+							"numC": 2,
+							"jnyL": [
+								{
+									"jid": "1|42763|0|86|7122020",
+									"prodX": 5,
+									"dirTxt": "Ostseebad Binz, Bahnhof",
+									"dirFlg": "1",
+									"stopL": [
+										{
+											"locX": 3,
+											"idx": 2,
+											"dProdX": 5,
+											"dTimeS": "155200",
+											"dDirTxt": "Ostseebad Binz, Bahnhof",
+											"dDirFlg": "1",
+											"type": "N"
+										},
+										{
+											"locX": 1,
+											"idx": 3,
+											"aProdX": 5,
+											"aTimeS": "161700",
+											"type": "N"
+										}
+									],
+									"ctxRecon": "T$A=1@O=S+U Gesundbrunnen Bhf (Berlin)@L=900007102@a=128@$A=1@O=Eberswalde, Hauptbahnhof@L=900350127@a=128@$202012071552$202012071617$IC 2457 $$1$$$$",
+									"msgL": [
+										{
+											"type": "REM",
+											"remX": 4,
+											"fLocX": 3,
+											"tLocX": 1,
+											"tagL": [
+												"RES_JNY_DTL"
+											]
+										},
+										{
+											"type": "REM",
+											"remX": 5,
+											"fLocX": 3,
+											"tLocX": 3,
+											"tagL": [
+												"RES_JNY_DTL_H3"
+											]
+										},
+										{
+											"type": "REM",
+											"remX": 6,
+											"fLocX": 1,
+											"tLocX": 1,
+											"tagL": [
+												"RES_JNY_DTL_H3"
+											]
+										},
+										{
+											"type": "REM",
+											"remX": 8,
+											"fLocX": 3,
+											"tLocX": 1,
+											"tagL": [
+												"RES_JNY_DTL"
+											]
+										},
+										{
+											"type": "REM",
+											"remX": 2,
+											"fLocX": 3,
+											"tLocX": 1,
+											"tagL": [
+												"RES_JNY_DTL"
+											]
+										},
+										{
+											"type": "REM",
+											"remX": 10,
+											"fLocX": 3,
+											"tLocX": 1,
+											"tagL": [
+												"RES_JNY_DTL"
+											]
+										}
+									],
+									"subscr": "F"
+								},
+								{
+									"jid": "1|42768|0|86|7122020",
+									"prodX": 6,
+									"dirTxt": "Stralsund, Hauptbahnhof",
+									"dirFlg": "1",
+									"stopL": [
+										{
+											"locX": 3,
+											"idx": 2,
+											"dProdX": 6,
+											"dTimeS": "182200",
+											"dDirTxt": "Stralsund, Hauptbahnhof",
+											"dDirFlg": "1",
+											"type": "N"
+										},
+										{
+											"locX": 1,
+											"idx": 4,
+											"aProdX": 6,
+											"aTimeS": "185200",
+											"type": "N"
+										}
+									],
+									"ctxRecon": "T$A=1@O=S+U Gesundbrunnen Bhf (Berlin)@L=900007102@a=128@$A=1@O=Eberswalde, Hauptbahnhof@L=900350127@a=128@$202012071822$202012071852$IC 2055 $$1$$$$",
+									"msgL": [
+										{
+											"type": "REM",
+											"remX": 4,
+											"fLocX": 3,
+											"tLocX": 1,
+											"tagL": [
+												"RES_JNY_DTL"
+											]
+										},
+										{
+											"type": "REM",
+											"remX": 5,
+											"fLocX": 3,
+											"tLocX": 3,
+											"tagL": [
+												"RES_JNY_DTL_H3"
+											]
+										},
+										{
+											"type": "REM",
+											"remX": 6,
+											"fLocX": 1,
+											"tLocX": 1,
+											"tagL": [
+												"RES_JNY_DTL_H3"
+											]
+										},
+										{
+											"type": "REM",
+											"remX": 8,
+											"fLocX": 3,
+											"tLocX": 1,
+											"tagL": [
+												"RES_JNY_DTL"
+											]
+										},
+										{
+											"type": "REM",
+											"remX": 2,
+											"fLocX": 3,
+											"tLocX": 1,
+											"tagL": [
+												"RES_JNY_DTL"
+											]
+										},
+										{
+											"type": "REM",
+											"remX": 10,
+											"fLocX": 3,
+											"tLocX": 1,
+											"tagL": [
+												"RES_JNY_DTL"
+											]
+										}
+									],
+									"subscr": "F"
+								}
+							]
+						},
+						"ctxRecon": "T$A=1@O=S+U Gesundbrunnen Bhf (Berlin)@L=900007102@a=128@$A=1@O=Eberswalde, Hauptbahnhof@L=900350127@a=128@$202012071352$202012071417$ICE 1710$$3$$$$",
+						"msgL": [
+							{
+								"type": "REM",
+								"remX": 4,
+								"fLocX": 3,
+								"tLocX": 1,
+								"tagL": [
+									"RES_JNY_DTL"
+								]
+							},
+							{
+								"type": "REM",
+								"remX": 5,
+								"fLocX": 3,
+								"tLocX": 3,
+								"tagL": [
+									"RES_JNY_DTL_H3"
+								]
+							},
+							{
+								"type": "REM",
+								"remX": 6,
+								"fLocX": 1,
+								"tLocX": 1,
+								"tagL": [
+									"RES_JNY_DTL_H3"
+								]
+							},
+							{
+								"type": "REM",
+								"remX": 7,
+								"fLocX": 3,
+								"tLocX": 1,
+								"tagL": [
+									"RES_JNY_DTL"
+								]
+							},
+							{
+								"type": "REM",
+								"remX": 8,
+								"fLocX": 3,
+								"tLocX": 1,
+								"tagL": [
+									"RES_JNY_DTL"
+								]
+							},
+							{
+								"type": "REM",
+								"remX": 2,
+								"fLocX": 3,
+								"tLocX": 1,
+								"tagL": [
+									"RES_JNY_DTL"
+								]
+							},
+							{
+								"type": "REM",
+								"remX": 9,
+								"fLocX": 3,
+								"tLocX": 1,
+								"tagL": [
+									"RES_JNY_DTL"
+								]
+							},
+							{
+								"type": "HIM",
+								"himX": 0,
+								"fLocX": 3,
+								"tagL": [
+									"RES_GLB_HDR_H3",
+									"SUM_GLB_HDR_H3"
+								]
+							}
+						],
+						"subscr": "F"
+					}
+				}
+			],
+			"ctxRecon": "¶HKI¶T$A=1@O=U Spichernstr. (Berlin)@L=900042101@a=128@$A=1@O=S+U Westhafen (Berlin)@L=900001201@a=128@$202012071408$202012071416$      U9$$1$$$$§T$A=1@O=S+U Westhafen (Berlin)@L=900001201@a=128@$A=1@O=S+U Gesundbrunnen Bhf (Berlin)@L=900007102@a=128@$202012071420$202012071425$     S41$$1$$$$§T$A=1@O=S+U Gesundbrunnen Bhf (Berlin)@L=900007102@a=128@$A=1@O=Eberswalde, Hauptbahnhof@L=900350127@a=128@$202012071352$202012071417$ICE 1710$$3$$$$",
+			"freq": {
+				"minC": 120
+			},
+			"msgL": [
+				{
+					"type": "REM",
+					"remX": 11,
+					"tagL": [
+						"SUM_CON_HDR_H3"
+					]
+				},
+				{
+					"type": "REM",
+					"remX": 12,
+					"tagL": [
+						"RES_CON_HDR_H3"
+					]
+				}
+			],
+			"conSubscr": "F",
+			"cksum": "3a115686_3"
+		},
+		{
+			"cid": "C-1",
+			"date": "20201207",
+			"dur": "005500",
+			"chg": 2,
+			"sDays": {
+				"sDaysR": "not every day",
+				"sDaysI": "7. until 11. Dec 2020",
+				"sDaysB": "7CF80000000000000000000000000000000000000000000000"
+			},
+			"isNotRdbl": true,
+			"badSecRefX": 1,
+			"dep": {
+				"locX": 0,
+				"idx": 7,
+				"dProdX": 7,
+				"dInR": true,
+				"dTimeS": "141200",
+				"dTimeR": "141200",
+				"dProgType": "PROGNOSED",
+				"type": "N"
+			},
+			"arr": {
+				"locX": 1,
+				"idx": 13,
+				"aPlatfS": "3",
+				"aOutR": true,
+				"aTimeS": "150700",
+				"type": "N"
+			},
+			"secL": [
+				{
+					"type": "JNY",
+					"icoX": 1,
+					"dep": {
+						"locX": 0,
+						"idx": 7,
+						"dProdX": 7,
+						"dInR": true,
+						"dTimeS": "141200",
+						"dTimeR": "141200",
+						"dProgType": "PROGNOSED",
+						"type": "N"
+					},
+					"arr": {
+						"locX": 2,
+						"idx": 13,
+						"aProdX": 7,
+						"aOutR": true,
+						"aTimeS": "142100",
+						"aTimeR": "142100",
+						"aProgType": "PROGNOSED",
+						"type": "N"
+					},
+					"jny": {
+						"jid": "1|35069|1|86|7122020",
+						"prodX": 8,
+						"dirTxt": "U Osloer Str. (Berlin)",
+						"dirFlg": "2",
+						"status": "P",
+						"isRchbl": true,
+						"freq": {
+							"minC": 4,
+							"maxC": 5,
+							"numC": 26
+						},
+						"ctxRecon": "T$A=1@O=U Spichernstr. (Berlin)@L=900042101@a=128@$A=1@O=S+U Westhafen (Berlin)@L=900001201@a=128@$202012071412$202012071421$      U9$$1$$$$",
+						"msgL": [
+							{
+								"type": "REM",
+								"remX": 0,
+								"fLocX": 0,
+								"tLocX": 2,
+								"tagL": [
+									"RES_JNY_DTL"
+								]
+							},
+							{
+								"type": "REM",
+								"remX": 1,
+								"fLocX": 0,
+								"tLocX": 2,
+								"tagL": [
+									"RES_JNY_DTL_H3"
+								]
+							},
+							{
+								"type": "REM",
+								"remX": 2,
+								"fLocX": 0,
+								"tLocX": 2,
+								"tagL": [
+									"RES_JNY_DTL"
+								]
+							},
+							{
+								"type": "HIM",
+								"himX": 0,
+								"fLocX": 0,
+								"tagL": [
+									"RES_GLB_HDR_H3",
+									"SUM_GLB_HDR_H3"
+								]
+							}
+						],
+						"subscr": "F"
+					},
+					"minChg": "000300"
+				},
+				{
+					"type": "JNY",
+					"icoX": 6,
+					"dep": {
+						"locX": 2,
+						"idx": 12,
+						"dProdX": 9,
+						"dInR": false,
+						"dTimeS": "142500",
+						"dCncl": true,
+						"msgL": [
+							{
+								"type": "REM",
+								"remX": 13,
+								"tagL": [
+									"RES_LOC_H3"
+								]
+							}
+						],
+						"type": "N"
+					},
+					"arr": {
+						"locX": 3,
+						"idx": 14,
+						"aProdX": 9,
+						"aOutR": false,
+						"aTimeS": "143000",
+						"aCncl": true,
+						"msgL": [
+							{
+								"type": "REM",
+								"remX": 13,
+								"tagL": [
+									"RES_LOC_H3"
+								]
+							}
+						],
+						"type": "N"
+					},
+					"jny": {
+						"jid": "1|66451|1|86|7122020",
+						"prodX": 10,
+						"dirTxt": "Ringbahn S 41",
+						"dirFlg": "1",
+						"status": "P",
+						"isCncl": true,
+						"isRchbl": false,
+						"freq": {
+							"minC": 5,
+							"maxC": 5,
+							"numC": 24
+						},
+						"ctxRecon": "T$A=1@O=S+U Westhafen (Berlin)@L=900001201@a=128@$A=1@O=S+U Gesundbrunnen Bhf (Berlin)@L=900007102@a=128@$202012071425$202012071430$     S41$$1$$$$",
+						"msgL": [
+							{
+								"type": "REM",
+								"remX": 3,
+								"fLocX": 2,
+								"tLocX": 3,
+								"tagL": [
+									"RES_JNY_DTL"
+								]
+							},
+							{
+								"type": "REM",
+								"remX": 1,
+								"fLocX": 2,
+								"tLocX": 3,
+								"tagL": [
+									"RES_JNY_DTL_H3"
+								]
+							},
+							{
+								"type": "REM",
+								"remX": 2,
+								"fLocX": 2,
+								"tLocX": 3,
+								"tagL": [
+									"RES_JNY_DTL"
+								]
+							},
+							{
+								"type": "HIM",
+								"himX": 0,
+								"fLocX": 2,
+								"tagL": [
+									"RES_GLB_HDR_H3",
+									"SUM_GLB_HDR_H3"
+								]
+							},
+							{
+								"type": "REM",
+								"remX": 14,
+								"tagL": [
+									"RES_SEC_HDR_H3"
+								]
+							}
+						],
+						"subscr": "F"
+					},
+					"minChg": "000500"
+				},
+				{
+					"type": "JNY",
+					"icoX": 13,
+					"dep": {
+						"locX": 3,
+						"idx": 8,
+						"dPlatfS": "9",
+						"dInR": true,
+						"dTimeS": "143900",
+						"type": "N"
+					},
+					"arr": {
+						"locX": 1,
+						"idx": 13,
+						"aPlatfS": "3",
+						"aOutR": true,
+						"aTimeS": "150700",
+						"type": "N"
+					},
+					"jny": {
+						"jid": "1|1961|0|86|7122020",
+						"prodX": 11,
+						"dirTxt": "Stralsund, Hauptbahnhof",
+						"dirFlg": "2",
+						"status": "P",
+						"isRchbl": true,
+						"freq": {
+							"minC": 14,
+							"maxC": 46,
+							"numC": 5,
+							"jnyL": [
+								{
+									"jid": "1|130|0|86|7122020",
+									"prodX": 12,
+									"dirTxt": "Tantow, Bahnhof",
+									"dirFlg": "2",
+									"stopL": [
+										{
+											"locX": 3,
+											"idx": 0,
+											"dProdX": 12,
+											"dTimeS": "145300",
+											"dDirTxt": "Tantow, Bahnhof",
+											"dDirFlg": "2",
+											"type": "N"
+										},
+										{
+											"locX": 1,
+											"idx": 2,
+											"aProdX": 12,
+											"aTimeS": "152600",
+											"type": "N"
+										}
+									],
+									"ctxRecon": "T$A=1@O=S+U Gesundbrunnen Bhf (Berlin)@L=900007102@a=128@$A=1@O=Eberswalde, Hauptbahnhof@L=900350127@a=128@$202012071453$202012071526$    RE66$$1$$$$",
+									"msgL": [
+										{
+											"type": "REM",
+											"remX": 4,
+											"fLocX": 3,
+											"tLocX": 1,
+											"tagL": [
+												"RES_JNY_DTL"
+											]
+										},
+										{
+											"type": "REM",
+											"remX": 15,
+											"fLocX": 3,
+											"tLocX": 1,
+											"tagL": [
+												"RES_JNY_DTL"
+											]
+										},
+										{
+											"type": "REM",
+											"remX": 2,
+											"fLocX": 3,
+											"tLocX": 1,
+											"tagL": [
+												"RES_JNY_DTL"
+											]
+										},
+										{
+											"type": "REM",
+											"remX": 17,
+											"fLocX": 3,
+											"tLocX": 1,
+											"tagL": [
+												"RES_JNY_DTL"
+											]
+										},
+										{
+											"type": "REM",
+											"remX": 18,
+											"tagL": [
+												"RES_JNY_H3"
+											]
+										}
+									],
+									"subscr": "F"
+								},
+								{
+									"jid": "1|1976|0|86|7122020",
+									"prodX": 13,
+									"dirTxt": "Schwedt, Bahnhof",
+									"dirFlg": "2",
+									"stopL": [
+										{
+											"locX": 3,
+											"idx": 5,
+											"dProdX": 13,
+											"dTimeS": "153900",
+											"dDirTxt": "Schwedt, Bahnhof",
+											"dDirFlg": "2",
+											"type": "N"
+										},
+										{
+											"locX": 1,
+											"idx": 7,
+											"aProdX": 13,
+											"aTimeS": "160700",
+											"type": "N"
+										}
+									],
+									"ctxRecon": "T$A=1@O=S+U Gesundbrunnen Bhf (Berlin)@L=900007102@a=128@$A=1@O=Eberswalde, Hauptbahnhof@L=900350127@a=128@$202012071539$202012071607$     RE3$$1$$$$",
+									"msgL": [
+										{
+											"type": "REM",
+											"remX": 4,
+											"fLocX": 3,
+											"tLocX": 1,
+											"tagL": [
+												"RES_JNY_DTL"
+											]
+										},
+										{
+											"type": "REM",
+											"remX": 1,
+											"fLocX": 3,
+											"tLocX": 1,
+											"tagL": [
+												"RES_JNY_DTL_H3"
+											]
+										},
+										{
+											"type": "REM",
+											"remX": 15,
+											"fLocX": 3,
+											"tLocX": 1,
+											"tagL": [
+												"RES_JNY_DTL"
+											]
+										},
+										{
+											"type": "REM",
+											"remX": 2,
+											"fLocX": 3,
+											"tLocX": 1,
+											"tagL": [
+												"RES_JNY_DTL"
+											]
+										},
+										{
+											"type": "REM",
+											"remX": 16,
+											"fLocX": 3,
+											"tLocX": 1,
+											"tagL": [
+												"RES_JNY_DTL"
+											]
+										},
+										{
+											"type": "REM",
+											"remX": 17,
+											"fLocX": 3,
+											"tLocX": 1,
+											"tagL": [
+												"RES_JNY_DTL"
+											]
+										},
+										{
+											"type": "REM",
+											"remX": 18,
+											"tagL": [
+												"RES_JNY_H3"
+											]
+										}
+									],
+									"subscr": "F"
+								},
+								{
+									"jid": "1|1971|0|86|7122020",
+									"prodX": 14,
+									"dirTxt": "Eberswalde, Hauptbahnhof",
+									"dirFlg": "2",
+									"stopL": [
+										{
+											"locX": 3,
+											"idx": 3,
+											"dProdX": 14,
+											"dTimeS": "155900",
+											"dDirTxt": "Eberswalde, Hauptbahnhof",
+											"dDirFlg": "2",
+											"type": "N"
+										},
+										{
+											"locX": 1,
+											"idx": 6,
+											"aProdX": 14,
+											"aTimeS": "162900",
+											"type": "N"
+										}
+									],
+									"ctxRecon": "T$A=1@O=S+U Gesundbrunnen Bhf (Berlin)@L=900007102@a=128@$A=1@O=Eberswalde, Hauptbahnhof@L=900350127@a=128@$202012071559$202012071629$     RE3$$1$$$$",
+									"msgL": [
+										{
+											"type": "REM",
+											"remX": 4,
+											"fLocX": 3,
+											"tLocX": 1,
+											"tagL": [
+												"RES_JNY_DTL"
+											]
+										},
+										{
+											"type": "REM",
+											"remX": 1,
+											"fLocX": 3,
+											"tLocX": 1,
+											"tagL": [
+												"RES_JNY_DTL_H3"
+											]
+										},
+										{
+											"type": "REM",
+											"remX": 15,
+											"fLocX": 3,
+											"tLocX": 1,
+											"tagL": [
+												"RES_JNY_DTL"
+											]
+										},
+										{
+											"type": "REM",
+											"remX": 2,
+											"fLocX": 3,
+											"tLocX": 1,
+											"tagL": [
+												"RES_JNY_DTL"
+											]
+										},
+										{
+											"type": "REM",
+											"remX": 17,
+											"fLocX": 3,
+											"tLocX": 1,
+											"tagL": [
+												"RES_JNY_DTL"
+											]
+										},
+										{
+											"type": "REM",
+											"remX": 18,
+											"tagL": [
+												"RES_JNY_H3"
+											]
+										}
+									],
+									"subscr": "F"
+								},
+								{
+									"jid": "1|1959|1|86|7122020",
+									"prodX": 15,
+									"dirTxt": "Stralsund, Hauptbahnhof",
+									"dirFlg": "2",
+									"stopL": [
+										{
+											"locX": 3,
+											"idx": 5,
+											"dProdX": 15,
+											"dTimeS": "163900",
+											"dDirTxt": "Stralsund, Hauptbahnhof",
+											"dDirFlg": "2",
+											"type": "N"
+										},
+										{
+											"locX": 1,
+											"idx": 7,
+											"aProdX": 15,
+											"aTimeS": "170700",
+											"type": "N"
+										}
+									],
+									"ctxRecon": "T$A=1@O=S+U Gesundbrunnen Bhf (Berlin)@L=900007102@a=128@$A=1@O=Eberswalde, Hauptbahnhof@L=900350127@a=128@$202012071639$202012071707$     RE3$$1$$$$",
+									"msgL": [
+										{
+											"type": "REM",
+											"remX": 4,
+											"fLocX": 3,
+											"tLocX": 1,
+											"tagL": [
+												"RES_JNY_DTL"
+											]
+										},
+										{
+											"type": "REM",
+											"remX": 1,
+											"fLocX": 3,
+											"tLocX": 1,
+											"tagL": [
+												"RES_JNY_DTL_H3"
+											]
+										},
+										{
+											"type": "REM",
+											"remX": 15,
+											"fLocX": 3,
+											"tLocX": 1,
+											"tagL": [
+												"RES_JNY_DTL"
+											]
+										},
+										{
+											"type": "REM",
+											"remX": 2,
+											"fLocX": 3,
+											"tLocX": 1,
+											"tagL": [
+												"RES_JNY_DTL"
+											]
+										},
+										{
+											"type": "REM",
+											"remX": 16,
+											"fLocX": 3,
+											"tLocX": 1,
+											"tagL": [
+												"RES_JNY_DTL"
+											]
+										},
+										{
+											"type": "REM",
+											"remX": 17,
+											"fLocX": 3,
+											"tLocX": 1,
+											"tagL": [
+												"RES_JNY_DTL"
+											]
+										},
+										{
+											"type": "REM",
+											"remX": 18,
+											"tagL": [
+												"RES_JNY_H3"
+											]
+										}
+									],
+									"subscr": "F"
+								},
+								{
+									"jid": "1|129|0|86|7122020",
+									"prodX": 16,
+									"dirTxt": "Szczecin, Glowny",
+									"dirFlg": "2",
+									"stopL": [
+										{
+											"locX": 3,
+											"idx": 0,
+											"dProdX": 16,
+											"dTimeS": "171900",
+											"dDirTxt": "Szczecin, Glowny",
+											"dDirFlg": "2",
+											"type": "N"
+										},
+										{
+											"locX": 1,
+											"idx": 2,
+											"aProdX": 16,
+											"aTimeS": "175100",
+											"type": "N"
+										}
+									],
+									"ctxRecon": "T$A=1@O=S+U Gesundbrunnen Bhf (Berlin)@L=900007102@a=128@$A=1@O=Eberswalde, Hauptbahnhof@L=900350127@a=128@$202012071719$202012071751$    RE66$$1$$$$",
+									"msgL": [
+										{
+											"type": "REM",
+											"remX": 4,
+											"fLocX": 3,
+											"tLocX": 1,
+											"tagL": [
+												"RES_JNY_DTL"
+											]
+										},
+										{
+											"type": "REM",
+											"remX": 15,
+											"fLocX": 3,
+											"tLocX": 1,
+											"tagL": [
+												"RES_JNY_DTL"
+											]
+										},
+										{
+											"type": "REM",
+											"remX": 2,
+											"fLocX": 3,
+											"tLocX": 1,
+											"tagL": [
+												"RES_JNY_DTL"
+											]
+										},
+										{
+											"type": "REM",
+											"remX": 17,
+											"fLocX": 3,
+											"tLocX": 1,
+											"tagL": [
+												"RES_JNY_DTL"
+											]
+										},
+										{
+											"type": "REM",
+											"remX": 18,
+											"tagL": [
+												"RES_JNY_H3"
+											]
+										}
+									],
+									"subscr": "F"
+								}
+							]
+						},
+						"ctxRecon": "T$A=1@O=S+U Gesundbrunnen Bhf (Berlin)@L=900007102@a=128@$A=1@O=Eberswalde, Hauptbahnhof@L=900350127@a=128@$202012071439$202012071507$     RE3$$1$$$$",
+						"msgL": [
+							{
+								"type": "REM",
+								"remX": 4,
+								"fLocX": 3,
+								"tLocX": 1,
+								"tagL": [
+									"RES_JNY_DTL"
+								]
+							},
+							{
+								"type": "REM",
+								"remX": 1,
+								"fLocX": 3,
+								"tLocX": 1,
+								"tagL": [
+									"RES_JNY_DTL_H3"
+								]
+							},
+							{
+								"type": "REM",
+								"remX": 15,
+								"fLocX": 3,
+								"tLocX": 1,
+								"tagL": [
+									"RES_JNY_DTL"
+								]
+							},
+							{
+								"type": "REM",
+								"remX": 2,
+								"fLocX": 3,
+								"tLocX": 1,
+								"tagL": [
+									"RES_JNY_DTL"
+								]
+							},
+							{
+								"type": "REM",
+								"remX": 16,
+								"fLocX": 3,
+								"tLocX": 1,
+								"tagL": [
+									"RES_JNY_DTL"
+								]
+							},
+							{
+								"type": "REM",
+								"remX": 17,
+								"fLocX": 3,
+								"tLocX": 1,
+								"tagL": [
+									"RES_JNY_DTL"
+								]
+							},
+							{
+								"type": "HIM",
+								"himX": 0,
+								"fLocX": 3,
+								"tagL": [
+									"RES_GLB_HDR_H3",
+									"SUM_GLB_HDR_H3"
+								]
+							},
+							{
+								"type": "REM",
+								"remX": 18,
+								"tagL": [
+									"RES_JNY_H3"
+								]
+							}
+						],
+						"subscr": "F"
+					}
+				}
+			],
+			"ctxRecon": "¶HKI¶T$A=1@O=U Spichernstr. (Berlin)@L=900042101@a=128@$A=1@O=S+U Westhafen (Berlin)@L=900001201@a=128@$202012071412$202012071421$      U9$$1$$$$§T$A=1@O=S+U Westhafen (Berlin)@L=900001201@a=128@$A=1@O=S+U Gesundbrunnen Bhf (Berlin)@L=900007102@a=128@$202012071425$202012071430$     S41$$1$$$$§T$A=1@O=S+U Gesundbrunnen Bhf (Berlin)@L=900007102@a=128@$A=1@O=Eberswalde, Hauptbahnhof@L=900350127@a=128@$202012071439$202012071507$     RE3$$1$$$$",
+			"freq": {
+				"minC": 14
+			},
+			"msgL": [
+				{
+					"type": "REM",
+					"remX": 19,
+					"tagL": [
+						"SUM_CON_HDR_H3"
+					]
+				}
+			],
+			"conSubscr": "F",
+			"cksum": "38d23e49_3"
+		}
+	],
+	"outCtxScrB": "2|OB|MT#11#15252#15252#15307#15307#0#0#325#15243#1#-2147483638#0#1#2|PDH#24775e408621ad489d173b87412c0030|RD#7122020|RT#140322|US#1",
+	"outCtxScrF": "2|OF|MT#11#15252#15252#15307#15307#0#0#325#15243#1#-2147483638#0#1#2|PDH#24775e408621ad489d173b87412c0030|RD#7122020|RT#140322|US#1",
+	"fpB": "20201129",
+	"fpE": "20210612",
+	"planrtTS": "1607346181"
+}

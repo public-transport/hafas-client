@@ -138,12 +138,15 @@ const parseJourneyLeg = (ctx, pt, date) => { // pt = raw leg
 			const parseAlternative = (a) => {
 				// todo: parse this just like a `leg` (breaking)
 				// todo: parse `a.stopL`, `a.ctxRecon`, `a.msgL`
-				const st0 = a.stopL[0] || {}
+				const st0 = Array.isArray(a.stopL) && a.stopL[0] || {}
+				const when = st0
+					? profile.parseWhen(ctx, date, st0.dTimeS, st0.dTimeR, st0.dTZOffset, st0.dCncl)
+					: null
 				return {
 					tripId: a.jid,
 					line: a.line || null,
 					direction: a.dirTxt || null,
-					...profile.parseWhen(ctx, date, st0.dTimeS, st0.dTimeR, st0.dTZOffset, st0.dCncl)
+					...when,
 				}
 			}
 			res.alternatives = freq.jnyL.map(parseAlternative)
