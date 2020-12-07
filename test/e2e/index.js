@@ -2,6 +2,7 @@
 
 require('./common')
 require('./db')
+require('./sbb')
 require('./vbb')
 require('./bvg')
 require('./oebb')
