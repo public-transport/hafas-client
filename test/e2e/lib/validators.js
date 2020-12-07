@@ -310,7 +310,9 @@ const createValidateJourneyLeg = (cfg) => {
 					a.ok(alt.direction, n + '.direction must not be empty')
 				}
 
-				assertValidWhen(alt.when, cfg.when, n + '.when')
+				if (alt.when !== null) {
+					assertValidWhen(alt.when, cfg.when, n + '.when')
+				}
 				if (alt.delay !== null) {
 					a.strictEqual(typeof alt.delay, 'number', n + '.delay must be a number')
 				}
