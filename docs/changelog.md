@@ -1,5 +1,14 @@
 # Changelog
 
+## `5.12.0`
+
+- 3e6d6d9 add [`serverInfo()` method](server-info.md)
+- ed48971/731d9b8 add [`remarks()` method](remarks.md)
+- 9d8260b/53e10f7/1a0d97d add [`lines()` method](lines.md)
+- e6bc8c6 `departures()`/`arrivals()`: add `line` option
+
+[🏷 `5.12.0`](https://github.com/public-transport/hafas-client/releases/tag/5.12.0), 2020-12-09
+
 ## `5.11.0`
 
 - 259fcd7 add [*VRN* (south-west Germany) profile](../p/vrn)
