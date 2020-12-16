@@ -1,15 +1,15 @@
 {
   "statusCode": 200,
   "headers": {
-    "date": "Tue, 18 Aug 2020 00:25:11 GMT",
+    "date": "Sun, 27 Dec 2020 00:57:59 GMT",
     "server": "Apache",
     "vary": "Accept-Encoding",
-    "content-length": "864",
+    "content-length": "794",
     "connection": "close",
     "content-type": "application/json; charset=utf-8"
   },
   "url": "https://db-regio.hafas.de/bin/hci/mgate.exe",
-  "time": 270,
+  "time": 261,
   "request": {
     "method": "POST",
     "headers": {
@@ -23,7 +23,7 @@
         "application/json"
       ],
       "user-agent": [
-        "public450a03437c18-transport/hafas-client:test"
+        "public-t93be7ca383b2ransport/hafas-client:test"
       ],
       "Content-Length": [
         "323"

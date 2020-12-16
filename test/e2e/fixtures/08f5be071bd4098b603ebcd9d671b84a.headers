@@ -1,15 +1,15 @@
 {
   "statusCode": 200,
   "headers": {
-    "date": "Sun, 19 Jul 2020 20:04:53 GMT",
+    "date": "Sun, 27 Dec 2020 00:58:17 GMT",
     "server": "Apache",
-    "content-length": "304",
-    "keep-alive": "timeout=5, max=13",
+    "content-length": "306",
+    "keep-alive": "timeout=5, max=99",
     "connection": "Keep-Alive",
     "content-type": "application/json; charset=utf-8"
   },
   "url": "https://fahrplan.salzburg-verkehr.at/bin/mgate.exe",
-  "time": 312,
+  "time": 273,
   "request": {
     "method": "POST",
     "headers": {
@@ -23,7 +23,7 @@
         "application/json"
       ],
       "user-agent": [
-        "public-transport/hafas-client:testdf34c2ec2b3a"
+        "public-transpor93be7ca383b2t/hafas-client:test"
       ],
       "Content-Length": [
         "182"

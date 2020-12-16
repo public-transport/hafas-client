@@ -1,0 +1,37 @@
+{
+  "statusCode": 200,
+  "headers": {
+    "date": "Sun, 27 Dec 2020 00:58:20 GMT",
+    "server": "Apache",
+    "content-length": "3895",
+    "cache-control": "max-age=86400",
+    "expires": "Mon, 28 Dec 2020 00:58:20 GMT",
+    "connection": "close",
+    "content-type": "application/json; charset=utf-8"
+  },
+  "url": "https://online.fahrplan.zvv.ch/bin/mgate.exe?mic=6e7fb7ad47beb927972467a46362b5d6&mac=67dd0dd78c35f4378c5639353d41183d",
+  "time": 271,
+  "request": {
+    "method": "POST",
+    "headers": {
+      "Content-Type": [
+        "application/json"
+      ],
+      "Accept-Encoding": [
+        "gzip, br, deflate"
+      ],
+      "Accept": [
+        "application/json"
+      ],
+      "user-agent": [
+        "public-transport/hafas-clien93be7ca383b2t:test"
+      ],
+      "Content-Length": [
+        "302"
+      ],
+      "Connection": [
+        "close"
+      ]
+    }
+  }
+}
