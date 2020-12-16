@@ -1,1 +1,0 @@
-{"ver":"1.25","lang":"deu","id":"wb6wfrbkmqw2x44c","err":"OK","graph":{"id":"standard","index":0},"subGraph":{"id":"global","index":0},"view":{"id":"standard","index":0,"type":"WGS84"},"svcResL":[{"meth":"JourneyGeoPos","err":"FAIL","errTxt":"HCI Service: request failed","errTxtOut":"Während der Suche ist ein interner Fehler aufgetreten"}]}

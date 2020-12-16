@@ -1,15 +1,15 @@
 {
   "statusCode": 200,
   "headers": {
-    "date": "Mon, 07 Dec 2020 15:14:46 GMT",
+    "date": "Sun, 27 Dec 2020 00:55:21 GMT",
     "server": "Apache/2.4.6 (Red Hat Enterprise Linux) OpenSSL/1.0.2k-fips",
-    "content-length": "1044",
+    "content-length": "1046",
     "x-robots-tag": "noindex, nofollow",
     "connection": "close",
     "content-type": "application/json; charset=utf-8"
   },
   "url": "http://fahrplan.sbb.ch/bin/mgate.exe",
-  "time": 246,
+  "time": 239,
   "request": {
     "method": "POST",
     "headers": {
@@ -23,7 +23,7 @@
         "application/json"
       ],
       "user-agent": [
-        "public-transport/hafas-cli3897068ef635ent:test"
+        "pu93be7ca383b2blic-transport/hafas-client:test"
       ],
       "Content-Length": [
         "273"
