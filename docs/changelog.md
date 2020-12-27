@@ -1,5 +1,14 @@
 # Changelog
 
+## `5.13.0`
+
+- 7444e08/bbf024d/6815c9e add [*SBB* (Switzerland) profile](../p/sbb)
+- 17e08ac `parseJourneyLeg` → `parseAlternative`: handle missing `stopL[]` 🐛, add tests ✅
+- 850ec94 *mobiliteit.lu*: fix endpoint, upgrade to version `1.25`
+- 54b7d28 *mobiliteit.lu*: fix `national-train` product bitmasks 🐛
+
+[🏷 `5.13.0`](https://github.com/public-transport/hafas-client/releases/tag/5.13.0), 2020-12-27
+
 ## `5.12.0`
 
 - 3e6d6d9 add [`serverInfo()` method](server-info.md)
