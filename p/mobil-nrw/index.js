@@ -34,6 +34,7 @@ const cflProfile = {
 	trip: true,
 	radar: true,
 	reachableFrom: true,
+	refreshJourneyUseOutReconL: true,
 	remarks: true,
 }
 
