@@ -223,6 +223,7 @@ HAFAS endpoint | wrapper library | docs | example code | source code
 [Société Nationale des Chemins de Fer Luxembourgeois (CFL)](https://en.wikipedia.org/wiki/Société_Nationale_des_Chemins_de_Fer_Luxembourgeois) | - | [docs](p/cfl/readme.md) | [example code](p/cfl/example.js) | [src](p/cfl/index.js)
 [Hamburg public transport (HVV)](https://en.wikipedia.org/wiki/Hamburger_Verkehrsverbund) | - | [docs](p/hvv/readme.md) | [example code](p/hvv/example.js) | [src](p/hvv/index.js)
 [*Nordhessischer Verkehrsverbund (NVV)*](https://en.wikipedia.org/wiki/Nordhessischer_Verkehrsverbund) ([Hesse](https://en.wikipedia.org/wiki/Hesse)) | - | [docs](p/nvv/readme.md) | [example code](p/nvv/example.js) | [src](p/nvv/index.js)
+[*mobil.nrw*](https://www.mobil.nrw) | - | [docs](p/mobil-nrw/readme.md) | [example code](p/mobil-nrw/example.js) | [src](p/mobil-nrw/index.js)
 *DB Busradar NRW* ([DB Regio Bus](https://en.wikipedia.org/wiki/DB_Regio#Bus_division_(DB_Regio_Bus))) | - | [docs](p/db-busradar-nrw/readme.md) | [example code](p/db-busradar-nrw/example.js) | [src](p/db-busradar-nrw/index.js)
 [Verkehrsverbund Süd-Niedersachsen (VSN)](https://de.wikipedia.org/wiki/Verkehrsverbund_S%C3%BCd-Niedersachsen) | - | [docs](p/vsn/readme.md) | [example code](p/vsn/example.js) | [src](p/vsn/index.js)
 [Ingolstädter Verkehrsgesellschaft (INVG)](https://de.wikipedia.org/wiki/Ingolstädter_Verkehrsgesellschaft) | - | [docs](p/invg/readme.md) | [example code](p/invg/example.js) | [src](p/invg/index.js)
