@@ -5,8 +5,8 @@
 [![npm version](https://img.shields.io/npm/v/hafas-client.svg)](https://www.npmjs.com/package/hafas-client)
 [![build status](https://img.shields.io/travis/public-transport/hafas-client.svg?branch=5)](https://travis-ci.org/public-transport/hafas-client)
 ![ISC-licensed](https://img.shields.io/github/license/public-transport/hafas-client.svg)
-[![chat on gitter](https://badges.gitter.im/public-transport/Lobby.svg)](https://gitter.im/public-transport/Lobby)
 [![support Jannis via GitHub Sponsors](https://img.shields.io/badge/support%20Jannis-donate-fa7664.svg)](https://github.com/sponsors/derhuerst)
+[![chat with Jannis on Twitter](https://img.shields.io/badge/chat%20with%20Jannis-on%20Twitter-1da1f2.svg)](https://twitter.com/derhuerst)
 
 
 ## Background
@@ -29,6 +29,11 @@ npm install hafas-client
 ### with [react-native](https://facebook.github.io/react-native/)
 
 `hafas-client` as well its dependencies use [Node-builtin modules](https://nodejs.org/dist/latest/docs/api/) and [Node globals](https://nodejs.org/api/globals.html). To be able to use it within react-native, follow [the instructions at `node-libs-react-native`](https://github.com/parshap/node-libs-react-native/blob/3/README.md#usage).
+
+
+## API
+
+[API documentation](docs/readme.md)
 
 
 ## Usage
@@ -192,11 +197,6 @@ client.journeys('8011167', '8000261', {results: 1})
 ```
 
 Each of the [profiles](p) has more detailed example code.
-
-
-## API
-
-[API documentation](docs/readme.md)
 
 
 ## supported networks/endpoints

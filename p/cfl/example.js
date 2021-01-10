@@ -22,9 +22,9 @@ client.departures('009864348', { duration: 5 })
 // 	east: 6.13
 // }, {results: 10})
 
-// .then(([journey]) => {
-// 	const leg = journey.legs[0]
-// 	return client.trip(leg.id, leg.line.name)
+// .then(({journeys}) => {
+// 	const leg = journeys[0].legs[0]
+// 	return client.trip(leg.tripId, leg.line.name)
 // })
 
 .then(data => {
