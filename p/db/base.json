@@ -1,0 +1,16 @@
+{
+	"auth": {
+		"type": "AID",
+		"aid": "n91dB8Z77MLdoR0K"
+	},
+	"salt": "6264493855566A34304B356676787766",
+	"client": {
+		"id": "DB",
+		"v": "16040000",
+		"type": "IPH",
+		"name": "DB Navigator"
+	},
+	"endpoint": "https://reiseauskunft.bahn.de/bin/mgate.exe",
+	"ext": "DB.R19.04.a",
+	"ver": "1.15"
+}

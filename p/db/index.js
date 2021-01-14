@@ -17,6 +17,7 @@ const _formatStation = require('../../format/station')
 const {bike} = require('../../format/filters')
 
 const products = require('./products')
+const baseProfile = require('./base.json')
 const formatLoyaltyCard = require('./loyalty-cards').format
 
 const transformReqBody = (ctx, body) => {
@@ -24,11 +25,6 @@ const transformReqBody = (ctx, body) => {
 
 	// see https://pastebin.com/qZ9WS3Cx
 	req.cfg = {...req.cfg, rtMode: 'HYBRID'} // todo: use `REALTIME`?
-
-	body.client = {id: 'DB', v: '16040000', type: 'IPH', name: 'DB Navigator'}
-	body.ext = 'DB.R19.04.a'
-	body.ver = '1.15'
-	body.auth = {type: 'AID', aid: 'n91dB8Z77MLdoR0K'}
 
 	return body
 }
@@ -447,11 +443,9 @@ const formatStation = (id) => {
 // todo: find option for absolute number of results
 
 const dbProfile = {
+	...baseProfile,
 	locale: 'de-DE',
 	timezone: 'Europe/Berlin',
-	endpoint: 'https://reiseauskunft.bahn.de/bin/mgate.exe',
-
-	salt: Buffer.from('bdI8UVj40K5fvxwf', 'utf8'),
 	addChecksum: true,
 
 	transformReqBody,

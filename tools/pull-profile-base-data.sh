@@ -22,3 +22,4 @@ ext: .options.ext, \
 ver: .options.version, \
 }"
 
+jq -r --tab "$query" <"$src/de/db-hafas-mgate.json" >../p/db/base.json
