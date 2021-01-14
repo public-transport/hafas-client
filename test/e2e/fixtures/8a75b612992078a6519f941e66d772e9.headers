@@ -1,0 +1,35 @@
+{
+  "statusCode": 200,
+  "headers": {
+    "date": "Thu, 14 Jan 2021 18:00:58 GMT",
+    "server": "Apache",
+    "content-length": "2812",
+    "connection": "close",
+    "content-type": "application/json; charset=utf-8"
+  },
+  "url": "https://s-bahn-muenchen.hafas.de/bin/540/mgate.exe?mic=9bc472127ba34dc7d0487cf814dee4e5&mac=c856d6c0cb96c20a51d31a402da5e6b2",
+  "time": 1527,
+  "request": {
+    "method": "POST",
+    "headers": {
+      "Content-Type": [
+        "application/json"
+      ],
+      "Accept-Encoding": [
+        "gzip, br, deflate"
+      ],
+      "Accept": [
+        "application/json"
+      ],
+      "user-agent": [
+        "public46442f1d1215-transport/hafas-client:test"
+      ],
+      "Content-Length": [
+        "1081"
+      ],
+      "Connection": [
+        "close"
+      ]
+    }
+  }
+}
