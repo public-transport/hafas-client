@@ -235,6 +235,7 @@ HAFAS endpoint | wrapper library | docs | example code | source code
 [Verkehrsgemeinschaft Osnabrück (VOS)](https://de.wikipedia.org/wiki/Verkehrsgemeinschaft_Osnabrück) | - | [docs](p/vos/readme.md) | [example code](p/vos/example.js) | [src](p/vos/index.js)
 [Aachener Verkehrsverbund (AVV)](https://de.wikipedia.org/wiki/Verkehrsgemeinschaft_Osnabrück) | - | [docs](p/avv/readme.md) | [example code](p/avv/example.js) | [src](p/avv/index.js)
 [Salzburg public transport (SVV)](https://de.wikipedia.org/wiki/Salzburger_Verkehrsverbund) | - | [docs](p/svv/readme.md) | [example code](p/svv/example.js) | [src](p/svv/index.js)
+[Verkehrsverbund Tirol (VVT)](https://de.wikipedia.org/wiki/Verkehrsverbund_Tirol) | - | [docs](p/vvt/readme.md) | [example code](p/vvt/example.js) | [src](p/vvt/index.js)
 [Zürich public transport (ZVV)](https://en.wikipedia.org/wiki/Zürcher_Verkehrsverbund) | - | [docs](p/zvv/readme.md) | [example code](p/zvv/example.js) | [src](p/zvv/index.js)
 
 There are also libraries that use `hafas-client` and pass their own profile in:
