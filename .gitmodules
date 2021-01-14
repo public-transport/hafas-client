@@ -1,0 +1,4 @@
+[submodule "tools/transport-apis"]
+	path = tools/transport-apis
+	url = https://github.com/public-transport/transport-apis.git
+	branch = v1
