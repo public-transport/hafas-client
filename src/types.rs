@@ -34,3 +34,15 @@ pub enum Place {
 	Address(Address),
 	Stop(Stop),
 }
+
+#[derive(PartialEq, Clone, Debug)]
+pub struct When {
+	pub planned: Option<i64>,
+	pub prognosed: Option<i64>,
+	pub cancelled: Option<bool>,
+}
+
+#[derive(PartialEq, Clone, Debug)]
+pub struct Dep {
+	pub when: When,
+}

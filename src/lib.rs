@@ -1,10 +1,11 @@
 use serde_json::Result;
+use parse::departure::parse_departure;
 
 pub mod types;
 pub mod parse;
 pub mod hafas_json;
 
-pub fn request() -> Result<Option<()>> {
+pub fn request() -> Result<types::Dep> {
 	let body = r#"{
 		"date": "20190819",
 		"stbStop": {
@@ -15,6 +16,6 @@ pub fn request() -> Result<Option<()>> {
 	}"#;
 
 	let dep: hafas_json::Dep = serde_json::from_str(body)?;
-	// todo: parse
+	let dep = parse_departure(dep);
 	Ok(dep)
 }
