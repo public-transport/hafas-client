@@ -1,5 +1,6 @@
 use serde_json::Result;
 
+pub mod types;
 pub mod parse;
 pub mod hafas_json;
 
