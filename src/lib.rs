@@ -1,5 +1,6 @@
 use serde_json::Result;
 
+pub mod parse;
 pub mod hafas_json;
 
 pub fn request() -> Result<Option<()>> {
