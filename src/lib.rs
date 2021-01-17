@@ -1,3 +1,7 @@
+use serde_json::Result;
+
+pub mod hafas_json;
+
 pub fn request() -> Result<Option<()>> {
 	let body = r#"{
 		"date": "20190819",
@@ -8,6 +12,7 @@ pub fn request() -> Result<Option<()>> {
 		"foo": true
 	}"#;
 
+	let dep: hafas_json::Dep = serde_json::from_str(body)?;
 	// todo: parse
-	Ok(None)
+	Ok(dep)
 }
