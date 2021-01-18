@@ -43,6 +43,23 @@ pub struct When {
 }
 
 #[derive(PartialEq, Clone, Debug)]
+pub struct Line {
+	pub id: Option<String>,
+	pub product: i32, // todo: make this an enum?
+	pub name: Option<String>,
+	pub adminCode: Option<String>, // todo: make a struct?
+	// todo: plenty more
+}
+
+#[derive(PartialEq, Clone, Debug)]
+pub struct Vehicle {
+	// todo: vehicle ID?
+	// todo: route ID?
+	// todo: "fahrt nr"?
+	// todo: label/name?
+}
+
+#[derive(PartialEq, Clone, Debug)]
 pub struct Dep {
 	pub when: When,
 }

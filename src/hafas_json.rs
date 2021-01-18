@@ -20,6 +20,28 @@ pub struct Loc {
 }
 
 #[derive(Deserialize, Clone, Debug)]
+pub struct ProdCtx {
+	pub lineId: Option<String>,
+	pub admin: Option<String>,
+	// todo: line, name, num, matchId, addName
+	// todo: catOut, catOutS, catOutL, catIn, catCode
+}
+#[derive(Deserialize, Clone, Debug)]
+pub struct Prod {
+	// `pid` is not a vehicle ID, rather a line ID actually
+	pub pid: Option<String>,
+	pub cls: i32,
+	pub icoX: Option<i32>, // todo: make a special type?
+	pub oprX: Option<i32>, // todo: make a special type?
+	pub name: Option<String>,
+	pub nameS: Option<String>,
+	pub addName: Option<String>,
+	pub prodCtx: Option<ProdCtx>,
+	pub number: Option<String>,
+	pub himIdL: Option<Vec<String>>, // todo: make a special type?
+}
+
+#[derive(Deserialize, Clone, Debug)]
 pub struct DepStbStop {
 	// todo: type
 	// pub locX: Option<i32>,
