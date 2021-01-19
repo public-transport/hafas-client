@@ -53,7 +53,19 @@ const checkWithVersion = async (version) => {
 const silent = argv.silent || argv.s
 
 ;(async () => {
-	for (let minor = 16; minor <= 35; minor++) {
+	const parseVer = ver => parseInt(ver.split('.')[1])
+	let baseMinor = 16
+	if ('string' === typeof profile.ver && profile.ver) {
+		baseMinor = parseVer(profile.ver)
+	} else {
+		const ctx = {opt: {}}
+		const body = profile.transformReqBody(ctx, {})
+		if ('string' === typeof body.ver && body.ver) {
+			baseMinor = parseVer(body.ver)
+		}
+	}
+
+	for (let minor = baseMinor; minor <= 70; minor++) {
 		const v = '1.' + minor
 		if (await checkWithVersion(v)) {
 			if (!silent) console.log(v + ' is supported ✔︎')
