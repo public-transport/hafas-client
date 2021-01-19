@@ -1,5 +1,14 @@
 # Changelog
 
+## `5.14.0`
+
+- ad6cfd22/3407ad6b/d017e627/02af67e2 add [*mobil.nrw* profile](../p/mobil-nrw)
+- 174ed807 `remarks()`: support missing `res.msgL[]` 🐛
+- 4efff792 `parseJourney`: use `j.recon.ctx` as `refreshToken` too 🐛
+- 86bf3b46 docs: remove "migrating to 4" guide, fix profile examples, minor tweaks 📝
+
+[🏷 `5.14.0`](https://github.com/public-transport/hafas-client/releases/tag/5.14.0), 2021-01-19
+
 ## `5.13.0`
 
 - 7444e08/bbf024d/6815c9e add [*SBB* (Switzerland) profile](../p/sbb)
