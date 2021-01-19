@@ -1,0 +1,467 @@
+{
+	"common": {
+		"locL": [
+			{
+				"lid": "A=1@O=Rostock Hbf@X=12131078@Y=54078242@U=80@L=8010304@",
+				"type": "S",
+				"name": "Rostock Hbf",
+				"icoX": 0,
+				"extId": "8010304",
+				"state": "F",
+				"crd": {
+					"x": 12131078,
+					"y": 54078242,
+					"floor": 0
+				},
+				"pCls": 27,
+				"gidL": [
+					"A×de:13003:1489"
+				],
+				"chgTime": "000600"
+			},
+			{
+				"lid": "A=1@O=Güstrow@X=12172833@Y=53800601@U=80@L=8010153@",
+				"type": "S",
+				"name": "Güstrow",
+				"icoX": 3,
+				"extId": "8010153",
+				"state": "F",
+				"crd": {
+					"x": 12172833,
+					"y": 53800601,
+					"floor": 0
+				},
+				"pCls": 26,
+				"gidL": [
+					"A×de:13072:2295"
+				],
+				"chgTime": "000400"
+			}
+		],
+		"prodL": [
+			{
+				"pid": "L::4::S::B2503118201::800156_S2::*",
+				"name": "S2",
+				"nameS": "S2",
+				"number": "S2",
+				"icoX": 1,
+				"cls": 16,
+				"oprX": 0,
+				"prodCtx": {
+					"name": "      S2",
+					"num": "670",
+					"line": "S2",
+					"matchId": "33419",
+					"catOut": "S       ",
+					"catOutS": "s",
+					"catOutL": "suburban train",
+					"catIn": "s",
+					"catCode": "4",
+					"admin": "800156"
+				}
+			},
+			{
+				"pid": "L::4::S::B2503118201::800156_S2::*",
+				"name": "S2",
+				"nameS": "S2",
+				"number": "S2",
+				"icoX": 1,
+				"cls": 16,
+				"oprX": 1,
+				"prodCtx": {
+					"name": "      S2",
+					"num": "670",
+					"line": "S2",
+					"lineId": "800156_S2",
+					"matchId": "33419",
+					"catOut": "S       ",
+					"catOutS": "s",
+					"catOutL": "suburban train",
+					"catIn": "s",
+					"catCode": "4",
+					"admin": "800156"
+				}
+			}
+		],
+		"opL": [
+			{
+				"name": "DB Regio AG Nordost",
+				"icoX": 2
+			},
+			{
+				"name": "DB Regio AG Nordost",
+				"icoX": 2,
+				"id": "1690"
+			}
+		],
+		"remL": [
+			{
+				"type": "A",
+				"code": "PB",
+				"prio": 200,
+				"icoX": 4,
+				"txtN": "Pflicht zur Bedeckung von Mund und Nase"
+			},
+			{
+				"type": "A",
+				"code": "FK",
+				"prio": 260,
+				"icoX": 5,
+				"txtN": "Number of bicycles conveyed limited (Rostock Hbf)"
+			},
+			{
+				"type": "A",
+				"code": "FK",
+				"prio": 260,
+				"icoX": 5,
+				"txtN": "Number of bicycles conveyed limited (Güstrow)"
+			},
+			{
+				"type": "A",
+				"code": "EH",
+				"prio": 560,
+				"icoX": 4,
+				"txtN": "Fahrzeuggebundene Einstiegshilfe vorhanden"
+			}
+		],
+		"icoL": [
+			{
+				"res": "prod_ice",
+				"fg": {
+					"r": 255,
+					"g": 255,
+					"b": 255
+				},
+				"bg": {
+					"r": 231,
+					"g": 50,
+					"b": 76
+				}
+			},
+			{
+				"res": "prod_comm_t",
+				"fg": {
+					"r": 255,
+					"g": 255,
+					"b": 255
+				},
+				"bg": {
+					"r": 19,
+					"g": 148,
+					"b": 69
+				}
+			},
+			{
+				"res": "RE",
+				"txt": "DB Regio AG Nordost"
+			},
+			{
+				"res": "prod_ic",
+				"fg": {
+					"r": 255,
+					"g": 255,
+					"b": 255
+				},
+				"bg": {
+					"r": 239,
+					"g": 124,
+					"b": 0
+				}
+			},
+			{
+				"res": "attr_info"
+			},
+			{
+				"res": "attr_bike"
+			},
+			{
+				"bg": {
+					"r": 19,
+					"g": 148,
+					"b": 69
+				},
+				"shp": "C"
+			},
+			{
+				"res": "cl_all"
+			}
+		],
+		"lDrawStyleL": [
+			{
+				"sIcoX": 1,
+				"type": "SOLID",
+				"bg": {
+					"r": 19,
+					"g": 148,
+					"b": 69
+				}
+			},
+			{
+				"type": "SOLID",
+				"bg": {
+					"r": 19,
+					"g": 148,
+					"b": 69
+				}
+			},
+			{
+				"sIcoX": 6,
+				"eIcoX": 6,
+				"type": "SOLID",
+				"bg": {
+					"r": 19,
+					"g": 148,
+					"b": 69
+				}
+			}
+		]
+	},
+	"outConL": [
+		{
+			"cid": "C-0",
+			"date": "20210119",
+			"dur": "003000",
+			"durS": "003000",
+			"durR": "003000",
+			"chg": 0,
+			"sDays": {
+				"sDaysR": "Mo - Fr",
+				"sDaysI": "not 2., 5. Apr, 13., 24. May",
+				"sDaysB": "F3E7CF9F3E7CF9F0004F9F3E7CF9E3C7CF9F3E7CF9F3E7CF9F3E7879F3E7CF9D3E3CC0"
+			},
+			"dep": {
+				"locX": 0,
+				"idx": 9,
+				"dProdX": 0,
+				"dPltfS": {
+					"type": "PL",
+					"txt": "1"
+				},
+				"dPltfR": {
+					"type": "PL",
+					"txt": "1"
+				},
+				"dTimeS": "141400",
+				"dTimeR": "141400",
+				"dProgType": "PROGNOSED",
+				"type": "N"
+			},
+			"arr": {
+				"locX": 1,
+				"idx": 16,
+				"aPltfS": {
+					"type": "PL",
+					"txt": "4"
+				},
+				"aPltfR": {
+					"type": "PL",
+					"txt": "4"
+				},
+				"aTimeS": "144400",
+				"aTimeR": "144400",
+				"aProgType": "PROGNOSED",
+				"type": "N"
+			},
+			"secL": [
+				{
+					"type": "JNY",
+					"dep": {
+						"locX": 0,
+						"idx": 9,
+						"dProdX": 0,
+						"dPltfS": {
+							"type": "PL",
+							"txt": "1"
+						},
+						"dPltfR": {
+							"type": "PL",
+							"txt": "1"
+						},
+						"dTimeS": "141400",
+						"dTimeR": "141400",
+						"dProgType": "PROGNOSED",
+						"type": "N"
+					},
+					"arr": {
+						"locX": 1,
+						"idx": 16,
+						"aPltfS": {
+							"type": "PL",
+							"txt": "4"
+						},
+						"aPltfR": {
+							"type": "PL",
+							"txt": "4"
+						},
+						"aTimeS": "144400",
+						"aTimeR": "144400",
+						"aProgType": "PROGNOSED",
+						"type": "N"
+					},
+					"jny": {
+						"jid": "1|224173|2|80|19012021",
+						"prodX": 1,
+						"dirTxt": "Güstrow",
+						"dirFlg": "1",
+						"status": "P",
+						"isRchbl": true,
+						"pos": {
+							"x": 12131078,
+							"y": 54078242
+						},
+						"freq": {
+							"minC": 60,
+							"maxC": 60,
+							"numC": 3
+						},
+						"ctxRecon": "T$A=1@O=Rostock Hbf@L=8010304@a=128@$A=1@O=Güstrow@L=8010153@a=128@$202101191414$202101191444$      S2$$1$$$$",
+						"msgL": [
+							{
+								"type": "REM",
+								"remX": 0,
+								"sty": "I",
+								"fLocX": 0,
+								"tLocX": 1,
+								"tagL": [
+									"RES_JNY_DTL"
+								],
+								"sort": 697303040
+							},
+							{
+								"type": "REM",
+								"remX": 1,
+								"sty": "I",
+								"fLocX": 0,
+								"tLocX": 0,
+								"tagL": [
+									"RES_JNY_DTL"
+								],
+								"sort": 705167360
+							},
+							{
+								"type": "REM",
+								"remX": 2,
+								"sty": "I",
+								"fLocX": 1,
+								"tLocX": 1,
+								"tagL": [
+									"RES_JNY_DTL"
+								],
+								"sort": 705167360
+							},
+							{
+								"type": "REM",
+								"remX": 3,
+								"sty": "I",
+								"fLocX": 0,
+								"tLocX": 1,
+								"tagL": [
+									"RES_JNY_DTL"
+								],
+								"sort": 744488960
+							}
+						],
+						"subscr": "F",
+						"prodL": [
+							{
+								"prodX": 1,
+								"fLocX": 0,
+								"tLocX": 1,
+								"fIdx": 9,
+								"tIdx": 16
+							}
+						],
+						"sumLDrawStyleX": 0,
+						"resLDrawStyleX": 2,
+						"trainStartDate": "20210119",
+						"durS": "003000"
+					}
+				}
+			],
+			"freq": {
+				"minC": 60
+			},
+			"conSubscr": "F",
+			"recState": "U",
+			"cksum": "5b26466c_3",
+			"cksumDti": "f0c373e9_3",
+			"intvlSubscr": "F",
+			"originType": "INITIAL",
+			"recon": {
+				"ctx": "¶HKI¶T$A=1@O=Rostock Hbf@L=8010304@a=128@$A=1@O=Güstrow@L=8010153@a=128@$202101191414$202101191444$      S2$$1$$$$"
+			}
+		}
+	],
+	"outCtxScrB": "2|OB|MT#11#205334#205334#205364#205364#0#0#5#205331#1#-2147483646#0#1#2|PDH#a111b62036d4280717e1769dcf194d2e|RD#19012021|RT#141129|US#1",
+	"outCtxScrF": "2|OF|MT#11#205334#205334#205364#205364#0#0#5#205331#1#-2147483646#0#1#2|PDH#a111b62036d4280717e1769dcf194d2e|RD#19012021|RT#141129|US#1",
+	"fpB": "20200901",
+	"fpE": "20210601",
+	"planrtTS": "1611061820",
+	"outConGrpSettings": {
+		"conGrpL": [
+			{
+				"name": "All connections",
+				"icoX": 7,
+				"grpid": "cl_all",
+				"conScoringL": [
+					{
+						"type": "DT",
+						"conScoreL": [
+							{
+								"score": 8332966629945115000,
+								"scoreS": "08332966629945114623",
+								"conRefL": [
+									0
+								]
+							}
+						],
+						"name": "Departure"
+					},
+					{
+						"type": "AT",
+						"conScoreL": [
+							{
+								"score": 8332834688549782000,
+								"scoreS": "08332834688549781503",
+								"conRefL": [
+									0
+								]
+							}
+						],
+						"name": "Arrival"
+					},
+					{
+						"type": "TI",
+						"conScoreL": [
+							{
+								"score": 9223236690780357000,
+								"scoreS": "09223236690780356607",
+								"conRefL": [
+									0
+								]
+							}
+						],
+						"name": "Duration"
+					}
+				],
+				"initScoringType": "DT",
+				"requests": [
+					{
+						"id": "RQ_CLIENT",
+						"autosend": true
+					}
+				],
+				"scrollable": true,
+				"bitmask": 1
+			}
+		],
+		"selectL": [
+			{
+				"icoX": 7,
+				"name": "All connections",
+				"bitIdx": 0
+			}
+		],
+		"variant": "RADIO"
+	}
+}

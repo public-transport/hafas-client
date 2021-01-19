@@ -38,7 +38,7 @@ const parseJourney = (ctx, j) => { // j = raw jouney
 	const res = {
 		type: 'journey',
 		legs,
-		refreshToken: j.ctxRecon || null
+		refreshToken: (j.recon && j.recon.ctx) || j.ctxRecon || null
 	}
 
 	const freq = j.freq || {}
