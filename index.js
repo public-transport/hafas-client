@@ -501,7 +501,8 @@ const createClient = (profile, userAgent, opt = {}) => {
 		} = await profile.request({profile, opt}, userAgent, req)
 
 		const ctx = {profile, opt, common, res}
-		return res.msgL.map(w => profile.parseWarning(ctx, w))
+		return (res.msgL || [])
+		.map(w => profile.parseWarning(ctx, w))
 	}
 
 	const lines = async (query, opt = {}) => {
