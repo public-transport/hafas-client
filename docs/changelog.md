@@ -1,5 +1,20 @@
 # Changelog
 
+## `5.15.0`
+
+- 7106d24a add [*VOS* profile](../p/vos)
+- 2ae6a9a4 add [*AVV* profile](../p/avv)
+- f47343df add [*BART* profile](../p/bart)
+- 2853fb04 add [*VVT* profile](../p/vvt)
+- 0690724d add [*VKG* profile](../p/vkg)
+- d69d2530 add `profile.remarksGetPolyline` flag
+- 51af991e `lib/request`: add `profile.(auth|client|ext|ver)` to request
+- 4ee062a1 `lib/request`: allow string `profile.salt`
+- c260e34f DB: parse `gridL[].itemL[].remL[]` 🐛
+- 33f398bd `parseWarning`: use `fromLocations[0]`
+
+[🏷 `5.15.0`](https://github.com/public-transport/hafas-client/releases/tag/5.15.0), 2021-01-26
+
 ## `5.14.0`
 
 - ad6cfd22/3407ad6b/d017e627/02af67e2 add [*mobil.nrw* profile](../p/mobil-nrw)

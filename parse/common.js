@@ -10,6 +10,8 @@ const findInTree = createFindInTree([
 	'**.msgL', '**.remL',
 ])
 
+// there are circular references (e.g. warning -> loc -> warning)
+// todo: parse either on-the-fly or in a recursive/iterative process
 const parseCommonData = (_ctx) => {
 	const {profile, opt, res} = _ctx
 	const c = res.common || {}
