@@ -15247,142 +15247,72 @@
 						{
 							"col": 0,
 							"row": 0,
-							"msgL": [
-								{
-									"type": "REM",
-									"remX": 23
-								}
-							]
+							"remL": [23]
 						},
 						{
 							"col": 1,
 							"row": 0,
-							"msgL": [
-								{
-									"type": "REM",
-									"remX": 24
-								}
-							]
+							"remL": [24]
 						},
 						{
 							"col": 0,
 							"row": 1,
-							"msgL": [
-								{
-									"type": "REM",
-									"remX": 25
-								}
-							]
+							"remL": [25]
 						},
 						{
 							"col": 1,
 							"row": 1,
-							"msgL": [
-								{
-									"type": "REM",
-									"remX": 24
-								}
-							]
+							"remL": [24]
 						},
 						{
 							"col": 0,
 							"row": 2,
-							"msgL": [
-								{
-									"type": "REM",
-									"remX": 26
-								}
-							]
+							"remL": [26]
 						},
 						{
 							"col": 1,
 							"row": 2,
-							"msgL": [
-								{
-									"type": "REM",
-									"remX": 24
-								}
-							]
+							"remL": [24]
 						},
 						{
 							"col": 0,
 							"row": 3,
-							"msgL": [
-								{
-									"type": "REM",
-									"remX": 27
-								}
-							]
+							"remL": [27]
 						},
 						{
 							"col": 1,
 							"row": 3,
-							"msgL": [
-								{
-									"type": "REM",
-									"remX": 24
-								}
-							]
+							"remL": [24]
 						},
 						{
 							"col": 0,
 							"row": 4,
-							"msgL": [
-								{
-									"type": "REM",
-									"remX": 28
-								}
-							]
+							"remL": [28]
 						},
 						{
 							"col": 1,
 							"row": 4,
-							"msgL": [
-								{
-									"type": "REM",
-									"remX": 24
-								}
-							]
+							"remL": [24]
 						},
 						{
 							"col": 0,
 							"row": 5,
-							"msgL": [
-								{
-									"type": "REM",
-									"remX": 29
-								}
-							]
+							"remL": [29]
 						},
 						{
 							"col": 1,
 							"row": 5,
-							"msgL": [
-								{
-									"type": "REM",
-									"remX": 30
-								}
-							]
+							"remL": [30]
 						},
 						{
 							"col": 0,
 							"row": 6,
-							"msgL": [
-								{
-									"type": "REM",
-									"remX": 31
-								}
-							]
+							"remL": [31]
 						},
 						{
 							"col": 1,
 							"row": 6,
-							"msgL": [
-								{
-									"type": "REM",
-									"remX": 30
-								}
-							]
+							"remL": [30]
 						}
 					],
 					"type": "OH",

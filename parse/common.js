@@ -7,7 +7,7 @@ const findInTree = createFindInTree([
 	'**.oprX', '**.icoX', '**.prodX', '**.pRefL', '**.locX',
 	'**.ani.fLocX', '**.ani.tLocX', '**.fLocX', '**.tLocX',
 	'**.remX', '**.himX', '**.polyG.polyXL', '**.rRefL',
-	'**.msgL',
+	'**.msgL', '**.remL',
 ])
 
 const parseCommonData = (_ctx) => {
@@ -54,6 +54,12 @@ const parseCommonData = (_ctx) => {
 		common.hints = c.remL.map(hint => profile.parseHint(ctx, hint))
 		matches['**.remX'].forEach(([idx, parents]) => {
 			if ('number' === typeof idx) parents[0].hint = common.hints[idx]
+		})
+		matches['**.remL'].forEach(([idxs, parents]) => {
+			if (!Array.isArray(idxs)) return;
+			parents[0].hints = idxs
+			.filter(idx => !!common.hints[idx])
+			.map(idx => common.hints[idx])
 		})
 		matches['**.rRefL'].forEach(([idxs, parents]) => {
 			parents[0].hints = idxs

@@ -45,9 +45,21 @@ const slices = (n, arr) => {
 
 const parseGrid = (g) => {
 	// todo: g.type, e.g. `S`
+	// todo: respect `g.itemL[].(col|row)`?
+
+	// todo
+	// parseGrid is being called by parseLocWithDetails, which is being called as
+	// profile.parseLocation by profile.parseCommon, parseCommon hasn't finished
+	// resolving all references yet, so we have to resolve them manually here.
+	// This would be fixed if we resolve references on-the-fly or in a recursive/
+	// iterative process.
 	return {
 		title: g.title,
-		rows: slices(g.nCols, g.itemL.map(item => item.msgL[0]))
+		rows: slices(g.nCols, g.itemL.map(item => (
+			Array.isArray(item.hints) && item.hints[0] ||
+			Array.isArray(item.remarkRefs) && item.remarkRefs[0] && item.remarkRefs[0].hint ||
+			{}
+		))),
 	}
 }
 
@@ -93,10 +105,9 @@ const parseLocWithDetails = ({parsed, common}, l) => {
 	if (parsed.type !== 'stop' && parsed.type !== 'station') return parsed
 
 	if (Array.isArray(l.gridL)) {
-		const resolveCell = cell => 'hint' in cell ? cell.hint.text : cell
 		const resolveCells = grid => ({
 			...grid,
-			rows: grid.rows.map(row => row.map(resolveCell))
+			rows: grid.rows.map(row => row.map(cell => cell && cell.text)),
 		})
 
 		let grids = l.gridL
