@@ -239,7 +239,7 @@ const createClient = (profile, userAgent, opt = {}) => {
 		opt = Object.assign({
 			stopovers: false, // return stations on the way?
 			tickets: false, // return tickets?
-			polylines: false, // return leg shapes?
+			polylines: false, // return leg shapes? (not supported by all endpoints)
 			subStops: true, // parse & expose sub-stops of stations?
 			entrances: true, // parse & expose entrances of stops/stations?
 			remarks: true // parse & expose hints & warnings?
@@ -435,6 +435,7 @@ const createClient = (profile, userAgent, opt = {}) => {
 			products: {},
 			subStops: true, // parse & expose sub-stops of stations?
 			entrances: true, // parse & expose entrances of stops/stations?
+			polylines: false, // return leg shapes?
 		}, opt)
 		if (Number.isNaN(+opt.when)) throw new TypeError('opt.when is invalid')
 
@@ -483,6 +484,7 @@ const createClient = (profile, userAgent, opt = {}) => {
 			from: Date.now(),
 			to: null,
 			products: null, // filter by affected products
+			polylines: false, // return leg shapes? (not supported by all endpoints)
 			...opt
 		}
 
