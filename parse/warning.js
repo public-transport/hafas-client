@@ -15,16 +15,16 @@ const parseMsgEdge = (ctx) => (e) => {
 	])
 	res.icon = e.icon || null
 	// todo: rename `Loc` -> `Location` [breaking]
-	res.fromLoc = e.fromLocation || null
-	res.toLoc = e.toLocation || null
+	res.fromLoc = Array.isArray(e.fromLocations) && e.fromLocations[0] || e.fromLocation || null
+	res.toLoc = Array.isArray(e.toLocations) && e.toLocations[0] || e.toLocation || null
 	return res
 }
 const parseMsgEvent = (ctx) => (e) => {
 	const {profile} = ctx // todo: test that covers this
 	return {
 		// todo: rename `Loc` -> `Location` [breaking]
-		fromLoc: e.fromLocation || null,
-		toLoc: e.toLocation || null,
+		fromLoc: Array.isArray(e.fromLocations) && e.fromLocations[0] || e.fromLocation || null,
+		toLoc: Array.isArray(e.toLocations) && e.toLocations[0] || e.toLocation || null,
 		start: profile.parseDateTime(ctx, e.fDate, e.fTime, null),
 		end: profile.parseDateTime(ctx, e.tDate, e.tTime, null),
 		sections: e.sectionNums || [] // todo: parse
