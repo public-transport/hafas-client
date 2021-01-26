@@ -1,5 +1,7 @@
 'use strict'
 
+Error.stackTraceLimit = Infinity
+
 require('./date-time')
 require('./icon')
 require('./operator')

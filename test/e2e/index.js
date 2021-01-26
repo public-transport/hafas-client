@@ -1,5 +1,7 @@
 'use strict'
 
+Error.stackTraceLimit = Infinity
+
 require('./common')
 require('./db')
 require('./sbb')

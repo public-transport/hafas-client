@@ -7,7 +7,6 @@ const products = require('../../p/vbn/products')
 const createValidate = require('./lib/validate-fptf-with')
 const {test} = require('./lib/util')
 const testJourneysStationToStation = require('./lib/journeys-station-to-station')
-const testRefreshJourney = require('./lib/refresh-journey')
 const testArrivals = require('./lib/arrivals')
 const testReachableFrom = require('./lib/reachable-from')
 
