@@ -62,6 +62,25 @@ const parseCommonData = (_ctx) => {
 		})
 	}
 
+	// resolve .msgL[] references
+	// todo: `himMsgEdgeL[].msgRefL[]` look different, it seems they only reference
+	// `common.himL[]` items?
+	const parseRemarkRef = (ref) => {
+		if (ref.type === 'REM' && ref.hint) {
+			return omit(ref, ['type', 'remX'])
+		}
+		if (ref.type === 'HIM' && ref.warning) {
+			return omit(ref, ['type', 'himX'])
+		}
+		return null
+	}
+	matches['**.msgL'].forEach(([refs, parents]) => {
+		// todo: store as parents[0].(hints|warnings)
+		parents[0].remarkRefs = refs
+		.map(parseRemarkRef)
+		.filter(ref => ref !== null)
+	})
+
 	common.locations = []
 	if (Array.isArray(c.locL)) {
 		common.locations = c.locL.map(loc => profile.parseLocation(ctx, loc))
@@ -100,22 +119,6 @@ const parseCommonData = (_ctx) => {
 			if ('number' === typeof idx) parents[0].warning = common.warnings[idx]
 		})
 	}
-
-	// resolve .msgL[] references
-	const parseRemarkRef = (ref) => {
-		if (ref.type === 'REM' && ref.hint) {
-			return omit(ref, ['type', 'remX'])
-		}
-		if (ref.type === 'HIM' && ref.warning) {
-			return omit(ref, ['type', 'himX'])
-		}
-		return null
-	}
-	matches['**.msgL'].forEach(([refs, parents]) => {
-		parents[0].remarkRefs = refs
-		.map(parseRemarkRef)
-		.filter(ref => ref !== null)
-	})
 
 	common.polylines = []
 	if ((opt.polylines || opt.polyline) && Array.isArray(c.polyL)) {
