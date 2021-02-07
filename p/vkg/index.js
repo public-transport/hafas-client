@@ -92,6 +92,8 @@ const vosProfile = {
 
 	products,
 
+	departuresGetPasslist: false,
+	departuresStbFltrEquiv: false,
 	trip: true,
 	refreshJourney: false, // todo: depends on 8615b85 from #204
 	reachableFrom: true,
