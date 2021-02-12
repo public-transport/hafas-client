@@ -252,7 +252,6 @@ test('departures at Wien Leibenfrostgasse', async (t) => {
 
 	const deps = await client.departures(wienLeibenfrostgasse, {
 		duration: 15, when,
-		stopovers: true
 	})
 
 	validate(t, deps, 'departures', 'departures')

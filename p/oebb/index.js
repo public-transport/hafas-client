@@ -10,17 +10,18 @@ const _parseMovement = require('../../parse/movement')
 const products = require('./products')
 
 const transformReqBody = (ctx, body) => {
-	// todo: necessary headers?
 	body.client = {
-		type: 'IPA',
+		type: 'IPH',
 		id: 'OEBB',
-		v: '6000500',
-		name: 'oebbIPAD_ADHOC',
-		os: 'iOS 10.3.3'
+		v: '6030600',
+		name: 'oebbPROD-ADHOC',
+		os: 'iOS 14.3',
 	}
-	// todo: https://gist.github.com/anonymous/a5fc856bc80ae7364721943243f934f4#file-haf_config_base-properties-L33 shows 1.16
-	body.ver = '1.16'
-	body.auth = {aid: 'OWDL4fE4ixNiPBBm'}
+	body.ver = '1.33'
+	body.auth = {
+		type: 'AID',
+		aid: 'OWDL4fE4ixNiPBBm',
+	}
 	body.lang = 'de'
 
 	return body
@@ -71,10 +72,12 @@ const oebbProfile = {
 	parseLocation: parseHook(_parseLocation, fixWeirdPOIs),
 	parseMovement: parseHook(_parseMovement, fixMovement),
 
+	departuresGetPasslist: false,
+	departuresStbFltrEquiv: false,
+	refreshJourneyUseOutReconL: true,
 	trip: true,
 	radar: true,
 	reachableFrom: true,
-	remarks: false, // seems like ver >= 1.20 is required
 }
 
 module.exports = oebbProfile
