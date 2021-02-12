@@ -1,0 +1,36 @@
+{
+  "statusCode": 200,
+  "headers": {
+    "date": "Fri, 12 Feb 2021 23:20:58 GMT",
+    "server": "Apache/2.4.25 (Debian)",
+    "content-length": "3054",
+    "access-control-allow-origin": "*",
+    "connection": "close",
+    "content-type": "application/json; charset=utf-8"
+  },
+  "url": "https://reiseauskunft.insa.de/bin/mgate.exe",
+  "time": 602,
+  "request": {
+    "method": "POST",
+    "headers": {
+      "Content-Type": [
+        "application/json"
+      ],
+      "Accept-Encoding": [
+        "gzip, br, deflate"
+      ],
+      "Accept": [
+        "application/json"
+      ],
+      "user-agent": [
+        "6196aefbf8c8public-transport/hafas-client:test"
+      ],
+      "Content-Length": [
+        "780"
+      ],
+      "Connection": [
+        "close"
+      ]
+    }
+  }
+}

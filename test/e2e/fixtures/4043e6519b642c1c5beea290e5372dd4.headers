@@ -1,15 +1,15 @@
 {
   "statusCode": 200,
   "headers": {
-    "date": "Thu, 14 Jan 2021 17:59:29 GMT",
+    "date": "Fri, 12 Feb 2021 23:20:20 GMT",
     "server": "Apache",
     "vary": "User-Agent",
-    "content-length": "1831",
+    "content-length": "1830",
     "connection": "close",
     "content-type": "application/json; charset=utf-8"
   },
   "url": "https://bvg-apps.hafas.de/bin/mgate.exe",
-  "time": 255,
+  "time": 304,
   "request": {
     "method": "POST",
     "headers": {
@@ -23,7 +23,7 @@
         "application/json"
       ],
       "user-agent": [
-        "public-transport/hafas-cli46442f1d1215ent:test"
+        "public-transport/hafas-c6196aefbf8c8lient:test"
       ],
       "Content-Length": [
         "296"
