@@ -1,5 +1,15 @@
 # Changelog
 
+## `5.15.1`
+
+- 7025d3bc ÖBB: enable `remarks()`
+- cb8d92be use `LOCAL_ADDRESS` environment variable to pick network interface address
+- 92f1831c `departures()`/`arrivals()`: document `opt.products` 📝
+- 7025d3bc/c6fb9661 ÖBB: change `ver` to `1.33` 🐛
+- 78bbf9b6 VKG, VVT `departures()`: disable `getPasslist` & `stbFltrEquiv` 🐛
+
+[🏷 `5.15.1`](https://github.com/public-transport/hafas-client/releases/tag/5.15.1), 2021-02-12
+
 ## `5.15.0`
 
 - 7106d24a add [*VOS* profile](../p/vos)

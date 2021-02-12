@@ -3,10 +3,17 @@
 **A client for the "mobile APIs" of [HAFAS](https://de.wikipedia.org/wiki/HAFAS) public transport management systems**.
 
 [![npm version](https://img.shields.io/npm/v/hafas-client.svg)](https://www.npmjs.com/package/hafas-client)
-[![build status](https://img.shields.io/travis/public-transport/hafas-client.svg?branch=5)](https://travis-ci.org/public-transport/hafas-client)
+[![build status](https://img.shields.io/github/workflow/status/public-transport/hafas-client/test/5)](https://github.com/public-transport/hafas-client/actions?query=branch%3A5)
 ![ISC-licensed](https://img.shields.io/github/license/public-transport/hafas-client.svg)
 [![support Jannis via GitHub Sponsors](https://img.shields.io/badge/support%20Jannis-donate-fa7664.svg)](https://github.com/sponsors/derhuerst)
 [![chat with Jannis on Twitter](https://img.shields.io/badge/chat%20with%20Jannis-on%20Twitter-1da1f2.svg)](https://twitter.com/derhuerst)
+
+- [Background](#background)
+- [Supported networks/endpoints](#supported-networks-endpoints)
+- [Installing](#installing)
+- [Usage](#usage)
+- [Related Projects](#related-projects)
+- [Contributing](#contributing)
 
 
 ## Background
@@ -20,7 +27,7 @@ Most customers get their own, **separate HAFAS deployments**; They all use the s
 Strictly speaking, permission is necessary to use this library with a HAFAS "mobile" endpoint. It merely tries to remove the *technical* barrier of accessing the data, in order to kick-start an ecosystem or apps and services that will eventually rely on [*openly available* data](https://opendatahandbook.org/solutions/en/Public-Transport-Data/).
 
 
-## supported networks/endpoints
+## Supported networks/endpoints
 
 `hafas-client` has [built-in support for many public transportation networks](p/readme.md).
 

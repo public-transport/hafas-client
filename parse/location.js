@@ -120,7 +120,7 @@ const parseLocation = (ctx, l) => {
 	return res
 }
 
-// We use a "visitied list" to prevent endless recursion.
+// We use a "visited list" to prevent endless recursion.
 const seen = Symbol('parseLocation seen items')
 const parseLocationWithoutCycles = (ctx, l, ...args) => {
 	if (ctx[seen] && ctx[seen].includes(l)) return null
