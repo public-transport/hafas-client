@@ -1,0 +1,15 @@
+{
+	"auth": {
+		"type": "AID",
+		"aid": "r0Ot9FLFNAFxijLW"
+	},
+	"salt": null,
+	"client": {
+		"id": "NAHSH",
+		"name": "NAHSHPROD",
+		"v": "3000700"
+	},
+	"endpoint": "https://nah.sh.hafas.de/bin/mgate.exe",
+	"ext": null,
+	"ver": "1.16"
+}
