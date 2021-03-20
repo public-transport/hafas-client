@@ -1,0 +1,16 @@
+{
+	"auth": {
+		"type": "AID",
+		"aid": "t2h7u1e6r4i8n3g7e0n"
+	},
+	"salt": null,
+	"client": {
+		"type": "IPH",
+		"id": "HAFAS",
+		"name": "VMT",
+		"v": "2040100"
+	},
+	"endpoint": "https://vmt.hafas.de/bin/ticketing/mgate.exe",
+	"ext": null,
+	"ver": "1.18"
+}
