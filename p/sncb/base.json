@@ -1,0 +1,16 @@
+{
+	"auth": {
+		"type": "AID",
+		"aid": "sncb-mobi"
+	},
+	"salt": null,
+	"client": {
+		"type": "IPH",
+		"id": "SNCB",
+		"name": "sncb",
+		"v": "4030200"
+	},
+	"endpoint": "https://www.belgianrail.be/jp/sncb-nmbs-routeplanner/mgate.exe",
+	"ext": null,
+	"ver": "1.16"
+}
