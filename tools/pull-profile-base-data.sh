@@ -37,3 +37,4 @@ jq -r --tab "$query" <"$src/pl/pkp-hafas-mgate.json" >../p/pkp/base.json
 jq -r --tab "$query" <"$src/dk/rejseplanen-hafas-mgate.json" >../p/rejseplanen/base.json
 jq -r --tab "$query" <"$src/de/rmv-hafas-mgate.json" >../p/rmv/base.json
 jq -r --tab "$query" <"$src/de/rsag-hafas-mgate.json" >../p/rsag/base.json
+jq -r --tab "$query" <"$src/de/saarvv-hafas-mgate.json" >../p/saarfahrplan/base.json

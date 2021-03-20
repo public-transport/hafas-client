@@ -1,0 +1,17 @@
+{
+	"auth": {
+		"type": "AID",
+		"aid": "51XfsVqgbdA6oXzHrx75jhlocRg6Xe"
+	},
+	"salt": null,
+	"client": {
+		"type": "AND",
+		"id": "ZPS-SAAR",
+		"v": 1000070,
+		"name": "Saarfahrplan",
+		"os": "Android 9"
+	},
+	"endpoint": "https://saarfahrplan.de/bin/mgate.exe",
+	"ext": null,
+	"ver": "1.21"
+}
