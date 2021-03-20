@@ -1,0 +1,17 @@
+{
+	"auth": {
+		"type": "AID",
+		"aid": "OGBAqytjHhCvr0J4"
+	},
+	"salt": null,
+	"client": {
+		"id": "DB-REGIO",
+		"name": "DB Busradar NRW",
+		"os": "Android 9",
+		"type": "AND",
+		"v": 100021
+	},
+	"endpoint": "https://db-regio.hafas.de/bin/hci/mgate.exe",
+	"ext": "DB.REGIO.1",
+	"ver": "1.10"
+}
