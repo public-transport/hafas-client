@@ -1,15 +1,7 @@
 'use strict'
 
+const baseProfile = require('./base.json')
 const products = require('./products')
-
-const transformReqBody = (ctx, body) => {
-	body.client = {type: 'IPH', id: 'DB-REGIO-VRN', name: 'VRN', v: '6000400'}
-	body.ext = 'DB.R19.04.a'
-	body.ver = '1.24'
-	body.auth = {type: 'AID', aid: 'p091VRNZz79KtUz5'}
-
-	return body
-}
 
 const formatRefreshJourneyReq = ({opt}, refreshToken) => {
 	return {
@@ -20,14 +12,11 @@ const formatRefreshJourneyReq = ({opt}, refreshToken) => {
 	}
 }
 
-module.exports = formatRefreshJourneyReq
-
 const hvvProfile = {
+	...baseProfile,
+
 	locale: 'de-DE',
 	timezone: 'Europe/Berlin',
-	endpoint: 'https://vrn.hafas.de/bin/mgate.exe',
-
-	transformReqBody,
 
 	products,
 

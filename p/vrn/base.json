@@ -1,0 +1,16 @@
+{
+	"auth": {
+		"type": "AID",
+		"aid": "p091VRNZz79KtUz5"
+	},
+	"salt": null,
+	"client": {
+		"type": "IPH",
+		"id": "DB-REGIO-VRN",
+		"name": "VRN",
+		"v": "6000400"
+	},
+	"endpoint": "https://vrn.hafas.de/bin/mgate.exe",
+	"ext": "DB.R19.04.a",
+	"ver": "1.24"
+}
