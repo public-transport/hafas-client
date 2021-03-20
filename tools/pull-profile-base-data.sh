@@ -42,3 +42,4 @@ jq -r --tab "$query" <"$src/de/db-sbahn-muenchen-hafas-mgate.json" >../p/sbahn-m
 jq -r --tab "$query" <"$src/ch/sbb-cff-ffs-hafas-mgate.json" >../p/sbb/base.json
 jq -r --tab "$query" <"$src/be/nmbs-sncb-hafas-mgate.json" >../p/sncb/base.json
 jq -r --tab "$query" <"$src/at/svv-hafas-mgate.json" >../p/svv/base.json
+jq -r --tab "$query" <"$src/de/vbb-hafas-mgate.json" >../p/vbb/base.json
