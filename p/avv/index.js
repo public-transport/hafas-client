@@ -1,5 +1,7 @@
 'use strict'
 
+const baseProfile = require('./base.json')
+
 const products = [{
 	id: 'regional-train',
 	mode: 'train',
@@ -80,21 +82,10 @@ const products = [{
 }]
 
 const avvProfile = {
+	...baseProfile,
+
 	locale: 'de-DE',
 	timezone: 'Europe/Berlin',
-	endpoint: 'https://auskunft.avv.de/bin/mgate.exe',
-
-	auth: {
-		type: 'AID',
-		aid: '4vV1AcH3N511icH',
-	},
-	client: {
-		id: 'AVV_AACHEN',
-		type: 'WEB',
-		name: 'webapp',
-		l: 'vs_avv',
-	},
-	ver: '1.18',
 
 	products,
 
