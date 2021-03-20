@@ -1,26 +1,19 @@
 'use strict'
 
+const baseProfile = require('./base.json')
 const products = require('./products')
 
 const transformReqBody = (ctx, body) => {
-	body.client = {
-		type: 'IPH',
-		id: 'NASA',
-		v: '4000200',
-		name: 'nasaPROD',
-		os: 'iPhone OS 11.2.5'
-	}
-	body.ver = '1.18'
-	body.auth = {type: 'AID', aid: "nasa-apps"}
 	body.lang = 'en' // todo: `de`?
 
 	return body
 }
 
 const insaProfile = {
+	...baseProfile,
+
 	locale: 'de-DE',
 	timezone: 'Europe/Berlin',
-	endpoint: 'https://reiseauskunft.insa.de/bin/mgate.exe',
 	transformReqBody,
 
 	products: products,
