@@ -1,0 +1,17 @@
+{
+	"auth": {
+		"type": "AID",
+		"aid": "ALT2vl7LAFDFu2dz"
+	},
+	"salt": null,
+	"client": {
+		"type": "IPH",
+		"id": "HAFAS",
+		"v": "4000000",
+		"name": "cflPROD-STORE",
+		"os": "iPhone OS 9.3.5"
+	},
+	"endpoint": "https://horaires.cfl.lu/bin/mgate.exe",
+	"ext": null,
+	"ver": "1.16"
+}
