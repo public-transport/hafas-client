@@ -1,0 +1,17 @@
+{
+	"auth": {
+		"type": "AID",
+		"aid": "P9bplgVCGnozdgQE"
+	},
+	"salt": null,
+	"client": {
+		"type": "IPA",
+		"id": "IRISHRAIL",
+		"v": "4000100",
+		"name": "IrishRailPROD-APPSTORE",
+		"os": "iOS 12.4.8"
+	},
+	"endpoint": "https://journeyplanner.irishrail.ie/bin/mgate.exe",
+	"ext": null,
+	"ver": "1.18"
+}
