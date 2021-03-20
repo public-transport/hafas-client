@@ -1,5 +1,7 @@
 'use strict'
 
+const baseProfile = require('./base.json')
+
 const products = [{
 	id: 'ice',
 	mode: 'train',
@@ -73,21 +75,10 @@ const products = [{
 }]
 
 const vosProfile = {
+	...baseProfile,
+
 	locale: 'de-DE',
 	timezone: 'Europe/Berlin',
-	endpoint: 'https://fahrplan.vos.info/bin/mgate.exe',
-
-	auth: {
-		type: 'AID',
-		aid: 'PnYowCQP7Tp1V',
-	},
-	client: {
-		id: 'SWO',
-		type: 'WEB',
-		name: 'webapp',
-		l: 'vs_swo',
-	},
-	ver: '1.32',
 
 	products,
 

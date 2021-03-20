@@ -1,0 +1,16 @@
+{
+	"auth": {
+		"type": "AID",
+		"aid": "PnYowCQP7Tp1V"
+	},
+	"salt": null,
+	"client": {
+		"id": "SWO",
+		"type": "WEB",
+		"name": "webapp",
+		"l": "vs_swo"
+	},
+	"endpoint": "https://fahrplan.vos.info/bin/mgate.exe",
+	"ext": null,
+	"ver": null
+}

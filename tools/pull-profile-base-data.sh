@@ -46,3 +46,4 @@ jq -r --tab "$query" <"$src/de/vbb-hafas-mgate.json" >../p/vbb/base.json
 jq -r --tab "$query" <"$src/de/vbn-hafas-mgate.json" >../p/vbn/base.json
 jq -r --tab "$query" <"$src/at/vkg-hafas-mgate.json" >../p/vkg/base.json
 jq -r --tab "$query" <"$src/de/vmt-hafas-mgate.json" >../p/vmt/base.json
+jq -r --tab "$query" <"$src/de/vos-hafas-mgate.json" >../p/vos/base.json
