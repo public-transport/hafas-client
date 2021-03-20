@@ -34,3 +34,4 @@ jq -r --tab "$query" <"$src/de/nahsh-hafas-mgate.json" >../p/nahsh/base.json
 jq -r --tab "$query" <"$src/de/nvv-hafas-mgate.json" >../p/nvv/base.json
 jq -r --tab "$query" <"$src/at/oebb-hafas-mgate.json" >../p/oebb/base.json
 jq -r --tab "$query" <"$src/pl/pkp-hafas-mgate.json" >../p/pkp/base.json
+jq -r --tab "$query" <"$src/dk/rejseplanen-hafas-mgate.json" >../p/rejseplanen/base.json
