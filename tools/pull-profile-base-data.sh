@@ -26,3 +26,4 @@ jq -r --tab "$query" <"$src/de/db-hafas-mgate.json" >../p/db/base.json
 jq -r --tab "$query" <"$src/de/db-busradar-nrw-hafas-mgate.json" >../p/db-busradar-nrw/base.json
 jq -r --tab "$query" <"$src/de/hvv-hafas-mgate.json" >../p/hvv/base.json
 jq -r --tab "$query" <"$src/de/nasa-hafas-mgate.json" >../p/insa/base.json
+jq -r --tab "$query" <"$src/de/invg-hafas-mgate.json" >../p/invg/base.json

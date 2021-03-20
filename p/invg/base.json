@@ -1,0 +1,16 @@
+{
+	"auth": {
+		"type": "AID",
+		"aid": "GITvwi3BGOmTQ2a5"
+	},
+	"salt": null,
+	"client": {
+		"type": "IPH",
+		"id": "INVG",
+		"name": "invgPROD-APPSTORE-LIVE",
+		"v": "1040000"
+	},
+	"endpoint": "https://fpa.invg.de/bin/mgate.exe",
+	"ext": null,
+	"ver": "1.16"
+}
