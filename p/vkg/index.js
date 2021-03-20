@@ -1,5 +1,7 @@
 'use strict'
 
+const baseProfile = require('./base.json')
+
 const products = [{ // todo: what is `8`?
 	id: 'trains',
 	mode: 'train',
@@ -73,21 +75,11 @@ const products = [{ // todo: what is `8`?
 }]
 
 const vosProfile = {
+	...baseProfile,
+
 	locale: 'at-DE',
 	timezone: 'Europe/Vienna',
-	endpoint: 'https://routenplaner.kaerntner-linien.at/bin/mgate.exe',
 
-	auth: {
-		type: 'AID',
-		aid: 'wf7mcf9bv3nv8g5f',
-	},
-	client: {
-		id: 'VAO',
-		type: 'WEB',
-		name: 'webapp',
-		l: 'vs_vkg',
-	},
-	ver: '1.32',
 	// todo: lang
 
 	products,
