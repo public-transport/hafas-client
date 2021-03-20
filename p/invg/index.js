@@ -9,9 +9,6 @@ const invgProfile = {
 	locale: 'de-DE',
 	timezone: 'Europe/Berlin',
 
-	salt: Buffer.from(baseProfile.salt, 'utf8'),
-	addMicMac: true,
-
 	products,
 
 	trip: true,
