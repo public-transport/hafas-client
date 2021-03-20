@@ -1,0 +1,17 @@
+{
+	"auth": {
+		"type": "AID",
+		"aid": "OWDL4fE4ixNiPBBm"
+	},
+	"salt": null,
+	"client": {
+		"type": "IPA",
+		"id": "OEBB",
+		"v": "6000500",
+		"name": "oebbIPAD_ADHOC",
+		"os": "iOS 10.3.3"
+	},
+	"endpoint": "http://fahrplan.oebb.at/bin/mgate.exe",
+	"ext": null,
+	"ver": "1.16"
+}

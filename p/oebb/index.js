@@ -3,6 +3,7 @@
 // todo: https://gist.github.com/anonymous/a5fc856bc80ae7364721943243f934f4#file-haf_config_base-properties-L5
 // todo: https://gist.github.com/anonymous/a5fc856bc80ae7364721943243f934f4#file-haf_config_base-properties-L47-L234
 
+const baseProfile = require('./base.json')
 const {parseHook} = require('../../lib/profile-hooks')
 
 const _parseLocation = require('../../parse/location')
@@ -10,18 +11,6 @@ const _parseMovement = require('../../parse/movement')
 const products = require('./products')
 
 const transformReqBody = (ctx, body) => {
-	body.client = {
-		type: 'IPH',
-		id: 'OEBB',
-		v: '6030600',
-		name: 'oebbPROD-ADHOC',
-		os: 'iOS 14.3',
-	}
-	body.ver = '1.33'
-	body.auth = {
-		type: 'AID',
-		aid: 'OWDL4fE4ixNiPBBm',
-	}
 	body.lang = 'de'
 
 	return body
@@ -61,10 +50,10 @@ const fixMovement = ({parsed}, m) => {
 }
 
 const oebbProfile = {
+	...baseProfile,
+
 	locale: 'de-AT',
 	timezone: 'Europe/Vienna',
-	// todo: there is also https://beta.verkehrsauskunft.at/bin/mgate.exe
-	endpoint: 'http://fahrplan.oebb.at/bin/mgate.exe',
 	transformReqBody,
 
 	products: products,
