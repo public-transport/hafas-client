@@ -1,0 +1,16 @@
+{
+	"auth": {
+		"type": "AID",
+		"aid": "TLRUqdDPF7ttB824Yoy2BN8mk"
+	},
+	"salt": null,
+	"client": {
+		"type": "IPH",
+		"id": "ZVV",
+		"name": "zvvPROD-STORE",
+		"v": "6000400"
+	},
+	"endpoint": "https://online.fahrplan.zvv.ch/bin/mgate.exe",
+	"ext": "ZVV.2",
+	"ver": "1.24"
+}
