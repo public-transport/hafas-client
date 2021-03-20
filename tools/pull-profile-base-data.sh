@@ -31,3 +31,4 @@ jq -r --tab "$query" <"$src/ie/iarnrod-eireann-hafas-mgate.json" >../p/irish-rai
 jq -r --tab "$query" <"$src/de/mobil-nrw-hafas-mgate.json" >../p/mobil-nrw/base.json
 jq -r --tab "$query" <"$src/lu/mobiliteit-lu-hafas-mgate.json" >../p/mobiliteit-lu/base.json
 jq -r --tab "$query" <"$src/de/nahsh-hafas-mgate.json" >../p/nahsh/base.json
+jq -r --tab "$query" <"$src/de/nvv-hafas-mgate.json" >../p/nvv/base.json
