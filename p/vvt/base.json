@@ -1,0 +1,16 @@
+{
+	"auth": {
+		"type": "AID",
+		"aid": "wf7mcf9bv3nv8g5f"
+	},
+	"salt": null,
+	"client": {
+		"id": "VAO",
+		"type": "WEB",
+		"name": "webapp",
+		"l": "vs_vvt"
+	},
+	"endpoint": "https://smartride.vvt.at/bin/mgate.exe",
+	"ext": null,
+	"ver": null
+}

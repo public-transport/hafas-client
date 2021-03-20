@@ -49,3 +49,4 @@ jq -r --tab "$query" <"$src/de/vmt-hafas-mgate.json" >../p/vmt/base.json
 jq -r --tab "$query" <"$src/de/vos-hafas-mgate.json" >../p/vos/base.json
 jq -r --tab "$query" <"$src/de/vrn-hafas-mgate.json" >../p/vrn/base.json
 jq -r --tab "$query" <"$src/de/vsn-hafas-mgate.json" >../p/vsn/base.json
+jq -r --tab "$query" <"$src/at/vvt-hafas-mgate.json" >../p/vvt/base.json
