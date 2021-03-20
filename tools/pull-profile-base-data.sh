@@ -41,3 +41,4 @@ jq -r --tab "$query" <"$src/de/saarvv-hafas-mgate.json" >../p/saarfahrplan/base.
 jq -r --tab "$query" <"$src/de/db-sbahn-muenchen-hafas-mgate.json" >../p/sbahn-muenchen/base.json
 jq -r --tab "$query" <"$src/ch/sbb-cff-ffs-hafas-mgate.json" >../p/sbb/base.json
 jq -r --tab "$query" <"$src/be/nmbs-sncb-hafas-mgate.json" >../p/sncb/base.json
+jq -r --tab "$query" <"$src/at/svv-hafas-mgate.json" >../p/svv/base.json
