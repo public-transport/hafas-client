@@ -1,22 +1,13 @@
 'use strict'
 
+const baseProfile = require('./base.json')
 const products = require('./products')
 
-const transformReqBody = (ctx, body) => {
-	body.client = {type: 'WEB', id: 'RSAG', name: 'webapp'}
-	body.ext = 'VBN.2'
-	body.ver = '1.24'
-	body.auth = {type: 'AID', aid: 'tF5JTs25rzUhGrrl'}
-
-	return body
-}
-
 const rsagProfile = {
+	...baseProfile,
+
 	locale: 'de-DE',
 	timezone: 'Europe/Berlin',
-	endpoint: 'https://fahrplan.rsag-online.de/bin/mgate.exe',
-
-	transformReqBody,
 
 	products,
 
