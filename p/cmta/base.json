@@ -1,0 +1,16 @@
+{
+	"auth": {
+		"type": "AID",
+		"aid": "ioslaskdcndrjcmlsd"
+	},
+	"salt": null,
+	"client": {
+		"type": "IPH",
+		"id": "CMTA",
+		"v": "2",
+		"name": "CapMetro"
+	},
+	"endpoint": "https://capmetro.hafas.cloud/bin/mgate.exe",
+	"ext": null,
+	"ver": "1.13"
+}
