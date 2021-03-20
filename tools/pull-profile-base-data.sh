@@ -19,4 +19,5 @@ ver: .options.ver, \
 
 jq -r --tab "$query" <"$src/de/avv-hafas-mgate.json" >../p/avv/base.json
 jq -r --tab "$query" <"$src/us/bart-hafas-mgate.json" >../p/bart/base.json
+jq -r --tab "$query" <"$src/de/bvg-hafas-mgate.json" >../p/bvg/base.json
 jq -r --tab "$query" <"$src/de/db-hafas-mgate.json" >../p/db/base.json

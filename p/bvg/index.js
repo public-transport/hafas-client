@@ -4,6 +4,7 @@ const shorten = require('vbb-short-station-name')
 const {to12Digit, to9Digit} = require('vbb-translate-ids')
 const parseLineName = require('vbb-parse-line')
 const getStations = require('vbb-stations')
+const baseProfile = require('./base.json')
 const {parseHook} = require('../../lib/profile-hooks')
 
 const _parseLine = require('../../parse/line')
@@ -13,15 +14,6 @@ const _parseJourneyLeg = require('../../parse/journey-leg')
 const _formatStation = require('../../format/station')
 
 const products = require('./products')
-
-const transformReqBody = (ctx, body) => {
-	body.client = {type: 'IPA', id: 'BVG', name: 'FahrInfo', v: '6020000'}
-	body.ext = 'BVG.1'
-	body.ver = '1.21'
-	body.auth = {type: 'AID', aid: 'Mz0YdF9Fgx0Mb9'}
-
-	return body
-}
 
 // todo: https://m.tagesspiegel.de/berlin/fahrerlebnis-wie-im-regionalexpress-so-faehrt-es-sich-in-der-neuen-express-s-bahn/25338674.html
 const parseLineWithMoreDetails = ({parsed}, p) => {
@@ -120,11 +112,11 @@ const requestJourneysWithBerlkoenig = ({opt}, query) => {
 // todo: adapt/extend `vbb-parse-ticket` to support the BVG markup
 
 const bvgProfile = {
+	...baseProfile,
+
 	locale: 'de-DE',
 	timezone: 'Europe/Berlin',
-	endpoint: 'https://bvg-apps.hafas.de/bin/mgate.exe',
 
-	transformReqBody,
 	transformJourneysQuery: requestJourneysWithBerlkoenig,
 
 	products,
