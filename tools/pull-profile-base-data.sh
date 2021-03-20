@@ -28,3 +28,4 @@ jq -r --tab "$query" <"$src/de/hvv-hafas-mgate.json" >../p/hvv/base.json
 jq -r --tab "$query" <"$src/de/nasa-hafas-mgate.json" >../p/insa/base.json
 jq -r --tab "$query" <"$src/de/invg-hafas-mgate.json" >../p/invg/base.json
 jq -r --tab "$query" <"$src/ie/iarnrod-eireann-hafas-mgate.json" >../p/irish-rail/base.json
+jq -r --tab "$query" <"$src/de/mobil-nrw-hafas-mgate.json" >../p/mobil-nrw/base.json

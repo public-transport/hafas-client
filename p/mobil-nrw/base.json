@@ -1,0 +1,17 @@
+{
+	"auth": {
+		"type": "AID",
+		"aid": "Kdf0LNRWYg5k3499"
+	},
+	"salt": null,
+	"client": {
+		"id": "DB-REGIO-NRW",
+		"name": "NRW",
+		"os": "iOS 12.4.9",
+		"type": "IPH",
+		"v": "6000300"
+	},
+	"endpoint": "https://nrw.hafas.de/bin/mgate.exe",
+	"ext": null,
+	"ver": "1.24"
+}
