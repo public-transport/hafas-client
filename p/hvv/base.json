@@ -1,0 +1,16 @@
+{
+	"auth": {
+		"type": "AID",
+		"aid": "andcXUmC9Mq6hjrwDIGd2l3oiaMrTUzyH"
+	},
+	"salt": "pqjM3iKEGOAhYbX76k9R5zutv",
+	"client": {
+		"type": "AND",
+		"id": "HVV",
+		"name": "HVVPROD_ADHOC",
+		"v": "4020100"
+	},
+	"endpoint": "https://hvv-app.hafas.de/bin/mgate.exe",
+	"ext": "HVV.1",
+	"ver": "1.16"
+}
