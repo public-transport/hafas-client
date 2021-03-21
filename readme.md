@@ -9,10 +9,10 @@
 [![chat with Jannis on Twitter](https://img.shields.io/badge/chat%20with%20Jannis-on%20Twitter-1da1f2.svg)](https://twitter.com/derhuerst)
 
 - [Background](#background)
-- [Supported networks/endpoints](#supported-networks-endpoints)
+- [Supported networks/endpoints](#supported-networksendpoints)
 - [Installing](#installing)
 - [Usage](#usage)
-- [Related Projects](#related-projects)
+- [Related Projects](#related)
 - [Contributing](#contributing)
 
 
