@@ -1,5 +1,14 @@
 # Changelog
 
+## `5.15.2`
+
+- 7025d3bc ÖBB: fix profile by using `https:` 🐛
+- ebe7c595 `lib/request`: fix `DEBUG` env var switch 🐛
+- 6f56f152 DB: enable usage of 1st class BahnCard 🐛
+- 68d8bf9f/9bfd4566/15be4a0b/b6ad9ba0/d9de0e00 fix readme/docs 📝
+
+[🏷 `5.15.2`](https://github.com/public-transport/hafas-client/releases/tag/5.15.2), 2021-03-26
+
 ## `5.15.1`
 
 - 7025d3bc ÖBB: enable `remarks()`
