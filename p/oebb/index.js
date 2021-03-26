@@ -64,7 +64,7 @@ const oebbProfile = {
 	locale: 'de-AT',
 	timezone: 'Europe/Vienna',
 	// todo: there is also https://beta.verkehrsauskunft.at/bin/mgate.exe
-	endpoint: 'http://fahrplan.oebb.at/bin/mgate.exe',
+	endpoint: 'https://fahrplan.oebb.at/bin/mgate.exe',
 	transformReqBody,
 
 	products: products,
