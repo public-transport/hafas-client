@@ -333,7 +333,7 @@ test('nearby', async (t) => {
 		type: 'location',
 		latitude: 52.4873452,
 		longitude: 13.3310411
-	}, {distance: 200})
+	}, {distance: 250})
 
 	validate(t, nearby, 'locations', 'nearby')
 

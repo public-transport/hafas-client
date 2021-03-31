@@ -1,14 +1,14 @@
 {
   "statusCode": 200,
   "headers": {
-    "date": "Fri, 12 Feb 2021 23:23:22 GMT",
+    "date": "Thu, 15 Apr 2021 09:26:03 GMT",
     "server": "Apache",
-    "content-length": "1044",
+    "content-length": "1080",
     "connection": "close",
     "content-type": "application/json; charset=utf-8"
   },
   "url": "https://fpa.invg.de/bin/mgate.exe?mic=7c87858feb17f41e7885d205ade8ecf1&mac=52cc0ad849ebd9be94616a2b29b7efec",
-  "time": 315,
+  "time": 369,
   "request": {
     "method": "POST",
     "headers": {
@@ -22,7 +22,7 @@
         "application/json"
       ],
       "user-agent": [
-        "public-transp6196aefbf8c8ort/hafas-client:test"
+        "publ825669b4acaeic-transport/hafas-client:test"
       ],
       "Content-Length": [
         "240"

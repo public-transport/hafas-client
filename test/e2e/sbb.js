@@ -37,8 +37,8 @@ const baselSBB = '8500010'
 const lausanne = '8501120'
 const oetwilAmSee = {
 	type: 'location',
-	address: '8618 Oetwil am See, Morgental',
-	latitude: 47.27828, longitude: 8.726153,
+	address: '8618 Oetwil am See, Morgental 3',
+	latitude: 47.278873, longitude: 8.726485,
 }
 
 test('journeys – Basel to Lausanne', async (t) => {

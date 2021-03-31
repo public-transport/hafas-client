@@ -1,0 +1,35 @@
+{
+  "statusCode": 200,
+  "headers": {
+    "date": "Thu, 15 Apr 2021 09:23:53 GMT",
+    "server": "Apache",
+    "content-length": "1878",
+    "connection": "close",
+    "content-type": "application/json; charset=utf-8"
+  },
+  "url": "https://nah.sh.hafas.de/bin/mgate.exe",
+  "time": 919,
+  "request": {
+    "method": "POST",
+    "headers": {
+      "Content-Type": [
+        "application/json"
+      ],
+      "Accept-Encoding": [
+        "gzip, br, deflate"
+      ],
+      "Accept": [
+        "application/json"
+      ],
+      "user-agent": [
+        "publi825669b4acaec-transport/hafas-client:test"
+      ],
+      "Content-Length": [
+        "473"
+      ],
+      "Connection": [
+        "close"
+      ]
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "statusCode": 200,
+  "headers": {
+    "date": "Thu, 15 Apr 2021 09:26:19 GMT",
+    "server": "Apache",
+    "content-length": "2730",
+    "cache-control": "max-age=86400",
+    "expires": "Fri, 16 Apr 2021 09:26:19 GMT",
+    "connection": "close",
+    "content-type": "application/json; charset=utf-8"
+  },
+  "url": "https://online.fahrplan.zvv.ch/bin/mgate.exe?mic=d2ce9355bc5100574e6173bd03f8aeb5&mac=94f18541257030bf1d195531f0b59777",
+  "time": 602,
+  "request": {
+    "method": "POST",
+    "headers": {
+      "Content-Type": [
+        "application/json"
+      ],
+      "Accept-Encoding": [
+        "gzip, br, deflate"
+      ],
+      "Accept": [
+        "application/json"
+      ],
+      "user-agent": [
+        "public-transport/hafas-client825669b4acae:test"
+      ],
+      "Content-Length": [
+        "658"
+      ],
+      "Connection": [
+        "close"
+      ]
+    }
+  }
+}
