@@ -31,7 +31,6 @@ const testRefreshJourney = require('./lib/refresh-journey')
 const journeysFailsWithNoProduct = require('./lib/journeys-fails-with-no-product')
 const testDepartures = require('./lib/departures')
 const testDeparturesInDirection = require('./lib/departures-in-direction')
-const testDeparturesWithoutRelatedStations = require('./lib/departures-without-related-stations')
 const testArrivals = require('./lib/arrivals')
 const testJourneysWithDetour = require('./lib/journeys-with-detour')
 const testReachableFrom = require('./lib/reachable-from')
@@ -350,19 +349,6 @@ test('departures at 7-digit station', async (t) => {
 	const eisenach = '8010097' // see derhuerst/vbb-hafas#22
 	await client.departures(eisenach, {when})
 	t.pass('did not fail')
-	t.end()
-})
-
-// todo: `opt.includeRelatedStations` is currently not supported by BVG
-test.skip('departures without related stations', async (t) => {
-	await testDeparturesWithoutRelatedStations({
-		test: t,
-		fetchDepartures: client.departures,
-		id: '900000024101', // Charlottenburg
-		when,
-		products: {bus: false, suburban: false, regional: false},
-		linesOfRelatedStations: ['U7']
-	})
 	t.end()
 })
 
