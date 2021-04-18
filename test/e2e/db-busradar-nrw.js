@@ -35,7 +35,6 @@ const hagenVorhalle = '8000977'
 test('departures at Hagen Bauhaus', async (t) => {
 	const departures = await client.departures(hagenBauhaus, {
 		duration: 120, when,
-		stopovers: true
 	})
 
 	await testDepartures({

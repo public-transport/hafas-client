@@ -77,10 +77,12 @@ const nahshProfile = {
 	parseJourney: parseHook(_parseJourney, parseJourneyWithTickets),
 	parseMovement: parseHook(_parseMovement, fixMovement),
 
+	departuresGetPasslist: false,
+	departuresStbFltrEquiv: false,
+	refreshJourneyUseOutReconL: true,
 	trip: true,
-	radar: true, // todo: see #34
+	radar: true,
 	reachableFrom: true,
-	remarks: false, // seems like ver >= 1.20 is required
 }
 
 module.exports = nahshProfile

@@ -11,6 +11,6 @@
 	},
 	"endpoint": "https://online.fahrplan.zvv.ch/bin/mgate.exe",
 	"ext": "ZVV.2",
-	"ver": "1.24",
+	"ver": "1.42",
 	"defaultLanguage": "de"
 }

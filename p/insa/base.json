@@ -10,6 +10,6 @@
 		"name": "nasaPROD"
 	},
 	"endpoint": "https://reiseauskunft.insa.de/bin/mgate.exe",
-	"ver": "1.18",
+	"ver": "1.44",
 	"defaultLanguage": "de"
 }

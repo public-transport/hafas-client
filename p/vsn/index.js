@@ -14,11 +14,10 @@ const vsnProfile = {
 
 	products: products,
 
+	refreshJourneyUseOutReconL: true,
 	trip: true,
 	radar: true,
-	refreshJourney: true,
 	reachableFrom: true,
-
 	departuresGetPasslist: false,
 	departuresStbFltrEquiv: false
 }

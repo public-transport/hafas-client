@@ -10,10 +10,12 @@ const invgProfile = {
 
 	products,
 
+	departuresGetPasslist: false,
+	departuresStbFltrEquiv: false,
+	refreshJourneyUseOutReconL: true,
 	trip: true,
 	radar: true,
 	refreshJourney: true,
-	remarks: false, // seems like ver >= 1.20 is required
 }
 
 module.exports = invgProfile

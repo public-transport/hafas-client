@@ -10,11 +10,12 @@ const insaProfile = {
 
 	products: products,
 
+	departuresGetPasslist: false,
+	departuresStbFltrEquiv: false,
 	trip: true,
 	radar: true,
-	refreshJourney: false,
+	refreshJourneyUseOutReconL: true,
 	reachableFrom: true,
-	remarks: false, // seems like ver >= 1.20 is required
 }
 
 module.exports = insaProfile;

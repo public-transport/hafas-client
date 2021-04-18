@@ -50,14 +50,17 @@ const bartProfile = {
 	...baseProfile,
 	locale: 'en-US',
 	timezone: 'America/Los_Angeles',
-	ver: '1.25',
+	ver: '1.40',
 
 	products,
 
 	trip: true,
 	radar: true,
-	refreshJourney: false, // todo: depends on 8615b85 from #204
 	reachableFrom: true,
+
+	departuresGetPasslist: false, // `departures()` method: support for `getPasslist` field?
+	departuresStbFltrEquiv: false, // `departures()` method: support for `stbFltrEquiv` field?
+	refreshJourneyUseOutReconL: true,
 }
 
 module.exports = bartProfile

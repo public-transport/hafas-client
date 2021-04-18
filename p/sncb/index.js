@@ -56,11 +56,12 @@ const sncbProfile = {
 
 	parseLine: parseHook(parseLine, lineNameWithoutFahrtNr),
 
+	departuresGetPasslist: false,
+	departuresStbFltrEquiv: false,
 	trip: true,
 	refreshJourney: true,
 	radar: true,
-	// todo: `reachableFrom: true` fails with `H9240`
-	remarks: false, // seems like ver >= 1.20 is required
+	reachableFrom: false, // todo: fails with `H9240`
 }
 
 module.exports = sncbProfile

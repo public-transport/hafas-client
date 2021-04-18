@@ -25,6 +25,7 @@ const saarfahrplanProfile = {
 
 	departuresGetPasslist: false,
 	departuresStbFltrEquiv: false,
+	refreshJourneyUseOutReconL: true,
 	trip: true,
 	radar: true,
 	reachableFrom: true

@@ -10,6 +10,6 @@
 		"name": "sncb"
 	},
 	"endpoint": "https://www.belgianrail.be/jp/sncb-nmbs-routeplanner/mgate.exe",
-	"ver": "1.16",
+	"ver": "1.21",
 	"defaultLanguage": "fr"
 }

@@ -10,6 +10,6 @@
 		"name": "IrishRailPROD-APPSTORE"
 	},
 	"endpoint": "https://journeyplanner.irishrail.ie/bin/mgate.exe",
-	"ver": "1.18",
+	"ver": "1.33",
 	"defaultLanguage": "en"
 }

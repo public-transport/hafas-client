@@ -78,14 +78,17 @@ const vosProfile = {
 	...baseProfile,
 	locale: 'de-DE',
 	timezone: 'Europe/Berlin',
-	ver: '1.32',
+	ver: '1.42',
 
 	products,
 
 	trip: true,
 	radar: true,
-	refreshJourney: false, // todo: depends on 8615b85 from #204
+	refreshJourneyUseOutReconL: true,
 	reachableFrom: true,
+
+	departuresGetPasslist: false,
+	departuresStbFltrEquiv: false,
 }
 
 module.exports = vosProfile

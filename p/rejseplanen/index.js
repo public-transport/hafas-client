@@ -12,6 +12,7 @@ const rejseplanenProfile = {
 
 	departuresGetPasslist: false,
 	departuresStbFltrEquiv: false,
+	refreshJourneyUseOutReconL: true,
 	trip: true,
 	radar: true,
 }

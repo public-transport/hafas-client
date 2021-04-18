@@ -10,6 +10,6 @@
 	},
 	"endpoint": "https://fahrplan.salzburg-verkehr.at/bin/mgate.exe",
 	"ext": "VAO.11",
-	"ver": "1.20",
+	"ver": "1.39",
 	"defaultLanguage": "de"
 }

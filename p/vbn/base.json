@@ -10,6 +10,6 @@
 		"name": "vbn"
 	},
 	"endpoint": "https://fahrplaner.vbn.de/bin/mgate.exe",
-	"ver": "1.27",
+	"ver": "1.42",
 	"defaultLanguage": "de"
 }

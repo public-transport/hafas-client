@@ -11,6 +11,6 @@
 	},
 	"endpoint": "https://db-regio.hafas.de/bin/hci/mgate.exe",
 	"ext": "DB.REGIO.1",
-	"ver": "1.10",
+	"ver": "1.24",
 	"defaultLanguage": "de"
 }

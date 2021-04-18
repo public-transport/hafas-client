@@ -14,10 +14,9 @@ const mobiliteitLuProfile = {
 	radar: true,
 	reachableFrom: true,
 
-	// Version 1.25 doesn't seem to support getPasslist & stbFltrEquiv
-	// for departures()/arrivals().
 	departuresGetPasslist: false,
 	departuresStbFltrEquiv: false,
+	refreshJourneyUseOutReconL: true,
 }
 
 module.exports = mobiliteitLuProfile;

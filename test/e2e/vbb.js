@@ -249,7 +249,6 @@ test('journeys: via works – with detour', async (t) => {
 test('departures', async (t) => {
 	const departures = await client.departures(spichernstr, {
 		duration: 5, when,
-		stopovers: true
 	})
 
 	await testDepartures({
@@ -312,7 +311,6 @@ test('departures without related stations', async (t) => {
 test('arrivals', async (t) => {
 	const arrivals = await client.arrivals(spichernstr, {
 		duration: 5, when,
-		stopovers: true
 	})
 
 	await testArrivals({

@@ -152,7 +152,6 @@ test('trip details', async (t) => {
 test('departures at Hamburg Barmbek', async (t) => {
 	const departures = await client.departures(barmbek, {
 		duration: 5, when,
-		stopovers: true
 	})
 
 	await testDepartures({

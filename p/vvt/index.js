@@ -78,14 +78,14 @@ const vvtProfile = {
 	...baseProfile,
 	locale: 'at-DE',
 	timezone: 'Europe/Vienna',
-	ver: '1.32',
+	ver: '1.39',
 
 	products,
 
 	departuresGetPasslist: false,
 	departuresStbFltrEquiv: false,
 	trip: true,
-	refreshJourney: false, // todo: depends on 8615b85 from #204
+	refreshJourneyUseOutReconL: true,
 	reachableFrom: true,
 }
 

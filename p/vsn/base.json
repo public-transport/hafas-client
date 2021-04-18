@@ -10,6 +10,6 @@
 		"name": "vsn"
 	},
 	"endpoint": "https://fahrplaner.vsninfo.de/hafas/mgate.exe",
-	"ver": "1.24",
+	"ver": "1.42",
 	"defaultLanguage": "de"
 }
