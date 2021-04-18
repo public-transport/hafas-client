@@ -6,6 +6,7 @@ const {Agent} = require('https')
 const {strictEqual: eql} = require('assert')
 const {parseHook} = require('../../lib/profile-hooks')
 const parseLine = require('../../parse/line')
+const baseProfile = require('./base.json')
 const products = require('./products')
 
 // `www.belgianrail.be:443` doesn't provide the necessary CA certificate
@@ -14,15 +15,6 @@ const products = require('./products')
 const ca = readFileSync(join(__dirname, 'digicert-sha2-secure-server-ca.crt.pem'))
 const agent = new Agent({ca})
 const transformReq = (ctx, req) => ({...req, agent})
-
-const transformReqBody = ({opt}, body) => {
-	body.client = {type: 'IPH', id: 'SNCB', name: 'sncb', v: '4030200'}
-	body.ver = '1.16'
-	body.auth = {type: 'AID', aid: 'sncb-mobi'}
-	body.lang = opt.language || 'fr'
-
-	return body
-}
 
 // todo: this is ugly
 const lineNameWithoutFahrtNr = ({parsed}) => {
@@ -54,12 +46,11 @@ eql(lineNameWithoutFahrtNr({
 }).name, 'S1 123a')
 
 const sncbProfile = {
+	...baseProfile,
 	locale: 'fr-BE',
 	timezone: 'Europe/Brussels',
-	endpoint: 'https://www.belgianrail.be/jp/sncb-nmbs-routeplanner/mgate.exe',
 
 	transformReq,
-	transformReqBody,
 
 	products,
 

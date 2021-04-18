@@ -1,5 +1,7 @@
 'use strict'
 
+const baseProfile = require('./base.json')
+
 // DB Busradar NRW app does not allow selecting specific modes of transport to filter results,
 // so the bitmasks had to be determined by querying some stations and looking at the results..
 const products = [
@@ -73,25 +75,10 @@ const products = [
 	}
 ]
 
-const transformReqBody = (_, body) => {
-	body.client = {
-		id: 'DB-REGIO',
-		name: 'DB Busradar NRW',
-		os: 'Android 9',
-		type: 'AND',
-		v: 100021
-	}
-	body.ext = 'DB.REGIO.1'
-	body.ver = '1.10'
-	body.auth = {type: 'AID', aid: 'OGBAqytjHhCvr0J4'}
-	return body
-}
-
 const dbBusradarNrwProfile = {
+	...baseProfile,
 	locale: 'de-DE',
 	timezone: 'Europe/Berlin',
-	endpoint: 'https://db-regio.hafas.de/bin/hci/mgate.exe',
-	transformReqBody,
 
 	products: products,
 

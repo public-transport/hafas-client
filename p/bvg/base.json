@@ -1,0 +1,16 @@
+{
+	"auth": {
+		"type": "AID",
+		"aid": "Mz0YdF9Fgx0Mb9"
+	},
+	"client": {
+		"type": "IPA",
+		"id": "BVG",
+		"v": "6020000",
+		"name": "FahrInfo"
+	},
+	"endpoint": "https://bvg-apps.hafas.de/bin/mgate.exe",
+	"ext": "BVG.1",
+	"ver": "1.44",
+	"defaultLanguage": "de"
+}

@@ -1,5 +1,7 @@
 'use strict'
 
+const baseProfile = require('./base.json')
+
 const products = [{
 	id: 'bart',
 	mode: 'train',
@@ -45,20 +47,9 @@ const products = [{
 }]
 
 const bartProfile = {
+	...baseProfile,
 	locale: 'en-US',
 	timezone: 'America/Los_Angeles',
-	endpoint: 'https://planner.bart.gov/bin/mgate.exe',
-
-	auth: {
-		type: 'AID',
-		aid: 'kEwHkFUCIL500dym',
-	},
-	client: {
-		id: 'BART',
-		type: 'WEB',
-		name: 'webapp',
-		l: 'vs_webapp',
-	},
 	ver: '1.25',
 
 	products,
