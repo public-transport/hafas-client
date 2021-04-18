@@ -42,6 +42,7 @@
 		"@derhuerst/br2nl": "^1.0.0",
 		"@derhuerst/round-robin-scheduler": "^1.0.4",
 		"capture-stack-trace": "^1.0.0",
+		"content-type": "^1.0.4",
 		"create-hash": "^1.2.0",
 		"fetch-ponyfill": "^7.0.0",
 		"google-polyline": "^1.0.3",
