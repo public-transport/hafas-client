@@ -5,22 +5,10 @@ const {parseHook} = require('../../lib/profile-hooks')
 const _parseLocation = require('../../parse/location')
 const _parseJourney = require('../../parse/journey')
 const _parseMovement = require('../../parse/movement')
+const baseProfile = require('./base.json')
 const products = require('./products')
 
 // todo: journey prices
-
-const transformReqBody = (ctx, body) => {
-	body.client = {
-		id: 'NAHSH',
-		name: 'NAHSHPROD',
-		v: '3000700'
-	}
-	body.ver = '1.16'
-	body.auth = {aid: 'r0Ot9FLFNAFxijLW'}
-	body.lang = 'de'
-
-	return body
-}
 
 const fixLocation = ({parsed}, l) => {
 	// weird fix for empty lines, e.g. IC/EC at Flensburg Hbf
@@ -79,10 +67,9 @@ const fixMovement = ({parsed}, m) => {
 }
 
 const nahshProfile = {
+	...baseProfile,
 	locale: 'de-DE',
 	timezone: 'Europe/Berlin',
-	endpoint: 'https://nah.sh.hafas.de/bin/mgate.exe',
-	transformReqBody,
 
 	products,
 

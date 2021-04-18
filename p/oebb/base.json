@@ -1,0 +1,15 @@
+{
+	"auth": {
+		"type": "AID",
+		"aid": "OWDL4fE4ixNiPBBm"
+	},
+	"client": {
+		"type": "IPA",
+		"id": "OEBB",
+		"v": "6000500",
+		"name": "oebbIPAD_ADHOC"
+	},
+	"endpoint": "http://fahrplan.oebb.at/bin/mgate.exe",
+	"ver": "1.16",
+	"defaultLanguage": "de"
+}

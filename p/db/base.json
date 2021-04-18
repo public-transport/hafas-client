@@ -5,12 +5,13 @@
 	},
 	"salt": "6264493855566A34304B356676787766",
 	"client": {
+		"type": "AND",
 		"id": "DB",
-		"v": "16040000",
-		"type": "IPH",
+		"v": 19040000,
 		"name": "DB Navigator"
 	},
 	"endpoint": "https://reiseauskunft.bahn.de/bin/mgate.exe",
-	"ext": "DB.R19.04.a",
-	"ver": "1.15"
+	"ext": "DB.R19.12.a",
+	"ver": "1.18",
+	"defaultLanguage": "en"
 }

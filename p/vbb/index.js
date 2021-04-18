@@ -13,16 +13,8 @@ const _parseJourney = require('../../parse/journey')
 const _parseDeparture = require('../../parse/departure')
 const _formatStation = require('../../format/station')
 
+const baseProfile = require('./base.json')
 const products = require('./products')
-
-const transformReqBody = (ctx, body) => {
-	body.client = {type: 'IPA', id: 'VBB', name: 'vbbPROD', v: '4010300'}
-	body.ext = 'VBB.1'
-	body.ver = '1.16'
-	body.auth = {type: 'AID', aid: 'hafas-vbb-apps'}
-
-	return body
-}
 
 // todo: https://m.tagesspiegel.de/berlin/fahrerlebnis-wie-im-regionalexpress-so-faehrt-es-sich-in-der-neuen-express-s-bahn/25338674.html
 const parseLineWithMoreDetails = ({parsed}, p) => {
@@ -98,16 +90,13 @@ const formatStation = (id) => {
 }
 
 const vbbProfile = {
+	...baseProfile,
 	locale: 'de-DE',
 	timezone: 'Europe/Berlin',
-	endpoint: 'https://fahrinfo.vbb.de/bin/mgate.exe',
-
 	// https://gist.github.com/derhuerst/a8d94a433358abc015ff77df4481070c#file-haf_config_base-properties-L39
 	// https://runkit.com/derhuerst/hafas-decrypt-encrypted-mac-salt
-	salt: Buffer.from('5243544a4d3266467846667878516649', 'hex'),
+	salt: Buffer.from('RCTJM2fFxFfxxQfI', 'utf8'),
 	addMicMac: true,
-
-	transformReqBody,
 
 	products: products,
 
