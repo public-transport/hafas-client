@@ -15,6 +15,18 @@ const albertEinsteinStr = {
 }
 
 client.journeys(rostockHbf, güstrow, {results: 1})
+
+// .then(({journeys}) => {
+// 	const [journey] = journeys
+// 	return client.refreshJourney(journey.refreshToken, {stopovers: true, remarks: true})
+// })
+
+// .then(({journeys}) => {
+// 	const [journey] = journeys
+// 	const leg = journey.legs[0]
+// 	return client.trip(leg.tripId, leg.line.name, {polyline: true})
+// })
+
 // client.departures(rostockHbf, {duration: 1})
 // client.arrivals(rostockHbf, {duration: 10, linesOfStops: true})
 // client.locations('güstrow', {results: 2})
@@ -29,12 +41,6 @@ client.journeys(rostockHbf, güstrow, {results: 1})
 // client.reachableFrom(albertEinsteinStr, {
 // 	when: new Date('2020-03-03T10:00:00+01:00'),
 // 	maxDuration: 10
-// })
-
-// .then(({journeys}) => {
-// 	const [journey] = journeys
-// 	const leg = journey.legs[0]
-// 	return client.trip(leg.tripId, leg.line.name, {polyline: true})
 // })
 
 .then((data) => {

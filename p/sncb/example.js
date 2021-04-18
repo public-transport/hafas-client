@@ -13,7 +13,7 @@ const gentPaddenhoek = {
 	latitude: 51.0517, longitude: 3.724878,
 }
 
-// client.journeys(gentStPieters, bruxellesMidi, {stopovers: true, remarks: true})
+client.journeys(gentStPieters, bruxellesMidi, {stopovers: true, remarks: true})
 // .then(({journeys}) => {
 // 	const leg = journeys[0].legs[0]
 // 	return client.trip(leg.tripId, leg.line.name, {polyline: true})

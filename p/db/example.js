@@ -7,6 +7,15 @@ const client = createClient(dbProfile, 'hafas-client-example')
 
 // Berlin Jungfernheide to München Hbf
 client.journeys('8011167', '8000261', {results: 1, tickets: true})
+// .then(({journeys}) => {
+// 	const leg = journeys[0].legs[0]
+// 	return client.trip(leg.tripId, leg.line.name, {polyline: true})
+// })
+// .then(({journeys}) => {
+// 	const [journey] = journeys
+// 	return client.refreshJourney(journey.refreshToken, {stopovers: true, remarks: true})
+// })
+
 // client.departures('8011167', {duration: 1})
 // client.arrivals('8011167', {duration: 10, linesOfStops: true})
 // client.locations('Berlin Jungfernheide')

@@ -15,10 +15,16 @@ client.locations('bürkli', {results: 2})
 // }, {distance: 60})
 
 // client.journeys(bürkliplatz, '8591123', {results: 1, polylines: true})
+
 // .then(({journeys}) => {
 // 	const [journey] = journeys
 // 	const leg = journey.legs[0]
 // 	return client.trip(leg.tripId, leg.line.name, {polyline: true})
+// })
+
+// .then(({journeys}) => {
+// 	const [journey] = journeys
+// 	return client.refreshJourney(journey.refreshToken, {stopovers: true, remarks: true})
 // })
 
 // client.departures(bürkliplatz, {duration: 1})

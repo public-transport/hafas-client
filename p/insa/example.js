@@ -14,6 +14,7 @@ const hellestr1 = {
 
 // from Magdeburg-Neustadt to Magdeburg-Buckau
 client.journeys('008010226', '008013456', {results: 1})
+
 // client.departures('008010226', { duration: 5 })
 // client.arrivals('8010226', {duration: 10, linesOfStops: true})
 // client.locations('Magdeburg Hbf', {results: 2})

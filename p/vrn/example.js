@@ -8,7 +8,7 @@ const client = createClient(hvvProfile, 'hafas-client-example')
 const ludwigshafen = '8000236'
 const meckesheim = '8003932'
 
-// client.journeys(ludwigshafen, meckesheim, {results: 1, polylines: true})
+client.journeys(ludwigshafen, meckesheim, {results: 1, polylines: true})
 // .then(({journeys}) => {
 // 	const leg = journeys[0].legs[0]
 // 	return client.trip(leg.tripId, leg.line.name, {polyline: true})

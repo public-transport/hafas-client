@@ -9,11 +9,13 @@ const ingolstadtHbf = '8000183'
 const audiParkplatz = '84999'
 
 client.journeys(ingolstadtHbf, audiParkplatz, {results: 1})
-// .then(([journey]) => {
+// .then(({journeys}) => {
+// 	const [journey] = journeys
 // 	const leg = journey.legs[0]
-// 	return client.trip(leg.id, leg.line.name, {polyline: true})
+// 	return client.trip(leg.tripId, leg.line.name, {polyline: true})
 // })
-// .then(([journey]) => {
+// .then(({journeys}) => {
+// 	const [journey] = journeys
 // 	return client.refreshJourney(journey.refreshToken, {stopovers: true, remarks: true})
 // })
 
