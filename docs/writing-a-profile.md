@@ -64,9 +64,14 @@ myProfile.parseLine = parseHook(parseLine, removeFoo)
 
 ## 1. Setup
 
-*Note*: There are many ways to find the required values. This way is rather easy and has worked for most of the apps that we've looked at so far.
+*Note*: There are many ways to find the required values. This way is rather easy and works with most endpoints by now.
 
-1. **Get an iOS or Android device and download the "official" app** for the public transport provider that you want to build a profile for.
+1. **Find the journey planning webapp** corresponding to the API endpoint; Usually, you can find it on the public transport provider's website.
+2. **Open your [browser's devtools](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools)**, switch to the "Network" tab, and **inspect the requests to the HAFAS API**.
+
+If you can't find the webapp or your public transport provider doesn't have one, you can inspect their mobile app's traffic instead:
+
+1. Get an iOS or Android device and **download the "official" app.**
 2. **Configure a [man-in-the-middle HTTP proxy](https://docs.mitmproxy.org/stable/concepts-howmitmproxyworks/)** like [mitmproxy](https://mitmproxy.org).
 	- Configure your device to trust the self-signed SSL certificate, [as outlined in the mitmproxy docs](https://docs.mitmproxy.org/stable/concepts-certificates/).
 	- *Note*: This method does not work if the app uses [public key pinning](https://en.wikipedia.org/wiki/HTTP_Public_Key_Pinning). In this case (the app won't be able to query data), please [create an issue](https://github.com/public-transport/hafas-client/issues/new), so we can discuss other techniques.
@@ -86,15 +91,15 @@ You may want to start with the [profile boilerplate](profile-boilerplate.js).
 - **Identify the `locale`.** Basically guess work; Use the date & time formats as an indicator.
 - **Identify the `timezone`.** This may be tricky, a for example [Deutsche Bahn](https://en.wikipedia.org/wiki/Deutsche_Bahn) returns departures for Moscow as `+01:00` instead of `+03:00`.
 - **Copy the authentication** and other meta fields, namely `ver`, `ext`, `client` and `lang`.
-	- You can find these fields in the root of each request JSON. Check [a VBB request](https://gist.github.com/derhuerst/5fa86ed5aec63645e5ae37e23e555886#file-1-http-L13-L22) and [the corresponding VBB profile](https://github.com/public-transport/hafas-client/blob/6e61097687a37b60d53e767f2711466b80c5142c/p/vbb/index.js#L22-L29) for an example.
-	- Add a function `transformReqBody(ctx, body)` to your profile, which adds the fields to `body`.
+	- You can find these fields in the root of each request JSON. Check [a HVV request](https://gist.github.com/derhuerst/5a9d29a556b54182f9d30202f7244bfd#file-journeys-http-L11-L54) and [the corresponding HVV profile](https://github.com/public-transport/hafas-client/blob/99142acf8b156599daa69f2e1470901088827982/p/hvv/index.js#L5-L23) for an example.
+	- Add a function `transformReqBody(ctx, body)` to your profile, which adds the fields to `body`. todo: adapt this
 	- Some profiles have a `checksum` parameter (like [here](https://gist.github.com/derhuerst/2a735268bd82a0a6779633f15dceba33#file-journey-details-1-http-L1)) or two `mic` & `mac` parameters (like [here](https://gist.github.com/derhuerst/5fa86ed5aec63645e5ae37e23e555886#file-1-http-L1)). If you see one of them in your requests, jump to the [*Authentication* section of the `mgate.exe` docs](hafas-mgate-api.md#authentication). Unfortunately, this is necessary to get the profile working.
 
 ## 3. Products
 
 In `hafas-client`, there's a distinction between the `mode` and the `product` fields:
 
-- The `mode` field describes the mode of transport in general. [Standardised by the *Friendly Public Transport Format* `1.2.0`](https://github.com/public-transport/friendly-public-transport-format/blob/1.2.0/spec/readme.md#modes), it is on purpose limited to a very small number of possible values, e.g. `train` or `bus`.
+- The `mode` field describes the mode of transport in general. [Standardised by the *Friendly Public Transport Format* `1.2.1`](https://github.com/public-transport/friendly-public-transport-format/blob/1.2.1/spec/readme.md#modes), it is on purpose limited to a very small number of possible values, e.g. `train` or `bus`.
 - The value for `product` relates to how a means of transport "works" *in local context*. Example: Even though [*S-Bahn*](https://en.wikipedia.org/wiki/Berlin_S-Bahn) and [*U-Bahn*](https://en.wikipedia.org/wiki/Berlin_U-Bahn) in Berlin are both `train`s, they have different operators, service patterns, stations and look different. Therefore, they are two distinct `product`s `subway` and `suburban`.
 
 **Specify `product`s that appear in the app** you recorded requests of. For a fictional transit network, this may look like this:
@@ -123,7 +128,7 @@ const products = [
 Let's break this down:
 
 - `id`: A sensible, [camelCased](https://en.wikipedia.org/wiki/Camel_case#Variations_and_synonyms), alphanumeric identifier. Use it for the key in the `products` array as well.
-- `mode`: A [valid *Friendly Public Transport Format* `1.2.0` mode](https://github.com/public-transport/friendly-public-transport-format/blob/1.2.0/spec/readme.md#modes).
+- `mode`: A [valid *Friendly Public Transport Format* `1.2.1` mode](https://github.com/public-transport/friendly-public-transport-format/blob/1.2.1/spec/readme.md#modes).
 - `bitmasks`: HAFAS endpoints work with a [bitmask](https://en.wikipedia.org/wiki/Mask_(computing)#Arguments_to_functions) that toggles the individual products. It should be an array of values that toggle the appropriate bit(s) in the bitmask (see below).
 - `name`: A short, but distinct name for the means of transport, *just precise enough in local context*, and in the local language. In Berlin, `S-Bahn-Schnellzug` would be too much, because everyone knows what `S-Bahn` means.
 - `short`: The shortest possible symbol that identifies the product.
