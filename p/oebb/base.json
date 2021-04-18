@@ -4,12 +4,12 @@
 		"aid": "OWDL4fE4ixNiPBBm"
 	},
 	"client": {
-		"type": "IPA",
+		"type": "IPH",
 		"id": "OEBB",
-		"v": "6000500",
-		"name": "oebbIPAD_ADHOC"
+		"v": "6030600",
+		"name": "oebbPROD-ADHOC"
 	},
-	"endpoint": "http://fahrplan.oebb.at/bin/mgate.exe",
-	"ver": "1.16",
+	"endpoint": "https://fahrplan.oebb.at/bin/mgate.exe",
+	"ver": "1.41",
 	"defaultLanguage": "de"
 }

@@ -474,11 +474,13 @@ const dbProfile = {
 
 	formatStation,
 
-	trip: true, // todo: #49
+	departuresGetPasslist: false,
+	departuresStbFltrEquiv: false,
+	refreshJourneyUseOutReconL: true,
+	trip: true,
 	radar: true,
 	reachableFrom: true,
-	remarks: false, // seems like ver >= 1.20 is required
-	lines: false, // seems like ver >= 1.16 is required
+	lines: false, // `.svcResL[0].res.lineL[]` is missing 🤔
 }
 
 module.exports = dbProfile

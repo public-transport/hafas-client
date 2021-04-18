@@ -11,6 +11,6 @@
 	},
 	"endpoint": "https://auskunft.nvv.de/auskunft/bin/app/mgate.exe",
 	"ext": "NVV.6.0",
-	"ver": "1.18",
+	"ver": "1.45",
 	"defaultLanguage": "de"
 }

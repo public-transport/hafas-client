@@ -82,11 +82,14 @@ const dbBusradarNrwProfile = {
 
 	products: products,
 
+	departuresGetPasslist: false,
+	departuresStbFltrEquiv: false,
+	refreshJourneyUseOutReconL: true,
 	journeysOutFrwd: false,
 	trip: true,
 	radar: true,
-	remarks: false, // seems like ver >= 1.20 is required
-	lines: false, // seems like ver >= 1.16 is required
+	remarks: true, // `.svcResL[0].res.msgL[]` is missing though 🤔
+	lines: false, // `.svcResL[0].res.lineL[]` is missing 🤔
 }
 
 module.exports = dbBusradarNrwProfile

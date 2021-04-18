@@ -85,10 +85,13 @@ const avvProfile = {
 	...baseProfile,
 	locale: 'de-DE',
 	timezone: 'Europe/Berlin',
-	ver: '1.18',
+	ver: '1.26',
 
 	products,
 
+	departuresGetPasslist: false,
+	departuresStbFltrEquiv: false,
+	refreshJourneyUseOutReconL: true,
 	trip: true,
 	radar: true,
 	reachableFrom: true,

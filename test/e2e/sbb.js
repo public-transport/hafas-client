@@ -143,7 +143,6 @@ test('trip details', async (t) => {
 test.skip('departures at Lausanne', async (t) => {
 	const departures = await client.departures(lausanne, {
 		duration: 10, when,
-		stopovers: true
 	})
 
 	await testDepartures({

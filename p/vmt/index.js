@@ -14,11 +14,11 @@ const hvvProfile = {
 
 	products,
 
+	departuresGetPasslist: false,
+	departuresStbFltrEquiv: false,
+	refreshJourneyUseOutReconL: true,
 	trip: true,
-	refreshJourney: true,
 	reachableFrom: true,
-	// fails with `CGI_READ_FAILED`
-	// radar: true,
 	remarks: false, // seems like ver >= 1.20 is required
 }
 

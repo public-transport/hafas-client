@@ -226,7 +226,6 @@ test('trip details', async (t) => {
 test('departures at Kiel Räucherei', async (t) => {
 	const departures = await client.departures(kielRaeucherei, {
 		duration: 30, when,
-		stopovers: true
 	})
 
 	await testDepartures({

@@ -15,8 +15,7 @@ const zvvProfile = {
 
 	trip: true,
 	radar: true,
-	// todo: fails with "Parser error: root.svcReqL.svcReqL.req(ctxRecon)"
-	refreshJourney: false,
+	refreshJourneyUseOutReconL: true,
 	reachableFrom: true,
 }
 

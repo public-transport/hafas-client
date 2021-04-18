@@ -15,6 +15,7 @@ const svvProfile = {
 	reachableFrom: true,
 	departuresGetPasslist: false,
 	departuresStbFltrEquiv: false,
+	refreshJourneyUseOutReconL: true,
 }
 
 module.exports = svvProfile

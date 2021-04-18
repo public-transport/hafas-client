@@ -10,11 +10,12 @@ const saarfahrplanProfile = {
 
 	products: products,
 
-	departuresGetPasslist: true,
+	departuresGetPasslist: false,
+	departuresStbFltrEquiv: false,
+	refreshJourneyUseOutReconL: true,
 	trip: true,
 	radar: true,
 	reachableFrom: true,
-	remarks: false, // seems like ver >= 1.20 is required
 }
 
 module.exports = saarfahrplanProfile

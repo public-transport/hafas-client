@@ -12,6 +12,6 @@
 	},
 	"endpoint": "https://hvv-app.hafas.de/bin/mgate.exe",
 	"ext": "HVV.1",
-	"ver": "1.16",
+	"ver": "1.18",
 	"defaultLanguage": "de"
 }

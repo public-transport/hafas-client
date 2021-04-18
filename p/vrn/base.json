@@ -11,6 +11,6 @@
 	},
 	"endpoint": "https://vrn.hafas.de/bin/mgate.exe",
 	"ext": "DB.R19.04.a",
-	"ver": "1.24",
+	"ver": "1.34",
 	"defaultLanguage": "de"
 }

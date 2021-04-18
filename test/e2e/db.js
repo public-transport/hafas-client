@@ -277,7 +277,6 @@ test('departures at Berlin Schwedter Str.', async (t) => {
 
 	const departures = await client.departures(blnSchwedterStr, {
 		duration: 5, when,
-		stopovers: true
 	})
 
 	await testDepartures({
@@ -341,7 +340,6 @@ test('arrivals at Berlin Schwedter Str.', async (t) => {
 
 	const arrivals = await client.arrivals(blnSchwedterStr, {
 		duration: 5, when,
-		stopovers: true
 	})
 
 	await testArrivals({

@@ -11,6 +11,6 @@
 	},
 	"endpoint": "https://fahrinfo.vbb.de/bin/mgate.exe",
 	"ext": "VBB.1",
-	"ver": "1.16",
+	"ver": "1.45",
 	"defaultLanguage": "de"
 }

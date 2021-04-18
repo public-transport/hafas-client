@@ -27,6 +27,7 @@ const hvvProfile = {
 	refreshJourney: true,
 	formatRefreshJourneyReq,
 
+	refreshJourneyUseOutReconL: true,
 	departuresGetPasslist: false, // `departures()`: support for `getPasslist`?
 	departuresStbFltrEquiv: false, // `departures()`: support for `stbFltrEquiv`?
 }

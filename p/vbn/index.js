@@ -17,9 +17,7 @@ const insaProfile = {
 	trip: true,
 	radar: true,
 	reachableFrom: true,
-
-	// todo: these fail with ver >= 1.21, see #164
-	refreshJourney: false,
+	refreshJourneyUseOutReconL: true,
 	departuresGetPasslist: false,
 	departuresStbFltrEquiv: false,
 }

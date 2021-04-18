@@ -18,6 +18,9 @@ const irishRailProfile = {
 
 	products: products,
 
+	departuresGetPasslist: false,
+	departuresStbFltrEquiv: false,
+	refreshJourney: false, // fails with `CGI_READ_FAILED`
 	trip: true,
 	radar: true,
 }

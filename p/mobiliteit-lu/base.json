@@ -9,6 +9,6 @@
 		"name": "webapp"
 	},
 	"endpoint": "https://cdt.hafas.de/bin/mgate.exe",
-	"ver": "1.25",
+	"ver": "1.43",
 	"defaultLanguage": "de"
 }

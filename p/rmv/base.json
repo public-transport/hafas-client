@@ -10,6 +10,6 @@
 	},
 	"endpoint": "https://www.rmv.de/auskunft/bin/jp/mgate.exe",
 	"ext": "RMV.1",
-	"ver": "1.18",
+	"ver": "1.44",
 	"defaultLanguage": "de"
 }
