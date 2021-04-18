@@ -16,6 +16,14 @@ const locBaden = { type: 'location', latitude: 47.476, longitude: 8.30613 }
 // client.journeys(zurich1, basel1, { results: 1 })
 // client.journeys(zurich2, basel2, { results: 1 })
 client.journeys(baden1, baden2, { results: 1 })
+// .then(({journeys}) => {
+// 	const leg = journeys[0].legs[0]
+// 	return client.trip(leg.tripId, leg.line.name, {polyline: true})
+// })
+// .then(({journeys}) => {
+// 	return client.refreshJourney(journeys[0].refreshToken, {remarks: true})
+// })
+
 // client.departures(zurich2, {duration: 1})
 // client.arrivals(zurich2, {duration: 10, linesOfStops: true})
 // client.locations('Basel', { results: 2 })

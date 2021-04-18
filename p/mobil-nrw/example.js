@@ -11,8 +11,13 @@ const aachenHbf = '8000001'
 
 client.journeys(soest, aachenHbf, {results: 1, stopovers: true})
 // .then(({journeys}) => {
-// 	const leg = journeys[0].legs[0]
-// 	return client.trip(leg.tripId, leg.line.name)
+// 	const [journey] = journeys
+// 	const leg = journey.legs[0]
+// 	return client.trip(leg.tripId, leg.line.name, {polyline: true})
+// })
+// .then(({journeys}) => {
+// 	const [journey] = journeys
+// 	return client.refreshJourney(journey.refreshToken, {stopovers: true, remarks: true})
 // })
 
 // client.locations('soest', {results: 3})

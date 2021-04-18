@@ -6,7 +6,7 @@ const vmtProfile = require('.')
 const client = createClient(vmtProfile, 'hafas-client-example')
 
 const jena = '190014'
-const gothaZOB = '167049'
+const gothaZOB = '167280'
 
 client.journeys(jena, gothaZOB, {results: 1})
 // client.departures(jena)

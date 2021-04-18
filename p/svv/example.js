@@ -30,12 +30,6 @@ client.journeys(sam, volksgarten, {results: 1, polylines: true})
 // client.locations('salzburg sam', {results: 2})
 // client.stop(sam, {linesOfStops: true}) // Dammtor
 // client.nearby(zillnerstr2)
-// client.radar({
-// 	north: 47.815,
-// 	west: 13.007,
-// 	south: 47.792,
-// 	east: 13.059
-// }, {results: 10})
 // client.reachableFrom(zillnerstr2, {
 // 	when: new Date('2020-06-01T10:00:00+0200'),
 // })

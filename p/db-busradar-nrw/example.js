@@ -7,7 +7,15 @@ const client = createClient(dbbusradarnrwProfile, 'hafas-client-example')
 
 // Hagen Bauhaus to Schwerte Bahnhof
 // returns hafas error PARSE
-// client.journeys('3307002', '3357026', {results: 1})
+client.journeys('3307002', '3357026', {results: 1})
+// .then(({journeys}) => {
+// 	const leg = journeys[0].legs[0]
+// 	return client.trip(leg.tripId, leg.line.name, {polyline: true})
+// })
+// .then(({journeys}) => {
+// 	const [journey] = journeys
+// 	return client.refreshJourney(journey.refreshToken, {stopovers: true, remarks: true})
+// })
 
 // client.departures('3307002', {duration: 60})
 // client.arrivals('3307002', {duration: 30, linesOfStops: true})

@@ -17,7 +17,7 @@ client.journeys('2200073', '2200042', {results: 1, polylines: true})
 // 	return client.refreshJourney(journey.refreshToken, {stopovers: true, remarks: true})
 // })
 
-// client.departures('2200005', {duration: 1, stopovers: true})
+// client.departures('2200005', {duration: 1})
 // client.arrivals('2200005', {duration: 10, linesOfStops: true})
 // client.locations('kirchweg', {results: 2})
 // client.stop('2200005', {linesOfStops: true}) // Kassel Kirchweg

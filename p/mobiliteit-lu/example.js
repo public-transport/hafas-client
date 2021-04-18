@@ -5,14 +5,19 @@ const mobiliteitProfile = require('.')
 
 const client = createClient(mobiliteitProfile, 'hafas-client example')
 
-const mersch = '160904001'
-const bruxellesCentral = '300000079'
+const mersch = '160904011'
+const luxembourgCentral = '200405060'
 
 // from Mersch to Bruxelles Central
-client.journeys(mersch, bruxellesCentral, {results: 1})
+client.journeys(mersch, luxembourgCentral, {results: 1})
 // .then(({journeys}) => {
-// 	const leg = journeys[0].legs[0]
-// 	return client.trip(leg.id, leg.line.name, {polyline: true})
+// 	const [journey] = journeys
+// 	const leg = journey.legs[0]
+// 	return client.trip(leg.tripId, leg.line.name, {polyline: true})
+// })
+// .then(({journeys}) => {
+// 	const [journey] = journeys
+// 	return client.refreshJourney(journey.refreshToken, {stopovers: true, remarks: true})
 // })
 
 // client.locations('mersch', {results: 3})
@@ -38,7 +43,6 @@ client.journeys(mersch, bruxellesCentral, {results: 1})
 // 	address: 'Mersch, Rue Mies 1',
 // 	latitude: 49.746044, longitude: 6.102228,
 // }, {
-// 	when: new Date('2020-10-10T10:00:00+02:00'),
 // 	maxDuration: 30
 // })
 
