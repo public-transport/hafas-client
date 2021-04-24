@@ -65,7 +65,7 @@ test('earlier/later journeys', async (t) => {
 	t.end()
 })
 
-test.skip('refreshJourney', async (t) => {
+test('refreshJourney', async (t) => {
 	await testRefreshJourney({
 		test: t,
 		fetchJourneys: client.journeys,
@@ -91,7 +91,7 @@ test('arrivals at Platz der Jugend', async (t) => {
 
 // todo: nearby
 
-test.skip('radar', async (t) => {
+test('radar', async (t) => {
 	const vehicles = await client.radar({
 		north: 54.116968,
 		west: 12.029738,
@@ -105,8 +105,7 @@ test.skip('radar', async (t) => {
 	t.end()
 })
 
-// todo: fails with "HCI Service: location missing or invalid"
-test.skip('reachableFrom', async (t) => {
+test('reachableFrom', async (t) => {
 	await testReachableFrom({
 		test: t,
 		reachableFrom: client.reachableFrom,

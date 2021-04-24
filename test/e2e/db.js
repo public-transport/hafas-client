@@ -399,7 +399,7 @@ test('line with additionalName', async (t) => {
 	t.end()
 })
 
-test.skip('radar', async (t) => {
+test('radar', async (t) => {
 	await pStations
 
 	const vehicles = await client.radar({

@@ -157,15 +157,15 @@ test('departures at Meckesheim', async (t) => {
 	t.end()
 })
 
-test.skip('departures at Meckesheim in direction of Mauer', async (t) => {
-	const zuzenhausen = '8006679'
+test('departures at Meckesheim in direction of Reilsheim', async (t) => {
+	const reilsheim = '8005015'
 	await testDeparturesInDirection({
 		test: t,
 		fetchDepartures: client.departures,
 		fetchTrip: client.trip,
 		id: meckesheim,
-		directionIds: [zuzenhausen],
-		when, duration: 5 * 60,
+		directionIds: [reilsheim],
+		when, duration: 30 * 60,
 		validate,
 	})
 	t.end()

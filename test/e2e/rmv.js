@@ -91,8 +91,7 @@ test.skip('radar', async (t) => {
 	t.end()
 })
 
-// todo: always fails with `LOCATION` ("location/stop not found")
-test.skip('reachableFrom', async (t) => {
+test('reachableFrom', async (t) => {
 	await testReachableFrom({
 		test: t,
 		reachableFrom: client.reachableFrom,
