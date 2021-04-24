@@ -158,8 +158,7 @@ test('Kiel Hbf to Holstentor', async (t) => {
 	t.end()
 })
 
-// todo: fails with "query too complex, try less intermediate stations"
-test.skip('Husum to Lübeck Hbf with stopover at Kiel Hbf', async (t) => {
+test('Husum to Lübeck Hbf with stopover at Kiel Hbf', async (t) => {
 	const res = await client.journeys(husum, luebeckHbf, {
 		via: kielHbf,
 		results: 1,

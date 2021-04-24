@@ -198,7 +198,7 @@ test('departures with station object', async (t) => {
 	t.end()
 })
 
-test.skip('departures at Auestadion in direction of Friedrichsplatz', async (t) => {
+test('departures at Auestadion in direction of Friedrichsplatz', async (t) => {
 	await testDeparturesInDirection({
 		test: t,
 		fetchDepartures: client.departures,
@@ -211,9 +211,8 @@ test.skip('departures at Auestadion in direction of Friedrichsplatz', async (t) 
 	t.end()
 })
 
-// todo: also shows deps at 2200073 Scheidemannplatz & 2200055 Wilhelmsstraße/Stadtmuseum
-test.skip('arrivals at Kassel Friedrichsplatz.', async (t) => {
-	const arrivals = await client.arrivals(friedrichsplatz, {
+test('arrivals at Kassel Weigelstr.', async (t) => {
+	const arrivals = await client.arrivals(weigelstr, {
 		duration: 5, when
 	})
 
@@ -221,7 +220,7 @@ test.skip('arrivals at Kassel Friedrichsplatz.', async (t) => {
 		test: t,
 		arrivals,
 		validate,
-		id: friedrichsplatz
+		id: weigelstr,
 	})
 	t.end()
 })
