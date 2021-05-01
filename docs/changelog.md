@@ -1,5 +1,17 @@
 # Changelog
 
+## `5.16.0`
+
+- 7cb62108 `lib/request`: validate response `content-type` 🐛
+- 96b4d55f (re-)upgrade profiles, adapt feature flags
+- 62843f79 update profiles' examples 📝
+- e9701648 add Rejseplanen profile to the list 📝
+- 4557e336 update the "writing a profile" guide 📝
+
+96b4d55f might break your code. Eventually I would have been forced to upgrade the HAFAS protocol version anyways though, so I included this change in the `5.16` minor release.
+
+[🏷 `5.16.0`](https://github.com/public-transport/hafas-client/releases/tag/5.16.0), 2021-05-01
+
 ## `5.15.2`
 
 - 7025d3bc ÖBB: fix profile by using `https:` 🐛
