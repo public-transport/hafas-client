@@ -218,7 +218,7 @@ tap.test('refreshJourney', async (t) => {
 	t.end()
 })
 
-tap.test('journeysFromTrip – U Mehringdamm to U Naturkundemuseum, reroute to Spittelmarkt.', async (t) => {
+tap.skip('journeysFromTrip – U Mehringdamm to U Naturkundemuseum, reroute to Spittelmarkt.', async (t) => {
 	const blnMehringdamm = '730939'
 	const blnStadtmitte = '732541'
 	const blnNaturkundemuseum = '732539'
