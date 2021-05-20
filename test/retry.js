@@ -48,7 +48,7 @@ tap.test('withRetrying works', (t) => {
 	.catch(t.ifError)
 
 	setTimeout(() => t.equal(calls, 1), 50) // buffer
-	setTimeout(() => t.equal(calls, 2), 150) // 100 + buffer
-	setTimeout(() => t.equal(calls, 3), 350) // 100 + 200 + buffer
-	setTimeout(() => t.equal(calls, 4), 750) // 100 + 200 + 400 + buffer
+	setTimeout(() => t.equal(calls, 2), 200) // 100 + buffer
+	setTimeout(() => t.equal(calls, 3), 450) // 100 + 200 + buffer
+	setTimeout(() => t.equal(calls, 4), 900) // 100 + 200 + 400 + buffer
 })
