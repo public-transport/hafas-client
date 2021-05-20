@@ -1,8 +1,6 @@
 'use strict'
 
-const stations = require('vbb-stations-autocomplete')
 const a = require('assert')
-const shorten = require('vbb-short-station-name')
 const products = require('../../../p/bvg/products')
 
 const {createWhen} = require('./util')
@@ -22,19 +20,8 @@ const cfg = {
 	products
 }
 
-const validateDirection = (dir, name) => {
-	if (!stations(dir, true, false)[0]) {
-		console.error(name + `: station "${dir}" is unknown`)
-	}
-}
-
 // todo: coordsOptional = false
-const _validateStation = createValidateStation(cfg)
-const validateStation = (validate, s, name) => {
-	_validateStation(validate, s, name)
-	// todo: find station by ID
-	a.equal(s.name, shorten(s.name), name + '.name must be shortened')
-}
+const validateStation = createValidateStation(cfg)
 
 const _validateLine = createValidateLine(cfg)
 const validateLine = (validate, l, name) => {
@@ -58,23 +45,11 @@ const validateLine = (validate, l, name) => {
 	}
 }
 
-const _validateJourneyLeg = createValidateJourneyLeg(cfg)
-const validateJourneyLeg = (validate, l, name) => {
-	_validateJourneyLeg(validate, l, name)
-	if (!l.walking) validateDirection(l.direction, name + '.direction')
-}
+const validateJourneyLeg = createValidateJourneyLeg(cfg)
 
-const _validateDeparture = createValidateDeparture(cfg)
-const validateDeparture = (validate, dep, name) => {
-	_validateDeparture(validate, dep, name)
-	validateDirection(dep.direction, name + '.direction')
-}
+const validateDeparture = createValidateDeparture(cfg)
 
-const _validateMovement = createValidateMovement(cfg)
-const validateMovement = (validate, m, name) => {
-	_validateMovement(validate, m, name)
-	validateDirection(m.direction, name + '.direction')
-}
+const validateMovement = createValidateMovement(cfg)
 
 module.exports = {
 	cfg,

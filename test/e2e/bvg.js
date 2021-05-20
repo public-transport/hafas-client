@@ -2,8 +2,6 @@
 
 // todo: DRY with vbb tests
 
-const stations = require('vbb-stations-autocomplete')
-const shorten = require('vbb-short-station-name')
 const isRoughlyEqual = require('is-roughly-equal')
 const {DateTime} = require('luxon')
 const flatMap = require('lodash/flatMap')
@@ -36,12 +34,6 @@ const testJourneysWithDetour = require('./lib/journeys-with-detour')
 const testReachableFrom = require('./lib/reachable-from')
 
 const when = cfg.when
-
-const validateDirection = (dir, name) => {
-	if (!stations(dir, true, false)[0]) {
-		console.error(name + `: station "${dir}" is unknown`)
-	}
-}
 
 const validate = createValidate(cfg, {
 	station: validateStation,
