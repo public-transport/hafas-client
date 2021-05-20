@@ -63,7 +63,6 @@
 		"vbb-translate-ids": "^4.0.0"
 	},
 	"devDependencies": {
-		"db-stations": "^3.0.0",
 		"eslint": "^7.0.0",
 		"is-coordinates": "^2.0.2",
 		"is-roughly-equal": "^0.1.0",

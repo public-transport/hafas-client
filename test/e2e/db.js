@@ -1,6 +1,5 @@
 'use strict'
 
-const {full: readStations} = require('db-stations')
 const isRoughlyEqual = require('is-roughly-equal')
 
 const {createWhen} = require('./lib/util')
@@ -27,14 +26,6 @@ const testJourneysWithDetour = require('./lib/journeys-with-detour')
 const testReachableFrom = require('./lib/reachable-from')
 const testServerInfo = require('./lib/server-info')
 
-const stations = []
-const pStations = new Promise((resolve, reject) => {
-	readStations()
-	.once('error', reject)
-	.once('end', () => resolve())
-	.on('data', station => stations.push(station))
-})
-
 const isObj = o => o !== null && 'object' === typeof o && !Array.isArray(o)
 
 const when = createWhen('Europe/Berlin', 'de-DE')
@@ -49,17 +40,7 @@ const cfg = {
 	maxLongitude: 16.180237
 }
 
-const _validateStation = createValidateStation(cfg)
-const validateStation = (validate, s, name) => {
-	_validateStation(validate, s, name)
-	const match = stations.some(station => (
-		station.id === s.id ||
-		(station.additionalIds && station.additionalIds.includes(s.id))
-	))
-	if (!match) {
-		console.error(name + `.id: unknown ID "${s.id}"`)
-	}
-}
+const validateStation = createValidateStation(cfg)
 
 const validate = createValidate(cfg, {
 	station: validateStation
@@ -93,8 +74,6 @@ const blnJannowitzbrücke = '8089019'
 const potsdamHbf = '8012666'
 
 test('journeys – Berlin Schwedter Str. to München Hbf', async (t) => {
-	await pStations
-
 	const res = await client.journeys(blnSchwedterStr, münchenHbf, {
 		results: 4,
 		departure: when,
@@ -131,8 +110,6 @@ test('journeys – fails with no product', (t) => {
 })
 
 test('Berlin Schwedter Str. to Torfstraße 17', async (t) => {
-	await pStations
-
 	const torfstr = {
 		type: 'location',
 		address: 'Torfstraße 17',
@@ -155,8 +132,6 @@ test('Berlin Schwedter Str. to Torfstraße 17', async (t) => {
 })
 
 test('Berlin Schwedter Str. to ATZE Musiktheater', async (t) => {
-	await pStations
-
 	const atze = {
 		type: 'location',
 		id: '991598902',
@@ -181,8 +156,6 @@ test('Berlin Schwedter Str. to ATZE Musiktheater', async (t) => {
 })
 
 test('journeys: via works – with detour', async (t) => {
-	await pStations
-
 	// Going from Westhafen to Wedding via Württembergalle without detour
 	// is currently impossible. We check if the routing engine computes a detour.
 	const res = await client.journeys(westhafen, wedding, {
@@ -205,8 +178,6 @@ test('journeys: via works – with detour', async (t) => {
 // todo: without detour
 
 test('earlier/later journeys, Jungfernheide -> München Hbf', async (t) => {
-	await pStations
-
 	await testEarlierLaterJourneys({
 		test: t,
 		fetchJourneys: client.journeys,
@@ -220,8 +191,6 @@ test('earlier/later journeys, Jungfernheide -> München Hbf', async (t) => {
 })
 
 test.skip('journeys – leg cycle & alternatives', async (t) => {
-	await pStations
-
 	await testLegCycleAlternatives({
 		test: t,
 		fetchJourneys: client.journeys,
@@ -232,8 +201,6 @@ test.skip('journeys – leg cycle & alternatives', async (t) => {
 })
 
 test('refreshJourney', async (t) => {
-	await pStations
-
 	await testRefreshJourney({
 		test: t,
 		fetchJourneys: client.journeys,
@@ -247,8 +214,6 @@ test('refreshJourney', async (t) => {
 })
 
 test('trip details', async (t) => {
-	await pStations
-
 	const res = await client.journeys(berlinHbf, münchenHbf, {
 		results: 1, departure: when
 	})
@@ -272,8 +237,6 @@ test('trip details', async (t) => {
 })
 
 test('departures at Berlin Schwedter Str.', async (t) => {
-	await pStations
-
 	const departures = await client.departures(blnSchwedterStr, {
 		duration: 5, when,
 	})
@@ -288,8 +251,6 @@ test('departures at Berlin Schwedter Str.', async (t) => {
 })
 
 test('departures with station object', async (t) => {
-	await pStations
-
 	const deps = await client.departures({
 		type: 'station',
 		id: jungfernheide,
@@ -306,8 +267,6 @@ test('departures with station object', async (t) => {
 })
 
 test('departures at Berlin Hbf in direction of Berlin Ostbahnhof', async (t) => {
-	await pStations
-
 	await testDeparturesInDirection({
 		test: t,
 		fetchDepartures: client.departures,
@@ -321,8 +280,6 @@ test('departures at Berlin Hbf in direction of Berlin Ostbahnhof', async (t) => 
 })
 
 test('arrivals at Berlin Schwedter Str.', async (t) => {
-	await pStations
-
 	const arrivals = await client.arrivals(blnSchwedterStr, {
 		duration: 5, when,
 	})
@@ -337,8 +294,6 @@ test('arrivals at Berlin Schwedter Str.', async (t) => {
 })
 
 test('nearby Berlin Jungfernheide', async (t) => {
-	await pStations
-
 	const nearby = await client.nearby({
 		type: 'location',
 		latitude: 52.530273,
@@ -363,8 +318,6 @@ test('nearby Berlin Jungfernheide', async (t) => {
 })
 
 test('locations named Jungfernheide', async (t) => {
-	await pStations
-
 	const locations = await client.locations('Jungfernheide', {
 		results: 10
 	})
@@ -379,8 +332,6 @@ test('locations named Jungfernheide', async (t) => {
 })
 
 test('stop', async (t) => {
-	await pStations
-
 	const s = await client.stop(regensburgHbf)
 
 	validate(t, s, ['stop', 'station'], 'stop')
@@ -400,8 +351,6 @@ test('line with additionalName', async (t) => {
 })
 
 test('radar', async (t) => {
-	await pStations
-
 	const vehicles = await client.radar({
 		north: 52.52411,
 		west: 13.41002,
@@ -416,8 +365,6 @@ test('radar', async (t) => {
 })
 
 test('reachableFrom', async (t) => {
-	await pStations
-
 	const torfstr17 = {
 		type: 'location',
 		address: 'Torfstraße 17',
