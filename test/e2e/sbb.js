@@ -1,11 +1,12 @@
 'use strict'
 
+const tap = require('tap')
+
 const {createWhen} = require('./lib/util')
 const createClient = require('../..')
 const sbbProfile = require('../../p/sbb')
 const products = require('../../p/sbb/products')
 const createValidate = require('./lib/validate-fptf-with')
-const {test} = require('./lib/util')
 const testJourneysStationToStation = require('./lib/journeys-station-to-station')
 const testJourneysStationToAddress = require('./lib/journeys-station-to-address')
 const testJourneysStationToPoi = require('./lib/journeys-station-to-poi')
@@ -41,7 +42,7 @@ const oetwilAmSee = {
 	latitude: 47.278873, longitude: 8.726485,
 }
 
-test('journeys – Basel to Lausanne', async (t) => {
+tap.test('journeys – Basel to Lausanne', async (t) => {
 	const res = await client.journeys(basel, lausanne, {
 		results: 4,
 		departure: when,
@@ -58,7 +59,7 @@ test('journeys – Basel to Lausanne', async (t) => {
 	t.end()
 })
 
-test('Lausanne to 8618 Oetwil am See, Morgental', async (t) => {
+tap.test('Lausanne to 8618 Oetwil am See, Morgental', async (t) => {
 	const res = await client.journeys(lausanne, oetwilAmSee, {
 		results: 3,
 		departure: when,
@@ -74,7 +75,7 @@ test('Lausanne to 8618 Oetwil am See, Morgental', async (t) => {
 	t.end()
 })
 
-test('Lausanne to ETH Institut für Pflanzenwissenschaften', async (t) => {
+tap.test('Lausanne to ETH Institut für Pflanzenwissenschaften', async (t) => {
 	const ethPflanzenwissenschaften = {
 		type: 'location',
 		id: '980008611',
@@ -99,7 +100,7 @@ test('Lausanne to ETH Institut für Pflanzenwissenschaften', async (t) => {
 
 // todo: via works – with detour
 
-test('earlier/later journeys', async (t) => {
+tap.test('earlier/later journeys', async (t) => {
 	await testEarlierLaterJourneys({
 		test: t,
 		fetchJourneys: client.journeys,
@@ -112,7 +113,7 @@ test('earlier/later journeys', async (t) => {
 	t.end()
 })
 
-test('refreshJourney', async (t) => {
+tap.test('refreshJourney', async (t) => {
 	await testRefreshJourney({
 		test: t,
 		fetchJourneys: client.journeys,
@@ -125,7 +126,7 @@ test('refreshJourney', async (t) => {
 	t.end()
 })
 
-test('trip details', async (t) => {
+tap.test('trip details', async (t) => {
 	const res = await client.journeys(baselSBB, lausanne, {
 		results: 1, departure: when
 	})
@@ -140,7 +141,7 @@ test('trip details', async (t) => {
 })
 
 // todo: fails with `CGI_READ_FAILED`
-test.skip('departures at Lausanne', async (t) => {
+tap.skip('departures at Lausanne', async (t) => {
 	const departures = await client.departures(lausanne, {
 		duration: 10, when,
 	})
@@ -155,7 +156,7 @@ test.skip('departures at Lausanne', async (t) => {
 })
 
 // todo: fails with `CGI_READ_FAILED`
-test.skip('departures with station object', async (t) => {
+tap.skip('departures with station object', async (t) => {
 	const deps = await client.departures({
 		type: 'station',
 		id: '8501120',
@@ -172,7 +173,7 @@ test.skip('departures with station object', async (t) => {
 })
 
 // todo: fails with `CGI_READ_FAILED`
-test.skip('arrivals at Lausanne', async (t) => {
+tap.skip('arrivals at Lausanne', async (t) => {
 	const arrivals = await client.arrivals(lausanne, {
 		duration: 10, when
 	})
@@ -188,7 +189,7 @@ test.skip('arrivals at Lausanne', async (t) => {
 
 // todo: nearby
 
-test('locations named "ETH Hönggerberg"', async (t) => {
+tap.test('locations named "ETH Hönggerberg"', async (t) => {
 	const locations = await client.locations('ETH Hönggerberg', {
 		results: 10,
 	})
@@ -206,7 +207,7 @@ test('locations named "ETH Hönggerberg"', async (t) => {
 	t.end()
 })
 
-test('stop Lausanne', async (t) => {
+tap.test('stop Lausanne', async (t) => {
 	const s = await client.stop(lausanne)
 
 	validate(t, s, ['stop', 'station'], 'station')
@@ -215,7 +216,7 @@ test('stop Lausanne', async (t) => {
 	t.end()
 })
 
-test('radar', async (t) => {
+tap.test('radar', async (t) => {
 	const vehicles = await client.radar({
 		north: 46.9984,
 		west: 7.3495,
@@ -229,7 +230,7 @@ test('radar', async (t) => {
 	t.end()
 })
 
-test('reachableFrom', async (t) => {
+tap.test('reachableFrom', async (t) => {
 	await testReachableFrom({
 		test: t,
 		reachableFrom: client.reachableFrom,

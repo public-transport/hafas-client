@@ -1,5 +1,6 @@
 'use strict'
 
+const tap = require('tap')
 const isRoughlyEqual = require('is-roughly-equal')
 
 const {createWhen} = require('./lib/util')
@@ -11,7 +12,6 @@ const {
 	movement: createValidateMovement
 } = require('./lib/validators')
 const createValidate = require('./lib/validate-fptf-with')
-const {test} = require('./lib/util')
 const testJourneysStationToStation = require('./lib/journeys-station-to-station')
 const testJourneysStationToAddress = require('./lib/journeys-station-to-address')
 const testJourneysStationToPoi = require('./lib/journeys-station-to-poi')
@@ -55,7 +55,7 @@ const uhlandstr1 = {
 	longitude: 11.441138
 }
 
-test('journeys – Ingolstadt Hbf to Audi Parkplatz', async (t) => {
+tap.test('journeys – Ingolstadt Hbf to Audi Parkplatz', async (t) => {
 	const telemannstr = '71801'
 	const res = await client.journeys(ingolstadtHbf, telemannstr, {
 		results: 4,
@@ -75,7 +75,7 @@ test('journeys – Ingolstadt Hbf to Audi Parkplatz', async (t) => {
 
 // todo: journeys, only one product
 
-test('journeys – fails with no product', (t) => {
+tap.test('journeys – fails with no product', (t) => {
 	journeysFailsWithNoProduct({
 		test: t,
 		fetchJourneys: client.journeys,
@@ -87,7 +87,7 @@ test('journeys – fails with no product', (t) => {
 	t.end()
 })
 
-test('Ingolstadt Hbf to Uhlandstr. 1', async (t) => {
+tap.test('Ingolstadt Hbf to Uhlandstr. 1', async (t) => {
 	const res = await client.journeys(ingolstadtHbf, uhlandstr1, {
 		results: 3,
 		departure: when
@@ -103,7 +103,7 @@ test('Ingolstadt Hbf to Uhlandstr. 1', async (t) => {
 	t.end()
 })
 
-test('Ingolstadt Hbf to Städtisches Freibad', async (t) => {
+tap.test('Ingolstadt Hbf to Städtisches Freibad', async (t) => {
 	const freibad = {
 		type: 'location',
 		id: '980000591',
@@ -130,7 +130,7 @@ test('Ingolstadt Hbf to Städtisches Freibad', async (t) => {
 // todo: via works – with detour
 // todo: without detour
 
-test('earlier/later journeys', async (t) => {
+tap.test('earlier/later journeys', async (t) => {
 	await testEarlierLaterJourneys({
 		test: t,
 		fetchJourneys: client.journeys,
@@ -143,7 +143,7 @@ test('earlier/later journeys', async (t) => {
 	t.end()
 })
 
-test('refreshJourney', async (t) => {
+tap.test('refreshJourney', async (t) => {
 	await testRefreshJourney({
 		test: t,
 		fetchJourneys: client.journeys,
@@ -156,7 +156,7 @@ test('refreshJourney', async (t) => {
 	t.end()
 })
 
-test('trip details', async (t) => {
+tap.test('trip details', async (t) => {
 	const {journeys} = await client.journeys(ingolstadtHbf, telemannstr, {
 		results: 1, departure: when
 	})
@@ -170,7 +170,7 @@ test('trip details', async (t) => {
 	t.end()
 })
 
-test('departures at Ingolstadt Hbf', async (t) => {
+tap.test('departures at Ingolstadt Hbf', async (t) => {
 	const ids = [
 		ingolstadtHbf, // station
 		'80301', // stop "Ingolstadt, Hauptbahnhof Stadtauswärts"
@@ -184,7 +184,7 @@ test('departures at Ingolstadt Hbf', async (t) => {
 	validate(t, deps, 'departures', 'departures')
 	t.ok(deps.length > 0, 'must be >0 departures')
 	// todo: move into deps validator
-	t.deepEqual(deps, deps.sort((a, b) => t.when > b.when))
+	t.same(deps, deps.sort((a, b) => t.when > b.when))
 
 	for (let i = 0; i < deps.length; i++) {
 		const dep = deps[i]
@@ -194,7 +194,7 @@ test('departures at Ingolstadt Hbf', async (t) => {
 	t.end()
 })
 
-test('departures with station object', async (t) => {
+tap.test('departures with station object', async (t) => {
 	const deps = await client.departures({
 		type: 'station',
 		id: ingolstadtHbf,
@@ -210,7 +210,7 @@ test('departures with station object', async (t) => {
 	t.end()
 })
 
-test('arrivals at Ingolstadt Hbf', async (t) => {
+tap.test('arrivals at Ingolstadt Hbf', async (t) => {
 	const ids = [
 		ingolstadtHbf, // station
 		'80301', // stop "Ingolstadt, Hauptbahnhof Stadtauswärts"
@@ -224,7 +224,7 @@ test('arrivals at Ingolstadt Hbf', async (t) => {
 	validate(t, arrs, 'arrivals', 'arrivals')
 	t.ok(arrs.length > 0, 'must be >0 arrivals')
 	// todo: move into arrs validator
-	t.deepEqual(arrs, arrs.sort((a, b) => t.when > b.when))
+	t.same(arrs, arrs.sort((a, b) => t.when > b.when))
 
 	for (let i = 0; i < arrs.length; i++) {
 		const arr = arrs[i]
@@ -234,7 +234,7 @@ test('arrivals at Ingolstadt Hbf', async (t) => {
 	t.end()
 })
 
-test('nearby', async (t) => {
+tap.test('nearby', async (t) => {
 	const nearby = await client.nearby({
 		type: 'location',
 		id: '990001921',
@@ -253,7 +253,7 @@ test('nearby', async (t) => {
 	t.end()
 })
 
-test('locations named "freibad"', async (t) => {
+tap.test('locations named "freibad"', async (t) => {
 	const freibadIngolstadt = '980000591'
 	const locations = await client.locations('freibad', {
 		results: 5
@@ -271,7 +271,7 @@ test('locations named "freibad"', async (t) => {
 	t.end()
 })
 
-test('stop Ettinger Str.', async (t) => {
+tap.test('stop Ettinger Str.', async (t) => {
 	const ettingerStr = '18304'
 	const s = await client.stop(ettingerStr)
 
@@ -281,7 +281,7 @@ test('stop Ettinger Str.', async (t) => {
 	t.end()
 })
 
-test('radar', async (t) => {
+tap.test('radar', async (t) => {
 	const vehicles = await client.radar({
 		north: 48.74453,
 		west: 11.42733,

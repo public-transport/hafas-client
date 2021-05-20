@@ -1,6 +1,6 @@
 'use strict'
 
-const test = require('tape')
+const tap = require('tap')
 const parse = require('../../parse/icon')
 
 const ctx = {
@@ -9,12 +9,12 @@ const ctx = {
 	profile: {}
 }
 
-test('parses icons correctly', (t) => {
+tap.test('parses icons correctly', (t) => {
 	const text = {
 		"res": "BVG",
 		"text": "Berliner Verkehrsbetriebe"
 	}
-	t.deepEqual(parse(ctx, text), {
+	t.same(parse(ctx, text), {
 		type: 'BVG',
 		title: 'Berliner Verkehrsbetriebe'
 	})
@@ -23,7 +23,7 @@ test('parses icons correctly', (t) => {
 		"res": "PROD_BUS",
 		"txtS": "18"
 	}
-	t.deepEqual(parse(ctx, txtS), {
+	t.same(parse(ctx, txtS), {
 		type: 'PROD_BUS',
 		title: '18'
 	})
@@ -32,7 +32,7 @@ test('parses icons correctly', (t) => {
 		"res": "RBB",
 		"txt": "Regionalbus Braunschweig GmbH"
 	}
-	t.deepEqual(parse(ctx, txt), {
+	t.same(parse(ctx, txt), {
 		type: 'RBB',
 		title: 'Regionalbus Braunschweig GmbH'
 	})
@@ -40,7 +40,7 @@ test('parses icons correctly', (t) => {
 	const noText = {
 		"res": "attr_bike_r"
 	}
-	t.deepEqual(parse(ctx, noText), {
+	t.same(parse(ctx, noText), {
 		type: 'attr_bike_r',
 		title: null
 	})
@@ -60,7 +60,7 @@ test('parses icons correctly', (t) => {
 			"a": 255
 		}
 	}
-	t.deepEqual(parse(ctx, withColor), {
+	t.same(parse(ctx, withColor), {
 		type: 'prod_sub_t',
 		title: null,
 		fgColor: {r: 255, g: 255, b: 255, a: 255},

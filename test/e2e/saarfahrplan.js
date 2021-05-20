@@ -1,5 +1,6 @@
 'use strict'
 
+const tap = require('tap')
 const isRoughlyEqual = require('is-roughly-equal')
 
 const { createWhen } = require('./lib/util')
@@ -11,7 +12,6 @@ const {
 	stop: validateStop
 } = require('./lib/validators')
 const createValidate = require('./lib/validate-fptf-with')
-const {test} = require('./lib/util')
 const testJourneysStationToStation = require('./lib/journeys-station-to-station')
 const testJourneysStationToAddress = require('./lib/journeys-station-to-address')
 const testJourneysStationToPoi = require('./lib/journeys-station-to-poi')
@@ -69,7 +69,7 @@ const thomasMannStr = {
 // @todo prices/tickets
 // @todo journeys, only one product
 
-test('journeys – fails with no product', (t) => {
+tap.test('journeys – fails with no product', (t) => {
 	journeysFailsWithNoProduct({
 		test: t,
 		fetchJourneys: client.journeys,
@@ -81,7 +81,7 @@ test('journeys – fails with no product', (t) => {
 	t.end()
 })
 
-test('Saarbrücken Hbf to Neunkirchen, Thomas-Mann-Straße 1', async (t) => {
+tap.test('Saarbrücken Hbf to Neunkirchen, Thomas-Mann-Straße 1', async (t) => {
 	const res = await client.journeys(saarbrueckenHbf, thomasMannStr, {
 		results: 3,
 		departure: when
@@ -97,7 +97,7 @@ test('Saarbrücken Hbf to Neunkirchen, Thomas-Mann-Straße 1', async (t) => {
 	t.end()
 })
 
-test('Saarbrücken Hbf to Schlossberghöhlen', async (t) => {
+tap.test('Saarbrücken Hbf to Schlossberghöhlen', async (t) => {
 	const schlossberghoehlen = {
 		type: 'location',
 		id: '9000185',
@@ -120,7 +120,7 @@ test('Saarbrücken Hbf to Schlossberghöhlen', async (t) => {
 	t.end()
 })
 
-test.skip('journeys: via works – with detour', async (t) => {
+tap.skip('journeys: via works – with detour', async (t) => {
 	// Going from Stephansplatz to Schottenring via Donauinsel without detour
 	// is currently impossible. We check if the routing engine computes a detour.
 	const stephansplatz = '1390167'
@@ -145,7 +145,7 @@ test.skip('journeys: via works – with detour', async (t) => {
 
 // todo: journeys: via works – without detour
 
-test('earlier/later journeys, Saarbrücken Hbf -> Saarlouis Hbf', async (t) => {
+tap.test('earlier/later journeys, Saarbrücken Hbf -> Saarlouis Hbf', async (t) => {
 	await testEarlierLaterJourneys({
 		test: t,
 		fetchJourneys: client.journeys,
@@ -158,7 +158,7 @@ test('earlier/later journeys, Saarbrücken Hbf -> Saarlouis Hbf', async (t) => {
 	t.end()
 })
 
-test('trip details', async (t) => {
+tap.test('trip details', async (t) => {
 	const res = await client.journeys(saarlouisHbf, metzVille, {
 		results: 1, departure: when
 	})
@@ -172,7 +172,7 @@ test('trip details', async (t) => {
 	t.end()
 })
 
-test('departures', async (t) => {
+tap.test('departures', async (t) => {
 	const departures = await client.departures(saarbrueckenUhlandstr, {
 		duration: 5, when
 	})
@@ -191,11 +191,11 @@ test('departures', async (t) => {
 	}
 
 	// todo: move into deps validator
-	t.deepEqual(departures, departures.sort((a, b) => t.when > b.when))
+	t.same(departures, departures.sort((a, b) => t.when > b.when))
 	t.end()
 })
 
-test('departures with stop object', async (t) => {
+tap.test('departures with stop object', async (t) => {
 	const deps = await client.departures({
 		type: 'stop',
 		id: '8000323',
@@ -211,7 +211,7 @@ test('departures with stop object', async (t) => {
 	t.end()
 })
 
-test('departures at Uhlandstr., Saarbrücken in direction of Landwehrplatz', async (t) => {
+tap.test('departures at Uhlandstr., Saarbrücken in direction of Landwehrplatz', async (t) => {
 	const saarbrueckenLandwehrplatz = '10606'
 	await testDeparturesInDirection({
 		test: t,
@@ -227,7 +227,7 @@ test('departures at Uhlandstr., Saarbrücken in direction of Landwehrplatz', asy
 
 // todo: arrivals
 
-test('nearby Saarbrücken Hbf', async (t) => {
+tap.test('nearby Saarbrücken Hbf', async (t) => {
 	const nearby = await client.nearby({
 		type: 'location',
 		latitude: 49.241066,
@@ -250,7 +250,7 @@ test('nearby Saarbrücken Hbf', async (t) => {
 	t.end()
 })
 
-test('locations named Saarbrücken', async (t) => {
+tap.test('locations named Saarbrücken', async (t) => {
 	const aufDerWerthBürgerpark = '10204'
 	const locations = await client.locations('bürgerpark', {
 		results: 20
@@ -268,7 +268,7 @@ test('locations named Saarbrücken', async (t) => {
 	t.end()
 })
 
-test('stop', async (t) => {
+tap.test('stop', async (t) => {
 	const s = await client.stop(saarbrueckenUhlandstr)
 
 	validate(t, s, ['stop', 'station'], 'stop')
@@ -277,7 +277,7 @@ test('stop', async (t) => {
 	t.end()
 })
 
-test('radar', async (t) => {
+tap.test('radar', async (t) => {
 	const vehicles = await client.radar({
 		north: 49.27,
 		west: 6.97,

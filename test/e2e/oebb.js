@@ -1,5 +1,6 @@
 'use strict'
 
+const tap = require('tap')
 const isRoughlyEqual = require('is-roughly-equal')
 const validateLine = require('validate-fptf/line')
 
@@ -12,7 +13,6 @@ const {
 	stop: validateStop
 } = require('./lib/validators')
 const createValidate = require('./lib/validate-fptf-with')
-const {test} = require('./lib/util')
 const testJourneysStationToStation = require('./lib/journeys-station-to-station')
 const testJourneysStationToAddress = require('./lib/journeys-station-to-address')
 const testJourneysStationToPoi = require('./lib/journeys-station-to-poi')
@@ -62,7 +62,7 @@ const wienRenngasse = '1390186'
 const wienKarlsplatz = '1390461'
 const wienPilgramgasse = '1390562'
 
-test('journeys – Salzburg Hbf to Wien Westbahnhof', async (t) => {
+tap.test('journeys – Salzburg Hbf to Wien Westbahnhof', async (t) => {
 	const res = await client.journeys(salzburgHbf, wienFickeystr, {
 		results: 4,
 		departure: when,
@@ -87,7 +87,7 @@ test('journeys – Salzburg Hbf to Wien Westbahnhof', async (t) => {
 
 // todo: journeys, only one product
 
-test('journeys – fails with no product', (t) => {
+tap.test('journeys – fails with no product', (t) => {
 	journeysFailsWithNoProduct({
 		test: t,
 		fetchJourneys: client.journeys,
@@ -99,7 +99,7 @@ test('journeys – fails with no product', (t) => {
 	t.end()
 })
 
-test('Salzburg Hbf to 1220 Wien, Fischerstrand 7', async (t) => {
+tap.test('Salzburg Hbf to 1220 Wien, Fischerstrand 7', async (t) => {
 	const wagramerStr = {
 		type: 'location',
     	address: '1220 Wien, Fischerstrand 7',
@@ -121,7 +121,7 @@ test('Salzburg Hbf to 1220 Wien, Fischerstrand 7', async (t) => {
 	t.end()
 })
 
-test('Salzburg Hbf to Uni Wien', async (t) => {
+tap.test('Salzburg Hbf to Uni Wien', async (t) => {
 	const uniWien = {
 		type: 'location',
 		id: '970076515',
@@ -144,7 +144,7 @@ test('Salzburg Hbf to Uni Wien', async (t) => {
 	t.end()
 })
 
-test('journeys: via works – with detour', async (t) => {
+tap.test('journeys: via works – with detour', async (t) => {
 	// Going from Stephansplatz to Schottenring via Donauinsel without detour
 	// is currently impossible. We check if the routing engine computes a detour.
 	const stephansplatz = '1390167'
@@ -167,7 +167,7 @@ test('journeys: via works – with detour', async (t) => {
 	t.end()
 })
 
-test('journeys: via works – without detour', async (t) => {
+tap.test('journeys: via works – without detour', async (t) => {
 	// When going from Karlsplatz to Praterstern via Museumsquartier, there is
 	// *no need* to change trains / no need for a "detour".
 	const karlsplatz = '1390461'
@@ -202,7 +202,7 @@ test('journeys: via works – without detour', async (t) => {
 	t.end()
 })
 
-test('earlier/later journeys, Salzburg Hbf -> Wien Westbahnhof', async (t) => {
+tap.test('earlier/later journeys, Salzburg Hbf -> Wien Westbahnhof', async (t) => {
 	await testEarlierLaterJourneys({
 		test: t,
 		fetchJourneys: client.journeys,
@@ -215,7 +215,7 @@ test('earlier/later journeys, Salzburg Hbf -> Wien Westbahnhof', async (t) => {
 	t.end()
 })
 
-test('refreshJourney', async (t) => {
+tap.test('refreshJourney', async (t) => {
 	await testRefreshJourney({
 		test: t,
 		fetchJourneys: client.journeys,
@@ -228,7 +228,7 @@ test('refreshJourney', async (t) => {
 	t.end()
 })
 
-test('trip details', async (t) => {
+tap.test('trip details', async (t) => {
 	const res = await client.journeys(wienWestbahnhof, muenchenHbf, {
 		results: 1, departure: when
 	})
@@ -242,7 +242,7 @@ test('trip details', async (t) => {
 	t.end()
 })
 
-test('departures at Wien Leibenfrostgasse', async (t) => {
+tap.test('departures at Wien Leibenfrostgasse', async (t) => {
 	const wienLeibenfrostgasse = '1390469'
 	const ids = [
 		wienLeibenfrostgasse, // station
@@ -257,7 +257,7 @@ test('departures at Wien Leibenfrostgasse', async (t) => {
 	validate(t, deps, 'departures', 'departures')
 	t.ok(deps.length > 0, 'must be >0 departures')
 	// todo: move into deps validator
-	t.deepEqual(deps, deps.sort((a, b) => t.when > b.when))
+	t.same(deps, deps.sort((a, b) => t.when > b.when))
 
 	for (let i = 0; i < deps.length; i++) {
 		const dep = deps[i]
@@ -267,7 +267,7 @@ test('departures at Wien Leibenfrostgasse', async (t) => {
 	t.end()
 })
 
-test('departures with station object', async (t) => {
+tap.test('departures with station object', async (t) => {
 	const deps = await client.departures({
 		type: 'station',
 		id: salzburgHbf,
@@ -283,7 +283,7 @@ test('departures with station object', async (t) => {
 	t.end()
 })
 
-test('departures at Karlsplatz in direction of Pilgramgasse', async (t) => {
+tap.test('departures at Karlsplatz in direction of Pilgramgasse', async (t) => {
 	const subStops = (await client.stop(wienPilgramgasse, {
 		subStops: true, entrances: false,
 	})).stops || []
@@ -302,7 +302,7 @@ test('departures at Karlsplatz in direction of Pilgramgasse', async (t) => {
 
 // todo: arrivals
 
-test('nearby Salzburg Hbf', async (t) => {
+tap.test('nearby Salzburg Hbf', async (t) => {
 	const nearby = await client.nearby({
 		type: 'location',
 		longitude: 13.045604,
@@ -325,7 +325,7 @@ test('nearby Salzburg Hbf', async (t) => {
 	t.end()
 })
 
-test('locations named Salzburg', async (t) => {
+tap.test('locations named Salzburg', async (t) => {
 	const salzburgVolksgarten = '591161'
 	const locations = await client.locations('Salzburg volksgarten', {
 		results: 20
@@ -343,7 +343,7 @@ test('locations named Salzburg', async (t) => {
 	t.end()
 })
 
-test('stop', async (t) => {
+tap.test('stop', async (t) => {
 	const loc = await client.stop(wienRenngasse)
 
 	// todo: find a way to always get products from the API
@@ -367,7 +367,7 @@ test('stop', async (t) => {
 	t.end()
 })
 
-test('radar Salzburg', async (t) => {
+tap.test('radar Salzburg', async (t) => {
 	let vehicles = await client.radar({
 		north: 47.827203,
 		west: 13.001261,

@@ -34,7 +34,7 @@ const testRefreshJourney = async (cfg) => {
 	const refreshed = await refreshJourney(model.refreshToken, {
 		stopovers: false
 	})
-	t.deepEqual(simplify(refreshed), simplify(model))
+	t.same(simplify(refreshed), simplify(model))
 }
 
 module.exports = testRefreshJourney

@@ -1,6 +1,6 @@
 'use strict'
 
-const test = require('tape')
+const tap = require('tap')
 const omit = require('lodash/omit')
 const parse = require('../../parse/location')
 
@@ -20,7 +20,7 @@ const ctx = {
 	profile
 }
 
-test('parses an address correctly', (t) => {
+tap.test('parses an address correctly', (t) => {
 	const input = {
 		type: 'A',
 		name: 'Foo street 3',
@@ -29,7 +29,7 @@ test('parses an address correctly', (t) => {
 	}
 
 	const address = parse(ctx, input)
-	t.deepEqual(address, {
+	t.same(address, {
 		type: 'location',
 		id: 'some id',
 		address: 'Foo street 3',
@@ -40,7 +40,7 @@ test('parses an address correctly', (t) => {
 	t.end()
 })
 
-test('parses a POI correctly', (t) => {
+tap.test('parses a POI correctly', (t) => {
 	const input = {
 		type: 'P',
 		name: 'some POI',
@@ -49,7 +49,7 @@ test('parses a POI correctly', (t) => {
 	}
 
 	const poi = parse(ctx, input)
-	t.deepEqual(poi, {
+	t.same(poi, {
 		type: 'location',
 		poi: true,
 		id: 'some id',
@@ -75,9 +75,9 @@ const fooBusStop = {
 	pCls: 123
 }
 
-test('parses a stop correctly', (t) => {
+tap.test('parses a stop correctly', (t) => {
 	const stop = parse(ctx, fooBusStop)
-	t.deepEqual(stop, {
+	t.same(stop, {
 		type: 'stop',
 		id: 'foo stop',
 		name: 'foo bus stop', // lower-cased!
@@ -106,12 +106,12 @@ test('parses a stop correctly', (t) => {
 	}, {
 		...fooBusStop, lines: [lineA]
 	})
-	t.deepEqual(withLines.lines, [lineA])
+	t.same(withLines.lines, [lineA])
 
 	t.end()
 })
 
-test('falls back to coordinates from `lid`', (t) => {
+tap.test('falls back to coordinates from `lid`', (t) => {
 	const {location} = parse(ctx, {
 		type: 'S',
 		name: 'foo',
@@ -123,7 +123,7 @@ test('falls back to coordinates from `lid`', (t) => {
 	t.end()
 })
 
-test('handles recursive references properly', (t) => {
+tap.test('handles recursive references properly', (t) => {
 	const southernInput = {
 		type: 'S',
 		name: 'Southern Platform',
@@ -171,14 +171,14 @@ test('handles recursive references properly', (t) => {
 		...fooBusStop,
 		entryLocL: [0]
 	})
-	t.deepEqual(entrances, [southernExpected.location])
+	t.same(entrances, [southernExpected.location])
 
 	const {type, stops} = parse(_ctx, {
 		...fooBusStop,
 		stopLocL: [0]
 	})
 	t.equal(type, 'station')
-	t.deepEqual(stops, [southernExpected])
+	t.same(stops, [southernExpected])
 
 	t.end()
 })

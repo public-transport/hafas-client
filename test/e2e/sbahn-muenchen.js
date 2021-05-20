@@ -1,12 +1,13 @@
 'use strict'
 
+const tap = require('tap')
+
 const {createWhen} = require('./lib/util')
 const createClient = require('../..')
 const sMunichProfile = require('../../p/sbahn-muenchen')
 const products = require('../../p/sbahn-muenchen/products')
 const {movement: _validateMovement} = require('./lib/validators')
 const createValidate = require('./lib/validate-fptf-with')
-const {test} = require('./lib/util')
 const testJourneysStationToStation = require('./lib/journeys-station-to-station')
 const testJourneysStationToAddress = require('./lib/journeys-station-to-address')
 const testJourneysStationToPoi = require('./lib/journeys-station-to-poi')
@@ -59,7 +60,7 @@ const poetschnerstr = {
 	longitude: 11.531695
 }
 
-test('journeys – Mittersendling to Karl-Theodor-Straße', async (t) => {
+tap.test('journeys – Mittersendling to Karl-Theodor-Straße', async (t) => {
 	const res = await client.journeys(mittersendling, karlTheodorStr, {
 		results: 4,
 		departure: when,
@@ -78,7 +79,7 @@ test('journeys – Mittersendling to Karl-Theodor-Straße', async (t) => {
 
 // todo: journeys, only one product
 
-test('journeys – fails with no product', (t) => {
+tap.test('journeys – fails with no product', (t) => {
 	journeysFailsWithNoProduct({
 		test: t,
 		fetchJourneys: client.journeys,
@@ -90,7 +91,7 @@ test('journeys – fails with no product', (t) => {
 	t.end()
 })
 
-test('Karl-Theodor-Straße to Pötschnerstraße 3, Neuhausen', async (t) => {
+tap.test('Karl-Theodor-Straße to Pötschnerstraße 3, Neuhausen', async (t) => {
 	const res = await client.journeys(karlTheodorStr, poetschnerstr, {
 		results: 3,
 		departure: when
@@ -106,7 +107,7 @@ test('Karl-Theodor-Straße to Pötschnerstraße 3, Neuhausen', async (t) => {
 	t.end()
 })
 
-test('Karl-Theodor-Straße to Hofbräuhaus', async (t) => {
+tap.test('Karl-Theodor-Straße to Hofbräuhaus', async (t) => {
 	const hofbraeuhaus = {
 		type: 'location',
 		id: '970006201',
@@ -134,7 +135,7 @@ test('Karl-Theodor-Straße to Hofbräuhaus', async (t) => {
 // todo: via works – with detour
 // todo: without detour
 
-test('earlier/later journeys', async (t) => {
+tap.test('earlier/later journeys', async (t) => {
 	await testEarlierLaterJourneys({
 		test: t,
 		fetchJourneys: client.journeys,
@@ -147,7 +148,7 @@ test('earlier/later journeys', async (t) => {
 	t.end()
 })
 
-test('refreshJourney', async (t) => {
+tap.test('refreshJourney', async (t) => {
 	await testRefreshJourney({
 		test: t,
 		fetchJourneys: client.journeys,
@@ -160,7 +161,7 @@ test('refreshJourney', async (t) => {
 	t.end()
 })
 
-test('trip details', async (t) => {
+tap.test('trip details', async (t) => {
 	const res = await client.journeys(mittersendling, karlTheodorStr, {
 		results: 1, departure: when
 	})
@@ -174,7 +175,7 @@ test('trip details', async (t) => {
 	t.end()
 })
 
-test('departures at Dietlindenstraße', async (t) => {
+tap.test('departures at Dietlindenstraße', async (t) => {
 	const dietlindenstr = '624391'
 	const departures = await client.departures(dietlindenstr, {
 		duration: 10, when,
@@ -189,7 +190,7 @@ test('departures at Dietlindenstraße', async (t) => {
 	t.end()
 })
 
-test('departures with station object', async (t) => {
+tap.test('departures with station object', async (t) => {
 	const deps = await client.departures({
 		type: 'station',
 		id: mittersendling,
@@ -205,7 +206,7 @@ test('departures with station object', async (t) => {
 	t.end()
 })
 
-test('arrivals at Karl-Theodor-Straße', async (t) => {
+tap.test('arrivals at Karl-Theodor-Straße', async (t) => {
 	const arrivals = await client.arrivals(karlTheodorStr, {
 		duration: 10, when,
 	})
@@ -221,7 +222,7 @@ test('arrivals at Karl-Theodor-Straße', async (t) => {
 
 // todo: nearby
 
-test('locations named "Nationaltheater"', async (t) => {
+tap.test('locations named "Nationaltheater"', async (t) => {
 	const nationaltheater = '624639'
 	const locations = await client.locations('Nationaltheater', {
 		results: 10
@@ -239,7 +240,7 @@ test('locations named "Nationaltheater"', async (t) => {
 	t.end()
 })
 
-test('station Karl-Theodor-Straße', async (t) => {
+tap.test('station Karl-Theodor-Straße', async (t) => {
 	const s = await client.stop(karlTheodorStr)
 
 	validate(t, s, ['stop', 'station'], 'station')
@@ -248,7 +249,7 @@ test('station Karl-Theodor-Straße', async (t) => {
 	t.end()
 })
 
-test('radar', async (t) => {
+tap.test('radar', async (t) => {
 	const vehicles = await client.radar({
 		north: 48.145121,
 		west: 11.543736,
@@ -262,7 +263,7 @@ test('radar', async (t) => {
 	t.end()
 })
 
-test('reachableFrom', async (t) => {
+tap.test('reachableFrom', async (t) => {
 	await testReachableFrom({
 		test: t,
 		reachableFrom: client.reachableFrom,

@@ -1,5 +1,7 @@
 'use strict'
 
+const tap = require('tap')
+
 const { createWhen } = require('./lib/util')
 const createClient = require('../..')
 const pkpProfile = require('../../p/pkp')
@@ -10,7 +12,6 @@ const {
 	movement: _validateMovement
 } = require('./lib/validators')
 const createValidate = require('./lib/validate-fptf-with')
-const {test} = require('./lib/util')
 const testJourneysStationToStation = require('./lib/journeys-station-to-station')
 const testArrivals = require('./lib/arrivals')
 const testReachableFrom = require('./lib/reachable-from')
@@ -69,7 +70,7 @@ const filharmonia = {
 	poi: true
 }
 
-test.skip('journeys – Wrocław Główny to Kraków Główny', async (t) => {
+tap.skip('journeys – Wrocław Główny to Kraków Główny', async (t) => {
 	const res = await client.journeys(wrocławGł, krakówGł, {
 		results: 4,
 		departure: when,
@@ -89,7 +90,7 @@ test.skip('journeys – Wrocław Główny to Kraków Główny', async (t) => {
 // todo: via works – with detour
 // todo: without detour
 
-test.skip('trip details', async (t) => {
+tap.skip('trip details', async (t) => {
 	const res = await client.journeys(wrocławGł, krakówGł, {
 		results: 1, departure: when
 	})
@@ -103,7 +104,7 @@ test.skip('trip details', async (t) => {
 	t.end()
 })
 
-test.skip('arrivals at Kraków Główny', async (t) => {
+tap.skip('arrivals at Kraków Główny', async (t) => {
 	const arrivals = await client.arrivals(krakówGł, {
 		duration: 10, when
 	})
@@ -116,7 +117,7 @@ test.skip('arrivals at Kraków Główny', async (t) => {
 	t.end()
 })
 
-test.skip('nearby', async (t) => {
+tap.skip('nearby', async (t) => {
 	const nearby = await client.nearby(dworcowa100, { distance: 500 })
 
 	validate(t, nearby, 'locations', 'nearby')
@@ -127,7 +128,7 @@ test.skip('nearby', async (t) => {
 	t.end()
 })
 
-test.skip('radar', async (t) => {
+tap.skip('radar', async (t) => {
 	const vehicles = await client.radar({
 		north: 48.74453,
 		west: 11.42733,
@@ -141,7 +142,7 @@ test.skip('radar', async (t) => {
 	t.end()
 })
 
-test.skip('reachableFrom', async (t) => {
+tap.skip('reachableFrom', async (t) => {
 	await testReachableFrom({
 		test: t,
 		reachableFrom: client.reachableFrom,

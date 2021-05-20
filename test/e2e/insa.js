@@ -1,5 +1,6 @@
 'use strict'
 
+const tap = require('tap')
 const isRoughlyEqual = require('is-roughly-equal')
 
 const {createWhen} = require('./lib/util')
@@ -11,7 +12,6 @@ const {
 	journeyLeg: createValidateJourneyLeg,
 } = require('./lib/validators')
 const createValidate = require('./lib/validate-fptf-with')
-const {test} = require('./lib/util')
 const testJourneysStationToStation = require('./lib/journeys-station-to-station')
 const testJourneysStationToAddress = require('./lib/journeys-station-to-address')
 const testJourneysStationToPoi = require('./lib/journeys-station-to-poi')
@@ -59,7 +59,7 @@ const stendal = '8010334'
 const dessau = '8010077'
 const universitaet = '19686'
 
-test('journeys – Magdeburg Hbf to Magdeburg-Buckau', async (t) => {
+tap.test('journeys – Magdeburg Hbf to Magdeburg-Buckau', async (t) => {
 	const res = await client.journeys(magdeburgHbf, magdeburgBuckau, {
 		results: 4,
 		departure: when,
@@ -78,7 +78,7 @@ test('journeys – Magdeburg Hbf to Magdeburg-Buckau', async (t) => {
 
 // todo: journeys, only one product
 
-test('journeys – fails with no product', (t) => {
+tap.test('journeys – fails with no product', (t) => {
 	journeysFailsWithNoProduct({
 		test: t,
 		fetchJourneys: client.journeys,
@@ -90,7 +90,7 @@ test('journeys – fails with no product', (t) => {
 	t.end()
 })
 
-test('Magdeburg Hbf to 39104 Magdeburg, Sternstr. 10', async (t) => {
+tap.test('Magdeburg Hbf to 39104 Magdeburg, Sternstr. 10', async (t) => {
 	const sternStr = {
 		type: 'location',
 		address: 'Magdeburg - Altenstadt, Sternstraße 10',
@@ -113,7 +113,7 @@ test('Magdeburg Hbf to 39104 Magdeburg, Sternstr. 10', async (t) => {
 	t.end()
 })
 
-test('Magdeburg Hbf to Kloster Unser Lieben Frauen', async (t) => {
+tap.test('Magdeburg Hbf to Kloster Unser Lieben Frauen', async (t) => {
 	const kloster = {
 		type: 'location',
 		id: '970012223',
@@ -137,7 +137,7 @@ test('Magdeburg Hbf to Kloster Unser Lieben Frauen', async (t) => {
 	t.end()
 })
 
-test('journeys: via works – with detour', async (t) => {
+tap.test('journeys: via works – with detour', async (t) => {
 	// Going from Magdeburg, Hasselbachplatz (Sternstr.) (Tram/Bus) to Stendal
 	// via Dessau without detour is currently impossible. We check if the routing
 	// engine computes a detour.
@@ -159,7 +159,7 @@ test('journeys: via works – with detour', async (t) => {
 
 // todo: without detour
 
-test('earlier/later journeys', async (t) => {
+tap.test('earlier/later journeys', async (t) => {
 	await testEarlierLaterJourneys({
 		test: t,
 		fetchJourneys: client.journeys,
@@ -172,7 +172,7 @@ test('earlier/later journeys', async (t) => {
 	t.end()
 })
 
-test('trip details', async (t) => {
+tap.test('trip details', async (t) => {
 	const res = await client.journeys(magdeburgHbf, magdeburgBuckau, {
 		results: 1, departure: when
 	})
@@ -186,7 +186,7 @@ test('trip details', async (t) => {
 	t.end()
 })
 
-test('departures at Magdeburg Leiterstr.', async (t) => {
+tap.test('departures at Magdeburg Leiterstr.', async (t) => {
 	const departures = await client.departures(leiterstr, {
 		duration: 5, when,
 	})
@@ -200,7 +200,7 @@ test('departures at Magdeburg Leiterstr.', async (t) => {
 	t.end()
 })
 
-test('departures with station object', async (t) => {
+tap.test('departures with station object', async (t) => {
 	const deps = await client.departures({
 		type: 'station',
 		id: magdeburgHbf,
@@ -216,7 +216,7 @@ test('departures with station object', async (t) => {
 	t.end()
 })
 
-test('departures at Leiterstr in direction of Universität', async (t) => {
+tap.test('departures at Leiterstr in direction of Universität', async (t) => {
 	await testDeparturesInDirection({
 		test: t,
 		fetchDepartures: client.departures,
@@ -229,7 +229,7 @@ test('departures at Leiterstr in direction of Universität', async (t) => {
 	t.end()
 })
 
-test('arrivals at Magdeburg Leiterstr.', async (t) => {
+tap.test('arrivals at Magdeburg Leiterstr.', async (t) => {
 	const arrivals = await client.arrivals(leiterstr, {
 		duration: 5, when
 	})
@@ -245,7 +245,7 @@ test('arrivals at Magdeburg Leiterstr.', async (t) => {
 
 // todo: nearby
 
-test('locations named Magdeburg', async (t) => {
+tap.test('locations named Magdeburg', async (t) => {
 	const nordpark = '7480'
 	const locations = await client.locations('nordpark', {
 		results: 20
@@ -263,7 +263,7 @@ test('locations named Magdeburg', async (t) => {
 	t.end()
 })
 
-test('station Magdeburg-Buckau', async (t) => {
+tap.test('station Magdeburg-Buckau', async (t) => {
 	const s = await client.stop(magdeburgBuckau)
 
 	validate(t, s, ['stop', 'station'], 'station')
@@ -272,7 +272,7 @@ test('station Magdeburg-Buckau', async (t) => {
 	t.end()
 })
 
-test('radar', async (t) => {
+tap.test('radar', async (t) => {
 	const vehicles = await client.radar({
 		north: 52.148364,
 		west: 11.600826,

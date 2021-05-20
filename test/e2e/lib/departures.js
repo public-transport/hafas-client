@@ -17,7 +17,7 @@ const testDepartures = async (cfg) => {
 	}
 
 	// todo: move into deps validator
-	t.deepEqual(deps, deps.sort((a, b) => t.when > b.when))
+	t.same(deps, deps.sort((a, b) => t.when > b.when))
 }
 
 module.exports = testDepartures

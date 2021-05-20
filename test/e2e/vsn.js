@@ -1,5 +1,6 @@
 'use strict'
 
+const tap = require('tap')
 const isRoughlyEqual = require('is-roughly-equal')
 
 const {createWhen} = require('./lib/util')
@@ -7,7 +8,6 @@ const createClient = require('../..')
 const vsnProfile = require('../../p/vsn')
 const products = require('../../p/vsn/products')
 const createValidate = require('./lib/validate-fptf-with')
-const {test} = require('./lib/util')
 const testJourneysStationToStation = require('./lib/journeys-station-to-station')
 const testJourneysStationToAddress = require('./lib/journeys-station-to-address')
 const testJourneysStationToPoi = require('./lib/journeys-station-to-poi')
@@ -34,7 +34,7 @@ const kornmarkt = '9033977'
 const jugendherberge = '9033961'
 const ewaldstrasse = '9033896'
 
-test('journeys – Kornmarkt to Ewaldstraße', async (t) => {
+tap.test('journeys – Kornmarkt to Ewaldstraße', async (t) => {
 	const res = await client.journeys(kornmarkt, ewaldstrasse, {
 		results: 4,
 		departure: when,
@@ -51,7 +51,7 @@ test('journeys – Kornmarkt to Ewaldstraße', async (t) => {
 	t.end()
 })
 
-test('Ewaldstraße to 37083 Göttingen, Schulweg 22', async (t) => {
+tap.test('Ewaldstraße to 37083 Göttingen, Schulweg 22', async (t) => {
 	const schulweg = {
 		type: 'location',
 		address: '37083 Göttingen, Schulweg 22',
@@ -72,7 +72,7 @@ test('Ewaldstraße to 37083 Göttingen, Schulweg 22', async (t) => {
 	t.end()
 })
 
-test('earlier/later journeys', async (t) => {
+tap.test('earlier/later journeys', async (t) => {
 	await testEarlierLaterJourneys({
 		test: t,
 		fetchJourneys: client.journeys,
@@ -85,7 +85,7 @@ test('earlier/later journeys', async (t) => {
 	t.end()
 })
 
-test('trip', async (t) => {
+tap.test('trip', async (t) => {
 	const { journeys } = await client.journeys(jugendherberge, kornmarkt, {
 		results: 1, departure: when
 	})
@@ -99,7 +99,7 @@ test('trip', async (t) => {
 	t.end()
 })
 
-test('departures at Kornmarkt.', async (t) => {
+tap.test('departures at Kornmarkt.', async (t) => {
 	const departures = await client.departures(kornmarkt, {
 		duration: 20, when
 	})
@@ -113,7 +113,7 @@ test('departures at Kornmarkt.', async (t) => {
 	t.end()
 })
 
-test('arrivals at Kornmarkt.', async (t) => {
+tap.test('arrivals at Kornmarkt.', async (t) => {
 	const arrivals = await client.arrivals(kornmarkt, {
 		duration: 20, when
 	})
@@ -127,7 +127,7 @@ test('arrivals at Kornmarkt.', async (t) => {
 	t.end()
 })
 
-test('departures with station object', async (t) => {
+tap.test('departures with station object', async (t) => {
 	const deps = await client.departures({
 		type: 'station',
 		id: kornmarkt,
@@ -143,7 +143,7 @@ test('departures with station object', async (t) => {
 	t.end()
 })
 
-test('locations named Botanischer Garten', async (t) => {
+tap.test('locations named Botanischer Garten', async (t) => {
 	const locations = await client.locations('Botanischer Garten', {
 		results: 20
 	})
@@ -157,7 +157,7 @@ test('locations named Botanischer Garten', async (t) => {
 	t.end()
 })
 
-test('stop Jugendherberge', async (t) => {
+tap.test('stop Jugendherberge', async (t) => {
 	const s = await client.stop(jugendherberge)
 
 	validate(t, s, ['stop', 'station'], 'stop')
@@ -166,7 +166,7 @@ test('stop Jugendherberge', async (t) => {
 	t.end()
 })
 
-test('radar', async (t) => {
+tap.test('radar', async (t) => {
 	const vehicles = await client.radar({
 		north: 52,
 		west: 9.8,

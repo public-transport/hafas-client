@@ -1,6 +1,6 @@
 'use strict'
 
-const test = require('tape')
+const tap = require('tap')
 
 const createClient = require('..')
 const rawProfile = require('../p/vsn')
@@ -17,11 +17,11 @@ const opt = {
 	products: null, // filter by affected products
 }
 
-test('parses a remarks() response correctly (VSN)', (t) => {
+tap.test('parses a remarks() response correctly (VSN)', (t) => {
 	const common = profile.parseCommon({profile, opt, res})
 	const ctx = {profile, opt, common, res}
 	const warnings = res.msgL.map(w => profile.parseWarning(ctx, w))
 
-	t.deepEqual(warnings, expected)
+	t.same(warnings, expected)
 	t.end()
 })

@@ -1,6 +1,6 @@
 'use strict'
 
-const test = require('tape')
+const tap = require('tap')
 const parse = require('../../parse/when')
 
 const profile = {
@@ -15,7 +15,7 @@ const ctx = {
 	profile
 }
 
-test('parseWhen works correctly', (t) => {
+tap.test('parseWhen works correctly', (t) => {
 	const date = '20190606'
 	const timeS = '163000'
 	const timeR = '163130'
@@ -26,15 +26,15 @@ test('parseWhen works correctly', (t) => {
 		delay: 130 // seconds
 	}
 
-	t.deepEqual(parse(ctx, date, timeS, timeR, tzOffset), expected)
+	t.same(parse(ctx, date, timeS, timeR, tzOffset), expected)
 
 	// no realtime data
-	t.deepEqual(parse(ctx, date, timeS, null, tzOffset), {
+	t.same(parse(ctx, date, timeS, null, tzOffset), {
 		...expected, when: expected.plannedWhen, delay: null
 	})
 
 	// cancelled
-	t.deepEqual(parse(ctx, date, timeS, timeR, tzOffset, true), {
+	t.same(parse(ctx, date, timeS, timeR, tzOffset, true), {
 		...expected,
 		when: null,
 		prognosedWhen: expected.when

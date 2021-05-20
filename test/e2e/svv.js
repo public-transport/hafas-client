@@ -1,11 +1,12 @@
 'use strict'
 
+const tap = require('tap')
+
 const {createWhen} = require('./lib/util')
 const createClient = require('../..')
 const svvProfile = require('../../p/svv')
 const products = require('../../p/svv/products')
 const createValidate = require('./lib/validate-fptf-with')
-const {test} = require('./lib/util')
 const testJourneysStationToStation = require('./lib/journeys-station-to-station')
 const testRefreshJourney = require('./lib/refresh-journey')
 const testArrivals = require('./lib/arrivals')
@@ -37,7 +38,7 @@ const zillnerstr2 = {
 	latitude: 47.801434, longitude: 13.031006,
 }
 
-test('journeys – Sam to Volksgarten', async (t) => {
+tap.test('journeys – Sam to Volksgarten', async (t) => {
 	const res = await client.journeys(sam, volksgarten, {
 		results: 4,
 		departure: when,
@@ -57,7 +58,7 @@ test('journeys – Sam to Volksgarten', async (t) => {
 // todo: via works – with detour
 // todo: without detour
 
-test('trip details', async (t) => {
+tap.test('trip details', async (t) => {
 	const res = await client.journeys(sam, volksgarten, {
 		results: 1, departure: when
 	})
@@ -71,20 +72,20 @@ test('trip details', async (t) => {
 	t.end()
 })
 
-test('arrivals at Volksgarten', async (t) => {
+tap.test('arrivals at Volksgarten', async (t) => {
 	const arrivals = await client.arrivals(volksgarten, {
 		duration: 10, when
 	})
 
 	validate(t, arrivals, 'arrivals', 'arrivals')
 	t.ok(arrivals.length > 0, 'must be >0 arrivals')
-	t.deepEqual(arrivals, arrivals.sort((a, b) => t.when > b.when))
+	t.same(arrivals, arrivals.sort((a, b) => t.when > b.when))
 	t.end()
 })
 
 // todo: nearby
 
-test('reachableFrom', async (t) => {
+tap.test('reachableFrom', async (t) => {
 	await testReachableFrom({
 		test: t,
 		reachableFrom: client.reachableFrom,
@@ -96,7 +97,7 @@ test('reachableFrom', async (t) => {
 	t.end()
 })
 
-test('serverInfo works', async (t) => {
+tap.test('serverInfo works', async (t) => {
 	await testServerInfo({
 		test: t,
 		fetchServerInfo: client.serverInfo,

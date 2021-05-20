@@ -1,5 +1,6 @@
 'use strict'
 
+const tap = require('tap')
 const assert = require('assert')
 const isRoughlyEqual = require('is-roughly-equal')
 
@@ -13,7 +14,6 @@ const {
 	movement: _validateMovement
 } = require('./lib/validators')
 const createValidate = require('./lib/validate-fptf-with')
-const {test} = require('./lib/util')
 const testJourneysStationToStation = require('./lib/journeys-station-to-station')
 const testJourneysStationToAddress = require('./lib/journeys-station-to-address')
 const testJourneysStationToPoi = require('./lib/journeys-station-to-poi')
@@ -72,7 +72,7 @@ const ettelbruck = '140701016'
 const mersch = '160904011'
 const luxembourg = '200405060'
 
-test('journeys – Ettelbruck to Luxembourg', async (t) => {
+tap.test('journeys – Ettelbruck to Luxembourg', async (t) => {
 	const res = await client.journeys(ettelbruck, luxembourg, {
 		results: 4,
 		departure: when,
@@ -91,7 +91,7 @@ test('journeys – Ettelbruck to Luxembourg', async (t) => {
 
 // todo: journeys, only one product
 
-test('journeys – fails with no product', (t) => {
+tap.test('journeys – fails with no product', (t) => {
 	journeysFailsWithNoProduct({
 		test: t,
 		fetchJourneys: client.journeys,
@@ -103,7 +103,7 @@ test('journeys – fails with no product', (t) => {
 	t.end()
 })
 
-test('Luxembourg to Ettelbruck, Rue des Romains 4', async (t) => {
+tap.test('Luxembourg to Ettelbruck, Rue des Romains 4', async (t) => {
 	const rueDeRomain = {
 		type: 'location',
 		address: 'Ettelbruck, Rue des Romains 4',
@@ -126,7 +126,7 @@ test('Luxembourg to Ettelbruck, Rue des Romains 4', async (t) => {
 	t.end()
 })
 
-test('Luxembourg to Centre Hospitalier du Nord', async (t) => {
+tap.test('Luxembourg to Centre Hospitalier du Nord', async (t) => {
 	const centreHospitalier = {
 		type: 'location',
 		id: '140701020',
@@ -153,7 +153,7 @@ test('Luxembourg to Centre Hospitalier du Nord', async (t) => {
 // todo: journeys: via works – with detour
 // todo: without detour
 
-test('earlier/later journeys', async (t) => {
+tap.test('earlier/later journeys', async (t) => {
 	await testEarlierLaterJourneys({
 		test: t,
 		fetchJourneys: client.journeys,
@@ -166,7 +166,7 @@ test('earlier/later journeys', async (t) => {
 	t.end()
 })
 
-test('trip', async (t) => {
+tap.test('trip', async (t) => {
 	const { journeys } = await client.journeys(luxembourg, ettelbruck, {
 		results: 1, departure: when
 	})
@@ -180,7 +180,7 @@ test('trip', async (t) => {
 	t.end()
 })
 
-test('departures at Ettelbruck.', async (t) => {
+tap.test('departures at Ettelbruck.', async (t) => {
 	const departures = await client.departures(ettelbruck, {
 		duration: 20, when
 	})
@@ -194,7 +194,7 @@ test('departures at Ettelbruck.', async (t) => {
 	t.end()
 })
 
-test('arrivals at Ettelbruck.', async (t) => {
+tap.test('arrivals at Ettelbruck.', async (t) => {
 	const arrivals = await client.arrivals(ettelbruck, {
 		duration: 20, when
 	})
@@ -208,7 +208,7 @@ test('arrivals at Ettelbruck.', async (t) => {
 	t.end()
 })
 
-test('departures with station object', async (t) => {
+tap.test('departures with station object', async (t) => {
 	const deps = await client.departures({
 		type: 'station',
 		id: ettelbruck,
@@ -226,7 +226,7 @@ test('departures with station object', async (t) => {
 
 // todo: nearby
 
-test('locations named Mersch', async (t) => {
+tap.test('locations named Mersch', async (t) => {
 	const locations = await client.locations('Mersch', {
 		results: 20
 	})
@@ -243,7 +243,7 @@ test('locations named Mersch', async (t) => {
 	t.end()
 })
 
-test('stop Mersch', async (t) => {
+tap.test('stop Mersch', async (t) => {
 	const s = await client.stop(mersch)
 
 	validate(t, s, ['stop', 'station'], 'stop')
@@ -252,7 +252,7 @@ test('stop Mersch', async (t) => {
 	t.end()
 })
 
-test('radar', async (t) => {
+tap.test('radar', async (t) => {
 	const vehicles = await client.radar({
 		north: 49.9,
 		west: 6.05,

@@ -1,5 +1,6 @@
 'use strict'
 
+const tap = require('tap')
 const isRoughlyEqual = require('is-roughly-equal')
 
 const {createWhen} = require('./lib/util')
@@ -7,7 +8,6 @@ const createClient = require('../..')
 const hvvProfile = require('../../p/hvv')
 const products = require('../../p/hvv/products')
 const createValidate = require('./lib/validate-fptf-with')
-const {test} = require('./lib/util')
 const testJourneysStationToStation = require('./lib/journeys-station-to-station')
 const journeysFailsWithNoProduct = require('./lib/journeys-fails-with-no-product')
 const testJourneysStationToAddress = require('./lib/journeys-station-to-address')
@@ -40,7 +40,7 @@ const altona = '20626'
 // const stendal = '8010334'
 // const dessau = '8010077'
 
-test('journeys – Hamburg Tiefstack to Hamburg Barmbek', async (t) => {
+tap.test('journeys – Hamburg Tiefstack to Hamburg Barmbek', async (t) => {
 	const res = await client.journeys(tiefstack, barmbek, {
 		results: 4,
 		departure: when,
@@ -59,7 +59,7 @@ test('journeys – Hamburg Tiefstack to Hamburg Barmbek', async (t) => {
 
 // todo: journeys, only one product
 
-test('journeys – fails with no product', (t) => {
+tap.test('journeys – fails with no product', (t) => {
 	journeysFailsWithNoProduct({
 		test: t,
 		fetchJourneys: client.journeys,
@@ -71,7 +71,7 @@ test('journeys – fails with no product', (t) => {
 	t.end()
 })
 
-test('Hamburg Tiefstack to Gilbertstr. 30, Hamburg', async (t) => {
+tap.test('Hamburg Tiefstack to Gilbertstr. 30, Hamburg', async (t) => {
 	const gilbertstr30 = {
 		type: 'location',
 		id: '970026640',
@@ -95,7 +95,7 @@ test('Hamburg Tiefstack to Gilbertstr. 30, Hamburg', async (t) => {
 	t.end()
 })
 
-test('Hamburg Tiefstack to Hamburger Meile', async (t) => {
+tap.test('Hamburg Tiefstack to Hamburger Meile', async (t) => {
 	const meile = {
 		type: 'location',
 		id: '980001831',
@@ -122,7 +122,7 @@ test('Hamburg Tiefstack to Hamburger Meile', async (t) => {
 // todo: via works – with detour
 // todo: via works – without detour
 
-test('earlier/later journeys', async (t) => {
+tap.test('earlier/later journeys', async (t) => {
 	await testEarlierLaterJourneys({
 		test: t,
 		fetchJourneys: client.journeys,
@@ -135,7 +135,7 @@ test('earlier/later journeys', async (t) => {
 	t.end()
 })
 
-test('trip details', async (t) => {
+tap.test('trip details', async (t) => {
 	const res = await client.journeys(tiefstack, barmbek, {
 		results: 1, departure: when
 	})
@@ -149,7 +149,7 @@ test('trip details', async (t) => {
 	t.end()
 })
 
-test('departures at Hamburg Barmbek', async (t) => {
+tap.test('departures at Hamburg Barmbek', async (t) => {
 	const departures = await client.departures(barmbek, {
 		duration: 5, when,
 	})
@@ -163,7 +163,7 @@ test('departures at Hamburg Barmbek', async (t) => {
 	t.end()
 })
 
-test('departures with station object', async (t) => {
+tap.test('departures with station object', async (t) => {
 	const deps = await client.departures({
 		type: 'station',
 		id: tiefstack,
@@ -179,7 +179,7 @@ test('departures with station object', async (t) => {
 	t.end()
 })
 
-test('departures at Barmbek in direction of Altona', async (t) => {
+tap.test('departures at Barmbek in direction of Altona', async (t) => {
 	await testDeparturesInDirection({
 		test: t,
 		fetchDepartures: client.departures,
@@ -192,7 +192,7 @@ test('departures at Barmbek in direction of Altona', async (t) => {
 	t.end()
 })
 
-test('arrivals at Hamburg Barmbek', async (t) => {
+tap.test('arrivals at Hamburg Barmbek', async (t) => {
 	const arrivals = await client.arrivals(barmbek, {
 		duration: 5, when
 	})
@@ -208,7 +208,7 @@ test('arrivals at Hamburg Barmbek', async (t) => {
 
 // todo: nearby
 
-test('locations named Elbphilharmonie', async (t) => {
+tap.test('locations named Elbphilharmonie', async (t) => {
 	const elbphilharmonie = '6242'
 	const locations = await client.locations('Elbphilharmonie', {
 		results: 20
@@ -226,7 +226,7 @@ test('locations named Elbphilharmonie', async (t) => {
 	t.end()
 })
 
-test('station Hamburg Barmbek', async (t) => {
+tap.test('station Hamburg Barmbek', async (t) => {
 	const s = await client.stop(barmbek)
 
 	validate(t, s, ['stop', 'station'], 'station')
@@ -235,7 +235,7 @@ test('station Hamburg Barmbek', async (t) => {
 	t.end()
 })
 
-test('radar', async (t) => {
+tap.test('radar', async (t) => {
 	const vehicles = await client.radar({
 		north: 53.569,
 		west: 10.022,

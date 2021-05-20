@@ -1,5 +1,6 @@
 'use strict'
 
+const tap = require('tap')
 const isRoughlyEqual = require('is-roughly-equal')
 
 const {createWhen} = require('./lib/util')
@@ -7,7 +8,6 @@ const createClient = require('../..')
 const nvvProfile = require('../../p/nvv')
 const products = require('../../p/nvv/products')
 const createValidate = require('./lib/validate-fptf-with')
-const {test} = require('./lib/util')
 const testJourneysStationToStation = require('./lib/journeys-station-to-station')
 const journeysFailsWithNoProduct = require('./lib/journeys-fails-with-no-product')
 const testJourneysStationToAddress = require('./lib/journeys-station-to-address')
@@ -39,7 +39,7 @@ const auestadion = '2200042'
 const weigelstr = '2200056'
 const friedrichsplatz = '2200006'
 
-test('journeys – Kassel Scheidemannplatz to Kassel Auestadion', async (t) => {
+tap.test('journeys – Kassel Scheidemannplatz to Kassel Auestadion', async (t) => {
 	const res = await client.journeys(scheidemannplatz, auestadion, {
 		results: 4,
 		departure: when,
@@ -58,7 +58,7 @@ test('journeys – Kassel Scheidemannplatz to Kassel Auestadion', async (t) => 
 
 // todo: journeys, only one product
 
-test('journeys – fails with no product', (t) => {
+tap.test('journeys – fails with no product', (t) => {
 	journeysFailsWithNoProduct({
 		test: t,
 		fetchJourneys: client.journeys,
@@ -70,7 +70,7 @@ test('journeys – fails with no product', (t) => {
 	t.end()
 })
 
-test('Kassel Scheidemannplatz to Heckerstraße 2', async (t) => {
+tap.test('Kassel Scheidemannplatz to Heckerstraße 2', async (t) => {
 	const heckerstr2 = {
 		type: 'location',
 		id: '990100251',
@@ -94,7 +94,7 @@ test('Kassel Scheidemannplatz to Heckerstraße 2', async (t) => {
 	t.end()
 })
 
-test('Kassel Scheidemannplatz to Grimmwelt', async (t) => {
+tap.test('Kassel Scheidemannplatz to Grimmwelt', async (t) => {
 	const grimmwelt = {
 		type: 'location',
 		id: '1500490',
@@ -118,7 +118,7 @@ test('Kassel Scheidemannplatz to Grimmwelt', async (t) => {
 	t.end()
 })
 
-test('journeys: via works – with detour', async (t) => {
+tap.test('journeys: via works – with detour', async (t) => {
 	// Going from Scheidemannplatz to Rathaus/Fünffensterstr. via Kassel Wilhelmshöhe
 	// implies a detour. We check if the routing engine computes a detour.
 	const rathausFünffensterstr = '2200436'
@@ -141,7 +141,7 @@ test('journeys: via works – with detour', async (t) => {
 
 // todo: without detour
 
-test('earlier/later journeys', async (t) => {
+tap.test('earlier/later journeys', async (t) => {
 	await testEarlierLaterJourneys({
 		test: t,
 		fetchJourneys: client.journeys,
@@ -154,7 +154,7 @@ test('earlier/later journeys', async (t) => {
 	t.end()
 })
 
-test('trip details', async (t) => {
+tap.test('trip details', async (t) => {
 	const res = await client.journeys(scheidemannplatz, auestadion, {
 		results: 1, departure: when
 	})
@@ -168,7 +168,7 @@ test('trip details', async (t) => {
 	t.end()
 })
 
-test('departures at Kassel Auestadion.', async (t) => {
+tap.test('departures at Kassel Auestadion.', async (t) => {
 	const departures = await client.departures(auestadion, {
 		duration: 11, when,
 	})
@@ -182,7 +182,7 @@ test('departures at Kassel Auestadion.', async (t) => {
 	t.end()
 })
 
-test('departures with station object', async (t) => {
+tap.test('departures with station object', async (t) => {
 	const deps = await client.departures({
 		type: 'station',
 		id: auestadion,
@@ -198,7 +198,7 @@ test('departures with station object', async (t) => {
 	t.end()
 })
 
-test('departures at Auestadion in direction of Friedrichsplatz', async (t) => {
+tap.test('departures at Auestadion in direction of Friedrichsplatz', async (t) => {
 	await testDeparturesInDirection({
 		test: t,
 		fetchDepartures: client.departures,
@@ -211,7 +211,7 @@ test('departures at Auestadion in direction of Friedrichsplatz', async (t) => {
 	t.end()
 })
 
-test('arrivals at Kassel Weigelstr.', async (t) => {
+tap.test('arrivals at Kassel Weigelstr.', async (t) => {
 	const arrivals = await client.arrivals(weigelstr, {
 		duration: 5, when
 	})
@@ -227,7 +227,7 @@ test('arrivals at Kassel Weigelstr.', async (t) => {
 
 // todo: nearby
 
-test('locations named Auestadion', async (t) => {
+tap.test('locations named Auestadion', async (t) => {
 	const locations = await client.locations('auestadion', {results: 10})
 
 	validate(t, locations, 'locations', 'locations')
@@ -240,7 +240,7 @@ test('locations named Auestadion', async (t) => {
 	t.end()
 })
 
-test('station Auestadion', async (t) => {
+tap.test('station Auestadion', async (t) => {
 	const s = await client.stop(auestadion)
 
 	validate(t, s, ['stop', 'station'], 'station')
@@ -249,7 +249,7 @@ test('station Auestadion', async (t) => {
 	t.end()
 })
 
-test('radar', async (t) => {
+tap.test('radar', async (t) => {
 	const vehicles = await client.radar({
 		north: 51.320153,
 		west: 9.458359,

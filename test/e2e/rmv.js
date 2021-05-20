@@ -1,11 +1,12 @@
 'use strict'
 
+const tap = require('tap')
+
 const {createWhen} = require('./lib/util')
 const createClient = require('../..')
 const rmvProfile = require('../../p/rmv')
 const products = require('../../p/rmv/products')
 const createValidate = require('./lib/validate-fptf-with')
-const {test} = require('./lib/util')
 const testJourneysStationToStation = require('./lib/journeys-station-to-station')
 const testRefreshJourney = require('./lib/refresh-journey')
 const testArrivals = require('./lib/arrivals')
@@ -30,7 +31,7 @@ const client = createClient(rmvProfile, 'public-transport/hafas-client:test')
 const frankfurtOstendstr = '3000525'
 const wiesbadenHbf = '3006907'
 
-test('journeys – Frankfurt Ostendstr. to Wiesbaden Hbf', async (t) => {
+tap.test('journeys – Frankfurt Ostendstr. to Wiesbaden Hbf', async (t) => {
 	const res = await client.journeys(frankfurtOstendstr, wiesbadenHbf, {
 		results: 4,
 		departure: when,
@@ -50,7 +51,7 @@ test('journeys – Frankfurt Ostendstr. to Wiesbaden Hbf', async (t) => {
 // todo: via works – with detour
 // todo: without detour
 
-test('trip details', async (t) => {
+tap.test('trip details', async (t) => {
 	const res = await client.journeys(frankfurtOstendstr, wiesbadenHbf, {
 		results: 1, departure: when
 	})
@@ -64,20 +65,20 @@ test('trip details', async (t) => {
 	t.end()
 })
 
-test('arrivals at Wiesbaden Hbf', async (t) => {
+tap.test('arrivals at Wiesbaden Hbf', async (t) => {
 	const arrivals = await client.arrivals(wiesbadenHbf, {
 		duration: 10, when
 	})
 
 	validate(t, arrivals, 'arrivals', 'arrivals')
 	t.ok(arrivals.length > 0, 'must be >0 arrivals')
-	t.deepEqual(arrivals, arrivals.sort((a, b) => t.when > b.when))
+	t.same(arrivals, arrivals.sort((a, b) => t.when > b.when))
 	t.end()
 })
 
 // todo: nearby
 
-test.skip('radar', async (t) => {
+tap.skip('radar', async (t) => {
 	const vehicles = await client.radar({
 		north: 53.090516,
 		west: 8.750106,
@@ -91,7 +92,7 @@ test.skip('radar', async (t) => {
 	t.end()
 })
 
-test('reachableFrom', async (t) => {
+tap.test('reachableFrom', async (t) => {
 	await testReachableFrom({
 		test: t,
 		reachableFrom: client.reachableFrom,

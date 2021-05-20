@@ -67,17 +67,19 @@
 		"is-coordinates": "^2.0.2",
 		"is-roughly-equal": "^0.1.0",
 		"replayer": "^2.2.3",
-		"tap-spec": "^5.0.0",
-		"tape": "^5.0.0",
+		"tap": "^15.0.9",
 		"validate-fptf": "^3.0.0"
 	},
 	"scripts": {
 		"lint": "eslint .",
-		"test-unit": "node test/index.js | tap-spec",
-		"test-integration": "VCR_MODE=playback node test/e2e/index.js | tap-spec",
-		"test-integration:record": "VCR_MODE=record node test/e2e/index.js | tap-spec",
-		"test-e2e": "VCR_OFF=true node test/e2e/index.js | tap-spec",
+		"test-unit": "tap test/*.js test/format/*.js test/parse/*.js",
+		"test-integration": "VCR_MODE=playback tap test/e2e/*.js",
+		"test-integration:record": "VCR_MODE=record tap test/e2e/*.js",
+		"test-e2e": "VCR_OFF=true tap test/e2e/*.js",
 		"test": "npm run test-unit && npm run test-integration",
 		"prepublishOnly": "npm run lint && npm test"
+	},
+	"tap": {
+		"coverage": false
 	}
 }

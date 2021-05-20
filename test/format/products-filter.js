@@ -1,6 +1,6 @@
 'use strict'
 
-const test = require('tape')
+const tap = require('tap')
 const format = require('../../format/products-filter')
 
 const products = [
@@ -27,10 +27,10 @@ const ctx = {
 	profile: {products}
 }
 
-test('formatProductsFilter works without customisations', (t) => {
+tap.test('formatProductsFilter works without customisations', (t) => {
 	const expected = 1 | 2 | 4
 	const filter = {}
-	t.deepEqual(format(ctx, filter), {
+	t.same(format(ctx, filter), {
 		type: 'PROD',
 		mode: 'INC',
 		value: expected + ''
@@ -38,7 +38,7 @@ test('formatProductsFilter works without customisations', (t) => {
 	t.end()
 })
 
-test('formatProductsFilter works with customisations', (t) => {
+tap.test('formatProductsFilter works with customisations', (t) => {
 	t.equal(+format(ctx, {
 		bus: true
 	}).value, 1 | 2 | 4)

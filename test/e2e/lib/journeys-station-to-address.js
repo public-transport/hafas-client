@@ -20,8 +20,8 @@ const testJourneysStationToAddress = async (cfg) => {
 		const d = j.legs[j.legs.length - 1].destination
 		const n = `res.journeys[0].legs[${i}].destination`
 
-		t.strictEqual(d.type, 'location', n + '.type is invalid')
-		t.strictEqual(d.address, address, n + '.address is invalid')
+		t.equal(d.type, 'location', n + '.type is invalid')
+		t.equal(d.address, address, n + '.address is invalid')
 		t.ok(isRoughlyEqual(.0001, d.latitude, latitude), n + '.latitude is invalid')
 		t.ok(isRoughlyEqual(.0001, d.longitude, longitude), n + '.longitude is invalid')
 	}

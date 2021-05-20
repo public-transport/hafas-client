@@ -1,6 +1,6 @@
 'use strict'
 
-const test = require('tape')
+const tap = require('tap')
 
 const createClient = require('..')
 const rawProfile = require('../p/mobiliteit-lu')
@@ -13,7 +13,7 @@ const opt = {
 	remarks: true,
 }
 
-test('parses a line correctly (mobiliteit.lu)', (t) => {
+tap.test('parses a line correctly (mobiliteit.lu)', (t) => {
 	const rawLine = {
 		pid: 'L::1::IC::B1303038328::IC_1303038328::*',
 		name: 'IC 108',
@@ -37,7 +37,7 @@ test('parses a line correctly (mobiliteit.lu)', (t) => {
 	const ctx = {profile, opt}
 	const stop = profile.parseLine(ctx, rawLine)
 
-	t.deepEqual(stop, {
+	t.same(stop, {
 		type: 'line',
 		id: 'ic-108',
 		fahrtNr: '108',

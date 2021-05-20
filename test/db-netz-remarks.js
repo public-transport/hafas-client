@@ -1,6 +1,6 @@
 'use strict'
 
-const test = require('tape')
+const tap = require('tap')
 
 const parseCommon = require('../parse/common')
 const defaultProfile = require('../lib/default-profile')
@@ -21,12 +21,12 @@ const opt = {
 	remarks: true
 }
 
-test('parseCommon parses a DB Netz response properly', (t) => {
+tap.test('parseCommon parses a DB Netz response properly', (t) => {
 	const {warnings} = profile.parseCommon({profile, opt, res})
 	t.pass('parsed without throwing')
 	const warning = warnings.find(w => w.id === 'HIM_FREETEXT_447862')
 
-	t.deepEqual(warning, {
+	t.same(warning, {
 		id: 'HIM_FREETEXT_447862',
 		type: 'warning',
 		summary: 'Abweichung Fpl f Zmst BKRW - NEB nur nach Gl101',

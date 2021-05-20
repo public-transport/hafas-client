@@ -1,11 +1,12 @@
 'use strict'
 
+const tap = require('tap')
+
 const {createWhen} = require('./lib/util')
 const createClient = require('../..')
 const vbnProfile = require('../../p/vbn')
 const products = require('../../p/vbn/products')
 const createValidate = require('./lib/validate-fptf-with')
-const {test} = require('./lib/util')
 const testJourneysStationToStation = require('./lib/journeys-station-to-station')
 const testArrivals = require('./lib/arrivals')
 const testReachableFrom = require('./lib/reachable-from')
@@ -29,7 +30,7 @@ const client = createClient(vbnProfile, 'public-transport/hafas-client:test')
 const oldenburg = '8000291'
 const bremenHumboldtstr = '9013973'
 
-test('journeys – Oldenburg to Bremen Humboldtstr.', async (t) => {
+tap.test('journeys – Oldenburg to Bremen Humboldtstr.', async (t) => {
 	const res = await client.journeys(oldenburg, bremenHumboldtstr, {
 		results: 4,
 		departure: when,
@@ -49,7 +50,7 @@ test('journeys – Oldenburg to Bremen Humboldtstr.', async (t) => {
 // todo: via works – with detour
 // todo: without detour
 
-test('trip details', async (t) => {
+tap.test('trip details', async (t) => {
 	const res = await client.journeys(oldenburg, bremenHumboldtstr, {
 		results: 1, departure: when
 	})
@@ -63,20 +64,20 @@ test('trip details', async (t) => {
 	t.end()
 })
 
-test('arrivals at Bremen Humboldtstr.', async (t) => {
+tap.test('arrivals at Bremen Humboldtstr.', async (t) => {
 	const arrivals = await client.arrivals(bremenHumboldtstr, {
 		duration: 10, when
 	})
 
 	validate(t, arrivals, 'arrivals', 'arrivals')
 	t.ok(arrivals.length > 0, 'must be >0 arrivals')
-	t.deepEqual(arrivals, arrivals.sort((a, b) => t.when > b.when))
+	t.same(arrivals, arrivals.sort((a, b) => t.when > b.when))
 	t.end()
 })
 
 // todo: nearby
 
-test('radar', async (t) => {
+tap.test('radar', async (t) => {
 	const vehicles = await client.radar({
 		north: 53.090516,
 		west: 8.750106,
@@ -91,7 +92,7 @@ test('radar', async (t) => {
 })
 
 // todo: fails with "HCI Service: location missing or invalid"
-test('reachableFrom', async (t) => {
+tap.test('reachableFrom', async (t) => {
 	await testReachableFrom({
 		test: t,
 		reachableFrom: client.reachableFrom,

@@ -1,6 +1,6 @@
 'use strict'
 
-const test = require('tape')
+const tap = require('tap')
 
 const createClient = require('..')
 const rawProfile = require('../p/db')
@@ -17,11 +17,11 @@ const opt = {
 	remarks: true,
 }
 
-test('parses a stop() response correctly (DB)', (t) => {
+tap.test('parses a stop() response correctly (DB)', (t) => {
 	const common = profile.parseCommon({profile, opt, res})
 	const ctx = {profile, opt, common, res}
 	const stop = profile.parseLocation(ctx, res.locL[0])
 
-	t.deepEqual(stop, expected)
+	t.same(stop, expected)
 	t.end()
 })

@@ -1,6 +1,6 @@
 'use strict'
 
-const test = require('tape')
+const tap = require('tap')
 const parse = require('../../parse/line')
 
 const profile = {
@@ -16,7 +16,7 @@ const ctx = {
 	profile
 }
 
-test('parses lines correctly', (t) => {
+tap.test('parses lines correctly', (t) => {
 	const input = {
 		line: 'foo line',
 		prodCtx: {
@@ -32,23 +32,23 @@ test('parses lines correctly', (t) => {
 		public: true
 	}
 
-	t.deepEqual(parse(ctx, input), expected)
+	t.same(parse(ctx, input), expected)
 
-	t.deepEqual(parse(ctx, {
+	t.same(parse(ctx, {
 		...input, line: null, addName: input.line
 	}), expected)
-	t.deepEqual(parse(ctx, {
+	t.same(parse(ctx, {
 		...input, line: null, name: input.line
 	}), expected)
 
 	// no prodCtx.lineId
-	t.deepEqual(parse(ctx, {
+	t.same(parse(ctx, {
 		...input, prodCtx: {...input.prodCtx, lineId: null}
 	}), {
 		...expected, id: 'foo-line'
 	})
 	// no prodCtx
-	t.deepEqual(parse(ctx, {
+	t.same(parse(ctx, {
 		...input, prodCtx: undefined
 	}), {
 		...expected, id: 'foo-line', fahrtNr: null

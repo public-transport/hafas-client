@@ -1,12 +1,12 @@
 'use strict'
 
+const tap = require('tap')
 const isRoughlyEqual = require('is-roughly-equal')
 
 const {createWhen} = require('./lib/util')
 const createClient = require('../..')
 const dbBusradarNrwProfile = require('../../p/db-busradar-nrw')
 const createValidate = require('./lib/validate-fptf-with')
-const {test} = require('./lib/util')
 const testDepartures = require('./lib/departures')
 const testArrivals = require('./lib/arrivals')
 
@@ -32,7 +32,7 @@ const hagenBauhaus = '3307002'
 const bielefeldHbf = '8000036'
 const hagenVorhalle = '8000977'
 
-test('departures at Hagen Bauhaus', async (t) => {
+tap.test('departures at Hagen Bauhaus', async (t) => {
 	const departures = await client.departures(hagenBauhaus, {
 		duration: 120, when,
 	})
@@ -46,7 +46,7 @@ test('departures at Hagen Bauhaus', async (t) => {
 	t.end()
 })
 
-test('trip details', async (t) => {
+tap.test('trip details', async (t) => {
 	const deps = await client.departures(hagenBauhaus, {
 		results: 1, duration: 120, when
 	})
@@ -60,7 +60,7 @@ test('trip details', async (t) => {
 	t.end()
 })
 
-test('departures with station object', async (t) => {
+tap.test('departures with station object', async (t) => {
 	const deps = await client.departures({
 		type: 'station',
 		id: hagenBauhaus,
@@ -78,7 +78,7 @@ test('departures with station object', async (t) => {
 
 // todo: departures at hagenBauhaus in direction of …
 
-test('arrivals at Hagen Bauhaus', async (t) => {
+tap.test('arrivals at Hagen Bauhaus', async (t) => {
 	const arrivals = await client.arrivals(hagenBauhaus, {
 		duration: 120, when
 	})
@@ -94,7 +94,7 @@ test('arrivals at Hagen Bauhaus', async (t) => {
 
 // todo: nearby
 
-test('locations named Vorhalle', async (t) => {
+tap.test('locations named Vorhalle', async (t) => {
 	const locations = await client.locations('vorhalle', {
 		results: 10
 	})
@@ -111,7 +111,7 @@ test('locations named Vorhalle', async (t) => {
 	t.end()
 })
 
-test('station Hagen-Vorhalle', async (t) => {
+tap.test('station Hagen-Vorhalle', async (t) => {
 	const s = await client.stop(hagenVorhalle)
 
 	validate(t, s, ['stop', 'station'], 'station')
@@ -120,7 +120,7 @@ test('station Hagen-Vorhalle', async (t) => {
 	t.end()
 })
 
-test('radar', async (t) => {
+tap.test('radar', async (t) => {
 	const vehicles = await client.radar({
 		north: 51.5,
 		west: 7.2,

@@ -5,7 +5,6 @@ const {AssertionError} = require('assert')
 const {DateTime} = require('luxon')
 const a = require('assert')
 const {join} = require('path')
-const tape = require('tape')
 
 const hour = 60 * 60 * 1000
 const day = 24 * hour
@@ -51,9 +50,7 @@ if (process.env.VCR_MODE && !process.env.VCR_OFF) {
 	})
 	replayer.fixtureDir(join(__dirname, '..', 'fixtures'))
 }
-const test = tape
 
 module.exports = {
 	hour, createWhen, assertValidWhen,
-	test,
 }

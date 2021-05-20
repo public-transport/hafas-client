@@ -1,6 +1,6 @@
 'use strict'
 
-const test = require('tape')
+const tap = require('tap')
 
 const createClient = require('..')
 const rawProfile = require('../p/bvg')
@@ -20,11 +20,11 @@ const opt = {
 	products: {}
 }
 
-test('parses a radar() response correctly (BVG)', (t) => {
+tap.test('parses a radar() response correctly (BVG)', (t) => {
 	const common = profile.parseCommon({profile, opt, res})
 	const ctx = {profile, opt, common, res}
 	const movements = res.jnyL.map(m => profile.parseMovement(ctx, m))
 
-	t.deepEqual(movements, expected)
+	t.same(movements, expected)
 	t.end()
 })

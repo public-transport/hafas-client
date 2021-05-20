@@ -1,11 +1,12 @@
 'use strict'
 
+const tap = require('tap')
+
 const {createWhen} = require('./lib/util')
 const createClient = require('../..')
 const rsagProfile = require('../../p/rsag')
 const products = require('../../p/rsag/products')
 const createValidate = require('./lib/validate-fptf-with')
-const {test} = require('./lib/util')
 const testJourneysStationToStation = require('./lib/journeys-station-to-station')
 const testEarlierLaterJourneys = require('./lib/earlier-later-journeys')
 const testRefreshJourney = require('./lib/refresh-journey')
@@ -32,7 +33,7 @@ const sternwarte = '704956'
 const sternwarte2 = '708539'
 const weißesKreuz = '708573'
 
-test('journeys – Platz der Jugend to Weißes Kreuz', async (t) => {
+tap.test('journeys – Platz der Jugend to Weißes Kreuz', async (t) => {
 	const res = await client.journeys(sternwarte, weißesKreuz, {
 		results: 4,
 		departure: when,
@@ -52,7 +53,7 @@ test('journeys – Platz der Jugend to Weißes Kreuz', async (t) => {
 // todo: journeys, walkingSpeed
 // todo: via works – with detour
 
-test('earlier/later journeys', async (t) => {
+tap.test('earlier/later journeys', async (t) => {
 	await testEarlierLaterJourneys({
 		test: t,
 		fetchJourneys: client.journeys,
@@ -65,7 +66,7 @@ test('earlier/later journeys', async (t) => {
 	t.end()
 })
 
-test('refreshJourney', async (t) => {
+tap.test('refreshJourney', async (t) => {
 	await testRefreshJourney({
 		test: t,
 		fetchJourneys: client.journeys,
@@ -78,20 +79,20 @@ test('refreshJourney', async (t) => {
 	t.end()
 })
 
-test('arrivals at Platz der Jugend', async (t) => {
+tap.test('arrivals at Platz der Jugend', async (t) => {
 	const arrivals = await client.arrivals(sternwarte, {
 		duration: 30, when
 	})
 
 	validate(t, arrivals, 'arrivals', 'arrivals')
 	t.ok(arrivals.length > 0, 'must be >0 arrivals')
-	t.deepEqual(arrivals, arrivals.sort((a, b) => t.when > b.when))
+	t.same(arrivals, arrivals.sort((a, b) => t.when > b.when))
 	t.end()
 })
 
 // todo: nearby
 
-test('radar', async (t) => {
+tap.test('radar', async (t) => {
 	const vehicles = await client.radar({
 		north: 54.116968,
 		west: 12.029738,
@@ -105,7 +106,7 @@ test('radar', async (t) => {
 	t.end()
 })
 
-test('reachableFrom', async (t) => {
+tap.test('reachableFrom', async (t) => {
 	await testReachableFrom({
 		test: t,
 		reachableFrom: client.reachableFrom,

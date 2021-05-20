@@ -1,6 +1,6 @@
 'use strict'
 
-const test = require('tape')
+const tap = require('tap')
 
 const createClient = require('..')
 const withRetrying = require('../retry')
@@ -9,7 +9,7 @@ const vbbProfile = require('../p/vbb')
 const userAgent = 'public-transport/hafas-client:test'
 const spichernstr = '900000042101'
 
-test('withRetrying works', (t) => {
+tap.test('withRetrying works', (t) => {
 	// for the first 3 calls, return different kinds of errors
 	let calls = 0
 	const failingRequest = async (ctx, userAgent, reqData) => {
@@ -44,7 +44,7 @@ test('withRetrying works', (t) => {
 
 	t.plan(1 + 4)
 	client.departures(spichernstr, {duration: 1})
-	.then(deps => t.deepEqual(deps, [], 'resolved with invalid value'))
+	.then(deps => t.same(deps, [], 'resolved with invalid value'))
 	.catch(t.ifError)
 
 	setTimeout(() => t.equal(calls, 1), 50) // buffer

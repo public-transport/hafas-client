@@ -1,6 +1,6 @@
 'use strict'
 
-const test = require('tape')
+const tap = require('tap')
 
 const createClient = require('..')
 const rawProfile = require('../p/vbb')
@@ -21,11 +21,11 @@ const opt = {
 	products: {}
 }
 
-test('parses a departure correctly (VBB)', (t) => {
+tap.test('parses a departure correctly (VBB)', (t) => {
 	const common = profile.parseCommon({profile, opt, res})
 	const ctx = {profile, opt, common, res}
 	const departures = res.jnyL.map(d => profile.parseDeparture(ctx, d))
 
-	t.deepEqual(departures, expected)
+	t.same(departures, expected)
 	t.end()
 })

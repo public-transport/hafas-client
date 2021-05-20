@@ -1,6 +1,6 @@
 'use strict'
 
-const test = require('tape')
+const tap = require('tap')
 
 const createClient = require('..')
 const rawProfile = require('../p/vsn')
@@ -28,11 +28,11 @@ const opt = {
 	// products: {}
 }
 
-test('parses departures correctly (VSN)', (t) => {
+tap.test('parses departures correctly (VSN)', (t) => {
 	const common = profile.parseCommon({profile, opt, res})
 	const ctx = {profile, opt, common, res}
 
 	const dep = profile.parseDeparture(ctx, res.jnyL[0])
-	t.deepEqual(dep, expected)
+	t.same(dep, expected)
 	t.end()
 })

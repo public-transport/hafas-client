@@ -36,7 +36,7 @@ const testReachableFrom = async (cfg) => {
 	}
 
 	const sorted = results.sort((a, b) => a.duration - b.duration)
-	t.deepEqual(results, sorted, 'results must be sorted by res.duration')
+	t.same(results, sorted, 'results must be sorted by res.duration')
 }
 
 module.exports = testReachableFrom

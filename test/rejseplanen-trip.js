@@ -1,6 +1,6 @@
 'use strict'
 
-const test = require('tape')
+const tap = require('tap')
 
 const createClient = require('..')
 const rawProfile = require('../p/rejseplanen')
@@ -19,11 +19,11 @@ const opt = {
 	when: '2020-07-11T16:49:00+02:00',
 }
 
-test('parses a trip correctly (Rejseplanen)', (t) => {
+tap.test('parses a trip correctly (Rejseplanen)', (t) => {
 	const common = profile.parseCommon({profile, opt, res})
 	const ctx = {profile, opt, common, res}
 	const trip = profile.parseTrip(ctx, res.journey)
 
-	t.deepEqual(trip, expected)
+	t.same(trip, expected)
 	t.end()
 })

@@ -1,11 +1,12 @@
 'use strict'
 
+const tap = require('tap')
+
 const {createWhen} = require('./lib/util')
 const createClient = require('../..')
 const mobilNrwProfile = require('../../p/mobil-nrw')
 const products = require('../../p/mobil-nrw/products')
 const createValidate = require('./lib/validate-fptf-with')
-const {test} = require('./lib/util')
 const testJourneysStationToStation = require('./lib/journeys-station-to-station')
 const testJourneysStationToAddress = require('./lib/journeys-station-to-address')
 const testJourneysStationToPoi = require('./lib/journeys-station-to-poi')
@@ -36,7 +37,7 @@ const soest = '8000076'
 const aachenHbf = '8000001'
 const dortmundStadtgarten = '655672'
 
-test('journeys – Soest to Aachen Hbf', async (t) => {
+tap.test('journeys – Soest to Aachen Hbf', async (t) => {
 	const res = await client.journeys(soest, aachenHbf, {
 		results: 4,
 		departure: when,
@@ -55,7 +56,7 @@ test('journeys – Soest to Aachen Hbf', async (t) => {
 
 // todo: journeys, only one product
 
-test('Aachen Hbf to Schillingstr. 3, Dortmund', async (t) => {
+tap.test('Aachen Hbf to Schillingstr. 3, Dortmund', async (t) => {
 	const schillingstr3 = {
 		type: 'location',
 		id: '980288407',
@@ -79,7 +80,7 @@ test('Aachen Hbf to Schillingstr. 3, Dortmund', async (t) => {
 	t.end()
 })
 
-test('Aachen Hbf to Sportanlage Schulzentrum, Dortmund', async (t) => {
+tap.test('Aachen Hbf to Sportanlage Schulzentrum, Dortmund', async (t) => {
 	const sportanlage = {
 		type: 'location',
 		id: '991557725',
@@ -107,7 +108,7 @@ test('Aachen Hbf to Sportanlage Schulzentrum, Dortmund', async (t) => {
 // todo: via works – with detour
 // todo: without detour
 
-test('earlier/later journeys', async (t) => {
+tap.test('earlier/later journeys', async (t) => {
 	await testEarlierLaterJourneys({
 		test: t,
 		fetchJourneys: client.journeys,
@@ -120,7 +121,7 @@ test('earlier/later journeys', async (t) => {
 	t.end()
 })
 
-test('refreshJourney', async (t) => {
+tap.test('refreshJourney', async (t) => {
 	await testRefreshJourney({
 		test: t,
 		fetchJourneys: client.journeys,
@@ -133,7 +134,7 @@ test('refreshJourney', async (t) => {
 	t.end()
 })
 
-test('trip details', async (t) => {
+tap.test('trip details', async (t) => {
 	const res = await client.journeys(soest, aachenHbf, {
 		results: 1, departure: when
 	})
@@ -147,7 +148,7 @@ test('trip details', async (t) => {
 	t.end()
 })
 
-test('departures at Soest', async (t) => {
+tap.test('departures at Soest', async (t) => {
 	const departures = await client.departures(soest, {
 		duration: 10, when,
 	})
@@ -161,7 +162,7 @@ test('departures at Soest', async (t) => {
 	t.end()
 })
 
-test('departures with station object', async (t) => {
+tap.test('departures with station object', async (t) => {
 	const deps = await client.departures({
 		type: 'station',
 		id: soest,
@@ -177,7 +178,7 @@ test('departures with station object', async (t) => {
 	t.end()
 })
 
-test('arrivals at Soest', async (t) => {
+tap.test('arrivals at Soest', async (t) => {
 	const arrivals = await client.arrivals(soest, {
 		duration: 10, when,
 	})
@@ -193,7 +194,7 @@ test('arrivals at Soest', async (t) => {
 
 // todo: nearby
 
-test('locations named "stadtgarten dortmund"', async (t) => {
+tap.test('locations named "stadtgarten dortmund"', async (t) => {
 	const locations = await client.locations('stadtgarten dortmund', {
 		results: 10,
 	})
@@ -210,7 +211,7 @@ test('locations named "stadtgarten dortmund"', async (t) => {
 	t.end()
 })
 
-test('station Aachen Hbf', async (t) => {
+tap.test('station Aachen Hbf', async (t) => {
 	const s = await client.stop(aachenHbf)
 
 	validate(t, s, ['stop', 'station'], 'station')
@@ -219,7 +220,7 @@ test('station Aachen Hbf', async (t) => {
 	t.end()
 })
 
-test('radar', async (t) => {
+tap.test('radar', async (t) => {
 	const vehicles = await client.radar({
 		north: 51.4358,
 		west: 6.7625,
@@ -233,7 +234,7 @@ test('radar', async (t) => {
 	t.end()
 })
 
-test('reachableFrom', async (t) => {
+tap.test('reachableFrom', async (t) => {
 	await testReachableFrom({
 		test: t,
 		reachableFrom: client.reachableFrom,

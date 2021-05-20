@@ -1,11 +1,12 @@
 'use strict'
 
+const tap = require('tap')
+
 const {createWhen} = require('./lib/util')
 const createClient = require('../..')
 const sncbProfile = require('../../p/sncb')
 const products = require('../../p/sncb/products')
 const createValidate = require('./lib/validate-fptf-with')
-const {test} = require('./lib/util')
 const testJourneysStationToStation = require('./lib/journeys-station-to-station')
 const testRefreshJourney = require('./lib/refresh-journey')
 const testArrivals = require('./lib/arrivals')
@@ -35,7 +36,7 @@ const gentPaddenhoek = {
 	latitude: 51.0517, longitude: 3.724878,
 }
 
-test('journeys – Gent Sant Pieters to Bruxelles Midi', async (t) => {
+tap.test('journeys – Gent Sant Pieters to Bruxelles Midi', async (t) => {
 	const res = await client.journeys(gentStPieters, bruxellesMidi, {
 		results: 4,
 		departure: when,
@@ -55,7 +56,7 @@ test('journeys – Gent Sant Pieters to Bruxelles Midi', async (t) => {
 // todo: via works – with detour
 // todo: without detour
 
-test('trip details', async (t) => {
+tap.test('trip details', async (t) => {
 	const res = await client.journeys(gentStPieters, bruxellesMidi, {
 		results: 1, departure: when
 	})
@@ -69,20 +70,20 @@ test('trip details', async (t) => {
 	t.end()
 })
 
-test('arrivals at Bruxelles Midi', async (t) => {
+tap.test('arrivals at Bruxelles Midi', async (t) => {
 	const arrivals = await client.arrivals(bruxellesMidi, {
 		duration: 10, when
 	})
 
 	validate(t, arrivals, 'arrivals', 'arrivals')
 	t.ok(arrivals.length > 0, 'must be >0 arrivals')
-	t.deepEqual(arrivals, arrivals.sort((a, b) => t.when > b.when))
+	t.same(arrivals, arrivals.sort((a, b) => t.when > b.when))
 	t.end()
 })
 
 // todo: nearby
 
-test('radar', async (t) => {
+tap.test('radar', async (t) => {
 	const vehicles = await client.radar({
 		north: 51.065,
 		west: 3.688,
@@ -96,7 +97,7 @@ test('radar', async (t) => {
 	t.end()
 })
 
-test.skip('reachableFrom', async (t) => {
+tap.skip('reachableFrom', async (t) => {
 	await testReachableFrom({
 		test: t,
 		reachableFrom: client.reachableFrom,

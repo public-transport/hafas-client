@@ -1,5 +1,6 @@
 'use strict'
 
+const tap = require('tap')
 const isRoughlyEqual = require('is-roughly-equal')
 
 const {createWhen} = require('./lib/util')
@@ -7,7 +8,6 @@ const createClient = require('../..')
 const zvvProfile = require('../../p/zvv')
 const products = require('../../p/zvv/products')
 const createValidate = require('./lib/validate-fptf-with')
-const {test} = require('./lib/util')
 const testJourneysStationToStation = require('./lib/journeys-station-to-station')
 const journeysFailsWithNoProduct = require('./lib/journeys-fails-with-no-product')
 const testJourneysStationToAddress = require('./lib/journeys-station-to-address')
@@ -33,7 +33,7 @@ const client = createClient(zvvProfile, 'public-transport/hafas-client:test')
 const bürkliplatz = '8591105'
 const ethUniversitätsspital = '8591123'
 
-test('journeys – Bürkliplatz to ETH/Universitätsspital', async (t) => {
+tap.test('journeys – Bürkliplatz to ETH/Universitätsspital', async (t) => {
 	const res = await client.journeys(bürkliplatz, ethUniversitätsspital, {
 		results: 4,
 		departure: when,
@@ -50,7 +50,7 @@ test('journeys – Bürkliplatz to ETH/Universitätsspital', async (t) => {
 	t.end()
 })
 
-test('earlier/later journeys', async (t) => {
+tap.test('earlier/later journeys', async (t) => {
 	await testEarlierLaterJourneys({
 		test: t,
 		fetchJourneys: client.journeys,
@@ -63,7 +63,7 @@ test('earlier/later journeys', async (t) => {
 	t.end()
 })
 
-test('trip details', async (t) => {
+tap.test('trip details', async (t) => {
 	const res = await client.journeys(bürkliplatz, ethUniversitätsspital, {
 		results: 1, departure: when
 	})
@@ -77,7 +77,7 @@ test('trip details', async (t) => {
 	t.end()
 })
 
-test.skip('departures at ETH/Universitätsspital', async (t) => { // todo
+tap.skip('departures at ETH/Universitätsspital', async (t) => { // todo
 	const departures = await client.departures(ethUniversitätsspital, {
 		duration: 5, when,
 	})
@@ -94,7 +94,7 @@ test.skip('departures at ETH/Universitätsspital', async (t) => { // todo
 // todo: departures in direction
 // todo: nearby
 
-test('locations named Rennweg', async (t) => {
+tap.test('locations named Rennweg', async (t) => {
 	const rennweg = '8591316'
 	const locations = await client.locations('Rennweg', {
 		results: 20,
@@ -111,7 +111,7 @@ test('locations named Rennweg', async (t) => {
 	t.end()
 })
 
-test('radar', async (t) => {
+tap.test('radar', async (t) => {
 	const vehicles = await client.radar({
 		north: 47.387,
 		west: 8.514,

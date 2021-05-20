@@ -1,6 +1,6 @@
 'use strict'
 
-const test = require('tape')
+const tap = require('tap')
 
 const createClient = require('..')
 const rawProfile = require('../p/sbb')
@@ -30,11 +30,11 @@ const opt = {
 	products: {},
 }
 
-test('parses a journeys() response correctly (SBB)', (t) => {
+tap.test('parses a journeys() response correctly (SBB)', (t) => {
 	const common = profile.parseCommon({profile, opt, res})
 	const ctx = {profile, opt, common, res}
 	const journeys = res.outConL.map(j => profile.parseJourney(ctx, j))
 
-	t.deepEqual(journeys, expected)
+	t.same(journeys, expected)
 	t.end()
 })

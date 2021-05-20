@@ -1,6 +1,6 @@
 'use strict'
 
-const test = require('tape')
+const tap = require('tap')
 
 const createClient = require('..')
 const rawProfile = require('../p/rsag')
@@ -20,11 +20,11 @@ const opt = {
 	products: {}
 }
 
-test('parses a journey correctly (RSAG)', (t) => {
+tap.test('parses a journey correctly (RSAG)', (t) => {
 	const common = profile.parseCommon({profile, opt, res})
 	const ctx = {profile, opt, common, res}
 	const journey = profile.parseJourney(ctx, res.outConL[0])
 
-	t.deepEqual(journey, expected)
+	t.same(journey, expected)
 	t.end()
 })

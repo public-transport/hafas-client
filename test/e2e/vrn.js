@@ -1,5 +1,6 @@
 'use strict'
 
+const tap = require('tap')
 const isRoughlyEqual = require('is-roughly-equal')
 
 const {createWhen} = require('./lib/util')
@@ -7,7 +8,6 @@ const createClient = require('../..')
 const vrnProfile = require('../../p/vrn')
 const products = require('../../p/vrn/products')
 const createValidate = require('./lib/validate-fptf-with')
-const {test} = require('./lib/util')
 const testJourneysStationToStation = require('./lib/journeys-station-to-station')
 const journeysFailsWithNoProduct = require('./lib/journeys-fails-with-no-product')
 const testJourneysStationToAddress = require('./lib/journeys-station-to-address')
@@ -36,7 +36,7 @@ const client = createClient(vrnProfile, 'public-transport/hafas-client:test')
 const ludwigshafen = '8000236'
 const meckesheim = '8003932'
 
-test('journeys – Ludwigshafen to Meckesheim', async (t) => {
+tap.test('journeys – Ludwigshafen to Meckesheim', async (t) => {
 	const res = await client.journeys(ludwigshafen, meckesheim, {
 		results: 4,
 		departure: when,
@@ -55,7 +55,7 @@ test('journeys – Ludwigshafen to Meckesheim', async (t) => {
 
 // todo: journeys, only one product
 
-test('journeys – fails with no product', (t) => {
+tap.test('journeys – fails with no product', (t) => {
 	journeysFailsWithNoProduct({
 		test: t,
 		fetchJourneys: client.journeys,
@@ -67,7 +67,7 @@ test('journeys – fails with no product', (t) => {
 	t.end()
 })
 
-test('Ludwigshafen to Pestalozzistr. 2, Ludwigshafen', async (t) => {
+tap.test('Ludwigshafen to Pestalozzistr. 2, Ludwigshafen', async (t) => {
 	const pestalozzistr2 = {
 		type: 'location',
 		id: '980787337',
@@ -90,7 +90,7 @@ test('Ludwigshafen to Pestalozzistr. 2, Ludwigshafen', async (t) => {
 	t.end()
 })
 
-test('Ludwigshafen to Südwest-Stadion', async (t) => {
+tap.test('Ludwigshafen to Südwest-Stadion', async (t) => {
 	const südweststadion = {
 		type: 'location',
 		id: '991664983',
@@ -116,7 +116,7 @@ test('Ludwigshafen to Südwest-Stadion', async (t) => {
 // todo: via works – with detour
 // todo: via works – without detour
 
-test('earlier/later journeys', async (t) => {
+tap.test('earlier/later journeys', async (t) => {
 	await testEarlierLaterJourneys({
 		test: t,
 		fetchJourneys: client.journeys,
@@ -129,7 +129,7 @@ test('earlier/later journeys', async (t) => {
 	t.end()
 })
 
-test('trip details', async (t) => {
+tap.test('trip details', async (t) => {
 	const res = await client.journeys(ludwigshafen, meckesheim, {
 		results: 1, departure: when
 	})
@@ -143,7 +143,7 @@ test('trip details', async (t) => {
 	t.end()
 })
 
-test('departures at Meckesheim', async (t) => {
+tap.test('departures at Meckesheim', async (t) => {
 	const departures = await client.departures(meckesheim, {
 		duration: 3 * 60, when,
 	})
@@ -157,7 +157,7 @@ test('departures at Meckesheim', async (t) => {
 	t.end()
 })
 
-test('departures at Meckesheim in direction of Reilsheim', async (t) => {
+tap.test('departures at Meckesheim in direction of Reilsheim', async (t) => {
 	const reilsheim = '8005015'
 	await testDeparturesInDirection({
 		test: t,
@@ -171,7 +171,7 @@ test('departures at Meckesheim in direction of Reilsheim', async (t) => {
 	t.end()
 })
 
-test('arrivals at Meckesheim', async (t) => {
+tap.test('arrivals at Meckesheim', async (t) => {
 	const arrivals = await client.arrivals(meckesheim, {
 		duration: 3 * 60, when
 	})
@@ -187,7 +187,7 @@ test('arrivals at Meckesheim', async (t) => {
 
 // todo: nearby
 
-test('locations named Ebertpark', async (t) => {
+tap.test('locations named Ebertpark', async (t) => {
 	const ebertpark = '506453'
 	const locations = await client.locations('Ebertpark', {
 		results: 20
@@ -205,7 +205,7 @@ test('locations named Ebertpark', async (t) => {
 	t.end()
 })
 
-test('station Meckesheim', async (t) => {
+tap.test('station Meckesheim', async (t) => {
 	const s = await client.stop(meckesheim)
 
 	validate(t, s, ['stop', 'station'], 'station')
@@ -214,7 +214,7 @@ test('station Meckesheim', async (t) => {
 	t.end()
 })
 
-test('radar', async (t) => {
+tap.test('radar', async (t) => {
 	const vehicles = await client.radar({
 		north: 49.4940,
 		west: 8.4560,

@@ -1,5 +1,6 @@
 'use strict'
 
+const tap = require('tap')
 const isRoughlyEqual = require('is-roughly-equal')
 
 const {createWhen} = require('./lib/util')
@@ -11,7 +12,6 @@ const {
 	trip: createValidateTrip
 } = require('./lib/validators')
 const createValidate = require('./lib/validate-fptf-with')
-const {test} = require('./lib/util')
 const testJourneysStationToStation = require('./lib/journeys-station-to-station')
 const testJourneysStationToAddress = require('./lib/journeys-station-to-address')
 const testJourneysStationToPoi = require('./lib/journeys-station-to-poi')
@@ -73,7 +73,7 @@ const blnTiergarten = '8089091'
 const blnJannowitzbrücke = '8089019'
 const potsdamHbf = '8012666'
 
-test('journeys – Berlin Schwedter Str. to München Hbf', async (t) => {
+tap.test('journeys – Berlin Schwedter Str. to München Hbf', async (t) => {
 	const res = await client.journeys(blnSchwedterStr, münchenHbf, {
 		results: 4,
 		departure: when,
@@ -97,7 +97,7 @@ test('journeys – Berlin Schwedter Str. to München Hbf', async (t) => {
 
 // todo: journeys, only one product
 
-test('journeys – fails with no product', (t) => {
+tap.test('journeys – fails with no product', (t) => {
 	journeysFailsWithNoProduct({
 		test: t,
 		fetchJourneys: client.journeys,
@@ -109,7 +109,7 @@ test('journeys – fails with no product', (t) => {
 	t.end()
 })
 
-test('Berlin Schwedter Str. to Torfstraße 17', async (t) => {
+tap.test('Berlin Schwedter Str. to Torfstraße 17', async (t) => {
 	const torfstr = {
 		type: 'location',
 		address: 'Torfstraße 17',
@@ -131,7 +131,7 @@ test('Berlin Schwedter Str. to Torfstraße 17', async (t) => {
 	t.end()
 })
 
-test('Berlin Schwedter Str. to ATZE Musiktheater', async (t) => {
+tap.test('Berlin Schwedter Str. to ATZE Musiktheater', async (t) => {
 	const atze = {
 		type: 'location',
 		id: '991598902',
@@ -155,7 +155,7 @@ test('Berlin Schwedter Str. to ATZE Musiktheater', async (t) => {
 	t.end()
 })
 
-test('journeys: via works – with detour', async (t) => {
+tap.test('journeys: via works – with detour', async (t) => {
 	// Going from Westhafen to Wedding via Württembergalle without detour
 	// is currently impossible. We check if the routing engine computes a detour.
 	const res = await client.journeys(westhafen, wedding, {
@@ -177,7 +177,7 @@ test('journeys: via works – with detour', async (t) => {
 // todo: walkingSpeed "Berlin - Charlottenburg, Hallerstraße" -> jungfernheide
 // todo: without detour
 
-test('earlier/later journeys, Jungfernheide -> München Hbf', async (t) => {
+tap.test('earlier/later journeys, Jungfernheide -> München Hbf', async (t) => {
 	await testEarlierLaterJourneys({
 		test: t,
 		fetchJourneys: client.journeys,
@@ -190,7 +190,7 @@ test('earlier/later journeys, Jungfernheide -> München Hbf', async (t) => {
 	t.end()
 })
 
-test.skip('journeys – leg cycle & alternatives', async (t) => {
+tap.skip('journeys – leg cycle & alternatives', async (t) => {
 	await testLegCycleAlternatives({
 		test: t,
 		fetchJourneys: client.journeys,
@@ -200,7 +200,7 @@ test.skip('journeys – leg cycle & alternatives', async (t) => {
 	t.end()
 })
 
-test('refreshJourney', async (t) => {
+tap.test('refreshJourney', async (t) => {
 	await testRefreshJourney({
 		test: t,
 		fetchJourneys: client.journeys,
@@ -213,7 +213,7 @@ test('refreshJourney', async (t) => {
 	t.end()
 })
 
-test('trip details', async (t) => {
+tap.test('trip details', async (t) => {
 	const res = await client.journeys(berlinHbf, münchenHbf, {
 		results: 1, departure: when
 	})
@@ -236,7 +236,7 @@ test('trip details', async (t) => {
 	t.end()
 })
 
-test('departures at Berlin Schwedter Str.', async (t) => {
+tap.test('departures at Berlin Schwedter Str.', async (t) => {
 	const departures = await client.departures(blnSchwedterStr, {
 		duration: 5, when,
 	})
@@ -250,7 +250,7 @@ test('departures at Berlin Schwedter Str.', async (t) => {
 	t.end()
 })
 
-test('departures with station object', async (t) => {
+tap.test('departures with station object', async (t) => {
 	const deps = await client.departures({
 		type: 'station',
 		id: jungfernheide,
@@ -266,7 +266,7 @@ test('departures with station object', async (t) => {
 	t.end()
 })
 
-test('departures at Berlin Hbf in direction of Berlin Ostbahnhof', async (t) => {
+tap.test('departures at Berlin Hbf in direction of Berlin Ostbahnhof', async (t) => {
 	await testDeparturesInDirection({
 		test: t,
 		fetchDepartures: client.departures,
@@ -279,7 +279,7 @@ test('departures at Berlin Hbf in direction of Berlin Ostbahnhof', async (t) => 
 	t.end()
 })
 
-test('arrivals at Berlin Schwedter Str.', async (t) => {
+tap.test('arrivals at Berlin Schwedter Str.', async (t) => {
 	const arrivals = await client.arrivals(blnSchwedterStr, {
 		duration: 5, when,
 	})
@@ -293,7 +293,7 @@ test('arrivals at Berlin Schwedter Str.', async (t) => {
 	t.end()
 })
 
-test('nearby Berlin Jungfernheide', async (t) => {
+tap.test('nearby Berlin Jungfernheide', async (t) => {
 	const nearby = await client.nearby({
 		type: 'location',
 		latitude: 52.530273,
@@ -317,7 +317,7 @@ test('nearby Berlin Jungfernheide', async (t) => {
 	t.end()
 })
 
-test('locations named Jungfernheide', async (t) => {
+tap.test('locations named Jungfernheide', async (t) => {
 	const locations = await client.locations('Jungfernheide', {
 		results: 10
 	})
@@ -331,7 +331,7 @@ test('locations named Jungfernheide', async (t) => {
 	t.end()
 })
 
-test('stop', async (t) => {
+tap.test('stop', async (t) => {
 	const s = await client.stop(regensburgHbf)
 
 	validate(t, s, ['stop', 'station'], 'stop')
@@ -340,7 +340,7 @@ test('stop', async (t) => {
 	t.end()
 })
 
-test('line with additionalName', async (t) => {
+tap.test('line with additionalName', async (t) => {
 	const departures = await client.departures(potsdamHbf, {
 		when,
 		duration: 12 * 60, // 12 minutes
@@ -350,7 +350,7 @@ test('line with additionalName', async (t) => {
 	t.end()
 })
 
-test('radar', async (t) => {
+tap.test('radar', async (t) => {
 	const vehicles = await client.radar({
 		north: 52.52411,
 		west: 13.41002,
@@ -364,7 +364,7 @@ test('radar', async (t) => {
 	t.end()
 })
 
-test('reachableFrom', async (t) => {
+tap.test('reachableFrom', async (t) => {
 	const torfstr17 = {
 		type: 'location',
 		address: 'Torfstraße 17',
@@ -383,7 +383,7 @@ test('reachableFrom', async (t) => {
 	t.end()
 })
 
-test('serverInfo works', async (t) => {
+tap.test('serverInfo works', async (t) => {
 	await testServerInfo({
 		test: t,
 		fetchServerInfo: client.serverInfo,

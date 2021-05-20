@@ -1,5 +1,6 @@
 'use strict'
 
+const tap = require('tap')
 const assert = require('assert')
 
 const {createWhen} = require('./lib/util')
@@ -7,7 +8,6 @@ const createClient = require('../..')
 const rejseplanenProfile = require('../../p/rejseplanen')
 const products = require('../../p/rejseplanen/products')
 const createValidate = require('./lib/validate-fptf-with')
-const {test} = require('./lib/util')
 const testJourneysStationToStation = require('./lib/journeys-station-to-station')
 const journeysFailsWithNoProduct = require('./lib/journeys-fails-with-no-product')
 const testJourneysStationToAddress = require('./lib/journeys-station-to-address')
@@ -32,7 +32,7 @@ const næstved = '8600810'
 const randers = '8600040'
 const aalborg = '8600020'
 
-test('journeys – Næstved to Aalborg', async (t) => {
+tap.test('journeys – Næstved to Aalborg', async (t) => {
 	const res = await client.journeys(næstved, aalborg, {
 		results: 4,
 		departure: when,
@@ -51,7 +51,7 @@ test('journeys – Næstved to Aalborg', async (t) => {
 
 // todo: journeys, only one product
 
-test('journeys – fails with no product', (t) => {
+tap.test('journeys – fails with no product', (t) => {
 	journeysFailsWithNoProduct({
 		test: t,
 		fetchJourneys: client.journeys,
@@ -63,7 +63,7 @@ test('journeys – fails with no product', (t) => {
 	t.end()
 })
 
-test('Randers to Møllegade 3, København', async (t) => {
+tap.test('Randers to Møllegade 3, København', async (t) => {
 	const møllegade3 = {
 		type: 'location',
 		id: '901011579',
@@ -89,7 +89,7 @@ test('Randers to Møllegade 3, København', async (t) => {
 // todo: journeys: via works – with detour
 // todo: without detour
 
-test('earlier/later journeys', async (t) => {
+tap.test('earlier/later journeys', async (t) => {
 	await testEarlierLaterJourneys({
 		test: t,
 		fetchJourneys: client.journeys,
@@ -102,7 +102,7 @@ test('earlier/later journeys', async (t) => {
 	t.end()
 })
 
-test('trip', async (t) => {
+tap.test('trip', async (t) => {
 	const { journeys } = await client.journeys(aalborg, næstved, {
 		results: 1, departure: when,
 	})
@@ -116,7 +116,7 @@ test('trip', async (t) => {
 	t.end()
 })
 
-test('departures at Næstved.', async (t) => {
+tap.test('departures at Næstved.', async (t) => {
 	const departures = await client.departures(næstved, {
 		duration: 20, when,
 	})
@@ -130,7 +130,7 @@ test('departures at Næstved.', async (t) => {
 	t.end()
 })
 
-test('arrivals at Næstved.', async (t) => {
+tap.test('arrivals at Næstved.', async (t) => {
 	const arrivals = await client.arrivals(næstved, {
 		duration: 20, when
 	})
@@ -146,7 +146,7 @@ test('arrivals at Næstved.', async (t) => {
 
 // todo: nearby
 
-test('locations named "næstved"', async (t) => {
+tap.test('locations named "næstved"', async (t) => {
 	const locations = await client.locations('næstved', {
 		results: 20,
 	})
@@ -164,7 +164,7 @@ test('locations named "næstved"', async (t) => {
 	t.end()
 })
 
-test('stop Næstved', async (t) => {
+tap.test('stop Næstved', async (t) => {
 	const s = await client.stop(næstved)
 
 	validate(t, s, ['stop', 'station'], 'stop')
@@ -173,7 +173,7 @@ test('stop Næstved', async (t) => {
 	t.end()
 })
 
-test('radar', async (t) => {
+tap.test('radar', async (t) => {
 	const vehicles = await client.radar({
 		north: 55.695,
 		west: 12.498,

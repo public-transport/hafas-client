@@ -1,5 +1,6 @@
 'use strict'
 
+const tap = require('tap')
 const isRoughlyEqual = require('is-roughly-equal')
 
 const {createWhen} = require('./lib/util')
@@ -11,7 +12,6 @@ const {
 	station: createValidateStation
 } = require('./lib/validators')
 const createValidate = require('./lib/validate-fptf-with')
-const {test} = require('./lib/util')
 const testJourneysStationToStation = require('./lib/journeys-station-to-station')
 const testJourneysStationToAddress = require('./lib/journeys-station-to-address')
 const testJourneysStationToPoi = require('./lib/journeys-station-to-poi')
@@ -73,7 +73,7 @@ const ellerbekerMarkt = '9049027'
 const seefischmarkt = '9049245'
 const kielRaeucherei = '9049217'
 
-test('journeys – Kiel Hbf to Flensburg', async (t) => {
+tap.test('journeys – Kiel Hbf to Flensburg', async (t) => {
 	const res = await client.journeys(kielHbf, flensburg, {
 		results: 4,
 		departure: when,
@@ -100,7 +100,7 @@ test('journeys – Kiel Hbf to Flensburg', async (t) => {
 
 // todo: journeys, only one product
 
-test('journeys – fails with no product', (t) => {
+tap.test('journeys – fails with no product', (t) => {
 	journeysFailsWithNoProduct({
 		test: t,
 		fetchJourneys: client.journeys,
@@ -112,7 +112,7 @@ test('journeys – fails with no product', (t) => {
 	t.end()
 })
 
-test('Kiel Hbf to Berliner Str. 80, Husum', async (t) => {
+tap.test('Kiel Hbf to Berliner Str. 80, Husum', async (t) => {
 	const berlinerStr = {
 		type: 'location',
 		address: 'Husum, Berliner Straße 80',
@@ -134,7 +134,7 @@ test('Kiel Hbf to Berliner Str. 80, Husum', async (t) => {
 	t.end()
 })
 
-test('Kiel Hbf to Holstentor', async (t) => {
+tap.test('Kiel Hbf to Holstentor', async (t) => {
 	const holstentor = {
 		type: 'location',
 		id: '970003168',
@@ -158,7 +158,7 @@ test('Kiel Hbf to Holstentor', async (t) => {
 	t.end()
 })
 
-test('Husum to Lübeck Hbf with stopover at Kiel Hbf', async (t) => {
+tap.test('Husum to Lübeck Hbf with stopover at Kiel Hbf', async (t) => {
 	const res = await client.journeys(husum, luebeckHbf, {
 		via: kielHbf,
 		results: 1,
@@ -179,7 +179,7 @@ test('Husum to Lübeck Hbf with stopover at Kiel Hbf', async (t) => {
 	t.end()
 })
 
-test('earlier/later journeys, Kiel Hbf -> Flensburg', async (t) => {
+tap.test('earlier/later journeys, Kiel Hbf -> Flensburg', async (t) => {
 	await testEarlierLaterJourneys({
 		test: t,
 		fetchJourneys: client.journeys,
@@ -192,7 +192,7 @@ test('earlier/later journeys, Kiel Hbf -> Flensburg', async (t) => {
 	t.end()
 })
 
-test('refreshJourney', async (t) => {
+tap.test('refreshJourney', async (t) => {
 	await testRefreshJourney({
 		test: t,
 		fetchJourneys: client.journeys,
@@ -208,7 +208,7 @@ test('refreshJourney', async (t) => {
 // todo: with detour test
 // todo: without detour test
 
-test('trip details', async (t) => {
+tap.test('trip details', async (t) => {
 	const res = await client.journeys(flensburg, husum, {
 		results: 1, departure: when
 	})
@@ -222,7 +222,7 @@ test('trip details', async (t) => {
 	t.end()
 })
 
-test('departures at Kiel Räucherei', async (t) => {
+tap.test('departures at Kiel Räucherei', async (t) => {
 	const departures = await client.departures(kielRaeucherei, {
 		duration: 30, when,
 	})
@@ -236,7 +236,7 @@ test('departures at Kiel Räucherei', async (t) => {
 	t.end()
 })
 
-test('departures with station object', async (t) => {
+tap.test('departures with station object', async (t) => {
 	const deps = await client.departures({
 		type: 'station',
 		id: kielHbf,
@@ -252,7 +252,7 @@ test('departures with station object', async (t) => {
 	t.end()
 })
 
-test('departures at Berlin Hbf in direction of Berlin Ostbahnhof', async (t) => {
+tap.test('departures at Berlin Hbf in direction of Berlin Ostbahnhof', async (t) => {
 	await testDeparturesInDirection({
 		test: t,
 		fetchDepartures: client.departures,
@@ -265,7 +265,7 @@ test('departures at Berlin Hbf in direction of Berlin Ostbahnhof', async (t) => 
 	t.end()
 })
 
-test('arrivals at Kiel Räucherei', async (t) => {
+tap.test('arrivals at Kiel Räucherei', async (t) => {
 	const arrivals = await client.arrivals(kielRaeucherei, {
 		duration: 30, when
 	})
@@ -279,7 +279,7 @@ test('arrivals at Kiel Räucherei', async (t) => {
 	t.end()
 })
 
-test('nearby Kiel Hbf', async (t) => {
+tap.test('nearby Kiel Hbf', async (t) => {
 	const kielHbfPosition = {
 		type: 'location',
 		latitude: 54.314982,
@@ -302,7 +302,7 @@ test('nearby Kiel Hbf', async (t) => {
 	t.end()
 })
 
-test('locations named "Kiel Rathaus"', async (t) => {
+tap.test('locations named "Kiel Rathaus"', async (t) => {
 	const kielRathaus = '9049200'
 	const locations = await client.locations('Kiel Rathaus', {
 		results: 15
@@ -318,7 +318,7 @@ test('locations named "Kiel Rathaus"', async (t) => {
 	t.end()
 })
 
-test('stop', async (t) => {
+tap.test('stop', async (t) => {
 	const s = await client.stop(kielHbf)
 
 	validate(t, s, ['stop', 'station'], 'stop')
@@ -327,7 +327,7 @@ test('stop', async (t) => {
 	t.end()
 })
 
-test('radar', async (t) => {
+tap.test('radar', async (t) => {
 	const vehicles = await client.radar({
 		north: 54.4,
 		west: 10.0,
@@ -354,7 +354,7 @@ test('radar', async (t) => {
 	t.end()
 })
 
-test('reachableFrom', async (t) => {
+tap.test('reachableFrom', async (t) => {
 	const berlinerStr = {
 		type: 'location',
 		address: 'Husum, Berliner Straße 80',
