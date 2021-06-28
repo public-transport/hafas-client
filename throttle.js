@@ -9,7 +9,7 @@ const withThrottling = (profile, limit = 5, interval = 1000) => {
 
 	return {
 		...profile,
-		request: throttle(request, limit, interval)
+		request: throttle({limit, interval})(request)
 	}
 }
 
