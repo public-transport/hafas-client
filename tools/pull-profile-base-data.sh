@@ -61,4 +61,5 @@ node -p "$query" "$src/de/vos-hafas-mgate.json" >../p/vos/base.json
 node -p "$query" "$src/de/vrn-hafas-mgate.json" >../p/vrn/base.json
 node -p "$query" "$src/de/vsn-hafas-mgate.json" >../p/vsn/base.json
 node -p "$query" "$src/at/vvt-hafas-mgate.json" >../p/vvt/base.json
+node -p "$query" "$src/ch/bls-hafas-mgate.json" >../p/bls/base.json
 node -p "$query" "$src/ch/zvv-hafas-mgate.json" >../p/zvv/base.json
