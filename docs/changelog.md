@@ -1,5 +1,12 @@
 # Changelog
 
+## `5.17.0`
+
+- 24c2cc6e add [*BLS* profile](../p/bls)
+- 33dab455 add [*TPG* profile](../p/tpg)
+
+[🏷 `5.17.0`](https://github.com/public-transport/hafas-client/releases/tag/5.17.0), 2021-07-28
+
 ## `5.16.0`
 
 - 7cb62108 `lib/request`: validate response `content-type` 🐛
