@@ -1,0 +1,35 @@
+{
+  "statusCode": 200,
+  "headers": {
+    "date": "Thu, 05 Aug 2021 18:10:17 GMT",
+    "server": "Apache",
+    "content-length": "841",
+    "content-type": "application/json; charset=utf-8",
+    "connection": "close"
+  },
+  "url": "https://verkehrsauskunft.verbundlinie.at/bin/mgate.exe",
+  "time": 266,
+  "request": {
+    "method": "POST",
+    "headers": {
+      "Content-Type": [
+        "application/json"
+      ],
+      "Accept-Encoding": [
+        "gzip, br, deflate"
+      ],
+      "Accept": [
+        "application/json"
+      ],
+      "user-agent": [
+        "public-transc9279a930e0bport/hafas-client:test"
+      ],
+      "Content-Length": [
+        "278"
+      ],
+      "Connection": [
+        "close"
+      ]
+    }
+  }
+}

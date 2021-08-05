@@ -39,6 +39,7 @@ HAFAS endpoint | wrapper library | docs | example code | profile name
 [Aachener Verkehrsverbund (AVV)](https://de.wikipedia.org/wiki/Verkehrsgemeinschaft_Osnabrück) | - | [docs](avv/readme.md) | [example](avv/example.js) | [`avv`](avv)
 [Rejseplanen in Denmark](http://www.rejseplanen.dk) | - | [docs](rejseplanen/readme.md) | [example](rejseplanen/example.js) | [`rejseplanen`](rejseplanen)
 [Innsbrucker Verkehrsbetriebe (IVB)](https://de.wikipedia.org/wiki/Innsbrucker_Verkehrsbetriebe_und_Stubaitalbahn) | - | [docs](ivb/readme.md) | [example](ivb/example.js) | [`ivb`](ivb)
+[Steirischer Verkehrsverbund (STV)](https://de.wikipedia.org/wiki/Steirischer_Verkehrsverbund) | - | [docs](stv/readme.md) | [example](stv/example.js) | [`stv`](stv)
 [Salzburg public transport (SVV)](https://de.wikipedia.org/wiki/Salzburger_Verkehrsverbund) | - | [docs](svv/readme.md) | [example](svv/example.js) | [`svv`](svv)
 [Verkehrsverbund Tirol (VVT)](https://de.wikipedia.org/wiki/Verkehrsverbund_Tirol) | - | [docs](vvt/readme.md) | [example](vvt/example.js) | [`vvt`](vvt)
 [*Kärntner Linien/Verkehrsverbund Kärnten (VKG/VVK)*](https://de.wikipedia.org/wiki/Verkehrsverbund_Kärnten) | - | [docs](vkg/readme.md) | [example](vkg/example.js) | [`vkg`](vkg)
