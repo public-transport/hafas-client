@@ -43,6 +43,7 @@ HAFAS endpoint | wrapper library | docs | example code | profile name
 [Steirischer Verkehrsverbund (STV)](https://de.wikipedia.org/wiki/Steirischer_Verkehrsverbund) | - | [docs](stv/readme.md) | [example](stv/example.js) | [`stv`](stv)
 [Salzburg public transport (SVV)](https://de.wikipedia.org/wiki/Salzburger_Verkehrsverbund) | - | [docs](svv/readme.md) | [example](svv/example.js) | [`svv`](svv)
 [Verkehrsverbund Tirol (VVT)](https://de.wikipedia.org/wiki/Verkehrsverbund_Tirol) | - | [docs](vvt/readme.md) | [example](vvt/example.js) | [`vvt`](vvt)
+[Verkehrsverbund Ost-Region (VOR)](https://de.wikipedia.org/wiki/Verkehrsverbund_Ost-Region) | - | [docs](vor/readme.md) | [example](vor/example.js) | [`vor`](vor)
 [*Kärntner Linien/Verkehrsverbund Kärnten (VKG/VVK)*](https://de.wikipedia.org/wiki/Verkehrsverbund_Kärnten) | - | [docs](vkg/readme.md) | [example](vkg/example.js) | [`vkg`](vkg)
 [Verkehrsverbund Vorarlberg (VVV)](https://de.wikipedia.org/wiki/Verkehrsverbund_Vorarlberg) | - | [docs](vvv/readme.md) | [example](vvv/example.js) | [`vvv`](vvv)
 [*Transports publics genevois (TPG)*](https://en.wikipedia.org/wiki/Geneva_Public_Transport) (Geneva) | - | [docs](tpg/readme.md) | [example](tpg/example.js) | [`tpg`](tpg)
