@@ -41,6 +41,7 @@ HAFAS endpoint | wrapper library | docs | example code | profile name
 [Salzburg public transport (SVV)](https://de.wikipedia.org/wiki/Salzburger_Verkehrsverbund) | - | [docs](svv/readme.md) | [example](svv/example.js) | [`svv`](svv)
 [Verkehrsverbund Tirol (VVT)](https://de.wikipedia.org/wiki/Verkehrsverbund_Tirol) | - | [docs](vvt/readme.md) | [example](vvt/example.js) | [`vvt`](vvt)
 [*Kärntner Linien/Verkehrsverbund Kärnten (VKG/VVK)*](https://de.wikipedia.org/wiki/Verkehrsverbund_Kärnten) | - | [docs](vkg/readme.md) | [example](vkg/example.js) | [`vkg`](vkg)
+[Verkehrsverbund Vorarlberg (VVV)](https://de.wikipedia.org/wiki/Verkehrsverbund_Vorarlberg) | - | [docs](vvv/readme.md) | [example](vvv/example.js) | [`vvv`](vvv)
 [*Transports publics genevois (TPG)*](https://en.wikipedia.org/wiki/Geneva_Public_Transport) (Geneva) | - | [docs](tpg/readme.md) | [example](tpg/example.js) | [`tpg`](tpg)
 [*BLS AG*](https://en.wikipedia.org/wiki/BLS_AG) (Bern) | - | [docs](bls/readme.md) | [example](bls/example.js) | [`bls`](bls)
 [Zürich public transport (ZVV)](https://en.wikipedia.org/wiki/Zürcher_Verkehrsverbund) | - | [docs](zvv/readme.md) | [example](zvv/example.js) | [`zvv`](zvv)
