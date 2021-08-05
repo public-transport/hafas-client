@@ -1,5 +1,17 @@
 # Changelog
 
+## `5.18.0`
+
+- e293223c add [*VVV* profile](../p/vvv)
+- f20466c2 add [*IVB* profile](../p/ivb)
+- 0ae13b09 add [*STV* profile](../p/stv)
+- 649a7ec0 add [*OÖVV* profile](../p/ooevv)
+- db2cbfdc add [*VOR* profile](../p/vor)
+- 56bd16b5 add [Salzburg profile](../p/salzburg)
+- ce828176/aab7babb/0995696c [*DB* profile](../p/db): add [`journeysFromTrip()`](journeys-from-trips.md)
+
+[🏷 `5.18.0`](https://github.com/public-transport/hafas-client/releases/tag/5.18.0), 2021-08-05
+
 ## `5.17.0`
 
 - 24c2cc6e add [*BLS* profile](../p/bls)
