@@ -1,0 +1,758 @@
+{
+	"common": {
+		"locL": [
+			{
+				"lid": "A=1@O=Karlsplatz (Stachus), München@X=11565584@Y=48140148@U=80@L=800001@",
+				"type": "S",
+				"name": "Karlsplatz (Stachus), München",
+				"icoX": 0,
+				"extId": "800001",
+				"state": "F",
+				"crd": {
+					"x": 11565584,
+					"y": 48140148,
+					"floor": 0
+				},
+				"pCls": 432,
+				"mMastLocX": 1
+			},
+			{
+				"lid": "A=1@O=München Karlsplatz@X=11565620@Y=48139456@U=80@L=8004132@",
+				"type": "S",
+				"name": "München Karlsplatz",
+				"icoX": 1,
+				"extId": "8004132",
+				"state": "F",
+				"crd": {
+					"x": 11565521,
+					"y": 48139564,
+					"z": 0,
+					"floor": 0
+				},
+				"pCls": 432
+			},
+			{
+				"lid": "A=1@O=München Hbf@X=11559004@Y=48139429@U=199@L=618000261@",
+				"type": "S",
+				"name": "München Hbf",
+				"icoX": 2,
+				"extId": "618000261",
+				"state": "F",
+				"crd": {
+					"x": 11559004,
+					"y": 48139429,
+					"floor": 0
+				},
+				"pCls": 0,
+				"entry": true,
+				"mMastLocX": 3
+			},
+			{
+				"lid": "A=1@O=München Hbf@X=11558339@Y=48140229@U=80@L=8000261@",
+				"type": "S",
+				"name": "München Hbf",
+				"icoX": 3,
+				"extId": "8000261",
+				"state": "F",
+				"crd": {
+					"x": 11558744,
+					"y": 48140364,
+					"z": 0,
+					"floor": 0
+				},
+				"pCls": 447
+			},
+			{
+				"lid": "A=1@O=Ulm Hbf@X=9982224@Y=48399433@U=80@L=8000170@",
+				"type": "S",
+				"name": "Ulm Hbf",
+				"icoX": 7,
+				"extId": "8000170",
+				"state": "F",
+				"crd": {
+					"x": 9982422,
+					"y": 48399585,
+					"z": 0,
+					"floor": 0
+				},
+				"pCls": 299
+			},
+			{
+				"lid": "A=1@O=ZOB Ost, Ulm@X=9983887@Y=48397644@U=80@L=801345@",
+				"type": "S",
+				"name": "ZOB Ost, Ulm",
+				"icoX": 0,
+				"extId": "801345",
+				"state": "F",
+				"crd": {
+					"x": 9983887,
+					"y": 48397644,
+					"floor": 0
+				},
+				"pCls": 40
+			},
+			{
+				"lid": "A=1@O=Oberholzheim Hauptstraße, Achstetten@X=9923848@Y=48260792@U=80@L=801494@",
+				"type": "S",
+				"name": "Oberholzheim Hauptstraße, Achstetten",
+				"icoX": 0,
+				"extId": "801494",
+				"state": "F",
+				"crd": {
+					"x": 9923848,
+					"y": 48260792,
+					"floor": 0
+				},
+				"pCls": 32
+			},
+			{
+				"lid": "A=1@O=Rathaus, Achstetten@X=9897941@Y=48258563@U=80@L=800132@",
+				"type": "S",
+				"name": "Rathaus, Achstetten",
+				"icoX": 0,
+				"extId": "800132",
+				"state": "F",
+				"crd": {
+					"x": 9897941,
+					"y": 48258563,
+					"floor": 0
+				},
+				"pCls": 32
+			},
+			{
+				"lid": "A=1@O=Moser, Achstetten@X=9898310@Y=48258859@U=80@L=800002@",
+				"type": "S",
+				"name": "Moser, Achstetten",
+				"icoX": 0,
+				"extId": "800002",
+				"state": "F",
+				"crd": {
+					"x": 9898310,
+					"y": 48258859,
+					"floor": 0
+				},
+				"pCls": 544
+			}
+		],
+		"prodL": [
+			{
+				"name": "Walk",
+				"icoX": 4,
+				"prodCtx": {
+					"name": "Walk"
+				}
+			},
+			{
+				"name": "IC 2094",
+				"number": "2094",
+				"icoX": 5,
+				"cls": 2,
+				"oprX": 0,
+				"prodCtx": {
+					"name": "IC  2094",
+					"num": "2094",
+					"matchId": "60",
+					"catOut": "IC",
+					"catOutS": "IC",
+					"catOutL": "Intercity",
+					"catIn": "IC",
+					"catCode": "1",
+					"admin": "80____"
+				}
+			},
+			{
+				"name": "Bus 24",
+				"nameS": "24",
+				"number": "24",
+				"icoX": 0,
+				"cls": 32,
+				"prodCtx": {
+					"name": "Bus   24",
+					"num": "45",
+					"line": "24",
+					"matchId": "24",
+					"catOut": "Bus",
+					"catOutS": "Bus",
+					"catOutL": "Bus",
+					"catIn": "Bus",
+					"catCode": "5",
+					"admin": "ald020"
+				}
+			},
+			{
+				"name": "Bus 24",
+				"nameS": "24",
+				"number": "24",
+				"icoX": 0,
+				"cls": 32,
+				"prodCtx": {
+					"name": "Bus   24",
+					"num": "45",
+					"line": "24",
+					"lineId": "5_ald020_24",
+					"matchId": "24",
+					"catOut": "Bus",
+					"catOutS": "Bus",
+					"catOutL": "Bus",
+					"catIn": "Bus",
+					"catCode": "5",
+					"admin": "ald020"
+				}
+			},
+			{
+				"name": "Bus 227",
+				"nameS": "227",
+				"number": "227",
+				"icoX": 0,
+				"cls": 32,
+				"oprX": 1,
+				"prodCtx": {
+					"name": "Bus  227",
+					"num": "3381",
+					"line": "227",
+					"matchId": "227",
+					"catOut": "Bus",
+					"catOutS": "Bus",
+					"catOutL": "Bus",
+					"catIn": "Bus",
+					"catCode": "5",
+					"admin": "rabRAB"
+				}
+			},
+			{
+				"name": "Bus 227",
+				"nameS": "227",
+				"number": "227",
+				"icoX": 0,
+				"cls": 32,
+				"oprX": 1,
+				"prodCtx": {
+					"name": "Bus  227",
+					"num": "3381",
+					"line": "227",
+					"lineId": "5_rabRAB_227",
+					"matchId": "227",
+					"catOut": "Bus",
+					"catOutS": "Bus",
+					"catOutL": "Bus",
+					"catIn": "Bus",
+					"catCode": "5",
+					"admin": "rabRAB"
+				}
+			}
+		],
+		"opL": [
+			{
+				"name": "DB Fernverkehr AG",
+				"icoX": 6
+			},
+			{
+				"name": "DB ZugBus Regionalverkehr Alb-Bodensee",
+				"icoX": 11
+			}
+		],
+		"remL": [
+			{
+				"type": "A",
+				"code": "CK",
+				"prio": 200,
+				"icoX": 8,
+				"txtN": "Komfort Check-in possible (visit bahn.de/kci for more information)"
+			},
+			{
+				"type": "A",
+				"code": "PF",
+				"prio": 200,
+				"icoX": 8,
+				"txtN": "Please wear an FFP2 mask. You are legally required to do so"
+			},
+			{
+				"type": "A",
+				"code": "FR",
+				"prio": 260,
+				"icoX": 9,
+				"txtN": "Bicycles conveyed - subject to reservation"
+			},
+			{
+				"type": "A",
+				"code": "FB",
+				"prio": 260,
+				"icoX": 10,
+				"txtN": "Number of bicycles conveyed limited"
+			},
+			{
+				"type": "A",
+				"code": "KG",
+				"prio": 640,
+				"icoX": 8,
+				"txtN": "No food or beverages"
+			},
+			{
+				"type": "A",
+				"code": "bg",
+				"prio": 560,
+				"icoX": 8,
+				"txtN": "Behindertengerechtes Fahrzeug"
+			}
+		],
+		"icoL": [
+			{
+				"res": "Bus"
+			},
+			{
+				"res": "S"
+			},
+			{
+				"res": "STA"
+			},
+			{
+				"res": "ECE"
+			},
+			{
+				"res": "prod_walk"
+			},
+			{
+				"res": "IC"
+			},
+			{
+				"res": "D",
+				"txt": "DB Fernverkehr AG"
+			},
+			{
+				"res": "ICE"
+			},
+			{
+				"res": "attr_info"
+			},
+			{
+				"res": "attr_bike_r"
+			},
+			{
+				"res": "attr_bike"
+			},
+			{
+				"res": "N",
+				"txt": "DB ZugBus Regionalverkehr Alb-Bodensee"
+			},
+			{
+				"res": "navi_enter"
+			}
+		],
+		"tcocL": [
+			{
+				"c": "FIRST",
+				"r": 1
+			},
+			{
+				"c": "SECOND",
+				"r": 1
+			}
+		],
+		"lDrawStyleL": [
+			{
+				"sIcoX": 4,
+				"type": "SOLID"
+			},
+			{
+				"type": "DOT"
+			},
+			{
+				"sIcoX": 5,
+				"type": "SOLID"
+			},
+			{
+				"type": "SOLID"
+			},
+			{
+				"sIcoX": 0,
+				"type": "SOLID"
+			}
+		]
+	},
+	"outConL": [
+		{
+			"cid": "DirectConReq",
+			"date": "20210817",
+			"dur": "032200",
+			"durS": "031300",
+			"durR": "031300",
+			"chg": 2,
+			"sDays": {
+				"sDaysR": "runs Mo - Th, not 1. Nov ",
+				"sDaysB": "00000000000000000000000000000000000000000000000000000000000063C78F1E3C78F1E3C78F0E3C78F1E3C0"
+			},
+			"dep": {
+				"locX": 0,
+				"dTimeS": "170800",
+				"type": "N"
+			},
+			"arr": {
+				"locX": 8,
+				"aTimeS": "203100",
+				"type": "N"
+			},
+			"secL": [
+				{
+					"type": "WALK",
+					"hide": false,
+					"dep": {
+						"locX": 0,
+						"dTimeS": "170800",
+						"dTZOffset": 0
+					},
+					"arr": {
+						"locX": 3,
+						"aTimeS": "171800",
+						"aTZOffset": 120
+					},
+					"gis": {
+						"dist": 701,
+						"durS": "001000",
+						"ctx": "G|1|G@F|A=1@O=Karlsplatz (Stachus), München@X=11565584@Y=48140148@U=80@L=800001@|A=1@O=München Hbf@X=11559004@Y=48139429@U=199@L=618000261@|17082021|170800|171600|bf|ft@0@2000@120@0@100@1@@0@@@@@false@0@-1@0@-1@-1@$f@$f@$f@$f@$f@$§bt@0@2000@120@0@100@1@@0@@@@@false@0@-1@0@-1@-1@$f@$f@$f@$f@$f@$§tf@$f@$f@$f@$f@$f@$§||±H|1|W$A=1@O=München Hbf@L=618000261@a=128@$A=1@O=München Hbf@L=8000261@a=128@$202108171716$202108171718$$$1$$$$",
+						"gisPrvr": "M",
+						"sumLDrawStyleX": 0,
+						"resLDrawStyleX": 1,
+						"prodX": 0
+					},
+					"resRecommendation": "U"
+				},
+				{
+					"type": "JNY",
+					"dep": {
+						"locX": 3,
+						"idx": 0,
+						"dProdX": 1,
+						"dPltfS": {
+							"type": "PL",
+							"txt": "17"
+						},
+						"dTimeS": "171900",
+						"dProgType": "PROGNOSED",
+						"dTrnCmpSX": {
+							"tcocX": [
+								0,
+								1
+							],
+							"tcM": 1
+						},
+						"dTZOffset": 120,
+						"type": "N"
+					},
+					"arr": {
+						"locX": 4,
+						"idx": 4,
+						"aPltfS": {
+							"type": "PL",
+							"txt": "25"
+						},
+						"aTimeS": "183600",
+						"aProgType": "PROGNOSED",
+						"aTrnCmpSX": {
+							"tcM": 1
+						},
+						"aTZOffset": 120,
+						"type": "N"
+					},
+					"jny": {
+						"jid": "1|187459|0|80|17082021",
+						"prodX": 1,
+						"dirTxt": "Ulm Hbf",
+						"status": "P",
+						"isRchbl": true,
+						"ctxRecon": "T$A=1@O=München Hbf@L=8000261@a=128@$A=1@O=Ulm Hbf@L=8000170@a=128@$202108171719$202108171836$IC  2094$$1$$$$",
+						"msgL": [
+							{
+								"type": "REM",
+								"remX": 0,
+								"sty": "I",
+								"fLocX": 3,
+								"tLocX": 4,
+								"fIdx": 0,
+								"tIdx": 4,
+								"tagL": [
+									"RES_JNY_DTL"
+								],
+								"sort": 697303040
+							},
+							{
+								"type": "REM",
+								"remX": 1,
+								"sty": "I",
+								"fLocX": 3,
+								"tLocX": 4,
+								"fIdx": 0,
+								"tIdx": 4,
+								"tagL": [
+									"RES_JNY_DTL"
+								],
+								"sort": 697303040
+							},
+							{
+								"type": "REM",
+								"remX": 2,
+								"sty": "I",
+								"fLocX": 3,
+								"tLocX": 4,
+								"fIdx": 0,
+								"tIdx": 4,
+								"tagL": [
+									"RES_JNY_DTL_L"
+								],
+								"sort": 705167360
+							},
+							{
+								"type": "REM",
+								"remX": 3,
+								"sty": "I",
+								"fLocX": 3,
+								"tLocX": 4,
+								"fIdx": 0,
+								"tIdx": 4,
+								"tagL": [
+									"RES_JNY_DTL_L"
+								],
+								"sort": 705167360
+							},
+							{
+								"type": "REM",
+								"remX": 4,
+								"sty": "I",
+								"fLocX": 3,
+								"tLocX": 4,
+								"fIdx": 0,
+								"tIdx": 4,
+								"tagL": [
+									"RES_JNY_DTL"
+								],
+								"sort": 754974720
+							}
+						],
+						"subscr": "F",
+						"chgDurR": 36,
+						"prodL": [
+							{
+								"prodX": 1,
+								"fLocX": 3,
+								"tLocX": 4,
+								"fIdx": 0,
+								"tIdx": 4
+							}
+						],
+						"dTrnCmpSX": {
+							"tcocX": [
+								0,
+								1
+							]
+						},
+						"sumLDrawStyleX": 2,
+						"resLDrawStyleX": 3,
+						"trainStartDate": "20210817",
+						"durS": "011700",
+						"tcocXL": [
+							0,
+							1
+						]
+					},
+					"minChg": "000600",
+					"resState": "N",
+					"resRecommendation": "N"
+				},
+				{
+					"type": "WALK",
+					"dep": {
+						"locX": 4,
+						"dTimeS": "183600",
+						"dTZOffset": 120,
+						"type": "N"
+					},
+					"arr": {
+						"locX": 5,
+						"aTimeS": "184200",
+						"aTZOffset": 120,
+						"type": "N"
+					},
+					"gis": {
+						"dist": 234,
+						"durS": "000600",
+						"dirGeo": 26,
+						"ctx": "H|1|W$A=1@O=Ulm Hbf@L=8000170@a=128@$A=1@O=ZOB Ost, Ulm@L=801345@a=128@$202108171836$202108171842$$$1$$$$",
+						"gisPrvr": "H",
+						"getDescr": true,
+						"getPoly": true,
+						"sumLDrawStyleX": 0,
+						"resLDrawStyleX": 1,
+						"prodX": 0
+					},
+					"resState": "N",
+					"resRecommendation": "N"
+				},
+				{
+					"type": "JNY",
+					"dep": {
+						"locX": 5,
+						"idx": 0,
+						"dProdX": 2,
+						"dTimeS": "191200",
+						"dProgType": "PROGNOSED",
+						"dTZOffset": 120,
+						"type": "N"
+					},
+					"arr": {
+						"locX": 6,
+						"idx": 15,
+						"aTimeS": "194800",
+						"aProgType": "PROGNOSED",
+						"aTZOffset": 120,
+						"type": "N"
+					},
+					"jny": {
+						"jid": "1|75903|0|80|17082021",
+						"prodX": 3,
+						"dirTxt": "Rabenstraße, Laupheim",
+						"dirFlg": "1",
+						"status": "P",
+						"isRchbl": true,
+						"ctxRecon": "T$A=1@O=ZOB Ost, Ulm@L=801345@a=128@$A=1@O=Oberholzheim Hauptstraße, Achstetten@L=801494@a=128@$202108171912$202108171948$Bus   24$$1$$$$",
+						"subscr": "F",
+						"chgDurR": 31,
+						"prodL": [
+							{
+								"prodX": 3,
+								"fLocX": 5,
+								"tLocX": 6,
+								"fIdx": 0,
+								"tIdx": 15
+							}
+						],
+						"sumLDrawStyleX": 4,
+						"resLDrawStyleX": 3,
+						"trainStartDate": "20210817",
+						"durS": "003600"
+					},
+					"minChg": "000300",
+					"resState": "N",
+					"resRecommendation": "N"
+				},
+				{
+					"type": "JNY",
+					"dep": {
+						"locX": 6,
+						"idx": 17,
+						"dProdX": 4,
+						"dTimeS": "201900",
+						"dProgType": "PROGNOSED",
+						"dTZOffset": 120,
+						"type": "N"
+					},
+					"arr": {
+						"locX": 7,
+						"idx": 21,
+						"aTimeS": "202900",
+						"aProgType": "PROGNOSED",
+						"aTZOffset": 120,
+						"type": "N"
+					},
+					"jny": {
+						"jid": "1|587878|0|80|17082021",
+						"prodX": 5,
+						"dirTxt": "Rabenstraße, Laupheim",
+						"dirFlg": "1",
+						"status": "P",
+						"isRchbl": true,
+						"ctxRecon": "T$A=1@O=Oberholzheim Hauptstraße, Achstetten@L=801494@a=128@$A=1@O=Rathaus, Achstetten@L=800132@a=128@$202108172019$202108172029$Bus  227$$1$$$$",
+						"msgL": [
+							{
+								"type": "REM",
+								"remX": 5,
+								"sty": "I",
+								"fLocX": 6,
+								"tLocX": 7,
+								"fIdx": 17,
+								"tIdx": 21,
+								"tagL": [
+									"RES_JNY_DTL"
+								],
+								"sort": 744488960
+							}
+						],
+						"subscr": "F",
+						"prodL": [
+							{
+								"prodX": 5,
+								"fLocX": 6,
+								"tLocX": 7,
+								"fIdx": 17,
+								"tIdx": 21
+							}
+						],
+						"sumLDrawStyleX": 4,
+						"resLDrawStyleX": 3,
+						"trainStartDate": "20210817",
+						"durS": "001000"
+					},
+					"resState": "N",
+					"resRecommendation": "N"
+				},
+				{
+					"type": "WALK",
+					"dep": {
+						"locX": 7,
+						"dTimeS": "202900",
+						"type": "N"
+					},
+					"arr": {
+						"locX": 8,
+						"aTimeS": "203100",
+						"type": "N"
+					},
+					"gis": {
+						"dist": 53,
+						"durS": "000200",
+						"ctx": "G|1|G@F|A=1@O=Rathaus, Achstetten@X=9897941@Y=48258563@U=80@L=800132@|A=1@O=Moser, Achstetten@X=9898310@Y=48258859@U=80@L=800002@|17082021|202900|203100|fb|ft@0@2000@120@0@100@1@@0@@@@@false@0@-1@0@-1@-1@$f@$f@$f@$f@$f@$§bt@0@2000@120@0@100@1@@0@@@@@false@0@-1@0@-1@-1@$f@$f@$f@$f@$f@$§tf@$f@$f@$f@$f@$f@$§||",
+						"gisPrvr": "E",
+						"getDescr": true,
+						"getPoly": true,
+						"sumLDrawStyleX": 0,
+						"resLDrawStyleX": 1,
+						"prodX": 0
+					},
+					"resState": "N",
+					"resRecommendation": "N"
+				}
+			],
+			"ctxRecon": "¶HKI¶G@F$A=1@O=Karlsplatz (Stachus), München@L=800001@a=128@$A=1@O=München Hbf@L=618000261@a=128@$202108171708$202108171716$$$1$$$$§W$A=1@O=München Hbf@L=618000261@a=128@$A=1@O=München Hbf@L=8000261@a=128@$202108171716$202108171718$$$1$$$$§T$A=1@O=München Hbf@L=8000261@a=128@$A=1@O=Ulm Hbf@L=8000170@a=128@$202108171719$202108171836$IC  2094$$1$$$$§W$A=1@O=Ulm Hbf@L=8000170@a=128@$A=1@O=ZOB Ost, Ulm@L=801345@a=128@$202108171836$202108171842$$$1$$$$§T$A=1@O=ZOB Ost, Ulm@L=801345@a=128@$A=1@O=Oberholzheim Hauptstraße, Achstetten@L=801494@a=128@$202108171912$202108171948$Bus   24$$1$$$$§T$A=1@O=Oberholzheim Hauptstraße, Achstetten@L=801494@a=128@$A=1@O=Rathaus, Achstetten@L=800132@a=128@$202108172019$202108172029$Bus  227$$1$$$$§G@F$A=1@O=Rathaus, Achstetten@L=800132@a=128@$A=1@O=Moser, Achstetten@L=800002@a=128@$202108172029$202108172031$$$1$$$$¶GP¶ft@0@2000@120@0@100@1@@0@@@@@false@0@-1@0@-1@-1@$f@$f@$f@$f@$f@$§bt@0@2000@120@0@100@1@@0@@@@@false@0@-1@0@-1@-1@$f@$f@$f@$f@$f@$§tf@$f@$f@$f@$f@$f@$§",
+			"conSubscr": "F",
+			"resState": "N",
+			"resRecommendation": "N",
+			"recState": "C",
+			"sotRating": 0,
+			"isSotCon": false,
+			"showARSLink": false,
+			"sotCtxt": {
+				"calcDate": "20210817",
+				"locMode": "FROM_START",
+				"reqMode": "UNKNOWN",
+				"calcTime": "153352"
+			},
+			"cksum": "4e99db20_3",
+			"cksumDti": "c10fe4ec_3",
+			"dTrnCmpSX": {
+				"tcocX": [
+					0,
+					1
+				]
+			},
+			"intvlSubscr": "P",
+			"tcocXL": [
+				0,
+				1
+			],
+			"originType": "INITIAL"
+		}
+	],
+	"fpB": "20201213",
+	"fpE": "20211211",
+	"bfATS": -1,
+	"bfIOSTS": -1,
+	"planrtTS": "1629207135"
+}

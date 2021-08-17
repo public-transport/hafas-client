@@ -59,6 +59,13 @@ const parseJourneyLeg = (ctx, pt, date) => { // pt = raw leg
 		destination: clone(pt.arr.location)
 	}
 
+	// HAFAS seems to have a bug where a journey's first leg has a `dTZOffset` of `0`.
+	// https://github.com/public-transport/hafas-client/issues/237
+	if (pt.type === 'WALK' && pt.dep.dTZOffset != pt.arr.aTZOffset) {
+		if (pt.dep.dTZOffset == 0) pt.dep.dTZOffset = pt.arr.aTZOffset
+		if (pt.arr.aTZOffset == 0) pt.arr.aTZOffset = pt.dep.dTZOffset
+	}
+
 	const dep = profile.parseWhen(ctx, date, pt.dep.dTimeS, pt.dep.dTimeR, pt.dep.dTZOffset, pt.dep.dCncl)
 	res.departure = dep.when
 	res.plannedDeparture = dep.plannedWhen
