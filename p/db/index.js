@@ -186,14 +186,26 @@ const parseJourneyWithPrice = ({parsed}, raw) => {
 	parsed.price = null
 	// todo: find cheapest, find discounts
 	// todo: write a parser like vbb-parse-ticket
-	// [ {
-	// 	prc: 15000,
-	// 	isFromPrice: true,
-	// 	isBookable: true,
-	// 	isUpsell: false,
-	// 	targetCtx: 'D',
-	// 	buttonText: 'To offer selection'
-	// } ]
+	// {
+	//   "statusCode": "OK",
+	//   "fareSetL": [
+	//     {
+	//       "fareL": [
+	//         {
+	//           "isFromPrice": true,
+	//           "isPartPrice": false,
+	//           "isBookable": true,
+	//           "isUpsell": false,
+	//           "targetCtx": "D",
+	//           "buttonText": "To offer selection",
+	//           "price": {
+	//             "amount": 11400
+	//           }
+	//         }
+	//       ]
+	//     }
+	//   ]
+	// }
 	if (
 		raw.trfRes &&
 		Array.isArray(raw.trfRes.fareSetL) &&
@@ -202,9 +214,9 @@ const parseJourneyWithPrice = ({parsed}, raw) => {
 		raw.trfRes.fareSetL[0].fareL[0]
 	) {
 		const tariff = raw.trfRes.fareSetL[0].fareL[0]
-		if (tariff.prc >= 0) { // wat
+		if (tariff.price && tariff.price.amount >= 0) { // wat
 			parsed.price = {
-				amount: tariff.prc / 100,
+				amount: tariff.price.amount / 100,
 				currency: 'EUR',
 				hint: null
 			}
