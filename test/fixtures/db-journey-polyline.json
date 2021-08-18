@@ -369,7 +369,7 @@
 					{
 						"fareL": [
 							{
-								"prc": 6990,
+								"price": { "amount": 6990 },
 								"isFromPrice": true,
 								"isBookable": true,
 								"isUpsell": false,
@@ -572,7 +572,7 @@
 					{
 						"fareL": [
 							{
-								"prc": 6990,
+								"price": { "amount": 6990 },
 								"isFromPrice": true,
 								"isBookable": true,
 								"isUpsell": false,
