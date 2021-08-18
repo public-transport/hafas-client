@@ -37,4 +37,4 @@ client.journeys('900000003201', '900000100008', {results: 1})
 .catch(console.error)
 ```
 
-`refreshJourney()` will return a *single* [*Friendly Public Transport Format* `1.2.0`](https://github.com/public-transport/friendly-public-transport-format/tree/1.2.0) `journey`, in the same format as with `journeys()`.
+`refreshJourney()` will return a *single* [*Friendly Public Transport Format* v2 draft](https://github.com/public-transport/friendly-public-transport-format/blob/3bd36faa721e85d9f5ca58fb0f38cdbedb87bbca/spec/readme.md) `journey`, in the same format as with `journeys()`.

@@ -1,6 +1,6 @@
 # `journeysFromTrip(tripId, previousStopover, to, [opt])`
 
-`to` must be an *Friendly Public Transport Format* (FPTF) `1.2.1` [`stop`](https://github.com/public-transport/friendly-public-transport-format/blob/1.2.1/spec/readme.md#stop) or [`station`](https://github.com/public-transport/friendly-public-transport-format/blob/1.2.1/spec/readme.md#station). See [`journeys()`](journeys.md) for details.
+`to` must be an [*Friendly Public Transport Format* (FPTF) `stop`](https://github.com/public-transport/friendly-public-transport-format/blob/3bd36faa721e85d9f5ca58fb0f38cdbedb87bbca/spec/readme.md#stop) or [`station`](https://github.com/public-transport/friendly-public-transport-format/blob/3bd36faa721e85d9f5ca58fb0f38cdbedb87bbca/spec/readme.md#station). See [`journeys()`](journeys.md) for details.
 
 With `opt`, you can override the default options, which look like this:
 
@@ -42,4 +42,4 @@ const previousStopover = leg.stopovers.find(st => st.departure && new Date(st.de
 const journeys = await client.journeysFromTrip(leg.id, previousStopover, kölnHbf)
 ```
 
-`journeys` will be an array of [FPTF `1.2.1` `journey`s](https://github.com/public-transport/friendly-public-transport-format/blob/1.2.1/spec/readme.md#journey), as documented in [`journeys()`](journeys.md).
+`journeys` will be an array of [FPTF `journey`s](https://github.com/public-transport/friendly-public-transport-format/blob/3bd36faa721e85d9f5ca58fb0f38cdbedb87bbca/spec/readme.md#journey), as documented in [`journeys()`](journeys.md).

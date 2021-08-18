@@ -69,7 +69,7 @@ const res = await client.journeys('8011167', '8000261', {results: 1})
 console.log(res)
 ```
 
-`journeys()` returns a [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/promise) that will resolve with an object with an array `journeys` that contains one [*Friendly Public Transport Format* (*FPTF*) `1.2.1` `journey`](https://github.com/public-transport/friendly-public-transport-format/blob/1.2.1/spec/readme.md#journey).
+`journeys()` returns a [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/promise) that will resolve with an object with an array `journeys` that contains one [*Friendly Public Transport Format* (*FPTF*) v2 draft `journey`](https://github.com/public-transport/friendly-public-transport-format/blob/3bd36faa721e85d9f5ca58fb0f38cdbedb87bbca/spec/readme.md#journey).
 
 ```js
 {

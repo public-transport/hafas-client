@@ -4,7 +4,7 @@ This method can be used to get stations reachable within a certain time from an 
 
 *Note*: It appears that HAFAS cannot generate actual isochrones, but only the list of reachable stations, which you can estimate the isochrone(s) from.
 
-`address` must be an [*FPTF* `location` object](https://github.com/public-transport/friendly-public-transport-format/blob/1.2.0/spec/readme.md#location-objects).
+`address` must be an [*FPTF* `location` object](https://github.com/public-transport/friendly-public-transport-format/blob/3bd36faa721e85d9f5ca58fb0f38cdbedb87bbca/spec/readme.md#location-objects).
 
 With `opt`, you can override the default options, which look like this:
 
@@ -26,7 +26,7 @@ With `opt`, you can override the default options, which look like this:
 
 ## Response
 
-`reachableFrom(address, [opt])` returns an array, in which each item has a `duration` and an array of [*Friendly Public Transport Format* `1.2.0`](https://github.com/public-transport/friendly-public-transport-format/tree/1.2.0) stations.
+`reachableFrom(address, [opt])` returns an array, in which each item has a `duration` and an array of [*Friendly Public Transport Format* `station`s](https://github.com/public-transport/friendly-public-transport-format/blob/3bd36faa721e85d9f5ca58fb0f38cdbedb87bbca/spec/readme.md#station).
 
 As an example, we're going to use the [VBB profile](../p/vbb):
 
