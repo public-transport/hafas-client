@@ -169,6 +169,7 @@ module.exports = {
 				name: 'ICE 523',
 				public: true,
 				adminCode: '80____',
+				productName: 'ICE',
 				mode: 'train',
 				product: 'nationalExpress',
 				operator: {

@@ -140,6 +140,7 @@ module.exports = [{
 			name: 'IC 51',
 			public: true,
 			adminCode: '000011',
+			productName: 'IC',
 			mode: 'train',
 			product: 'international-train',
 			operator: {
@@ -172,6 +173,7 @@ module.exports = [{
 			name: 'IC 5',
 			public: true,
 			adminCode: '000011',
+			productName: 'IC',
 			mode: 'train',
 			product: 'international-train',
 			operator: {
@@ -204,6 +206,7 @@ module.exports = [{
 			name: 'S 5',
 			public: true,
 			adminCode: '000011',
+			productName: 'S',
 			mode: 'train',
 			product: 'suburban-train',
 			operator: {
@@ -244,6 +247,7 @@ module.exports = [{
 			name: 'IC 6',
 			public: true,
 			adminCode: '000011',
+			productName: 'IC',
 			mode: 'train',
 			product: 'international-train',
 			operator: {
@@ -267,6 +271,7 @@ module.exports = [{
 				name: 'IC 61',
 				public: true,
 				adminCode: '000011',
+				productName: 'IC',
 				mode: 'train',
 				product: 'international-train',
 				operator: {
@@ -288,6 +293,7 @@ module.exports = [{
 				name: 'IC 61',
 				public: true,
 				adminCode: '000011',
+				productName: 'IC',
 				mode: 'train',
 				product: 'international-train',
 				operator: {
@@ -309,6 +315,7 @@ module.exports = [{
 				name: 'EC 57',
 				public: true,
 				adminCode: '000011',
+				productName: 'EC',
 				mode: 'train',
 				product: 'international-train',
 				operator: {
@@ -330,6 +337,7 @@ module.exports = [{
 				name: 'IC 61',
 				public: true,
 				adminCode: '000011',
+				productName: 'IC',
 				mode: 'train',
 				product: 'international-train',
 				operator: {
@@ -361,6 +369,7 @@ module.exports = [{
 			name: 'IC 1',
 			public: true,
 			adminCode: '000011',
+			productName: 'IC',
 			mode: 'train',
 			product: 'international-train',
 			operator: {
@@ -401,6 +410,7 @@ module.exports = [{
 			name: 'IC 61',
 			public: true,
 			adminCode: '000011',
+			productName: 'IC',
 			mode: 'train',
 			product: 'international-train',
 			operator: {
@@ -424,6 +434,7 @@ module.exports = [{
 				name: 'IC 61',
 				public: true,
 				adminCode: '000011',
+				productName: 'IC',
 				mode: 'train',
 				product: 'international-train',
 				operator: {
@@ -445,6 +456,7 @@ module.exports = [{
 				name: 'EC 57',
 				public: true,
 				adminCode: '000011',
+				productName: 'EC',
 				mode: 'train',
 				product: 'international-train',
 				operator: {
@@ -466,6 +478,7 @@ module.exports = [{
 				name: 'IC 61',
 				public: true,
 				adminCode: '000011',
+				productName: 'IC',
 				mode: 'train',
 				product: 'international-train',
 				operator: {
@@ -487,6 +500,7 @@ module.exports = [{
 				name: 'IC 61',
 				public: true,
 				adminCode: '000011',
+				productName: 'IC',
 				mode: 'train',
 				product: 'international-train',
 				operator: {
@@ -518,6 +532,7 @@ module.exports = [{
 			name: 'IR 15',
 			public: true,
 			adminCode: '000011',
+			productName: 'IR',
 			mode: 'train',
 			product: 'interregional-train',
 			operator: {
@@ -558,6 +573,7 @@ module.exports = [{
 			name: 'IC 51',
 			public: true,
 			adminCode: '000011',
+			productName: 'IC',
 			mode: 'train',
 			product: 'international-train',
 			operator: {
@@ -590,6 +606,7 @@ module.exports = [{
 			name: 'IC 5',
 			public: true,
 			adminCode: '000011',
+			productName: 'IC',
 			mode: 'train',
 			product: 'international-train',
 			operator: {
@@ -622,6 +639,7 @@ module.exports = [{
 			name: 'S 5',
 			public: true,
 			adminCode: '000011',
+			productName: 'S',
 			mode: 'train',
 			product: 'suburban-train',
 			operator: {

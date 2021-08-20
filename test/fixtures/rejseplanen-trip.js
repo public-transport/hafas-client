@@ -55,6 +55,7 @@ module.exports = {
 		name: 'Replacement bus RØD',
 		public: true,
 		adminCode: '000001',
+		productName: 'Togbus',
 		mode: 'train',
 		product: 'o',
 		operator: {type: 'operator', id: 'dsb', name: 'DSB'},

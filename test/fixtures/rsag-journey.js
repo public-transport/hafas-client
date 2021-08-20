@@ -13,6 +13,7 @@ module.exports = {
 				name: 'S2',
 				public: true,
 				adminCode: '800156',
+				productName: 'S',
 				mode: 'train',
 				product: 's-bahn',
 				operator: {

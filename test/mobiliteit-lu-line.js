@@ -44,6 +44,7 @@ tap.test('parses a line correctly (mobiliteit.lu)', (t) => {
 		name: 'IC 108',
 		public: true,
 		adminCode: 'C88',
+		productName: 'IC',
 		mode: 'train',
 		product: 'national-train',
 	})

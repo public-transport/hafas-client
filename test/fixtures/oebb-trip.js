@@ -114,6 +114,7 @@ module.exports = {
 		name: 'RJ 742',
 		public: true,
 		adminCode: '81____',
+		productName: 'RJ',
 		mode: 'train',
 		product: 'nationalExpress',
 		operator: {type: 'operator', id: 'nahreisezug', name: 'Nahreisezug'}
