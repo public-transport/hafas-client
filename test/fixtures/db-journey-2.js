@@ -65,6 +65,7 @@ module.exports = {
 				name: 'S 7',
 				public: true,
 				adminCode: '800725',
+				productName: 'S',
 				mode: 'train',
 				product: 'suburban',
 				operator: {
@@ -365,6 +366,7 @@ module.exports = {
 				name: 'U 3',
 				public: true,
 				adminCode: 'swm001',
+				productName: 'U',
 				mode: 'train',
 				product: 'subway'
 			},

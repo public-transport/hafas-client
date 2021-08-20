@@ -193,6 +193,7 @@ module.exports = [
 			name: 'U8',
 			public: true,
 			adminCode: 'BVU',
+			productName: 'U',
 			mode: 'train',
 			product: 'subway',
 			operator: {
@@ -858,6 +859,7 @@ module.exports = [
 			name: 'U8',
 			public: true,
 			adminCode: 'BVU',
+			productName: 'U',
 			mode: 'train',
 			product: 'subway',
 			operator: {
@@ -1618,6 +1620,7 @@ module.exports = [
 			name: 'S9',
 			public: true,
 			adminCode: 'DBS',
+			productName: 'S',
 			mode: 'train',
 			product: 'suburban',
 			operator: {

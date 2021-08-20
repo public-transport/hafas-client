@@ -58,6 +58,7 @@ module.exports = [{
 			name: 'U9',
 			public: true,
 			adminCode: 'BVU',
+			productName: 'U',
 			mode: 'train',
 			product: 'subway',
 			operator: {
@@ -133,6 +134,7 @@ module.exports = [{
 			name: 'S41',
 			public: true,
 			adminCode: 'DBS',
+			productName: 'S',
 			mode: 'train',
 			product: 'suburban',
 			operator: {
@@ -208,6 +210,7 @@ module.exports = [{
 			name: 'ICE 1710',
 			public: true,
 			adminCode: 'N80',
+			productName: 'ICE',
 			mode: 'train',
 			product: 'express',
 			operator: {type: 'operator', id: 'db-regio-ag', name: 'DB Regio AG'},
@@ -232,6 +235,7 @@ module.exports = [{
 				name: 'IC 2457',
 				public: true,
 				adminCode: 'N80',
+				productName: 'IC',
 				mode: 'train',
 				product: 'express',
 				operator: {
@@ -258,6 +262,7 @@ module.exports = [{
 				name: 'IC 2055',
 				public: true,
 				adminCode: 'N80',
+				productName: 'IC',
 				mode: 'train',
 				product: 'express',
 				operator: {
@@ -347,6 +352,7 @@ module.exports = [{
 			name: 'U9',
 			public: true,
 			adminCode: 'BVU',
+			productName: 'U',
 			mode: 'train',
 			product: 'subway',
 			operator: {
@@ -422,6 +428,7 @@ module.exports = [{
 			name: 'S41',
 			public: true,
 			adminCode: 'DBS',
+			productName: 'S',
 			mode: 'train',
 			product: 'suburban',
 			operator: {
@@ -498,6 +505,7 @@ module.exports = [{
 			name: 'RE3',
 			public: true,
 			adminCode: '800158',
+			productName: 'RE',
 			mode: 'train',
 			product: 'regional',
 			operator: {type: 'operator', id: 'db-regio-ag', name: 'DB Regio AG'},
@@ -522,6 +530,7 @@ module.exports = [{
 				name: 'RE66',
 				public: true,
 				adminCode: '800151',
+				productName: 'RE',
 				mode: 'train',
 				product: 'regional',
 				operator: {
@@ -548,6 +557,7 @@ module.exports = [{
 				name: 'RE3',
 				public: true,
 				adminCode: '800158',
+				productName: 'RE',
 				mode: 'train',
 				product: 'regional',
 				operator: {
@@ -574,6 +584,7 @@ module.exports = [{
 				name: 'RE3',
 				public: true,
 				adminCode: '800158',
+				productName: 'RE',
 				mode: 'train',
 				product: 'regional',
 				operator: {
@@ -600,6 +611,7 @@ module.exports = [{
 				name: 'RE3',
 				public: true,
 				adminCode: '800158',
+				productName: 'RE',
 				mode: 'train',
 				product: 'regional',
 				operator: {
@@ -626,6 +638,7 @@ module.exports = [{
 				name: 'RE66',
 				public: true,
 				adminCode: '800151',
+				productName: 'RE',
 				mode: 'train',
 				product: 'regional',
 				operator: {

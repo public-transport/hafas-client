@@ -256,6 +256,7 @@ module.exports = [
 			name: 'U 7',
 			public: true,
 			adminCode: 'vbbBVU',
+			productName: 'U',
 			mode: 'train',
 			product: 'subway',
 			operator: { type: 'operator', id: 'nahreisezug', name: 'Nahreisezug' }

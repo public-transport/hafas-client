@@ -696,6 +696,7 @@ module.exports = {
 			name: 'S2',
 			public: true,
 			adminCode: 'DBS',
+			productName: 'S',
 			mode: 'train',
 			product: 'suburban',
 			operator: {

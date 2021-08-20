@@ -63,6 +63,7 @@ module.exports = {
 		name: 'IC 2315',
 		public: true,
 		adminCode: '80____',
+		productName: 'IC',
 		mode: 'train',
 		product: 'national',
 		operator: {
