@@ -1,14 +1,14 @@
 {
   "statusCode": 200,
   "headers": {
-    "date": "Thu, 05 Aug 2021 18:10:05 GMT",
+    "date": "Mon, 23 Aug 2021 22:33:13 GMT",
     "server": "Apache",
-    "content-length": "1119",
+    "content-length": "1128",
     "content-type": "application/json; charset=utf-8",
     "connection": "close"
   },
   "url": "https://fahrplan.ivb.at/bin/mgate.exe",
-  "time": 372,
+  "time": 247,
   "request": {
     "method": "POST",
     "headers": {
@@ -22,7 +22,7 @@
         "application/json"
       ],
       "user-agent": [
-        "public-tra44fe4bad857bnsport/hafas-client:test"
+        "publi7fff0ca8897fc-transport/hafas-client:test"
       ],
       "Content-Length": [
         "263"

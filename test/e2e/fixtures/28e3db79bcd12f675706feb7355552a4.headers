@@ -1,15 +1,15 @@
 {
-  "statusCode": 200,
+  "statusCode": 302,
   "headers": {
-    "date": "Sat, 24 Apr 2021 11:32:39 GMT",
-    "server": "Apache/2.4.6 (Red Hat Enterprise Linux) OpenSSL/1.0.2k-fips",
-    "content-length": "538",
-    "x-robots-tag": "noindex, nofollow",
+    "date": "Mon, 23 Aug 2021 22:51:06 GMT",
+    "server": "Apache",
+    "location": "http://www.sbb.ch/de/fahrplan.html?",
+    "content-length": "219",
     "connection": "close",
-    "content-type": "application/json; charset=utf-8"
+    "content-type": "text/html; charset=iso-8859-1"
   },
   "url": "http://fahrplan.sbb.ch/bin/mgate.exe",
-  "time": 188,
+  "time": 91,
   "request": {
     "method": "POST",
     "headers": {
@@ -23,7 +23,7 @@
         "application/json"
       ],
       "user-agent": [
-        "public-transport/hafas-clie20b5b0a15e38nt:test"
+        "public-transport/hafa585d4fc827ads-client:test"
       ],
       "Content-Length": [
         "213"

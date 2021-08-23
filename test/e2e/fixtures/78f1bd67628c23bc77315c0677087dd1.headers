@@ -1,0 +1,32 @@
+{
+  "statusCode": 200,
+  "headers": {
+    "date": "Mon, 23 Aug 2021 22:33:49 GMT",
+    "content-length": "2095",
+    "x-robots-tag": "noindex, noarchive, nosnippet",
+    "connection": "close",
+    "content-type": "application/json; charset=utf-8"
+  },
+  "url": "https://www.belgianrail.be/jp/sncb-nmbs-routeplanner/mgate.exe",
+  "time": 2332,
+  "request": {
+    "method": "POST",
+    "headers": {
+      "Content-Type": [
+        "application/json"
+      ],
+      "Accept-Encoding": [
+        "gzip, br, deflate"
+      ],
+      "Accept": [
+        "application/json"
+      ],
+      "user-agent": [
+        "public-transport/hafas1b61b66afefe-client:test"
+      ],
+      "Content-Length": [
+        "619"
+      ]
+    }
+  }
+}

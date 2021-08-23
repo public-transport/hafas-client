@@ -1,0 +1,35 @@
+{
+  "statusCode": 200,
+  "headers": {
+    "date": "Mon, 23 Aug 2021 22:34:02 GMT",
+    "server": "Apache",
+    "content-length": "3802",
+    "connection": "close",
+    "content-type": "application/json; charset=utf-8"
+  },
+  "url": "https://fahrplaner.vsninfo.de/hafas/mgate.exe?mic=cf028bfcfa4c541f22a00895c495c81e&mac=41b18c6855a2d2d46f0f9f4c572a0b1d",
+  "time": 671,
+  "request": {
+    "method": "POST",
+    "headers": {
+      "Content-Type": [
+        "application/json"
+      ],
+      "Accept-Encoding": [
+        "gzip, br, deflate"
+      ],
+      "Accept": [
+        "application/json"
+      ],
+      "user-agent": [
+        "public-transport/hafas-client:tdfb062c516e1est"
+      ],
+      "Content-Length": [
+        "729"
+      ],
+      "Connection": [
+        "close"
+      ]
+    }
+  }
+}

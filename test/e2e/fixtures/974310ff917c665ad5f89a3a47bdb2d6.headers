@@ -1,0 +1,35 @@
+{
+  "statusCode": 200,
+  "headers": {
+    "date": "Mon, 23 Aug 2021 22:33:54 GMT",
+    "server": "Apache",
+    "content-length": "3405",
+    "connection": "close",
+    "content-type": "application/json; charset=utf-8"
+  },
+  "url": "https://fahrplaner.vbn.de/bin/mgate.exe?mic=722db48fd0ace34d9eec00d0d06155ae&mac=7f95ccb4b53186237bcf0d370fbd8ac7",
+  "time": 400,
+  "request": {
+    "method": "POST",
+    "headers": {
+      "Content-Type": [
+        "application/json"
+      ],
+      "Accept-Encoding": [
+        "gzip, br, deflate"
+      ],
+      "Accept": [
+        "application/json"
+      ],
+      "user-agent": [
+        "publ69ce58b92fa7ic-transport/hafas-client:test"
+      ],
+      "Content-Length": [
+        "268"
+      ],
+      "Connection": [
+        "close"
+      ]
+    }
+  }
+}

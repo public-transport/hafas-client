@@ -1,0 +1,35 @@
+{
+  "statusCode": 200,
+  "headers": {
+    "date": "Mon, 23 Aug 2021 22:33:41 GMT",
+    "server": "Apache",
+    "content-length": "5084",
+    "connection": "close",
+    "content-type": "application/json; charset=utf-8"
+  },
+  "url": "https://fahrplan.rsag-online.de/bin/mgate.exe",
+  "time": 476,
+  "request": {
+    "method": "POST",
+    "headers": {
+      "Content-Type": [
+        "application/json"
+      ],
+      "Accept-Encoding": [
+        "gzip, br, deflate"
+      ],
+      "Accept": [
+        "application/json"
+      ],
+      "user-agent": [
+        "public-transport/ad67a9c0e73dhafas-client:test"
+      ],
+      "Content-Length": [
+        "731"
+      ],
+      "Connection": [
+        "close"
+      ]
+    }
+  }
+}

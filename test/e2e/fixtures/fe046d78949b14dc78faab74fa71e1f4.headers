@@ -1,0 +1,35 @@
+{
+  "statusCode": 200,
+  "headers": {
+    "date": "Mon, 23 Aug 2021 22:33:48 GMT",
+    "server": "Apache",
+    "content-length": "11952",
+    "content-type": "application/json; charset=utf-8",
+    "connection": "close"
+  },
+  "url": "https://fahrplan.salzburg-verkehr.at/bin/mgate.exe",
+  "time": 1604,
+  "request": {
+    "method": "POST",
+    "headers": {
+      "Content-Type": [
+        "application/json"
+      ],
+      "Accept-Encoding": [
+        "gzip, br, deflate"
+      ],
+      "Accept": [
+        "application/json"
+      ],
+      "user-agent": [
+        "public-transport/hafas-clien4362cbc32aa6t:test"
+      ],
+      "Content-Length": [
+        "632"
+      ],
+      "Connection": [
+        "close"
+      ]
+    }
+  }
+}

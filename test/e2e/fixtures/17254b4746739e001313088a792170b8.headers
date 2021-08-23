@@ -1,0 +1,35 @@
+{
+  "statusCode": 200,
+  "headers": {
+    "date": "Mon, 23 Aug 2021 22:33:12 GMT",
+    "server": "Apache",
+    "content-length": "6775",
+    "connection": "close",
+    "content-type": "application/json; charset=utf-8"
+  },
+  "url": "https://fpa.invg.de/bin/mgate.exe",
+  "time": 1208,
+  "request": {
+    "method": "POST",
+    "headers": {
+      "Content-Type": [
+        "application/json"
+      ],
+      "Accept-Encoding": [
+        "gzip, br, deflate"
+      ],
+      "Accept": [
+        "application/json"
+      ],
+      "user-agent": [
+        "public-transport/hafas-cl4df3d5be7d98ient:test"
+      ],
+      "Content-Length": [
+        "640"
+      ],
+      "Connection": [
+        "close"
+      ]
+    }
+  }
+}

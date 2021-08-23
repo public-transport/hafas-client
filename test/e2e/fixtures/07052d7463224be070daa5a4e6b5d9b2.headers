@@ -1,7 +1,7 @@
 {
   "statusCode": 200,
   "headers": {
-    "date": "Sat, 24 Apr 2021 11:34:27 GMT",
+    "date": "Mon, 23 Aug 2021 22:33:28 GMT",
     "content-type": "application/json; charset=utf-8",
     "content-length": "508",
     "connection": "close",
@@ -9,7 +9,7 @@
     "access-control-allow-origin": "*"
   },
   "url": "https://auskunft.nvv.de/auskunft/bin/app/mgate.exe",
-  "time": 212,
+  "time": 223,
   "request": {
     "method": "POST",
     "headers": {
@@ -23,7 +23,7 @@
         "application/json"
       ],
       "user-agent": [
-        "public-transport/h20b5b0a15e38afas-client:test"
+        "pube1082e641429lic-transport/hafas-client:test"
       ],
       "Content-Length": [
         "256"

@@ -1,0 +1,35 @@
+{
+  "statusCode": 200,
+  "headers": {
+    "date": "Mon, 23 Aug 2021 22:33:11 GMT",
+    "server": "Apache",
+    "content-length": "3154",
+    "connection": "close",
+    "content-type": "application/json; charset=utf-8"
+  },
+  "url": "https://hvv-app.hafas.de/bin/mgate.exe?mic=f617b50193881c608f517332eb73294d&mac=d34e57bb6c57e4644e2eecb74fff7f0e",
+  "time": 279,
+  "request": {
+    "method": "POST",
+    "headers": {
+      "Content-Type": [
+        "application/json"
+      ],
+      "Accept-Encoding": [
+        "gzip, br, deflate"
+      ],
+      "Accept": [
+        "application/json"
+      ],
+      "user-agent": [
+        "public-transpeb6376b6cf25ort/hafas-client:test"
+      ],
+      "Content-Length": [
+        "429"
+      ],
+      "Connection": [
+        "close"
+      ]
+    }
+  }
+}

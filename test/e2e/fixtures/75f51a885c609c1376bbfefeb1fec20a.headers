@@ -1,14 +1,14 @@
 {
   "statusCode": 200,
   "headers": {
-    "date": "Thu, 05 Aug 2021 18:10:27 GMT",
+    "date": "Mon, 23 Aug 2021 22:33:29 GMT",
     "transfer-encoding": "chunked",
     "content-type": "application/json; charset=utf-8",
     "connection": "close",
     "strict-transport-security": "max-age=15552000; includeSubDomains"
   },
   "url": "https://app.verkehrsauskunft.at/bin/mgate.exe?mic=252230314636b9e1ed51d8665c761a48&mac=874447bb7da6b7fee876ab7d61583ba6",
-  "time": 282,
+  "time": 315,
   "request": {
     "method": "POST",
     "headers": {
@@ -22,7 +22,7 @@
         "application/json"
       ],
       "user-agent": [
-        "public-tr52c19d463253ansport/hafas-client:test"
+        "public-trd86ff3f1c655ansport/hafas-client:test"
       ],
       "Content-Length": [
         "311"
