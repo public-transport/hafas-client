@@ -9,7 +9,6 @@ There are built-in profiles for these public transportation networks:
 HAFAS endpoint | wrapper library | docs | example code | profile name
 -|-|-|-|-
 [Deutsche Bahn (DB)](https://en.wikipedia.org/wiki/Deutsche_Bahn) | [`db-hafas`](https://github.com/public-transport/db-hafas) | [docs](db/readme.md) | [example](db/example.js) | [`db`](db)
-[Swiss Railways (SBB)](https://en.wikipedia.org/wiki/Swiss_Federal_Railways) | - | [docs](sbb/readme.md) | [example](sbb/example.js) | [`sbb`](sbb)
 [Polskie Koleje Państwowe (PKP)](https://en.wikipedia.org/wiki/Polish_State_Railways) | [`pkp-hafas`](https://github.com/juliuste/pkp-hafas) | [docs](pkp/readme.md) | [example](pkp/example.js) | [`pkp`](pkp)
 [Belgian National Railways (SNCB/NMBS)](https://en.wikipedia.org/wiki/National_Railway_Company_of_Belgium) | - | [docs](sncb/readme.md) | [example](sncb/example.js) | [`sncb`](sncb)
 [*Iarnród Éireann* (Irish Rail)](https://en.wikipedia.org/wiki/Iarnród_Éireann) | - | [docs](irish-rail/readme.md) | [example](irish-rail/example.js) | [`irish-rail`](irish-rail)
