@@ -14,7 +14,6 @@ const testEarlierLaterJourneys = require('./lib/earlier-later-journeys')
 const testRefreshJourney = require('./lib/refresh-journey')
 const testDepartures = require('./lib/departures')
 const testArrivals = require('./lib/arrivals')
-// const testJourneysWithDetour = require('./lib/journeys-with-detour')
 const testReachableFrom = require('./lib/reachable-from')
 
 const when = createWhen(mobilNrwProfile.timezone, mobilNrwProfile.locale)
@@ -149,6 +148,13 @@ tap.test('trip details', async (t) => {
 })
 
 tap.test('departures at Soest', async (t) => {
+	const ids = [
+		soest,
+		'906135', // Bahnhof, Soest
+		'904812', // Bahnhof/Brüdertor, Soest
+		'902737', // Bahnhof E, Soest
+	]
+
 	const departures = await client.departures(soest, {
 		duration: 10, when,
 	})
@@ -157,7 +163,7 @@ tap.test('departures at Soest', async (t) => {
 		test: t,
 		departures,
 		validate,
-		id: soest
+		ids,
 	})
 	t.end()
 })
@@ -179,6 +185,13 @@ tap.test('departures with station object', async (t) => {
 })
 
 tap.test('arrivals at Soest', async (t) => {
+	const ids = [
+		soest,
+		'906135', // Bahnhof, Soest
+		'904812', // Bahnhof/Brüdertor, Soest
+		'902737', // Bahnhof E, Soest
+	]
+
 	const arrivals = await client.arrivals(soest, {
 		duration: 10, when,
 	})
@@ -187,7 +200,7 @@ tap.test('arrivals at Soest', async (t) => {
 		test: t,
 		arrivals,
 		validate,
-		id: soest
+		ids,
 	})
 	t.end()
 })

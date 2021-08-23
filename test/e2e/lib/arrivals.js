@@ -1,7 +1,8 @@
 'use strict'
 
 const testArrivals = async (cfg) => {
-	const {test: t, arrivals: arrs, validate, id} = cfg
+	const {test: t, arrivals: arrs, validate} = cfg
+	const ids = cfg.ids || (cfg.id ? [cfg.id] : [])
 
 	validate(t, arrs, 'arrivals', 'arrivals')
 	t.ok(arrs.length > 0, 'must be >0 arrivals')
@@ -13,7 +14,11 @@ const testArrivals = async (cfg) => {
 			name += '.station'
 		}
 
-		t.equal(stop.id, id, name + '.id is invalid')
+		t.ok(
+			ids.includes(stop.id) ||
+			(stop.station && ids.includes(stop.station.id)),
+			name + '.id is invalid',
+		)
 	}
 
 	// todo: move into arrivals validator

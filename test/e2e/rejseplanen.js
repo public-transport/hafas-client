@@ -125,7 +125,11 @@ tap.test('departures at Næstved.', async (t) => {
 		test: t,
 		departures,
 		validate,
-		id: næstved,
+		ids: [
+			næstved,
+			'8650810', // Næstved St. (togbus)
+			'8651810', // Næstved St. (togbus)
+		],
 	})
 	t.end()
 })
@@ -139,7 +143,11 @@ tap.test('arrivals at Næstved.', async (t) => {
 		test: t,
 		arrivals,
 		validate,
-		id: næstved,
+		ids: [
+			næstved,
+			'8650810', // Næstved St. (togbus)
+			'8651810', // Næstved St. (togbus)
+		],
 	})
 	t.end()
 })

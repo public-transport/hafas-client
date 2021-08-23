@@ -174,7 +174,8 @@ tap.test('departures at Ingolstadt Hbf', async (t) => {
 	const ids = [
 		ingolstadtHbf, // station
 		'80301', // stop "Ingolstadt, Hauptbahnhof Stadtauswärts"
-		'80302' // stop "Ingolstadt, Hauptbahnhof Stadteinwärts"
+		'80302', // stop "Ingolstadt, Hauptbahnhof Stadteinwärts"
+		'80303', // stop "Ingolstadt, Hauptbahnhof Stadtauswärts"
 	]
 
 	const deps = await client.departures(ingolstadtHbf, {

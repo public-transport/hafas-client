@@ -172,11 +172,11 @@ tap.test('journeys: via works – without detour', async (t) => {
 	// *no need* to change trains / no need for a "detour".
 	const karlsplatz = '1390461'
 	const praterstern = '1290201'
-	const museumsquartier = '1390171'
-	const museumsquartierPassed = '901014'
+	const stephansplatz = '1390167'
+	const stephansplatzPassed = '901006'
 
 	const res = await client.journeys(karlsplatz, praterstern, {
-		via: museumsquartier,
+		via: stephansplatz,
 		results: 1,
 		departure: when,
 		stopovers: true
@@ -186,15 +186,15 @@ tap.test('journeys: via works – without detour', async (t) => {
 
 	const l1 = res.journeys[0].legs.some((leg) => {
 		return (
-			leg.destination.id === museumsquartier ||
-			leg.destination.id === museumsquartierPassed
+			leg.destination.id === stephansplatz ||
+			leg.destination.id === stephansplatzPassed
 		)
 	})
 	t.notOk(l1, 'transfer at Museumsquartier')
 
 	const l2 = res.journeys[0].legs.some((leg) => {
 		return leg.stopovers && leg.stopovers.some((stopover) => {
-			return stopover.stop.id === museumsquartierPassed
+			return stopover.stop.id === stephansplatzPassed
 		})
 	})
 	t.ok(l2, 'Museumsquartier is not being passed')

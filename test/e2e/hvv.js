@@ -98,7 +98,7 @@ tap.test('Hamburg Tiefstack to Gilbertstr. 30, Hamburg', async (t) => {
 tap.test('Hamburg Tiefstack to Hamburger Meile', async (t) => {
 	const meile = {
 		type: 'location',
-		id: '980001831',
+		id: '980001841',
 		poi: true,
 		name: 'Hamburger Meile',
 		latitude: 53.572455,

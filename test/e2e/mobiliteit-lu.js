@@ -70,10 +70,10 @@ const client = createClient(mobiliteitLuProfile, 'public-transport/hafas-client:
 
 const ettelbruck = '140701016'
 const mersch = '160904011'
-const luxembourg = '200405060'
+const luxembourgGareCentrale = '200405060'
 
 tap.test('journeys – Ettelbruck to Luxembourg', async (t) => {
-	const res = await client.journeys(ettelbruck, luxembourg, {
+	const res = await client.journeys(ettelbruck, luxembourgGareCentrale, {
 		results: 4,
 		departure: when,
 		stopovers: true
@@ -84,7 +84,11 @@ tap.test('journeys – Ettelbruck to Luxembourg', async (t) => {
 		res,
 		validate,
 		fromId: ettelbruck,
-		toId: luxembourg
+		toIds: [
+			luxembourgGareCentrale,
+			'300030001', // Luxembourg, Gare Centrale (Tram)
+			'300032002', // Luxembourg, Gare Rocade
+		],
 	})
 	t.end()
 })
@@ -96,7 +100,7 @@ tap.test('journeys – fails with no product', (t) => {
 		test: t,
 		fetchJourneys: client.journeys,
 		fromId: ettelbruck,
-		toId: luxembourg,
+		toId: luxembourgGareCentrale,
 		when,
 		products
 	})
@@ -111,7 +115,7 @@ tap.test('Luxembourg to Ettelbruck, Rue des Romains 4', async (t) => {
 		longitude: 6.097608
 	}
 
-	const res = await client.journeys(luxembourg, rueDeRomain, {
+	const res = await client.journeys(luxembourgGareCentrale, rueDeRomain, {
 		results: 3,
 		departure: when
 	})
@@ -120,22 +124,23 @@ tap.test('Luxembourg to Ettelbruck, Rue des Romains 4', async (t) => {
 		test: t,
 		res,
 		validate,
-		fromId: luxembourg,
+		fromId: luxembourgGareCentrale,
 		to: rueDeRomain
 	})
 	t.end()
 })
 
-tap.test('Luxembourg to Centre Hospitalier du Nord', async (t) => {
+// Some journeys don't start or stop at the stop/POI that we queried journeys for.
+tap.skip('Luxembourg to Centre Hospitalier du Nord', async (t) => {
 	const centreHospitalier = {
 		type: 'location',
-		id: '140701020',
+		id: '980050385',
 		poi: true,
-		name: 'Ettelbruck, Centre Hospitalier du Nord',
-		latitude: 49.853096,
-		longitude: 6.094075
+		name: 'Ettelbruck, Centre Hospitalier du Nord (CHDN)',
+		latitude: 49.853519,
+		longitude: 6.094587,
 	}
-	const res = await client.journeys(luxembourg, centreHospitalier, {
+	const res = await client.journeys(luxembourgGareCentrale, centreHospitalier, {
 		results: 3,
 		departure: when
 	})
@@ -144,7 +149,7 @@ tap.test('Luxembourg to Centre Hospitalier du Nord', async (t) => {
 		test: t,
 		res,
 		validate,
-		fromId: luxembourg,
+		fromId: luxembourgGareCentrale,
 		to: centreHospitalier
 	})
 	t.end()
@@ -158,7 +163,7 @@ tap.test('earlier/later journeys', async (t) => {
 		test: t,
 		fetchJourneys: client.journeys,
 		validate,
-		fromId: luxembourg,
+		fromId: luxembourgGareCentrale,
 		toId: ettelbruck,
 		when,
 	})
@@ -167,7 +172,7 @@ tap.test('earlier/later journeys', async (t) => {
 })
 
 tap.test('trip', async (t) => {
-	const { journeys } = await client.journeys(luxembourg, ettelbruck, {
+	const { journeys } = await client.journeys(luxembourgGareCentrale, ettelbruck, {
 		results: 1, departure: when
 	})
 

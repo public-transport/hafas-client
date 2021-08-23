@@ -141,7 +141,7 @@ tap.test('Berlin Schwedter Str. to ATZE Musiktheater', async (t) => {
 		type: 'location',
 		id: '991598902',
 		poi: true,
-		name: 'ATZE Musiktheater',
+		name: 'Berlin, Atze Musiktheater für Kinder (Kultur und U',
 		latitude: 52.542417,
 		longitude: 13.350437
 	}

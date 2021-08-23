@@ -110,9 +110,9 @@ tap.test('Karl-Theodor-Straße to Pötschnerstraße 3, Neuhausen', async (t) => 
 tap.test('Karl-Theodor-Straße to Hofbräuhaus', async (t) => {
 	const hofbraeuhaus = {
 		type: 'location',
-		id: '970006201',
+		id: '970008829',
 		poi: true,
-		name: 'München, Hofbräuhaus',
+		name: 'München, Hofbräuhaus München',
 		latitude: 48.137739,
 		longitude: 11.579823
 	}

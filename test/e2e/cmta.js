@@ -92,14 +92,14 @@ tap.test('Domain to 1104 Elm Street, Austin, TX 78703', async (t) => {
 	t.end()
 })
 
-tap.test('Domain to Whole Foods Market - North Lamar Blvd', async (t) => {
+tap.test('Domain to WHOLE FOODS MARKET - ARBOR TRAILS', async (t) => {
 	const wholeFoodsMarket = {
 		type: 'location',
-		id: '9830513', // or `9855231`
+		id: '9893387',
 		poi: true,
-		name: 'Whole Foods Market - N Lamar Blvd',
-		latitude: 30.270653,
-		longitude: -97.753564
+		name: 'WHOLE FOODS MARKET - ARBOR TRAILS',
+		latitude: 30.22026,
+		longitude: -97.84174,
 	}
 	const res = await client.journeys(domain, wholeFoodsMarket, {
 		results: 3,
