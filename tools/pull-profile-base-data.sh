@@ -70,3 +70,4 @@ node -p "$query" "$src/at/vvv-hafas-mgate.json" >../p/vvv/base.json
 node -p "$query" "$src/ch/bls-hafas-mgate.json" >../p/bls/base.json
 node -p "$query" "$src/ch/tpg-hafas-mgate.json" >../p/tpg/base.json
 node -p "$query" "$src/ch/zvv-hafas-mgate.json" >../p/zvv/base.json
+node -p "$query" "$src/us/dart-hafas-mgate.json" >../p/dart/base.json

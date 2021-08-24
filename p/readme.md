@@ -18,6 +18,7 @@ HAFAS endpoint | wrapper library | docs | example code | profile name
 [Österreichische Bundesbahnen (ÖBB)](https://en.wikipedia.org/wiki/Austrian_Federal_Railways) | [`oebb-hafas`](https://github.com/juliuste/oebb-hafas) | [docs](oebb/readme.md) | [example](oebb/example.js) | [`oebb`](oebb)
 [*Mobilitéitszentral* (Luxembourg)](https://www.mobiliteit.lu/) | - | [docs](mobiliteit-lu/readme.md) | [example](mobiliteit-lu/example.js) | [`mobiliteit-lu`](mobiliteit-lu)
 [Bay Area Rapid Transit (BART)](https://en.wikipedia.org/wiki/Bay_Area_Rapid_Transit) | - | [docs](bart/readme.md) | [example](bart/example.js) | [`bart`](bart)
+[Des Moines Area Rapid Transit (DART)](https://en.wikipedia.org/wiki/Des_Moines_metropolitan_area) | - | [docs](dart/readme.md) | [example](dart/example.js) | [`dart`](dart)
 [Nahverkehr Sachsen-Anhalt (NASA)](https://de.wikipedia.org/wiki/Nahverkehrsservice_Sachsen-Anhalt)/[INSA](https://insa.de) | [`insa-hafas`](https://github.com/public-transport/insa-hafas) | [docs](insa/readme.md) | [example](insa/example.js) | [`insa`](insa)
 [Nahverkehrsverbund Schleswig-Holstein (NAH.SH)](https://de.wikipedia.org/wiki/Nahverkehrsverbund_Schleswig-Holstein) | [`nahsh-hafas`](https://github.com/juliuste/nahsh-hafas) | [docs](nahsh/readme.md) | [example](nahsh/example.js) | [`nahsh`](nahsh)
 [Rhein-Main-Verkehrsverbund (RMV)](https://en.wikipedia.org/wiki/Rhein-Main-Verkehrsverbund) | - | [docs](rmv/readme.md) | [example](rmv/example.js) | [`rmv`](rmv)
