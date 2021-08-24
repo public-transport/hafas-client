@@ -1,5 +1,15 @@
 # Changelog
 
+## `5.19.0`
+
+- c10f3181 `refreshJourney()`: expose `realtimeDataFrom`
+- c3bdcc88 expose `prodCtx.catOut` as `line.productName`
+- 21610276 first/last walking leg: handle `dTZOffset`/`aTZOffset` of `0` 🐛
+- 6de2dc7b/dd52c4ad DB: fix price parsing 🐛
+- 0114f587 adapt E2E tests to latest data ✅
+
+[🏷 `5.19.0`](https://github.com/public-transport/hafas-client/releases/tag/5.19.0), 2021-08-24
+
 ## `5.18.0`
 
 - e293223c add [*VVV* profile](../p/vvv)
