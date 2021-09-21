@@ -1,5 +1,12 @@
 # Changelog
 
+## `5.19.1`
+
+- 042668ff add [*DART* profile](../p/dart)
+- ca75c440 adapt *VBB* profile to server changes
+
+[🏷 `5.19.1`](https://github.com/public-transport/hafas-client/releases/tag/5.19.1), 2021-09-21
+
 ## `5.19.0`
 
 - c10f3181 `refreshJourney()`: expose `realtimeDataFrom`
