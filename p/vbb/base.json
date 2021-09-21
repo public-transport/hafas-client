@@ -1,16 +1,15 @@
 {
 	"auth": {
 		"type": "AID",
-		"aid": "hafas-vbb-apps"
+		"aid": "hafas-vbb-webapp"
 	},
 	"client": {
-		"type": "IPA",
+		"type": "WEB",
 		"id": "VBB",
-		"v": "4010300",
-		"name": "vbbPROD"
+		"name": "VBB WebApp",
+		"l": "vs_webapp_vbb"
 	},
 	"endpoint": "https://fahrinfo.vbb.de/bin/mgate.exe",
-	"ext": "VBB.1",
 	"ver": "1.45",
 	"defaultLanguage": "de"
 }

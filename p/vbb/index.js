@@ -93,10 +93,6 @@ const vbbProfile = {
 	...baseProfile,
 	locale: 'de-DE',
 	timezone: 'Europe/Berlin',
-	// https://gist.github.com/derhuerst/a8d94a433358abc015ff77df4481070c#file-haf_config_base-properties-L39
-	// https://runkit.com/derhuerst/hafas-decrypt-encrypted-mac-salt
-	salt: Buffer.from('RCTJM2fFxFfxxQfI', 'utf8'),
-	addMicMac: true,
 
 	products: products,
 
