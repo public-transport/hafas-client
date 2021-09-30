@@ -1,0 +1,708 @@
+{
+	"stopLocationOrCoordLocation": [
+		{
+			"StopLocation": {
+				"LocationNotes": {
+					"LocationNote": [
+						{
+							"value": "Der Bahnhof besteht aus vier Ebenen. <break msecs=300/> In der oberen Ebene, fahren die S-Bahnen, und Regional-Züge ab. <break msecs=300/> Die Zugänge, befinden sich auf der Straßen-Ebene. <break msecs=300/> In der untersten Ebene, fahren die U-Bahnen ab. <break msecs=300/> Der Bahnsteig, ist über eine Zwischen-Ebene, durch Aufzüge, Rampen, und Roll-Treppen, barriere-frei erreichbar. <break msecs=300/> In der Nähe des Bahnhofs, befinden sich Bus-Haltestellen. <break msecs=300/> Die Bahnsteige der S-Bahn, und der Regionalbahn, verfügen über Blinden-Leitstreifen.",
+							"key": "BT",
+							"type": "A",
+							"txtN": "Der Bahnhof besteht aus vier Ebenen. <break msecs=300/> In der oberen Ebene, fahren die S-Bahnen, und Regional-Züge ab. <break msecs=300/> Die Zugänge, befinden sich auf der Straßen-Ebene. <break msecs=300/> In der untersten Ebene, fahren die U-Bahnen ab. <break msecs=300/> Der Bahnsteig, ist über eine Zwischen-Ebene, durch Aufzüge, Rampen, und Roll-Treppen, barriere-frei erreichbar. <break msecs=300/> In der Nähe des Bahnhofs, befinden sich Bus-Haltestellen. <break msecs=300/> Die Bahnsteige der S-Bahn, und der Regionalbahn, verfügen über Blinden-Leitstreifen."
+						},
+						{
+							"value": "lift",
+							"key": "AU",
+							"type": "A",
+							"txtN": "lift"
+						},
+						{
+							"value": "escalator",
+							"key": "RO",
+							"type": "A",
+							"txtN": "escalator"
+						},
+						{
+							"value": "Responsible DINO stop",
+							"key": "IS",
+							"type": "A",
+							"txtN": "Responsible DINO stop"
+						},
+						{
+							"value": "de:11000:900020201",
+							"key": "IF",
+							"type": "I",
+							"txtN": "de:11000:900020201"
+						},
+						{
+							"value": "8089100",
+							"key": "TD",
+							"type": "I",
+							"txtN": "8089100"
+						},
+						{
+							"value": "Der Bahnhof besteht aus vier Ebenen. <break msecs=300/> In der oberen Ebene, fahren die S-Bahnen, und Regional-Züge ab. <break msecs=300/> Die Zugänge, befinden sich auf der Straßen-Ebene. <break msecs=300/> In der untersten Ebene, fahren die U-Bahnen ab. <break msecs=300/> Der Bahnsteig, ist über eine Zwischen-Ebene, durch Aufzüge, Rampen, und Roll-Treppen, barriere-frei erreichbar. <break msecs=300/> In der Nähe des Bahnhofs, befinden sich Bus-Haltestellen. <break msecs=300/> Die Bahnsteige der S-Bahn, und der Regionalbahn, verfügen über Blinden-Leitstreifen.",
+							"key": "bd",
+							"type": "I",
+							"txtN": "Der Bahnhof besteht aus vier Ebenen. <break msecs=300/> In der oberen Ebene, fahren die S-Bahnen, und Regional-Züge ab. <break msecs=300/> Die Zugänge, befinden sich auf der Straßen-Ebene. <break msecs=300/> In der untersten Ebene, fahren die U-Bahnen ab. <break msecs=300/> Der Bahnsteig, ist über eine Zwischen-Ebene, durch Aufzüge, Rampen, und Roll-Treppen, barriere-frei erreichbar. <break msecs=300/> In der Nähe des Bahnhofs, befinden sich Bus-Haltestellen. <break msecs=300/> Die Bahnsteige der S-Bahn, und der Regionalbahn, verfügen über Blinden-Leitstreifen."
+						},
+						{
+							"value": "900020201",
+							"key": "BB",
+							"type": "I",
+							"txtN": "900020201"
+						}
+					]
+				},
+				"productAtStop": [
+					{
+						"icon": {
+							"foregroundColor": {
+								"r": 255,
+								"g": 255,
+								"b": 255,
+								"hex": "#FFFFFF"
+							},
+							"backgroundColor": {
+								"r": 55,
+								"g": 135,
+								"b": 74,
+								"hex": "#37874A"
+							},
+							"res": "prod_gen"
+						},
+						"name": "S41",
+						"lineId": "S41",
+						"cls": "1"
+					},
+					{
+						"icon": {
+							"foregroundColor": {
+								"r": 255,
+								"g": 255,
+								"b": 255,
+								"hex": "#FFFFFF"
+							},
+							"backgroundColor": {
+								"r": 55,
+								"g": 135,
+								"b": 74,
+								"hex": "#37874A"
+							},
+							"res": "prod_gen"
+						},
+						"name": "S42",
+						"lineId": "S42",
+						"cls": "1"
+					},
+					{
+						"icon": {
+							"foregroundColor": {
+								"r": 255,
+								"g": 255,
+								"b": 255,
+								"hex": "#FFFFFF"
+							},
+							"backgroundColor": {
+								"r": 55,
+								"g": 135,
+								"b": 74,
+								"hex": "#37874A"
+							},
+							"res": "prod_gen"
+						},
+						"name": "S46",
+						"lineId": "S46",
+						"cls": "1"
+					},
+					{
+						"icon": {
+							"foregroundColor": {
+								"r": 255,
+								"g": 255,
+								"b": 255,
+								"hex": "#FFFFFF"
+							},
+							"backgroundColor": {
+								"r": 0,
+								"g": 51,
+								"b": 153,
+								"hex": "#003399"
+							},
+							"res": "prod_gen"
+						},
+						"name": "U7",
+						"lineId": "U7",
+						"cls": "2"
+					},
+					{
+						"icon": {
+							"foregroundColor": {
+								"r": 255,
+								"g": 255,
+								"b": 255,
+								"hex": "#FFFFFF"
+							},
+							"backgroundColor": {
+								"r": 153,
+								"g": 51,
+								"b": 153,
+								"hex": "#993399"
+							},
+							"res": "prod_gen"
+						},
+						"name": "109",
+						"lineId": "109",
+						"cls": "8"
+					},
+					{
+						"icon": {
+							"foregroundColor": {
+								"r": 255,
+								"g": 255,
+								"b": 255,
+								"hex": "#FFFFFF"
+							},
+							"backgroundColor": {
+								"r": 153,
+								"g": 51,
+								"b": 153,
+								"hex": "#993399"
+							},
+							"res": "prod_gen"
+						},
+						"name": "M21",
+						"lineId": "M21",
+						"cls": "8"
+					},
+					{
+						"icon": {
+							"foregroundColor": {
+								"r": 255,
+								"g": 255,
+								"b": 255,
+								"hex": "#FFFFFF"
+							},
+							"backgroundColor": {
+								"r": 153,
+								"g": 51,
+								"b": 153,
+								"hex": "#993399"
+							},
+							"res": "prod_gen"
+						},
+						"name": "M27",
+						"lineId": "M27",
+						"cls": "8"
+					},
+					{
+						"icon": {
+							"foregroundColor": {
+								"r": 255,
+								"g": 255,
+								"b": 255,
+								"hex": "#FFFFFF"
+							},
+							"backgroundColor": {
+								"r": 153,
+								"g": 51,
+								"b": 153,
+								"hex": "#993399"
+							},
+							"res": "prod_gen"
+						},
+						"name": "N7",
+						"lineId": "N7",
+						"cls": "8"
+					},
+					{
+						"icon": {
+							"foregroundColor": {
+								"r": 255,
+								"g": 255,
+								"b": 255,
+								"hex": "#FFFFFF"
+							},
+							"backgroundColor": {
+								"r": 226,
+								"g": 0,
+								"b": 25,
+								"hex": "#E20019"
+							},
+							"res": "prod_gen"
+						},
+						"name": "RB10",
+						"lineId": "RB10",
+						"cls": "64"
+					},
+					{
+						"icon": {
+							"foregroundColor": {
+								"r": 255,
+								"g": 255,
+								"b": 255,
+								"hex": "#FFFFFF"
+							},
+							"backgroundColor": {
+								"r": 226,
+								"g": 0,
+								"b": 25,
+								"hex": "#E20019"
+							},
+							"res": "prod_gen"
+						},
+						"name": "RB13",
+						"lineId": "RB13",
+						"cls": "64"
+					},
+					{
+						"icon": {
+							"foregroundColor": {
+								"r": 255,
+								"g": 255,
+								"b": 255,
+								"hex": "#FFFFFF"
+							},
+							"backgroundColor": {
+								"r": 226,
+								"g": 0,
+								"b": 25,
+								"hex": "#E20019"
+							},
+							"res": "prod_gen"
+						},
+						"name": "RE2",
+						"lineId": "RE2",
+						"cls": "64"
+					},
+					{
+						"icon": {
+							"foregroundColor": {
+								"r": 255,
+								"g": 255,
+								"b": 255,
+								"hex": "#FFFFFF"
+							},
+							"backgroundColor": {
+								"r": 226,
+								"g": 0,
+								"b": 25,
+								"hex": "#E20019"
+							},
+							"res": "prod_gen"
+						},
+						"name": "RE4",
+						"lineId": "RE4",
+						"cls": "64"
+					},
+					{
+						"icon": {
+							"foregroundColor": {
+								"r": 255,
+								"g": 255,
+								"b": 255,
+								"hex": "#FFFFFF"
+							},
+							"backgroundColor": {
+								"r": 226,
+								"g": 0,
+								"b": 25,
+								"hex": "#E20019"
+							},
+							"res": "prod_gen"
+						},
+						"name": "RE6",
+						"lineId": "RE6",
+						"cls": "64"
+					}
+				],
+				"altId": [
+					"A×de:11000:900020201"
+				],
+				"timezoneOffset": 120,
+				"id": "A=1@O=S+U Jungfernheide Bhf (Berlin)@X=13300134@Y=52530434@U=86@L=900020201@B=1@p=1627383691@",
+				"extId": "900020201",
+				"name": "S+U Jungfernheide Bhf (Berlin)",
+				"lon": 13.300134,
+				"lat": 52.530434,
+				"weight": 26162,
+				"products": 75,
+				"meta": true
+			}
+		},
+		{
+			"StopLocation": {
+				"LocationNotes": {
+					"LocationNote": [
+						{
+							"value": "Der Haltestellembereich Tegeler Weg/S Jungfernheide besteht aus den Haltestellen im Tegeler Weg im Bereich der Olbersstraße und der Max-Dohrn-Straße.<break msecs=300/>\\n\\n",
+							"key": "BT",
+							"type": "A",
+							"txtN": "Der Haltestellembereich Tegeler Weg/S Jungfernheide besteht aus den Haltestellen im Tegeler Weg im Bereich der Olbersstraße und der Max-Dohrn-Straße.<break msecs=300/>\\n\\n"
+						},
+						{
+							"value": "Responsible DINO stop",
+							"key": "IS",
+							"type": "A",
+							"txtN": "Responsible DINO stop"
+						},
+						{
+							"value": "de:11000:900020207",
+							"key": "IF",
+							"type": "I",
+							"txtN": "de:11000:900020207"
+						},
+						{
+							"value": "Der Haltestellembereich Tegeler Weg/S Jungfernheide besteht aus den Haltestellen im Tegeler Weg im Bereich der Olbersstraße und der Max-Dohrn-Straße.<break msecs=300/>\\n\\n",
+							"key": "bd",
+							"type": "I",
+							"txtN": "Der Haltestellembereich Tegeler Weg/S Jungfernheide besteht aus den Haltestellen im Tegeler Weg im Bereich der Olbersstraße und der Max-Dohrn-Straße.<break msecs=300/>\\n\\n"
+						},
+						{
+							"value": "900020207",
+							"key": "BB",
+							"type": "I",
+							"txtN": "900020207"
+						}
+					]
+				},
+				"productAtStop": [
+					{
+						"icon": {
+							"foregroundColor": {
+								"r": 255,
+								"g": 255,
+								"b": 255,
+								"hex": "#FFFFFF"
+							},
+							"backgroundColor": {
+								"r": 55,
+								"g": 135,
+								"b": 74,
+								"hex": "#37874A"
+							},
+							"res": "prod_gen"
+						},
+						"name": "S41",
+						"lineId": "S41",
+						"cls": "1"
+					},
+					{
+						"icon": {
+							"foregroundColor": {
+								"r": 255,
+								"g": 255,
+								"b": 255,
+								"hex": "#FFFFFF"
+							},
+							"backgroundColor": {
+								"r": 55,
+								"g": 135,
+								"b": 74,
+								"hex": "#37874A"
+							},
+							"res": "prod_gen"
+						},
+						"name": "S42",
+						"lineId": "S42",
+						"cls": "1"
+					},
+					{
+						"icon": {
+							"foregroundColor": {
+								"r": 255,
+								"g": 255,
+								"b": 255,
+								"hex": "#FFFFFF"
+							},
+							"backgroundColor": {
+								"r": 55,
+								"g": 135,
+								"b": 74,
+								"hex": "#37874A"
+							},
+							"res": "prod_gen"
+						},
+						"name": "S46",
+						"lineId": "S46",
+						"cls": "1"
+					},
+					{
+						"icon": {
+							"foregroundColor": {
+								"r": 255,
+								"g": 255,
+								"b": 255,
+								"hex": "#FFFFFF"
+							},
+							"backgroundColor": {
+								"r": 0,
+								"g": 51,
+								"b": 153,
+								"hex": "#003399"
+							},
+							"res": "prod_gen"
+						},
+						"name": "U7",
+						"lineId": "U7",
+						"cls": "2"
+					},
+					{
+						"icon": {
+							"foregroundColor": {
+								"r": 255,
+								"g": 255,
+								"b": 255,
+								"hex": "#FFFFFF"
+							},
+							"backgroundColor": {
+								"r": 153,
+								"g": 51,
+								"b": 153,
+								"hex": "#993399"
+							},
+							"res": "prod_gen"
+						},
+						"name": "109",
+						"lineId": "109",
+						"cls": "8"
+					},
+					{
+						"icon": {
+							"foregroundColor": {
+								"r": 255,
+								"g": 255,
+								"b": 255,
+								"hex": "#FFFFFF"
+							},
+							"backgroundColor": {
+								"r": 153,
+								"g": 51,
+								"b": 153,
+								"hex": "#993399"
+							},
+							"res": "prod_gen"
+						},
+						"name": "M21",
+						"lineId": "M21",
+						"cls": "8"
+					},
+					{
+						"icon": {
+							"foregroundColor": {
+								"r": 255,
+								"g": 255,
+								"b": 255,
+								"hex": "#FFFFFF"
+							},
+							"backgroundColor": {
+								"r": 153,
+								"g": 51,
+								"b": 153,
+								"hex": "#993399"
+							},
+							"res": "prod_gen"
+						},
+						"name": "M27",
+						"lineId": "M27",
+						"cls": "8"
+					},
+					{
+						"icon": {
+							"foregroundColor": {
+								"r": 255,
+								"g": 255,
+								"b": 255,
+								"hex": "#FFFFFF"
+							},
+							"backgroundColor": {
+								"r": 153,
+								"g": 51,
+								"b": 153,
+								"hex": "#993399"
+							},
+							"res": "prod_gen"
+						},
+						"name": "N7",
+						"lineId": "N7",
+						"cls": "8"
+					},
+					{
+						"icon": {
+							"foregroundColor": {
+								"r": 255,
+								"g": 255,
+								"b": 255,
+								"hex": "#FFFFFF"
+							},
+							"backgroundColor": {
+								"r": 226,
+								"g": 0,
+								"b": 25,
+								"hex": "#E20019"
+							},
+							"res": "prod_gen"
+						},
+						"name": "RB10",
+						"lineId": "RB10",
+						"cls": "64"
+					},
+					{
+						"icon": {
+							"foregroundColor": {
+								"r": 255,
+								"g": 255,
+								"b": 255,
+								"hex": "#FFFFFF"
+							},
+							"backgroundColor": {
+								"r": 226,
+								"g": 0,
+								"b": 25,
+								"hex": "#E20019"
+							},
+							"res": "prod_gen"
+						},
+						"name": "RB13",
+						"lineId": "RB13",
+						"cls": "64"
+					},
+					{
+						"icon": {
+							"foregroundColor": {
+								"r": 255,
+								"g": 255,
+								"b": 255,
+								"hex": "#FFFFFF"
+							},
+							"backgroundColor": {
+								"r": 226,
+								"g": 0,
+								"b": 25,
+								"hex": "#E20019"
+							},
+							"res": "prod_gen"
+						},
+						"name": "RE2",
+						"lineId": "RE2",
+						"cls": "64"
+					},
+					{
+						"icon": {
+							"foregroundColor": {
+								"r": 255,
+								"g": 255,
+								"b": 255,
+								"hex": "#FFFFFF"
+							},
+							"backgroundColor": {
+								"r": 226,
+								"g": 0,
+								"b": 25,
+								"hex": "#E20019"
+							},
+							"res": "prod_gen"
+						},
+						"name": "RE4",
+						"lineId": "RE4",
+						"cls": "64"
+					},
+					{
+						"icon": {
+							"foregroundColor": {
+								"r": 255,
+								"g": 255,
+								"b": 255,
+								"hex": "#FFFFFF"
+							},
+							"backgroundColor": {
+								"r": 226,
+								"g": 0,
+								"b": 25,
+								"hex": "#E20019"
+							},
+							"res": "prod_gen"
+						},
+						"name": "RE6",
+						"lineId": "RE6",
+						"cls": "64"
+					}
+				],
+				"altId": [
+					"A×de:11000:900020207"
+				],
+				"timezoneOffset": 120,
+				"id": "A=1@O=Tegeler Weg/S Jungfernheide (Berlin)@X=13296242@Y=52529410@U=86@L=900020207@B=1@p=1627383691@",
+				"extId": "900020207",
+				"name": "Tegeler Weg/S Jungfernheide (Berlin)",
+				"lon": 13.296242,
+				"lat": 52.52941,
+				"weight": 703,
+				"products": 8,
+				"meta": true
+			}
+		},
+		{
+			"CoordLocation": {
+				"LocationNotes": {
+					"LocationNote": [
+						{
+							"value": "http://www.berlin.de/ba-charlottenburg-wilmersdorf/org/sport/stadien_sportplaetze.html",
+							"key": "B1",
+							"type": "A",
+							"txtN": "http://www.berlin.de/ba-charlottenburg-wilmersdorf/org/sport/stadien_sportplaetze.html"
+						},
+						{
+							"value": "Jungfernheideweg 62;13629 Berlin",
+							"key": "B2",
+							"type": "A",
+							"txtN": "Jungfernheideweg 62;13629 Berlin"
+						},
+						{
+							"value": "P0 (POI-Kategorie Sehenswertes: Sehenswertes, Ausflugsziele)",
+							"key": "P0",
+							"type": "A",
+							"txtN": "P0 (POI-Kategorie Sehenswertes: Sehenswertes, Ausflugsziele)"
+						},
+						{
+							"value": "http://www.berlin.de/ba-charlottenburg-wilmersdorf/org/sport/stadien_sportplaetze.html",
+							"key": "UR",
+							"type": "I",
+							"txtN": "http://www.berlin.de/ba-charlottenburg-wilmersdorf/org/sport/stadien_sportplaetze.html"
+						},
+						{
+							"value": "Jungfernheideweg 62;13629 Berlin",
+							"key": "AD",
+							"type": "I",
+							"txtN": "Jungfernheideweg 62;13629 Berlin"
+						}
+					]
+				},
+				"icon": {
+					"res": "loc_poi"
+				},
+				"id": "A=4@O=Berlin, Sportplatz Jungfernheide@X=13273589@Y=52546813@U=104@L=900981212@B=1@p=1626350963@",
+				"extId": "900981212",
+				"name": "Berlin, Sportplatz Jungfernheide",
+				"type": "POI",
+				"lon": 13.273589,
+				"lat": 52.546813
+			}
+		}
+	],
+	"TechnicalMessages": {
+		"TechnicalMessage": [
+			{
+				"value": "2021-09-29 19:13:04",
+				"key": "requestTime"
+			},
+			{
+				"value": "ttp=15085#15321 plancode0=66rkt planid=1627383691 planid0=1627383691 planid_adr=1592347662 plancode_adr=mbtls planid_poi=1626350963 plancode_poi=6kmpx planid_ext=1516270147 plancode_ext=c07th srvv=5.45.VBB.9.6.6 (02c029c19) [Sep 27 2021] tlibv=TRFVER: rel/vbb/2.16.2 2020-12-07 09:48:02 +0100 (Built-by: rhu) VBB_TARIF jno=2",
+				"key": "backendInfo"
+			}
+		]
+	},
+	"serverVersion": "2.15.1-SNAPSHOT",
+	"dialectVersion": "1.29",
+	"requestId": "vbi2qiwu6asxwwcs"
+}
