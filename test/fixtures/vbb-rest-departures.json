@@ -1,0 +1,456 @@
+{
+	"Departure": [
+		{
+			"JourneyDetailRef": {
+				"ref": "1|15591|3|86|4102021"
+			},
+			"JourneyStatus": "P",
+			"ProductAtStop": {
+				"icon": {
+					"foregroundColor": {
+						"r": 255,
+						"g": 255,
+						"b": 255,
+						"hex": "#FFFFFF"
+					},
+					"backgroundColor": {
+						"r": 204,
+						"g": 0,
+						"b": 0,
+						"hex": "#CC0000"
+					},
+					"res": "prod_gen"
+				},
+				"name": "12",
+				"internalName": "      12",
+				"displayNumber": "12",
+				"num": "1",
+				"line": "12",
+				"catOut": "Tram",
+				"catIn": "T",
+				"catCode": "2",
+				"cls": "4",
+				"catOutS": "T",
+				"catOutL": "Tram",
+				"operatorCode": "BVG",
+				"operator": "Berliner Verkehrsbetriebe",
+				"admin": "BVT---",
+				"matchId": "12"
+			},
+			"Product": [
+				{
+					"icon": {
+						"foregroundColor": {
+							"r": 255,
+							"g": 255,
+							"b": 255,
+							"hex": "#FFFFFF"
+						},
+						"backgroundColor": {
+							"r": 204,
+							"g": 0,
+							"b": 0,
+							"hex": "#CC0000"
+						},
+						"res": "prod_gen"
+					},
+					"name": "12",
+					"internalName": "      12",
+					"displayNumber": "12",
+					"num": "1",
+					"line": "12",
+					"catOut": "Tram",
+					"catIn": "T",
+					"catCode": "2",
+					"cls": "4",
+					"catOutS": "T",
+					"catOutL": "Tram",
+					"operatorCode": "BVG",
+					"operator": "Berliner Verkehrsbetriebe",
+					"admin": "BVT---",
+					"routeIdxFrom": 15,
+					"routeIdxTo": 25,
+					"matchId": "12"
+				}
+			],
+			"Notes": {
+				"Note": [
+					{
+						"value": "Bicycle conveyance",
+						"key": "FB",
+						"type": "A",
+						"priority": 350,
+						"routeIdxFrom": 15,
+						"routeIdxTo": 25,
+						"txtN": "Bicycle conveyance"
+					},
+					{
+						"value": "barrier-free",
+						"key": "bf",
+						"type": "A",
+						"priority": 920,
+						"routeIdxFrom": 15,
+						"routeIdxTo": 25,
+						"txtN": "barrier-free"
+					}
+				]
+			},
+			"altId": [
+				"A×de:11000:900110505::3"
+			],
+			"name": "12",
+			"type": "ST",
+			"stop": "Schwedter Str. (Berlin)",
+			"stopid": "A=1@O=Schwedter Str. (Berlin)@X=13407591@Y=52536601@U=86@L=302207003@",
+			"stopExtId": "302207003",
+			"time": "10:01:00",
+			"date": "2021-10-04",
+			"reachable": true,
+			"direction": "Am Kupfergraben (Berlin)",
+			"entry": true
+		},
+		{
+			"JourneyDetailRef": {
+				"ref": "1|15615|4|86|4102021"
+			},
+			"JourneyStatus": "P",
+			"ProductAtStop": {
+				"icon": {
+					"foregroundColor": {
+						"r": 255,
+						"g": 255,
+						"b": 255,
+						"hex": "#FFFFFF"
+					},
+					"backgroundColor": {
+						"r": 204,
+						"g": 0,
+						"b": 0,
+						"hex": "#CC0000"
+					},
+					"res": "prod_gen"
+				},
+				"name": "12",
+				"internalName": "      12",
+				"displayNumber": "12",
+				"num": "27",
+				"line": "12",
+				"catOut": "Tram",
+				"catIn": "T",
+				"catCode": "2",
+				"cls": "4",
+				"catOutS": "T",
+				"catOutL": "Tram",
+				"operatorCode": "BVG",
+				"operator": "Berliner Verkehrsbetriebe",
+				"admin": "BVT---",
+				"matchId": "12"
+			},
+			"Product": [
+				{
+					"icon": {
+						"foregroundColor": {
+							"r": 255,
+							"g": 255,
+							"b": 255,
+							"hex": "#FFFFFF"
+						},
+						"backgroundColor": {
+							"r": 204,
+							"g": 0,
+							"b": 0,
+							"hex": "#CC0000"
+						},
+						"res": "prod_gen"
+					},
+					"name": "12",
+					"internalName": "      12",
+					"displayNumber": "12",
+					"num": "27",
+					"line": "12",
+					"catOut": "Tram",
+					"catIn": "T",
+					"catCode": "2",
+					"cls": "4",
+					"catOutS": "T",
+					"catOutL": "Tram",
+					"operatorCode": "BVG",
+					"operator": "Berliner Verkehrsbetriebe",
+					"admin": "BVT---",
+					"routeIdxFrom": 9,
+					"routeIdxTo": 25,
+					"matchId": "12"
+				}
+			],
+			"Notes": {
+				"Note": [
+					{
+						"value": "Bicycle conveyance",
+						"key": "FB",
+						"type": "A",
+						"priority": 350,
+						"routeIdxFrom": 9,
+						"routeIdxTo": 25,
+						"txtN": "Bicycle conveyance"
+					},
+					{
+						"value": "barrier-free",
+						"key": "bf",
+						"type": "A",
+						"priority": 920,
+						"routeIdxFrom": 9,
+						"routeIdxTo": 25,
+						"txtN": "barrier-free"
+					}
+				]
+			},
+			"altId": [
+				"A×de:11000:900110505::4"
+			],
+			"name": "12",
+			"type": "ST",
+			"stop": "Schwedter Str. (Berlin)",
+			"stopid": "A=1@O=Schwedter Str. (Berlin)@X=13408274@Y=52537140@U=86@L=302207004@",
+			"stopExtId": "302207004",
+			"time": "10:02:00",
+			"date": "2021-10-04",
+			"reachable": true,
+			"direction": "Pasedagplatz (Berlin)",
+			"entry": true
+		},
+		{
+			"JourneyDetailRef": {
+				"ref": "1|16174|2|86|4102021"
+			},
+			"JourneyStatus": "P",
+			"ProductAtStop": {
+				"icon": {
+					"foregroundColor": {
+						"r": 255,
+						"g": 255,
+						"b": 255,
+						"hex": "#FFFFFF"
+					},
+					"backgroundColor": {
+						"r": 204,
+						"g": 0,
+						"b": 0,
+						"hex": "#CC0000"
+					},
+					"res": "prod_gen"
+				},
+				"name": "M1",
+				"internalName": "      M1",
+				"displayNumber": "M1",
+				"num": "629",
+				"line": "M1",
+				"catOut": "Tram",
+				"catIn": "T",
+				"catCode": "2",
+				"cls": "4",
+				"catOutS": "T",
+				"catOutL": "Tram",
+				"operatorCode": "BVG",
+				"operator": "Berliner Verkehrsbetriebe",
+				"admin": "BVT---",
+				"matchId": "M1"
+			},
+			"Product": [
+				{
+					"icon": {
+						"foregroundColor": {
+							"r": 255,
+							"g": 255,
+							"b": 255,
+							"hex": "#FFFFFF"
+						},
+						"backgroundColor": {
+							"r": 204,
+							"g": 0,
+							"b": 0,
+							"hex": "#CC0000"
+						},
+						"res": "prod_gen"
+					},
+					"name": "M1",
+					"internalName": "      M1",
+					"displayNumber": "M1",
+					"num": "629",
+					"line": "M1",
+					"catOut": "Tram",
+					"catIn": "T",
+					"catCode": "2",
+					"cls": "4",
+					"catOutS": "T",
+					"catOutL": "Tram",
+					"operatorCode": "BVG",
+					"operator": "Berliner Verkehrsbetriebe",
+					"admin": "BVT---",
+					"routeIdxFrom": 10,
+					"routeIdxTo": 28,
+					"matchId": "M1"
+				}
+			],
+			"Notes": {
+				"Note": [
+					{
+						"value": "Bicycle conveyance",
+						"key": "FB",
+						"type": "A",
+						"priority": 350,
+						"routeIdxFrom": 10,
+						"routeIdxTo": 28,
+						"txtN": "Bicycle conveyance"
+					},
+					{
+						"value": "barrier-free",
+						"key": "bf",
+						"type": "A",
+						"priority": 920,
+						"routeIdxFrom": 10,
+						"routeIdxTo": 28,
+						"txtN": "barrier-free"
+					}
+				]
+			},
+			"altId": [
+				"A×de:11000:900110505::4"
+			],
+			"name": "M1",
+			"type": "ST",
+			"stop": "Schwedter Str. (Berlin)",
+			"stopid": "A=1@O=Schwedter Str. (Berlin)@X=13408274@Y=52537140@U=86@L=302207004@",
+			"stopExtId": "302207004",
+			"time": "10:02:00",
+			"date": "2021-10-04",
+			"reachable": true,
+			"direction": "Schillerstr. (Berlin)",
+			"entry": true
+		},
+		{
+			"JourneyDetailRef": {
+				"ref": "1|16127|2|86|4102021"
+			},
+			"JourneyStatus": "P",
+			"ProductAtStop": {
+				"icon": {
+					"foregroundColor": {
+						"r": 255,
+						"g": 255,
+						"b": 255,
+						"hex": "#FFFFFF"
+					},
+					"backgroundColor": {
+						"r": 204,
+						"g": 0,
+						"b": 0,
+						"hex": "#CC0000"
+					},
+					"res": "prod_gen"
+				},
+				"name": "M1",
+				"internalName": "      M1",
+				"displayNumber": "M1",
+				"num": "580",
+				"line": "M1",
+				"catOut": "Tram",
+				"catIn": "T",
+				"catCode": "2",
+				"cls": "4",
+				"catOutS": "T",
+				"catOutL": "Tram",
+				"operatorCode": "BVG",
+				"operator": "Berliner Verkehrsbetriebe",
+				"admin": "BVT---",
+				"matchId": "M1"
+			},
+			"Product": [
+				{
+					"icon": {
+						"foregroundColor": {
+							"r": 255,
+							"g": 255,
+							"b": 255,
+							"hex": "#FFFFFF"
+						},
+						"backgroundColor": {
+							"r": 204,
+							"g": 0,
+							"b": 0,
+							"hex": "#CC0000"
+						},
+						"res": "prod_gen"
+					},
+					"name": "M1",
+					"internalName": "      M1",
+					"displayNumber": "M1",
+					"num": "580",
+					"line": "M1",
+					"catOut": "Tram",
+					"catIn": "T",
+					"catCode": "2",
+					"cls": "4",
+					"catOutS": "T",
+					"catOutL": "Tram",
+					"operatorCode": "BVG",
+					"operator": "Berliner Verkehrsbetriebe",
+					"admin": "BVT---",
+					"routeIdxFrom": 20,
+					"routeIdxTo": 30,
+					"matchId": "M1"
+				}
+			],
+			"Notes": {
+				"Note": [
+					{
+						"value": "Bicycle conveyance",
+						"key": "FB",
+						"type": "A",
+						"priority": 350,
+						"routeIdxFrom": 20,
+						"routeIdxTo": 30,
+						"txtN": "Bicycle conveyance"
+					},
+					{
+						"value": "barrier-free",
+						"key": "bf",
+						"type": "A",
+						"priority": 920,
+						"routeIdxFrom": 20,
+						"routeIdxTo": 30,
+						"txtN": "barrier-free"
+					}
+				]
+			},
+			"altId": [
+				"A×de:11000:900110505::3"
+			],
+			"name": "M1",
+			"type": "ST",
+			"stop": "Schwedter Str. (Berlin)",
+			"stopid": "A=1@O=Schwedter Str. (Berlin)@X=13407591@Y=52536601@U=86@L=302207003@",
+			"stopExtId": "302207003",
+			"time": "10:04:00",
+			"date": "2021-10-04",
+			"reachable": true,
+			"direction": "Am Kupfergraben (Berlin)",
+			"entry": true
+		}
+	],
+	"TechnicalMessages": {
+		"TechnicalMessage": [
+			{
+				"value": "2021-09-29 20:40:49",
+				"key": "requestTime"
+			},
+			{
+				"value": "ttp=15085#15321 plancode0=66rkt planid=1627383691 planid0=1627383691 planid_adr=1592347662 plancode_adr=mbtls planid_poi=1626350963 plancode_poi=6kmpx planid_ext=1516270147 plancode_ext=c07th srvv=5.45.VBB.9.6.6 (02c029c19) [Sep 27 2021] tlibv=TRFVER: rel/vbb/2.16.2 2020-12-07 09:48:02 +0100 (Built-by: rhu) VBB_TARIF jno=2",
+				"key": "backendInfo"
+			}
+		]
+	},
+	"serverVersion": "2.15.1-SNAPSHOT",
+	"dialectVersion": "1.29",
+	"planRtTs": "2021-09-29T20:39:44.000+02:00",
+	"requestId": "8ciixg6mmakw8ics"
+}
