@@ -52,6 +52,7 @@ const parseJourneyLeg = (ctx, l) => { // l = leg
 		if (depPl.prognosedPlatform) res.prognosedDeparturePlatform = depPl.prognosedPlatform
 
 		// todo: pull `public` value from `profile.products`
+		// todo: this might be a URL, e.g. `https://api.vasttrafik.se/bin/rest.exe/v2/journeyDetail?ref=370035%2F124691%2F407586%2F80448%2F80%3Fdate%3D2021-10-20%26station_evaId%3D34279001%26station_type%3Ddep%26format%3Djson%26`
 		res.tripId = l.JourneyDetailRef && l.JourneyDetailRef.ref || null
 
 		// todo: is it num instead of number?

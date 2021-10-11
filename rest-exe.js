@@ -29,7 +29,7 @@ const createRestClient = (profile, token, userAgent) => {
 
 		const {res} = await profile.request({profile, opt, token}, userAgent, 'location.name', {
 			input: opt.fuzzy ? query + '?' : query,
-			maxNo: 3, // todo: opt.results
+			maxNo: opt.results,
 			type: profile.formatLocationFilter(opt.stops, opt.addresses, opt.poi)
 			// todo: `products` with bitmask
 			// todo: coordLong, coordLat, radius

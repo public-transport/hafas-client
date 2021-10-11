@@ -1,0 +1,14 @@
+{
+	"private": true,
+	"name": "rest-supported-services",
+	"version": "1.0.0",
+	"type": "module",
+	"bin": {
+		"hafas-client-rest-supported-services": "./cli.js"
+	},
+	"author": "Jannis R <mail@jannisr.de>",
+	"license": "ISC",
+	"dependencies": {
+		"mri": "^1.1.4"
+	}
+}
