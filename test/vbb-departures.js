@@ -17,7 +17,7 @@ const opt = {
 	remarks: true,
 	stopovers: true,
 	includeRelatedStations: true,
-	when: '2019-08-19T20:30:00+02:00',
+	when: '2021-10-12T17:42:00+02:00',
 	products: {}
 }
 
