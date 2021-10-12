@@ -16,7 +16,7 @@ const opt = {
 	subStops: false,
 	entrances: true,
 	remarks: true,
-	when: '2020-07-11T16:49:00+02:00',
+	when: '2021-11-12T17:30:00+02:00',
 }
 
 tap.test('parses a trip correctly (Rejseplanen)', (t) => {

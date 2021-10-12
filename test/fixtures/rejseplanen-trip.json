@@ -5,69 +5,190 @@
 				"lid": "A=1@O=Aalborg St.@X=9917044@Y=57043037@U=86@L=8600020@",
 				"type": "S",
 				"name": "Aalborg St.",
-				"icoX": 2,
+				"icoX": 0,
 				"extId": "8600020",
 				"state": "F",
 				"crd": {
 					"x": 9917044,
 					"y": 57043037,
-					"layerX": 0,
-					"crdSysX": 0
+					"floor": 0
 				},
-				"pCls": 239
+				"pCls": 7,
+				"chgTime": "000300"
+			},
+			{
+				"lid": "A=1@O=Aarhus H@X=10204761@Y=56150444@U=86@L=8600053@",
+				"type": "S",
+				"name": "Aarhus H",
+				"icoX": 0,
+				"extId": "8600053",
+				"state": "F",
+				"crd": {
+					"x": 10204761,
+					"y": 56150444,
+					"floor": 0
+				},
+				"pCls": 2319,
+				"chgTime": "000600"
+			},
+			{
+				"lid": "A=1@O=Skalborg St.@X=9898373@Y=57008366@U=86@L=8600022@",
+				"type": "S",
+				"name": "Skalborg St.",
+				"icoX": 0,
+				"extId": "8600022",
+				"state": "F",
+				"crd": {
+					"x": 9898373,
+					"y": 57008366,
+					"floor": 0
+				},
+				"pCls": 5,
+				"chgTime": "000300"
+			},
+			{
+				"lid": "A=1@O=Svenstrup St. (Jylland)@X=9856294@Y=56973092@U=86@L=8600023@",
+				"type": "S",
+				"name": "Svenstrup St. (Jylland)",
+				"icoX": 0,
+				"extId": "8600023",
+				"state": "F",
+				"crd": {
+					"x": 9856294,
+					"y": 56973092,
+					"floor": 0
+				},
+				"pCls": 5,
+				"chgTime": "000300"
+			},
+			{
+				"lid": "A=1@O=Støvring St.@X=9843925@Y=56890976@U=86@L=8600026@",
+				"type": "S",
+				"name": "Støvring St.",
+				"icoX": 0,
+				"extId": "8600026",
+				"state": "F",
+				"crd": {
+					"x": 9843925,
+					"y": 56890976,
+					"floor": 0
+				},
+				"pCls": 5,
+				"chgTime": "000300"
+			},
+			{
+				"lid": "A=1@O=Skørping St.@X=9887361@Y=56835719@U=86@L=8600027@",
+				"type": "S",
+				"name": "Skørping St.",
+				"icoX": 0,
+				"extId": "8600027",
+				"state": "F",
+				"crd": {
+					"x": 9887361,
+					"y": 56835719,
+					"floor": 0
+				},
+				"pCls": 5,
+				"chgTime": "000200"
+			},
+			{
+				"lid": "A=1@O=Arden St.@X=9859926@Y=56769729@U=86@L=8600029@",
+				"type": "S",
+				"name": "Arden St.",
+				"icoX": 0,
+				"extId": "8600029",
+				"state": "F",
+				"crd": {
+					"x": 9859926,
+					"y": 56769729,
+					"floor": 0
+				},
+				"pCls": 3,
+				"chgTime": "000200"
 			},
 			{
 				"lid": "A=1@O=Hobro St.@X=9782790@Y=56643539@U=86@L=8600032@",
 				"type": "S",
 				"name": "Hobro St.",
-				"icoX": 2,
+				"icoX": 0,
 				"extId": "8600032",
 				"state": "F",
 				"crd": {
 					"x": 9782790,
 					"y": 56643539,
-					"layerX": 0,
-					"crdSysX": 0
+					"floor": 0
 				},
-				"pCls": 303
+				"pCls": 3,
+				"chgTime": "000200"
+			},
+			{
+				"lid": "A=1@O=Randers St.@X=10022011@Y=56461858@U=86@L=8600040@",
+				"type": "S",
+				"name": "Randers St.",
+				"icoX": 0,
+				"extId": "8600040",
+				"state": "F",
+				"crd": {
+					"x": 10022011,
+					"y": 56461858,
+					"floor": 0
+				},
+				"pCls": 3,
+				"chgTime": "000200"
+			},
+			{
+				"lid": "A=1@O=Langå St.@X=9896144@Y=56386393@U=86@L=8600044@",
+				"type": "S",
+				"name": "Langå St.",
+				"icoX": 0,
+				"extId": "8600044",
+				"state": "F",
+				"crd": {
+					"x": 9896144,
+					"y": 56386393,
+					"floor": 0
+				},
+				"pCls": 13,
+				"chgTime": "000400"
+			},
+			{
+				"lid": "A=1@O=Hadsten St.@X=10047234@Y=56327496@U=86@L=8600047@",
+				"type": "S",
+				"name": "Hadsten St.",
+				"icoX": 0,
+				"extId": "8600047",
+				"state": "F",
+				"crd": {
+					"x": 10047234,
+					"y": 56327496,
+					"floor": 0
+				},
+				"pCls": 13,
+				"chgTime": "000200"
 			}
 		],
 		"prodL": [
 			{
-				"name": "Replacement bus RØD",
-				"nameS": "RØD",
-				"number": "RØD",
+				"pid": "L::0::IC::B2174145061::IC_2174145061::*",
+				"name": "IC 71160",
+				"number": "71160",
 				"icoX": 0,
-				"cls": 8,
+				"cls": 1,
 				"oprX": 0,
 				"prodCtx": {
-					"name": "Replacement bus RØD",
-					"num": "20002",
-					"line": "RØD",
-					"matchId": "RØD",
-					"catOut": "Togbus  ",
-					"catOutS": "018",
-					"catOutL": "Replacement bus",
-					"catIn": "018",
-					"catCode": "3",
-					"admin": "000001"
-				}
-			}
-		],
-		"polyL": [],
-		"layerL": [
-			{
-				"id": "standard",
-				"name": "standard",
-				"index": 0,
-				"annoCnt": 0
-			}
-		],
-		"crdSysL": [
-			{
-				"id": "standard",
-				"index": 0,
-				"type": "WGS84"
+					"name": "IC  71160",
+					"num": "71160",
+					"matchId": "71160",
+					"catOut": "IC      ",
+					"catOutS": "001",
+					"catOutL": "IC      ",
+					"catIn": "001",
+					"catCode": "0",
+					"admin": "000002"
+				},
+				"himIdL": [
+					"HIM_FREETEXT_263669"
+				]
 			}
 		],
 		"opL": [
@@ -78,38 +199,29 @@
 		],
 		"remL": [
 			{
-				"type": "I",
-				"code": "NO",
-				"icoX": 3,
-				"txtN": "Vi kører med Togbusser på denne tur, som derfor varer længere end normalt. Tiderne, du ser i Rejseplanen, er kun vejledende. Togbusserne kører i pendulfart mellem stationerne. Det skyldes akutte driftsforstyrrelser. I Togbussen kan du ikke tage din cykel med."
+				"type": "R",
+				"code": "text.realtime.stop.dep.platformChange",
+				"icoX": 2,
+				"txtN": "Abfahrt heute von Gleis 3"
 			},
 			{
-				"type": "R",
-				"code": "text.realtime.journey.additional.service",
-				"icoX": 4,
-				"txtN": "Extra bus or train"
+				"type": "A",
+				"code": "RE",
+				"prio": 0,
+				"icoX": 3,
+				"txtN": "Reservierung empfohlen"
+			},
+			{
+				"type": "A",
+				"code": "TD",
+				"prio": 0,
+				"icoX": 3,
+				"txtN": "Mulighed for internet"
 			}
 		],
 		"icoL": [
 			{
-				"res": "prod_gen",
-				"fg": {
-					"r": 255,
-					"g": 255,
-					"b": 255
-				},
-				"bg": {
-					"r": 80,
-					"g": 183,
-					"b": 72
-				}
-			},
-			{
-				"res": "DSB",
-				"txt": "DSB"
-			},
-			{
-				"res": "prod_ic",
+				"res": "IC",
 				"fg": {
 					"r": 255,
 					"g": 255,
@@ -122,72 +234,392 @@
 				}
 			},
 			{
-				"res": "INFO"
+				"res": "DSB",
+				"txt": "DSB"
 			},
 			{
-				"res": "rt_warn"
+				"res": "rt_platform"
+			},
+			{
+				"res": "attr_info"
+			}
+		],
+		"dirL": [
+			{
+				"txt": "CPH Lufthavn",
+				"flg": "1"
+			}
+		],
+		"lDrawStyleL": [
+			{
+				"sIcoX": 0,
+				"type": "SOLID",
+				"bg": {
+					"r": 239,
+					"g": 65,
+					"b": 48
+				}
+			},
+			{
+				"type": "SOLID",
+				"bg": {
+					"r": 239,
+					"g": 65,
+					"b": 48
+				}
 			}
 		]
 	},
 	"journey": {
-		"jid": "1|51255|0|86|13072020",
-		"date": "20200713",
+		"jid": "1|307|4|86|12102021",
+		"date": "20211012",
 		"prodX": 0,
-		"status": "A",
+		"dirTxt": "CPH Lufthavn",
+		"dirFlg": "1",
+		"status": "P",
 		"isRchbl": true,
 		"stopL": [
 			{
 				"locX": 0,
 				"idx": 0,
 				"dProdX": 0,
-				"dInR": true,
-				"dTimeS": "103500",
+				"dPltfS": {
+					"type": "PL",
+					"txt": "4"
+				},
+				"dPltfR": {
+					"type": "PL",
+					"txt": "3"
+				},
+				"dPlatfCh": true,
+				"dTimeS": "160600",
+				"dProgType": "PROGNOSED",
+				"dDirTxt": "CPH Lufthavn",
+				"dDirFlg": "1",
+				"msgL": [
+					{
+						"type": "REM",
+						"remX": 0,
+						"sty": "M",
+						"tagL": [
+							"RES_LOC_H3"
+						],
+						"sort": 13107200,
+						"persist": false
+					}
+				],
+				"type": "N"
+			},
+			{
+				"locX": 2,
+				"idx": 1,
+				"aProdX": 0,
+				"aPltfS": {
+					"type": "PL",
+					"txt": "2"
+				},
+				"aPltfR": {
+					"type": "PL",
+					"txt": "2"
+				},
+				"aTimeS": "160900",
+				"aTimeR": "161000",
+				"aProgType": "PROGNOSED",
+				"dProdX": 0,
+				"dPltfS": {
+					"type": "PL",
+					"txt": "2"
+				},
+				"dPltfR": {
+					"type": "PL",
+					"txt": "2"
+				},
+				"dTimeS": "161000",
+				"dTimeR": "161200",
+				"dProgType": "PROGNOSED",
+				"type": "N"
+			},
+			{
+				"locX": 3,
+				"idx": 2,
+				"aProdX": 0,
+				"aPltfS": {
+					"type": "PL",
+					"txt": "2"
+				},
+				"aPltfR": {
+					"type": "PL",
+					"txt": "2"
+				},
+				"aTimeS": "161300",
+				"aTimeR": "161400",
+				"aProgType": "PROGNOSED",
+				"dProdX": 0,
+				"dPltfS": {
+					"type": "PL",
+					"txt": "2"
+				},
+				"dPltfR": {
+					"type": "PL",
+					"txt": "2"
+				},
+				"dTimeS": "161400",
+				"dTimeR": "161700",
+				"dProgType": "PROGNOSED",
+				"type": "N"
+			},
+			{
+				"locX": 4,
+				"idx": 3,
+				"aProdX": 0,
+				"aPltfS": {
+					"type": "PL",
+					"txt": "2"
+				},
+				"aPltfR": {
+					"type": "PL",
+					"txt": "2"
+				},
+				"aTimeS": "162100",
+				"aTimeR": "162200",
+				"aProgType": "PROGNOSED",
+				"dProdX": 0,
+				"dPltfS": {
+					"type": "PL",
+					"txt": "2"
+				},
+				"dPltfR": {
+					"type": "PL",
+					"txt": "2"
+				},
+				"dTimeS": "162200",
+				"dTimeR": "162400",
+				"dProgType": "PROGNOSED",
+				"type": "N"
+			},
+			{
+				"locX": 5,
+				"idx": 4,
+				"aProdX": 0,
+				"aPltfS": {
+					"type": "PL",
+					"txt": "3"
+				},
+				"aPltfR": {
+					"type": "PL",
+					"txt": "3"
+				},
+				"aTimeS": "162700",
+				"aTimeR": "162800",
+				"aProgType": "PROGNOSED",
+				"dProdX": 0,
+				"dPltfS": {
+					"type": "PL",
+					"txt": "3"
+				},
+				"dPltfR": {
+					"type": "PL",
+					"txt": "3"
+				},
+				"dTimeS": "162800",
+				"dTimeR": "162900",
+				"dProgType": "PROGNOSED",
+				"type": "N"
+			},
+			{
+				"locX": 6,
+				"idx": 5,
+				"aProdX": 0,
+				"aPltfS": {
+					"type": "PL",
+					"txt": "1"
+				},
+				"aPltfR": {
+					"type": "PL",
+					"txt": "1"
+				},
+				"aTimeS": "163300",
+				"aTimeR": "163600",
+				"aProgType": "PROGNOSED",
+				"dProdX": 0,
+				"dPltfS": {
+					"type": "PL",
+					"txt": "1"
+				},
+				"dPltfR": {
+					"type": "PL",
+					"txt": "1"
+				},
+				"dTimeS": "163400",
+				"dTimeR": "163700",
+				"dProgType": "PROGNOSED",
+				"type": "N"
+			},
+			{
+				"locX": 7,
+				"idx": 6,
+				"aProdX": 0,
+				"aPltfS": {
+					"type": "PL",
+					"txt": "3"
+				},
+				"aPltfR": {
+					"type": "PL",
+					"txt": "3"
+				},
+				"aTimeS": "164300",
+				"aTimeR": "164500",
+				"aProgType": "PROGNOSED",
+				"dProdX": 0,
+				"dPltfS": {
+					"type": "PL",
+					"txt": "3"
+				},
+				"dPltfR": {
+					"type": "PL",
+					"txt": "3"
+				},
+				"dTimeS": "164500",
+				"dTimeR": "164600",
+				"dProgType": "PROGNOSED",
+				"type": "N"
+			},
+			{
+				"locX": 8,
+				"idx": 7,
+				"aProdX": 0,
+				"aPltfS": {
+					"type": "PL",
+					"txt": "3"
+				},
+				"aPltfR": {
+					"type": "PL",
+					"txt": "3"
+				},
+				"aTimeS": "165900",
+				"aTimeR": "170100",
+				"aProgType": "PROGNOSED",
+				"dProdX": 0,
+				"dPltfS": {
+					"type": "PL",
+					"txt": "3"
+				},
+				"dPltfR": {
+					"type": "PL",
+					"txt": "3"
+				},
+				"dTimeS": "170100",
+				"dProgType": "PROGNOSED",
+				"type": "N"
+			},
+			{
+				"locX": 9,
+				"idx": 8,
+				"aProdX": 0,
+				"aPltfS": {
+					"type": "PL",
+					"txt": "2"
+				},
+				"aPltfR": {
+					"type": "PL",
+					"txt": "2"
+				},
+				"aTimeS": "170900",
+				"aProgType": "PROGNOSED",
+				"dProdX": 0,
+				"dPltfS": {
+					"type": "PL",
+					"txt": "2"
+				},
+				"dPltfR": {
+					"type": "PL",
+					"txt": "2"
+				},
+				"dTimeS": "171000",
+				"dProgType": "PROGNOSED",
+				"type": "N"
+			},
+			{
+				"locX": 10,
+				"idx": 9,
+				"aProdX": 0,
+				"aPltfS": {
+					"type": "PL",
+					"txt": "1"
+				},
+				"aPltfR": {
+					"type": "PL",
+					"txt": "1"
+				},
+				"aTimeS": "171700",
+				"aProgType": "PROGNOSED",
+				"dProdX": 0,
+				"dPltfS": {
+					"type": "PL",
+					"txt": "1"
+				},
+				"dPltfR": {
+					"type": "PL",
+					"txt": "1"
+				},
+				"dTimeS": "171800",
 				"dProgType": "PROGNOSED",
 				"type": "N"
 			},
 			{
 				"locX": 1,
-				"idx": 1,
+				"idx": 11,
 				"aProdX": 0,
-				"aOutR": true,
-				"aTimeS": "112500",
+				"aPltfS": {
+					"type": "PL",
+					"txt": "5"
+				},
+				"aPltfR": {
+					"type": "PL",
+					"txt": "5"
+				},
+				"aTimeS": "173800",
 				"aProgType": "PROGNOSED",
 				"type": "N"
 			}
 		],
 		"sDaysL": [
 			{
-				"sDaysR": "not every day",
-				"sDaysI": "13. Jul",
-				"sDaysB": "10000000000000000000",
+				"sDaysR": "nicht täglich",
+				"sDaysI": "12. bis 24. Okt 2021",
+				"sDaysB": "FFF8000000000000000000",
 				"fLocX": 0,
 				"tLocX": 1,
 				"fLocIdx": 0,
-				"tLocIdx": 1
+				"tLocIdx": 11
 			}
 		],
+		"pos": {
+			"x": 9953450,
+			"y": 56482839
+		},
 		"msgL": [
 			{
 				"type": "REM",
-				"remX": 0,
-				"dspl": "U",
+				"remX": 1,
+				"sty": "I",
 				"fLocX": 0,
 				"tLocX": 1,
 				"tagL": [
-					"RES_JNY_DTL"
+					"RES_JNY_DTL_H3"
 				],
-				"sort": 684195840,
-				"persist": false
+				"sort": 402653184
 			},
 			{
 				"type": "REM",
-				"remX": 1,
-				"dspl": "U",
+				"remX": 2,
+				"sty": "I",
+				"fLocX": 0,
+				"tLocX": 1,
 				"tagL": [
-					"RES_JNY_H3"
+					"RES_JNY_DTL_H3"
 				],
-				"sort": 13107200,
-				"persist": false
+				"sort": 402653184
 			}
 		],
 		"subscr": "F",
@@ -197,11 +629,23 @@
 				"fLocX": 0,
 				"tLocX": 1,
 				"fIdx": 0,
-				"tIdx": 1
+				"tIdx": 11
 			}
-		]
+		],
+		"dirL": [
+			{
+				"dirX": 0,
+				"fLocX": 0,
+				"tLocX": 1,
+				"fIdx": 0,
+				"tIdx": 11
+			}
+		],
+		"sumLDrawStyleX": 0,
+		"resLDrawStyleX": 1,
+		"trainStartDate": "20211012"
 	},
-	"fpB": "20200710",
-	"fpE": "20200923",
-	"planrtTS": "1594478912"
+	"fpB": "20211012",
+	"fpE": "20220105",
+	"planrtTS": "1634050700"
 }
