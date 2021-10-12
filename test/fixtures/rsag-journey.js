@@ -23,6 +23,11 @@ module.exports = {
 				}
 			},
 			reachable: true,
+			currentLocation: {
+				type: 'location',
+				latitude: 54.078242,
+				longitude: 12.131078,
+			},
 
 			origin: {
 				type: 'stop',

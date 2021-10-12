@@ -126,6 +126,11 @@ The `Promise` returned by `journeys()` will resolve with an object with the `jou
 				express: false,
 				night: false
 			},
+			currentLocation: {
+				type: 'location',
+				latitude: 52.51384,
+				longitude: 13.526806,
+			},
 
 			origin: {
 				type: 'station',

@@ -107,6 +107,15 @@ const parseJourneyLeg = (ctx, pt, date) => { // pt = raw leg
 		res.tripId = pt.jny.jid
 		res.line = pt.jny.line || null
 		res.direction = pt.jny.dirTxt && profile.parseStationName(ctx, pt.jny.dirTxt) || null
+
+		if (pt.jny.pos) {
+			res.currentLocation = {
+				type: 'location',
+				latitude: pt.jny.pos.y / 1000000,
+				longitude: pt.jny.pos.x / 1000000,
+			}
+		}
+
 		const arrPl = profile.parsePlatform(ctx, pt.arr.aPlatfS || (pt.arr.aPltfS !== undefined ? pt.arr.aPltfS.txt : null), pt.arr.aPlatfR || (pt.arr.aPltfR !== undefined ? pt.arr.aPltfR.txt : null), pt.arr.aCncl)
 		res.arrivalPlatform = arrPl.platform
 		res.plannedArrivalPlatform = arrPl.plannedPlatform

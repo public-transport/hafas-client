@@ -57,6 +57,31 @@ The response looked like this:
 ```js
 {
 	id: '1|31431|28|86|17122017',
+	direction: 'S Spandau',
+	line: {
+		type: 'line',
+		id: '18299',
+		fahrtNr: '12345',
+		name: 'S9',
+		public: true,
+		mode: 'train',
+		product: 'suburban',
+		symbol: 'S',
+		nr: 9,
+		metro: false,
+		express: false,
+		night: false,
+		operator: {
+			type: 'operator',
+			id: 's-bahn-berlin-gmbh',
+			name: 'S-Bahn Berlin GmbH'
+		}
+	},
+	currentLocation: {
+		type: 'location',
+		latitude: 52.447455,
+		longitude: 13.522464,
+	},
 
 	origin: {
 		type: 'station',
@@ -107,26 +132,7 @@ The response looked like this:
 	arrivalDelay: 90,
 	arrivalPlatform: '3a',
 	plannedArrivalPlatform: '2',
-	line: {
-		type: 'line',
-		id: '18299',
-		fahrtNr: '12345',
-		name: 'S9',
-		public: true,
-		mode: 'train',
-		product: 'suburban',
-		symbol: 'S',
-		nr: 9,
-		metro: false,
-		express: false,
-		night: false,
-		operator: {
-			type: 'operator',
-			id: 's-bahn-berlin-gmbh',
-			name: 'S-Bahn Berlin GmbH'
-		}
-	},
-	direction: 'S Spandau',
+
 	stopovers: [ /* … */ ]
 }
 ```
