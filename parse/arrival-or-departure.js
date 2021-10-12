@@ -34,6 +34,14 @@ const createParseArrOrDep = (prefix) => {
 			remarks: []
 		}
 
+		if (d.pos) {
+			res.currentTripPosition = {
+				type: 'location',
+				latitude: d.pos.y / 1000000,
+				longitude: d.pos.x / 1000000,
+			}
+		}
+
 		if (cancelled) {
 			res.cancelled = true
 			Object.defineProperty(res, 'canceled', {value: true})

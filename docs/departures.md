@@ -97,6 +97,11 @@ The response may look like this:
 			name: 'S-Bahn Berlin GmbH'
 		}
 	},
+	currentTripPosition: {
+		type: 'location',
+		latitude: 52.500851,
+		longitude: 13.283755,
+	},
 
 	stop: {
 		type: 'station',
@@ -143,6 +148,11 @@ The response may look like this:
 		night: false,
 		operator: { /* … */ }
 	},
+	currentTripPosition: {
+		type: 'location',
+		latitude: 52.505004,
+		longitude: 13.322391,
+	},
 
 	stop: { /* … */ },
 
@@ -170,6 +180,11 @@ The response may look like this:
 		express: false,
 		night: false,
 		operator: { /* … */ }
+	},
+	currentTripPosition: {
+		type: 'location',
+		latitude: 52.49864,
+		longitude: 13.307622,
 	},
 
 	stop: { /* … */ },

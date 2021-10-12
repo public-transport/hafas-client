@@ -245,7 +245,12 @@ module.exports = [
 				validUntil: '2022-12-31T00:00:00+01:00',
 				modified: '2021-06-12T07:43:36+02:00'
 			}
-		]
+		],
+		currentTripPosition: {
+			type: 'location',
+			latitude: 52.514218,
+			longitude: 13.419502,
+		},
 	},
 	{
 		tripId: '1|12106|15|86|12102021',
@@ -490,7 +495,12 @@ module.exports = [
 				validUntil: '2022-12-31T00:00:00+01:00',
 				modified: '2021-06-12T07:43:36+02:00'
 			}
-		]
+		],
+		currentTripPosition: {
+			type: 'location',
+			latitude: 52.514227,
+			longitude: 13.422495,
+		},
 	},
 	{
 		tripId: '1|23076|26|86|12102021',
@@ -736,7 +746,12 @@ module.exports = [
 				validUntil: '2022-12-31T00:00:00+01:00',
 				modified: '2021-06-12T07:43:36+02:00'
 			}
-		]
+		],
+		currentTripPosition: {
+			type: 'location',
+			latitude: 52.518982,
+			longitude: 13.415097,
+		},
 	},
 	{
 		tripId: '1|23117|2|86|12102021',
@@ -982,7 +997,12 @@ module.exports = [
 				validUntil: '2022-12-31T00:00:00+01:00',
 				modified: '2021-06-12T07:43:36+02:00'
 			}
-		]
+		],
+		currentTripPosition: {
+			type: 'location',
+			latitude: 52.51011,
+			longitude: 13.415834,
+		},
 	},
 	{
 		tripId: '1|25978|5|86|12102021',
@@ -1228,7 +1248,12 @@ module.exports = [
 				validUntil: '2022-12-31T00:00:00+01:00',
 				modified: '2021-06-12T07:43:36+02:00'
 			}
-		]
+		],
+		currentTripPosition: {
+			type: 'location',
+			latitude: 52.512052,
+			longitude: 13.427682,
+		},
 	},
 	{
 		tripId: '1|26593|10|86|12102021',
@@ -1474,7 +1499,12 @@ module.exports = [
 				validUntil: '2022-12-31T00:00:00+01:00',
 				modified: '2021-06-12T07:43:36+02:00'
 			}
-		]
+		],
+		currentTripPosition: {
+			type: 'location',
+			latitude: 52.52167,
+			longitude: 13.410989,
+		},
 	},
 	{
 		tripId: '1|26662|10|86|12102021',
@@ -1720,7 +1750,12 @@ module.exports = [
 				validUntil: '2022-12-31T00:00:00+01:00',
 				modified: '2021-06-12T07:43:36+02:00'
 			}
-		]
+		],
+		currentTripPosition: {
+			type: 'location',
+			latitude: 52.507287,
+			longitude: 13.445238,
+		},
 	},
 	{
 		tripId: '1|26077|2|86|12102021',
@@ -1966,7 +2001,12 @@ module.exports = [
 				validUntil: '2022-12-31T00:00:00+01:00',
 				modified: '2021-06-12T07:43:36+02:00'
 			}
-		]
+		],
+		currentTripPosition: {
+			type: 'location',
+			latitude: 52.520528,
+			longitude: 13.39373,
+		},
 	},
 	{
 		tripId: '1|23049|34|86|12102021',
@@ -2212,7 +2252,12 @@ module.exports = [
 				validUntil: '2022-12-31T00:00:00+01:00',
 				modified: '2021-06-12T07:43:36+02:00'
 			}
-		]
+		],
+		currentTripPosition: {
+			type: 'location',
+			latitude: 52.534345,
+			longitude: 13.398197,
+		},
 	},
 	{
 		tripId: '1|23111|31|86|12102021',
@@ -2458,7 +2503,12 @@ module.exports = [
 				validUntil: '2022-12-31T00:00:00+01:00',
 				modified: '2021-06-12T07:43:36+02:00'
 			}
-		]
+		],
+		currentTripPosition: {
+			type: 'location',
+			latitude: 52.493516,
+			longitude: 13.421839,
+		},
 	},
 	{
 		tripId: '1|12062|15|86|12102021',
@@ -2703,7 +2753,12 @@ module.exports = [
 				validUntil: '2022-12-31T00:00:00+01:00',
 				modified: '2021-06-12T07:43:36+02:00'
 			}
-		]
+		],
+		currentTripPosition: {
+			type: 'location',
+			latitude: 52.516519,
+			longitude: 13.40956,
+		},
 	},
 	{
 		tripId: '1|27181|9|86|12102021',
@@ -2949,6 +3004,11 @@ module.exports = [
 				validUntil: '2022-12-31T00:00:00+01:00',
 				modified: '2021-06-12T07:43:36+02:00'
 			}
-		]
+		],
+		currentTripPosition: {
+			type: 'location',
+			latitude: 52.498604,
+			longitude: 13.467252,
+		},
 	}
 ]
