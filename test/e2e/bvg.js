@@ -367,7 +367,10 @@ tap.test('nearby', async (t) => {
 		type: 'location',
 		latitude: 52.4873452,
 		longitude: 13.3310411
-	}, {distance: 300})
+	}, {
+		// Even though HAFAS reports Landhausstr. to be 179m, we have to pass way more here. 🙄
+		distance: 600,
+	})
 
 	validate(t, nearby, 'locations', 'nearby')
 
@@ -376,7 +379,8 @@ tap.test('nearby', async (t) => {
 	t.ok(nearby[0].distance > 0)
 	t.ok(nearby[0].distance < 100)
 
-	t.equal(nearby[1].id, landhausstr)
+	const res = nearby.find(s => s.id === landhausstr)
+	t.ok(res, `Landhausstr. ${landhausstr} is not among the nearby stops`)
 	t.equal(nearby[1].name, 'Landhausstr.')
 	t.ok(nearby[1].distance > 100)
 	t.ok(nearby[1].distance < 200)
