@@ -1,5 +1,14 @@
 # Changelog
 
+## `5.20.0`
+
+- 0a096a13 `parseJourneyLeg()`/`parseTrip()`: expose `currentLocation` ✅📝
+- b10c1ce6 Rejseplanen `trip()` test: update fixtures ✅
+- 6507d5a7 VBB `departures()` test: update fixtures ✅
+- c1ee557c `parseArrivalOrDeparture()`: expose `currentTripLocation` ✅📝
+
+[🏷 `5.20.0`](https://github.com/public-transport/hafas-client/releases/tag/5.20.0), 2021-10-18
+
 ## `5.19.1`
 
 - 042668ff add [*DART* profile](../p/dart)
