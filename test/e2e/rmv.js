@@ -78,7 +78,7 @@ tap.test('arrivals at Wiesbaden Hbf', async (t) => {
 
 // todo: nearby
 
-tap.skip('radar', async (t) => {
+tap.test('radar', async (t) => {
 	const vehicles = await client.radar({
 		north: 53.090516,
 		west: 8.750106,

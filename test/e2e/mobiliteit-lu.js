@@ -131,7 +131,7 @@ tap.test('Luxembourg to Ettelbruck, Rue des Romains 4', async (t) => {
 })
 
 // Some journeys don't start or stop at the stop/POI that we queried journeys for.
-tap.skip('Luxembourg to Centre Hospitalier du Nord', async (t) => {
+tap.test('Luxembourg to Centre Hospitalier du Nord', async (t) => {
 	const centreHospitalier = {
 		type: 'location',
 		id: '980050385',

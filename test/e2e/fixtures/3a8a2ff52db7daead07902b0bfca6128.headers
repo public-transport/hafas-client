@@ -1,0 +1,35 @@
+{
+  "statusCode": 200,
+  "headers": {
+    "date": "Thu, 21 Oct 2021 22:03:36 GMT",
+    "server": "Apache",
+    "content-length": "2526",
+    "connection": "close",
+    "content-type": "application/json; charset=utf-8"
+  },
+  "url": "https://horaires.cfl.lu/bin/mgate.exe",
+  "time": 319,
+  "request": {
+    "method": "POST",
+    "headers": {
+      "Content-Type": [
+        "application/json"
+      ],
+      "Accept-Encoding": [
+        "gzip, br, deflate"
+      ],
+      "Accept": [
+        "application/json"
+      ],
+      "user-agent": [
+        "public-transport/hafas-clc77d51f4df3eient:test"
+      ],
+      "Content-Length": [
+        "745"
+      ],
+      "Connection": [
+        "close"
+      ]
+    }
+  }
+}

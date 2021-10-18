@@ -1,19 +1,19 @@
 {
   "statusCode": 200,
   "headers": {
-    "date": "Mon, 23 Aug 2021 22:33:15 GMT",
+    "date": "Thu, 21 Oct 2021 22:03:45 GMT",
     "content-type": "application/json; charset=utf-8",
-    "content-length": "1262",
+    "content-length": "1269",
     "connection": "close",
     "set-cookie": [
-      "AWSALB=liAM9c/BbfXB3hlpYMcOaHrcEc3bQwEDZGPBP7L1mID1UQHPau8cnC1Ry4FWcGCb90v9vIVnIOfSvJJbJ7+48TxYSomWSXG9prjXkl9M2b91GNIj7QGfv6sQLOIJ; Expires=Mon, 30 Aug 2021 22:33:15 GMT; Path=/",
-      "AWSALBCORS=liAM9c/BbfXB3hlpYMcOaHrcEc3bQwEDZGPBP7L1mID1UQHPau8cnC1Ry4FWcGCb90v9vIVnIOfSvJJbJ7+48TxYSomWSXG9prjXkl9M2b91GNIj7QGfv6sQLOIJ; Expires=Mon, 30 Aug 2021 22:33:15 GMT; Path=/; SameSite=None; Secure"
+      "AWSALB=p6wt7IUFGDUKHzJ9P1sO+EcxX3iAw/FQ7JiuuZCxjZpoc21+Ky3sN0wMDLgiE7RzgtKg7PeWVVcFrRVR5kAfbFmPwYRwhUfx6UoUN3WhEC8eDgruN4X5j2GkW7+I; Expires=Thu, 28 Oct 2021 22:03:45 GMT; Path=/",
+      "AWSALBCORS=p6wt7IUFGDUKHzJ9P1sO+EcxX3iAw/FQ7JiuuZCxjZpoc21+Ky3sN0wMDLgiE7RzgtKg7PeWVVcFrRVR5kAfbFmPwYRwhUfx6UoUN3WhEC8eDgruN4X5j2GkW7+I; Expires=Thu, 28 Oct 2021 22:03:45 GMT; Path=/; SameSite=None; Secure",
+      "TS014cfc63=0121ca1b95f09b1b8774260609478349e1b56623924bccfd1b69b06c34423175279ef1626820b4cabd615e464122adbbd80a932ce44fb47cc688cfaadf10fa7634eb9052c3925508ac4695e11d5918f03c0a7f7c4b; Path=/; Secure; HTTPOnly"
     ],
-    "server": "Apache",
     "strict-transport-security": "max-age=16070400; includeSubDomains"
   },
   "url": "https://reiseauskunft.bahn.de/bin/mgate.exe?checksum=06b19b27e42d2be37a1c774d8f0500f0",
-  "time": 249,
+  "time": 257,
   "request": {
     "method": "POST",
     "headers": {
@@ -27,7 +27,7 @@
         "application/json"
       ],
       "user-agent": [
-        "public-52e01e9cec9ctransport/hafas-client:test"
+        "public-transport/had85438d73667fas-client:test"
       ],
       "Content-Length": [
         "323"

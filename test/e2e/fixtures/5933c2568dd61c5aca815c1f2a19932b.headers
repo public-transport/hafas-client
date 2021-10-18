@@ -1,14 +1,14 @@
 {
   "statusCode": 200,
   "headers": {
-    "date": "Mon, 23 Aug 2021 22:34:07 GMT",
+    "date": "Thu, 21 Oct 2021 22:04:02 GMT",
     "server": "Apache",
-    "content-length": "1324",
+    "content-length": "1326",
     "connection": "close",
     "content-type": "application/json; charset=utf-8"
   },
   "url": "https://vrn.hafas.de/bin/mgate.exe",
-  "time": 248,
+  "time": 244,
   "request": {
     "method": "POST",
     "headers": {
@@ -22,7 +22,7 @@
         "application/json"
       ],
       "user-agent": [
-        "public-6414c8274dc7transport/hafas-client:test"
+        "public-27b6fea5e173transport/hafas-client:test"
       ],
       "Content-Length": [
         "251"

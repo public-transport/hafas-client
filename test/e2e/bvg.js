@@ -191,7 +191,7 @@ tap.test('earlier/later journeys', async (t) => {
 	t.end()
 })
 
-tap.skip('journeys – leg cycle & alternatives', async (t) => {
+tap.test('journeys – leg cycle & alternatives', async (t) => {
 	await testLegCycleAlternatives({
 		test: t,
 		fetchJourneys: client.journeys,

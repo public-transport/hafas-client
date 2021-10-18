@@ -1,0 +1,37 @@
+{
+  "statusCode": 200,
+  "headers": {
+    "date": "Thu, 21 Oct 2021 22:03:46 GMT",
+    "server": "Apache",
+    "content-length": "2285",
+    "access-control-allow-origin": "*",
+    "access-control-allow-headers": "*",
+    "connection": "close",
+    "content-type": "application/json; charset=utf-8"
+  },
+  "url": "https://bvg-apps-ext.hafas.de/bin/mgate.exe",
+  "time": 228,
+  "request": {
+    "method": "POST",
+    "headers": {
+      "Content-Type": [
+        "application/json"
+      ],
+      "Accept-Encoding": [
+        "gzip, br, deflate"
+      ],
+      "Accept": [
+        "application/json"
+      ],
+      "user-agent": [
+        "public-transport/hafas-c2ebf9eed52c3lient:test"
+      ],
+      "Content-Length": [
+        "369"
+      ],
+      "Connection": [
+        "close"
+      ]
+    }
+  }
+}

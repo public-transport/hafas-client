@@ -1,0 +1,35 @@
+{
+  "statusCode": 200,
+  "headers": {
+    "date": "Thu, 21 Oct 2021 22:03:42 GMT",
+    "content-length": "13684",
+    "connection": "close",
+    "content-type": "application/json; charset=utf-8",
+    "strict-transport-security": "max-age=63072000; includeSubDomains"
+  },
+  "url": "https://www.rmv.de/auskunft/bin/jp/mgate.exe",
+  "time": 1304,
+  "request": {
+    "method": "POST",
+    "headers": {
+      "Content-Type": [
+        "application/json"
+      ],
+      "Accept-Encoding": [
+        "gzip, br, deflate"
+      ],
+      "Accept": [
+        "application/json"
+      ],
+      "user-agent": [
+        "public-transport/hafa7e22a5973496s-client:test"
+      ],
+      "Content-Length": [
+        "627"
+      ],
+      "Connection": [
+        "close"
+      ]
+    }
+  }
+}

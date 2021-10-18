@@ -1,0 +1,40 @@
+{
+  "statusCode": 200,
+  "headers": {
+    "date": "Thu, 21 Oct 2021 22:03:45 GMT",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "3013",
+    "connection": "close",
+    "set-cookie": [
+      "AWSALB=RZMkuhO6HOGaAe5D1qYhQizJu4fjwpe5dwwgIMr7zjl9SyLMT8La8qp5HSbhiU3BNAaD4R32adPoPP3ifgGAOQBAoq/Sn6Eiu1EnpL/uJ605n75/H+QByBhPsTuc; Expires=Thu, 28 Oct 2021 22:03:45 GMT; Path=/",
+      "AWSALBCORS=RZMkuhO6HOGaAe5D1qYhQizJu4fjwpe5dwwgIMr7zjl9SyLMT8La8qp5HSbhiU3BNAaD4R32adPoPP3ifgGAOQBAoq/Sn6Eiu1EnpL/uJ605n75/H+QByBhPsTuc; Expires=Thu, 28 Oct 2021 22:03:45 GMT; Path=/; SameSite=None; Secure",
+      "TS014cfc63=0121ca1b95b5df8cb4b8b0f0c7f93bea3496a1134b2f794672b6387c6ba0820e0ff26bf4fc6bdc764b5858a491ce0beb910095ca0f545e03aa55785e9d95d41a8f1ac05a892f546045cbdb23115577f80dba84ae0d; Path=/; Secure; HTTPOnly"
+    ],
+    "strict-transport-security": "max-age=16070400; includeSubDomains"
+  },
+  "url": "https://reiseauskunft.bahn.de/bin/mgate.exe?checksum=a9d71e5d0d294de043b5ddab886e0066",
+  "time": 231,
+  "request": {
+    "method": "POST",
+    "headers": {
+      "Content-Type": [
+        "application/json"
+      ],
+      "Accept-Encoding": [
+        "gzip, br, deflate"
+      ],
+      "Accept": [
+        "application/json"
+      ],
+      "user-agent": [
+        "public-trand85438d73667sport/hafas-client:test"
+      ],
+      "Content-Length": [
+        "314"
+      ],
+      "Connection": [
+        "close"
+      ]
+    }
+  }
+}

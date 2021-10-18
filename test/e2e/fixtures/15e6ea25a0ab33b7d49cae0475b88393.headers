@@ -1,7 +1,7 @@
 {
   "statusCode": 200,
   "headers": {
-    "date": "Mon, 23 Aug 2021 22:33:28 GMT",
+    "date": "Thu, 21 Oct 2021 22:03:41 GMT",
     "content-type": "application/json; charset=utf-8",
     "content-length": "893",
     "connection": "close",
@@ -23,7 +23,7 @@
         "application/json"
       ],
       "user-agent": [
-        "public-transpore1082e641429t/hafas-client:test"
+        "public-transport/hafas-client:ae507434438ctest"
       ],
       "Content-Length": [
         "309"

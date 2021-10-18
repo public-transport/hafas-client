@@ -1,16 +1,16 @@
 {
   "statusCode": 200,
   "headers": {
-    "date": "Mon, 23 Aug 2021 22:34:07 GMT",
+    "date": "Thu, 21 Oct 2021 22:03:59 GMT",
     "server": "Apache",
-    "content-length": "1250",
+    "content-length": "1295",
     "cache-control": "max-age=86400",
-    "expires": "Tue, 24 Aug 2021 22:34:07 GMT",
+    "expires": "Fri, 22 Oct 2021 22:03:59 GMT",
     "connection": "close",
     "content-type": "application/json; charset=utf-8"
   },
   "url": "https://online.fahrplan.zvv.ch/bin/mgate.exe",
-  "time": 176,
+  "time": 187,
   "request": {
     "method": "POST",
     "headers": {
@@ -24,7 +24,7 @@
         "application/json"
       ],
       "user-agent": [
-        "public-transport/h9db8807dae0dafas-client:test"
+        "pub7a72652f8ce2lic-transport/hafas-client:test"
       ],
       "Content-Length": [
         "305"

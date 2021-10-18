@@ -1,14 +1,14 @@
 {
   "statusCode": 200,
   "headers": {
-    "date": "Mon, 23 Aug 2021 22:33:58 GMT",
+    "date": "Thu, 21 Oct 2021 22:03:54 GMT",
     "server": "Apache",
-    "content-length": "1226",
+    "content-length": "1245",
     "content-type": "application/json; charset=utf-8",
     "connection": "close"
   },
   "url": "https://anachb.vor.at/bin/mgate.exe?mic=edda4ed2f647b0775e1bdb42ecc1be52&mac=3e9f423493a839202d16f9f484b06663",
-  "time": 326,
+  "time": 519,
   "request": {
     "method": "POST",
     "headers": {
@@ -22,7 +22,7 @@
         "application/json"
       ],
       "user-agent": [
-        "public-transport/h6824d8c179cbafas-client:test"
+        "public-transport25d9b291013d/hafas-client:test"
       ],
       "Content-Length": [
         "309"
