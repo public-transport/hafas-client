@@ -49,6 +49,10 @@ const parseLine = (ctx, p) => {
 		const {mode, id} = parseBitmask(ctx, parseInt(p.cls)) || {}
 		res.mode = mode || null
 		res.product = id || null
+	} else if (p.productMask && Number.isInteger(p.productMask.integerValue)) {
+		const {mode, id} = parseBitmask(ctx, p.productMask.integerValue) || {}
+		res.mode = mode || null
+		res.product = id || null
 	}
 
 	if (p.operator) res.operator = p.operator // todo: move up

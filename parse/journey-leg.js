@@ -53,8 +53,16 @@ const parseJourneyLeg = (ctx, pt, date) => { // pt = raw leg
 	const {profile, opt} = ctx
 
 	const res = {
-		origin: clone(pt.dep.location) || null,
-		destination: clone(pt.arr.location)
+		origin: (
+			(pt.dep.location && clone(pt.dep.location))
+			|| (pt.dep.loc && profile.parseLocation(ctx, pt.dep.loc))
+			|| null
+		),
+		destination: (
+			(pt.arr.location && clone(pt.arr.location))
+			|| (pt.arr.loc && profile.parseLocation(ctx, pt.arr.loc))
+			|| null
+		),
 	}
 
 	// HAFAS seems to have a bug where a journey's first leg has a `dTZOffset` of `0`.
@@ -82,6 +90,7 @@ const parseJourneyLeg = (ctx, pt, date) => { // pt = raw leg
 		res.reachable = !!pt.jny.isRchbl
 	}
 
+	// todo: pt.jny.polylineGroup.polylineList[]
 	if (pt.jny && pt.jny.polyline) {
 		res.polyline = pt.jny.polyline || null
 	} else if (pt.jny && pt.jny.poly) {
@@ -103,10 +112,14 @@ const parseJourneyLeg = (ctx, pt, date) => { // pt = raw leg
 		if (opt.remarks && pt.gis && Array.isArray(pt.gis.msgL)) {
 			applyRemarks(ctx, res, pt.gis.msgL)
 		}
-	} else if (pt.type === 'JNY') {
+	} else if (pt.type === 'JNY' || pt.type === '2') { // todo: what does `2` mean?
 		// todo: pull `public` value from `profile.products`
 		res.tripId = pt.jny.jid
-		res.line = pt.jny.line || null
+		res.line = (
+			pt.jny.line
+			|| (pt.jny.prod && profile.parseLine(ctx, pt.jny.prod))
+			|| null
+		)
 		// todo [breaking]: don't call parseStationName() here, add parseDirection() hook
 		// todo: support pt.jny.dirL[]
 		res.direction = pt.jny.dirTxt && profile.parseStationName(ctx, pt.jny.dirTxt) || null
@@ -119,13 +132,33 @@ const parseJourneyLeg = (ctx, pt, date) => { // pt = raw leg
 			}
 		}
 
-		const arrPl = profile.parsePlatform(ctx, pt.arr.aPlatfS || (pt.arr.aPltfS !== undefined ? pt.arr.aPltfS.txt : null), pt.arr.aPlatfR || (pt.arr.aPltfR !== undefined ? pt.arr.aPltfR.txt : null), pt.arr.aCncl)
+		const aPlatfS = (
+			pt.arr.aPlatfS
+			|| (pt.arr.aPltfS ? pt.arr.aPltfS.txt : null)
+			|| (pt.arr.aPlatformS && pt.arr.aPlatformS.text) // todo: what is aPlatformS.type?
+		)
+		const aPlatfR = (
+			pt.arr.aPlatfR
+			|| (pt.arr.aPltfR ? pt.arr.aPltfR.txt : null)
+			|| (pt.arr.aPlatformR && pt.arr.aPlatformR.text) // todo: what is aPlatformR.type?
+		)
+		const arrPl = profile.parsePlatform(ctx, aPlatfS, aPlatfR, pt.arr.aCncl)
 		res.arrivalPlatform = arrPl.platform
 		res.plannedArrivalPlatform = arrPl.plannedPlatform
 		if (arrPl.prognosedPlatform) res.prognosedArrivalPlatform = arrPl.prognosedPlatform
 		res.arrivalPrognosisType = profile.parsePrognosisType(ctx, pt.arr.aProgType) || null
 
-		const depPl = profile.parsePlatform(ctx, pt.dep.dPlatfS || (pt.dep.dPltfS !== undefined ? pt.dep.dPltfS.txt : null), pt.dep.dPlatfR || (pt.dep.dPltfR !== undefined ? pt.dep.dPltfR.txt : null), pt.dep.dCncl)
+		const dPlatfS = (
+			pt.dep.dPlatfS
+			|| (pt.dep.dPltfS ? pt.dep.dPltfS.txt : null)
+			|| (pt.dep.dPlatformS && pt.dep.dPlatformS.text) // todo: what is dPlatformS.type?
+		)
+		const dPlatfR = (
+			pt.dep.dPlatfR
+			|| (pt.dep.dPltfR ? pt.dep.dPltfR.txt : null)
+			|| (pt.dep.dPlatformR && pt.dep.dPlatformR.text) // todo: what is dPlatformR.type?
+		)
+		const depPl = profile.parsePlatform(ctx, dPlatfS, dPlatfR, pt.dep.dCncl)
 		res.departurePlatform = depPl.platform
 		res.plannedDeparturePlatform = depPl.plannedPlatform
 		if (depPl.prognosedPlatform) res.prognosedDeparturePlatform = depPl.prognosedPlatform
@@ -135,8 +168,13 @@ const parseJourneyLeg = (ctx, pt, date) => { // pt = raw leg
 			const stopL = pt.jny.stopL
 			res.stopovers = stopL.map(s => profile.parseStopover(ctx, s, date))
 
-			if (opt.remarks && Array.isArray(pt.jny.msgL)) {
-				applyRemarks(ctx, res, pt.jny.msgL)
+			const msgL = (
+				(Array.isArray(pt.jny.msgL) && pt.jny.msgL)
+				|| (Array.isArray(pt.jny.msgListElement) && pt.jny.msgListElement)
+				|| null
+			)
+			if (opt.remarks && Array.isArray(msgL)) {
+				applyRemarks(ctx, res, msgL)
 				// todo: parse & use `code: EXTERNAL_ID` remarks?
 			}
 
@@ -167,7 +205,11 @@ const parseJourneyLeg = (ctx, pt, date) => { // pt = raw leg
 					: null
 				return {
 					tripId: a.jid,
-					line: a.line || null,
+					line: (
+						a.line
+						|| (a.prod && profile.parseLine(ctx, a.prod))
+						|| null
+					),
 					direction: a.dirTxt || null,
 					...when,
 				}

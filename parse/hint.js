@@ -129,8 +129,9 @@ const parseHint = (ctx, h) => {
 	}
 
 	const text = h.txtN && h.txtN.trim() || ''
-	const icon = h.icon || null
-	const code = h.code || (icon && icon.type && codesByIcon[icon.type]) || null
+	const icon = h.icon || h.ico || null
+	const iconType = icon && ((icon && icon.type) || (icon && icon.res))
+	const code = h.code || (iconType && codesByIcon[iconType]) || null
 
 	if (h.type === 'M') {
 		return {
@@ -149,7 +150,7 @@ const parseHint = (ctx, h) => {
 			tripId: h.jid
 		}
 	}
-	if (h.type === 'A' || h.type === 'I') {
+	if (h.type === 'A' || h.type === 'I' || h.type === '2') {
 		return {
 			type: 'hint',
 			code,

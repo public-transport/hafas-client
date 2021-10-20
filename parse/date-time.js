@@ -2,6 +2,26 @@ import {DateTime, FixedOffsetZone, IANAZone} from 'luxon'
 import {luxonIANAZonesByProfile as timezones} from '../lib/luxon-timezones.js'
 
 const parseDateTime = ({profile}, date, time, tzOffset = null, timestamp = false) => {
+	let timezone
+	if (tzOffset !== null) {
+		timezone = FixedOffsetZone.instance(tzOffset)
+	} else if (timezones.has(profile)) {
+		timezone = timezones.get(profile)
+	} else {
+		timezone = new IANAZone(profile.timezone)
+		timezones.set(profile, timezone)
+	}
+
+	if (time && /\d{4}-\d{2}-\d{2}T/.test(time)) {
+		const dt = DateTime.fromISO(time, {
+			locale: profile.locale,
+			zone: timezone,
+		})
+		if (!dt.invalid) {
+			return timestamp ? dt.toMillis() : dt.toISO({suppressMilliseconds: true})
+		}
+	}
+
 	const pDate = [date.substr(-8, 4), date.substr(-4, 2), date.substr(-2, 2)]
 	if (!pDate[0] || !pDate[1] || !pDate[2]) {
 		throw new Error('invalid date format: ' + date)
@@ -13,16 +33,6 @@ const parseDateTime = ({profile}, date, time, tzOffset = null, timestamp = false
 	}
 
 	const daysOffset = time.length > 6 ? parseInt(time.slice(0, -6)) : 0
-
-	let timezone
-	if (tzOffset !== null) {
-		timezone = FixedOffsetZone.instance(tzOffset)
-	} else if (timezones.has(profile)) {
-		timezone = timezones.get(profile)
-	} else {
-		timezone = new IANAZone(profile.timezone)
-		timezones.set(profile, timezone)
-	}
 
 	let dt = DateTime.fromISO(pDate.join('-') + 'T' + pTime.join(':'), {
 		locale: profile.locale,

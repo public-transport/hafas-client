@@ -11,7 +11,7 @@ import {findRemarks} from './find-remarks.js'
 // todo: c.bfATS, c.bfIOSTS
 // todo: c.recState (e.g. `U`)
 // todo: c.intvlSubscr (e.g. `F`)
-
+// todo: https://gist.github.com/derhuerst/ca801d0d93bc4ff8276f9c760b3240b4#file-subscription-journey-js-L3295-L3363
 const parseJourney = (ctx, j) => { // j = raw jouney
 	const {profile, opt} = ctx
 
@@ -31,8 +31,13 @@ const parseJourney = (ctx, j) => { // j = raw jouney
 		if (freq.numC) res.cycle.nr = freq.numC
 	}
 
-	if (opt.remarks && Array.isArray(j.msgL)) {
-		res.remarks = findRemarks(ctx, j.msgL).map(([remark]) => remark)
+	const msgL = (
+		(Array.isArray(j.msgL) && j.msgL)
+		|| (Array.isArray(j.messageList) && j.messageList)
+		|| null
+	)
+	if (opt.remarks && msgL) {
+		res.remarks = findRemarks(ctx, msgL).map(([remark]) => remark)
 	}
 
 	if (opt.scheduledDays && j.sDays) {

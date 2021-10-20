@@ -11,7 +11,14 @@ import flatMap from 'lodash/flatMap.js'
 // - remarks: both "notes" and "warnings"
 
 const findRemarks = (ctx, refs) => {
+	const {profile} = ctx
+
 	return flatMap(refs, (ref) => {
+		if (ref.type === '2' && ref.rem) {
+			const hint = profile.parseHint(ctx, ref.rem)
+			return hint ? [[hint, ref]] : []
+		}
+
 		return [ref.warning, ref.hint]
 		.filter(rem => !!rem)
 		.map(rem => [rem, ref])
