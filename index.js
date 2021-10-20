@@ -3,6 +3,7 @@ import sortBy from 'lodash/sortBy.js'
 import omit from 'lodash/omit.js'
 import {v4 as uuidV4} from 'uuid'
 import {randomBytes} from 'node:crypto'
+import {DateTime} from 'luxon'
 
 import {defaultProfile} from './lib/default-profile.js'
 import {validateProfile} from './lib/validate-profile.js'
@@ -877,6 +878,94 @@ const createClient = (profile, userAgent, opt = {}) => {
 		}
 	}
 
+	const subscribeToJourney = async (userId, channelIds, journeyRefreshToken, opt = {}) => {
+		if (!isNonEmptyString(userId)) {
+			throw new TypeError('userId must be a non-empty string')
+		}
+		if (!Array.isArray(channelIds) || channelIds.length === 0) {
+			throw new TypeError('channelIds must be a non-empty array')
+		}
+		for (let i = 0; i < channelIds.length; i++) {
+			if (!isNonEmptyString(channelIds[i])) {
+				throw new TypeError(`channelIds[${i}] must be a non-empty string`)
+			}
+		}
+		if (!isNonEmptyString(journeyRefreshToken)) {
+			throw new TypeError('journeyRefreshToken must be a non-empty string')
+		}
+
+		opt = {
+			tripWarnings: true, // Subscribe to train information (failures, delays, change of platforms)?
+			routeWarnings: true, // Subscribe to route information (disturbances & construction sites)?
+			startMinutesBeforeJourney: 30, // Start monitoring x minutes before the journey begins.
+			minimumDelay: 1, // Only send notifications with at least x minutes of (vehicle) delay.
+			fromDate: Date.now(),
+			duration: 3, // Subscribe for 3 days.
+			// Most mobile apps pass in the whole journey, with all references to `res.common`
+			// properly inlined. HAFAS seems to ignore the `data` field entirely though:
+			// Whatever we pass in here is being stored and returned on `subscription(userId, subId)`.
+			// todo: comply with mobile apps, pass in properly formatted journey?
+			payload: null,
+			...opt,
+		}
+		if (opt.payload !== null && 'string' !== typeof opt.payload) {
+			throw new TypeError('opt.payload must be a string')
+		}
+
+		const untilDate = DateTime
+		.fromMillis(+opt.fromDate, {locale: profile.locale, zone: profile.timezone})
+		.plus({days: 3})
+		.toMillis()
+
+		const req = {
+			userId,
+			channels: channelIds.map((channelId) => ({channelId})),
+			conSubscr: {
+				ctxRecon: journeyRefreshToken,
+				data: opt.payload,
+				hysteresis: {
+					minDeviationInterval: opt.minimumDelay,
+					notificationStart: opt.startMinutesBeforeJourney,
+					notifyArrivalPreviewTime: 1, // todo: what is this?
+					notifyDepartureWithoutRT: 1, // todo: what is this?
+				},
+				monitorFlags: [
+					// todo: what exactly do these values stand for?
+					...(opt.tripWarnings ? ['OF', 'PF', 'DF', 'AF', 'DV'] : []),
+					...(opt.routeWarnings ? ['FTF'] : []),
+				],
+				serviceDays: {
+					beginDate: profile.formatDate(profile, +new Date(opt.fromDate)),
+					endDate: profile.formatDate(profile, untilDate),
+					// todo: allow custom weekdays via the `selectedDays` "binary string"
+				},
+			},
+		}
+
+		const {res} = await profile.request({profile, opt}, userAgent, {
+			meth: 'SubscrCreate',
+			req,
+		})
+		return res.subscrId
+	}
+
+	const unsubscribe = async (userId, subscriptionId) => {
+		if (!isNonEmptyString(userId)) {
+			throw new TypeError('userId must be a non-empty string')
+		}
+		if (subscriptionId === null || subscriptionId === undefined) {
+			throw new TypeError('missing subscriptionId')
+		}
+
+		await profile.request({profile, opt}, userAgent, {
+			meth: 'SubscrDelete',
+			req: {
+				userId,
+				subscrId: subscriptionId,
+			},
+		})
+	}
+
 	const client = {
 		departures,
 		arrivals,
@@ -898,6 +987,8 @@ const createClient = (profile, userAgent, opt = {}) => {
 		client.createSubscriptionsUser = createSubscriptionsUser
 		client.subscriptions = subscriptions
 		client.subscription = subscription
+		client.subscribeToJourney = subscribeToJourney
+		client.unsubscribe = unsubscribe
 	}
 	Object.defineProperty(client, 'profile', {value: profile})
 	return client

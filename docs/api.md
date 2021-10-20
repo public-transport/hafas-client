@@ -15,3 +15,4 @@
 - [`remarks([opt])`](remarks.md) – get all remarks
 - [`lines(query, [opt])`](lines.md) – get all lines matching a name
 - [`serverInfo([opt])`](server-info.md) – fetch meta information from HAFAS
+- [subscription-related methods](subscription-api.md)

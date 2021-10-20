@@ -226,3 +226,62 @@ tap.test('radar', async (t) => {
 	validate(t, res, 'radarResult', 'res')
 	t.end()
 })
+
+tap.test('subscribing to a journey works', async (t) => {
+	// random values
+	const userId = '0e494620-debb-4a1a-908f-d0c848ec7bc3'
+	const pushToken = '4ef21531abfd23f050b17087a62d7d3bc145e0a1d91a1ce34f1cfd75653ef38a'
+	const channelId = 'some-channel'
+
+	const _userId = await client.createSubscriptionsUser([channelId], {
+		userId, pushToken,
+	})
+	t.equal(_userId, userId)
+
+	t.same(await client.subscriptions(userId), [])
+
+	const {journeys} = await client.journeys(ludwigshafen, meckesheim, {
+		departure: when, results: 1,
+	})
+	const journey = journeys[0]
+	const subId = await client.subscribeToJourney(userId, [channelId], journey.refreshToken, {
+		fromDate: when,
+	})
+	t.ok(subId !== undefined && subId !== null, 'subId')
+
+	const {
+		subscription: sub, rtEvents, himEvents,
+	} = await client.subscription(userId, subId, {activeDays: true})
+	t.ok(sub)
+	t.equal(sub.id, subId)
+	t.same(sub.hysteresis, {
+		minDeviationInterval: 1,
+		notificationStart: 30,
+		notifyArrivalPreviewTime: 1,
+		notifyDepartureWithoutRT: 1,
+	})
+	t.same(sub.monitorFlags, ['AF', 'DF', 'DV', 'FTF', 'OF', 'PF'])
+	t.ok(Array.isArray(sub.connectionInfo))
+	t.ok(sub.connectionInfo.length > 0)
+	t.equal(sub.journeyRefreshToken, journey.refreshToken)
+	t.ok(sub.activeDays)
+	t.ok(Array.isArray(rtEvents))
+	t.ok(Array.isArray(himEvents))
+
+	// This fails because our integration testing utility keeps only the first
+	// response to identical identical requests.
+	// see https://github.com/aneilbaboo/replayer/issues/27
+	// todo: change the replayer setup
+	const subs = await client.subscriptions(userId)
+	t.same(subs, [{
+		id: subId,
+		status: 'ACTIVE',
+		channels: [{id: channelId}],
+		journeyRefreshToken: journey.refreshToken,
+	}])
+
+	await client.unsubscribe(userId, subId)
+	t.same(await client.subscriptions(userId), [])
+
+	t.end()
+})
