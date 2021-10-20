@@ -1,6 +1,8 @@
 const codesByIcon = Object.assign(Object.create(null), {
 	cancel: 'cancelled',
 	himWarn: 'disturbance',
+	HimInfo: 'disturbance',
+	// todo: attr_info, attr_bike_r, attr_bike, attr_bistro
 })
 
 const linkTypesByCode = Object.assign(Object.create(null), {

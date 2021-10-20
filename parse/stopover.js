@@ -42,7 +42,7 @@ const parseStopover = (ctx, st, date) => { // st = raw stopover
     }
 
 	if (opt.remarks && Array.isArray(st.msgL)) {
-		res.remarks = findRemarks(st.msgL).map(([remark]) => remark)
+		res.remarks = findRemarks(ctx, st.msgL).map(([remark]) => remark)
 	}
 
 	return res

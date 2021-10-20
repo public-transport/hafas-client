@@ -7,8 +7,8 @@ const addRemark = (stopoverOrLeg, remark) => {
 	stopoverOrLeg.remarks.push(remark)
 }
 
-const applyRemarks = (leg, refs) => {
-	for (let [remark, ref] of findRemarks(refs)) {
+const applyRemarks = (ctx, leg, refs) => {
+	for (let [remark, ref] of findRemarks(ctx, refs)) {
 		const {fromLocation, toLocation} = ref
 
 		let wholeLeg = true, fromI = 0, toI = 0
@@ -101,7 +101,7 @@ const parseJourneyLeg = (ctx, pt, date) => { // pt = raw leg
 
 		// https://gist.github.com/derhuerst/426d4b95aeae701843b1e9c23105b8d4#file-tripsearch-2018-12-05-http-L4207-L4229
 		if (opt.remarks && pt.gis && Array.isArray(pt.gis.msgL)) {
-			applyRemarks(res, pt.gis.msgL)
+			applyRemarks(ctx, res, pt.gis.msgL)
 		}
 	} else if (pt.type === 'JNY') {
 		// todo: pull `public` value from `profile.products`
@@ -136,7 +136,7 @@ const parseJourneyLeg = (ctx, pt, date) => { // pt = raw leg
 			res.stopovers = stopL.map(s => profile.parseStopover(ctx, s, date))
 
 			if (opt.remarks && Array.isArray(pt.jny.msgL)) {
-				applyRemarks(res, pt.jny.msgL)
+				applyRemarks(ctx, res, pt.jny.msgL)
 				// todo: parse & use `code: EXTERNAL_ID` remarks?
 			}
 

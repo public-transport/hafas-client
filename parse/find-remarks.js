@@ -10,7 +10,7 @@ import flatMap from 'lodash/flatMap.js'
 // - warnings: notes from `himL` for cancellations, construction, etc
 // - remarks: both "notes" and "warnings"
 
-const findRemarks = (refs) => {
+const findRemarks = (ctx, refs) => {
 	return flatMap(refs, (ref) => {
 		return [ref.warning, ref.hint]
 		.filter(rem => !!rem)
