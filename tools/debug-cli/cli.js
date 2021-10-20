@@ -46,6 +46,15 @@ const methodsAndTheirArgs = [
 	['lines', 0, toString],
 	['lines', 1, parseJsObject],
 	['serverInfo', 0, parseJsObject],
+	// createSubscriptionsUser(channelIds = […], opt = {})
+	['createSubscriptionsUser', 0, parseJsObject],
+	['createSubscriptionsUser', 1, parseJsObject],
+	// subscriptions(userId)
+	['subscriptions', 0, toString],
+	// subscription(userId, subscriptionId, opt = {})
+	['subscription', 0, toString],
+	['subscription', 1, toString],
+	['subscription', 2, parseJsObject],
 ]
 
 const {
