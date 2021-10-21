@@ -597,6 +597,64 @@ const createClient = (profile, userAgent, opt = {}) => {
 		}
 	}
 
+	// todo: rename to tripsAsTree? how do we obtain actual trips?
+	const pidFiltersAsTree = async (opt = {}) => {
+		const {
+			pidFilter,
+		} = Object.assign({
+			pidFilter: null,
+		}, opt)
+
+		const {res, common} = await profile.request({profile, opt}, userAgent, {
+			meth: 'JourneyTree',
+			req: {
+				pid: pidFilter,
+				// https://github.com/marudor/BahnhofsAbfahrten/blob/f32da187ef3306345674ea4665c97135f6f4c20f/packages/types/HAFAS/JourneyTree.ts#L3-L13
+				// getChilds?: number;
+				getHIM: false,
+				getParent: true,
+				getStatus: true,
+				// todo: https://github.com/marudor/BahnhofsAbfahrten/blob/41b0bfcc450acf154b5c3476d26658072ca3f038/packages/types/HAFAS/index.ts#L89-L109
+				// himFltrL?: HimFilter[];
+				// todo: https://github.com/marudor/BahnhofsAbfahrten/blob/41b0bfcc450acf154b5c3476d26658072ca3f038/packages/types/HAFAS/index.ts#L20-L45
+				// see also https://github.com/derhuerst/BahnhofsAbfahrten/pull/1
+				jnyFltrL: [
+				// {
+				// 	mode: 'INC',
+				// 	type: 'JID',
+				// 	value: '1|18357|19|86|21102021',
+				// }
+				],
+				// rect?: GeoRect;
+				// ring?: GeoRing;
+			},
+		})
+
+		const ctx = {profile, opt, common, res}
+		return profile.parsePidFiltersTree(ctx, res.jnyTreeNodeL)
+	}
+
+	// todo: rename
+	const foo = async (opt = {}) => {
+		const {res, common} = await profile.request({profile, opt}, userAgent, {
+			meth: 'JourneyGraph',
+			req: {
+				// https://github.com/marudor/BahnhofsAbfahrten/blob/f32da187ef3306345674ea4665c97135f6f4c20f/packages/types/HAFAS/JourneyGraph.ts#L3-L11
+				date: '20211021',
+				getPasslist: true,
+				getProductStartEndInfo: true,
+				// todo: https://github.com/marudor/BahnhofsAbfahrten/blob/41b0bfcc450acf154b5c3476d26658072ca3f038/packages/types/HAFAS/index.ts#L20-L45
+				// see also https://github.com/derhuerst/BahnhofsAbfahrten/pull/1
+				jnyFltrL: [{
+					mode: 'INC',
+					type: 'JID',
+					value: '1|18357|19|86|21102021',
+				}],
+			},
+		})
+		return null // todo
+	}
+
 	const radar = async ({north, west, south, east}, opt) => {
 		if ('number' !== typeof north) throw new TypeError('north must be a number.')
 		if ('number' !== typeof west) throw new TypeError('west must be a number.')
@@ -789,6 +847,8 @@ const createClient = (profile, userAgent, opt = {}) => {
 		locations,
 		stop,
 		nearby,
+		pidFiltersAsTree,
+		foo, // todo
 		serverInfo,
 	}
 	if (profile.trip) client.trip = trip

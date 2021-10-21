@@ -46,6 +46,8 @@ const methodsAndTheirArgs = [
 	['lines', 0, toString],
 	['lines', 1, parseJsObject],
 	['serverInfo', 0, parseJsObject],
+	['pidFiltersAsTree', 0, parseJsObject],
+	['foo', 0, parseJsObject],
 ]
 
 const {
