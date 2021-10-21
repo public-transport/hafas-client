@@ -872,6 +872,26 @@ const createClient = (profile, userAgent, opt = {}) => {
 		return profile.parseSubscription(ctx, res.details)
 	}
 
+	const _setSubscriptionStatus = async (status, userId, subscriptionId, opt = {}) => {
+		if (!isNonEmptyString(userId)) {
+			throw new TypeError('userId must be a non-empty string')
+		}
+		if (subscriptionId === null || subscriptionId === undefined) {
+			throw new TypeError('missing subscriptionId')
+		}
+		return await profile.request({profile, opt}, userAgent, {
+			meth: 'SubscrStatus',
+			req: {
+				userId,
+				subscrId: subscriptionId,
+				status,
+			},
+		})
+	}
+	// todo: these fail repeatedly with a 504 Gateway Timeout 🤡
+	const disableSubscription = _setSubscriptionStatus.bind(null, 'EXPIRED')
+	const enableSubscription = _setSubscriptionStatus.bind(null, 'ACTIVE')
+
 	const subscribeToJourney = async (userId, channelIds, journeyRefreshToken, opt = {}) => {
 		if (!isNonEmptyString(userId)) {
 			throw new TypeError('userId must be a non-empty string')
@@ -981,6 +1001,8 @@ const createClient = (profile, userAgent, opt = {}) => {
 		client.createSubscriptionsUser = createSubscriptionsUser
 		client.subscriptions = subscriptions
 		client.subscription = subscription
+		client.disableSubscription = disableSubscription
+		client.enableSubscription = enableSubscription
 		client.subscribeToJourney = subscribeToJourney
 		client.unsubscribe = unsubscribe
 	}
