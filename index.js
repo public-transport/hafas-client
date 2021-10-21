@@ -869,13 +869,7 @@ const createClient = (profile, userAgent, opt = {}) => {
 		})
 		const ctx = {profile, opt, common, res}
 
-		const {details} = res
-		return {
-			subscription: profile.parseSubscription(ctx, subscriptionId, details.conSubscr),
-			// todo: parse & give a proper name
-			rtEvents: details.eventHistory && details.eventHistory.rtEvents || [],
-			himEvents: details.eventHistory && details.eventHistory.himEvents || [],
-		}
+		return profile.parseSubscription(ctx, res.details)
 	}
 
 	const subscribeToJourney = async (userId, channelIds, journeyRefreshToken, opt = {}) => {
