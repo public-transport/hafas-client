@@ -495,23 +495,45 @@ const createClient = (profile, userAgent, opt = {}) => {
 		})
 	}
 
-	const tripsByName = (lineNameOrFahrtNr, opt = {}) => {
+	// todo [breaking]: rename to trips()?
+	const tripsByName = (lineNameOrFahrtNr = '*', opt = {}) => {
 		if (!isNonEmptyString(lineNameOrFahrtNr)) {
 			throw new TypeError('lineNameOrFahrtNr must be a non-empty string.')
 		}
 		opt = Object.assign({
+			when: null,
+			fromWhen: null, untilWhen: null,
+			onlyCurrentlyRunning: true,
 		}, opt)
-		opt.when = new Date(opt.when || Date.now())
+
+		const req = {
+			// fields: https://github.com/marudor/BahnhofsAbfahrten/blob/f619e754f212980261eb7e2b151cd73ba0213da8/packages/types/HAFAS/JourneyMatch.ts#L4-L23
+			input: lineNameOrFahrtNr,
+			onlyCR: opt.onlyCurrentlyRunning,
+			// todo: passing `tripId` yields a `CGI_READ_FAILED` error
+			// todo: passing a stop ID as `extId` yields a `PARAMETER` error
+			// todo: `onlyRT: true` reduces the number of results, but filters recent trips 🤔
+			// todo: `onlyTN: true` yields a `NO_MATCH` error
+			// todo: jnyFltrL, useAeqi
+		}
+		if (opt.when !== null) {
+			req.date = profile.formatDate(profile, new Date(opt.when))
+			req.time = profile.formatTime(profile, new Date(opt.when))
+		}
+		// todo: fromWhen doesn't work yet, but untilWhen does
+		if (opt.fromWhen !== null) {
+			req.dateB = profile.formatDate(profile, new Date(opt.fromWhen))
+			req.timeB = profile.formatTime(profile, new Date(opt.fromWhen))
+		}
+		if (opt.untilWhen !== null) {
+			req.dateE = profile.formatDate(profile, new Date(opt.untilWhen))
+			req.timeE = profile.formatTime(profile, new Date(opt.untilWhen))
+		}
 
 		return profile.request({profile, opt}, userAgent, {
 			cfg: {polyEnc: 'GPA'},
 			meth: 'JourneyMatch',
-			req: {
-				input: lineNameOrFahrtNr,
-				// todo: date seems to be ignored
-				date: profile.formatDate(profile, opt.when),
-				// todo: there are probably more options
-			}
+			req,
 		})
 		.then(({res, common}) => {
 			const ctx = {profile, opt, common, res}

@@ -1,6 +1,6 @@
-# `tripsByName(lineNameOrFahrtNr, [opt])`
+# `tripsByName([lineNameOrFahrtNr], [opt])`
 
-Get all trips matching a name.
+Get all trips matching one or more criteria, e.g. a specific name.
 
 ## Response
 
@@ -13,6 +13,19 @@ const vbbProfile = require('hafas-client/p/vbb')
 const client = createClient(vbbProfile, 'my-awesome-program')
 
 console.log(await client.tripsByName('S1'))
+```
+
+With `opt`, you can override the default options, which look like this:
+
+```js
+{
+	// use either this
+	when: null,
+	// or these
+	fromWhen: null, untilWhen: null,
+
+	onlyCurrentlyRunning: true,
+}
 ```
 
 The response may look like this:

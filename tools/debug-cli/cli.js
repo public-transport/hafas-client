@@ -39,6 +39,8 @@ const parseArgs = [
 	['trip', 0, toString],
 	['trip', 1, toString],
 	['trip', 2, parseJsObject],
+	['tripsByName', 0, toString],
+	['tripsByName', 1, parseJsObject],
 	['radar', 0, parseJsObject],
 	['radar', 1, parseJsObject],
 	['reachableFrom', 0, parseJsObject],

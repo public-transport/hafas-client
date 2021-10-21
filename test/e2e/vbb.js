@@ -179,6 +179,40 @@ tap.test('trip details', async (t) => {
 	t.end()
 })
 
+// This currently fails because some trips' departure/arrival is out of the range
+// around `when`, as expected by `assertValidWhen`, as called by `validate`.
+// todo: allow turning this off?
+tap.skip('trips', async (t) => {
+	const r1 = await client.tripsByName('S1')
+	t.ok(Array.isArray(r1))
+	t.ok(r1.length > 0)
+	t.ok(r1.every(t => t.line.name.trim() === 'S1'))
+	for (let i = 0; i < r1.length; i++) {
+		validate(t, r1[i], 'trip', `r1[${i}]`)
+	}
+
+	const r2 = await client.tripsByName('S1', {
+		onlyCurrentlyRunning: false,
+	})
+	t.ok(Array.isArray(r2))
+	t.ok(r2.length > r1.length)
+	t.ok(r2.every(t => t.line.name.trim() === 'S1'))
+	for (let i = 0; i < r2.length; i++) {
+		validate(t, r2[i], 'trip', `r2[${i}]`)
+	}
+
+	const r3 = await client.tripsByName('*', {
+		onlyCurrentlyRunning: false,
+	})
+	t.ok(Array.isArray(r3))
+	t.ok(r3.length > r2.length)
+	for (let i = 0; i < r3.length; i++) {
+		validate(t, r3[i], 'trip', `r3[${i}]`)
+	}
+
+	t.end()
+})
+
 tap.test('journeys – station to address', async (t) => {
 	const torfstr = {
 		type: 'location',
