@@ -25,6 +25,20 @@ With `opt`, you can override the default options, which look like this:
 	fromWhen: null, untilWhen: null,
 
 	onlyCurrentlyRunning: true,
+	products: {
+		// these entries may vary from profile to profile
+		suburban: true,
+		subway: true,
+		tram: true,
+		bus: true,
+		ferry: true,
+		express: true,
+		regional: true,
+	},
+
+	currentlyStoppingAt: null, // only show trips currently stopping at a stop/station, string
+	lineName: null, // only show trips with this line name, string
+	operatorNames: null, // only show trips with these operator names, array of strings
 }
 ```
 

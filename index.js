@@ -504,17 +504,25 @@ const createClient = (profile, userAgent, opt = {}) => {
 			when: null,
 			fromWhen: null, untilWhen: null,
 			onlyCurrentlyRunning: true,
+			products: {},
+			currentlyStoppingAt: null,
+			lineName: null,
+			operatorNames: null,
+			additionalFilters: [], // undocumented
 		}, opt)
 
 		const req = {
 			// fields: https://github.com/marudor/BahnhofsAbfahrten/blob/f619e754f212980261eb7e2b151cd73ba0213da8/packages/types/HAFAS/JourneyMatch.ts#L4-L23
 			input: lineNameOrFahrtNr,
 			onlyCR: opt.onlyCurrentlyRunning,
+			jnyFltrL: [
+				profile.formatProductsFilter({profile}, opt.products),
+			],
 			// todo: passing `tripId` yields a `CGI_READ_FAILED` error
 			// todo: passing a stop ID as `extId` yields a `PARAMETER` error
 			// todo: `onlyRT: true` reduces the number of results, but filters recent trips 🤔
 			// todo: `onlyTN: true` yields a `NO_MATCH` error
-			// todo: jnyFltrL, useAeqi
+			// todo: useAeqi
 		}
 		if (opt.when !== null) {
 			req.date = profile.formatDate(profile, new Date(opt.when))
@@ -529,6 +537,32 @@ const createClient = (profile, userAgent, opt = {}) => {
 			req.dateE = profile.formatDate(profile, new Date(opt.untilWhen))
 			req.timeE = profile.formatTime(profile, new Date(opt.untilWhen))
 		}
+		const filter = (mode, type, value) => ({mode, type, value})
+		if (opt.currentlyStoppingAt !== null) {
+			if (!isNonEmptyString(opt.currentlyStoppingAt)) {
+				throw new TypeError('opt.currentlyStoppingAt must be a non-empty string.')
+			}
+			req.jnyFltrL.push(filter('INC', 'STATIONS', opt.currentlyStoppingAt))
+		}
+		if (opt.lineName !== null) {
+			if (!isNonEmptyString(opt.lineName)) {
+				throw new TypeError('opt.lineName must be a non-empty string.')
+			}
+			// todo: does this target `line` or `lineId`?
+			req.jnyFltrL.push(filter('INC', 'LINE', opt.lineName))
+		}
+		if (opt.operatorNames !== null) {
+			if (
+				!Array.isArray(opt.operatorNames)
+				|| opt.operatorNames.length === 0
+				|| !opt.operatorNames.every(isNonEmptyString)
+			) {
+				throw new TypeError('opt.operatorNames must be an array of non-empty strings.')
+			}
+			// todo: is the an escaping mechanism for ","
+			req.jnyFltrL.push(filter('INC', 'OP', opt.operatorNames.join(',')))
+		}
+		req.jnyFltrL = [...req.jnyFltrL, ...opt.additionalFilters]
 
 		return profile.request({profile, opt}, userAgent, {
 			cfg: {polyEnc: 'GPA'},
