@@ -231,6 +231,69 @@ const createRestClient = (profile, token, userAgent) => {
 	}
 
 	// todo: fails with 404
+	// todo [breaking]: rename to trips()?
+	// const tripsByName = async (lineNameOrFahrtNr = '*', opt = {}) => {
+	// 	if (!isNonEmptyString(lineNameOrFahrtNr)) {
+	// 		throw new TypeError('lineNameOrFahrtNr must be a non-empty string.')
+	// 	}
+	// 	opt = Object.assign({
+	// 		when: null,
+	// 		// currentlyStoppingAt: null,
+	// 		lineNames: null,
+	// 		operatorNames: null,
+	// 		// additionalFilters: [], // undocumented
+	// 	}, opt)
+
+	// 	const req = {
+	// 		match: lineNameOrFahrtNr,
+	// 		// todo: filters, stations, station, uic, infotexts, showPassingPoints
+	// 	}
+	// 	if (opt.when !== null) {
+	// 		req.date = profile.formatDate({profile, opt}, new Date(opt.when))
+	// 		req.time = profile.formatTime({profile, opt}, new Date(opt.when))
+	// 	}
+	// 	// if (opt.currentlyStoppingAt !== null) {
+	// 	// 	if (!isNonEmptyString(opt.currentlyStoppingAt)) {
+	// 	// 		throw new TypeError('opt.currentlyStoppingAt must be a non-empty string.')
+	// 	// 	}
+	// 	// 	req.jnyFltrL.push(filter('INC', 'STATIONS', opt.currentlyStoppingAt))
+	// 	// }
+	// 	if (opt.lineNames !== null) {
+	// 		if (
+	// 			!Array.isArray(opt.lineNames)
+	// 			|| opt.lineNames.length === 0
+	// 			|| !opt.lineNames.every(isNonEmptyString)
+	// 		) {
+	// 			throw new TypeError('opt.lineNames must be an array of non-empty strings.')
+	// 		}
+	// 		// todo: is the an escaping mechanism for ","
+	// 		req.lines = opt.lineNames.join(',')
+	// 	}
+	// 	if (opt.operatorNames !== null) {
+	// 		if (
+	// 			!Array.isArray(opt.operatorNames)
+	// 			|| opt.operatorNames.length === 0
+	// 			|| !opt.operatorNames.every(isNonEmptyString)
+	// 		) {
+	// 			throw new TypeError('opt.operatorNames must be an array of non-empty strings.')
+	// 		}
+	// 		// todo: is the an escaping mechanism for ","
+	// 		req.operators = opt.operatorNames.join(',')
+	// 	}
+	// 	// req.filters = opt.additionalFilters
+
+	// 	let ctx
+	// 	// try {
+	// 		const {res} = await profile.request({profile, opt, token}, userAgent, 'journeyMatch', req)
+	// 		ctx = {profile, opt, res}
+	// 	// } catch (err) {
+	// 	// 	if (err && err.code === 'NO_MATCH') return {res: {jnyL: []}}
+	// 	// 	else throw err
+	// 	// }
+	// 	return res.jnyL.map(t => profile.parseTrip(ctx, t))
+	// }
+
+	// todo: fails with 404
 	// const tripHistory = async (tripId, opt = {}) => {
 	// 	const {res} = await profile.request({profile, opt, token}, userAgent, 'rtarchive', {
 	// 		id: tripId,
@@ -280,7 +343,9 @@ const createRestClient = (profile, token, userAgent) => {
 	const client = {
 		locations, nearby,
 		departures, arrivals,
-		journeys, trip, tripAlternatives,
+		journeys, trip,
+		// tripsByName,
+		tripAlternatives,
 	}
 	Object.defineProperty(client, 'profile', {value: profile})
 	return client

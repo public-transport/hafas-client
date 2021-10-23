@@ -184,7 +184,7 @@ if (!token) {
 		// 	wrapped.originalError = err
 		// 	throw wrapped
 		// }
-		// return true
+		return true
 	}
 
 	for (const svc of SERVICES) {
