@@ -1,0 +1,312 @@
+{
+	"common": {
+		"locL": [
+			{
+				"lid": "A=1@O=Rufbus NF (Niederer-Fläming) SSD@X=13290902@Y=52051831@U=86@L=11@",
+				"type": "S",
+				"name": "Rufbus NF (Niederer-Fläming) SSD",
+				"icoX": 3,
+				"extId": "11",
+				"state": "F",
+				"crd": {
+					"x": 13290902,
+					"y": 52051831,
+					"floor": 0
+				},
+				"pCls": 8,
+				"entry": true,
+				"chgTime": "000300"
+			},
+			{
+				"lid": "A=1@O=Rufbus NF (Niederer-Fläming) SDD@X=13322643@Y=52050078@U=86@L=13@",
+				"type": "S",
+				"name": "Rufbus NF (Niederer-Fläming) SDD",
+				"icoX": 3,
+				"extId": "13",
+				"state": "F",
+				"crd": {
+					"x": 13322643,
+					"y": 52050078,
+					"floor": 0
+				},
+				"pCls": 8,
+				"entry": true,
+				"chgTime": "000300"
+			}
+		],
+		"prodL": [
+			{
+				"pid": "L::3::Bus::B0026665956::Bus_0026665956_R777::*",
+				"name": "R777",
+				"nameS": "R777",
+				"number": "R777",
+				"icoX": 0,
+				"cls": 8,
+				"oprX": 0,
+				"prodCtx": {
+					"name": "    R777",
+					"num": "7",
+					"line": "R777",
+					"matchId": "R777",
+					"catOut": "Bus     ",
+					"catOutS": "BV",
+					"catOutL": "Bus     ",
+					"catIn": "BV",
+					"catCode": "3",
+					"admin": "VTFRuf"
+				}
+			}
+		],
+		"opL": [
+			{
+				"name": "Verkehrsgesellschaft Teltow-Fläming mbH",
+				"url": "https://www.vtf-online.de/",
+				"icoX": 1,
+				"id": "246"
+			}
+		],
+		"remL": [
+			{
+				"type": "A",
+				"code": "OPERATOR",
+				"icoX": 2,
+				"txtS": "VTF",
+				"txtN": "VTF",
+				"txtL": "Verkehrsgesellschaft Teltow-Fläming mbH"
+			},
+			{
+				"type": "A",
+				"code": "qv",
+				"prio": 1,
+				"icoX": 2,
+				"txtN": "Rufbus Bestellung unter Tel.: (03371) 62 81 81"
+			},
+			{
+				"type": "A",
+				"code": "qw",
+				"prio": 1,
+				"icoX": 2,
+				"txtN": "Bestellannahme: täglich von 5.00 - 17.00 Uhr"
+			},
+			{
+				"type": "A",
+				"code": "qx",
+				"prio": 1,
+				"icoX": 2,
+				"txtN": "Onlinebuchung unter: <a href=\"https://www.vtfonline.de/rufbusapp.html\" target=\"_blank\">https://www.vtfonline.de/rufbusapp.html</a>"
+			},
+			{
+				"type": "A",
+				"code": "qu",
+				"prio": 2,
+				"icoX": 2,
+				"txtN": "VBB-Tarif zuzüglich des Komfortzuschlages 1,00 EUR je Fahrgast und Strecke"
+			},
+			{
+				"type": "A",
+				"code": "hx",
+				"prio": 350,
+				"icoX": 2,
+				"txtN": "Linientaxi max. 8 Personen"
+			}
+		],
+		"himL": [
+			{
+				"hid": "118634",
+				"act": true,
+				"head": "Gemeinsam sicher unterwegs - mit Abstand und medizinischer Maske (in Berlin: FFP2)!",
+				"text": "An Haltestellen und Bahnhöfen sowie in Fahrzeugen. Maskenmuffel riskieren mindestens 50 Euro.<br><a href=\"https://www.vbb.de/corona\" target=\"_blank\" rel=\"noopener\">Weitere Informationen</a>",
+				"icoX": 4,
+				"prio": 100,
+				"prod": 65535,
+				"src": 50,
+				"lModDate": "20210612",
+				"lModTime": "074336",
+				"sDate": "20210424",
+				"sTime": "000000",
+				"eDate": "20221231",
+				"eTime": "000000",
+				"sDaily": "000000",
+				"eDaily": "235900",
+				"comp": "VBB",
+				"catRefL": [
+					0
+				],
+				"pubChL": [
+					{
+						"name": "TIMETABLE",
+						"fDate": "20210423",
+						"fTime": "134200",
+						"tDate": "20221231",
+						"tTime": "000000"
+					}
+				],
+				"baseType": "GLOBAL"
+			}
+		],
+		"icoL": [
+			{
+				"res": "prod_bus_t",
+				"fg": {
+					"r": 255,
+					"g": 255,
+					"b": 255
+				},
+				"bg": {
+					"r": 166,
+					"g": 22,
+					"b": 128
+				}
+			},
+			{
+				"res": "VTF",
+				"txt": "Verkehrsgesellschaft Teltow-Fläming mbH"
+			},
+			{
+				"res": "attr_info"
+			},
+			{
+				"res": "loc_stop"
+			},
+			{
+				"res": "HIM0"
+			}
+		],
+		"himMsgCatL": [
+			{
+				"id": 0
+			}
+		],
+		"lDrawStyleL": [
+			{
+				"sIcoX": 0,
+				"type": "SOLID",
+				"bg": {
+					"r": 166,
+					"g": 22,
+					"b": 128
+				}
+			},
+			{
+				"type": "SOLID",
+				"bg": {
+					"r": 166,
+					"g": 22,
+					"b": 128
+				}
+			}
+		]
+	},
+	"journey": {
+		"jid": "1|42971|454|86|24102021",
+		"date": "20211024",
+		"prodX": 0,
+		"dirTxt": "Rufbus Niederer-Fläming",
+		"dirFlg": "1",
+		"status": "P",
+		"isRchbl": true,
+		"sDaysL": [
+			{
+				"sDaysR": "Sa, So",
+				"sDaysB": "83060C183060C1",
+				"fLocX": 0,
+				"tLocX": 1,
+				"fLocIdx": 0,
+				"tLocIdx": 1
+			}
+		],
+		"msgL": [
+			{
+				"type": "REM",
+				"remX": 0,
+				"sty": "I",
+				"fLocX": 0,
+				"tLocX": 1,
+				"tagL": [
+					"RES_JNY_DTL"
+				],
+				"sort": 684195840
+			},
+			{
+				"type": "REM",
+				"remX": 1,
+				"sty": "I",
+				"dspl": "U",
+				"fLocX": 0,
+				"tLocX": 1,
+				"tagL": [
+					"SUM_CON_HDR_H3",
+					"RES_JNY_DTL_H3"
+				],
+				"sort": 402784256
+			},
+			{
+				"type": "REM",
+				"remX": 2,
+				"sty": "I",
+				"dspl": "U",
+				"fLocX": 0,
+				"tLocX": 1,
+				"tagL": [
+					"SUM_CON_HDR_H3",
+					"RES_JNY_DTL_H3"
+				],
+				"sort": 402784256
+			},
+			{
+				"type": "REM",
+				"remX": 3,
+				"sty": "I",
+				"dspl": "U",
+				"fLocX": 0,
+				"tLocX": 1,
+				"tagL": [
+					"SUM_CON_HDR_H3",
+					"RES_JNY_DTL_H3"
+				],
+				"sort": 402784256
+			},
+			{
+				"type": "REM",
+				"remX": 4,
+				"sty": "I",
+				"fLocX": 0,
+				"tLocX": 1,
+				"tagL": [
+					"RES_JNY_DTL_H3"
+				],
+				"sort": 402915328
+			},
+			{
+				"type": "REM",
+				"remX": 5,
+				"sty": "I",
+				"fLocX": 0,
+				"tLocX": 1,
+				"tagL": [
+					"RES_JNY_DTL"
+				],
+				"sort": 716963840
+			},
+			{
+				"type": "HIM",
+				"himX": 0,
+				"sty": "M",
+				"fLocX": 0,
+				"tLocX": 0,
+				"tagL": [
+					"RES_GLB_HDR_H3",
+					"SUM_GLB_HDR_H3"
+				],
+				"sort": 373554673
+			}
+		],
+		"subscr": "N",
+		"sumLDrawStyleX": 0,
+		"resLDrawStyleX": 1,
+		"trainStartDate": "20211024"
+	},
+	"fpB": "20211017",
+	"fpE": "20211211",
+	"planrtTS": "1635084435"
+}

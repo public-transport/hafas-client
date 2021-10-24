@@ -10,8 +10,12 @@ const parseTrip = (ctx, t) => { // t = raw trip
 	// pretend the trip is a leg in a journey
 	const fakeLeg = {
 		type: 'JNY',
-		dep: minBy(t.stopL, 'idx') || t.stopL[0],
-		arr: maxBy(t.stopL, 'idx') || last(t.stopL),
+		dep: Array.isArray(t.stopL)
+			? minBy(t.stopL, 'idx') || t.stopL[0]
+			: {},
+		arr: Array.isArray(t.stopL)
+			? maxBy(t.stopL, 'idx') || last(t.stopL)
+			: {},
 		jny: t,
 	}
 
