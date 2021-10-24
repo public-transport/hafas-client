@@ -1,5 +1,17 @@
 # Changelog
 
+## `5.20.1`
+
+- 46fb44d0 SNCB: update CA chain 🐛
+- f0d33564 `parseTrip()`: handle missing `stopL[]` (on-demand trips) 🐛✅
+- fd6a349b `tripsByName()`: more options, add to debug CLI, skipped E2E test ✅📝
+- 39ca7ede `tripsByName()`: support some journey filters
+- 22a7f16e remove SBB integration/E2E test ✅
+- 102c4bf2 BVG/VBB: fix `nearby()` integration/E2E test ✅
+- 959e894d E2E/integration tests: un-skip tests, update mocked `when`, update fixtures ✅
+
+[🏷 `5.20.1`](https://github.com/public-transport/hafas-client/releases/tag/5.20.1), 2021-10-24
+
 ## `5.20.0`
 
 - 0a096a13 `parseJourneyLeg()`/`parseTrip()`: expose `currentLocation` ✅📝

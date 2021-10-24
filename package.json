@@ -1,7 +1,7 @@
 {
 	"name": "hafas-client",
 	"description": "Client for HAFAS public transport APIs.",
-	"version": "5.20.0",
+	"version": "5.20.1",
 	"main": "index.js",
 	"files": [
 		"index.js",
@@ -21,7 +21,7 @@
 		"Adrian Böhme <hannsadrian@gmail.com> (https://github.com/Adwirawien)",
 		"Yureka <github@yuka.dev>"
 	],
-	"homepage": "https://github.com/public-transport/hafas-client/tree/5.20.0",
+	"homepage": "https://github.com/public-transport/hafas-client/tree/5.20.1",
 	"repository": "public-transport/hafas-client",
 	"bugs": "https://github.com/public-transport/hafas-client/issues",
 	"funding": {
