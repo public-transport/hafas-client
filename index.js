@@ -187,7 +187,7 @@ const createClient = (profile, userAgent, opt = {}) => {
 			maxChg: opt.transfers,
 			minChgTime: opt.transferTime,
 			depLocL: [from],
-			viaLocL: opt.via ? [{loc: opt.via}] : null,
+			viaLocL: opt.via ? [{loc: opt.via}] : [],
 			arrLocL: [to],
 			jnyFltrL: filters,
 			gisFltrL,
