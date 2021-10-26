@@ -123,9 +123,9 @@ tap.test('Saarbrücken Hbf to Schlossberghöhlen', async (t) => {
 tap.skip('journeys: via works – with detour', async (t) => {
 	// Going from Stephansplatz to Schottenring via Donauinsel without detour
 	// is currently impossible. We check if the routing engine computes a detour.
-	const stephansplatz = '1390167'
-	const schottenring = '1390163'
-	const donauinsel = '1392277'
+	const stephansplatz = '1390167' // todo: does not exist anymore?
+	const schottenring = '1390163' // todo: does not exist anymore?
+	const donauinsel = '1392277' // todo: does not exist anymore?
 	const donauinselPassed = '922001'
 	const res = await client.journeys(stephansplatz, schottenring, {
 		via: donauinsel,

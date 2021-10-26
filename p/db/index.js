@@ -169,6 +169,17 @@ const transformJourneysQuery = ({opt}, query) => {
 	return query
 }
 
+// todo: fix this
+// line: {
+// 	type: 'line',
+// 	id: '5-vbbbvb-x9',
+// 	fahrtNr: '52496',
+// 	name: 'X9',
+// 	public: true,
+// 	mode: 'bus',
+// 	product: 'bus',
+// 	operator: {type: 'operator', id: 'nahreisezug', name: 'Nahreisezug'}
+// }
 const parseLineWithAdditionalName = ({parsed}, l) => {
 	if (l.nameS && ['bus', 'tram', 'ferry'].includes(l.product)) {
 		parsed.name = l.nameS

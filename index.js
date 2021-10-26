@@ -342,7 +342,7 @@ const createClient = (profile, userAgent, opt = {}) => {
 
 		const query = {
 			// https://github.com/marudor/BahnhofsAbfahrten/blob/49ebf8b36576547112e61a6273bee770f0769660/packages/types/HAFAS/SearchOnTrip.ts#L16-L30
-			// todo: support search by `journey.refreshToken` (a.k.a. `ctxRecon`)?
+			// todo: support search by `journey.refreshToken` (a.k.a. `ctxRecon`) via `sotMode: RC`?
 			sotMode: 'JI', // seach by trip ID (a.k.a. "JID")
 			jid: fromTripId,
 			locData: { // when & where the trip has been entered
@@ -465,6 +465,7 @@ const createClient = (profile, userAgent, opt = {}) => {
 		.then(({common, res}) => {
 			if (!Array.isArray(res.locL)) return []
 
+			// todo: parse `.dur` – walking duration?
 			const ctx = {profile, opt, common, res}
 			const results = res.locL.map(loc => profile.parseNearby(ctx, loc))
 			return Number.isInteger(opt.results) ? results.slice(0, opt.results) : results
@@ -569,6 +570,7 @@ const createClient = (profile, userAgent, opt = {}) => {
 			meth: 'JourneyMatch',
 			req,
 		})
+		// todo [breaking]: catch `NO_MATCH` errors, return []
 		.then(({res, common}) => {
 			const ctx = {profile, opt, common, res}
 			return res.jnyL.map(t => profile.parseTrip(ctx, t))
