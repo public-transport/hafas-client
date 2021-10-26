@@ -15,7 +15,7 @@ const formatStationBoardReq = (ctx, station, type) => {
 		date: profile.formatDate(profile, opt.when),
 		time: profile.formatTime(profile, opt.when),
 		stbLoc: station,
-		dirLoc: opt.direction ? profile.formatStation(opt.direction) : null,
+		dirLoc: opt.direction ? profile.formatStation(opt.direction) : undefined,
 		jnyFltrL,
 		dur: opt.duration
 	}
