@@ -2,6 +2,17 @@
 
 ## `5.20.1`
 
+- 84c7582a `journeys()`: fix empty `viaLocL[]` 🐛 (#247)
+- dd5e4368 fix `departures()`/`arrivals()` without `opt.direction` 🐛
+- 3f75e075 BVG: update API endpoint
+- 1f6e6810 DB: update `.ext`
+- 39d3807c minor tweaks 📝
+- 8d4f8a83 E2E/integration tests: update fixtures ✅
+
+[🏷 `5.20.1`](https://github.com/public-transport/hafas-client/releases/tag/5.20.1), 2021-10-26
+
+## `5.20.1`
+
 - 46fb44d0 SNCB: update CA chain 🐛
 - f0d33564 `parseTrip()`: handle missing `stopL[]` (on-demand trips) 🐛✅
 - fd6a349b `tripsByName()`: more options, add to debug CLI, skipped E2E test ✅📝
