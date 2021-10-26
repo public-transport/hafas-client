@@ -11,7 +11,7 @@
 		"name": "DB Navigator"
 	},
 	"endpoint": "https://reiseauskunft.bahn.de/bin/mgate.exe",
-	"ext": "DB.R19.12.a",
+	"ext": "DB.R20.12.b",
 	"ver": "1.34",
 	"defaultLanguage": "en"
 }
