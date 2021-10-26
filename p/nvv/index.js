@@ -3,7 +3,7 @@
 const baseProfile = require('./base.json')
 const products = require('./products')
 
-const saarfahrplanProfile = {
+const nvvProfile = {
 	...baseProfile,
 	locale: 'de-DE',
 	timezone: 'Europe/Berlin',
@@ -18,4 +18,4 @@ const saarfahrplanProfile = {
 	reachableFrom: true,
 }
 
-module.exports = saarfahrplanProfile
+module.exports = nvvProfile

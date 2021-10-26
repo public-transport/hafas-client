@@ -8,13 +8,6 @@
 [![support Jannis via GitHub Sponsors](https://img.shields.io/badge/support%20Jannis-donate-fa7664.svg)](https://github.com/sponsors/derhuerst)
 [![chat with Jannis on Twitter](https://img.shields.io/badge/chat%20with%20Jannis-on%20Twitter-1da1f2.svg)](https://twitter.com/derhuerst)
 
-- [Background](#background)
-- [Supported networks/endpoints](#supported-networksendpoints)
-- [Installing](#installing)
-- [Usage](#usage)
-- [Related Projects](#related)
-- [Contributing](#contributing)
-
 
 ## Background
 
@@ -221,7 +214,7 @@ While `hafas-client` itself should work in the browser via a bundler like [Webpa
 [API documentation](docs/readme.md)
 
 
-## Related
+## Related Projects
 
 - [`*.transport.rest`](https://transport.rest/) – Public APIs wrapping some HAFAS endpoints.
 - [`BahnhofsAbfahrten`](https://github.com/marudor/BahnhofsAbfahrten) a.k.a. [`marudor.de`](https://marudor.de/) – A very detailed public transport website for Germany. Uses HAFAS underneath, [has an API](https://docs.marudor.de).

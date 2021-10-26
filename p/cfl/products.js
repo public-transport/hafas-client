@@ -39,7 +39,7 @@ module.exports = [
 		mode: 'gondola',
 		bitmasks: [512],
 		name: 'Fun', // taken from the horaires.cfl.lu website
-		short: 'Fun',
+		short: 'Fun', // abbreviation for funicular?
 		default: true
 	}
 ]
