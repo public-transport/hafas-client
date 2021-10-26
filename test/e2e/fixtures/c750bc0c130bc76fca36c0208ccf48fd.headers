@@ -1,15 +1,15 @@
 {
   "statusCode": 200,
   "headers": {
-    "date": "Thu, 21 Oct 2021 22:03:44 GMT",
+    "date": "Tue, 26 Oct 2021 12:48:51 GMT",
     "content-type": "application/json; charset=utf-8",
-    "content-length": "4063",
+    "content-length": "3998",
     "connection": "close",
     "server": "Apache",
     "vary": "Accept-Encoding"
   },
   "url": "https://capmetro.hafas.cloud/bin/mgate.exe",
-  "time": 453,
+  "time": 525,
   "request": {
     "method": "POST",
     "headers": {
@@ -23,7 +23,7 @@
         "application/json"
       ],
       "user-agent": [
-        "public55f70a98973d-transport/hafas-client:test"
+        "public-transport/hafas-cli634de01a436dent:test"
       ],
       "Content-Length": [
         "458"

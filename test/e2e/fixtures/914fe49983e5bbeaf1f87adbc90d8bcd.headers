@@ -1,14 +1,14 @@
 {
   "statusCode": 200,
   "headers": {
-    "date": "Thu, 21 Oct 2021 22:03:45 GMT",
+    "date": "Tue, 26 Oct 2021 12:48:52 GMT",
     "server": "Apache",
     "content-length": "3866",
     "connection": "close",
     "content-type": "application/json; charset=utf-8"
   },
   "url": "https://nrw.hafas.de/bin/mgate.exe",
-  "time": 389,
+  "time": 430,
   "request": {
     "method": "POST",
     "headers": {
@@ -22,7 +22,7 @@
         "application/json"
       ],
       "user-agent": [
-        "public-transport/hafas-client:tf3f78fb03f3eest"
+        "public-transport/hafas-client:te529b42d5cc46st"
       ],
       "Content-Length": [
         "460"

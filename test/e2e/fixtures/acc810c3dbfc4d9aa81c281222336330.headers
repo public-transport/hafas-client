@@ -1,7 +1,7 @@
 {
   "statusCode": 200,
   "headers": {
-    "date": "Thu, 21 Oct 2021 22:03:52 GMT",
+    "date": "Tue, 26 Oct 2021 12:49:13 GMT",
     "server": "Apache",
     "content-length": "705",
     "content-type": "application/json; charset=utf-8",
@@ -9,7 +9,7 @@
     "strict-transport-security": "max-age=63072000; includeSubDomains"
   },
   "url": "https://fahrplan.oebb.at/bin/mgate.exe",
-  "time": 343,
+  "time": 1221,
   "request": {
     "method": "POST",
     "headers": {
@@ -23,7 +23,7 @@
         "application/json"
       ],
       "user-agent": [
-        "public-t22b92615159eransport/hafas-client:test"
+        "9175238c4145public-transport/hafas-client:test"
       ],
       "Content-Length": [
         "234"

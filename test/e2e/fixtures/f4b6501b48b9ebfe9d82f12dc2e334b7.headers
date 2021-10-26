@@ -1,14 +1,14 @@
 {
   "statusCode": 200,
   "headers": {
-    "date": "Thu, 21 Oct 2021 22:03:42 GMT",
+    "date": "Tue, 26 Oct 2021 12:48:49 GMT",
     "server": "Apache",
-    "content-length": "2007",
+    "content-length": "2009",
     "connection": "close",
     "content-type": "application/json; charset=utf-8"
   },
   "url": "https://cdt.hafas.de/bin/mgate.exe",
-  "time": 318,
+  "time": 506,
   "request": {
     "method": "POST",
     "headers": {
@@ -22,7 +22,7 @@
         "application/json"
       ],
       "user-agent": [
-        "public-transe5727cf88a62port/hafas-client:test"
+        "public-transport/hafaaec8eda42460s-client:test"
       ],
       "Content-Length": [
         "261"

@@ -1,14 +1,14 @@
 {
   "statusCode": 200,
   "headers": {
-    "date": "Thu, 21 Oct 2021 22:03:51 GMT",
+    "date": "Tue, 26 Oct 2021 12:49:00 GMT",
     "server": "Apache",
-    "content-length": "11039",
+    "content-length": "11040",
     "content-type": "application/json; charset=utf-8",
     "connection": "close"
   },
   "url": "https://fahrplan.salzburg-verkehr.at/bin/mgate.exe",
-  "time": 3528,
+  "time": 3513,
   "request": {
     "method": "POST",
     "headers": {
@@ -22,7 +22,7 @@
         "application/json"
       ],
       "user-agent": [
-        "public-transport/hafas-client:tesc91ae59ca288t"
+        "public-transport/hafas-client9a048c4b64d9:test"
       ],
       "Content-Length": [
         "450"

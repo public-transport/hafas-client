@@ -1,14 +1,14 @@
 {
   "statusCode": 200,
   "headers": {
-    "date": "Thu, 21 Oct 2021 22:03:49 GMT",
+    "date": "Tue, 26 Oct 2021 12:48:55 GMT",
     "server": "Apache",
-    "content-length": "3593",
+    "content-length": "3594",
     "connection": "close",
     "content-type": "application/json; charset=utf-8"
   },
   "url": "https://fahrplan.rsag-online.de/bin/mgate.exe",
-  "time": 602,
+  "time": 1382,
   "request": {
     "method": "POST",
     "headers": {
@@ -22,7 +22,7 @@
         "application/json"
       ],
       "user-agent": [
-        "pubfcdef2f5571clic-transport/hafas-client:test"
+        "public-transport/hafas-cl7b12a821d15dient:test"
       ],
       "Content-Length": [
         "458"

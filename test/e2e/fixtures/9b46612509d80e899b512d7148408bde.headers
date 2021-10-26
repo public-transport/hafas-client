@@ -1,14 +1,14 @@
 {
   "statusCode": 200,
   "headers": {
-    "date": "Thu, 21 Oct 2021 22:03:46 GMT",
+    "date": "Tue, 26 Oct 2021 12:48:52 GMT",
     "content-length": "4002",
     "connection": "close",
     "content-type": "application/json; charset=utf-8",
     "strict-transport-security": "max-age=63072000; includeSubDomains"
   },
   "url": "https://www.rmv.de/auskunft/bin/jp/mgate.exe",
-  "time": 833,
+  "time": 937,
   "request": {
     "method": "POST",
     "headers": {
@@ -22,7 +22,7 @@
         "application/json"
       ],
       "user-agent": [
-        "public-transport/hafas-client:t7e22a5973496est"
+        "public-transport/hafas-49f390d62a6eclient:test"
       ],
       "Content-Length": [
         "442"
