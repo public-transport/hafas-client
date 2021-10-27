@@ -49,7 +49,6 @@ const applyRemarks = (leg, refs) => {
 // todo: what is `sty: 'UNDEF'`?
 // todo: pt.prodL
 // todo: pt.parJnyL (list of coupled trains)
-// todo: pt.planrtTS
 
 const parseJourneyLeg = (ctx, pt, date) => { // pt = raw leg
 	const {profile, opt} = ctx

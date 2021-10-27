@@ -25,6 +25,7 @@ module.exports = {
 		night: false
 	},
 	reachable: true,
+	realtimeDataUpdatedAt: 1635084435,
 
 	origin: {},
 	departure: null,

@@ -74,6 +74,7 @@ const createClient = (profile, userAgent, opt = {}) => {
 
 		const req = profile.formatStationBoardReq({profile, opt}, station, type)
 
+		// todo [breaking]: return object with realtimeDataUpdatedAt
 		return profile.request({profile, opt}, userAgent, req)
 		.then(({res, common}) => {
 			if (!Array.isArray(res.jnyL)) return []
@@ -227,6 +228,7 @@ const createClient = (profile, userAgent, opt = {}) => {
 				earlierRef: res.outCtxScrB,
 				laterRef: res.outCtxScrF,
 				journeys,
+				// todo [breaking]: rename to realtimeDataUpdatedAt
 				realtimeDataFrom: res.planrtTS ? parseInt(res.planrtTS) : null,
 			}
 		})
@@ -260,6 +262,7 @@ const createClient = (profile, userAgent, opt = {}) => {
 
 			const ctx = {profile, opt, common, res}
 			return {
+				// todo [breaking]: rename to realtimeDataUpdatedAt
 				realtimeDataFrom: res.planrtTS ? parseInt(res.planrtTS) : null,
 				...profile.parseJourney(ctx, res.outConL[0])
 			}
@@ -367,6 +370,7 @@ const createClient = (profile, userAgent, opt = {}) => {
 		if (!Array.isArray(res.outConL)) return []
 
 		const ctx = {profile, opt, common, res}
+		// todo [breaking]: return object with realtimeDataUpdatedAt
 		return res.outConL
 		.map(rawJourney => profile.parseJourney(ctx, rawJourney))
 		.map((journey) => {
@@ -489,6 +493,7 @@ const createClient = (profile, userAgent, opt = {}) => {
 
 		const req = profile.formatTripReq({profile, opt}, id, lineName)
 
+		// todo [breaking]: return object with realtimeDataUpdatedAt
 		return profile.request({profile, opt}, userAgent, req)
 		.then(({common, res}) => {
 			const ctx = {profile, opt, common, res}
@@ -565,6 +570,7 @@ const createClient = (profile, userAgent, opt = {}) => {
 		}
 		req.jnyFltrL = [...req.jnyFltrL, ...opt.additionalFilters]
 
+		// todo [breaking]: return object with realtimeDataUpdatedAt
 		return profile.request({profile, opt}, userAgent, {
 			cfg: {polyEnc: 'GPA'},
 			meth: 'JourneyMatch',
@@ -600,6 +606,7 @@ const createClient = (profile, userAgent, opt = {}) => {
 
 		const req = profile.formatRadarReq({profile, opt}, north, west, south, east)
 
+		// todo [breaking]: return object with realtimeDataUpdatedAt
 		return profile.request({profile, opt}, userAgent, req)
 		.then(({res, common}) => {
 			if (!Array.isArray(res.jnyL)) return []
@@ -650,6 +657,7 @@ const createClient = (profile, userAgent, opt = {}) => {
 						byDuration[i].stations.push(loc)
 					}
 				}
+				// todo [breaking]: return object with realtimeDataUpdatedAt
 				return byDuration
 			})
 		}
@@ -686,6 +694,7 @@ const createClient = (profile, userAgent, opt = {}) => {
 			res, common,
 		} = await profile.request({profile, opt}, userAgent, req)
 
+		// todo [breaking]: return object with realtimeDataUpdatedAt
 		const ctx = {profile, opt, common, res}
 		return (res.msgL || [])
 		.map(w => profile.parseWarning(ctx, w))
@@ -701,6 +710,7 @@ const createClient = (profile, userAgent, opt = {}) => {
 			res, common,
 		} = await profile.request({profile, opt}, userAgent, req)
 
+		// todo [breaking]: return object with realtimeDataUpdatedAt
 		if (!Array.isArray(res.lineL)) return []
 		const ctx = {profile, opt, common, res}
 		return res.lineL.map(l => {
