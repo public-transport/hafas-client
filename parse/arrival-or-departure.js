@@ -50,7 +50,9 @@ const createParseArrOrDep = (prefix) => {
 		if (opt.remarks) {
 			res.remarks = findRemarks([
 				...(d.remL || []),
-				...(d.msgL || [])
+				...(d.msgL || []),
+				...(d.stbStop.remL || []),
+				...(d.stbStop.msgL || []),
 			]).map(([remark]) => remark)
 		}
 
