@@ -1,0 +1,1699 @@
+{
+	"common": {
+		"crdSysL": [
+			{
+				"id": "standard",
+				"index": 0,
+				"type": "WGS84"
+			}
+		],
+		"dirL": [
+			{
+				"flg": "2",
+				"txt": "S Ostbahnhof via S+U Wedding"
+			},
+			{
+				"flg": "2",
+				"txt": "S Ostbahnhof via S+U Hauptbahnhof"
+			},
+			{
+				"flg": "2",
+				"txt": "S Ostbahnhof via Friedrichstr."
+			},
+			{
+				"flg": "2",
+				"txt": "S Ostbahnhof"
+			}
+		],
+		"icoL": [
+			{
+				"bg": {
+					"b": 153,
+					"g": 51,
+					"r": 153
+				},
+				"fg": {
+					"b": 255,
+					"g": 255,
+					"r": 255
+				},
+				"res": "prod_bus_t"
+			},
+			{
+				"res": "BVG",
+				"txt": "Berliner Verkehrsbetriebe"
+			},
+			{
+				"bg": {
+					"b": 153,
+					"g": 51,
+					"r": 0
+				},
+				"fg": {
+					"b": 255,
+					"g": 255,
+					"r": 255
+				},
+				"res": "prod_sub_t"
+			},
+			{
+				"bg": {
+					"b": 74,
+					"g": 135,
+					"r": 55
+				},
+				"fg": {
+					"b": 255,
+					"g": 255,
+					"r": 255
+				},
+				"res": "prod_comm_t"
+			},
+			{
+				"res": "occup_fig_low"
+			},
+			{
+				"res": "occup_fig_mid"
+			},
+			{
+				"bg": {
+					"b": 0,
+					"g": 0,
+					"r": 204
+				},
+				"fg": {
+					"b": 255,
+					"g": 255,
+					"r": 255
+				},
+				"res": "prod_tram_t"
+			},
+			{
+				"res": "attr_info"
+			}
+		],
+		"lDrawStyleL": [
+			{
+				"bg": {
+					"b": 153,
+					"g": 51,
+					"r": 153
+				},
+				"sIcoX": 0,
+				"type": "SOLID"
+			},
+			{
+				"bg": {
+					"b": 153,
+					"g": 51,
+					"r": 153
+				},
+				"type": "SOLID"
+			}
+		],
+		"layerL": [
+			{
+				"annoCnt": 0,
+				"id": "standard",
+				"index": 0,
+				"name": "standard"
+			}
+		],
+		"locL": [
+			{
+				"crd": {
+					"crdSysX": 0,
+					"layerX": 0,
+					"x": 13359391,
+					"y": 52546489
+				},
+				"extId": "900009102",
+				"icoX": 2,
+				"lid": "A=1@O=U Leopoldplatz (Berlin)@X=13359391@Y=52546489@U=86@L=900009102@",
+				"name": "U Leopoldplatz (Berlin)",
+				"pCls": 10,
+				"state": "F",
+				"type": "S"
+			},
+			{
+				"crd": {
+					"crdSysX": 0,
+					"layerX": 0,
+					"x": 13366061,
+					"y": 52542732
+				},
+				"extId": "900009104",
+				"icoX": 3,
+				"lid": "A=1@O=S+U Wedding (Berlin)@X=13366061@Y=52542732@U=86@L=900009104@",
+				"name": "S+U Wedding (Berlin)",
+				"pCls": 11,
+				"state": "F",
+				"type": "S"
+			},
+			{
+				"crd": {
+					"crdSysX": 0,
+					"layerX": 0,
+					"x": 13369072,
+					"y": 52525607
+				},
+				"extId": "900003201",
+				"icoX": 3,
+				"lid": "A=1@O=S+U Berlin Hauptbahnhof@X=13369072@Y=52525607@U=86@L=900003201@",
+				"name": "S+U Berlin Hauptbahnhof",
+				"pCls": 111,
+				"state": "F",
+				"type": "S"
+			},
+			{
+				"crd": {
+					"crdSysX": 0,
+					"layerX": 0,
+					"x": 13386448,
+					"y": 52520519
+				},
+				"extId": "900100001",
+				"icoX": 3,
+				"lid": "A=1@O=S+U Friedrichstr. Bhf (Berlin)@X=13386448@Y=52520519@U=86@L=900100001@",
+				"name": "S+U Friedrichstr. Bhf (Berlin)",
+				"pCls": 79,
+				"state": "F",
+				"type": "S"
+			},
+			{
+				"crd": {
+					"crdSysX": 0,
+					"layerX": 0,
+					"x": 13435089,
+					"y": 52510335
+				},
+				"extId": "900120005",
+				"icoX": 3,
+				"lid": "A=1@O=S Ostbahnhof (Berlin)@X=13435089@Y=52510335@U=86@L=900120005@",
+				"name": "S Ostbahnhof (Berlin)",
+				"pCls": 105,
+				"state": "F",
+				"type": "S"
+			},
+			{
+				"crd": {
+					"crdSysX": 0,
+					"layerX": 0,
+					"x": 13362663,
+					"y": 52544476
+				},
+				"extId": "900009151",
+				"icoX": 0,
+				"lid": "A=1@O=Gerichtstr. (Berlin)@X=13362663@Y=52544476@U=86@L=900009151@",
+				"name": "Gerichtstr. (Berlin)",
+				"pCls": 8,
+				"state": "F",
+				"type": "S"
+			},
+			{
+				"crd": {
+					"crdSysX": 0,
+					"layerX": 0,
+					"x": 13368713,
+					"y": 52541195
+				},
+				"extId": "900008104",
+				"icoX": 0,
+				"lid": "A=1@O=U Reinickendorfer Str./Fennstr. (Berlin)@X=13368713@Y=52541195@U=86@L=900008104@",
+				"name": "U Reinickendorfer Str./Fennstr. (Berlin)",
+				"pCls": 10,
+				"state": "F",
+				"type": "S"
+			},
+			{
+				"crd": {
+					"crdSysX": 0,
+					"layerX": 0,
+					"x": 13363607,
+					"y": 52538848
+				},
+				"extId": "900001202",
+				"icoX": 0,
+				"lid": "A=1@O=Am Nordhafen (Berlin)@X=13363607@Y=52538848@U=86@L=900001202@",
+				"name": "Am Nordhafen (Berlin)",
+				"pCls": 8,
+				"state": "F",
+				"type": "S"
+			},
+			{
+				"crd": {
+					"crdSysX": 0,
+					"layerX": 0,
+					"x": 13361216,
+					"y": 52536736
+				},
+				"extId": "900001252",
+				"icoX": 0,
+				"lid": "A=1@O=Friedrich-Krause-Ufer (Berlin)@X=13361216@Y=52536736@U=86@L=900001252@",
+				"name": "Friedrich-Krause-Ufer (Berlin)",
+				"pCls": 8,
+				"state": "F",
+				"type": "S"
+			},
+			{
+				"crd": {
+					"crdSysX": 0,
+					"layerX": 0,
+					"x": 13365512,
+					"y": 52533320
+				},
+				"extId": "900001206",
+				"icoX": 0,
+				"lid": "A=1@O=Heidestr. (Berlin)@X=13365512@Y=52533320@U=86@L=900001206@",
+				"name": "Heidestr. (Berlin)",
+				"pCls": 8,
+				"state": "F",
+				"type": "S"
+			},
+			{
+				"crd": {
+					"crdSysX": 0,
+					"layerX": 0,
+					"x": 13368110,
+					"y": 52530668
+				},
+				"extId": "900001203",
+				"icoX": 0,
+				"lid": "A=1@O=Döberitzer Str. (Berlin)@X=13368110@Y=52530668@U=86@L=900001203@",
+				"name": "Döberitzer Str. (Berlin)",
+				"pCls": 8,
+				"state": "F",
+				"type": "S"
+			},
+			{
+				"crd": {
+					"crdSysX": 0,
+					"layerX": 0,
+					"x": 13376929,
+					"y": 52528762
+				},
+				"extId": "900100503",
+				"icoX": 6,
+				"lid": "A=1@O=Invalidenpark (Berlin)@X=13376929@Y=52528762@U=86@L=900100503@",
+				"name": "Invalidenpark (Berlin)",
+				"pCls": 12,
+				"state": "F",
+				"type": "S"
+			},
+			{
+				"crd": {
+					"crdSysX": 0,
+					"layerX": 0,
+					"x": 13379086,
+					"y": 52525760
+				},
+				"extId": "900100542",
+				"icoX": 0,
+				"lid": "A=1@O=Charité - Campus Mitte (Berlin)@X=13379086@Y=52525760@U=86@L=900100542@",
+				"name": "Charité - Campus Mitte (Berlin)",
+				"pCls": 8,
+				"state": "F",
+				"type": "S"
+			},
+			{
+				"crd": {
+					"crdSysX": 0,
+					"layerX": 0,
+					"x": 13379392,
+					"y": 52524052
+				},
+				"extId": "900100033",
+				"icoX": 0,
+				"lid": "A=1@O=Schumannstr. (Berlin)@X=13379392@Y=52524052@U=86@L=900100033@",
+				"name": "Schumannstr. (Berlin)",
+				"pCls": 8,
+				"state": "F",
+				"type": "S"
+			},
+			{
+				"crd": {
+					"crdSysX": 0,
+					"layerX": 0,
+					"x": 13383266,
+					"y": 52523126
+				},
+				"extId": "900100509",
+				"icoX": 0,
+				"lid": "A=1@O=Deutsches Theater (Berlin)@X=13383266@Y=52523126@U=86@L=900100509@",
+				"name": "Deutsches Theater (Berlin)",
+				"pCls": 8,
+				"state": "F",
+				"type": "S"
+			},
+			{
+				"crd": {
+					"crdSysX": 0,
+					"layerX": 0,
+					"x": 13386835,
+					"y": 52523711
+				},
+				"extId": "900100047",
+				"icoX": 0,
+				"lid": "A=1@O=Friedrichstr./Reinhardtstr. (Berlin)@X=13386835@Y=52523711@U=86@L=900100047@",
+				"name": "Friedrichstr./Reinhardtstr. (Berlin)",
+				"pCls": 8,
+				"state": "F",
+				"type": "S"
+			},
+			{
+				"crd": {
+					"crdSysX": 0,
+					"layerX": 0,
+					"x": 13388875,
+					"y": 52516996
+				},
+				"extId": "900100513",
+				"icoX": 2,
+				"lid": "A=1@O=U Unter den Linden (Berlin)@X=13388875@Y=52516996@U=86@L=900100513@",
+				"name": "U Unter den Linden (Berlin)",
+				"pCls": 10,
+				"state": "F",
+				"type": "S"
+			},
+			{
+				"crd": {
+					"crdSysX": 0,
+					"layerX": 0,
+					"x": 13389208,
+					"y": 52514766
+				},
+				"extId": "900100027",
+				"icoX": 0,
+				"lid": "A=1@O=Französische Str. (Berlin)@X=13389208@Y=52514766@U=86@L=900100027@",
+				"name": "Französische Str. (Berlin)",
+				"pCls": 8,
+				"state": "F",
+				"type": "S"
+			},
+			{
+				"crd": {
+					"crdSysX": 0,
+					"layerX": 0,
+					"x": 13397334,
+					"y": 52515306
+				},
+				"extId": "900100530",
+				"icoX": 0,
+				"lid": "A=1@O=Werderscher Markt (Berlin)@X=13397334@Y=52515306@U=86@L=900100530@",
+				"name": "Werderscher Markt (Berlin)",
+				"pCls": 8,
+				"state": "F",
+				"type": "S"
+			},
+			{
+				"crd": {
+					"crdSysX": 0,
+					"layerX": 0,
+					"x": 13401676,
+					"y": 52516124
+				},
+				"extId": "900100052",
+				"icoX": 0,
+				"lid": "A=1@O=Berliner Schloss (Berlin)@X=13401676@Y=52516124@U=86@L=900100052@",
+				"name": "Berliner Schloss (Berlin)",
+				"pCls": 8,
+				"state": "F",
+				"type": "S"
+			},
+			{
+				"crd": {
+					"crdSysX": 0,
+					"layerX": 0,
+					"x": 13403995,
+					"y": 52515189
+				},
+				"extId": "900100531",
+				"icoX": 0,
+				"lid": "A=1@O=Neumannsgasse (Berlin)@X=13403995@Y=52515189@U=86@L=900100531@",
+				"name": "Neumannsgasse (Berlin)",
+				"pCls": 8,
+				"state": "F",
+				"type": "S"
+			},
+			{
+				"crd": {
+					"crdSysX": 0,
+					"layerX": 0,
+					"x": 13406449,
+					"y": 52513571
+				},
+				"extId": "900100726",
+				"icoX": 0,
+				"lid": "A=1@O=Fischerinsel. (Berlin)@X=13406449@Y=52513571@U=86@L=900100726@",
+				"name": "Fischerinsel. (Berlin)",
+				"pCls": 8,
+				"state": "F",
+				"type": "S"
+			},
+			{
+				"crd": {
+					"crdSysX": 0,
+					"layerX": 0,
+					"x": 13408768,
+					"y": 52512007
+				},
+				"extId": "900100014",
+				"icoX": 2,
+				"lid": "A=1@O=U Märkisches Museum (Berlin)@X=13408768@Y=52512007@U=86@L=900100014@",
+				"name": "U Märkisches Museum (Berlin)",
+				"pCls": 10,
+				"state": "F",
+				"type": "S"
+			},
+			{
+				"crd": {
+					"crdSysX": 0,
+					"layerX": 0,
+					"x": 13413749,
+					"y": 52508285
+				},
+				"extId": "900100032",
+				"icoX": 0,
+				"lid": "A=1@O=Heinrich-Heine-Str./Annenstr. (Berlin)@X=13413749@Y=52508285@U=86@L=900100032@",
+				"name": "Heinrich-Heine-Str./Annenstr. (Berlin)",
+				"pCls": 8,
+				"state": "F",
+				"type": "S"
+			},
+			{
+				"crd": {
+					"crdSysX": 0,
+					"layerX": 0,
+					"x": 13417857,
+					"y": 52506595
+				},
+				"extId": "900100544",
+				"icoX": 0,
+				"lid": "A=1@O=Heinrich-Heine-Platz (Berlin)@X=13417857@Y=52506595@U=86@L=900100544@",
+				"name": "Heinrich-Heine-Platz (Berlin)",
+				"pCls": 8,
+				"state": "F",
+				"type": "S"
+			},
+			{
+				"crd": {
+					"crdSysX": 0,
+					"layerX": 0,
+					"x": 13422144,
+					"y": 52505283
+				},
+				"extId": "900100546",
+				"icoX": 0,
+				"lid": "A=1@O=Adalbertstr. (Berlin)@X=13422144@Y=52505283@U=86@L=900100546@",
+				"name": "Adalbertstr. (Berlin)",
+				"pCls": 8,
+				"state": "F",
+				"type": "S"
+			},
+			{
+				"crd": {
+					"crdSysX": 0,
+					"layerX": 0,
+					"x": 13428437,
+					"y": 52507215
+				},
+				"extId": "900014107",
+				"icoX": 0,
+				"lid": "A=1@O=Bethaniendamm (Berlin)@X=13428437@Y=52507215@U=86@L=900014107@",
+				"name": "Bethaniendamm (Berlin)",
+				"pCls": 8,
+				"state": "F",
+				"type": "S"
+			}
+		],
+		"opL": [
+			{
+				"icoX": 1,
+				"id": "796",
+				"name": "Berliner Verkehrsbetriebe",
+				"url": "https://www.bvg.de/"
+			}
+		],
+		"polyL": [
+			{
+				"crdEncF": "????????????????????????????????????????????????????????????????????????????????????????????????????",
+				"crdEncS": "NNNNNNLNNNNMNMMNNNLNNKNNKNKLNKNLNNNKLNNMNNNNNNNNNNLNNNKNNNNNNNNMMNNNNNNNMNNNNNNNNNLNMNNMNKNKNNNNNKNN",
+				"crdEncYX": "{{u_IchppArGiN??pJkS??bI{PXE^x@??~Lx\\??hFtNv@h@jAqAtCqIjBaCaE~G??nSgVMI??nCuBrIgJ??rEeE`DmBXHxAbEpBbCjA`@hFTpAk@Hg@gAiG??qAiG{@{BkJwd@??gAmFLa@fSmB??vLiA??lEm@uBwV??iBiS??WuCJ_@zRqB??`H]rNoB??wB`@fNsAFyA??aB}m@??}ByPHeB{AkH??KmB`FeI??zHoL??`IyMjCmC??vIeJ`HsO??|CgHrCkM??hB{Jz@^RWpBgLHsC??McLw@kFw@{CsAiCgCcD_Am@??wE_AyJsIzHe\\Qq@wAuAaBlE",
+				"delta": true,
+				"dim": 2,
+				"lDrawStyleX": 0,
+				"ppLocRefL": [
+					{
+						"locX": 0,
+						"ppIdx": 0
+					},
+					{
+						"locX": 5,
+						"ppIdx": 1
+					},
+					{
+						"locX": 1,
+						"ppIdx": 3
+					},
+					{
+						"locX": 6,
+						"ppIdx": 7
+					},
+					{
+						"locX": 7,
+						"ppIdx": 9
+					},
+					{
+						"locX": 8,
+						"ppIdx": 16
+					},
+					{
+						"locX": 9,
+						"ppIdx": 19
+					},
+					{
+						"locX": 10,
+						"ppIdx": 22
+					},
+					{
+						"locX": 2,
+						"ppIdx": 33
+					},
+					{
+						"locX": 11,
+						"ppIdx": 37
+					},
+					{
+						"locX": 12,
+						"ppIdx": 41
+					},
+					{
+						"locX": 13,
+						"ppIdx": 43
+					},
+					{
+						"locX": 14,
+						"ppIdx": 46
+					},
+					{
+						"locX": 15,
+						"ppIdx": 48
+					},
+					{
+						"locX": 3,
+						"ppIdx": 52
+					},
+					{
+						"locX": 16,
+						"ppIdx": 55
+					},
+					{
+						"locX": 17,
+						"ppIdx": 59
+					},
+					{
+						"locX": 18,
+						"ppIdx": 61
+					},
+					{
+						"locX": 19,
+						"ppIdx": 65
+					},
+					{
+						"locX": 20,
+						"ppIdx": 68
+					},
+					{
+						"locX": 21,
+						"ppIdx": 70
+					},
+					{
+						"locX": 22,
+						"ppIdx": 73
+					},
+					{
+						"locX": 23,
+						"ppIdx": 76
+					},
+					{
+						"locX": 24,
+						"ppIdx": 79
+					},
+					{
+						"locX": 25,
+						"ppIdx": 85
+					},
+					{
+						"locX": 26,
+						"ppIdx": 92
+					},
+					{
+						"locX": 4,
+						"ppIdx": 99
+					}
+				]
+			}
+		],
+		"prodL": [
+			{
+				"cls": 8,
+				"icoX": 0,
+				"name": "147",
+				"nameS": "147",
+				"number": "147",
+				"oprX": 0,
+				"pid": "L::3::Bus::B3041857784::Bus_3041857784_147::*",
+				"prodCtx": {
+					"admin": "BVB---",
+					"catCode": "3",
+					"catIn": "B",
+					"catOut": "Bus     ",
+					"catOutL": "Bus     ",
+					"catOutS": "B",
+					"line": "147",
+					"matchId": "147",
+					"name": "     147",
+					"num": "7070"
+				}
+			}
+		],
+		"remL": [
+			{
+				"code": "text.occup.loc.max.11",
+				"icoX": 4,
+				"txtN": "low occupancy expected",
+				"type": "A"
+			},
+			{
+				"code": "text.occup.loc.max.12",
+				"icoX": 5,
+				"txtN": "medium occupancy expected",
+				"type": "A"
+			},
+			{
+				"code": "bf",
+				"icoX": 7,
+				"prio": 2,
+				"txtN": "barrier-free",
+				"type": "A"
+			},
+			{
+				"code": "text.journeystop.product.or.direction.changes.stop.message",
+				"icoX": 7,
+				"txtN": "As 147 heading towards S Ostbahnhof via S+U Wedding from here",
+				"type": "A"
+			},
+			{
+				"code": "text.journeystop.product.or.direction.changes.stop.message",
+				"icoX": 7,
+				"txtN": "As 147 heading towards S Ostbahnhof via S+U Hauptbahnhof from here",
+				"type": "A"
+			},
+			{
+				"code": "text.journeystop.product.or.direction.changes.journey.message",
+				"icoX": 7,
+				"txtN": "From S+U Wedding (Berlin) as 147 heading towards S Ostbahnhof via S+U Hauptbahnhof",
+				"type": "A"
+			},
+			{
+				"code": "text.journeystop.product.or.direction.changes.stop.message",
+				"icoX": 7,
+				"txtN": "As 147 heading towards S Ostbahnhof via Friedrichstr. from here",
+				"type": "A"
+			},
+			{
+				"code": "text.journeystop.product.or.direction.changes.journey.message",
+				"icoX": 7,
+				"txtN": "From S+U Berlin Hauptbahnhof as 147 heading towards S Ostbahnhof via Friedrichstr.",
+				"type": "A"
+			},
+			{
+				"code": "text.journeystop.product.or.direction.changes.stop.message",
+				"icoX": 7,
+				"txtN": "As 147 heading towards S Ostbahnhof from here",
+				"type": "A"
+			},
+			{
+				"code": "text.journeystop.product.or.direction.changes.journey.message",
+				"icoX": 7,
+				"txtN": "From S+U Friedrichstr. Bhf (Berlin) as 147 heading towards S Ostbahnhof",
+				"type": "A"
+			},
+			{
+				"code": "text.occup.jny.max.12",
+				"icoX": 5,
+				"txtN": "medium occupancy expected",
+				"type": "A"
+			}
+		],
+		"tcocL": [
+			{
+				"c": "SECOND"
+			},
+			{
+				"c": "SECOND"
+			},
+			{
+				"c": "SECOND"
+			},
+			{
+				"c": "SECOND"
+			},
+			{
+				"c": "SECOND"
+			},
+			{
+				"c": "SECOND"
+			},
+			{
+				"c": "SECOND"
+			},
+			{
+				"c": "SECOND"
+			},
+			{
+				"c": "SECOND"
+			},
+			{
+				"c": "SECOND"
+			},
+			{
+				"c": "SECOND"
+			},
+			{
+				"c": "SECOND"
+			},
+			{
+				"c": "SECOND"
+			},
+			{
+				"c": "SECOND"
+			},
+			{
+				"c": "SECOND"
+			},
+			{
+				"c": "SECOND"
+			},
+			{
+				"c": "SECOND"
+			},
+			{
+				"c": "SECOND"
+			},
+			{
+				"c": "SECOND"
+			},
+			{
+				"c": "SECOND"
+			},
+			{
+				"c": "SECOND"
+			},
+			{
+				"c": "SECOND"
+			},
+			{
+				"c": "SECOND"
+			},
+			{
+				"c": "SECOND"
+			},
+			{
+				"c": "SECOND"
+			},
+			{
+				"c": "SECOND"
+			}
+		]
+	},
+	"fpB": "20211022",
+	"fpE": "20211211",
+	"journey": {
+		"date": "20211101",
+		"dirFlg": "2",
+		"dirL": [
+			{
+				"dirX": 0,
+				"fIdx": 0,
+				"fLocX": 0,
+				"tIdx": 2,
+				"tLocX": 1
+			},
+			{
+				"dirX": 1,
+				"fIdx": 2,
+				"fLocX": 1,
+				"tIdx": 8,
+				"tLocX": 2
+			},
+			{
+				"dirX": 2,
+				"fIdx": 8,
+				"fLocX": 2,
+				"tIdx": 14,
+				"tLocX": 3
+			},
+			{
+				"dirX": 3,
+				"fIdx": 14,
+				"fLocX": 3,
+				"tIdx": 26,
+				"tLocX": 4
+			}
+		],
+		"dirTxt": "S Ostbahnhof via S+U Wedding",
+		"isRchbl": true,
+		"jid": "1|6849|3|86|1112021",
+		"msgL": [
+			{
+				"fLocX": 0,
+				"remX": 2,
+				"sort": 402915328,
+				"sty": "I",
+				"tLocX": 4,
+				"tagL": [
+					"RES_JNY_DTL_H3"
+				],
+				"type": "REM"
+			},
+			{
+				"remX": 5,
+				"sort": 684195840,
+				"sty": "I",
+				"tagL": [
+					"SUM_JNY_H3"
+				],
+				"type": "REM"
+			},
+			{
+				"remX": 7,
+				"sort": 684195840,
+				"sty": "I",
+				"tagL": [
+					"SUM_JNY_H3"
+				],
+				"type": "REM"
+			},
+			{
+				"remX": 9,
+				"sort": 684195840,
+				"sty": "I",
+				"tagL": [
+					"SUM_JNY_H3"
+				],
+				"type": "REM"
+			},
+			{
+				"dspl": "U",
+				"remX": 10,
+				"sort": 684195840,
+				"sty": "I",
+				"tagL": [
+					"SUM_CON_HDR_H3",
+					"RES_CON_HDR_H3"
+				],
+				"type": "REM"
+			}
+		],
+		"polyG": {
+			"crdSysX": 0,
+			"layerX": 0,
+			"polyXL": [
+				0
+			]
+		},
+		"prodL": [
+			{
+				"fIdx": 0,
+				"fLocX": 0,
+				"prodX": 0,
+				"tIdx": 2,
+				"tLocX": 1
+			},
+			{
+				"fIdx": 2,
+				"fLocX": 1,
+				"prodX": 0,
+				"tIdx": 8,
+				"tLocX": 2
+			},
+			{
+				"fIdx": 8,
+				"fLocX": 2,
+				"prodX": 0,
+				"tIdx": 14,
+				"tLocX": 3
+			},
+			{
+				"fIdx": 14,
+				"fLocX": 3,
+				"prodX": 0,
+				"tIdx": 26,
+				"tLocX": 4
+			}
+		],
+		"prodX": 0,
+		"resLDrawStyleX": 1,
+		"sDaysL": [
+			{
+				"fLocIdx": 0,
+				"fLocX": 0,
+				"sDaysB": "9F3E7CF9F3E7C0",
+				"sDaysR": "Mo - Fr",
+				"tLocIdx": 26,
+				"tLocX": 4
+			}
+		],
+		"status": "P",
+		"stopL": [
+			{
+				"dDirFlg": "2",
+				"dDirTxt": "S Ostbahnhof via S+U Wedding",
+				"dProdX": 0,
+				"dProgType": "PROGNOSED",
+				"dTimeS": "071800",
+				"dTrnCmpSX": {
+					"tcocX": [
+						0
+					]
+				},
+				"idx": 0,
+				"locX": 0,
+				"msgL": [
+					{
+						"dspl": "U",
+						"remX": 0,
+						"sort": 684195840,
+						"sty": "I",
+						"tagL": [
+							"RES_LOC_H3"
+						],
+						"type": "REM"
+					},
+					{
+						"remX": 3,
+						"sort": 684195840,
+						"sty": "I",
+						"tagL": [
+							"RES_LOC_H3"
+						],
+						"type": "REM"
+					}
+				],
+				"type": "N"
+			},
+			{
+				"aProdX": 0,
+				"aTimeS": "072000",
+				"dProdX": 0,
+				"dTimeS": "072000",
+				"dTrnCmpSX": {
+					"tcocX": [
+						1
+					]
+				},
+				"idx": 1,
+				"locX": 5,
+				"msgL": [
+					{
+						"dspl": "U",
+						"remX": 0,
+						"sort": 684195840,
+						"sty": "I",
+						"tagL": [
+							"RES_LOC_H3"
+						],
+						"type": "REM"
+					}
+				],
+				"type": "N"
+			},
+			{
+				"aProdX": 0,
+				"aTimeS": "072100",
+				"dDirTxt": "S Ostbahnhof via S+U Hauptbahnhof",
+				"dProdX": 0,
+				"dTimeS": "072100",
+				"dTrnCmpSX": {
+					"tcocX": [
+						2
+					]
+				},
+				"idx": 2,
+				"locX": 1,
+				"msgL": [
+					{
+						"dspl": "U",
+						"remX": 0,
+						"sort": 684195840,
+						"sty": "I",
+						"tagL": [
+							"RES_LOC_H3"
+						],
+						"type": "REM"
+					},
+					{
+						"remX": 4,
+						"sort": 684195840,
+						"sty": "I",
+						"tagL": [
+							"RES_LOC_H3"
+						],
+						"type": "REM"
+					}
+				],
+				"type": "N"
+			},
+			{
+				"aProdX": 0,
+				"aTimeS": "072200",
+				"dProdX": 0,
+				"dTimeS": "072200",
+				"dTrnCmpSX": {
+					"tcocX": [
+						3
+					]
+				},
+				"idx": 3,
+				"locX": 6,
+				"msgL": [
+					{
+						"dspl": "U",
+						"remX": 0,
+						"sort": 684195840,
+						"sty": "I",
+						"tagL": [
+							"RES_LOC_H3"
+						],
+						"type": "REM"
+					}
+				],
+				"type": "N"
+			},
+			{
+				"aProdX": 0,
+				"aTimeS": "072400",
+				"dProdX": 0,
+				"dTimeS": "072400",
+				"dTrnCmpSX": {
+					"tcocX": [
+						4
+					]
+				},
+				"idx": 4,
+				"locX": 7,
+				"msgL": [
+					{
+						"dspl": "U",
+						"remX": 0,
+						"sort": 684195840,
+						"sty": "I",
+						"tagL": [
+							"RES_LOC_H3"
+						],
+						"type": "REM"
+					}
+				],
+				"type": "N"
+			},
+			{
+				"aProdX": 0,
+				"aTimeS": "072600",
+				"dProdX": 0,
+				"dTimeS": "072600",
+				"dTrnCmpSX": {
+					"tcocX": [
+						5
+					]
+				},
+				"idx": 5,
+				"locX": 8,
+				"msgL": [
+					{
+						"dspl": "U",
+						"remX": 0,
+						"sort": 684195840,
+						"sty": "I",
+						"tagL": [
+							"RES_LOC_H3"
+						],
+						"type": "REM"
+					}
+				],
+				"type": "N"
+			},
+			{
+				"aProdX": 0,
+				"aTimeS": "072700",
+				"dProdX": 0,
+				"dTimeS": "072700",
+				"dTrnCmpSX": {
+					"tcocX": [
+						6
+					]
+				},
+				"idx": 6,
+				"locX": 9,
+				"msgL": [
+					{
+						"dspl": "U",
+						"remX": 0,
+						"sort": 684195840,
+						"sty": "I",
+						"tagL": [
+							"RES_LOC_H3"
+						],
+						"type": "REM"
+					}
+				],
+				"type": "N"
+			},
+			{
+				"aProdX": 0,
+				"aTimeS": "072800",
+				"dProdX": 0,
+				"dTimeS": "072800",
+				"dTrnCmpSX": {
+					"tcocX": [
+						7
+					]
+				},
+				"idx": 7,
+				"locX": 10,
+				"msgL": [
+					{
+						"dspl": "U",
+						"remX": 0,
+						"sort": 684195840,
+						"sty": "I",
+						"tagL": [
+							"RES_LOC_H3"
+						],
+						"type": "REM"
+					}
+				],
+				"type": "N"
+			},
+			{
+				"aProdX": 0,
+				"aTimeS": "073100",
+				"dDirTxt": "S Ostbahnhof via Friedrichstr.",
+				"dProdX": 0,
+				"dTimeS": "073100",
+				"dTrnCmpSX": {
+					"tcocX": [
+						8
+					]
+				},
+				"idx": 8,
+				"locX": 2,
+				"msgL": [
+					{
+						"dspl": "U",
+						"remX": 1,
+						"sort": 684195840,
+						"sty": "I",
+						"tagL": [
+							"RES_LOC_H3"
+						],
+						"type": "REM"
+					},
+					{
+						"remX": 6,
+						"sort": 684195840,
+						"sty": "I",
+						"tagL": [
+							"RES_LOC_H3"
+						],
+						"type": "REM"
+					}
+				],
+				"type": "N"
+			},
+			{
+				"aProdX": 0,
+				"aTimeS": "073300",
+				"dProdX": 0,
+				"dTimeS": "073300",
+				"dTrnCmpSX": {
+					"tcocX": [
+						9
+					]
+				},
+				"idx": 9,
+				"locX": 11,
+				"msgL": [
+					{
+						"dspl": "U",
+						"remX": 1,
+						"sort": 684195840,
+						"sty": "I",
+						"tagL": [
+							"RES_LOC_H3"
+						],
+						"type": "REM"
+					}
+				],
+				"type": "N"
+			},
+			{
+				"aProdX": 0,
+				"aTimeS": "073500",
+				"dProdX": 0,
+				"dTimeS": "073500",
+				"dTrnCmpSX": {
+					"tcocX": [
+						10
+					]
+				},
+				"idx": 10,
+				"locX": 12,
+				"msgL": [
+					{
+						"dspl": "U",
+						"remX": 0,
+						"sort": 684195840,
+						"sty": "I",
+						"tagL": [
+							"RES_LOC_H3"
+						],
+						"type": "REM"
+					}
+				],
+				"type": "N"
+			},
+			{
+				"aProdX": 0,
+				"aTimeS": "073600",
+				"dProdX": 0,
+				"dTimeS": "073600",
+				"dTrnCmpSX": {
+					"tcocX": [
+						11
+					]
+				},
+				"idx": 11,
+				"locX": 13,
+				"msgL": [
+					{
+						"dspl": "U",
+						"remX": 0,
+						"sort": 684195840,
+						"sty": "I",
+						"tagL": [
+							"RES_LOC_H3"
+						],
+						"type": "REM"
+					}
+				],
+				"type": "N"
+			},
+			{
+				"aProdX": 0,
+				"aTimeS": "073800",
+				"dProdX": 0,
+				"dTimeS": "073800",
+				"dTrnCmpSX": {
+					"tcocX": [
+						12
+					]
+				},
+				"idx": 12,
+				"locX": 14,
+				"msgL": [
+					{
+						"dspl": "U",
+						"remX": 0,
+						"sort": 684195840,
+						"sty": "I",
+						"tagL": [
+							"RES_LOC_H3"
+						],
+						"type": "REM"
+					}
+				],
+				"type": "N"
+			},
+			{
+				"aProdX": 0,
+				"aTimeS": "073900",
+				"dProdX": 0,
+				"dTimeS": "073900",
+				"dTrnCmpSX": {
+					"tcocX": [
+						13
+					]
+				},
+				"idx": 13,
+				"locX": 15,
+				"msgL": [
+					{
+						"dspl": "U",
+						"remX": 0,
+						"sort": 684195840,
+						"sty": "I",
+						"tagL": [
+							"RES_LOC_H3"
+						],
+						"type": "REM"
+					}
+				],
+				"type": "N"
+			},
+			{
+				"aProdX": 0,
+				"aTimeS": "074100",
+				"dDirTxt": "S Ostbahnhof",
+				"dProdX": 0,
+				"dTimeS": "074100",
+				"dTrnCmpSX": {
+					"tcocX": [
+						14
+					]
+				},
+				"idx": 14,
+				"locX": 3,
+				"msgL": [
+					{
+						"dspl": "U",
+						"remX": 0,
+						"sort": 684195840,
+						"sty": "I",
+						"tagL": [
+							"RES_LOC_H3"
+						],
+						"type": "REM"
+					},
+					{
+						"remX": 8,
+						"sort": 684195840,
+						"sty": "I",
+						"tagL": [
+							"RES_LOC_H3"
+						],
+						"type": "REM"
+					}
+				],
+				"type": "N"
+			},
+			{
+				"aProdX": 0,
+				"aTimeS": "074400",
+				"dProdX": 0,
+				"dTimeS": "074400",
+				"dTrnCmpSX": {
+					"tcocX": [
+						15
+					]
+				},
+				"idx": 15,
+				"locX": 16,
+				"msgL": [
+					{
+						"dspl": "U",
+						"remX": 0,
+						"sort": 684195840,
+						"sty": "I",
+						"tagL": [
+							"RES_LOC_H3"
+						],
+						"type": "REM"
+					}
+				],
+				"type": "N"
+			},
+			{
+				"aProdX": 0,
+				"aTimeS": "074500",
+				"dProdX": 0,
+				"dTimeS": "074500",
+				"dTrnCmpSX": {
+					"tcocX": [
+						16
+					]
+				},
+				"idx": 16,
+				"locX": 17,
+				"msgL": [
+					{
+						"dspl": "U",
+						"remX": 0,
+						"sort": 684195840,
+						"sty": "I",
+						"tagL": [
+							"RES_LOC_H3"
+						],
+						"type": "REM"
+					}
+				],
+				"type": "N"
+			},
+			{
+				"aProdX": 0,
+				"aTimeS": "074700",
+				"dProdX": 0,
+				"dTimeS": "074700",
+				"dTrnCmpSX": {
+					"tcocX": [
+						17
+					]
+				},
+				"idx": 17,
+				"locX": 18,
+				"msgL": [
+					{
+						"dspl": "U",
+						"remX": 0,
+						"sort": 684195840,
+						"sty": "I",
+						"tagL": [
+							"RES_LOC_H3"
+						],
+						"type": "REM"
+					}
+				],
+				"type": "N"
+			},
+			{
+				"aProdX": 0,
+				"aTimeS": "074700",
+				"dProdX": 0,
+				"dTimeS": "074700",
+				"dTrnCmpSX": {
+					"tcocX": [
+						18
+					]
+				},
+				"idx": 18,
+				"locX": 19,
+				"msgL": [
+					{
+						"dspl": "U",
+						"remX": 0,
+						"sort": 684195840,
+						"sty": "I",
+						"tagL": [
+							"RES_LOC_H3"
+						],
+						"type": "REM"
+					}
+				],
+				"type": "N"
+			},
+			{
+				"aProdX": 0,
+				"aTimeS": "074800",
+				"dProdX": 0,
+				"dTimeS": "074800",
+				"dTrnCmpSX": {
+					"tcocX": [
+						19
+					]
+				},
+				"idx": 19,
+				"locX": 20,
+				"msgL": [
+					{
+						"dspl": "U",
+						"remX": 0,
+						"sort": 684195840,
+						"sty": "I",
+						"tagL": [
+							"RES_LOC_H3"
+						],
+						"type": "REM"
+					}
+				],
+				"type": "N"
+			},
+			{
+				"aProdX": 0,
+				"aTimeS": "074900",
+				"dProdX": 0,
+				"dTimeS": "074900",
+				"dTrnCmpSX": {
+					"tcocX": [
+						20
+					]
+				},
+				"idx": 20,
+				"locX": 21,
+				"msgL": [
+					{
+						"dspl": "U",
+						"remX": 0,
+						"sort": 684195840,
+						"sty": "I",
+						"tagL": [
+							"RES_LOC_H3"
+						],
+						"type": "REM"
+					}
+				],
+				"type": "N"
+			},
+			{
+				"aProdX": 0,
+				"aTimeS": "075000",
+				"dProdX": 0,
+				"dTimeS": "075000",
+				"dTrnCmpSX": {
+					"tcocX": [
+						21
+					]
+				},
+				"idx": 21,
+				"locX": 22,
+				"msgL": [
+					{
+						"dspl": "U",
+						"remX": 0,
+						"sort": 684195840,
+						"sty": "I",
+						"tagL": [
+							"RES_LOC_H3"
+						],
+						"type": "REM"
+					}
+				],
+				"type": "N"
+			},
+			{
+				"aProdX": 0,
+				"aTimeS": "075100",
+				"dProdX": 0,
+				"dTimeS": "075100",
+				"dTrnCmpSX": {
+					"tcocX": [
+						22
+					]
+				},
+				"idx": 22,
+				"locX": 23,
+				"msgL": [
+					{
+						"dspl": "U",
+						"remX": 0,
+						"sort": 684195840,
+						"sty": "I",
+						"tagL": [
+							"RES_LOC_H3"
+						],
+						"type": "REM"
+					}
+				],
+				"type": "N"
+			},
+			{
+				"aProdX": 0,
+				"aTimeS": "075200",
+				"dProdX": 0,
+				"dTimeS": "075200",
+				"dTrnCmpSX": {
+					"tcocX": [
+						23
+					]
+				},
+				"idx": 23,
+				"locX": 24,
+				"msgL": [
+					{
+						"dspl": "U",
+						"remX": 0,
+						"sort": 684195840,
+						"sty": "I",
+						"tagL": [
+							"RES_LOC_H3"
+						],
+						"type": "REM"
+					}
+				],
+				"type": "N"
+			},
+			{
+				"aProdX": 0,
+				"aTimeS": "075300",
+				"dProdX": 0,
+				"dTimeS": "075300",
+				"dTrnCmpSX": {
+					"tcocX": [
+						24
+					]
+				},
+				"idx": 24,
+				"locX": 25,
+				"msgL": [
+					{
+						"dspl": "U",
+						"remX": 0,
+						"sort": 684195840,
+						"sty": "I",
+						"tagL": [
+							"RES_LOC_H3"
+						],
+						"type": "REM"
+					}
+				],
+				"type": "N"
+			},
+			{
+				"aProdX": 0,
+				"aTimeS": "075500",
+				"dProdX": 0,
+				"dTimeS": "075500",
+				"dTrnCmpSX": {
+					"tcocX": [
+						25
+					]
+				},
+				"idx": 25,
+				"locX": 26,
+				"msgL": [
+					{
+						"dspl": "U",
+						"remX": 0,
+						"sort": 684195840,
+						"sty": "I",
+						"tagL": [
+							"RES_LOC_H3"
+						],
+						"type": "REM"
+					}
+				],
+				"type": "N"
+			},
+			{
+				"aProdX": 0,
+				"aProgType": "PROGNOSED",
+				"aTimeS": "075900",
+				"idx": 26,
+				"locX": 4,
+				"type": "N"
+			}
+		],
+		"subscr": "F",
+		"sumLDrawStyleX": 0
+	},
+	"planrtTS": "1635406146"
+}

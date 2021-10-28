@@ -9,13 +9,38 @@ const {parseHook} = require('../../lib/profile-hooks')
 const {
 	parseLine: _parseLine,
 	parseLocation: _parseLocation,
+	parseArrival: _parseArrival,
 	parseDeparture: _parseDeparture,
+	parseStopover: _parseStopover,
 	parseJourneyLeg: _parseJourneyLeg,
 	formatStation: _formatStation,
 } = require('../../lib/default-profile')
 
 const baseProfile = require('./base.json')
 const products = require('./products')
+
+const addOccupancy = (item, occupancyCodes) => {
+	const remIdx = (item.remarks || [])
+	.findIndex(r => r.code && occupancyCodes.has(r.code))
+	if (remIdx < 0) return;
+	const rem = item.remarks[remIdx]
+
+	item.occupancy = occupancyCodes.get(rem.code)
+	item.remarks = [
+		...item.remarks.slice(0, remIdx),
+		...item.remarks.slice(remIdx + 1),
+	]
+}
+const stopoverOccupancyCodes = new Map([
+	['text.occup.loc.max.11', 'low'],
+	['text.occup.loc.max.12', 'medium'],
+	// todo: high
+])
+const journeyLegOccupancyCodes = new Map([
+	['text.occup.jny.max.11', 'low'],
+	['text.occup.jny.max.12', 'medium'],
+	// todo: high
+])
 
 // todo: https://m.tagesspiegel.de/berlin/fahrerlebnis-wie-im-regionalexpress-so-faehrt-es-sich-in-der-neuen-express-s-bahn/25338674.html
 const parseLineWithMoreDetails = ({parsed}, p) => {
@@ -56,6 +81,27 @@ const parseDepartureRenameRingbahn = ({parsed}, dep) => {
 	}
 	return parsed
 }
+const parseArrivalRenameRingbahn = ({parsed}, arr) => {
+	if (parsed.line && parsed.line.product === 'suburban') {
+		const p = parsed.provenance && parsed.provenance.trim()
+		if (ringbahnClockwise.test(p)) {
+			parsed.provenance = 'Ringbahn S41 ⟳'
+		} else if (ringbahnAnticlockwise.test(p)) {
+			parsed.provenance = 'Ringbahn S42 ⟲'
+		}
+	}
+	return parsed
+}
+
+const parseArrDepWithOccupancy = ({parsed}, d) => {
+	addOccupancy(parsed, stopoverOccupancyCodes)
+	return parsed
+}
+
+const parseStopoverWithOccupancy = ({parsed}, st, date) => {
+	addOccupancy(parsed, stopoverOccupancyCodes)
+	return parsed
+}
 
 const parseJourneyLegWithBerlkönig = (ctx, leg, date) => {
 	if (leg.type === 'KISS') {
@@ -85,6 +131,12 @@ const parseJourneyLegWithBerlkönig = (ctx, leg, date) => {
 		}
 	}
 	return _parseJourneyLeg(ctx, leg, date)
+}
+const parseJourneyLegWithOccupancy = ({parsed}, leg, date) => {
+	if (leg.type === 'JNY') {
+		addOccupancy(parsed, journeyLegOccupancyCodes)
+	}
+	return parsed
 }
 
 const validIBNR = /^\d+$/
@@ -126,8 +178,19 @@ const bvgProfile = {
 	parseLine: parseHook(_parseLine, parseLineWithMoreDetails),
 	parseLocation: parseHook(_parseLocation, parseLocation),
 	parseStationName: (ctx, name) => shorten(name),
-	parseDeparture: parseHook(_parseDeparture, parseDepartureRenameRingbahn),
-	parseJourneyLeg: parseJourneyLegWithBerlkönig,
+	parseArrival: parseHook(
+		parseHook(_parseArrival, parseArrivalRenameRingbahn),
+		parseArrDepWithOccupancy,
+	),
+	parseDeparture: parseHook(
+		parseHook(_parseDeparture, parseDepartureRenameRingbahn),
+		parseArrDepWithOccupancy,
+	),
+	parseStopover: parseHook(_parseStopover, parseStopoverWithOccupancy),
+	parseJourneyLeg: parseHook(
+		parseJourneyLegWithBerlkönig,
+		parseJourneyLegWithOccupancy,
+	),
 
 	formatStation,
 
