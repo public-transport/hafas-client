@@ -6,11 +6,13 @@ const parseLineName = require('vbb-parse-line')
 const getStations = require('vbb-stations')
 const {parseHook} = require('../../lib/profile-hooks')
 
-const _parseLine = require('../../parse/line')
-const _parseLocation = require('../../parse/location')
-const _parseDeparture = require('../../parse/departure')
-const _parseJourneyLeg = require('../../parse/journey-leg')
-const _formatStation = require('../../format/station')
+const {
+	parseLine: _parseLine,
+	parseLocation: _parseLocation,
+	parseDeparture: _parseDeparture,
+	parseJourneyLeg: _parseJourneyLeg,
+	formatStation: _formatStation,
+} = require('../../lib/default-profile')
 
 const baseProfile = require('./base.json')
 const products = require('./products')
@@ -40,9 +42,10 @@ const parseLocation = ({parsed}, l) => {
 	return parsed
 }
 
+// todo: S45, S46?
 const ringbahnClockwise = /^ringbahn s\s?41$/i
 const ringbahnAnticlockwise = /^ringbahn s\s?42$/i
-const parseDepartureRenameRingbahn = ({parsed}) => {
+const parseDepartureRenameRingbahn = ({parsed}, dep) => {
 	if (parsed.line && parsed.line.product === 'suburban') {
 		const d = parsed.direction && parsed.direction.trim()
 		if (ringbahnClockwise.test(d)) {
