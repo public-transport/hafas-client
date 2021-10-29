@@ -19,6 +19,7 @@ const {
 const baseProfile = require('./base.json')
 const products = require('./products')
 
+// todo: there's also a referenced icon `{"res":"occup_fig_{low,mid}"}`
 const addOccupancy = (item, occupancyCodes) => {
 	const remIdx = (item.remarks || [])
 	.findIndex(r => r.code && occupancyCodes.has(r.code))
@@ -34,12 +35,12 @@ const addOccupancy = (item, occupancyCodes) => {
 const stopoverOccupancyCodes = new Map([
 	['text.occup.loc.max.11', 'low'],
 	['text.occup.loc.max.12', 'medium'],
-	// todo: high
+	['text.occup.loc.max.13', 'high'],
 ])
 const journeyLegOccupancyCodes = new Map([
 	['text.occup.jny.max.11', 'low'],
 	['text.occup.jny.max.12', 'medium'],
-	// todo: high
+	['text.occup.jny.max.13', 'high'],
 ])
 
 // todo: https://m.tagesspiegel.de/berlin/fahrerlebnis-wie-im-regionalexpress-so-faehrt-es-sich-in-der-neuen-express-s-bahn/25338674.html
