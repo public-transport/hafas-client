@@ -34,7 +34,7 @@ const client = createClient(dbProfile, 'my-awesome-program')
 // find any journey from Berlin Südkreuz to München Hbf
 const [journey] = await client.journeys(berlinSüdkreuz, münchenHbf, {results: 1, stopovers: true})
 // find the ICE leg
-const leg = journey.legs.find(l => l.line.product === 'nationalExp')
+const leg = journey.legs.find(l => l.line.product === 'nationalExpress')
 // find the stopover at the stop you've just passed
 const previousStopover = leg.stopovers.find(st => st.departure && new Date(st.departure) < Date.now())
 
