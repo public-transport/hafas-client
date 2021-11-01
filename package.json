@@ -1,7 +1,7 @@
 {
 	"name": "hafas-client",
 	"description": "Client for HAFAS public transport APIs.",
-	"version": "5.20.2",
+	"version": "5.21.0",
 	"main": "index.js",
 	"files": [
 		"index.js",
@@ -22,7 +22,7 @@
 		"Yureka <github@yuka.dev>",
 		"Kristjan Esperanto (https://github.com/KristjanESPERANTO)"
 	],
-	"homepage": "https://github.com/public-transport/hafas-client/tree/5.20.2",
+	"homepage": "https://github.com/public-transport/hafas-client/tree/5.21.0",
 	"repository": "public-transport/hafas-client",
 	"bugs": "https://github.com/public-transport/hafas-client/issues",
 	"funding": {

@@ -1,6 +1,16 @@
 # Changelog
 
-## `5.20.1`
+## `5.21.0`
+
+- 97b6a76e `parseTrip()`: expose `realtimeDataUpdatedAt` ✅
+- 3453cbe1 `parseArrival()`/`parseDeparture()`: expose `stbStop.{rem,msg}L` as `remarks[]` as well
+- 69ddf5fb/6941e7a4 BVG: parse occupancy ✅
+- c270eed9 `nationalExp` -> `nationalExpress` 🐛
+- 4492b3a3 use correct `HttpsAgent` option for `LOCAL_ADDRESS` environment variable 🐛
+
+[🏷 `5.21.0`](https://github.com/public-transport/hafas-client/releases/tag/5.21.0), 2021-11-01
+
+## `5.20.2`
 
 - 84c7582a `journeys()`: fix empty `viaLocL[]` 🐛 (#247)
 - dd5e4368 fix `departures()`/`arrivals()` without `opt.direction` 🐛
@@ -9,7 +19,7 @@
 - 39d3807c minor tweaks 📝
 - 8d4f8a83 E2E/integration tests: update fixtures ✅
 
-[🏷 `5.20.1`](https://github.com/public-transport/hafas-client/releases/tag/5.20.1), 2021-10-26
+[🏷 `5.20.2`](https://github.com/public-transport/hafas-client/releases/tag/5.20.2), 2021-10-26
 
 ## `5.20.1`
 
