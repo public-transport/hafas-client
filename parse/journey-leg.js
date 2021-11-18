@@ -42,13 +42,14 @@ const applyRemarks = (leg, refs) => {
 }
 
 // todo: pt.status, pt.isPartCncl
-// todo: pt.isRchbl, pt.chRatingRT, pt.chgDurR, pt.minChg
-// todo: pt.dep.dProgType, pt.arr.dProgType
+// todo: pt.chRatingRT, pt.chgDurR, pt.minChg
 // todo: what is pt.jny.dirFlg?
 // todo: what is pt.recState?
 // todo: what is `sty: 'UNDEF'`?
 // todo: pt.prodL
 // todo: pt.parJnyL (list of coupled trains)
+// todo: pt.planrtTS
+// todo: what is pt.jny.lPassSt?
 
 const parseJourneyLeg = (ctx, pt, date) => { // pt = raw leg
 	const {profile, opt} = ctx
@@ -68,12 +69,14 @@ const parseJourneyLeg = (ctx, pt, date) => { // pt = raw leg
 	const dep = profile.parseWhen(ctx, date, pt.dep.dTimeS, pt.dep.dTimeR, pt.dep.dTZOffset, pt.dep.dCncl)
 	res.departure = dep.when
 	res.plannedDeparture = dep.plannedWhen
+	// todo: pt.dep.dProgType
 	res.departureDelay = dep.delay
 	if (dep.prognosedWhen) res.prognosedDeparture = dep.prognosedWhen
 
 	const arr = profile.parseWhen(ctx, date, pt.arr.aTimeS, pt.arr.aTimeR, pt.arr.aTZOffset, pt.arr.aCncl)
 	res.arrival = arr.when
 	res.plannedArrival = arr.plannedWhen
+	// todo: pt.arr.aProgType
 	res.arrivalDelay = arr.delay
 	if (arr.prognosedWhen) res.prognosedArrival = arr.prognosedWhen
 
@@ -132,6 +135,7 @@ const parseJourneyLeg = (ctx, pt, date) => { // pt = raw leg
 			if (opt.remarks && Array.isArray(pt.jny.msgL)) {
 				// todo: apply leg-wide remarks if `opt.stopovers` is false
 				applyRemarks(res, pt.jny.msgL)
+				// todo: parse & use `code: EXTERNAL_ID` remarks?
 			}
 
 			// filter stations the train passes without stopping, as this doesn't comply with fptf (yet)

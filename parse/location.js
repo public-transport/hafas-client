@@ -13,6 +13,9 @@ const leadingZeros = /^0+/
 // 	- `6733` for 8013074 with p/vmt
 // 	- `3933` for 8012092 with p/vmt
 // 	- `2062` for 8010168 with p/vmt
+// todo: l.gidL (e.g. `["A×de:15088:8013414"]`)
+// todo: `i` param in `lid` (e.g. `A=1@O=Zöberitz@X=12033455@Y=51504612@U=80@L=8013414@i=A×de:15088:8013414@`)
+
 const parseLocation = (ctx, l) => {
 	const {profile, opt} = ctx
 

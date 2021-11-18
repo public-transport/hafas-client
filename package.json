@@ -20,7 +20,8 @@
 		"em0lar <hello@em0lar.de>",
 		"Adrian Böhme <hannsadrian@gmail.com> (https://github.com/Adwirawien)",
 		"Yureka <github@yuka.dev>",
-		"Kristjan Esperanto (https://github.com/KristjanESPERANTO)"
+		"Kristjan Esperanto (https://github.com/KristjanESPERANTO)",
+		"Marcel Radzio <mtrnord@nordgedanken.dev>"
 	],
 	"homepage": "https://github.com/public-transport/hafas-client/tree/5.21.0",
 	"repository": "public-transport/hafas-client",

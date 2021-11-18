@@ -18,7 +18,10 @@ const formatRadarReq = (ctx, north, west, south, east) => {
 			jnyFltrL: [
 				profile.formatProductsFilter(ctx, opt.products || {})
 			],
-			trainPosMode: 'CALC' // todo: what is this? what about realtime?
+			// todo: what is this? what about realtime?
+			// - CALC
+			// - CALC_REPORT (as seen in the INSA Young app)
+			trainPosMode: 'CALC',
 		}
 	}
 }

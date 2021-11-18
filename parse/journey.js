@@ -22,15 +22,18 @@ const parseScheduledDays = (sDaysB, year, profile) => {
 	return res
 }
 
-// todo: c.conSubscr
+// todo: c.conSubscr (e.g. `F`)
 // todo: c.trfRes x vbb-parse-ticket
 // todo: c.sotRating, c.isSotCon, c.sotCtxt
 // todo: c.showARSLink
 // todo: c.useableTime
-// todo: c.cksum
+// todo: c.cksum (e.g. `b3a94228_3`), c.cksumDti (e.g. `c2717eb3_3`)
 // todo: c.isNotRdbl
 // todo: c.badSecRefX
 // todo: c.bfATS, c.bfIOSTS
+// todo: c.recState (e.g. `U`)
+// todo: c.intvlSubscr (e.g. `F`)
+
 const parseJourney = (ctx, j) => { // j = raw jouney
 	const {profile, opt} = ctx
 

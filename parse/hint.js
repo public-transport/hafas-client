@@ -26,6 +26,7 @@ const linkTypesByCode = Object.assign(Object.create(null), {
 // todo: https://github.com/public-transport/hafas-client/issues/5
 // todo: expose h.type somehow
 // todo: https://github.com/KDE/kpublictransport/blob/39ac8f9586b9300fa8a9ba0dec010e96fab9ab08/src/lib/backends/hafasmgateparser.cpp#L56-L72
+// todo: h.sty
 const parseHint = (ctx, h) => {
 	// todo: C
 

@@ -477,6 +477,7 @@ const createClient = (profile, userAgent, opt = {}) => {
 	}
 
 	const trip = (id, lineName, opt = {}) => {
+		// todo [breaking]: remove lineName param, not needed anymore
 		if (!isNonEmptyString(id)) {
 			throw new TypeError('id must be a non-empty string.')
 		}
