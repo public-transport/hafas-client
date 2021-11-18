@@ -1,5 +1,11 @@
 # Changelog
 
+## `5.21.1`
+
+- f41b8ac4 BVG: update API endpoint 🐛, add new integration test fixtures ✅
+
+[🏷 `5.21.1`](https://github.com/public-transport/hafas-client/releases/tag/5.21.1), 2021-11-18
+
 ## `5.21.0`
 
 - 97b6a76e `parseTrip()`: expose `realtimeDataUpdatedAt` ✅
