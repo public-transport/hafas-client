@@ -1,0 +1,39 @@
+{
+  "statusCode": 200,
+  "headers": {
+    "date": "Sat, 27 Nov 2021 22:46:26 GMT",
+    "server": "Apache/2.4.38 (Debian) OpenSSL/1.1.1d",
+    "content-type": "application/json",
+    "access-control-allow-headers": "*",
+    "access-control-allow-methods": "GET,POST,OPTIONS",
+    "access-control-allow-origin": "*",
+    "backend-group": "default",
+    "connection": "close",
+    "transfer-encoding": "chunked"
+  },
+  "url": "https://auskunft.kvb.koeln/gate",
+  "time": 195,
+  "request": {
+    "method": "POST",
+    "headers": {
+      "Content-Type": [
+        "application/json"
+      ],
+      "Accept-Encoding": [
+        "gzip, br, deflate"
+      ],
+      "Accept": [
+        "application/json"
+      ],
+      "user-agent": [
+        "public-transpo912a53de656frt/hafas-client:test"
+      ],
+      "Content-Length": [
+        "279"
+      ],
+      "Connection": [
+        "close"
+      ]
+    }
+  }
+}

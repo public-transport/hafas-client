@@ -38,6 +38,7 @@ HAFAS endpoint | wrapper library | docs | example code | profile name
 [Verkehrsverbund Mittelthüringen (VMT)](https://en.wikipedia.org/wiki/Verkehrsverbund_Mittelthüringen) | - | [docs](vmt/readme.md) | [example](vmt/example.js) | [`vmt`](vmt)
 [Verkehrsgemeinschaft Osnabrück (VOS)](https://de.wikipedia.org/wiki/Verkehrsgemeinschaft_Osnabrück) | - | [docs](vos/readme.md) | [example](vos/example.js) | [`vos`](vos)
 [Aachener Verkehrsverbund (AVV)](https://de.wikipedia.org/wiki/Verkehrsgemeinschaft_Osnabrück) | - | [docs](avv/readme.md) | [example](avv/example.js) | [`avv`](avv)
+[Kölner Verkehrs-Betriebe (KVB)](https://de.wikipedia.org/wiki/Kölner_Verkehrs-Betriebe) | - | [docs](kvb/readme.md) | [example](kvb/example.js) | [`kvb`](kvb)
 [Rejseplanen in Denmark](http://www.rejseplanen.dk) | - | [docs](rejseplanen/readme.md) | [example](rejseplanen/example.js) | [`rejseplanen`](rejseplanen)
 [Innsbrucker Verkehrsbetriebe (IVB)](https://de.wikipedia.org/wiki/Innsbrucker_Verkehrsbetriebe_und_Stubaitalbahn) | - | [docs](ivb/readme.md) | [example](ivb/example.js) | [`ivb`](ivb)
 [Oberösterreichischer Verkehrsverbund (OÖVV)](https://de.wikipedia.org/wiki/Oberösterreichischer_Verkehrsverbund) | - | [docs](ooevv/readme.md) | [example](ooevv/example.js) | [`ooevv`](ooevv)
