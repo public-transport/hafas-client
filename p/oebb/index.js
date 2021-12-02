@@ -60,7 +60,7 @@ const oebbProfile = {
 	trip: true,
 	radar: true,
 	reachableFrom: true,
-	lines: false, // `.svcResL[0].res.lineL[]` is missing 🤔
+	// lines: false, // `.svcResL[0].res.lineL[]` is missing 🤔
 }
 
 module.exports = oebbProfile
