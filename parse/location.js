@@ -124,6 +124,7 @@ const parseLocation = (ctx, l) => {
 }
 
 // We use a "visited list" to prevent endless recursion.
+// todo: can we use a WeakMap here?
 const seen = Symbol('parseLocation seen items')
 const parseLocationWithoutCycles = (ctx, l, ...args) => {
 	if (ctx[seen] && ctx[seen].includes(l)) return null
