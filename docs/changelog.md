@@ -1,5 +1,12 @@
 # Changelog
 
+## `5.22.0`
+
+- ed86ad0b add [*KVB* profile](../p/kvb)
+- f6733d93 ÖBB: enable `lines()`
+
+[🏷 `5.22.0`](https://github.com/public-transport/hafas-client/releases/tag/5.22.0), 2021-12-08
+
 ## `5.21.1`
 
 - f41b8ac4 BVG: update API endpoint 🐛, add new integration test fixtures ✅
