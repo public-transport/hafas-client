@@ -532,6 +532,9 @@ const createClient = (profile, userAgent, opt = {}) => {
 			onlyCR: opt.onlyCurrentlyRunning,
 			jnyFltrL: [
 				profile.formatProductsFilter({profile}, opt.products),
+				// these don't work:
+				// {mode: 'INC', type: 'ROUTE', value: 'R::10::Schiff::B3012287613::de:aac:05358|obersee:rs::1'},
+				// {mode: 'INC', type: 'CAT', value: 'G::4::Fähre::B*::*::*'},
 			],
 			// todo: passing `tripId` yields a `CGI_READ_FAILED` error
 			// todo: passing a stop ID as `extId` yields a `PARAMETER` error

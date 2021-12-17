@@ -25,6 +25,7 @@ const parsePidFiltersTree = (ctx, jnyTreeNodeL) => {
 			// todo [breaking]: rename field?
 			// todo: parse differently? most tree nodes have a sparse common.prodL[_.prodX]
 			product: _.line,
+			// nrOfTrips: _.stat ? _.stat.cnt : null, // todo: is this wrong
 			// todo: _.icon?
 		}
 		parsedNodes.set(_, node)
