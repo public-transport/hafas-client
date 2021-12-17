@@ -1,3 +1,11 @@
+const nodeKinds = new Map()
+// todo: are these correct?
+nodeKinds.set('P', 'product') // usually level 0, pid filter begins with `P:` "Produkt"?
+nodeKinds.set('C', 'category') // usually level 1, pid filter begins with `G:` "Gruppe"?
+nodeKinds.set('O', 'operator') // usually level 2, pid filter begins with `B:` "Betreiber"?
+nodeKinds.set('L', 'line') // usually level 3, pid filter begins with `L:` "Linie"?
+nodeKinds.set('D', 'direction') // usually level 4, pid filter begins with `R:` "Richtung"?
+
 const parsePidFiltersTree = (ctx, jnyTreeNodeL) => {
 	const parsedNodes = new WeakMap() // raw node -> parsed node
 	const parseNode = (idx) => {
@@ -5,13 +13,13 @@ const parsePidFiltersTree = (ctx, jnyTreeNodeL) => {
 		if (!_) throw new Error(`missing node ${idx}`) // todo: don't let this happen
 		if (parsedNodes.has(_)) return parsedNodes.get(_)
 
-		// todo: what is _.type?
 		// todo: what is _.stat.rt? nr of children with realtime data?
 		// todo: what is _.stat.ont?
 		// todo: what is _.stat.cncl? nr of canceled children?
 		// todo: what is _.stat.delGrpL & _.stat.delCntL?
 		// todo: what is _.stat.him? nr of children with HIM messages?
 		const node = {
+			kind: nodeKinds.has(_.type) ? nodeKinds.get(_.type) : null,
 			name: _.name,
 			pidFilter: _.pid, // todo [breaking]: rename field?
 			// todo [breaking]: rename field?

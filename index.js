@@ -630,6 +630,8 @@ const createClient = (profile, userAgent, opt = {}) => {
 			},
 		})
 
+		if (!Array.isArray(res.jnyTreeNodeL)) return null
+
 		const ctx = {profile, opt, common, res}
 		return profile.parsePidFiltersTree(ctx, res.jnyTreeNodeL)
 	}
