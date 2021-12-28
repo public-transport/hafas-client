@@ -1,5 +1,12 @@
 # Changelog
 
+## `5.22.1`
+
+- 2fd06941 use [HTTP Keep-Alive](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Keep-Alive) ⚡️
+- 9c10a176 fix request debug-logging 🐛
+
+[🏷 `5.22.1`](https://github.com/public-transport/hafas-client/releases/tag/5.22.1), 2021-12-28
+
 ## `5.22.0`
 
 - ed86ad0b add [*KVB* profile](../p/kvb)
