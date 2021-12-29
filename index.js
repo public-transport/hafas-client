@@ -231,8 +231,9 @@ const createClient = (profile, userAgent, opt = {}) => {
 			earlierRef: res.outCtxScrB,
 			laterRef: res.outCtxScrF,
 			journeys,
-			// todo [breaking]: rename to realtimeDataUpdatedAt
-			realtimeDataFrom: res.planrtTS ? parseInt(res.planrtTS) : null,
+			realtimeDataUpdatedAt: res.planrtTS && res.planrtTS !== '0'
+				? parseInt(res.planrtTS)
+				: null,
 		}
 	}
 
@@ -261,8 +262,9 @@ const createClient = (profile, userAgent, opt = {}) => {
 		const ctx = {profile, opt, common, res}
 
 		return {
-			// todo [breaking]: rename to realtimeDataUpdatedAt
-			realtimeDataFrom: res.planrtTS ? parseInt(res.planrtTS) : null,
+			realtimeDataUpdatedAt: res.planrtTS && res.planrtTS !== '0'
+				? parseInt(res.planrtTS)
+				: null,
 			...profile.parseJourney(ctx, res.outConL[0])
 		}
 	}
@@ -368,8 +370,7 @@ const createClient = (profile, userAgent, opt = {}) => {
 		if (!Array.isArray(res.outConL)) return []
 
 		const ctx = {profile, opt, common, res}
-		// todo [breaking]: return object with realtimeDataUpdatedAt
-		return res.outConL
+		const journeys = res.outConL
 		.map(rawJourney => profile.parseJourney(ctx, rawJourney))
 		.map((journey) => {
 			// For the first (transit) leg, HAFAS sometimes returns *all* past
@@ -388,6 +389,13 @@ const createClient = (profile, userAgent, opt = {}) => {
 				],
 			}
 		})
+
+		return {
+			journeys,
+			realtimeDataUpdatedAt: res.planrtTS && res.planrtTS !== '0'
+				? parseInt(res.planrtTS)
+				: null,
+		}
 	}
 
 	const locations = async (query, opt = {}) => {
