@@ -69,8 +69,8 @@ const thomasMannStr = {
 // @todo prices/tickets
 // @todo journeys, only one product
 
-tap.test('journeys – fails with no product', (t) => {
-	journeysFailsWithNoProduct({
+tap.test('journeys – fails with no product', async (t) => {
+	await journeysFailsWithNoProduct({
 		test: t,
 		fetchJourneys: client.journeys,
 		fromId: saarbrueckenHbf,

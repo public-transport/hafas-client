@@ -21,33 +21,25 @@ const testEarlierLaterJourneys = async (cfg) => {
 	t.ok(model.laterRef)
 
 	// departure/arrival and earlierThan/laterThan should be mutually exclusive
-	t.throws(() => {
-		fetchJourneys(fromId, toId, {
+	await t.rejects(async () => {
+		await fetchJourneys(fromId, toId, {
 			departure: when, earlierThan: model.earlierRef
 		})
-		// silence rejections, we're only interested in exceptions
-		.catch(() => {})
 	})
-	t.throws(() => {
-		fetchJourneys(fromId, toId, {
+	await t.rejects(async () => {
+		await fetchJourneys(fromId, toId, {
 			departure: when, laterThan: model.laterRef
 		})
-		// silence rejections, we're only interested in exceptions
-		.catch(() => {})
 	})
-	t.throws(() => {
-		fetchJourneys(fromId, toId, {
+	await t.rejects(async () => {
+		await fetchJourneys(fromId, toId, {
 			arrival: when, earlierThan: model.earlierRef
 		})
-		// silence rejections, we're only interested in exceptions
-		.catch(() => {})
 	})
-	t.throws(() => {
-		fetchJourneys(fromId, toId, {
+	await t.rejects(async () => {
+		await fetchJourneys(fromId, toId, {
 			arrival: when, laterThan: model.laterRef
 		})
-		// silence rejections, we're only interested in exceptions
-		.catch(() => {})
 	})
 
 	let earliestDep = Infinity, latestDep = -Infinity
