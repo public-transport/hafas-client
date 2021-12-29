@@ -1,6 +1,5 @@
 'use strict'
 
-const parseLineName = require('vbb-parse-line')
 const {parseHook} = require('../../lib/profile-hooks')
 
 const parseAndAddLocationDHID = require('./parse-loc-dhid')
@@ -12,16 +11,8 @@ const _parseDeparture = require('../../parse/departure')
 const baseProfile = require('./base.json')
 const products = require('./products')
 
-// todo: https://m.tagesspiegel.de/berlin/fahrerlebnis-wie-im-regionalexpress-so-faehrt-es-sich-in-der-neuen-express-s-bahn/25338674.html
-const parseLineWithMoreDetails = ({parsed}, p) => {
+const parseLineWithShortName = ({parsed}, p) => {
 	parsed.name = p.name.replace(/^(bus|tram)\s+/i, '')
-	const details = parseLineName(parsed.name)
-	parsed.symbol = details.symbol
-	parsed.nr = details.nr
-	parsed.metro = details.metro
-	parsed.express = details.express
-	parsed.night = details.night
-
 	return parsed
 }
 
@@ -79,7 +70,7 @@ const vbbProfile = {
 
 	products: products,
 
-	parseLine: parseHook(_parseLine, parseLineWithMoreDetails),
+	parseLine: parseHook(_parseLine, parseLineWithShortName),
 	parseLocation: parseHook(_parseLocation, parseLocation),
 	parseJourney: parseHook(_parseJourney, parseJourneyWithTickets),
 	parseDeparture: parseHook(_parseDeparture, parseDepartureRenameRingbahn),
