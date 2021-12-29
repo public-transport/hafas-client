@@ -1,6 +1,5 @@
 'use strict'
 
-const shorten = require('vbb-short-station-name')
 const parseLineName = require('vbb-parse-line')
 const parseTicket = require('vbb-parse-ticket')
 const {parseHook} = require('../../lib/profile-hooks')
@@ -77,7 +76,6 @@ const vbbProfile = {
 
 	parseLine: parseHook(_parseLine, parseLineWithMoreDetails),
 	parseLocation: parseHook(_parseLocation, parseLocation),
-	parseStationName: (ctx, name) => shorten(name),
 	parseJourney: parseHook(_parseJourney, parseJourneyWithTickets),
 	parseDeparture: parseHook(_parseDeparture, parseDepartureRenameRingbahn),
 
