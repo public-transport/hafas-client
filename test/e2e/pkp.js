@@ -131,7 +131,7 @@ tap.skip('nearby', async (t) => {
 })
 
 tap.skip('radar', async (t) => {
-	const vehicles = await client.radar({
+	const res = await client.radar({
 		north: 48.74453,
 		west: 11.42733,
 		south: 48.73453,
@@ -140,7 +140,7 @@ tap.skip('radar', async (t) => {
 		duration: 5 * 60, when, results: 10
 	})
 
-	validate(t, vehicles, 'movements', 'vehicles')
+	validate(t, res, 'radarResult', 'res')
 	t.end()
 })
 

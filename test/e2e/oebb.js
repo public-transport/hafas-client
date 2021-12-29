@@ -367,7 +367,7 @@ tap.test('stop', async (t) => {
 })
 
 tap.test('radar Salzburg', async (t) => {
-	let vehicles = await client.radar({
+	let res = await client.radar({
 		north: 47.827203,
 		west: 13.001261,
 		south: 47.773278,
@@ -377,7 +377,7 @@ tap.test('radar Salzburg', async (t) => {
 	})
 
 	// todo: find a way to always get frames from the API
-	vehicles = vehicles.filter(m => m.frames && m.frames.length > 0)
+	res.movements = res.movements.filter(m => m.frames && m.frames.length > 0)
 
 	// todo: find a way to always get products from the API
 	// todo: cfg.stationProductsOptional option
@@ -396,7 +396,7 @@ tap.test('radar Salzburg', async (t) => {
 			}, name)
 		},
 	})
-	validate(t, vehicles, 'movements', 'vehicles')
+	validate(t, res, 'radarResult', 'res')
 
 	t.end()
 })

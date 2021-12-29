@@ -238,7 +238,7 @@ tap.skip('station Hamburg Barmbek', async (t) => {
 })
 
 tap.skip('radar', async (t) => {
-	const vehicles = await client.radar({
+	const res = await client.radar({
 		north: 53.569,
 		west: 10.022,
 		south: 53.55,
@@ -247,6 +247,6 @@ tap.skip('radar', async (t) => {
 		duration: 5 * 60, when, results: 10
 	})
 
-	validate(t, vehicles, 'movements', 'vehicles')
+	validate(t, res, 'radarResult', 'res')
 	t.end()
 })

@@ -83,7 +83,7 @@ tap.test('arrivals at Wiesbaden Hbf', async (t) => {
 // todo: nearby
 
 tap.test('radar', async (t) => {
-	const vehicles = await client.radar({
+	const res = await client.radar({
 		north: 53.090516,
 		west: 8.750106,
 		south: 53.062859,
@@ -92,7 +92,7 @@ tap.test('radar', async (t) => {
 		duration: 5 * 60, when, results: 10
 	})
 
-	validate(t, vehicles, 'movements', 'vehicles')
+	validate(t, res, 'radarResult', 'res')
 	t.end()
 })
 

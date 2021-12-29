@@ -279,7 +279,7 @@ tap.test('station Magdeburg-Buckau', async (t) => {
 })
 
 tap.test('radar', async (t) => {
-	const vehicles = await client.radar({
+	const res = await client.radar({
 		north: 52.148364,
 		west: 11.600826,
 		south: 52.108486,
@@ -292,7 +292,7 @@ tap.test('radar', async (t) => {
 		stationCoordsOptional: true, // see #28
 	})
 	const validate = createValidate(customCfg, validators)
-	validate(t, vehicles, 'movements', 'vehicles')
+	validate(t, res, 'radarResult', 'res')
 
 	t.end()
 })
