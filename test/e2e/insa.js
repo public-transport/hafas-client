@@ -79,8 +79,8 @@ tap.test('journeys – Magdeburg Hbf to Magdeburg-Buckau', async (t) => {
 
 // todo: journeys, only one product
 
-tap.test('journeys – fails with no product', (t) => {
-	journeysFailsWithNoProduct({
+tap.test('journeys – fails with no product', async (t) => {
+	await journeysFailsWithNoProduct({
 		test: t,
 		fetchJourneys: client.journeys,
 		fromId: magdeburgHbf,
