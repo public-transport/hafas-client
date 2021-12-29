@@ -1,4 +1,4 @@
-# `trip(id, lineName, [opt])`
+# `trip(id, [opt])`
 
 This method can be used to refetch information about a trip – a vehicle stopping at a set of stops at specific times.
 
@@ -16,7 +16,7 @@ const client = createClient(vbbProfile, 'my-awesome-program')
 const {journeys} = client.journeys('900000003201', '900000100008', {results: 1})
 const leg = journeys[0].legs[0]
 
-await client.trip(leg.tripId, leg.line.name)
+await client.trip(leg.tripId)
 ```
 
 With `opt`, you can override the default options, which look like this:

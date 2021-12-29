@@ -1,16 +1,16 @@
 {
   "statusCode": 200,
   "headers": {
-    "date": "Tue, 03 May 2022 15:06:27 GMT",
+    "date": "Tue, 03 May 2022 15:24:27 GMT",
     "server": "Apache",
     "vary": "User-Agent",
-    "content-length": "2369",
+    "content-length": "2359",
     "access-control-allow-origin": "*",
     "access-control-allow-headers": "*",
     "content-type": "application/json; charset=utf-8"
   },
   "url": "https://bvg-apps-ext.hafas.de/bin/mgate.exe",
-  "time": 255,
+  "time": 35475,
   "request": {
     "method": "POST",
     "headers": {
@@ -24,7 +24,7 @@
         "application/json"
       ],
       "user-agent": [
-        "public171367-transpor171367t/haf171367as-cli171367ent:tes171367t"
+        "public92b9d3-transpo92b9d3rt/ha92b9d3fas-cl92b9d3ient:te92b9d3st"
       ],
       "connection": [
         "keep-alive"

@@ -1,13 +1,13 @@
 {
   "statusCode": 200,
   "headers": {
-    "date": "Tue, 03 May 2022 14:53:33 GMT",
+    "date": "Tue, 03 May 2022 15:24:34 GMT",
     "server": "Apache",
-    "content-length": "2815",
+    "content-length": "2818",
     "content-type": "application/json; charset=utf-8"
   },
   "url": "https://nrw.hafas.de/bin/mgate.exe",
-  "time": 526,
+  "time": 647,
   "request": {
     "method": "POST",
     "headers": {
@@ -21,7 +21,7 @@
         "application/json"
       ],
       "user-agent": [
-        "public-f28ef0transporf28ef0t/hafasf28ef0-clientf28ef0:test"
+        "public-t2e7ca4ransp2e7ca4ort/hafa2e7ca4s-clie2e7ca4nt:tes2e7ca4t"
       ],
       "connection": [
         "keep-alive"

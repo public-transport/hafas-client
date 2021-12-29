@@ -18,7 +18,7 @@ const oberndorfKrankenhaus = '455110200'
 // .then(({journeys}) => {
 // 	const [journey] = journeys
 // 	const leg = journey.legs[0]
-// 	return client.trip(leg.tripId, leg.line.name, {polyline: true})
+// 	return client.trip(leg.tripId, {polyline: true})
 // })
 
 // client.departures(salzburgGaswerkgasse, {duration: 1})

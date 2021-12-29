@@ -35,7 +35,7 @@ client.locations('hansaplatz', {results: 2})
 // .then(({journeys}) => {
 // 	const [journey] = journeys
 // 	const leg = journey.legs[0]
-// 	return client.trip(leg.tripId, leg.line.name, {polyline: true})
+// 	return client.trip(leg.tripId, {polyline: true})
 // })
 
 // .then(({journeys}) => {
