@@ -330,7 +330,7 @@ tap.test('stop', async (t) => {
 })
 
 tap.test('radar', async (t) => {
-	const vehicles = await client.radar({
+	const res = await client.radar({
 		north: 54.4,
 		west: 10.0,
 		south: 54.2,
@@ -351,7 +351,7 @@ tap.test('radar', async (t) => {
 			validateStation(validate, s, name)
 		}
 	})
-	validate(t, vehicles, 'movements', 'vehicles')
+	validate(t, res, 'radarResult', 'res')
 
 	t.end()
 })

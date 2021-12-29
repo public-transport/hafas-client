@@ -632,6 +632,14 @@ const validateMovements = (val, ms, name = 'movements') => {
 	}
 }
 
+const validateRadarResult = (val, res, name = 'movementsResult') => {
+	a.ok(isObj(res), name + ' must be an object')
+
+	val.movements(val, res.movements, name + '.movements')
+
+	val.realtimeDataUpdatedAt(val, res.realtimeDataUpdatedAt, name + '.realtimeDataUpdatedAt')
+}
+
 module.exports = {
 	realtimeDataUpdatedAt: createValidateRealtimeDataUpdatedAt,
 	products: createValidateProducts,
@@ -660,5 +668,6 @@ module.exports = {
 	arrivalsResponse: createValidateArrivalsResponse,
 	departuresResponse: createValidateDeparturesResponse,
 	movement: createValidateMovement,
-	movements: () => validateMovements
+	movements: () => validateMovements,
+	radarResult: () => validateRadarResult,
 }

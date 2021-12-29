@@ -30,7 +30,10 @@ const vbbProfile = require('hafas-client/p/vbb')
 
 const client = createClient(vbbProfile, 'my-awesome-program')
 
-await client.radar({
+const {
+	movements,
+	realtimeDataUpdatedAt,
+} = await client.radar({
 	north: 52.52411,
 	west: 13.41002,
 	south: 52.51942,
@@ -38,7 +41,9 @@ await client.radar({
 }, {results: 5})
 ```
 
-The result may look like this:
+`realtimeDataUpdatedAt` is a UNIX timestamp reflecting the latest moment when (at least some of) the response's realtime data have been updated.
+
+`movements` may look like this:
 
 ```js
 [ {

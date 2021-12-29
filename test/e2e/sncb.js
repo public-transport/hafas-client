@@ -88,7 +88,7 @@ tap.test('arrivals at Bruxelles Midi', async (t) => {
 // todo: nearby
 
 tap.test('radar', async (t) => {
-	const vehicles = await client.radar({
+	const res = await client.radar({
 		north: 51.065,
 		west: 3.688,
 		south: 51.04,
@@ -97,7 +97,7 @@ tap.test('radar', async (t) => {
 		duration: 5 * 60, when, results: 10
 	})
 
-	validate(t, vehicles, 'movements', 'vehicles')
+	validate(t, res, 'radarResult', 'res')
 	t.end()
 })
 
