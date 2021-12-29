@@ -37,12 +37,12 @@ const validate = createValidate(cfg, {
 
 const client = createClient(vbbProfile, 'public-transport/hafas-client:test')
 
-const amrumerStr = '900000009101'
-const spichernstr = '900000042101'
-const bismarckstr = '900000024201'
-const westhafen = '900000001201'
-const wedding = '900000009104'
-const württembergallee = '900000026153'
+const amrumerStr = '900009101'
+const spichernstr = '900042101'
+const bismarckstr = '900024201'
+const westhafen = '900001201'
+const wedding = '900009104'
+const württembergallee = '900026153'
 
 tap.test('journeys – Spichernstr. to Bismarckstr.', async (t) => {
 	const res = await client.journeys({
@@ -123,7 +123,7 @@ tap.test('journeys: walkingSpeed', async (t) => {
 		latitude: 52.443576,
 		longitude: 13.198973
 	}
-	const wannsee = '900000053301'
+	const wannsee = '900053301'
 
 	await testJourneysWalkingSpeed({
 		test: t,
@@ -343,8 +343,8 @@ tap.test('arrivals', async (t) => {
 })
 
 tap.test('nearby', async (t) => {
-	const berlinerStr = '900000044201'
-	const landhausstr = '900000043252'
+	const berlinerStr = '900044201'
+	const landhausstr = '900043252'
 
 	// Berliner Str./Bundesallee
 	const nearby = await client.nearby({

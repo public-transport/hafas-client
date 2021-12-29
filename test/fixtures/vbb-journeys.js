@@ -5,7 +5,7 @@ module.exports = [{
 	legs: [{
 		origin: {
 			type: 'stop',
-			id: '900000042101',
+			id: '900042101',
 			name: 'U Spichernstr.',
 			location: {
 				type: 'location',
@@ -25,7 +25,7 @@ module.exports = [{
 		},
 		destination: {
 			type: 'stop',
-			id: '900000001201',
+			id: '900001201',
 			name: 'S+U Westhafen',
 			location: {
 				type: 'location',
@@ -83,7 +83,7 @@ module.exports = [{
 	}, {
 		origin: {
 			type: 'stop',
-			id: '900000001201',
+			id: '900001201',
 			name: 'S+U Westhafen',
 			location: {
 				type: 'location',
@@ -103,7 +103,7 @@ module.exports = [{
 		},
 		destination: {
 			type: 'stop',
-			id: '900000007102',
+			id: '900007102',
 			name: 'S+U Gesundbrunnen',
 			location: {
 				type: 'location',
@@ -161,7 +161,7 @@ module.exports = [{
 	}, {
 		origin: {
 			type: 'stop',
-			id: '900000007102',
+			id: '900007102',
 			name: 'S+U Gesundbrunnen',
 			location: {
 				type: 'location',
@@ -181,7 +181,7 @@ module.exports = [{
 		},
 		destination: {
 			type: 'stop',
-			id: '900000350127',
+			id: '900350127',
 			name: 'Eberswalde, Hbf',
 			location: {
 				type: 'location',
@@ -305,7 +305,7 @@ module.exports = [{
 	legs: [{
 		origin: {
 			type: 'stop',
-			id: '900000042101',
+			id: '900042101',
 			name: 'U Spichernstr.',
 			location: {
 				type: 'location',
@@ -325,7 +325,7 @@ module.exports = [{
 		},
 		destination: {
 			type: 'stop',
-			id: '900000001201',
+			id: '900001201',
 			name: 'S+U Westhafen',
 			location: {
 				type: 'location',
@@ -383,7 +383,7 @@ module.exports = [{
 	}, {
 		origin: {
 			type: 'stop',
-			id: '900000001201',
+			id: '900001201',
 			name: 'S+U Westhafen',
 			location: {
 				type: 'location',
@@ -403,7 +403,7 @@ module.exports = [{
 		},
 		destination: {
 			type: 'stop',
-			id: '900000007102',
+			id: '900007102',
 			name: 'S+U Gesundbrunnen',
 			location: {
 				type: 'location',
@@ -462,7 +462,7 @@ module.exports = [{
 	}, {
 		origin: {
 			type: 'stop',
-			id: '900000007102',
+			id: '900007102',
 			name: 'S+U Gesundbrunnen',
 			location: {
 				type: 'location',
@@ -482,7 +482,7 @@ module.exports = [{
 		},
 		destination: {
 			type: 'stop',
-			id: '900000350127',
+			id: '900350127',
 			name: 'Eberswalde, Hbf',
 			location: {
 				type: 'location',
