@@ -701,10 +701,16 @@ const createClient = (profile, userAgent, opt = {}) => {
 			res, common,
 		} = await profile.request({profile, opt}, userAgent, req)
 
-		// todo [breaking]: return object with realtimeDataUpdatedAt
 		const ctx = {profile, opt, common, res}
-		return (res.msgL || [])
+		const remarks = (res.msgL || [])
 		.map(w => profile.parseWarning(ctx, w))
+
+		return {
+			remarks,
+			realtimeDataUpdatedAt: res.planrtTS && res.planrtTS !== '0'
+				? parseInt(res.planrtTS)
+				: null,
+		}
 	}
 
 	const lines = async (query, opt = {}) => {
