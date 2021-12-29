@@ -474,12 +474,9 @@ const createClient = (profile, userAgent, opt = {}) => {
 			: results
 	}
 
-	const trip = async (id, lineName, opt = {}) => {
+	const trip = async (id, opt = {}) => {
 		if (!isNonEmptyString(id)) {
 			throw new TypeError('id must be a non-empty string.')
-		}
-		if (!isNonEmptyString(lineName)) {
-			throw new TypeError('lineName must be a non-empty string.')
 		}
 		opt = Object.assign({
 			stopovers: true, // return stations on the way?
@@ -490,7 +487,7 @@ const createClient = (profile, userAgent, opt = {}) => {
 			scheduledDays: false, // parse & expose dates trip is valid on?
 		}, opt)
 
-		const req = profile.formatTripReq({profile, opt}, id, lineName)
+		const req = profile.formatTripReq({profile, opt}, id)
 
 		const {res, common} = await profile.request({profile, opt}, userAgent, req)
 		const ctx = {profile, opt, common, res}

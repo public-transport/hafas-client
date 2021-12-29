@@ -35,7 +35,7 @@ client.departures('8004154', {duration: 5})
 // .then(({journeys}) => {
 // 	const [journey] = journeys
 // 	const leg = journey.legs.find(leg => leg.line)
-// 	return client.trip(leg.tripId, leg.line.name, {polyline: true})
+// 	return client.trip(leg.tripId, {polyline: true})
 // })
 
 // .then(({journeys}) => {

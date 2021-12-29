@@ -12,7 +12,7 @@ const bruxellesCentral = '8800003'
 client.journeys(mersch, bruxellesCentral, {results: 1})
 // .then(({journeys}) => {
 // 	const leg = journeys[0].legs[0]
-// 	return client.trip(leg.tripId, leg.line.name, {polyline: true})
+// 	return client.trip(leg.tripId, {polyline: true})
 // })
 // .then(({journeys}) => {
 // 	const [journey] = journeys

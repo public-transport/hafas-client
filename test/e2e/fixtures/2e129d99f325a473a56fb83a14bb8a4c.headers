@@ -1,0 +1,37 @@
+{
+  "statusCode": 200,
+  "headers": {
+    "date": "Tue, 03 May 2022 15:25:51 GMT",
+    "server": "Apache",
+    "content-length": "3511",
+    "content-type": "application/json; charset=utf-8",
+    "set-cookie": [
+      "HAFAS-PROD-MOBIL-CL-SSL=HAFAS-PROD-MOBIL-01; path=/"
+    ]
+  },
+  "url": "https://mobil.rozklad-pkp.pl:8019/bin/mgate.exe",
+  "time": 229,
+  "request": {
+    "method": "POST",
+    "headers": {
+      "Content-Type": [
+        "application/json"
+      ],
+      "Accept-Encoding": [
+        "gzip, br, deflate"
+      ],
+      "Accept": [
+        "application/json"
+      ],
+      "user-agent": [
+        "public-t13f943ranspor13f943t/haf13f943as-client:13f943test"
+      ],
+      "connection": [
+        "keep-alive"
+      ],
+      "Content-Length": [
+        "231"
+      ]
+    }
+  }
+}

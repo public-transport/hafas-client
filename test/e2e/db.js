@@ -250,7 +250,7 @@ tap.skip('journeysFromTrip – U Mehringdamm to U Naturkundemuseum, reroute to S
 		for (const j of journeys) {
 			const l = j.legs.find(isU6Leg)
 			if (!l) continue
-			const t = await client.trip(l.tripId, l.line && l.line.name, {
+			const t = await client.trip(l.tripId, {
 				stopovers: true, remarks: false
 			})
 
@@ -311,7 +311,7 @@ tap.test('trip details', async (t) => {
 	t.ok(p.tripId, 'precondition failed')
 	t.ok(p.line.name, 'precondition failed')
 
-	const tripRes = await client.trip(p.tripId, p.line.name, {when})
+	const tripRes = await client.trip(p.tripId, {when})
 
 	const validate = createValidate(cfg, {
 		trip: (cfg) => {

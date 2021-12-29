@@ -1,9 +1,9 @@
 {
   "statusCode": 200,
   "headers": {
-    "date": "Tue, 03 May 2022 15:16:51 GMT",
+    "date": "Tue, 03 May 2022 15:27:25 GMT",
     "content-type": "application/json; charset=utf-8",
-    "content-length": "2092",
+    "content-length": "2091",
     "connection": "keep-alive",
     "server": "Apache/2.4.25 (Debian)",
     "access-control-allow-origin": "*",
@@ -11,7 +11,7 @@
     "access-control-allow-methods": "PUT, GET, POST, DELETE, OPTIONS"
   },
   "url": "https://online.fahrplan.zvv.ch/bin/mgate.exe",
-  "time": 187,
+  "time": 508,
   "request": {
     "method": "POST",
     "headers": {
@@ -25,7 +25,7 @@
         "application/json"
       ],
       "user-agent": [
-        "publi3b7fabc-tran3b7fabsport/haf3b7fabas-client:3b7fabtest"
+        "public-tr2c3db3ansport/2c3db3hafas-2c3db3client:tes2c3db3t"
       ],
       "connection": [
         "keep-alive"
