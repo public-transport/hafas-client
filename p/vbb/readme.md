@@ -17,5 +17,4 @@ const client = createClient(vbbProfile, 'my-awesome-program')
 
 - parses *VBB*-specific products (such as *X-Bus*)
 - parses line names to give more information (e.g. "Is it an express bus?")
-- parses *VBB*-specific tickets
 - renames *Ringbahn* line names to contain `⟳` and `⟲`
