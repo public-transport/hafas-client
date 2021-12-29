@@ -6,8 +6,17 @@ const anyOf = require('validate-fptf/lib/any-of')
 
 const {assertValidWhen} = require('./util')
 
+const DAY = 24 * 60 * 60 * 1000
+
 const isObj = o => o !== null && 'object' === typeof o && !Array.isArray(o)
 const is = val => val !== null && val !== undefined
+
+const createValidateRealtimeDataUpdatedAt = (cfg) => {
+	const validateRealtimeDataUpdatedAt = (val, rtDataUpdatedAt, name = 'realtimeDataUpdatedAt') => {
+		assertValidWhen(rtDataUpdatedAt * 1000, cfg.when, name, 100 * DAY)
+	}
+	return validateRealtimeDataUpdatedAt
+}
 
 const createValidateProducts = (cfg) => {
 	const validateProducts = (val, p, name = 'products') => {
@@ -518,6 +527,24 @@ const createValidateDepartures = (cfg) => {
 	return _createValidateStationBoardResults(cfg, 'departure')
 }
 
+const _createValidateStationBoardResponse = (cfg, validatorsKey, arrsOrDepsKey) => {
+	const _validateStationBoardResponse = (val, res, name) => {
+		a.ok(isObj(res), name + ' must be an object')
+
+		val.realtimeDataUpdatedAt(val, res.realtimeDataUpdatedAt, name + '.realtimeDataUpdatedAt')
+
+		const arrsOrDeps = res[arrsOrDepsKey]
+		val[validatorsKey](val, arrsOrDeps, `${name}.${arrsOrDepsKey}`)
+	}
+	return _validateStationBoardResponse
+}
+const createValidateArrivalsResponse = (cfg) => {
+	return _createValidateStationBoardResponse(cfg, 'arrivals', 'arrivals')
+}
+const createValidateDeparturesResponse = (cfg) => {
+	return _createValidateStationBoardResponse(cfg, 'departures', 'departures')
+}
+
 const createValidateMovement = (cfg) => {
 	const { maxLatitude, minLatitude, maxLongitude, minLongitude } = cfg
 	const validateMovement = (val, m, name = 'movement') => {
@@ -576,6 +603,7 @@ const validateMovements = (val, ms, name = 'movements') => {
 }
 
 module.exports = {
+	realtimeDataUpdatedAt: createValidateRealtimeDataUpdatedAt,
 	products: createValidateProducts,
 	station: createValidateStation,
 	stop: () => validateStop,
@@ -596,6 +624,8 @@ module.exports = {
 	departure: createValidateDeparture,
 	arrivals: createValidateArrivals,
 	departures: createValidateDepartures,
+	arrivalsResponse: createValidateArrivalsResponse,
+	departuresResponse: createValidateDeparturesResponse,
 	movement: createValidateMovement,
 	movements: () => validateMovements
 }

@@ -189,13 +189,13 @@ tap.test('trip details', async (t) => {
 })
 
 tap.test('departures at Magdeburg Universität', async (t) => {
-	const departures = await client.departures(universitaet, {
+	const res = await client.departures(universitaet, {
 		duration: 30, when,
 	})
 
 	await testDepartures({
 		test: t,
-		departures,
+		res,
 		validate,
 		id: universitaet
 	})
@@ -203,7 +203,7 @@ tap.test('departures at Magdeburg Universität', async (t) => {
 })
 
 tap.test('departures with station object', async (t) => {
-	const deps = await client.departures({
+	const res = await client.departures({
 		type: 'stop',
 		id: universitaet,
 		name: 'Universität',
@@ -216,7 +216,7 @@ tap.test('departures with station object', async (t) => {
 		duration: 30, when,
 	})
 
-	validate(t, deps, 'departures', 'deps')
+	validate(t, res, 'departuresResponse', 'res')
 	t.end()
 })
 
@@ -235,13 +235,13 @@ tap.test('departures at Universität in direction of Spielhagenstr.', async (t) 
 })
 
 tap.test('arrivals at Magdeburg Universität', async (t) => {
-	const arrivals = await client.arrivals(universitaet, {
+	const res = await client.arrivals(universitaet, {
 		duration: 30, when
 	})
 
 	await testArrivals({
 		test: t,
-		arrivals,
+		res,
 		validate,
 		id: universitaet
 	})

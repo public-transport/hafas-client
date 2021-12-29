@@ -299,13 +299,13 @@ tap.test('journeys: via works – with detour', async (t) => {
 // todo: without detour test
 
 tap.test('departures', async (t) => {
-	const departures = await client.departures(spichernstr, {
+	const res = await client.departures(spichernstr, {
 		duration: 5, when
 	})
 
 	await testDepartures({
 		test: t,
-		departures,
+		res,
 		validate,
 		id: spichernstr
 	})
@@ -313,7 +313,7 @@ tap.test('departures', async (t) => {
 })
 
 tap.test('departures with station object', async (t) => {
-	const deps = await client.departures({
+	const res = await client.departures({
 		type: 'station',
 		id: spichernstr,
 		name: 'U Spichernstr',
@@ -324,7 +324,7 @@ tap.test('departures with station object', async (t) => {
 		}
 	}, {when})
 
-	validate(t, deps, 'departures', 'departures')
+	validate(t, res, 'departuresResponse', 'res')
 	t.end()
 })
 
@@ -349,13 +349,13 @@ tap.test('departures at 7-digit station', async (t) => {
 })
 
 tap.test('arrivals', async (t) => {
-	const arrivals = await client.arrivals(spichernstr, {
+	const res = await client.arrivals(spichernstr, {
 		duration: 5, when
 	})
 
 	await testArrivals({
 		test: t,
-		arrivals,
+		res,
 		validate,
 		id: spichernstr
 	})

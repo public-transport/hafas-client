@@ -38,7 +38,7 @@ const createClient = (profile, userAgent, opt = {}) => {
 		throw new TypeError('userAgent must be a string');
 	}
 
-	const _stationBoard = async (station, type, parse, opt = {}) => {
+	const _stationBoard = async (station, type, resultsField, parse, opt = {}) => {
 		if (isObj(station)) station = profile.formatStation(station.id)
 		else if ('string' === typeof station) station = profile.formatStation(station)
 		else throw new TypeError('station must be an object or a string.')
@@ -75,19 +75,25 @@ const createClient = (profile, userAgent, opt = {}) => {
 		const req = profile.formatStationBoardReq({profile, opt}, station, type)
 
 		const {res, common} = await profile.request({profile, opt}, userAgent, req)
-		if (!Array.isArray(res.jnyL)) return []
 
 		const ctx = {profile, opt, common, res}
-		// todo [breaking]: return object with realtimeDataUpdatedAt
-		return res.jnyL.map(res => parse(ctx, res))
+		const jnyL = Array.isArray(res.jnyL) ? res.jnyL : []
+		const results = jnyL.map(res => parse(ctx, res))
 		.sort((a, b) => new Date(a.when) - new Date(b.when)) // todo
+
+		return {
+			[resultsField]: results,
+			realtimeDataUpdatedAt: res.planrtTS && res.planrtTS !== '0'
+				? parseInt(res.planrtTS)
+				: null,
+		}
 	}
 
 	const departures = async (station, opt = {}) => {
-		return await _stationBoard(station, 'DEP', profile.parseDeparture, opt)
+		return await _stationBoard(station, 'DEP', 'departures', profile.parseDeparture, opt)
 	}
 	const arrivals = async (station, opt = {}) => {
-		return await _stationBoard(station, 'ARR', profile.parseArrival, opt)
+		return await _stationBoard(station, 'ARR', 'arrivals', profile.parseArrival, opt)
 	}
 
 	const journeys = async (from, to, opt = {}) => {

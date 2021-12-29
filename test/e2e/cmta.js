@@ -162,13 +162,13 @@ tap.test('trip details', async (t) => {
 })
 
 tap.test('departures at Broadie Oaks', async (t) => {
-	const departures = await client.departures(broadieOaks, {
+	const res = await client.departures(broadieOaks, {
 		duration: 10, when,
 	})
 
 	await testDepartures({
 		test: t,
-		departures,
+		res,
 		validate,
 		id: broadieOaks
 	})
@@ -176,7 +176,7 @@ tap.test('departures at Broadie Oaks', async (t) => {
 })
 
 tap.test('departures with station object', async (t) => {
-	const deps = await client.departures({
+	const res = await client.departures({
 		type: 'station',
 		id: broadieOaks,
 		name: 'Magdeburg Hbf',
@@ -187,18 +187,18 @@ tap.test('departures with station object', async (t) => {
 		}
 	}, {when})
 
-	validate(t, deps, 'departures', 'departures')
+	validate(t, res, 'departuresResponse', 'res')
 	t.end()
 })
 
 tap.test('arrivals at Broadie Oaks', async (t) => {
-	const arrivals = await client.arrivals(broadieOaks, {
+	const res = await client.arrivals(broadieOaks, {
 		duration: 10, when
 	})
 
 	await testArrivals({
 		test: t,
-		arrivals,
+		res,
 		validate,
 		id: broadieOaks
 	})

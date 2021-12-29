@@ -151,13 +151,13 @@ tap.skip('trip details', async (t) => {
 })
 
 tap.skip('departures at Hamburg Barmbek', async (t) => {
-	const departures = await client.departures(barmbek, {
+	const res = await client.departures(barmbek, {
 		duration: 5, when,
 	})
 
 	await testDepartures({
 		test: t,
-		departures,
+		res,
 		validate,
 		id: barmbek
 	})
@@ -165,7 +165,7 @@ tap.skip('departures at Hamburg Barmbek', async (t) => {
 })
 
 tap.skip('departures with station object', async (t) => {
-	const deps = await client.departures({
+	const res = await client.departures({
 		type: 'station',
 		id: tiefstack,
 		name: 'Hamburg Tiefstack',
@@ -176,7 +176,7 @@ tap.skip('departures with station object', async (t) => {
 		}
 	}, {when})
 
-	validate(t, deps, 'departures', 'departures')
+	validate(t, res, 'departuresResponse', 'res')
 	t.end()
 })
 
@@ -194,13 +194,13 @@ tap.skip('departures at Barmbek in direction of Altona', async (t) => {
 })
 
 tap.skip('arrivals at Hamburg Barmbek', async (t) => {
-	const arrivals = await client.arrivals(barmbek, {
+	const res = await client.arrivals(barmbek, {
 		duration: 5, when
 	})
 
 	await testArrivals({
 		test: t,
-		arrivals,
+		res,
 		validate,
 		id: barmbek
 	})

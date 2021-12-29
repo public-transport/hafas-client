@@ -172,13 +172,13 @@ tap.test('trip details', async (t) => {
 })
 
 tap.test('departures', async (t) => {
-	const departures = await client.departures(saarbrueckenUhlandstr, {
+	const res = await client.departures(saarbrueckenUhlandstr, {
 		duration: 5, when
 	})
 
 	await testDepartures({
 		test: t,
-		departures,
+		res,
 		validate,
 		id: saarbrueckenUhlandstr,
 	})
@@ -186,9 +186,9 @@ tap.test('departures', async (t) => {
 })
 
 tap.test('departures with stop object', async (t) => {
-	const deps = await client.departures({
+	const res = await client.departures({
 		type: 'stop',
-		id: '8000323',
+		id: saarbrueckenHbf,
 		name: 'Saarbrücken Hbf',
 		location: {
 			type: 'location',
@@ -197,7 +197,7 @@ tap.test('departures with stop object', async (t) => {
 		}
 	}, {when})
 
-	validate(t, deps, 'departures', 'departures')
+	validate(t, res, 'departuresResponse', 'res')
 	t.end()
 })
 

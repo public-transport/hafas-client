@@ -183,13 +183,13 @@ tap.test('trip', async (t) => {
 })
 
 tap.test('departures at Ettelbruck.', async (t) => {
-	const departures = await client.departures(ettelbruck, {
+	const res = await client.departures(ettelbruck, {
 		duration: 20, when
 	})
 
 	await testDepartures({
 		test: t,
-		departures,
+		res,
 		validate,
 		id: ettelbruck
 	})
@@ -197,13 +197,13 @@ tap.test('departures at Ettelbruck.', async (t) => {
 })
 
 tap.test('arrivals at Ettelbruck.', async (t) => {
-	const arrivals = await client.arrivals(ettelbruck, {
+	const res = await client.arrivals(ettelbruck, {
 		duration: 20, when
 	})
 
 	await testArrivals({
 		test: t,
-		arrivals,
+		res,
 		validate,
 		id: ettelbruck
 	})
@@ -211,7 +211,7 @@ tap.test('arrivals at Ettelbruck.', async (t) => {
 })
 
 tap.test('departures with station object', async (t) => {
-	const deps = await client.departures({
+	const res = await client.departures({
 		type: 'station',
 		id: ettelbruck,
 		name: 'Ettelbruck',
@@ -222,7 +222,7 @@ tap.test('departures with station object', async (t) => {
 		}
 	}, {when})
 
-	validate(t, deps, 'departures', 'departures')
+	validate(t, res, 'departuresResponse', 'res')
 	t.end()
 })
 
