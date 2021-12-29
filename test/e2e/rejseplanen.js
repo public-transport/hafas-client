@@ -118,13 +118,13 @@ tap.test('trip', async (t) => {
 })
 
 tap.test('departures at Næstved.', async (t) => {
-	const departures = await client.departures(næstved, {
+	const res = await client.departures(næstved, {
 		duration: 20, when,
 	})
 
 	await testDepartures({
 		test: t,
-		departures,
+		res,
 		validate,
 		ids: [
 			næstved,
@@ -136,13 +136,13 @@ tap.test('departures at Næstved.', async (t) => {
 })
 
 tap.test('arrivals at Næstved.', async (t) => {
-	const arrivals = await client.arrivals(næstved, {
+	const res = await client.arrivals(næstved, {
 		duration: 20, when
 	})
 
 	await testArrivals({
 		test: t,
-		arrivals,
+		res,
 		validate,
 		ids: [
 			næstved,

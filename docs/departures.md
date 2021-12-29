@@ -55,7 +55,7 @@ await client.departures('900000024101', {products: {tram: false, ferry: false}})
 
 *Note:* As stated in the [*Friendly Public Transport Format* v2 draft spec](https://github.com/public-transport/friendly-public-transport-format/blob/3bd36faa721e85d9f5ca58fb0f38cdbedb87bbca/spec/readme.md), the `when` field includes the current delay. The `delay` field, if present, expresses how much the former differs from the schedule.
 
-You may pass the `tripId` field into [`trip(id, lineName, [opt])`](trip.md) to get details on the vehicle's trip.
+You may pass a departure's `tripId` into [`trip(id, lineName, [opt])`](trip.md) to get details on the whole trip.
 
 As an example, we're going to use the [VBB profile](../p/vbb):
 
@@ -66,10 +66,15 @@ const vbbProfile = require('hafas-client/p/vbb')
 const client = createClient(vbbProfile, 'my-awesome-program')
 
 // S Charlottenburg
-await client.departures('900000024101', {duration: 3})
+const {
+	departures,
+	realtimeDataUpdatedAt,
+} = await client.departures('900000024101', {duration: 3})
 ```
 
-The result may look like this:
+`realtimeDataUpdatedAt` is a UNIX timestamp reflecting the latest moment when (at least some) of the response's realtime data have been updated.
+
+`departures` may look like this:
 
 ```js
 [ {

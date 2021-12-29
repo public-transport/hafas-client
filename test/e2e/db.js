@@ -330,13 +330,13 @@ tap.test('trip details', async (t) => {
 })
 
 tap.test('departures at Berlin Schwedter Str.', async (t) => {
-	const departures = await client.departures(blnSchwedterStr, {
+	const res = await client.departures(blnSchwedterStr, {
 		duration: 5, when,
 	})
 
 	await testDepartures({
 		test: t,
-		departures,
+		res,
 		validate,
 		id: blnSchwedterStr
 	})
@@ -344,7 +344,7 @@ tap.test('departures at Berlin Schwedter Str.', async (t) => {
 })
 
 tap.test('departures with station object', async (t) => {
-	const deps = await client.departures({
+	const res = await client.departures({
 		type: 'station',
 		id: jungfernheide,
 		name: 'Berlin Jungfernheide',
@@ -355,7 +355,7 @@ tap.test('departures with station object', async (t) => {
 		}
 	}, {when})
 
-	validate(t, deps, 'departures', 'departures')
+	validate(t, res, 'departuresResponse', 'res')
 	t.end()
 })
 
@@ -373,13 +373,13 @@ tap.test('departures at Berlin Hbf in direction of Berlin Ostbahnhof', async (t)
 })
 
 tap.test('arrivals at Berlin Schwedter Str.', async (t) => {
-	const arrivals = await client.arrivals(blnSchwedterStr, {
+	const res = await client.arrivals(blnSchwedterStr, {
 		duration: 5, when,
 	})
 
 	await testArrivals({
 		test: t,
-		arrivals,
+		res,
 		validate,
 		id: blnSchwedterStr
 	})
@@ -434,7 +434,7 @@ tap.test('stop', async (t) => {
 })
 
 tap.test('line with additionalName', async (t) => {
-	const departures = await client.departures(potsdamHbf, {
+	const {departures} = await client.departures(potsdamHbf, {
 		when,
 		duration: 12 * 60, // 12 minutes
 		products: {bus: false, suburban: false, tram: false}
