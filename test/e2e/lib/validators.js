@@ -448,6 +448,26 @@ const validateTrip = (val, trip, name = 'trip') => {
 	val.journeyLeg(val, withFakeTripId, name)
 }
 
+const validateTripResult = (val, res, name = 'tripResult') => {
+	a.ok(isObj(res), name + ' must be an object')
+
+	val.trip(val, res.trip, name + '.trip')
+
+	val.realtimeDataUpdatedAt(val, res.realtimeDataUpdatedAt, name + '.realtimeDataUpdatedAt')
+}
+
+const validateTripsByNameResult = (val, res, name = 'tripsByNameResult') => {
+	a.ok(isObj(res), name + ' must be an object')
+
+	a.ok(Array.isArray(res.trips), name + '.trips must be an array')
+	a.ok(res.trips.length > 0, name + '.trips must not be empty')
+	for (let i = 0; i < res.trips.length; i++) {
+		val.trip(val, res.trips[i], `${name}.trips[${i}]`)
+	}
+
+	val.realtimeDataUpdatedAt(val, res.realtimeDataUpdatedAt, name + '.realtimeDataUpdatedAt')
+}
+
 const createValidateArrivalOrDeparture = (type, cfg) => {
 	if (type !== 'arrival' && type !== 'departure') throw new Error('invalid type')
 
@@ -631,6 +651,8 @@ module.exports = {
 	journeysResult: () => validateJourneysResult,
 	refreshJourneyResult: () => validateRefreshJourneyResult,
 	trip: () => validateTrip,
+	tripResult: () => validateTripResult,
+	tripsByNameResult: () => validateTripsByNameResult,
 	arrival: createValidateArrival,
 	departure: createValidateDeparture,
 	arrivals: createValidateArrivals,

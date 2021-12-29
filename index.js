@@ -494,8 +494,14 @@ const createClient = (profile, userAgent, opt = {}) => {
 		const {res, common} = await profile.request({profile, opt}, userAgent, req)
 		const ctx = {profile, opt, common, res}
 
-		// todo [breaking]: return object with realtimeDataUpdatedAt
-		return profile.parseTrip(ctx, res.journey)
+		const trip = profile.parseTrip(ctx, res.journey)
+
+		return {
+			trip,
+			realtimeDataUpdatedAt: res.planrtTS && res.planrtTS !== '0'
+				? parseInt(res.planrtTS)
+				: null,
+		}
 	}
 
 	// todo [breaking]: rename to trips()?
@@ -575,8 +581,14 @@ const createClient = (profile, userAgent, opt = {}) => {
 		// todo [breaking]: catch `NO_MATCH` errors, return []
 		const ctx = {profile, opt, common, res}
 
-		// todo [breaking]: return object with realtimeDataUpdatedAt
-		return res.jnyL.map(t => profile.parseTrip(ctx, t))
+		const trips = res.jnyL.map(t => profile.parseTrip(ctx, t))
+
+		return {
+			trips,
+			realtimeDataUpdatedAt: res.planrtTS && res.planrtTS !== '0'
+				? parseInt(res.planrtTS)
+				: null,
+		}
 	}
 
 	const radar = async ({north, west, south, east}, opt) => {

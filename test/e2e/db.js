@@ -11,7 +11,7 @@ const createClient = require('../..')
 const dbProfile = require('../../p/db')
 const products = require('../../p/db/products')
 const {
-	station: createValidateStation,
+    station: createValidateStation,
 	trip: createValidateTrip
 } = require('./lib/validators')
 const createValidate = require('./lib/validate-fptf-with')
@@ -314,7 +314,8 @@ tap.test('trip details', async (t) => {
 	const p = res.journeys[0].legs.find(l => !l.walking)
 	t.ok(p.tripId, 'precondition failed')
 	t.ok(p.line.name, 'precondition failed')
-	const trip = await client.trip(p.tripId, p.line.name, {when})
+
+	const tripRes = await client.trip(p.tripId, p.line.name, {when})
 
 	const validateTrip = createValidateTrip(cfg)
 	const validate = createValidate(cfg, {
@@ -324,7 +325,7 @@ tap.test('trip details', async (t) => {
 			validateTrip(validate, trip, name)
 		}
 	})
-	validate(t, trip, 'trip', 'trip')
+	validate(t, tripRes, 'tripResult', 'tripRes')
 
 	t.end()
 })

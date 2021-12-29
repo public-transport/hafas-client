@@ -5,7 +5,7 @@ const maxBy = require('lodash/maxBy')
 const last = require('lodash/last')
 
 const parseTrip = (ctx, t) => { // t = raw trip
-	const {profile, res} = ctx
+	const {profile} = ctx
 
 	// pretend the trip is a leg in a journey
 	const fakeLeg = {
@@ -28,11 +28,6 @@ const parseTrip = (ctx, t) => { // t = raw trip
 	trip.id = trip.tripId
 	delete trip.tripId
 	// todo [breaking]: delete trip.reachable
-
-	if (res.planrtTS) {
-		// todo [breaking]: remove here
-		trip.realtimeDataUpdatedAt = parseInt(res.planrtTS)
-	}
 
 	return trip
 }

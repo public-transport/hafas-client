@@ -39,7 +39,6 @@ module.exports = {
 		}
 	],
 	occupancy: 'medium',
-	realtimeDataUpdatedAt: 1635406146,
 
 	origin: {
 		type: 'stop',

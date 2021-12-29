@@ -24,7 +24,7 @@ const testDeparturesInDirection = async (cfg) => {
 		const name = `deps[${i}]`
 
 		const line = dep.line && dep.line.name
-		const trip = await fetchTrip(dep.tripId, line, {
+		const {trip} = await fetchTrip(dep.tripId, line, {
 			when, stopovers: true
 		})
 		t.ok(trip.stopovers.some(st => (

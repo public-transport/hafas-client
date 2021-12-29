@@ -20,7 +20,6 @@ module.exports = {
 		},
 	},
 	reachable: true,
-	realtimeDataUpdatedAt: 1635084435,
 
 	origin: {},
 	departure: null,
