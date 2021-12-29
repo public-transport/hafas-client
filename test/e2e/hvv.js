@@ -60,8 +60,8 @@ tap.skip('journeys – Hamburg Tiefstack to Hamburg Barmbek', async (t) => {
 
 // todo: journeys, only one product
 
-tap.skip('journeys – fails with no product', (t) => {
-	journeysFailsWithNoProduct({
+tap.skip('journeys – fails with no product', async (t) => {
+	await journeysFailsWithNoProduct({
 		test: t,
 		fetchJourneys: client.journeys,
 		fromId: tiefstack,

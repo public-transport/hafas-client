@@ -114,8 +114,8 @@ tap.test('journeys – only subway', async (t) => {
 	t.end()
 })
 
-tap.test('journeys – fails with no product', (t) => {
-	journeysFailsWithNoProduct({
+tap.test('journeys – fails with no product', async (t) => {
+	await journeysFailsWithNoProduct({
 		test: t,
 		fetchJourneys: client.journeys,
 		fromId: spichernstr,
