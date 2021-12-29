@@ -12,7 +12,7 @@ const svvProfile = require('hafas-client/p/svv')
 
 const client = createClient(svvProfile, 'my-awesome-program')
 
-console.log(await client.lines('S1'))
+await client.lines('S1')
 ```
 
 ```js
