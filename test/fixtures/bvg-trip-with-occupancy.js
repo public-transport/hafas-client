@@ -99,8 +99,6 @@ module.exports = {
 		'2021-12-16': false,
 	},
 
-	realtimeDataUpdatedAt: 1635406146,
-
 	origin: {
 		type: 'stop',
 		id: '900009102',

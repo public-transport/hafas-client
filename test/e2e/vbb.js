@@ -177,9 +177,10 @@ tap.test('trip details', async (t) => {
 	const p = res.journeys[0].legs.find(l => !l.walking)
 	t.ok(p.tripId, 'precondition failed')
 	t.ok(p.line.name, 'precondition failed')
-	const trip = await client.trip(p.tripId, p.line.name, {when})
 
-	validate(t, trip, 'trip', 'trip')
+	const tripRes = await client.trip(p.tripId, p.line.name, {when})
+
+	validate(t, tripRes, 'tripResult', 'res')
 	t.end()
 })
 
@@ -187,7 +188,7 @@ tap.test('trip details', async (t) => {
 // around `when`, as expected by `assertValidWhen`, as called by `validate`.
 // todo: allow turning this off?
 tap.skip('trips', async (t) => {
-	const r1 = await client.tripsByName('S1')
+	const {trips: r1} = await client.tripsByName('S1')
 	t.ok(Array.isArray(r1))
 	t.ok(r1.length > 0)
 	t.ok(r1.every(t => t.line.name.trim() === 'S1'))
@@ -195,7 +196,7 @@ tap.skip('trips', async (t) => {
 		validate(t, r1[i], 'trip', `r1[${i}]`)
 	}
 
-	const r2 = await client.tripsByName('S1', {
+	const {trips: r2} = await client.tripsByName('S1', {
 		onlyCurrentlyRunning: false,
 	})
 	t.ok(Array.isArray(r2))
@@ -205,7 +206,7 @@ tap.skip('trips', async (t) => {
 		validate(t, r2[i], 'trip', `r2[${i}]`)
 	}
 
-	const r3 = await client.tripsByName('*', {
+	const {trips: r3} = await client.tripsByName('*', {
 		onlyCurrentlyRunning: false,
 	})
 	t.ok(Array.isArray(r3))

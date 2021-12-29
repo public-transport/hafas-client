@@ -5,7 +5,7 @@ const maxBy = require('lodash/maxBy')
 const last = require('lodash/last')
 
 const parseTrip = (ctx, t) => { // t = raw trip
-	const {profile, opt, res} = ctx
+	const {profile, opt} = ctx
 
 	// pretend the trip is a leg in a journey
 	const fakeLeg = {
@@ -41,11 +41,6 @@ const parseTrip = (ctx, t) => { // t = raw trip
 		const sDays = matchingSDays.length === 1 ? matchingSDays[0] : null
 		// todo [breaking]: rename to scheduledDates
 		trip.scheduledDays = profile.parseScheduledDays(ctx, sDays)
-	}
-
-	if (res.planrtTS) {
-		// todo [breaking]: remove here
-		trip.realtimeDataUpdatedAt = parseInt(res.planrtTS)
 	}
 
 	return trip
