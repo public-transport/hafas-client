@@ -88,8 +88,8 @@ const corona = {
 	edges: [{
 		icoCrd: {x: 14768356, y: 48156724, type: 'WGS84'},
 		icon: null,
-		fromLoc: null,
-		toLoc: null
+		fromLocation: null,
+		toLocation: null
 	}],
 	validFrom: '2020-05-15T00:00:00+02:00',
 	validUntil: '2020-06-30T23:59:00+02:00',
