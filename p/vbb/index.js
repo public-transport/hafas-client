@@ -107,8 +107,6 @@ const vbbProfile = {
 
 	formatStation,
 
-	departuresGetPasslist: false,
-	departuresStbFltrEquiv: false,
 	journeysWalkingSpeed: true,
 	refreshJourneyUseOutReconL: true,
 	trip: true,

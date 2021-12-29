@@ -56,8 +56,6 @@ const sncbProfile = {
 
 	parseLine: parseHook(parseLine, lineNameWithoutFahrtNr),
 
-	departuresGetPasslist: false,
-	departuresStbFltrEquiv: false,
 	trip: true,
 	refreshJourney: true,
 	radar: true,

@@ -10,9 +10,6 @@ const zvvProfile = {
 
 	products,
 
-	departuresGetPasslist: false,
-	departuresStbFltrEquiv: false,
-
 	trip: true,
 	radar: true,
 	refreshJourneyUseOutReconL: true,

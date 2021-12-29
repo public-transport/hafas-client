@@ -504,8 +504,6 @@ const dbProfile = {
 
 	formatStation,
 
-	departuresGetPasslist: false,
-	departuresStbFltrEquiv: false,
 	refreshJourneyUseOutReconL: true,
 	trip: true,
 	journeysFromTrip: true,

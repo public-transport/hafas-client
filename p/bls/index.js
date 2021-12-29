@@ -86,9 +86,6 @@ const blsProfile = {
 	radar: true,
 	refreshJourneyUseOutReconL: true,
 	reachableFrom: true,
-
-	departuresGetPasslist: false,
-	departuresStbFltrEquiv: false,
 }
 
 module.exports = blsProfile
