@@ -1,7 +1,6 @@
 'use strict'
 
 const parseLineName = require('vbb-parse-line')
-const parseTicket = require('vbb-parse-ticket')
 const {parseHook} = require('../../lib/profile-hooks')
 
 const parseAndAddLocationDHID = require('./parse-loc-dhid')
@@ -31,23 +30,29 @@ const parseLocation = ({parsed}, l) => {
 	return parsed
 }
 
+// todo: move this to parse/tickets.js?
 const parseJourneyWithTickets = ({parsed}, j) => {
 	if (
 		j.trfRes &&
-		Array.isArray(j.trfRes.fareSetL) &&
-		j.trfRes.fareSetL[0] &&
-		Array.isArray(j.trfRes.fareSetL[0].fareL)
+		Array.isArray(j.trfRes.fareSetL)
 	) {
-		parsed.tickets = []
-		const sets = j.trfRes.fareSetL[0].fareL
-		for (let s of sets) {
-			if (!Array.isArray(s.ticketL) || s.ticketL.length === 0) continue
-			for (let t of s.ticketL) {
-				const ticket = parseTicket(t)
-				ticket.name = s.name + ' – ' + ticket.name
-				parsed.tickets.push(ticket)
-			}
-		}
+		parsed.tickets = j.trfRes.fareSetL
+			.map((s) => {
+				if (!Array.isArray(s.fareL) || s.fareL.length === 0) return null
+				return {
+					name: s.name,
+					description: s.desc,
+					tickets: s.fareL.map((f) => ({
+						// todo: sometimes there's also t.ticketL
+						name: f.name,
+						price: f.price,
+					})),
+				}
+			})
+			.filter(set => !!set)
+
+		// todo: j.trfRes.totalPrice
+		// todo: j.trfRes.msgL
 	}
 
 	return parsed
