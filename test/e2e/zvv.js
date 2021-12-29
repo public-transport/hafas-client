@@ -79,13 +79,13 @@ tap.test('trip details', async (t) => {
 
 tap.test('departures at ETH/Universitätsspital', async (t) => { // todo
 	const polyterrasseETH = '8503500'
-	const departures = await client.departures(ethUniversitätsspital, {
+	const res = await client.departures(ethUniversitätsspital, {
 		duration: 5, when,
 	})
 
 	await testDepartures({
 		test: t,
-		departures,
+		res,
 		validate,
 		ids: [ethUniversitätsspital, polyterrasseETH],
 	})

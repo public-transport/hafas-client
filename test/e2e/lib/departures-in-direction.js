@@ -11,12 +11,13 @@ const testDeparturesInDirection = async (cfg) => {
 		validate
 	} = cfg
 
-	const deps = await fetchDepartures(id, {
+	const res = await fetchDepartures(id, {
 		direction: directionIds[0],
 		when
 	})
-	validate(t, deps, 'departures', 'departures')
-	t.ok(deps.length > 0, 'must be >0 departures')
+	const {departures: deps} = res
+
+	validate(t, res, 'departuresResponse', 'res')
 
 	for (let i = 0; i < deps.length; i++) {
 		const dep = deps[i]

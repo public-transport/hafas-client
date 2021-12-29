@@ -34,13 +34,13 @@ const bielefeldHbf = '8000036'
 const hagenVorhalle = '8000977'
 
 tap.test('departures at Hagen Bauhaus', async (t) => {
-	const departures = await client.departures(hagenBauhaus, {
+	const res = await client.departures(hagenBauhaus, {
 		duration: 120, when,
 	})
 
 	await testDepartures({
 		test: t,
-		departures,
+		res,
 		validate,
 		id: hagenBauhaus
 	})
@@ -48,11 +48,11 @@ tap.test('departures at Hagen Bauhaus', async (t) => {
 })
 
 tap.test('trip details', async (t) => {
-	const deps = await client.departures(hagenBauhaus, {
+	const res = await client.departures(hagenBauhaus, {
 		results: 1, duration: 120, when
 	})
 
-	const p = deps[0] || {}
+	const p = res.departures[0] || {}
 	t.ok(p.tripId, 'precondition failed')
 	t.ok(p.line.name, 'precondition failed')
 	const trip = await client.trip(p.tripId, p.line.name, {when})
@@ -62,7 +62,7 @@ tap.test('trip details', async (t) => {
 })
 
 tap.test('departures with station object', async (t) => {
-	const deps = await client.departures({
+	const res = await client.departures({
 		type: 'station',
 		id: hagenBauhaus,
 		name: 'Hagen(Westf) Bauhaus',
@@ -73,20 +73,20 @@ tap.test('departures with station object', async (t) => {
 		}
 	}, {when, duration: 120})
 
-	validate(t, deps, 'departures', 'departures')
+	validate(t, res, 'departuresResponse', 'res')
 	t.end()
 })
 
 // todo: departures at hagenBauhaus in direction of …
 
 tap.test('arrivals at Hagen Bauhaus', async (t) => {
-	const arrivals = await client.arrivals(hagenBauhaus, {
+	const res = await client.arrivals(hagenBauhaus, {
 		duration: 120, when
 	})
 
 	await testArrivals({
 		test: t,
-		arrivals,
+		res,
 		validate,
 		id: hagenBauhaus
 	})

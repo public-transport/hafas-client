@@ -66,13 +66,13 @@ tap.test('trip details', async (t) => {
 })
 
 tap.test('arrivals at Wiesbaden Hbf', async (t) => {
-	const arrivals = await client.arrivals(wiesbadenHbf, {
+	const res = await client.arrivals(wiesbadenHbf, {
 		duration: 10, when
 	})
 
 	await testArrivals({
 		test: t,
-		arrivals,
+		res,
 		validate,
 		id: wiesbadenHbf,
 	})
