@@ -26,6 +26,7 @@ const testDeparturesInDirection = require('./lib/departures-in-direction')
 const testArrivals = require('./lib/arrivals')
 const testJourneysWithDetour = require('./lib/journeys-with-detour')
 const testReachableFrom = require('./lib/reachable-from')
+const testRemarks = require('./lib/remarks')
 
 const T_MOCK = 1641897000 * 1000 // 2022-01-11T11:30:00+01
 const when = createWhen(bvgProfile.timezone, bvgProfile.locale, T_MOCK)
@@ -444,6 +445,16 @@ tap.test('reachableFrom', async (t) => {
 		when,
 		maxDuration: 15,
 		validate
+	})
+	t.end()
+})
+
+tap.test('remarks', async (t) => {
+	await testRemarks({
+		test: t,
+		fetchRemarks: client.remarks,
+		when,
+		validate,
 	})
 	t.end()
 })
