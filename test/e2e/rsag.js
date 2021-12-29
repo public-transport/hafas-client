@@ -81,13 +81,13 @@ tap.test('refreshJourney', async (t) => {
 })
 
 tap.test('arrivals at Platz der Jugend', async (t) => {
-	const arrivals = await client.arrivals(sternwarte, {
+	const res = await client.arrivals(sternwarte, {
 		duration: 30, when
 	})
 
 	await testArrivals({
 		test: t,
-		arrivals,
+		res,
 		validate,
 		ids: [
 			sternwarte,

@@ -23,11 +23,10 @@ const createWhen = (timezone, locale, tMock) => {
 	}).startOf('week').plus({weeks: 1, hours: 10}).toJSDate()
 }
 
-const assertValidWhen = (actual, expected, name) => {
+const assertValidWhen = (actual, expected, name, delta = day + 6 * hour) => {
 	const ts = +new Date(actual)
 	a.ok(!Number.isNaN(ts), name + ' is not parsable by Date')
 	// the timestamps might be from long-distance trains
-	const delta = day + 6 * hour
 	if (!isRoughlyEqual(delta, +expected, ts)) {
 		throw new AssertionError({
 			message: name + ' is out of range',

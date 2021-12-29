@@ -42,9 +42,16 @@ tap.test('withRetrying works', (t) => {
 	})
 	const client = createClient(profile, userAgent)
 
-	t.plan(1 + 4)
+	t.plan(2 + 4)
 	client.departures(spichernstr, {duration: 1})
-	.then(deps => t.same(deps, [], 'resolved with invalid value'))
+	.then((res) => {
+		const {
+			departures: deps,
+			realtimeDataUpdatedAt,
+		} = res
+		t.same(deps, [], 'resolved with invalid value')
+		t.equal(realtimeDataUpdatedAt, null, 'resolved with invalid value')
+	})
 	.catch(t.ifError)
 
 	setTimeout(() => t.equal(calls, 1), 50) // buffer

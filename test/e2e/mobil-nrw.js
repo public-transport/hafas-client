@@ -156,13 +156,13 @@ tap.test('departures at Soest', async (t) => {
 		'902737', // Bahnhof E, Soest
 	]
 
-	const departures = await client.departures(soest, {
+	const res = await client.departures(soest, {
 		duration: 10, when,
 	})
 
 	await testDepartures({
 		test: t,
-		departures,
+		res,
 		validate,
 		ids,
 	})
@@ -170,7 +170,7 @@ tap.test('departures at Soest', async (t) => {
 })
 
 tap.test('departures with station object', async (t) => {
-	const deps = await client.departures({
+	const res = await client.departures({
 		type: 'station',
 		id: soest,
 		name: 'Magdeburg Hbf',
@@ -181,7 +181,7 @@ tap.test('departures with station object', async (t) => {
 		}
 	}, {when})
 
-	validate(t, deps, 'departures', 'departures')
+	validate(t, res, 'departuresResponse', 'res')
 	t.end()
 })
 
@@ -193,13 +193,13 @@ tap.test('arrivals at Soest', async (t) => {
 		'902737', // Bahnhof E, Soest
 	]
 
-	const arrivals = await client.arrivals(soest, {
+	const res = await client.arrivals(soest, {
 		duration: 10, when,
 	})
 
 	await testArrivals({
 		test: t,
-		arrivals,
+		res,
 		validate,
 		ids,
 	})

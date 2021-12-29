@@ -171,13 +171,13 @@ tap.test('trip details', async (t) => {
 })
 
 tap.test('departures at Kassel Auestadion.', async (t) => {
-	const departures = await client.departures(auestadion, {
+	const res = await client.departures(auestadion, {
 		duration: 11, when,
 	})
 
 	await testDepartures({
 		test: t,
-		departures,
+		res,
 		validate,
 		id: auestadion
 	})
@@ -185,7 +185,7 @@ tap.test('departures at Kassel Auestadion.', async (t) => {
 })
 
 tap.test('departures with station object', async (t) => {
-	const deps = await client.departures({
+	const res = await client.departures({
 		type: 'station',
 		id: auestadion,
 		name: 'Kassel Auestadion',
@@ -196,7 +196,7 @@ tap.test('departures with station object', async (t) => {
 		}
 	}, {when})
 
-	validate(t, deps, 'departures', 'departures')
+	validate(t, res, 'departuresResponse', 'res')
 	t.end()
 })
 
@@ -214,13 +214,13 @@ tap.test('departures at Auestadion in direction of Friedrichsplatz', async (t) =
 })
 
 tap.test('arrivals at Kassel Weigelstr.', async (t) => {
-	const arrivals = await client.arrivals(weigelstr, {
+	const res = await client.arrivals(weigelstr, {
 		duration: 5, when
 	})
 
 	await testArrivals({
 		test: t,
-		arrivals,
+		res,
 		validate,
 		id: weigelstr,
 	})

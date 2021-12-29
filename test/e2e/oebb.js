@@ -251,13 +251,13 @@ tap.test('departures at Wien Leibenfrostgasse', async (t) => {
 		'904030' // stop "Wien Leibenfrostgasse (Ziegelofengasse)"
 	]
 
-	const deps = await client.departures(wienLeibenfrostgasse, {
+	const res = await client.departures(wienLeibenfrostgasse, {
 		duration: 15, when,
 	})
 
 	await testDepartures({
 		test: t,
-		departures: deps,
+		res,
 		validate,
 		ids,
 	})
@@ -265,7 +265,7 @@ tap.test('departures at Wien Leibenfrostgasse', async (t) => {
 })
 
 tap.test('departures with station object', async (t) => {
-	const deps = await client.departures({
+	const res = await client.departures({
 		type: 'station',
 		id: salzburgHbf,
 		name: 'Salzburg Hbf',
@@ -276,7 +276,7 @@ tap.test('departures with station object', async (t) => {
 		}
 	}, {when})
 
-	validate(t, deps, 'departures', 'departures')
+	validate(t, res, 'departuresResponse', 'res')
 	t.end()
 })
 

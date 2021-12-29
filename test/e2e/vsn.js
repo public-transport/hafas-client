@@ -101,13 +101,13 @@ tap.test('trip', async (t) => {
 })
 
 tap.test('departures at Kornmarkt.', async (t) => {
-	const departures = await client.departures(kornmarkt, {
+	const res = await client.departures(kornmarkt, {
 		duration: 20, when
 	})
 
 	await testDepartures({
 		test: t,
-		departures,
+		res,
 		validate,
 		id: kornmarkt
 	})
@@ -115,13 +115,13 @@ tap.test('departures at Kornmarkt.', async (t) => {
 })
 
 tap.test('arrivals at Kornmarkt.', async (t) => {
-	const arrivals = await client.arrivals(kornmarkt, {
+	const res = await client.arrivals(kornmarkt, {
 		duration: 20, when
 	})
 
 	await testArrivals({
 		test: t,
-		arrivals,
+		res,
 		validate,
 		id: kornmarkt
 	})
@@ -129,7 +129,7 @@ tap.test('arrivals at Kornmarkt.', async (t) => {
 })
 
 tap.test('departures with station object', async (t) => {
-	const deps = await client.departures({
+	const res = await client.departures({
 		type: 'station',
 		id: kornmarkt,
 		name: 'Kornmarkt',
@@ -140,7 +140,7 @@ tap.test('departures with station object', async (t) => {
 		}
 	}, {when})
 
-	validate(t, deps, 'departures', 'departures')
+	validate(t, res, 'departuresResponse', 'res')
 	t.end()
 })
 
