@@ -40,7 +40,7 @@ tap.test('parseCommon parses a DB Netz response properly', (t) => {
 			icoCrd: { x: 13469131, y: 52614672, type: 'WGS84' },
 			msgRefL: [ 3, 7, 17, 18, 20, 21 ],
 			icon: { type: 'HIM11216', title: null },
-			fromLoc: {
+			fromLocation: {
 				type: 'stop',
 				id: '8011046',
 				name: 'Berlin-Karow (BKAR)',
@@ -52,7 +52,7 @@ tap.test('parseCommon parses a DB Netz response properly', (t) => {
 				},
 				products: { a: true, b: false, c: true }
 			},
-			toLoc: {
+			toLocation: {
 				type: 'stop',
 				id: '8011046',
 				name: 'Berlin-Karow (BKAR)',
@@ -66,7 +66,7 @@ tap.test('parseCommon parses a DB Netz response properly', (t) => {
 			}
 		}],
 		events: [{
-			fromLoc: {
+			fromLocation: {
 				type: 'stop',
 				id: '8011046',
 				name: 'Berlin-Karow (BKAR)',
@@ -78,7 +78,7 @@ tap.test('parseCommon parses a DB Netz response properly', (t) => {
 				},
 				products: { a: true, b: false, c: true }
 			},
-			toLoc: {
+			toLocation: {
 				type: 'stop',
 				id: '8011046',
 				name: 'Berlin-Karow (BKAR)',
