@@ -79,9 +79,6 @@ const tpgProfile = {
 	radar: true,
 	refreshJourneyUseOutReconL: true,
 	reachableFrom: true,
-
-	departuresGetPasslist: false,
-	departuresStbFltrEquiv: false,
 }
 
 module.exports = tpgProfile

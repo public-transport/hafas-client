@@ -13,6 +13,8 @@ const hvvProfile = {
 
 	products,
 
+	departuresGetPasslist: true,
+	departuresStbFltrEquiv: true,
 	trip: true,
 	radar: true,
 	refreshJourney: true,

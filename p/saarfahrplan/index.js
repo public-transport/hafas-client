@@ -23,8 +23,6 @@ const saarfahrplanProfile = {
 
 	parseMovement: parseHook(_parseMovement, fixMovement),
 
-	departuresGetPasslist: false,
-	departuresStbFltrEquiv: false,
 	refreshJourneyUseOutReconL: true,
 	trip: true,
 	radar: true,

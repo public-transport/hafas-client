@@ -54,8 +54,6 @@ const oebbProfile = {
 	parseLocation: parseHook(_parseLocation, fixWeirdPOIs),
 	parseMovement: parseHook(_parseMovement, fixMovement),
 
-	departuresGetPasslist: false,
-	departuresStbFltrEquiv: false,
 	refreshJourneyUseOutReconL: true,
 	trip: true,
 	radar: true,

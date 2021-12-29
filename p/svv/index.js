@@ -13,8 +13,6 @@ const svvProfile = {
 	trip: true,
 	refreshJourney: true,
 	reachableFrom: true,
-	departuresGetPasslist: false,
-	departuresStbFltrEquiv: false,
 	refreshJourneyUseOutReconL: true,
 }
 

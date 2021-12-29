@@ -82,8 +82,6 @@ const dbBusradarNrwProfile = {
 
 	products: products,
 
-	departuresGetPasslist: false,
-	departuresStbFltrEquiv: false,
 	refreshJourneyUseOutReconL: true,
 	journeysOutFrwd: false,
 	trip: true,

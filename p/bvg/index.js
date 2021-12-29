@@ -200,8 +200,6 @@ const bvgProfile = {
 
 	formatStation,
 
-	departuresGetPasslist: false, // `departures()` method: support for `getPasslist` field?
-	departuresStbFltrEquiv: false, // `departures()` method: support for `stbFltrEquiv` field?
 	refreshJourneyUseOutReconL: true,
 	trip: true,
 	radar: true,
