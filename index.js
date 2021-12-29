@@ -2,7 +2,6 @@
 
 const isObj = require('lodash/isObject')
 const sortBy = require('lodash/sortBy')
-const pRetry = require('p-retry')
 const omit = require('lodash/omit')
 
 const defaultProfile = require('./lib/default-profile')
@@ -619,7 +618,7 @@ const createClient = (profile, userAgent, opt = {}) => {
 		})
 	}
 
-	const reachableFrom = (address, opt = {}) => {
+	const reachableFrom = async (address, opt = {}) => {
 		validateLocation(address, 'address')
 
 		opt = Object.assign({
@@ -635,41 +634,32 @@ const createClient = (profile, userAgent, opt = {}) => {
 
 		const req = profile.formatReachableFromReq({profile, opt}, address)
 
-		const refetch = () => {
-			return profile.request({profile, opt}, userAgent, req)
-			.then(({res, common}) => {
-				if (!Array.isArray(res.posL)) {
-					const err = new Error('invalid response')
-					err.shouldRetry = true
-					throw err
-				}
-
-				const byDuration = []
-				let i = 0, lastDuration = NaN
-				for (const pos of sortBy(res.posL, 'dur')) {
-					const loc = common.locations[pos.locX]
-					if (!loc) continue
-					if (pos.dur !== lastDuration) {
-						lastDuration = pos.dur
-						i = byDuration.length
-						byDuration.push({
-							duration: pos.dur,
-							stations: [loc]
-						})
-					} else {
-						byDuration[i].stations.push(loc)
-					}
-				}
-				// todo [breaking]: return object with realtimeDataUpdatedAt
-				return byDuration
-			})
+		const {res, common} = await profile.request({profile, opt}, userAgent, req)
+		if (!Array.isArray(res.posL)) {
+			const err = new Error('invalid response')
+			err.shouldRetry = true
+			throw err
 		}
 
-		return pRetry(refetch, {
-			retries: 3,
-			factor: 2,
-			minTimeout: 2 * 1000
-		})
+		const byDuration = []
+		let i = 0, lastDuration = NaN
+		for (const pos of sortBy(res.posL, 'dur')) {
+			const loc = common.locations[pos.locX]
+			if (!loc) continue
+			if (pos.dur !== lastDuration) {
+				lastDuration = pos.dur
+				i = byDuration.length
+				byDuration.push({
+					duration: pos.dur,
+					stations: [loc]
+				})
+			} else {
+				byDuration[i].stations.push(loc)
+			}
+		}
+
+		// todo [breaking]: return object with realtimeDataUpdatedAt
+		return byDuration
 	}
 
 	const remarks = async (opt = {}) => {
