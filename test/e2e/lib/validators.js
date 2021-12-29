@@ -13,6 +13,7 @@ const is = val => val !== null && val !== undefined
 
 const createValidateRealtimeDataUpdatedAt = (cfg) => {
 	const validateRealtimeDataUpdatedAt = (val, rtDataUpdatedAt, name = 'realtimeDataUpdatedAt') => {
+		a.ok(Number.isInteger(rtDataUpdatedAt), name + ' must be an integer')
 		assertValidWhen(rtDataUpdatedAt * 1000, cfg.when, name, 100 * DAY)
 	}
 	return validateRealtimeDataUpdatedAt
