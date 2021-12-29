@@ -1,19 +1,19 @@
 {
   "statusCode": 200,
   "headers": {
-    "date": "Tue, 26 Oct 2021 12:48:53 GMT",
+    "date": "Wed, 29 Dec 2021 14:25:22 GMT",
     "content-type": "application/json; charset=utf-8",
-    "content-length": "2617",
-    "connection": "close",
+    "content-length": "2380",
+    "connection": "keep-alive",
     "set-cookie": [
-      "AWSALB=ENWPsE86Dm8cpWJTqpXqMMkoXfd7yXs9vtrQ3nAG+xMcBGagxnL9Vfot0keBFFIgCpQVn3+kxXVnozCjLJASUJI4FpDcupwsndFuBwqSsxlQJkkZmQiVirGA6VlV; Expires=Tue, 02 Nov 2021 12:48:53 GMT; Path=/",
-      "AWSALBCORS=ENWPsE86Dm8cpWJTqpXqMMkoXfd7yXs9vtrQ3nAG+xMcBGagxnL9Vfot0keBFFIgCpQVn3+kxXVnozCjLJASUJI4FpDcupwsndFuBwqSsxlQJkkZmQiVirGA6VlV; Expires=Tue, 02 Nov 2021 12:48:53 GMT; Path=/; SameSite=None; Secure",
-      "TS014cfc63=0121ca1b953d8a4f13a8cdce529ecb5c606ec847ce79103c5af94c4f5181e5f554b254ac01046b1c17334af84fb5b405221ecb401af5b2e75756c9a571e291f1d4468c189b90c8482d0b6809dd2fcd536fa67c50f3; Path=/; Secure; HTTPOnly"
+      "AWSALB=PKVwunq4HDF6qqE+j34uzR6sm1+uK9gQNpKKnb42bqF939NZFjKKqePfHzUdxszg/2U48vbVAMRXUSAPEflLqDUWj7sPw0c69yMxNnd88IPnmLXv3D/tMoLEzOPm; Expires=Wed, 05 Jan 2022 14:25:21 GMT; Path=/",
+      "AWSALBCORS=PKVwunq4HDF6qqE+j34uzR6sm1+uK9gQNpKKnb42bqF939NZFjKKqePfHzUdxszg/2U48vbVAMRXUSAPEflLqDUWj7sPw0c69yMxNnd88IPnmLXv3D/tMoLEzOPm; Expires=Wed, 05 Jan 2022 14:25:21 GMT; Path=/; SameSite=None; Secure",
+      "TS014cfc63=0121ca1b95eaf112d5df86fa0e9c017b2bbb72e895fb5068f8a10e36568fed3d1cf44b32188450b75e3b4cb04b998948e974d66ac7fff92f9b7c06e6404aaa0a4290f24d2ca7983cf6b1c19333d243f46a62668b45; Path=/; Secure; HTTPOnly"
     ],
     "strict-transport-security": "max-age=16070400; includeSubDomains"
   },
   "url": "https://reiseauskunft.bahn.de/bin/mgate.exe?checksum=5846f14ad00cb2f6143b1f38da365c34",
-  "time": 273,
+  "time": 538,
   "request": {
     "method": "POST",
     "headers": {
@@ -27,13 +27,13 @@
         "application/json"
       ],
       "user-agent": [
-        "public0610b170f1da-transport/hafas-client:test"
+        "public-transport/ha2f33a942bd79fas-client:test"
+      ],
+      "connection": [
+        "keep-alive"
       ],
       "Content-Length": [
         "275"
-      ],
-      "Connection": [
-        "close"
       ]
     }
   }

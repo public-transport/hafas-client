@@ -1,14 +1,15 @@
 {
   "statusCode": 200,
   "headers": {
-    "date": "Tue, 26 Oct 2021 12:49:00 GMT",
+    "date": "Wed, 29 Dec 2021 14:25:20 GMT",
     "server": "Apache",
-    "content-length": "1078",
-    "content-type": "application/json; charset=utf-8",
-    "connection": "close"
+    "content-length": "1088",
+    "keep-alive": "timeout=5, max=94",
+    "connection": "Keep-Alive",
+    "content-type": "application/json; charset=utf-8"
   },
   "url": "https://fahrplan.vmobil.at/bin/mgate.exe?mic=b612903e01707306710b6fbabc65bcee&mac=2287c0d8d5f08f184f1e71f246aee38c",
-  "time": 633,
+  "time": 536,
   "request": {
     "method": "POST",
     "headers": {
@@ -22,13 +23,13 @@
         "application/json"
       ],
       "user-agent": [
-        "public-trab9b09fd5a300nsport/hafas-client:test"
+        "public-0b500d2d4f7ftransport/hafas-client:test"
+      ],
+      "connection": [
+        "keep-alive"
       ],
       "Content-Length": [
         "296"
-      ],
-      "Connection": [
-        "close"
       ]
     }
   }

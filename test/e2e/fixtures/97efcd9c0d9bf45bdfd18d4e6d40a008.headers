@@ -1,14 +1,13 @@
 {
   "statusCode": 200,
   "headers": {
-    "date": "Tue, 26 Oct 2021 12:48:45 GMT",
+    "date": "Wed, 29 Dec 2021 14:25:11 GMT",
     "server": "Apache",
-    "content-length": "1220",
-    "connection": "close",
+    "content-length": "983",
     "content-type": "application/json; charset=utf-8"
   },
   "url": "https://horaires.cfl.lu/bin/mgate.exe",
-  "time": 278,
+  "time": 130,
   "request": {
     "method": "POST",
     "headers": {
@@ -22,13 +21,13 @@
         "application/json"
       ],
       "user-agent": [
-        "publied7e55a573dbc-transport/hafas-client:test"
+        "public-transport/hafas-cla35eebf6816dient:test"
+      ],
+      "connection": [
+        "keep-alive"
       ],
       "Content-Length": [
         "234"
-      ],
-      "Connection": [
-        "close"
       ]
     }
   }

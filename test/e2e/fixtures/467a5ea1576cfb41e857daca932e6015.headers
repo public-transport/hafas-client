@@ -1,14 +1,15 @@
 {
   "statusCode": 200,
   "headers": {
-    "date": "Tue, 26 Oct 2021 12:48:51 GMT",
+    "date": "Wed, 29 Dec 2021 14:25:15 GMT",
     "server": "Apache",
     "content-length": "843",
-    "content-type": "application/json; charset=utf-8",
-    "connection": "close"
+    "keep-alive": "timeout=5, max=36",
+    "connection": "Keep-Alive",
+    "content-type": "application/json; charset=utf-8"
   },
   "url": "https://verkehrsauskunft.salzburg.gv.at/bin/mgate.exe",
-  "time": 607,
+  "time": 597,
   "request": {
     "method": "POST",
     "headers": {
@@ -22,13 +23,13 @@
         "application/json"
       ],
       "user-agent": [
-        "public-1e02f25e3caatransport/hafas-client:test"
+        "public-transport/hafas93846741100f-client:test"
+      ],
+      "connection": [
+        "keep-alive"
       ],
       "Content-Length": [
         "265"
-      ],
-      "Connection": [
-        "close"
       ]
     }
   }

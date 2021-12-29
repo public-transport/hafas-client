@@ -1,14 +1,16 @@
 {
   "statusCode": 200,
   "headers": {
-    "date": "Tue, 26 Oct 2021 12:49:00 GMT",
+    "date": "Wed, 29 Dec 2021 14:25:20 GMT",
     "server": "Apache",
-    "content-length": "2117",
-    "connection": "close",
+    "vary": "User-Agent",
+    "content-length": "1744",
+    "keep-alive": "timeout=5, max=84",
+    "connection": "Keep-Alive",
     "content-type": "application/json; charset=utf-8"
   },
   "url": "https://nah.sh.hafas.de/bin/mgate.exe",
-  "time": 293,
+  "time": 140,
   "request": {
     "method": "POST",
     "headers": {
@@ -22,13 +24,13 @@
         "application/json"
       ],
       "user-agent": [
-        "public-transport/hafb2143b951368as-client:test"
+        "public-transport/ha3b5a299cfa4ffas-client:test"
+      ],
+      "connection": [
+        "keep-alive"
       ],
       "Content-Length": [
         "378"
-      ],
-      "Connection": [
-        "close"
       ]
     }
   }
