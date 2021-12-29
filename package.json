@@ -41,7 +41,7 @@
 		"http"
 	],
 	"engines": {
-		"node": ">=10"
+		"node": ">=16"
 	},
 	"dependencies": {
 		"@derhuerst/br2nl": "^1.0.0",
