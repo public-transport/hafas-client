@@ -669,8 +669,12 @@ const createClient = (profile, userAgent, opt = {}) => {
 			}
 		}
 
-		// todo [breaking]: return object with realtimeDataUpdatedAt
-		return byDuration
+		return {
+			reachable: byDuration,
+			realtimeDataUpdatedAt: res.planrtTS && res.planrtTS !== '0'
+				? parseInt(res.planrtTS)
+				: null,
+		}
 	}
 
 	const remarks = async (opt = {}) => {

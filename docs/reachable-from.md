@@ -36,17 +36,22 @@ const vbbProfile = require('hafas-client/p/vbb')
 
 const client = createClient(vbbProfile, 'my-awesome-program')
 
-console.log(await client.reachableFrom({
+const {
+	reachable,
+	realtimeDataUpdatedAt,
+} = await client.reachableFrom({
 	type: 'location',
 	address: '13353 Berlin-Wedding, Torfstr. 17',
 	latitude: 52.541797,
 	longitude: 13.350042
 }, {
 	maxDuration: 10 // minutes
-}))
+})
 ```
 
-The result may look like this:
+`realtimeDataUpdatedAt` is a UNIX timestamp reflecting the latest moment when (at least some of) the response's realtime data have been updated.
+
+`reachable` may look like this:
 
 ```js
 [
