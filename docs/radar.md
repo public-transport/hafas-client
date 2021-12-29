@@ -30,17 +30,15 @@ const vbbProfile = require('hafas-client/p/vbb')
 
 const client = createClient(vbbProfile, 'my-awesome-program')
 
-client.radar({
+await client.radar({
 	north: 52.52411,
 	west: 13.41002,
 	south: 52.51942,
 	east: 13.41709
 }, {results: 5})
-.then(console.log)
-.catch(console.error)
 ```
 
-The response may look like this:
+The result may look like this:
 
 ```js
 [ {

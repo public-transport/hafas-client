@@ -28,12 +28,10 @@ const vbbProfile = require('hafas-client/p/vbb')
 
 const client = createClient(vbbProfile, 'my-awesome-program')
 
-client.locations('Alexanderplatz', {results: 3})
-.then(console.log)
-.catch(console.error)
+await client.locations('Alexanderplatz', {results: 3})
 ```
 
-The response may look like this:
+The result may look like this:
 
 ```js
 [ {

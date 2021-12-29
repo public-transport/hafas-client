@@ -91,15 +91,13 @@ const vbbProfile = require('hafas-client/p/vbb')
 const client = createClient(vbbProfile, 'my-awesome-program')
 
 // Hauptbahnhof to Heinrich-Heine-Str.
-client.journeys('900000003201', '900000100008', {
+await client.journeys('900000003201', '900000100008', {
 	results: 1,
 	stopovers: true
 })
-.then(console.log)
-.catch(console.error)
 ```
 
-The `Promise` returned by `journeys()` will resolve with an object with the `journeys` & `earlierRef`/`laterRef` fields. It might look like this:
+`journeys()` will resolve with an object with the `journeys` & `earlierRef`/`laterRef` fields. It might look like this:
 
 ```js
 {
@@ -317,21 +315,16 @@ To get more journeys earlier/later than the current set of results, pass `earlie
 const hbf = '900000003201'
 const heinrichHeineStr = '900000100008'
 
-client.journeys(hbf, heinrichHeineStr)
-.then((res) => {
-	const lastJourney = res.journeys[res.journeys.length - 1]
-	console.log('departure of last journey', lastJourney.legs[0].departure)
+const res1 = await client.journeys(hbf, heinrichHeineStr)
+const lastJourney = res1.journeys[res1.journeys.length - 1]
+console.log('departure of last journey', lastJourney.legs[0].departure)
 
-	// get later journeys
-	return client.journeys(hbf, heinrichHeineStr, {
-		laterThan: res.laterRef
-	})
+// get later journeys
+const res2 = await client.journeys(hbf, heinrichHeineStr, {
+	laterThan: res1.laterRef
 })
-.then((laterRes) => {
-	const firstLaterJourney = laterRes.journeys[laterRes.journeys.length - 1]
-	console.log('departure of first (later) journey', firstLaterJourney.legs[0].departure)
-})
-.catch(console.error)
+const firstLaterJourney = res2.journeys[res2.journeys.length - 1]
+console.log('departure of first (later) journey', firstLaterJourney.legs[0].departure)
 ```
 
 ```

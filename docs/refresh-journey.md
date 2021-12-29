@@ -27,14 +27,10 @@ const vbbProfile = require('hafas-client/p/vbb')
 const client = createClient(vbbProfile)
 
 // Hauptbahnhof to Heinrich-Heine-Str.
-client.journeys('900000003201', '900000100008', {results: 1})
-.then(([journey]) => {
-	// later, fetch up-to-date info on the journey
-	client.refreshJourney(journey.refreshToken, {stopovers: true, remarks: true})
-	.then(console.log)
-	.catch(console.error)
-})
-.catch(console.error)
+const {journeys} = await client.journeys('900000003201', '900000100008', {results: 1})
+
+// later, fetch up-to-date info on the journey
+await client.refreshJourney(journeys[0].refreshToken, {stopovers: true, remarks: true})
 ```
 
 `refreshJourney()` will return a *single* [*Friendly Public Transport Format* v2 draft](https://github.com/public-transport/friendly-public-transport-format/blob/3bd36faa721e85d9f5ca58fb0f38cdbedb87bbca/spec/readme.md) `journey`, in the same format as with `journeys()`.

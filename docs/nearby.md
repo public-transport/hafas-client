@@ -29,16 +29,14 @@ const vbbProfile = require('hafas-client/p/vbb')
 
 const client = createClient(vbbProfile, 'my-awesome-program')
 
-client.nearby({
+await client.nearby({
 	type: 'location',
 	latitude: 52.5137344,
 	longitude: 13.4744798
 }, {distance: 400})
-.then(console.log)
-.catch(console.error)
 ```
 
-The response may look like this:
+The result may look like this:
 
 ```js
 [ {
