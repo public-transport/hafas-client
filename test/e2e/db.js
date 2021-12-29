@@ -445,7 +445,7 @@ tap.test('line with additionalName', async (t) => {
 })
 
 tap.test('radar', async (t) => {
-	const vehicles = await client.radar({
+	const res = await client.radar({
 		north: 52.52411,
 		west: 13.41002,
 		south: 52.51942,
@@ -454,7 +454,7 @@ tap.test('radar', async (t) => {
 		duration: 5 * 60, when
 	})
 
-	validate(t, vehicles, 'movements', 'vehicles')
+	validate(t, res, 'radarResult', 'res')
 	t.end()
 })
 

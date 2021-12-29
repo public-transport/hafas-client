@@ -123,7 +123,7 @@ tap.test('station Hagen-Vorhalle', async (t) => {
 })
 
 tap.test('radar', async (t) => {
-	const vehicles = await client.radar({
+	const res = await client.radar({
 		north: 51.5,
 		west: 7.2,
 		south: 51.2,
@@ -136,6 +136,6 @@ tap.test('radar', async (t) => {
 		...cfg,
 		stationCoordsOptional: true,
 	}, {})
-	validate(t, vehicles, 'movements', 'vehicles')
+	validate(t, res, 'radarResult', 'res')
 	t.end()
 })

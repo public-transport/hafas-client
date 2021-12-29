@@ -114,7 +114,7 @@ tap.test('locations named Rennweg', async (t) => {
 })
 
 tap.test('radar', async (t) => {
-	const vehicles = await client.radar({
+	const res = await client.radar({
 		north: 47.387,
 		west: 8.514,
 		south: 47.356,
@@ -123,6 +123,6 @@ tap.test('radar', async (t) => {
 		duration: 5 * 60, when, results: 10,
 	})
 
-	validate(t, vehicles, 'movements', 'vehicles')
+	validate(t, res, 'radarResult', 'res')
 	t.end()
 })
