@@ -36,19 +36,17 @@ const vbbProfile = require('hafas-client/p/vbb')
 
 const client = createClient(vbbProfile, 'my-awesome-program')
 
-client.reachableFrom({
+console.log(await client.reachableFrom({
 	type: 'location',
 	address: '13353 Berlin-Wedding, Torfstr. 17',
 	latitude: 52.541797,
 	longitude: 13.350042
 }, {
 	maxDuration: 10 // minutes
-})
-.then(console.log)
-.catch(console.error)
+}))
 ```
 
-The response may look like this:
+The result may look like this:
 
 ```js
 [

@@ -12,7 +12,7 @@ const vbbProfile = require('hafas-client/p/vbb')
 
 const client = createClient(vbbProfile, 'my-awesome-program')
 
-console.log(await client.tripsByName('S1'))
+await client.tripsByName('S1')
 ```
 
 With `opt`, you can override the default options, which look like this:
@@ -42,7 +42,7 @@ With `opt`, you can override the default options, which look like this:
 }
 ```
 
-The response may look like this:
+The result may look like this:
 
 ```js
 [

@@ -40,12 +40,10 @@ const vbbProfile = require('hafas-client/p/vbb')
 
 const client = createClient(vbbProfile, 'my-awesome-program')
 
-client.stop('900000042101') // U Spichernstr.
-.then(console.log)
-.catch(console.error)
+await client.stop('900000042101') // U Spichernstr.
 ```
 
-The response may look like this:
+The result may look like this:
 
 ```js
 {
