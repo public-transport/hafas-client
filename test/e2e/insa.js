@@ -54,7 +54,7 @@ const client = createClient(insaProfile, 'public-transport/hafas-client:test')
 const magdeburgHbf = '8010224'
 const magdeburgBuckau = '8013456'
 const leiterstr = '7464'
-const hasselbachplatzSternstrasse = '6545'
+const hasselbachplatz = '90443'
 const stendal = '8010334'
 const dessau = '8010077'
 const universitaet = '19686'
@@ -141,7 +141,7 @@ tap.test('journeys: via works – with detour', async (t) => {
 	// Going from Magdeburg, Hasselbachplatz (Sternstr.) (Tram/Bus) to Stendal
 	// via Dessau without detour is currently impossible. We check if the routing
 	// engine computes a detour.
-	const res = await client.journeys(hasselbachplatzSternstrasse, stendal, {
+	const res = await client.journeys(hasselbachplatz, stendal, {
 		via: dessau,
 		results: 1,
 		departure: when,

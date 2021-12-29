@@ -123,7 +123,7 @@ tap.test('journeys – fails with no product', (t) => {
 })
 
 // BerlKönig for public use is suspended during COVID-19.
-tap.skip('journeys – BerlKönig', async (t) => {
+tap.test('journeys – BerlKönig', async (t) => {
 	const when = DateTime.fromMillis(Date.now(), {
 		zone: 'Europe/Berlin',
 		locale: 'de-De',
@@ -191,7 +191,7 @@ tap.test('earlier/later journeys', async (t) => {
 	t.end()
 })
 
-tap.test('journeys – leg cycle & alternatives', async (t) => {
+tap.skip('journeys – leg cycle & alternatives', async (t) => {
 	await testLegCycleAlternatives({
 		test: t,
 		fetchJourneys: client.journeys,

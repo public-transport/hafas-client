@@ -200,7 +200,8 @@ tap.skip('journeys – leg cycle & alternatives', async (t) => {
 		test: t,
 		fetchJourneys: client.journeys,
 		fromId: blnTiergarten,
-		toId: blnJannowitzbrücke
+		toId: blnJannowitzbrücke,
+		when,
 	})
 	t.end()
 })
@@ -452,7 +453,7 @@ tap.test('radar', async (t) => {
 	t.end()
 })
 
-tap.test('reachableFrom', async (t) => {
+tap.test('reachableFrom', {timeout: 20 * 1000}, async (t) => {
 	const torfstr17 = {
 		type: 'location',
 		address: 'Torfstraße 17',

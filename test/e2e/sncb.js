@@ -33,7 +33,7 @@ const bruxellesMidi = '8814001'
 const gentPaddenhoek = {
 	type: 'location',
 	address: 'Gent, Paddenhoek',
-	latitude: 51.0517, longitude: 3.724878,
+	latitude: 51.051691, longitude: 3.724914,
 }
 
 tap.test('journeys – Gent Sant Pieters to Bruxelles Midi', async (t) => {

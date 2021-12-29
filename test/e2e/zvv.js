@@ -77,7 +77,8 @@ tap.test('trip details', async (t) => {
 	t.end()
 })
 
-tap.skip('departures at ETH/Universitätsspital', async (t) => { // todo
+tap.test('departures at ETH/Universitätsspital', async (t) => { // todo
+	const polyterrasseETH = '8503500'
 	const departures = await client.departures(ethUniversitätsspital, {
 		duration: 5, when,
 	})
@@ -86,7 +87,7 @@ tap.skip('departures at ETH/Universitätsspital', async (t) => { // todo
 		test: t,
 		departures,
 		validate,
-		id: ethUniversitätsspital
+		ids: [ethUniversitätsspital, polyterrasseETH],
 	})
 	t.end()
 })
