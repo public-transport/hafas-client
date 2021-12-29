@@ -59,9 +59,10 @@ tap.test('trip details', async (t) => {
 	const p = res.journeys[0].legs.find(l => !l.walking)
 	t.ok(p.tripId, 'precondition failed')
 	t.ok(p.line.name, 'precondition failed')
-	const trip = await client.trip(p.tripId, p.line.name, {when})
 
-	validate(t, trip, 'trip', 'trip')
+	const tripRes = await client.trip(p.tripId, p.line.name, {when})
+
+	validate(t, tripRes, 'tripResult', 'res')
 	t.end()
 })
 

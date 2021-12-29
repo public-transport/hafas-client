@@ -21,7 +21,6 @@ module.exports = {
 		product: 'national-train',
 		operator: { type: 'operator', id: 'dsb', name: 'DSB' },
 	},
-	realtimeDataUpdatedAt: 1634050700,
 
 	origin: {
 		type: 'stop',
