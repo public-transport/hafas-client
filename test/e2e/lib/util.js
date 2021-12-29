@@ -43,6 +43,7 @@ if (process.env.VCR_MODE && !process.env.VCR_OFF) {
 	const replayer = require('replayer')
 	replayer.configure({
 		headerWhitelist: [
+			// excludes User-Agent & Connection
 			'Content-Type', 'Accept-Encoding', 'Accept',
 		],
 		includeHeaderValues: true,
