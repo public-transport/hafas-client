@@ -154,6 +154,7 @@ const formatStation = (id) => {
 }
 
 // use the Berlkönig ride sharing service?
+// todo: https://github.com/alexander-albers/tripkit/issues/26#issuecomment-825437320
 const requestJourneysWithBerlkoenig = ({opt}, query) => {
 	if (('numF' in query) && opt.berlkoenig) {
 		// todo: check if this is still true

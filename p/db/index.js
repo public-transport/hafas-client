@@ -157,6 +157,7 @@ const transformJourneysQuery = ({opt}, query) => {
 
 	query.trfReq = {
 		jnyCl: opt.firstClass === true ? 1 : 2,
+		// todo [breaking]: support multiple travelers
 		tvlrProf: [{
 			type: 'E',
 			redtnCard: opt.loyaltyCard

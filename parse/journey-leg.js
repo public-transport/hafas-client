@@ -109,6 +109,7 @@ const parseJourneyLeg = (ctx, pt, date) => { // pt = raw leg
 		res.tripId = pt.jny.jid
 		res.line = pt.jny.line || null
 		// todo [breaking]: don't call parseStationName() here, add parseDirection() hook
+		// todo: support pt.jny.dirL[]
 		res.direction = pt.jny.dirTxt && profile.parseStationName(ctx, pt.jny.dirTxt) || null
 
 		if (pt.jny.pos) {
