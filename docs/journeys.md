@@ -97,7 +97,12 @@ await client.journeys('900000003201', '900000100008', {
 })
 ```
 
-`journeys()` will resolve with an object with the `journeys` & `earlierRef`/`laterRef` fields. It might look like this:
+`journeys()` will resolve with an object with the following fields:
+- `journeys`
+- `earlierRef`/`laterRef` – pass them as `opt.earlierThan`/`opt.laterThan` into another `journeys()` call to retrieve the next "page" of journeys
+- `realtimeDataUpdatedAt` – a UNIX timestamp reflecting the latest moment when (at least some of) the response's realtime data have been updated
+
+This object might look like this:
 
 ```js
 {
@@ -267,6 +272,7 @@ await client.journeys('900000003201', '900000100008', {
 	} ],
 	earlierRef: '…', // use with the `earlierThan` option
 	laterRef: '…' // use with the `laterThan` option
+	realtimeDataUpdatedAt: 1531259400, // 2018-07-10T23:50:00+02
 }
 ```
 
