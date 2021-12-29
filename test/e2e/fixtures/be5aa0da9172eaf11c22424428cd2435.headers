@@ -1,15 +1,15 @@
 {
   "statusCode": 200,
   "headers": {
-    "date": "Tue, 03 May 2022 14:57:52 GMT",
+    "date": "Tue, 03 May 2022 15:28:51 GMT",
     "server": "Apache/2.4.18 (Ubuntu)",
-    "content-length": "1057",
-    "keep-alive": "timeout=5, max=90",
+    "content-length": "1059",
+    "keep-alive": "timeout=5, max=98",
     "connection": "Keep-Alive",
     "content-type": "application/json; charset=utf-8"
   },
   "url": "https://saarfahrplan.de/bin/mgate.exe?mic=9bc01518a43d2cf30e7ae4ff1ed4f102&mac=a93002aecc5d165caea500ae3a640b3e",
-  "time": 121,
+  "time": 138,
   "request": {
     "method": "POST",
     "headers": {
@@ -23,7 +23,7 @@
         "application/json"
       ],
       "user-agent": [
-        "public-trc723e6ansporc723e6t/hafac723e6s-clientc723e6:test"
+        "public41c2f9-transpor41c2f9t/hafas-41c2f9clien41c2f9t:test"
       ],
       "connection": [
         "keep-alive"

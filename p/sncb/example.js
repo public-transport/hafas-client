@@ -16,7 +16,7 @@ const gentPaddenhoek = {
 client.journeys(gentStPieters, bruxellesMidi, {stopovers: true, remarks: true})
 // .then(({journeys}) => {
 // 	const leg = journeys[0].legs[0]
-// 	return client.trip(leg.tripId, leg.line.name, {polyline: true})
+// 	return client.trip(leg.tripId, {polyline: true})
 // })
 // .then(({journeys}) => {
 // 	return client.refreshJourney(journeys[0].refreshToken, {remarks: true})

@@ -9,7 +9,7 @@ const client = createClient(dbProfile, 'hafas-client-example')
 client.journeys('8011167', '8000261', {results: 1, tickets: true})
 // .then(({journeys}) => {
 // 	const leg = journeys[0].legs[0]
-// 	return client.trip(leg.tripId, leg.line.name, {polyline: true})
+// 	return client.trip(leg.tripId, {polyline: true})
 // })
 // .then(({journeys}) => {
 // 	const [journey] = journeys

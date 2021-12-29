@@ -56,7 +56,7 @@ tap.test('trip details', async (t) => {
 	t.ok(p.tripId, 'precondition failed')
 	t.ok(p.line.name, 'precondition failed')
 
-	const tripRes = await client.trip(p.tripId, p.line.name, {when})
+	const tripRes = await client.trip(p.tripId, {when})
 
 	validate(t, tripRes, 'tripResult', 'res')
 	t.end()

@@ -1,0 +1,34 @@
+{
+  "statusCode": 200,
+  "headers": {
+    "date": "Tue, 03 May 2022 15:24:35 GMT",
+    "server": "Apache",
+    "content-length": "2129",
+    "content-type": "application/json; charset=utf-8"
+  },
+  "url": "https://cdt.hafas.de/bin/mgate.exe",
+  "time": 156,
+  "request": {
+    "method": "POST",
+    "headers": {
+      "Content-Type": [
+        "application/json"
+      ],
+      "Accept-Encoding": [
+        "gzip, br, deflate"
+      ],
+      "Accept": [
+        "application/json"
+      ],
+      "user-agent": [
+        "public-tr853138ansport/853138hafas-c853138lient:t853138est"
+      ],
+      "connection": [
+        "keep-alive"
+      ],
+      "Content-Length": [
+        "244"
+      ]
+    }
+  }
+}

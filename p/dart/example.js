@@ -18,7 +18,7 @@ const se5thStEHackleyAveDsm2294 = '100004972'
 // .then(({journeys}) => {
 // 	const [journey] = journeys
 // 	const leg = journey.legs.find(l => !!l.line)
-// 	return client.trip(leg.tripId, leg.line.name, {polyline: true})
+// 	return client.trip(leg.tripId, {polyline: true})
 // })
 
 // client.departures(mlkJrPkwyAdamsAveDsm2055, {duration: 10})

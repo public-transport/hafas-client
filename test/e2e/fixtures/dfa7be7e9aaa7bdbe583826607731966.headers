@@ -1,13 +1,13 @@
 {
   "statusCode": 200,
   "headers": {
-    "date": "Tue, 03 May 2022 15:19:53 GMT",
-    "content-length": "3968",
+    "date": "Tue, 03 May 2022 15:25:53 GMT",
+    "content-length": "3972",
     "content-type": "application/json; charset=utf-8",
     "strict-transport-security": "max-age=63072000; includeSubDomains"
   },
   "url": "https://www.rmv.de/auskunft/bin/jp/mgate.exe",
-  "time": 1061,
+  "time": 4659,
   "request": {
     "method": "POST",
     "headers": {
@@ -21,7 +21,7 @@
         "application/json"
       ],
       "user-agent": [
-        "public-tr9fba52ansport9fba52/hafas-cl9fba52ient:tes9fba52t"
+        "public-c43c93transpc43c93ort/hafac43c93s-clic43c93ent:tc43c93est"
       ],
       "connection": [
         "keep-alive"
