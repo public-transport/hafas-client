@@ -723,10 +723,9 @@ const createClient = (profile, userAgent, opt = {}) => {
 			res, common,
 		} = await profile.request({profile, opt}, userAgent, req)
 
-		// todo [breaking]: return object with realtimeDataUpdatedAt
 		if (!Array.isArray(res.lineL)) return []
 		const ctx = {profile, opt, common, res}
-		return res.lineL.map(l => {
+		const lines = res.lineL.map(l => {
 			const parseDirRef = i => (res.common.dirL[i] || {}).txt || null
 			return {
 				...omit(l.line, ['id', 'fahrtNr']),
@@ -740,6 +739,13 @@ const createClient = (profile, userAgent, opt = {}) => {
 					: null,
 			}
 		})
+
+		return {
+			lines,
+			realtimeDataUpdatedAt: res.planrtTS && res.planrtTS !== '0'
+				? parseInt(res.planrtTS)
+				: null,
+		}
 	}
 
 	const serverInfo = async (opt = {}) => {

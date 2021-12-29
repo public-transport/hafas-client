@@ -12,8 +12,15 @@ const svvProfile = require('hafas-client/p/svv')
 
 const client = createClient(svvProfile, 'my-awesome-program')
 
-await client.lines('S1')
+const {
+	lines,
+	realtimeDataUpdatedAt,
+} = await client.lines('S1')
 ```
+
+`realtimeDataUpdatedAt` is a UNIX timestamp reflecting the latest moment when (at least some of) the response's realtime data have been updated.
+
+`lines` may look like this:
 
 ```js
 [
