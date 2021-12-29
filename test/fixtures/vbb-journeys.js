@@ -6,7 +6,7 @@ module.exports = [{
 		origin: {
 			type: 'stop',
 			id: '900042101',
-			name: 'U Spichernstr.',
+			name: 'U Spichernstr. (Berlin)',
 			location: {
 				type: 'location',
 				id: '900042101',
@@ -26,7 +26,7 @@ module.exports = [{
 		destination: {
 			type: 'stop',
 			id: '900001201',
-			name: 'S+U Westhafen',
+			name: 'S+U Westhafen (Berlin)',
 			location: {
 				type: 'location',
 				id: '900001201',
@@ -74,7 +74,7 @@ module.exports = [{
 			express: false,
 			night: false,
 		},
-		direction: 'U Osloer Str.',
+		direction: 'U Osloer Str. (Berlin)',
 		arrivalPlatform: null,
 		plannedArrivalPlatform: null,
 		departurePlatform: null,
@@ -84,7 +84,7 @@ module.exports = [{
 		origin: {
 			type: 'stop',
 			id: '900001201',
-			name: 'S+U Westhafen',
+			name: 'S+U Westhafen (Berlin)',
 			location: {
 				type: 'location',
 				id: '900001201',
@@ -104,7 +104,7 @@ module.exports = [{
 		destination: {
 			type: 'stop',
 			id: '900007102',
-			name: 'S+U Gesundbrunnen',
+			name: 'S+U Gesundbrunnen Bhf (Berlin)',
 			location: {
 				type: 'location',
 				id: '900007102',
@@ -162,7 +162,7 @@ module.exports = [{
 		origin: {
 			type: 'stop',
 			id: '900007102',
-			name: 'S+U Gesundbrunnen',
+			name: 'S+U Gesundbrunnen Bhf (Berlin)',
 			location: {
 				type: 'location',
 				id: '900007102',
@@ -182,7 +182,7 @@ module.exports = [{
 		destination: {
 			type: 'stop',
 			id: '900350127',
-			name: 'Eberswalde, Hbf',
+			name: 'Eberswalde, Hauptbahnhof',
 			location: {
 				type: 'location',
 				id: '900350127',
@@ -226,7 +226,7 @@ module.exports = [{
 			express: false,
 			night: false,
 		},
-		direction: 'Ostseebad Binz, Bhf',
+		direction: 'Ostseebad Binz, Bahnhof',
 		arrivalPlatform: '3',
 		plannedArrivalPlatform: '3',
 		departurePlatform: '10',
@@ -306,7 +306,7 @@ module.exports = [{
 		origin: {
 			type: 'stop',
 			id: '900042101',
-			name: 'U Spichernstr.',
+			name: 'U Spichernstr. (Berlin)',
 			location: {
 				type: 'location',
 				id: '900042101',
@@ -326,7 +326,7 @@ module.exports = [{
 		destination: {
 			type: 'stop',
 			id: '900001201',
-			name: 'S+U Westhafen',
+			name: 'S+U Westhafen (Berlin)',
 			location: {
 				type: 'location',
 				id: '900001201',
@@ -374,7 +374,7 @@ module.exports = [{
 			express: false,
 			night: false,
 		},
-		direction: 'U Osloer Str.',
+		direction: 'U Osloer Str. (Berlin)',
 		arrivalPlatform: null,
 		plannedArrivalPlatform: null,
 		departurePlatform: null,
@@ -384,7 +384,7 @@ module.exports = [{
 		origin: {
 			type: 'stop',
 			id: '900001201',
-			name: 'S+U Westhafen',
+			name: 'S+U Westhafen (Berlin)',
 			location: {
 				type: 'location',
 				id: '900001201',
@@ -404,7 +404,7 @@ module.exports = [{
 		destination: {
 			type: 'stop',
 			id: '900007102',
-			name: 'S+U Gesundbrunnen',
+			name: 'S+U Gesundbrunnen Bhf (Berlin)',
 			location: {
 				type: 'location',
 				id: '900007102',
@@ -463,7 +463,7 @@ module.exports = [{
 		origin: {
 			type: 'stop',
 			id: '900007102',
-			name: 'S+U Gesundbrunnen',
+			name: 'S+U Gesundbrunnen Bhf (Berlin)',
 			location: {
 				type: 'location',
 				id: '900007102',
@@ -483,7 +483,7 @@ module.exports = [{
 		destination: {
 			type: 'stop',
 			id: '900350127',
-			name: 'Eberswalde, Hbf',
+			name: 'Eberswalde, Hauptbahnhof',
 			location: {
 				type: 'location',
 				id: '900350127',
@@ -527,7 +527,7 @@ module.exports = [{
 			express: true,
 			night: false,
 		},
-		direction: 'Stralsund, Hbf',
+		direction: 'Stralsund, Hauptbahnhof',
 		arrivalPlatform: '3',
 		plannedArrivalPlatform: '3',
 		departurePlatform: '9',
