@@ -19,9 +19,7 @@ const dbProfile = require('hafas-client/p/db')
 const client = createClient(withThrottling(dbProfile), 'my-awesome-program')
 
 // Berlin Jungfernheide to München Hbf
-client.journeys('8011167', '8000261', {results: 1})
-.then(console.log)
-.catch(console.error)
+await client.journeys('8011167', '8000261', {results: 1})
 ```
 
 You can pass custom values for the nr of requests (`limit`) per interval into `withThrottling`:

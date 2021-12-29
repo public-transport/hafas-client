@@ -13,13 +13,10 @@ const vbbProfile = require('hafas-client/p/vbb')
 const client = createClient(vbbProfile, 'my-awesome-program')
 
 // Hauptbahnhof to Heinrich-Heine-Str.
-client.journeys('900000003201', '900000100008', {results: 1})
-.then(([journey]) => {
-	const leg = journey.legs[0]
-	return client.trip(leg.tripId, leg.line.name)
-})
-.then(console.log)
-.catch(console.error)
+const {journeys} = client.journeys('900000003201', '900000100008', {results: 1})
+const leg = journeys[0].legs[0]
+
+await client.trip(leg.tripId, leg.line.name)
 ```
 
 With `opt`, you can override the default options, which look like this:
@@ -47,12 +44,12 @@ const vbbProfile = require('hafas-client/p/vbb')
 
 const client = createClient(vbbProfile)
 
-client.trip('1|31431|28|86|17122017', 'S9', {when: 1513534689273})
-.then(console.log)
-.catch(console.error)
+console.log(await client.trip('1|31431|28|86|17122017', 'S9', {
+	when: 1513534689273,
+}))
 ```
 
-The response looked like this:
+The result looked like this:
 
 ```js
 {

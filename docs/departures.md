@@ -48,7 +48,7 @@ const vbbProfile = require('hafas-client/p/vbb')
 const client = createClient(vbbProfile, 'my-awesome-program')
 
 // will query with these products: suburban, subway, bus, express, regional
-client.departures('900000024101', {products: {tram: false, ferry: false}})
+await client.departures('900000024101', {products: {tram: false, ferry: false}})
 ```
 
 ## Response
@@ -66,12 +66,10 @@ const vbbProfile = require('hafas-client/p/vbb')
 const client = createClient(vbbProfile, 'my-awesome-program')
 
 // S Charlottenburg
-client.departures('900000024101', {duration: 3})
-.then(console.log)
-.catch(console.error)
+await client.departures('900000024101', {duration: 3})
 ```
 
-The response may look like this:
+The result may look like this:
 
 ```js
 [ {
