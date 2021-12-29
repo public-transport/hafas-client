@@ -25,8 +25,15 @@ const svvProfile = require('hafas-client/p/svv')
 
 const client = createClient(svvProfile, 'my-awesome-program')
 
-await client.remarks()
+const {
+	remarks,
+	realtimeDataUpdatedAt,
+} = await client.remarks()
 ```
+
+`realtimeDataUpdatedAt` is a UNIX timestamp reflecting the latest moment when (at least some of) the response's realtime data have been updated.
+
+`remarks` may look like this:
 
 ```js
 [
