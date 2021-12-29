@@ -618,8 +618,14 @@ const createClient = (profile, userAgent, opt = {}) => {
 		if (!Array.isArray(res.jnyL)) return []
 		const ctx = {profile, opt, common, res}
 
-		// todo [breaking]: return object with realtimeDataUpdatedAt
-		return res.jnyL.map(m => profile.parseMovement(ctx, m))
+		const movements = res.jnyL.map(m => profile.parseMovement(ctx, m))
+
+		return {
+			movements,
+			realtimeDataUpdatedAt: res.planrtTS && res.planrtTS !== '0'
+				? parseInt(res.planrtTS)
+				: null,
+		}
 	}
 
 	const reachableFrom = async (address, opt = {}) => {

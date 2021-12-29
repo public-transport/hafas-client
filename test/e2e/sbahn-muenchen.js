@@ -252,7 +252,7 @@ tap.test('station Karl-Theodor-Straße', async (t) => {
 })
 
 tap.test('radar', async (t) => {
-	const vehicles = await client.radar({
+	const res = await client.radar({
 		north: 48.145121,
 		west: 11.543736,
 		south: 48.138339,
@@ -261,7 +261,7 @@ tap.test('radar', async (t) => {
 		duration: 5 * 60, when, results: 10
 	})
 
-	validate(t, vehicles, 'movements', 'vehicles')
+	validate(t, res, 'radarResult', 'res')
 	t.end()
 })
 
