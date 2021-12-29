@@ -7,7 +7,7 @@ module.exports = [
 			type: 'stop',
 			id: '900100004',
 			stationDHID: 'de:11000:900100004',
-			name: 'S+U Jannowitzbrücke',
+			name: 'S+U Jannowitzbrücke (Berlin)',
 			location: {
 				type: 'location',
 				id: '900100004',
@@ -197,13 +197,13 @@ module.exports = [
 		platform: '3',
 		plannedPlatform: '3',
 		prognosisType: 'calculated',
-		direction: 'S Erkner',
+		direction: 'S Erkner Bhf',
 		origin: null,
 		destination: {
 			type: "stop",
 			id: "900310004",
 			stationDHID: 'de:12067:900310004',
-			name: "S Erkner",
+			name: "S Erkner Bhf",
 			location: {
 				type: "location",
 				id: "900310004",
@@ -282,7 +282,7 @@ module.exports = [
 			type: 'stop',
 			id: '900100004',
 			stationDHID: 'de:11000:900100004',
-			name: 'S+U Jannowitzbrücke',
+			name: 'S+U Jannowitzbrücke (Berlin)',
 			location: {
 				type: 'location',
 				id: '900100004',
@@ -527,7 +527,7 @@ module.exports = [
 			type: "stop",
 			id: "900005207",
 			stationDHID: 'de:11000:900005207',
-			name: "Philharmonie Süd",
+			name: "Philharmonie Süd (Berlin)",
 			location: {
 				type: "location",
 				id: "900005207",
@@ -556,7 +556,7 @@ module.exports = [
 			type: 'stop',
 			id: '900100004',
 			stationDHID: 'de:11000:900100004',
-			name: 'S+U Jannowitzbrücke',
+			name: 'S+U Jannowitzbrücke (Berlin)',
 			location: {
 				type: 'location',
 				id: '900100004',
@@ -746,7 +746,7 @@ module.exports = [
 		platform: null,
 		plannedPlatform: null,
 		prognosisType: 'prognosed',
-		direction: 'S+U Hermannstr.',
+		direction: 'S+U Hermannstr. (Berlin)',
 		provenance: null,
 		line: {
 			type: 'line',
@@ -802,7 +802,7 @@ module.exports = [
 			type: "stop",
 			id: "900079221",
 			stationDHID: 'de:11000:900079221',
-			name: "S+U Hermannstr.",
+			name: "S+U Hermannstr. (Berlin)",
 			location: {
 				type: "location",
 				id: "900079221",
@@ -831,7 +831,7 @@ module.exports = [
 			type: 'stop',
 			id: '900100004',
 			stationDHID: 'de:11000:900100004',
-			name: 'S+U Jannowitzbrücke',
+			name: 'S+U Jannowitzbrücke (Berlin)',
 			location: {
 				type: 'location',
 				id: '900100004',
@@ -1077,7 +1077,7 @@ module.exports = [
 			type: 'stop',
 			id: '900096197',
 			stationDHID: 'de:11000:900096197',
-			name: 'S+U Wittenau [U8]',
+			name: 'S+U Wittenau (Berlin) [U8]',
 			location: {
 				type: 'location',
 				id: '900096197',
@@ -1106,7 +1106,7 @@ module.exports = [
 			type: 'stop',
 			id: '900100004',
 			stationDHID: 'de:11000:900100004',
-			name: 'S+U Jannowitzbrücke',
+			name: 'S+U Jannowitzbrücke (Berlin)',
 			location: {
 				type: 'location',
 				id: '900100004',
@@ -1296,7 +1296,7 @@ module.exports = [
 		platform: '4',
 		plannedPlatform: '4',
 		prognosisType: 'calculated',
-		direction: 'S Westkreuz',
+		direction: 'S Westkreuz (Berlin)',
 		provenance: null,
 		line: {
 			type: 'line',
@@ -1352,7 +1352,7 @@ module.exports = [
 			type: 'stop',
 			id: '900024102',
 			stationDHID: 'de:11000:900024102',
-			name: 'S Westkreuz',
+			name: 'S Westkreuz (Berlin)',
 			location: {
 				type: 'location',
 				id: '900024102',
@@ -1381,7 +1381,7 @@ module.exports = [
 			type: 'stop',
 			id: '900100004',
 			stationDHID: 'de:11000:900100004',
-			name: 'S+U Jannowitzbrücke',
+			name: 'S+U Jannowitzbrücke (Berlin)',
 			location: {
 				type: 'location',
 				id: '900100004',
@@ -1571,7 +1571,7 @@ module.exports = [
 		platform: '3',
 		plannedPlatform: '3',
 		prognosisType: 'calculated',
-		direction: 'S Ahrensfelde',
+		direction: 'S Ahrensfelde Bhf (Berlin)',
 		provenance: null,
 		line: {
 			type: 'line',
@@ -1627,7 +1627,7 @@ module.exports = [
 			type: 'stop',
 			id: '900170004',
 			stationDHID: 'de:11000:900170004',
-			name: 'S Ahrensfelde',
+			name: 'S Ahrensfelde Bhf (Berlin)',
 			location: {
 				type: 'location',
 				id: '900170004',
@@ -1656,7 +1656,7 @@ module.exports = [
 			type: 'stop',
 			id: '900100004',
 			stationDHID: 'de:11000:900100004',
-			name: 'S+U Jannowitzbrücke',
+			name: 'S+U Jannowitzbrücke (Berlin)',
 			location: {
 				type: 'location',
 				id: '900100004',
@@ -1931,7 +1931,7 @@ module.exports = [
 			type: 'stop',
 			id: '900100004',
 			stationDHID: 'de:11000:900100004',
-			name: 'S+U Jannowitzbrücke',
+			name: 'S+U Jannowitzbrücke (Berlin)',
 			location: {
 				type: 'location',
 				id: '900100004',
@@ -2121,7 +2121,7 @@ module.exports = [
 		platform: '3',
 		plannedPlatform: '3',
 		prognosisType: 'calculated',
-		direction: 'S Strausberg',
+		direction: 'S Strausberg Bhf',
 		provenance: null,
 		line: {
 			type: 'line',
@@ -2177,7 +2177,7 @@ module.exports = [
 			type: 'stop',
 			id: '900320004',
 			stationDHID: 'de:12064:900320004',
-			name: 'S Strausberg',
+			name: 'S Strausberg Bhf',
 			location: {
 				type: 'location',
 				id: '900320004',
@@ -2206,7 +2206,7 @@ module.exports = [
 			type: 'stop',
 			id: '900100004',
 			stationDHID: 'de:11000:900100004',
-			name: 'S+U Jannowitzbrücke',
+			name: 'S+U Jannowitzbrücke (Berlin)',
 			location: {
 				type: 'location',
 				id: '900100004',
@@ -2396,7 +2396,7 @@ module.exports = [
 		platform: null,
 		plannedPlatform: null,
 		prognosisType: 'prognosed',
-		direction: 'S+U Hermannstr.',
+		direction: 'S+U Hermannstr. (Berlin)',
 		provenance: null,
 		line: {
 			type: 'line',
@@ -2452,7 +2452,7 @@ module.exports = [
 			type: 'stop',
 			id: '900079221',
 			stationDHID: 'de:11000:900079221',
-			name: 'S+U Hermannstr.',
+			name: 'S+U Hermannstr. (Berlin)',
 			location: {
 				type: 'location',
 				id: '900079221',
@@ -2481,7 +2481,7 @@ module.exports = [
 			type: 'stop',
 			id: '900100004',
 			stationDHID: 'de:11000:900100004',
-			name: 'S+U Jannowitzbrücke',
+			name: 'S+U Jannowitzbrücke (Berlin)',
 			location: {
 				type: 'location',
 				id: '900100004',
@@ -2671,7 +2671,7 @@ module.exports = [
 		platform: null,
 		plannedPlatform: null,
 		prognosisType: 'prognosed',
-		direction: 'U Paracelsus-Bad',
+		direction: 'U Paracelsus-Bad (Berlin)',
 		provenance: null,
 		line: {
 			type: 'line',
@@ -2727,7 +2727,7 @@ module.exports = [
 			type: 'stop',
 			id: '900085104',
 			stationDHID: 'de:11000:900085104',
-			name: 'U Paracelsus-Bad',
+			name: 'U Paracelsus-Bad (Berlin)',
 			location: {
 				type: 'location',
 				id: '900085104',
@@ -2756,7 +2756,7 @@ module.exports = [
 			type: 'stop',
 			id: '900100004',
 			stationDHID: 'de:11000:900100004',
-			name: 'S+U Jannowitzbrücke',
+			name: 'S+U Jannowitzbrücke (Berlin)',
 			location: {
 				type: 'location',
 				id: '900100004',
@@ -3001,7 +3001,7 @@ module.exports = [
 			type: 'stop',
 			id: '900120004',
 			stationDHID: 'de:11000:900120004',
-			name: 'S+U Warschauer Str.',
+			name: 'S+U Warschauer Str. (Berlin)',
 			location: {
 				type: 'location',
 				id: '900120004',
@@ -3030,7 +3030,7 @@ module.exports = [
 			type: 'stop',
 			id: '900100004',
 			stationDHID: 'de:11000:900100004',
-			name: 'S+U Jannowitzbrücke',
+			name: 'S+U Jannowitzbrücke (Berlin)',
 			location: {
 				type: 'location',
 				id: '900100004',
@@ -3220,7 +3220,7 @@ module.exports = [
 		platform: '4',
 		plannedPlatform: '4',
 		prognosisType: 'calculated',
-		direction: 'S Spandau',
+		direction: 'S Spandau Bhf (Berlin)',
 		provenance: null,
 		line: {
 			type: 'line',
@@ -3276,7 +3276,7 @@ module.exports = [
 			type: 'stop',
 			id: '900029101',
 			stationDHID: 'de:11000:900029101',
-			name: 'S Spandau',
+			name: 'S Spandau Bhf (Berlin)',
 			location: {
 				type: 'location',
 				id: '900029101',
