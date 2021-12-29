@@ -27,9 +27,6 @@ const pkpProfile = {
 	refreshJourney: false,
 	reachableFrom: true,
 	remarks: false, // seems like ver >= 1.20 is required
-
-	departuresGetPasslist: false,
-	departuresStbFltrEquiv: false,
 }
 
 module.exports = pkpProfile

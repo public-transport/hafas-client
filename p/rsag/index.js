@@ -14,8 +14,6 @@ const rsagProfile = {
 	radar: true,
 	reachableFrom: true,
 	refreshJourneyUseOutReconL: true,
-	departuresGetPasslist: false,
-	departuresStbFltrEquiv: false,
 }
 
 module.exports = rsagProfile

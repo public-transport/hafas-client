@@ -94,8 +94,6 @@ const ivbProfile = {
 
 	products,
 
-	departuresGetPasslist: false,
-	departuresStbFltrEquiv: false,
 	refreshJourneyUseOutReconL: true,
 	trip: true,
 	reachableFrom: true,

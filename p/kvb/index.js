@@ -64,8 +64,6 @@ const vosProfile = {
 
 	products,
 
-	departuresGetPasslist: false,
-	departuresStbFltrEquiv: false,
 	refreshJourneyUseOutReconL: true,
 	trip: true,
 	reachableFrom: true,
