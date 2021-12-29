@@ -44,12 +44,17 @@ const vbbProfile = require('hafas-client/p/vbb')
 
 const client = createClient(vbbProfile)
 
-console.log(await client.trip('1|31431|28|86|17122017', 'S9', {
+const {
+	trip,
+	realtimeDataUpdatedAt,
+} = await client.trip('1|31431|28|86|17122017', 'S9', {
 	when: 1513534689273,
-}))
+})
 ```
 
-The result looked like this:
+`realtimeDataUpdatedAt` is a UNIX timestamp reflecting the latest moment when (at least some of) the response's realtime data have been updated.
+
+When running the code above, `trip` looked like this:
 
 ```js
 {
