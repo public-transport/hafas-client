@@ -10,8 +10,6 @@ const cflProfile = {
 
 	products,
 
-	departuresGetPasslist: false,
-	departuresStbFltrEquiv: false,
 	trip: true,
 	radar: true,
 	reachableFrom: true,

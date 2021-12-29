@@ -82,8 +82,6 @@ const vvtProfile = {
 
 	products,
 
-	departuresGetPasslist: false,
-	departuresStbFltrEquiv: false,
 	trip: true,
 	refreshJourneyUseOutReconL: true,
 	reachableFrom: true,

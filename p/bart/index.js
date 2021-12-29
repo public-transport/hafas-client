@@ -58,8 +58,6 @@ const bartProfile = {
 	radar: true,
 	reachableFrom: true,
 
-	departuresGetPasslist: false, // `departures()` method: support for `getPasslist` field?
-	departuresStbFltrEquiv: false, // `departures()` method: support for `stbFltrEquiv` field?
 	refreshJourneyUseOutReconL: true,
 }
 

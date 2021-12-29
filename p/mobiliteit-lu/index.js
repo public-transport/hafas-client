@@ -14,8 +14,6 @@ const mobiliteitLuProfile = {
 	radar: true,
 	reachableFrom: true,
 
-	departuresGetPasslist: false,
-	departuresStbFltrEquiv: false,
 	refreshJourneyUseOutReconL: true,
 }
 

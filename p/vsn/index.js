@@ -18,8 +18,6 @@ const vsnProfile = {
 	trip: true,
 	radar: true,
 	reachableFrom: true,
-	departuresGetPasslist: false,
-	departuresStbFltrEquiv: false
 }
 
 module.exports = vsnProfile

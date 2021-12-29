@@ -10,8 +10,6 @@ const rejseplanenProfile = {
 
 	products: products,
 
-	departuresGetPasslist: false,
-	departuresStbFltrEquiv: false,
 	refreshJourneyUseOutReconL: true,
 	trip: true,
 	radar: true,

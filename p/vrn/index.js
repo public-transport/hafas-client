@@ -15,8 +15,6 @@ const hvvProfile = {
 	reachableFrom: true,
 	refreshJourney: true,
 	refreshJourneyUseOutReconL: true,
-	departuresGetPasslist: false, // `departures()`: support for `getPasslist`?
-	departuresStbFltrEquiv: false, // `departures()`: support for `stbFltrEquiv`?
 }
 
 module.exports = hvvProfile
