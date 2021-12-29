@@ -18,7 +18,7 @@ const amstettenStadtbad = '431507400'
 // .then(({journeys}) => {
 // 	const [journey] = journeys
 // 	const leg = journey.legs.find(l => !!l.line)
-// 	return client.trip(leg.tripId, leg.line.name, {polyline: true})
+// 	return client.trip(leg.tripId, {polyline: true})
 // })
 
 client.departures(linzTheatergasse, {duration: 12 * 60})

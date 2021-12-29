@@ -1,15 +1,15 @@
 {
   "statusCode": 200,
   "headers": {
-    "date": "Tue, 03 May 2022 15:14:33 GMT",
+    "date": "Tue, 03 May 2022 15:24:29 GMT",
     "content-type": "application/json; charset=utf-8",
-    "content-length": "1653",
+    "content-length": "1652",
     "connection": "keep-alive",
     "server": "Apache",
     "vary": "Accept-Encoding"
   },
   "url": "https://capmetro.hafas.cloud/bin/mgate.exe",
-  "time": 256,
+  "time": 849,
   "request": {
     "method": "POST",
     "headers": {
@@ -23,7 +23,7 @@
         "application/json"
       ],
       "user-agent": [
-        "public-t9a9648ranspor9a9648t/hafa9a9648s-clie9a9648nt:test"
+        "public-tr0c04d4anspor0c04d4t/haf0c04d4as-clien0c04d4t:tes0c04d4t"
       ],
       "connection": [
         "keep-alive"

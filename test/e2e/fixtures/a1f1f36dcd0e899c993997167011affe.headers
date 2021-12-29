@@ -1,15 +1,15 @@
 {
   "statusCode": 200,
   "headers": {
-    "date": "Tue, 03 May 2022 14:52:10 GMT",
+    "date": "Tue, 03 May 2022 15:24:33 GMT",
     "server": "Apache",
-    "content-length": "2842",
-    "keep-alive": "timeout=5, max=92",
+    "content-length": "2843",
+    "keep-alive": "timeout=5, max=100",
     "connection": "Keep-Alive",
     "content-type": "application/json; charset=utf-8"
   },
   "url": "https://fpa.invg.de/bin/mgate.exe",
-  "time": 390,
+  "time": 864,
   "request": {
     "method": "POST",
     "headers": {
@@ -23,7 +23,7 @@
         "application/json"
       ],
       "user-agent": [
-        "public-tr7445daansport/7445dahafas-clie7445dant:tes7445dat"
+        "public-tra2adb9fnsport/h2adb9fafas-cli2adb9fent:test"
       ],
       "connection": [
         "keep-alive"

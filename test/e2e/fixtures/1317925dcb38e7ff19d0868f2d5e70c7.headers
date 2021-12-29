@@ -1,15 +1,15 @@
 {
   "statusCode": 200,
   "headers": {
-    "date": "Tue, 03 May 2022 14:58:03 GMT",
+    "date": "Tue, 03 May 2022 15:28:52 GMT",
     "server": "Apache",
-    "content-length": "4297",
-    "keep-alive": "timeout=5, max=92",
+    "content-length": "4295",
+    "keep-alive": "timeout=5, max=100",
     "connection": "Keep-Alive",
     "content-type": "application/json; charset=utf-8"
   },
   "url": "https://s-bahn-muenchen.hafas.de/bin/540/mgate.exe?mic=349024572bbe41a165d74bc9585f0778&mac=eae1b5c529d08dcd519ec5b59c9fcc48",
-  "time": 590,
+  "time": 926,
   "request": {
     "method": "POST",
     "headers": {
@@ -23,7 +23,7 @@
         "application/json"
       ],
       "user-agent": [
-        "public-t66f0fbranspo66f0fbrt/hafas66f0fb-client:t66f0fbest"
+        "public51526a-transport51526a/hafas-51526aclient:t51526aest"
       ],
       "connection": [
         "keep-alive"

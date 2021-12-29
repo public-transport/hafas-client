@@ -1,13 +1,13 @@
 {
   "statusCode": 200,
   "headers": {
-    "date": "Tue, 03 May 2022 15:03:32 GMT",
+    "date": "Tue, 03 May 2022 15:27:23 GMT",
     "server": "Apache",
-    "content-length": "1305",
+    "content-length": "1307",
     "content-type": "application/json; charset=utf-8"
   },
   "url": "https://vrn.hafas.de/bin/mgate.exe",
-  "time": 213,
+  "time": 195,
   "request": {
     "method": "POST",
     "headers": {
@@ -21,7 +21,7 @@
         "application/json"
       ],
       "user-agent": [
-        "public-tr18ea3eansport18ea3e/hafas-cli18ea3eent:te18ea3est"
+        "public-tf2cb61ranspf2cb61ort/haf2cb61fas-clienf2cb61t:tesf2cb61t"
       ],
       "connection": [
         "keep-alive"

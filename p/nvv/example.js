@@ -10,7 +10,7 @@ client.journeys('2200073', '2200042', {results: 1, polylines: true})
 // .then(({journeys}) => {
 // 	const [journey] = journeys
 //	const leg = journey.legs.find(l => !!l.line)
-// 	return client.trip(leg.tripId, leg.line.name, {polyline: true})
+// 	return client.trip(leg.tripId, {polyline: true})
 // })
 // .then(({journeys}) => {
 // 	const [journey] = journeys

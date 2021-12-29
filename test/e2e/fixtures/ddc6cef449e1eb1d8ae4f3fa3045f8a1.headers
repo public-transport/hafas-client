@@ -1,18 +1,18 @@
 {
   "statusCode": 200,
   "headers": {
-    "date": "Tue, 03 May 2022 15:09:25 GMT",
+    "date": "Tue, 03 May 2022 15:27:20 GMT",
     "server": "Apache",
     "access-control-allow-headers": "*",
     "access-control-allow-methods": "GET,POST,OPTIONS",
     "access-control-allow-origin": "*",
     "content-length": "6996",
-    "keep-alive": "timeout=5, max=97",
+    "keep-alive": "timeout=5, max=31",
     "connection": "Keep-Alive",
     "content-type": "application/json; charset=utf-8"
   },
   "url": "https://fahrplan.salzburg-verkehr.at/bin/mgate.exe",
-  "time": 387,
+  "time": 5923,
   "request": {
     "method": "POST",
     "headers": {
@@ -26,7 +26,7 @@
         "application/json"
       ],
       "user-agent": [
-        "public-cf5231transporcf5231t/hafascf5231-client:tcf5231est"
+        "public2a79c1-transport2a79c1/hafas-cli2a79c1ent:tes2a79c1t"
       ],
       "connection": [
         "keep-alive"
