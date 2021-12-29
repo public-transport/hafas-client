@@ -418,6 +418,14 @@ const validateJourneysResult = (val, res, name = 'journeysResult') => {
 	a.ok(isObj(res), name + ' must be an object')
 	// todo: `earlierRef`, `laterRef`
 	val.journeys(val, res.journeys, name + '.journeys')
+
+	val.realtimeDataUpdatedAt(val, res.realtimeDataUpdatedAt, name + '.realtimeDataUpdatedAt')
+}
+
+const validateRefreshJourneyResult = (val, res, name = 'refreshJourneyResult') => {
+	val.journey(val, res, name + '.journey')
+
+	val.realtimeDataUpdatedAt(val, res.realtimeDataUpdatedAt, name + '.realtimeDataUpdatedAt')
 }
 
 const validateTrip = (val, trip, name = 'trip') => {
@@ -609,6 +617,7 @@ module.exports = {
 	journey: () => validateJourney,
 	journeys: () => validateJourneys,
 	journeysResult: () => validateJourneysResult,
+	refreshJourneyResult: () => validateRefreshJourneyResult,
 	trip: () => validateTrip,
 	arrival: createValidateArrival,
 	departure: createValidateDeparture,
