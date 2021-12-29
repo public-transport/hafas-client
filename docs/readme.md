@@ -60,6 +60,30 @@ const retryingDbProfile = withRetrying(dbProfile, {
 const client = createClient(retryingDbProfile, 'my-awesome-program')
 ```
 
+## User agent randomization
+
+By default, `hafas-client` randomizes the client name that you pass into `createClient`, and sends it as [`User-Agent`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent) in a randomized form:
+
+```js
+const createClient('hafas-client')
+// …
+const client = createClient(someProfile, 'my-awesome-program')
+
+await client.journeys(/* … */)
+// User-Agent: my-awee70429some-pre70429ogram
+await client.journeys(/* … */)
+// User-Agent: my-awesom9bb8e2e-prog9bb8e2ram
+```
+
+You can turn this off by setting `profile.randomizeUserAgent` to `false`:
+
+```js
+const client = createClient({
+	...someProfile,
+	randomizeUserAgent: false,
+}, 'my-awesome-program')
+```
+
 ## Logging requests
 
 You can use `profile.logRequest` and `profile.logResponse` to process the raw [Fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) [`Request`](https://developer.mozilla.org/en-US/docs/Web/API/Request) and [`Response`](https://developer.mozilla.org/en-US/docs/Web/API/Response), respectively.
