@@ -61,8 +61,7 @@
 		"pinkie-promise": "^2.0.1",
 		"qs": "^6.6.0",
 		"slugg": "^1.2.0",
-		"vbb-parse-line": "^1.0.0",
-		"vbb-parse-ticket": "^0.2.1"
+		"vbb-parse-line": "^1.0.0"
 	},
 	"devDependencies": {
 		"eslint": "^7.0.0",
