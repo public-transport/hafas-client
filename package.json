@@ -63,9 +63,7 @@
 		"slugg": "^1.2.0",
 		"vbb-parse-line": "^1.0.0",
 		"vbb-parse-ticket": "^0.2.1",
-		"vbb-short-station-name": "^1.0.1",
-		"vbb-stations": "^7.1.0",
-		"vbb-translate-ids": "^4.0.0"
+		"vbb-short-station-name": "^1.0.1"
 	},
 	"devDependencies": {
 		"eslint": "^7.0.0",

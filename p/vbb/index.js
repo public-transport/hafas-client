@@ -1,10 +1,8 @@
 'use strict'
 
 const shorten = require('vbb-short-station-name')
-const {to12Digit, to9Digit} = require('vbb-translate-ids')
 const parseLineName = require('vbb-parse-line')
 const parseTicket = require('vbb-parse-ticket')
-const getStations = require('vbb-stations')
 const {parseHook} = require('../../lib/profile-hooks')
 
 const parseAndAddLocationDHID = require('./parse-loc-dhid')
@@ -12,7 +10,6 @@ const _parseLine = require('../../parse/line')
 const _parseLocation = require('../../parse/location')
 const _parseJourney = require('../../parse/journey')
 const _parseDeparture = require('../../parse/departure')
-const _formatStation = require('../../format/station')
 
 const baseProfile = require('./base.json')
 const products = require('./products')
@@ -31,15 +28,6 @@ const parseLineWithMoreDetails = ({parsed}, p) => {
 }
 
 const parseLocation = ({parsed}, l) => {
-	if ((parsed.type === 'stop' || parsed.type === 'station') && parsed.id[0] === '9') {
-		parsed.name = shorten(parsed.name)
-		parsed.id = to12Digit(parsed.id)
-		if (!parsed.location.latitude || !parsed.location.longitude) {
-			const [s] = getStations(parsed.id)
-			if (s) Object.assign(parsed.location, s.location)
-		}
-	}
-
 	parseAndAddLocationDHID(parsed, l)
 	return parsed
 }
@@ -80,18 +68,6 @@ const parseDepartureRenameRingbahn = ({parsed}) => {
 	return parsed
 }
 
-const validIBNR = /^\d+$/
-const formatStation = (id) => {
-	if ('string' !== typeof id) throw new TypeError('station ID must be a string.')
-	if (!validIBNR.test(id)) {
-		throw new Error('station ID must be a valid IBNR.')
-	}
-	// The VBB has some 7-digit stations. We don't convert them to 12 digits,
-	// because it only recognizes in the 7-digit format. see derhuerst/vbb-hafas#22
-	if (id.length !== 7) id = to9Digit(id)
-	return _formatStation(id)
-}
-
 const vbbProfile = {
 	...baseProfile,
 	locale: 'de-DE',
@@ -104,8 +80,6 @@ const vbbProfile = {
 	parseStationName: (ctx, name) => shorten(name),
 	parseJourney: parseHook(_parseJourney, parseJourneyWithTickets),
 	parseDeparture: parseHook(_parseDeparture, parseDepartureRenameRingbahn),
-
-	formatStation,
 
 	journeysWalkingSpeed: true,
 	refreshJourneyUseOutReconL: true,
