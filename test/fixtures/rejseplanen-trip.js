@@ -1,7 +1,6 @@
 'use strict'
 
 module.exports = {
-	reachable: true, // todo: drop this field
 	id: '1|307|4|86|12102021',
 	direction: 'CPH Lufthavn',
 	currentLocation: {

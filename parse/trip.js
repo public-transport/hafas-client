@@ -27,7 +27,7 @@ const parseTrip = (ctx, t) => { // t = raw trip
 	const trip = profile.parseJourneyLeg(ctx, fakeLeg, date)
 	trip.id = trip.tripId
 	delete trip.tripId
-	// todo [breaking]: delete trip.reachable
+	delete trip.reachable
 
 	return trip
 }
