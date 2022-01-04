@@ -1,6 +1,7 @@
 'use strict'
 
 const tap = require('tap')
+const omit = require('lodash/omit')
 const parse = require('../../parse/line')
 
 const profile = {
@@ -21,7 +22,9 @@ tap.test('parses lines correctly', (t) => {
 		line: 'foo line',
 		prodCtx: {
 			lineId: 'Foo ',
-			num: 123
+			num: 123,
+			// HAFAS endpoints commonly have these padded admin codes.
+			admin: 'foo---',
 		}
 	}
 	const expected = {
@@ -29,7 +32,8 @@ tap.test('parses lines correctly', (t) => {
 		id: 'foo',
 		fahrtNr: 123,
 		name: 'foo line',
-		public: true
+		public: true,
+		adminCode: 'foo---',
 	}
 
 	t.same(parse(ctx, input), expected)
@@ -51,7 +55,11 @@ tap.test('parses lines correctly', (t) => {
 	t.same(parse(ctx, {
 		...input, prodCtx: undefined
 	}), {
-		...expected, id: 'foo-line', fahrtNr: null
+		...omit(expected, [
+			'adminCode',
+		]),
+		id: 'foo-line',
+		fahrtNr: null,
 	})
 	t.end()
 })
