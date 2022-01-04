@@ -108,7 +108,6 @@ module.exports = {
 	plannedDeparture: '2020-06-11T16:33:00+02:00',
 	departureDelay: null,
 	departurePrognosisType: 'prognosed',
-	reachable: true,
 	line: {
 		type: 'line',
 		id: 'rj-742',
