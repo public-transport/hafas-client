@@ -22,8 +22,7 @@ const parseLine = ({profile}, p) => {
 	// todo: what is p.prodCtx.catCode?
 
 	if (p.prodCtx && 'string' === typeof p.prodCtx.admin) {
-		// todo [breaking]: don't trim
-		res.adminCode = p.prodCtx.admin.replace(/-+$/, '')
+		res.adminCode = p.prodCtx.admin
 	}
 
 	if (p.prodCtx && 'string' === typeof p.prodCtx.catOut) {

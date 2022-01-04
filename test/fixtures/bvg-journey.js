@@ -695,7 +695,7 @@ module.exports = {
 			fahrtNr: '14825',
 			name: 'S2',
 			public: true,
-			adminCode: 'DBS',
+			adminCode: 'DBS---',
 			productName: 'S',
 			mode: 'train',
 			product: 'suburban',
