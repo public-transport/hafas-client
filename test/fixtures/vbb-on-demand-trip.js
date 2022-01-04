@@ -19,7 +19,6 @@ module.exports = {
 			name: 'Verkehrsgesellschaft Teltow-Fläming mbH'
 		},
 	},
-	reachable: true,
 
 	origin: {},
 	departure: null,

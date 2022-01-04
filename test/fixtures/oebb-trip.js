@@ -106,7 +106,6 @@ module.exports = {
 	departure: '2020-06-11T16:33:00+02:00',
 	plannedDeparture: '2020-06-11T16:33:00+02:00',
 	departureDelay: null,
-	reachable: true,
 	line: {
 		type: 'line',
 		id: 'rj-742',

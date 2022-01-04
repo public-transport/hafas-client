@@ -3,7 +3,6 @@
 module.exports = {
 	id: '1|6849|3|86|1112021',
 	direction: 'S Ostbahnhof via S+U Wedding',
-	reachable: true,
 	line: {
 		type: 'line',
 		id: '147',
