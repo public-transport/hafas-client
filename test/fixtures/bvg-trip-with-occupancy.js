@@ -9,7 +9,7 @@ module.exports = {
 		fahrtNr: '7070',
 		name: '147',
 		public: true,
-		adminCode: 'BVB',
+		adminCode: 'BVB---',
 		productName: 'Bus',
 		mode: 'bus',
 		product: 'bus',
