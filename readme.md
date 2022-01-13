@@ -233,6 +233,7 @@ While `hafas-client` itself should work in the browser via a bundler like [Webpa
 - [`hafas-find-stations`](https://github.com/derhuerst/hafas-find-stations#hafas-find-stations) – Given a HAFAS client, find all stations in a bounding box.
 - [`hafas-collect-departures-at`](https://github.com/public-transport/hafas-collect-departures-at#hafas-collect-departures-at) – Utility to collect departures, using any HAFAS client.
 - [`find-hafas-data-in-another-hafas`](https://github.com/derhuerst/find-hafas-data-in-another-hafas#find-hafas-data-in-another-hafas) – Find data from one HAFAS endpoint in the data of another HAFAS endpoint.
+- [`hafas-gtfs-rt-feed`](https://github.com/derhuerst/hafas-gtfs-rt-feed) – Generate a [GTFS Realtime (GTFS-RT)](https://developers.google.com/transit/gtfs-realtime/) feed by polling a HAFAS endpoint.
 - [`hafas-monitor-trips`](https://github.com/derhuerst/hafas-monitor-trips#hafas-monitor-trips) – Using a HAFAS client, watch all trips in a bounding box.
 - [`hafas-monitor-departures`](https://github.com/derhuerst/hafas-monitor-departures#hafas-monitor-departures) – Pass in a HAFAS client, fetch all departures at any set of stations.
 - [`hafas-record-delays`](https://github.com/derhuerst/hafas-record-delays#hafas-record-delays) – Record delays from `hafas-monitor-departures` into a LevelDB.
