@@ -1,5 +1,15 @@
 # Changelog
 
+## `5.22.2`
+
+- f6b144f0 BVG: update API endpoint
+- e3a02297 `lib/request`: tweak `User-Agent` randomisation logic
+- e69d069d/fa9a8d9f update integration tests ✅
+- 2ec079ad TPG: add integration test ✅
+- 4cd0e9d9 minor tweaks 📝
+
+[🏷 `5.22.2`](https://github.com/public-transport/hafas-client/releases/tag/5.22.2), 2022-01-13
+
 ## `5.22.1`
 
 - 2fd06941 use [HTTP Keep-Alive](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Keep-Alive) ⚡️
