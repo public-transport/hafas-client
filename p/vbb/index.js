@@ -67,11 +67,11 @@ const ringbahnClockwise = /^ringbahn s\s?41$/i
 const ringbahnAnticlockwise = /^ringbahn s\s?42$/i
 const parseDepartureRenameRingbahn = ({parsed}) => {
 	if (parsed.line && parsed.line.product === 'suburban') {
-		const d = parsed.direction && parsed.direction.trim()
+		const d = parsed.headsign && parsed.headsign.trim()
 		if (ringbahnClockwise.test(d)) {
-			parsed.direction = 'Ringbahn S41 ⟳'
+			parsed.headsign = 'Ringbahn S41 ⟳'
 		} else if (ringbahnAnticlockwise.test(d)) {
-			parsed.direction = 'Ringbahn S42 ⟲'
+			parsed.headsign = 'Ringbahn S42 ⟲'
 		}
 	}
 	return parsed

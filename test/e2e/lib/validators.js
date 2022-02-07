@@ -388,10 +388,12 @@ const createValidateArrivalOrDeparture = (type, cfg) => {
 		}
 
 		val.line(val, dep.line, name + '.line')
-		if (type === 'departure') {
-			const n = name + '.direction'
-			a.strictEqual(typeof dep.direction, 'string', n + ' must be a string')
-			a.ok(dep.direction, n + ' must not be empty')
+
+		if (dep.headsign !== null) {
+			const n = name + '.headsign'
+			a.strictEqual(typeof dep.headsign, 'string', n + ' must be a string')
+			a.ok(dep.headsign, n + ' must not be empty')
+		}
 		}
 	}
 	return validateArrivalOrDeparture
