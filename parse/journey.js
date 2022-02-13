@@ -1,6 +1,6 @@
 import {findRemarks} from './find-remarks.js'
 
-// todo: c.conSubscr (e.g. `F`)
+// todo: c.conSubscr (e.g. `F`, `U`) – is this journey subscribed to?
 // todo: c.trfRes x vbb-parse-ticket
 // todo: c.sotRating, c.isSotCon, c.sotCtxt
 // todo: c.showARSLink

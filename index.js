@@ -892,6 +892,9 @@ const createClient = (profile, userAgent, opt = {}) => {
 	const disableSubscription = _setSubscriptionStatus.bind(null, 'EXPIRED')
 	const enableSubscription = _setSubscriptionStatus.bind(null, 'ACTIVE')
 
+	// todo: subscribeToJourneysInterval
+	// https://gist.github.com/derhuerst/d267ac179e49e927d38daa1a4bdf7760#file-6-subscriptions-http-L81-L132
+
 	const subscribeToJourney = async (userId, channelIds, journeyRefreshToken, opt = {}) => {
 		if (!isNonEmptyString(userId)) {
 			throw new TypeError('userId must be a non-empty string')
