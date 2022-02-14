@@ -305,20 +305,20 @@ const createRestClient = (profile, token, userAgent) => {
 	// }
 
 	// todo: fails with 404
-	// const radar = async (bbox, opt = {}) => {
-	// 	const {res} = await profile.request({profile, opt, token}, userAgent, 'journeyPos', {
-	// 		llLat: bbox.south,
-	// 		llLon: bbox.west,
-	// 		urLat: bbox.north,
-	// 		urLon: bbox.east,
-	// 		// todo: operators, products, attributes, lines, jid, infotexts
-	// 		// todo: maxJny, time
-	// 		date: profile.formatDate(profile, opt.when || Date.now())
-	// 	})
-	// 	const ctx = {profile, opt, res}
+	const radar = async (bbox, opt = {}) => {
+		const {res} = await profile.request({profile, opt, token}, userAgent, 'journeyPos', {
+			llLat: bbox.south,
+			llLon: bbox.west,
+			urLat: bbox.north,
+			urLon: bbox.east,
+			// todo: operators, products, attributes, lines, jid, infotexts
+			// todo: maxJny, time
+			date: profile.formatDate(profile, opt.when || Date.now())
+		})
+		const ctx = {profile, opt, res}
 
-	// 	return ctx.res
-	// }
+		return ctx.res
+	}
 
 	// todo: fails with 404
 	// const remarks = async (opt = {}) => {
@@ -346,6 +346,7 @@ const createRestClient = (profile, token, userAgent) => {
 		journeys, trip,
 		// tripsByName,
 		tripAlternatives,
+		radar,
 	}
 	Object.defineProperty(client, 'profile', {value: profile})
 	return client

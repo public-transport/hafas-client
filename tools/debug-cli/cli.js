@@ -72,6 +72,10 @@ const parsedArgs = args.slice(2).map((arg, i) => {
 	const client = createRestClient(profile, token, 'hafas-client debug CLI')
 
 	const fn = client[fnName]
+	if ('function' !== typeof fn) {
+		console.error(`client.${fnName} is not a function`)
+		process.exit(1)
+	}
 
 	const res = await fn(...parsedArgs)
 	process.stdout.write(JSON.stringify(res) + '\n')
