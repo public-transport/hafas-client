@@ -306,18 +306,35 @@ const createRestClient = (profile, token, userAgent) => {
 
 	// todo: fails with 404
 	const radar = async (bbox, opt = {}) => {
+		opt = {
+			results: 256, // maximum nr of movements
+			realtimePositionsOnly: false,
+			products: null, // optionally an object of booleans
+			...opt,
+		}
+
+		const when = opt.when || Date.now()
+
 		const {res} = await profile.request({profile, opt, token}, userAgent, 'journeyPos', {
 			llLat: bbox.south,
 			llLon: bbox.west,
 			urLat: bbox.north,
 			urLon: bbox.east,
 			// todo: operators, products, attributes, lines, jid, infotexts
-			// todo: maxJny, time
-			date: profile.formatDate(profile, opt.when || Date.now())
+			date: profile.formatDate(profile, when),
+			time: profile.formatTime(profile, when),
+			products: profile.formatProductsBitmask({profile, opt}, opt.products || {}),
+			maxJny: opt.results,
+			// Mode the used for position calculation
+			// REPORT_ONLY: Only get back reported positions.
+			// CALC_REPORT: Use reported position if available, calculate if not.
+			// CALC: Calculate all positions
+			positionMode: opt.realtimePositionsOnly ? 'REPORT_ONLY' : 'CALC_REPORT',
 		})
 		const ctx = {profile, opt, res}
 
-		return ctx.res
+		if (!Array.isArray(res.Journey)) return []
+		return res.Journey.map(m => profile.parseMovement(ctx, m))
 	}
 
 	// todo: fails with 404
