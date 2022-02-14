@@ -21,7 +21,10 @@ const parseStopover = (ctx, st) => {
 		plannedDeparture: dep.plannedWhen,
 		departureDelay: dep.delay,
 		departurePlatform: depPl.platform,
-		plannedDeparturePlatform: depPl.plannedPlatform
+		plannedDeparturePlatform: depPl.plannedPlatform,
+
+		// todo: expose st.boarding, st.rtBoarding, st.alighting, st.rtAlighting
+		// todo: expose st.entry
 	}
 
 	if (arr.prognosedWhen) res.prognosedArrival = arr.prognosedWhen
@@ -29,6 +32,7 @@ const parseStopover = (ctx, st) => {
 	if (dep.prognosedWhen) res.prognosedDeparture = dep.prognosedWhen
 	if (depPl.prognosedPlatform) res.prognosedDeparturePlatform = depPl.prognosedPlatform
 
+	// todo: is there a more accurate flag?
 	if (st.rtBoarding === false || st.rtAlighting === false) {
 		res.cancelled = true
 		Object.defineProperty(res, 'canceled', {value: true})

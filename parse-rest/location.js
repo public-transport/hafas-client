@@ -24,8 +24,6 @@ const parseLocation = (ctx, l) => {
 	// todo: l.notes https://github.com/public-transport/hafas-client/issues/130
 
 	if (l.type === 'S' || l.type === 'ST' || id.A === '1') {
-		// todo: l.altId, l.mainMastAltId
-
 		const stop = {
 			type: 'stop',
 			id: res.id,
@@ -51,6 +49,8 @@ const parseLocation = (ctx, l) => {
 		} else {
 			stop.type = 'station'
 		}
+
+		// todo: parse & expose l.altId & l.mainMastAltId
 
 		return stop
 	}
