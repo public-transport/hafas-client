@@ -12,7 +12,9 @@
 		"retry.js",
 		"lib",
 		"parse",
+		"parse-rest",
 		"format",
+		"format-rest",
 		"p",
 		"docs"
 	],
