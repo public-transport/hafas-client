@@ -14,8 +14,10 @@ const parseMovement = (ctx, m) => { // m = raw movement
 		// todo: use .name, .trainNumber & trainCategory?
 		line: m.Product ? profile.parseLine(ctx, m.Product) : null,
 
-		// todo: stopL[0] is the first of the trip! -> filter out
-		nextStopovers: stopovers.map(s => profile.parseStopover(ctx, s)),
+		nextStopovers: stopovers
+			// stopL[0] is the first of the trip, so we ignore it
+			.slice(1)
+			.map(s => profile.parseStopover(ctx, s)),
 	}
 
 	// todo: parse & expose polyline?
