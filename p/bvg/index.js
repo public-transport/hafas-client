@@ -73,22 +73,22 @@ const ringbahnClockwise = /^ringbahn s\s?41$/i
 const ringbahnAnticlockwise = /^ringbahn s\s?42$/i
 const parseDepartureRenameRingbahn = ({parsed}, dep) => {
 	if (parsed.line && parsed.line.product === 'suburban') {
-		const d = parsed.headsign && parsed.headsign.trim()
+		const d = parsed.direction && parsed.direction.trim()
 		if (ringbahnClockwise.test(d)) {
-			parsed.headsign = 'Ringbahn S41 ⟳'
+			parsed.direction = 'Ringbahn S41 ⟳'
 		} else if (ringbahnAnticlockwise.test(d)) {
-			parsed.headsign = 'Ringbahn S42 ⟲'
+			parsed.direction = 'Ringbahn S42 ⟲'
 		}
 	}
 	return parsed
 }
 const parseArrivalRenameRingbahn = ({parsed}, arr) => {
 	if (parsed.line && parsed.line.product === 'suburban') {
-		const p = parsed.headsign && parsed.headsign.trim()
+		const p = parsed.provenance && parsed.provenance.trim()
 		if (ringbahnClockwise.test(p)) {
-			parsed.headsign = 'Ringbahn S41 ⟳'
+			parsed.provenance = 'Ringbahn S41 ⟳'
 		} else if (ringbahnAnticlockwise.test(p)) {
-			parsed.headsign = 'Ringbahn S42 ⟲'
+			parsed.provenance = 'Ringbahn S42 ⟲'
 		}
 	}
 	return parsed
