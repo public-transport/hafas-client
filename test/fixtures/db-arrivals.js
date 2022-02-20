@@ -249,6 +249,8 @@ module.exports = [
 		plannedPlatform: null,
 		direction: null,
 		provenance: 'Rathaus Spandau (S+U), Berlin',
+		origin: null,
+		destination: null,
 		line: {
 			type: 'line',
 			id: '7-vbbbvu-7',

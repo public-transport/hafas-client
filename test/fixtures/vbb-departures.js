@@ -196,6 +196,27 @@ module.exports = [
 		platform: '3',
 		plannedPlatform: '3',
 		direction: 'S Erkner',
+		origin: null,
+		destination: {
+			type: "stop",
+			id: "900000310004",
+			name: "S Erkner",
+			location: {
+				type: "location",
+				id: "900310004",
+				latitude: 52.428398,
+				longitude: 13.752246,
+			},
+			products: {
+				suburban: true,
+				subway: false,
+				tram: false,
+				bus: true,
+				ferry: false,
+				express: false,
+				regional: true,
+			},
+		},
 		provenance: null,
 		line: {
 			type: 'line',
@@ -496,6 +517,27 @@ module.exports = [
 				modified: '2021-06-12T07:43:36+02:00'
 			}
 		],
+		origin: null,
+		destination: {
+			type: "stop",
+			id: "900000005207",
+			name: "Philharmonie Süd",
+			location: {
+				type: "location",
+				id: "900005207",
+				latitude: 52.508761,
+				longitude: 13.370025,
+			},
+			products: {
+				suburban: false,
+				subway: false,
+				tram: false,
+				bus: true,
+				ferry: false,
+				express: false,
+				regional: false,
+			},
+		},
 		currentTripPosition: {
 			type: 'location',
 			latitude: 52.514227,
@@ -747,6 +789,27 @@ module.exports = [
 				modified: '2021-06-12T07:43:36+02:00'
 			}
 		],
+		origin: null,
+		destination: {
+			type: "stop",
+			id: "900000079221",
+			name: "S+U Hermannstr.",
+			location: {
+				type: "location",
+				id: "900079221",
+				latitude: 52.467339,
+				longitude: 13.43143,
+			},
+			products: {
+				suburban: true,
+				subway: true,
+				tram: false,
+				bus: true,
+				ferry: false,
+				express: false,
+				regional: false,
+			},
+		},
 		currentTripPosition: {
 			type: 'location',
 			latitude: 52.518982,
@@ -998,6 +1061,27 @@ module.exports = [
 				modified: '2021-06-12T07:43:36+02:00'
 			}
 		],
+		origin: null,
+		destination: {
+			type: 'stop',
+			id: '900000096197',
+			name: 'S+U Wittenau [U8]',
+			location: {
+				type: 'location',
+				id: '900096197',
+				latitude: 52.59566,
+				longitude: 13.334634,
+			},
+			products: {
+				suburban: true,
+				subway: true,
+				tram: false,
+				bus: true,
+				ferry: false,
+				express: false,
+				regional: false,
+			},
+		},
 		currentTripPosition: {
 			type: 'location',
 			latitude: 52.51011,
@@ -1249,6 +1333,27 @@ module.exports = [
 				modified: '2021-06-12T07:43:36+02:00'
 			}
 		],
+		origin: null,
+		destination: {
+			type: 'stop',
+			id: '900000024102',
+			name: 'S Westkreuz',
+			location: {
+				type: 'location',
+				id: '900024102',
+				latitude: 52.501148,
+				longitude: 13.283036,
+			},
+			products: {
+				suburban: true,
+				subway: false,
+				tram: false,
+				bus: true,
+				ferry: false,
+				express: false,
+				regional: false,
+			},
+		},
 		currentTripPosition: {
 			type: 'location',
 			latitude: 52.512052,
@@ -1500,6 +1605,27 @@ module.exports = [
 				modified: '2021-06-12T07:43:36+02:00'
 			}
 		],
+		origin: null,
+		destination: {
+			type: 'stop',
+			id: '900000170004',
+			name: 'S Ahrensfelde',
+			location: {
+				type: 'location',
+				id: '900170004',
+				latitude: 52.571335,
+				longitude: 13.565648,
+			},
+			products: {
+				suburban: true,
+				subway: false,
+				tram: false,
+				bus: true,
+				ferry: false,
+				express: false,
+				regional: true,
+			},
+		},
 		currentTripPosition: {
 			type: 'location',
 			latitude: 52.52167,
@@ -1751,6 +1877,27 @@ module.exports = [
 				modified: '2021-06-12T07:43:36+02:00'
 			}
 		],
+		origin: null,
+		destination: {
+			type: 'stop',
+			id: '900000230999',
+			name: 'S Potsdam Hauptbahnhof',
+			location: {
+				type: 'location',
+				id: '900230999',
+				latitude: 52.391659,
+				longitude: 13.066172,
+			},
+			products: {
+				suburban: true,
+				subway: false,
+				tram: true,
+				bus: true,
+				ferry: false,
+				express: true,
+				regional: true,
+			},
+		},
 		currentTripPosition: {
 			type: 'location',
 			latitude: 52.507287,
@@ -2002,6 +2149,27 @@ module.exports = [
 				modified: '2021-06-12T07:43:36+02:00'
 			}
 		],
+		origin: null,
+		destination: {
+			type: 'stop',
+			id: '900000320004',
+			name: 'S Strausberg',
+			location: {
+				type: 'location',
+				id: '900320004',
+				latitude: 52.532367,
+				longitude: 13.834794,
+			},
+			products: {
+				suburban: true,
+				subway: false,
+				tram: true,
+				bus: true,
+				ferry: false,
+				express: false,
+				regional: true,
+			},
+		},
 		currentTripPosition: {
 			type: 'location',
 			latitude: 52.520528,
@@ -2253,6 +2421,27 @@ module.exports = [
 				modified: '2021-06-12T07:43:36+02:00'
 			}
 		],
+		origin: null,
+		destination: {
+			type: 'stop',
+			id: '900000079221',
+			name: 'S+U Hermannstr.',
+			location: {
+				type: 'location',
+				id: '900079221',
+				latitude: 52.467339,
+				longitude: 13.43143,
+			},
+			products: {
+				suburban: true,
+				subway: true,
+				tram: false,
+				bus: true,
+				ferry: false,
+				express: false,
+				regional: false,
+			},
+		},
 		currentTripPosition: {
 			type: 'location',
 			latitude: 52.534345,
@@ -2504,6 +2693,27 @@ module.exports = [
 				modified: '2021-06-12T07:43:36+02:00'
 			}
 		],
+		origin: null,
+		destination: {
+			type: 'stop',
+			id: '900000085104',
+			name: 'U Paracelsus-Bad',
+			location: {
+				type: 'location',
+				id: '900085104',
+				latitude: 52.574428,
+				longitude: 13.3473,
+			},
+			products: {
+				suburban: true,
+				subway: true,
+				tram: false,
+				bus: true,
+				ferry: false,
+				express: false,
+				regional: false,
+			},
+		},
 		currentTripPosition: {
 			type: 'location',
 			latitude: 52.493516,
@@ -2754,6 +2964,27 @@ module.exports = [
 				modified: '2021-06-12T07:43:36+02:00'
 			}
 		],
+		origin: null,
+		destination: {
+			type: 'stop',
+			id: '900000120004',
+			name: 'S+U Warschauer Str.',
+			location: {
+				type: 'location',
+				id: '900120004',
+				latitude: 52.505768,
+				longitude: 13.449157,
+			},
+			products: {
+				suburban: true,
+				subway: true,
+				tram: true,
+				bus: true,
+				ferry: false,
+				express: false,
+				regional: false,
+			},
+		},
 		currentTripPosition: {
 			type: 'location',
 			latitude: 52.516519,
@@ -3005,6 +3236,27 @@ module.exports = [
 				modified: '2021-06-12T07:43:36+02:00'
 			}
 		],
+		origin: null,
+		destination: {
+			type: 'stop',
+			id: '900000029101',
+			name: 'S Spandau',
+			location: {
+				type: 'location',
+				id: '900029101',
+				latitude: 52.534794,
+				longitude: 13.197477,
+			},
+			products: {
+				suburban: true,
+				subway: true,
+				tram: false,
+				bus: true,
+				ferry: false,
+				express: true,
+				regional: true,
+			},
+		},
 		currentTripPosition: {
 			type: 'location',
 			latitude: 52.498604,

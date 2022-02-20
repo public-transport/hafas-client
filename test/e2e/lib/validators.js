@@ -388,10 +388,21 @@ const createValidateArrivalOrDeparture = (type, cfg) => {
 		}
 
 		val.line(val, dep.line, name + '.line')
+
 		if (type === 'departure') {
 			const n = name + '.direction'
 			a.strictEqual(typeof dep.direction, 'string', n + ' must be a string')
 			a.ok(dep.direction, n + ' must not be empty')
+		}
+
+		if (dep.destination !== null) {
+				const lName = name + '.destination'
+				val.location(val, dep.destination, lName)
+		}
+
+		if (dep.origin !== null) {
+				const lName = name + '.origin'
+				val.location(val, dep.origin, lName)
 		}
 	}
 	return validateArrivalOrDeparture

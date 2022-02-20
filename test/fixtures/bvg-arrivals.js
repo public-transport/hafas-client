@@ -371,6 +371,8 @@ module.exports = [
 		plannedPlatform: null,
 		direction: null,
 		provenance: 'Clara-Jaschke-Str.',
+		origin: null,
+		destination: null,
 		line: {
 			type: 'line',
 			id: 'm5',
@@ -410,6 +412,8 @@ module.exports = [
 		plannedPlatform: null,
 		direction: null,
 		provenance: 'Ahrensfelde/Stadtgrenze',
+		origin: null,
+		destination: null,
 		line: {
 			type: 'line',
 			id: 'm8',
@@ -449,6 +453,8 @@ module.exports = [
 		plannedPlatform: null,
 		direction: null,
 		provenance: 'Clara-Jaschke-Str.',
+		origin: null,
+		destination: null,
 		line: {
 			type: 'line',
 			id: 'm8',
@@ -488,6 +494,8 @@ module.exports = [
 		plannedPlatform: null,
 		direction: null,
 		provenance: 'Riesaer Str.',
+		origin: null,
+		destination: null,
 		line: {
 			type: 'line',
 			id: '56',
@@ -527,6 +535,8 @@ module.exports = [
 		plannedPlatform: '2',
 		direction: null,
 		provenance: 'S Grünau',
+		origin: null,
+		destination: null,
 		line: {
 			type: 'line',
 			id: 's8',
@@ -567,6 +577,8 @@ module.exports = [
 		plannedPlatform: '1',
 		direction: null,
 		provenance: 'S Südkreuz',
+		origin: null,
+		destination: null,
 		line: {
 			type: 'line',
 			id: 's41',
@@ -608,6 +620,8 @@ module.exports = [
 		plannedPlatform: '2',
 		direction: null,
 		provenance: 'S Südkreuz',
+		origin: null,
+		destination: null,
 		line: {
 			type: 'line',
 			id: 's42',
@@ -649,6 +663,8 @@ module.exports = [
 		plannedPlatform: null,
 		direction: null,
 		provenance: 'S Hackescher Markt',
+		origin: null,
+		destination: null,
 		line: {
 			type: 'line',
 			id: '56',
@@ -688,6 +704,8 @@ module.exports = [
 		plannedPlatform: '2',
 		direction: null,
 		provenance: 'S Südkreuz',
+		origin: null,
+		destination: null,
 		line: {
 			type: 'line',
 			id: 's42',
@@ -729,6 +747,8 @@ module.exports = [
 		plannedPlatform: null,
 		direction: null,
 		provenance: 'Scharnweberstr./Weichselstr.',
+		origin: null,
+		destination: null,
 		line: {
 			type: 'line',
 			id: 'm5',
@@ -768,6 +788,8 @@ module.exports = [
 		plannedPlatform: '1',
 		direction: null,
 		provenance: 'S Südkreuz',
+		origin: null,
+		destination: null,
 		line: {
 			type: 'line',
 			id: 's41',
@@ -807,6 +829,8 @@ module.exports = [
 		plannedPlatform: '2',
 		direction: null,
 		provenance: 'S Südkreuz',
+		origin: null,
+		destination: null,
 		line: {
 			type: 'line',
 			id: 's42',
@@ -846,6 +870,8 @@ module.exports = [
 		plannedPlatform: null,
 		direction: null,
 		provenance: 'Clara-Jaschke-Str.',
+		origin: null,
+		destination: null,
 		line: {
 			type: 'line',
 			id: 'm5',
@@ -887,6 +913,8 @@ module.exports = [
 		prognosedPlatform: null,
 		direction: null,
 		provenance: 'S Birkenwerder',
+		origin: null,
+		destination: null,
 		line: {
 			type: 'line',
 			id: 's8',
@@ -937,6 +965,8 @@ module.exports = [
 		plannedPlatform: null,
 		direction: null,
 		provenance: 'Ahrensfelde/Stadtgrenze',
+		origin: null,
+		destination: null,
 		line: {
 			type: 'line',
 			id: 'm8',
@@ -976,6 +1006,8 @@ module.exports = [
 		plannedPlatform: null,
 		direction: null,
 		provenance: 'Clara-Jaschke-Str.',
+		origin: null,
+		destination: null,
 		line: {
 			type: 'line',
 			id: 'm8',
@@ -1015,6 +1047,8 @@ module.exports = [
 		plannedPlatform: null,
 		direction: null,
 		provenance: 'Riesaer Str.',
+		origin: null,
+		destination: null,
 		line: {
 			type: 'line',
 			id: '56',
@@ -1056,6 +1090,8 @@ module.exports = [
 		prognosedPlatform: null,
 		direction: null,
 		provenance: 'S Grünau',
+		origin: null,
+		destination: null,
 		line: {
 			type: 'line',
 			id: 's85',
@@ -1128,6 +1164,8 @@ module.exports = [
 		plannedPlatform: '1',
 		direction: null,
 		provenance: 'S Südkreuz',
+		origin: null,
+		destination: null,
 		line: {
 			type: 'line',
 			id: 's41',
@@ -1169,6 +1207,8 @@ module.exports = [
 		plannedPlatform: '2',
 		direction: null,
 		provenance: 'S Südkreuz',
+		origin: null,
+		destination: null,
 		line: {
 			type: 'line',
 			id: 's42',
@@ -1210,6 +1250,8 @@ module.exports = [
 		plannedPlatform: '2',
 		direction: null,
 		provenance: 'S Südkreuz',
+		origin: null,
+		destination: null,
 		line: {
 			type: 'line',
 			id: 's42',
@@ -1251,6 +1293,8 @@ module.exports = [
 		plannedPlatform: '2',
 		direction: null,
 		provenance: 'S Südkreuz',
+		origin: null,
+		destination: null,
 		line: {
 			type: 'line',
 			id: 's42',
@@ -1292,6 +1336,8 @@ module.exports = [
 		plannedPlatform: '2',
 		direction: null,
 		provenance: 'S Südkreuz',
+		origin: null,
+		destination: null,
 		line: {
 			type: 'line',
 			id: 's42',
@@ -1333,6 +1379,8 @@ module.exports = [
 		plannedPlatform: '2',
 		direction: null,
 		provenance: 'S Südkreuz',
+		origin: null,
+		destination: null,
 		line: {
 			type: 'line',
 			id: 's42',

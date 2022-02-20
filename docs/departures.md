@@ -78,6 +78,27 @@ The response may look like this:
 	tripId: '1|31431|28|86|17122017',
 	trip: 31431,
 	direction: 'S Spandau',
+	// Depending on the HAFAS endpoint, the destination may be present:
+	destination: {
+		type: 'stop',
+		id: '900000029101',
+		name: 'S Spandau',
+		location: {
+			type: 'location',
+			id: '900029101',
+			latitude: 52.534794,
+			longitude: 13.197477
+		},
+		products: {
+			suburban: true,
+			subway: true,
+			tram: false,
+			bus: true,
+			ferry: false,
+			express: true,
+			regional: true,
+		},
+	},
 	line: {
 		type: 'line',
 		id: '18299',

@@ -31,7 +31,17 @@ const createParseArrOrDep = (prefix) => {
 			direction: prefix === DEPARTURE && d.dirTxt && profile.parseStationName(ctx, d.dirTxt) || null,
 			provenance: prefix === ARRIVAL && d.dirTxt && profile.parseStationName(ctx, d.dirTxt) || null,
 			line: d.line || null,
-			remarks: []
+			remarks: [],
+			origin: null,
+			destination: null
+		}
+
+		if (prefix === DEPARTURE && Array.isArray(d.prodL) && d.prodL[0].tLocX) {
+			res.destination = profile.parseLocation(ctx, ctx.res.common.locL[d.prodL[0].tLocX])
+		}
+
+		if (prefix === ARRIVAL && Array.isArray(d.prodL) && d.prodL[0].fLocX) {
+			res.origin = profile.parseLocation(ctx, ctx.res.common.locL[d.prodL[0].fLocX])
 		}
 
 		if (d.pos) {
