@@ -731,13 +731,22 @@ const createClient = (profile, userAgent, opt = {}) => {
 	}
 
 	const serverInfo = async (opt = {}) => {
+		opt = {
+			versionInfo: true, // query HAFAS versions?
+			...opt
+		}
+
 		const {res, common} = await profile.request({profile, opt}, userAgent, {
 			meth: 'ServerInfo',
-			req: {}
+			req: {
+				getVersionInfo: opt.versionInfo,
+			},
 		})
 
 		const ctx = {profile, opt, common, res}
 		return {
+			// todo: what are .serverVersion & .clientVersion?
+			hciVersion: res.hciVersion || null,
 			timetableStart: res.fpB || null,
 			timetableEnd: res.fpE || null,
 			serverTime: res.sD && res.sT

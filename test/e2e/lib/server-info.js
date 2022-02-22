@@ -9,6 +9,9 @@ const testServerInfo = async (cfg) => {
 	const info = await fetchServerInfo()
 	t.ok(info, 'invalid info')
 
+	t.equal(typeof info.hciVersion, 'string', 'invalid info.hciVersion')
+	t.ok(info.hciVersion, 'invalid info.hciVersion')
+
 	t.equal(typeof info.timetableStart, 'string', 'invalid info.timetableStart')
 	t.ok(info.timetableStart, 'invalid info.timetableStart')
 	t.equal(typeof info.timetableEnd, 'string', 'invalid info.timetableEnd')
