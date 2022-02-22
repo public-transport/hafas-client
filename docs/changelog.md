@@ -1,5 +1,11 @@
 # Changelog
 
+## `5.23.0`
+
+- 57084262 expose `departure.destination` & `arrival.origin` ✅
+
+[🏷 `5.23.0`](https://github.com/public-transport/hafas-client/releases/tag/5.23.0), 2022-02-23
+
 ## `5.22.2`
 
 - f6b144f0 BVG: update API endpoint
