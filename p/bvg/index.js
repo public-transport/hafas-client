@@ -57,7 +57,7 @@ const parseLineWithMoreDetails = ({parsed}, p) => {
 }
 
 const parseLocation = ({parsed}, l) => {
-	if (parsed.type === 'stop' || parsed.type === 'station') {
+	if ((parsed.type === 'stop' || parsed.type === 'station') && parsed.id[0] === '9') {
 		parsed.name = shorten(parsed.name)
 		parsed.id = to12Digit(parsed.id)
 		if (!parsed.location.latitude || !parsed.location.longitude) {
