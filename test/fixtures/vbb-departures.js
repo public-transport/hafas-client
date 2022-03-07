@@ -6,6 +6,7 @@ module.exports = [
 		stop: {
 			type: 'stop',
 			id: '900000100004',
+			stationDHID: 'de:11000:900100004',
 			name: 'S+U Jannowitzbrücke',
 			location: {
 				type: 'location',
@@ -200,6 +201,7 @@ module.exports = [
 		destination: {
 			type: "stop",
 			id: "900000310004",
+			stationDHID: 'de:12067:900310004',
 			name: "S Erkner",
 			location: {
 				type: "location",
@@ -278,6 +280,7 @@ module.exports = [
 		stop: {
 			type: 'stop',
 			id: '900000100004',
+			stationDHID: 'de:11000:900100004',
 			name: 'S+U Jannowitzbrücke',
 			location: {
 				type: 'location',
@@ -521,6 +524,7 @@ module.exports = [
 		destination: {
 			type: "stop",
 			id: "900000005207",
+			stationDHID: 'de:11000:900005207',
 			name: "Philharmonie Süd",
 			location: {
 				type: "location",
@@ -549,6 +553,7 @@ module.exports = [
 		stop: {
 			type: 'stop',
 			id: '900000100004',
+			stationDHID: 'de:11000:900100004',
 			name: 'S+U Jannowitzbrücke',
 			location: {
 				type: 'location',
@@ -793,6 +798,7 @@ module.exports = [
 		destination: {
 			type: "stop",
 			id: "900000079221",
+			stationDHID: 'de:11000:900079221',
 			name: "S+U Hermannstr.",
 			location: {
 				type: "location",
@@ -821,6 +827,7 @@ module.exports = [
 		stop: {
 			type: 'stop',
 			id: '900000100004',
+			stationDHID: 'de:11000:900100004',
 			name: 'S+U Jannowitzbrücke',
 			location: {
 				type: 'location',
@@ -1065,6 +1072,7 @@ module.exports = [
 		destination: {
 			type: 'stop',
 			id: '900000096197',
+			stationDHID: 'de:11000:900096197',
 			name: 'S+U Wittenau [U8]',
 			location: {
 				type: 'location',
@@ -1093,6 +1101,7 @@ module.exports = [
 		stop: {
 			type: 'stop',
 			id: '900000100004',
+			stationDHID: 'de:11000:900100004',
 			name: 'S+U Jannowitzbrücke',
 			location: {
 				type: 'location',
@@ -1337,6 +1346,7 @@ module.exports = [
 		destination: {
 			type: 'stop',
 			id: '900000024102',
+			stationDHID: 'de:11000:900024102',
 			name: 'S Westkreuz',
 			location: {
 				type: 'location',
@@ -1365,6 +1375,7 @@ module.exports = [
 		stop: {
 			type: 'stop',
 			id: '900000100004',
+			stationDHID: 'de:11000:900100004',
 			name: 'S+U Jannowitzbrücke',
 			location: {
 				type: 'location',
@@ -1609,6 +1620,7 @@ module.exports = [
 		destination: {
 			type: 'stop',
 			id: '900000170004',
+			stationDHID: 'de:11000:900170004',
 			name: 'S Ahrensfelde',
 			location: {
 				type: 'location',
@@ -1637,6 +1649,7 @@ module.exports = [
 		stop: {
 			type: 'stop',
 			id: '900000100004',
+			stationDHID: 'de:11000:900100004',
 			name: 'S+U Jannowitzbrücke',
 			location: {
 				type: 'location',
@@ -1881,6 +1894,7 @@ module.exports = [
 		destination: {
 			type: 'stop',
 			id: '900000230999',
+			stationDHID: 'de:12054:900230999',
 			name: 'S Potsdam Hauptbahnhof',
 			location: {
 				type: 'location',
@@ -1909,6 +1923,7 @@ module.exports = [
 		stop: {
 			type: 'stop',
 			id: '900000100004',
+			stationDHID: 'de:11000:900100004',
 			name: 'S+U Jannowitzbrücke',
 			location: {
 				type: 'location',
@@ -2153,6 +2168,7 @@ module.exports = [
 		destination: {
 			type: 'stop',
 			id: '900000320004',
+			stationDHID: 'de:12064:900320004',
 			name: 'S Strausberg',
 			location: {
 				type: 'location',
@@ -2181,6 +2197,7 @@ module.exports = [
 		stop: {
 			type: 'stop',
 			id: '900000100004',
+			stationDHID: 'de:11000:900100004',
 			name: 'S+U Jannowitzbrücke',
 			location: {
 				type: 'location',
@@ -2425,6 +2442,7 @@ module.exports = [
 		destination: {
 			type: 'stop',
 			id: '900000079221',
+			stationDHID: 'de:11000:900079221',
 			name: 'S+U Hermannstr.',
 			location: {
 				type: 'location',
@@ -2453,6 +2471,7 @@ module.exports = [
 		stop: {
 			type: 'stop',
 			id: '900000100004',
+			stationDHID: 'de:11000:900100004',
 			name: 'S+U Jannowitzbrücke',
 			location: {
 				type: 'location',
@@ -2697,6 +2716,7 @@ module.exports = [
 		destination: {
 			type: 'stop',
 			id: '900000085104',
+			stationDHID: 'de:11000:900085104',
 			name: 'U Paracelsus-Bad',
 			location: {
 				type: 'location',
@@ -2725,6 +2745,7 @@ module.exports = [
 		stop: {
 			type: 'stop',
 			id: '900000100004',
+			stationDHID: 'de:11000:900100004',
 			name: 'S+U Jannowitzbrücke',
 			location: {
 				type: 'location',
@@ -2968,6 +2989,7 @@ module.exports = [
 		destination: {
 			type: 'stop',
 			id: '900000120004',
+			stationDHID: 'de:11000:900120004',
 			name: 'S+U Warschauer Str.',
 			location: {
 				type: 'location',
@@ -2996,6 +3018,7 @@ module.exports = [
 		stop: {
 			type: 'stop',
 			id: '900000100004',
+			stationDHID: 'de:11000:900100004',
 			name: 'S+U Jannowitzbrücke',
 			location: {
 				type: 'location',
@@ -3240,6 +3263,7 @@ module.exports = [
 		destination: {
 			type: 'stop',
 			id: '900000029101',
+			stationDHID: 'de:11000:900029101',
 			name: 'S Spandau',
 			location: {
 				type: 'location',

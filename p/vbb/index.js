@@ -7,6 +7,7 @@ const parseTicket = require('vbb-parse-ticket')
 const getStations = require('vbb-stations')
 const {parseHook} = require('../../lib/profile-hooks')
 
+const parseAndAddLocationDHID = require('./parse-loc-dhid')
 const _parseLine = require('../../parse/line')
 const _parseLocation = require('../../parse/location')
 const _parseJourney = require('../../parse/journey')
@@ -38,6 +39,8 @@ const parseLocation = ({parsed}, l) => {
 			if (s) Object.assign(parsed.location, s.location)
 		}
 	}
+
+	parseAndAddLocationDHID(parsed, l)
 	return parsed
 }
 

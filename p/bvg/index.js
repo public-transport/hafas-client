@@ -6,6 +6,8 @@ const parseLineName = require('vbb-parse-line')
 const getStations = require('vbb-stations')
 const {parseHook} = require('../../lib/profile-hooks')
 
+const parseAndAddLocationDHID = require('../vbb/parse-loc-dhid')
+
 const {
 	parseLine: _parseLine,
 	parseLocation: _parseLocation,
@@ -65,6 +67,8 @@ const parseLocation = ({parsed}, l) => {
 			if (s) Object.assign(parsed.location, s.location)
 		}
 	}
+
+	parseAndAddLocationDHID(parsed, l)
 	return parsed
 }
 
