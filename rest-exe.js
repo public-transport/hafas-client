@@ -13,6 +13,8 @@ const createRestClient = (profile, token, userAgent) => {
 	if (!isNonEmptyString(token)) throw new Error('missing token')
 	if (!isNonEmptyString(userAgent)) throw new Error('missing userAgent')
 
+	// todo: res.planRtTs -> realtimeDataUpdatedAt
+
 	const locations = async (query, opt = {}) => {
 		if (!isNonEmptyString(query)) {
 			throw new TypeError('query must be a non-empty string.')
