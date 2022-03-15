@@ -8,7 +8,7 @@ const parseTrip = (ctx, t) => {
 	const product = t.products && t.products[0] && t.products[0].Product
 	const direction = t.directions && t.directions[0] && t.directions[0].value
 
-	const stopovers = sortBy(t.stops, 'routeIdx')
+	const stopovers = sortBy(t.stops || [], 'routeIdx')
 	.map(st => profile.parseStopover(ctx, st))
 	const dep = stopovers[0]
 	const arr = last(stopovers)

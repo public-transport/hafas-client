@@ -223,9 +223,21 @@ const createRestClient = (profile, token, userAgent) => {
 	}
 
 	const trip = async (id, opt = {}) => {
+		opt = {
+			stopovers: true, // return stops/stations on the way?
+			polylines: false, // return leg shapes?
+			when: Date.now(),
+			...opt,
+		}
+
 		const {res} = await profile.request({profile, opt, token}, userAgent, 'journeyDetail', {
 			id,
-			// todo: date, poly, showPassingPoints, rtMode
+			date: profile.formatDate({profile, opt}, opt.when),
+
+			passlist: opt.stopovers ? 1 : 0,
+			showPassingPoints: 1, // return pass-by stopovers
+			poly: opt.polylines ? 1 : 0,
+			rtMode: 'FULL', // todo: make customisable?, see https://pastebin.com/qZ9WS3Cx
 		})
 		const ctx = {profile, opt, res}
 
