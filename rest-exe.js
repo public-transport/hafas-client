@@ -222,7 +222,9 @@ const createRestClient = (profile, token, userAgent) => {
 		return ctx.res.Trip.map(t => profile.parseJourney(ctx, t))
 	}
 
-	const trip = async (id, opt = {}) => {
+	// we mock the mgate.exe API here
+	// todo [breaking]: remove lineName parameter
+	const trip = async (id, lineName, opt = {}) => {
 		opt = {
 			stopovers: true, // return stops/stations on the way?
 			polylines: false, // return leg shapes?
@@ -233,6 +235,8 @@ const createRestClient = (profile, token, userAgent) => {
 		const {res} = await profile.request({profile, opt, token}, userAgent, 'journeyDetail', {
 			id,
 			date: profile.formatDate({profile, opt}, opt.when),
+			// date: '2022-03-14',
+			// time: profile.formatTime({profile, opt}, opt.when),
 
 			passlist: opt.stopovers ? 1 : 0,
 			showPassingPoints: 1, // return pass-by stopovers
