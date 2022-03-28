@@ -28,7 +28,7 @@ There are also libraries that use `hafas-client` and pass their own profile in:
 
 HAFAS endpoint | library
 ---------------|--------
-[Betriebsstellen & disturbances in the German rail network](https://strecken.info/) | [`db-netz-hafas`](https://github.com/derhuerst/db-netz-hafas)
+[Betriebsstellen & disturbances in the German rail network](http://strecken.info/) | [`db-netz-hafas`](https://github.com/derhuerst/db-netz-hafas)
 
 
 ## Installing
