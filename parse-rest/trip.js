@@ -10,6 +10,10 @@ const parseTrip = (ctx, t) => {
 
 	const stopovers = sortBy(t.stops || [], 'routeIdx')
 	.map(st => profile.parseStopover(ctx, st))
+	if (stopovers.length === 0) {
+		// todo: throw "server returned bogus data" error
+	}
+
 	const dep = stopovers[0]
 	const arr = last(stopovers)
 
