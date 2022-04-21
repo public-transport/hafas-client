@@ -7,11 +7,11 @@
 	"client": {
 		"type": "AND",
 		"id": "DB",
-		"v": 19040000,
+		"v": 21120000,
 		"name": "DB Navigator"
 	},
 	"endpoint": "https://reiseauskunft.bahn.de/bin/mgate.exe",
-	"ext": "DB.R20.12.b",
-	"ver": "1.46",
+	"ext": "DB.R21.12.a",
+	"ver": "1.34",
 	"defaultLanguage": "en"
 }
