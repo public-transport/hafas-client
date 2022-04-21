@@ -19,6 +19,7 @@ const {bike} = require('../../format/filters')
 const products = require('./products')
 const baseProfile = require('./base.json')
 const formatLoyaltyCard = require('./loyalty-cards').format
+const {ageGroup} = require('./ageGroup')
 
 const transformReqBody = (ctx, body) => {
 	const req = body.svcReqL[0] || {}
@@ -159,7 +160,7 @@ const transformJourneysQuery = ({opt}, query) => {
 		jnyCl: opt.firstClass === true ? 1 : 2,
 		// todo [breaking]: support multiple travelers
 		tvlrProf: [{
-			type: 'E',
+			type: opt.ageGroup || ageGroup.ADULT,
 			redtnCard: opt.loyaltyCard
 				? formatLoyaltyCard(opt.loyaltyCard)
 				: null
