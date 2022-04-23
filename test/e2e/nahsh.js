@@ -23,7 +23,8 @@ const testDeparturesInDirection = require('./lib/departures-in-direction')
 const testArrivals = require('./lib/arrivals')
 const testReachableFrom = require('./lib/reachable-from')
 
-const when = createWhen('Europe/Berlin', 'de-DE')
+const T_MOCK = 1641897000 * 1000 // 2022-01-11T11:30:00+01
+const when = createWhen(nahshProfile.timezone, nahshProfile.locale, T_MOCK)
 
 const cfg = {
 	when,

@@ -12,7 +12,8 @@ const testRefreshJourney = require('./lib/refresh-journey')
 const testArrivals = require('./lib/arrivals')
 const testReachableFrom = require('./lib/reachable-from')
 
-const when = createWhen(rmvProfile.timezone, rmvProfile.locale)
+const T_MOCK = 1641897000 * 1000 // 2022-01-11T11:30:00+01
+const when = createWhen(rmvProfile.timezone, rmvProfile.locale, T_MOCK)
 
 const cfg = {
 	when,

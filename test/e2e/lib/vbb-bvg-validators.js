@@ -12,7 +12,8 @@ const {
 	movement: createValidateMovement
 } = require('./validators')
 
-const when = createWhen('Europe/Berlin', 'de-DE')
+const T_MOCK = 1641897000 * 1000 // 2022-01-11T11:30:00+01
+const when = createWhen('Europe/Berlin', 'de-DE', T_MOCK)
 
 const cfg = {
 	when,

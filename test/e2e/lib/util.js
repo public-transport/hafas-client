@@ -1,7 +1,7 @@
 'use strict'
 
 const isRoughlyEqual = require('is-roughly-equal')
-const {AssertionError} = require('assert')
+const {ok, AssertionError} = require('assert')
 const {DateTime} = require('luxon')
 const a = require('assert')
 const {join} = require('path')
@@ -10,12 +10,12 @@ const hour = 60 * 60 * 1000
 const day = 24 * hour
 const week = 7 * day
 
-const T_MOCK = 1641897000 * 1000 // 2022-01-11T11:30:00+01
-
 // next Monday 10 am
-const createWhen = (timezone, locale) => {
+const createWhen = (timezone, locale, tMock) => {
+	ok(Number.isInteger(tMock), 'tMock must be an integer')
+
 	const t = process.env.VCR_MODE && !process.env.VCR_OFF
-		? T_MOCK
+		? tMock
 		: Date.now()
 	return DateTime.fromMillis(t, {
 		zone: timezone,

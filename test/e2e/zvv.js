@@ -17,7 +17,8 @@ const testDepartures = require('./lib/departures')
 const testDeparturesInDirection = require('./lib/departures-in-direction')
 const testArrivals = require('./lib/arrivals')
 
-const when = createWhen('Europe/Zurich', 'de-CH')
+const T_MOCK = 1641897000 * 1000 // 2022-01-11T11:30:00+01
+const when = createWhen(zvvProfile.timezone, zvvProfile.locale, T_MOCK)
 
 const validate = createValidate({
 	when,

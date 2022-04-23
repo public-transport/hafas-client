@@ -8,7 +8,8 @@ const blsProfile = require('../../p/bls')
 const createValidate = require('./lib/validate-fptf-with')
 const testJourneysStationToAddress = require('./lib/journeys-station-to-address')
 
-const when = createWhen(blsProfile.timezone, blsProfile.locale)
+const T_MOCK = 1641897000 * 1000 // 2022-01-11T11:30:00+01
+const when = createWhen(blsProfile.timezone, blsProfile.locale, T_MOCK)
 
 const cfg = {
 	when,

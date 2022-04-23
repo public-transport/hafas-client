@@ -20,7 +20,9 @@ const testRefreshJourney = require('./lib/refresh-journey')
 const journeysFailsWithNoProduct = require('./lib/journeys-fails-with-no-product')
 const testArrivals = require('./lib/arrivals')
 
-const when = createWhen('Europe/Berlin', 'de-DE')
+const T_MOCK = 1641897000 * 1000 // 2022-01-11T11:30:00+01
+const when = createWhen(invgProfile.timezone, invgProfile.locale, T_MOCK)
+
 const cfg = {when, products}
 
 const _validateJourneyLeg = createValidateJourneyLeg(cfg)

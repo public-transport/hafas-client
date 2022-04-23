@@ -22,7 +22,8 @@ const journeysFailsWithNoProduct = require('./lib/journeys-fails-with-no-product
 const testJourneysWithDetour = require('./lib/journeys-with-detour')
 const testDeparturesInDirection = require('./lib/departures-in-direction')
 
-const when = createWhen('Europe/Vienna', 'de-AT')
+const T_MOCK = 1641897000 * 1000 // 2022-01-11T11:30:00+01
+const when = createWhen(oebbProfile.timezone, oebbProfile.locale, T_MOCK)
 
 const cfg = {
 	when,

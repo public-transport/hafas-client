@@ -7,7 +7,9 @@ const createClient = require('../..')
 const kvbProfile = require('../../p/kvb')
 const createValidate = require('./lib/validate-fptf-with')
 
-const when = createWhen(kvbProfile.timezone, kvbProfile.locale)
+const T_MOCK = 1641897000 * 1000 // 2022-01-11T11:30:00+01
+const when = createWhen(kvbProfile.timezone, kvbProfile.locale, T_MOCK)
+
 const cfg = {
 	when,
 	stationCoordsOptional: false,

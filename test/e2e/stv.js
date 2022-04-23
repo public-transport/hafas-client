@@ -7,7 +7,9 @@ const createClient = require('../..')
 const stvProfile = require('../../p/stv')
 const createValidate = require('./lib/validate-fptf-with')
 
-const when = createWhen(stvProfile.timezone, stvProfile.locale)
+const T_MOCK = 1641897000 * 1000 // 2022-01-11T11:30:00+01
+const when = createWhen(stvProfile.timezone, stvProfile.locale, T_MOCK)
+
 const cfg = {
 	when,
 	stationCoordsOptional: false,
