@@ -19,7 +19,7 @@ const {bike} = require('../../format/filters')
 const products = require('./products')
 const baseProfile = require('./base.json')
 const formatLoyaltyCard = require('./loyalty-cards').format
-const {ageGroup} = require('./ageGroup')
+const {ageGroup, ageGroupFromAge} = require('./ageGroup')
 
 const transformReqBody = (ctx, body) => {
 	const req = body.svcReqL[0] || {}
@@ -156,11 +156,16 @@ const transformJourneysQuery = ({opt}, query) => {
 	const filters = query.jnyFltrL
 	if (opt.bike) filters.push(bike)
 
+	if (('age' in opt) && ('ageGroup' in opt))
+		throw new TypeError('opt.age and opt.ageGroup are mutually exclusive.')
+
+	const tvlrAgeGroup = ('age' in opt) ? ageGroupFromAge(opt.age) : opt.ageGroup
+
 	query.trfReq = {
 		jnyCl: opt.firstClass === true ? 1 : 2,
 		// todo [breaking]: support multiple travelers
 		tvlrProf: [{
-			type: opt.ageGroup || ageGroup.ADULT,
+			type: tvlrAgeGroup || ageGroup.ADULT,
 			redtnCard: opt.loyaltyCard
 				? formatLoyaltyCard(opt.loyaltyCard)
 				: null
