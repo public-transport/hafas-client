@@ -1,0 +1,40 @@
+{
+  "statusCode": 200,
+  "headers": {
+    "date": "Tue, 26 Apr 2022 10:10:45 GMT",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "2216",
+    "connection": "keep-alive",
+    "set-cookie": [
+      "AWSALB=tllhyQeXB/13eCdOqnz2i203Ks5XzVQxkKbgG3milPoyVrrpZ5vVUAgquf5COr3Uwn7IB4UVzop5ok+Yl2RCNfVoO40JQ2t/GkWwLa9MteX/Cajg3Sum2r0rlOAW; Expires=Tue, 03 May 2022 10:10:44 GMT; Path=/",
+      "AWSALBCORS=tllhyQeXB/13eCdOqnz2i203Ks5XzVQxkKbgG3milPoyVrrpZ5vVUAgquf5COr3Uwn7IB4UVzop5ok+Yl2RCNfVoO40JQ2t/GkWwLa9MteX/Cajg3Sum2r0rlOAW; Expires=Tue, 03 May 2022 10:10:44 GMT; Path=/; SameSite=None; Secure"
+    ],
+    "server": "Apache",
+    "strict-transport-security": "max-age=16070400; includeSubDomains"
+  },
+  "url": "https://reiseauskunft.bahn.de/bin/mgate.exe?checksum=0a65669ce5735644c70f345fc251694d",
+  "time": 226,
+  "request": {
+    "method": "POST",
+    "headers": {
+      "Content-Type": [
+        "application/json"
+      ],
+      "Accept-Encoding": [
+        "gzip, br, deflate"
+      ],
+      "Accept": [
+        "application/json"
+      ],
+      "user-agent": [
+        "public-e93725transport/e93725hafas-cle93725ient:test"
+      ],
+      "connection": [
+        "keep-alive"
+      ],
+      "Content-Length": [
+        "715"
+      ]
+    }
+  }
+}
