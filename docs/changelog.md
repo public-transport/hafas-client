@@ -1,5 +1,15 @@
 # Changelog
 
+## `5.24.0`
+
+- 2edcd49e `serverInfo()`: add `opt.versionInfo` 📝✅
+- f3c2ee6f/1236cf63 DB: support age-based tariffs – Thanks @roehrt!
+- 7e1f7ed4 BVG/VBB: parse stop DHIDs ✅
+- f8ca2d5d BVG: only expand `9*` stop IDs to 12 digits 🐛
+- 68ecd7c5 readme: fix `strecken.info` link 📝 – Thanks @fhueter!
+
+[🏷 `5.24.0`](https://github.com/public-transport/hafas-client/releases/tag/5.24.0), 2022-04-26
+
 ## `5.23.0`
 
 - 57084262 expose `departure.destination` & `arrival.origin` ✅
