@@ -123,7 +123,7 @@ tap.test('journeys – fails with no product', (t) => {
 })
 
 // BerlKönig for public use is suspended during COVID-19.
-tap.test('journeys – BerlKönig', async (t) => {
+tap.skip('journeys – BerlKönig', async (t) => {
 	const when = DateTime.fromMillis(Date.now(), {
 		zone: 'Europe/Berlin',
 		locale: 'de-De',
