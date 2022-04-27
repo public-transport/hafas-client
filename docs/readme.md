@@ -41,11 +41,6 @@ import {dbProfile} from 'hafas-client/p/db.js'
 
 // create a client with Deutsche Bahn profile that will retry on HAFAS errors
 const client = createClient(withRetrying(dbProfile), 'my-awesome-program')
-
-// Berlin Jungfernheide to München Hbf
-client.journeys('8011167', '8000261', {results: 1})
-.then(console.log)
-.catch(console.error)
 ```
 
 You can pass custom options into `withRetrying`. They will be passed into [`retry`](https://github.com/tim-kos/node-retry#tutorial).
