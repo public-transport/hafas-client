@@ -2,16 +2,11 @@
 
 const tap = require('tap')
 
+const {createWhen} = require('./lib/util')
 const createClient = require('../..')
 const vbbProfile = require('../../p/vbb')
 const products = require('../../p/vbb/products')
-const {
-	cfg,
-	validateStation,
-	validateJourneyLeg,
-	validateDeparture,
-	validateMovement
-} = require('./lib/vbb-bvg-validators')
+const createVbbValidators = require('./lib/vbb-bvg-validators')
 const createValidate = require('./lib/validate-fptf-with')
 const testJourneysStationToStation = require('./lib/journeys-station-to-station')
 const testJourneysStationToAddress = require('./lib/journeys-station-to-address')
@@ -26,7 +21,18 @@ const testArrivals = require('./lib/arrivals')
 const testJourneysWithDetour = require('./lib/journeys-with-detour')
 const testReachableFrom = require('./lib/reachable-from')
 
-const when = cfg.when
+const T_MOCK = 1641897000 * 1000 // 2022-01-11T11:30:00+01
+const when = createWhen(vbbProfile.timezone, vbbProfile.locale, T_MOCK)
+
+const {
+	cfg,
+	validateStation,
+	validateJourneyLeg,
+	validateDeparture,
+	validateMovement
+} = createVbbValidators({
+	when,
+})
 
 const validate = createValidate(cfg, {
 	station: validateStation,
