@@ -12,11 +12,6 @@ module.exports = [
 			public: true,
 			mode: 'train',
 			product: 'tram',
-			symbol: 'M',
-			nr: 4,
-			metro: true,
-			express: false,
-			night: false
 		},
 		location: {
 			type: 'location',
@@ -388,11 +383,6 @@ module.exports = [
 			public: true,
 			mode: 'train',
 			product: 'suburban',
-			symbol: 'S',
-			nr: 9,
-			metro: false,
-			express: false,
-			night: false
 		},
 		location: {
 			type: 'location',
@@ -764,11 +754,6 @@ module.exports = [
 			public: true,
 			mode: 'train',
 			product: 'subway',
-			symbol: 'U',
-			nr: 8,
-			metro: false,
-			express: false,
-			night: false
 		},
 		location: {
 			type: 'location',
@@ -1140,11 +1125,6 @@ module.exports = [
 			public: true,
 			mode: 'train',
 			product: 'subway',
-			symbol: 'U',
-			nr: 5,
-			metro: false,
-			express: false,
-			night: false
 		},
 		location: {
 			type: 'location',
@@ -1516,11 +1496,6 @@ module.exports = [
 			public: true,
 			mode: 'train',
 			product: 'subway',
-			symbol: 'U',
-			nr: 2,
-			metro: false,
-			express: false,
-			night: false
 		},
 		location: {
 			type: 'location',
@@ -1892,11 +1867,6 @@ module.exports = [
 			public: true,
 			mode: 'train',
 			product: 'tram',
-			symbol: 'M',
-			nr: 6,
-			metro: true,
-			express: false,
-			night: false
 		},
 		location: {
 			type: 'location',
@@ -2268,11 +2238,6 @@ module.exports = [
 			public: true,
 			mode: 'train',
 			product: 'tram',
-			symbol: 'M',
-			nr: 6,
-			metro: true,
-			express: false,
-			night: false
 		},
 		location: {
 			type: 'location',
@@ -2644,11 +2609,6 @@ module.exports = [
 			public: true,
 			mode: 'train',
 			product: 'tram',
-			symbol: 'M',
-			nr: 5,
-			metro: true,
-			express: false,
-			night: false
 		},
 		location: {
 			type: 'location',
