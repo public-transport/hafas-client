@@ -373,13 +373,13 @@ tap.test('nearby', async (t) => {
 	validate(t, nearby, 'locations', 'nearby')
 
 	t.equal(nearby[0].id, berlinerStr)
-	t.equal(nearby[0].name, 'U Berliner Str.')
+	t.equal(nearby[0].name, 'U Berliner Str. (Berlin)')
 	t.ok(nearby[0].distance > 0)
 	t.ok(nearby[0].distance < 100)
 
 	const res = nearby.find(s => s.id === landhausstr)
 	t.ok(res, `Landhausstr. ${landhausstr} is not among the nearby stops`)
-	t.equal(nearby[1].name, 'Landhausstr.')
+	t.equal(nearby[1].name, 'Landhausstr. (Berlin)')
 	t.ok(nearby[1].distance > 100)
 	t.ok(nearby[1].distance < 200)
 

@@ -1,6 +1,5 @@
 'use strict'
 
-const shorten = require('vbb-short-station-name')
 const {parseHook} = require('../../lib/profile-hooks')
 
 const parseAndAddLocationDHID = require('../vbb/parse-loc-dhid')
@@ -41,10 +40,6 @@ const journeyLegOccupancyCodes = new Map([
 ])
 
 const parseLocation = ({parsed}, l) => {
-	if ((parsed.type === 'stop' || parsed.type === 'station') && parsed.id[0] === '9') {
-		parsed.name = shorten(parsed.name)
-	}
-
 	parseAndAddLocationDHID(parsed, l)
 	return parsed
 }
@@ -146,7 +141,6 @@ const bvgProfile = {
 	products,
 
 	parseLocation: parseHook(_parseLocation, parseLocation),
-	parseStationName: (ctx, name) => shorten(name),
 	parseArrival: parseHook(
 		parseHook(_parseArrival, parseArrivalRenameRingbahn),
 		parseArrDepWithOccupancy,
