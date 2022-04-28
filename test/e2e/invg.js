@@ -18,6 +18,7 @@ const testJourneysStationToPoi = require('./lib/journeys-station-to-poi')
 const testEarlierLaterJourneys = require('./lib/earlier-later-journeys')
 const testRefreshJourney = require('./lib/refresh-journey')
 const journeysFailsWithNoProduct = require('./lib/journeys-fails-with-no-product')
+const testDepartures = require('./lib/departures')
 const testArrivals = require('./lib/arrivals')
 
 const T_MOCK = 1641897000 * 1000 // 2022-01-11T11:30:00+01
@@ -184,16 +185,12 @@ tap.test('departures at Ingolstadt Hbf', async (t) => {
 		duration: 10, when
 	})
 
-	validate(t, deps, 'departures', 'departures')
-	t.ok(deps.length > 0, 'must be >0 departures')
-	// todo: move into deps validator
-	t.same(deps, deps.sort((a, b) => t.when > b.when))
-
-	for (let i = 0; i < deps.length; i++) {
-		const dep = deps[i]
-		t.ok(ids.includes(dep.stop.id), `deps[${i}].stop.id ("${dep.stop.id}") is invalid`)
-	}
-
+	await testDepartures({
+		test: t,
+		departures: deps,
+		validate,
+		ids,
+	})
 	t.end()
 })
 
@@ -224,16 +221,12 @@ tap.test('arrivals at Ingolstadt Hbf', async (t) => {
 		duration: 10, when
 	})
 
-	validate(t, arrs, 'arrivals', 'arrivals')
-	t.ok(arrs.length > 0, 'must be >0 arrivals')
-	// todo: move into arrs validator
-	t.same(arrs, arrs.sort((a, b) => t.when > b.when))
-
-	for (let i = 0; i < arrs.length; i++) {
-		const arr = arrs[i]
-		t.ok(ids.includes(arr.stop.id), `arrs[${i}].stop.id ("${arr.stop.id}") is invalid`)
-	}
-
+	await testArrivals({
+		test: t,
+		arrivals: arrs,
+		validate,
+		ids,
+	})
 	t.end()
 })
 

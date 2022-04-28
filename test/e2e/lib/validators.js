@@ -491,19 +491,21 @@ const createValidateDeparture = (cfg) => {
 	}
 }
 
-const validateArrivals = (val, deps, name = 'arrivals') => {
-	a.ok(Array.isArray(deps), name + ' must be an array')
-	a.ok(deps.length > 0, name + ' must not be empty')
-	for (let i = 0; i < deps.length; i++) {
-		val.arrival(val, deps[i], name + `[${i}]`)
+const _createValidateStationBoardResults = (cfg, validatorsKey) => {
+	const validateStationBoardResults = (val, arrsOrDeps, name) => {
+		a.ok(Array.isArray(arrsOrDeps), name + ' must be an array')
+		a.ok(arrsOrDeps.length > 0, name + ' must not be empty')
+		for (let i = 0; i < arrsOrDeps.length; i++) {
+			val[validatorsKey](val, arrsOrDeps[i], name + `[${i}]`)
+		}
 	}
+	return validateStationBoardResults
 }
-const validateDepartures = (val, deps, name = 'departures') => {
-	a.ok(Array.isArray(deps), name + ' must be an array')
-	a.ok(deps.length > 0, name + ' must not be empty')
-	for (let i = 0; i < deps.length; i++) {
-		val.departure(val, deps[i], name + `[${i}]`)
-	}
+const createValidateArrivals = (cfg) => {
+	return _createValidateStationBoardResults(cfg, 'arrival')
+}
+const createValidateDepartures = (cfg) => {
+	return _createValidateStationBoardResults(cfg, 'departure')
 }
 
 const createValidateMovement = (cfg) => {
@@ -582,8 +584,8 @@ module.exports = {
 	trip: () => validateTrip,
 	arrival: createValidateArrival,
 	departure: createValidateDeparture,
-	departures: () => validateDepartures,
-	arrivals: () => validateArrivals,
+	arrivals: createValidateArrivals,
+	departures: createValidateDepartures,
 	movement: createValidateMovement,
 	movements: () => validateMovements
 }

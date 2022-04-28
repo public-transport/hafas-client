@@ -22,7 +22,7 @@ const testArrivals = async (cfg) => {
 	}
 
 	// todo: move into arrivals validator
-	t.same(arrs, arrs.sort((a, b) => t.when > b.when))
+	t.same(arrs, arrs.sort((a, b) => t.when > b.when), 'arrivals must be sorted by .when')
 }
 
 module.exports = testArrivals

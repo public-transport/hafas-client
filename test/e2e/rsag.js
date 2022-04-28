@@ -85,9 +85,15 @@ tap.test('arrivals at Platz der Jugend', async (t) => {
 		duration: 30, when
 	})
 
-	validate(t, arrivals, 'arrivals', 'arrivals')
-	t.ok(arrivals.length > 0, 'must be >0 arrivals')
-	t.same(arrivals, arrivals.sort((a, b) => t.when > b.when))
+	await testArrivals({
+		test: t,
+		arrivals,
+		validate,
+		ids: [
+			sternwarte,
+			'708539', // Rostock Sternwarte
+		],
+	})
 	t.end()
 })
 

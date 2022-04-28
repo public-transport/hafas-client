@@ -16,7 +16,6 @@ const testJourneysStationToStation = require('./lib/journeys-station-to-station'
 const testJourneysStationToAddress = require('./lib/journeys-station-to-address')
 const testJourneysStationToPoi = require('./lib/journeys-station-to-poi')
 const testEarlierLaterJourneys = require('./lib/earlier-later-journeys')
-const testRefreshJourney = require('./lib/refresh-journey')
 const journeysFailsWithNoProduct = require('./lib/journeys-fails-with-no-product')
 const testJourneysWithDetour = require('./lib/journeys-with-detour')
 const testDepartures = require('./lib/departures')
@@ -177,21 +176,12 @@ tap.test('departures', async (t) => {
 		duration: 5, when
 	})
 
-	validate(t, departures, 'departures', 'departures')
-	t.ok(departures.length > 0, 'must be >0 departures')
-	for (let i = 0; i < departures.length; i++) {
-		let stop = departures[i].stop
-		let name = `departures[${i}].stop`
-		if (stop.station) {
-			stop = stop.station
-			name += '.station'
-		}
-
-		t.equal(stop.id, saarbrueckenUhlandstr, name + '.id is invalid')
-	}
-
-	// todo: move into deps validator
-	t.same(departures, departures.sort((a, b) => t.when > b.when))
+	await testDepartures({
+		test: t,
+		departures,
+		validate,
+		id: saarbrueckenUhlandstr,
+	})
 	t.end()
 })
 

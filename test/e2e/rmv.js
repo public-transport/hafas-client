@@ -8,7 +8,6 @@ const rmvProfile = require('../../p/rmv')
 const products = require('../../p/rmv/products')
 const createValidate = require('./lib/validate-fptf-with')
 const testJourneysStationToStation = require('./lib/journeys-station-to-station')
-const testRefreshJourney = require('./lib/refresh-journey')
 const testArrivals = require('./lib/arrivals')
 const testReachableFrom = require('./lib/reachable-from')
 
@@ -71,9 +70,12 @@ tap.test('arrivals at Wiesbaden Hbf', async (t) => {
 		duration: 10, when
 	})
 
-	validate(t, arrivals, 'arrivals', 'arrivals')
-	t.ok(arrivals.length > 0, 'must be >0 arrivals')
-	t.same(arrivals, arrivals.sort((a, b) => t.when > b.when))
+	await testArrivals({
+		test: t,
+		arrivals,
+		validate,
+		id: wiesbadenHbf,
+	})
 	t.end()
 })
 

@@ -20,6 +20,7 @@ const testEarlierLaterJourneys = require('./lib/earlier-later-journeys')
 const testRefreshJourney = require('./lib/refresh-journey')
 const journeysFailsWithNoProduct = require('./lib/journeys-fails-with-no-product')
 const testJourneysWithDetour = require('./lib/journeys-with-detour')
+const testDepartures = require('./lib/departures')
 const testDeparturesInDirection = require('./lib/departures-in-direction')
 
 const T_MOCK = 1641897000 * 1000 // 2022-01-11T11:30:00+01
@@ -254,16 +255,12 @@ tap.test('departures at Wien Leibenfrostgasse', async (t) => {
 		duration: 15, when,
 	})
 
-	validate(t, deps, 'departures', 'departures')
-	t.ok(deps.length > 0, 'must be >0 departures')
-	// todo: move into deps validator
-	t.same(deps, deps.sort((a, b) => t.when > b.when))
-
-	for (let i = 0; i < deps.length; i++) {
-		const dep = deps[i]
-		t.ok(ids.includes(dep.stop.id), `deps[${i}].stop.id ("${dep.stop.id}") is invalid`)
-	}
-
+	await testDepartures({
+		test: t,
+		departures: deps,
+		validate,
+		ids,
+	})
 	t.end()
 })
 
