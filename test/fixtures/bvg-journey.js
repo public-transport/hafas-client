@@ -13,7 +13,7 @@ module.exports = {
 		},
 		destination: {
 			type: 'stop',
-			id: '900000100007',
+			id: '900100007',
 			name: 'S Oranienburger Str.',
 			location: {
 				type: 'location',
@@ -43,7 +43,7 @@ module.exports = {
 	}, {
 		origin: {
 			type: 'stop',
-			id: '900000100007',
+			id: '900100007',
 			name: 'S Oranienburger Str.',
 			location: {
 				type: 'location',
@@ -63,7 +63,7 @@ module.exports = {
 		},
 		destination: {
 			type: 'stop',
-			id: '900000058101',
+			id: '900058101',
 			name: 'S Südkreuz',
 			location: {
 				type: 'location',
@@ -97,7 +97,7 @@ module.exports = {
 					type: 'Feature',
 					properties: {
 						type: 'stop',
-						id: '900000100007',
+						id: '900100007',
 						name: 'S Oranienburger Str.',
 						location: {
 							type: 'location',
@@ -193,7 +193,7 @@ module.exports = {
 					type: 'Feature',
 					properties: {
 						type: 'stop',
-						id: '900000100001',
+						id: '900100001',
 						name: 'S+U Friedrichstr.',
 						location: {
 							type: 'location',
@@ -300,7 +300,7 @@ module.exports = {
 					type: 'Feature',
 					properties: {
 						type: 'stop',
-						id: '900000100025',
+						id: '900100025',
 						name: 'S+U Brandenburger Tor',
 						location: {
 							type: 'location',
@@ -407,7 +407,7 @@ module.exports = {
 					type: 'Feature',
 					properties: {
 						type: 'stop',
-						id: '900000100020',
+						id: '900100020',
 						name: 'S+U Potsdamer Platz',
 						location: {
 							type: 'location',
@@ -448,7 +448,7 @@ module.exports = {
 					type: 'Feature',
 					properties: {
 						type: 'stop',
-						id: '900000012101',
+						id: '900012101',
 						name: 'S Anhalter Bahnhof',
 						location: {
 							type: 'location',
@@ -577,7 +577,7 @@ module.exports = {
 					type: 'Feature',
 					properties: {
 						type: 'stop',
-						id: '900000058103',
+						id: '900058103',
 						name: 'S+U Yorckstr. S2 S25 S26 U7',
 						location: {
 							type: 'location',
@@ -662,7 +662,7 @@ module.exports = {
 					type: 'Feature',
 					properties: {
 						type: 'stop',
-						id: '900000058101',
+						id: '900058101',
 						name: 'S Südkreuz',
 						location: {
 							type: 'location',
@@ -715,7 +715,7 @@ module.exports = {
 		stopovers: [{
 			stop: {
 				type: 'stop',
-				id: '900000100007',
+				id: '900100007',
 				name: 'S Oranienburger Str.',
 				location: {
 					type: 'location',
@@ -749,7 +749,7 @@ module.exports = {
 		{
 			stop: {
 				type: 'stop',
-				id: '900000100001',
+				id: '900100001',
 				name: 'S+U Friedrichstr.',
 				location: {
 					type: 'location',
@@ -783,7 +783,7 @@ module.exports = {
 		{
 			stop: {
 				type: 'stop',
-				id: '900000100025',
+				id: '900100025',
 				name: 'S+U Brandenburger Tor',
 				location: {
 					type: 'location',
@@ -817,7 +817,7 @@ module.exports = {
 		{
 			stop: {
 				type: 'stop',
-				id: '900000100020',
+				id: '900100020',
 				name: 'S+U Potsdamer Platz',
 				location: {
 					type: 'location',
@@ -851,7 +851,7 @@ module.exports = {
 		{
 			stop: {
 				type: 'stop',
-				id: '900000012101',
+				id: '900012101',
 				name: 'S Anhalter Bahnhof',
 				location: {
 					type: 'location',
@@ -885,7 +885,7 @@ module.exports = {
 		{
 			stop: {
 				type: 'stop',
-				id: '900000058103',
+				id: '900058103',
 				name: 'S+U Yorckstr. S2 S25 S26 U7',
 				location: {
 					type: 'location',
@@ -919,7 +919,7 @@ module.exports = {
 		{
 			stop: {
 				type: 'stop',
-				id: '900000058101',
+				id: '900058101',
 				name: 'S Südkreuz',
 				location: {
 					type: 'location',
