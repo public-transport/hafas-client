@@ -4,7 +4,7 @@ const sLandsbergerAllee = {
 	type: 'stop',
 	id: '900110004',
 	stationDHID: 'de:11000:900110004',
-	name: 'S Landsberger Allee',
+	name: 'S Landsberger Allee (Berlin)',
 	location: {
 		type: 'location',
 		id: '900110004',
@@ -302,7 +302,7 @@ module.exports = [
 		plannedPlatform: null,
 		prognosisType: 'prognosed',
 		direction: null,
-		provenance: 'Clara-Jaschke-Str.',
+		provenance: 'Clara-Jaschke-Str. (Berlin)',
 		origin: null,
 		destination: null,
 		line: {
@@ -339,7 +339,7 @@ module.exports = [
 		plannedPlatform: null,
 		prognosisType: 'calculated',
 		direction: null,
-		provenance: 'Ahrensfelde/Stadtgrenze',
+		provenance: 'Ahrensfelde/Stadtgrenze (Berlin)',
 		origin: null,
 		destination: null,
 		line: {
@@ -376,7 +376,7 @@ module.exports = [
 		plannedPlatform: null,
 		prognosisType: 'calculated',
 		direction: null,
-		provenance: 'Clara-Jaschke-Str.',
+		provenance: 'Clara-Jaschke-Str. (Berlin)',
 		origin: null,
 		destination: null,
 		line: {
@@ -413,7 +413,7 @@ module.exports = [
 		plannedPlatform: null,
 		prognosisType: 'prognosed',
 		direction: null,
-		provenance: 'Riesaer Str.',
+		provenance: 'Riesaer Str. (Berlin)',
 		origin: null,
 		destination: null,
 		line: {
@@ -450,7 +450,7 @@ module.exports = [
 		plannedPlatform: '2',
 		prognosisType: 'prognosed',
 		direction: null,
-		provenance: 'S Grünau',
+		provenance: 'S Grünau (Berlin)',
 		origin: null,
 		destination: null,
 		line: {
@@ -488,7 +488,7 @@ module.exports = [
 		plannedPlatform: '1',
 		prognosisType: 'prognosed',
 		direction: null,
-		provenance: 'S Südkreuz',
+		provenance: 'S Südkreuz Bhf (Berlin)',
 		origin: null,
 		destination: null,
 		line: {
@@ -527,7 +527,7 @@ module.exports = [
 		plannedPlatform: '2',
 		prognosisType: null,
 		direction: null,
-		provenance: 'S Südkreuz',
+		provenance: 'S Südkreuz Bhf (Berlin)',
 		origin: null,
 		destination: null,
 		line: {
@@ -566,7 +566,7 @@ module.exports = [
 		plannedPlatform: null,
 		prognosisType: 'prognosed',
 		direction: null,
-		provenance: 'S Hackescher Markt',
+		provenance: 'S Hackescher Markt (Berlin)',
 		origin: null,
 		destination: null,
 		line: {
@@ -603,7 +603,7 @@ module.exports = [
 		plannedPlatform: '2',
 		prognosisType: 'prognosed',
 		direction: null,
-		provenance: 'S Südkreuz',
+		provenance: 'S Südkreuz Bhf (Berlin)',
 		origin: null,
 		destination: null,
 		line: {
@@ -642,7 +642,7 @@ module.exports = [
 		plannedPlatform: null,
 		prognosisType: 'calculated',
 		direction: null,
-		provenance: 'Scharnweberstr./Weichselstr.',
+		provenance: 'Scharnweberstr./Weichselstr. (Berlin)',
 		origin: null,
 		destination: null,
 		line: {
@@ -679,7 +679,7 @@ module.exports = [
 		plannedPlatform: '1',
 		prognosisType: 'prognosed',
 		direction: null,
-		provenance: 'S Südkreuz',
+		provenance: 'S Südkreuz Bhf (Berlin)',
 		origin: null,
 		destination: null,
 		line: {
@@ -716,7 +716,7 @@ module.exports = [
 		plannedPlatform: '2',
 		prognosisType: null,
 		direction: null,
-		provenance: 'S Südkreuz',
+		provenance: 'S Südkreuz Bhf (Berlin)',
 		origin: null,
 		destination: null,
 		line: {
@@ -753,7 +753,7 @@ module.exports = [
 		plannedPlatform: null,
 		prognosisType: 'calculated',
 		direction: null,
-		provenance: 'Clara-Jaschke-Str.',
+		provenance: 'Clara-Jaschke-Str. (Berlin)',
 		origin: null,
 		destination: null,
 		line: {
@@ -792,7 +792,7 @@ module.exports = [
 		prognosedPlatform: null,
 		prognosisType: null,
 		direction: null,
-		provenance: 'S Birkenwerder',
+		provenance: 'S Birkenwerder Bhf',
 		origin: null,
 		destination: null,
 		line: {
@@ -840,7 +840,7 @@ module.exports = [
 		plannedPlatform: null,
 		prognosisType: 'calculated',
 		direction: null,
-		provenance: 'Ahrensfelde/Stadtgrenze',
+		provenance: 'Ahrensfelde/Stadtgrenze (Berlin)',
 		origin: null,
 		destination: null,
 		line: {
@@ -877,7 +877,7 @@ module.exports = [
 		plannedPlatform: null,
 		prognosisType: 'calculated',
 		direction: null,
-		provenance: 'Clara-Jaschke-Str.',
+		provenance: 'Clara-Jaschke-Str. (Berlin)',
 		origin: null,
 		destination: null,
 		line: {
@@ -914,7 +914,7 @@ module.exports = [
 		plannedPlatform: null,
 		prognosisType: 'calculated',
 		direction: null,
-		provenance: 'Riesaer Str.',
+		provenance: 'Riesaer Str. (Berlin)',
 		origin: null,
 		destination: null,
 		line: {
@@ -953,7 +953,7 @@ module.exports = [
 		prognosedPlatform: null,
 		prognosisType: null,
 		direction: null,
-		provenance: 'S Grünau',
+		provenance: 'S Grünau (Berlin)',
 		origin: null,
 		destination: null,
 		line: {
@@ -1023,7 +1023,7 @@ module.exports = [
 		plannedPlatform: '1',
 		prognosisType: 'prognosed',
 		direction: null,
-		provenance: 'S Südkreuz',
+		provenance: 'S Südkreuz Bhf (Berlin)',
 		origin: null,
 		destination: null,
 		line: {
@@ -1062,7 +1062,7 @@ module.exports = [
 		plannedPlatform: '2',
 		prognosisType: null,
 		direction: null,
-		provenance: 'S Südkreuz',
+		provenance: 'S Südkreuz Bhf (Berlin)',
 		origin: null,
 		destination: null,
 		line: {
@@ -1101,7 +1101,7 @@ module.exports = [
 		plannedPlatform: '2',
 		prognosisType: null,
 		direction: null,
-		provenance: 'S Südkreuz',
+		provenance: 'S Südkreuz Bhf (Berlin)',
 		origin: null,
 		destination: null,
 		line: {
@@ -1140,7 +1140,7 @@ module.exports = [
 		plannedPlatform: '2',
 		prognosisType: null,
 		direction: null,
-		provenance: 'S Südkreuz',
+		provenance: 'S Südkreuz Bhf (Berlin)',
 		origin: null,
 		destination: null,
 		line: {
@@ -1179,7 +1179,7 @@ module.exports = [
 		plannedPlatform: '2',
 		prognosisType: null,
 		direction: null,
-		provenance: 'S Südkreuz',
+		provenance: 'S Südkreuz Bhf (Berlin)',
 		origin: null,
 		destination: null,
 		line: {
@@ -1218,7 +1218,7 @@ module.exports = [
 		plannedPlatform: '2',
 		prognosisType: null,
 		direction: null,
-		provenance: 'S Südkreuz',
+		provenance: 'S Südkreuz Bhf (Berlin)',
 		origin: null,
 		destination: null,
 		line: {
