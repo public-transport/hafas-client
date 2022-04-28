@@ -32,10 +32,11 @@ const testRefreshJourney = async (cfg) => {
 	t.equal(typeof model.refreshToken, 'string')
 	t.ok(model.refreshToken)
 
-	const refreshed = await refreshJourney(model.refreshToken, {
+	const refreshedRes = await refreshJourney(model.refreshToken, {
 		stopovers: false
 	})
-	validate(t, refreshed, 'refreshJourneyResult', 'refreshed')
+	validate(t, refreshedRes, 'refreshJourneyResult', 'refreshedRes')
+	const refreshed = refreshedRes.journey
 
 	t.same(simplify(refreshed), simplify(model))
 }
