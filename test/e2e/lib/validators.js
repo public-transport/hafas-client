@@ -433,9 +433,11 @@ const validateJourneysResult = (val, res, name = 'journeysResult') => {
 }
 
 const validateRefreshJourneyResult = (val, res, name = 'refreshJourneyResult') => {
-	val.journey(val, res, name + '.journey')
+	a.ok(isObj(res), name + ' must be an object')
 
 	val.realtimeDataUpdatedAt(val, res.realtimeDataUpdatedAt, name + '.realtimeDataUpdatedAt')
+
+	val.journey(val, res.journey, name + '.journey')
 }
 
 const validateTrip = (val, trip, name = 'trip') => {
