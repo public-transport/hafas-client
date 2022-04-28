@@ -30,8 +30,10 @@ const client = createClient(vbbProfile)
 const {journeys} = await client.journeys('900000003201', '900000100008', {results: 1})
 
 // later, fetch up-to-date info on the journey
-const journey = await client.refreshJourney(journeys[0].refreshToken, {stopovers: true, remarks: true})
-const {realtimeDataUpdatedAt} = journey
+const {
+	journey,
+	realtimeDataUpdatedAt,
+} = await client.refreshJourney(journeys[0].refreshToken, {stopovers: true, remarks: true})
 ```
 
 `journey` is a *single* [*Friendly Public Transport Format* v2 draft](https://github.com/public-transport/friendly-public-transport-format/blob/3bd36faa721e85d9f5ca58fb0f38cdbedb87bbca/spec/readme.md) `journey`, in the same format as returned by [`journeys()`](journeys.md).
