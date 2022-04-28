@@ -1,7 +1,6 @@
 'use strict'
 
 const shorten = require('vbb-short-station-name')
-const {to12Digit, to9Digit} = require('vbb-translate-ids')
 const getStations = require('vbb-stations')
 const {parseHook} = require('../../lib/profile-hooks')
 
@@ -13,7 +12,6 @@ const {
 	parseDeparture: _parseDeparture,
 	parseStopover: _parseStopover,
 	parseJourneyLeg: _parseJourneyLeg,
-	formatStation: _formatStation,
 } = require('../../lib/default-profile')
 
 const baseProfile = require('./base.json')
@@ -46,7 +44,6 @@ const journeyLegOccupancyCodes = new Map([
 const parseLocation = ({parsed}, l) => {
 	if ((parsed.type === 'stop' || parsed.type === 'station') && parsed.id[0] === '9') {
 		parsed.name = shorten(parsed.name)
-		parsed.id = to12Digit(parsed.id)
 		if (!parsed.location.latitude || !parsed.location.longitude) {
 			const [s] = getStations(parsed.id)
 			if (s) Object.assign(parsed.location, s.location)
@@ -129,19 +126,6 @@ const parseJourneyLegWithOccupancy = ({parsed}, leg, date) => {
 	return parsed
 }
 
-const validIBNR = /^\d+$/
-const formatStation = (id) => {
-	if ('string' !== typeof id) throw new Error('station ID must be a string.')
-	const l = id.length
-	if ((l !== 7 && l !== 9 && l !== 12) || !validIBNR.test(id)) {
-		throw new Error('station ID must be a valid IBNR.')
-	}
-	// BVG has some 7-digit stations. We don't convert them to 12 digits,
-	// because it only recognizes in the 7-digit format. see derhuerst/vbb-hafas#22
-	if (l !== 7) id = to9Digit(id)
-	return _formatStation(id)
-}
-
 // use the Berlkönig ride sharing service?
 // todo: https://github.com/alexander-albers/tripkit/issues/26#issuecomment-825437320
 const requestJourneysWithBerlkoenig = ({opt}, query) => {
@@ -181,8 +165,6 @@ const bvgProfile = {
 		parseJourneyLegWithBerlkönig,
 		parseJourneyLegWithOccupancy,
 	),
-
-	formatStation,
 
 	refreshJourneyUseOutReconL: true,
 	trip: true,

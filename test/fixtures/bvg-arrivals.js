@@ -2,7 +2,7 @@
 
 const sLandsbergerAllee = {
 	type: 'stop',
-	id: '900000110004',
+	id: '900110004',
 	stationDHID: 'de:11000:900110004',
 	name: 'S Landsberger Allee',
 	location: {
