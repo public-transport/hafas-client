@@ -2,14 +2,12 @@
 
 const shorten = require('vbb-short-station-name')
 const {to12Digit, to9Digit} = require('vbb-translate-ids')
-const parseLineName = require('vbb-parse-line')
 const getStations = require('vbb-stations')
 const {parseHook} = require('../../lib/profile-hooks')
 
 const parseAndAddLocationDHID = require('../vbb/parse-loc-dhid')
 
 const {
-	parseLine: _parseLine,
 	parseLocation: _parseLocation,
 	parseArrival: _parseArrival,
 	parseDeparture: _parseDeparture,
@@ -44,19 +42,6 @@ const journeyLegOccupancyCodes = new Map([
 	['text.occup.jny.max.12', 'medium'],
 	['text.occup.jny.max.13', 'high'],
 ])
-
-// todo: https://m.tagesspiegel.de/berlin/fahrerlebnis-wie-im-regionalexpress-so-faehrt-es-sich-in-der-neuen-express-s-bahn/25338674.html
-const parseLineWithMoreDetails = ({parsed}, p) => {
-	parsed.name = p.name.replace(/^(bus|tram)\s+/i, '')
-	const details = parseLineName(parsed.name)
-	parsed.symbol = details.symbol
-	parsed.nr = details.nr
-	parsed.metro = details.metro
-	parsed.express = details.express
-	parsed.night = details.night
-
-	return parsed
-}
 
 const parseLocation = ({parsed}, l) => {
 	if ((parsed.type === 'stop' || parsed.type === 'station') && parsed.id[0] === '9') {
@@ -181,7 +166,6 @@ const bvgProfile = {
 
 	products,
 
-	parseLine: parseHook(_parseLine, parseLineWithMoreDetails),
 	parseLocation: parseHook(_parseLocation, parseLocation),
 	parseStationName: (ctx, name) => shorten(name),
 	parseArrival: parseHook(

@@ -8,7 +8,6 @@ const products = require('../../p/vbb/products')
 const {
 	cfg,
 	validateStation,
-	validateLine,
 	validateJourneyLeg,
 	validateDeparture,
 	validateMovement
@@ -31,7 +30,6 @@ const when = cfg.when
 
 const validate = createValidate(cfg, {
 	station: validateStation,
-	line: validateLine,
 	journeyLeg: validateJourneyLeg,
 	departure: validateDeparture,
 	movement: validateMovement

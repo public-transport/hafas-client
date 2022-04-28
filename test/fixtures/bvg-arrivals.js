@@ -29,11 +29,6 @@ const sLandsbergerAllee = {
 		productName: 'S',
 		mode: 'train',
 		product: 'suburban',
-		symbol: 'S',
-		nr: 8,
-		metro: false,
-		express: false,
-		night: false,
 	}, {
 		type: 'line',
 		id: 's41',
@@ -43,11 +38,6 @@ const sLandsbergerAllee = {
 		productName: 'S',
 		mode: 'train',
 		product: 'suburban',
-		symbol: 'S',
-		nr: 41,
-		metro: false,
-		express: false,
-		night: false,
 	}, {
 		type: 'line',
 		id: 's42',
@@ -57,11 +47,6 @@ const sLandsbergerAllee = {
 		productName: 'S',
 		mode: 'train',
 		product: 'suburban',
-		symbol: 'S',
-		nr: 42,
-		metro: false,
-		express: false,
-		night: false,
 	}, {
 		type: 'line',
 		id: 's85',
@@ -71,11 +56,6 @@ const sLandsbergerAllee = {
 		productName: 'S',
 		mode: 'train',
 		product: 'suburban',
-		symbol: 'S',
-		nr: 85,
-		metro: false,
-		express: false,
-		night: false,
 	}, {
 		type: 'line',
 		id: '56',
@@ -85,11 +65,6 @@ const sLandsbergerAllee = {
 		productName: 'Tram',
 		mode: 'train',
 		product: 'tram',
-		symbol: null,
-		nr: 56,
-		metro: false,
-		express: false,
-		night: false,
 	}, {
 		type: 'line',
 		id: 'm2',
@@ -99,11 +74,6 @@ const sLandsbergerAllee = {
 		productName: 'Tram',
 		mode: 'train',
 		product: 'tram',
-		symbol: 'M',
-		nr: 2,
-		metro: true,
-		express: false,
-		night: false,
 	}, {
 		type: 'line',
 		id: 'm5',
@@ -113,11 +83,6 @@ const sLandsbergerAllee = {
 		productName: 'Tram',
 		mode: 'train',
 		product: 'tram',
-		symbol: 'M',
-		nr: 5,
-		metro: true,
-		express: false,
-		night: false,
 	}, {
 		type: 'line',
 		id: 'm6',
@@ -127,11 +92,6 @@ const sLandsbergerAllee = {
 		productName: 'Tram',
 		mode: 'train',
 		product: 'tram',
-		symbol: 'M',
-		nr: 6,
-		metro: true,
-		express: false,
-		night: false,
 	}, {
 		type: 'line',
 		id: 'm8',
@@ -141,11 +101,6 @@ const sLandsbergerAllee = {
 		productName: 'Tram',
 		mode: 'train',
 		product: 'tram',
-		symbol: 'M',
-		nr: 8,
-		metro: true,
-		express: false,
-		night: false,
 	}, {
 		type: 'line',
 		id: 'm10',
@@ -155,11 +110,6 @@ const sLandsbergerAllee = {
 		productName: 'Tram',
 		mode: 'train',
 		product: 'tram',
-		symbol: 'M',
-		nr: 10,
-		metro: true,
-		express: false,
-		night: false,
 	}, {
 		type: 'line',
 		id: '156',
@@ -169,11 +119,6 @@ const sLandsbergerAllee = {
 		productName: 'Bus',
 		mode: 'bus',
 		product: 'bus',
-		symbol: null,
-		nr: 156,
-		metro: false,
-		express: false,
-		night: false,
 	}, {
 		type: 'line',
 		id: 'm6',
@@ -183,11 +128,6 @@ const sLandsbergerAllee = {
 		productName: 'Bus',
 		mode: 'bus',
 		product: 'bus',
-		symbol: 'M',
-		nr: 6,
-		metro: true,
-		express: false,
-		night: false,
 	}, {
 		type: 'line',
 		id: 's41',
@@ -197,11 +137,6 @@ const sLandsbergerAllee = {
 		productName: 'Bus',
 		mode: 'bus',
 		product: 'bus',
-		symbol: 'S',
-		nr: 41,
-		metro: false,
-		express: false,
-		night: false,
 	}, {
 		type: 'line',
 		id: 's42',
@@ -211,11 +146,6 @@ const sLandsbergerAllee = {
 		productName: 'Bus',
 		mode: 'bus',
 		product: 'bus',
-		symbol: 'S',
-		nr: 42,
-		metro: false,
-		express: false,
-		night: false,
 	}],
 }
 
@@ -390,11 +320,6 @@ module.exports = [
 				id: 'berliner-verkehrsbetriebe',
 				name: 'Berliner Verkehrsbetriebe'
 			},
-			symbol: 'M',
-			nr: 5,
-			metro: true,
-			express: false,
-			night: false
 		},
 		remarks: [
 			{type: 'hint', code: 'bf', text: 'barrierefrei'},
@@ -432,11 +357,6 @@ module.exports = [
 				id: 'berliner-verkehrsbetriebe',
 				name: 'Berliner Verkehrsbetriebe'
 			},
-			symbol: 'M',
-			nr: 8,
-			metro: true,
-			express: false,
-			night: false
 		},
 		remarks: [
 			{type: 'hint', code: 'bf', text: 'barrierefrei'},
@@ -474,11 +394,6 @@ module.exports = [
 				id: 'berliner-verkehrsbetriebe',
 				name: 'Berliner Verkehrsbetriebe'
 			},
-			symbol: 'M',
-			nr: 8,
-			metro: true,
-			express: false,
-			night: false
 		},
 		remarks: [
 			{type: 'hint', code: 'bf', text: 'barrierefrei'},
@@ -516,11 +431,6 @@ module.exports = [
 				id: 'berliner-verkehrsbetriebe',
 				name: 'Berliner Verkehrsbetriebe'
 			},
-			symbol: null,
-			nr: 56,
-			metro: false,
-			express: false,
-			night: false
 		},
 		remarks: [
 			{type: 'hint', code: 'bf', text: 'barrierefrei'},
@@ -558,11 +468,6 @@ module.exports = [
 				id: 's-bahn-berlin-gmbh',
 				name: 'S-Bahn Berlin GmbH'
 			},
-			symbol: 'S',
-			nr: 8,
-			metro: false,
-			express: false,
-			night: false
 		},
 		remarks: [
 			{type: 'hint', code: 'bf', text: 'barrierefrei'},
@@ -601,11 +506,6 @@ module.exports = [
 				id: 's-bahn-berlin-gmbh',
 				name: 'S-Bahn Berlin GmbH'
 			},
-			symbol: 'S',
-			nr: 41,
-			metro: false,
-			express: false,
-			night: false
 		},
 		remarks: [
 			{type: 'hint', code: 'bf', text: 'barrierefrei'},
@@ -645,11 +545,6 @@ module.exports = [
 				id: 's-bahn-berlin-gmbh',
 				name: 'S-Bahn Berlin GmbH'
 			},
-			symbol: 'S',
-			nr: 42,
-			metro: false,
-			express: false,
-			night: false
 		},
 		remarks: [
 			{type: 'hint', code: 'bf', text: 'barrierefrei'},
@@ -689,11 +584,6 @@ module.exports = [
 				id: 'berliner-verkehrsbetriebe',
 				name: 'Berliner Verkehrsbetriebe'
 			},
-			symbol: null,
-			nr: 56,
-			metro: false,
-			express: false,
-			night: false
 		},
 		remarks: [
 			{type: 'hint', code: 'bf', text: 'barrierefrei'},
@@ -731,11 +621,6 @@ module.exports = [
 				id: 's-bahn-berlin-gmbh',
 				name: 'S-Bahn Berlin GmbH'
 			},
-			symbol: 'S',
-			nr: 42,
-			metro: false,
-			express: false,
-			night: false
 		},
 		remarks: [
 			{type: 'hint', code: 'bf', text: 'barrierefrei'},
@@ -775,11 +660,6 @@ module.exports = [
 				id: 'berliner-verkehrsbetriebe',
 				name: 'Berliner Verkehrsbetriebe'
 			},
-			symbol: 'M',
-			nr: 5,
-			metro: true,
-			express: false,
-			night: false
 		},
 		remarks: [
 			{type: 'hint', code: 'bf', text: 'barrierefrei'},
@@ -817,11 +697,6 @@ module.exports = [
 				id: 's-bahn-berlin-gmbh',
 				name: 'S-Bahn Berlin GmbH'
 			},
-			symbol: 'S',
-			nr: 41,
-			metro: false,
-			express: false,
-			night: false
 		},
 		remarks: [
 			{type: 'hint', code: 'bf', text: 'barrierefrei'},
@@ -859,11 +734,6 @@ module.exports = [
 				id: 's-bahn-berlin-gmbh',
 				name: 'S-Bahn Berlin GmbH'
 			},
-			symbol: 'S',
-			nr: 42,
-			metro: false,
-			express: false,
-			night: false
 		},
 		remarks: [
 			{type: 'hint', code: 'bf', text: 'barrierefrei'},
@@ -901,11 +771,6 @@ module.exports = [
 				id: 'berliner-verkehrsbetriebe',
 				name: 'Berliner Verkehrsbetriebe'
 			},
-			symbol: 'M',
-			nr: 5,
-			metro: true,
-			express: false,
-			night: false
 		},
 		remarks: [
 			{type: 'hint', code: 'bf', text: 'barrierefrei'},
@@ -945,11 +810,6 @@ module.exports = [
 				id: 's-bahn-berlin-gmbh',
 				name: 'S-Bahn Berlin GmbH'
 			},
-			symbol: 'S',
-			nr: 8,
-			metro: false,
-			express: false,
-			night: false
 		},
 		remarks: [
 			{type: 'hint', code: 'bf', text: 'barrierefrei'},
@@ -998,11 +858,6 @@ module.exports = [
 				id: 'berliner-verkehrsbetriebe',
 				name: 'Berliner Verkehrsbetriebe'
 			},
-			symbol: 'M',
-			nr: 8,
-			metro: true,
-			express: false,
-			night: false
 		},
 		remarks: [
 			{type: 'hint', code: 'bf', text: 'barrierefrei'},
@@ -1040,11 +895,6 @@ module.exports = [
 				id: 'berliner-verkehrsbetriebe',
 				name: 'Berliner Verkehrsbetriebe'
 			},
-			symbol: 'M',
-			nr: 8,
-			metro: true,
-			express: false,
-			night: false
 		},
 		remarks: [
 			{type: 'hint', code: 'bf', text: 'barrierefrei'},
@@ -1082,11 +932,6 @@ module.exports = [
 				id: 'berliner-verkehrsbetriebe',
 				name: 'Berliner Verkehrsbetriebe'
 			},
-			symbol: null,
-			nr: 56,
-			metro: false,
-			express: false,
-			night: false
 		},
 		remarks: [
 			{type: 'hint', code: 'bf', text: 'barrierefrei'},
@@ -1126,11 +971,6 @@ module.exports = [
 				id: 's-bahn-berlin-gmbh',
 				name: 'S-Bahn Berlin GmbH'
 			},
-			symbol: 'S',
-			nr: 85,
-			metro: false,
-			express: false,
-			night: false
 		},
 		remarks: [
 			{type: 'hint', code: 'bf', text: 'barrierefrei'},
@@ -1201,11 +1041,6 @@ module.exports = [
 				id: 's-bahn-berlin-gmbh',
 				name: 'S-Bahn Berlin GmbH'
 			},
-			symbol: 'S',
-			nr: 41,
-			metro: false,
-			express: false,
-			night: false
 		},
 		remarks: [
 			{type: 'hint', code: 'bf', text: 'barrierefrei'},
@@ -1245,11 +1080,6 @@ module.exports = [
 				id: 's-bahn-berlin-gmbh',
 				name: 'S-Bahn Berlin GmbH'
 			},
-			symbol: 'S',
-			nr: 42,
-			metro: false,
-			express: false,
-			night: false
 		},
 		remarks: [
 			{type: 'hint', code: 'bf', text: 'barrierefrei'},
@@ -1289,11 +1119,6 @@ module.exports = [
 				id: 's-bahn-berlin-gmbh',
 				name: 'S-Bahn Berlin GmbH'
 			},
-			symbol: 'S',
-			nr: 42,
-			metro: false,
-			express: false,
-			night: false
 		},
 		remarks: [
 			{type: 'hint', code: 'bf', text: 'barrierefrei'},
@@ -1333,11 +1158,6 @@ module.exports = [
 				id: 's-bahn-berlin-gmbh',
 				name: 'S-Bahn Berlin GmbH'
 			},
-			symbol: 'S',
-			nr: 42,
-			metro: false,
-			express: false,
-			night: false
 		},
 		remarks: [
 			{type: 'hint', code: 'bf', text: 'barrierefrei'},
@@ -1377,11 +1197,6 @@ module.exports = [
 				id: 's-bahn-berlin-gmbh',
 				name: 'S-Bahn Berlin GmbH'
 			},
-			symbol: 'S',
-			nr: 42,
-			metro: false,
-			express: false,
-			night: false
 		},
 		remarks: [
 			{type: 'hint', code: 'bf', text: 'barrierefrei'},
@@ -1421,11 +1236,6 @@ module.exports = [
 				id: 's-bahn-berlin-gmbh',
 				name: 'S-Bahn Berlin GmbH'
 			},
-			symbol: 'S',
-			nr: 42,
-			metro: false,
-			express: false,
-			night: false
 		},
 		remarks: [
 			{type: 'hint', code: 'bf', text: 'barrierefrei'},
