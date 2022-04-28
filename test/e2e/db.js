@@ -45,11 +45,7 @@ const cfg = {
 	maxLongitude: 16.180237
 }
 
-const validateStation = createValidateStation(cfg)
-
-const validate = createValidate(cfg, {
-	station: validateStation
-})
+const validate = createValidate(cfg)
 
 const assertValidPrice = (t, p) => {
 	t.ok(p)
@@ -317,12 +313,16 @@ tap.test('trip details', async (t) => {
 
 	const tripRes = await client.trip(p.tripId, p.line.name, {when})
 
-	const validateTrip = createValidateTrip(cfg)
 	const validate = createValidate(cfg, {
-		trip: (validate, trip, name) => {
-			trip = Object.assign({}, trip)
-			if (!trip.direction) trip.direction = 'foo' // todo, see #49
-			validateTrip(validate, trip, name)
+		trip: (cfg) => {
+			const validateTrip = createValidateTrip(cfg)
+			const validateTripWithFakeDirection = (val, trip, name) => {
+				validateTrip(val, {
+					...trip,
+					direction: trip.direction || 'foo', // todo, see #49
+				}, name)
+			}
+			return validateTripWithFakeDirection
 		}
 	})
 	validate(t, tripRes, 'tripResult', 'tripRes')
