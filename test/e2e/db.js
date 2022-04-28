@@ -4,6 +4,7 @@ const tap = require('tap')
 const isRoughlyEqual = require('is-roughly-equal')
 const maxBy = require('lodash/maxBy')
 const flatMap = require('lodash/flatMap')
+const last = require('lodash/last')
 
 const {createWhen} = require('./lib/util')
 const createClient = require('../..')
@@ -257,8 +258,9 @@ tap.skip('journeysFromTrip – U Mehringdamm to U Naturkundemuseum, reroute to S
 				stopovers: true, remarks: false
 			})
 
-			const hasStoppedAtA = t.stopovers
+			const pastStopovers = t.stopovers
 			.filter(st => departureOf(st) < Date.now()) // todo: <= ?
+			const hasStoppedAtA = pastStopovers
 			.find(sameStopOrStation({id: stopAId}))
 			const willStopAtB = t.stopovers
 			.filter(st => arrivalOf(st) > Date.now()) // todo: >= ?
@@ -291,7 +293,8 @@ tap.skip('journeysFromTrip – U Mehringdamm to U Naturkundemuseum, reroute to S
 		clone.price = {amount: 123, currency: 'EUR'}
 		return clone
 	}
-	validate(t, newJourneys.map(withFakePrice), 'newJourneys', 'journeysFromTrip')
+	// todo: there is no such validator!
+	validate(t, newJourneys.map(withFakePrice), 'journeysFromTrip', 'newJourneys')
 
 	for (let i = 0; i < newJourneys.length; i++) {
 		const j = newJourneys[i]
