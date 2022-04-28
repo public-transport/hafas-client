@@ -23,7 +23,7 @@ module.exports = [
 				stop: {
 					type: 'stop',
 					id: '900100002',
-					name: 'S Hackescher Markt',
+					name: 'S Hackescher Markt (Berlin)',
 					location: {
 						type: 'location',
 						id: '900100002',
@@ -55,7 +55,7 @@ module.exports = [
 				stop: {
 					type: 'stop',
 					id: '900100026',
-					name: 'S+U Alexanderplatz/Gontardstr.',
+					name: 'S+U Alexanderplatz Bhf/Gontardstr. (Berlin)',
 					location: {
 						type: 'location',
 						id: '900100026',
@@ -87,7 +87,7 @@ module.exports = [
 				stop: {
 					type: 'stop',
 					id: '900100005',
-					name: 'U Alexanderplatz [Tram]',
+					name: 'U Alexanderplatz (Berlin) [Tram]',
 					location: {
 						type: 'location',
 						id: '900100005',
@@ -119,7 +119,7 @@ module.exports = [
 				stop: {
 					type: 'stop',
 					id: '900151003',
-					name: 'Zingster Str.',
+					name: 'Zingster Str. (Berlin)',
 					location: {
 						type: 'location',
 						id: '900151003',
@@ -153,7 +153,7 @@ module.exports = [
 				origin: {
 					type: 'stop',
 					id: '900100026',
-					name: 'S+U Alexanderplatz/Gontardstr.',
+					name: 'S+U Alexanderplatz Bhf/Gontardstr. (Berlin)',
 					location: {
 						type: 'location',
 						id: '900100026',
@@ -173,7 +173,7 @@ module.exports = [
 				destination: {
 					type: 'stop',
 					id: '900100005',
-					name: 'U Alexanderplatz [Tram]',
+					name: 'U Alexanderplatz (Berlin) [Tram]',
 					location: {
 						type: 'location',
 						id: '900100005',
@@ -196,7 +196,7 @@ module.exports = [
 				origin: {
 					type: 'stop',
 					id: '900100026',
-					name: 'S+U Alexanderplatz/Gontardstr.',
+					name: 'S+U Alexanderplatz Bhf/Gontardstr. (Berlin)',
 					location: {
 						type: 'location',
 						id: '900100026',
@@ -216,7 +216,7 @@ module.exports = [
 				destination: {
 					type: 'stop',
 					id: '900100005',
-					name: 'U Alexanderplatz [Tram]',
+					name: 'U Alexanderplatz (Berlin) [Tram]',
 					location: {
 						type: 'location',
 						id: '900100005',
@@ -239,7 +239,7 @@ module.exports = [
 				origin: {
 					type: 'stop',
 					id: '900100026',
-					name: 'S+U Alexanderplatz/Gontardstr.',
+					name: 'S+U Alexanderplatz Bhf/Gontardstr. (Berlin)',
 					location: {
 						type: 'location',
 						id: '900100026',
@@ -259,7 +259,7 @@ module.exports = [
 				destination: {
 					type: 'stop',
 					id: '900100005',
-					name: 'U Alexanderplatz [Tram]',
+					name: 'U Alexanderplatz (Berlin) [Tram]',
 					location: {
 						type: 'location',
 						id: '900100005',
@@ -282,7 +282,7 @@ module.exports = [
 				origin: {
 					type: 'stop',
 					id: '900100026',
-					name: 'S+U Alexanderplatz/Gontardstr.',
+					name: 'S+U Alexanderplatz Bhf/Gontardstr. (Berlin)',
 					location: {
 						type: 'location',
 						id: '900100026',
@@ -302,7 +302,7 @@ module.exports = [
 				destination: {
 					type: 'stop',
 					id: '900100005',
-					name: 'U Alexanderplatz [Tram]',
+					name: 'U Alexanderplatz (Berlin) [Tram]',
 					location: {
 						type: 'location',
 						id: '900100005',
@@ -373,7 +373,7 @@ module.exports = [
 		}
 	},
 	{
-		direction: 'S Spandau',
+		direction: 'S Spandau Bhf (Berlin)',
 		tripId: '1|35835|39|86|19082019',
 		line: {
 			type: 'line',
@@ -394,7 +394,7 @@ module.exports = [
 				stop: {
 					type: 'stop',
 					id: '900260005',
-					name: 'S Flughafen Berlin-Schönefeld',
+					name: 'S Flughafen Berlin-Schönefeld Bhf',
 					location: {
 						type: 'location',
 						id: '900260005',
@@ -426,7 +426,7 @@ module.exports = [
 				stop: {
 					type: 'stop',
 					id: '900100003',
-					name: 'S+U Alexanderplatz',
+					name: 'S+U Alexanderplatz Bhf (Berlin)',
 					location: {
 						type: 'location',
 						id: '900100003',
@@ -458,7 +458,7 @@ module.exports = [
 				stop: {
 					type: 'stop',
 					id: '900100002',
-					name: 'S Hackescher Markt',
+					name: 'S Hackescher Markt (Berlin)',
 					location: {
 						type: 'location',
 						id: '900100002',
@@ -490,7 +490,7 @@ module.exports = [
 				stop: {
 					type: 'stop',
 					id: '900029101',
-					name: 'S Spandau',
+					name: 'S Spandau Bhf (Berlin)',
 					location: {
 						type: 'location',
 						id: '900029101',
@@ -524,7 +524,7 @@ module.exports = [
 				origin: {
 					type: 'stop',
 					id: '900100003',
-					name: 'S+U Alexanderplatz',
+					name: 'S+U Alexanderplatz Bhf (Berlin)',
 					location: {
 						type: 'location',
 						id: '900100003',
@@ -544,7 +544,7 @@ module.exports = [
 				destination: {
 					type: 'stop',
 					id: '900100002',
-					name: 'S Hackescher Markt',
+					name: 'S Hackescher Markt (Berlin)',
 					location: {
 						type: 'location',
 						id: '900100002',
@@ -567,7 +567,7 @@ module.exports = [
 				origin: {
 					type: 'stop',
 					id: '900100003',
-					name: 'S+U Alexanderplatz',
+					name: 'S+U Alexanderplatz Bhf (Berlin)',
 					location: {
 						type: 'location',
 						id: '900100003',
@@ -587,7 +587,7 @@ module.exports = [
 				destination: {
 					type: 'stop',
 					id: '900100002',
-					name: 'S Hackescher Markt',
+					name: 'S Hackescher Markt (Berlin)',
 					location: {
 						type: 'location',
 						id: '900100002',
@@ -610,7 +610,7 @@ module.exports = [
 				origin: {
 					type: 'stop',
 					id: '900100003',
-					name: 'S+U Alexanderplatz',
+					name: 'S+U Alexanderplatz Bhf (Berlin)',
 					location: {
 						type: 'location',
 						id: '900100003',
@@ -630,7 +630,7 @@ module.exports = [
 				destination: {
 					type: 'stop',
 					id: '900100002',
-					name: 'S Hackescher Markt',
+					name: 'S Hackescher Markt (Berlin)',
 					location: {
 						type: 'location',
 						id: '900100002',
@@ -653,7 +653,7 @@ module.exports = [
 				origin: {
 					type: 'stop',
 					id: '900100003',
-					name: 'S+U Alexanderplatz',
+					name: 'S+U Alexanderplatz Bhf (Berlin)',
 					location: {
 						type: 'location',
 						id: '900100003',
@@ -673,7 +673,7 @@ module.exports = [
 				destination: {
 					type: 'stop',
 					id: '900100002',
-					name: 'S Hackescher Markt',
+					name: 'S Hackescher Markt (Berlin)',
 					location: {
 						type: 'location',
 						id: '900100002',
@@ -744,7 +744,7 @@ module.exports = [
 		}
 	},
 	{
-		direction: 'S+U Hermannstr.',
+		direction: 'S+U Hermannstr. (Berlin)',
 		tripId: '1|31029|0|86|19082019',
 		line: {
 			type: 'line',
@@ -765,7 +765,7 @@ module.exports = [
 				stop: {
 					type: 'stop',
 					id: '900085104',
-					name: 'U Paracelsus-Bad',
+					name: 'U Paracelsus-Bad (Berlin)',
 					location: {
 						type: 'location',
 						id: '900085104',
@@ -797,7 +797,7 @@ module.exports = [
 				stop: {
 					type: 'stop',
 					id: '900100705',
-					name: 'S+U Alexanderplatz [U8]',
+					name: 'S+U Alexanderplatz (Berlin) [U8]',
 					location: {
 						type: 'location',
 						id: '900100705',
@@ -829,7 +829,7 @@ module.exports = [
 				stop: {
 					type: 'stop',
 					id: '900100004',
-					name: 'S+U Jannowitzbrücke',
+					name: 'S+U Jannowitzbrücke (Berlin)',
 					location: {
 						type: 'location',
 						id: '900100004',
@@ -861,7 +861,7 @@ module.exports = [
 				stop: {
 					type: 'stop',
 					id: '900079221',
-					name: 'S+U Hermannstr.',
+					name: 'S+U Hermannstr. (Berlin)',
 					location: {
 						type: 'location',
 						id: '900079221',
@@ -895,7 +895,7 @@ module.exports = [
 				origin: {
 					type: 'stop',
 					id: '900100705',
-					name: 'S+U Alexanderplatz [U8]',
+					name: 'S+U Alexanderplatz (Berlin) [U8]',
 					location: {
 						type: 'location',
 						id: '900100705',
@@ -915,7 +915,7 @@ module.exports = [
 				destination: {
 					type: 'stop',
 					id: '900100004',
-					name: 'S+U Jannowitzbrücke',
+					name: 'S+U Jannowitzbrücke (Berlin)',
 					location: {
 						type: 'location',
 						id: '900100004',
@@ -938,7 +938,7 @@ module.exports = [
 				origin: {
 					type: 'stop',
 					id: '900100705',
-					name: 'S+U Alexanderplatz [U8]',
+					name: 'S+U Alexanderplatz (Berlin) [U8]',
 					location: {
 						type: 'location',
 						id: '900100705',
@@ -958,7 +958,7 @@ module.exports = [
 				destination: {
 					type: 'stop',
 					id: '900100004',
-					name: 'S+U Jannowitzbrücke',
+					name: 'S+U Jannowitzbrücke (Berlin)',
 					location: {
 						type: 'location',
 						id: '900100004',
@@ -981,7 +981,7 @@ module.exports = [
 				origin: {
 					type: 'stop',
 					id: '900100705',
-					name: 'S+U Alexanderplatz [U8]',
+					name: 'S+U Alexanderplatz (Berlin) [U8]',
 					location: {
 						type: 'location',
 						id: '900100705',
@@ -1001,7 +1001,7 @@ module.exports = [
 				destination: {
 					type: 'stop',
 					id: '900100004',
-					name: 'S+U Jannowitzbrücke',
+					name: 'S+U Jannowitzbrücke (Berlin)',
 					location: {
 						type: 'location',
 						id: '900100004',
@@ -1024,7 +1024,7 @@ module.exports = [
 				origin: {
 					type: 'stop',
 					id: '900100705',
-					name: 'S+U Alexanderplatz [U8]',
+					name: 'S+U Alexanderplatz (Berlin) [U8]',
 					location: {
 						type: 'location',
 						id: '900100705',
@@ -1044,7 +1044,7 @@ module.exports = [
 				destination: {
 					type: 'stop',
 					id: '900100004',
-					name: 'S+U Jannowitzbrücke',
+					name: 'S+U Jannowitzbrücke (Berlin)',
 					location: {
 						type: 'location',
 						id: '900100004',
@@ -1136,7 +1136,7 @@ module.exports = [
 				stop: {
 					type: 'stop',
 					id: '900175004',
-					name: 'U Kaulsdorf-Nord',
+					name: 'U Kaulsdorf-Nord (Berlin)',
 					location: {
 						type: 'location',
 						id: '900175004',
@@ -1168,7 +1168,7 @@ module.exports = [
 				stop: {
 					type: 'stop',
 					id: '900100017',
-					name: 'U Schillingstr.',
+					name: 'U Schillingstr. (Berlin)',
 					location: {
 						type: 'location',
 						id: '900100017',
@@ -1200,7 +1200,7 @@ module.exports = [
 				stop: {
 					type: 'stop',
 					id: '900100704',
-					name: 'S+U Alexanderplatz [U5]',
+					name: 'S+U Alexanderplatz (Berlin) [U5]',
 					location: {
 						type: 'location',
 						id: '900100704',
@@ -1232,7 +1232,7 @@ module.exports = [
 				stop: {
 					type: 'stop',
 					id: '900100704',
-					name: 'S+U Alexanderplatz [U5]',
+					name: 'S+U Alexanderplatz (Berlin) [U5]',
 					location: {
 						type: 'location',
 						id: '900100704',
@@ -1266,7 +1266,7 @@ module.exports = [
 				origin: {
 					type: 'stop',
 					id: '900100017',
-					name: 'U Schillingstr.',
+					name: 'U Schillingstr. (Berlin)',
 					location: {
 						type: 'location',
 						id: '900100017',
@@ -1286,7 +1286,7 @@ module.exports = [
 				destination: {
 					type: 'stop',
 					id: '900100704',
-					name: 'S+U Alexanderplatz [U5]',
+					name: 'S+U Alexanderplatz (Berlin) [U5]',
 					location: {
 						type: 'location',
 						id: '900100704',
@@ -1309,7 +1309,7 @@ module.exports = [
 				origin: {
 					type: 'stop',
 					id: '900100017',
-					name: 'U Schillingstr.',
+					name: 'U Schillingstr. (Berlin)',
 					location: {
 						type: 'location',
 						id: '900100017',
@@ -1329,7 +1329,7 @@ module.exports = [
 				destination: {
 					type: 'stop',
 					id: '900100704',
-					name: 'S+U Alexanderplatz [U5]',
+					name: 'S+U Alexanderplatz (Berlin) [U5]',
 					location: {
 						type: 'location',
 						id: '900100704',
@@ -1352,7 +1352,7 @@ module.exports = [
 				origin: {
 					type: 'stop',
 					id: '900100017',
-					name: 'U Schillingstr.',
+					name: 'U Schillingstr. (Berlin)',
 					location: {
 						type: 'location',
 						id: '900100017',
@@ -1372,7 +1372,7 @@ module.exports = [
 				destination: {
 					type: 'stop',
 					id: '900100704',
-					name: 'S+U Alexanderplatz [U5]',
+					name: 'S+U Alexanderplatz (Berlin) [U5]',
 					location: {
 						type: 'location',
 						id: '900100704',
@@ -1395,7 +1395,7 @@ module.exports = [
 				origin: {
 					type: 'stop',
 					id: '900100017',
-					name: 'U Schillingstr.',
+					name: 'U Schillingstr. (Berlin)',
 					location: {
 						type: 'location',
 						id: '900100017',
@@ -1415,7 +1415,7 @@ module.exports = [
 				destination: {
 					type: 'stop',
 					id: '900100704',
-					name: 'S+U Alexanderplatz [U5]',
+					name: 'S+U Alexanderplatz (Berlin) [U5]',
 					location: {
 						type: 'location',
 						id: '900100704',
@@ -1486,7 +1486,7 @@ module.exports = [
 		}
 	},
 	{
-		direction: 'S+U Pankow',
+		direction: 'S+U Pankow (Berlin)',
 		tripId: '1|30095|5|86|19082019',
 		line: {
 			type: 'line',
@@ -1507,7 +1507,7 @@ module.exports = [
 				stop: {
 					type: 'stop',
 					id: '900026201',
-					name: 'U Theodor-Heuss-Platz',
+					name: 'U Theodor-Heuss-Platz (Berlin)',
 					location: {
 						type: 'location',
 						id: '900026201',
@@ -1539,7 +1539,7 @@ module.exports = [
 				stop: {
 					type: 'stop',
 					id: '900100015',
-					name: 'U Klosterstr.',
+					name: 'U Klosterstr. (Berlin)',
 					location: {
 						type: 'location',
 						id: '900100015',
@@ -1571,7 +1571,7 @@ module.exports = [
 				stop: {
 					type: 'stop',
 					id: '900100703',
-					name: 'S+U Alexanderplatz [U2]',
+					name: 'S+U Alexanderplatz (Berlin) [U2]',
 					location: {
 						type: 'location',
 						id: '900100703',
@@ -1603,7 +1603,7 @@ module.exports = [
 				stop: {
 					type: 'stop',
 					id: '900130002',
-					name: 'S+U Pankow',
+					name: 'S+U Pankow (Berlin)',
 					location: {
 						type: 'location',
 						id: '900130002',
@@ -1637,7 +1637,7 @@ module.exports = [
 				origin: {
 					type: 'stop',
 					id: '900100015',
-					name: 'U Klosterstr.',
+					name: 'U Klosterstr. (Berlin)',
 					location: {
 						type: 'location',
 						id: '900100015',
@@ -1657,7 +1657,7 @@ module.exports = [
 				destination: {
 					type: 'stop',
 					id: '900100703',
-					name: 'S+U Alexanderplatz [U2]',
+					name: 'S+U Alexanderplatz (Berlin) [U2]',
 					location: {
 						type: 'location',
 						id: '900100703',
@@ -1680,7 +1680,7 @@ module.exports = [
 				origin: {
 					type: 'stop',
 					id: '900100015',
-					name: 'U Klosterstr.',
+					name: 'U Klosterstr. (Berlin)',
 					location: {
 						type: 'location',
 						id: '900100015',
@@ -1700,7 +1700,7 @@ module.exports = [
 				destination: {
 					type: 'stop',
 					id: '900100703',
-					name: 'S+U Alexanderplatz [U2]',
+					name: 'S+U Alexanderplatz (Berlin) [U2]',
 					location: {
 						type: 'location',
 						id: '900100703',
@@ -1723,7 +1723,7 @@ module.exports = [
 				origin: {
 					type: 'stop',
 					id: '900100015',
-					name: 'U Klosterstr.',
+					name: 'U Klosterstr. (Berlin)',
 					location: {
 						type: 'location',
 						id: '900100015',
@@ -1743,7 +1743,7 @@ module.exports = [
 				destination: {
 					type: 'stop',
 					id: '900100703',
-					name: 'S+U Alexanderplatz [U2]',
+					name: 'S+U Alexanderplatz (Berlin) [U2]',
 					location: {
 						type: 'location',
 						id: '900100703',
@@ -1766,7 +1766,7 @@ module.exports = [
 				origin: {
 					type: 'stop',
 					id: '900100015',
-					name: 'U Klosterstr.',
+					name: 'U Klosterstr. (Berlin)',
 					location: {
 						type: 'location',
 						id: '900100015',
@@ -1786,7 +1786,7 @@ module.exports = [
 				destination: {
 					type: 'stop',
 					id: '900100703',
-					name: 'S+U Alexanderplatz [U2]',
+					name: 'S+U Alexanderplatz (Berlin) [U2]',
 					location: {
 						type: 'location',
 						id: '900100703',
@@ -1878,7 +1878,7 @@ module.exports = [
 				stop: {
 					type: 'stop',
 					id: '900100002',
-					name: 'S Hackescher Markt',
+					name: 'S Hackescher Markt (Berlin)',
 					location: {
 						type: 'location',
 						id: '900100002',
@@ -1910,7 +1910,7 @@ module.exports = [
 				stop: {
 					type: 'stop',
 					id: '900100005',
-					name: 'U Alexanderplatz [Tram]',
+					name: 'U Alexanderplatz (Berlin) [Tram]',
 					location: {
 						type: 'location',
 						id: '900100005',
@@ -1942,7 +1942,7 @@ module.exports = [
 				stop: {
 					type: 'stop',
 					id: '900100040',
-					name: 'Mollstr./Otto-Braun-Str.',
+					name: 'Mollstr./Otto-Braun-Str. (Berlin)',
 					location: {
 						type: 'location',
 						id: '900100040',
@@ -1974,7 +1974,7 @@ module.exports = [
 				stop: {
 					type: 'stop',
 					id: '900175013',
-					name: 'Riesaer Str.',
+					name: 'Riesaer Str. (Berlin)',
 					location: {
 						type: 'location',
 						id: '900175013',
@@ -2008,7 +2008,7 @@ module.exports = [
 				origin: {
 					type: 'stop',
 					id: '900100005',
-					name: 'U Alexanderplatz [Tram]',
+					name: 'U Alexanderplatz (Berlin) [Tram]',
 					location: {
 						type: 'location',
 						id: '900100005',
@@ -2028,7 +2028,7 @@ module.exports = [
 				destination: {
 					type: 'stop',
 					id: '900100040',
-					name: 'Mollstr./Otto-Braun-Str.',
+					name: 'Mollstr./Otto-Braun-Str. (Berlin)',
 					location: {
 						type: 'location',
 						id: '900100040',
@@ -2051,7 +2051,7 @@ module.exports = [
 				origin: {
 					type: 'stop',
 					id: '900100005',
-					name: 'U Alexanderplatz [Tram]',
+					name: 'U Alexanderplatz (Berlin) [Tram]',
 					location: {
 						type: 'location',
 						id: '900100005',
@@ -2071,7 +2071,7 @@ module.exports = [
 				destination: {
 					type: 'stop',
 					id: '900100040',
-					name: 'Mollstr./Otto-Braun-Str.',
+					name: 'Mollstr./Otto-Braun-Str. (Berlin)',
 					location: {
 						type: 'location',
 						id: '900100040',
@@ -2094,7 +2094,7 @@ module.exports = [
 				origin: {
 					type: 'stop',
 					id: '900100005',
-					name: 'U Alexanderplatz [Tram]',
+					name: 'U Alexanderplatz (Berlin) [Tram]',
 					location: {
 						type: 'location',
 						id: '900100005',
@@ -2114,7 +2114,7 @@ module.exports = [
 				destination: {
 					type: 'stop',
 					id: '900100040',
-					name: 'Mollstr./Otto-Braun-Str.',
+					name: 'Mollstr./Otto-Braun-Str. (Berlin)',
 					location: {
 						type: 'location',
 						id: '900100040',
@@ -2137,7 +2137,7 @@ module.exports = [
 				origin: {
 					type: 'stop',
 					id: '900100005',
-					name: 'U Alexanderplatz [Tram]',
+					name: 'U Alexanderplatz (Berlin) [Tram]',
 					location: {
 						type: 'location',
 						id: '900100005',
@@ -2157,7 +2157,7 @@ module.exports = [
 				destination: {
 					type: 'stop',
 					id: '900100040',
-					name: 'Mollstr./Otto-Braun-Str.',
+					name: 'Mollstr./Otto-Braun-Str. (Berlin)',
 					location: {
 						type: 'location',
 						id: '900100040',
@@ -2249,7 +2249,7 @@ module.exports = [
 				stop: {
 					type: 'stop',
 					id: '900175013',
-					name: 'Riesaer Str.',
+					name: 'Riesaer Str. (Berlin)',
 					location: {
 						type: 'location',
 						id: '900175013',
@@ -2281,7 +2281,7 @@ module.exports = [
 				stop: {
 					type: 'stop',
 					id: '900100026',
-					name: 'S+U Alexanderplatz/Gontardstr.',
+					name: 'S+U Alexanderplatz Bhf/Gontardstr. (Berlin)',
 					location: {
 						type: 'location',
 						id: '900100026',
@@ -2313,7 +2313,7 @@ module.exports = [
 				stop: {
 					type: 'stop',
 					id: '900100515',
-					name: 'Spandauer Str./Marienkirche',
+					name: 'Spandauer Str./Marienkirche (Berlin)',
 					location: {
 						type: 'location',
 						id: '900100515',
@@ -2345,7 +2345,7 @@ module.exports = [
 				stop: {
 					type: 'stop',
 					id: '900100002',
-					name: 'S Hackescher Markt',
+					name: 'S Hackescher Markt (Berlin)',
 					location: {
 						type: 'location',
 						id: '900100002',
@@ -2379,7 +2379,7 @@ module.exports = [
 				origin: {
 					type: 'stop',
 					id: '900100026',
-					name: 'S+U Alexanderplatz/Gontardstr.',
+					name: 'S+U Alexanderplatz Bhf/Gontardstr. (Berlin)',
 					location: {
 						type: 'location',
 						id: '900100026',
@@ -2399,7 +2399,7 @@ module.exports = [
 				destination: {
 					type: 'stop',
 					id: '900100515',
-					name: 'Spandauer Str./Marienkirche',
+					name: 'Spandauer Str./Marienkirche (Berlin)',
 					location: {
 						type: 'location',
 						id: '900100515',
@@ -2422,7 +2422,7 @@ module.exports = [
 				origin: {
 					type: 'stop',
 					id: '900100026',
-					name: 'S+U Alexanderplatz/Gontardstr.',
+					name: 'S+U Alexanderplatz Bhf/Gontardstr. (Berlin)',
 					location: {
 						type: 'location',
 						id: '900100026',
@@ -2442,7 +2442,7 @@ module.exports = [
 				destination: {
 					type: 'stop',
 					id: '900100515',
-					name: 'Spandauer Str./Marienkirche',
+					name: 'Spandauer Str./Marienkirche (Berlin)',
 					location: {
 						type: 'location',
 						id: '900100515',
@@ -2465,7 +2465,7 @@ module.exports = [
 				origin: {
 					type: 'stop',
 					id: '900100026',
-					name: 'S+U Alexanderplatz/Gontardstr.',
+					name: 'S+U Alexanderplatz Bhf/Gontardstr. (Berlin)',
 					location: {
 						type: 'location',
 						id: '900100026',
@@ -2485,7 +2485,7 @@ module.exports = [
 				destination: {
 					type: 'stop',
 					id: '900100515',
-					name: 'Spandauer Str./Marienkirche',
+					name: 'Spandauer Str./Marienkirche (Berlin)',
 					location: {
 						type: 'location',
 						id: '900100515',
@@ -2508,7 +2508,7 @@ module.exports = [
 				origin: {
 					type: 'stop',
 					id: '900100026',
-					name: 'S+U Alexanderplatz/Gontardstr.',
+					name: 'S+U Alexanderplatz Bhf/Gontardstr. (Berlin)',
 					location: {
 						type: 'location',
 						id: '900100026',
@@ -2528,7 +2528,7 @@ module.exports = [
 				destination: {
 					type: 'stop',
 					id: '900100515',
-					name: 'Spandauer Str./Marienkirche',
+					name: 'Spandauer Str./Marienkirche (Berlin)',
 					location: {
 						type: 'location',
 						id: '900100515',
@@ -2620,7 +2620,7 @@ module.exports = [
 				stop: {
 					type: 'stop',
 					id: '900151003',
-					name: 'Zingster Str.',
+					name: 'Zingster Str. (Berlin)',
 					location: {
 						type: 'location',
 						id: '900151003',
@@ -2652,7 +2652,7 @@ module.exports = [
 				stop: {
 					type: 'stop',
 					id: '900100040',
-					name: 'Mollstr./Otto-Braun-Str.',
+					name: 'Mollstr./Otto-Braun-Str. (Berlin)',
 					location: {
 						type: 'location',
 						id: '900100040',
@@ -2684,7 +2684,7 @@ module.exports = [
 				stop: {
 					type: 'stop',
 					id: '900100005',
-					name: 'U Alexanderplatz [Tram]',
+					name: 'U Alexanderplatz (Berlin) [Tram]',
 					location: {
 						type: 'location',
 						id: '900100005',
@@ -2716,7 +2716,7 @@ module.exports = [
 				stop: {
 					type: 'stop',
 					id: '900003259',
-					name: 'Lüneburger Str.',
+					name: 'Lüneburger Str. (Berlin)',
 					location: {
 						type: 'location',
 						id: '900003259',
@@ -2750,7 +2750,7 @@ module.exports = [
 				origin: {
 					type: 'stop',
 					id: '900100040',
-					name: 'Mollstr./Otto-Braun-Str.',
+					name: 'Mollstr./Otto-Braun-Str. (Berlin)',
 					location: {
 						type: 'location',
 						id: '900100040',
@@ -2770,7 +2770,7 @@ module.exports = [
 				destination: {
 					type: 'stop',
 					id: '900100005',
-					name: 'U Alexanderplatz [Tram]',
+					name: 'U Alexanderplatz (Berlin) [Tram]',
 					location: {
 						type: 'location',
 						id: '900100005',
@@ -2793,7 +2793,7 @@ module.exports = [
 				origin: {
 					type: 'stop',
 					id: '900100040',
-					name: 'Mollstr./Otto-Braun-Str.',
+					name: 'Mollstr./Otto-Braun-Str. (Berlin)',
 					location: {
 						type: 'location',
 						id: '900100040',
@@ -2813,7 +2813,7 @@ module.exports = [
 				destination: {
 					type: 'stop',
 					id: '900100005',
-					name: 'U Alexanderplatz [Tram]',
+					name: 'U Alexanderplatz (Berlin) [Tram]',
 					location: {
 						type: 'location',
 						id: '900100005',
@@ -2836,7 +2836,7 @@ module.exports = [
 				origin: {
 					type: 'stop',
 					id: '900100040',
-					name: 'Mollstr./Otto-Braun-Str.',
+					name: 'Mollstr./Otto-Braun-Str. (Berlin)',
 					location: {
 						type: 'location',
 						id: '900100040',
@@ -2856,7 +2856,7 @@ module.exports = [
 				destination: {
 					type: 'stop',
 					id: '900100005',
-					name: 'U Alexanderplatz [Tram]',
+					name: 'U Alexanderplatz (Berlin) [Tram]',
 					location: {
 						type: 'location',
 						id: '900100005',
@@ -2879,7 +2879,7 @@ module.exports = [
 				origin: {
 					type: 'stop',
 					id: '900100040',
-					name: 'Mollstr./Otto-Braun-Str.',
+					name: 'Mollstr./Otto-Braun-Str. (Berlin)',
 					location: {
 						type: 'location',
 						id: '900100040',
@@ -2899,7 +2899,7 @@ module.exports = [
 				destination: {
 					type: 'stop',
 					id: '900100005',
-					name: 'U Alexanderplatz [Tram]',
+					name: 'U Alexanderplatz (Berlin) [Tram]',
 					location: {
 						type: 'location',
 						id: '900100005',
