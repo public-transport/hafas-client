@@ -9,7 +9,7 @@
         "Atomics": "readonly",
         "SharedArrayBuffer": "readonly"
     },
-    "ignorePatterns": ["node_modules", "test", "*example.js"],
+    "ignorePatterns": ["node_modules", "*example.js"],
     "parserOptions": {
         "ecmaVersion": 2018
     },
@@ -22,5 +22,15 @@
                 "ignoreRestSiblings": false
             }
         ]
-    }
+    },
+    "overrides": [
+        {
+            "files": [
+                "test/**"
+            ],
+            "rules": {
+                "no-unused-vars": "off"
+            }
+        }
+    ]
 }

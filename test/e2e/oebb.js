@@ -63,7 +63,7 @@ const wienRenngasse = '1390186'
 const wienKarlsplatz = '1390461'
 const wienPilgramgasse = '1390562'
 
-tap.test('journeys – Salzburg Hbf to Wien Westbahnhof', async (t) => {
+tap.test('journeys – Salzburg Hbf to Wien Westbahnhof', async (t) => {
 	const res = await client.journeys(salzburgHbf, wienFickeystr, {
 		results: 4,
 		departure: when,
@@ -88,7 +88,7 @@ tap.test('journeys – Salzburg Hbf to Wien Westbahnhof', async (t) => {
 
 // todo: journeys, only one product
 
-tap.test('journeys – fails with no product', (t) => {
+tap.test('journeys – fails with no product', (t) => {
 	journeysFailsWithNoProduct({
 		test: t,
 		fetchJourneys: client.journeys,
@@ -103,9 +103,9 @@ tap.test('journeys – fails with no product', (t) => {
 tap.test('Salzburg Hbf to 1220 Wien, Fischerstrand 7', async (t) => {
 	const wagramerStr = {
 		type: 'location',
-    	address: '1220 Wien, Fischerstrand 7',
-    	latitude: 48.236216,
-    	longitude: 16.425863
+		address: '1220 Wien, Fischerstrand 7',
+		latitude: 48.236216,
+		longitude: 16.425863
 	}
 	const res = await client.journeys(salzburgHbf, wagramerStr, {
 		results: 3,

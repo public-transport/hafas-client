@@ -32,7 +32,7 @@ const assertValidWhen = (actual, expected, name) => {
 		throw new AssertionError({
 			message: name + ' is out of range',
 			actual: ts,
-			expected: `${expected - delta} - ${+expected + delta}`,
+			expected: `${expected - delta} - ${+expected + delta}`,
 			operator: 'isRoughlyEqual',
 		})
 	}

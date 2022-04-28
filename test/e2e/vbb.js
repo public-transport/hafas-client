@@ -46,7 +46,7 @@ const westhafen = '900000001201'
 const wedding = '900000009104'
 const württembergallee = '900000026153'
 
-tap.test('journeys – Spichernstr. to Bismarckstr.', async (t) => {
+tap.test('journeys – Spichernstr. to Bismarckstr.', async (t) => {
 	const res = await client.journeys({
 		type: 'stop',
 		id: spichernstr,
@@ -69,7 +69,7 @@ tap.test('journeys – Spichernstr. to Bismarckstr.', async (t) => {
 	t.end()
 })
 
-tap.test('journeys – only subway', async (t) => {
+tap.test('journeys – only subway', async (t) => {
 	const res = await client.journeys(spichernstr, bismarckstr, {
 		results: 20,
 		departure: when,
@@ -104,9 +104,9 @@ tap.test('journeys – only subway', async (t) => {
 	t.end()
 })
 
-// todo: journeys – with arrival time
+// todo: journeys – with arrival time
 
-tap.test('journeys – fails with no product', (t) => {
+tap.test('journeys – fails with no product', (t) => {
 	journeysFailsWithNoProduct({
 		test: t,
 		fetchJourneys: client.journeys,
@@ -213,7 +213,7 @@ tap.skip('trips', async (t) => {
 	t.end()
 })
 
-tap.test('journeys – station to address', async (t) => {
+tap.test('journeys – station to address', async (t) => {
 	const torfstr = {
 		type: 'location',
 		address: '13353 Berlin-Wedding, Torfstr. 17',
@@ -235,7 +235,7 @@ tap.test('journeys – station to address', async (t) => {
 	t.end()
 })
 
-tap.test('journeys – station to POI', async (t) => {
+tap.test('journeys – station to POI', async (t) => {
 	const atze = {
 		type: 'location',
 		id: '900980720',
