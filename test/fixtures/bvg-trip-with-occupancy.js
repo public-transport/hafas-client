@@ -19,11 +19,6 @@ module.exports = {
 			id: 'berliner-verkehrsbetriebe',
 			name: 'Berliner Verkehrsbetriebe'
 		},
-		symbol: null,
-		nr: 147,
-		metro: false,
-		express: false,
-		night: false
 	},
 	remarks: [
 		{ type: 'hint', code: 'bf', text: 'barrier-free' },

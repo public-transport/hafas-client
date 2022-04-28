@@ -706,11 +706,6 @@ module.exports = {
 				id: 's-bahn-berlin-gmbh',
 				name: 'S-Bahn Berlin GmbH'
 			},
-			symbol: 'S',
-			nr: 2,
-			metro: false,
-			express: false,
-			night: false
 		},
 		direction: 'S Blankenfelde (TF)',
 		arrivalPlatform: '1',
