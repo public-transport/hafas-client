@@ -43,7 +43,7 @@ module.exports = {
 
 	origin: {
 		type: 'stop',
-		id: '900000009102',
+		id: '900009102',
 		name: 'U Leopoldplatz',
 		location: {
 			type: 'location',
@@ -70,7 +70,7 @@ module.exports = {
 
 	destination: {
 		type: 'stop',
-		id: '900000120005',
+		id: '900120005',
 		name: 'S Ostbahnhof',
 		location: {
 			type: 'location',
@@ -102,7 +102,7 @@ module.exports = {
 				type: 'Feature',
 				properties: {
 					type: 'stop',
-					id: '900000009102',
+					id: '900009102',
 					name: 'U Leopoldplatz',
 					location: {
 						type: 'location',
@@ -126,7 +126,7 @@ module.exports = {
 				type: 'Feature',
 				properties: {
 					type: 'stop',
-					id: '900000009151',
+					id: '900009151',
 					name: 'Gerichtstr.',
 					location: {
 						type: 'location',
@@ -150,7 +150,7 @@ module.exports = {
 				type: 'Feature',
 				properties: {
 					type: 'stop',
-					id: '900000009104',
+					id: '900009104',
 					name: 'S+U Wedding',
 					location: {
 						type: 'location',
@@ -184,7 +184,7 @@ module.exports = {
 				type: 'Feature',
 				properties: {
 					type: 'stop',
-					id: '900000008104',
+					id: '900008104',
 					name: 'U Reinickendorfer Str./Fennstr.',
 					location: {
 						type: 'location',
@@ -208,7 +208,7 @@ module.exports = {
 				type: 'Feature',
 				properties: {
 					type: 'stop',
-					id: '900000001202',
+					id: '900001202',
 					name: 'Am Nordhafen',
 					location: {
 						type: 'location',
@@ -257,7 +257,7 @@ module.exports = {
 				type: 'Feature',
 				properties: {
 					type: 'stop',
-					id: '900000001252',
+					id: '900001252',
 					name: 'Friedrich-Krause-Ufer',
 					location: {
 						type: 'location',
@@ -286,7 +286,7 @@ module.exports = {
 				type: 'Feature',
 				properties: {
 					type: 'stop',
-					id: '900000001206',
+					id: '900001206',
 					name: 'Heidestr.',
 					location: {
 						type: 'location',
@@ -315,7 +315,7 @@ module.exports = {
 				type: 'Feature',
 				properties: {
 					type: 'stop',
-					id: '900000001203',
+					id: '900001203',
 					name: 'Döberitzer Str.',
 					location: {
 						type: 'location',
@@ -384,7 +384,7 @@ module.exports = {
 				type: 'Feature',
 				properties: {
 					type: 'stop',
-					id: '900000003201',
+					id: '900003201',
 					name: 'S+U Berlin Hauptbahnhof',
 					location: {
 						type: 'location',
@@ -418,7 +418,7 @@ module.exports = {
 				type: 'Feature',
 				properties: {
 					type: 'stop',
-					id: '900000100503',
+					id: '900100503',
 					name: 'Invalidenpark',
 					location: {
 						type: 'location',
@@ -452,7 +452,7 @@ module.exports = {
 				type: 'Feature',
 				properties: {
 					type: 'stop',
-					id: '900000100542',
+					id: '900100542',
 					name: 'Charité - Campus Mitte',
 					location: {
 						type: 'location',
@@ -476,7 +476,7 @@ module.exports = {
 				type: 'Feature',
 				properties: {
 					type: 'stop',
-					id: '900000100033',
+					id: '900100033',
 					name: 'Schumannstr.',
 					location: {
 						type: 'location',
@@ -505,7 +505,7 @@ module.exports = {
 				type: 'Feature',
 				properties: {
 					type: 'stop',
-					id: '900000100509',
+					id: '900100509',
 					name: 'Deutsches Theater',
 					location: {
 						type: 'location',
@@ -529,7 +529,7 @@ module.exports = {
 				type: 'Feature',
 				properties: {
 					type: 'stop',
-					id: '900000100047',
+					id: '900100047',
 					name: 'Friedrichstr./Reinhardtstr.',
 					location: {
 						type: 'location',
@@ -563,7 +563,7 @@ module.exports = {
 				type: 'Feature',
 				properties: {
 					type: 'stop',
-					id: '900000100001',
+					id: '900100001',
 					name: 'S+U Friedrichstr.',
 					location: {
 						type: 'location',
@@ -592,7 +592,7 @@ module.exports = {
 				type: 'Feature',
 				properties: {
 					type: 'stop',
-					id: '900000100513',
+					id: '900100513',
 					name: 'U Unter den Linden',
 					location: {
 						type: 'location',
@@ -626,7 +626,7 @@ module.exports = {
 				type: 'Feature',
 				properties: {
 					type: 'stop',
-					id: '900000100027',
+					id: '900100027',
 					name: 'Französische Str.',
 					location: {
 						type: 'location',
@@ -650,7 +650,7 @@ module.exports = {
 				type: 'Feature',
 				properties: {
 					type: 'stop',
-					id: '900000100530',
+					id: '900100530',
 					name: 'Werderscher Markt',
 					location: {
 						type: 'location',
@@ -684,7 +684,7 @@ module.exports = {
 				type: 'Feature',
 				properties: {
 					type: 'stop',
-					id: '900000100052',
+					id: '900100052',
 					name: 'Berliner Schloss',
 					location: {
 						type: 'location',
@@ -713,7 +713,7 @@ module.exports = {
 				type: 'Feature',
 				properties: {
 					type: 'stop',
-					id: '900000100531',
+					id: '900100531',
 					name: 'Neumannsgasse',
 					location: {
 						type: 'location',
@@ -737,7 +737,7 @@ module.exports = {
 				type: 'Feature',
 				properties: {
 					type: 'stop',
-					id: '900000100726',
+					id: '900100726',
 					name: 'Fischerinsel.',
 					location: {
 						type: 'location',
@@ -766,7 +766,7 @@ module.exports = {
 				type: 'Feature',
 				properties: {
 					type: 'stop',
-					id: '900000100014',
+					id: '900100014',
 					name: 'U Märkisches Museum',
 					location: {
 						type: 'location',
@@ -795,7 +795,7 @@ module.exports = {
 				type: 'Feature',
 				properties: {
 					type: 'stop',
-					id: '900000100032',
+					id: '900100032',
 					name: 'Heinrich-Heine-Str./Annenstr.',
 					location: {
 						type: 'location',
@@ -824,7 +824,7 @@ module.exports = {
 				type: 'Feature',
 				properties: {
 					type: 'stop',
-					id: '900000100544',
+					id: '900100544',
 					name: 'Heinrich-Heine-Platz',
 					location: {
 						type: 'location',
@@ -868,7 +868,7 @@ module.exports = {
 				type: 'Feature',
 				properties: {
 					type: 'stop',
-					id: '900000100546',
+					id: '900100546',
 					name: 'Adalbertstr.',
 					location: {
 						type: 'location',
@@ -917,7 +917,7 @@ module.exports = {
 				type: 'Feature',
 				properties: {
 					type: 'stop',
-					id: '900000014107',
+					id: '900014107',
 					name: 'Bethaniendamm',
 					location: {
 						type: 'location',
@@ -966,7 +966,7 @@ module.exports = {
 				type: 'Feature',
 				properties: {
 					type: 'stop',
-					id: '900000120005',
+					id: '900120005',
 					name: 'S Ostbahnhof',
 					location: {
 						type: 'location',
@@ -993,7 +993,7 @@ module.exports = {
 		{
 			stop: {
 				type: 'stop',
-				id: '900000009102',
+				id: '900009102',
 				name: 'U Leopoldplatz',
 				location: {
 					type: 'location',
@@ -1035,7 +1035,7 @@ module.exports = {
 		{
 			stop: {
 				type: 'stop',
-				id: '900000009151',
+				id: '900009151',
 				name: 'Gerichtstr.',
 				location: {
 					type: 'location',
@@ -1071,7 +1071,7 @@ module.exports = {
 		{
 			stop: {
 				type: 'stop',
-				id: '900000009104',
+				id: '900009104',
 				name: 'S+U Wedding',
 				location: {
 					type: 'location',
@@ -1113,7 +1113,7 @@ module.exports = {
 		{
 			stop: {
 				type: 'stop',
-				id: '900000008104',
+				id: '900008104',
 				name: 'U Reinickendorfer Str./Fennstr.',
 				location: {
 					type: 'location',
@@ -1149,7 +1149,7 @@ module.exports = {
 		{
 			stop: {
 				type: 'stop',
-				id: '900000001202',
+				id: '900001202',
 				name: 'Am Nordhafen',
 				location: {
 					type: 'location',
@@ -1185,7 +1185,7 @@ module.exports = {
 		{
 			stop: {
 				type: 'stop',
-				id: '900000001252',
+				id: '900001252',
 				name: 'Friedrich-Krause-Ufer',
 				location: {
 					type: 'location',
@@ -1221,7 +1221,7 @@ module.exports = {
 		{
 			stop: {
 				type: 'stop',
-				id: '900000001206',
+				id: '900001206',
 				name: 'Heidestr.',
 				location: {
 					type: 'location',
@@ -1257,7 +1257,7 @@ module.exports = {
 		{
 			stop: {
 				type: 'stop',
-				id: '900000001203',
+				id: '900001203',
 				name: 'Döberitzer Str.',
 				location: {
 					type: 'location',
@@ -1293,7 +1293,7 @@ module.exports = {
 		{
 			stop: {
 				type: 'stop',
-				id: '900000003201',
+				id: '900003201',
 				name: 'S+U Berlin Hauptbahnhof',
 				location: {
 					type: 'location',
@@ -1335,7 +1335,7 @@ module.exports = {
 		{
 			stop: {
 				type: 'stop',
-				id: '900000100503',
+				id: '900100503',
 				name: 'Invalidenpark',
 				location: {
 					type: 'location',
@@ -1371,7 +1371,7 @@ module.exports = {
 		{
 			stop: {
 				type: 'stop',
-				id: '900000100542',
+				id: '900100542',
 				name: 'Charité - Campus Mitte',
 				location: {
 					type: 'location',
@@ -1407,7 +1407,7 @@ module.exports = {
 		{
 			stop: {
 				type: 'stop',
-				id: '900000100033',
+				id: '900100033',
 				name: 'Schumannstr.',
 				location: {
 					type: 'location',
@@ -1443,7 +1443,7 @@ module.exports = {
 		{
 			stop: {
 				type: 'stop',
-				id: '900000100509',
+				id: '900100509',
 				name: 'Deutsches Theater',
 				location: {
 					type: 'location',
@@ -1479,7 +1479,7 @@ module.exports = {
 		{
 			stop: {
 				type: 'stop',
-				id: '900000100047',
+				id: '900100047',
 				name: 'Friedrichstr./Reinhardtstr.',
 				location: {
 					type: 'location',
@@ -1515,7 +1515,7 @@ module.exports = {
 		{
 			stop: {
 				type: 'stop',
-				id: '900000100001',
+				id: '900100001',
 				name: 'S+U Friedrichstr.',
 				location: {
 					type: 'location',
@@ -1557,7 +1557,7 @@ module.exports = {
 		{
 			stop: {
 				type: 'stop',
-				id: '900000100513',
+				id: '900100513',
 				name: 'U Unter den Linden',
 				location: {
 					type: 'location',
@@ -1593,7 +1593,7 @@ module.exports = {
 		{
 			stop: {
 				type: 'stop',
-				id: '900000100027',
+				id: '900100027',
 				name: 'Französische Str.',
 				location: {
 					type: 'location',
@@ -1629,7 +1629,7 @@ module.exports = {
 		{
 			stop: {
 				type: 'stop',
-				id: '900000100530',
+				id: '900100530',
 				name: 'Werderscher Markt',
 				location: {
 					type: 'location',
@@ -1665,7 +1665,7 @@ module.exports = {
 		{
 			stop: {
 				type: 'stop',
-				id: '900000100052',
+				id: '900100052',
 				name: 'Berliner Schloss',
 				location: {
 					type: 'location',
@@ -1701,7 +1701,7 @@ module.exports = {
 		{
 			stop: {
 				type: 'stop',
-				id: '900000100531',
+				id: '900100531',
 				name: 'Neumannsgasse',
 				location: {
 					type: 'location',
@@ -1737,7 +1737,7 @@ module.exports = {
 		{
 			stop: {
 				type: 'stop',
-				id: '900000100726',
+				id: '900100726',
 				name: 'Fischerinsel.',
 				location: {
 					type: 'location',
@@ -1773,7 +1773,7 @@ module.exports = {
 		{
 			stop: {
 				type: 'stop',
-				id: '900000100014',
+				id: '900100014',
 				name: 'U Märkisches Museum',
 				location: {
 					type: 'location',
@@ -1809,7 +1809,7 @@ module.exports = {
 		{
 			stop: {
 				type: 'stop',
-				id: '900000100032',
+				id: '900100032',
 				name: 'Heinrich-Heine-Str./Annenstr.',
 				location: {
 					type: 'location',
@@ -1845,7 +1845,7 @@ module.exports = {
 		{
 			stop: {
 				type: 'stop',
-				id: '900000100544',
+				id: '900100544',
 				name: 'Heinrich-Heine-Platz',
 				location: {
 					type: 'location',
@@ -1881,7 +1881,7 @@ module.exports = {
 		{
 			stop: {
 				type: 'stop',
-				id: '900000100546',
+				id: '900100546',
 				name: 'Adalbertstr.',
 				location: {
 					type: 'location',
@@ -1917,7 +1917,7 @@ module.exports = {
 		{
 			stop: {
 				type: 'stop',
-				id: '900000014107',
+				id: '900014107',
 				name: 'Bethaniendamm',
 				location: {
 					type: 'location',
@@ -1953,7 +1953,7 @@ module.exports = {
 		{
 			stop: {
 				type: 'stop',
-				id: '900000120005',
+				id: '900120005',
 				name: 'S Ostbahnhof',
 				location: {
 					type: 'location',
