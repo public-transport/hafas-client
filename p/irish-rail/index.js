@@ -3,16 +3,11 @@
 const baseProfile = require('./base.json')
 const products = require('./products')
 
-const transformReqBody = (ctx, body) => {
-	body.lang = 'ga'
-	return body
-}
-
 const irishRailProfile = {
 	...baseProfile,
 	locale: 'en-IE',
 	timezone: 'Europe/Dublin',
-	transformReqBody,
+	defaultLanguage: 'ga',
 	salt: Buffer.from('i5s7m3q9z6b4k1c2', 'utf8'),
 	addMicMac: true,
 
