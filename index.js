@@ -261,10 +261,10 @@ const createClient = (profile, userAgent, opt = {}) => {
 		const ctx = {profile, opt, common, res}
 
 		return {
+			journey: profile.parseJourney(ctx, res.outConL[0]),
 			realtimeDataUpdatedAt: res.planrtTS && res.planrtTS !== '0'
 				? parseInt(res.planrtTS)
 				: null,
-			...profile.parseJourney(ctx, res.outConL[0])
 		}
 	}
 
