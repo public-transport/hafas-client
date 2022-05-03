@@ -22,7 +22,7 @@ const journeysFailsWithNoProduct = require('./lib/journeys-fails-with-no-product
 const testDepartures = require('./lib/departures')
 const testArrivals = require('./lib/arrivals')
 
-const T_MOCK = 1641897000 * 1000 // 2022-01-11T11:30:00+01
+const T_MOCK = 1652175000 * 1000 // 2022-05-10T11:30+02:00
 const when = createWhen(mobiliteitLuProfile.timezone, mobiliteitLuProfile.locale, T_MOCK)
 
 const cfg = {

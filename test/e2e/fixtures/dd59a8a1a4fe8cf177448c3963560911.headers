@@ -1,0 +1,36 @@
+{
+  "statusCode": 200,
+  "headers": {
+    "date": "Tue, 03 May 2022 14:54:52 GMT",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "4299",
+    "connection": "keep-alive",
+    "server": "Apache/2.4.25 (Debian)",
+    "access-control-allow-origin": "*"
+  },
+  "url": "https://auskunft.nvv.de/auskunft/bin/app/mgate.exe",
+  "time": 396,
+  "request": {
+    "method": "POST",
+    "headers": {
+      "Content-Type": [
+        "application/json"
+      ],
+      "Accept-Encoding": [
+        "gzip, br, deflate"
+      ],
+      "Accept": [
+        "application/json"
+      ],
+      "user-agent": [
+        "public-d69f38transpd69f38ort/hafd69f38as-cld69f38ient:tesd69f38t"
+      ],
+      "connection": [
+        "keep-alive"
+      ],
+      "Content-Length": [
+        "773"
+      ]
+    }
+  }
+}

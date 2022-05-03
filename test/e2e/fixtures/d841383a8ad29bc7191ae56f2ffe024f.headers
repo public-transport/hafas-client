@@ -1,0 +1,32 @@
+{
+  "error": {
+    "errno": -60,
+    "code": "ETIMEDOUT",
+    "syscall": "read"
+  },
+  "url": "https://fahrplaner.vsninfo.de/hafas/mgate.exe?mic=3a8247478db321b971b965ae0ef81969&mac=5c6aa57f34efc57adefe9b6401570beb",
+  "time": 36452,
+  "request": {
+    "method": "POST",
+    "headers": {
+      "Content-Type": [
+        "application/json"
+      ],
+      "Accept-Encoding": [
+        "gzip, br, deflate"
+      ],
+      "Accept": [
+        "application/json"
+      ],
+      "user-agent": [
+        "public-t5b3807ranspor5b3807t/hafas5b3807-client:te5b3807st"
+      ],
+      "connection": [
+        "keep-alive"
+      ],
+      "Content-Length": [
+        "337"
+      ]
+    }
+  }
+}
