@@ -1,0 +1,37 @@
+{
+  "statusCode": 200,
+  "headers": {
+    "date": "Tue, 03 May 2022 14:55:18 GMT",
+    "server": "Apache",
+    "content-length": "7332",
+    "keep-alive": "timeout=5, max=52",
+    "connection": "Keep-Alive",
+    "content-type": "application/json; charset=utf-8",
+    "strict-transport-security": "max-age=63072000; includeSubDomains"
+  },
+  "url": "https://fahrplan.oebb.at/bin/mgate.exe",
+  "time": 914,
+  "request": {
+    "method": "POST",
+    "headers": {
+      "Content-Type": [
+        "application/json"
+      ],
+      "Accept-Encoding": [
+        "gzip, br, deflate"
+      ],
+      "Accept": [
+        "application/json"
+      ],
+      "user-agent": [
+        "public-tr11cf88ansport/ha11cf88fas-clie11cf88nt:test"
+      ],
+      "connection": [
+        "keep-alive"
+      ],
+      "Content-Length": [
+        "635"
+      ]
+    }
+  }
+}

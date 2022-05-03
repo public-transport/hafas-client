@@ -1,16 +1,16 @@
 {
   "statusCode": 200,
   "headers": {
-    "date": "Wed, 29 Dec 2021 14:25:25 GMT",
+    "date": "Tue, 03 May 2022 15:08:21 GMT",
     "content-type": "application/json; charset=utf-8",
-    "content-length": "2228",
+    "content-length": "2264",
     "connection": "keep-alive",
     "server": "Apache/2.4.25 (Debian)",
     "access-control-allow-origin": "*",
     "access-control-allow-headers": "*"
   },
   "url": "https://mobilapps.rejseplanen.dk/bin/iphone.exe",
-  "time": 177,
+  "time": 181,
   "request": {
     "method": "POST",
     "headers": {
@@ -24,7 +24,7 @@
         "application/json"
       ],
       "user-agent": [
-        "pubf7059c6e5392lic-transport/hafas-client:test"
+        "public-trf420f4ansport/hf420f4afas-clf420f4ient:test"
       ],
       "connection": [
         "keep-alive"

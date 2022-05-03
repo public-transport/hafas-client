@@ -1,0 +1,36 @@
+{
+  "statusCode": 200,
+  "headers": {
+    "date": "Tue, 03 May 2022 15:20:03 GMT",
+    "server": "Apache",
+    "content-length": "2813",
+    "keep-alive": "timeout=5, max=95",
+    "connection": "Keep-Alive",
+    "content-type": "application/json; charset=utf-8"
+  },
+  "url": "https://fahrplaner.vsninfo.de/hafas/mgate.exe?mic=3a2d810dd42faa883dfcb945b5ef98e1&mac=5785b2d1ccdb11ef8c66dc7dc9b7dbad",
+  "time": 695,
+  "request": {
+    "method": "POST",
+    "headers": {
+      "Content-Type": [
+        "application/json"
+      ],
+      "Accept-Encoding": [
+        "gzip, br, deflate"
+      ],
+      "Accept": [
+        "application/json"
+      ],
+      "user-agent": [
+        "public-tra7c1d30nsport/h7c1d30afas-clie7c1d30nt:test"
+      ],
+      "connection": [
+        "keep-alive"
+      ],
+      "Content-Length": [
+        "623"
+      ]
+    }
+  }
+}

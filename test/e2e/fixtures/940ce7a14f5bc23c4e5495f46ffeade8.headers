@@ -1,0 +1,36 @@
+{
+  "statusCode": 200,
+  "headers": {
+    "date": "Tue, 03 May 2022 15:15:26 GMT",
+    "server": "Apache",
+    "content-length": "430",
+    "keep-alive": "timeout=5, max=97",
+    "connection": "Keep-Alive",
+    "content-type": "application/json; charset=utf-8"
+  },
+  "url": "https://fahrplaner.vbn.de/bin/mgate.exe?mic=49679168737cfc5fc9b32b5eec72a296&mac=164ce7f9003043976222496773a33630",
+  "time": 438,
+  "request": {
+    "method": "POST",
+    "headers": {
+      "Content-Type": [
+        "application/json"
+      ],
+      "Accept-Encoding": [
+        "gzip, br, deflate"
+      ],
+      "Accept": [
+        "application/json"
+      ],
+      "user-agent": [
+        "public-tr8aa596ansport/h8aa596afas-c8aa596lient:t8aa596est"
+      ],
+      "connection": [
+        "keep-alive"
+      ],
+      "Content-Length": [
+        "336"
+      ]
+    }
+  }
+}
