@@ -8,6 +8,7 @@ const defaultProfile = require('./lib/default-profile')
 const validateProfile = require('./lib/validate-profile')
 const {INVALID_REQUEST} = require('./lib/errors')
 const sliceLeg = require('./lib/slice-leg')
+const {HafasError} = require('./lib/errors')
 
 const isNonEmptyString = str => 'string' === typeof str && str.length > 0
 
@@ -248,11 +249,7 @@ const createClient = (profile, userAgent, opt = {}) => {
 
 		const {res, common} = await profile.request({profile, opt}, userAgent, req)
 		if (!Array.isArray(res.outConL) || !res.outConL[0]) {
-			const err = new Error('invalid response')
-			// technically this is not a HAFAS error
-			// todo: find a different flag with decent DX
-			err.isHafasError = true
-			throw err
+			throw new HafasError('invalid response, expected outConL[0]', null, {})
 		}
 
 		const ctx = {profile, opt, common, res}
@@ -427,14 +424,10 @@ const createClient = (profile, userAgent, opt = {}) => {
 
 		const {res, common} = await profile.request({profile, opt}, userAgent, req)
 		if (!res || !Array.isArray(res.locL) || !res.locL[0]) {
-			// todo: proper stack trace?
-			// todo: DRY with lib/request.js
-			const err = new Error('response has no stop')
-			// technically this is not a HAFAS error
-			// todo: find a different flag with decent DX
-			err.isHafasError = true
-			err.code = INVALID_REQUEST
-			throw err
+			throw new HafasError('invalid response, expected locL[0]', null, {
+				// This problem occurs on invalid input. 🙄
+				code: INVALID_REQUEST,
+			})
 		}
 
 		const ctx = {profile, opt, res, common}
@@ -622,9 +615,9 @@ const createClient = (profile, userAgent, opt = {}) => {
 
 		const {res, common} = await profile.request({profile, opt}, userAgent, req)
 		if (!Array.isArray(res.posL)) {
-			const err = new Error('invalid response')
-			err.shouldRetry = true
-			throw err
+			throw new HafasError('invalid response, expected posL[0]', null, {
+				shouldRetry: true,
+			})
 		}
 
 		const byDuration = []
