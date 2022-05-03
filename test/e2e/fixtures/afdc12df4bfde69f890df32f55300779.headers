@@ -1,19 +1,19 @@
 {
   "statusCode": 200,
   "headers": {
-    "date": "Tue, 26 Apr 2022 10:10:48 GMT",
+    "date": "Tue, 03 May 2022 14:52:00 GMT",
     "content-type": "application/json; charset=utf-8",
-    "content-length": "1275",
+    "content-length": "1271",
     "connection": "keep-alive",
     "set-cookie": [
-      "AWSALB=N1ol9vMEAucTxRTFylpdS2BD2vdFRPHfa4r28pejii37ES50GN1i3dNUIMepM2Zajq7rFEYiOuNGZE56CI+19eNubVEoG9p3qDHLVGeS7aMESEnND20vTEByNEYQ; Expires=Tue, 03 May 2022 10:10:47 GMT; Path=/",
-      "AWSALBCORS=N1ol9vMEAucTxRTFylpdS2BD2vdFRPHfa4r28pejii37ES50GN1i3dNUIMepM2Zajq7rFEYiOuNGZE56CI+19eNubVEoG9p3qDHLVGeS7aMESEnND20vTEByNEYQ; Expires=Tue, 03 May 2022 10:10:47 GMT; Path=/; SameSite=None; Secure"
+      "AWSALB=AHsDSR3DIm6XOP2HGo9Z819Uayl7W6XBZO/bgypuEJ1G3Llw8PqQW6byrDUQkGBqh/X97h3ZFgD3ndLlec5vwxUzA7u7gkDzv9OEn9RDMAO7FCoOGfXhrbWbcV/n; Expires=Tue, 10 May 2022 14:52:00 GMT; Path=/",
+      "AWSALBCORS=AHsDSR3DIm6XOP2HGo9Z819Uayl7W6XBZO/bgypuEJ1G3Llw8PqQW6byrDUQkGBqh/X97h3ZFgD3ndLlec5vwxUzA7u7gkDzv9OEn9RDMAO7FCoOGfXhrbWbcV/n; Expires=Tue, 10 May 2022 14:52:00 GMT; Path=/; SameSite=None; Secure"
     ],
     "server": "Apache",
     "strict-transport-security": "max-age=16070400; includeSubDomains"
   },
   "url": "https://reiseauskunft.bahn.de/bin/mgate.exe?checksum=e6bdfd29f39ef628b11273df9f35eb7f",
-  "time": 324,
+  "time": 385,
   "request": {
     "method": "POST",
     "headers": {
@@ -27,7 +27,7 @@
         "application/json"
       ],
       "user-agent": [
-        "public-te93725ranspore93725t/hafas-e93725client:te93725est"
+        "public-tr98758dansport/h98758dafas-cli98758dent:te98758dst"
       ],
       "connection": [
         "keep-alive"

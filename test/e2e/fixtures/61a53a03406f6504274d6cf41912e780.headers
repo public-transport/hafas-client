@@ -1,16 +1,16 @@
 {
   "statusCode": 200,
   "headers": {
-    "date": "Tue, 03 May 2022 13:48:54 GMT",
+    "date": "Tue, 03 May 2022 14:51:52 GMT",
     "server": "Apache/2.4.25 (Debian)",
-    "content-length": "2310",
+    "content-length": "2306",
     "access-control-allow-origin": "*",
-    "keep-alive": "timeout=5, max=89",
+    "keep-alive": "timeout=5, max=88",
     "connection": "Keep-Alive",
     "content-type": "application/json; charset=utf-8"
   },
   "url": "https://reiseauskunft.insa.de/bin/mgate.exe",
-  "time": 138,
+  "time": 142,
   "request": {
     "method": "POST",
     "headers": {
@@ -24,7 +24,7 @@
         "application/json"
       ],
       "user-agent": [
-        "publicc01d4f-transpc01d4fort/hc01d4fafas-cliec01d4fnt:tesc01d4ft"
+        "public-t780ef5ranspor780ef5t/hafa780ef5s-client:t780ef5est"
       ],
       "connection": [
         "keep-alive"

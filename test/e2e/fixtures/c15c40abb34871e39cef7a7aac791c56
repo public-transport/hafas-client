@@ -1,0 +1,1 @@
+{"ver":"1.40","lang":"eng","id":"ax2cqmse2gks9k8g","err":"OK","graph":{"id":"standard","index":0},"subGraph":{"id":"global","index":0},"view":{"id":"standard","index":0,"type":"WGS84"},"svcResL":[{"meth":"JourneyGeoPos","err":"OK","res":{"date":"20220718","time":"100000","fpB":"20220502","fpE":"20220529","planrtTS":"1651590371"}}]}

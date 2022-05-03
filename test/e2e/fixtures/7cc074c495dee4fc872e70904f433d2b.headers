@@ -1,16 +1,16 @@
 {
   "statusCode": 200,
   "headers": {
-    "date": "Wed, 29 Dec 2021 14:25:28 GMT",
+    "date": "Tue, 03 May 2022 14:55:31 GMT",
     "server": "Apache",
-    "content-length": "1385",
-    "keep-alive": "timeout=5, max=36",
+    "content-length": "1351",
+    "keep-alive": "timeout=5, max=81",
     "connection": "Keep-Alive",
     "content-type": "application/json; charset=utf-8",
     "strict-transport-security": "max-age=63072000; includeSubDomains"
   },
   "url": "https://fahrplan.oebb.at/bin/mgate.exe",
-  "time": 147,
+  "time": 6389,
   "request": {
     "method": "POST",
     "headers": {
@@ -24,7 +24,7 @@
         "application/json"
       ],
       "user-agent": [
-        "public-transpo43fa9fb13d68rt/hafas-client:test"
+        "public-11cf88trans11cf88port/haf11cf88as-cli11cf88ent:test"
       ],
       "connection": [
         "keep-alive"

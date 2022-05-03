@@ -11,7 +11,7 @@ const testJourneysStationToStation = require('./lib/journeys-station-to-station'
 const testArrivals = require('./lib/arrivals')
 const testReachableFrom = require('./lib/reachable-from')
 
-const T_MOCK = 1641897000 * 1000 // 2022-01-11T11:30:00+01
+const T_MOCK = 1657618200 * 1000 // 2022-07-12T11:30+02:00
 const when = createWhen(rmvProfile.timezone, rmvProfile.locale, T_MOCK)
 
 const cfg = {
