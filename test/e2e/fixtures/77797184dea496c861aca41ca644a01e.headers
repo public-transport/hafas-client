@@ -1,14 +1,14 @@
 {
   "statusCode": 200,
   "headers": {
-    "date": "Thu, 28 Apr 2022 09:37:29 GMT",
+    "date": "Tue, 03 May 2022 15:03:27 GMT",
     "server": "Apache",
     "vary": "User-Agent",
-    "content-length": "3246",
+    "content-length": "3244",
     "content-type": "application/json; charset=utf-8"
   },
   "url": "https://fahrinfo.vbb.de/bin/mgate.exe",
-  "time": 497,
+  "time": 573,
   "request": {
     "method": "POST",
     "headers": {
@@ -22,7 +22,7 @@
         "application/json"
       ],
       "user-agent": [
-        "public-aae48ftransportaae48f/hafaaae48fs-clieaae48fnt:tesaae48ft"
+        "public-tra60f02fnspor60f02ft/hafas60f02f-clie60f02fnt:test"
       ],
       "connection": [
         "keep-alive"

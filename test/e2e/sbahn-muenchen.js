@@ -19,7 +19,7 @@ const testArrivals = require('./lib/arrivals')
 const testJourneysWithDetour = require('./lib/journeys-with-detour')
 const testReachableFrom = require('./lib/reachable-from')
 
-const T_MOCK = 1641897000 * 1000 // 2022-01-11T11:30:00+01
+const T_MOCK = 1657618200 * 1000 // 2022-07-12T11:30+02:00
 const when = createWhen(sMunichProfile.timezone, sMunichProfile.locale, T_MOCK)
 
 const cfg = {

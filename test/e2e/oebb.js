@@ -23,7 +23,7 @@ const testJourneysWithDetour = require('./lib/journeys-with-detour')
 const testDepartures = require('./lib/departures')
 const testDeparturesInDirection = require('./lib/departures-in-direction')
 
-const T_MOCK = 1641897000 * 1000 // 2022-01-11T11:30:00+01
+const T_MOCK = 1657618200 * 1000 // 2022-07-12T11:30+02:00
 const when = createWhen(oebbProfile.timezone, oebbProfile.locale, T_MOCK)
 
 const cfg = {

@@ -1,17 +1,17 @@
 {
   "statusCode": 200,
   "headers": {
-    "date": "Wed, 29 Dec 2021 14:25:23 GMT",
-    "server": "Apache",
-    "content-length": "1283",
-    "cache-control": "max-age=86400",
-    "expires": "Thu, 30 Dec 2021 14:25:23 GMT",
-    "keep-alive": "timeout=5, max=93",
-    "connection": "Keep-Alive",
-    "content-type": "application/json; charset=utf-8"
+    "date": "Tue, 03 May 2022 15:16:52 GMT",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "1282",
+    "connection": "keep-alive",
+    "server": "Apache/2.4.25 (Debian)",
+    "access-control-allow-origin": "*",
+    "access-control-allow-headers": "origin, x-requested-with, x-prototype-version, content-type",
+    "access-control-allow-methods": "PUT, GET, POST, DELETE, OPTIONS"
   },
   "url": "https://online.fahrplan.zvv.ch/bin/mgate.exe",
-  "time": 87,
+  "time": 140,
   "request": {
     "method": "POST",
     "headers": {
@@ -25,7 +25,7 @@
         "application/json"
       ],
       "user-agent": [
-        "publicf1cbf68dc667-transport/hafas-client:test"
+        "public-tra3b7fabnsport/ha3b7fabfas-cli3b7fabent:test"
       ],
       "connection": [
         "keep-alive"
