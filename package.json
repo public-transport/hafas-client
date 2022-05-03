@@ -71,7 +71,7 @@
 	},
 	"scripts": {
 		"lint": "eslint .",
-		"test-unit": "tap test/*.js test/format/*.js test/parse/*.js",
+		"test-unit": "tap test/lib/*.js test/*.js test/format/*.js test/parse/*.js",
 		"test-integration": "VCR_MODE=playback tap test/e2e/*.js",
 		"test-integration:record": "VCR_MODE=record tap -t60 -j16 test/e2e/*.js",
 		"test-e2e": "VCR_OFF=true tap -t60 -j16 test/e2e/*.js",
