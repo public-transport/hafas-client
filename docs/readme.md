@@ -149,6 +149,44 @@ const client = createClient({
 
 The default `profile.logRequest` [`console.error`](https://nodejs.org/docs/latest-v10.x/api/console.html#console_console_error_data_args)s the request body, if you have set `$DEBUG` to `hafas-client`. Likewise, `profile.logResponse` `console.error`s the response body.
 
+## Error handling
+
+Unexpected errors – e.g. due to bugs in `hafas-client` itself – aside, its methods may reject with the following errors:
+
+- `HafasError` – A generic error to signal that something HAFAS-related went wrong, either in the client, or in the HAFAS endpoint.
+- `HafasAccessDeniedError` – The HAFAS endpoint has rejected your request because you're not allowed to access it (or the specific API call). Subclass of `HafasError`.
+- `HafasInvalidRequestError` – The HAFAS endpoint reports that an invalid request has been sent. Subclass of `HafasError`.
+- `HafasNotFoundError` – The HAFAS endpoint does not know about such stop/trip/etc. Subclass of `HafasError`.
+- `HafasServerError` – An error occured within the HAFAS endpoint, so that it can't fulfill the request; For example, this happens when HAFAS' internal backend is unavailable. Subclass of `HafasError`.
+
+Each error has the following properties:
+
+- `isHafasError` – Always `true`. Allows you to differente HAFAS-related errors from e.g. network errors.
+- `code` – A string representing the error type for all other error classes, e.g. `INVALID_REQUEST` for `HafasInvalidRequestError`. `null` for plain `HafasError`s.
+- `isCausedByServer` – Boolean, telling you if the HAFAS endpoint says that it couldn't process your request because *it* is unavailable/broken.
+- `hafasCode` – A HAFAS-specific error code, if the HAFAS endpoint returned one; e.g. `H890` when no journeys could be found. `null` otherwise.
+- `request` – The [Fetch API `Request`](https://developer.mozilla.org/en-US/docs/Web/API/Request) of the request.
+- `url` – The URL of the request.
+- `response` – The [Fetch API `Response`](https://developer.mozilla.org/en-US/docs/Web/API/Response).
+
+To check **if an error from `hafas-client` is HAFAS-specific, use `error instanceof HafasError`**:
+
+```js
+const {HafasError} = require('hafas-client/lib/errors')
+
+try {
+	await client.journeys(/* … */)
+} catch (err) {
+	if (err instanceof HafasError) {
+		// HAFAS-specific error
+	} else {
+		// different error, e.g. network (ETIMEDOUT, ENETDOWN)
+	}
+}
+```
+
+To determine **if you should automatically retry an error, use `!error.causedByServer`**.
+
 ## Using `hafas-client` from another language
 
 If you want to use `hafas-client` to access HAFAS APIs but work with non-Node.js environments, you can use [`hafas-client-rpc`](https://github.com/derhuerst/hafas-client-rpc) to create a [JSON-RPC](https://www.jsonrpc.org) interface that you can send commands to.
