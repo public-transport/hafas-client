@@ -73,6 +73,62 @@ tap.test('checkIfResponseIsOk properly throws HAFAS "LOCATION" errors', (t) => {
 	}
 })
 
+tap.test('checkIfResponseIsOk properly throws HAFAS "NO_MATCH" errors', (t) => {
+	try {
+		checkIfResIsOk({
+			body: resNoMatch,
+			errProps: {secret},
+		})
+	} catch (err) {
+		t.ok(err)
+
+		t.ok(err instanceof HafasError)
+		t.equal(err.isHafasError, true)
+		t.equal(err.message.slice(0, 10), 'NO_MATCH: ')
+		t.ok(err.message.length > 10)
+
+		t.ok(err instanceof HafasNotFoundError)
+		t.equal(err.isCausedByServer, false)
+		t.equal(err.code, NOT_FOUND)
+		t.equal(err.hafasCode, 'NO_MATCH')
+
+		t.equal(err.hafasResponseId, resNoMatch.id)
+		t.equal(err.hafasMessage, 'Nothing found.')
+		t.equal(err.hafasDescription, 'Während der Suche ist leider ein interner Fehler aufgetreten. Bitte wenden Sie sich an unsere Serviceauskunft unter Tel. 0421 596059.')
+		t.equal(err.secret, secret)
+
+		t.end()
+	}
+})
+
+tap.test('checkIfResponseIsOk properly throws HAFAS "PARAMETER" errors', (t) => {
+	try {
+		checkIfResIsOk({
+			body: resParameter,
+			errProps: {secret},
+		})
+	} catch (err) {
+		t.ok(err)
+
+		t.ok(err instanceof HafasError)
+		t.equal(err.isHafasError, true)
+		t.equal(err.message.slice(0, 11), 'PARAMETER: ')
+		t.ok(err.message.length > 11)
+
+		t.ok(err instanceof HafasInvalidRequestError)
+		t.equal(err.isCausedByServer, false)
+		t.equal(err.code, INVALID_REQUEST)
+		t.equal(err.hafasCode, 'PARAMETER')
+
+		t.equal(err.hafasResponseId, resParameter.id)
+		t.equal(err.hafasMessage, 'HCI Service: parameter invalid')
+		t.equal(err.hafasDescription, 'Während der Suche ist ein interner Fehler aufgetreten')
+		t.equal(err.secret, secret)
+
+		t.end()
+	}
+})
+
 tap.test('checkIfResponseIsOk properly parses an unknown HAFAS errors', (t) => {
 	const body = {
 		ver: '1.42',
