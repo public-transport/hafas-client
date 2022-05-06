@@ -1,0 +1,27 @@
+{
+	"ver": "1.42",
+	"lang": "deu",
+	"id": "pz2cgmquimu5pm4k",
+	"err": "OK",
+	"graph": {
+		"id": "standard",
+		"index": 0
+	},
+	"subGraph": {
+		"id": "global",
+		"index": 0
+	},
+	"view": {
+		"id": "standard",
+		"index": 0,
+		"type": "WGS84"
+	},
+	"svcResL": [
+		{
+			"meth": "JourneyMatch",
+			"err": "NO_MATCH",
+			"errTxt": "Nothing found.",
+			"errTxtOut": "Während der Suche ist leider ein interner Fehler aufgetreten. Bitte wenden Sie sich an unsere Serviceauskunft unter Tel. 0421 596059."
+		}
+	]
+}
