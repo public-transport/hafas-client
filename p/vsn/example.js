@@ -1,9 +1,8 @@
-'use strict'
+import {inspect} from 'util'
+import {createClient} from '../../index.js'
+import {profile} from './index.js'
 
-const createClient = require('../..')
-const vsnProfile = require('.')
-
-const client = createClient(vsnProfile, 'hafas-client-example')
+const client = createClient(profile, 'hafas-client-example')
 
 client.journeys('9033961', '9033962', {results: 1, polylines: true})
 
@@ -43,6 +42,6 @@ client.journeys('9033961', '9033962', {results: 1, polylines: true})
 // 	maxDuration: 8
 // })
 .then((data) => {
-	console.log(require('util').inspect(data, {depth: null, colors: true}))
+	console.log(inspect(data, {depth: null, colors: true}))
 })
 .catch(console.error)

@@ -1,6 +1,4 @@
-'use strict'
-
-module.exports = [
+const products = [
 	// todo: what is `256`?
 	{
 		id: 'express',
@@ -59,3 +57,7 @@ module.exports = [
 		default: true
 	}
 ]
+
+export {
+	products,
+}

@@ -1,9 +1,7 @@
-'use strict'
+import tap from 'tap'
 
-const tap = require('tap')
-
-const createClient = require('../..')
-const vbbProfile = require('../../p/vbb')
+import {createClient} from '../../index.js'
+import {profile as vbbProfile} from '../../p/vbb/index.js'
 
 const client = createClient(vbbProfile, 'public-transport/hafas-client:test')
 

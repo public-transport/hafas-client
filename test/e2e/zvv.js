@@ -1,27 +1,24 @@
-'use strict'
+import tap from 'tap'
+import isRoughlyEqual from 'is-roughly-equal'
 
-const tap = require('tap')
-const isRoughlyEqual = require('is-roughly-equal')
-
-const {createWhen} = require('./lib/util')
-const createClient = require('../..')
-const zvvProfile = require('../../p/zvv')
-const products = require('../../p/zvv/products')
-const createValidate = require('./lib/validate-fptf-with')
-const testJourneysStationToStation = require('./lib/journeys-station-to-station')
-const testJourneysStationToAddress = require('./lib/journeys-station-to-address')
-const testJourneysStationToPoi = require('./lib/journeys-station-to-poi')
-const testEarlierLaterJourneys = require('./lib/earlier-later-journeys')
-const testDepartures = require('./lib/departures')
-const testDeparturesInDirection = require('./lib/departures-in-direction')
-const testArrivals = require('./lib/arrivals')
+import {createWhen} from './lib/util.js'
+import {createClient} from '../../index.js'
+import {profile as zvvProfile} from '../../p/zvv/index.js'
+import {createValidateFptfWith as createValidate} from './lib/validate-fptf-with.js'
+import {testJourneysStationToStation} from './lib/journeys-station-to-station.js'
+import {testJourneysStationToAddress} from './lib/journeys-station-to-address.js'
+import {testJourneysStationToPoi} from './lib/journeys-station-to-poi.js'
+import {testEarlierLaterJourneys} from './lib/earlier-later-journeys.js'
+import {testDepartures} from './lib/departures.js'
+import {testDeparturesInDirection} from './lib/departures-in-direction.js'
+import {testArrivals} from './lib/arrivals.js'
 
 const T_MOCK = 1657618200 * 1000 // 2022-07-12T11:30+02:00
 const when = createWhen(zvvProfile.timezone, zvvProfile.locale, T_MOCK)
 
 const validate = createValidate({
 	when,
-	products,
+	products: zvvProfile.products,
 	maxLatitude: 47.75,
 	minLongitude: 7.38,
 	minLatitude: 46.99,

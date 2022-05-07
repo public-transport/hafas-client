@@ -1,33 +1,30 @@
-'use strict'
+import tap from 'tap'
+import assert from 'assert'
+import isRoughlyEqual from 'is-roughly-equal'
 
-const tap = require('tap')
-const assert = require('assert')
-const isRoughlyEqual = require('is-roughly-equal')
-
-const {createWhen} = require('./lib/util')
-const createClient = require('../..')
-const cflProfile = require('../../p/cfl')
-const products = require('../../p/cfl/products')
-const {
-	line: createValidateLine,
-	journeyLeg: createValidateJourneyLeg,
-	movement: _validateMovement
-} = require('./lib/validators')
-const createValidate = require('./lib/validate-fptf-with')
-const testJourneysStationToStation = require('./lib/journeys-station-to-station')
-const testJourneysStationToAddress = require('./lib/journeys-station-to-address')
-const testJourneysStationToPoi = require('./lib/journeys-station-to-poi')
-const testEarlierLaterJourneys = require('./lib/earlier-later-journeys')
-const journeysFailsWithNoProduct = require('./lib/journeys-fails-with-no-product')
-const testDepartures = require('./lib/departures')
-const testArrivals = require('./lib/arrivals')
+import {createWhen} from './lib/util.js'
+import {createClient} from '../../index.js'
+import {profile as cflProfile} from '../../p/cfl/index.js'
+import {
+	createValidateLine,
+	createValidateJourneyLeg,
+	createValidateMovement,
+} from './lib/validators.js'
+import {createValidateFptfWith as createValidate} from './lib/validate-fptf-with.js'
+import {testJourneysStationToStation} from './lib/journeys-station-to-station.js'
+import {testJourneysStationToAddress} from './lib/journeys-station-to-address.js'
+import {testJourneysStationToPoi} from './lib/journeys-station-to-poi.js'
+import {testEarlierLaterJourneys} from './lib/earlier-later-journeys.js'
+import {journeysFailsWithNoProduct} from './lib/journeys-fails-with-no-product.js'
+import {testDepartures} from './lib/departures.js'
+import {testArrivals} from './lib/arrivals.js'
 
 const T_MOCK = 1657618200 * 1000 // 2022-07-12T11:30+02:00
 const when = createWhen(cflProfile.timezone, cflProfile.locale, T_MOCK)
 
 const cfg = {
 	when,
-	products,
+	products: cflProfile.products,
 	minLatitude: 47.24,
 	maxLatitude: 52.9,
 	minLongitude: -0.63,
@@ -46,6 +43,7 @@ const validateJourneyLeg = (validate, l, name) => {
 	_validateJourneyLeg(validate, l, name)
 }
 
+const _validateMovement = createValidateMovement(cfg)
 const validateMovement = (val, m, name = 'movement') => {
 	// todo: fix this upstream
 	const withFakeLocation = Object.assign({}, m)
@@ -99,7 +97,7 @@ tap.test('journeys – fails with no product', async (t) => {
 		fromId: ettelbruck,
 		toId: luxembourgGareCentrale,
 		when,
-		products
+		products: cflProfile.products,
 	})
 	t.end()
 })

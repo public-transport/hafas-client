@@ -1,6 +1,4 @@
-'use strict'
-
-module.exports = [
+const products = [
 	{
 		id: 'nationalExpress',
 		mode: 'train',
@@ -91,3 +89,7 @@ module.exports = [
 	}
 	// todo: `1`, `2`, `4` bitmasks?
 ]
+
+export {
+	products,
+}

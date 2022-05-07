@@ -1,7 +1,5 @@
-'use strict'
-
-const tap = require('tap')
-const format = require('../../format/products-filter')
+import tap from 'tap'
+import {formatProductsFilter as format} from '../../format/products-filter.js'
 
 const products = [
 	{

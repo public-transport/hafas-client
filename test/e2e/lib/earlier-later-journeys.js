@@ -1,5 +1,3 @@
-'use strict'
-
 const testEarlierLaterJourneys = async (cfg) => {
 	const {
 		test: t,
@@ -73,4 +71,6 @@ const testEarlierLaterJourneys = async (cfg) => {
 	}
 }
 
-module.exports = testEarlierLaterJourneys
+export {
+	testEarlierLaterJourneys,
+}

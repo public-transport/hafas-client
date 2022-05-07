@@ -1,9 +1,8 @@
-'use strict'
+import {inspect} from 'util'
+import {createClient} from '../../index.js'
+import {profile} from './index.js'
 
-const createClient = require('../..')
-const bvgProfile = require('.')
-
-const client = createClient(bvgProfile, 'hafas-client-example')
+const client = createClient(profile, 'hafas-client-example')
 
 // Hauptbahnhof to Charlottenburg
 client.journeys('900000003201', '900000024101', {results: 1, polylines: true})
@@ -43,6 +42,6 @@ client.journeys('900000003201', '900000024101', {results: 1, polylines: true})
 // 	return client.refreshJourney(journey.refreshToken, {stopovers: true, remarks: true})
 // })
 .then((data) => {
-	console.log(require('util').inspect(data, {depth: null, colors: true}))
+	console.log(inspect(data, {depth: null, colors: true}))
 })
 .catch(console.error)

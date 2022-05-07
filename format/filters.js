@@ -1,5 +1,3 @@
-'use strict'
-
 const bike = {type: 'BC', mode: 'INC'}
 
 const accessibility = {
@@ -8,4 +6,7 @@ const accessibility = {
 	complete: {type: 'META', mode: 'INC', meta: 'completeBarrierfree'}
 }
 
-module.exports = {bike, accessibility}
+export {
+	bike,
+	accessibility,
+}

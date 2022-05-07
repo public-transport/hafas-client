@@ -1,9 +1,8 @@
-'use strict'
+import {inspect} from 'util'
+import {createClient} from '../../index.js'
+import {profile} from './index.js'
 
-const createClient = require('../..')
-const vvtProfile = require('.')
-
-const client = createClient(vvtProfile, 'hafas-client-example')
+const client = createClient(profile, 'hafas-client-example')
 
 const innsbruckMitterweg = '476152300'
 const kufsteinListstr = '476603100'
@@ -42,6 +41,6 @@ client.departures(innsbruckMitterweg, {duration: 1})
 // })
 
 .then((data) => {
-	console.log(require('util').inspect(data, {depth: null, colors: true}))
+	console.log(inspect(data, {depth: null, colors: true}))
 })
 .catch(console.error)

@@ -1,5 +1,3 @@
-'use strict'
-
 const point = (lon, lat) => ({
 	type: 'Point',
 	coordinates: [lon, lat],
@@ -96,7 +94,7 @@ const corona = {
 	modified: '2020-05-28T13:48:14+02:00'
 }
 
-module.exports = {
+const oebbTrip = {
 	id: '2|#VN#0#ST#1591790769#PI#0#ZI#398470#TA#0#DA#110620#1S#8100353#1T#1633#LS#8100002#LT#1948#PU#81#RT#1#CA#RJ#ZE#742#ZB#RJ 742  #',
 	origin: wienFlughafen,
 	destination: salzburgHbf,
@@ -2023,4 +2021,8 @@ module.exports = {
 			feature(point(13.0456, 47.81285), salzburgHbf),
 		]
 	},
+}
+
+export {
+	oebbTrip,
 }

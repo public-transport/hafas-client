@@ -1,5 +1,3 @@
-'use strict'
-
 const WEEK = 7 * 24 * 60 * 60 * 1000
 
 const testRemarks = async (cfg) => {
@@ -32,4 +30,6 @@ const testRemarks = async (cfg) => {
 	}
 }
 
-module.exports = testRemarks
+export {
+	testRemarks,
+}

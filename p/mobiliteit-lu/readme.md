@@ -5,8 +5,8 @@
 ## Usage
 
 ```js
-const createClient = require('hafas-client')
-const mobiliteitProfile = require('hafas-client/p/mobiliteit-lu')
+import {createClient} from 'hafas-client'
+import {mobiliteitProfile} from 'hafas-client/p/mobiliteit-lu/index.js'
 
 // create a client with mobiliteit.lu profile
 const client = createClient(mobiliteitProfile, 'my-awesome-program')

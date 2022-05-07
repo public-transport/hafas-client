@@ -1,4 +1,7 @@
-'use strict'
+// todo: use import assertions once they're supported by Node.js & ESLint
+// https://github.com/tc39/proposal-import-assertions
+import {createRequire} from 'module'
+const require = createRequire(import.meta.url)
 
 const baseProfile = require('./base.json')
 
@@ -75,7 +78,7 @@ const products = [
 	}
 ]
 
-const dbBusradarNrwProfile = {
+const profile = {
 	...baseProfile,
 	locale: 'de-DE',
 	timezone: 'Europe/Berlin',
@@ -90,5 +93,6 @@ const dbBusradarNrwProfile = {
 	lines: false, // `.svcResL[0].res.lineL[]` is missing 🤔
 }
 
-module.exports = dbBusradarNrwProfile
-
+export {
+	profile,
+}

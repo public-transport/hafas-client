@@ -1,6 +1,4 @@
-'use strict'
-
-module.exports = [
+const products = [
 	// todo: other bits
 	{
 		id: 'express-train',
@@ -43,3 +41,7 @@ module.exports = [
 		default: true
 	}
 ]
+
+export {
+	products,
+}

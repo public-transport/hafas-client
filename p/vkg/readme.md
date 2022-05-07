@@ -5,8 +5,8 @@
 ## Usage
 
 ```js
-const createClient = require('hafas-client')
-const vkgProfile = require('hafas-client/p/vkg')
+import {createClient} from 'hafas-client'
+import {vkgProfile} from 'hafas-client/p/vkg/index.js'
 
 // create a client with VKG profile
 const client = createClient(vkgProfile, 'my-awesome-program')

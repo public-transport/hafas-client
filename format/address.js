@@ -1,7 +1,5 @@
-'use strict'
-
-const formatLocationIdentifier = require('./location-identifier')
-const formatCoord = require('./coord')
+import {formatLocationIdentifier} from './location-identifier.js'
+import {formatCoord} from './coord.js'
 
 const formatAddress = (a) => {
 	if (a.type !== 'location' || !a.latitude || !a.longitude || !a.address) {
@@ -22,4 +20,6 @@ const formatAddress = (a) => {
 	}
 }
 
-module.exports = formatAddress
+export {
+	formatAddress,
+}

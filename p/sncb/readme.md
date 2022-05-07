@@ -5,8 +5,8 @@
 ## Usage
 
 ```js
-const createClient = require('hafas-client')
-const sncbProfile = require('hafas-client/p/sncb')
+import {createClient} from 'hafas-client'
+import {sncbProfile} from 'hafas-client/p/sncb/index.js'
 
 // create a client with SNCB profile
 const client = createClient(sncbProfile, 'my-awesome-program')

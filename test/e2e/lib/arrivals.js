@@ -1,5 +1,3 @@
-'use strict'
-
 const testArrivals = async (cfg) => {
 	const {test: t, res, validate} = cfg
 	const ids = cfg.ids || (cfg.id ? [cfg.id] : [])
@@ -26,4 +24,6 @@ const testArrivals = async (cfg) => {
 	t.same(arrs, arrs.sort((a, b) => t.when > b.when), 'res.arrivals must be sorted by .when')
 }
 
-module.exports = testArrivals
+export {
+	testArrivals,
+}

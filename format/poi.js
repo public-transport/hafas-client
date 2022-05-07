@@ -1,7 +1,5 @@
-'use strict'
-
-const formatLocationIdentifier = require('./location-identifier')
-const formatCoord = require('./coord')
+import {formatLocationIdentifier} from './location-identifier.js'
+import {formatCoord} from './coord.js'
 
 const formatPoi = (p) => {
 	if (p.type !== 'location' || !p.latitude || !p.longitude || !p.id || !p.name) {
@@ -21,4 +19,6 @@ const formatPoi = (p) => {
 	}
 }
 
-module.exports = formatPoi
+export {
+	formatPoi,
+}

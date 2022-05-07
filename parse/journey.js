@@ -1,6 +1,4 @@
-'use strict'
-
-const findRemarks = require('./find-remarks')
+import {findRemarks} from './find-remarks.js'
 
 // todo: c.conSubscr (e.g. `F`)
 // todo: c.trfRes x vbb-parse-ticket
@@ -45,4 +43,6 @@ const parseJourney = (ctx, j) => { // j = raw jouney
 	return res
 }
 
-module.exports = parseJourney
+export {
+	parseJourney,
+}

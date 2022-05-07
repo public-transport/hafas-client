@@ -1,9 +1,8 @@
-'use strict'
+import {inspect} from 'util'
+import {createClient} from '../../index.js'
+import {profile} from './index.js'
 
-const createClient = require('../..')
-const cmtaProfile = require('.')
-
-const client = createClient(cmtaProfile, 'hafas-client-example')
+const client = createClient(profile, 'hafas-client-example')
 
 const ingolstadtHbf = '8000183'
 const audiParkplatz = '84999'
@@ -40,6 +39,6 @@ client.journeys(ingolstadtHbf, audiParkplatz, {results: 1})
 // todo: `reachableFrom` with `Ingolstadt, Tillystraße 1` 48.745769 | 11.432814
 
 .then((data) => {
-	console.log(require('util').inspect(data, {depth: null, colors: true}))
+	console.log(inspect(data, {depth: null, colors: true}))
 })
 .catch(console.error)

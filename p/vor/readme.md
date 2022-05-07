@@ -5,8 +5,8 @@
 ## Usage
 
 ```js
-const createClient = require('hafas-client')
-const vorProfile = require('hafas-client/p/vor')
+import {createClient} from 'hafas-client'
+import {vorProfile} from 'hafas-client/p/vor/index.js'
 
 // create a client with VOR profile
 const client = createClient(vorProfile, 'my-awesome-program')

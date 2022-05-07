@@ -1,9 +1,8 @@
-'use strict'
+import {inspect} from 'util'
+import {createClient} from '../../index.js'
+import {profile} from './index.js'
 
-const createClient = require('../..')
-const rejseplanenProfile = require('.')
-
-const client = createClient(rejseplanenProfile, 'hafas-client-example')
+const client = createClient(profile, 'hafas-client-example')
 
 // from København Central to Aalborg
 // client.journeys('8600626', '8600020', {results: 1})
@@ -29,6 +28,6 @@ client.departures('8600626', {duration: 5})
 // }, {results: 10})
 
 .then(data => {
-	console.log(require('util').inspect(data, {depth: null, colors: true}))
+	console.log(inspect(data, {depth: null, colors: true}))
 })
 .catch(console.error)

@@ -1,8 +1,6 @@
-'use strict'
-
-const tap = require('tap')
-const parse = require('../../parse/warning')
-const merge = require('lodash/merge')
+import tap from 'tap'
+import {parseWarning as parse} from '../../parse/warning.js'
+import merge from 'lodash/merge.js'
 
 const profile = {
 	parseProductsBitmask: (_, bitmask) => [bitmask],

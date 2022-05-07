@@ -1,7 +1,5 @@
-'use strict'
-
-const tap = require('tap')
-const parse = require('../../parse/operator')
+import tap from 'tap'
+import {parseOperator as parse} from '../../parse/operator.js'
 
 const ctx = {
 	data: {},

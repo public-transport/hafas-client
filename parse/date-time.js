@@ -1,6 +1,4 @@
-'use strict'
-
-const {DateTime, FixedOffsetZone, IANAZone} = require('luxon')
+import {DateTime, FixedOffsetZone, IANAZone} from 'luxon'
 
 const timezones = new WeakMap()
 
@@ -35,4 +33,6 @@ const parseDateTime = ({profile}, date, time, tzOffset = null, timestamp = false
 	return timestamp ? dt.toMillis() : dt.toISO({suppressMilliseconds: true})
 }
 
-module.exports = parseDateTime
+export {
+	parseDateTime,
+}

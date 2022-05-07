@@ -1,5 +1,3 @@
-'use strict'
-
 const formatReachableFromReq = (ctx, address) => {
 	const {profile, opt} = ctx
 
@@ -19,4 +17,6 @@ const formatReachableFromReq = (ctx, address) => {
 	}
 }
 
-module.exports = formatReachableFromReq
+export {
+	formatReachableFromReq,
+}

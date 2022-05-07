@@ -1,9 +1,8 @@
-'use strict'
+import {inspect} from 'util'
+import {createClient} from '../../index.js'
+import {profile} from './index.js'
 
-const createClient = require('../..')
-const nvvProfile = require('.')
-
-const client = createClient(nvvProfile, 'hafas-client-example')
+const client = createClient(profile, 'hafas-client-example')
 
 // Scheidemannplatz to Auestadion
 client.journeys('2200073', '2200042', {results: 1, polylines: true})
@@ -44,6 +43,6 @@ client.journeys('2200073', '2200042', {results: 1, polylines: true})
 // })
 
 .then((data) => {
-	console.log(require('util').inspect(data, {depth: null, colors: true}))
+	console.log(inspect(data, {depth: null, colors: true}))
 })
 .catch(console.error)

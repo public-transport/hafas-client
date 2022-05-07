@@ -1,6 +1,4 @@
-'use strict'
-
-const {DateTime} = require('luxon')
+import {DateTime} from 'luxon'
 
 // todo: DRY with parse/date-time.js
 const parseDate = (date) => {
@@ -42,4 +40,6 @@ const parseScheduledDays = (ctx, sDays) => {
 	return res
 }
 
-module.exports = parseScheduledDays
+export {
+	parseScheduledDays,
+}

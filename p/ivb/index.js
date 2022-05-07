@@ -1,8 +1,10 @@
-'use strict'
+// todo: use import assertions once they're supported by Node.js & ESLint
+// https://github.com/tc39/proposal-import-assertions
+import {createRequire} from 'module'
+const require = createRequire(import.meta.url)
 
-const {readFileSync} = require('fs')
-const {join} = require('path')
-const {Agent} = require('https')
+import {readFileSync} from 'fs'
+import {Agent} from 'https'
 const baseProfile = require('./base.json')
 
 const products = [{
@@ -80,11 +82,11 @@ const products = [{
 // `fahrplan.ivb.at:443` doesn't provide the necessary CA certificate chain for
 // Node.js to trust the certificate, so we manually add it.
 // todo: fix this properly, e.g. by letting them know
-const ca = readFileSync(join(__dirname, 'digicert-tls-rsa-sha256-2020-ca1.crt.pem'))
+const ca = readFileSync(new URL('./digicert-tls-rsa-sha256-2020-ca1.crt.pem', import.meta.url).pathname)
 const agent = new Agent({ca})
 const transformReq = (ctx, req) => ({...req, agent})
 
-const ivbProfile = {
+const profile = {
 	...baseProfile,
 	ver: '1.32',
 	transformReq,
@@ -99,4 +101,6 @@ const ivbProfile = {
 	reachableFrom: true,
 }
 
-module.exports = ivbProfile
+export {
+	profile,
+}

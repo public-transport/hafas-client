@@ -1,6 +1,4 @@
-'use strict'
-
-module.exports = {
+const bvgJourney = {
 	type: 'journey',
 	legs: [{
 		origin: {
@@ -1102,4 +1100,8 @@ module.exports = {
 		'2019-12-15': false,
 		'2019-12-16': false,
 	}),
+}
+
+export {
+	bvgJourney,
 }

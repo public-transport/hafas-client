@@ -1,11 +1,14 @@
-'use strict'
+// todo: use import assertions once they're supported by Node.js & ESLint
+// https://github.com/tc39/proposal-import-assertions
+import {createRequire} from 'module'
+const require = createRequire(import.meta.url)
 
-const tap = require('tap')
+import tap from 'tap'
 
-const createClient = require('..')
-const rawProfile = require('../p/db')
+import {createClient} from '../index.js'
+import {profile as rawProfile} from '../p/db/index.js'
 const res = require('./fixtures/db-journey-2.json')
-const expected = require('./fixtures/db-journey-2.js')
+import {dbJourney as expected} from './fixtures/db-journey-2.js'
 
 const client = createClient(rawProfile, 'public-transport/hafas-client:test')
 const {profile} = client

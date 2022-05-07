@@ -1,7 +1,7 @@
 #!/usr/bin/env node
-'use strict'
 
-const mri = require('mri')
+import mri from 'mri'
+import {createClient} from '../../index.js'
 
 const argv = mri(process.argv.slice(2), {
 	boolean: [
@@ -23,18 +23,16 @@ Examples:
 	process.exit(0)
 }
 
-const {join} = require('path')
-const createClient = require('../..')
-
-const profile = require(join(__dirname, '..', '..', 'p', argv._[0]))
-const client = createClient(
-	profile,
-	'hafas-client-endpoint-hci-version',
-)
-
 const silent = argv.silent || argv.s
 
 ;(async () => {
+	const {profile} = import(`../../p/${argv._[0]}/index.js`)
+
+	const client = createClient(
+		profile,
+		'hafas-client-endpoint-hci-version',
+	)
+
 	const {hciVersion: v} = await client.serverInfo()
 
 	if ('string' !== typeof v || !v) {

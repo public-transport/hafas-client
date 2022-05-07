@@ -1,6 +1,4 @@
-'use strict'
-
-const findRemarks = require('./find-remarks')
+import {findRemarks} from './find-remarks.js'
 
 const parseStopover = (ctx, st, date) => { // st = raw stopover
 	const {profile, opt} = ctx
@@ -46,4 +44,6 @@ const parseStopover = (ctx, st, date) => { // st = raw stopover
 	return res
 }
 
-module.exports = parseStopover
+export {
+	parseStopover,
+}

@@ -49,8 +49,8 @@ npm install hafas-client
 Pick the [profile](p/readme.md) for the HAFAS endpoint covering the area you want to get data for. Pass the profile and a descriptive name for your program into the `createClient` function:
 
 ```js
-const createClient = require('hafas-client')
-const dbProfile = require('hafas-client/p/db')
+import {createClient} from 'hafas-client'
+import {dbProfile} from 'hafas-client/p/db/index.js'
 
 // create a client with the Deutsche Bahn profile
 const client = createClient(dbProfile, 'my-awesome-program')

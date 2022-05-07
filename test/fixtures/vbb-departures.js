@@ -1,6 +1,4 @@
-'use strict'
-
-module.exports = [
+const vbbDepartures = [
 	{
 		tripId: '1|24934|5|86|12102021',
 		stop: {
@@ -2580,3 +2578,7 @@ module.exports = [
 		},
 	}
 ]
+
+export {
+	vbbDepartures,
+}

@@ -1,11 +1,14 @@
-'use strict'
+// todo: use import assertions once they're supported by Node.js & ESLint
+// https://github.com/tc39/proposal-import-assertions
+import {createRequire} from 'module'
+const require = createRequire(import.meta.url)
 
-const tap = require('tap')
+import tap from 'tap'
 
-const createClient = require('..')
-const rawProfile = require('../p/rejseplanen')
+import {createClient} from '../index.js'
+import {profile as rawProfile} from '../p/rejseplanen/index.js'
 const res = require('./fixtures/rejseplanen-trip.json')
-const expected = require('./fixtures/rejseplanen-trip.js')
+import {rejseplanenTrip as expected} from './fixtures/rejseplanen-trip.js'
 
 const client = createClient(rawProfile, 'public-transport/hafas-client:test')
 const {profile} = client

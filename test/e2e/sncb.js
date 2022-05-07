@@ -1,15 +1,12 @@
-'use strict'
+import tap from 'tap'
 
-const tap = require('tap')
-
-const {createWhen} = require('./lib/util')
-const createClient = require('../..')
-const sncbProfile = require('../../p/sncb')
-const products = require('../../p/sncb/products')
-const createValidate = require('./lib/validate-fptf-with')
-const testJourneysStationToStation = require('./lib/journeys-station-to-station')
-const testArrivals = require('./lib/arrivals')
-const testReachableFrom = require('./lib/reachable-from')
+import {createWhen} from './lib/util.js'
+import {createClient} from '../../index.js'
+import {profile as sncbProfile} from '../../p/sncb/index.js'
+import {createValidateFptfWith as createValidate} from './lib/validate-fptf-with.js'
+import {testJourneysStationToStation} from './lib/journeys-station-to-station.js'
+import {testArrivals} from './lib/arrivals.js'
+import {testReachableFrom} from './lib/reachable-from.js'
 
 const T_MOCK = 1657618200 * 1000 // 2022-07-12T11:30+02:00
 const when = createWhen(sncbProfile.timezone, sncbProfile.locale, T_MOCK)
@@ -17,7 +14,7 @@ const when = createWhen(sncbProfile.timezone, sncbProfile.locale, T_MOCK)
 const cfg = {
 	when,
 	stationCoordsOptional: false,
-	products,
+	products: sncbProfile.products,
 	minLatitude: 46.513,
 	maxLatitude: 54.521,
 	minLongitude: -1.423,

@@ -1,14 +1,12 @@
-'use strict'
+import tap from 'tap'
+import isRoughlyEqual from 'is-roughly-equal'
 
-const tap = require('tap')
-const isRoughlyEqual = require('is-roughly-equal')
-
-const {createWhen} = require('./lib/util')
-const createClient = require('../..')
-const dbBusradarNrwProfile = require('../../p/db-busradar-nrw')
-const createValidate = require('./lib/validate-fptf-with')
-const testDepartures = require('./lib/departures')
-const testArrivals = require('./lib/arrivals')
+import {createWhen} from './lib/util.js'
+import {createClient} from '../../index.js'
+import {profile as dbBusradarNrwProfile} from '../../p/db-busradar-nrw/index.js'
+import {createValidateFptfWith as createValidate} from './lib/validate-fptf-with.js'
+import {testDepartures} from './lib/departures.js'
+import {testArrivals} from './lib/arrivals.js'
 
 const isObj = o => o !== null && 'object' === typeof o && !Array.isArray(o)
 

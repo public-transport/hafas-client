@@ -1,12 +1,10 @@
-'use strict'
+import tap from 'tap'
 
-const tap = require('tap')
-
-const {createWhen} = require('./lib/util')
-const createClient = require('../..')
-const blsProfile = require('../../p/bls')
-const createValidate = require('./lib/validate-fptf-with')
-const testJourneysStationToAddress = require('./lib/journeys-station-to-address')
+import {createWhen} from './lib/util.js'
+import {createClient} from '../../index.js'
+import {profile as blsProfile} from '../../p/bls/index.js'
+import {createValidateFptfWith as createValidate} from './lib/validate-fptf-with.js'
+import {testJourneysStationToAddress} from './lib/journeys-station-to-address.js'
 
 const T_MOCK = 1641897000 * 1000 // 2022-01-11T11:30:00+01
 const when = createWhen(blsProfile.timezone, blsProfile.locale, T_MOCK)

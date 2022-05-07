@@ -1,5 +1,3 @@
-'use strict'
-
 const parseBitmask = ({profile}, bitmask) => {
 	const res = {}
 	for (let product of profile.products) res[product.id] = false
@@ -14,4 +12,6 @@ const parseBitmask = ({profile}, bitmask) => {
 	return res
 }
 
-module.exports = parseBitmask
+export {
+	parseBitmask,
+}

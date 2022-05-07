@@ -1,6 +1,4 @@
-'use strict'
-
-module.exports = [
+const products = [
 	// todo: what is `64`?
 	{
 		id: 'regional-train',
@@ -59,3 +57,7 @@ module.exports = [
 		default: false,
 	},
 ]
+
+export {
+	products,
+}

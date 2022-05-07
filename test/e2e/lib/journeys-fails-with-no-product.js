@@ -1,5 +1,3 @@
-'use strict'
-
 const journeysFailsWithNoProduct = async (cfg) => {
 	const {
 		test: t,
@@ -18,4 +16,6 @@ const journeysFailsWithNoProduct = async (cfg) => {
 	})
 }
 
-module.exports = journeysFailsWithNoProduct
+export {
+	journeysFailsWithNoProduct,
+}

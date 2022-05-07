@@ -7,8 +7,8 @@
 ## Usage
 
 ```js
-const createClient = require('hafas-client')
-const dartProfile = require('hafas-client/p/dart')
+import {createClient} from 'hafas-client'
+import {dartProfile} from 'hafas-client/p/dart/index.js'
 
 // create a client with DART profile
 const client = createClient(dartProfile, 'my-awesome-program')

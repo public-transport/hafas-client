@@ -1,9 +1,12 @@
-'use strict'
+// todo: use import assertions once they're supported by Node.js & ESLint
+// https://github.com/tc39/proposal-import-assertions
+import {createRequire} from 'module'
+const require = createRequire(import.meta.url)
 
 const baseProfile = require('./base.json')
-const products = require('./products')
+import {products} from './products.js'
 
-const cflProfile = {
+const profile = {
 	...baseProfile,
 	locale: 'de-DE',
 	timezone: 'Europe/Berlin',
@@ -17,4 +20,6 @@ const cflProfile = {
 	remarks: true,
 }
 
-module.exports = cflProfile;
+export {
+	profile,
+}
