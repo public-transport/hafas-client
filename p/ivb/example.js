@@ -1,9 +1,8 @@
-'use strict'
+import {inspect} from 'util'
+import {createClient} from '../../index.js'
+import {profile} from './index.js'
 
-const createClient = require('../..')
-const ivbProfile = require('.')
-
-const client = createClient(ivbProfile, 'hafas-client example')
+const client = createClient(profile, 'hafas-client example')
 
 const innsbruckGriesauweg = '476162400'
 const völsWest = '476431800'
@@ -44,6 +43,6 @@ client.locations('griesauweg', {results: 3})
 // })
 
 .then((data) => {
-	console.log(require('util').inspect(data, {depth: null, colors: true}))
+	console.log(inspect(data, {depth: null, colors: true}))
 })
 .catch(console.error)

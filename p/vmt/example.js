@@ -1,9 +1,8 @@
-'use strict'
+import {inspect} from 'util'
+import {createClient} from '../../index.js'
+import {profile} from './index.js'
 
-const createClient = require('../..')
-const vmtProfile = require('.')
-
-const client = createClient(vmtProfile, 'hafas-client-example')
+const client = createClient(profile, 'hafas-client-example')
 
 const jena = '190014'
 const gothaZOB = '167280'
@@ -39,6 +38,6 @@ client.journeys(jena, gothaZOB, {results: 1})
 // })
 
 .then((data) => {
-	console.log(require('util').inspect(data, {depth: null, colors: true}))
+	console.log(inspect(data, {depth: null, colors: true}))
 })
 .catch(console.error)

@@ -1,6 +1,4 @@
-'use strict'
-
-const isRoughlyEqual = require('is-roughly-equal')
+import isRoughlyEqual from 'is-roughly-equal'
 
 const testJourneysStationToAddress = async (cfg) => {
 	const {test: t, res, validate, fromId} = cfg
@@ -27,4 +25,6 @@ const testJourneysStationToAddress = async (cfg) => {
 	}
 }
 
-module.exports = testJourneysStationToAddress
+export {
+	testJourneysStationToAddress,
+}

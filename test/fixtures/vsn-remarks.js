@@ -1,6 +1,4 @@
-'use strict'
-
-module.exports = [
+const vsnRemarks = [
 	{
 		id: 'HIM_FREETEXT_14164',
 		type: 'warning',
@@ -330,3 +328,7 @@ module.exports = [
 		modified: '2020-02-21T13:31:05+01:00'
 	}
 ]
+
+export {
+	vsnRemarks,
+}

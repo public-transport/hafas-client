@@ -1,6 +1,4 @@
-'use strict'
-
-const formatLocationIdentifier = require('./location-identifier')
+import {formatLocationIdentifier} from './location-identifier.js'
 
 const formatStation = (id) => {
 	return {
@@ -13,4 +11,6 @@ const formatStation = (id) => {
 	}
 }
 
-module.exports = formatStation
+export {
+	formatStation,
+}

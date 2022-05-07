@@ -1,6 +1,4 @@
-'use strict'
-
-module.exports = {
+const bvgTripWithOccupancy = {
 	id: '1|6849|3|86|1112021',
 	direction: 'S Ostbahnhof via S+U Wedding',
 	line: {
@@ -1927,4 +1925,8 @@ module.exports = {
 			plannedDeparturePlatform: null
 		}
 	],
+}
+
+export {
+	bvgTripWithOccupancy,
 }

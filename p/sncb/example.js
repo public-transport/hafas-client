@@ -1,9 +1,8 @@
-'use strict'
+import {inspect} from 'util'
+import {createClient} from '../../index.js'
+import {profile} from './index.js'
 
-const createClient = require('../..')
-const sncbProfile = require('.')
-
-const client = createClient(sncbProfile, 'hafas-client-example')
+const client = createClient(profile, 'hafas-client-example')
 
 const gentStPieters = '8892007'
 const bruxellesMidi = '8814001'
@@ -36,6 +35,6 @@ client.journeys(gentStPieters, bruxellesMidi, {stopovers: true, remarks: true})
 // client.reachableFrom(gentPaddenhoek)
 
 .then((data) => {
-	console.log(require('util').inspect(data, {depth: null, colors: true}))
+	console.log(inspect(data, {depth: null, colors: true}))
 })
 .catch(console.error)

@@ -5,8 +5,8 @@
 ## Usage
 
 ```js
-const createClient = require('hafas-client')
-const tpgProfile = require('hafas-client/p/TPG')
+import {createClient} from 'hafas-client'
+import {tpgProfile} from 'hafas-client/p/tpg/index.js'
 
 // create a client with TPG profile
 const client = createClient(tpgProfile, 'my-awesome-program')

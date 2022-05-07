@@ -1,9 +1,8 @@
-'use strict'
+import {inspect} from 'util'
+import {createClient} from '../../index.js'
+import {profile} from './index.js'
 
-const createClient = require('../..')
-const vosProfile = require('.')
-
-const client = createClient(vosProfile, 'hafas-client-example')
+const client = createClient(profile, 'hafas-client-example')
 
 const saarplatz = '9071733'
 const finkenweg = '9071574'
@@ -48,6 +47,6 @@ const finkenweg = '9071574'
 // })
 
 .then((data) => {
-	console.log(require('util').inspect(data, {depth: null, colors: true}))
+	console.log(inspect(data, {depth: null, colors: true}))
 })
 .catch(console.error)

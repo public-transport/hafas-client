@@ -1,9 +1,8 @@
-'use strict'
+import {inspect} from 'util'
+import {createClient} from '../../index.js'
+import {profile} from './index.js'
 
-const createClient = require('../..')
-const cmtaProfile = require('.')
-
-const client = createClient(cmtaProfile, 'hafas-client-example')
+const client = createClient(profile, 'hafas-client-example')
 
 // Broadie Oaks to Domain
 client.journeys('000002370', '000005919', {results: 1, polylines: true})
@@ -43,6 +42,6 @@ client.journeys('000002370', '000005919', {results: 1, polylines: true})
 // })
 
 .then((data) => {
-	console.log(require('util').inspect(data, {depth: null, colors: true}))
+	console.log(inspect(data, {depth: null, colors: true}))
 })
 .catch(console.error)

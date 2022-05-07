@@ -1,5 +1,3 @@
-'use strict'
-
 const testDeparturesInDirection = async (cfg) => {
 	const {
 		test: t,
@@ -34,4 +32,6 @@ const testDeparturesInDirection = async (cfg) => {
 	}
 }
 
-module.exports = testDeparturesInDirection
+export {
+	testDeparturesInDirection,
+}

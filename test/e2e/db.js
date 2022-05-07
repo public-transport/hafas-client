@@ -1,33 +1,30 @@
-'use strict'
+import tap from 'tap'
+import isRoughlyEqual from 'is-roughly-equal'
+import maxBy from 'lodash/maxBy.js'
+import flatMap from 'lodash/flatMap.js'
+import last from 'lodash/last.js'
 
-const tap = require('tap')
-const isRoughlyEqual = require('is-roughly-equal')
-const maxBy = require('lodash/maxBy')
-const flatMap = require('lodash/flatMap')
-const last = require('lodash/last')
-
-const {createWhen} = require('./lib/util')
-const createClient = require('../..')
-const dbProfile = require('../../p/db')
-const products = require('../../p/db/products')
-const {
-    station: createValidateStation,
-	trip: createValidateTrip
-} = require('./lib/validators')
-const createValidate = require('./lib/validate-fptf-with')
-const testJourneysStationToStation = require('./lib/journeys-station-to-station')
-const testJourneysStationToAddress = require('./lib/journeys-station-to-address')
-const testJourneysStationToPoi = require('./lib/journeys-station-to-poi')
-const testEarlierLaterJourneys = require('./lib/earlier-later-journeys')
-const testLegCycleAlternatives = require('./lib/leg-cycle-alternatives')
-const testRefreshJourney = require('./lib/refresh-journey')
-const journeysFailsWithNoProduct = require('./lib/journeys-fails-with-no-product')
-const testDepartures = require('./lib/departures')
-const testDeparturesInDirection = require('./lib/departures-in-direction')
-const testArrivals = require('./lib/arrivals')
-const testJourneysWithDetour = require('./lib/journeys-with-detour')
-const testReachableFrom = require('./lib/reachable-from')
-const testServerInfo = require('./lib/server-info')
+import {createWhen} from './lib/util.js'
+import {createClient} from '../../index.js'
+import {profile as dbProfile} from '../../p/db/index.js'
+import {
+    createValidateStation,
+	createValidateTrip
+} from './lib/validators.js'
+import {createValidateFptfWith as createValidate} from './lib/validate-fptf-with.js'
+import {testJourneysStationToStation} from './lib/journeys-station-to-station.js'
+import {testJourneysStationToAddress} from './lib/journeys-station-to-address.js'
+import {testJourneysStationToPoi} from './lib/journeys-station-to-poi.js'
+import {testEarlierLaterJourneys} from './lib/earlier-later-journeys.js'
+import {testLegCycleAlternatives} from './lib/leg-cycle-alternatives.js'
+import {testRefreshJourney} from './lib/refresh-journey.js'
+import {journeysFailsWithNoProduct} from './lib/journeys-fails-with-no-product.js'
+import {testDepartures} from './lib/departures.js'
+import {testDeparturesInDirection} from './lib/departures-in-direction.js'
+import {testArrivals} from './lib/arrivals.js'
+import {testJourneysWithDetour} from './lib/journeys-with-detour.js'
+import {testReachableFrom} from './lib/reachable-from.js'
+import {testServerInfo} from './lib/server-info.js'
 
 const isObj = o => o !== null && 'object' === typeof o && !Array.isArray(o)
 const minute = 60 * 1000
@@ -38,7 +35,7 @@ const when = createWhen(dbProfile.timezone, dbProfile.locale, T_MOCK)
 const cfg = {
 	when,
 	stationCoordsOptional: false,
-	products,
+	products: dbProfile.products,
 	minLatitude: 46.673100,
 	maxLatitude: 55.030671,
 	minLongitude: 6.896517,
@@ -107,7 +104,7 @@ tap.test('journeys – fails with no product', async (t) => {
 		fromId: blnSchwedterStr,
 		toId: münchenHbf,
 		when,
-		products
+		products: dbProfile.products,
 	})
 	t.end()
 })

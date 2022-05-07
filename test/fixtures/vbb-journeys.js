@@ -1,6 +1,4 @@
-'use strict'
-
-module.exports = [{
+const vbbJourneys = [{
 	type: 'journey',
 	legs: [{
 		origin: {
@@ -601,3 +599,7 @@ module.exports = [{
 		text: 'A section of this itinerary is cancelled or unusable.'
 	}],
 }]
+
+export {
+	vbbJourneys,
+}

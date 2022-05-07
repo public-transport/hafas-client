@@ -1,6 +1,4 @@
-'use strict'
-
-const isObj = require('lodash/isObject')
+import isObj from 'lodash/isObject.js'
 
 const hasProp = (o, k) => Object.prototype.hasOwnProperty.call(o, k)
 
@@ -32,4 +30,6 @@ const formatProductsFilter = (ctx, filter) => {
 	}
 }
 
-module.exports = formatProductsFilter
+export {
+	formatProductsFilter,
+}

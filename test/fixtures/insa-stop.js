@@ -1,6 +1,4 @@
-'use strict'
-
-module.exports = {
+const insaStop = {
 	type: 'stop',
 	id: '7341',
 	ids: {
@@ -22,4 +20,8 @@ module.exports = {
 		bus: true,
 		tourismTrain: false
 	},
+}
+
+export {
+	insaStop,
 }

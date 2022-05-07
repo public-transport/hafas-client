@@ -1,10 +1,8 @@
-'use strict'
-
-const isRoughlyEqual = require('is-roughly-equal')
-const {ok, AssertionError} = require('assert')
-const {DateTime} = require('luxon')
-const a = require('assert')
-const {join} = require('path')
+import isRoughlyEqual from 'is-roughly-equal'
+import {ok, AssertionError} from 'assert'
+import {DateTime} from 'luxon'
+import * as a from 'assert'
+import {createRequire} from 'module'
 
 const hour = 60 * 60 * 1000
 const day = 24 * hour
@@ -39,7 +37,9 @@ const assertValidWhen = (actual, expected, name, delta = day + 6 * hour) => {
 
 // HTTP request mocking
 if (process.env.VCR_MODE && !process.env.VCR_OFF) {
+	const require = createRequire(import.meta.url)
 	const replayer = require('replayer')
+
 	replayer.configure({
 		headerWhitelist: [
 			// excludes User-Agent & Connection
@@ -48,9 +48,9 @@ if (process.env.VCR_MODE && !process.env.VCR_OFF) {
 		includeHeaderValues: true,
 		touchHits: false,
 	})
-	replayer.fixtureDir(join(__dirname, '..', 'fixtures'))
+	replayer.fixtureDir(new URL('../fixtures', import.meta.url).pathname)
 }
 
-module.exports = {
+export {
 	hour, createWhen, assertValidWhen,
 }

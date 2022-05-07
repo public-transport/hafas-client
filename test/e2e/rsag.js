@@ -1,17 +1,14 @@
-'use strict'
+import tap from 'tap'
 
-const tap = require('tap')
-
-const {createWhen} = require('./lib/util')
-const createClient = require('../..')
-const rsagProfile = require('../../p/rsag')
-const products = require('../../p/rsag/products')
-const createValidate = require('./lib/validate-fptf-with')
-const testJourneysStationToStation = require('./lib/journeys-station-to-station')
-const testEarlierLaterJourneys = require('./lib/earlier-later-journeys')
-const testRefreshJourney = require('./lib/refresh-journey')
-const testArrivals = require('./lib/arrivals')
-const testReachableFrom = require('./lib/reachable-from')
+import {createWhen} from './lib/util.js'
+import {createClient} from '../../index.js'
+import {profile as rsagProfile} from '../../p/rsag/index.js'
+import {createValidateFptfWith as createValidate} from './lib/validate-fptf-with.js'
+import {testJourneysStationToStation} from './lib/journeys-station-to-station.js'
+import {testEarlierLaterJourneys} from './lib/earlier-later-journeys.js'
+import {testRefreshJourney} from './lib/refresh-journey.js'
+import {testArrivals} from './lib/arrivals.js'
+import {testReachableFrom} from './lib/reachable-from.js'
 
 const T_MOCK = 1641897000 * 1000 // 2022-01-11T11:30:00+01
 const when = createWhen(rsagProfile.timezone, rsagProfile.locale, T_MOCK)
@@ -19,7 +16,7 @@ const when = createWhen(rsagProfile.timezone, rsagProfile.locale, T_MOCK)
 const cfg = {
 	when,
 	// stationCoordsOptional: false,
-	products,
+	products: rsagProfile.products,
 	minLatitude: 52.299,
 	maxLatitude: 54.862,
 	minLongitude: 9.121,

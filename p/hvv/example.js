@@ -1,9 +1,8 @@
-'use strict'
+import {inspect} from 'util'
+import {createClient} from '../../index.js'
+import {profile} from './index.js'
 
-const createClient = require('../..')
-const hvvProfile = require('.')
-
-const client = createClient(hvvProfile, 'hafas-client-example')
+const client = createClient(profile, 'hafas-client-example')
 
 // client.journeys('116', '5900', {results: 1, polylines: true})
 // client.departures('116', {duration: 1})
@@ -42,6 +41,6 @@ client.locations('dammtor', {results: 2})
 // 	return client.refreshJourney(journey.refreshToken, {stopovers: true, remarks: true})
 // })
 .then((data) => {
-	console.log(require('util').inspect(data, {depth: null, colors: true}))
+	console.log(inspect(data, {depth: null, colors: true}))
 })
 .catch(console.error)

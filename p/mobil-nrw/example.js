@@ -1,10 +1,8 @@
-'use strict'
+import {inspect} from 'util'
+import {createClient} from '../../index.js'
+import {profile} from './index.js'
 
-const {inspect} = require('util')
-const createClient = require('../..')
-const cflProfile = require('.')
-
-const client = createClient(cflProfile, 'hafas-client-example')
+const client = createClient(profile, 'hafas-client-example')
 
 const soest = '8000076'
 const aachenHbf = '8000001'

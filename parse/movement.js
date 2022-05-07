@@ -1,5 +1,3 @@
-'use strict'
-
 // todo: what is m.dirGeo? maybe the speed?
 // todo: what is m.stopL?
 // todo: what is m.proc? wut?
@@ -52,4 +50,6 @@ const parseMovement = (ctx, m) => { // m = raw movement
 	return res
 }
 
-module.exports = parseMovement
+export {
+	parseMovement,
+}

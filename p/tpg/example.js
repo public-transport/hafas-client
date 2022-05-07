@@ -1,9 +1,8 @@
-'use strict'
+import {inspect} from 'util'
+import {createClient} from '../../index.js'
+import {profile} from './index.js'
 
-const createClient = require('../..')
-const tpgProfile = require('.')
-
-const client = createClient(tpgProfile, 'hafas-client-example')
+const client = createClient(profile, 'hafas-client-example')
 
 const miremont = '100449'
 const moillebeau = '100451'
@@ -48,6 +47,6 @@ client.journeys(miremont, moillebeau, {results: 1, stopovers: true})
 // })
 
 .then((data) => {
-	console.log(require('util').inspect(data, {depth: null, colors: true}))
+	console.log(inspect(data, {depth: null, colors: true}))
 })
 .catch(console.error)

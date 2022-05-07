@@ -1,33 +1,31 @@
-'use strict'
-
 // todo: DRY with vbb tests
-const tap = require('tap')
 
-const isRoughlyEqual = require('is-roughly-equal')
-const {DateTime} = require('luxon')
-const flatMap = require('lodash/flatMap')
+import tap from 'tap'
 
-const {createWhen} = require('./lib/util')
-const createClient = require('../..')
-const bvgProfile = require('../../p/bvg')
-const products = require('../../p/bvg/products')
-const createValidate = require('./lib/validate-fptf-with')
-const createBvgValidators = require('./lib/vbb-bvg-validators')
-const testJourneysStationToStation = require('./lib/journeys-station-to-station')
-const testJourneysStationToAddress = require('./lib/journeys-station-to-address')
-const testJourneysStationToPoi = require('./lib/journeys-station-to-poi')
-const testJourneysWalkingSpeed = require('./lib/journeys-walking-speed')
-const testEarlierLaterJourneys = require('./lib/earlier-later-journeys')
-const testLegCycleAlternatives = require('./lib/leg-cycle-alternatives')
-const testRefreshJourney = require('./lib/refresh-journey')
-const journeysFailsWithNoProduct = require('./lib/journeys-fails-with-no-product')
-const testDepartures = require('./lib/departures')
-const testDeparturesInDirection = require('./lib/departures-in-direction')
-const testArrivals = require('./lib/arrivals')
-const testJourneysWithDetour = require('./lib/journeys-with-detour')
-const testReachableFrom = require('./lib/reachable-from')
-const testRemarks = require('./lib/remarks')
-const testLines = require('./lib/lines')
+import isRoughlyEqual from 'is-roughly-equal'
+import {DateTime} from 'luxon'
+import flatMap from 'lodash/flatMap.js'
+
+import {createWhen} from './lib/util.js'
+import {createClient} from '../../index.js'
+import {profile as bvgProfile} from '../../p/bvg/index.js'
+import {createValidateFptfWith as createValidate} from './lib/validate-fptf-with.js'
+import {createVbbBvgValidators} from './lib/vbb-bvg-validators.js'
+import {testJourneysStationToStation} from './lib/journeys-station-to-station.js'
+import {testJourneysStationToAddress} from './lib/journeys-station-to-address.js'
+import {testJourneysStationToPoi} from './lib/journeys-station-to-poi.js'
+import {testJourneysWalkingSpeed} from './lib/journeys-walking-speed.js'
+import {testEarlierLaterJourneys} from './lib/earlier-later-journeys.js'
+import {testLegCycleAlternatives} from './lib/leg-cycle-alternatives.js'
+import {testRefreshJourney} from './lib/refresh-journey.js'
+import {journeysFailsWithNoProduct} from './lib/journeys-fails-with-no-product.js'
+import {testDepartures} from './lib/departures.js'
+import {testDeparturesInDirection} from './lib/departures-in-direction.js'
+import {testArrivals} from './lib/arrivals.js'
+import {testJourneysWithDetour} from './lib/journeys-with-detour.js'
+import {testReachableFrom} from './lib/reachable-from.js'
+import {testRemarks} from './lib/remarks.js'
+import {testLines} from './lib/lines.js'
 
 const T_MOCK = 1657618200 * 1000 // 2022-07-12T11:30+02:00
 const when = createWhen(bvgProfile.timezone, bvgProfile.locale, T_MOCK)
@@ -38,7 +36,7 @@ const {
 	validateJourneyLeg,
 	validateDeparture,
 	validateMovement
-} = createBvgValidators({
+} = createVbbBvgValidators({
 	when,
 })
 
@@ -123,7 +121,7 @@ tap.test('journeys – fails with no product', async (t) => {
 		fromId: spichernstr,
 		toId: bismarckstr,
 		when,
-		products
+		products: bvgProfile.products,
 	})
 	t.end()
 })

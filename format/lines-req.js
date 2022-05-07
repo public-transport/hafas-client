@@ -1,5 +1,3 @@
-'use strict'
-
 const formatLinesReq = (ctx, query) => {
 	return {
 		meth: 'LineMatch',
@@ -9,4 +7,6 @@ const formatLinesReq = (ctx, query) => {
 	}
 }
 
-module.exports = formatLinesReq
+export {
+	formatLinesReq,
+}

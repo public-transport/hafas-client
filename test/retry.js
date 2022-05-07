@@ -1,10 +1,8 @@
-'use strict'
+import tap from 'tap'
 
-const tap = require('tap')
-
-const createClient = require('..')
-const withRetrying = require('../retry')
-const vbbProfile = require('../p/vbb')
+import {createClient} from '../index.js'
+import {withRetrying} from '../retry.js'
+import {profile as vbbProfile} from '../p/vbb/index.js'
 
 const userAgent = 'public-transport/hafas-client:test'
 const spichernstr = '900000042101'

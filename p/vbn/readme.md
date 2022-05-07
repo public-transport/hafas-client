@@ -5,8 +5,8 @@ The [*Verkehrsverbund Bremen/Niedersachsen (VBN)*](https://de.wikipedia.org/wiki
 ## Usage
 
 ```js
-const createClient = require('hafas-client')
-const vbnProfile = require('hafas-client/p/vbn')
+import {createClient} from 'hafas-client'
+import {vbnProfile} from 'hafas-client/p/vbn/index.js'
 
 // create a client with VBN profile
 const client = createClient(vbnProfile, 'my-awesome-program')

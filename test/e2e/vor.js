@@ -1,11 +1,9 @@
-'use strict'
+import tap from 'tap'
 
-const tap = require('tap')
-
-const {createWhen} = require('./lib/util')
-const createClient = require('../..')
-const vorProfile = require('../../p/vor')
-const createValidate = require('./lib/validate-fptf-with')
+import {createWhen} from './lib/util.js'
+import {createClient} from '../../index.js'
+import {profile as vorProfile} from '../../p/vor/index.js'
+import {createValidateFptfWith as createValidate} from './lib/validate-fptf-with.js'
 
 const T_MOCK = 1641897000 * 1000 // 2022-01-11T11:30:00+01
 const when = createWhen(vorProfile.timezone, vorProfile.locale, T_MOCK)

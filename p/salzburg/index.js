@@ -1,4 +1,7 @@
-'use strict'
+// todo: use import assertions once they're supported by Node.js & ESLint
+// https://github.com/tc39/proposal-import-assertions
+import {createRequire} from 'module'
+const require = createRequire(import.meta.url)
 
 const baseProfile = require('./base.json')
 
@@ -74,7 +77,7 @@ const products = [{
 	default: true,
 }]
 
-const salzburgProfile = {
+const profile = {
 	...baseProfile,
 	ver: '1.32',
 
@@ -88,4 +91,6 @@ const salzburgProfile = {
 	reachableFrom: true,
 }
 
-module.exports = salzburgProfile
+export {
+	profile,
+}

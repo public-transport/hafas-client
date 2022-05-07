@@ -1,6 +1,4 @@
-'use strict'
-
-module.exports = [
+const products = [
 	// https://github.com/public-transport/hafas-client/issues/93#issuecomment-437868265
 	{
 		id: 'bus',
@@ -67,3 +65,7 @@ module.exports = [
 		default: false
 	}
 ]
+
+export {
+	products,
+}

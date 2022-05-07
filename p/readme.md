@@ -60,7 +60,7 @@ If you want to write a profile for an endpoint, check out the [*writing a profil
 Your profile must be passed into `createClient` and is expected to be in a certain structure:
 
 ```js
-const createClient = require('hafas-client')
+import {createClient} from 'hafas-client'
 
 const myCustomProfile = {
 	// …

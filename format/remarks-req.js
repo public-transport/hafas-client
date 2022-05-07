@@ -1,5 +1,3 @@
-'use strict'
-
 const formatRemarksReq = (ctx) => {
 	const {profile, opt} = ctx
 
@@ -31,4 +29,6 @@ const formatRemarksReq = (ctx) => {
 	return {meth: 'HimSearch', req}
 }
 
-module.exports = formatRemarksReq
+export {
+	formatRemarksReq,
+}

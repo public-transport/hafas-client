@@ -1,5 +1,3 @@
-'use strict'
-
 const formatStationBoardReq = (ctx, station, type) => {
 	const {profile, opt} = ctx
 
@@ -31,4 +29,6 @@ const formatStationBoardReq = (ctx, station, type) => {
 	}
 }
 
-module.exports = formatStationBoardReq
+export {
+	formatStationBoardReq,
+}

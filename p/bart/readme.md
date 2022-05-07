@@ -5,8 +5,8 @@
 ## Usage
 
 ```js
-const createClient = require('hafas-client')
-const bartProfile = require('hafas-client/p/BART')
+import {createClient} from 'hafas-client'
+import {bartProfile} from 'hafas-client/p/bart/index.js'
 
 // create a client with BART profile
 const client = createClient(bartProfile, 'my-awesome-program')

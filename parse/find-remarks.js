@@ -1,6 +1,4 @@
-'use strict'
-
-const flatMap = require('lodash/flatMap')
+import flatMap from 'lodash/flatMap.js'
 
 // There are two kinds of notes: "remarks" (in `remL`) and HAFAS
 // Information Manager (HIM) notes (in `himL`). The former describe
@@ -20,4 +18,6 @@ const findRemarks = (refs) => {
 	})
 }
 
-module.exports = findRemarks
+export {
+	findRemarks,
+}

@@ -1,6 +1,4 @@
-'use strict'
-
-const findRemarks = require('./find-remarks')
+import {findRemarks} from './find-remarks.js'
 
 const clone = obj => Object.assign({}, obj)
 
@@ -182,4 +180,6 @@ const parseJourneyLeg = (ctx, pt, date) => { // pt = raw leg
 	return res
 }
 
-module.exports = parseJourneyLeg
+export {
+	parseJourneyLeg,
+}

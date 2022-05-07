@@ -1,5 +1,3 @@
-'use strict'
-
 const formatRectangle = (profile, north, west, south, east) => {
 	return {
 		llCrd: {
@@ -13,4 +11,6 @@ const formatRectangle = (profile, north, west, south, east) => {
 	}
 }
 
-module.exports = formatRectangle
+export {
+	formatRectangle,
+}

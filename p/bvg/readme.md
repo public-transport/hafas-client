@@ -5,8 +5,8 @@
 ## Usage
 
 ```js
-const createClient = require('hafas-client')
-const bvgProfile = require('hafas-client/p/bvg')
+import {createClient} from 'hafas-client'
+import {bvgProfile} from 'hafas-client/p/bvg/index.js'
 
 // create a client with BVG profile
 const client = createClient(bvgProfile, 'my-awesome-program')

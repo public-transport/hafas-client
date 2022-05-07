@@ -1,7 +1,5 @@
-'use strict'
-
-const {parse} = require('qs')
-const get = require('lodash/get')
+import {parse} from 'qs'
+import get from 'lodash/get.js'
 
 const POI = 'P'
 const STATION = 'S'
@@ -133,4 +131,6 @@ const parseLocationWithoutCycles = (ctx, l, ...args) => {
 	return parseLocation({...ctx, [seen]: newSeen}, l, ...args)
 }
 
-module.exports = parseLocationWithoutCycles
+export {
+	parseLocationWithoutCycles as parseLocation,
+}

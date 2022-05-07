@@ -1,9 +1,8 @@
-'use strict'
+import {inspect} from 'util'
+import {createClient} from '../../index.js'
+import {profile} from './index.js'
 
-const createClient = require('../../')
-const sbbProfile = require('.')
-
-const client = createClient(sbbProfile, 'hafas-client-example')
+const client = createClient(profile, 'hafas-client-example')
 
 const zurich1 = '8530813' // Zürich Kreuzplatz
 const zurich2 = '8503000' // Zürich HB
@@ -49,6 +48,6 @@ client.journeys(baden1, baden2, { results: 1 })
 
 
 .then((data) => {
-	console.log(require('util').inspect(data, {depth: null, colors: true}))
+	console.log(inspect(data, {depth: null, colors: true}))
 })
 .catch(console.error)

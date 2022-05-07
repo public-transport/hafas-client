@@ -1,25 +1,28 @@
-'use strict'
+// todo: use import assertions once they're supported by Node.js & ESLint
+// https://github.com/tc39/proposal-import-assertions
+import {createRequire} from 'module'
+const require = createRequire(import.meta.url)
 
-const trim = require('lodash/trim')
-const uniqBy = require('lodash/uniqBy')
-const slugg = require('slugg')
-const without = require('lodash/without')
-const {parseHook} = require('../../lib/profile-hooks')
+import trim from 'lodash/trim.js'
+import uniqBy from 'lodash/uniqBy.js'
+import slugg from 'slugg'
+import without from 'lodash/without.js'
+import {parseHook} from '../../lib/profile-hooks.js'
 
-const _parseJourney = require('../../parse/journey')
-const _parseJourneyLeg = require('../../parse/journey-leg')
-const _parseLine = require('../../parse/line')
-const _parseArrival = require('../../parse/arrival')
-const _parseDeparture = require('../../parse/departure')
-const _parseHint = require('../../parse/hint')
-const _parseLocation = require('../../parse/location')
-const _formatStation = require('../../format/station')
-const {bike} = require('../../format/filters')
+import {parseJourney as _parseJourney} from '../../parse/journey.js'
+import {parseJourneyLeg as _parseJourneyLeg} from '../../parse/journey-leg.js'
+import {parseLine as _parseLine} from '../../parse/line.js'
+import {parseArrival as _parseArrival} from '../../parse/arrival.js'
+import {parseDeparture as _parseDeparture} from '../../parse/departure.js'
+import {parseHint as _parseHint} from '../../parse/hint.js'
+import {parseLocation as _parseLocation} from '../../parse/location.js'
+import {formatStation as _formatStation} from '../../format/station.js'
+import {bike} from '../../format/filters.js'
 
-const products = require('./products')
 const baseProfile = require('./base.json')
-const formatLoyaltyCard = require('./loyalty-cards').format
-const {ageGroup, ageGroupFromAge} = require('./ageGroup')
+import {products} from './products.js'
+import {formatLoyaltyCard} from './loyalty-cards.js'
+import {ageGroup, ageGroupFromAge} from './ageGroup.js'
 
 const transformReqBody = (ctx, body) => {
 	const req = body.svcReqL[0] || {}
@@ -483,7 +486,7 @@ const formatStation = (id) => {
 
 // todo: find option for absolute number of results
 
-const dbProfile = {
+const profile = {
 	...baseProfile,
 	locale: 'de-DE',
 	timezone: 'Europe/Berlin',
@@ -512,4 +515,6 @@ const dbProfile = {
 	lines: false, // `.svcResL[0].res.lineL[]` is missing 🤔
 }
 
-module.exports = dbProfile
+export {
+	profile,
+}

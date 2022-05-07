@@ -1,9 +1,12 @@
-'use strict'
+// todo: use import assertions once they're supported by Node.js & ESLint
+// https://github.com/tc39/proposal-import-assertions
+import {createRequire} from 'module'
+const require = createRequire(import.meta.url)
 
-const tap = require('tap')
+import tap from 'tap'
 
-const createClient = require('..')
-const rawProfile = require('../p/db')
+import {createClient} from '../index.js'
+import {profile as rawProfile} from '../p/db/index.js'
 const resDTZOffset0 = require('./fixtures/db-journey-dtzoffset-0.json')
 const resATZOffset0 = require('./fixtures/db-journey-atzoffset-0.json')
 

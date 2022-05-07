@@ -5,8 +5,8 @@
 ## Usage
 
 ```js
-const createClient = require('hafas-client')
-const oebbProfile = require('hafas-client/p/oebb')
+import {createClient} from 'hafas-client'
+import {oebbProfile} from 'hafas-client/p/oebb/index.js'
 
 // create a client with ÖBB profile
 const client = createClient(oebbProfile, 'my-awesome-program')

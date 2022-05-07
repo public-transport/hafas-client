@@ -1,5 +1,3 @@
-'use strict'
-
 const sep = '@'
 
 const formatLocationIdentifier = (data) => {
@@ -13,4 +11,6 @@ const formatLocationIdentifier = (data) => {
 	return str
 }
 
-module.exports = formatLocationIdentifier
+export {
+	formatLocationIdentifier,
+}

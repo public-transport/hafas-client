@@ -1,14 +1,17 @@
-'use strict'
+// todo: use import assertions once they're supported by Node.js & ESLint
+// https://github.com/tc39/proposal-import-assertions
+import {createRequire} from 'module'
+const require = createRequire(import.meta.url)
 
 // todo: https://gist.github.com/anonymous/a5fc856bc80ae7364721943243f934f4#file-haf_config_base-properties-L5
 // todo: https://gist.github.com/anonymous/a5fc856bc80ae7364721943243f934f4#file-haf_config_base-properties-L47-L234
 
-const {parseHook} = require('../../lib/profile-hooks')
+import {parseHook} from '../../lib/profile-hooks.js'
 
-const _parseLocation = require('../../parse/location')
-const _parseMovement = require('../../parse/movement')
+import {parseLocation as _parseLocation} from '../../parse/location.js'
+import {parseMovement as _parseMovement} from '../../parse/movement.js'
 const baseProfile = require('./base.json')
-const products = require('./products')
+import {products} from './products.js'
 
 // ÖBB has some 'stations' **in austria** with no departures/products,
 // like station entrances, that are actually POIs.
@@ -43,7 +46,7 @@ const fixMovement = ({parsed}, m) => {
 	return parsed
 }
 
-const oebbProfile = {
+const profile = {
 	...baseProfile,
 	locale: 'de-AT',
 	timezone: 'Europe/Vienna',
@@ -61,4 +64,6 @@ const oebbProfile = {
 	// lines: false, // `.svcResL[0].res.lineL[]` is missing 🤔
 }
 
-module.exports = oebbProfile
+export {
+	profile,
+}

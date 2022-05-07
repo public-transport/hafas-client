@@ -1,5 +1,3 @@
-'use strict'
-
 const formatLocation = (profile, l, name = 'location') => {
 	if ('string' === typeof l) return profile.formatStation(l)
 	if ('object' === typeof l && !Array.isArray(l)) {
@@ -14,4 +12,6 @@ const formatLocation = (profile, l, name = 'location') => {
 	throw new TypeError(name + ': valid station, address or poi required.')
 }
 
-module.exports = formatLocation
+export {
+	formatLocation,
+}

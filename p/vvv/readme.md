@@ -5,8 +5,8 @@
 ## Usage
 
 ```js
-const createClient = require('hafas-client')
-const vvvProfile = require('hafas-client/p/vvv')
+import {createClient} from 'hafas-client'
+import {vvvProfile} from 'hafas-client/p/vvv/index.js'
 
 // create a client with VVV profile
 const client = createClient(vvvProfile, 'my-awesome-program')
