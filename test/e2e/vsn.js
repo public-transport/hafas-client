@@ -1,26 +1,23 @@
-'use strict'
+import tap from 'tap'
+import isRoughlyEqual from 'is-roughly-equal'
 
-const tap = require('tap')
-const isRoughlyEqual = require('is-roughly-equal')
-
-const {createWhen} = require('./lib/util')
-const createClient = require('../..')
-const vsnProfile = require('../../p/vsn')
-const products = require('../../p/vsn/products')
-const createValidate = require('./lib/validate-fptf-with')
-const testJourneysStationToStation = require('./lib/journeys-station-to-station')
-const testJourneysStationToAddress = require('./lib/journeys-station-to-address')
-const testJourneysStationToPoi = require('./lib/journeys-station-to-poi')
-const testEarlierLaterJourneys = require('./lib/earlier-later-journeys')
-const testDepartures = require('./lib/departures')
-const testArrivals = require('./lib/arrivals')
+import {createWhen} from './lib/util.js'
+import {createClient} from '../../index.js'
+import {profile as vsnProfile} from '../../p/vsn/index.js'
+import {createValidateFptfWith as createValidate} from './lib/validate-fptf-with.js'
+import {testJourneysStationToStation} from './lib/journeys-station-to-station.js'
+import {testJourneysStationToAddress} from './lib/journeys-station-to-address.js'
+import {testJourneysStationToPoi} from './lib/journeys-station-to-poi.js'
+import {testEarlierLaterJourneys} from './lib/earlier-later-journeys.js'
+import {testDepartures} from './lib/departures.js'
+import {testArrivals} from './lib/arrivals.js'
 
 const T_MOCK = 1652175000 * 1000 // 2022-05-10T11:30+02:00
 const when = createWhen(vsnProfile.timezone, vsnProfile.locale, T_MOCK)
 
 const cfg = {
 	when,
-	products,
+	products: vsnProfile.products,
 	minLatitude: 50,
 	maxLatitude: 54.5,
 	minLongitude: 6.5,

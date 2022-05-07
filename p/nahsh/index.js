@@ -1,12 +1,15 @@
-'use strict'
+// todo: use import assertions once they're supported by Node.js & ESLint
+// https://github.com/tc39/proposal-import-assertions
+import {createRequire} from 'module'
+const require = createRequire(import.meta.url)
 
-const {parseHook} = require('../../lib/profile-hooks')
+import {parseHook} from '../../lib/profile-hooks.js'
 
-const _parseLocation = require('../../parse/location')
-const _parseJourney = require('../../parse/journey')
-const _parseMovement = require('../../parse/movement')
+import {parseLocation as _parseLocation} from '../../parse/location.js'
+import {parseJourney as _parseJourney} from '../../parse/journey.js'
+import {parseMovement as _parseMovement} from '../../parse/movement.js'
 const baseProfile = require('./base.json')
-const products = require('./products')
+import {products} from './products.js'
 
 // todo: journey prices
 
@@ -66,7 +69,7 @@ const fixMovement = ({parsed}, m) => {
 	return parsed
 }
 
-const nahshProfile = {
+const profile = {
 	...baseProfile,
 	locale: 'de-DE',
 	timezone: 'Europe/Berlin',
@@ -83,4 +86,6 @@ const nahshProfile = {
 	reachableFrom: true,
 }
 
-module.exports = nahshProfile
+export {
+	profile,
+}

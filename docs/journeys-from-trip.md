@@ -22,8 +22,8 @@ With `opt`, you can override the default options, which look like this:
 As an example, we're going to use the [*Deutsche Bahn* profile](../p/db):
 
 ```js
-const createClient = require('hafas-client')
-const dbProfile = require('hafas-client/p/db')
+import {createClient} from 'hafas-client'
+import {dbProfile} from 'hafas-client/p/db.js'
 
 const berlinSüdkreuz = '8011113'
 const münchenHbf = '8000261'

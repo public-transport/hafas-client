@@ -1,10 +1,13 @@
-'use strict'
+// todo: use import assertions once they're supported by Node.js & ESLint
+// https://github.com/tc39/proposal-import-assertions
+import {createRequire} from 'module'
+const require = createRequire(import.meta.url)
 
-const {parseHook} = require('../../lib/profile-hooks')
+import {parseHook} from '../../lib/profile-hooks.js'
 
-const parseLocation = require('../../parse/location')
+import {parseLocation} from '../../parse/location.js'
 const baseProfile = require('./base.json')
-const products = require('./products')
+import {products} from './products.js'
 
 const trimStopName = ({parsed}, l) => {
 	if (parsed.type === 'stop' || parsed.type === 'station' && parsed.name) {
@@ -13,7 +16,7 @@ const trimStopName = ({parsed}, l) => {
 	return parsed
 }
 
-const pkpProfile = {
+const profile = {
 	...baseProfile,
 	locale: 'pl-PL',
 	timezone: 'Europe/Warsaw',
@@ -29,4 +32,6 @@ const pkpProfile = {
 	remarks: false, // seems like ver >= 1.20 is required
 }
 
-module.exports = pkpProfile
+export {
+	profile,
+}

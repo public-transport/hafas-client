@@ -1,7 +1,5 @@
-'use strict'
-
-const tap = require('tap')
-const parse = require('../../parse/date-time')
+import tap from 'tap'
+import {parseDateTime as parse} from '../../parse/date-time.js'
 
 const ctx = {
 	common: {},

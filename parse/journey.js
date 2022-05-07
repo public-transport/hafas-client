@@ -1,7 +1,5 @@
-'use strict'
-
-const {DateTime} = require('luxon')
-const findRemarks = require('./find-remarks')
+import {DateTime} from 'luxon'
+import {findRemarks} from './find-remarks.js'
 
 const parseScheduledDays = (sDaysB, year, profile) => {
 	sDaysB = Buffer.from(sDaysB, 'hex')
@@ -67,4 +65,6 @@ const parseJourney = (ctx, j) => { // j = raw jouney
 	return res
 }
 
-module.exports = parseJourney
+export {
+	parseJourney,
+}

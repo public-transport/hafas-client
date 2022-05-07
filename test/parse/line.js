@@ -1,8 +1,6 @@
-'use strict'
-
-const tap = require('tap')
-const omit = require('lodash/omit')
-const parse = require('../../parse/line')
+import tap from 'tap'
+import omit from 'lodash/omit.js'
+import {parseLine as parse} from '../../parse/line.js'
 
 const profile = {
 	products: [

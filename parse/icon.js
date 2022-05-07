@@ -1,5 +1,3 @@
-'use strict'
-
 const parseIcon = (ctx, i) => {
 	if (i.res === 'Empty') return null
 	const res = {
@@ -11,4 +9,6 @@ const parseIcon = (ctx, i) => {
 	return res
 }
 
-module.exports = parseIcon
+export {
+	parseIcon,
+}

@@ -1,5 +1,3 @@
-'use strict'
-
 const parseWhen = (ctx, date, timeS, timeR, tzOffset, cncl = false) => {
 	const parse = ctx.profile.parseDateTime
 
@@ -28,4 +26,6 @@ const parseWhen = (ctx, date, timeS, timeR, tzOffset, cncl = false) => {
 	}
 }
 
-module.exports = parseWhen
+export {
+	parseWhen,
+}

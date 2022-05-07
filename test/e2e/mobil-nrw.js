@@ -1,20 +1,17 @@
-'use strict'
+import tap from 'tap'
 
-const tap = require('tap')
-
-const {createWhen} = require('./lib/util')
-const createClient = require('../..')
-const mobilNrwProfile = require('../../p/mobil-nrw')
-const products = require('../../p/mobil-nrw/products')
-const createValidate = require('./lib/validate-fptf-with')
-const testJourneysStationToStation = require('./lib/journeys-station-to-station')
-const testJourneysStationToAddress = require('./lib/journeys-station-to-address')
-const testJourneysStationToPoi = require('./lib/journeys-station-to-poi')
-const testEarlierLaterJourneys = require('./lib/earlier-later-journeys')
-const testRefreshJourney = require('./lib/refresh-journey')
-const testDepartures = require('./lib/departures')
-const testArrivals = require('./lib/arrivals')
-const testReachableFrom = require('./lib/reachable-from')
+import {createWhen} from './lib/util.js'
+import {createClient} from '../../index.js'
+import {profile as mobilNrwProfile} from '../../p/mobil-nrw/index.js'
+import {createValidateFptfWith as createValidate} from './lib/validate-fptf-with.js'
+import {testJourneysStationToStation} from './lib/journeys-station-to-station.js'
+import {testJourneysStationToAddress} from './lib/journeys-station-to-address.js'
+import {testJourneysStationToPoi} from './lib/journeys-station-to-poi.js'
+import {testEarlierLaterJourneys} from './lib/earlier-later-journeys.js'
+import {testRefreshJourney} from './lib/refresh-journey.js'
+import {testDepartures} from './lib/departures.js'
+import {testArrivals} from './lib/arrivals.js'
+import {testReachableFrom} from './lib/reachable-from.js'
 
 const T_MOCK = 1657618200 * 1000 // 2022-07-12T11:30+02:00
 const when = createWhen(mobilNrwProfile.timezone, mobilNrwProfile.locale, T_MOCK)
@@ -22,7 +19,7 @@ const when = createWhen(mobilNrwProfile.timezone, mobilNrwProfile.locale, T_MOCK
 const cfg = {
 	when,
 	stationCoordsOptional: false,
-	products,
+	products: mobilNrwProfile.products,
 	minLatitude: 48.089,
 	minLongitude: 1.659,
 	maxLatitude: 53.531,

@@ -1,5 +1,3 @@
-'use strict'
-
 const parsePlatform = (ctx, platfS, platfR, cncl = false) => {
 	let planned = platfS || null
 	let prognosed = platfR || null
@@ -17,4 +15,6 @@ const parsePlatform = (ctx, platfS, platfR, cncl = false) => {
 	}
 }
 
-module.exports = parsePlatform
+export {
+	parsePlatform,
+}

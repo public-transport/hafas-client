@@ -1,7 +1,5 @@
-'use strict'
-
-const tap = require('tap')
-const parse = require('../../parse/warning')
+import tap from 'tap'
+import {parseWarning as parse} from '../../parse/warning.js'
 
 const profile = {
 	parseProductsBitmask: (_, bitmask) => [bitmask],

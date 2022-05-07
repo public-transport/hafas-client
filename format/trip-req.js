@@ -1,5 +1,3 @@
-'use strict'
-
 const formatTripReq = ({opt}, id) => {
 	return {
 		cfg: {polyEnc: 'GPA'},
@@ -15,4 +13,6 @@ const formatTripReq = ({opt}, id) => {
 	}
 }
 
-module.exports = formatTripReq
+export {
+	formatTripReq,
+}

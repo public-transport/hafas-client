@@ -1,9 +1,12 @@
-'use strict'
+// todo: use import assertions once they're supported by Node.js & ESLint
+// https://github.com/tc39/proposal-import-assertions
+import {createRequire} from 'module'
+const require = createRequire(import.meta.url)
 
-const tap = require('tap')
+import tap from 'tap'
 
-const createClient = require('..')
-const rawProfile = require('../p/sncb')
+import {createClient} from '../index.js'
+import {profile as rawProfile} from '../p/sncb/index.js'
 const resWithChkiLeg = require('./fixtures/sncb-journey-with-chki.json')
 
 const client = createClient(rawProfile, 'public-transport/hafas-client:test')

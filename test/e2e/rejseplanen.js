@@ -1,26 +1,23 @@
-'use strict'
+import tap from 'tap'
+import assert from 'assert'
 
-const tap = require('tap')
-const assert = require('assert')
-
-const {createWhen} = require('./lib/util')
-const createClient = require('../..')
-const rejseplanenProfile = require('../../p/rejseplanen')
-const products = require('../../p/rejseplanen/products')
-const createValidate = require('./lib/validate-fptf-with')
-const testJourneysStationToStation = require('./lib/journeys-station-to-station')
-const journeysFailsWithNoProduct = require('./lib/journeys-fails-with-no-product')
-const testJourneysStationToAddress = require('./lib/journeys-station-to-address')
-const testEarlierLaterJourneys = require('./lib/earlier-later-journeys')
-const testDepartures = require('./lib/departures')
-const testArrivals = require('./lib/arrivals')
+import {createWhen} from './lib/util.js'
+import {createClient} from '../../index.js'
+import {profile as rejseplanenProfile} from '../../p/rejseplanen/index.js'
+import {createValidateFptfWith as createValidate} from './lib/validate-fptf-with.js'
+import {testJourneysStationToStation} from './lib/journeys-station-to-station.js'
+import {journeysFailsWithNoProduct} from './lib/journeys-fails-with-no-product.js'
+import {testJourneysStationToAddress} from './lib/journeys-station-to-address.js'
+import {testEarlierLaterJourneys} from './lib/earlier-later-journeys.js'
+import {testDepartures} from './lib/departures.js'
+import {testArrivals} from './lib/arrivals.js'
 
 const T_MOCK = 1657618200 * 1000 // 2022-07-12T11:30+02:00
 const when = createWhen(rejseplanenProfile.timezone, rejseplanenProfile.locale, T_MOCK)
 
 const validate = createValidate({
 	when,
-	products,
+	products: rejseplanenProfile.products,
 	minLatitude: 52.7,
 	maxLatitude: 58.85,
 	minLongitude: 5.8,
@@ -59,7 +56,7 @@ tap.test('journeys – fails with no product', async (t) => {
 		fromId: næstved,
 		toId: aalborg,
 		when,
-		products,
+		products: rejseplanenProfile.products,
 	})
 	t.end()
 })

@@ -11,9 +11,9 @@
 There's opt-in support for throttling requests to the endpoint.
 
 ```js
-const createClient = require('hafas-client')
-const withThrottling = require('hafas-client/throttle')
-const dbProfile = require('hafas-client/p/db')
+import {createClient} from 'hafas-client'
+import {withThrottling} from 'hafas-client/throttle.js'
+import {dbProfile} from 'hafas-client/p/db.js'
 
 // create a throttled HAFAS client with Deutsche Bahn profile
 const client = createClient(withThrottling(dbProfile), 'my-awesome-program')
@@ -35,9 +35,9 @@ const client = createClient(throttledDbProfile, 'my-awesome-program')
 There's opt-in support for retrying failed requests to the endpoint.
 
 ```js
-const createClient = require('hafas-client')
-const withRetrying = require('hafas-client/retry')
-const dbProfile = require('hafas-client/p/db')
+import {createClient} from 'hafas-client'
+import {withRetrying} from 'hafas-client/retry.js'
+import {dbProfile} from 'hafas-client/p/db.js'
 
 // create a client with Deutsche Bahn profile that will retry on HAFAS errors
 const client = createClient(withRetrying(dbProfile), 'my-awesome-program')
@@ -65,7 +65,7 @@ const client = createClient(retryingDbProfile, 'my-awesome-program')
 By default, `hafas-client` randomizes the client name that you pass into `createClient`, and sends it as [`User-Agent`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent) in a randomized form:
 
 ```js
-const createClient('hafas-client')
+import {createClient} from 'hafas-client'
 // …
 const client = createClient(someProfile, 'my-awesome-program')
 
@@ -158,7 +158,7 @@ Each error has the following properties:
 To check **if an error from `hafas-client` is HAFAS-specific, use `error instanceof HafasError`**:
 
 ```js
-const {HafasError} = require('hafas-client/lib/errors')
+import {HafasError} from 'hafas-client/lib/errors.js'
 
 try {
 	await client.journeys(/* … */)

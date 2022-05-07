@@ -1,5 +1,3 @@
-'use strict'
-
 const simplify = j => j.legs.map(l => {
 	return {
 		origin: l.origin,
@@ -41,4 +39,6 @@ const testRefreshJourney = async (cfg) => {
 	t.same(simplify(refreshed), simplify(model))
 }
 
-module.exports = testRefreshJourney
+export {
+	testRefreshJourney,
+}

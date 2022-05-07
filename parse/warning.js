@@ -1,7 +1,5 @@
-'use strict'
-
-const brToNewline = require('@derhuerst/br2nl')
-const omit = require('lodash/omit')
+import brToNewline from '@derhuerst/br2nl'
+import omit from 'lodash/omit.js'
 
 const typesByIcon = Object.assign(Object.create(null), {
 	HimWarn: 'status'
@@ -104,4 +102,6 @@ const parseWarning = (ctx, w) => {
 	return res
 }
 
-module.exports = parseWarning
+export {
+	parseWarning,
+}

@@ -1,7 +1,5 @@
-'use strict'
-
-const omit = require('lodash/omit')
-const createFindInTree = require('../lib/find-in-tree');
+import omit from 'lodash/omit.js'
+import {createFindInTree} from '../lib/find-in-tree.js'
 
 const findInTree = createFindInTree([
 	'**.oprX', '**.icoX', '**.prodX', '**.pRefL', '**.locX',
@@ -142,4 +140,6 @@ const parseCommonData = (_ctx) => {
 	return common
 }
 
-module.exports = parseCommonData
+export {
+	parseCommonData,
+}

@@ -1,6 +1,4 @@
-'use strict'
-
-const {DateTime, IANAZone} = require('luxon')
+import {DateTime, IANAZone} from 'luxon'
 
 const timezones = new WeakMap()
 
@@ -19,4 +17,6 @@ const formatDate = (profile, when) => {
 	}).toFormat('yyyyMMdd')
 }
 
-module.exports = formatDate
+export {
+	formatDate,
+}

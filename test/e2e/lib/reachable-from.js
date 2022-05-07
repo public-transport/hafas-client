@@ -1,6 +1,4 @@
-'use strict'
-
-const isPlainObject = require('lodash/isPlainObject')
+import isPlainObject from 'lodash/isPlainObject.js'
 
 const testReachableFrom = async (cfg) => {
 	const {
@@ -47,4 +45,6 @@ const testReachableFrom = async (cfg) => {
 	t.same(results, sorted, 'results must be sorted by res.duration')
 }
 
-module.exports = testReachableFrom
+export {
+	testReachableFrom,
+}

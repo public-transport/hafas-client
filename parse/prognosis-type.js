@@ -1,5 +1,3 @@
-'use strict'
-
 const parsePrognosisType = (_, progType) => {
 	return {
 		'PROGNOSED': 'prognosed',
@@ -8,4 +6,6 @@ const parsePrognosisType = (_, progType) => {
 	}[progType] || null
 }
 
-module.exports = parsePrognosisType
+export {
+	parsePrognosisType,
+}

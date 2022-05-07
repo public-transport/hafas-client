@@ -5,8 +5,8 @@ The government of [Salzburg](https://en.wikipedia.org/wiki/Salzburg) operates a 
 ## Usage
 
 ```js
-const createClient = require('hafas-client')
-const salzburgProfile = require('hafas-client/p/salzburg')
+import {createClient} from 'hafas-client'
+import {salzburgProfile} from 'hafas-client/p/salzburg/index.js'
 
 // create a client with Salzburg profile
 const client = createClient(salzburgProfile, 'my-awesome-program')

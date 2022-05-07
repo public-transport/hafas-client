@@ -85,8 +85,8 @@ With `opt`, you can override the default options, which look like this:
 As an example, we're going to use the [VBB profile](../p/vbb):
 
 ```js
-const createClient = require('hafas-client')
-const vbbProfile = require('hafas-client/p/vbb')
+import {createClient} 'hafas-client'
+import {vbbProfile} 'hafas-client/p/vbb.js'
 
 const client = createClient(vbbProfile, 'my-awesome-program')
 

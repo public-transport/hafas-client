@@ -1,6 +1,4 @@
-'use strict'
-
-module.exports = [
+const products = [
 	{
 		id: 'bus',
 		mode: 'bus',
@@ -26,3 +24,7 @@ module.exports = [
 		default: true
 	}
 ]
+
+export {
+	products,
+}

@@ -1,26 +1,23 @@
-'use strict'
+import tap from 'tap'
+import isRoughlyEqual from 'is-roughly-equal'
 
-const tap = require('tap')
-const isRoughlyEqual = require('is-roughly-equal')
-
-const {createWhen} = require('./lib/util')
-const createClient = require('../..')
-const insaProfile = require('../../p/insa')
-const products = require('../../p/insa/products')
-const {
-	movement: createValidateMovement,
-	journeyLeg: createValidateJourneyLeg,
-} = require('./lib/validators')
-const createValidate = require('./lib/validate-fptf-with')
-const testJourneysStationToStation = require('./lib/journeys-station-to-station')
-const testJourneysStationToAddress = require('./lib/journeys-station-to-address')
-const testJourneysStationToPoi = require('./lib/journeys-station-to-poi')
-const testEarlierLaterJourneys = require('./lib/earlier-later-journeys')
-const journeysFailsWithNoProduct = require('./lib/journeys-fails-with-no-product')
-const testDepartures = require('./lib/departures')
-const testDeparturesInDirection = require('./lib/departures-in-direction')
-const testArrivals = require('./lib/arrivals')
-const testJourneysWithDetour = require('./lib/journeys-with-detour')
+import {createWhen} from './lib/util.js'
+import {createClient} from '../../index.js'
+import {profile as insaProfile} from '../../p/insa/index.js'
+import {
+	createValidateMovement,
+	createValidateJourneyLeg,
+} from './lib/validators.js'
+import {createValidateFptfWith as createValidate} from './lib/validate-fptf-with.js'
+import {testJourneysStationToStation} from './lib/journeys-station-to-station.js'
+import {testJourneysStationToAddress} from './lib/journeys-station-to-address.js'
+import {testJourneysStationToPoi} from './lib/journeys-station-to-poi.js'
+import {testEarlierLaterJourneys} from './lib/earlier-later-journeys.js'
+import {journeysFailsWithNoProduct} from './lib/journeys-fails-with-no-product.js'
+import {testDepartures} from './lib/departures.js'
+import {testDeparturesInDirection} from './lib/departures-in-direction.js'
+import {testArrivals} from './lib/arrivals.js'
+import {testJourneysWithDetour} from './lib/journeys-with-detour.js'
 
 const isObj = o => o !== null && 'object' === typeof o && !Array.isArray(o)
 
@@ -30,7 +27,7 @@ const when = createWhen(insaProfile.timezone, insaProfile.locale, T_MOCK)
 const cfg = {
 	when,
 	stationCoordsOptional: false,
-	products,
+	products: insaProfile.products,
 	minLatitude: 50.7,
 	maxLatitude: 53.2,
 	minLongitude: 9, // considering e.g. IC 245
@@ -86,7 +83,7 @@ tap.test('journeys – fails with no product', async (t) => {
 		fromId: magdeburgHbf,
 		toId: magdeburgBuckau,
 		when,
-		products
+		products: insaProfile.products,
 	})
 	t.end()
 })

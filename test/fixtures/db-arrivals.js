@@ -1,6 +1,4 @@
-'use strict'
-
-module.exports = [
+const dbArrivals = [
 	{
 		tripId: '1|1144239|52|80|9062020',
 		stop: {
@@ -267,3 +265,7 @@ module.exports = [
 		remarks: []
 	}
 ]
+
+export {
+	dbArrivals,
+}

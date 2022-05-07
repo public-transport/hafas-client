@@ -1,18 +1,20 @@
-'use strict'
+// todo: use import assertions once they're supported by Node.js & ESLint
+// https://github.com/tc39/proposal-import-assertions
+import {createRequire} from 'module'
+const require = createRequire(import.meta.url)
 
-const {readFileSync} = require('fs')
-const {join} = require('path')
-const {Agent} = require('https')
-const {strictEqual: eql} = require('assert')
-const {parseHook} = require('../../lib/profile-hooks')
-const parseLine = require('../../parse/line')
+import {readFileSync} from 'fs'
+import {Agent} from 'https'
+import {strictEqual as eql} from 'assert'
+import {parseHook} from '../../lib/profile-hooks.js'
+import {parseLine} from '../../parse/line.js'
 const baseProfile = require('./base.json')
-const products = require('./products')
+import {products} from './products.js'
 
 // `www.belgianrail.be:443` doesn't provide the necessary CA certificate
 // chain for Node.js to trust the certificate, so we manually add it.
 // todo: fix this properly, e.g. by letting them know
-const ca = readFileSync(join(__dirname, 'digicert-sha2-secure-server-ca.crt.pem'))
+const ca = readFileSync(new URL('./digicert-sha2-secure-server-ca.crt.pem', import.meta.url).pathname)
 const agent = new Agent({ca})
 const transformReq = (ctx, req) => ({...req, agent})
 
@@ -45,7 +47,7 @@ eql(lineNameWithoutFahrtNr({
 	parsed: {name: 'S1 123a', fahrtNr: '123'}
 }).name, 'S1 123a')
 
-const sncbProfile = {
+const profile = {
 	...baseProfile,
 	locale: 'fr-BE',
 	timezone: 'Europe/Brussels',
@@ -62,4 +64,6 @@ const sncbProfile = {
 	reachableFrom: false, // todo: fails with `H9240` "HAFAS Kernel: Internal error."
 }
 
-module.exports = sncbProfile
+export {
+	profile,
+}

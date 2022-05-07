@@ -1,16 +1,13 @@
-'use strict'
+import {products} from '../../../p/bvg/products.js'
 
-const a = require('assert')
-const products = require('../../../p/bvg/products')
+import {
+	createValidateStation,
+	createValidateJourneyLeg,
+	createValidateDeparture,
+	createValidateMovement,
+} from './validators.js'
 
-const {
-	station: createValidateStation,
-	journeyLeg: createValidateJourneyLeg,
-	departure: createValidateDeparture,
-	movement: createValidateMovement
-} = require('./validators')
-
-const createValidators = ({when}) => {
+const createVbbBvgValidators = ({when}) => {
 	const cfg = {
 		when,
 		stationCoordsOptional: false,
@@ -35,4 +32,6 @@ const createValidators = ({when}) => {
 	}
 }
 
-module.exports = createValidators
+export {
+	createVbbBvgValidators,
+}

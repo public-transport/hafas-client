@@ -1,27 +1,24 @@
-'use strict'
+import tap from 'tap'
+import isRoughlyEqual from 'is-roughly-equal'
 
-const tap = require('tap')
-const isRoughlyEqual = require('is-roughly-equal')
-
-const {createWhen} = require('./lib/util')
-const createClient = require('../..')
-const nahshProfile = require('../../p/nahsh')
-const products = require('../../p/nahsh/products')
-const {
-	line: createValidateLine,
-	station: createValidateStation
-} = require('./lib/validators')
-const createValidate = require('./lib/validate-fptf-with')
-const testJourneysStationToStation = require('./lib/journeys-station-to-station')
-const testJourneysStationToAddress = require('./lib/journeys-station-to-address')
-const testJourneysStationToPoi = require('./lib/journeys-station-to-poi')
-const testEarlierLaterJourneys = require('./lib/earlier-later-journeys')
-const testRefreshJourney = require('./lib/refresh-journey')
-const journeysFailsWithNoProduct = require('./lib/journeys-fails-with-no-product')
-const testDepartures = require('./lib/departures')
-const testDeparturesInDirection = require('./lib/departures-in-direction')
-const testArrivals = require('./lib/arrivals')
-const testReachableFrom = require('./lib/reachable-from')
+import {createWhen} from './lib/util.js'
+import {createClient} from '../../index.js'
+import {profile as nahshProfile} from '../../p/nahsh/index.js'
+import {
+	createValidateLine,
+	createValidateStation
+} from './lib/validators.js'
+import {createValidateFptfWith as createValidate} from './lib/validate-fptf-with.js'
+import {testJourneysStationToStation} from './lib/journeys-station-to-station.js'
+import {testJourneysStationToAddress} from './lib/journeys-station-to-address.js'
+import {testJourneysStationToPoi} from './lib/journeys-station-to-poi.js'
+import {testEarlierLaterJourneys} from './lib/earlier-later-journeys.js'
+import {testRefreshJourney} from './lib/refresh-journey.js'
+import {journeysFailsWithNoProduct} from './lib/journeys-fails-with-no-product.js'
+import {testDepartures} from './lib/departures.js'
+import {testDeparturesInDirection} from './lib/departures-in-direction.js'
+import {testArrivals} from './lib/arrivals.js'
+import {testReachableFrom} from './lib/reachable-from.js'
 
 const T_MOCK = 1657618200 * 1000 // 2022-07-12T11:30+02:00
 const when = createWhen(nahshProfile.timezone, nahshProfile.locale, T_MOCK)
@@ -29,7 +26,7 @@ const when = createWhen(nahshProfile.timezone, nahshProfile.locale, T_MOCK)
 const cfg = {
 	when,
 	stationCoordsOptional: false,
-	products,
+	products: nahshProfile.products,
 	maxLatitude: 55.15,
 	minLongitude: 7.5,
 	minLatitude: 53.15,
@@ -108,7 +105,7 @@ tap.test('journeys – fails with no product', async (t) => {
 		fromId: kielHbf,
 		toId: flensburg,
 		when,
-		products
+		products: nahshProfile.products,
 	})
 	t.end()
 })
@@ -340,6 +337,7 @@ tap.test('radar', async (t) => {
 	})
 
 	// todo: cfg.stationProductsOptional option
+	const {products} = nahshProfile
 	const allProducts = products.reduce((acc, p) => (acc[p.id] = true, acc), {})
 	const validateStation = createValidateStation(cfg)
 	const validate = createValidate(cfg, {

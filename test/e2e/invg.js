@@ -1,30 +1,30 @@
-'use strict'
+import tap from 'tap'
+import isRoughlyEqual from 'is-roughly-equal'
 
-const tap = require('tap')
-const isRoughlyEqual = require('is-roughly-equal')
-
-const {createWhen} = require('./lib/util')
-const createClient = require('../..')
-const invgProfile = require('../../p/invg')
-const products = require('../../p/invg/products')
-const {
-	journeyLeg: createValidateJourneyLeg,
-	movement: createValidateMovement
-} = require('./lib/validators')
-const createValidate = require('./lib/validate-fptf-with')
-const testJourneysStationToStation = require('./lib/journeys-station-to-station')
-const testJourneysStationToAddress = require('./lib/journeys-station-to-address')
-const testJourneysStationToPoi = require('./lib/journeys-station-to-poi')
-const testEarlierLaterJourneys = require('./lib/earlier-later-journeys')
-const testRefreshJourney = require('./lib/refresh-journey')
-const journeysFailsWithNoProduct = require('./lib/journeys-fails-with-no-product')
-const testDepartures = require('./lib/departures')
-const testArrivals = require('./lib/arrivals')
+import {createWhen} from './lib/util.js'
+import {createClient} from '../../index.js'
+import {profile as invgProfile} from '../../p/invg/index.js'
+import {
+	createValidateJourneyLeg,
+	createValidateMovement,
+} from './lib/validators.js'
+import {createValidateFptfWith as createValidate} from './lib/validate-fptf-with.js'
+import {testJourneysStationToStation} from './lib/journeys-station-to-station.js'
+import {testJourneysStationToAddress} from './lib/journeys-station-to-address.js'
+import {testJourneysStationToPoi} from './lib/journeys-station-to-poi.js'
+import {testEarlierLaterJourneys} from './lib/earlier-later-journeys.js'
+import {testRefreshJourney} from './lib/refresh-journey.js'
+import {journeysFailsWithNoProduct} from './lib/journeys-fails-with-no-product.js'
+import {testDepartures} from './lib/departures.js'
+import {testArrivals} from './lib/arrivals.js'
 
 const T_MOCK = 1657618200 * 1000 // 2022-07-12T11:30+02:00
 const when = createWhen(invgProfile.timezone, invgProfile.locale, T_MOCK)
 
-const cfg = {when, products}
+const cfg = {
+	when,
+	products: invgProfile.products,
+}
 
 const _validateJourneyLeg = createValidateJourneyLeg(cfg)
 const validateJourneyLeg = (val, leg, name = 'journeyLeg') => {
@@ -85,7 +85,7 @@ tap.test('journeys – fails with no product', async (t) => {
 		fromId: ingolstadtHbf,
 		toId: telemannstr,
 		when,
-		products
+		products: invgProfile.products,
 	})
 	t.end()
 })

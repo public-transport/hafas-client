@@ -1,4 +1,3 @@
-'use strict'
 // Refer to the the ./writing-a-profile.md guide.
 
 const products = [
@@ -41,4 +40,6 @@ const insaProfile = {
 	radar: false
 }
 
-module.exports = insaProfile
+export {
+	insaProfile,
+}

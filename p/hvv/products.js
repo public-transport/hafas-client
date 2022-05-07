@@ -1,6 +1,4 @@
-'use strict'
-
-module.exports = [ // todo: what is `512`?
+const products = [ // todo: what is `512`?
 	{
 		id: 'subway',
 		mode: 'train',
@@ -90,3 +88,7 @@ module.exports = [ // todo: what is `512`?
 		default: false
 	}
 ]
+
+export {
+	products,
+}

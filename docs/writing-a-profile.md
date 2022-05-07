@@ -35,7 +35,7 @@ Assuming their HAFAS endpoint returns all line names prefixed with `foo `, we ca
 
 ```js
 // get the default line parser
-const parseLine = require('hafas-client/parse/line')
+import {parseLine} from 'hafas-client/parse/line.js'
 
 // wrapper function with additional logic
 const parseLineWithoutFoo = (ctx, rawLine) => {
@@ -52,7 +52,7 @@ If you pass this profile into `hafas-client`, the `parseLine` method will overri
 You can also use the `parseHook` helper to reduce boilerplate:
 
 ```js
-const {parseHook} = require('hafas-client/lib/profile-hooks')
+import {parseHook} from 'hafas-client/lib/profile-hooks.js'
 
 const removeFoo = (ctx, rawLine) => ({
 	...ctx.parsed,

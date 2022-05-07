@@ -1,19 +1,20 @@
-'use strict'
+// todo: use import assertions once they're supported by Node.js & ESLint
+// https://github.com/tc39/proposal-import-assertions
+import {createRequire} from 'module'
+const require = createRequire(import.meta.url)
 
-const {parseHook} = require('../../lib/profile-hooks')
+import {parseHook} from '../../lib/profile-hooks.js'
 
-const parseAndAddLocationDHID = require('../vbb/parse-loc-dhid')
+import {parseAndAddLocationDHID} from '../vbb/parse-loc-dhid.js'
 
-const {
-	parseLocation: _parseLocation,
-	parseArrival: _parseArrival,
-	parseDeparture: _parseDeparture,
-	parseStopover: _parseStopover,
-	parseJourneyLeg: _parseJourneyLeg,
-} = require('../../lib/default-profile')
+import {parseLocation as _parseLocation} from '../../parse/location.js'
+import {parseArrival as _parseArrival} from '../../parse/arrival.js'
+import {parseDeparture as _parseDeparture} from '../../parse/departure.js'
+import {parseStopover as _parseStopover} from '../../parse/stopover.js'
+import {parseJourneyLeg as _parseJourneyLeg} from '../../parse/journey-leg.js'
 
 const baseProfile = require('./base.json')
-const products = require('./products')
+import {products} from './products.js'
 
 // todo: there's also a referenced icon `{"res":"occup_fig_{low,mid}"}`
 const addOccupancy = (item, occupancyCodes) => {
@@ -131,7 +132,7 @@ const requestJourneysWithBerlkoenig = ({opt}, query) => {
 
 // todo: adapt/extend `vbb-parse-ticket` to support the BVG markup
 
-const bvgProfile = {
+const profile = {
 	...baseProfile,
 	locale: 'de-DE',
 	timezone: 'Europe/Berlin',
@@ -162,4 +163,6 @@ const bvgProfile = {
 	reachableFrom: true
 }
 
-module.exports = bvgProfile
+export {
+	profile,
+}

@@ -1,14 +1,12 @@
-'use strict'
+import isObj from 'lodash/isObject.js'
+import sortBy from 'lodash/sortBy.js'
+import omit from 'lodash/omit.js'
 
-const isObj = require('lodash/isObject')
-const sortBy = require('lodash/sortBy')
-const omit = require('lodash/omit')
-
-const defaultProfile = require('./lib/default-profile')
-const validateProfile = require('./lib/validate-profile')
-const {INVALID_REQUEST} = require('./lib/errors')
-const sliceLeg = require('./lib/slice-leg')
-const {HafasError} = require('./lib/errors')
+import {defaultProfile} from './lib/default-profile.js'
+import {validateProfile} from './lib/validate-profile.js'
+import {INVALID_REQUEST} from './lib/errors.js'
+import {sliceLeg} from './lib/slice-leg.js'
+import {HafasError} from './lib/errors.js'
 
 const isNonEmptyString = str => 'string' === typeof str && str.length > 0
 
@@ -794,4 +792,6 @@ const createClient = (profile, userAgent, opt = {}) => {
 	return client
 }
 
-module.exports = createClient
+export {
+	createClient,
+}

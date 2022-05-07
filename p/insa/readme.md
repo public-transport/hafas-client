@@ -5,8 +5,8 @@ The [Nahverkehr Sachsen-Anhalt (NASA)](https://de.wikipedia.org/wiki/Nahverkehrs
 ## Usage
 
 ```js
-const createClient = require('hafas-client')
-const insaProfile = require('hafas-client/p/insa')
+import {createClient} from 'hafas-client'
+import {insaProfile} from 'hafas-client/p/insa/index.js'
 
 // create a client with INSA profile
 const client = createClient(insaProfile, 'my-awesome-program')

@@ -1,5 +1,3 @@
-'use strict'
-
 const ageGroup = {
 	BABY: 'B',
 	CHILD: 'K',
@@ -30,7 +28,7 @@ const ageGroupFromAge = (age) => {
 	throw new TypeError(`Invalid age '${age}'`)
 }
 
-module.exports = {
+export {
 	ageGroup,
-	ageGroupFromAge
+	ageGroupFromAge,
 }

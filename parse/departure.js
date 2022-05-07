@@ -1,8 +1,8 @@
-'use strict'
-
-const createParseArrOrDep = require('./arrival-or-departure')
+import {createParseArrOrDep} from './arrival-or-departure.js'
 
 const DEPARTURE = 'd'
 const parseDeparture = createParseArrOrDep(DEPARTURE)
 
-module.exports = parseDeparture
+export {
+	parseDeparture,
+}

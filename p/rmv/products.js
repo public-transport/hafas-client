@@ -1,6 +1,4 @@
-'use strict'
-
-module.exports = [
+const products = [
 	{
 		id: 'express-train',
 		mode: 'train',
@@ -83,3 +81,7 @@ module.exports = [
 	}
 	// todo: remaining bitmask `1015`
 ]
+
+export {
+	products,
+}

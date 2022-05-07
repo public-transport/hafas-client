@@ -1,5 +1,3 @@
-'use strict'
-
 const codesByIcon = Object.assign(Object.create(null), {
 	cancel: 'cancelled',
 	himWarn: 'disturbance',
@@ -110,4 +108,6 @@ const parseHint = (ctx, h) => {
 	return null
 }
 
-module.exports = parseHint
+export {
+	parseHint,
+}

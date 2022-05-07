@@ -3,8 +3,8 @@
 
 ## Usage
 ```js
-const createClient = require('hafas-client')
-const vsnProfile = require('hafas-client/p/vsn')
+import {createClient} from 'hafas-client'
+import {vsnProfile} from 'hafas-client/p/vsn/index.js'
 
 // create a client with VSN profile
 const client = createClient(vsnProfile, 'my-awesome-program')
