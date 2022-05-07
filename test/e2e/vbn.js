@@ -1,15 +1,12 @@
-'use strict'
+import tap from 'tap'
 
-const tap = require('tap')
-
-const {createWhen} = require('./lib/util')
-const createClient = require('../..')
-const vbnProfile = require('../../p/vbn')
-const products = require('../../p/vbn/products')
-const createValidate = require('./lib/validate-fptf-with')
-const testJourneysStationToStation = require('./lib/journeys-station-to-station')
-const testArrivals = require('./lib/arrivals')
-const testReachableFrom = require('./lib/reachable-from')
+import {createWhen} from './lib/util.js'
+import {createClient} from '../../index.js'
+import {profile as vbnProfile} from '../../p/vbn/index.js'
+import {createValidateFptfWith as createValidate} from './lib/validate-fptf-with.js'
+import {testJourneysStationToStation} from './lib/journeys-station-to-station.js'
+import {testArrivals} from './lib/arrivals.js'
+import {testReachableFrom} from './lib/reachable-from.js'
 
 const T_MOCK = 1652175000 * 1000 // 2022-05-10T11:30+02:00
 const when = createWhen(vbnProfile.timezone, vbnProfile.locale, T_MOCK)
@@ -17,7 +14,7 @@ const when = createWhen(vbnProfile.timezone, vbnProfile.locale, T_MOCK)
 const cfg = {
 	when,
 	stationCoordsOptional: false,
-	products,
+	products: vbnProfile.products,
 	minLatitude: 51.817,
 	maxLatitude: 53.657,
 	minLongitude: 5.248,

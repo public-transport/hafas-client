@@ -5,8 +5,8 @@
 ## Usage
 
 ```js
-const createClient = require('hafas-client')
-const pkpProfile = require('hafas-client/p/pkp')
+import {createClient} from 'hafas-client'
+import {pkpProfile} from 'hafas-client/p/pkp/index.js'
 
 // create a client with PKP profile
 const client = createClient(pkpProfile, 'my-awesome-program')

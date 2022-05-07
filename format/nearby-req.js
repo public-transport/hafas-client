@@ -1,6 +1,4 @@
-'use strict'
-
-const nearbyReq = (ctx, location) => {
+const formatNearbyReq = (ctx, location) => {
 	const {profile, opt} = ctx
 
 	return {
@@ -25,4 +23,6 @@ const nearbyReq = (ctx, location) => {
 	}
 }
 
-module.exports = nearbyReq
+export {
+	formatNearbyReq,
+}

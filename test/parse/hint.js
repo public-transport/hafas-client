@@ -1,7 +1,5 @@
-'use strict'
-
-const tap = require('tap')
-const parse = require('../../parse/hint')
+import tap from 'tap'
+import {parseHint as parse} from '../../parse/hint.js'
 
 const ctx = {
 	data: {},

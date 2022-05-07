@@ -1,6 +1,4 @@
-'use strict'
-
-const findRemarks = require('./find-remarks')
+import {findRemarks} from './find-remarks.js'
 
 const ARRIVAL = 'a'
 const DEPARTURE = 'd'
@@ -83,4 +81,6 @@ const createParseArrOrDep = (prefix) => {
 	return parseArrOrDep
 }
 
-module.exports = createParseArrOrDep
+export {
+	createParseArrOrDep,
+}

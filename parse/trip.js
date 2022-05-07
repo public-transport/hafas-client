@@ -1,8 +1,6 @@
-'use strict'
-
-const minBy = require('lodash/minBy')
-const maxBy = require('lodash/maxBy')
-const last = require('lodash/last')
+import minBy from 'lodash/minBy.js'
+import maxBy from 'lodash/maxBy.js'
+import last from 'lodash/last.js'
 
 const parseTrip = (ctx, t) => { // t = raw trip
 	const {profile} = ctx
@@ -32,4 +30,6 @@ const parseTrip = (ctx, t) => { // t = raw trip
 	return trip
 }
 
-module.exports = parseTrip
+export {
+	parseTrip,
+}

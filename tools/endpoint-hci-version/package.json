@@ -2,6 +2,7 @@
 	"private": true,
 	"name": "endpoint-hci-version",
 	"version": "1.0.0",
+	"type": "module",
 	"bin": {
 		"hafas-client-endpoint-hci-version": "./cli.js"
 	},

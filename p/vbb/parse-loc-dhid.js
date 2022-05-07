@@ -1,5 +1,3 @@
-'use strict'
-
 const dhidPrefix = 'A×'
 
 const parseAndAddLocationDHID = (loc, l) => {
@@ -15,4 +13,6 @@ const parseAndAddLocationDHID = (loc, l) => {
 	loc.stationDHID = dhid
 }
 
-module.exports = parseAndAddLocationDHID
+export {
+	parseAndAddLocationDHID,
+}

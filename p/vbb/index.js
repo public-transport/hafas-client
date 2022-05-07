@@ -1,15 +1,18 @@
-'use strict'
+// todo: use import assertions once they're supported by Node.js & ESLint
+// https://github.com/tc39/proposal-import-assertions
+import {createRequire} from 'module'
+const require = createRequire(import.meta.url)
 
-const {parseHook} = require('../../lib/profile-hooks')
+import {parseHook} from '../../lib/profile-hooks.js'
 
-const parseAndAddLocationDHID = require('./parse-loc-dhid')
-const _parseLine = require('../../parse/line')
-const _parseLocation = require('../../parse/location')
-const _parseJourney = require('../../parse/journey')
-const _parseDeparture = require('../../parse/departure')
+import {parseAndAddLocationDHID} from './parse-loc-dhid.js'
+import {parseLine as _parseLine} from '../../parse/line.js'
+import {parseLocation as _parseLocation} from '../../parse/location.js'
+import {parseJourney as _parseJourney} from '../../parse/journey.js'
+import {parseDeparture as _parseDeparture} from '../../parse/departure.js'
 
 const baseProfile = require('./base.json')
-const products = require('./products')
+import {products} from './products.js'
 
 const parseLineWithShortName = ({parsed}, p) => {
 	parsed.name = p.name.replace(/^(bus|tram)\s+/i, '')
@@ -63,7 +66,7 @@ const parseDepartureRenameRingbahn = ({parsed}) => {
 	return parsed
 }
 
-const vbbProfile = {
+const profile = {
 	...baseProfile,
 	locale: 'de-DE',
 	timezone: 'Europe/Berlin',
@@ -82,4 +85,6 @@ const vbbProfile = {
 	reachableFrom: true,
 }
 
-module.exports = vbbProfile
+export {
+	profile,
+}

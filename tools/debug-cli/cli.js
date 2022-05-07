@@ -1,9 +1,7 @@
 #!/usr/bin/env node
-'use strict'
 
-const mri = require('mri')
-const {join} = require('path')
-const createClient = require('../..')
+import mri from 'mri'
+import {createClient} from '../../index.js'
 
 const showError = (err) => {
 	console.error(err)
@@ -52,19 +50,21 @@ const parseArgs = [
 
 const argv = mri(process.argv.slice(2))
 
-const profile = require(join('../../p', argv._[0]))
-const client = createClient(profile, 'hafas-client debug CLI')
-
 const fnName = argv._[1]
-const fn = client[fnName]
 
 const args = argv._.slice(2).map((arg, i) => {
 	const parser = parseArgs.find(([_fnName, _i]) => _fnName === fnName && _i === i)
 	return parser ? parser[2](arg) : arg
 })
 
-fn(...args)
-.then((res) => {
+;(async () => {
+	const {profile} = await import(`../../p/${argv._[0]}/index.js`)
+
+	const client = createClient(profile, 'hafas-client debug CLI')
+
+	const fn = client[fnName]
+
+	const res = await fn(...args)
 	process.stdout.write(JSON.stringify(res) + '\n')
-})
+})()
 .catch(showError)

@@ -1,6 +1,4 @@
-'use strict'
-
-module.exports = {
+const dbJourneyPolyline = {
 	type: 'journey',
 	legs: [
 		{
@@ -3977,4 +3975,8 @@ module.exports = {
 		'currency': 'EUR',
 		'hint': null
 	}
+}
+
+export {
+	dbJourneyPolyline,
 }

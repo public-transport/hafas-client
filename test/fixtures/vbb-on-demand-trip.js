@@ -1,6 +1,4 @@
-'use strict'
-
-module.exports = {
+const vbbOnDemandTrip = {
 	id: '1|42971|454|86|24102021',
 	direction: 'Rufbus Niederer-Fläming',
 	line: {
@@ -35,4 +33,8 @@ module.exports = {
 	arrivalPlatform: null,
 	plannedArrivalPlatform: null,
 	arrivalPrognosisType: null,
+}
+
+export {
+	vbbOnDemandTrip,
 }

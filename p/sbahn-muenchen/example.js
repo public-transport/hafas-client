@@ -1,9 +1,8 @@
-'use strict'
+import {inspect} from 'util'
+import {createClient} from '../../index.js'
+import {profile} from './index.js'
 
-const createClient = require('../..')
-const vbbProfile = require('.')
-
-const client = createClient(vbbProfile, 'hafas-client-example')
+const client = createClient(profile, 'hafas-client-example')
 
 // Mittersendling to Charlottenburg
 // client.journeys('8004154', '0621790', {results: 1, polylines: true})
@@ -46,6 +45,6 @@ client.departures('8004154', {duration: 5})
 // })
 
 .then((data) => {
-	console.log(require('util').inspect(data, {depth: null, colors: true}))
+	console.log(inspect(data, {depth: null, colors: true}))
 })
 .catch(console.error)

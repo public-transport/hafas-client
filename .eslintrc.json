@@ -1,7 +1,6 @@
 {
     "env": {
-        "commonjs": true,
-        "es6": true,
+        "es2021": true,
         "node": true
     },
     "extends": "eslint:recommended",
@@ -11,7 +10,8 @@
     },
     "ignorePatterns": ["node_modules", "*example.js"],
     "parserOptions": {
-        "ecmaVersion": 2018
+        "ecmaVersion": 2021,
+        "sourceType": "module"
     },
     "rules": {
         "no-unused-vars": [

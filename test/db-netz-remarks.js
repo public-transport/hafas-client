@@ -1,9 +1,12 @@
-'use strict'
+// todo: use import assertions once they're supported by Node.js & ESLint
+// https://github.com/tc39/proposal-import-assertions
+import {createRequire} from 'module'
+const require = createRequire(import.meta.url)
 
-const tap = require('tap')
+import tap from 'tap'
 
-const parseCommon = require('../parse/common')
-const defaultProfile = require('../lib/default-profile')
+import {parseCommonData as parseCommon} from '../parse/common.js'
+import {defaultProfile} from '../lib/default-profile.js'
 const res = require('./fixtures/db-netz-remarks.json')
 
 const profile = {

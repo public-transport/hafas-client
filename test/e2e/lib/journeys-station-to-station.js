@@ -1,5 +1,3 @@
-'use strict'
-
 const testJourneysStationToStation = async (cfg) => {
 	const {test: t, res, validate} = cfg
 	const fromIds = cfg.fromIds || (cfg.fromId ? [cfg.fromId] : [])
@@ -28,4 +26,6 @@ const testJourneysStationToStation = async (cfg) => {
 	}
 }
 
-module.exports = testJourneysStationToStation
+export {
+	testJourneysStationToStation,
+}

@@ -1,16 +1,13 @@
-'use strict'
+import tap from 'tap'
 
-const tap = require('tap')
-
-const {createWhen} = require('./lib/util')
-const createClient = require('../..')
-const svvProfile = require('../../p/svv')
-const products = require('../../p/svv/products')
-const createValidate = require('./lib/validate-fptf-with')
-const testJourneysStationToStation = require('./lib/journeys-station-to-station')
-const testArrivals = require('./lib/arrivals')
-const testReachableFrom = require('./lib/reachable-from')
-const testServerInfo = require('./lib/server-info')
+import {createWhen} from './lib/util.js'
+import {createClient} from '../../index.js'
+import {profile as svvProfile} from '../../p/svv/index.js'
+import {createValidateFptfWith as createValidate} from './lib/validate-fptf-with.js'
+import {testJourneysStationToStation} from './lib/journeys-station-to-station.js'
+import {testArrivals} from './lib/arrivals.js'
+import {testReachableFrom} from './lib/reachable-from.js'
+import {testServerInfo} from './lib/server-info.js'
 
 const T_MOCK = 1657618200 * 1000 // 2022-07-12T11:30+02:00
 const when = createWhen(svvProfile.timezone, svvProfile.locale, T_MOCK)
@@ -18,7 +15,7 @@ const when = createWhen(svvProfile.timezone, svvProfile.locale, T_MOCK)
 const cfg = {
 	when,
 	stationCoordsOptional: false,
-	products,
+	products: svvProfile.products,
 	minLatitude: 45.742,
 	maxLatitude: 49.41,
 	minLongitude: 8.177,

@@ -7,8 +7,8 @@
 As an example, we're going to use the [SVV profile](../p/svv):
 
 ```js
-const createClient = require('hafas-client')
-const svvProfile = require('hafas-client/p/svv')
+import {createClient} from 'hafas-client'
+import {svvProfile} from 'hafas-client/p/svv.js'
 
 const client = createClient(svvProfile, 'my-awesome-program')
 

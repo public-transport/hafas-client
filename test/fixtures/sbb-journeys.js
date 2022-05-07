@@ -1,5 +1,3 @@
-'use strict'
-
 const baselSBB = {
 	type: 'stop',
 	id: '8500010',
@@ -120,7 +118,7 @@ const yverdonLesBains = {
 	},
 }
 
-module.exports = [{
+const sbbJourneys = [{
 	type: 'journey',
 	legs: [{
 		origin: baselSBB,
@@ -682,3 +680,7 @@ module.exports = [{
 		{type: 'hint', code: 'cap2nd_11', text: '2.'},
 	],
 }]
+
+export {
+	sbbJourneys,
+}

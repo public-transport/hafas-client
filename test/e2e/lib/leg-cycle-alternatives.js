@@ -1,8 +1,6 @@
-'use strict'
+import isRoughlyEqual from 'is-roughly-equal'
 
-const isRoughlyEqual = require('is-roughly-equal')
-
-const {hour} = require('./util')
+import {hour} from './util.js'
 
 const testLegCycleAlternatives = async (cfg) => {
 	const {
@@ -43,4 +41,6 @@ const testLegCycleAlternatives = async (cfg) => {
 	}
 }
 
-module.exports = testLegCycleAlternatives
+export {
+	testLegCycleAlternatives,
+}

@@ -1,6 +1,4 @@
-'use strict'
-
-const p = [
+const products = [
 	{
 		id: 'nationalExpress',
 		mode: 'train',
@@ -83,4 +81,6 @@ const p = [
 	}
 ]
 
-module.exports = p
+export {
+	products,
+}

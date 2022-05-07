@@ -1,11 +1,10 @@
-'use strict'
+import validateFptf from 'validate-fptf'
+const {defaultValidators} = validateFptf
+import anyOf from 'validate-fptf/lib/any-of.js'
 
-const {defaultValidators} = require('validate-fptf')
-const anyOf = require('validate-fptf/lib/any-of')
+import validators from './validators.js'
 
-const validators = require('./validators')
-
-const create = (cfg, customValidators = {}) => {
+const createValidateFptfWith = (cfg, customValidators = {}) => {
 	const val = Object.assign({}, defaultValidators)
 	for (let key of Object.keys(validators)) {
 		val[key] = validators[key](cfg)
@@ -23,4 +22,6 @@ const create = (cfg, customValidators = {}) => {
 	return validateFptfWith
 }
 
-module.exports = create
+export {
+	createValidateFptfWith,
+}

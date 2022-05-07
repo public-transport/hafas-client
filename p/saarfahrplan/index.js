@@ -1,10 +1,13 @@
-'use strict'
+// todo: use import assertions once they're supported by Node.js & ESLint
+// https://github.com/tc39/proposal-import-assertions
+import {createRequire} from 'module'
+const require = createRequire(import.meta.url)
 
-const {parseHook} = require('../../lib/profile-hooks')
+import {parseHook} from '../../lib/profile-hooks.js'
 
-const _parseMovement = require('../../parse/movement')
+import {parseMovement as _parseMovement} from '../../parse/movement.js'
 const baseProfile = require('./base.json')
-const products = require('./products')
+import {products} from './products.js'
 
 const fixMovement = ({parsed}, m) => {
 	// filter out empty stopovers
@@ -12,7 +15,7 @@ const fixMovement = ({parsed}, m) => {
 	return parsed
 }
 
-const saarfahrplanProfile = {
+const profile = {
 	...baseProfile,
 	locale: 'de-DE',
 	timezone: 'Europe/Berlin',
@@ -29,4 +32,6 @@ const saarfahrplanProfile = {
 	reachableFrom: true
 }
 
-module.exports = saarfahrplanProfile
+export {
+	profile,
+}

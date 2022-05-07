@@ -5,8 +5,8 @@
 ## Usage
 
 ```js
-const createClient = require('hafas-client')
-const invgProfile = require('hafas-client/p/invg')
+import {createClient} from 'hafas-client'
+import {invgProfile} from 'hafas-client/p/invg/index.js'
 
 // create a client with INVG profile
 const client = createClient(invgProfile, 'my-awesome-program')

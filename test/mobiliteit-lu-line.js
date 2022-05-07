@@ -1,9 +1,7 @@
-'use strict'
+import tap from 'tap'
 
-const tap = require('tap')
-
-const createClient = require('..')
-const rawProfile = require('../p/mobiliteit-lu')
+import {createClient} from '../index.js'
+import {profile as rawProfile} from '../p/mobiliteit-lu/index.js'
 
 const client = createClient(rawProfile, 'public-transport/hafas-client:test')
 const {profile} = client

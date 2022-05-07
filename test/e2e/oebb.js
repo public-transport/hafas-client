@@ -1,27 +1,24 @@
-'use strict'
+import tap from 'tap'
+import isRoughlyEqual from 'is-roughly-equal'
+import validateLine from 'validate-fptf/line.js'
 
-const tap = require('tap')
-const isRoughlyEqual = require('is-roughly-equal')
-const validateLine = require('validate-fptf/line')
-
-const {createWhen} = require('./lib/util')
-const createClient = require('../..')
-const oebbProfile = require('../../p/oebb')
-const products = require('../../p/oebb/products')
-const {
-	station: createValidateStation,
-	stop: validateStop
-} = require('./lib/validators')
-const createValidate = require('./lib/validate-fptf-with')
-const testJourneysStationToStation = require('./lib/journeys-station-to-station')
-const testJourneysStationToAddress = require('./lib/journeys-station-to-address')
-const testJourneysStationToPoi = require('./lib/journeys-station-to-poi')
-const testEarlierLaterJourneys = require('./lib/earlier-later-journeys')
-const testRefreshJourney = require('./lib/refresh-journey')
-const journeysFailsWithNoProduct = require('./lib/journeys-fails-with-no-product')
-const testJourneysWithDetour = require('./lib/journeys-with-detour')
-const testDepartures = require('./lib/departures')
-const testDeparturesInDirection = require('./lib/departures-in-direction')
+import {createWhen} from './lib/util.js'
+import {createClient} from '../../index.js'
+import {profile as oebbProfile} from '../../p/oebb/index.js'
+import {
+	createValidateStation,
+	createValidateStop,
+} from './lib/validators.js'
+import {createValidateFptfWith as createValidate} from './lib/validate-fptf-with.js'
+import {testJourneysStationToStation} from './lib/journeys-station-to-station.js'
+import {testJourneysStationToAddress} from './lib/journeys-station-to-address.js'
+import {testJourneysStationToPoi} from './lib/journeys-station-to-poi.js'
+import {testEarlierLaterJourneys} from './lib/earlier-later-journeys.js'
+import {testRefreshJourney} from './lib/refresh-journey.js'
+import {journeysFailsWithNoProduct} from './lib/journeys-fails-with-no-product.js'
+import {testJourneysWithDetour} from './lib/journeys-with-detour.js'
+import {testDepartures} from './lib/departures.js'
+import {testDeparturesInDirection} from './lib/departures-in-direction.js'
 
 const T_MOCK = 1657618200 * 1000 // 2022-07-12T11:30+02:00
 const when = createWhen(oebbProfile.timezone, oebbProfile.locale, T_MOCK)
@@ -29,7 +26,7 @@ const when = createWhen(oebbProfile.timezone, oebbProfile.locale, T_MOCK)
 const cfg = {
 	when,
 	stationCoordsOptional: false,
-	products,
+	products: oebbProfile.products,
 	minLatitude: 45.992803,
 	maxLatitude: 49.453517,
 	minLongitude: 8.787557,
@@ -39,6 +36,8 @@ const cfg = {
 // todo validateDirection: search list of stations for direction
 
 const validate = createValidate(cfg)
+
+const _validateStop = createValidateStop(cfg)
 
 const assertValidPrice = (t, p) => {
 	t.ok(p)
@@ -96,7 +95,7 @@ tap.test('journeys – fails with no product', async (t) => {
 		fromId: salzburgHbf,
 		toId: wienFickeystr,
 		when,
-		products
+		products: oebbProfile.products,
 	})
 	t.end()
 })
@@ -347,12 +346,13 @@ tap.test('stop', async (t) => {
 
 	// todo: find a way to always get products from the API
 	// todo: cfg.stationProductsOptional option
+	const {products} = oebbProfile
 	const allProducts = products.reduce((acc, p) => (acc[p.id] = true, acc), {})
 	const validateStation = createValidateStation(cfg)
 	const validate = createValidate(cfg, {
 		stop: (validate, s, name) => {
 			const withFakeProducts = Object.assign({products: allProducts}, s)
-			validateStop(validate, withFakeProducts, name)
+			_validateStop(validate, withFakeProducts, name)
 		},
 		station: (validate, s, name) => {
 			const withFakeProducts = Object.assign({products: allProducts}, s)
@@ -381,6 +381,7 @@ tap.test('radar Salzburg', async (t) => {
 
 	// todo: find a way to always get products from the API
 	// todo: cfg.stationProductsOptional option
+	const {products} = oebbProfile
 	const allProducts = products.reduce((acc, p) => (acc[p.id] = true, acc), {})
 	const validateStation = createValidateStation(cfg)
 	const validate = createValidate(cfg, {

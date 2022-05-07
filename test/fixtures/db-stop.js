@@ -1,5 +1,3 @@
-'use strict'
-
 const facilities = {
 	'3SZentrale': '030/2971055',
 	parkingLots: true,
@@ -63,7 +61,7 @@ const station = {
 	reisezentrumOpeningHours,
 }
 
-module.exports = {
+const dbStop = {
 	...station,
 	stops: [{
 		type: 'stop',
@@ -632,4 +630,8 @@ module.exports = {
 		type: 'location', id: '610728659',
 		latitude: 52.522317, longitude: 13.412895
 	}],
+}
+
+export {
+	dbStop,
 }

@@ -5,8 +5,8 @@
 ## Usage
 
 ```js
-const createClient = require('hafas-client')
-const stvProfile = require('hafas-client/p/stv')
+import {createClient} from 'hafas-client'
+import {stvProfile} from 'hafas-client/p/stv/index.js'
 
 // create a client with STV profile
 const client = createClient(stvProfile, 'my-awesome-program')

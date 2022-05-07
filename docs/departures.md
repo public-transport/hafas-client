@@ -43,8 +43,9 @@ With `opt`, you can override the default options, which look like this:
 If you pass an object `opt.products`, its fields will partially override the default products defined in the profile. An example with the [BVG profile](../p/bvg):
 
 ```js
-const createClient = require('hafas-client')
-const vbbProfile = require('hafas-client/p/vbb')
+import {createClient} from 'hafas-client'
+import {vbbProfile} from 'hafas-client/p/vbb.js'
+
 const client = createClient(vbbProfile, 'my-awesome-program')
 
 // will query with these products: suburban, subway, bus, express, regional
@@ -60,8 +61,8 @@ You may pass a departure's `tripId` into [`trip(id, lineName, [opt])`](trip.md) 
 As an example, we're going to use the [VBB profile](../p/vbb):
 
 ```js
-const createClient = require('hafas-client')
-const vbbProfile = require('hafas-client/p/vbb')
+import {createClient} from 'hafas-client'
+import {vbbProfile} from 'hafas-client/p/vbb.js'
 
 const client = createClient(vbbProfile, 'my-awesome-program')
 

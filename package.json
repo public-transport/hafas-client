@@ -2,6 +2,7 @@
 	"name": "hafas-client",
 	"description": "Client for HAFAS public transport APIs.",
 	"version": "5.26.1",
+	"type": "module",
 	"main": "index.js",
 	"files": [
 		"index.js",

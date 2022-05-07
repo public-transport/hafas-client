@@ -5,8 +5,8 @@
 ## Usage
 
 ```js
-const createClient = require('hafas-client')
-const kvbProfile = require('hafas-client/p/kvb')
+import {createClient} from 'hafas-client'
+import {kvbProfile} from 'hafas-client/p/kvb/index.js'
 
 // create a client with KVB profile
 const client = createClient(kvbProfile, 'my-awesome-program')

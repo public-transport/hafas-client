@@ -1,11 +1,14 @@
-'use strict'
+// todo: use import assertions once they're supported by Node.js & ESLint
+// https://github.com/tc39/proposal-import-assertions
+import {createRequire} from 'module'
+const require = createRequire(import.meta.url)
 
-const tap = require('tap')
+import tap from 'tap'
 
-const createClient = require('..')
-const rawProfile = require('../p/oebb')
+import {createClient} from '../index.js'
+import {profile as rawProfile} from '../p/oebb/index.js'
 const res = require('./fixtures/oebb-trip.json')
-const expected = require('./fixtures/oebb-trip.js')
+import {oebbTrip as expected} from './fixtures/oebb-trip.js'
 
 const client = createClient(rawProfile, 'public-transport/hafas-client:test')
 const {profile} = client

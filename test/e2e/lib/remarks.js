@@ -1,5 +1,3 @@
-'use strict'
-
 const WEEK = 7 * 24 * 60 * 60 * 1000
 
 const testRemarks = async (cfg) => {
@@ -29,4 +27,6 @@ const testRemarks = async (cfg) => {
 	validate(t, realtimeDataUpdatedAt, 'realtimeDataUpdatedAt', 'res.realtimeDataUpdatedAt')
 }
 
-module.exports = testRemarks
+export {
+	testRemarks,
+}

@@ -1,25 +1,22 @@
-'use strict'
+import tap from 'tap'
+import isRoughlyEqual from 'is-roughly-equal'
 
-const tap = require('tap')
-const isRoughlyEqual = require('is-roughly-equal')
-
-const { createWhen } = require('./lib/util')
-const createClient = require('../..')
-const saarfahrplanProfile = require('../../p/saarfahrplan')
-const products = require('../../p/saarfahrplan/products')
-const {
-	station: createValidateStation,
-	stop: validateStop
-} = require('./lib/validators')
-const createValidate = require('./lib/validate-fptf-with')
-const testJourneysStationToStation = require('./lib/journeys-station-to-station')
-const testJourneysStationToAddress = require('./lib/journeys-station-to-address')
-const testJourneysStationToPoi = require('./lib/journeys-station-to-poi')
-const testEarlierLaterJourneys = require('./lib/earlier-later-journeys')
-const journeysFailsWithNoProduct = require('./lib/journeys-fails-with-no-product')
-const testJourneysWithDetour = require('./lib/journeys-with-detour')
-const testDepartures = require('./lib/departures')
-const testDeparturesInDirection = require('./lib/departures-in-direction')
+import {createWhen} from './lib/util.js'
+import {createClient} from '../../index.js'
+import {profile as saarfahrplanProfile} from '../../p/saarfahrplan/index.js'
+import {
+	createValidateStation,
+	createValidateStop,
+} from './lib/validators.js'
+import {createValidateFptfWith as createValidate} from './lib/validate-fptf-with.js'
+import {testJourneysStationToStation} from './lib/journeys-station-to-station.js'
+import {testJourneysStationToAddress} from './lib/journeys-station-to-address.js'
+import {testJourneysStationToPoi} from './lib/journeys-station-to-poi.js'
+import {testEarlierLaterJourneys} from './lib/earlier-later-journeys.js'
+import {journeysFailsWithNoProduct} from './lib/journeys-fails-with-no-product.js'
+import {testJourneysWithDetour} from './lib/journeys-with-detour.js'
+import {testDepartures} from './lib/departures.js'
+import {testDeparturesInDirection} from './lib/departures-in-direction.js'
 
 const T_MOCK = 1657618200 * 1000 // 2022-07-12T11:30+02:00
 const when = createWhen(saarfahrplanProfile.timezone, saarfahrplanProfile.locale, T_MOCK)
@@ -27,7 +24,7 @@ const when = createWhen(saarfahrplanProfile.timezone, saarfahrplanProfile.locale
 const cfg = {
 	when,
 	// stationCoordsOptional: false, @todo
-	products,
+	products: saarfahrplanProfile.products,
 	minLatitude: 49,
 	maxLatitude: 49.6,
 	minLongitude: 6.1,
@@ -76,7 +73,7 @@ tap.test('journeys – fails with no product', async (t) => {
 		fromId: saarbrueckenHbf,
 		toId: saarlouisHbf,
 		when,
-		products
+		products: saarfahrplanProfile.products,
 	})
 	t.end()
 })

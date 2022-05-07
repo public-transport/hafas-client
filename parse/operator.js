@@ -1,6 +1,4 @@
-'use strict'
-
-const slugg = require('slugg')
+import slugg from 'slugg'
 
 const parseOperator = (ctx, a) => {
 	const name = a.name && a.name.trim()
@@ -12,4 +10,6 @@ const parseOperator = (ctx, a) => {
 	}
 }
 
-module.exports = parseOperator
+export {
+	parseOperator,
+}

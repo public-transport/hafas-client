@@ -1,6 +1,4 @@
-'use strict'
-
-const slugg = require('slugg')
+import slugg from 'slugg'
 
 const parseLine = ({profile}, p) => {
 	if (!p) return null // todo: handle this upstream
@@ -51,4 +49,6 @@ const parseLine = ({profile}, p) => {
 	return res
 }
 
-module.exports = parseLine
+export {
+	parseLine,
+}

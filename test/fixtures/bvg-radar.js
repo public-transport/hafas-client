@@ -1,6 +1,4 @@
-'use strict'
-
-module.exports = [
+const bvgRadar = [
 	{
 		direction: 'Hohenschönhausen, Zingster Str.',
 		tripId: '1|57637|1|86|19082019',
@@ -3034,3 +3032,7 @@ module.exports = [
 		}
 	}
 ]
+
+export {
+	bvgRadar,
+}

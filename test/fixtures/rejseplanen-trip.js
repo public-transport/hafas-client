@@ -1,6 +1,4 @@
-'use strict'
-
-module.exports = {
+const rejseplanenTrip = {
 	id: '1|307|4|86|12102021',
 	direction: 'CPH Lufthavn',
 	currentLocation: {
@@ -437,4 +435,8 @@ module.exports = {
 			departurePrognosisType: null,
 		},
 	],
+}
+
+export {
+	rejseplanenTrip,
 }

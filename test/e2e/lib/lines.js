@@ -1,5 +1,3 @@
-'use strict'
-
 const testLines = async (cfg) => {
 	const {
 		test: t,
@@ -23,4 +21,6 @@ const testLines = async (cfg) => {
 	validate(t, realtimeDataUpdatedAt, 'realtimeDataUpdatedAt', 'res.realtimeDataUpdatedAt')
 }
 
-module.exports = testLines
+export {
+	testLines,
+}

@@ -1,4 +1,7 @@
-'use strict'
+// todo: use import assertions once they're supported by Node.js & ESLint
+// https://github.com/tc39/proposal-import-assertions
+import {createRequire} from 'module'
+const require = createRequire(import.meta.url)
 
 const baseProfile = require('./base.json')
 
@@ -74,7 +77,7 @@ const products = [{
 	default: true,
 }]
 
-const vorProfile = {
+const profile = {
 	...baseProfile,
 	auth: {
 		type: 'USER',
@@ -95,4 +98,6 @@ const vorProfile = {
 	reachableFrom: true,
 }
 
-module.exports = vorProfile
+export {
+	profile,
+}

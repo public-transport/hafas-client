@@ -1,5 +1,3 @@
-'use strict'
-
 const sLandsbergerAllee = {
 	type: 'stop',
 	id: '900110004',
@@ -291,7 +289,7 @@ const bauzeitverlängerung = {
 	modified: '2021-10-27T17:00:45+02:00',
 }
 
-module.exports = [
+const bvgArrivals = [
 	{
 		tripId: '1|18731|26|86|28102021',
 		stop: sLandsbergerAllee,
@@ -1248,3 +1246,7 @@ module.exports = [
 		currentTripPosition: {type: 'location', latitude: 52.473811, longitude: 13.456142},
 	},
 ]
+
+export {
+	bvgArrivals,
+}

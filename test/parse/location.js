@@ -1,8 +1,6 @@
-'use strict'
-
-const tap = require('tap')
-const omit = require('lodash/omit')
-const parse = require('../../parse/location')
+import tap from 'tap'
+import omit from 'lodash/omit.js'
+import {parseLocation as parse} from '../../parse/location.js'
 
 const profile = {
 	parseLocation: parse,

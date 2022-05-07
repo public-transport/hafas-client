@@ -1,9 +1,8 @@
-'use strict'
+import {inspect} from 'util'
+import {createClient} from '../../index.js'
+import {profile} from './index.js'
 
-const createClient = require('../..')
-const dartProfile = require('.')
-
-const client = createClient(dartProfile, 'hafas-client example')
+const client = createClient(profile, 'hafas-client example')
 
 const mlkJrPkwyAdamsAveDsm2055 = '100002702'
 const se5thStEHackleyAveDsm2294 = '100004972'
@@ -49,6 +48,6 @@ client.locations('adams ave', {results: 3})
 // })
 
 .then((data) => {
-	console.log(require('util').inspect(data, {depth: null, colors: true}))
+	console.log(inspect(data, {depth: null, colors: true}))
 })
 .catch(console.error)

@@ -1,6 +1,4 @@
-'use strict'
-
-module.exports = {
+const dbJourney = {
 	type: 'journey',
 	legs: [
 		{
@@ -1159,4 +1157,8 @@ module.exports = {
 	refreshToken: '¶HKI¶T$A=1@O=München-Mittersendling@L=8004154@a=128@$A=1@O=München Siemenswerke@L=8004137@a=128@$202011161004$202011161005$S      7$$1$$$§W$A=1@O=München Siemenswerke@L=8004137@a=128@$A=1@O=Obersendling, München@L=625016@a=128@$202011161005$202011161015$$$1$$$§T$A=1@O=Obersendling, München@L=625016@a=128@$A=1@O=Bonner Platz, München@L=624333@a=128@$202011161015$202011161033$U      3$$1$$$§G@F$A=1@O=Bonner Platz, München@L=624333@a=128@$A=1@O=Karl-Theodor-Straße, München@L=621790@a=128@$202011161033$202011161038$$$1$$$¶GP¶ft@0@2000@120@1@100@1@1000@0@@@@@false@0@-1@$f@$f@$f@$f@$f@$§bt@0@2000@120@1@100@1@1000@0@@@@@false@0@-1@$f@$f@$f@$f@$f@$§tt@0@5000@120@1@100@1@2500@0@@@@@false@0@-1@$t@0@25000@120@1@100@1@3000@0@@@@@false@0@-1@$f@$f@$f@$f@$§',
 	cycle: {min: 1200},
 	price: null
+}
+
+export {
+	dbJourney,
 }
