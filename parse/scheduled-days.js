@@ -27,9 +27,11 @@ const parseScheduledDays = (ctx, sDays) => {
 
 	const _fpB = parseDate(fpB)
 	let d = DateTime.fromObject({
-		zone: profile.timezone, locale: profile.locale,
 		year: _fpB.year, month: _fpB.month, day: _fpB.day,
 		hour: 0, minute: 0, second: 0, millisecond: 0
+	}, {
+		zone: profile.timezone,
+		locale: profile.locale,
 	})
 	for (let b = 0; b < sDaysB.length; b++) {
 		for (let i = 0; i < 8; i++) {
