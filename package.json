@@ -61,11 +61,11 @@
 		"slugg": "^1.2.0"
 	},
 	"devDependencies": {
-		"eslint": "^7.0.0",
+		"eslint": "^8.15.0",
 		"is-coordinates": "^2.0.2",
 		"is-roughly-equal": "^0.1.0",
 		"replayer": "^2.2.3",
-		"tap": "^15.2.3",
+		"tap": "^16.2.0",
 		"validate-fptf": "^3.0.0"
 	},
 	"scripts": {
