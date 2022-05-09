@@ -8,10 +8,12 @@ const parseScheduledDays = (sDaysB, year, profile) => {
 	const res = Object.create(null)
 
 	let d = DateTime.fromObject({
-		zone: profile.timezone, locale: profile.locale,
 		year, // Expected to be in the correct tz offset!
 		month: 1, day: 1,
 		hour: 0, minute: 0, second: 0, millisecond: 0
+	}, {
+		zone: profile.timezone,
+		locale: profile.locale,
 	})
 	for (let b = 0; b < sDaysB.length; b++) {
 		for (let i = 0; i < 8; i++) {
