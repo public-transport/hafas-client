@@ -15,7 +15,7 @@ const dbJourney = {
 				products: {
 					nationalExpress: true,
 					national: true,
-					regionalExp: true,
+					regionalExpress: true,
 					regional: true,
 					suburban: true,
 					bus: true,
@@ -38,7 +38,7 @@ const dbJourney = {
 				products: {
 					nationalExpress: true,
 					national: true,
-					regionalExp: true,
+					regionalExpress: true,
 					regional: true,
 					suburban: true,
 					bus: true,
@@ -60,7 +60,7 @@ const dbJourney = {
 					products: {
 						nationalExpress: true,
 						national: true,
-						regionalExp: true,
+						regionalExpress: true,
 						regional: true,
 						suburban: true,
 						bus: true,
@@ -96,7 +96,7 @@ const dbJourney = {
 				products: {
 					nationalExpress: true,
 					national: true,
-					regionalExp: true,
+					regionalExpress: true,
 					regional: true,
 					suburban: true,
 					bus: true,
@@ -118,7 +118,7 @@ const dbJourney = {
 					products: {
 						nationalExpress: true,
 						national: true,
-						regionalExp: true,
+						regionalExpress: true,
 						regional: true,
 						suburban: true,
 						bus: true,
@@ -142,7 +142,7 @@ const dbJourney = {
 				products: {
 					nationalExpress: true,
 					national: true,
-					regionalExp: false,
+					regionalExpress: false,
 					regional: true,
 					suburban: true,
 					bus: true,

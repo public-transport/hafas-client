@@ -43,7 +43,7 @@ const station = {
 	products: {
 		nationalExpress: false,
 		national: false,
-		regionalExp: false,
+		regionalExpress: false,
 		regional: true,
 		suburban: true,
 		bus: true,
@@ -80,7 +80,7 @@ const dbStop = {
 		products: {
 			nationalExpress: false,
 			national: false,
-			regionalExp: false,
+			regionalExpress: false,
 			regional: true,
 			suburban: true,
 			bus: true,
@@ -110,7 +110,7 @@ const dbStop = {
 		products: {
 			nationalExpress: false,
 			national: false,
-			regionalExp: false,
+			regionalExpress: false,
 			regional: true,
 			suburban: true,
 			bus: true,
@@ -140,7 +140,7 @@ const dbStop = {
 		products: {
 			nationalExpress: false,
 			national: false,
-			regionalExp: false,
+			regionalExpress: false,
 			regional: true,
 			suburban: true,
 			bus: true,
@@ -170,7 +170,7 @@ const dbStop = {
 		products: {
 			nationalExpress: false,
 			national: false,
-			regionalExp: false,
+			regionalExpress: false,
 			regional: true,
 			suburban: true,
 			bus: true,
@@ -200,7 +200,7 @@ const dbStop = {
 		products: {
 			nationalExpress: false,
 			national: false,
-			regionalExp: false,
+			regionalExpress: false,
 			regional: true,
 			suburban: true,
 			bus: true,
@@ -229,7 +229,7 @@ const dbStop = {
 		products: {
 			nationalExpress: false,
 			national: false,
-			regionalExp: false,
+			regionalExpress: false,
 			regional: true,
 			suburban: true,
 			bus: true,
@@ -259,7 +259,7 @@ const dbStop = {
 		products: {
 			nationalExpress: false,
 			national: false,
-			regionalExp: false,
+			regionalExpress: false,
 			regional: true,
 			suburban: true,
 			bus: true,
@@ -289,7 +289,7 @@ const dbStop = {
 		products: {
 			nationalExpress: false,
 			national: false,
-			regionalExp: false,
+			regionalExpress: false,
 			regional: true,
 			suburban: true,
 			bus: true,
@@ -318,7 +318,7 @@ const dbStop = {
 		products: {
 			nationalExpress: false,
 			national: false,
-			regionalExp: false,
+			regionalExpress: false,
 			regional: true,
 			suburban: true,
 			bus: true,
@@ -348,7 +348,7 @@ const dbStop = {
 		products: {
 			nationalExpress: false,
 			national: false,
-			regionalExp: false,
+			regionalExpress: false,
 			regional: true,
 			suburban: true,
 			bus: true,
@@ -377,7 +377,7 @@ const dbStop = {
 		products: {
 			nationalExpress: false,
 			national: false,
-			regionalExp: false,
+			regionalExpress: false,
 			regional: true,
 			suburban: true,
 			bus: true,
@@ -406,7 +406,7 @@ const dbStop = {
 		products: {
 			nationalExpress: false,
 			national: false,
-			regionalExp: false,
+			regionalExpress: false,
 			regional: true,
 			suburban: true,
 			bus: true,
@@ -435,7 +435,7 @@ const dbStop = {
 		products: {
 			nationalExpress: false,
 			national: false,
-			regionalExp: false,
+			regionalExpress: false,
 			regional: false,
 			suburban: false,
 			bus: false,
