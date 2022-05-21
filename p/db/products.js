@@ -17,7 +17,7 @@ const products = [
 		default: true
 	},
 	{
-		id: 'regionalExp', // todo: rename
+		id: 'regionalExpress',
 		mode: 'train',
 		bitmasks: [4],
 		name: 'RegionalExpress & InterRegio',
