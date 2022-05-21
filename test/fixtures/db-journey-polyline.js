@@ -15,7 +15,7 @@ const dbJourneyPolyline = {
 				products: {
 					nationalExpress: true,
 					national: true,
-					regionalExp: true,
+					regionalExpress: true,
 					regional: true,
 					suburban: true,
 					bus: true,
@@ -37,7 +37,7 @@ const dbJourneyPolyline = {
 					products: {
 						nationalExpress: true,
 						national: true,
-						regionalExp: true,
+						regionalExpress: true,
 						regional: true,
 						suburban: true,
 						bus: true,
@@ -61,7 +61,7 @@ const dbJourneyPolyline = {
 				products: {
 					nationalExpress: true,
 					national: true,
-					regionalExp: true,
+					regionalExpress: true,
 					regional: true,
 					suburban: true,
 					bus: true,
@@ -96,7 +96,7 @@ const dbJourneyPolyline = {
 							products: {
 								nationalExpress: true,
 								national: true,
-								regionalExp: true,
+								regionalExpress: true,
 								regional: true,
 								suburban: true,
 								bus: true,
@@ -118,7 +118,7 @@ const dbJourneyPolyline = {
 								products: {
 									nationalExpress: true,
 									national: true,
-									regionalExp: true,
+									regionalExpress: true,
 									regional: true,
 									suburban: true,
 									bus: true,
@@ -3925,7 +3925,7 @@ const dbJourneyPolyline = {
 							'products': {
 								'nationalExpress': true,
 								'national': true,
-								'regionalExp': true,
+								'regionalExpress': true,
 								'regional': true,
 								'suburban': true,
 								'bus': true,

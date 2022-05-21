@@ -14,7 +14,7 @@ const dbArrivals = [
 			products: {
 				nationalExpress: false,
 				national: false,
-				regionalExp: false,
+				regionalExpress: false,
 				regional: true,
 				suburban: true,
 				bus: true,
@@ -36,7 +36,7 @@ const dbArrivals = [
 				products: {
 					nationalExpress: false,
 					national: false,
-					regionalExp: false,
+					regionalExpress: false,
 					regional: true,
 					suburban: true,
 					bus: true,
