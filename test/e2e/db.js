@@ -270,7 +270,7 @@ tap.skip('journeysFromTrip – U Mehringdamm to U Naturkundemuseum, reroute to S
 	// Find a vehicle from U Mehringdamm to U Stadtmitte (to the north) that is currently
 	// between these two stations.
 	const {trip, prevStopover} = await findTripBetween(blnMehringdamm, blnStadtmitte, {
-		regionalExp: false, regional: false, suburban: false
+		regionalExpress: false, regional: false, suburban: false
 	})
 	t.ok(trip, 'precondition failed: trip not found')
 	t.ok(prevStopover, 'precondition failed: previous stopover missing')
