@@ -28,7 +28,7 @@ const transformReqBody = (ctx, body) => {
 	const req = body.svcReqL[0] || {}
 
 	// see https://pastebin.com/qZ9WS3Cx
-	req.cfg = {...req.cfg, rtMode: 'HYBRID'} // todo: use `REALTIME`?
+	req.cfg = {...req.cfg, rtMode: 'REALTIME'}
 
 	return body
 }
