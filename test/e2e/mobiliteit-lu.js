@@ -19,7 +19,7 @@ import {journeysFailsWithNoProduct} from './lib/journeys-fails-with-no-product.j
 import {testDepartures} from './lib/departures.js'
 import {testArrivals} from './lib/arrivals.js'
 
-const T_MOCK = 1652175000 * 1000 // 2022-05-10T11:30+02:00
+const T_MOCK = 1655803800 * 1000 // 2022-06-21T11:30+02:00
 const when = createWhen(mobiliteitLuProfile.timezone, mobiliteitLuProfile.locale, T_MOCK)
 
 const cfg = {
