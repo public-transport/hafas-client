@@ -15,7 +15,7 @@ import {testArrivals} from './lib/arrivals.js'
 import {testJourneysWithDetour} from './lib/journeys-with-detour.js'
 import {testReachableFrom} from './lib/reachable-from.js'
 
-const T_MOCK = 1652175000 * 1000 // 2022-05-10T11:30+02:00
+const T_MOCK = 1657643400 * 1000 // 2022-07-12T11:30-05:00
 const when = createWhen(cmtaProfile.timezone, cmtaProfile.locale, T_MOCK)
 
 const cfg = {
