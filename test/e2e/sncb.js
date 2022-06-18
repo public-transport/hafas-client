@@ -8,7 +8,7 @@ import {testJourneysStationToStation} from './lib/journeys-station-to-station.js
 import {testArrivals} from './lib/arrivals.js'
 import {testReachableFrom} from './lib/reachable-from.js'
 
-const T_MOCK = 1657618200 * 1000 // 2022-07-12T11:30+02:00
+const T_MOCK = 1655803800 * 1000 // 2022-06-21T11:30+02:00
 const when = createWhen(sncbProfile.timezone, sncbProfile.locale, T_MOCK)
 
 const cfg = {
