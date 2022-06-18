@@ -771,7 +771,7 @@ const createClient = (profile, userAgent, opt = {}) => {
 			serverTime: res.sD && res.sT
 				? profile.parseDateTime(ctx, res.sD, res.sT)
 				: null,
-			realtimeDataUpdatedAt: res.planrtTS
+			realtimeDataUpdatedAt: res.planrtTS && res.planrtTS !== '0'
 				? parseInt(res.planrtTS)
 				: null,
 		}
