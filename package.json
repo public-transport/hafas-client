@@ -62,10 +62,12 @@
 		"slugg": "^1.2.0"
 	},
 	"devDependencies": {
+		"@pollyjs/adapter-node-http": "^6.0.5",
+		"@pollyjs/core": "^6.0.5",
+		"@pollyjs/persister-fs": "^6.0.5",
 		"eslint": "^8.15.0",
 		"is-coordinates": "^2.0.2",
 		"is-roughly-equal": "^0.1.0",
-		"replayer": "^2.2.3",
 		"tap": "^16.2.0",
 		"validate-fptf": "^3.0.0"
 	},
