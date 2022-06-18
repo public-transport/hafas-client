@@ -1,5 +1,8 @@
 'use strict'
 
+const {readFileSync} = require('fs')
+const {join: pathJoin} = require('path')
+const {Agent} = require('https')
 const baseProfile = require('./base.json')
 
 const products = [{
@@ -46,10 +49,18 @@ const products = [{
 	default: true,
 }]
 
+// `auskunft.kvb.koeln:443` doesn't provide the necessary CA certificate chain for
+// Node.js to trust the certificate, so we manually add it.
+// todo: fix this properly, e.g. by letting them know
+const ca = readFileSync(pathJoin(__dirname, 'thawte-rsa-ca-2018.pem'))
+const agent = new Agent({ca})
+const transformReq = (ctx, req) => ({...req, agent})
+
 const vosProfile = {
 	...baseProfile,
 	locale: 'de-DE',
 	timezone: 'Europe/Berlin',
+	transformReq,
 
 	products,
 
