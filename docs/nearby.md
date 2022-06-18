@@ -1,6 +1,6 @@
 # `nearby(location, [opt])`
 
-This method can be used to find stations close to a location. Note that it is not supported by every profile/endpoint.
+This method can be used to find stops/stations & POIs close to a location. Note that it is not supported by every profile/endpoint.
 
 `location` must be an [*FPTF* `location` object](https://github.com/public-transport/friendly-public-transport-format/blob/3bd36faa721e85d9f5ca58fb0f38cdbedb87bbca/spec/readme.md#location-objects).
 
