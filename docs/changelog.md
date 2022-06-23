@@ -1,5 +1,11 @@
 # Changelog
 
+## `5.24.1`
+
+- 492cb7df KVB: provide CA certificate chain via `Agent` 🐛
+
+[🏷 `5.24.1`](https://github.com/public-transport/hafas-client/releases/tag/5.24.1), 2022-06-23
+
 ## `5.24.0`
 
 - 2edcd49e `serverInfo()`: add `opt.versionInfo` 📝✅
