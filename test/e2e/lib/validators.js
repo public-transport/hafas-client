@@ -175,6 +175,11 @@ const createValidateStopover = (cfg) => {
 			val.date(val, s.plannedArrival, name + '.plannedArrival')
 			assertValidWhen(s.plannedArrival, cfg.when, name + '.plannedArrival')
 		}
+		if (is(s.departureProgressType)) {
+			const msg = name + '.departureProgressType must '
+			a.strictEqual(typeof s.departureProgressType, 'string', msg + 'be a string')
+			a.ok(s.departureProgressType, msg + 'not be empty')
+		}
 		if (is(s.plannedDeparture)) {
 			val.date(val, s.plannedDeparture, name + '.plannedDeparture')
 			assertValidWhen(s.plannedDeparture, cfg.when, name + '.plannedDeparture')
@@ -208,6 +213,11 @@ const createValidateStopover = (cfg) => {
 			const msg = name + '.plannedArrivalPlatform must '
 			a.strictEqual(typeof s.plannedArrivalPlatform, 'string', msg + 'be a string')
 			a.ok(s.plannedArrivalPlatform, msg + 'not be empty')
+		}
+		if (is(s.arrivalProgressType)) {
+			const msg = name + '.arrivalProgressType must '
+			a.strictEqual(typeof s.arrivalProgressType, 'string', msg + 'be a string')
+			a.ok(s.arrivalProgressType, msg + 'not be empty')
 		}
 		if (is(s.departurePlatform)) {
 			const msg = name + '.departurePlatform must '
