@@ -140,6 +140,14 @@ const parseJourneyLeg = (ctx, pt, date) => { // pt = raw leg
 				// todo: parse & use `code: EXTERNAL_ID` remarks?
 			}
 
+			// ensure that a station that has been passed has the previous ones as passed as well
+			for (let i = res.stopovers.length - 1; i >= 0; i--) {
+				if (res.stopovers[i].hasArrived === true && res.stopovers[i - 1]) {
+					res.stopovers[i - 1].hasArrived = true;
+					res.stopovers[i - 1].hasDeparted = true;
+				}
+			}
+
 			// filter stations the train passes without stopping, as this doesn't comply with fptf (yet)
 			res.stopovers = res.stopovers.filter((x) => !x.passBy)
 		}

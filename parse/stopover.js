@@ -16,13 +16,13 @@ const parseStopover = (ctx, st, date) => { // st = raw stopover
 		plannedArrival: arr.plannedWhen,
 		arrivalDelay: arr.delay,
 		arrivalPlatform: arrPl.platform,
-		arrivalProgressType: st.aProgType,
+		arrivalPrognosisType: st.aProgType,
 		plannedArrivalPlatform: arrPl.plannedPlatform,
 		departure: dep.when,
 		plannedDeparture: dep.plannedWhen,
 		departureDelay: dep.delay,
 		departurePlatform: depPl.platform,
-		departureProgressType: st.dProgType,
+		departurePrognosisType: st.dProgType,
 		plannedDeparturePlatform: depPl.plannedPlatform
 	}
 
