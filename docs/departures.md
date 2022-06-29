@@ -80,7 +80,6 @@ const {
 ```js
 [ {
 	tripId: '1|31431|28|86|17122017',
-	trip: 31431,
 	direction: 'S Spandau',
 	// Depending on the HAFAS endpoint, the destination may be present:
 	destination: {
@@ -156,7 +155,6 @@ const {
 }, {
 	cancelled: true,
 	tripId: '1|30977|8|86|17122017',
-	trip: 30977,
 	direction: 'S Westkreuz',
 	line: {
 		type: 'line',
@@ -189,7 +187,6 @@ const {
 	prognosedPlatform: '2'
 }, {
 	tripId: '1|28671|4|86|17122017',
-	trip: 28671,
 	direction: 'U Rudow',
 	line: {
 		type: 'line',

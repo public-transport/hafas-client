@@ -30,7 +30,7 @@ const createParseArrOrDep = (prefix) => {
 			// todo: for arrivals, this is the *origin*, not the *direction*
 			direction: prefix === DEPARTURE && d.dirTxt && profile.parseStationName(ctx, d.dirTxt) || null,
 			provenance: prefix === ARRIVAL && d.dirTxt && profile.parseStationName(ctx, d.dirTxt) || null,
-			line: d.line || null,
+			product: d.product || null,
 			remarks: [],
 			origin: null,
 			destination: null

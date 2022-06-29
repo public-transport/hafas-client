@@ -10,7 +10,7 @@ const parseMovement = (ctx, m) => { // m = raw movement
 	const res = {
 		direction: m.dirTxt ? profile.parseStationName(ctx, m.dirTxt) : null,
 		tripId: m.jid || null,
-		line: m.line || null,
+		product: m.product || null,
 		location: m.pos ? {
 			type: 'location',
 			latitude: m.pos.y / 1000000,

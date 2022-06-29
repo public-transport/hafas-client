@@ -106,7 +106,7 @@ const parseJourneyLeg = (ctx, pt, date) => { // pt = raw leg
 	} else if (pt.type === 'JNY') {
 		// todo: pull `public` value from `profile.products`
 		res.tripId = pt.jny.jid
-		res.line = pt.jny.line || null
+		res.product = pt.jny.product || null
 		// todo [breaking]: don't call parseStationName() here, add parseDirection() hook
 		// todo: support pt.jny.dirL[]
 		res.direction = pt.jny.dirTxt && profile.parseStationName(ctx, pt.jny.dirTxt) || null
@@ -166,7 +166,7 @@ const parseJourneyLeg = (ctx, pt, date) => { // pt = raw leg
 					: null
 				return {
 					tripId: a.jid,
-					line: a.line || null,
+					product: a.product || null,
 					direction: a.dirTxt || null,
 					...when,
 				}
