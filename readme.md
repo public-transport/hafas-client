@@ -240,6 +240,7 @@ While `hafas-client` itself should work in the browser via a bundler like [Webpa
 - [`hafas-monitor-journeys`](https://github.com/derhuerst/hafas-monitor-journeys) – Use `hafas-client` to monitor journeys from A to B.
 - [`hafas-discover-stations`](https://github.com/derhuerst/hafas-discover-stations#hafas-discover-stations) – Pass in a HAFAS client, discover stations by querying departures.
 - [`hafas-estimate-station-weight`](https://github.com/derhuerst/hafas-estimate-station-weight#hafas-estimate-station-weight) – Pass in a HAFAS client, estimate the importance of a station.
+- [`db-ticket`](https://github.com/envake/db-tickets) – A library to retrieve ticket information from Deutsche Bahn.
 
 More related libraries can be found [via the npm package index](https://www.npmjs.com/search?q=hafas).
 
