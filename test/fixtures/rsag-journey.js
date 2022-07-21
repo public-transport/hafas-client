@@ -57,6 +57,7 @@ module.exports = {
 			departureDelay: 0,
 			departurePlatform: '1',
 			plannedDeparturePlatform: '1',
+			departurePrognosisType: 'prognosed',
 
 			destination: {
 				type: 'stop',
@@ -86,6 +87,7 @@ module.exports = {
 			arrivalDelay: 0,
 			arrivalPlatform: '4',
 			plannedArrivalPlatform: '4',
+			arrivalPrognosisType: 'prognosed',
 
 			cycle: {min: 3600, max: 3600, nr: 3},
 		},

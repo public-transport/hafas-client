@@ -175,6 +175,11 @@ const createValidateStopover = (cfg) => {
 			val.date(val, s.plannedArrival, name + '.plannedArrival')
 			assertValidWhen(s.plannedArrival, cfg.when, name + '.plannedArrival')
 		}
+		if (is(s.departurePrognosisType)) {
+			const msg = name + '.departurePrognosisType must '
+			a.strictEqual(typeof s.departurePrognosisType, 'string', msg + 'be a string')
+			a.ok(s.departurePrognosisType, msg + 'not be empty')
+		}
 		if (is(s.plannedDeparture)) {
 			val.date(val, s.plannedDeparture, name + '.plannedDeparture')
 			assertValidWhen(s.plannedDeparture, cfg.when, name + '.plannedDeparture')
@@ -208,6 +213,11 @@ const createValidateStopover = (cfg) => {
 			const msg = name + '.plannedArrivalPlatform must '
 			a.strictEqual(typeof s.plannedArrivalPlatform, 'string', msg + 'be a string')
 			a.ok(s.plannedArrivalPlatform, msg + 'not be empty')
+		}
+		if (is(s.arrivalPrognosisType)) {
+			const msg = name + '.arrivalPrognosisType must '
+			a.strictEqual(typeof s.arrivalPrognosisType, 'string', msg + 'be a string')
+			a.ok(s.arrivalPrognosisType, msg + 'not be empty')
 		}
 		if (is(s.departurePlatform)) {
 			const msg = name + '.departurePlatform must '

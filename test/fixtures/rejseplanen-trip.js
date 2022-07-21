@@ -46,6 +46,7 @@ module.exports = {
 	departureDelay: null,
 	departurePlatform: '3',
 	plannedDeparturePlatform: '4',
+	departurePrognosisType: 'prognosed',
 
 	destination: {
 		type: 'stop',
@@ -70,6 +71,7 @@ module.exports = {
 	arrivalDelay: null,
 	arrivalPlatform: '5',
 	plannedArrivalPlatform: '5',
+	arrivalPrognosisType: 'prognosed',
 
 	remarks: [
 		{ type: 'hint', code: 'RE', text: 'Reservierung empfohlen' },
@@ -101,11 +103,13 @@ module.exports = {
 			arrivalDelay: null,
 			arrivalPlatform: null,
 			plannedArrivalPlatform: null,
+			arrivalPrognosisType: null,
 			departure: '2021-10-12T16:06:00+02:00',
 			plannedDeparture: '2021-10-12T16:06:00+02:00',
 			departureDelay: null,
 			departurePlatform: '3',
 			plannedDeparturePlatform: '4',
+			departurePrognosisType: 'prognosed',
 			remarks: [
 				{
 					type: 'status',
@@ -138,11 +142,13 @@ module.exports = {
 			arrivalDelay: 60,
 			arrivalPlatform: '2',
 			plannedArrivalPlatform: '2',
+			arrivalPrognosisType: 'prognosed',
 			departure: '2021-10-12T16:12:00+02:00',
 			plannedDeparture: '2021-10-12T16:10:00+02:00',
 			departureDelay: 120,
 			departurePlatform: '2',
 			plannedDeparturePlatform: '2',
+			departurePrognosisType: 'prognosed',
 		},
 		{
 			stop: {
@@ -168,11 +174,13 @@ module.exports = {
 			arrivalDelay: 60,
 			arrivalPlatform: '2',
 			plannedArrivalPlatform: '2',
+			arrivalPrognosisType: 'prognosed',
 			departure: '2021-10-12T16:17:00+02:00',
 			plannedDeparture: '2021-10-12T16:14:00+02:00',
 			departureDelay: 180,
 			departurePlatform: '2',
 			plannedDeparturePlatform: '2',
+			departurePrognosisType: 'prognosed',
 		},
 		{
 			stop: {
@@ -198,11 +206,13 @@ module.exports = {
 			arrivalDelay: 60,
 			arrivalPlatform: '2',
 			plannedArrivalPlatform: '2',
+			arrivalPrognosisType: 'prognosed',
 			departure: '2021-10-12T16:24:00+02:00',
 			plannedDeparture: '2021-10-12T16:22:00+02:00',
 			departureDelay: 120,
 			departurePlatform: '2',
 			plannedDeparturePlatform: '2',
+			departurePrognosisType: 'prognosed',
 		},
 		{
 			stop: {
@@ -228,11 +238,13 @@ module.exports = {
 			arrivalDelay: 60,
 			arrivalPlatform: '3',
 			plannedArrivalPlatform: '3',
+			arrivalPrognosisType: 'prognosed',
 			departure: '2021-10-12T16:29:00+02:00',
 			plannedDeparture: '2021-10-12T16:28:00+02:00',
 			departureDelay: 60,
 			departurePlatform: '3',
 			plannedDeparturePlatform: '3',
+			departurePrognosisType: 'prognosed',
 		},
 		{
 			stop: {
@@ -258,11 +270,13 @@ module.exports = {
 			arrivalDelay: 180,
 			arrivalPlatform: '1',
 			plannedArrivalPlatform: '1',
+			arrivalPrognosisType: 'prognosed',
 			departure: '2021-10-12T16:37:00+02:00',
 			plannedDeparture: '2021-10-12T16:34:00+02:00',
 			departureDelay: 180,
 			departurePlatform: '1',
 			plannedDeparturePlatform: '1',
+			departurePrognosisType: 'prognosed',
 		},
 		{
 			stop: {
@@ -288,11 +302,13 @@ module.exports = {
 			arrivalDelay: 120,
 			arrivalPlatform: '3',
 			plannedArrivalPlatform: '3',
+			arrivalPrognosisType: 'prognosed',
 			departure: '2021-10-12T16:46:00+02:00',
 			plannedDeparture: '2021-10-12T16:45:00+02:00',
 			departureDelay: 60,
 			departurePlatform: '3',
 			plannedDeparturePlatform: '3',
+			departurePrognosisType: 'prognosed',
 		},
 		{
 			stop: {
@@ -318,11 +334,13 @@ module.exports = {
 			arrivalDelay: 120,
 			arrivalPlatform: '3',
 			plannedArrivalPlatform: '3',
+			arrivalPrognosisType: 'prognosed',
 			departure: '2021-10-12T17:01:00+02:00',
 			plannedDeparture: '2021-10-12T17:01:00+02:00',
 			departureDelay: null,
 			departurePlatform: '3',
 			plannedDeparturePlatform: '3',
+			departurePrognosisType: 'prognosed',
 		},
 		{
 			stop: {
@@ -348,11 +366,13 @@ module.exports = {
 			arrivalDelay: null,
 			arrivalPlatform: '2',
 			plannedArrivalPlatform: '2',
+			arrivalPrognosisType: 'prognosed',
 			departure: '2021-10-12T17:10:00+02:00',
 			plannedDeparture: '2021-10-12T17:10:00+02:00',
 			departureDelay: null,
 			departurePlatform: '2',
 			plannedDeparturePlatform: '2',
+			departurePrognosisType: 'prognosed',
 		},
 		{
 			stop: {
@@ -378,11 +398,13 @@ module.exports = {
 			arrivalDelay: null,
 			arrivalPlatform: '1',
 			plannedArrivalPlatform: '1',
+			arrivalPrognosisType: 'prognosed',
 			departure: '2021-10-12T17:18:00+02:00',
 			plannedDeparture: '2021-10-12T17:18:00+02:00',
 			departureDelay: null,
 			departurePlatform: '1',
 			plannedDeparturePlatform: '1',
+			departurePrognosisType: 'prognosed',
 		},
 		{
 			stop: {
@@ -408,11 +430,13 @@ module.exports = {
 			arrivalDelay: null,
 			arrivalPlatform: '5',
 			plannedArrivalPlatform: '5',
+			arrivalPrognosisType: 'prognosed',
 			departure: null,
 			plannedDeparture: null,
 			departureDelay: null,
 			departurePlatform: null,
 			plannedDeparturePlatform: null,
+			departurePrognosisType: null,
 		},
 	],
 }

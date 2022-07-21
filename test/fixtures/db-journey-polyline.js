@@ -76,9 +76,11 @@ module.exports = {
 			arrival: '2020-07-27T12:34:00+02:00',
 			plannedArrival: '2020-07-27T12:34:00+02:00',
 			arrivalDelay: null,
+			arrivalPrognosisType: 'prognosed',
 			departure: '2020-07-27T10:38:00+02:00',
 			plannedDeparture: '2020-07-27T10:38:00+02:00',
 			departureDelay: null,
+			departurePrognosisType: 'prognosed',
 			reachable: true,
 			polyline: {
 				type: 'FeatureCollection',

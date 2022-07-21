@@ -157,9 +157,11 @@ module.exports = {
 			arrival: '2020-04-11T09:01:00+02:00',
 			plannedArrival: '2020-04-11T09:01:00+02:00',
 			arrivalDelay: null,
+			arrivalPrognosisType: 'prognosed',
 			departure: '2020-04-11T05:20:00+02:00',
 			plannedDeparture: '2020-04-11T05:20:00+02:00',
 			departureDelay: null,
+			departurePrognosisType: 'prognosed',
 			reachable: true,
 			tripId: '1|301001|0|80|11042020',
 			line: {

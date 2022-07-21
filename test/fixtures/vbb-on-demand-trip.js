@@ -33,6 +33,7 @@ module.exports = {
 	departureDelay: null,
 	departurePlatform: null,
 	plannedDeparturePlatform: null,
+	departurePrognosisType: null,
 
 	destination: {},
 	arrival: null,
@@ -40,4 +41,5 @@ module.exports = {
 	arrivalDelay: null,
 	arrivalPlatform: null,
 	plannedArrivalPlatform: null,
+	arrivalPrognosisType: null,
 }

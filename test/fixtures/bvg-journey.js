@@ -84,9 +84,11 @@ module.exports = {
 		arrival: '2019-08-18T14:29:00+02:00',
 		plannedArrival: '2019-08-18T14:29:00+02:00',
 		arrivalDelay: 0,
+		arrivalPrognosisType: 'prognosed',
 		departure: '2019-08-18T14:16:00+02:00',
 		plannedDeparture: '2019-08-18T14:16:00+02:00',
 		departureDelay: 0,
+		departurePrognosisType: 'prognosed',
 		reachable: true,
 		polyline: {
 			type: 'FeatureCollection',
@@ -741,11 +743,13 @@ module.exports = {
 			arrivalDelay: null,
 			arrivalPlatform: null,
 			plannedArrivalPlatform: null,
+			arrivalPrognosisType: null,
 			departure: '2019-08-18T14:16:00+02:00',
 			plannedDeparture: '2019-08-18T14:16:00+02:00',
 			departureDelay: 0,
 			departurePlatform: '1',
-			plannedDeparturePlatform: '1'
+			plannedDeparturePlatform: '1',
+			departurePrognosisType: 'prognosed',
 		},
 		{
 			stop: {
@@ -773,11 +777,13 @@ module.exports = {
 			arrivalDelay: 0,
 			arrivalPlatform: '11',
 			plannedArrivalPlatform: '11',
+			arrivalPrognosisType: 'prognosed',
 			departure: '2019-08-18T14:18:00+02:00',
 			plannedDeparture: '2019-08-18T14:18:00+02:00',
 			departureDelay: 0,
 			departurePlatform: '11',
-			plannedDeparturePlatform: '11'
+			plannedDeparturePlatform: '11',
+			departurePrognosisType: 'prognosed',
 		},
 		{
 			stop: {
@@ -805,11 +811,13 @@ module.exports = {
 			arrivalDelay: 0,
 			arrivalPlatform: '1',
 			plannedArrivalPlatform: '1',
+			arrivalPrognosisType: 'prognosed',
 			departure: '2019-08-18T14:20:00+02:00',
 			plannedDeparture: '2019-08-18T14:20:00+02:00',
 			departureDelay: 0,
 			departurePlatform: '1',
-			plannedDeparturePlatform: '1'
+			plannedDeparturePlatform: '1',
+			departurePrognosisType: 'prognosed',
 		},
 		{
 			stop: {
@@ -837,11 +845,13 @@ module.exports = {
 			arrivalDelay: 0,
 			arrivalPlatform: '11',
 			plannedArrivalPlatform: '11',
+			arrivalPrognosisType: 'prognosed',
 			departure: '2019-08-18T14:22:00+02:00',
 			plannedDeparture: '2019-08-18T14:22:00+02:00',
 			departureDelay: 0,
 			departurePlatform: '11',
-			plannedDeparturePlatform: '11'
+			plannedDeparturePlatform: '11',
+			departurePrognosisType: 'prognosed',
 		},
 		{
 			stop: {
@@ -869,11 +879,13 @@ module.exports = {
 			arrivalDelay: 0,
 			arrivalPlatform: '2',
 			plannedArrivalPlatform: '2',
+			arrivalPrognosisType: 'prognosed',
 			departure: '2019-08-18T14:24:00+02:00',
 			plannedDeparture: '2019-08-18T14:24:00+02:00',
 			departureDelay: 0,
 			departurePlatform: '2',
-			plannedDeparturePlatform: '2'
+			plannedDeparturePlatform: '2',
+			departurePrognosisType: 'prognosed',
 		},
 		{
 			stop: {
@@ -901,11 +913,13 @@ module.exports = {
 			arrivalDelay: 0,
 			arrivalPlatform: '1',
 			plannedArrivalPlatform: '1',
+			arrivalPrognosisType: 'prognosed',
 			departure: '2019-08-18T14:27:00+02:00',
 			plannedDeparture: '2019-08-18T14:27:00+02:00',
 			departureDelay: 0,
 			departurePlatform: '1',
-			plannedDeparturePlatform: '1'
+			plannedDeparturePlatform: '1',
+			departurePrognosisType: 'prognosed',
 		},
 		{
 			stop: {
@@ -933,11 +947,13 @@ module.exports = {
 			arrivalDelay: 0,
 			arrivalPlatform: '1',
 			plannedArrivalPlatform: '1',
+			arrivalPrognosisType: 'prognosed',
 			departure: null,
 			plannedDeparture: null,
 			departureDelay: null,
 			departurePlatform: null,
-			plannedDeparturePlatform: null
+			plannedDeparturePlatform: null,
+			departurePrognosisType: null,
 		}],
 		remarks: [
 			{
