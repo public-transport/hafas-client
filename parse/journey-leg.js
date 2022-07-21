@@ -90,7 +90,7 @@ const parseJourneyLeg = (ctx, pt, date) => { // pt = raw leg
 		res.polyline = profile.parsePolyline(ctx, pt.jny.poly)
 	}
 
-	if (pt.type === 'WALK' || pt.type === 'TRSF' || pt.type === 'DEVI') {
+	if (pt.type === 'WALK' || pt.type === 'TRSF' || pt.type === 'DEVI' || pt.type === 'CHKI') {
 		res.public = true
 		res.walking = true
 		res.distance = pt.gis && pt.gis.dist || null
@@ -99,6 +99,7 @@ const parseJourneyLeg = (ctx, pt, date) => { // pt = raw leg
 			// todo: pt.resState, pt.resRecommendation
 			res.transfer = true
 		}
+		if (pt.type === 'CHKI') res.checkin = true
 
 		// https://gist.github.com/derhuerst/426d4b95aeae701843b1e9c23105b8d4#file-tripsearch-2018-12-05-http-L4207-L4229
 		if (opt.remarks && pt.gis && Array.isArray(pt.gis.msgL)) {
