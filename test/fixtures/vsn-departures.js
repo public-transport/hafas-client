@@ -54,6 +54,7 @@ module.exports = {
 	delay: 3480,
 	platform: '8',
 	plannedPlatform: '8',
+	prognosisType: 'prognosed',
 	direction: 'Frankfurt(Main) Hbf',
 	provenance: null,
 	origin: null,

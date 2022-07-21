@@ -196,6 +196,7 @@ module.exports = [
 		delay: 0,
 		platform: '3',
 		plannedPlatform: '3',
+		prognosisType: 'calculated',
 		direction: 'S Erkner',
 		origin: null,
 		destination: {
@@ -470,6 +471,7 @@ module.exports = [
 		delay: 0,
 		platform: null,
 		plannedPlatform: null,
+		prognosisType: 'prognosed',
 		direction: 'Tiergarten, Philharmonie',
 		provenance: null,
 		line: {
@@ -743,6 +745,7 @@ module.exports = [
 		delay: 0,
 		platform: null,
 		plannedPlatform: null,
+		prognosisType: 'prognosed',
 		direction: 'S+U Hermannstr.',
 		provenance: null,
 		line: {
@@ -1017,6 +1020,7 @@ module.exports = [
 		delay: 0,
 		platform: null,
 		plannedPlatform: null,
+		prognosisType: 'prognosed',
 		direction: 'S+U Wittenau',
 		provenance: null,
 		line: {
@@ -1291,6 +1295,7 @@ module.exports = [
 		delay: 0,
 		platform: '4',
 		plannedPlatform: '4',
+		prognosisType: 'calculated',
 		direction: 'S Westkreuz',
 		provenance: null,
 		line: {
@@ -1565,6 +1570,7 @@ module.exports = [
 		delay: 0,
 		platform: '3',
 		plannedPlatform: '3',
+		prognosisType: 'calculated',
 		direction: 'S Ahrensfelde',
 		provenance: null,
 		line: {
@@ -1839,6 +1845,7 @@ module.exports = [
 		delay: 0,
 		platform: '4',
 		plannedPlatform: '4',
+		prognosisType: 'calculated',
 		direction: 'S Potsdam Hauptbahnhof',
 		provenance: null,
 		line: {
@@ -2113,6 +2120,7 @@ module.exports = [
 		delay: 0,
 		platform: '3',
 		plannedPlatform: '3',
+		prognosisType: 'calculated',
 		direction: 'S Strausberg',
 		provenance: null,
 		line: {
@@ -2387,6 +2395,7 @@ module.exports = [
 		delay: 0,
 		platform: null,
 		plannedPlatform: null,
+		prognosisType: 'prognosed',
 		direction: 'S+U Hermannstr.',
 		provenance: null,
 		line: {
@@ -2661,6 +2670,7 @@ module.exports = [
 		delay: 0,
 		platform: null,
 		plannedPlatform: null,
+		prognosisType: 'prognosed',
 		direction: 'U Paracelsus-Bad',
 		provenance: null,
 		line: {
@@ -2935,6 +2945,7 @@ module.exports = [
 		delay: 0,
 		platform: null,
 		plannedPlatform: null,
+		prognosisType: 'prognosed',
 		direction: 'S+U Warschauer Str.',
 		provenance: null,
 		line: {
@@ -3208,6 +3219,7 @@ module.exports = [
 		delay: 0,
 		platform: '4',
 		plannedPlatform: '4',
+		prognosisType: 'calculated',
 		direction: 'S Spandau',
 		provenance: null,
 		line: {
