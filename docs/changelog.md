@@ -1,5 +1,13 @@
 # Changelog
 
+## `5.25.0`
+
+- 0a636981 parse `CHKI` (check-in, check-out) legs ✅
+- 7c68f962 `parse{Stopover,JourneyLeg, Trip}`: expose `{arrival,departure}PrognosisType` ✅
+- 95af0a01 `parseArrival` & `parseDeparture`: expose `prognosisType` ✅
+
+[🏷 `5.25.0`](https://github.com/public-transport/hafas-client/releases/tag/5.24.0), 2022-07-30
+
 ## `5.24.1`
 
 - 492cb7df KVB: provide CA certificate chain via `Agent` 🐛
