@@ -86,11 +86,15 @@ As an example, we can implement a custom logger:
 const createClient = require('hafas-client')
 const dbProfile = require('hafas-client/p/db')
 
-const logRequest = (ctx, fetchRequest) => {
+const logRequest = (ctx, fetchRequest, requestId) => {
 	// ctx looks just like with the other profile.* hooks:
 	const {profile, opt} = ctx
 
-	console.debug(fetchRequest.headers, fetchRequest.body + '')
+	console.debug(requestId, fetchRequest.headers, fetchRequest.body + '')
+}
+
+const logResponse = (ctx, fetchResponse, body, requestId) => {
+	console.debug(requestId, fetchResponse.headers, body + '')
 }
 
 // create a client with Deutsche Bahn profile that debug-logs
@@ -103,7 +107,7 @@ const client = createClient({
 
 ```js
 // logRequest output:
-{
+'29d0e3' {
 	accept: 'application/json',
 	'accept-encoding': 'gzip, br, deflate',
 	'content-type': 'application/json',
@@ -111,7 +115,7 @@ const client = createClient({
 	'user-agent': 'hafas842c51-clie842c51nt debug C842c51LI'
 } {"lang":"de","svcReqL":[{"cfg":{"polyEnc":"GPA"},"meth":"LocMatch",…
 // logResponse output:
-{
+'29d0e3' {
 	'content-encoding': 'gzip',
 	'content-length': '1010',
 	'content-type': 'application/json; charset=utf-8',
