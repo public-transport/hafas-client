@@ -76,6 +76,53 @@ const retryingDbProfile = withRetrying(dbProfile, {
 const client = createClient(retryingDbProfile, 'my-awesome-program')
 ```
 
+## Logging requests
+
+You can use `profile.logRequest` and `profile.logResponse` to process the raw [Fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) [`Request`](https://developer.mozilla.org/en-US/docs/Web/API/Request) and [`Response`](https://developer.mozilla.org/en-US/docs/Web/API/Response), respectively.
+
+As an example, we can implement a custom logger:
+
+```js
+const createClient = require('hafas-client')
+const dbProfile = require('hafas-client/p/db')
+
+const logRequest = (ctx, fetchRequest) => {
+	// ctx looks just like with the other profile.* hooks:
+	const {profile, opt} = ctx
+
+	console.debug(fetchRequest.headers, fetchRequest.body + '')
+}
+
+// create a client with Deutsche Bahn profile that debug-logs
+const client = createClient({
+	...dbProfile,
+	logRequest,
+	logResponse,
+}, 'my-awesome-program')
+```
+
+```js
+// logRequest output:
+{
+	accept: 'application/json',
+	'accept-encoding': 'gzip, br, deflate',
+	'content-type': 'application/json',
+	connection: 'keep-alive',
+	'user-agent': 'hafas842c51-clie842c51nt debug C842c51LI'
+} {"lang":"de","svcReqL":[{"cfg":{"polyEnc":"GPA"},"meth":"LocMatch",…
+// logResponse output:
+{
+	'content-encoding': 'gzip',
+	'content-length': '1010',
+	'content-type': 'application/json; charset=utf-8',
+	date: 'Thu, 06 Oct 2022 12:31:09 GMT',
+	server: 'Apache',
+	vary: 'User-Agent'
+} {"ver":"1.45","lang":"deu","id":"sb42zgck4mxtxm4s","err":"OK","graph"…
+```
+
+The default `profile.logRequest` [`console.error`](https://nodejs.org/docs/latest-v10.x/api/console.html#console_console_error_data_args)s the request body, if you have set `$DEBUG` to `hafas-client`. Likewise, `profile.logResponse` `console.error`s the response body.
+
 ## Writing a profile
 
 Check [the guide](writing-a-profile.md).
