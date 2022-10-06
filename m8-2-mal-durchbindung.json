@@ -1,0 +1,3931 @@
+{
+	"origin": {
+		"type": "stop",
+		"id": "900000170006",
+		"name": "Ahrensfelde/Stadtgrenze",
+		"location": {
+			"type": "location",
+			"id": "900170006",
+			"latitude": 52.572837,
+			"longitude": 13.574673
+		},
+		"products": {
+			"suburban": false,
+			"subway": false,
+			"tram": true,
+			"bus": false,
+			"ferry": false,
+			"express": false,
+			"regional": false
+		},
+		"stationDHID": "de:11000:900170006"
+	},
+	"destination": {
+		"type": "stop",
+		"id": "900000150504",
+		"name": "Gehrenseestr.",
+		"location": {
+			"type": "location",
+			"id": "900150504",
+			"latitude": 52.550013,
+			"longitude": 13.508558
+		},
+		"products": {
+			"suburban": false,
+			"subway": false,
+			"tram": true,
+			"bus": true,
+			"ferry": false,
+			"express": false,
+			"regional": false
+		},
+		"stationDHID": "de:11000:900150504"
+	},
+	"departure": "2022-03-16T23:54:00+01:00",
+	"plannedDeparture": "2022-03-16T23:54:00+01:00",
+	"departureDelay": null,
+	"arrival": "2022-03-17T01:21:00+01:00",
+	"plannedArrival": "2022-03-17T01:18:00+01:00",
+	"arrivalDelay": 180,
+	"reachable": true,
+	"line": {
+		"type": "line",
+		"id": "m8",
+		"fahrtNr": "837",
+		"name": "M8",
+		"public": true,
+		"adminCode": "BVT",
+		"productName": "Tram",
+		"mode": "train",
+		"product": "tram",
+		"operator": {
+			"type": "operator",
+			"id": "berliner-verkehrsbetriebe",
+			"name": "Berliner Verkehrsbetriebe"
+		},
+		"symbol": "M",
+		"nr": 8,
+		"metro": true,
+		"express": false,
+		"night": false
+	},
+	"direction": "S+U Hauptbahnhof",
+	"currentLocation": {
+		"type": "location",
+		"latitude": 52.521283,
+		"longitude": 13.407312
+	},
+	"arrivalPlatform": null,
+	"plannedArrivalPlatform": null,
+	"departurePlatform": null,
+	"plannedDeparturePlatform": null,
+	"stopovers": [
+		{
+			"stop": {
+				"type": "stop",
+				"id": "900000170006",
+				"name": "Ahrensfelde/Stadtgrenze",
+				"location": {
+					"type": "location",
+					"id": "900170006",
+					"latitude": 52.572837,
+					"longitude": 13.574673
+				},
+				"products": {
+					"suburban": false,
+					"subway": false,
+					"tram": true,
+					"bus": false,
+					"ferry": false,
+					"express": false,
+					"regional": false
+				},
+				"stationDHID": "de:11000:900170006"
+			},
+			"arrival": null,
+			"plannedArrival": null,
+			"arrivalDelay": null,
+			"arrivalPlatform": null,
+			"plannedArrivalPlatform": null,
+			"departure": "2022-03-16T23:54:00+01:00",
+			"plannedDeparture": "2022-03-16T23:54:00+01:00",
+			"departureDelay": null,
+			"departurePlatform": null,
+			"plannedDeparturePlatform": null,
+			"remarks": [
+				{
+					"type": "hint",
+					"code": "text.journeystop.product.or.direction.changes.stop.message",
+					"text": "Verkehrt ab hier als M8 in Richtung S+U Hauptbahnhof"
+				},
+				{
+					"type": "hint",
+					"code": "OPERATOR",
+					"text": "BVG (Ahrensfelde/Stadtgrenze (Berlin) - U Rosenthaler Platz (Berlin))"
+				},
+				{
+					"id": "144719",
+					"type": "warning",
+					"summary": "Es gelten 3G-Regel und Maskenpflicht!",
+					"text": "Bitte tragen Sie eine FFP2-Maske.\n<a href=\"https://www.vbb.de/corona\" target=\"_blank\" rel=\"noopener\">Weitere Informationen</a>",
+					"icon": {
+						"type": "HIM0",
+						"title": null
+					},
+					"priority": 100,
+					"products": {
+						"suburban": true,
+						"subway": true,
+						"tram": true,
+						"bus": true,
+						"ferry": true,
+						"express": true,
+						"regional": true
+					},
+					"company": "VBB",
+					"categories": [
+						0
+					],
+					"validFrom": "2021-11-24T00:00:00+01:00",
+					"validUntil": "2022-12-31T00:00:00+01:00",
+					"modified": "2022-01-12T08:36:30+01:00"
+				}
+			]
+		},
+		{
+			"stop": {
+				"type": "stop",
+				"id": "900000170011",
+				"name": "Barnimplatz",
+				"location": {
+					"type": "location",
+					"id": "900170011",
+					"latitude": 52.567803,
+					"longitude": 13.573694
+				},
+				"products": {
+					"suburban": false,
+					"subway": false,
+					"tram": true,
+					"bus": true,
+					"ferry": false,
+					"express": false,
+					"regional": false
+				},
+				"stationDHID": "de:11000:900170011"
+			},
+			"arrival": "2022-03-16T23:55:00+01:00",
+			"plannedArrival": "2022-03-16T23:55:00+01:00",
+			"arrivalDelay": null,
+			"arrivalPlatform": null,
+			"plannedArrivalPlatform": null,
+			"departure": "2022-03-16T23:55:00+01:00",
+			"plannedDeparture": "2022-03-16T23:55:00+01:00",
+			"departureDelay": null,
+			"departurePlatform": null,
+			"plannedDeparturePlatform": null,
+			"remarks": [
+				{
+					"type": "hint",
+					"code": "OPERATOR",
+					"text": "BVG (Ahrensfelde/Stadtgrenze (Berlin) - U Rosenthaler Platz (Berlin))"
+				}
+			]
+		},
+		{
+			"stop": {
+				"type": "stop",
+				"id": "900000170506",
+				"name": "Niemegker Str.",
+				"location": {
+					"type": "location",
+					"id": "900170506",
+					"latitude": 52.564728,
+					"longitude": 13.571581
+				},
+				"products": {
+					"suburban": false,
+					"subway": false,
+					"tram": true,
+					"bus": false,
+					"ferry": false,
+					"express": false,
+					"regional": false
+				},
+				"stationDHID": "de:11000:900170506"
+			},
+			"arrival": "2022-03-16T23:56:00+01:00",
+			"plannedArrival": "2022-03-16T23:56:00+01:00",
+			"arrivalDelay": null,
+			"arrivalPlatform": null,
+			"plannedArrivalPlatform": null,
+			"departure": "2022-03-16T23:56:00+01:00",
+			"plannedDeparture": "2022-03-16T23:56:00+01:00",
+			"departureDelay": null,
+			"departurePlatform": null,
+			"plannedDeparturePlatform": null,
+			"remarks": [
+				{
+					"type": "hint",
+					"code": "OPERATOR",
+					"text": "BVG (Ahrensfelde/Stadtgrenze (Berlin) - U Rosenthaler Platz (Berlin))"
+				}
+			]
+		},
+		{
+			"stop": {
+				"type": "stop",
+				"id": "900000170531",
+				"name": "Wuhletalstr.",
+				"location": {
+					"type": "location",
+					"id": "900170531",
+					"latitude": 52.557618,
+					"longitude": 13.568174
+				},
+				"products": {
+					"suburban": false,
+					"subway": false,
+					"tram": true,
+					"bus": false,
+					"ferry": false,
+					"express": false,
+					"regional": false
+				},
+				"stationDHID": "de:11000:900170531"
+			},
+			"arrival": "2022-03-16T23:58:00+01:00",
+			"plannedArrival": "2022-03-16T23:58:00+01:00",
+			"arrivalDelay": null,
+			"arrivalPlatform": null,
+			"plannedArrivalPlatform": null,
+			"departure": "2022-03-16T23:58:00+01:00",
+			"plannedDeparture": "2022-03-16T23:58:00+01:00",
+			"departureDelay": null,
+			"departurePlatform": null,
+			"plannedDeparturePlatform": null,
+			"remarks": [
+				{
+					"type": "hint",
+					"code": "OPERATOR",
+					"text": "BVG (Ahrensfelde/Stadtgrenze (Berlin) - U Rosenthaler Platz (Berlin))"
+				}
+			]
+		},
+		{
+			"stop": {
+				"type": "stop",
+				"id": "900000170530",
+				"name": "Max-Herrmann-Str.",
+				"location": {
+					"type": "location",
+					"id": "900170530",
+					"latitude": 52.553905,
+					"longitude": 13.565666
+				},
+				"products": {
+					"suburban": false,
+					"subway": false,
+					"tram": true,
+					"bus": false,
+					"ferry": false,
+					"express": false,
+					"regional": false
+				},
+				"stationDHID": "de:11000:900170530"
+			},
+			"arrival": "2022-03-16T23:59:00+01:00",
+			"plannedArrival": "2022-03-16T23:59:00+01:00",
+			"arrivalDelay": null,
+			"arrivalPlatform": null,
+			"plannedArrivalPlatform": null,
+			"departure": "2022-03-16T23:59:00+01:00",
+			"plannedDeparture": "2022-03-16T23:59:00+01:00",
+			"departureDelay": null,
+			"departurePlatform": null,
+			"plannedDeparturePlatform": null,
+			"remarks": [
+				{
+					"type": "hint",
+					"code": "OPERATOR",
+					"text": "BVG (Ahrensfelde/Stadtgrenze (Berlin) - U Rosenthaler Platz (Berlin))"
+				}
+			]
+		},
+		{
+			"stop": {
+				"type": "stop",
+				"id": "900000170529",
+				"name": "Bürgerpark Marzahn",
+				"location": {
+					"type": "location",
+					"id": "900170529",
+					"latitude": 52.549851,
+					"longitude": 13.560749
+				},
+				"products": {
+					"suburban": false,
+					"subway": false,
+					"tram": true,
+					"bus": false,
+					"ferry": false,
+					"express": false,
+					"regional": false
+				},
+				"stationDHID": "de:11000:900170529"
+			},
+			"arrival": "2022-03-17T00:00:00+01:00",
+			"plannedArrival": "2022-03-17T00:00:00+01:00",
+			"arrivalDelay": null,
+			"arrivalPlatform": null,
+			"plannedArrivalPlatform": null,
+			"departure": "2022-03-17T00:00:00+01:00",
+			"plannedDeparture": "2022-03-17T00:00:00+01:00",
+			"departureDelay": null,
+			"departurePlatform": null,
+			"plannedDeparturePlatform": null,
+			"remarks": [
+				{
+					"type": "hint",
+					"code": "OPERATOR",
+					"text": "BVG (Ahrensfelde/Stadtgrenze (Berlin) - U Rosenthaler Platz (Berlin))"
+				}
+			]
+		},
+		{
+			"stop": {
+				"type": "stop",
+				"id": "900000170517",
+				"name": "Jan-Petersen-Str.",
+				"location": {
+					"type": "location",
+					"id": "900170517",
+					"latitude": 52.547307,
+					"longitude": 13.562421
+				},
+				"products": {
+					"suburban": false,
+					"subway": false,
+					"tram": true,
+					"bus": true,
+					"ferry": false,
+					"express": false,
+					"regional": false
+				},
+				"stationDHID": "de:11000:900170517"
+			},
+			"arrival": "2022-03-17T00:02:00+01:00",
+			"plannedArrival": "2022-03-17T00:02:00+01:00",
+			"arrivalDelay": null,
+			"arrivalPlatform": null,
+			"plannedArrivalPlatform": null,
+			"departure": "2022-03-17T00:02:00+01:00",
+			"plannedDeparture": "2022-03-17T00:02:00+01:00",
+			"departureDelay": null,
+			"departurePlatform": null,
+			"plannedDeparturePlatform": null,
+			"remarks": [
+				{
+					"type": "hint",
+					"code": "OPERATOR",
+					"text": "BVG (Ahrensfelde/Stadtgrenze (Berlin) - U Rosenthaler Platz (Berlin))"
+				}
+			]
+		},
+		{
+			"stop": {
+				"type": "stop",
+				"id": "900000170516",
+				"name": "Alt-Marzahn",
+				"location": {
+					"type": "location",
+					"id": "900170516",
+					"latitude": 52.541968,
+					"longitude": 13.563707
+				},
+				"products": {
+					"suburban": false,
+					"subway": false,
+					"tram": true,
+					"bus": true,
+					"ferry": false,
+					"express": false,
+					"regional": false
+				},
+				"stationDHID": "de:11000:900170516"
+			},
+			"arrival": "2022-03-17T00:04:00+01:00",
+			"plannedArrival": "2022-03-17T00:04:00+01:00",
+			"arrivalDelay": null,
+			"arrivalPlatform": null,
+			"plannedArrivalPlatform": null,
+			"departure": "2022-03-17T00:04:00+01:00",
+			"plannedDeparture": "2022-03-17T00:04:00+01:00",
+			"departureDelay": null,
+			"departurePlatform": null,
+			"plannedDeparturePlatform": null,
+			"remarks": [
+				{
+					"type": "hint",
+					"code": "OPERATOR",
+					"text": "BVG (Ahrensfelde/Stadtgrenze (Berlin) - U Rosenthaler Platz (Berlin))"
+				}
+			]
+		},
+		{
+			"stop": {
+				"type": "stop",
+				"id": "900000170515",
+				"name": "Adersleber Weg",
+				"location": {
+					"type": "location",
+					"id": "900170515",
+					"latitude": 52.537896,
+					"longitude": 13.560318
+				},
+				"products": {
+					"suburban": false,
+					"subway": false,
+					"tram": true,
+					"bus": true,
+					"ferry": false,
+					"express": false,
+					"regional": false
+				},
+				"stationDHID": "de:11000:900170515"
+			},
+			"arrival": "2022-03-17T00:05:00+01:00",
+			"plannedArrival": "2022-03-17T00:05:00+01:00",
+			"arrivalDelay": null,
+			"arrivalPlatform": null,
+			"plannedArrivalPlatform": null,
+			"departure": "2022-03-17T00:05:00+01:00",
+			"plannedDeparture": "2022-03-17T00:05:00+01:00",
+			"departureDelay": null,
+			"departurePlatform": null,
+			"plannedDeparturePlatform": null,
+			"remarks": [
+				{
+					"type": "hint",
+					"code": "OPERATOR",
+					"text": "BVG (Ahrensfelde/Stadtgrenze (Berlin) - U Rosenthaler Platz (Berlin))"
+				}
+			]
+		},
+		{
+			"stop": {
+				"type": "stop",
+				"id": "900000170019",
+				"name": "Allee der Kosmonauten/Poelchaustr.",
+				"location": {
+					"type": "location",
+					"id": "900170019",
+					"latitude": 52.533913,
+					"longitude": 13.552326
+				},
+				"products": {
+					"suburban": false,
+					"subway": false,
+					"tram": true,
+					"bus": true,
+					"ferry": false,
+					"express": false,
+					"regional": false
+				},
+				"stationDHID": "de:11000:900170019"
+			},
+			"arrival": "2022-03-17T00:07:00+01:00",
+			"plannedArrival": "2022-03-17T00:07:00+01:00",
+			"arrivalDelay": null,
+			"arrivalPlatform": null,
+			"plannedArrivalPlatform": null,
+			"departure": "2022-03-17T00:07:00+01:00",
+			"plannedDeparture": "2022-03-17T00:07:00+01:00",
+			"departureDelay": null,
+			"departurePlatform": null,
+			"plannedDeparturePlatform": null,
+			"remarks": [
+				{
+					"type": "hint",
+					"code": "OPERATOR",
+					"text": "BVG (Ahrensfelde/Stadtgrenze (Berlin) - U Rosenthaler Platz (Berlin))"
+				}
+			]
+		},
+		{
+			"stop": {
+				"type": "stop",
+				"id": "900000171517",
+				"name": "Boschpoler Str.",
+				"location": {
+					"type": "location",
+					"id": "900171517",
+					"latitude": 52.527504,
+					"longitude": 13.548811
+				},
+				"products": {
+					"suburban": false,
+					"subway": false,
+					"tram": true,
+					"bus": true,
+					"ferry": false,
+					"express": false,
+					"regional": false
+				},
+				"stationDHID": "de:11000:900171517"
+			},
+			"arrival": "2022-03-17T00:09:00+01:00",
+			"plannedArrival": "2022-03-17T00:09:00+01:00",
+			"arrivalDelay": null,
+			"arrivalPlatform": null,
+			"plannedArrivalPlatform": null,
+			"departure": "2022-03-17T00:09:00+01:00",
+			"plannedDeparture": "2022-03-17T00:09:00+01:00",
+			"departureDelay": null,
+			"departurePlatform": null,
+			"plannedDeparturePlatform": null,
+			"remarks": [
+				{
+					"type": "hint",
+					"code": "OPERATOR",
+					"text": "BVG (Ahrensfelde/Stadtgrenze (Berlin) - U Rosenthaler Platz (Berlin))"
+				}
+			]
+		},
+		{
+			"stop": {
+				"type": "stop",
+				"id": "900000171516",
+				"name": "Helene-Weigel-Platz",
+				"location": {
+					"type": "location",
+					"id": "900171516",
+					"latitude": 52.525958,
+					"longitude": 13.542879
+				},
+				"products": {
+					"suburban": false,
+					"subway": false,
+					"tram": true,
+					"bus": true,
+					"ferry": false,
+					"express": false,
+					"regional": false
+				},
+				"stationDHID": "de:11000:900171516"
+			},
+			"arrival": "2022-03-17T00:10:00+01:00",
+			"plannedArrival": "2022-03-17T00:10:00+01:00",
+			"arrivalDelay": null,
+			"arrivalPlatform": null,
+			"plannedArrivalPlatform": null,
+			"departure": "2022-03-17T00:10:00+01:00",
+			"plannedDeparture": "2022-03-17T00:10:00+01:00",
+			"departureDelay": null,
+			"departurePlatform": null,
+			"plannedDeparturePlatform": null,
+			"remarks": [
+				{
+					"type": "hint",
+					"code": "OPERATOR",
+					"text": "BVG (Ahrensfelde/Stadtgrenze (Berlin) - U Rosenthaler Platz (Berlin))"
+				}
+			]
+		},
+		{
+			"stop": {
+				"type": "stop",
+				"id": "900000171003",
+				"name": "S Springpfuhl",
+				"location": {
+					"type": "location",
+					"id": "900171003",
+					"latitude": 52.525805,
+					"longitude": 13.536901
+				},
+				"products": {
+					"suburban": true,
+					"subway": false,
+					"tram": true,
+					"bus": true,
+					"ferry": false,
+					"express": false,
+					"regional": false
+				},
+				"stationDHID": "de:11000:900171003"
+			},
+			"arrival": "2022-03-17T00:11:00+01:00",
+			"plannedArrival": "2022-03-17T00:11:00+01:00",
+			"arrivalDelay": null,
+			"arrivalPlatform": null,
+			"plannedArrivalPlatform": null,
+			"departure": "2022-03-17T00:11:00+01:00",
+			"plannedDeparture": "2022-03-17T00:11:00+01:00",
+			"departureDelay": null,
+			"departurePlatform": null,
+			"plannedDeparturePlatform": null,
+			"remarks": [
+				{
+					"type": "hint",
+					"code": "OPERATOR",
+					"text": "BVG (Ahrensfelde/Stadtgrenze (Berlin) - U Rosenthaler Platz (Berlin))"
+				}
+			]
+		},
+		{
+			"stop": {
+				"type": "stop",
+				"id": "900000171515",
+				"name": "Beilsteiner Str.",
+				"location": {
+					"type": "location",
+					"id": "900171515",
+					"latitude": 52.525499,
+					"longitude": 13.530114
+				},
+				"products": {
+					"suburban": false,
+					"subway": false,
+					"tram": true,
+					"bus": false,
+					"ferry": false,
+					"express": false,
+					"regional": false
+				},
+				"stationDHID": "de:11000:900171515"
+			},
+			"arrival": "2022-03-17T00:12:00+01:00",
+			"plannedArrival": "2022-03-17T00:12:00+01:00",
+			"arrivalDelay": null,
+			"arrivalPlatform": null,
+			"plannedArrivalPlatform": null,
+			"departure": "2022-03-17T00:12:00+01:00",
+			"plannedDeparture": "2022-03-17T00:12:00+01:00",
+			"departureDelay": null,
+			"departurePlatform": null,
+			"plannedDeparturePlatform": null,
+			"remarks": [
+				{
+					"type": "hint",
+					"code": "OPERATOR",
+					"text": "BVG (Ahrensfelde/Stadtgrenze (Berlin) - U Rosenthaler Platz (Berlin))"
+				}
+			]
+		},
+		{
+			"stop": {
+				"type": "stop",
+				"id": "900000171708",
+				"name": "Allee der Kosmonauten/ Rhinstr.",
+				"location": {
+					"type": "location",
+					"id": "900171708",
+					"latitude": 52.525877,
+					"longitude": 13.520495
+				},
+				"products": {
+					"suburban": false,
+					"subway": false,
+					"tram": true,
+					"bus": true,
+					"ferry": false,
+					"express": false,
+					"regional": false
+				},
+				"stationDHID": "de:11000:900171708"
+			},
+			"arrival": "2022-03-17T00:13:00+01:00",
+			"plannedArrival": "2022-03-17T00:13:00+01:00",
+			"arrivalDelay": null,
+			"arrivalPlatform": null,
+			"plannedArrivalPlatform": null,
+			"departure": "2022-03-17T00:13:00+01:00",
+			"plannedDeparture": "2022-03-17T00:13:00+01:00",
+			"departureDelay": null,
+			"departurePlatform": null,
+			"plannedDeparturePlatform": null,
+			"remarks": [
+				{
+					"type": "hint",
+					"code": "OPERATOR",
+					"text": "BVG (Ahrensfelde/Stadtgrenze (Berlin) - U Rosenthaler Platz (Berlin))"
+				}
+			]
+		},
+		{
+			"stop": {
+				"type": "stop",
+				"id": "900000171709",
+				"name": "Allee der  Kosmonauten/Rhinstr.",
+				"location": {
+					"type": "location",
+					"id": "900171709",
+					"latitude": 52.525868,
+					"longitude": 13.518446
+				},
+				"products": {
+					"suburban": false,
+					"subway": false,
+					"tram": true,
+					"bus": true,
+					"ferry": false,
+					"express": false,
+					"regional": false
+				},
+				"stationDHID": "de:11000:900171709"
+			},
+			"arrival": "2022-03-17T00:14:00+01:00",
+			"plannedArrival": "2022-03-17T00:14:00+01:00",
+			"arrivalDelay": null,
+			"arrivalPlatform": null,
+			"plannedArrivalPlatform": null,
+			"departure": "2022-03-17T00:14:00+01:00",
+			"plannedDeparture": "2022-03-17T00:14:00+01:00",
+			"departureDelay": null,
+			"departurePlatform": null,
+			"plannedDeparturePlatform": null,
+			"remarks": [
+				{
+					"type": "hint",
+					"code": "OPERATOR",
+					"text": "BVG (Ahrensfelde/Stadtgrenze (Berlin) - U Rosenthaler Platz (Berlin))"
+				},
+				{
+					"id": "61239",
+					"type": "warning",
+					"summary": "Ersatzverkehr",
+					"text": "Tram 27: Ersatzverkehr aufgrund von Bauarbeiten zwischen Allee der Kosmonauten/Rhinstraße &lt; > Alt-Hohenschönhausen. Die Linie fährt Krankenhaus Köpenick &lt; > Allee der Kosmonauten/Rhinstraße &lt; > S+U Lichtenberg/Gudrunstraße bzw. Betriebshof Lichtenberg.[br] (Allee der  Kosmonauten/Rhinstr. (Berlin) - Alt-Hohenschönhausen (Berlin))",
+					"icon": {
+						"type": "HIM1",
+						"title": null
+					},
+					"priority": 100,
+					"products": {
+						"suburban": false,
+						"subway": false,
+						"tram": true,
+						"bus": false,
+						"ferry": false,
+						"express": false,
+						"regional": false
+					},
+					"categories": [
+						1
+					],
+					"validFrom": "2022-03-07T04:30:00+01:00",
+					"validUntil": "2022-04-11T00:30:00+02:00",
+					"modified": "2022-03-01T10:33:54+01:00"
+				}
+			]
+		},
+		{
+			"stop": {
+				"type": "stop",
+				"id": "900000160520",
+				"name": "Ev. Krankenhaus KEH",
+				"location": {
+					"type": "location",
+					"id": "900160520",
+					"latitude": 52.525481,
+					"longitude": 13.508648
+				},
+				"products": {
+					"suburban": false,
+					"subway": false,
+					"tram": true,
+					"bus": true,
+					"ferry": false,
+					"express": false,
+					"regional": false
+				},
+				"stationDHID": "de:11000:900160520"
+			},
+			"arrival": "2022-03-17T00:15:00+01:00",
+			"plannedArrival": "2022-03-17T00:15:00+01:00",
+			"arrivalDelay": null,
+			"arrivalPlatform": null,
+			"plannedArrivalPlatform": null,
+			"departure": "2022-03-17T00:15:00+01:00",
+			"plannedDeparture": "2022-03-17T00:15:00+01:00",
+			"departureDelay": null,
+			"departurePlatform": null,
+			"plannedDeparturePlatform": null,
+			"remarks": [
+				{
+					"type": "hint",
+					"code": "OPERATOR",
+					"text": "BVG (Ahrensfelde/Stadtgrenze (Berlin) - U Rosenthaler Platz (Berlin))"
+				},
+				{
+					"id": "61239",
+					"type": "warning",
+					"summary": "Ersatzverkehr",
+					"text": "Tram 27: Ersatzverkehr aufgrund von Bauarbeiten zwischen Allee der Kosmonauten/Rhinstraße &lt; > Alt-Hohenschönhausen. Die Linie fährt Krankenhaus Köpenick &lt; > Allee der Kosmonauten/Rhinstraße &lt; > S+U Lichtenberg/Gudrunstraße bzw. Betriebshof Lichtenberg.[br] (Allee der  Kosmonauten/Rhinstr. (Berlin) - Alt-Hohenschönhausen (Berlin))",
+					"icon": {
+						"type": "HIM1",
+						"title": null
+					},
+					"priority": 100,
+					"products": {
+						"suburban": false,
+						"subway": false,
+						"tram": true,
+						"bus": false,
+						"ferry": false,
+						"express": false,
+						"regional": false
+					},
+					"categories": [
+						1
+					],
+					"validFrom": "2022-03-07T04:30:00+01:00",
+					"validUntil": "2022-04-11T00:30:00+02:00",
+					"modified": "2022-03-01T10:33:54+01:00"
+				}
+			]
+		},
+		{
+			"stop": {
+				"type": "stop",
+				"id": "900000160712",
+				"name": "Herzbergstr./ Siegfriedstr",
+				"location": {
+					"type": "location",
+					"id": "900160712",
+					"latitude": 52.52638,
+					"longitude": 13.498975
+				},
+				"products": {
+					"suburban": false,
+					"subway": false,
+					"tram": true,
+					"bus": true,
+					"ferry": false,
+					"express": false,
+					"regional": false
+				},
+				"stationDHID": "de:11000:900160712"
+			},
+			"arrival": "2022-03-17T00:17:00+01:00",
+			"plannedArrival": "2022-03-17T00:17:00+01:00",
+			"arrivalDelay": null,
+			"arrivalPlatform": null,
+			"plannedArrivalPlatform": null,
+			"departure": "2022-03-17T00:17:00+01:00",
+			"plannedDeparture": "2022-03-17T00:17:00+01:00",
+			"departureDelay": null,
+			"departurePlatform": null,
+			"plannedDeparturePlatform": null,
+			"remarks": [
+				{
+					"type": "hint",
+					"code": "OPERATOR",
+					"text": "BVG (Ahrensfelde/Stadtgrenze (Berlin) - U Rosenthaler Platz (Berlin))"
+				},
+				{
+					"id": "61239",
+					"type": "warning",
+					"summary": "Ersatzverkehr",
+					"text": "Tram 27: Ersatzverkehr aufgrund von Bauarbeiten zwischen Allee der Kosmonauten/Rhinstraße &lt; > Alt-Hohenschönhausen. Die Linie fährt Krankenhaus Köpenick &lt; > Allee der Kosmonauten/Rhinstraße &lt; > S+U Lichtenberg/Gudrunstraße bzw. Betriebshof Lichtenberg.[br] (Allee der  Kosmonauten/Rhinstr. (Berlin) - Alt-Hohenschönhausen (Berlin))",
+					"icon": {
+						"type": "HIM1",
+						"title": null
+					},
+					"priority": 100,
+					"products": {
+						"suburban": false,
+						"subway": false,
+						"tram": true,
+						"bus": false,
+						"ferry": false,
+						"express": false,
+						"regional": false
+					},
+					"categories": [
+						1
+					],
+					"validFrom": "2022-03-07T04:30:00+01:00",
+					"validUntil": "2022-04-11T00:30:00+02:00",
+					"modified": "2022-03-01T10:33:54+01:00"
+				}
+			]
+		},
+		{
+			"stop": {
+				"type": "stop",
+				"id": "900000160518",
+				"name": "Herzbergstr./Industriegebiet",
+				"location": {
+					"type": "location",
+					"id": "900160518",
+					"latitude": 52.526578,
+					"longitude": 13.489833
+				},
+				"products": {
+					"suburban": false,
+					"subway": false,
+					"tram": true,
+					"bus": true,
+					"ferry": false,
+					"express": false,
+					"regional": false
+				},
+				"stationDHID": "de:11000:900160518"
+			},
+			"arrival": "2022-03-17T00:18:00+01:00",
+			"plannedArrival": "2022-03-17T00:18:00+01:00",
+			"arrivalDelay": null,
+			"arrivalPlatform": null,
+			"plannedArrivalPlatform": null,
+			"departure": "2022-03-17T00:18:00+01:00",
+			"plannedDeparture": "2022-03-17T00:18:00+01:00",
+			"departureDelay": null,
+			"departurePlatform": null,
+			"plannedDeparturePlatform": null,
+			"remarks": [
+				{
+					"type": "hint",
+					"code": "OPERATOR",
+					"text": "BVG (Ahrensfelde/Stadtgrenze (Berlin) - U Rosenthaler Platz (Berlin))"
+				},
+				{
+					"id": "61239",
+					"type": "warning",
+					"summary": "Ersatzverkehr",
+					"text": "Tram 27: Ersatzverkehr aufgrund von Bauarbeiten zwischen Allee der Kosmonauten/Rhinstraße &lt; > Alt-Hohenschönhausen. Die Linie fährt Krankenhaus Köpenick &lt; > Allee der Kosmonauten/Rhinstraße &lt; > S+U Lichtenberg/Gudrunstraße bzw. Betriebshof Lichtenberg.[br] (Allee der  Kosmonauten/Rhinstr. (Berlin) - Alt-Hohenschönhausen (Berlin))",
+					"icon": {
+						"type": "HIM1",
+						"title": null
+					},
+					"priority": 100,
+					"products": {
+						"suburban": false,
+						"subway": false,
+						"tram": true,
+						"bus": false,
+						"ferry": false,
+						"express": false,
+						"regional": false
+					},
+					"categories": [
+						1
+					],
+					"validFrom": "2022-03-07T04:30:00+01:00",
+					"validUntil": "2022-04-11T00:30:00+02:00",
+					"modified": "2022-03-01T10:33:54+01:00"
+				}
+			]
+		},
+		{
+			"stop": {
+				"type": "stop",
+				"id": "900000160509",
+				"name": "Bernhard-Bästlein-Str.",
+				"location": {
+					"type": "location",
+					"id": "900160509",
+					"latitude": 52.526767,
+					"longitude": 13.4823
+				},
+				"products": {
+					"suburban": false,
+					"subway": false,
+					"tram": true,
+					"bus": true,
+					"ferry": false,
+					"express": false,
+					"regional": false
+				},
+				"stationDHID": "de:11000:900160509"
+			},
+			"arrival": "2022-03-17T00:20:00+01:00",
+			"plannedArrival": "2022-03-17T00:20:00+01:00",
+			"arrivalDelay": null,
+			"arrivalPlatform": null,
+			"plannedArrivalPlatform": null,
+			"departure": "2022-03-17T00:20:00+01:00",
+			"plannedDeparture": "2022-03-17T00:20:00+01:00",
+			"departureDelay": null,
+			"departurePlatform": null,
+			"plannedDeparturePlatform": null,
+			"remarks": [
+				{
+					"type": "hint",
+					"code": "OPERATOR",
+					"text": "BVG (Ahrensfelde/Stadtgrenze (Berlin) - U Rosenthaler Platz (Berlin))"
+				},
+				{
+					"id": "61239",
+					"type": "warning",
+					"summary": "Ersatzverkehr",
+					"text": "Tram 27: Ersatzverkehr aufgrund von Bauarbeiten zwischen Allee der Kosmonauten/Rhinstraße &lt; > Alt-Hohenschönhausen. Die Linie fährt Krankenhaus Köpenick &lt; > Allee der Kosmonauten/Rhinstraße &lt; > S+U Lichtenberg/Gudrunstraße bzw. Betriebshof Lichtenberg.[br] (Allee der  Kosmonauten/Rhinstr. (Berlin) - Alt-Hohenschönhausen (Berlin))",
+					"icon": {
+						"type": "HIM1",
+						"title": null
+					},
+					"priority": 100,
+					"products": {
+						"suburban": false,
+						"subway": false,
+						"tram": true,
+						"bus": false,
+						"ferry": false,
+						"express": false,
+						"regional": false
+					},
+					"categories": [
+						1
+					],
+					"validFrom": "2022-03-07T04:30:00+01:00",
+					"validUntil": "2022-04-11T00:30:00+02:00",
+					"modified": "2022-03-01T10:33:54+01:00"
+				}
+			]
+		},
+		{
+			"stop": {
+				"type": "stop",
+				"id": "900000160710",
+				"name": "Roederplatz.",
+				"location": {
+					"type": "location",
+					"id": "900160710",
+					"latitude": 52.526614,
+					"longitude": 13.478767
+				},
+				"products": {
+					"suburban": false,
+					"subway": false,
+					"tram": true,
+					"bus": true,
+					"ferry": false,
+					"express": false,
+					"regional": false
+				},
+				"stationDHID": "de:11000:900160710"
+			},
+			"arrival": "2022-03-17T00:21:00+01:00",
+			"plannedArrival": "2022-03-17T00:21:00+01:00",
+			"arrivalDelay": null,
+			"arrivalPlatform": null,
+			"plannedArrivalPlatform": null,
+			"departure": "2022-03-17T00:21:00+01:00",
+			"plannedDeparture": "2022-03-17T00:21:00+01:00",
+			"departureDelay": null,
+			"departurePlatform": null,
+			"plannedDeparturePlatform": null,
+			"remarks": [
+				{
+					"type": "hint",
+					"code": "OPERATOR",
+					"text": "BVG (Ahrensfelde/Stadtgrenze (Berlin) - U Rosenthaler Platz (Berlin))"
+				},
+				{
+					"id": "61239",
+					"type": "warning",
+					"summary": "Ersatzverkehr",
+					"text": "Tram 27: Ersatzverkehr aufgrund von Bauarbeiten zwischen Allee der Kosmonauten/Rhinstraße &lt; > Alt-Hohenschönhausen. Die Linie fährt Krankenhaus Köpenick &lt; > Allee der Kosmonauten/Rhinstraße &lt; > S+U Lichtenberg/Gudrunstraße bzw. Betriebshof Lichtenberg.[br] (Allee der  Kosmonauten/Rhinstr. (Berlin) - Alt-Hohenschönhausen (Berlin))",
+					"icon": {
+						"type": "HIM1",
+						"title": null
+					},
+					"priority": 100,
+					"products": {
+						"suburban": false,
+						"subway": false,
+						"tram": true,
+						"bus": false,
+						"ferry": false,
+						"express": false,
+						"regional": false
+					},
+					"categories": [
+						1
+					],
+					"validFrom": "2022-03-07T04:30:00+01:00",
+					"validUntil": "2022-04-11T00:30:00+02:00",
+					"modified": "2022-03-01T10:33:54+01:00"
+				}
+			]
+		},
+		{
+			"stop": {
+				"type": "stop",
+				"id": "900000160510",
+				"name": "Anton-Saefkow-Platz",
+				"location": {
+					"type": "location",
+					"id": "900160510",
+					"latitude": 52.528178,
+					"longitude": 13.468879
+				},
+				"products": {
+					"suburban": false,
+					"subway": false,
+					"tram": true,
+					"bus": false,
+					"ferry": false,
+					"express": false,
+					"regional": false
+				},
+				"stationDHID": "de:11000:900160510"
+			},
+			"arrival": "2022-03-17T00:22:00+01:00",
+			"plannedArrival": "2022-03-17T00:22:00+01:00",
+			"arrivalDelay": null,
+			"arrivalPlatform": null,
+			"plannedArrivalPlatform": null,
+			"departure": "2022-03-17T00:22:00+01:00",
+			"plannedDeparture": "2022-03-17T00:22:00+01:00",
+			"departureDelay": null,
+			"departurePlatform": null,
+			"plannedDeparturePlatform": null,
+			"remarks": [
+				{
+					"type": "hint",
+					"code": "OPERATOR",
+					"text": "BVG (Ahrensfelde/Stadtgrenze (Berlin) - U Rosenthaler Platz (Berlin))"
+				},
+				{
+					"id": "61239",
+					"type": "warning",
+					"summary": "Ersatzverkehr",
+					"text": "Tram 27: Ersatzverkehr aufgrund von Bauarbeiten zwischen Allee der Kosmonauten/Rhinstraße &lt; > Alt-Hohenschönhausen. Die Linie fährt Krankenhaus Köpenick &lt; > Allee der Kosmonauten/Rhinstraße &lt; > S+U Lichtenberg/Gudrunstraße bzw. Betriebshof Lichtenberg.[br] (Allee der  Kosmonauten/Rhinstr. (Berlin) - Alt-Hohenschönhausen (Berlin))",
+					"icon": {
+						"type": "HIM1",
+						"title": null
+					},
+					"priority": 100,
+					"products": {
+						"suburban": false,
+						"subway": false,
+						"tram": true,
+						"bus": false,
+						"ferry": false,
+						"express": false,
+						"regional": false
+					},
+					"categories": [
+						1
+					],
+					"validFrom": "2022-03-07T04:30:00+01:00",
+					"validUntil": "2022-04-11T00:30:00+02:00",
+					"modified": "2022-03-01T10:33:54+01:00"
+				}
+			]
+		},
+		{
+			"stop": {
+				"type": "stop",
+				"id": "900000110029",
+				"name": "Karl-Lade-Str.",
+				"location": {
+					"type": "location",
+					"id": "900110029",
+					"latitude": 52.529176,
+					"longitude": 13.462605
+				},
+				"products": {
+					"suburban": false,
+					"subway": false,
+					"tram": true,
+					"bus": true,
+					"ferry": false,
+					"express": false,
+					"regional": false
+				},
+				"stationDHID": "de:11000:900110029"
+			},
+			"arrival": "2022-03-17T00:23:00+01:00",
+			"plannedArrival": "2022-03-17T00:23:00+01:00",
+			"arrivalDelay": null,
+			"arrivalPlatform": null,
+			"plannedArrivalPlatform": null,
+			"departure": "2022-03-17T00:23:00+01:00",
+			"plannedDeparture": "2022-03-17T00:23:00+01:00",
+			"departureDelay": null,
+			"departurePlatform": null,
+			"plannedDeparturePlatform": null,
+			"remarks": [
+				{
+					"type": "hint",
+					"code": "OPERATOR",
+					"text": "BVG (Ahrensfelde/Stadtgrenze (Berlin) - U Rosenthaler Platz (Berlin))"
+				},
+				{
+					"id": "61239",
+					"type": "warning",
+					"summary": "Ersatzverkehr",
+					"text": "Tram 27: Ersatzverkehr aufgrund von Bauarbeiten zwischen Allee der Kosmonauten/Rhinstraße &lt; > Alt-Hohenschönhausen. Die Linie fährt Krankenhaus Köpenick &lt; > Allee der Kosmonauten/Rhinstraße &lt; > S+U Lichtenberg/Gudrunstraße bzw. Betriebshof Lichtenberg.[br] (Allee der  Kosmonauten/Rhinstr. (Berlin) - Alt-Hohenschönhausen (Berlin))",
+					"icon": {
+						"type": "HIM1",
+						"title": null
+					},
+					"priority": 100,
+					"products": {
+						"suburban": false,
+						"subway": false,
+						"tram": true,
+						"bus": false,
+						"ferry": false,
+						"express": false,
+						"regional": false
+					},
+					"categories": [
+						1
+					],
+					"validFrom": "2022-03-07T04:30:00+01:00",
+					"validUntil": "2022-04-11T00:30:00+02:00",
+					"modified": "2022-03-01T10:33:54+01:00"
+				}
+			]
+		},
+		{
+			"stop": {
+				"type": "stop",
+				"id": "900000110004",
+				"name": "S Landsberger Allee",
+				"location": {
+					"type": "location",
+					"id": "900110004",
+					"latitude": 52.528771,
+					"longitude": 13.455944
+				},
+				"products": {
+					"suburban": true,
+					"subway": false,
+					"tram": true,
+					"bus": true,
+					"ferry": false,
+					"express": false,
+					"regional": false
+				},
+				"stationDHID": "de:11000:900110004"
+			},
+			"arrival": "2022-03-17T00:25:00+01:00",
+			"plannedArrival": "2022-03-17T00:25:00+01:00",
+			"arrivalDelay": null,
+			"arrivalPlatform": null,
+			"plannedArrivalPlatform": null,
+			"departure": "2022-03-17T00:25:00+01:00",
+			"plannedDeparture": "2022-03-17T00:25:00+01:00",
+			"departureDelay": null,
+			"departurePlatform": null,
+			"plannedDeparturePlatform": null,
+			"remarks": [
+				{
+					"type": "hint",
+					"code": "OPERATOR",
+					"text": "BVG (Ahrensfelde/Stadtgrenze (Berlin) - U Rosenthaler Platz (Berlin))"
+				},
+				{
+					"id": "61239",
+					"type": "warning",
+					"summary": "Ersatzverkehr",
+					"text": "Tram 27: Ersatzverkehr aufgrund von Bauarbeiten zwischen Allee der Kosmonauten/Rhinstraße &lt; > Alt-Hohenschönhausen. Die Linie fährt Krankenhaus Köpenick &lt; > Allee der Kosmonauten/Rhinstraße &lt; > S+U Lichtenberg/Gudrunstraße bzw. Betriebshof Lichtenberg.[br] (Allee der  Kosmonauten/Rhinstr. (Berlin) - Alt-Hohenschönhausen (Berlin))",
+					"icon": {
+						"type": "HIM1",
+						"title": null
+					},
+					"priority": 100,
+					"products": {
+						"suburban": false,
+						"subway": false,
+						"tram": true,
+						"bus": false,
+						"ferry": false,
+						"express": false,
+						"regional": false
+					},
+					"categories": [
+						1
+					],
+					"validFrom": "2022-03-07T04:30:00+01:00",
+					"validUntil": "2022-04-11T00:30:00+02:00",
+					"modified": "2022-03-01T10:33:54+01:00"
+				}
+			]
+		},
+		{
+			"stop": {
+				"type": "stop",
+				"id": "900000120016",
+				"name": "Landsberger Allee/Petersburger Str.",
+				"location": {
+					"type": "location",
+					"id": "900120016",
+					"latitude": 52.526048,
+					"longitude": 13.446775
+				},
+				"products": {
+					"suburban": false,
+					"subway": false,
+					"tram": true,
+					"bus": true,
+					"ferry": false,
+					"express": false,
+					"regional": false
+				},
+				"stationDHID": "de:11000:900120016"
+			},
+			"arrival": "2022-03-17T00:27:00+01:00",
+			"plannedArrival": "2022-03-17T00:27:00+01:00",
+			"arrivalDelay": null,
+			"arrivalPlatform": null,
+			"plannedArrivalPlatform": null,
+			"departure": "2022-03-17T00:27:00+01:00",
+			"plannedDeparture": "2022-03-17T00:27:00+01:00",
+			"departureDelay": null,
+			"departurePlatform": null,
+			"plannedDeparturePlatform": null,
+			"remarks": [
+				{
+					"type": "hint",
+					"code": "OPERATOR",
+					"text": "BVG (Ahrensfelde/Stadtgrenze (Berlin) - U Rosenthaler Platz (Berlin))"
+				},
+				{
+					"id": "61239",
+					"type": "warning",
+					"summary": "Ersatzverkehr",
+					"text": "Tram 27: Ersatzverkehr aufgrund von Bauarbeiten zwischen Allee der Kosmonauten/Rhinstraße &lt; > Alt-Hohenschönhausen. Die Linie fährt Krankenhaus Köpenick &lt; > Allee der Kosmonauten/Rhinstraße &lt; > S+U Lichtenberg/Gudrunstraße bzw. Betriebshof Lichtenberg.[br] (Allee der  Kosmonauten/Rhinstr. (Berlin) - Alt-Hohenschönhausen (Berlin))",
+					"icon": {
+						"type": "HIM1",
+						"title": null
+					},
+					"priority": 100,
+					"products": {
+						"suburban": false,
+						"subway": false,
+						"tram": true,
+						"bus": false,
+						"ferry": false,
+						"express": false,
+						"regional": false
+					},
+					"categories": [
+						1
+					],
+					"validFrom": "2022-03-07T04:30:00+01:00",
+					"validUntil": "2022-04-11T00:30:00+02:00",
+					"modified": "2022-03-01T10:33:54+01:00"
+				}
+			]
+		},
+		{
+			"stop": {
+				"type": "stop",
+				"id": "900000120513",
+				"name": "Klinikum im Friedrichshain",
+				"location": {
+					"type": "location",
+					"id": "900120513",
+					"latitude": 52.524151,
+					"longitude": 13.440204
+				},
+				"products": {
+					"suburban": false,
+					"subway": false,
+					"tram": true,
+					"bus": false,
+					"ferry": false,
+					"express": false,
+					"regional": false
+				},
+				"stationDHID": "de:11000:900120513"
+			},
+			"arrival": "2022-03-17T00:29:00+01:00",
+			"plannedArrival": "2022-03-17T00:29:00+01:00",
+			"arrivalDelay": null,
+			"arrivalPlatform": null,
+			"plannedArrivalPlatform": null,
+			"departure": "2022-03-17T00:29:00+01:00",
+			"plannedDeparture": "2022-03-17T00:29:00+01:00",
+			"departureDelay": null,
+			"departurePlatform": null,
+			"plannedDeparturePlatform": null,
+			"remarks": [
+				{
+					"type": "hint",
+					"code": "OPERATOR",
+					"text": "BVG (Ahrensfelde/Stadtgrenze (Berlin) - U Rosenthaler Platz (Berlin))"
+				},
+				{
+					"id": "61239",
+					"type": "warning",
+					"summary": "Ersatzverkehr",
+					"text": "Tram 27: Ersatzverkehr aufgrund von Bauarbeiten zwischen Allee der Kosmonauten/Rhinstraße &lt; > Alt-Hohenschönhausen. Die Linie fährt Krankenhaus Köpenick &lt; > Allee der Kosmonauten/Rhinstraße &lt; > S+U Lichtenberg/Gudrunstraße bzw. Betriebshof Lichtenberg.[br] (Allee der  Kosmonauten/Rhinstr. (Berlin) - Alt-Hohenschönhausen (Berlin))",
+					"icon": {
+						"type": "HIM1",
+						"title": null
+					},
+					"priority": 100,
+					"products": {
+						"suburban": false,
+						"subway": false,
+						"tram": true,
+						"bus": false,
+						"ferry": false,
+						"express": false,
+						"regional": false
+					},
+					"categories": [
+						1
+					],
+					"validFrom": "2022-03-07T04:30:00+01:00",
+					"validUntil": "2022-04-11T00:30:00+02:00",
+					"modified": "2022-03-01T10:33:54+01:00"
+				}
+			]
+		},
+		{
+			"stop": {
+				"type": "stop",
+				"id": "900000120019",
+				"name": "Platz der Vereinten Nationen",
+				"location": {
+					"type": "location",
+					"id": "900120019",
+					"latitude": 52.523252,
+					"longitude": 13.433057
+				},
+				"products": {
+					"suburban": false,
+					"subway": false,
+					"tram": true,
+					"bus": true,
+					"ferry": false,
+					"express": false,
+					"regional": false
+				},
+				"stationDHID": "de:11000:900120019"
+			},
+			"arrival": "2022-03-17T00:30:00+01:00",
+			"plannedArrival": "2022-03-17T00:30:00+01:00",
+			"arrivalDelay": null,
+			"arrivalPlatform": null,
+			"plannedArrivalPlatform": null,
+			"departure": "2022-03-17T00:30:00+01:00",
+			"plannedDeparture": "2022-03-17T00:30:00+01:00",
+			"departureDelay": null,
+			"departurePlatform": null,
+			"plannedDeparturePlatform": null,
+			"remarks": [
+				{
+					"type": "hint",
+					"code": "OPERATOR",
+					"text": "BVG (Ahrensfelde/Stadtgrenze (Berlin) - U Rosenthaler Platz (Berlin))"
+				},
+				{
+					"id": "61239",
+					"type": "warning",
+					"summary": "Ersatzverkehr",
+					"text": "Tram 27: Ersatzverkehr aufgrund von Bauarbeiten zwischen Allee der Kosmonauten/Rhinstraße &lt; > Alt-Hohenschönhausen. Die Linie fährt Krankenhaus Köpenick &lt; > Allee der Kosmonauten/Rhinstraße &lt; > S+U Lichtenberg/Gudrunstraße bzw. Betriebshof Lichtenberg.[br] (Allee der  Kosmonauten/Rhinstr. (Berlin) - Alt-Hohenschönhausen (Berlin))",
+					"icon": {
+						"type": "HIM1",
+						"title": null
+					},
+					"priority": 100,
+					"products": {
+						"suburban": false,
+						"subway": false,
+						"tram": true,
+						"bus": false,
+						"ferry": false,
+						"express": false,
+						"regional": false
+					},
+					"categories": [
+						1
+					],
+					"validFrom": "2022-03-07T04:30:00+01:00",
+					"validUntil": "2022-04-11T00:30:00+02:00",
+					"modified": "2022-03-01T10:33:54+01:00"
+				}
+			]
+		},
+		{
+			"stop": {
+				"type": "stop",
+				"id": "900000120511",
+				"name": "Büschingstr.",
+				"location": {
+					"type": "location",
+					"id": "900120511",
+					"latitude": 52.523126,
+					"longitude": 13.427214
+				},
+				"products": {
+					"suburban": false,
+					"subway": false,
+					"tram": true,
+					"bus": false,
+					"ferry": false,
+					"express": false,
+					"regional": false
+				},
+				"stationDHID": "de:11000:900120511"
+			},
+			"arrival": "2022-03-17T00:31:00+01:00",
+			"plannedArrival": "2022-03-17T00:31:00+01:00",
+			"arrivalDelay": null,
+			"arrivalPlatform": null,
+			"plannedArrivalPlatform": null,
+			"departure": "2022-03-17T00:31:00+01:00",
+			"plannedDeparture": "2022-03-17T00:31:00+01:00",
+			"departureDelay": null,
+			"departurePlatform": null,
+			"plannedDeparturePlatform": null,
+			"remarks": [
+				{
+					"type": "hint",
+					"code": "OPERATOR",
+					"text": "BVG (Ahrensfelde/Stadtgrenze (Berlin) - U Rosenthaler Platz (Berlin))"
+				},
+				{
+					"id": "61239",
+					"type": "warning",
+					"summary": "Ersatzverkehr",
+					"text": "Tram 27: Ersatzverkehr aufgrund von Bauarbeiten zwischen Allee der Kosmonauten/Rhinstraße &lt; > Alt-Hohenschönhausen. Die Linie fährt Krankenhaus Köpenick &lt; > Allee der Kosmonauten/Rhinstraße &lt; > S+U Lichtenberg/Gudrunstraße bzw. Betriebshof Lichtenberg.[br] (Allee der  Kosmonauten/Rhinstr. (Berlin) - Alt-Hohenschönhausen (Berlin))",
+					"icon": {
+						"type": "HIM1",
+						"title": null
+					},
+					"priority": 100,
+					"products": {
+						"suburban": false,
+						"subway": false,
+						"tram": true,
+						"bus": false,
+						"ferry": false,
+						"express": false,
+						"regional": false
+					},
+					"categories": [
+						1
+					],
+					"validFrom": "2022-03-07T04:30:00+01:00",
+					"validUntil": "2022-04-11T00:30:00+02:00",
+					"modified": "2022-03-01T10:33:54+01:00"
+				}
+			]
+		},
+		{
+			"stop": {
+				"type": "stop",
+				"id": "900000100040",
+				"name": "Mollstr./Otto-Braun-Str.",
+				"location": {
+					"type": "location",
+					"id": "900100040",
+					"latitude": 52.525185,
+					"longitude": 13.419942
+				},
+				"products": {
+					"suburban": false,
+					"subway": false,
+					"tram": true,
+					"bus": true,
+					"ferry": false,
+					"express": false,
+					"regional": false
+				},
+				"stationDHID": "de:11000:900100040"
+			},
+			"arrival": "2022-03-17T00:33:00+01:00",
+			"plannedArrival": "2022-03-17T00:33:00+01:00",
+			"arrivalDelay": null,
+			"arrivalPlatform": null,
+			"plannedArrivalPlatform": null,
+			"departure": "2022-03-17T00:33:00+01:00",
+			"plannedDeparture": "2022-03-17T00:33:00+01:00",
+			"departureDelay": null,
+			"departurePlatform": null,
+			"plannedDeparturePlatform": null,
+			"remarks": [
+				{
+					"type": "hint",
+					"code": "OPERATOR",
+					"text": "BVG (Ahrensfelde/Stadtgrenze (Berlin) - U Rosenthaler Platz (Berlin))"
+				},
+				{
+					"id": "61239",
+					"type": "warning",
+					"summary": "Ersatzverkehr",
+					"text": "Tram 27: Ersatzverkehr aufgrund von Bauarbeiten zwischen Allee der Kosmonauten/Rhinstraße &lt; > Alt-Hohenschönhausen. Die Linie fährt Krankenhaus Köpenick &lt; > Allee der Kosmonauten/Rhinstraße &lt; > S+U Lichtenberg/Gudrunstraße bzw. Betriebshof Lichtenberg.[br] (Allee der  Kosmonauten/Rhinstr. (Berlin) - Alt-Hohenschönhausen (Berlin))",
+					"icon": {
+						"type": "HIM1",
+						"title": null
+					},
+					"priority": 100,
+					"products": {
+						"suburban": false,
+						"subway": false,
+						"tram": true,
+						"bus": false,
+						"ferry": false,
+						"express": false,
+						"regional": false
+					},
+					"categories": [
+						1
+					],
+					"validFrom": "2022-03-07T04:30:00+01:00",
+					"validUntil": "2022-04-11T00:30:00+02:00",
+					"modified": "2022-03-01T10:33:54+01:00"
+				}
+			]
+		},
+		{
+			"stop": {
+				"type": "stop",
+				"id": "900000110022",
+				"name": "Mollstr./Prenzlauer Allee",
+				"location": {
+					"type": "location",
+					"id": "900110022",
+					"latitude": 52.526866,
+					"longitude": 13.41596
+				},
+				"products": {
+					"suburban": false,
+					"subway": false,
+					"tram": true,
+					"bus": true,
+					"ferry": false,
+					"express": false,
+					"regional": false
+				},
+				"stationDHID": "de:11000:900110022"
+			},
+			"arrival": "2022-03-17T00:34:00+01:00",
+			"plannedArrival": "2022-03-17T00:34:00+01:00",
+			"arrivalDelay": null,
+			"arrivalPlatform": null,
+			"plannedArrivalPlatform": null,
+			"departure": "2022-03-17T00:34:00+01:00",
+			"plannedDeparture": "2022-03-17T00:34:00+01:00",
+			"departureDelay": null,
+			"departurePlatform": null,
+			"plannedDeparturePlatform": null,
+			"remarks": [
+				{
+					"type": "hint",
+					"code": "OPERATOR",
+					"text": "BVG (Ahrensfelde/Stadtgrenze (Berlin) - U Rosenthaler Platz (Berlin))"
+				},
+				{
+					"id": "61239",
+					"type": "warning",
+					"summary": "Ersatzverkehr",
+					"text": "Tram 27: Ersatzverkehr aufgrund von Bauarbeiten zwischen Allee der Kosmonauten/Rhinstraße &lt; > Alt-Hohenschönhausen. Die Linie fährt Krankenhaus Köpenick &lt; > Allee der Kosmonauten/Rhinstraße &lt; > S+U Lichtenberg/Gudrunstraße bzw. Betriebshof Lichtenberg.[br] (Allee der  Kosmonauten/Rhinstr. (Berlin) - Alt-Hohenschönhausen (Berlin))",
+					"icon": {
+						"type": "HIM1",
+						"title": null
+					},
+					"priority": 100,
+					"products": {
+						"suburban": false,
+						"subway": false,
+						"tram": true,
+						"bus": false,
+						"ferry": false,
+						"express": false,
+						"regional": false
+					},
+					"categories": [
+						1
+					],
+					"validFrom": "2022-03-07T04:30:00+01:00",
+					"validUntil": "2022-04-11T00:30:00+02:00",
+					"modified": "2022-03-01T10:33:54+01:00"
+				}
+			]
+		},
+		{
+			"stop": {
+				"type": "stop",
+				"id": "900000100016",
+				"name": "U Rosa-Luxemburg-Platz",
+				"location": {
+					"type": "location",
+					"id": "900100016",
+					"latitude": 52.528529,
+					"longitude": 13.41009
+				},
+				"products": {
+					"suburban": false,
+					"subway": true,
+					"tram": true,
+					"bus": true,
+					"ferry": false,
+					"express": false,
+					"regional": false
+				},
+				"stationDHID": "de:11000:900100016"
+			},
+			"arrival": "2022-03-17T00:35:00+01:00",
+			"plannedArrival": "2022-03-17T00:35:00+01:00",
+			"arrivalDelay": null,
+			"arrivalPlatform": null,
+			"plannedArrivalPlatform": null,
+			"departure": "2022-03-17T00:35:00+01:00",
+			"plannedDeparture": "2022-03-17T00:35:00+01:00",
+			"departureDelay": null,
+			"departurePlatform": null,
+			"plannedDeparturePlatform": null,
+			"remarks": [
+				{
+					"type": "hint",
+					"code": "OPERATOR",
+					"text": "BVG (Ahrensfelde/Stadtgrenze (Berlin) - U Rosenthaler Platz (Berlin))"
+				},
+				{
+					"id": "61239",
+					"type": "warning",
+					"summary": "Ersatzverkehr",
+					"text": "Tram 27: Ersatzverkehr aufgrund von Bauarbeiten zwischen Allee der Kosmonauten/Rhinstraße &lt; > Alt-Hohenschönhausen. Die Linie fährt Krankenhaus Köpenick &lt; > Allee der Kosmonauten/Rhinstraße &lt; > S+U Lichtenberg/Gudrunstraße bzw. Betriebshof Lichtenberg.[br] (Allee der  Kosmonauten/Rhinstr. (Berlin) - Alt-Hohenschönhausen (Berlin))",
+					"icon": {
+						"type": "HIM1",
+						"title": null
+					},
+					"priority": 100,
+					"products": {
+						"suburban": false,
+						"subway": false,
+						"tram": true,
+						"bus": false,
+						"ferry": false,
+						"express": false,
+						"regional": false
+					},
+					"categories": [
+						1
+					],
+					"validFrom": "2022-03-07T04:30:00+01:00",
+					"validUntil": "2022-04-11T00:30:00+02:00",
+					"modified": "2022-03-01T10:33:54+01:00"
+				}
+			]
+		},
+		{
+			"stop": {
+				"type": "stop",
+				"id": "900000100023",
+				"name": "U Rosenthaler Platz",
+				"location": {
+					"type": "location",
+					"id": "900100023",
+					"latitude": 52.529778,
+					"longitude": 13.401397
+				},
+				"products": {
+					"suburban": false,
+					"subway": true,
+					"tram": true,
+					"bus": true,
+					"ferry": false,
+					"express": false,
+					"regional": false
+				},
+				"stationDHID": "de:11000:900100023"
+			},
+			"arrival": "2022-03-17T00:36:00+01:00",
+			"plannedArrival": "2022-03-17T00:36:00+01:00",
+			"arrivalDelay": null,
+			"arrivalPlatform": null,
+			"plannedArrivalPlatform": null,
+			"departure": "2022-03-17T00:37:00+01:00",
+			"plannedDeparture": "2022-03-17T00:37:00+01:00",
+			"departureDelay": 0,
+			"departurePlatform": null,
+			"plannedDeparturePlatform": null,
+			"remarks": [
+				{
+					"type": "hint",
+					"code": "text.journeystop.product.or.direction.changes.stop.message",
+					"text": "Verkehrt ab hier als M5 in Richtung U  Naturkundemuseum"
+				},
+				{
+					"type": "hint",
+					"code": "OPERATOR",
+					"text": "BVG (Ahrensfelde/Stadtgrenze (Berlin) - U Rosenthaler Platz (Berlin))"
+				},
+				{
+					"type": "hint",
+					"code": "OPERATOR",
+					"text": "BVG (U Rosenthaler Platz (Berlin) - U Naturkundemuseum (Berlin) [Chausseestr.])"
+				},
+				{
+					"id": "148028",
+					"type": "warning",
+					"summary": ".nur M10 fährt zum Hauptbahnhof",
+					"text": "Tram M5 und M8 fahren nicht zwischen S+U Hauptbahnhof und U Naturkundemuseum, nutzen Sie bitte die M10. Tram M5 fährt Zingster Str. - U Naturkundemuseum - weiter über die Strecke der M8 bis U Rosenthaler Platz. Tram M8 fährt Ahrensfelde - U Rosenthaler Platz - weiter (nach Wartezeit) als M5 über U Naturkundemuseum - S Hackescher Markt - Zingster Str. (U Rosenthaler Platz (Berlin) - S Oranienburger Str. (Berlin))",
+					"icon": {
+						"type": "HIM1",
+						"title": null
+					},
+					"priority": 100,
+					"products": {
+						"suburban": true,
+						"subway": true,
+						"tram": true,
+						"bus": true,
+						"ferry": true,
+						"express": true,
+						"regional": true
+					},
+					"company": "BVG",
+					"categories": [
+						1
+					],
+					"validFrom": "2021-12-20T04:00:00+01:00",
+					"validUntil": "2022-03-28T04:00:00+02:00",
+					"modified": "2021-12-21T18:49:30+01:00"
+				},
+				{
+					"id": "61239",
+					"type": "warning",
+					"summary": "Ersatzverkehr",
+					"text": "Tram 27: Ersatzverkehr aufgrund von Bauarbeiten zwischen Allee der Kosmonauten/Rhinstraße &lt; > Alt-Hohenschönhausen. Die Linie fährt Krankenhaus Köpenick &lt; > Allee der Kosmonauten/Rhinstraße &lt; > S+U Lichtenberg/Gudrunstraße bzw. Betriebshof Lichtenberg.[br] (Allee der  Kosmonauten/Rhinstr. (Berlin) - Alt-Hohenschönhausen (Berlin))",
+					"icon": {
+						"type": "HIM1",
+						"title": null
+					},
+					"priority": 100,
+					"products": {
+						"suburban": false,
+						"subway": false,
+						"tram": true,
+						"bus": false,
+						"ferry": false,
+						"express": false,
+						"regional": false
+					},
+					"categories": [
+						1
+					],
+					"validFrom": "2022-03-07T04:30:00+01:00",
+					"validUntil": "2022-04-11T00:30:00+02:00",
+					"modified": "2022-03-01T10:33:54+01:00"
+				}
+			]
+		},
+		{
+			"stop": {
+				"type": "stop",
+				"id": "900000100041",
+				"name": "Brunnenstr./Invalidenstr.",
+				"location": {
+					"type": "location",
+					"id": "900100041",
+					"latitude": 52.532601,
+					"longitude": 13.398889
+				},
+				"products": {
+					"suburban": false,
+					"subway": false,
+					"tram": true,
+					"bus": true,
+					"ferry": false,
+					"express": false,
+					"regional": false
+				},
+				"stationDHID": "de:11000:900100041"
+			},
+			"arrival": "2022-03-17T00:40:00+01:00",
+			"plannedArrival": "2022-03-17T00:39:00+01:00",
+			"arrivalDelay": 60,
+			"arrivalPlatform": null,
+			"plannedArrivalPlatform": null,
+			"departure": "2022-03-17T00:40:00+01:00",
+			"plannedDeparture": "2022-03-17T00:39:00+01:00",
+			"departureDelay": 60,
+			"departurePlatform": null,
+			"plannedDeparturePlatform": null,
+			"remarks": [
+				{
+					"type": "hint",
+					"code": "OPERATOR",
+					"text": "BVG (U Rosenthaler Platz (Berlin) - U Naturkundemuseum (Berlin) [Chausseestr.])"
+				},
+				{
+					"id": "148028",
+					"type": "warning",
+					"summary": ".nur M10 fährt zum Hauptbahnhof",
+					"text": "Tram M5 und M8 fahren nicht zwischen S+U Hauptbahnhof und U Naturkundemuseum, nutzen Sie bitte die M10. Tram M5 fährt Zingster Str. - U Naturkundemuseum - weiter über die Strecke der M8 bis U Rosenthaler Platz. Tram M8 fährt Ahrensfelde - U Rosenthaler Platz - weiter (nach Wartezeit) als M5 über U Naturkundemuseum - S Hackescher Markt - Zingster Str. (U Rosenthaler Platz (Berlin) - S Oranienburger Str. (Berlin))",
+					"icon": {
+						"type": "HIM1",
+						"title": null
+					},
+					"priority": 100,
+					"products": {
+						"suburban": true,
+						"subway": true,
+						"tram": true,
+						"bus": true,
+						"ferry": true,
+						"express": true,
+						"regional": true
+					},
+					"company": "BVG",
+					"categories": [
+						1
+					],
+					"validFrom": "2021-12-20T04:00:00+01:00",
+					"validUntil": "2022-03-28T04:00:00+02:00",
+					"modified": "2021-12-21T18:49:30+01:00"
+				},
+				{
+					"id": "61239",
+					"type": "warning",
+					"summary": "Ersatzverkehr",
+					"text": "Tram 27: Ersatzverkehr aufgrund von Bauarbeiten zwischen Allee der Kosmonauten/Rhinstraße &lt; > Alt-Hohenschönhausen. Die Linie fährt Krankenhaus Köpenick &lt; > Allee der Kosmonauten/Rhinstraße &lt; > S+U Lichtenberg/Gudrunstraße bzw. Betriebshof Lichtenberg.[br] (Allee der  Kosmonauten/Rhinstr. (Berlin) - Alt-Hohenschönhausen (Berlin))",
+					"icon": {
+						"type": "HIM1",
+						"title": null
+					},
+					"priority": 100,
+					"products": {
+						"suburban": false,
+						"subway": false,
+						"tram": true,
+						"bus": false,
+						"ferry": false,
+						"express": false,
+						"regional": false
+					},
+					"categories": [
+						1
+					],
+					"validFrom": "2022-03-07T04:30:00+01:00",
+					"validUntil": "2022-04-11T00:30:00+02:00",
+					"modified": "2022-03-01T10:33:54+01:00"
+				}
+			]
+		},
+		{
+			"stop": {
+				"type": "stop",
+				"id": "900000100504",
+				"name": "Pappelplatz",
+				"location": {
+					"type": "location",
+					"id": "900100504",
+					"latitude": 52.532322,
+					"longitude": 13.395195
+				},
+				"products": {
+					"suburban": false,
+					"subway": false,
+					"tram": true,
+					"bus": true,
+					"ferry": false,
+					"express": false,
+					"regional": false
+				},
+				"stationDHID": "de:11000:900100504"
+			},
+			"arrival": "2022-03-17T00:41:00+01:00",
+			"plannedArrival": "2022-03-17T00:40:00+01:00",
+			"arrivalDelay": 60,
+			"arrivalPlatform": null,
+			"plannedArrivalPlatform": null,
+			"departure": "2022-03-17T00:41:00+01:00",
+			"plannedDeparture": "2022-03-17T00:40:00+01:00",
+			"departureDelay": 60,
+			"departurePlatform": null,
+			"plannedDeparturePlatform": null,
+			"remarks": [
+				{
+					"type": "hint",
+					"code": "OPERATOR",
+					"text": "BVG (U Rosenthaler Platz (Berlin) - U Naturkundemuseum (Berlin) [Chausseestr.])"
+				},
+				{
+					"id": "148028",
+					"type": "warning",
+					"summary": ".nur M10 fährt zum Hauptbahnhof",
+					"text": "Tram M5 und M8 fahren nicht zwischen S+U Hauptbahnhof und U Naturkundemuseum, nutzen Sie bitte die M10. Tram M5 fährt Zingster Str. - U Naturkundemuseum - weiter über die Strecke der M8 bis U Rosenthaler Platz. Tram M8 fährt Ahrensfelde - U Rosenthaler Platz - weiter (nach Wartezeit) als M5 über U Naturkundemuseum - S Hackescher Markt - Zingster Str. (U Rosenthaler Platz (Berlin) - S Oranienburger Str. (Berlin))",
+					"icon": {
+						"type": "HIM1",
+						"title": null
+					},
+					"priority": 100,
+					"products": {
+						"suburban": true,
+						"subway": true,
+						"tram": true,
+						"bus": true,
+						"ferry": true,
+						"express": true,
+						"regional": true
+					},
+					"company": "BVG",
+					"categories": [
+						1
+					],
+					"validFrom": "2021-12-20T04:00:00+01:00",
+					"validUntil": "2022-03-28T04:00:00+02:00",
+					"modified": "2021-12-21T18:49:30+01:00"
+				},
+				{
+					"id": "61239",
+					"type": "warning",
+					"summary": "Ersatzverkehr",
+					"text": "Tram 27: Ersatzverkehr aufgrund von Bauarbeiten zwischen Allee der Kosmonauten/Rhinstraße &lt; > Alt-Hohenschönhausen. Die Linie fährt Krankenhaus Köpenick &lt; > Allee der Kosmonauten/Rhinstraße &lt; > S+U Lichtenberg/Gudrunstraße bzw. Betriebshof Lichtenberg.[br] (Allee der  Kosmonauten/Rhinstr. (Berlin) - Alt-Hohenschönhausen (Berlin))",
+					"icon": {
+						"type": "HIM1",
+						"title": null
+					},
+					"priority": 100,
+					"products": {
+						"suburban": false,
+						"subway": false,
+						"tram": true,
+						"bus": false,
+						"ferry": false,
+						"express": false,
+						"regional": false
+					},
+					"categories": [
+						1
+					],
+					"validFrom": "2022-03-07T04:30:00+01:00",
+					"validUntil": "2022-04-11T00:30:00+02:00",
+					"modified": "2022-03-01T10:33:54+01:00"
+				}
+			]
+		},
+		{
+			"stop": {
+				"type": "stop",
+				"id": "900000007104",
+				"name": "S Nordbahnhof",
+				"location": {
+					"type": "location",
+					"id": "900007104",
+					"latitude": 52.531675,
+					"longitude": 13.388794
+				},
+				"products": {
+					"suburban": true,
+					"subway": false,
+					"tram": true,
+					"bus": true,
+					"ferry": false,
+					"express": false,
+					"regional": false
+				},
+				"stationDHID": "de:11000:900007104"
+			},
+			"arrival": "2022-03-17T00:42:00+01:00",
+			"plannedArrival": "2022-03-17T00:41:00+01:00",
+			"arrivalDelay": 60,
+			"arrivalPlatform": null,
+			"plannedArrivalPlatform": null,
+			"departure": "2022-03-17T00:42:00+01:00",
+			"plannedDeparture": "2022-03-17T00:41:00+01:00",
+			"departureDelay": 60,
+			"departurePlatform": null,
+			"plannedDeparturePlatform": null,
+			"remarks": [
+				{
+					"type": "hint",
+					"code": "OPERATOR",
+					"text": "BVG (U Rosenthaler Platz (Berlin) - U Naturkundemuseum (Berlin) [Chausseestr.])"
+				},
+				{
+					"id": "148028",
+					"type": "warning",
+					"summary": ".nur M10 fährt zum Hauptbahnhof",
+					"text": "Tram M5 und M8 fahren nicht zwischen S+U Hauptbahnhof und U Naturkundemuseum, nutzen Sie bitte die M10. Tram M5 fährt Zingster Str. - U Naturkundemuseum - weiter über die Strecke der M8 bis U Rosenthaler Platz. Tram M8 fährt Ahrensfelde - U Rosenthaler Platz - weiter (nach Wartezeit) als M5 über U Naturkundemuseum - S Hackescher Markt - Zingster Str. (U Rosenthaler Platz (Berlin) - S Oranienburger Str. (Berlin))",
+					"icon": {
+						"type": "HIM1",
+						"title": null
+					},
+					"priority": 100,
+					"products": {
+						"suburban": true,
+						"subway": true,
+						"tram": true,
+						"bus": true,
+						"ferry": true,
+						"express": true,
+						"regional": true
+					},
+					"company": "BVG",
+					"categories": [
+						1
+					],
+					"validFrom": "2021-12-20T04:00:00+01:00",
+					"validUntil": "2022-03-28T04:00:00+02:00",
+					"modified": "2021-12-21T18:49:30+01:00"
+				},
+				{
+					"id": "61239",
+					"type": "warning",
+					"summary": "Ersatzverkehr",
+					"text": "Tram 27: Ersatzverkehr aufgrund von Bauarbeiten zwischen Allee der Kosmonauten/Rhinstraße &lt; > Alt-Hohenschönhausen. Die Linie fährt Krankenhaus Köpenick &lt; > Allee der Kosmonauten/Rhinstraße &lt; > S+U Lichtenberg/Gudrunstraße bzw. Betriebshof Lichtenberg.[br] (Allee der  Kosmonauten/Rhinstr. (Berlin) - Alt-Hohenschönhausen (Berlin))",
+					"icon": {
+						"type": "HIM1",
+						"title": null
+					},
+					"priority": 100,
+					"products": {
+						"suburban": false,
+						"subway": false,
+						"tram": true,
+						"bus": false,
+						"ferry": false,
+						"express": false,
+						"regional": false
+					},
+					"categories": [
+						1
+					],
+					"validFrom": "2022-03-07T04:30:00+01:00",
+					"validUntil": "2022-04-11T00:30:00+02:00",
+					"modified": "2022-03-01T10:33:54+01:00"
+				}
+			]
+		},
+		{
+			"stop": {
+				"type": "stop",
+				"id": "900000100710",
+				"name": "U Naturkundemuseum [Chausseestr.]",
+				"location": {
+					"type": "location",
+					"id": "900100710",
+					"latitude": 52.530273,
+					"longitude": 13.383743
+				},
+				"products": {
+					"suburban": false,
+					"subway": true,
+					"tram": true,
+					"bus": true,
+					"ferry": false,
+					"express": false,
+					"regional": false
+				},
+				"stationDHID": "de:11000:900100710"
+			},
+			"arrival": "2022-03-17T00:45:00+01:00",
+			"plannedArrival": "2022-03-17T00:43:00+01:00",
+			"arrivalDelay": 120,
+			"arrivalPlatform": null,
+			"plannedArrivalPlatform": null,
+			"departure": "2022-03-17T00:45:00+01:00",
+			"plannedDeparture": "2022-03-17T00:43:00+01:00",
+			"departureDelay": 120,
+			"departurePlatform": null,
+			"plannedDeparturePlatform": null,
+			"remarks": [
+				{
+					"type": "hint",
+					"code": "text.journeystop.product.or.direction.changes.stop.message",
+					"text": "Verkehrt ab hier als M5 in Richtung Hohenschönhausen, Gehrenseestr."
+				},
+				{
+					"type": "hint",
+					"code": "OPERATOR",
+					"text": "BVG (U Rosenthaler Platz (Berlin) - U Naturkundemuseum (Berlin) [Chausseestr.])"
+				},
+				{
+					"type": "hint",
+					"code": "OPERATOR",
+					"text": "BVG (U Naturkundemuseum (Berlin) [Chausseestr.] - Gehrenseestr. (Berlin))"
+				},
+				{
+					"id": "148028",
+					"type": "warning",
+					"summary": ".nur M10 fährt zum Hauptbahnhof",
+					"text": "Tram M5 und M8 fahren nicht zwischen S+U Hauptbahnhof und U Naturkundemuseum, nutzen Sie bitte die M10. Tram M5 fährt Zingster Str. - U Naturkundemuseum - weiter über die Strecke der M8 bis U Rosenthaler Platz. Tram M8 fährt Ahrensfelde - U Rosenthaler Platz - weiter (nach Wartezeit) als M5 über U Naturkundemuseum - S Hackescher Markt - Zingster Str. (U Rosenthaler Platz (Berlin) - S Oranienburger Str. (Berlin))",
+					"icon": {
+						"type": "HIM1",
+						"title": null
+					},
+					"priority": 100,
+					"products": {
+						"suburban": true,
+						"subway": true,
+						"tram": true,
+						"bus": true,
+						"ferry": true,
+						"express": true,
+						"regional": true
+					},
+					"company": "BVG",
+					"categories": [
+						1
+					],
+					"validFrom": "2021-12-20T04:00:00+01:00",
+					"validUntil": "2022-03-28T04:00:00+02:00",
+					"modified": "2021-12-21T18:49:30+01:00"
+				},
+				{
+					"id": "61239",
+					"type": "warning",
+					"summary": "Ersatzverkehr",
+					"text": "Tram 27: Ersatzverkehr aufgrund von Bauarbeiten zwischen Allee der Kosmonauten/Rhinstraße &lt; > Alt-Hohenschönhausen. Die Linie fährt Krankenhaus Köpenick &lt; > Allee der Kosmonauten/Rhinstraße &lt; > S+U Lichtenberg/Gudrunstraße bzw. Betriebshof Lichtenberg.[br] (Allee der  Kosmonauten/Rhinstr. (Berlin) - Alt-Hohenschönhausen (Berlin))",
+					"icon": {
+						"type": "HIM1",
+						"title": null
+					},
+					"priority": 100,
+					"products": {
+						"suburban": false,
+						"subway": false,
+						"tram": true,
+						"bus": false,
+						"ferry": false,
+						"express": false,
+						"regional": false
+					},
+					"categories": [
+						1
+					],
+					"validFrom": "2022-03-07T04:30:00+01:00",
+					"validUntil": "2022-04-11T00:30:00+02:00",
+					"modified": "2022-03-01T10:33:54+01:00"
+				}
+			]
+		},
+		{
+			"stop": {
+				"type": "stop",
+				"id": "900000100506",
+				"name": "Hannoversche Str.",
+				"location": {
+					"type": "location",
+					"id": "900100506",
+					"latitude": 52.527297,
+					"longitude": 13.387392
+				},
+				"products": {
+					"suburban": false,
+					"subway": false,
+					"tram": true,
+					"bus": true,
+					"ferry": false,
+					"express": false,
+					"regional": false
+				},
+				"stationDHID": "de:11000:900100506"
+			},
+			"arrival": "2022-03-17T00:46:00+01:00",
+			"plannedArrival": "2022-03-17T00:44:00+01:00",
+			"arrivalDelay": 120,
+			"arrivalPlatform": null,
+			"plannedArrivalPlatform": null,
+			"departure": "2022-03-17T00:46:00+01:00",
+			"plannedDeparture": "2022-03-17T00:44:00+01:00",
+			"departureDelay": 120,
+			"departurePlatform": null,
+			"plannedDeparturePlatform": null,
+			"remarks": [
+				{
+					"type": "hint",
+					"code": "OPERATOR",
+					"text": "BVG (U Naturkundemuseum (Berlin) [Chausseestr.] - Gehrenseestr. (Berlin))"
+				},
+				{
+					"id": "148028",
+					"type": "warning",
+					"summary": ".nur M10 fährt zum Hauptbahnhof",
+					"text": "Tram M5 und M8 fahren nicht zwischen S+U Hauptbahnhof und U Naturkundemuseum, nutzen Sie bitte die M10. Tram M5 fährt Zingster Str. - U Naturkundemuseum - weiter über die Strecke der M8 bis U Rosenthaler Platz. Tram M8 fährt Ahrensfelde - U Rosenthaler Platz - weiter (nach Wartezeit) als M5 über U Naturkundemuseum - S Hackescher Markt - Zingster Str. (U Rosenthaler Platz (Berlin) - S Oranienburger Str. (Berlin))",
+					"icon": {
+						"type": "HIM1",
+						"title": null
+					},
+					"priority": 100,
+					"products": {
+						"suburban": true,
+						"subway": true,
+						"tram": true,
+						"bus": true,
+						"ferry": true,
+						"express": true,
+						"regional": true
+					},
+					"company": "BVG",
+					"categories": [
+						1
+					],
+					"validFrom": "2021-12-20T04:00:00+01:00",
+					"validUntil": "2022-03-28T04:00:00+02:00",
+					"modified": "2021-12-21T18:49:30+01:00"
+				},
+				{
+					"id": "61239",
+					"type": "warning",
+					"summary": "Ersatzverkehr",
+					"text": "Tram 27: Ersatzverkehr aufgrund von Bauarbeiten zwischen Allee der Kosmonauten/Rhinstraße &lt; > Alt-Hohenschönhausen. Die Linie fährt Krankenhaus Köpenick &lt; > Allee der Kosmonauten/Rhinstraße &lt; > S+U Lichtenberg/Gudrunstraße bzw. Betriebshof Lichtenberg.[br] (Allee der  Kosmonauten/Rhinstr. (Berlin) - Alt-Hohenschönhausen (Berlin))",
+					"icon": {
+						"type": "HIM1",
+						"title": null
+					},
+					"priority": 100,
+					"products": {
+						"suburban": false,
+						"subway": false,
+						"tram": true,
+						"bus": false,
+						"ferry": false,
+						"express": false,
+						"regional": false
+					},
+					"categories": [
+						1
+					],
+					"validFrom": "2022-03-07T04:30:00+01:00",
+					"validUntil": "2022-04-11T00:30:00+02:00",
+					"modified": "2022-03-01T10:33:54+01:00"
+				}
+			]
+		},
+		{
+			"stop": {
+				"type": "stop",
+				"id": "900000100007",
+				"name": "S Oranienburger Str.",
+				"location": {
+					"type": "location",
+					"id": "900100007",
+					"latitude": 52.525158,
+					"longitude": 13.393064
+				},
+				"products": {
+					"suburban": true,
+					"subway": false,
+					"tram": true,
+					"bus": true,
+					"ferry": false,
+					"express": false,
+					"regional": false
+				},
+				"stationDHID": "de:11000:900100007"
+			},
+			"arrival": "2022-03-17T00:47:00+01:00",
+			"plannedArrival": "2022-03-17T00:45:00+01:00",
+			"arrivalDelay": 120,
+			"arrivalPlatform": null,
+			"plannedArrivalPlatform": null,
+			"departure": "2022-03-17T00:47:00+01:00",
+			"plannedDeparture": "2022-03-17T00:45:00+01:00",
+			"departureDelay": 120,
+			"departurePlatform": null,
+			"plannedDeparturePlatform": null,
+			"remarks": [
+				{
+					"type": "hint",
+					"code": "OPERATOR",
+					"text": "BVG (U Naturkundemuseum (Berlin) [Chausseestr.] - Gehrenseestr. (Berlin))"
+				},
+				{
+					"id": "148028",
+					"type": "warning",
+					"summary": ".nur M10 fährt zum Hauptbahnhof",
+					"text": "Tram M5 und M8 fahren nicht zwischen S+U Hauptbahnhof und U Naturkundemuseum, nutzen Sie bitte die M10. Tram M5 fährt Zingster Str. - U Naturkundemuseum - weiter über die Strecke der M8 bis U Rosenthaler Platz. Tram M8 fährt Ahrensfelde - U Rosenthaler Platz - weiter (nach Wartezeit) als M5 über U Naturkundemuseum - S Hackescher Markt - Zingster Str. (U Rosenthaler Platz (Berlin) - S Oranienburger Str. (Berlin))",
+					"icon": {
+						"type": "HIM1",
+						"title": null
+					},
+					"priority": 100,
+					"products": {
+						"suburban": true,
+						"subway": true,
+						"tram": true,
+						"bus": true,
+						"ferry": true,
+						"express": true,
+						"regional": true
+					},
+					"company": "BVG",
+					"categories": [
+						1
+					],
+					"validFrom": "2021-12-20T04:00:00+01:00",
+					"validUntil": "2022-03-28T04:00:00+02:00",
+					"modified": "2021-12-21T18:49:30+01:00"
+				},
+				{
+					"id": "61239",
+					"type": "warning",
+					"summary": "Ersatzverkehr",
+					"text": "Tram 27: Ersatzverkehr aufgrund von Bauarbeiten zwischen Allee der Kosmonauten/Rhinstraße &lt; > Alt-Hohenschönhausen. Die Linie fährt Krankenhaus Köpenick &lt; > Allee der Kosmonauten/Rhinstraße &lt; > S+U Lichtenberg/Gudrunstraße bzw. Betriebshof Lichtenberg.[br] (Allee der  Kosmonauten/Rhinstr. (Berlin) - Alt-Hohenschönhausen (Berlin))",
+					"icon": {
+						"type": "HIM1",
+						"title": null
+					},
+					"priority": 100,
+					"products": {
+						"suburban": false,
+						"subway": false,
+						"tram": true,
+						"bus": false,
+						"ferry": false,
+						"express": false,
+						"regional": false
+					},
+					"categories": [
+						1
+					],
+					"validFrom": "2022-03-07T04:30:00+01:00",
+					"validUntil": "2022-04-11T00:30:00+02:00",
+					"modified": "2022-03-01T10:33:54+01:00"
+				}
+			]
+		},
+		{
+			"stop": {
+				"type": "stop",
+				"id": "900000100512",
+				"name": "Monbijouplatz",
+				"location": {
+					"type": "location",
+					"id": "900100512",
+					"latitude": 52.523657,
+					"longitude": 13.398476
+				},
+				"products": {
+					"suburban": false,
+					"subway": false,
+					"tram": true,
+					"bus": false,
+					"ferry": false,
+					"express": false,
+					"regional": false
+				},
+				"stationDHID": "de:11000:900100512"
+			},
+			"arrival": "2022-03-17T00:49:00+01:00",
+			"plannedArrival": "2022-03-17T00:46:00+01:00",
+			"arrivalDelay": 180,
+			"arrivalPlatform": null,
+			"plannedArrivalPlatform": null,
+			"departure": "2022-03-17T00:49:00+01:00",
+			"plannedDeparture": "2022-03-17T00:46:00+01:00",
+			"departureDelay": 180,
+			"departurePlatform": null,
+			"plannedDeparturePlatform": null,
+			"remarks": [
+				{
+					"type": "hint",
+					"code": "OPERATOR",
+					"text": "BVG (U Naturkundemuseum (Berlin) [Chausseestr.] - Gehrenseestr. (Berlin))"
+				},
+				{
+					"id": "61239",
+					"type": "warning",
+					"summary": "Ersatzverkehr",
+					"text": "Tram 27: Ersatzverkehr aufgrund von Bauarbeiten zwischen Allee der Kosmonauten/Rhinstraße &lt; > Alt-Hohenschönhausen. Die Linie fährt Krankenhaus Köpenick &lt; > Allee der Kosmonauten/Rhinstraße &lt; > S+U Lichtenberg/Gudrunstraße bzw. Betriebshof Lichtenberg.[br] (Allee der  Kosmonauten/Rhinstr. (Berlin) - Alt-Hohenschönhausen (Berlin))",
+					"icon": {
+						"type": "HIM1",
+						"title": null
+					},
+					"priority": 100,
+					"products": {
+						"suburban": false,
+						"subway": false,
+						"tram": true,
+						"bus": false,
+						"ferry": false,
+						"express": false,
+						"regional": false
+					},
+					"categories": [
+						1
+					],
+					"validFrom": "2022-03-07T04:30:00+01:00",
+					"validUntil": "2022-04-11T00:30:00+02:00",
+					"modified": "2022-03-01T10:33:54+01:00"
+				}
+			]
+		},
+		{
+			"stop": {
+				"type": "stop",
+				"id": "900000100002",
+				"name": "S Hackescher Markt",
+				"location": {
+					"type": "location",
+					"id": "900100002",
+					"latitude": 52.522605,
+					"longitude": 13.402359
+				},
+				"products": {
+					"suburban": true,
+					"subway": false,
+					"tram": true,
+					"bus": true,
+					"ferry": false,
+					"express": false,
+					"regional": false
+				},
+				"stationDHID": "de:11000:900100002"
+			},
+			"arrival": "2022-03-17T00:51:00+01:00",
+			"plannedArrival": "2022-03-17T00:48:00+01:00",
+			"arrivalDelay": 180,
+			"arrivalPlatform": null,
+			"plannedArrivalPlatform": null,
+			"departure": "2022-03-17T00:51:00+01:00",
+			"plannedDeparture": "2022-03-17T00:48:00+01:00",
+			"departureDelay": 180,
+			"departurePlatform": null,
+			"plannedDeparturePlatform": null,
+			"remarks": [
+				{
+					"type": "hint",
+					"code": "OPERATOR",
+					"text": "BVG (U Naturkundemuseum (Berlin) [Chausseestr.] - Gehrenseestr. (Berlin))"
+				},
+				{
+					"id": "61239",
+					"type": "warning",
+					"summary": "Ersatzverkehr",
+					"text": "Tram 27: Ersatzverkehr aufgrund von Bauarbeiten zwischen Allee der Kosmonauten/Rhinstraße &lt; > Alt-Hohenschönhausen. Die Linie fährt Krankenhaus Köpenick &lt; > Allee der Kosmonauten/Rhinstraße &lt; > S+U Lichtenberg/Gudrunstraße bzw. Betriebshof Lichtenberg.[br] (Allee der  Kosmonauten/Rhinstr. (Berlin) - Alt-Hohenschönhausen (Berlin))",
+					"icon": {
+						"type": "HIM1",
+						"title": null
+					},
+					"priority": 100,
+					"products": {
+						"suburban": false,
+						"subway": false,
+						"tram": true,
+						"bus": false,
+						"ferry": false,
+						"express": false,
+						"regional": false
+					},
+					"categories": [
+						1
+					],
+					"validFrom": "2022-03-07T04:30:00+01:00",
+					"validUntil": "2022-04-11T00:30:00+02:00",
+					"modified": "2022-03-01T10:33:54+01:00"
+				}
+			]
+		},
+		{
+			"stop": {
+				"type": "stop",
+				"id": "900000100515",
+				"name": "Spandauer Str./Marienkirche",
+				"location": {
+					"type": "location",
+					"id": "900100515",
+					"latitude": 52.520025,
+					"longitude": 13.404822
+				},
+				"products": {
+					"suburban": false,
+					"subway": false,
+					"tram": true,
+					"bus": true,
+					"ferry": false,
+					"express": false,
+					"regional": false
+				},
+				"stationDHID": "de:11000:900100515"
+			},
+			"arrival": "2022-03-17T00:52:00+01:00",
+			"plannedArrival": "2022-03-17T00:49:00+01:00",
+			"arrivalDelay": 180,
+			"arrivalPlatform": null,
+			"plannedArrivalPlatform": null,
+			"departure": "2022-03-17T00:52:00+01:00",
+			"plannedDeparture": "2022-03-17T00:49:00+01:00",
+			"departureDelay": 180,
+			"departurePlatform": null,
+			"plannedDeparturePlatform": null,
+			"remarks": [
+				{
+					"type": "hint",
+					"code": "OPERATOR",
+					"text": "BVG (U Naturkundemuseum (Berlin) [Chausseestr.] - Gehrenseestr. (Berlin))"
+				},
+				{
+					"id": "61239",
+					"type": "warning",
+					"summary": "Ersatzverkehr",
+					"text": "Tram 27: Ersatzverkehr aufgrund von Bauarbeiten zwischen Allee der Kosmonauten/Rhinstraße &lt; > Alt-Hohenschönhausen. Die Linie fährt Krankenhaus Köpenick &lt; > Allee der Kosmonauten/Rhinstraße &lt; > S+U Lichtenberg/Gudrunstraße bzw. Betriebshof Lichtenberg.[br] (Allee der  Kosmonauten/Rhinstr. (Berlin) - Alt-Hohenschönhausen (Berlin))",
+					"icon": {
+						"type": "HIM1",
+						"title": null
+					},
+					"priority": 100,
+					"products": {
+						"suburban": false,
+						"subway": false,
+						"tram": true,
+						"bus": false,
+						"ferry": false,
+						"express": false,
+						"regional": false
+					},
+					"categories": [
+						1
+					],
+					"validFrom": "2022-03-07T04:30:00+01:00",
+					"validUntil": "2022-04-11T00:30:00+02:00",
+					"modified": "2022-03-01T10:33:54+01:00"
+				}
+			]
+		},
+		{
+			"stop": {
+				"type": "stop",
+				"id": "900000100026",
+				"name": "S+U Alexanderplatz/Gontardstr.",
+				"location": {
+					"type": "location",
+					"id": "900100026",
+					"latitude": 52.52105,
+					"longitude": 13.411285
+				},
+				"products": {
+					"suburban": true,
+					"subway": true,
+					"tram": true,
+					"bus": true,
+					"ferry": false,
+					"express": false,
+					"regional": true
+				},
+				"stationDHID": "de:11000:900100026"
+			},
+			"arrival": "2022-03-17T00:54:00+01:00",
+			"plannedArrival": "2022-03-17T00:51:00+01:00",
+			"arrivalDelay": 180,
+			"arrivalPlatform": null,
+			"plannedArrivalPlatform": null,
+			"departure": "2022-03-17T00:54:00+01:00",
+			"plannedDeparture": "2022-03-17T00:51:00+01:00",
+			"departureDelay": 180,
+			"departurePlatform": null,
+			"plannedDeparturePlatform": null,
+			"remarks": [
+				{
+					"type": "hint",
+					"code": "OPERATOR",
+					"text": "BVG (U Naturkundemuseum (Berlin) [Chausseestr.] - Gehrenseestr. (Berlin))"
+				},
+				{
+					"id": "61239",
+					"type": "warning",
+					"summary": "Ersatzverkehr",
+					"text": "Tram 27: Ersatzverkehr aufgrund von Bauarbeiten zwischen Allee der Kosmonauten/Rhinstraße &lt; > Alt-Hohenschönhausen. Die Linie fährt Krankenhaus Köpenick &lt; > Allee der Kosmonauten/Rhinstraße &lt; > S+U Lichtenberg/Gudrunstraße bzw. Betriebshof Lichtenberg.[br] (Allee der  Kosmonauten/Rhinstr. (Berlin) - Alt-Hohenschönhausen (Berlin))",
+					"icon": {
+						"type": "HIM1",
+						"title": null
+					},
+					"priority": 100,
+					"products": {
+						"suburban": false,
+						"subway": false,
+						"tram": true,
+						"bus": false,
+						"ferry": false,
+						"express": false,
+						"regional": false
+					},
+					"categories": [
+						1
+					],
+					"validFrom": "2022-03-07T04:30:00+01:00",
+					"validUntil": "2022-04-11T00:30:00+02:00",
+					"modified": "2022-03-01T10:33:54+01:00"
+				}
+			]
+		},
+		{
+			"stop": {
+				"type": "stop",
+				"id": "900000100005",
+				"name": "U Alexanderplatz [Tram]",
+				"location": {
+					"type": "location",
+					"id": "900100005",
+					"latitude": 52.522083,
+					"longitude": 13.414593
+				},
+				"products": {
+					"suburban": true,
+					"subway": true,
+					"tram": true,
+					"bus": true,
+					"ferry": false,
+					"express": false,
+					"regional": true
+				},
+				"stationDHID": "de:11000:900100005"
+			},
+			"arrival": "2022-03-17T00:56:00+01:00",
+			"plannedArrival": "2022-03-17T00:53:00+01:00",
+			"arrivalDelay": 180,
+			"arrivalPlatform": null,
+			"plannedArrivalPlatform": null,
+			"departure": "2022-03-17T00:56:00+01:00",
+			"plannedDeparture": "2022-03-17T00:53:00+01:00",
+			"departureDelay": 180,
+			"departurePlatform": null,
+			"plannedDeparturePlatform": null,
+			"remarks": [
+				{
+					"type": "hint",
+					"code": "OPERATOR",
+					"text": "BVG (U Naturkundemuseum (Berlin) [Chausseestr.] - Gehrenseestr. (Berlin))"
+				},
+				{
+					"id": "61239",
+					"type": "warning",
+					"summary": "Ersatzverkehr",
+					"text": "Tram 27: Ersatzverkehr aufgrund von Bauarbeiten zwischen Allee der Kosmonauten/Rhinstraße &lt; > Alt-Hohenschönhausen. Die Linie fährt Krankenhaus Köpenick &lt; > Allee der Kosmonauten/Rhinstraße &lt; > S+U Lichtenberg/Gudrunstraße bzw. Betriebshof Lichtenberg.[br] (Allee der  Kosmonauten/Rhinstr. (Berlin) - Alt-Hohenschönhausen (Berlin))",
+					"icon": {
+						"type": "HIM1",
+						"title": null
+					},
+					"priority": 100,
+					"products": {
+						"suburban": false,
+						"subway": false,
+						"tram": true,
+						"bus": false,
+						"ferry": false,
+						"express": false,
+						"regional": false
+					},
+					"categories": [
+						1
+					],
+					"validFrom": "2022-03-07T04:30:00+01:00",
+					"validUntil": "2022-04-11T00:30:00+02:00",
+					"modified": "2022-03-01T10:33:54+01:00"
+				}
+			]
+		},
+		{
+			"stop": {
+				"type": "stop",
+				"id": "900000100040",
+				"name": "Mollstr./Otto-Braun-Str.",
+				"location": {
+					"type": "location",
+					"id": "900100040",
+					"latitude": 52.525185,
+					"longitude": 13.419942
+				},
+				"products": {
+					"suburban": false,
+					"subway": false,
+					"tram": true,
+					"bus": true,
+					"ferry": false,
+					"express": false,
+					"regional": false
+				},
+				"stationDHID": "de:11000:900100040"
+			},
+			"arrival": "2022-03-17T00:59:00+01:00",
+			"plannedArrival": "2022-03-17T00:56:00+01:00",
+			"arrivalDelay": 180,
+			"arrivalPlatform": null,
+			"plannedArrivalPlatform": null,
+			"departure": "2022-03-17T00:59:00+01:00",
+			"plannedDeparture": "2022-03-17T00:56:00+01:00",
+			"departureDelay": 180,
+			"departurePlatform": null,
+			"plannedDeparturePlatform": null,
+			"remarks": [
+				{
+					"type": "hint",
+					"code": "OPERATOR",
+					"text": "BVG (U Naturkundemuseum (Berlin) [Chausseestr.] - Gehrenseestr. (Berlin))"
+				},
+				{
+					"id": "61239",
+					"type": "warning",
+					"summary": "Ersatzverkehr",
+					"text": "Tram 27: Ersatzverkehr aufgrund von Bauarbeiten zwischen Allee der Kosmonauten/Rhinstraße &lt; > Alt-Hohenschönhausen. Die Linie fährt Krankenhaus Köpenick &lt; > Allee der Kosmonauten/Rhinstraße &lt; > S+U Lichtenberg/Gudrunstraße bzw. Betriebshof Lichtenberg.[br] (Allee der  Kosmonauten/Rhinstr. (Berlin) - Alt-Hohenschönhausen (Berlin))",
+					"icon": {
+						"type": "HIM1",
+						"title": null
+					},
+					"priority": 100,
+					"products": {
+						"suburban": false,
+						"subway": false,
+						"tram": true,
+						"bus": false,
+						"ferry": false,
+						"express": false,
+						"regional": false
+					},
+					"categories": [
+						1
+					],
+					"validFrom": "2022-03-07T04:30:00+01:00",
+					"validUntil": "2022-04-11T00:30:00+02:00",
+					"modified": "2022-03-01T10:33:54+01:00"
+				}
+			]
+		},
+		{
+			"stop": {
+				"type": "stop",
+				"id": "900000120511",
+				"name": "Büschingstr.",
+				"location": {
+					"type": "location",
+					"id": "900120511",
+					"latitude": 52.523126,
+					"longitude": 13.427214
+				},
+				"products": {
+					"suburban": false,
+					"subway": false,
+					"tram": true,
+					"bus": false,
+					"ferry": false,
+					"express": false,
+					"regional": false
+				},
+				"stationDHID": "de:11000:900120511"
+			},
+			"arrival": "2022-03-17T01:00:00+01:00",
+			"plannedArrival": "2022-03-17T00:57:00+01:00",
+			"arrivalDelay": 180,
+			"arrivalPlatform": null,
+			"plannedArrivalPlatform": null,
+			"departure": "2022-03-17T01:00:00+01:00",
+			"plannedDeparture": "2022-03-17T00:57:00+01:00",
+			"departureDelay": 180,
+			"departurePlatform": null,
+			"plannedDeparturePlatform": null,
+			"remarks": [
+				{
+					"type": "hint",
+					"code": "OPERATOR",
+					"text": "BVG (U Naturkundemuseum (Berlin) [Chausseestr.] - Gehrenseestr. (Berlin))"
+				},
+				{
+					"id": "61239",
+					"type": "warning",
+					"summary": "Ersatzverkehr",
+					"text": "Tram 27: Ersatzverkehr aufgrund von Bauarbeiten zwischen Allee der Kosmonauten/Rhinstraße &lt; > Alt-Hohenschönhausen. Die Linie fährt Krankenhaus Köpenick &lt; > Allee der Kosmonauten/Rhinstraße &lt; > S+U Lichtenberg/Gudrunstraße bzw. Betriebshof Lichtenberg.[br] (Allee der  Kosmonauten/Rhinstr. (Berlin) - Alt-Hohenschönhausen (Berlin))",
+					"icon": {
+						"type": "HIM1",
+						"title": null
+					},
+					"priority": 100,
+					"products": {
+						"suburban": false,
+						"subway": false,
+						"tram": true,
+						"bus": false,
+						"ferry": false,
+						"express": false,
+						"regional": false
+					},
+					"categories": [
+						1
+					],
+					"validFrom": "2022-03-07T04:30:00+01:00",
+					"validUntil": "2022-04-11T00:30:00+02:00",
+					"modified": "2022-03-01T10:33:54+01:00"
+				}
+			]
+		},
+		{
+			"stop": {
+				"type": "stop",
+				"id": "900000120019",
+				"name": "Platz der Vereinten Nationen",
+				"location": {
+					"type": "location",
+					"id": "900120019",
+					"latitude": 52.523252,
+					"longitude": 13.433057
+				},
+				"products": {
+					"suburban": false,
+					"subway": false,
+					"tram": true,
+					"bus": true,
+					"ferry": false,
+					"express": false,
+					"regional": false
+				},
+				"stationDHID": "de:11000:900120019"
+			},
+			"arrival": "2022-03-17T01:01:00+01:00",
+			"plannedArrival": "2022-03-17T00:58:00+01:00",
+			"arrivalDelay": 180,
+			"arrivalPlatform": null,
+			"plannedArrivalPlatform": null,
+			"departure": "2022-03-17T01:01:00+01:00",
+			"plannedDeparture": "2022-03-17T00:58:00+01:00",
+			"departureDelay": 180,
+			"departurePlatform": null,
+			"plannedDeparturePlatform": null,
+			"remarks": [
+				{
+					"type": "hint",
+					"code": "OPERATOR",
+					"text": "BVG (U Naturkundemuseum (Berlin) [Chausseestr.] - Gehrenseestr. (Berlin))"
+				},
+				{
+					"id": "61239",
+					"type": "warning",
+					"summary": "Ersatzverkehr",
+					"text": "Tram 27: Ersatzverkehr aufgrund von Bauarbeiten zwischen Allee der Kosmonauten/Rhinstraße &lt; > Alt-Hohenschönhausen. Die Linie fährt Krankenhaus Köpenick &lt; > Allee der Kosmonauten/Rhinstraße &lt; > S+U Lichtenberg/Gudrunstraße bzw. Betriebshof Lichtenberg.[br] (Allee der  Kosmonauten/Rhinstr. (Berlin) - Alt-Hohenschönhausen (Berlin))",
+					"icon": {
+						"type": "HIM1",
+						"title": null
+					},
+					"priority": 100,
+					"products": {
+						"suburban": false,
+						"subway": false,
+						"tram": true,
+						"bus": false,
+						"ferry": false,
+						"express": false,
+						"regional": false
+					},
+					"categories": [
+						1
+					],
+					"validFrom": "2022-03-07T04:30:00+01:00",
+					"validUntil": "2022-04-11T00:30:00+02:00",
+					"modified": "2022-03-01T10:33:54+01:00"
+				}
+			]
+		},
+		{
+			"stop": {
+				"type": "stop",
+				"id": "900000120513",
+				"name": "Klinikum im Friedrichshain",
+				"location": {
+					"type": "location",
+					"id": "900120513",
+					"latitude": 52.524151,
+					"longitude": 13.440204
+				},
+				"products": {
+					"suburban": false,
+					"subway": false,
+					"tram": true,
+					"bus": false,
+					"ferry": false,
+					"express": false,
+					"regional": false
+				},
+				"stationDHID": "de:11000:900120513"
+			},
+			"arrival": "2022-03-17T01:02:00+01:00",
+			"plannedArrival": "2022-03-17T00:59:00+01:00",
+			"arrivalDelay": 180,
+			"arrivalPlatform": null,
+			"plannedArrivalPlatform": null,
+			"departure": "2022-03-17T01:02:00+01:00",
+			"plannedDeparture": "2022-03-17T00:59:00+01:00",
+			"departureDelay": 180,
+			"departurePlatform": null,
+			"plannedDeparturePlatform": null,
+			"remarks": [
+				{
+					"type": "hint",
+					"code": "OPERATOR",
+					"text": "BVG (U Naturkundemuseum (Berlin) [Chausseestr.] - Gehrenseestr. (Berlin))"
+				},
+				{
+					"id": "61239",
+					"type": "warning",
+					"summary": "Ersatzverkehr",
+					"text": "Tram 27: Ersatzverkehr aufgrund von Bauarbeiten zwischen Allee der Kosmonauten/Rhinstraße &lt; > Alt-Hohenschönhausen. Die Linie fährt Krankenhaus Köpenick &lt; > Allee der Kosmonauten/Rhinstraße &lt; > S+U Lichtenberg/Gudrunstraße bzw. Betriebshof Lichtenberg.[br] (Allee der  Kosmonauten/Rhinstr. (Berlin) - Alt-Hohenschönhausen (Berlin))",
+					"icon": {
+						"type": "HIM1",
+						"title": null
+					},
+					"priority": 100,
+					"products": {
+						"suburban": false,
+						"subway": false,
+						"tram": true,
+						"bus": false,
+						"ferry": false,
+						"express": false,
+						"regional": false
+					},
+					"categories": [
+						1
+					],
+					"validFrom": "2022-03-07T04:30:00+01:00",
+					"validUntil": "2022-04-11T00:30:00+02:00",
+					"modified": "2022-03-01T10:33:54+01:00"
+				}
+			]
+		},
+		{
+			"stop": {
+				"type": "stop",
+				"id": "900000120016",
+				"name": "Landsberger Allee/Petersburger Str.",
+				"location": {
+					"type": "location",
+					"id": "900120016",
+					"latitude": 52.526048,
+					"longitude": 13.446775
+				},
+				"products": {
+					"suburban": false,
+					"subway": false,
+					"tram": true,
+					"bus": true,
+					"ferry": false,
+					"express": false,
+					"regional": false
+				},
+				"stationDHID": "de:11000:900120016"
+			},
+			"arrival": "2022-03-17T01:04:00+01:00",
+			"plannedArrival": "2022-03-17T01:01:00+01:00",
+			"arrivalDelay": 180,
+			"arrivalPlatform": null,
+			"plannedArrivalPlatform": null,
+			"departure": "2022-03-17T01:04:00+01:00",
+			"plannedDeparture": "2022-03-17T01:01:00+01:00",
+			"departureDelay": 180,
+			"departurePlatform": null,
+			"plannedDeparturePlatform": null,
+			"remarks": [
+				{
+					"type": "hint",
+					"code": "OPERATOR",
+					"text": "BVG (U Naturkundemuseum (Berlin) [Chausseestr.] - Gehrenseestr. (Berlin))"
+				},
+				{
+					"id": "61239",
+					"type": "warning",
+					"summary": "Ersatzverkehr",
+					"text": "Tram 27: Ersatzverkehr aufgrund von Bauarbeiten zwischen Allee der Kosmonauten/Rhinstraße &lt; > Alt-Hohenschönhausen. Die Linie fährt Krankenhaus Köpenick &lt; > Allee der Kosmonauten/Rhinstraße &lt; > S+U Lichtenberg/Gudrunstraße bzw. Betriebshof Lichtenberg.[br] (Allee der  Kosmonauten/Rhinstr. (Berlin) - Alt-Hohenschönhausen (Berlin))",
+					"icon": {
+						"type": "HIM1",
+						"title": null
+					},
+					"priority": 100,
+					"products": {
+						"suburban": false,
+						"subway": false,
+						"tram": true,
+						"bus": false,
+						"ferry": false,
+						"express": false,
+						"regional": false
+					},
+					"categories": [
+						1
+					],
+					"validFrom": "2022-03-07T04:30:00+01:00",
+					"validUntil": "2022-04-11T00:30:00+02:00",
+					"modified": "2022-03-01T10:33:54+01:00"
+				}
+			]
+		},
+		{
+			"stop": {
+				"type": "stop",
+				"id": "900000110004",
+				"name": "S Landsberger Allee",
+				"location": {
+					"type": "location",
+					"id": "900110004",
+					"latitude": 52.528771,
+					"longitude": 13.455944
+				},
+				"products": {
+					"suburban": true,
+					"subway": false,
+					"tram": true,
+					"bus": true,
+					"ferry": false,
+					"express": false,
+					"regional": false
+				},
+				"stationDHID": "de:11000:900110004"
+			},
+			"arrival": "2022-03-17T01:06:00+01:00",
+			"plannedArrival": "2022-03-17T01:03:00+01:00",
+			"arrivalDelay": 180,
+			"arrivalPlatform": null,
+			"plannedArrivalPlatform": null,
+			"departure": "2022-03-17T01:06:00+01:00",
+			"plannedDeparture": "2022-03-17T01:03:00+01:00",
+			"departureDelay": 180,
+			"departurePlatform": null,
+			"plannedDeparturePlatform": null,
+			"remarks": [
+				{
+					"type": "hint",
+					"code": "OPERATOR",
+					"text": "BVG (U Naturkundemuseum (Berlin) [Chausseestr.] - Gehrenseestr. (Berlin))"
+				},
+				{
+					"id": "61239",
+					"type": "warning",
+					"summary": "Ersatzverkehr",
+					"text": "Tram 27: Ersatzverkehr aufgrund von Bauarbeiten zwischen Allee der Kosmonauten/Rhinstraße &lt; > Alt-Hohenschönhausen. Die Linie fährt Krankenhaus Köpenick &lt; > Allee der Kosmonauten/Rhinstraße &lt; > S+U Lichtenberg/Gudrunstraße bzw. Betriebshof Lichtenberg.[br] (Allee der  Kosmonauten/Rhinstr. (Berlin) - Alt-Hohenschönhausen (Berlin))",
+					"icon": {
+						"type": "HIM1",
+						"title": null
+					},
+					"priority": 100,
+					"products": {
+						"suburban": false,
+						"subway": false,
+						"tram": true,
+						"bus": false,
+						"ferry": false,
+						"express": false,
+						"regional": false
+					},
+					"categories": [
+						1
+					],
+					"validFrom": "2022-03-07T04:30:00+01:00",
+					"validUntil": "2022-04-11T00:30:00+02:00",
+					"modified": "2022-03-01T10:33:54+01:00"
+				}
+			]
+		},
+		{
+			"stop": {
+				"type": "stop",
+				"id": "900000110030",
+				"name": "Oderbruchstr.",
+				"location": {
+					"type": "location",
+					"id": "900110030",
+					"latitude": 52.530434,
+					"longitude": 13.461454
+				},
+				"products": {
+					"suburban": false,
+					"subway": false,
+					"tram": true,
+					"bus": true,
+					"ferry": false,
+					"express": false,
+					"regional": false
+				},
+				"stationDHID": "de:11000:900110030"
+			},
+			"arrival": "2022-03-17T01:07:00+01:00",
+			"plannedArrival": "2022-03-17T01:04:00+01:00",
+			"arrivalDelay": 180,
+			"arrivalPlatform": null,
+			"plannedArrivalPlatform": null,
+			"departure": "2022-03-17T01:07:00+01:00",
+			"plannedDeparture": "2022-03-17T01:04:00+01:00",
+			"departureDelay": 180,
+			"departurePlatform": null,
+			"plannedDeparturePlatform": null,
+			"remarks": [
+				{
+					"type": "hint",
+					"code": "OPERATOR",
+					"text": "BVG (U Naturkundemuseum (Berlin) [Chausseestr.] - Gehrenseestr. (Berlin))"
+				},
+				{
+					"id": "61239",
+					"type": "warning",
+					"summary": "Ersatzverkehr",
+					"text": "Tram 27: Ersatzverkehr aufgrund von Bauarbeiten zwischen Allee der Kosmonauten/Rhinstraße &lt; > Alt-Hohenschönhausen. Die Linie fährt Krankenhaus Köpenick &lt; > Allee der Kosmonauten/Rhinstraße &lt; > S+U Lichtenberg/Gudrunstraße bzw. Betriebshof Lichtenberg.[br] (Allee der  Kosmonauten/Rhinstr. (Berlin) - Alt-Hohenschönhausen (Berlin))",
+					"icon": {
+						"type": "HIM1",
+						"title": null
+					},
+					"priority": 100,
+					"products": {
+						"suburban": false,
+						"subway": false,
+						"tram": true,
+						"bus": false,
+						"ferry": false,
+						"express": false,
+						"regional": false
+					},
+					"categories": [
+						1
+					],
+					"validFrom": "2022-03-07T04:30:00+01:00",
+					"validUntil": "2022-04-11T00:30:00+02:00",
+					"modified": "2022-03-01T10:33:54+01:00"
+				}
+			]
+		},
+		{
+			"stop": {
+				"type": "stop",
+				"id": "900000160508",
+				"name": "Judith-Auer-Str.",
+				"location": {
+					"type": "location",
+					"id": "900160508",
+					"latitude": 52.534129,
+					"longitude": 13.467864
+				},
+				"products": {
+					"suburban": false,
+					"subway": false,
+					"tram": true,
+					"bus": true,
+					"ferry": false,
+					"express": false,
+					"regional": false
+				},
+				"stationDHID": "de:11000:900160508"
+			},
+			"arrival": "2022-03-17T01:08:00+01:00",
+			"plannedArrival": "2022-03-17T01:05:00+01:00",
+			"arrivalDelay": 180,
+			"arrivalPlatform": null,
+			"plannedArrivalPlatform": null,
+			"departure": "2022-03-17T01:08:00+01:00",
+			"plannedDeparture": "2022-03-17T01:05:00+01:00",
+			"departureDelay": 180,
+			"departurePlatform": null,
+			"plannedDeparturePlatform": null,
+			"remarks": [
+				{
+					"type": "hint",
+					"code": "OPERATOR",
+					"text": "BVG (U Naturkundemuseum (Berlin) [Chausseestr.] - Gehrenseestr. (Berlin))"
+				},
+				{
+					"id": "61239",
+					"type": "warning",
+					"summary": "Ersatzverkehr",
+					"text": "Tram 27: Ersatzverkehr aufgrund von Bauarbeiten zwischen Allee der Kosmonauten/Rhinstraße &lt; > Alt-Hohenschönhausen. Die Linie fährt Krankenhaus Köpenick &lt; > Allee der Kosmonauten/Rhinstraße &lt; > S+U Lichtenberg/Gudrunstraße bzw. Betriebshof Lichtenberg.[br] (Allee der  Kosmonauten/Rhinstr. (Berlin) - Alt-Hohenschönhausen (Berlin))",
+					"icon": {
+						"type": "HIM1",
+						"title": null
+					},
+					"priority": 100,
+					"products": {
+						"suburban": false,
+						"subway": false,
+						"tram": true,
+						"bus": false,
+						"ferry": false,
+						"express": false,
+						"regional": false
+					},
+					"categories": [
+						1
+					],
+					"validFrom": "2022-03-07T04:30:00+01:00",
+					"validUntil": "2022-04-11T00:30:00+02:00",
+					"modified": "2022-03-01T10:33:54+01:00"
+				}
+			]
+		},
+		{
+			"stop": {
+				"type": "stop",
+				"id": "900000150011",
+				"name": "Hohenschönhauser Str. [1-2]",
+				"location": {
+					"type": "location",
+					"id": "900150011",
+					"latitude": 52.535855,
+					"longitude": 13.472862
+				},
+				"products": {
+					"suburban": false,
+					"subway": false,
+					"tram": true,
+					"bus": true,
+					"ferry": false,
+					"express": false,
+					"regional": false
+				},
+				"stationDHID": "de:11000:900150011"
+			},
+			"arrival": "2022-03-17T01:09:00+01:00",
+			"plannedArrival": "2022-03-17T01:06:00+01:00",
+			"arrivalDelay": 180,
+			"arrivalPlatform": null,
+			"plannedArrivalPlatform": null,
+			"departure": "2022-03-17T01:09:00+01:00",
+			"plannedDeparture": "2022-03-17T01:06:00+01:00",
+			"departureDelay": 180,
+			"departurePlatform": null,
+			"plannedDeparturePlatform": null,
+			"remarks": [
+				{
+					"type": "hint",
+					"code": "OPERATOR",
+					"text": "BVG (U Naturkundemuseum (Berlin) [Chausseestr.] - Gehrenseestr. (Berlin))"
+				},
+				{
+					"id": "61239",
+					"type": "warning",
+					"summary": "Ersatzverkehr",
+					"text": "Tram 27: Ersatzverkehr aufgrund von Bauarbeiten zwischen Allee der Kosmonauten/Rhinstraße &lt; > Alt-Hohenschönhausen. Die Linie fährt Krankenhaus Köpenick &lt; > Allee der Kosmonauten/Rhinstraße &lt; > S+U Lichtenberg/Gudrunstraße bzw. Betriebshof Lichtenberg.[br] (Allee der  Kosmonauten/Rhinstr. (Berlin) - Alt-Hohenschönhausen (Berlin))",
+					"icon": {
+						"type": "HIM1",
+						"title": null
+					},
+					"priority": 100,
+					"products": {
+						"suburban": false,
+						"subway": false,
+						"tram": true,
+						"bus": false,
+						"ferry": false,
+						"express": false,
+						"regional": false
+					},
+					"categories": [
+						1
+					],
+					"validFrom": "2022-03-07T04:30:00+01:00",
+					"validUntil": "2022-04-11T00:30:00+02:00",
+					"modified": "2022-03-01T10:33:54+01:00"
+				}
+			]
+		},
+		{
+			"stop": {
+				"type": "stop",
+				"id": "900000150510",
+				"name": "Sandinostr.",
+				"location": {
+					"type": "location",
+					"id": "900150510",
+					"latitude": 52.53848,
+					"longitude": 13.4807
+				},
+				"products": {
+					"suburban": false,
+					"subway": false,
+					"tram": true,
+					"bus": false,
+					"ferry": false,
+					"express": false,
+					"regional": false
+				},
+				"stationDHID": "de:11000:900150510"
+			},
+			"arrival": "2022-03-17T01:12:00+01:00",
+			"plannedArrival": "2022-03-17T01:09:00+01:00",
+			"arrivalDelay": 180,
+			"arrivalPlatform": null,
+			"plannedArrivalPlatform": null,
+			"departure": "2022-03-17T01:12:00+01:00",
+			"plannedDeparture": "2022-03-17T01:09:00+01:00",
+			"departureDelay": 180,
+			"departurePlatform": null,
+			"plannedDeparturePlatform": null,
+			"remarks": [
+				{
+					"type": "hint",
+					"code": "OPERATOR",
+					"text": "BVG (U Naturkundemuseum (Berlin) [Chausseestr.] - Gehrenseestr. (Berlin))"
+				},
+				{
+					"id": "61239",
+					"type": "warning",
+					"summary": "Ersatzverkehr",
+					"text": "Tram 27: Ersatzverkehr aufgrund von Bauarbeiten zwischen Allee der Kosmonauten/Rhinstraße &lt; > Alt-Hohenschönhausen. Die Linie fährt Krankenhaus Köpenick &lt; > Allee der Kosmonauten/Rhinstraße &lt; > S+U Lichtenberg/Gudrunstraße bzw. Betriebshof Lichtenberg.[br] (Allee der  Kosmonauten/Rhinstr. (Berlin) - Alt-Hohenschönhausen (Berlin))",
+					"icon": {
+						"type": "HIM1",
+						"title": null
+					},
+					"priority": 100,
+					"products": {
+						"suburban": false,
+						"subway": false,
+						"tram": true,
+						"bus": false,
+						"ferry": false,
+						"express": false,
+						"regional": false
+					},
+					"categories": [
+						1
+					],
+					"validFrom": "2022-03-07T04:30:00+01:00",
+					"validUntil": "2022-04-11T00:30:00+02:00",
+					"modified": "2022-03-01T10:33:54+01:00"
+				}
+			]
+		},
+		{
+			"stop": {
+				"type": "stop",
+				"id": "900000150511",
+				"name": "Simon-Bolivar-Str.",
+				"location": {
+					"type": "location",
+					"id": "900150511",
+					"latitude": 52.539702,
+					"longitude": 13.484035
+				},
+				"products": {
+					"suburban": false,
+					"subway": false,
+					"tram": true,
+					"bus": false,
+					"ferry": false,
+					"express": false,
+					"regional": false
+				},
+				"stationDHID": "de:11000:900150511"
+			},
+			"arrival": "2022-03-17T01:13:00+01:00",
+			"plannedArrival": "2022-03-17T01:10:00+01:00",
+			"arrivalDelay": 180,
+			"arrivalPlatform": null,
+			"plannedArrivalPlatform": null,
+			"departure": "2022-03-17T01:13:00+01:00",
+			"plannedDeparture": "2022-03-17T01:10:00+01:00",
+			"departureDelay": 180,
+			"departurePlatform": null,
+			"plannedDeparturePlatform": null,
+			"remarks": [
+				{
+					"type": "hint",
+					"code": "OPERATOR",
+					"text": "BVG (U Naturkundemuseum (Berlin) [Chausseestr.] - Gehrenseestr. (Berlin))"
+				},
+				{
+					"id": "38909",
+					"type": "warning",
+					"summary": "geänderte Haltestellenbedienung",
+					"text": "Tram M5: Verlegung der Haltestelle Werneuchener Straße Richtung Zingster Straße um ca. 135 vor den regulären Standort.[br] (Simon-Bolivar-Str. (Berlin) - Oberseestr. (Berlin))",
+					"icon": {
+						"type": "HIM1",
+						"title": null
+					},
+					"priority": 100,
+					"products": {
+						"suburban": false,
+						"subway": false,
+						"tram": true,
+						"bus": false,
+						"ferry": false,
+						"express": false,
+						"regional": false
+					},
+					"categories": [
+						1
+					],
+					"validFrom": "2021-09-09T09:00:00+02:00",
+					"validUntil": "2049-12-31T23:59:59+01:00",
+					"modified": "2021-08-25T13:51:00+02:00"
+				},
+				{
+					"id": "61239",
+					"type": "warning",
+					"summary": "Ersatzverkehr",
+					"text": "Tram 27: Ersatzverkehr aufgrund von Bauarbeiten zwischen Allee der Kosmonauten/Rhinstraße &lt; > Alt-Hohenschönhausen. Die Linie fährt Krankenhaus Köpenick &lt; > Allee der Kosmonauten/Rhinstraße &lt; > S+U Lichtenberg/Gudrunstraße bzw. Betriebshof Lichtenberg.[br] (Allee der  Kosmonauten/Rhinstr. (Berlin) - Alt-Hohenschönhausen (Berlin))",
+					"icon": {
+						"type": "HIM1",
+						"title": null
+					},
+					"priority": 100,
+					"products": {
+						"suburban": false,
+						"subway": false,
+						"tram": true,
+						"bus": false,
+						"ferry": false,
+						"express": false,
+						"regional": false
+					},
+					"categories": [
+						1
+					],
+					"validFrom": "2022-03-07T04:30:00+01:00",
+					"validUntil": "2022-04-11T00:30:00+02:00",
+					"modified": "2022-03-01T10:33:54+01:00"
+				}
+			]
+		},
+		{
+			"stop": {
+				"type": "stop",
+				"id": "900000150512",
+				"name": "Werneuchener Str.",
+				"location": {
+					"type": "location",
+					"id": "900150512",
+					"latitude": 52.542426,
+					"longitude": 13.489312
+				},
+				"products": {
+					"suburban": false,
+					"subway": false,
+					"tram": true,
+					"bus": false,
+					"ferry": false,
+					"express": false,
+					"regional": false
+				},
+				"stationDHID": "de:11000:900150512"
+			},
+			"arrival": "2022-03-17T01:14:00+01:00",
+			"plannedArrival": "2022-03-17T01:11:00+01:00",
+			"arrivalDelay": 180,
+			"arrivalPlatform": null,
+			"plannedArrivalPlatform": null,
+			"departure": "2022-03-17T01:14:00+01:00",
+			"plannedDeparture": "2022-03-17T01:11:00+01:00",
+			"departureDelay": 180,
+			"departurePlatform": null,
+			"plannedDeparturePlatform": null,
+			"remarks": [
+				{
+					"type": "hint",
+					"code": "OPERATOR",
+					"text": "BVG (U Naturkundemuseum (Berlin) [Chausseestr.] - Gehrenseestr. (Berlin))"
+				},
+				{
+					"id": "38909",
+					"type": "warning",
+					"summary": "geänderte Haltestellenbedienung",
+					"text": "Tram M5: Verlegung der Haltestelle Werneuchener Straße Richtung Zingster Straße um ca. 135 vor den regulären Standort.[br] (Simon-Bolivar-Str. (Berlin) - Oberseestr. (Berlin))",
+					"icon": {
+						"type": "HIM1",
+						"title": null
+					},
+					"priority": 100,
+					"products": {
+						"suburban": false,
+						"subway": false,
+						"tram": true,
+						"bus": false,
+						"ferry": false,
+						"express": false,
+						"regional": false
+					},
+					"categories": [
+						1
+					],
+					"validFrom": "2021-09-09T09:00:00+02:00",
+					"validUntil": "2049-12-31T23:59:59+01:00",
+					"modified": "2021-08-25T13:51:00+02:00"
+				},
+				{
+					"id": "61239",
+					"type": "warning",
+					"summary": "Ersatzverkehr",
+					"text": "Tram 27: Ersatzverkehr aufgrund von Bauarbeiten zwischen Allee der Kosmonauten/Rhinstraße &lt; > Alt-Hohenschönhausen. Die Linie fährt Krankenhaus Köpenick &lt; > Allee der Kosmonauten/Rhinstraße &lt; > S+U Lichtenberg/Gudrunstraße bzw. Betriebshof Lichtenberg.[br] (Allee der  Kosmonauten/Rhinstr. (Berlin) - Alt-Hohenschönhausen (Berlin))",
+					"icon": {
+						"type": "HIM1",
+						"title": null
+					},
+					"priority": 100,
+					"products": {
+						"suburban": false,
+						"subway": false,
+						"tram": true,
+						"bus": false,
+						"ferry": false,
+						"express": false,
+						"regional": false
+					},
+					"categories": [
+						1
+					],
+					"validFrom": "2022-03-07T04:30:00+01:00",
+					"validUntil": "2022-04-11T00:30:00+02:00",
+					"modified": "2022-03-01T10:33:54+01:00"
+				}
+			]
+		},
+		{
+			"stop": {
+				"type": "stop",
+				"id": "900000150513",
+				"name": "Freienwalder Str.",
+				"location": {
+					"type": "location",
+					"id": "900150513",
+					"latitude": 52.544341,
+					"longitude": 13.493006
+				},
+				"products": {
+					"suburban": false,
+					"subway": false,
+					"tram": true,
+					"bus": false,
+					"ferry": false,
+					"express": false,
+					"regional": false
+				},
+				"stationDHID": "de:11000:900150513"
+			},
+			"arrival": "2022-03-17T01:15:00+01:00",
+			"plannedArrival": "2022-03-17T01:12:00+01:00",
+			"arrivalDelay": 180,
+			"arrivalPlatform": null,
+			"plannedArrivalPlatform": null,
+			"departure": "2022-03-17T01:15:00+01:00",
+			"plannedDeparture": "2022-03-17T01:12:00+01:00",
+			"departureDelay": 180,
+			"departurePlatform": null,
+			"plannedDeparturePlatform": null,
+			"remarks": [
+				{
+					"type": "hint",
+					"code": "OPERATOR",
+					"text": "BVG (U Naturkundemuseum (Berlin) [Chausseestr.] - Gehrenseestr. (Berlin))"
+				},
+				{
+					"id": "38909",
+					"type": "warning",
+					"summary": "geänderte Haltestellenbedienung",
+					"text": "Tram M5: Verlegung der Haltestelle Werneuchener Straße Richtung Zingster Straße um ca. 135 vor den regulären Standort.[br] (Simon-Bolivar-Str. (Berlin) - Oberseestr. (Berlin))",
+					"icon": {
+						"type": "HIM1",
+						"title": null
+					},
+					"priority": 100,
+					"products": {
+						"suburban": false,
+						"subway": false,
+						"tram": true,
+						"bus": false,
+						"ferry": false,
+						"express": false,
+						"regional": false
+					},
+					"categories": [
+						1
+					],
+					"validFrom": "2021-09-09T09:00:00+02:00",
+					"validUntil": "2049-12-31T23:59:59+01:00",
+					"modified": "2021-08-25T13:51:00+02:00"
+				},
+				{
+					"id": "61239",
+					"type": "warning",
+					"summary": "Ersatzverkehr",
+					"text": "Tram 27: Ersatzverkehr aufgrund von Bauarbeiten zwischen Allee der Kosmonauten/Rhinstraße &lt; > Alt-Hohenschönhausen. Die Linie fährt Krankenhaus Köpenick &lt; > Allee der Kosmonauten/Rhinstraße &lt; > S+U Lichtenberg/Gudrunstraße bzw. Betriebshof Lichtenberg.[br] (Allee der  Kosmonauten/Rhinstr. (Berlin) - Alt-Hohenschönhausen (Berlin))",
+					"icon": {
+						"type": "HIM1",
+						"title": null
+					},
+					"priority": 100,
+					"products": {
+						"suburban": false,
+						"subway": false,
+						"tram": true,
+						"bus": false,
+						"ferry": false,
+						"express": false,
+						"regional": false
+					},
+					"categories": [
+						1
+					],
+					"validFrom": "2022-03-07T04:30:00+01:00",
+					"validUntil": "2022-04-11T00:30:00+02:00",
+					"modified": "2022-03-01T10:33:54+01:00"
+				}
+			]
+		},
+		{
+			"stop": {
+				"type": "stop",
+				"id": "900000150007",
+				"name": "Oberseestr.",
+				"location": {
+					"type": "location",
+					"id": "900150007",
+					"latitude": 52.546759,
+					"longitude": 13.497609
+				},
+				"products": {
+					"suburban": false,
+					"subway": false,
+					"tram": true,
+					"bus": false,
+					"ferry": false,
+					"express": false,
+					"regional": false
+				},
+				"stationDHID": "de:11000:900150007"
+			},
+			"arrival": "2022-03-17T01:17:00+01:00",
+			"plannedArrival": "2022-03-17T01:14:00+01:00",
+			"arrivalDelay": 180,
+			"arrivalPlatform": null,
+			"plannedArrivalPlatform": null,
+			"departure": "2022-03-17T01:17:00+01:00",
+			"plannedDeparture": "2022-03-17T01:14:00+01:00",
+			"departureDelay": 180,
+			"departurePlatform": null,
+			"plannedDeparturePlatform": null,
+			"remarks": [
+				{
+					"type": "hint",
+					"code": "OPERATOR",
+					"text": "BVG (U Naturkundemuseum (Berlin) [Chausseestr.] - Gehrenseestr. (Berlin))"
+				},
+				{
+					"id": "38909",
+					"type": "warning",
+					"summary": "geänderte Haltestellenbedienung",
+					"text": "Tram M5: Verlegung der Haltestelle Werneuchener Straße Richtung Zingster Straße um ca. 135 vor den regulären Standort.[br] (Simon-Bolivar-Str. (Berlin) - Oberseestr. (Berlin))",
+					"icon": {
+						"type": "HIM1",
+						"title": null
+					},
+					"priority": 100,
+					"products": {
+						"suburban": false,
+						"subway": false,
+						"tram": true,
+						"bus": false,
+						"ferry": false,
+						"express": false,
+						"regional": false
+					},
+					"categories": [
+						1
+					],
+					"validFrom": "2021-09-09T09:00:00+02:00",
+					"validUntil": "2049-12-31T23:59:59+01:00",
+					"modified": "2021-08-25T13:51:00+02:00"
+				},
+				{
+					"id": "61239",
+					"type": "warning",
+					"summary": "Ersatzverkehr",
+					"text": "Tram 27: Ersatzverkehr aufgrund von Bauarbeiten zwischen Allee der Kosmonauten/Rhinstraße &lt; > Alt-Hohenschönhausen. Die Linie fährt Krankenhaus Köpenick &lt; > Allee der Kosmonauten/Rhinstraße &lt; > S+U Lichtenberg/Gudrunstraße bzw. Betriebshof Lichtenberg.[br] (Allee der  Kosmonauten/Rhinstr. (Berlin) - Alt-Hohenschönhausen (Berlin))",
+					"icon": {
+						"type": "HIM1",
+						"title": null
+					},
+					"priority": 100,
+					"products": {
+						"suburban": false,
+						"subway": false,
+						"tram": true,
+						"bus": false,
+						"ferry": false,
+						"express": false,
+						"regional": false
+					},
+					"categories": [
+						1
+					],
+					"validFrom": "2022-03-07T04:30:00+01:00",
+					"validUntil": "2022-04-11T00:30:00+02:00",
+					"modified": "2022-03-01T10:33:54+01:00"
+				}
+			]
+		},
+		{
+			"stop": {
+				"type": "stop",
+				"id": "900000150020",
+				"name": "Alt-Hohenschönhausen",
+				"location": {
+					"type": "location",
+					"id": "900150020",
+					"latitude": 52.548871,
+					"longitude": 13.504764
+				},
+				"products": {
+					"suburban": false,
+					"subway": false,
+					"tram": true,
+					"bus": true,
+					"ferry": false,
+					"express": false,
+					"regional": false
+				},
+				"stationDHID": "de:11000:900150020"
+			},
+			"arrival": "2022-03-17T01:19:00+01:00",
+			"plannedArrival": "2022-03-17T01:16:00+01:00",
+			"arrivalDelay": 180,
+			"arrivalPlatform": null,
+			"plannedArrivalPlatform": null,
+			"departure": "2022-03-17T01:19:00+01:00",
+			"plannedDeparture": "2022-03-17T01:16:00+01:00",
+			"departureDelay": 180,
+			"departurePlatform": null,
+			"plannedDeparturePlatform": null,
+			"remarks": [
+				{
+					"type": "hint",
+					"code": "OPERATOR",
+					"text": "BVG (U Naturkundemuseum (Berlin) [Chausseestr.] - Gehrenseestr. (Berlin))"
+				},
+				{
+					"id": "61239",
+					"type": "warning",
+					"summary": "Ersatzverkehr",
+					"text": "Tram 27: Ersatzverkehr aufgrund von Bauarbeiten zwischen Allee der Kosmonauten/Rhinstraße &lt; > Alt-Hohenschönhausen. Die Linie fährt Krankenhaus Köpenick &lt; > Allee der Kosmonauten/Rhinstraße &lt; > S+U Lichtenberg/Gudrunstraße bzw. Betriebshof Lichtenberg.[br] (Allee der  Kosmonauten/Rhinstr. (Berlin) - Alt-Hohenschönhausen (Berlin))",
+					"icon": {
+						"type": "HIM1",
+						"title": null
+					},
+					"priority": 100,
+					"products": {
+						"suburban": false,
+						"subway": false,
+						"tram": true,
+						"bus": false,
+						"ferry": false,
+						"express": false,
+						"regional": false
+					},
+					"categories": [
+						1
+					],
+					"validFrom": "2022-03-07T04:30:00+01:00",
+					"validUntil": "2022-04-11T00:30:00+02:00",
+					"modified": "2022-03-01T10:33:54+01:00"
+				}
+			]
+		},
+		{
+			"stop": {
+				"type": "stop",
+				"id": "900000150504",
+				"name": "Gehrenseestr.",
+				"location": {
+					"type": "location",
+					"id": "900150504",
+					"latitude": 52.550013,
+					"longitude": 13.508558
+				},
+				"products": {
+					"suburban": false,
+					"subway": false,
+					"tram": true,
+					"bus": true,
+					"ferry": false,
+					"express": false,
+					"regional": false
+				},
+				"stationDHID": "de:11000:900150504"
+			},
+			"arrival": "2022-03-17T01:21:00+01:00",
+			"plannedArrival": "2022-03-17T01:18:00+01:00",
+			"arrivalDelay": 180,
+			"arrivalPlatform": null,
+			"plannedArrivalPlatform": null,
+			"departure": null,
+			"plannedDeparture": null,
+			"departureDelay": null,
+			"departurePlatform": null,
+			"plannedDeparturePlatform": null,
+			"remarks": [
+				{
+					"type": "hint",
+					"code": "OPERATOR",
+					"text": "BVG (U Naturkundemuseum (Berlin) [Chausseestr.] - Gehrenseestr. (Berlin))"
+				}
+			]
+		}
+	],
+	"remarks": [
+		{
+			"type": "hint",
+			"code": "bf",
+			"text": "barrierefrei"
+		},
+		{
+			"type": "hint",
+			"code": "FB",
+			"text": "Fahrradmitnahme möglich"
+		},
+		{
+			"type": "hint",
+			"code": "text.journeystop.product.or.direction.changes.journey.message",
+			"text": "Verkehrt ab U Rosenthaler Platz (Berlin) als M5 in Richtung U  Naturkundemuseum"
+		},
+		{
+			"type": "hint",
+			"code": "text.journeystop.product.or.direction.changes.journey.message",
+			"text": "Verkehrt ab U Naturkundemuseum (Berlin) [Chausseestr.] als M5 in Richtung Hohenschönhausen, Gehrenseestr."
+		}
+	],
+	"id": "1|67386|0|86|16032022",
+	"realtimeDataUpdatedAt": 1647474743
+}
