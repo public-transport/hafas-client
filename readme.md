@@ -208,6 +208,10 @@ Each [profile](p/readme.md) has more detailed example code.
 
 While `hafas-client` itself should work in the browser via a bundler like [Webpack](https://webpack.js.org), most HAFAS API endpoints don't enable [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing), so you won't be able query them directly.
 
+## TypeScript
+
+There are [community-maintained TypeScript typings](https://www.npmjs.com/package/@types/hafas-client).
+
 
 ## API
 
@@ -222,6 +226,8 @@ While `hafas-client` itself should work in the browser via a bundler like [Webpa
 - [`TripKit`](https://github.com/alexander-albers/tripkit) – Swift equivalent to `hafas-client`, with support for more types of public transport APIs; Used by [ÖPNV Navigator](https://apps.apple.com/de/app/öpnv-navigator/id1239908782).
 - [`kpublictransport`](https://github.com/KDE/kpublictransport) – C++ equivalent to `hafas-client`, with support for more types of public transport APIs; Used by [KDE Itinerary](https://apps.kde.org/itinerary/).
 - [`pyhafas`](https://github.com/n0emis/pyhafas) – Python equivalent to `hafas-client`, with support for more types of public transport APIs.
+- [`hafas-rs`](https://cyberchaos.dev/yuka/hafas-rs/) – Rust equivalent to `hafas-client`.
+- [`fshafas`](https://github.com/bergmannjg/fshafas) – F# port of `hafas-client`.
 - [*Friendly Public Transport Format*](https://github.com/public-transport/friendly-public-transport-format#friendly-public-transport-format-fptf) – A format for APIs, libraries and datasets containing and working with public transport data.
 - [`observe-hafas-client`](https://github.com/public-transport/observe-hafas-client) – Observe all departures/arrivals/etc. returned by `hafas-client`.
 - [`cached-hafas-client`](https://github.com/public-transport/cached-hafas-client) – Pass in a `hafas-client` instance, cache data from it.
