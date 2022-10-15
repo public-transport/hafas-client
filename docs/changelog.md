@@ -1,5 +1,13 @@
 # Changelog
 
+## `5.26.1`
+
+- 0f7382e3 `parseArrival` & `parseDeparture`: properly parse `.origin` & `destination` 🐛
+- 7ccffa5e `profile.log{Request,Response}()`: pass in random request ID
+- 66d78767 readme: mention typings & related libs 📝
+
+[🏷 `5.26.1`](https://github.com/public-transport/hafas-client/releases/tag/5.26.1), 2022-10-15
+
 ## `5.26.0`
 
 - 829c9ca4 add `profile.log{Request,Response}()` hooks 📝
