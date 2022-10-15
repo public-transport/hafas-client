@@ -14,6 +14,7 @@ const createParseArrOrDep = (prefix) => {
 
 	const parseArrOrDep = (ctx, d) => { // d = raw arrival/departure
 		const {profile, opt} = ctx
+		const {locL} = ctx.res.common
 
 		const tPlanned = d.stbStop[prefix + 'TimeS']
 		const tPrognosed = d.stbStop[prefix + 'TimeR']
@@ -37,12 +38,12 @@ const createParseArrOrDep = (prefix) => {
 			destination: null
 		}
 
-		if (prefix === DEPARTURE && Array.isArray(d.prodL) && d.prodL[0].tLocX) {
-			res.destination = profile.parseLocation(ctx, ctx.res.common.locL[d.prodL[0].tLocX])
+		if (prefix === DEPARTURE && Array.isArray(d.prodL) && d.prodL[0] && locL[d.prodL[0].tLocX]) {
+			res.destination = profile.parseLocation(ctx, locL[d.prodL[0].tLocX])
 		}
 
-		if (prefix === ARRIVAL && Array.isArray(d.prodL) && d.prodL[0].fLocX) {
-			res.origin = profile.parseLocation(ctx, ctx.res.common.locL[d.prodL[0].fLocX])
+		if (prefix === ARRIVAL && Array.isArray(d.prodL) && d.prodL[0] && locL[d.prodL[0].fLocX]) {
+			res.origin = profile.parseLocation(ctx, locL[d.prodL[0].fLocX])
 		}
 
 		if (d.pos) {
