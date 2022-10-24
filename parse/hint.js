@@ -27,6 +27,28 @@ const linkTypesByCode = Object.assign(Object.create(null), {
 // todo: expose h.type somehow
 // todo: https://github.com/KDE/kpublictransport/blob/39ac8f9586b9300fa8a9ba0dec010e96fab9ab08/src/lib/backends/hafasmgateparser.cpp#L56-L72
 // todo: h.sty
+
+// SNCB:
+// {
+// 	"type": "A",
+// 	"code": "60",
+// 	"prio": 10,
+// 	"icoX": 2,
+// 	"txtN": "Reservierungspflicht"
+// }
+// {
+// 	"type": "A",
+// 	"code": "64",
+// 	"prio": 110,
+// 	"icoX": 2,
+// 	"txtN": "Zuschlag"
+// }
+// {
+// 	"type": "I",
+// 	"code": "CON_OVERVIEW_TARIF_HINT",
+// 	"icoX": 2,
+// 	"txtN": "Für diese Strecke ist ein internationales Ticket notwendig."
+// }
 const parseHint = (ctx, h) => {
 	// todo: C
 

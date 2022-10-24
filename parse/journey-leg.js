@@ -43,7 +43,7 @@ const applyRemarks = (leg, refs) => {
 
 // todo: pt.status, pt.isPartCncl
 // todo: pt.chRatingRT, pt.chgDurR, pt.minChg
-// todo: what is pt.jny.dirFlg?
+// todo: pt.jny.dirFlg – https://github.com/alexander-albers/tripkit/blob/07047c6ddef24339ebd49a86a78158bca8047421/Sources/TripKit/Provider/AbstractHafasClientInterfaceProvider.swift#L347-L353 & https://github.com/alexander-albers/tripkit/commit/07047c6ddef24339ebd49a86a78158bca8047421#commitcomment-68471656
 // todo: what is pt.recState?
 // todo: what is `sty: 'UNDEF'`?
 // todo: pt.prodL

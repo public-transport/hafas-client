@@ -12,6 +12,7 @@ const parseAndAddLocationDHID = (loc, l) => {
 	// It seems that the DHID of the parent station is being used, not of the stop.
 	// if (!loc.ids) loc.ids = {}
 	// loc.ids.dhid = dhid
+	// todo: use loc.ids.stationDHID instead?
 	loc.stationDHID = dhid
 }
 

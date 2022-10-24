@@ -5,7 +5,7 @@ const findRemarks = require('./find-remarks')
 const ARRIVAL = 'a'
 const DEPARTURE = 'd'
 
-// todo: what is d.jny.dirFlg?
+// todo: pt.jny.dirFlg – https://github.com/alexander-albers/tripkit/blob/07047c6ddef24339ebd49a86a78158bca8047421/Sources/TripKit/Provider/AbstractHafasClientInterfaceProvider.swift#L347-L353 & https://github.com/alexander-albers/tripkit/commit/07047c6ddef24339ebd49a86a78158bca8047421#commitcomment-68471656
 // todo: d.stbStop.dProgType/d.stbStop.aProgType
 // todo: d.stbStop.dProdX/aProdX can be different than d.prodX
 
