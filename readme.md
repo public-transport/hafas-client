@@ -8,6 +8,8 @@
 [![support Jannis via GitHub Sponsors](https://img.shields.io/badge/support%20Jannis-donate-fa7664.svg)](https://github.com/sponsors/derhuerst)
 [![chat with Jannis on Twitter](https://img.shields.io/badge/chat%20with%20Jannis-on%20Twitter-1da1f2.svg)](https://twitter.com/derhuerst)
 
+**[documentation](docs/readme.md)**
+
 
 ## Background
 
@@ -206,11 +208,11 @@ Each [profile](p/readme.md) has more detailed example code.
 
 ### in the browser
 
-While `hafas-client` itself should work in the browser via a bundler like [Webpack](https://webpack.js.org), most HAFAS API endpoints don't enable [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing), so you won't be able query them directly.
+While `hafas-client` itself should work in the browser via a bundler like [Webpack](https://webpack.js.org), most HAFAS API endpoints don't allow [cross-origin resource sharing (CORS)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing), so you won't be able query them (without a proxy server).
 
-## TypeScript
+### TypeScript
 
-There are [community-maintained TypeScript typings](https://www.npmjs.com/package/@types/hafas-client).
+There are [community-maintained TypeScript typings available as `@types/hafas-client`](https://www.npmjs.com/package/@types/hafas-client).
 
 
 ## API
@@ -248,7 +250,7 @@ There are [community-maintained TypeScript typings](https://www.npmjs.com/packag
 - [`hafas-monitor-journeys`](https://github.com/derhuerst/hafas-monitor-journeys) – Use `hafas-client` to monitor journeys from A to B.
 - [`hafas-discover-stations`](https://github.com/derhuerst/hafas-discover-stations#hafas-discover-stations) – Pass in a HAFAS client, discover stations by querying departures.
 - [`hafas-estimate-station-weight`](https://github.com/derhuerst/hafas-estimate-station-weight#hafas-estimate-station-weight) – Pass in a HAFAS client, estimate the importance of a station.
-- [`db-ticket`](https://github.com/envake/db-tickets) – A library to retrieve ticket information from Deutsche Bahn.
+- [`db-tickets`](https://github.com/envake/db-tickets) – A library to retrieve ticket information from Deutsche Bahn.
 
 More related libraries can be found [via the npm package index](https://www.npmjs.com/search?q=hafas).
 

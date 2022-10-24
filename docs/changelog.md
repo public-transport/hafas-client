@@ -16,8 +16,8 @@
 
 ## `5.25.0`
 
-- 0a636981 parse `CHKI` (check-in, check-out) legs ✅
-- 7c68f962 `parse{Stopover,JourneyLeg, Trip}`: expose `{arrival,departure}PrognosisType` ✅
+- 0a636981 parse `CHKI` (check-in, check-out) legs ✅ – Thanks @yu-re-ka!
+- 7c68f962 `parse{Stopover,JourneyLeg, Trip}`: expose `{arrival,departure}PrognosisType` ✅ – Thanks @HybridFox!
 - 95af0a01 `parseArrival` & `parseDeparture`: expose `prognosisType` ✅
 
 [🏷 `5.25.0`](https://github.com/public-transport/hafas-client/releases/tag/5.25.0), 2022-07-30

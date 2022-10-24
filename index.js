@@ -139,7 +139,7 @@ const createClient = (profile, userAgent, opt = {}) => {
 			subStops: true, // parse & expose sub-stops of stations?
 			entrances: true, // parse & expose entrances of stops/stations?
 			remarks: true, // parse & expose hints & warnings?
-			scheduledDays: false
+			scheduledDays: false, // parse & expose dates each journey is valid on?
 		}, opt)
 		if (opt.via) opt.via = profile.formatLocation(profile, opt.via, 'opt.via')
 
@@ -245,7 +245,8 @@ const createClient = (profile, userAgent, opt = {}) => {
 			polylines: false, // return leg shapes? (not supported by all endpoints)
 			subStops: true, // parse & expose sub-stops of stations?
 			entrances: true, // parse & expose entrances of stops/stations?
-			remarks: true // parse & expose hints & warnings?
+			remarks: true, // parse & expose hints & warnings?
+			scheduledDays: false, // parse & expose dates the journey is valid on?
 		}, opt)
 
 		const req = profile.formatRefreshJourneyReq({profile, opt}, refreshToken)
