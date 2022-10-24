@@ -228,6 +228,8 @@ There are [community-maintained TypeScript typings](https://www.npmjs.com/packag
 - [`pyhafas`](https://github.com/n0emis/pyhafas) – Python equivalent to `hafas-client`, with support for more types of public transport APIs.
 - [`hafas-rs`](https://cyberchaos.dev/yuka/hafas-rs/) – Rust equivalent to `hafas-client`.
 - [`fshafas`](https://github.com/bergmannjg/fshafas) – F# port of `hafas-client`.
+- [`hafas-client-php`](https://github.com/MrKrisKrisu/hafas-client-php) – PHP port of `hafas-client`.
+- [*Transit*](https://jlnstrk.github.io/transit/) – Kotlin client for mutliple kinds of public transport APIs, with support for HAFAS APIs.
 - [*Friendly Public Transport Format*](https://github.com/public-transport/friendly-public-transport-format#friendly-public-transport-format-fptf) – A format for APIs, libraries and datasets containing and working with public transport data.
 - [`observe-hafas-client`](https://github.com/public-transport/observe-hafas-client) – Observe all departures/arrivals/etc. returned by `hafas-client`.
 - [`cached-hafas-client`](https://github.com/public-transport/cached-hafas-client) – Pass in a `hafas-client` instance, cache data from it.

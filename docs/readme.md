@@ -127,6 +127,10 @@ const client = createClient({
 
 The default `profile.logRequest` [`console.error`](https://nodejs.org/docs/latest-v10.x/api/console.html#console_console_error_data_args)s the request body, if you have set `$DEBUG` to `hafas-client`. Likewise, `profile.logResponse` `console.error`s the response body.
 
+## Using `hafas-client` from another language
+
+If you want to use `hafas-client` to access HAFAS APIs but work with non-Node.js environments, you can use [`hafas-client-rpc`](https://github.com/derhuerst/hafas-client-rpc) to create a [JSON-RPC](https://www.jsonrpc.org) interface that you can send commands to.
+
 ## Writing a profile
 
 Check [the guide](writing-a-profile.md).
