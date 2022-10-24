@@ -48,7 +48,7 @@
 		"@derhuerst/round-robin-scheduler": "^1.0.4",
 		"content-type": "^1.0.4",
 		"create-hash": "^1.2.0",
-		"fetch-ponyfill": "^7.0.0",
+		"cross-fetch": "^3.1.5",
 		"google-polyline": "^1.0.3",
 		"gps-distance": "0.0.4",
 		"https-proxy-agent": "^5.0.0",
@@ -57,7 +57,6 @@
 		"object-scan": "^13.0.0",
 		"p-retry": "^4.1.0",
 		"p-throttle": "^4.1.1",
-		"pinkie-promise": "^2.0.1",
 		"qs": "^6.6.0",
 		"slugg": "^1.2.0"
 	},
