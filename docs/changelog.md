@@ -1,5 +1,9 @@
 # Changelog
 
+## `6.0.0`
+
+todo
+
 ## `5.26.1`
 
 - 0f7382e3 `parseArrival` & `parseDeparture`: properly parse `.origin` & `destination` 🐛
