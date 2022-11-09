@@ -13,7 +13,7 @@ import {testJourneysStationToStation} from './lib/journeys-station-to-station.js
 import {testArrivals} from './lib/arrivals.js'
 import {testReachableFrom} from './lib/reachable-from.js'
 
-const T_MOCK = 1641897000 * 1000 // 2022-01-11T11:30:00+01
+const T_MOCK = 1671260400 * 1000 // 2022-12-17T08:00:00+01:00
 const when = createWhen(pkpProfile.timezone, pkpProfile.locale, T_MOCK)
 
 const cfg = {

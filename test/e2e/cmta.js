@@ -15,7 +15,7 @@ import {testArrivals} from './lib/arrivals.js'
 import {testJourneysWithDetour} from './lib/journeys-with-detour.js'
 import {testReachableFrom} from './lib/reachable-from.js'
 
-const T_MOCK = 1652175000 * 1000 // 2022-05-10T11:30+02:00
+const T_MOCK = 1670310000 * 1000 // 2022-12-06T08:00:00+01:00
 const when = createWhen(cmtaProfile.timezone, cmtaProfile.locale, T_MOCK)
 
 const cfg = {
@@ -93,7 +93,7 @@ tap.test('Domain to 1104 Elm Street, Austin, TX 78703', async (t) => {
 tap.test('Domain to WHOLE FOODS MARKET - ARBOR TRAILS', async (t) => {
 	const wholeFoodsMarket = {
 		type: 'location',
-		id: '9893387',
+		id: '9893207',
 		poi: true,
 		name: 'WHOLE FOODS MARKET - ARBOR TRAILS',
 		latitude: 30.22026,

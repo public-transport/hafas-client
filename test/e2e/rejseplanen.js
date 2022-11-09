@@ -12,7 +12,7 @@ import {testEarlierLaterJourneys} from './lib/earlier-later-journeys.js'
 import {testDepartures} from './lib/departures.js'
 import {testArrivals} from './lib/arrivals.js'
 
-const T_MOCK = 1657618200 * 1000 // 2022-07-12T11:30+02:00
+const T_MOCK = 1671260400 * 1000 // 2022-12-17T08:00:00+01:00
 const when = createWhen(rejseplanenProfile.timezone, rejseplanenProfile.locale, T_MOCK)
 
 const validate = createValidate({

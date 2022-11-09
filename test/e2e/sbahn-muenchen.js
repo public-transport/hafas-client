@@ -16,7 +16,7 @@ import {testArrivals} from './lib/arrivals.js'
 import {testJourneysWithDetour} from './lib/journeys-with-detour.js'
 import {testReachableFrom} from './lib/reachable-from.js'
 
-const T_MOCK = 1657618200 * 1000 // 2022-07-12T11:30+02:00
+const T_MOCK = 1668495600 * 1000 // 2022-11-15T08:00:00+01:00
 const when = createWhen(sMunichProfile.timezone, sMunichProfile.locale, T_MOCK)
 
 const cfg = {

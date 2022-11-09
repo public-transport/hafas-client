@@ -5,7 +5,7 @@ import {createClient} from '../../index.js'
 import {profile as oövvProfile} from '../../p/ooevv/index.js'
 import {createValidateFptfWith as createValidate} from './lib/validate-fptf-with.js'
 
-const T_MOCK = 1641897000 * 1000 // 2022-01-11T11:30:00+01
+const T_MOCK = 1671260400 * 1000 // 2022-12-17T08:00:00+01:00
 const when = createWhen(oövvProfile.timezone, oövvProfile.locale, T_MOCK)
 
 const cfg = {

@@ -13,7 +13,7 @@ import {testDepartures} from './lib/departures.js'
 import {testDeparturesInDirection} from './lib/departures-in-direction.js'
 import {testArrivals} from './lib/arrivals.js'
 
-const T_MOCK = 1657618200 * 1000 // 2022-07-12T11:30+02:00
+const T_MOCK = 1671260400 * 1000 // 2022-12-17T08:00:00+01:00
 const when = createWhen(zvvProfile.timezone, zvvProfile.locale, T_MOCK)
 
 const validate = createValidate({

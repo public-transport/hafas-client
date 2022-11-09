@@ -21,7 +21,7 @@ import {testJourneysWithDetour} from './lib/journeys-with-detour.js'
 
 const isObj = o => o !== null && 'object' === typeof o && !Array.isArray(o)
 
-const T_MOCK = 1652175000 * 1000 // 2022-05-10T11:30+02:00
+const T_MOCK = 1668495600 * 1000 // 2022-11-15T08:00:00+01:00
 const when = createWhen(insaProfile.timezone, insaProfile.locale, T_MOCK)
 
 const cfg = {

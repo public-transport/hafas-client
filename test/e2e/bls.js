@@ -6,7 +6,7 @@ import {profile as blsProfile} from '../../p/bls/index.js'
 import {createValidateFptfWith as createValidate} from './lib/validate-fptf-with.js'
 import {testJourneysStationToAddress} from './lib/journeys-station-to-address.js'
 
-const T_MOCK = 1641897000 * 1000 // 2022-01-11T11:30:00+01
+const T_MOCK = 1671260400 * 1000 // 2022-12-17T08:00:00+01:00
 const when = createWhen(blsProfile.timezone, blsProfile.locale, T_MOCK)
 
 const cfg = {

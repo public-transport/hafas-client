@@ -19,7 +19,7 @@ import {journeysFailsWithNoProduct} from './lib/journeys-fails-with-no-product.j
 import {testDepartures} from './lib/departures.js'
 import {testArrivals} from './lib/arrivals.js'
 
-const T_MOCK = 1652175000 * 1000 // 2022-05-10T11:30+02:00
+const T_MOCK = 1668495600 * 1000 // 2022-11-15T08:00:00+01:00
 const when = createWhen(mobiliteitLuProfile.timezone, mobiliteitLuProfile.locale, T_MOCK)
 
 const cfg = {
@@ -133,7 +133,7 @@ tap.test('Luxembourg to Ettelbruck, Rue des Romains 4', async (t) => {
 tap.test('Luxembourg to Centre Hospitalier du Nord', async (t) => {
 	const centreHospitalier = {
 		type: 'location',
-		id: '980050385',
+		id: '980054622',
 		poi: true,
 		name: 'Ettelbruck, Centre Hospitalier du Nord (CHDN)',
 		latitude: 49.853519,

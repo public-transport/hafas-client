@@ -27,7 +27,7 @@ import {testReachableFrom} from './lib/reachable-from.js'
 import {testRemarks} from './lib/remarks.js'
 import {testLines} from './lib/lines.js'
 
-const T_MOCK = 1657618200 * 1000 // 2022-07-12T11:30+02:00
+const T_MOCK = 1671260400 * 1000 // 2022-12-17T08:00:00+01:00
 const when = createWhen(bvgProfile.timezone, bvgProfile.locale, T_MOCK)
 
 const {

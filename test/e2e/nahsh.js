@@ -20,7 +20,8 @@ import {testDeparturesInDirection} from './lib/departures-in-direction.js'
 import {testArrivals} from './lib/arrivals.js'
 import {testReachableFrom} from './lib/reachable-from.js'
 
-const T_MOCK = 1657618200 * 1000 // 2022-07-12T11:30+02:00
+const T_MOCK = 1670310000 * 1000 // 2022-12-06T08:00:00+01:00
+// const T_MOCK = 1668495600 * 1000 // 2022-11-15T08:00:00+01:00
 const when = createWhen(nahshProfile.timezone, nahshProfile.locale, T_MOCK)
 
 const cfg = {
@@ -63,6 +64,7 @@ const assertValidPrice = (t, p) => {
 const client = createClient(nahshProfile, 'public-transport/hafas-client:test')
 
 const kielHbf = '9049079'
+const kielHbf2 = '9049076'
 const flensburg = '9027253'
 const luebeckHbf = '9057819'
 const husum = '9044660'
@@ -126,7 +128,7 @@ tap.test('Kiel Hbf to Berliner Str. 80, Husum', async (t) => {
 		test: t,
 		res,
 		validate,
-		fromId: kielHbf,
+		fromIds: [kielHbf, kielHbf2],
 		to: berlinerStr
 	})
 	t.end()
@@ -150,7 +152,7 @@ tap.test('Kiel Hbf to Holstentor', async (t) => {
 		test: t,
 		res,
 		validate,
-		fromId: kielHbf,
+		fromIds: [kielHbf, kielHbf2],
 		to: holstentor
 	})
 	t.end()

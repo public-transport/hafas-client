@@ -8,7 +8,7 @@ import {testJourneysStationToStation} from './lib/journeys-station-to-station.js
 import {testArrivals} from './lib/arrivals.js'
 import {testReachableFrom} from './lib/reachable-from.js'
 
-const T_MOCK = 1657618200 * 1000 // 2022-07-12T11:30+02:00
+const T_MOCK = 1668495600 * 1000 // 2022-11-15T08:00:00+01:00
 const when = createWhen(rmvProfile.timezone, rmvProfile.locale, T_MOCK)
 
 const cfg = {

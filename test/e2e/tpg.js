@@ -6,7 +6,7 @@ import {profile as tpgProfile} from '../../p/tpg/index.js'
 import {createValidateFptfWith as createValidate} from './lib/validate-fptf-with.js'
 import {testJourneysStationToAddress} from './lib/journeys-station-to-address.js'
 
-const T_MOCK = 1641897000 * 1000 // 2022-01-11T11:30:00+01
+const T_MOCK = 1668495600 * 1000 // 2022-11-15T08:00:00+01:00
 const when = createWhen(tpgProfile.timezone, tpgProfile.locale, T_MOCK)
 
 const cfg = {
