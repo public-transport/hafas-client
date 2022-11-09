@@ -293,10 +293,11 @@ tap.test('nearby Kiel Hbf', async (t) => {
 	t.ok(Array.isArray(nearby))
 	t.equal(nearby.length, 2)
 
-	t.ok(nearby[0].id === kielHbf || nearby[0].id === '8000199')
-	t.equal(nearby[0].name, 'Kiel Hbf')
-	t.ok(nearby[0].distance >= 0)
-	t.ok(nearby[0].distance <= 100)
+	const match = nearby.find(n => n.id === kielHbf || n.station?.id === kielHbf)
+	t.ok(match)
+	t.equal(match.name, 'Kiel Hbf')
+	t.ok(match.distance >= 0)
+	t.ok(match.distance <= 100)
 
 	t.end()
 })
