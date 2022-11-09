@@ -98,7 +98,7 @@ tap.test('radar', async (t) => {
 	t.end()
 })
 
-tap.skip('reachableFrom', async (t) => {
+tap.test('reachableFrom', async (t) => {
 	await testReachableFrom({
 		test: t,
 		reachableFrom: client.reachableFrom,

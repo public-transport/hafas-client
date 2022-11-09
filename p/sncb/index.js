@@ -61,7 +61,7 @@ const profile = {
 	trip: true,
 	refreshJourney: true,
 	radar: true,
-	reachableFrom: false, // todo: fails with `H9240` "HAFAS Kernel: Internal error."
+	reachableFrom: true,
 }
 
 export {
