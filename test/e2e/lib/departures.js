@@ -17,7 +17,7 @@ const testDepartures = async (cfg) => {
 		t.ok(
 			ids.includes(stop.id) ||
 			(stop.station && ids.includes(stop.station.id)),
-			name + '.id is invalid',
+			`${name}.id is invalid (${stop.id}), must be one of ${ids.join('/')}`,
 		)
 	}
 

@@ -33,7 +33,7 @@ const cfg = {
 	products,
 	minLatitude: 50.7,
 	maxLatitude: 53.2,
-	minLongitude: 10.25,
+	minLongitude: 9, // considering e.g. IC 245
 	maxLongitude: 13.4
 }
 
