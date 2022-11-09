@@ -75,6 +75,7 @@ if (process.env.VCR_MODE && !process.env.VCR_OFF) {
 			keepUnusedRequests: true, // todo: change to false?
 		},
 		matchRequestsBy: {
+			order: false,
 			headers: {
 				// todo: use an allow-list here?
 				exclude: [
