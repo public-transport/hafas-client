@@ -177,20 +177,21 @@ tap.test('journeys: via works – with detour', async (t) => {
 // todo: walkingSpeed "Berlin - Charlottenburg, Hallerstraße" -> jungfernheide
 // todo: without detour
 
-tap.test('earlier/later journeys, Jungfernheide -> München Hbf', async (t) => {
+// todo: with the DB endpoint, earlierRef/laterRef is missing queries many days in the future
+tap.skip('earlier/later journeys, Jungfernheide -> München Hbf', async (t) => {
 	await testEarlierLaterJourneys({
 		test: t,
 		fetchJourneys: client.journeys,
 		validate,
 		fromId: jungfernheide,
 		toId: münchenHbf,
-		when
+		when,
 	})
 
 	t.end()
 })
 
-tap.skip('journeys – leg cycle & alternatives', async (t) => {
+tap.test('journeys – leg cycle & alternatives', async (t) => {
 	await testLegCycleAlternatives({
 		test: t,
 		fetchJourneys: client.journeys,

@@ -125,15 +125,15 @@ tap.test('Luxembourg to 9071 Ettelbruck, Rue des Romains 4', async (t) => {
 	t.end()
 })
 
-// Each journey's last leg has a destination without the ID.
-tap.skip('Luxembourg to Centre Hospitalier du Nord', async (t) => {
+tap.test('Luxembourg to Centre Hospitalier du Nord', async (t) => {
+	const luxembourg = '9217081'
 	const centreHospitalier = {
 		type: 'location',
-		id: '140701020',
+		id: '990027653',
 		poi: true,
-		name: 'Ettelbruck, Centre Hospitalier du Nord',
-		latitude: 49.853096,
-		longitude: 6.094075
+		name: 'Centre Hospitalier du Nord (CHDN), Ettelbruck',
+		latitude: 49.853168,
+		longitude: 6.096268,
 	}
 	const res = await client.journeys(luxembourgGareCentrale, centreHospitalier, {
 		results: 3,
@@ -144,7 +144,7 @@ tap.skip('Luxembourg to Centre Hospitalier du Nord', async (t) => {
 		test: t,
 		res,
 		validate,
-		fromId: luxembourgGareCentrale,
+		fromId: luxembourg,
 		to: centreHospitalier
 	})
 	t.end()

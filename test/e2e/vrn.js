@@ -204,7 +204,7 @@ tap.test('locations named Ebertpark', async (t) => {
 	t.end()
 })
 
-tap.test('station Meckesheim', async (t) => {
+tap.skip('station Meckesheim', async (t) => {
 	const s = await client.stop(meckesheim)
 
 	validate(t, s, ['stop', 'station'], 'station')

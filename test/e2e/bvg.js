@@ -56,7 +56,7 @@ const westhafen = '900001201'
 const wedding = '900009104'
 const württembergallee = '900026153'
 const tiergarten = '900003103'
-const jannowitzbrücke = '900000100004'
+const jannowitzbrücke = '900100004'
 
 const hour = 60 * 60 * 1000
 
@@ -195,7 +195,7 @@ tap.test('earlier/later journeys', async (t) => {
 	t.end()
 })
 
-tap.skip('journeys – leg cycle & alternatives', async (t) => {
+tap.test('journeys – leg cycle & alternatives', async (t) => {
 	await testLegCycleAlternatives({
 		test: t,
 		fetchJourneys: client.journeys,

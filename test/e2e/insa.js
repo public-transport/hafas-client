@@ -111,8 +111,7 @@ tap.test('Magdeburg Hbf to 39104 Magdeburg, Sternstr. 10', async (t) => {
 	t.end()
 })
 
-// only 1 result instead of >=3
-tap.skip('Magdeburg Hbf to Kloster Unser Lieben Frauen', async (t) => {
+tap.test('Magdeburg Hbf to Kloster Unser Lieben Frauen', async (t) => {
 	const kloster = {
 		type: 'location',
 		id: '970012223',

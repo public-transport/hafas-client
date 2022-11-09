@@ -299,8 +299,7 @@ tap.test('departures at Karlsplatz in direction of Pilgramgasse', async (t) => {
 
 // todo: arrivals
 
-// todo: nearby[0].distance is undefined 🙄
-tap.skip('nearby Salzburg Hbf', async (t) => {
+tap.test('nearby Salzburg Hbf', async (t) => {
 	const nearby = await client.nearby({
 		type: 'location',
 		longitude: 13.045605,
