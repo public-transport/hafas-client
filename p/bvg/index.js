@@ -1,25 +1,20 @@
-'use strict'
+// todo: use import assertions once they're supported by Node.js & ESLint
+// https://github.com/tc39/proposal-import-assertions
+import {createRequire} from 'module'
+const require = createRequire(import.meta.url)
 
-const shorten = require('vbb-short-station-name')
-const {to12Digit, to9Digit} = require('vbb-translate-ids')
-const parseLineName = require('vbb-parse-line')
-const getStations = require('vbb-stations')
-const {parseHook} = require('../../lib/profile-hooks')
+import {parseHook} from '../../lib/profile-hooks.js'
 
-const parseAndAddLocationDHID = require('../vbb/parse-loc-dhid')
+import {parseAndAddLocationDHID} from '../vbb/parse-loc-dhid.js'
 
-const {
-	parseLine: _parseLine,
-	parseLocation: _parseLocation,
-	parseArrival: _parseArrival,
-	parseDeparture: _parseDeparture,
-	parseStopover: _parseStopover,
-	parseJourneyLeg: _parseJourneyLeg,
-	formatStation: _formatStation,
-} = require('../../lib/default-profile')
+import {parseLocation as _parseLocation} from '../../parse/location.js'
+import {parseArrival as _parseArrival} from '../../parse/arrival.js'
+import {parseDeparture as _parseDeparture} from '../../parse/departure.js'
+import {parseStopover as _parseStopover} from '../../parse/stopover.js'
+import {parseJourneyLeg as _parseJourneyLeg} from '../../parse/journey-leg.js'
 
 const baseProfile = require('./base.json')
-const products = require('./products')
+import {products} from './products.js'
 
 // todo: there's also a referenced icon `{"res":"occup_fig_{low,mid}"}`
 const addOccupancy = (item, occupancyCodes) => {
@@ -45,29 +40,7 @@ const journeyLegOccupancyCodes = new Map([
 	['text.occup.jny.max.13', 'high'],
 ])
 
-// todo: https://m.tagesspiegel.de/berlin/fahrerlebnis-wie-im-regionalexpress-so-faehrt-es-sich-in-der-neuen-express-s-bahn/25338674.html
-const parseLineWithMoreDetails = ({parsed}, p) => {
-	parsed.name = p.name.replace(/^(bus|tram)\s+/i, '')
-	const details = parseLineName(parsed.name)
-	parsed.symbol = details.symbol
-	parsed.nr = details.nr
-	parsed.metro = details.metro
-	parsed.express = details.express
-	parsed.night = details.night
-
-	return parsed
-}
-
 const parseLocation = ({parsed}, l) => {
-	if ((parsed.type === 'stop' || parsed.type === 'station') && parsed.id[0] === '9') {
-		parsed.name = shorten(parsed.name)
-		parsed.id = to12Digit(parsed.id)
-		if (!parsed.location.latitude || !parsed.location.longitude) {
-			const [s] = getStations(parsed.id)
-			if (s) Object.assign(parsed.location, s.location)
-		}
-	}
-
 	parseAndAddLocationDHID(parsed, l)
 	return parsed
 }
@@ -144,19 +117,6 @@ const parseJourneyLegWithOccupancy = ({parsed}, leg, date) => {
 	return parsed
 }
 
-const validIBNR = /^\d+$/
-const formatStation = (id) => {
-	if ('string' !== typeof id) throw new Error('station ID must be a string.')
-	const l = id.length
-	if ((l !== 7 && l !== 9 && l !== 12) || !validIBNR.test(id)) {
-		throw new Error('station ID must be a valid IBNR.')
-	}
-	// BVG has some 7-digit stations. We don't convert them to 12 digits,
-	// because it only recognizes in the 7-digit format. see derhuerst/vbb-hafas#22
-	if (l !== 7) id = to9Digit(id)
-	return _formatStation(id)
-}
-
 // use the Berlkönig ride sharing service?
 // todo: https://github.com/alexander-albers/tripkit/issues/26#issuecomment-825437320
 const requestJourneysWithBerlkoenig = ({opt}, query) => {
@@ -172,7 +132,7 @@ const requestJourneysWithBerlkoenig = ({opt}, query) => {
 
 // todo: adapt/extend `vbb-parse-ticket` to support the BVG markup
 
-const bvgProfile = {
+const profile = {
 	...baseProfile,
 	locale: 'de-DE',
 	timezone: 'Europe/Berlin',
@@ -181,9 +141,7 @@ const bvgProfile = {
 
 	products,
 
-	parseLine: parseHook(_parseLine, parseLineWithMoreDetails),
 	parseLocation: parseHook(_parseLocation, parseLocation),
-	parseStationName: (ctx, name) => shorten(name),
 	parseArrival: parseHook(
 		parseHook(_parseArrival, parseArrivalRenameRingbahn),
 		parseArrDepWithOccupancy,
@@ -198,10 +156,6 @@ const bvgProfile = {
 		parseJourneyLegWithOccupancy,
 	),
 
-	formatStation,
-
-	departuresGetPasslist: false, // `departures()` method: support for `getPasslist` field?
-	departuresStbFltrEquiv: false, // `departures()` method: support for `stbFltrEquiv` field?
 	refreshJourneyUseOutReconL: true,
 	trip: true,
 	radar: true,
@@ -209,4 +163,6 @@ const bvgProfile = {
 	reachableFrom: true
 }
 
-module.exports = bvgProfile
+export {
+	profile,
+}

@@ -1,6 +1,6 @@
 # `nearby(location, [opt])`
 
-This method can be used to find stations close to a location. Note that it is not supported by every profile/endpoint.
+This method can be used to find stops/stations & POIs close to a location. Note that it is not supported by every profile/endpoint.
 
 `location` must be an [*FPTF* `location` object](https://github.com/public-transport/friendly-public-transport-format/blob/3bd36faa721e85d9f5ca58fb0f38cdbedb87bbca/spec/readme.md#location-objects).
 
@@ -24,21 +24,19 @@ With `opt`, you can override the default options, which look like this:
 As an example, we're going to use the [VBB profile](../p/vbb):
 
 ```js
-const createClient = require('hafas-client')
-const vbbProfile = require('hafas-client/p/vbb')
+import {createClient} from 'hafas-client'
+import {vbbProfile} from 'hafas-client/p/vbb.js'
 
 const client = createClient(vbbProfile, 'my-awesome-program')
 
-client.nearby({
+await client.nearby({
 	type: 'location',
 	latitude: 52.5137344,
 	longitude: 13.4744798
 }, {distance: 400})
-.then(console.log)
-.catch(console.error)
 ```
 
-The response may look like this:
+The result may look like this:
 
 ```js
 [ {

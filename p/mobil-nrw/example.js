@@ -1,10 +1,8 @@
-'use strict'
+import {inspect} from 'util'
+import {createClient} from '../../index.js'
+import {profile} from './index.js'
 
-const {inspect} = require('util')
-const createClient = require('../..')
-const cflProfile = require('.')
-
-const client = createClient(cflProfile, 'hafas-client-example')
+const client = createClient(profile, 'hafas-client-example')
 
 const soest = '8000076'
 const aachenHbf = '8000001'
@@ -13,7 +11,7 @@ client.journeys(soest, aachenHbf, {results: 1, stopovers: true})
 // .then(({journeys}) => {
 // 	const [journey] = journeys
 // 	const leg = journey.legs[0]
-// 	return client.trip(leg.tripId, leg.line.name, {polyline: true})
+// 	return client.trip(leg.tripId, {polyline: true})
 // })
 // .then(({journeys}) => {
 // 	const [journey] = journeys

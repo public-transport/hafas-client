@@ -2,6 +2,7 @@
 	"name": "hafas-client",
 	"description": "Client for HAFAS public transport APIs.",
 	"version": "5.26.1",
+	"type": "module",
 	"main": "index.js",
 	"files": [
 		"index.js",
@@ -41,43 +42,38 @@
 		"http"
 	],
 	"engines": {
-		"node": ">=10"
+		"node": ">=16"
 	},
 	"dependencies": {
 		"@derhuerst/br2nl": "^1.0.0",
 		"@derhuerst/round-robin-scheduler": "^1.0.4",
-		"capture-stack-trace": "^1.0.0",
 		"content-type": "^1.0.4",
 		"create-hash": "^1.2.0",
-		"fetch-ponyfill": "^7.0.0",
+		"cross-fetch": "^3.1.5",
 		"google-polyline": "^1.0.3",
 		"gps-distance": "0.0.4",
 		"https-proxy-agent": "^5.0.0",
 		"lodash": "^4.17.5",
-		"luxon": "^1.3.0",
+		"luxon": "^2.3.2",
 		"object-scan": "^13.0.0",
-		"p-retry": "^4.1.0",
-		"p-throttle": "^4.1.1",
-		"pinkie-promise": "^2.0.1",
+		"p-retry": "^5.1.1",
+		"p-throttle": "^5.0.0",
 		"qs": "^6.6.0",
-		"slugg": "^1.2.0",
-		"vbb-parse-line": "^1.0.0",
-		"vbb-parse-ticket": "^0.2.1",
-		"vbb-short-station-name": "^1.0.1",
-		"vbb-stations": "^7.1.0",
-		"vbb-translate-ids": "^4.0.0"
+		"slugg": "^1.2.0"
 	},
 	"devDependencies": {
-		"eslint": "^7.0.0",
+		"@pollyjs/adapter-node-http": "^6.0.5",
+		"@pollyjs/core": "^6.0.5",
+		"@pollyjs/persister-fs": "^6.0.5",
+		"eslint": "^8.15.0",
 		"is-coordinates": "^2.0.2",
 		"is-roughly-equal": "^0.1.0",
-		"replayer": "^2.2.3",
-		"tap": "^15.2.3",
+		"tap": "^16.2.0",
 		"validate-fptf": "^3.0.0"
 	},
 	"scripts": {
 		"lint": "eslint .",
-		"test-unit": "tap test/*.js test/format/*.js test/parse/*.js",
+		"test-unit": "tap test/lib/*.js test/*.js test/format/*.js test/parse/*.js",
 		"test-integration": "VCR_MODE=playback tap test/e2e/*.js",
 		"test-integration:record": "VCR_MODE=record tap -t60 -j16 test/e2e/*.js",
 		"test-e2e": "VCR_OFF=true tap -t60 -j16 test/e2e/*.js",

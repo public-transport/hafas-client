@@ -5,8 +5,8 @@
 ## Usage
 
 ```js
-const createClient = require('hafas-client')
-const blsProfile = require('hafas-client/p/BLS')
+import {createClient} from 'hafas-client'
+import {blsProfile} from 'hafas-client/p/bls/index.js'
 
 // create a client with BLS profile
 const client = createClient(blsProfile, 'my-awesome-program')

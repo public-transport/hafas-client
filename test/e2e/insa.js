@@ -1,36 +1,33 @@
-'use strict'
+import tap from 'tap'
+import isRoughlyEqual from 'is-roughly-equal'
 
-const tap = require('tap')
-const isRoughlyEqual = require('is-roughly-equal')
-
-const {createWhen} = require('./lib/util')
-const createClient = require('../..')
-const insaProfile = require('../../p/insa')
-const products = require('../../p/insa/products')
-const {
-	movement: createValidateMovement,
-	journeyLeg: createValidateJourneyLeg,
-} = require('./lib/validators')
-const createValidate = require('./lib/validate-fptf-with')
-const testJourneysStationToStation = require('./lib/journeys-station-to-station')
-const testJourneysStationToAddress = require('./lib/journeys-station-to-address')
-const testJourneysStationToPoi = require('./lib/journeys-station-to-poi')
-const testEarlierLaterJourneys = require('./lib/earlier-later-journeys')
-const journeysFailsWithNoProduct = require('./lib/journeys-fails-with-no-product')
-const testDepartures = require('./lib/departures')
-const testDeparturesInDirection = require('./lib/departures-in-direction')
-const testArrivals = require('./lib/arrivals')
-const testJourneysWithDetour = require('./lib/journeys-with-detour')
+import {createWhen} from './lib/util.js'
+import {createClient} from '../../index.js'
+import {profile as insaProfile} from '../../p/insa/index.js'
+import {
+	createValidateMovement,
+	createValidateJourneyLeg,
+} from './lib/validators.js'
+import {createValidateFptfWith as createValidate} from './lib/validate-fptf-with.js'
+import {testJourneysStationToStation} from './lib/journeys-station-to-station.js'
+import {testJourneysStationToAddress} from './lib/journeys-station-to-address.js'
+import {testJourneysStationToPoi} from './lib/journeys-station-to-poi.js'
+import {testEarlierLaterJourneys} from './lib/earlier-later-journeys.js'
+import {journeysFailsWithNoProduct} from './lib/journeys-fails-with-no-product.js'
+import {testDepartures} from './lib/departures.js'
+import {testDeparturesInDirection} from './lib/departures-in-direction.js'
+import {testArrivals} from './lib/arrivals.js'
+import {testJourneysWithDetour} from './lib/journeys-with-detour.js'
 
 const isObj = o => o !== null && 'object' === typeof o && !Array.isArray(o)
 
-const T_MOCK = 1652175000 * 1000 // 2022-05-10T11:30+02:00
+const T_MOCK = 1657618200 * 1000 // 2022-07-12T11:30+02:00
 const when = createWhen(insaProfile.timezone, insaProfile.locale, T_MOCK)
 
 const cfg = {
 	when,
 	stationCoordsOptional: false,
-	products,
+	products: insaProfile.products,
 	minLatitude: 50.7,
 	maxLatitude: 53.2,
 	minLongitude: 9, // considering e.g. IC 245
@@ -79,14 +76,14 @@ tap.test('journeys – Magdeburg Hbf to Magdeburg-Buckau', async (t) => {
 
 // todo: journeys, only one product
 
-tap.test('journeys – fails with no product', (t) => {
-	journeysFailsWithNoProduct({
+tap.test('journeys – fails with no product', async (t) => {
+	await journeysFailsWithNoProduct({
 		test: t,
 		fetchJourneys: client.journeys,
 		fromId: magdeburgHbf,
 		toId: magdeburgBuckau,
 		when,
-		products
+		products: insaProfile.products,
 	})
 	t.end()
 })
@@ -182,20 +179,21 @@ tap.test('trip details', async (t) => {
 	const p = res.journeys[0].legs.find(l => !l.walking)
 	t.ok(p.tripId, 'precondition failed')
 	t.ok(p.line.name, 'precondition failed')
-	const trip = await client.trip(p.tripId, p.line.name, {when})
 
-	validate(t, trip, 'trip', 'trip')
+	const tripRes = await client.trip(p.tripId, {when})
+
+	validate(t, tripRes, 'tripResult', 'res')
 	t.end()
 })
 
 tap.test('departures at Magdeburg Universität', async (t) => {
-	const departures = await client.departures(universitaet, {
+	const res = await client.departures(universitaet, {
 		duration: 30, when,
 	})
 
 	await testDepartures({
 		test: t,
-		departures,
+		res,
 		validate,
 		id: universitaet
 	})
@@ -203,7 +201,7 @@ tap.test('departures at Magdeburg Universität', async (t) => {
 })
 
 tap.test('departures with station object', async (t) => {
-	const deps = await client.departures({
+	const res = await client.departures({
 		type: 'stop',
 		id: universitaet,
 		name: 'Universität',
@@ -216,7 +214,7 @@ tap.test('departures with station object', async (t) => {
 		duration: 30, when,
 	})
 
-	validate(t, deps, 'departures', 'deps')
+	validate(t, res, 'departuresResponse', 'res')
 	t.end()
 })
 
@@ -235,13 +233,13 @@ tap.test('departures at Universität in direction of Spielhagenstr.', async (t) 
 })
 
 tap.test('arrivals at Magdeburg Universität', async (t) => {
-	const arrivals = await client.arrivals(universitaet, {
+	const res = await client.arrivals(universitaet, {
 		duration: 30, when
 	})
 
 	await testArrivals({
 		test: t,
-		arrivals,
+		res,
 		validate,
 		id: universitaet
 	})
@@ -278,7 +276,7 @@ tap.test('station Magdeburg-Buckau', async (t) => {
 })
 
 tap.test('radar', async (t) => {
-	const vehicles = await client.radar({
+	const res = await client.radar({
 		north: 52.148364,
 		west: 11.600826,
 		south: 52.108486,
@@ -291,7 +289,7 @@ tap.test('radar', async (t) => {
 		stationCoordsOptional: true, // see #28
 	})
 	const validate = createValidate(customCfg, validators)
-	validate(t, vehicles, 'movements', 'vehicles')
+	validate(t, res, 'radarResult', 'res')
 
 	t.end()
 })

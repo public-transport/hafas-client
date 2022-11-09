@@ -5,8 +5,8 @@
 ## Usage
 
 ```js
-const createClient = require('hafas-client')
-const cmtaProfile = require('hafas-client/p/cmta')
+import {createClient} from 'hafas-client'
+import {cmtaProfile} from 'hafas-client/p/cmta/index.js'
 
 // create a client with CMTA profile
 const client = createClient(cmtaProfile, 'my-awesome-program')

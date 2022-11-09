@@ -1,28 +1,25 @@
-'use strict'
+import tap from 'tap'
 
-const tap = require('tap')
+import {createWhen} from './lib/util.js'
+import {createClient} from '../../index.js'
+import {profile as mobilNrwProfile} from '../../p/mobil-nrw/index.js'
+import {createValidateFptfWith as createValidate} from './lib/validate-fptf-with.js'
+import {testJourneysStationToStation} from './lib/journeys-station-to-station.js'
+import {testJourneysStationToAddress} from './lib/journeys-station-to-address.js'
+import {testJourneysStationToPoi} from './lib/journeys-station-to-poi.js'
+import {testEarlierLaterJourneys} from './lib/earlier-later-journeys.js'
+import {testRefreshJourney} from './lib/refresh-journey.js'
+import {testDepartures} from './lib/departures.js'
+import {testArrivals} from './lib/arrivals.js'
+import {testReachableFrom} from './lib/reachable-from.js'
 
-const {createWhen} = require('./lib/util')
-const createClient = require('../..')
-const mobilNrwProfile = require('../../p/mobil-nrw')
-const products = require('../../p/mobil-nrw/products')
-const createValidate = require('./lib/validate-fptf-with')
-const testJourneysStationToStation = require('./lib/journeys-station-to-station')
-const testJourneysStationToAddress = require('./lib/journeys-station-to-address')
-const testJourneysStationToPoi = require('./lib/journeys-station-to-poi')
-const testEarlierLaterJourneys = require('./lib/earlier-later-journeys')
-const testRefreshJourney = require('./lib/refresh-journey')
-const testDepartures = require('./lib/departures')
-const testArrivals = require('./lib/arrivals')
-const testReachableFrom = require('./lib/reachable-from')
-
-const T_MOCK = 1641897000 * 1000 // 2022-01-11T11:30:00+01
+const T_MOCK = 1657618200 * 1000 // 2022-07-12T11:30+02:00
 const when = createWhen(mobilNrwProfile.timezone, mobilNrwProfile.locale, T_MOCK)
 
 const cfg = {
 	when,
 	stationCoordsOptional: false,
-	products,
+	products: mobilNrwProfile.products,
 	minLatitude: 48.089,
 	minLongitude: 1.659,
 	maxLatitude: 53.531,
@@ -142,9 +139,10 @@ tap.test('trip details', async (t) => {
 	const p = res.journeys[0].legs.find(l => !l.walking)
 	t.ok(p.tripId, 'precondition failed')
 	t.ok(p.line.name, 'precondition failed')
-	const trip = await client.trip(p.tripId, p.line.name, {when})
 
-	validate(t, trip, 'trip', 'trip')
+	const tripRes = await client.trip(p.tripId, {when})
+
+	validate(t, tripRes, 'tripResult', 'res')
 	t.end()
 })
 
@@ -156,13 +154,13 @@ tap.test('departures at Soest', async (t) => {
 		'902737', // Bahnhof E, Soest
 	]
 
-	const departures = await client.departures(soest, {
+	const res = await client.departures(soest, {
 		duration: 10, when,
 	})
 
 	await testDepartures({
 		test: t,
-		departures,
+		res,
 		validate,
 		ids,
 	})
@@ -170,7 +168,7 @@ tap.test('departures at Soest', async (t) => {
 })
 
 tap.test('departures with station object', async (t) => {
-	const deps = await client.departures({
+	const res = await client.departures({
 		type: 'station',
 		id: soest,
 		name: 'Magdeburg Hbf',
@@ -181,7 +179,7 @@ tap.test('departures with station object', async (t) => {
 		}
 	}, {when})
 
-	validate(t, deps, 'departures', 'departures')
+	validate(t, res, 'departuresResponse', 'res')
 	t.end()
 })
 
@@ -193,13 +191,13 @@ tap.test('arrivals at Soest', async (t) => {
 		'902737', // Bahnhof E, Soest
 	]
 
-	const arrivals = await client.arrivals(soest, {
+	const res = await client.arrivals(soest, {
 		duration: 10, when,
 	})
 
 	await testArrivals({
 		test: t,
-		arrivals,
+		res,
 		validate,
 		ids,
 	})
@@ -235,7 +233,7 @@ tap.test('station Aachen Hbf', async (t) => {
 })
 
 tap.test('radar', async (t) => {
-	const vehicles = await client.radar({
+	const res = await client.radar({
 		north: 51.4358,
 		west: 6.7625,
 		south: 51.4214,
@@ -244,7 +242,7 @@ tap.test('radar', async (t) => {
 		duration: 5 * 60, when, results: 10,
 	})
 
-	validate(t, vehicles, 'movements', 'vehicles')
+	validate(t, res, 'radarResult', 'res')
 	t.end()
 })
 

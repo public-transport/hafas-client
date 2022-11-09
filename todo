@@ -1,0 +1,3 @@
+filters:
+{mode: 'INC', type: 'ROUTE', value: 'R::10::Schiff::B3012287613::de:aac:05358|obersee:rs::1'}
+{mode: 'INC', type: 'CAT', value: 'G::4::Fähre::B*::*::*'}

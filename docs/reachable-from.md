@@ -31,12 +31,15 @@ With `opt`, you can override the default options, which look like this:
 As an example, we're going to use the [VBB profile](../p/vbb):
 
 ```js
-const createClient = require('hafas-client')
-const vbbProfile = require('hafas-client/p/vbb')
+import {createClient} from 'hafas-client'
+import {vbbProfile} from 'hafas-client/p/vbb.js'
 
 const client = createClient(vbbProfile, 'my-awesome-program')
 
-client.reachableFrom({
+const {
+	reachable,
+	realtimeDataUpdatedAt,
+} = await client.reachableFrom({
 	type: 'location',
 	address: '13353 Berlin-Wedding, Torfstr. 17',
 	latitude: 52.541797,
@@ -44,11 +47,11 @@ client.reachableFrom({
 }, {
 	maxDuration: 10 // minutes
 })
-.then(console.log)
-.catch(console.error)
 ```
 
-The response may look like this:
+`realtimeDataUpdatedAt` is a UNIX timestamp reflecting the latest moment when (at least some of) the response's realtime data have been updated.
+
+`reachable` may look like this:
 
 ```js
 [

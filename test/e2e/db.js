@@ -1,33 +1,30 @@
-'use strict'
+import tap from 'tap'
+import isRoughlyEqual from 'is-roughly-equal'
+import maxBy from 'lodash/maxBy.js'
+import flatMap from 'lodash/flatMap.js'
+import last from 'lodash/last.js'
 
-const tap = require('tap')
-const isRoughlyEqual = require('is-roughly-equal')
-const maxBy = require('lodash/maxBy')
-const flatMap = require('lodash/flatMap')
-const last = require('lodash/last')
-
-const {createWhen} = require('./lib/util')
-const createClient = require('../..')
-const dbProfile = require('../../p/db')
-const products = require('../../p/db/products')
-const {
-	station: createValidateStation,
-	trip: createValidateTrip
-} = require('./lib/validators')
-const createValidate = require('./lib/validate-fptf-with')
-const testJourneysStationToStation = require('./lib/journeys-station-to-station')
-const testJourneysStationToAddress = require('./lib/journeys-station-to-address')
-const testJourneysStationToPoi = require('./lib/journeys-station-to-poi')
-const testEarlierLaterJourneys = require('./lib/earlier-later-journeys')
-const testLegCycleAlternatives = require('./lib/leg-cycle-alternatives')
-const testRefreshJourney = require('./lib/refresh-journey')
-const journeysFailsWithNoProduct = require('./lib/journeys-fails-with-no-product')
-const testDepartures = require('./lib/departures')
-const testDeparturesInDirection = require('./lib/departures-in-direction')
-const testArrivals = require('./lib/arrivals')
-const testJourneysWithDetour = require('./lib/journeys-with-detour')
-const testReachableFrom = require('./lib/reachable-from')
-const testServerInfo = require('./lib/server-info')
+import {createWhen} from './lib/util.js'
+import {createClient} from '../../index.js'
+import {profile as dbProfile} from '../../p/db/index.js'
+import {
+    createValidateStation,
+	createValidateTrip
+} from './lib/validators.js'
+import {createValidateFptfWith as createValidate} from './lib/validate-fptf-with.js'
+import {testJourneysStationToStation} from './lib/journeys-station-to-station.js'
+import {testJourneysStationToAddress} from './lib/journeys-station-to-address.js'
+import {testJourneysStationToPoi} from './lib/journeys-station-to-poi.js'
+import {testEarlierLaterJourneys} from './lib/earlier-later-journeys.js'
+import {testLegCycleAlternatives} from './lib/leg-cycle-alternatives.js'
+import {testRefreshJourney} from './lib/refresh-journey.js'
+import {journeysFailsWithNoProduct} from './lib/journeys-fails-with-no-product.js'
+import {testDepartures} from './lib/departures.js'
+import {testDeparturesInDirection} from './lib/departures-in-direction.js'
+import {testArrivals} from './lib/arrivals.js'
+import {testJourneysWithDetour} from './lib/journeys-with-detour.js'
+import {testReachableFrom} from './lib/reachable-from.js'
+import {testServerInfo} from './lib/server-info.js'
 
 const isObj = o => o !== null && 'object' === typeof o && !Array.isArray(o)
 const minute = 60 * 1000
@@ -38,18 +35,14 @@ const when = createWhen(dbProfile.timezone, dbProfile.locale, T_MOCK)
 const cfg = {
 	when,
 	stationCoordsOptional: false,
-	products,
+	products: dbProfile.products,
 	minLatitude: 46.673100,
 	maxLatitude: 55.030671,
 	minLongitude: 6.896517,
 	maxLongitude: 16.180237
 }
 
-const validateStation = createValidateStation(cfg)
-
-const validate = createValidate(cfg, {
-	station: validateStation
-})
+const validate = createValidate(cfg)
 
 const assertValidPrice = (t, p) => {
 	t.ok(p)
@@ -104,14 +97,14 @@ tap.test('journeys – Berlin Schwedter Str. to München Hbf', async (t) => {
 
 // todo: journeys, only one product
 
-tap.test('journeys – fails with no product', (t) => {
-	journeysFailsWithNoProduct({
+tap.test('journeys – fails with no product', async (t) => {
+	await journeysFailsWithNoProduct({
 		test: t,
 		fetchJourneys: client.journeys,
 		fromId: blnSchwedterStr,
 		toId: münchenHbf,
 		when,
-		products
+		products: dbProfile.products,
 	})
 	t.end()
 })
@@ -254,7 +247,7 @@ tap.skip('journeysFromTrip – U Mehringdamm to U Naturkundemuseum, reroute to S
 		for (const j of journeys) {
 			const l = j.legs.find(isU6Leg)
 			if (!l) continue
-			const t = await client.trip(l.tripId, l.line && l.line.name, {
+			const t = await client.trip(l.tripId, {
 				stopovers: true, remarks: false
 			})
 
@@ -277,7 +270,7 @@ tap.skip('journeysFromTrip – U Mehringdamm to U Naturkundemuseum, reroute to S
 	// Find a vehicle from U Mehringdamm to U Stadtmitte (to the north) that is currently
 	// between these two stations.
 	const {trip, prevStopover} = await findTripBetween(blnMehringdamm, blnStadtmitte, {
-		regionalExp: false, regional: false, suburban: false
+		regionalExpress: false, regional: false, suburban: false
 	})
 	t.ok(trip, 'precondition failed: trip not found')
 	t.ok(prevStopover, 'precondition failed: previous stopover missing')
@@ -314,29 +307,34 @@ tap.test('trip details', async (t) => {
 	const p = res.journeys[0].legs.find(l => !l.walking)
 	t.ok(p.tripId, 'precondition failed')
 	t.ok(p.line.name, 'precondition failed')
-	const trip = await client.trip(p.tripId, p.line.name, {when})
 
-	const validateTrip = createValidateTrip(cfg)
+	const tripRes = await client.trip(p.tripId, {when})
+
 	const validate = createValidate(cfg, {
-		trip: (validate, trip, name) => {
-			trip = Object.assign({}, trip)
-			if (!trip.direction) trip.direction = 'foo' // todo, see #49
-			validateTrip(validate, trip, name)
+		trip: (cfg) => {
+			const validateTrip = createValidateTrip(cfg)
+			const validateTripWithFakeDirection = (val, trip, name) => {
+				validateTrip(val, {
+					...trip,
+					direction: trip.direction || 'foo', // todo, see #49
+				}, name)
+			}
+			return validateTripWithFakeDirection
 		}
 	})
-	validate(t, trip, 'trip', 'trip')
+	validate(t, tripRes, 'tripResult', 'tripRes')
 
 	t.end()
 })
 
 tap.test('departures at Berlin Schwedter Str.', async (t) => {
-	const departures = await client.departures(blnSchwedterStr, {
+	const res = await client.departures(blnSchwedterStr, {
 		duration: 5, when,
 	})
 
 	await testDepartures({
 		test: t,
-		departures,
+		res,
 		validate,
 		id: blnSchwedterStr
 	})
@@ -344,7 +342,7 @@ tap.test('departures at Berlin Schwedter Str.', async (t) => {
 })
 
 tap.test('departures with station object', async (t) => {
-	const deps = await client.departures({
+	const res = await client.departures({
 		type: 'station',
 		id: jungfernheide,
 		name: 'Berlin Jungfernheide',
@@ -355,7 +353,7 @@ tap.test('departures with station object', async (t) => {
 		}
 	}, {when})
 
-	validate(t, deps, 'departures', 'departures')
+	validate(t, res, 'departuresResponse', 'res')
 	t.end()
 })
 
@@ -373,13 +371,13 @@ tap.test('departures at Berlin Hbf in direction of Berlin Ostbahnhof', async (t)
 })
 
 tap.test('arrivals at Berlin Schwedter Str.', async (t) => {
-	const arrivals = await client.arrivals(blnSchwedterStr, {
+	const res = await client.arrivals(blnSchwedterStr, {
 		duration: 5, when,
 	})
 
 	await testArrivals({
 		test: t,
-		arrivals,
+		res,
 		validate,
 		id: blnSchwedterStr
 	})
@@ -434,7 +432,7 @@ tap.test('stop', async (t) => {
 })
 
 tap.test('line with additionalName', async (t) => {
-	const departures = await client.departures(potsdamHbf, {
+	const {departures} = await client.departures(potsdamHbf, {
 		when,
 		duration: 12 * 60, // 12 minutes
 		products: {bus: false, suburban: false, tram: false}
@@ -444,7 +442,7 @@ tap.test('line with additionalName', async (t) => {
 })
 
 tap.test('radar', async (t) => {
-	const vehicles = await client.radar({
+	const res = await client.radar({
 		north: 52.52411,
 		west: 13.41002,
 		south: 52.51942,
@@ -453,7 +451,7 @@ tap.test('radar', async (t) => {
 		duration: 5 * 60, when
 	})
 
-	validate(t, vehicles, 'movements', 'vehicles')
+	validate(t, res, 'radarResult', 'res')
 	t.end()
 })
 

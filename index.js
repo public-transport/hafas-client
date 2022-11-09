@@ -1,14 +1,12 @@
-'use strict'
+import isObj from 'lodash/isObject.js'
+import sortBy from 'lodash/sortBy.js'
+import omit from 'lodash/omit.js'
 
-const isObj = require('lodash/isObject')
-const sortBy = require('lodash/sortBy')
-const pRetry = require('p-retry')
-const omit = require('lodash/omit')
-
-const defaultProfile = require('./lib/default-profile')
-const validateProfile = require('./lib/validate-profile')
-const {INVALID_REQUEST} = require('./lib/errors')
-const sliceLeg = require('./lib/slice-leg')
+import {defaultProfile} from './lib/default-profile.js'
+import {validateProfile} from './lib/validate-profile.js'
+import {INVALID_REQUEST} from './lib/errors.js'
+import {sliceLeg} from './lib/slice-leg.js'
+import {HafasError} from './lib/errors.js'
 
 const isNonEmptyString = str => 'string' === typeof str && str.length > 0
 
@@ -38,7 +36,7 @@ const createClient = (profile, userAgent, opt = {}) => {
 		throw new TypeError('userAgent must be a string');
 	}
 
-	const _stationBoard = (station, type, parse, opt = {}) => {
+	const _stationBoard = async (station, type, resultsField, parse, opt = {}) => {
 		if (isObj(station)) station = profile.formatStation(station.id)
 		else if ('string' === typeof station) station = profile.formatStation(station)
 		else throw new TypeError('station must be an object or a string.')
@@ -74,25 +72,29 @@ const createClient = (profile, userAgent, opt = {}) => {
 
 		const req = profile.formatStationBoardReq({profile, opt}, station, type)
 
-		// todo [breaking]: return object with realtimeDataUpdatedAt
-		return profile.request({profile, opt}, userAgent, req)
-		.then(({res, common}) => {
-			if (!Array.isArray(res.jnyL)) return []
+		const {res, common} = await profile.request({profile, opt}, userAgent, req)
 
-			const ctx = {profile, opt, common, res}
-			return res.jnyL.map(res => parse(ctx, res))
-			.sort((a, b) => new Date(a.when) - new Date(b.when)) // todo
-		})
+		const ctx = {profile, opt, common, res}
+		const jnyL = Array.isArray(res.jnyL) ? res.jnyL : []
+		const results = jnyL.map(res => parse(ctx, res))
+		.sort((a, b) => new Date(a.when) - new Date(b.when)) // todo
+
+		return {
+			[resultsField]: results,
+			realtimeDataUpdatedAt: res.planrtTS && res.planrtTS !== '0'
+				? parseInt(res.planrtTS)
+				: null,
+		}
 	}
 
-	const departures = (station, opt = {}) => {
-		return _stationBoard(station, 'DEP', profile.parseDeparture, opt)
+	const departures = async (station, opt = {}) => {
+		return await _stationBoard(station, 'DEP', 'departures', profile.parseDeparture, opt)
 	}
-	const arrivals = (station, opt = {}) => {
-		return _stationBoard(station, 'ARR', profile.parseArrival, opt)
+	const arrivals = async (station, opt = {}) => {
+		return await _stationBoard(station, 'ARR', 'arrivals', profile.parseArrival, opt)
 	}
 
-	const journeys = (from, to, opt = {}) => {
+	const journeys = async (from, to, opt = {}) => {
 		from = profile.formatLocation(profile, from, 'from')
 		to = profile.formatLocation(profile, to, 'to')
 
@@ -211,30 +213,29 @@ const createClient = (profile, userAgent, opt = {}) => {
 		if (opt.results !== null) query.numF = opt.results
 		if (profile.journeysOutFrwd) query.outFrwd = outFrwd
 
-		return profile.request({profile, opt}, userAgent, {
+		const {res, common} = await profile.request({profile, opt}, userAgent, {
 			cfg: {polyEnc: 'GPA'},
 			meth: 'TripSearch',
 			req: profile.transformJourneysQuery({profile, opt}, query)
 		})
-		.then(({res, common}) => {
-			if (!Array.isArray(res.outConL)) return []
-			// todo: outConGrpL
+		if (!Array.isArray(res.outConL)) return []
+		// todo: outConGrpL
 
-			const ctx = {profile, opt, common, res}
-			const journeys = res.outConL
-			.map(j => profile.parseJourney(ctx, j))
+		const ctx = {profile, opt, common, res}
+		const journeys = res.outConL
+		.map(j => profile.parseJourney(ctx, j))
 
-			return {
-				earlierRef: res.outCtxScrB,
-				laterRef: res.outCtxScrF,
-				journeys,
-				// todo [breaking]: rename to realtimeDataUpdatedAt
-				realtimeDataFrom: res.planrtTS ? parseInt(res.planrtTS) : null,
-			}
-		})
+		return {
+			earlierRef: res.outCtxScrB,
+			laterRef: res.outCtxScrF,
+			journeys,
+			realtimeDataUpdatedAt: res.planrtTS && res.planrtTS !== '0'
+				? parseInt(res.planrtTS)
+				: null,
+		}
 	}
 
-	const refreshJourney = (refreshToken, opt = {}) => {
+	const refreshJourney = async (refreshToken, opt = {}) => {
 		if ('string' !== typeof refreshToken || !refreshToken) {
 			throw new TypeError('refreshToken must be a non-empty string.')
 		}
@@ -251,23 +252,19 @@ const createClient = (profile, userAgent, opt = {}) => {
 
 		const req = profile.formatRefreshJourneyReq({profile, opt}, refreshToken)
 
-		return profile.request({profile, opt}, userAgent, req)
-		.then(({res, common}) => {
-			if (!Array.isArray(res.outConL) || !res.outConL[0]) {
-				const err = new Error('invalid response')
-				// technically this is not a HAFAS error
-				// todo: find a different flag with decent DX
-				err.isHafasError = true
-				throw err
-			}
+		const {res, common} = await profile.request({profile, opt}, userAgent, req)
+		if (!Array.isArray(res.outConL) || !res.outConL[0]) {
+			throw new HafasError('invalid response, expected outConL[0]', null, {})
+		}
 
-			const ctx = {profile, opt, common, res}
-			return {
-				// todo [breaking]: rename to realtimeDataUpdatedAt
-				realtimeDataFrom: res.planrtTS ? parseInt(res.planrtTS) : null,
-				...profile.parseJourney(ctx, res.outConL[0])
-			}
-		})
+		const ctx = {profile, opt, common, res}
+
+		return {
+			journey: profile.parseJourney(ctx, res.outConL[0]),
+			realtimeDataUpdatedAt: res.planrtTS && res.planrtTS !== '0'
+				? parseInt(res.planrtTS)
+				: null,
+		}
 	}
 
 	// Although the DB Navigator app passes the *first* stopover of the trip
@@ -371,8 +368,7 @@ const createClient = (profile, userAgent, opt = {}) => {
 		if (!Array.isArray(res.outConL)) return []
 
 		const ctx = {profile, opt, common, res}
-		// todo [breaking]: return object with realtimeDataUpdatedAt
-		return res.outConL
+		const journeys = res.outConL
 		.map(rawJourney => profile.parseJourney(ctx, rawJourney))
 		.map((journey) => {
 			// For the first (transit) leg, HAFAS sometimes returns *all* past
@@ -391,9 +387,16 @@ const createClient = (profile, userAgent, opt = {}) => {
 				],
 			}
 		})
+
+		return {
+			journeys,
+			realtimeDataUpdatedAt: res.planrtTS && res.planrtTS !== '0'
+				? parseInt(res.planrtTS)
+				: null,
+		}
 	}
 
-	const locations = (query, opt = {}) => {
+	const locations = async (query, opt = {}) => {
 		if (!isNonEmptyString(query)) {
 			throw new TypeError('query must be a non-empty string.')
 		}
@@ -410,16 +413,14 @@ const createClient = (profile, userAgent, opt = {}) => {
 
 		const req = profile.formatLocationsReq({profile, opt}, query)
 
-		return profile.request({profile, opt}, userAgent, req)
-		.then(({res, common}) => {
-			if (!res.match || !Array.isArray(res.match.locL)) return []
+		const {res, common} = await profile.request({profile, opt}, userAgent, req)
+		if (!res.match || !Array.isArray(res.match.locL)) return []
 
-			const ctx = {profile, opt, common, res}
-			return res.match.locL.map(loc => profile.parseLocation(ctx, loc))
-		})
+		const ctx = {profile, opt, common, res}
+		return res.match.locL.map(loc => profile.parseLocation(ctx, loc))
 	}
 
-	const stop = (stop, opt = {}) => {
+	const stop = async (stop, opt = {}) => {
 		if ('object' === typeof stop) stop = profile.formatStation(stop.id)
 		else if ('string' === typeof stop) stop = profile.formatStation(stop)
 		else throw new TypeError('stop must be an object or a string.')
@@ -433,25 +434,19 @@ const createClient = (profile, userAgent, opt = {}) => {
 
 		const req = profile.formatStopReq({profile, opt}, stop)
 
-		return profile.request({profile, opt}, userAgent, req)
-		.then(({res, common}) => {
-			if (!res || !Array.isArray(res.locL) || !res.locL[0]) {
-				// todo: proper stack trace?
-				// todo: DRY with lib/request.js
-				const err = new Error('response has no stop')
-				// technically this is not a HAFAS error
-				// todo: find a different flag with decent DX
-				err.isHafasError = true
-				err.code = INVALID_REQUEST
-				throw err
-			}
+		const {res, common} = await profile.request({profile, opt}, userAgent, req)
+		if (!res || !Array.isArray(res.locL) || !res.locL[0]) {
+			throw new HafasError('invalid response, expected locL[0]', null, {
+				// This problem occurs on invalid input. 🙄
+				code: INVALID_REQUEST,
+			})
+		}
 
-			const ctx = {profile, opt, res, common}
-			return profile.parseLocation(ctx, res.locL[0])
-		})
+		const ctx = {profile, opt, res, common}
+		return profile.parseLocation(ctx, res.locL[0])
 	}
 
-	const nearby = (location, opt = {}) => {
+	const nearby = async (location, opt = {}) => {
 		validateLocation(location, 'location')
 
 		opt = Object.assign({
@@ -466,24 +461,20 @@ const createClient = (profile, userAgent, opt = {}) => {
 
 		const req = profile.formatNearbyReq({profile, opt}, location)
 
-		return profile.request({profile, opt}, userAgent, req)
-		.then(({common, res}) => {
-			if (!Array.isArray(res.locL)) return []
+		const {res, common} = await profile.request({profile, opt}, userAgent, req)
+		if (!Array.isArray(res.locL)) return []
 
-			// todo: parse `.dur` – walking duration?
-			const ctx = {profile, opt, common, res}
-			const results = res.locL.map(loc => profile.parseNearby(ctx, loc))
-			return Number.isInteger(opt.results) ? results.slice(0, opt.results) : results
-		})
+		// todo: parse `.dur` – walking duration?
+		const ctx = {profile, opt, common, res}
+		const results = res.locL.map(loc => profile.parseNearby(ctx, loc))
+		return Number.isInteger(opt.results)
+			? results.slice(0, opt.results)
+			: results
 	}
 
-	const trip = (id, lineName, opt = {}) => {
-		// todo [breaking]: remove lineName param, not needed anymore
+	const trip = async (id, opt = {}) => {
 		if (!isNonEmptyString(id)) {
 			throw new TypeError('id must be a non-empty string.')
-		}
-		if (!isNonEmptyString(lineName)) {
-			throw new TypeError('lineName must be a non-empty string.')
 		}
 		opt = Object.assign({
 			stopovers: true, // return stations on the way?
@@ -493,18 +484,23 @@ const createClient = (profile, userAgent, opt = {}) => {
 			remarks: true // parse & expose hints & warnings?
 		}, opt)
 
-		const req = profile.formatTripReq({profile, opt}, id, lineName)
+		const req = profile.formatTripReq({profile, opt}, id)
 
-		// todo [breaking]: return object with realtimeDataUpdatedAt
-		return profile.request({profile, opt}, userAgent, req)
-		.then(({common, res}) => {
-			const ctx = {profile, opt, common, res}
-			return profile.parseTrip(ctx, res.journey)
-		})
+		const {res, common} = await profile.request({profile, opt}, userAgent, req)
+		const ctx = {profile, opt, common, res}
+
+		const trip = profile.parseTrip(ctx, res.journey)
+
+		return {
+			trip,
+			realtimeDataUpdatedAt: res.planrtTS && res.planrtTS !== '0'
+				? parseInt(res.planrtTS)
+				: null,
+		}
 	}
 
 	// todo [breaking]: rename to trips()?
-	const tripsByName = (lineNameOrFahrtNr = '*', opt = {}) => {
+	const tripsByName = async (lineNameOrFahrtNr = '*', opt = {}) => {
 		if (!isNonEmptyString(lineNameOrFahrtNr)) {
 			throw new TypeError('lineNameOrFahrtNr must be a non-empty string.')
 		}
@@ -572,20 +568,25 @@ const createClient = (profile, userAgent, opt = {}) => {
 		}
 		req.jnyFltrL = [...req.jnyFltrL, ...opt.additionalFilters]
 
-		// todo [breaking]: return object with realtimeDataUpdatedAt
-		return profile.request({profile, opt}, userAgent, {
+		const {res, common} = await profile.request({profile, opt}, userAgent, {
 			cfg: {polyEnc: 'GPA'},
 			meth: 'JourneyMatch',
 			req,
 		})
 		// todo [breaking]: catch `NO_MATCH` errors, return []
-		.then(({res, common}) => {
-			const ctx = {profile, opt, common, res}
-			return res.jnyL.map(t => profile.parseTrip(ctx, t))
-		})
+		const ctx = {profile, opt, common, res}
+
+		const trips = res.jnyL.map(t => profile.parseTrip(ctx, t))
+
+		return {
+			trips,
+			realtimeDataUpdatedAt: res.planrtTS && res.planrtTS !== '0'
+				? parseInt(res.planrtTS)
+				: null,
+		}
 	}
 
-	const radar = ({north, west, south, east}, opt) => {
+	const radar = async ({north, west, south, east}, opt) => {
 		if ('number' !== typeof north) throw new TypeError('north must be a number.')
 		if ('number' !== typeof west) throw new TypeError('west must be a number.')
 		if ('number' !== typeof south) throw new TypeError('south must be a number.')
@@ -608,17 +609,21 @@ const createClient = (profile, userAgent, opt = {}) => {
 
 		const req = profile.formatRadarReq({profile, opt}, north, west, south, east)
 
-		// todo [breaking]: return object with realtimeDataUpdatedAt
-		return profile.request({profile, opt}, userAgent, req)
-		.then(({res, common}) => {
-			if (!Array.isArray(res.jnyL)) return []
+		const {res, common} = await profile.request({profile, opt}, userAgent, req)
+		if (!Array.isArray(res.jnyL)) return []
+		const ctx = {profile, opt, common, res}
 
-			const ctx = {profile, opt, common, res}
-			return res.jnyL.map(m => profile.parseMovement(ctx, m))
-		})
+		const movements = res.jnyL.map(m => profile.parseMovement(ctx, m))
+
+		return {
+			movements,
+			realtimeDataUpdatedAt: res.planrtTS && res.planrtTS !== '0'
+				? parseInt(res.planrtTS)
+				: null,
+		}
 	}
 
-	const reachableFrom = (address, opt = {}) => {
+	const reachableFrom = async (address, opt = {}) => {
 		validateLocation(address, 'address')
 
 		opt = Object.assign({
@@ -634,41 +639,36 @@ const createClient = (profile, userAgent, opt = {}) => {
 
 		const req = profile.formatReachableFromReq({profile, opt}, address)
 
-		const refetch = () => {
-			return profile.request({profile, opt}, userAgent, req)
-			.then(({res, common}) => {
-				if (!Array.isArray(res.posL)) {
-					const err = new Error('invalid response')
-					err.shouldRetry = true
-					throw err
-				}
-
-				const byDuration = []
-				let i = 0, lastDuration = NaN
-				for (const pos of sortBy(res.posL, 'dur')) {
-					const loc = common.locations[pos.locX]
-					if (!loc) continue
-					if (pos.dur !== lastDuration) {
-						lastDuration = pos.dur
-						i = byDuration.length
-						byDuration.push({
-							duration: pos.dur,
-							stations: [loc]
-						})
-					} else {
-						byDuration[i].stations.push(loc)
-					}
-				}
-				// todo [breaking]: return object with realtimeDataUpdatedAt
-				return byDuration
+		const {res, common} = await profile.request({profile, opt}, userAgent, req)
+		if (!Array.isArray(res.posL)) {
+			throw new HafasError('invalid response, expected posL[0]', null, {
+				shouldRetry: true,
 			})
 		}
 
-		return pRetry(refetch, {
-			retries: 3,
-			factor: 2,
-			minTimeout: 2 * 1000
-		})
+		const byDuration = []
+		let i = 0, lastDuration = NaN
+		for (const pos of sortBy(res.posL, 'dur')) {
+			const loc = common.locations[pos.locX]
+			if (!loc) continue
+			if (pos.dur !== lastDuration) {
+				lastDuration = pos.dur
+				i = byDuration.length
+				byDuration.push({
+					duration: pos.dur,
+					stations: [loc]
+				})
+			} else {
+				byDuration[i].stations.push(loc)
+			}
+		}
+
+		return {
+			reachable: byDuration,
+			realtimeDataUpdatedAt: res.planrtTS && res.planrtTS !== '0'
+				? parseInt(res.planrtTS)
+				: null,
+		}
 	}
 
 	const remarks = async (opt = {}) => {
@@ -696,10 +696,16 @@ const createClient = (profile, userAgent, opt = {}) => {
 			res, common,
 		} = await profile.request({profile, opt}, userAgent, req)
 
-		// todo [breaking]: return object with realtimeDataUpdatedAt
 		const ctx = {profile, opt, common, res}
-		return (res.msgL || [])
+		const remarks = (res.msgL || [])
 		.map(w => profile.parseWarning(ctx, w))
+
+		return {
+			remarks,
+			realtimeDataUpdatedAt: res.planrtTS && res.planrtTS !== '0'
+				? parseInt(res.planrtTS)
+				: null,
+		}
 	}
 
 	const lines = async (query, opt = {}) => {
@@ -712,10 +718,9 @@ const createClient = (profile, userAgent, opt = {}) => {
 			res, common,
 		} = await profile.request({profile, opt}, userAgent, req)
 
-		// todo [breaking]: return object with realtimeDataUpdatedAt
 		if (!Array.isArray(res.lineL)) return []
 		const ctx = {profile, opt, common, res}
-		return res.lineL.map(l => {
+		const lines = res.lineL.map(l => {
 			const parseDirRef = i => (res.common.dirL[i] || {}).txt || null
 			return {
 				...omit(l.line, ['id', 'fahrtNr']),
@@ -729,6 +734,13 @@ const createClient = (profile, userAgent, opt = {}) => {
 					: null,
 			}
 		})
+
+		return {
+			lines,
+			realtimeDataUpdatedAt: res.planrtTS && res.planrtTS !== '0'
+				? parseInt(res.planrtTS)
+				: null,
+		}
 	}
 
 	const serverInfo = async (opt = {}) => {
@@ -753,7 +765,7 @@ const createClient = (profile, userAgent, opt = {}) => {
 			serverTime: res.sD && res.sT
 				? profile.parseDateTime(ctx, res.sD, res.sT)
 				: null,
-			realtimeDataUpdatedAt: res.planrtTS
+			realtimeDataUpdatedAt: res.planrtTS && res.planrtTS !== '0'
 				? parseInt(res.planrtTS)
 				: null,
 		}
@@ -780,4 +792,6 @@ const createClient = (profile, userAgent, opt = {}) => {
 	return client
 }
 
-module.exports = createClient
+export {
+	createClient,
+}

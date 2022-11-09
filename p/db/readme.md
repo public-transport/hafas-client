@@ -5,8 +5,8 @@
 ## Usage
 
 ```js
-const createClient = require('hafas-client')
-const dbProfile = require('hafas-client/p/db')
+import {createClient} from 'hafas-client'
+import {dbProfile} from 'hafas-client/p/db/index.js'
 
 // create a client with DB profile
 const client = createClient(dbProfile, 'my-awesome-program')
@@ -74,7 +74,7 @@ With the `db` profile, `hafas-client` will return more station information whene
 ## Using the `loyaltyCard` option
 
 ```js
-const {data: loyaltyCards} = require('hafas-client/p/db/loyalty-cards')
+import {data as loyaltyCards} from 'hafas-client/p/db/loyalty-cards.js'
 
 hafas.journeys(from, to, {
 	loyaltyCard: {type: data.BAHNCARD, discount: 25}

@@ -1,6 +1,4 @@
-'use strict'
-
-module.exports = {
+const rsagJourneys = {
 	type: 'journey',
 	legs: [
 		{
@@ -94,4 +92,8 @@ module.exports = {
 	],
 	refreshToken: '¶HKI¶T$A=1@O=Rostock Hbf@L=8010304@a=128@$A=1@O=Güstrow@L=8010153@a=128@$202101191414$202101191444$      S2$$1$$$$',
 	cycle: {min: 3600},
+}
+
+export {
+	rsagJourneys,
 }

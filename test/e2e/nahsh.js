@@ -1,35 +1,32 @@
-'use strict'
+import tap from 'tap'
+import isRoughlyEqual from 'is-roughly-equal'
 
-const tap = require('tap')
-const isRoughlyEqual = require('is-roughly-equal')
+import {createWhen} from './lib/util.js'
+import {createClient} from '../../index.js'
+import {profile as nahshProfile} from '../../p/nahsh/index.js'
+import {
+	createValidateLine,
+	createValidateStation
+} from './lib/validators.js'
+import {createValidateFptfWith as createValidate} from './lib/validate-fptf-with.js'
+import {testJourneysStationToStation} from './lib/journeys-station-to-station.js'
+import {testJourneysStationToAddress} from './lib/journeys-station-to-address.js'
+import {testJourneysStationToPoi} from './lib/journeys-station-to-poi.js'
+import {testEarlierLaterJourneys} from './lib/earlier-later-journeys.js'
+import {testRefreshJourney} from './lib/refresh-journey.js'
+import {journeysFailsWithNoProduct} from './lib/journeys-fails-with-no-product.js'
+import {testDepartures} from './lib/departures.js'
+import {testDeparturesInDirection} from './lib/departures-in-direction.js'
+import {testArrivals} from './lib/arrivals.js'
+import {testReachableFrom} from './lib/reachable-from.js'
 
-const {createWhen} = require('./lib/util')
-const createClient = require('../..')
-const nahshProfile = require('../../p/nahsh')
-const products = require('../../p/nahsh/products')
-const {
-	line: createValidateLine,
-	station: createValidateStation
-} = require('./lib/validators')
-const createValidate = require('./lib/validate-fptf-with')
-const testJourneysStationToStation = require('./lib/journeys-station-to-station')
-const testJourneysStationToAddress = require('./lib/journeys-station-to-address')
-const testJourneysStationToPoi = require('./lib/journeys-station-to-poi')
-const testEarlierLaterJourneys = require('./lib/earlier-later-journeys')
-const testRefreshJourney = require('./lib/refresh-journey')
-const journeysFailsWithNoProduct = require('./lib/journeys-fails-with-no-product')
-const testDepartures = require('./lib/departures')
-const testDeparturesInDirection = require('./lib/departures-in-direction')
-const testArrivals = require('./lib/arrivals')
-const testReachableFrom = require('./lib/reachable-from')
-
-const T_MOCK = 1641897000 * 1000 // 2022-01-11T11:30:00+01
+const T_MOCK = 1657618200 * 1000 // 2022-07-12T11:30+02:00
 const when = createWhen(nahshProfile.timezone, nahshProfile.locale, T_MOCK)
 
 const cfg = {
 	when,
 	stationCoordsOptional: false,
-	products,
+	products: nahshProfile.products,
 	maxLatitude: 55.15,
 	minLongitude: 7.5,
 	minLatitude: 53.15,
@@ -101,14 +98,14 @@ tap.test('journeys – Kiel Hbf to Flensburg', async (t) => {
 
 // todo: journeys, only one product
 
-tap.test('journeys – fails with no product', (t) => {
-	journeysFailsWithNoProduct({
+tap.test('journeys – fails with no product', async (t) => {
+	await journeysFailsWithNoProduct({
 		test: t,
 		fetchJourneys: client.journeys,
 		fromId: kielHbf,
 		toId: flensburg,
 		when,
-		products
+		products: nahshProfile.products,
 	})
 	t.end()
 })
@@ -217,20 +214,21 @@ tap.test('trip details', async (t) => {
 	const p = res.journeys[0].legs.find(l => !l.walking)
 	t.ok(p.tripId, 'precondition failed')
 	t.ok(p.line.name, 'precondition failed')
-	const trip = await client.trip(p.tripId, p.line.name, {when})
 
-	validate(t, trip, 'trip', 'trip')
+	const tripRes = await client.trip(p.tripId, {when})
+
+	validate(t, tripRes, 'tripResult', 'res')
 	t.end()
 })
 
 tap.test('departures at Kiel Räucherei', async (t) => {
-	const departures = await client.departures(kielRaeucherei, {
+	const res = await client.departures(kielRaeucherei, {
 		duration: 30, when,
 	})
 
 	await testDepartures({
 		test: t,
-		departures,
+		res,
 		validate,
 		id: kielRaeucherei
 	})
@@ -238,7 +236,7 @@ tap.test('departures at Kiel Räucherei', async (t) => {
 })
 
 tap.test('departures with station object', async (t) => {
-	const deps = await client.departures({
+	const res = await client.departures({
 		type: 'station',
 		id: kielHbf,
 		name: 'Kiel Hbf',
@@ -249,7 +247,7 @@ tap.test('departures with station object', async (t) => {
 		}
 	}, {when})
 
-	validate(t, deps, 'departures', 'departures')
+	validate(t, res, 'departuresResponse', 'res')
 	t.end()
 })
 
@@ -267,13 +265,13 @@ tap.test('departures at Berlin Hbf in direction of Berlin Ostbahnhof', async (t)
 })
 
 tap.test('arrivals at Kiel Räucherei', async (t) => {
-	const arrivals = await client.arrivals(kielRaeucherei, {
+	const res = await client.arrivals(kielRaeucherei, {
 		duration: 30, when
 	})
 
 	await testArrivals({
 		test: t,
-		arrivals,
+		res,
 		validate,
 		id: kielRaeucherei
 	})
@@ -329,7 +327,7 @@ tap.test('stop', async (t) => {
 })
 
 tap.test('radar', async (t) => {
-	const vehicles = await client.radar({
+	const res = await client.radar({
 		north: 54.4,
 		west: 10.0,
 		south: 54.2,
@@ -339,6 +337,7 @@ tap.test('radar', async (t) => {
 	})
 
 	// todo: cfg.stationProductsOptional option
+	const {products} = nahshProfile
 	const allProducts = products.reduce((acc, p) => (acc[p.id] = true, acc), {})
 	const validateStation = createValidateStation(cfg)
 	const validate = createValidate(cfg, {
@@ -350,7 +349,7 @@ tap.test('radar', async (t) => {
 			validateStation(validate, s, name)
 		}
 	})
-	validate(t, vehicles, 'movements', 'vehicles')
+	validate(t, res, 'radarResult', 'res')
 
 	t.end()
 })

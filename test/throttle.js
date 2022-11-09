@@ -1,10 +1,13 @@
-'use strict'
+// todo: use import assertions once they're supported by Node.js & ESLint
+// https://github.com/tc39/proposal-import-assertions
+import {createRequire} from 'module'
+const require = createRequire(import.meta.url)
 
-const tap = require('tap')
+import tap from 'tap'
 
-const createClient = require('..')
-const withThrottling = require('../throttle')
-const vbbProfile = require('../p/vbb')
+import {createClient} from '../index.js'
+import {withThrottling} from '../throttle.js'
+import {profile as vbbProfile} from '../p/vbb/index.js'
 const depsRes = require('./fixtures/vbb-departures.json')
 
 const ua = 'public-transport/hafas-client:test'

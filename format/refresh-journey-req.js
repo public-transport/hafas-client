@@ -1,5 +1,3 @@
-'use strict'
-
 const formatRefreshJourneyReq = (ctx, refreshToken) => {
 	// eslint-disable-next-line no-unused-vars
 	const {profile, opt} = ctx
@@ -22,4 +20,6 @@ const formatRefreshJourneyReq = (ctx, refreshToken) => {
 	}
 }
 
-module.exports = formatRefreshJourneyReq
+export {
+	formatRefreshJourneyReq,
+}

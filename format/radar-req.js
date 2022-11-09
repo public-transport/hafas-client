@@ -1,5 +1,3 @@
-'use strict'
-
 const formatRadarReq = (ctx, north, west, south, east) => {
 	const {profile, opt} = ctx
 
@@ -26,4 +24,6 @@ const formatRadarReq = (ctx, north, west, south, east) => {
 	}
 }
 
-module.exports = formatRadarReq
+export {
+	formatRadarReq,
+}

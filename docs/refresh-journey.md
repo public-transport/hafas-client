@@ -21,20 +21,21 @@ With `opt`, you can override the default options, which look like this:
 As an example, we're going to use the [VBB profile](../p/vbb):
 
 ```js
-const createClient = require('hafas-client')
-const vbbProfile = require('hafas-client/p/vbb')
+import {createClient} from 'hafas-client'
+import {vbbProfile} from 'hafas-client/p/vbb.js'
 
 const client = createClient(vbbProfile)
 
 // Hauptbahnhof to Heinrich-Heine-Str.
-client.journeys('900000003201', '900000100008', {results: 1})
-.then(([journey]) => {
-	// later, fetch up-to-date info on the journey
-	client.refreshJourney(journey.refreshToken, {stopovers: true, remarks: true})
-	.then(console.log)
-	.catch(console.error)
-})
-.catch(console.error)
+const {journeys} = await client.journeys('900000003201', '900000100008', {results: 1})
+
+// later, fetch up-to-date info on the journey
+const {
+	journey,
+	realtimeDataUpdatedAt,
+} = await client.refreshJourney(journeys[0].refreshToken, {stopovers: true, remarks: true})
 ```
 
-`refreshJourney()` will return a *single* [*Friendly Public Transport Format* v2 draft](https://github.com/public-transport/friendly-public-transport-format/blob/3bd36faa721e85d9f5ca58fb0f38cdbedb87bbca/spec/readme.md) `journey`, in the same format as with `journeys()`.
+`journey` is a *single* [*Friendly Public Transport Format* v2 draft](https://github.com/public-transport/friendly-public-transport-format/blob/3bd36faa721e85d9f5ca58fb0f38cdbedb87bbca/spec/readme.md) `journey`, in the same format as returned by [`journeys()`](journeys.md).
+
+`realtimeDataUpdatedAt` is a UNIX timestamp reflecting the latest moment when (at least some of) the response's realtime data have been updated.

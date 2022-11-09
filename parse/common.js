@@ -1,7 +1,5 @@
-'use strict'
-
-const omit = require('lodash/omit')
-const createFindInTree = require('../lib/find-in-tree');
+import omit from 'lodash/omit.js'
+import {createFindInTree} from '../lib/find-in-tree.js'
 
 const findInTree = createFindInTree([
 	'**.oprX', '**.icoX', '**.prodX', '**.pRefL', '**.locX',
@@ -36,19 +34,19 @@ const parseCommonData = (_ctx) => {
 		})
 	}
 
-	common.lines = []
+	common.products = []
 	if (Array.isArray(c.prodL)) {
-		common.lines = c.prodL.map(l => profile.parseLine(ctx, l))
+		common.products = c.prodL.map(l => profile.parseProduct(ctx, l))
 
 		matches['**.prodX'].forEach(([idx, parents]) => {
-			if ('number' === typeof idx) parents[0].line = common.lines[idx]
+			if ('number' === typeof idx) parents[0].product = common.products[idx]
 		})
 		matches['**.pRefL'].forEach(([idxs, parents]) => {
-			parents[0].lines = idxs.filter(idx => !!common.lines[idx]).map(idx => common.lines[idx])
+			parents[0].products = idxs.filter(idx => !!common.products[idx]).map(idx => common.products[idx])
 		})
 		// todo
-		// **.dep.dProdX: departureLine -> common.lines[idx]
-		// **.arr.aProdX: arrivalLine -> common.lines[idx]
+		// **.dep.dProdX: departureProduct -> common.products[idx]
+		// **.arr.aProdX: arrivalProduct -> common.products[idx]
 	}
 
 	common.hints = []
@@ -142,4 +140,6 @@ const parseCommonData = (_ctx) => {
 	return common
 }
 
-module.exports = parseCommonData
+export {
+	parseCommonData,
+}

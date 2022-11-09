@@ -1,5 +1,3 @@
-'use strict'
-
 // todo: generate from https://reiseauskunft.bahn.de/addons/fachkonfig-utf8.cfg ?
 const c = {
 	NONE: Symbol('no loyalty card'),
@@ -25,7 +23,7 @@ const formatLoyaltyCard = (data) => {
 	return 0
 }
 
-module.exports = {
-	data: c,
-	format: formatLoyaltyCard
+export {
+	c as data,
+	formatLoyaltyCard,
 }

@@ -35,17 +35,15 @@ With `opt`, you can override the default options, which look like this:
 As an example, we're going to use the [VBB profile](../p/vbb):
 
 ```js
-const createClient = require('hafas-client')
-const vbbProfile = require('hafas-client/p/vbb')
+import {createClient} from 'hafas-client'
+import {vbbProfile} from 'hafas-client/p/vbb.js'
 
 const client = createClient(vbbProfile, 'my-awesome-program')
 
-client.stop('900000042101') // U Spichernstr.
-.then(console.log)
-.catch(console.error)
+await client.stop('900000042101') // U Spichernstr.
 ```
 
-The response may look like this:
+The result may look like this:
 
 ```js
 {

@@ -1,7 +1,5 @@
-'use strict'
-
-const retry = require('p-retry')
-const defaultProfile = require('./lib/default-profile')
+import retry from 'p-retry'
+import {defaultProfile} from './lib/default-profile.js'
 
 const retryDefaults = {
 	retries: 3,
@@ -36,4 +34,6 @@ const withRetrying = (profile, retryOpts = {}) => {
 	}
 }
 
-module.exports = withRetrying
+export {
+	withRetrying,
+}

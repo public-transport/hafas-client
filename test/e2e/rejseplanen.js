@@ -1,26 +1,23 @@
-'use strict'
+import tap from 'tap'
+import assert from 'assert'
 
-const tap = require('tap')
-const assert = require('assert')
+import {createWhen} from './lib/util.js'
+import {createClient} from '../../index.js'
+import {profile as rejseplanenProfile} from '../../p/rejseplanen/index.js'
+import {createValidateFptfWith as createValidate} from './lib/validate-fptf-with.js'
+import {testJourneysStationToStation} from './lib/journeys-station-to-station.js'
+import {journeysFailsWithNoProduct} from './lib/journeys-fails-with-no-product.js'
+import {testJourneysStationToAddress} from './lib/journeys-station-to-address.js'
+import {testEarlierLaterJourneys} from './lib/earlier-later-journeys.js'
+import {testDepartures} from './lib/departures.js'
+import {testArrivals} from './lib/arrivals.js'
 
-const {createWhen} = require('./lib/util')
-const createClient = require('../..')
-const rejseplanenProfile = require('../../p/rejseplanen')
-const products = require('../../p/rejseplanen/products')
-const createValidate = require('./lib/validate-fptf-with')
-const testJourneysStationToStation = require('./lib/journeys-station-to-station')
-const journeysFailsWithNoProduct = require('./lib/journeys-fails-with-no-product')
-const testJourneysStationToAddress = require('./lib/journeys-station-to-address')
-const testEarlierLaterJourneys = require('./lib/earlier-later-journeys')
-const testDepartures = require('./lib/departures')
-const testArrivals = require('./lib/arrivals')
-
-const T_MOCK = 1641897000 * 1000 // 2022-01-11T11:30:00+01
+const T_MOCK = 1657618200 * 1000 // 2022-07-12T11:30+02:00
 const when = createWhen(rejseplanenProfile.timezone, rejseplanenProfile.locale, T_MOCK)
 
 const validate = createValidate({
 	when,
-	products,
+	products: rejseplanenProfile.products,
 	minLatitude: 52.7,
 	maxLatitude: 58.85,
 	minLongitude: 5.8,
@@ -52,14 +49,14 @@ tap.test('journeys – Næstved to Aalborg', async (t) => {
 
 // todo: journeys, only one product
 
-tap.test('journeys – fails with no product', (t) => {
-	journeysFailsWithNoProduct({
+tap.test('journeys – fails with no product', async (t) => {
+	await journeysFailsWithNoProduct({
 		test: t,
 		fetchJourneys: client.journeys,
 		fromId: næstved,
 		toId: aalborg,
 		when,
-		products,
+		products: rejseplanenProfile.products,
 	})
 	t.end()
 })
@@ -111,20 +108,21 @@ tap.test('trip', async (t) => {
 	const p = journeys[0].legs.find(l => !l.walking)
 	t.ok(p.tripId, 'precondition failed')
 	t.ok(p.line.name, 'precondition failed')
-	const trip = await client.trip(p.tripId, p.line.name, {when})
 
-	validate(t, trip, 'trip', 'trip')
+	const tripRes = await client.trip(p.tripId, {when})
+
+	validate(t, tripRes, 'tripResult', 'res')
 	t.end()
 })
 
 tap.test('departures at Næstved.', async (t) => {
-	const departures = await client.departures(næstved, {
+	const res = await client.departures(næstved, {
 		duration: 20, when,
 	})
 
 	await testDepartures({
 		test: t,
-		departures,
+		res,
 		validate,
 		ids: [
 			næstved,
@@ -136,13 +134,13 @@ tap.test('departures at Næstved.', async (t) => {
 })
 
 tap.test('arrivals at Næstved.', async (t) => {
-	const arrivals = await client.arrivals(næstved, {
+	const res = await client.arrivals(næstved, {
 		duration: 20, when
 	})
 
 	await testArrivals({
 		test: t,
-		arrivals,
+		res,
 		validate,
 		ids: [
 			næstved,
@@ -183,7 +181,7 @@ tap.test('stop Næstved', async (t) => {
 })
 
 tap.test('radar', async (t) => {
-	const vehicles = await client.radar({
+	const res = await client.radar({
 		north: 55.695,
 		west: 12.498,
 		south: 55.639,
@@ -192,6 +190,6 @@ tap.test('radar', async (t) => {
 		duration: 5 * 60, when, results: 10,
 	})
 
-	validate(t, vehicles, 'movements', 'vehicles')
+	validate(t, res, 'radarResult', 'res')
 	t.end()
 })

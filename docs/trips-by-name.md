@@ -7,12 +7,15 @@ Get all trips matching one or more criteria, e.g. a specific name.
 As an example, we're going to use the [VBB profile](../p/vbb):
 
 ```js
-const createClient = require('hafas-client')
-const vbbProfile = require('hafas-client/p/vbb')
+import {createClient} from 'hafas-client'
+import {vbbProfile} from 'hafas-client/p/vbb.js'
 
 const client = createClient(vbbProfile, 'my-awesome-program')
 
-console.log(await client.tripsByName('S1'))
+const {
+	trips,
+	realtimeDataUpdatedAt,
+} = await client.tripsByName('S1')
 ```
 
 With `opt`, you can override the default options, which look like this:
@@ -42,7 +45,9 @@ With `opt`, you can override the default options, which look like this:
 }
 ```
 
-The response may look like this:
+`realtimeDataUpdatedAt` is a UNIX timestamp reflecting the latest moment when (at least some of) the response's realtime data have been updated.
+
+`trips` may look like this:
 
 ```js
 [

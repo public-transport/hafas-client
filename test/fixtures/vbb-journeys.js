@@ -1,12 +1,10 @@
-'use strict'
-
-module.exports = [{
+const vbbJourneys = [{
 	type: 'journey',
 	legs: [{
 		origin: {
 			type: 'stop',
-			id: '900000042101',
-			name: 'U Spichernstr.',
+			id: '900042101',
+			name: 'U Spichernstr. (Berlin)',
 			location: {
 				type: 'location',
 				id: '900042101',
@@ -25,8 +23,8 @@ module.exports = [{
 		},
 		destination: {
 			type: 'stop',
-			id: '900000001201',
-			name: 'S+U Westhafen',
+			id: '900001201',
+			name: 'S+U Westhafen (Berlin)',
 			location: {
 				type: 'location',
 				id: '900001201',
@@ -59,7 +57,7 @@ module.exports = [{
 			fahrtNr: '24005',
 			name: 'U9',
 			public: true,
-			adminCode: 'BVU',
+			adminCode: 'BVU---',
 			productName: 'U',
 			mode: 'train',
 			product: 'subway',
@@ -68,13 +66,8 @@ module.exports = [{
 				id: 'berliner-verkehrsbetriebe',
 				name: 'Berliner Verkehrsbetriebe'
 			},
-			symbol: 'U',
-			nr: 9,
-			metro: false,
-			express: false,
-			night: false,
 		},
-		direction: 'U Osloer Str.',
+		direction: 'U Osloer Str. (Berlin)',
 		arrivalPlatform: null,
 		plannedArrivalPlatform: null,
 		departurePlatform: null,
@@ -83,8 +76,8 @@ module.exports = [{
 	}, {
 		origin: {
 			type: 'stop',
-			id: '900000001201',
-			name: 'S+U Westhafen',
+			id: '900001201',
+			name: 'S+U Westhafen (Berlin)',
 			location: {
 				type: 'location',
 				id: '900001201',
@@ -103,8 +96,8 @@ module.exports = [{
 		},
 		destination: {
 			type: 'stop',
-			id: '900000007102',
-			name: 'S+U Gesundbrunnen',
+			id: '900007102',
+			name: 'S+U Gesundbrunnen Bhf (Berlin)',
 			location: {
 				type: 'location',
 				id: '900007102',
@@ -137,7 +130,7 @@ module.exports = [{
 			fahrtNr: '2568',
 			name: 'S41',
 			public: true,
-			adminCode: 'DBS',
+			adminCode: 'DBS---',
 			productName: 'S',
 			mode: 'train',
 			product: 'suburban',
@@ -146,11 +139,6 @@ module.exports = [{
 				id: 's-bahn-berlin-gmbh',
 				name: 'S-Bahn Berlin GmbH'
 			},
-			symbol: 'S',
-			nr: 41,
-			metro: false,
-			express: false,
-			night: false,
 		},
 		direction: 'Ringbahn S 41',
 		arrivalPlatform: '3',
@@ -161,8 +149,8 @@ module.exports = [{
 	}, {
 		origin: {
 			type: 'stop',
-			id: '900000007102',
-			name: 'S+U Gesundbrunnen',
+			id: '900007102',
+			name: 'S+U Gesundbrunnen Bhf (Berlin)',
 			location: {
 				type: 'location',
 				id: '900007102',
@@ -181,8 +169,8 @@ module.exports = [{
 		},
 		destination: {
 			type: 'stop',
-			id: '900000350127',
-			name: 'Eberswalde, Hbf',
+			id: '900350127',
+			name: 'Eberswalde, Hauptbahnhof',
 			location: {
 				type: 'location',
 				id: '900350127',
@@ -215,18 +203,13 @@ module.exports = [{
 			fahrtNr: '1710',
 			name: 'ICE 1710',
 			public: true,
-			adminCode: 'N80',
+			adminCode: 'N80---',
 			productName: 'ICE',
 			mode: 'train',
 			product: 'express',
 			operator: {type: 'operator', id: 'db-regio-ag', name: 'DB Regio AG'},
-			symbol: 'ICE',
-			nr: 1710,
-			metro: false,
-			express: false,
-			night: false,
 		},
-		direction: 'Ostseebad Binz, Bhf',
+		direction: 'Ostseebad Binz, Bahnhof',
 		arrivalPlatform: '3',
 		plannedArrivalPlatform: '3',
 		departurePlatform: '10',
@@ -240,7 +223,7 @@ module.exports = [{
 				fahrtNr: '2457',
 				name: 'IC 2457',
 				public: true,
-				adminCode: 'N80',
+				adminCode: 'N80---',
 				productName: 'IC',
 				mode: 'train',
 				product: 'express',
@@ -249,11 +232,6 @@ module.exports = [{
 					id: 'db-regio-ag',
 					name: 'DB Regio AG'
 				},
-				symbol: 'IC',
-				nr: 2457,
-				metro: false,
-				express: false,
-				night: false,
 			},
 			direction: 'Ostseebad Binz, Bahnhof',
 			when: '2020-12-07T15:52:00+01:00',
@@ -267,7 +245,7 @@ module.exports = [{
 				fahrtNr: '2055',
 				name: 'IC 2055',
 				public: true,
-				adminCode: 'N80',
+				adminCode: 'N80---',
 				productName: 'IC',
 				mode: 'train',
 				product: 'express',
@@ -276,11 +254,6 @@ module.exports = [{
 					id: 'db-regio-ag',
 					name: 'DB Regio AG'
 				},
-				symbol: 'IC',
-				nr: 2055,
-				metro: false,
-				express: false,
-				night: false,
 			},
 			direction: 'Stralsund, Hauptbahnhof',
 			when: '2020-12-07T18:22:00+01:00',
@@ -305,8 +278,8 @@ module.exports = [{
 	legs: [{
 		origin: {
 			type: 'stop',
-			id: '900000042101',
-			name: 'U Spichernstr.',
+			id: '900042101',
+			name: 'U Spichernstr. (Berlin)',
 			location: {
 				type: 'location',
 				id: '900042101',
@@ -325,8 +298,8 @@ module.exports = [{
 		},
 		destination: {
 			type: 'stop',
-			id: '900000001201',
-			name: 'S+U Westhafen',
+			id: '900001201',
+			name: 'S+U Westhafen (Berlin)',
 			location: {
 				type: 'location',
 				id: '900001201',
@@ -359,7 +332,7 @@ module.exports = [{
 			fahrtNr: '24006',
 			name: 'U9',
 			public: true,
-			adminCode: 'BVU',
+			adminCode: 'BVU---',
 			productName: 'U',
 			mode: 'train',
 			product: 'subway',
@@ -368,13 +341,8 @@ module.exports = [{
 				id: 'berliner-verkehrsbetriebe',
 				name: 'Berliner Verkehrsbetriebe'
 			},
-			symbol: 'U',
-			nr: 9,
-			metro: false,
-			express: false,
-			night: false,
 		},
-		direction: 'U Osloer Str.',
+		direction: 'U Osloer Str. (Berlin)',
 		arrivalPlatform: null,
 		plannedArrivalPlatform: null,
 		departurePlatform: null,
@@ -383,8 +351,8 @@ module.exports = [{
 	}, {
 		origin: {
 			type: 'stop',
-			id: '900000001201',
-			name: 'S+U Westhafen',
+			id: '900001201',
+			name: 'S+U Westhafen (Berlin)',
 			location: {
 				type: 'location',
 				id: '900001201',
@@ -403,8 +371,8 @@ module.exports = [{
 		},
 		destination: {
 			type: 'stop',
-			id: '900000007102',
-			name: 'S+U Gesundbrunnen',
+			id: '900007102',
+			name: 'S+U Gesundbrunnen Bhf (Berlin)',
 			location: {
 				type: 'location',
 				id: '900007102',
@@ -437,7 +405,7 @@ module.exports = [{
 			fahrtNr: '2723',
 			name: 'S41',
 			public: true,
-			adminCode: 'DBS',
+			adminCode: 'DBS---',
 			productName: 'S',
 			mode: 'train',
 			product: 'suburban',
@@ -446,11 +414,6 @@ module.exports = [{
 				id: 's-bahn-berlin-gmbh',
 				name: 'S-Bahn Berlin GmbH'
 			},
-			symbol: 'S',
-			nr: 41,
-			metro: false,
-			express: false,
-			night: false,
 		},
 		direction: 'Ringbahn S 41',
 		arrivalPlatform: null,
@@ -462,8 +425,8 @@ module.exports = [{
 	}, {
 		origin: {
 			type: 'stop',
-			id: '900000007102',
-			name: 'S+U Gesundbrunnen',
+			id: '900007102',
+			name: 'S+U Gesundbrunnen Bhf (Berlin)',
 			location: {
 				type: 'location',
 				id: '900007102',
@@ -482,8 +445,8 @@ module.exports = [{
 		},
 		destination: {
 			type: 'stop',
-			id: '900000350127',
-			name: 'Eberswalde, Hbf',
+			id: '900350127',
+			name: 'Eberswalde, Hauptbahnhof',
 			location: {
 				type: 'location',
 				id: '900350127',
@@ -521,13 +484,8 @@ module.exports = [{
 			mode: 'train',
 			product: 'regional',
 			operator: {type: 'operator', id: 'db-regio-ag', name: 'DB Regio AG'},
-			symbol: 'RE',
-			nr: 3,
-			metro: false,
-			express: true,
-			night: false,
 		},
-		direction: 'Stralsund, Hbf',
+		direction: 'Stralsund, Hauptbahnhof',
 		arrivalPlatform: '3',
 		plannedArrivalPlatform: '3',
 		departurePlatform: '9',
@@ -550,11 +508,6 @@ module.exports = [{
 					id: 'db-regio-ag',
 					name: 'DB Regio AG'
 				},
-				symbol: 'RE',
-				nr: 66,
-				metro: false,
-				express: true,
-				night: false,
 			},
 			direction: 'Tantow, Bahnhof',
 			when: '2020-12-07T14:53:00+01:00',
@@ -577,11 +530,6 @@ module.exports = [{
 					id: 'db-regio-ag',
 					name: 'DB Regio AG'
 				},
-				symbol: 'RE',
-				nr: 3,
-				metro: false,
-				express: true,
-				night: false,
 			},
 			direction: 'Schwedt, Bahnhof',
 			when: '2020-12-07T15:39:00+01:00',
@@ -604,11 +552,6 @@ module.exports = [{
 					id: 'db-regio-ag',
 					name: 'DB Regio AG'
 				},
-				symbol: 'RE',
-				nr: 3,
-				metro: false,
-				express: true,
-				night: false,
 			},
 			direction: 'Eberswalde, Hauptbahnhof',
 			when: '2020-12-07T15:59:00+01:00',
@@ -631,11 +574,6 @@ module.exports = [{
 					id: 'db-regio-ag',
 					name: 'DB Regio AG'
 				},
-				symbol: 'RE',
-				nr: 3,
-				metro: false,
-				express: true,
-				night: false,
 			},
 			direction: 'Stralsund, Hauptbahnhof',
 			when: '2020-12-07T16:39:00+01:00',
@@ -658,11 +596,6 @@ module.exports = [{
 					id: 'db-regio-ag',
 					name: 'DB Regio AG'
 				},
-				symbol: 'RE',
-				nr: 66,
-				metro: false,
-				express: true,
-				night: false,
 			},
 			direction: 'Szczecin, Glowny',
 			when: '2020-12-07T17:19:00+01:00',
@@ -678,3 +611,7 @@ module.exports = [{
 		text: 'A section of this itinerary is cancelled or unusable.'
 	}],
 }]
+
+export {
+	vbbJourneys,
+}

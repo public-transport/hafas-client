@@ -1,32 +1,29 @@
-'use strict'
+import tap from 'tap'
+import isRoughlyEqual from 'is-roughly-equal'
 
-const tap = require('tap')
-const isRoughlyEqual = require('is-roughly-equal')
-
-const {createWhen} = require('./lib/util')
-const createClient = require('../..')
-const nvvProfile = require('../../p/nvv')
-const products = require('../../p/nvv/products')
-const createValidate = require('./lib/validate-fptf-with')
-const testJourneysStationToStation = require('./lib/journeys-station-to-station')
-const journeysFailsWithNoProduct = require('./lib/journeys-fails-with-no-product')
-const testJourneysStationToAddress = require('./lib/journeys-station-to-address')
-const testJourneysStationToPoi = require('./lib/journeys-station-to-poi')
-const testEarlierLaterJourneys = require('./lib/earlier-later-journeys')
-const testDepartures = require('./lib/departures')
-const testDeparturesInDirection = require('./lib/departures-in-direction')
-const testArrivals = require('./lib/arrivals')
-const testJourneysWithDetour = require('./lib/journeys-with-detour')
+import {createWhen} from './lib/util.js'
+import {createClient} from '../../index.js'
+import {profile as nvvProfile} from '../../p/nvv/index.js'
+import {createValidateFptfWith as createValidate} from './lib/validate-fptf-with.js'
+import {testJourneysStationToStation} from './lib/journeys-station-to-station.js'
+import {journeysFailsWithNoProduct} from './lib/journeys-fails-with-no-product.js'
+import {testJourneysStationToAddress} from './lib/journeys-station-to-address.js'
+import {testJourneysStationToPoi} from './lib/journeys-station-to-poi.js'
+import {testEarlierLaterJourneys} from './lib/earlier-later-journeys.js'
+import {testDepartures} from './lib/departures.js'
+import {testDeparturesInDirection} from './lib/departures-in-direction.js'
+import {testArrivals} from './lib/arrivals.js'
+import {testJourneysWithDetour} from './lib/journeys-with-detour.js'
 
 const isObj = o => o !== null && 'object' === typeof o && !Array.isArray(o)
 
-const T_MOCK = 1641897000 * 1000 // 2022-01-11T11:30:00+01
+const T_MOCK = 1657618200 * 1000 // 2022-07-12T11:30+02:00
 const when = createWhen(nvvProfile.timezone, nvvProfile.locale, T_MOCK)
 
 const cfg = {
 	when,
 	stationCoordsOptional: false,
-	products,
+	products: nvvProfile.products,
 	minLatitude: 48,
 	minLongitude: 8,
 	maxLatitude: 53,
@@ -60,14 +57,14 @@ tap.test('journeys – Kassel Scheidemannplatz to Kassel Auestadion', async (t)
 
 // todo: journeys, only one product
 
-tap.test('journeys – fails with no product', (t) => {
-	journeysFailsWithNoProduct({
+tap.test('journeys – fails with no product', async (t) => {
+	await journeysFailsWithNoProduct({
 		test: t,
 		fetchJourneys: client.journeys,
 		fromId: scheidemannplatz,
 		toId: auestadion,
 		when,
-		products
+		products: nvvProfile.products,
 	})
 	t.end()
 })
@@ -164,20 +161,21 @@ tap.test('trip details', async (t) => {
 	const p = res.journeys[0].legs.find(l => !l.walking)
 	t.ok(p.tripId, 'precondition failed')
 	t.ok(p.line.name, 'precondition failed')
-	const trip = await client.trip(p.tripId, p.line.name, {when})
 
-	validate(t, trip, 'trip', 'trip')
+	const tripRes = await client.trip(p.tripId, {when})
+
+	validate(t, tripRes, 'tripResult', 'res')
 	t.end()
 })
 
 tap.test('departures at Kassel Auestadion.', async (t) => {
-	const departures = await client.departures(auestadion, {
+	const res = await client.departures(auestadion, {
 		duration: 11, when,
 	})
 
 	await testDepartures({
 		test: t,
-		departures,
+		res,
 		validate,
 		id: auestadion
 	})
@@ -185,7 +183,7 @@ tap.test('departures at Kassel Auestadion.', async (t) => {
 })
 
 tap.test('departures with station object', async (t) => {
-	const deps = await client.departures({
+	const res = await client.departures({
 		type: 'station',
 		id: auestadion,
 		name: 'Kassel Auestadion',
@@ -196,7 +194,7 @@ tap.test('departures with station object', async (t) => {
 		}
 	}, {when})
 
-	validate(t, deps, 'departures', 'departures')
+	validate(t, res, 'departuresResponse', 'res')
 	t.end()
 })
 
@@ -214,13 +212,13 @@ tap.test('departures at Auestadion in direction of Friedrichsplatz', async (t) =
 })
 
 tap.test('arrivals at Kassel Weigelstr.', async (t) => {
-	const arrivals = await client.arrivals(weigelstr, {
+	const res = await client.arrivals(weigelstr, {
 		duration: 5, when
 	})
 
 	await testArrivals({
 		test: t,
-		arrivals,
+		res,
 		validate,
 		id: weigelstr,
 	})
@@ -252,7 +250,7 @@ tap.test('station Auestadion', async (t) => {
 })
 
 tap.test('radar', async (t) => {
-	const vehicles = await client.radar({
+	const res = await client.radar({
 		north: 51.320153,
 		west: 9.458359,
 		south: 51.304304,
@@ -261,7 +259,7 @@ tap.test('radar', async (t) => {
 		duration: 5 * 60, when, results: 10
 	})
 
-	validate(t, vehicles, 'movements', 'vehicles')
+	validate(t, res, 'radarResult', 'res')
 
 	t.end()
 })

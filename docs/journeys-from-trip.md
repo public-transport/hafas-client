@@ -22,8 +22,8 @@ With `opt`, you can override the default options, which look like this:
 As an example, we're going to use the [*Deutsche Bahn* profile](../p/db):
 
 ```js
-const createClient = require('hafas-client')
-const dbProfile = require('hafas-client/p/db')
+import {createClient} from 'hafas-client'
+import {dbProfile} from 'hafas-client/p/db.js'
 
 const berlinSüdkreuz = '8011113'
 const münchenHbf = '8000261'
@@ -39,7 +39,12 @@ const leg = journey.legs.find(l => l.line.product === 'nationalExpress')
 const previousStopover = leg.stopovers.find(st => st.departure && new Date(st.departure) < Date.now())
 
 // find journeys from the ICE train to Köln Hbf
-const journeys = await client.journeysFromTrip(leg.id, previousStopover, kölnHbf)
+const {
+	journeys,
+	realtimeDataUpdatedAt,
+} = await client.journeysFromTrip(leg.id, previousStopover, kölnHbf)
 ```
 
-`journeys` will be an array of [FPTF `journey`s](https://github.com/public-transport/friendly-public-transport-format/blob/3bd36faa721e85d9f5ca58fb0f38cdbedb87bbca/spec/readme.md#journey), as documented in [`journeys()`](journeys.md).
+`journeys` is an array of [FPTF `journey`s](https://github.com/public-transport/friendly-public-transport-format/blob/3bd36faa721e85d9f5ca58fb0f38cdbedb87bbca/spec/readme.md#journey), as documented in [`journeys()`](journeys.md).
+
+`realtimeDataUpdatedAt` is a UNIX timestamp reflecting the latest moment when (at least some of) the response's realtime data have been updated.

@@ -1,4 +1,7 @@
-'use strict'
+// todo: use import assertions once they're supported by Node.js & ESLint
+// https://github.com/tc39/proposal-import-assertions
+import {createRequire} from 'module'
+const require = createRequire(import.meta.url)
 
 const baseProfile = require('./base.json')
 
@@ -46,7 +49,7 @@ const products = [{
 	default: true,
 }]
 
-const bartProfile = {
+const profile = {
 	...baseProfile,
 	locale: 'en-US',
 	timezone: 'America/Los_Angeles',
@@ -58,9 +61,9 @@ const bartProfile = {
 	radar: true,
 	reachableFrom: true,
 
-	departuresGetPasslist: false, // `departures()` method: support for `getPasslist` field?
-	departuresStbFltrEquiv: false, // `departures()` method: support for `stbFltrEquiv` field?
 	refreshJourneyUseOutReconL: true,
 }
 
-module.exports = bartProfile
+export {
+	profile,
+}

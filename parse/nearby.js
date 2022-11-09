@@ -1,5 +1,3 @@
-'use strict'
-
 // todo: remarks
 // todo: lines
 // todo: what is s.pCls?
@@ -12,4 +10,6 @@ const parseNearby = (ctx, n) => { // n = raw nearby location
 	return res
 }
 
-module.exports = parseNearby
+export {
+	parseNearby,
+}

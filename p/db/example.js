@@ -1,15 +1,14 @@
-'use strict'
+import {inspect} from 'util'
+import {createClient} from '../../index.js'
+import {profile} from './index.js'
 
-const createClient = require('../../')
-const dbProfile = require('.')
-
-const client = createClient(dbProfile, 'hafas-client-example')
+const client = createClient(profile, 'hafas-client-example')
 
 // Berlin Jungfernheide to München Hbf
 client.journeys('8011167', '8000261', {results: 1, tickets: true})
 // .then(({journeys}) => {
 // 	const leg = journeys[0].legs[0]
-// 	return client.trip(leg.tripId, leg.line.name, {polyline: true})
+// 	return client.trip(leg.tripId, {polyline: true})
 // })
 // .then(({journeys}) => {
 // 	const [journey] = journeys
@@ -55,5 +54,5 @@ client.journeys('8011167', '8000261', {results: 1, tickets: true})
 // })
 
 .then((data) => {
-	console.log(require('util').inspect(data, {depth: null, colors: true}))
+	console.log(inspect(data, {depth: null, colors: true}))
 }, console.error)

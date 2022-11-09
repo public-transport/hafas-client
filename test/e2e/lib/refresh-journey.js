@@ -1,5 +1,3 @@
-'use strict'
-
 const simplify = j => j.legs.map(l => {
 	return {
 		origin: l.origin,
@@ -15,26 +13,32 @@ const testRefreshJourney = async (cfg) => {
 		test: t,
 		fetchJourneys,
 		refreshJourney,
+		validate,
 		fromId,
 		toId,
 		when,
-		// todo: validate
 	} = cfg
 
 	const modelRes = await fetchJourneys(fromId, toId, {
 		results: 1, departure: when,
 		stopovers: false
 	})
+	validate(t, modelRes, 'journeysResult', 'modelRes')
 	const [model] = modelRes.journeys
 
 	// todo: move to journeys validator?
 	t.equal(typeof model.refreshToken, 'string')
 	t.ok(model.refreshToken)
 
-	const refreshed = await refreshJourney(model.refreshToken, {
+	const refreshedRes = await refreshJourney(model.refreshToken, {
 		stopovers: false
 	})
+	validate(t, refreshedRes, 'refreshJourneyResult', 'refreshedRes')
+	const refreshed = refreshedRes.journey
+
 	t.same(simplify(refreshed), simplify(model))
 }
 
-module.exports = testRefreshJourney
+export {
+	testRefreshJourney,
+}

@@ -1,11 +1,9 @@
-'use strict'
-
-const minBy = require('lodash/minBy')
-const maxBy = require('lodash/maxBy')
-const last = require('lodash/last')
+import minBy from 'lodash/minBy.js'
+import maxBy from 'lodash/maxBy.js'
+import last from 'lodash/last.js'
 
 const parseTrip = (ctx, t) => { // t = raw trip
-	const {profile, res} = ctx
+	const {profile} = ctx
 
 	// pretend the trip is a leg in a journey
 	const fakeLeg = {
@@ -27,14 +25,11 @@ const parseTrip = (ctx, t) => { // t = raw trip
 	const trip = profile.parseJourneyLeg(ctx, fakeLeg, date)
 	trip.id = trip.tripId
 	delete trip.tripId
-	// todo [breaking]: delete trip.reachable
-
-	if (res.planrtTS) {
-		// todo [breaking]: remove here
-		trip.realtimeDataUpdatedAt = parseInt(res.planrtTS)
-	}
+	delete trip.reachable
 
 	return trip
 }
 
-module.exports = parseTrip
+export {
+	parseTrip,
+}

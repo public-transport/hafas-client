@@ -1,17 +1,18 @@
-'use strict'
+// todo: use import assertions once they're supported by Node.js & ESLint
+// https://github.com/tc39/proposal-import-assertions
+import {createRequire} from 'module'
+const require = createRequire(import.meta.url)
 
 const baseProfile = require('./base.json')
-const products = require('./products')
+import {products} from './products.js'
 
-const cmtaProfile = {
+const profile = {
 	...baseProfile,
 	locale: 'en-US',
 	timezone: 'America/Chicago',
 
 	products,
 
-	departuresGetPasslist: false,
-	departuresStbFltrEquiv: false,
 	refreshJourneyUseOutReconL: true,
 	trip: true,
 	radar: true,
@@ -20,4 +21,6 @@ const cmtaProfile = {
 	remarks: true, // `.svcResL[0].res.msgL[]` is missing though 🤔
 }
 
-module.exports = cmtaProfile
+export {
+	profile,
+}

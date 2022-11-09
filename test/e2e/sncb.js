@@ -1,23 +1,20 @@
-'use strict'
+import tap from 'tap'
 
-const tap = require('tap')
+import {createWhen} from './lib/util.js'
+import {createClient} from '../../index.js'
+import {profile as sncbProfile} from '../../p/sncb/index.js'
+import {createValidateFptfWith as createValidate} from './lib/validate-fptf-with.js'
+import {testJourneysStationToStation} from './lib/journeys-station-to-station.js'
+import {testArrivals} from './lib/arrivals.js'
+import {testReachableFrom} from './lib/reachable-from.js'
 
-const {createWhen} = require('./lib/util')
-const createClient = require('../..')
-const sncbProfile = require('../../p/sncb')
-const products = require('../../p/sncb/products')
-const createValidate = require('./lib/validate-fptf-with')
-const testJourneysStationToStation = require('./lib/journeys-station-to-station')
-const testArrivals = require('./lib/arrivals')
-const testReachableFrom = require('./lib/reachable-from')
-
-const T_MOCK = 1641897000 * 1000 // 2022-01-11T11:30:00+01
+const T_MOCK = 1655803800 * 1000 // 2022-06-21T11:30+02:00
 const when = createWhen(sncbProfile.timezone, sncbProfile.locale, T_MOCK)
 
 const cfg = {
 	when,
 	stationCoordsOptional: false,
-	products,
+	products: sncbProfile.products,
 	minLatitude: 46.513,
 	maxLatitude: 54.521,
 	minLongitude: -1.423,
@@ -64,20 +61,21 @@ tap.test('trip details', async (t) => {
 	const p = res.journeys[0].legs.find(l => !l.walking)
 	t.ok(p.tripId, 'precondition failed')
 	t.ok(p.line.name, 'precondition failed')
-	const trip = await client.trip(p.tripId, p.line.name, {when})
 
-	validate(t, trip, 'trip', 'trip')
+	const tripRes = await client.trip(p.tripId, {when})
+
+	validate(t, tripRes, 'tripResult', 'res')
 	t.end()
 })
 
 tap.test('arrivals at Bruxelles Midi', async (t) => {
-	const arrivals = await client.arrivals(bruxellesMidi, {
+	const res = await client.arrivals(bruxellesMidi, {
 		duration: 10, when
 	})
 
 	await testArrivals({
 		test: t,
-		arrivals,
+		res,
 		validate,
 		id: bruxellesMidi,
 	})
@@ -87,7 +85,7 @@ tap.test('arrivals at Bruxelles Midi', async (t) => {
 // todo: nearby
 
 tap.test('radar', async (t) => {
-	const vehicles = await client.radar({
+	const res = await client.radar({
 		north: 51.065,
 		west: 3.688,
 		south: 51.04,
@@ -96,7 +94,7 @@ tap.test('radar', async (t) => {
 		duration: 5 * 60, when, results: 10
 	})
 
-	validate(t, vehicles, 'movements', 'vehicles')
+	validate(t, res, 'radarResult', 'res')
 	t.end()
 })
 

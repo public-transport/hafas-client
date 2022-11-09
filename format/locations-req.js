@@ -1,5 +1,3 @@
-'use strict'
-
 const formatLocationsReq = (ctx, query) => {
 	const {profile, opt} = ctx
 
@@ -17,4 +15,6 @@ const formatLocationsReq = (ctx, query) => {
 	}
 }
 
-module.exports = formatLocationsReq
+export {
+	formatLocationsReq,
+}

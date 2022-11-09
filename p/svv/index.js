@@ -1,9 +1,12 @@
-'use strict'
+// todo: use import assertions once they're supported by Node.js & ESLint
+// https://github.com/tc39/proposal-import-assertions
+import {createRequire} from 'module'
+const require = createRequire(import.meta.url)
 
 const baseProfile = require('./base.json')
-const products = require('./products')
+import {products} from './products.js'
 
-const svvProfile = {
+const profile = {
 	...baseProfile,
 	locale: 'at-DE',
 	timezone: 'Europe/Vienna',
@@ -13,9 +16,9 @@ const svvProfile = {
 	trip: true,
 	refreshJourney: true,
 	reachableFrom: true,
-	departuresGetPasslist: false,
-	departuresStbFltrEquiv: false,
 	refreshJourneyUseOutReconL: true,
 }
 
-module.exports = svvProfile
+export {
+	profile,
+}

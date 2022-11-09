@@ -1,29 +1,26 @@
-'use strict'
+import tap from 'tap'
+import isRoughlyEqual from 'is-roughly-equal'
 
-const tap = require('tap')
-const isRoughlyEqual = require('is-roughly-equal')
+import {createWhen} from './lib/util.js'
+import {createClient} from '../../index.js'
+import {profile as vrnProfile} from '../../p/vrn/index.js'
+import {createValidateFptfWith as createValidate} from './lib/validate-fptf-with.js'
+import {testJourneysStationToStation} from './lib/journeys-station-to-station.js'
+import {journeysFailsWithNoProduct} from './lib/journeys-fails-with-no-product.js'
+import {testJourneysStationToAddress} from './lib/journeys-station-to-address.js'
+import {testJourneysStationToPoi} from './lib/journeys-station-to-poi.js'
+import {testEarlierLaterJourneys} from './lib/earlier-later-journeys.js'
+import {testDepartures} from './lib/departures.js'
+import {testDeparturesInDirection} from './lib/departures-in-direction.js'
+import {testArrivals} from './lib/arrivals.js'
 
-const {createWhen} = require('./lib/util')
-const createClient = require('../..')
-const vrnProfile = require('../../p/vrn')
-const products = require('../../p/vrn/products')
-const createValidate = require('./lib/validate-fptf-with')
-const testJourneysStationToStation = require('./lib/journeys-station-to-station')
-const journeysFailsWithNoProduct = require('./lib/journeys-fails-with-no-product')
-const testJourneysStationToAddress = require('./lib/journeys-station-to-address')
-const testJourneysStationToPoi = require('./lib/journeys-station-to-poi')
-const testEarlierLaterJourneys = require('./lib/earlier-later-journeys')
-const testDepartures = require('./lib/departures')
-const testDeparturesInDirection = require('./lib/departures-in-direction')
-const testArrivals = require('./lib/arrivals')
-
-const T_MOCK = 1641897000 * 1000 // 2022-01-11T11:30:00+01
+const T_MOCK = 1657618200 * 1000 // 2022-07-12T11:30+02:00
 const when = createWhen(vrnProfile.timezone, vrnProfile.locale, T_MOCK)
 
 const cfg = {
 	when,
 	// stationCoordsOptional: false,
-	products,
+	products: vrnProfile.products,
 	minLatitude: 48.462,
 	minLongitude: 6.163,
 	maxLatitude: 50.440,
@@ -56,14 +53,14 @@ tap.test('journeys – Ludwigshafen to Meckesheim', async (t) => {
 
 // todo: journeys, only one product
 
-tap.test('journeys – fails with no product', (t) => {
-	journeysFailsWithNoProduct({
+tap.test('journeys – fails with no product', async (t) => {
+	await journeysFailsWithNoProduct({
 		test: t,
 		fetchJourneys: client.journeys,
 		fromId: ludwigshafen,
 		toId: meckesheim,
 		when,
-		products
+		products: vrnProfile.products,
 	})
 	t.end()
 })
@@ -138,20 +135,21 @@ tap.test('trip details', async (t) => {
 	const p = res.journeys[0].legs.find(l => !l.walking)
 	t.ok(p.tripId, 'precondition failed')
 	t.ok(p.line.name, 'precondition failed')
-	const trip = await client.trip(p.tripId, p.line.name, {when})
 
-	validate(t, trip, 'trip', 'trip')
+	const tripRes = await client.trip(p.tripId, {when})
+
+	validate(t, tripRes, 'tripResult', 'res')
 	t.end()
 })
 
 tap.test('departures at Meckesheim', async (t) => {
-	const departures = await client.departures(meckesheim, {
+	const res = await client.departures(meckesheim, {
 		duration: 3 * 60, when,
 	})
 
 	await testDepartures({
 		test: t,
-		departures,
+		res,
 		validate,
 		id: meckesheim
 	})
@@ -173,13 +171,13 @@ tap.test('departures at Meckesheim in direction of Reilsheim', async (t) => {
 })
 
 tap.test('arrivals at Meckesheim', async (t) => {
-	const arrivals = await client.arrivals(meckesheim, {
+	const res = await client.arrivals(meckesheim, {
 		duration: 3 * 60, when
 	})
 
 	await testArrivals({
 		test: t,
-		arrivals,
+		res,
 		validate,
 		id: meckesheim
 	})
@@ -216,7 +214,7 @@ tap.test('station Meckesheim', async (t) => {
 })
 
 tap.test('radar', async (t) => {
-	const vehicles = await client.radar({
+	const res = await client.radar({
 		north: 49.4940,
 		west: 8.4560,
 		south: 49.4774,
@@ -225,6 +223,6 @@ tap.test('radar', async (t) => {
 		duration: 5 * 60, when, results: 10,
 	})
 
-	validate(t, vehicles, 'movements', 'vehicles')
+	validate(t, res, 'radarResult', 'res')
 	t.end()
 })

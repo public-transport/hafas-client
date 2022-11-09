@@ -5,8 +5,8 @@
 ## Usage
 
 ```js
-const createClient = require('hafas-client')
-const nahshProfile = require('hafas-client/p/nahsh')
+import {createClient} from 'hafas-client'
+import {nahshProfile} from 'hafas-client/p/nahsh/index.js'
 
 // create a client with NAH.SH profile
 const client = createClient(nahshProfile, 'my-awesome-program')

@@ -1,9 +1,8 @@
-'use strict'
+import {inspect} from 'util'
+import {createClient} from '../../index.js'
+import {profile} from './index.js'
 
-const createClient = require('../..')
-const stvProfile = require('.')
-
-const client = createClient(stvProfile, 'hafas-client example')
+const client = createClient(profile, 'hafas-client example')
 
 const grazSonnenhang = '460413500'
 const grazHödlweg = '460415400'
@@ -18,7 +17,7 @@ const grazHödlweg = '460415400'
 // .then(({journeys}) => {
 // 	const [journey] = journeys
 // 	const leg = journey.legs[0]
-// 	return client.trip(leg.tripId, leg.line.name, {polyline: true})
+// 	return client.trip(leg.tripId, {polyline: true})
 // })
 
 // client.departures(grazSonnenhang, {duration: 1})
@@ -44,6 +43,6 @@ client.locations('sonnenhang', {results: 3})
 // })
 
 .then((data) => {
-	console.log(require('util').inspect(data, {depth: null, colors: true}))
+	console.log(inspect(data, {depth: null, colors: true}))
 })
 .catch(console.error)

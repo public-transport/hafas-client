@@ -1,6 +1,4 @@
-'use strict'
-
-const slugg = require('slugg')
+import slugg from 'slugg'
 
 const parseLine = ({profile}, p) => {
 	if (!p) return null // todo: handle this upstream
@@ -22,8 +20,7 @@ const parseLine = ({profile}, p) => {
 	// todo: what is p.prodCtx.catCode?
 
 	if (p.prodCtx && 'string' === typeof p.prodCtx.admin) {
-		// todo [breaking]: don't trim
-		res.adminCode = p.prodCtx.admin.replace(/-+$/, '')
+		res.adminCode = p.prodCtx.admin
 	}
 
 	if (p.prodCtx && 'string' === typeof p.prodCtx.catOut) {
@@ -52,4 +49,6 @@ const parseLine = ({profile}, p) => {
 	return res
 }
 
-module.exports = parseLine
+export {
+	parseLine,
+}

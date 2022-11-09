@@ -1,5 +1,3 @@
-'use strict'
-
 const point = (lon, lat) => ({
 	type: 'Point',
 	coordinates: [lon, lat],
@@ -88,19 +86,18 @@ const corona = {
 	edges: [{
 		icoCrd: {x: 14768356, y: 48156724, type: 'WGS84'},
 		icon: null,
-		fromLoc: null,
-		toLoc: null
+		fromLocation: null,
+		toLocation: null
 	}],
 	validFrom: '2020-05-15T00:00:00+02:00',
 	validUntil: '2020-06-30T23:59:00+02:00',
 	modified: '2020-05-28T13:48:14+02:00'
 }
 
-module.exports = {
+const oebbTrip = {
 	id: '2|#VN#0#ST#1591790769#PI#0#ZI#398470#TA#0#DA#110620#1S#8100353#1T#1633#LS#8100002#LT#1948#PU#81#RT#1#CA#RJ#ZE#742#ZB#RJ 742  #',
 	origin: wienFlughafen,
 	destination: salzburgHbf,
-	realtimeDataUpdatedAt: 1591881826,
 	arrival: '2020-06-11T19:48:00+02:00',
 	plannedArrival: '2020-06-11T19:48:00+02:00',
 	arrivalDelay: null,
@@ -109,7 +106,6 @@ module.exports = {
 	plannedDeparture: '2020-06-11T16:33:00+02:00',
 	departureDelay: null,
 	departurePrognosisType: 'prognosed',
-	reachable: true,
 	line: {
 		type: 'line',
 		id: 'rj-742',
@@ -2025,4 +2021,8 @@ module.exports = {
 			feature(point(13.0456, 47.81285), salzburgHbf),
 		]
 	},
+}
+
+export {
+	oebbTrip,
 }

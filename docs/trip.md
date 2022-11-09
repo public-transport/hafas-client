@@ -1,4 +1,4 @@
-# `trip(id, lineName, [opt])`
+# `trip(id, [opt])`
 
 This method can be used to refetch information about a trip – a vehicle stopping at a set of stops at specific times.
 
@@ -7,19 +7,16 @@ This method can be used to refetch information about a trip – a vehicle stopp
 Let's say you used [`journeys`](journeys.md) and now want to get more up-to-date data about the arrival/departure of a leg. You'd pass in the trip ID from `leg.tripId`, e.g. `'1|24983|22|86|18062017'`, and the name of the line from `leg.line.name` like this:
 
 ```js
-const createClient = require('hafas-client')
-const vbbProfile = require('hafas-client/p/vbb')
+import {createClient} from 'hafas-client'
+import {vbbProfile} from 'hafas-client/p/vbb.js'
 
 const client = createClient(vbbProfile, 'my-awesome-program')
 
 // Hauptbahnhof to Heinrich-Heine-Str.
-client.journeys('900000003201', '900000100008', {results: 1})
-.then(([journey]) => {
-	const leg = journey.legs[0]
-	return client.trip(leg.tripId, leg.line.name)
-})
-.then(console.log)
-.catch(console.error)
+const {journeys} = client.journeys('900000003201', '900000100008', {results: 1})
+const leg = journeys[0].legs[0]
+
+await client.trip(leg.tripId)
 ```
 
 With `opt`, you can override the default options, which look like this:
@@ -42,17 +39,22 @@ With `opt`, you can override the default options, which look like this:
 As an example, we're going to use the [VBB profile](../p/vbb):
 
 ```js
-const createClient = require('hafas-client')
-const vbbProfile = require('hafas-client/p/vbb')
+import {createClient} from 'hafas-client'
+import {vbbProfile} from 'hafas-client/p/vbb/index.js'
 
 const client = createClient(vbbProfile)
 
-client.trip('1|31431|28|86|17122017', 'S9', {when: 1513534689273})
-.then(console.log)
-.catch(console.error)
+const {
+	trip,
+	realtimeDataUpdatedAt,
+} = await client.trip('1|31431|28|86|17122017', 'S9', {
+	when: 1513534689273,
+})
 ```
 
-The response looked like this:
+`realtimeDataUpdatedAt` is a UNIX timestamp reflecting the latest moment when (at least some of) the response's realtime data have been updated.
+
+When running the code above, `trip` looked like this:
 
 ```js
 {

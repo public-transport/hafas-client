@@ -1,6 +1,4 @@
-'use strict'
-
-module.exports = {
+const bvgJourney = {
 	type: 'journey',
 	legs: [{
 		origin: {
@@ -13,8 +11,8 @@ module.exports = {
 		},
 		destination: {
 			type: 'stop',
-			id: '900000100007',
-			name: 'S Oranienburger Str.',
+			id: '900100007',
+			name: 'S Oranienburger Str. (Berlin)',
 			location: {
 				type: 'location',
 				id: '900100007',
@@ -43,8 +41,8 @@ module.exports = {
 	}, {
 		origin: {
 			type: 'stop',
-			id: '900000100007',
-			name: 'S Oranienburger Str.',
+			id: '900100007',
+			name: 'S Oranienburger Str. (Berlin)',
 			location: {
 				type: 'location',
 				id: '900100007',
@@ -63,8 +61,8 @@ module.exports = {
 		},
 		destination: {
 			type: 'stop',
-			id: '900000058101',
-			name: 'S Südkreuz',
+			id: '900058101',
+			name: 'S Südkreuz Bhf (Berlin)',
 			location: {
 				type: 'location',
 				id: '900058101',
@@ -97,8 +95,8 @@ module.exports = {
 					type: 'Feature',
 					properties: {
 						type: 'stop',
-						id: '900000100007',
-						name: 'S Oranienburger Str.',
+						id: '900100007',
+						name: 'S Oranienburger Str. (Berlin)',
 						location: {
 							type: 'location',
 							id: '900100007',
@@ -193,8 +191,8 @@ module.exports = {
 					type: 'Feature',
 					properties: {
 						type: 'stop',
-						id: '900000100001',
-						name: 'S+U Friedrichstr.',
+						id: '900100001',
+						name: 'S+U Friedrichstr. Bhf (Berlin)',
 						location: {
 							type: 'location',
 							id: '900100001',
@@ -300,8 +298,8 @@ module.exports = {
 					type: 'Feature',
 					properties: {
 						type: 'stop',
-						id: '900000100025',
-						name: 'S+U Brandenburger Tor',
+						id: '900100025',
+						name: 'S+U Brandenburger Tor (Berlin)',
 						location: {
 							type: 'location',
 							id: '900100025',
@@ -407,8 +405,8 @@ module.exports = {
 					type: 'Feature',
 					properties: {
 						type: 'stop',
-						id: '900000100020',
-						name: 'S+U Potsdamer Platz',
+						id: '900100020',
+						name: 'S+U Potsdamer Platz Bhf (Berlin)',
 						location: {
 							type: 'location',
 							id: '900100020',
@@ -448,8 +446,8 @@ module.exports = {
 					type: 'Feature',
 					properties: {
 						type: 'stop',
-						id: '900000012101',
-						name: 'S Anhalter Bahnhof',
+						id: '900012101',
+						name: 'S Anhalter Bahnhof (Berlin)',
 						location: {
 							type: 'location',
 							id: '900012101',
@@ -577,8 +575,8 @@ module.exports = {
 					type: 'Feature',
 					properties: {
 						type: 'stop',
-						id: '900000058103',
-						name: 'S+U Yorckstr. S2 S25 S26 U7',
+						id: '900058103',
+						name: 'S+U Yorckstr. S2 S25 S26 U7 (Berlin)',
 						location: {
 							type: 'location',
 							id: '900058103',
@@ -662,8 +660,8 @@ module.exports = {
 					type: 'Feature',
 					properties: {
 						type: 'stop',
-						id: '900000058101',
-						name: 'S Südkreuz',
+						id: '900058101',
+						name: 'S Südkreuz Bhf (Berlin)',
 						location: {
 							type: 'location',
 							id: '900058101',
@@ -697,7 +695,7 @@ module.exports = {
 			fahrtNr: '14825',
 			name: 'S2',
 			public: true,
-			adminCode: 'DBS',
+			adminCode: 'DBS---',
 			productName: 'S',
 			mode: 'train',
 			product: 'suburban',
@@ -706,13 +704,8 @@ module.exports = {
 				id: 's-bahn-berlin-gmbh',
 				name: 'S-Bahn Berlin GmbH'
 			},
-			symbol: 'S',
-			nr: 2,
-			metro: false,
-			express: false,
-			night: false
 		},
-		direction: 'S Blankenfelde (TF)',
+		direction: 'S Blankenfelde (TF) Bhf',
 		arrivalPlatform: '1',
 		plannedArrivalPlatform: '1',
 		departurePlatform: '1',
@@ -720,8 +713,8 @@ module.exports = {
 		stopovers: [{
 			stop: {
 				type: 'stop',
-				id: '900000100007',
-				name: 'S Oranienburger Str.',
+				id: '900100007',
+				name: 'S Oranienburger Str. (Berlin)',
 				location: {
 					type: 'location',
 					id: '900100007',
@@ -754,8 +747,8 @@ module.exports = {
 		{
 			stop: {
 				type: 'stop',
-				id: '900000100001',
-				name: 'S+U Friedrichstr.',
+				id: '900100001',
+				name: 'S+U Friedrichstr. Bhf (Berlin)',
 				location: {
 					type: 'location',
 					id: '900100001',
@@ -788,8 +781,8 @@ module.exports = {
 		{
 			stop: {
 				type: 'stop',
-				id: '900000100025',
-				name: 'S+U Brandenburger Tor',
+				id: '900100025',
+				name: 'S+U Brandenburger Tor (Berlin)',
 				location: {
 					type: 'location',
 					id: '900100025',
@@ -822,8 +815,8 @@ module.exports = {
 		{
 			stop: {
 				type: 'stop',
-				id: '900000100020',
-				name: 'S+U Potsdamer Platz',
+				id: '900100020',
+				name: 'S+U Potsdamer Platz Bhf (Berlin)',
 				location: {
 					type: 'location',
 					id: '900100020',
@@ -856,8 +849,8 @@ module.exports = {
 		{
 			stop: {
 				type: 'stop',
-				id: '900000012101',
-				name: 'S Anhalter Bahnhof',
+				id: '900012101',
+				name: 'S Anhalter Bahnhof (Berlin)',
 				location: {
 					type: 'location',
 					id: '900012101',
@@ -890,8 +883,8 @@ module.exports = {
 		{
 			stop: {
 				type: 'stop',
-				id: '900000058103',
-				name: 'S+U Yorckstr. S2 S25 S26 U7',
+				id: '900058103',
+				name: 'S+U Yorckstr. S2 S25 S26 U7 (Berlin)',
 				location: {
 					type: 'location',
 					id: '900058103',
@@ -924,8 +917,8 @@ module.exports = {
 		{
 			stop: {
 				type: 'stop',
-				id: '900000058101',
-				name: 'S Südkreuz',
+				id: '900058101',
+				name: 'S Südkreuz Bhf (Berlin)',
 				location: {
 					type: 'location',
 					id: '900058101',
@@ -1107,4 +1100,8 @@ module.exports = {
 		'2019-05-07': false,
 		'2019-05-08': false
 	}),
+}
+
+export {
+	bvgJourney,
 }

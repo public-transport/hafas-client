@@ -1,6 +1,4 @@
-'use strict'
-
-module.exports = {
+const dbJourneyPolyline = {
 	type: 'journey',
 	legs: [
 		{
@@ -17,7 +15,7 @@ module.exports = {
 				products: {
 					nationalExpress: true,
 					national: true,
-					regionalExp: true,
+					regionalExpress: true,
 					regional: true,
 					suburban: true,
 					bus: true,
@@ -39,7 +37,7 @@ module.exports = {
 					products: {
 						nationalExpress: true,
 						national: true,
-						regionalExp: true,
+						regionalExpress: true,
 						regional: true,
 						suburban: true,
 						bus: true,
@@ -63,7 +61,7 @@ module.exports = {
 				products: {
 					nationalExpress: true,
 					national: true,
-					regionalExp: true,
+					regionalExpress: true,
 					regional: true,
 					suburban: true,
 					bus: true,
@@ -100,7 +98,7 @@ module.exports = {
 							products: {
 								nationalExpress: true,
 								national: true,
-								regionalExp: true,
+								regionalExpress: true,
 								regional: true,
 								suburban: true,
 								bus: true,
@@ -122,7 +120,7 @@ module.exports = {
 								products: {
 									nationalExpress: true,
 									national: true,
-									regionalExp: true,
+									regionalExpress: true,
 									regional: true,
 									suburban: true,
 									bus: true,
@@ -3929,7 +3927,7 @@ module.exports = {
 							'products': {
 								'nationalExpress': true,
 								'national': true,
-								'regionalExp': true,
+								'regionalExpress': true,
 								'regional': true,
 								'suburban': true,
 								'bus': true,
@@ -3977,4 +3975,8 @@ module.exports = {
 		'currency': 'EUR',
 		'hint': null
 	}
+}
+
+export {
+	dbJourneyPolyline,
 }

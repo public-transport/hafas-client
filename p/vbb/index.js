@@ -1,66 +1,52 @@
-'use strict'
+// todo: use import assertions once they're supported by Node.js & ESLint
+// https://github.com/tc39/proposal-import-assertions
+import {createRequire} from 'module'
+const require = createRequire(import.meta.url)
 
-const shorten = require('vbb-short-station-name')
-const {to12Digit, to9Digit} = require('vbb-translate-ids')
-const parseLineName = require('vbb-parse-line')
-const parseTicket = require('vbb-parse-ticket')
-const getStations = require('vbb-stations')
-const {parseHook} = require('../../lib/profile-hooks')
+import {parseHook} from '../../lib/profile-hooks.js'
 
-const parseAndAddLocationDHID = require('./parse-loc-dhid')
-const _parseLine = require('../../parse/line')
-const _parseLocation = require('../../parse/location')
-const _parseJourney = require('../../parse/journey')
-const _parseDeparture = require('../../parse/departure')
-const _formatStation = require('../../format/station')
+import {parseAndAddLocationDHID} from './parse-loc-dhid.js'
+import {parseLine as _parseLine} from '../../parse/line.js'
+import {parseLocation as _parseLocation} from '../../parse/location.js'
+import {parseJourney as _parseJourney} from '../../parse/journey.js'
+import {parseDeparture as _parseDeparture} from '../../parse/departure.js'
 
 const baseProfile = require('./base.json')
-const products = require('./products')
+import {products} from './products.js'
 
-// todo: https://m.tagesspiegel.de/berlin/fahrerlebnis-wie-im-regionalexpress-so-faehrt-es-sich-in-der-neuen-express-s-bahn/25338674.html
-const parseLineWithMoreDetails = ({parsed}, p) => {
+const parseLineWithShortName = ({parsed}, p) => {
 	parsed.name = p.name.replace(/^(bus|tram)\s+/i, '')
-	const details = parseLineName(parsed.name)
-	parsed.symbol = details.symbol
-	parsed.nr = details.nr
-	parsed.metro = details.metro
-	parsed.express = details.express
-	parsed.night = details.night
-
 	return parsed
 }
 
 const parseLocation = ({parsed}, l) => {
-	if ((parsed.type === 'stop' || parsed.type === 'station') && parsed.id[0] === '9') {
-		parsed.name = shorten(parsed.name)
-		parsed.id = to12Digit(parsed.id)
-		if (!parsed.location.latitude || !parsed.location.longitude) {
-			const [s] = getStations(parsed.id)
-			if (s) Object.assign(parsed.location, s.location)
-		}
-	}
-
 	parseAndAddLocationDHID(parsed, l)
 	return parsed
 }
 
+// todo: move this to parse/tickets.js?
 const parseJourneyWithTickets = ({parsed}, j) => {
 	if (
 		j.trfRes &&
-		Array.isArray(j.trfRes.fareSetL) &&
-		j.trfRes.fareSetL[0] &&
-		Array.isArray(j.trfRes.fareSetL[0].fareL)
+		Array.isArray(j.trfRes.fareSetL)
 	) {
-		parsed.tickets = []
-		const sets = j.trfRes.fareSetL[0].fareL
-		for (let s of sets) {
-			if (!Array.isArray(s.ticketL) || s.ticketL.length === 0) continue
-			for (let t of s.ticketL) {
-				const ticket = parseTicket(t)
-				ticket.name = s.name + ' – ' + ticket.name
-				parsed.tickets.push(ticket)
-			}
-		}
+		parsed.tickets = j.trfRes.fareSetL
+			.map((s) => {
+				if (!Array.isArray(s.fareL) || s.fareL.length === 0) return null
+				return {
+					name: s.name,
+					description: s.desc,
+					tickets: s.fareL.map((f) => ({
+						// todo: sometimes there's also t.ticketL
+						name: f.name,
+						price: f.price,
+					})),
+				}
+			})
+			.filter(set => !!set)
+
+		// todo: j.trfRes.totalPrice
+		// todo: j.trfRes.msgL
 	}
 
 	return parsed
@@ -80,35 +66,18 @@ const parseDepartureRenameRingbahn = ({parsed}) => {
 	return parsed
 }
 
-const validIBNR = /^\d+$/
-const formatStation = (id) => {
-	if ('string' !== typeof id) throw new TypeError('station ID must be a string.')
-	if (!validIBNR.test(id)) {
-		throw new Error('station ID must be a valid IBNR.')
-	}
-	// The VBB has some 7-digit stations. We don't convert them to 12 digits,
-	// because it only recognizes in the 7-digit format. see derhuerst/vbb-hafas#22
-	if (id.length !== 7) id = to9Digit(id)
-	return _formatStation(id)
-}
-
-const vbbProfile = {
+const profile = {
 	...baseProfile,
 	locale: 'de-DE',
 	timezone: 'Europe/Berlin',
 
 	products: products,
 
-	parseLine: parseHook(_parseLine, parseLineWithMoreDetails),
+	parseLine: parseHook(_parseLine, parseLineWithShortName),
 	parseLocation: parseHook(_parseLocation, parseLocation),
-	parseStationName: (ctx, name) => shorten(name),
 	parseJourney: parseHook(_parseJourney, parseJourneyWithTickets),
 	parseDeparture: parseHook(_parseDeparture, parseDepartureRenameRingbahn),
 
-	formatStation,
-
-	departuresGetPasslist: false,
-	departuresStbFltrEquiv: false,
 	journeysWalkingSpeed: true,
 	refreshJourneyUseOutReconL: true,
 	trip: true,
@@ -116,4 +85,6 @@ const vbbProfile = {
 	reachableFrom: true,
 }
 
-module.exports = vbbProfile
+export {
+	profile,
+}

@@ -1,16 +1,15 @@
-'use strict'
+import {inspect} from 'util'
+import {createClient} from '../../index.js'
+import {profile} from './index.js'
 
-const createClient = require('../..')
-const nahshProfile = require('.')
-
-const client = createClient(nahshProfile, 'hafas-client-example')
+const client = createClient(profile, 'hafas-client-example')
 
 // Flensburg Hbf to Kiel Hbf
 client.journeys('8000103', '8000199', {results: 10, tickets: true})
 // .then(({journeys}) => {
 // 	const [journey] = journeys
 // 	const leg = journey.legs[0]
-// 	return client.trip(leg.tripId, leg.line.name, {polyline: true})
+// 	return client.trip(leg.tripId, {polyline: true})
 // })
 // .then(({journeys}) => {
 // 	const [journey] = journeys
@@ -47,6 +46,6 @@ client.journeys('8000103', '8000199', {results: 10, tickets: true})
 // })
 
 .then((data) => {
-	console.log(require('util').inspect(data, {depth: null, colors: true}))
+	console.log(inspect(data, {depth: null, colors: true}))
 })
 .catch(console.error)

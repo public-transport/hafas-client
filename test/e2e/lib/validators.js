@@ -1,13 +1,22 @@
-'use strict'
+import * as a from 'assert'
+import validateFptf from 'validate-fptf'
+const {defaultValidators} = validateFptf
+import anyOf from 'validate-fptf/lib/any-of.js'
 
-const a = require('assert')
-const {defaultValidators} = require('validate-fptf')
-const anyOf = require('validate-fptf/lib/any-of')
+import {assertValidWhen} from './util.js'
 
-const {assertValidWhen} = require('./util')
+const DAY = 24 * 60 * 60 * 1000
 
 const isObj = o => o !== null && 'object' === typeof o && !Array.isArray(o)
 const is = val => val !== null && val !== undefined
+
+const createValidateRealtimeDataUpdatedAt = (cfg) => {
+	const validateRealtimeDataUpdatedAt = (val, rtDataUpdatedAt, name = 'realtimeDataUpdatedAt') => {
+		a.ok(Number.isInteger(rtDataUpdatedAt), name + ' must be an integer')
+		assertValidWhen(rtDataUpdatedAt * 1000, cfg.when, name, 100 * DAY)
+	}
+	return validateRealtimeDataUpdatedAt
+}
 
 const createValidateProducts = (cfg) => {
 	const validateProducts = (val, p, name = 'products') => {
@@ -49,6 +58,7 @@ const validateStop = (val, s, name = 'stop') => {
 	defaultValidators.stop(val, s, name)
 	// todo: check if s.id has leading zeros
 }
+const createValidateStop = () => validateStop
 
 const validatePoi = (val, poi, name = 'location') => {
 	defaultValidators.location(val, poi, name)
@@ -58,12 +68,14 @@ const validatePoi = (val, poi, name = 'location') => {
 	a.strictEqual(typeof poi.name, 'string', name + '.name must be a string')
 	a.ok(poi.name, name + '.name must not be empty')
 }
+const createValidatePoi = () => validatePoi
 
 const validateAddress = (val, addr, name = 'location') => {
 	defaultValidators.location(val, addr, name)
 	a.strictEqual(typeof addr.address, 'string', name + '.address must be a string')
 	a.ok(addr.address, name + '.address must not be empty')
 }
+const createValidateAddress = () => validateAddress
 
 const validateLocation = (val, loc, name = 'location') => {
 	a.ok(isObj(loc), name + ' must be an object')
@@ -74,6 +86,7 @@ const validateLocation = (val, loc, name = 'location') => {
 		validateAddress(val, loc, name)
 	} else defaultValidators.location(val, loc, name)
 }
+const createValidateLocation = () => validateLocation
 
 const validateLocations = (val, locs, name = 'locations') => {
 	a.ok(Array.isArray(locs), name + ' must be an array')
@@ -82,6 +95,7 @@ const validateLocations = (val, locs, name = 'locations') => {
 		val.location(val, locs[i], name + `[${i}]`)
 	}
 }
+const createValidateLocations = () => validateLocations
 
 const createValidateLine = (cfg) => {
 	const validLineModes = []
@@ -153,6 +167,7 @@ const validateRemark = (val, rem, name = 'remark') => {
 		}
 	}
 }
+const createValidateRemark = () => validateRemark
 
 const createValidateStopover = (cfg) => {
 	const validateStopover = (val, s, name = 'stopover') => {
@@ -280,6 +295,7 @@ const validateTicket = (val, ti, name = 'ticket') => {
 		a.ok(ti.variant, name + '.variant must not be empty')
 	}
 }
+const createValidateTicket = () => validateTicket
 
 const createValidateJourneyLeg = (cfg) => {
 	const validateJourneyLeg = (val, leg, name = 'journeyLeg') => {
@@ -406,6 +422,7 @@ const validateJourney = (val, j, name = 'journey') => {
 		}
 	}
 }
+const createValidateJourney = () => validateJourney
 
 const validateJourneys = (val, js, name = 'journeys') => {
 	a.ok(Array.isArray(js), name + ' must be an array')
@@ -414,12 +431,25 @@ const validateJourneys = (val, js, name = 'journeys') => {
 		val.journey(val, js[i], name + `[${i}]`)
 	}
 }
+const createValidateJourneys = () => validateJourneys
 
 const validateJourneysResult = (val, res, name = 'journeysResult') => {
 	a.ok(isObj(res), name + ' must be an object')
 	// todo: `earlierRef`, `laterRef`
 	val.journeys(val, res.journeys, name + '.journeys')
+
+	val.realtimeDataUpdatedAt(val, res.realtimeDataUpdatedAt, name + '.realtimeDataUpdatedAt')
 }
+const createValidateJourneysResult = () => validateJourneysResult
+
+const validateRefreshJourneyResult = (val, res, name = 'refreshJourneyResult') => {
+	a.ok(isObj(res), name + ' must be an object')
+
+	val.realtimeDataUpdatedAt(val, res.realtimeDataUpdatedAt, name + '.realtimeDataUpdatedAt')
+
+	val.journey(val, res.journey, name + '.journey')
+}
+const createValidateRefreshJourneyResult = () => validateRefreshJourneyResult
 
 const validateTrip = (val, trip, name = 'trip') => {
 	const withFakeTripId = Object.assign({
@@ -428,6 +458,29 @@ const validateTrip = (val, trip, name = 'trip') => {
 	delete withFakeTripId.id
 	val.journeyLeg(val, withFakeTripId, name)
 }
+const createValidateTrip = () => validateTrip
+
+const validateTripResult = (val, res, name = 'tripResult') => {
+	a.ok(isObj(res), name + ' must be an object')
+
+	val.trip(val, res.trip, name + '.trip')
+
+	val.realtimeDataUpdatedAt(val, res.realtimeDataUpdatedAt, name + '.realtimeDataUpdatedAt')
+}
+const createValidateTripResult = () => validateTripResult
+
+const validateTripsByNameResult = (val, res, name = 'tripsByNameResult') => {
+	a.ok(isObj(res), name + ' must be an object')
+
+	a.ok(Array.isArray(res.trips), name + '.trips must be an array')
+	a.ok(res.trips.length > 0, name + '.trips must not be empty')
+	for (let i = 0; i < res.trips.length; i++) {
+		val.trip(val, res.trips[i], `${name}.trips[${i}]`)
+	}
+
+	val.realtimeDataUpdatedAt(val, res.realtimeDataUpdatedAt, name + '.realtimeDataUpdatedAt')
+}
+const createValidateTripsByNameResult = () => validateTripsByNameResult
 
 const createValidateArrivalOrDeparture = (type, cfg) => {
 	if (type !== 'arrival' && type !== 'departure') throw new Error('invalid type')
@@ -518,6 +571,24 @@ const createValidateDepartures = (cfg) => {
 	return _createValidateStationBoardResults(cfg, 'departure')
 }
 
+const _createValidateStationBoardResponse = (cfg, validatorsKey, arrsOrDepsKey) => {
+	const _validateStationBoardResponse = (val, res, name) => {
+		a.ok(isObj(res), name + ' must be an object')
+
+		val.realtimeDataUpdatedAt(val, res.realtimeDataUpdatedAt, name + '.realtimeDataUpdatedAt')
+
+		const arrsOrDeps = res[arrsOrDepsKey]
+		val[validatorsKey](val, arrsOrDeps, `${name}.${arrsOrDepsKey}`)
+	}
+	return _validateStationBoardResponse
+}
+const createValidateArrivalsResponse = (cfg) => {
+	return _createValidateStationBoardResponse(cfg, 'arrivals', 'arrivals')
+}
+const createValidateDeparturesResponse = (cfg) => {
+	return _createValidateStationBoardResponse(cfg, 'departures', 'departures')
+}
+
 const createValidateMovement = (cfg) => {
 	const { maxLatitude, minLatitude, maxLongitude, minLongitude } = cfg
 	const validateMovement = (val, m, name = 'movement') => {
@@ -574,28 +645,77 @@ const validateMovements = (val, ms, name = 'movements') => {
 		val.movement(val, ms[i], name + `[${i}]`)
 	}
 }
+const createValidateMovements = () => validateMovements
 
-module.exports = {
+const validateRadarResult = (val, res, name = 'movementsResult') => {
+	a.ok(isObj(res), name + ' must be an object')
+
+	val.movements(val, res.movements, name + '.movements')
+
+	val.realtimeDataUpdatedAt(val, res.realtimeDataUpdatedAt, name + '.realtimeDataUpdatedAt')
+}
+const createValidateRadarResult = () => validateRadarResult
+
+export {
+	createValidateRealtimeDataUpdatedAt,
+	createValidateProducts,
+	createValidateStation,
+	createValidateStop,
+	createValidateLocation,
+	createValidateLocations,
+	createValidatePoi,
+	createValidateAddress,
+	createValidateLine,
+	createValidateRemark,
+	createValidateStopover,
+	createValidateTicket,
+	createValidateJourneyLeg,
+	createValidateJourney,
+	createValidateJourneys,
+	createValidateJourneysResult,
+	createValidateRefreshJourneyResult,
+	createValidateTrip,
+	createValidateTripResult,
+	createValidateTripsByNameResult,
+	createValidateArrival,
+	createValidateDeparture,
+	createValidateArrivals,
+	createValidateDepartures,
+	createValidateArrivalsResponse,
+	createValidateDeparturesResponse,
+	createValidateMovement,
+	createValidateMovements,
+	createValidateRadarResult,
+}
+
+export default {
+	realtimeDataUpdatedAt: createValidateRealtimeDataUpdatedAt,
 	products: createValidateProducts,
 	station: createValidateStation,
-	stop: () => validateStop,
-	location: () => validateLocation,
-	locations: () => validateLocations,
-	poi: () => validatePoi,
-	address: () => validateAddress,
+	stop: createValidateStop,
+	location: createValidateLocation,
+	locations: createValidateLocations,
+	poi: createValidatePoi,
+	address: createValidateAddress,
 	line: createValidateLine,
-	remark: () => validateRemark,
+	remark: createValidateRemark,
 	stopover: createValidateStopover,
-	ticket: () => validateTicket,
+	ticket: createValidateTicket,
 	journeyLeg: createValidateJourneyLeg,
-	journey: () => validateJourney,
-	journeys: () => validateJourneys,
-	journeysResult: () => validateJourneysResult,
-	trip: () => validateTrip,
+	journey: createValidateJourney,
+	journeys: createValidateJourneys,
+	journeysResult: createValidateJourneysResult,
+	refreshJourneyResult: createValidateRefreshJourneyResult,
+	trip: createValidateTrip,
+	tripResult: createValidateTripResult,
+	tripsByNameResult: createValidateTripsByNameResult,
 	arrival: createValidateArrival,
 	departure: createValidateDeparture,
 	arrivals: createValidateArrivals,
 	departures: createValidateDepartures,
+	arrivalsResponse: createValidateArrivalsResponse,
+	departuresResponse: createValidateDeparturesResponse,
 	movement: createValidateMovement,
-	movements: () => validateMovements
+	movements: createValidateMovements,
+	radarResult: createValidateRadarResult,
 }

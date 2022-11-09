@@ -1,6 +1,4 @@
-'use strict'
-
-module.exports = {
+const vsnDepartures = {
 	tripId: '1|265947|0|80|1082020',
 	stop: {
 		type: 'stop',
@@ -98,4 +96,8 @@ module.exports = {
 		},
 	},
 	remarks: [],
+}
+
+export {
+	vsnDepartures,
 }

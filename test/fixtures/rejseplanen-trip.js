@@ -1,7 +1,4 @@
-'use strict'
-
-module.exports = {
-	reachable: true, // todo: drop this field
+const rejseplanenTrip = {
 	id: '1|307|4|86|12102021',
 	direction: 'CPH Lufthavn',
 	currentLocation: {
@@ -21,7 +18,6 @@ module.exports = {
 		product: 'national-train',
 		operator: { type: 'operator', id: 'dsb', name: 'DSB' },
 	},
-	realtimeDataUpdatedAt: 1634050700,
 
 	origin: {
 		type: 'stop',
@@ -439,4 +435,8 @@ module.exports = {
 			departurePrognosisType: null,
 		},
 	],
+}
+
+export {
+	rejseplanenTrip,
 }

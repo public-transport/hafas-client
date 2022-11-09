@@ -1,6 +1,4 @@
-'use strict'
-
-module.exports = {
+const dbJourney = {
 	type: 'journey',
 	legs: [
 		{
@@ -17,7 +15,7 @@ module.exports = {
 				products: {
 					nationalExpress: true,
 					national: true,
-					regionalExp: true,
+					regionalExpress: true,
 					regional: true,
 					suburban: true,
 					bus: true,
@@ -40,7 +38,7 @@ module.exports = {
 				products: {
 					nationalExpress: true,
 					national: true,
-					regionalExp: true,
+					regionalExpress: true,
 					regional: true,
 					suburban: true,
 					bus: true,
@@ -62,7 +60,7 @@ module.exports = {
 					products: {
 						nationalExpress: true,
 						national: true,
-						regionalExp: true,
+						regionalExpress: true,
 						regional: true,
 						suburban: true,
 						bus: true,
@@ -98,7 +96,7 @@ module.exports = {
 				products: {
 					nationalExpress: true,
 					national: true,
-					regionalExp: true,
+					regionalExpress: true,
 					regional: true,
 					suburban: true,
 					bus: true,
@@ -120,7 +118,7 @@ module.exports = {
 					products: {
 						nationalExpress: true,
 						national: true,
-						regionalExp: true,
+						regionalExpress: true,
 						regional: true,
 						suburban: true,
 						bus: true,
@@ -144,7 +142,7 @@ module.exports = {
 				products: {
 					nationalExpress: true,
 					national: true,
-					regionalExp: false,
+					regionalExpress: false,
 					regional: true,
 					suburban: true,
 					bus: true,
@@ -189,4 +187,8 @@ module.exports = {
 	],
 	refreshToken: '¶HKI¶D$A=1@O=Köln Hbf@L=8000207@a=128@$A=1@O=Köln Messe/Deutz Gl.11-12@L=8073368@a=128@$202004110517$202004110520$$$1$§T$A=1@O=Köln Messe/Deutz Gl.11-12@L=8073368@a=128@$A=1@O=Nürnberg Hbf@L=8000284@a=128@$202004110520$202004110901$ICE  523$$1$',
 	price: {amount: 49.9, currency: 'EUR', hint: null},
+}
+
+export {
+	dbJourney,
 }

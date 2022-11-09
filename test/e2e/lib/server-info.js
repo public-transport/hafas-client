@@ -1,5 +1,3 @@
-'use strict'
-
 const testServerInfo = async (cfg) => {
 	const {
 		test: t,
@@ -24,4 +22,6 @@ const testServerInfo = async (cfg) => {
 	t.ok(info.realtimeDataUpdatedAt > 0, 'invalid info.realtimeDataUpdatedAt')
 }
 
-module.exports = testServerInfo
+export {
+	testServerInfo,
+}

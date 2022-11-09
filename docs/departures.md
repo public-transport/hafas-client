@@ -43,40 +43,43 @@ With `opt`, you can override the default options, which look like this:
 If you pass an object `opt.products`, its fields will partially override the default products defined in the profile. An example with the [BVG profile](../p/bvg):
 
 ```js
-const createClient = require('hafas-client')
-const vbbProfile = require('hafas-client/p/vbb')
+import {createClient} from 'hafas-client'
+import {vbbProfile} from 'hafas-client/p/vbb.js'
+
 const client = createClient(vbbProfile, 'my-awesome-program')
 
 // will query with these products: suburban, subway, bus, express, regional
-client.departures('900000024101', {products: {tram: false, ferry: false}})
+await client.departures('900000024101', {products: {tram: false, ferry: false}})
 ```
 
 ## Response
 
 *Note:* As stated in the [*Friendly Public Transport Format* v2 draft spec](https://github.com/public-transport/friendly-public-transport-format/blob/3bd36faa721e85d9f5ca58fb0f38cdbedb87bbca/spec/readme.md), the `when` field includes the current delay. The `delay` field, if present, expresses how much the former differs from the schedule.
 
-You may pass the `tripId` field into [`trip(id, lineName, [opt])`](trip.md) to get details on the vehicle's trip.
+You may pass a departure's `tripId` into [`trip(id, lineName, [opt])`](trip.md) to get details on the whole trip.
 
 As an example, we're going to use the [VBB profile](../p/vbb):
 
 ```js
-const createClient = require('hafas-client')
-const vbbProfile = require('hafas-client/p/vbb')
+import {createClient} from 'hafas-client'
+import {vbbProfile} from 'hafas-client/p/vbb.js'
 
 const client = createClient(vbbProfile, 'my-awesome-program')
 
 // S Charlottenburg
-client.departures('900000024101', {duration: 3})
-.then(console.log)
-.catch(console.error)
+const {
+	departures,
+	realtimeDataUpdatedAt,
+} = await client.departures('900000024101', {duration: 3})
 ```
 
-The response may look like this:
+`realtimeDataUpdatedAt` is a UNIX timestamp reflecting the latest moment when (at least some) of the response's realtime data have been updated.
+
+`departures` may look like this:
 
 ```js
 [ {
 	tripId: '1|31431|28|86|17122017',
-	trip: 31431,
 	direction: 'S Spandau',
 	// Depending on the HAFAS endpoint, the destination may be present:
 	destination: {
@@ -152,7 +155,6 @@ The response may look like this:
 }, {
 	cancelled: true,
 	tripId: '1|30977|8|86|17122017',
-	trip: 30977,
 	direction: 'S Westkreuz',
 	line: {
 		type: 'line',
@@ -185,7 +187,6 @@ The response may look like this:
 	prognosedPlatform: '2'
 }, {
 	tripId: '1|28671|4|86|17122017',
-	trip: 28671,
 	direction: 'U Rudow',
 	line: {
 		type: 'line',

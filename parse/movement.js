@@ -1,5 +1,3 @@
-'use strict'
-
 // todo: what is m.dirGeo? maybe the speed?
 // todo: what is m.stopL?
 // todo: what is m.proc? wut?
@@ -12,7 +10,7 @@ const parseMovement = (ctx, m) => { // m = raw movement
 	const res = {
 		direction: m.dirTxt ? profile.parseStationName(ctx, m.dirTxt) : null,
 		tripId: m.jid || null,
-		line: m.line || null,
+		product: m.product || null,
 		location: m.pos ? {
 			type: 'location',
 			latitude: m.pos.y / 1000000,
@@ -52,4 +50,6 @@ const parseMovement = (ctx, m) => { // m = raw movement
 	return res
 }
 
-module.exports = parseMovement
+export {
+	parseMovement,
+}

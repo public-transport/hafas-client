@@ -1,21 +1,18 @@
-'use strict'
+import tap from 'tap'
+import isRoughlyEqual from 'is-roughly-equal'
 
-const tap = require('tap')
-const isRoughlyEqual = require('is-roughly-equal')
-
-const {createWhen} = require('./lib/util')
-const createClient = require('../..')
-const hvvProfile = require('../../p/hvv')
-const products = require('../../p/hvv/products')
-const createValidate = require('./lib/validate-fptf-with')
-const testJourneysStationToStation = require('./lib/journeys-station-to-station')
-const journeysFailsWithNoProduct = require('./lib/journeys-fails-with-no-product')
-const testJourneysStationToAddress = require('./lib/journeys-station-to-address')
-const testJourneysStationToPoi = require('./lib/journeys-station-to-poi')
-const testEarlierLaterJourneys = require('./lib/earlier-later-journeys')
-const testDepartures = require('./lib/departures')
-const testDeparturesInDirection = require('./lib/departures-in-direction')
-const testArrivals = require('./lib/arrivals')
+import {createWhen} from './lib/util.js'
+import {createClient} from '../../index.js'
+import {profile as hvvProfile} from '../../p/hvv/index.js'
+import {createValidateFptfWith as createValidate} from './lib/validate-fptf-with.js'
+import {testJourneysStationToStation} from './lib/journeys-station-to-station.js'
+import {journeysFailsWithNoProduct} from './lib/journeys-fails-with-no-product.js'
+import {testJourneysStationToAddress} from './lib/journeys-station-to-address.js'
+import {testJourneysStationToPoi} from './lib/journeys-station-to-poi.js'
+import {testEarlierLaterJourneys} from './lib/earlier-later-journeys.js'
+import {testDepartures} from './lib/departures.js'
+import {testDeparturesInDirection} from './lib/departures-in-direction.js'
+import {testArrivals} from './lib/arrivals.js'
 
 const T_MOCK = 1641897000 * 1000 // 2022-01-11T11:30:00+01
 const when = createWhen(hvvProfile.timezone, hvvProfile.locale, T_MOCK)
@@ -23,7 +20,7 @@ const when = createWhen(hvvProfile.timezone, hvvProfile.locale, T_MOCK)
 const cfg = {
 	when,
 	// stationCoordsOptional: false,
-	products,
+	products: hvvProfile.products,
 	// minLatitude: 50.7,
 	// maxLatitude: 53.2,
 	// minLongitude: 10.25,
@@ -60,14 +57,14 @@ tap.skip('journeys – Hamburg Tiefstack to Hamburg Barmbek', async (t) => {
 
 // todo: journeys, only one product
 
-tap.skip('journeys – fails with no product', (t) => {
-	journeysFailsWithNoProduct({
+tap.skip('journeys – fails with no product', async (t) => {
+	await journeysFailsWithNoProduct({
 		test: t,
 		fetchJourneys: client.journeys,
 		fromId: tiefstack,
 		toId: barmbek,
 		when,
-		products
+		products: hvvProfile.products,
 	})
 	t.end()
 })
@@ -144,20 +141,21 @@ tap.skip('trip details', async (t) => {
 	const p = res.journeys[0].legs.find(l => !l.walking)
 	t.ok(p.tripId, 'precondition failed')
 	t.ok(p.line.name, 'precondition failed')
-	const trip = await client.trip(p.tripId, p.line.name, {when})
 
-	validate(t, trip, 'trip', 'trip')
+	const tripRes = await client.trip(p.tripId, {when})
+
+	validate(t, tripRes, 'tripResult', 'res')
 	t.end()
 })
 
 tap.skip('departures at Hamburg Barmbek', async (t) => {
-	const departures = await client.departures(barmbek, {
+	const res = await client.departures(barmbek, {
 		duration: 5, when,
 	})
 
 	await testDepartures({
 		test: t,
-		departures,
+		res,
 		validate,
 		id: barmbek
 	})
@@ -165,7 +163,7 @@ tap.skip('departures at Hamburg Barmbek', async (t) => {
 })
 
 tap.skip('departures with station object', async (t) => {
-	const deps = await client.departures({
+	const res = await client.departures({
 		type: 'station',
 		id: tiefstack,
 		name: 'Hamburg Tiefstack',
@@ -176,7 +174,7 @@ tap.skip('departures with station object', async (t) => {
 		}
 	}, {when})
 
-	validate(t, deps, 'departures', 'departures')
+	validate(t, res, 'departuresResponse', 'res')
 	t.end()
 })
 
@@ -194,13 +192,13 @@ tap.skip('departures at Barmbek in direction of Altona', async (t) => {
 })
 
 tap.skip('arrivals at Hamburg Barmbek', async (t) => {
-	const arrivals = await client.arrivals(barmbek, {
+	const res = await client.arrivals(barmbek, {
 		duration: 5, when
 	})
 
 	await testArrivals({
 		test: t,
-		arrivals,
+		res,
 		validate,
 		id: barmbek
 	})
@@ -237,7 +235,7 @@ tap.skip('station Hamburg Barmbek', async (t) => {
 })
 
 tap.skip('radar', async (t) => {
-	const vehicles = await client.radar({
+	const res = await client.radar({
 		north: 53.569,
 		west: 10.022,
 		south: 53.55,
@@ -246,6 +244,6 @@ tap.skip('radar', async (t) => {
 		duration: 5 * 60, when, results: 10
 	})
 
-	validate(t, vehicles, 'movements', 'vehicles')
+	validate(t, res, 'radarResult', 'res')
 	t.end()
 })

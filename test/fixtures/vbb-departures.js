@@ -1,13 +1,11 @@
-'use strict'
-
-module.exports = [
+const vbbDepartures = [
 	{
 		tripId: '1|24934|5|86|12102021',
 		stop: {
 			type: 'stop',
-			id: '900000100004',
+			id: '900100004',
 			stationDHID: 'de:11000:900100004',
-			name: 'S+U Jannowitzbrücke',
+			name: 'S+U Jannowitzbrücke (Berlin)',
 			location: {
 				type: 'location',
 				id: '900100004',
@@ -33,11 +31,6 @@ module.exports = [
 					productName: 'S',
 					mode: 'train',
 					product: 'suburban',
-					symbol: 'S',
-					nr: 3,
-					metro: false,
-					express: false,
-					night: false
 				},
 				{
 					type: 'line',
@@ -48,11 +41,6 @@ module.exports = [
 					productName: 'S',
 					mode: 'train',
 					product: 'suburban',
-					symbol: 'S',
-					nr: 5,
-					metro: false,
-					express: false,
-					night: false
 				},
 				{
 					type: 'line',
@@ -63,11 +51,6 @@ module.exports = [
 					productName: 'S',
 					mode: 'train',
 					product: 'suburban',
-					symbol: 'S',
-					nr: 7,
-					metro: false,
-					express: false,
-					night: false
 				},
 				{
 					type: 'line',
@@ -78,11 +61,6 @@ module.exports = [
 					productName: 'S',
 					mode: 'train',
 					product: 'suburban',
-					symbol: 'S',
-					nr: 9,
-					metro: false,
-					express: false,
-					night: false
 				},
 				{
 					type: 'line',
@@ -93,11 +71,6 @@ module.exports = [
 					productName: 'U',
 					mode: 'train',
 					product: 'subway',
-					symbol: 'U',
-					nr: 8,
-					metro: false,
-					express: false,
-					night: false
 				},
 				{
 					type: 'line',
@@ -108,11 +81,6 @@ module.exports = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-					symbol: null,
-					nr: 300,
-					metro: false,
-					express: false,
-					night: false
 				},
 				{
 					type: 'line',
@@ -123,11 +91,6 @@ module.exports = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-					symbol: 'N',
-					nr: 8,
-					metro: false,
-					express: false,
-					night: true
 				},
 				{
 					type: 'line',
@@ -138,11 +101,6 @@ module.exports = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-					symbol: 'N',
-					nr: 40,
-					metro: false,
-					express: false,
-					night: true
 				},
 				{
 					type: 'line',
@@ -153,11 +111,6 @@ module.exports = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-					symbol: 'N',
-					nr: 60,
-					metro: false,
-					express: false,
-					night: true
 				},
 				{
 					type: 'line',
@@ -168,11 +121,6 @@ module.exports = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-					symbol: 'N',
-					nr: 65,
-					metro: false,
-					express: false,
-					night: true
 				},
 				{
 					type: 'line',
@@ -183,11 +131,6 @@ module.exports = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-					symbol: 'S',
-					nr: 7,
-					metro: false,
-					express: false,
-					night: false
 				}
 			]
 		},
@@ -197,13 +140,13 @@ module.exports = [
 		platform: '3',
 		plannedPlatform: '3',
 		prognosisType: 'calculated',
-		direction: 'S Erkner',
+		direction: 'S Erkner Bhf',
 		origin: null,
 		destination: {
 			type: "stop",
-			id: "900000310004",
+			id: "900310004",
 			stationDHID: 'de:12067:900310004',
-			name: "S Erkner",
+			name: "S Erkner Bhf",
 			location: {
 				type: "location",
 				id: "900310004",
@@ -227,7 +170,7 @@ module.exports = [
 			fahrtNr: '10541',
 			name: 'S3',
 			public: true,
-			adminCode: 'DBS',
+			adminCode: 'DBS---',
 			productName: 'S',
 			mode: 'train',
 			product: 'suburban',
@@ -236,11 +179,6 @@ module.exports = [
 				id: 's-bahn-berlin-gmbh',
 				name: 'S-Bahn Berlin GmbH'
 			},
-			symbol: 'S',
-			nr: 3,
-			metro: false,
-			express: false,
-			night: false
 		},
 		remarks: [
 			{ type: 'hint', code: 'OPERATOR', text: 'DBS' },
@@ -280,9 +218,9 @@ module.exports = [
 		tripId: '1|12106|15|86|12102021',
 		stop: {
 			type: 'stop',
-			id: '900000100004',
+			id: '900100004',
 			stationDHID: 'de:11000:900100004',
-			name: 'S+U Jannowitzbrücke',
+			name: 'S+U Jannowitzbrücke (Berlin)',
 			location: {
 				type: 'location',
 				id: '900100004',
@@ -308,11 +246,6 @@ module.exports = [
 					productName: 'S',
 					mode: 'train',
 					product: 'suburban',
-					symbol: 'S',
-					nr: 3,
-					metro: false,
-					express: false,
-					night: false
 				},
 				{
 					type: 'line',
@@ -323,11 +256,6 @@ module.exports = [
 					productName: 'S',
 					mode: 'train',
 					product: 'suburban',
-					symbol: 'S',
-					nr: 5,
-					metro: false,
-					express: false,
-					night: false
 				},
 				{
 					type: 'line',
@@ -338,11 +266,6 @@ module.exports = [
 					productName: 'S',
 					mode: 'train',
 					product: 'suburban',
-					symbol: 'S',
-					nr: 7,
-					metro: false,
-					express: false,
-					night: false
 				},
 				{
 					type: 'line',
@@ -353,11 +276,6 @@ module.exports = [
 					productName: 'S',
 					mode: 'train',
 					product: 'suburban',
-					symbol: 'S',
-					nr: 9,
-					metro: false,
-					express: false,
-					night: false
 				},
 				{
 					type: 'line',
@@ -368,11 +286,6 @@ module.exports = [
 					productName: 'U',
 					mode: 'train',
 					product: 'subway',
-					symbol: 'U',
-					nr: 8,
-					metro: false,
-					express: false,
-					night: false
 				},
 				{
 					type: 'line',
@@ -383,11 +296,6 @@ module.exports = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-					symbol: null,
-					nr: 300,
-					metro: false,
-					express: false,
-					night: false
 				},
 				{
 					type: 'line',
@@ -398,11 +306,6 @@ module.exports = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-					symbol: 'N',
-					nr: 8,
-					metro: false,
-					express: false,
-					night: true
 				},
 				{
 					type: 'line',
@@ -413,11 +316,6 @@ module.exports = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-					symbol: 'N',
-					nr: 40,
-					metro: false,
-					express: false,
-					night: true
 				},
 				{
 					type: 'line',
@@ -428,11 +326,6 @@ module.exports = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-					symbol: 'N',
-					nr: 60,
-					metro: false,
-					express: false,
-					night: true
 				},
 				{
 					type: 'line',
@@ -443,11 +336,6 @@ module.exports = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-					symbol: 'N',
-					nr: 65,
-					metro: false,
-					express: false,
-					night: true
 				},
 				{
 					type: 'line',
@@ -458,11 +346,6 @@ module.exports = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-					symbol: 'S',
-					nr: 7,
-					metro: false,
-					express: false,
-					night: false
 				}
 			]
 		},
@@ -480,7 +363,7 @@ module.exports = [
 			fahrtNr: '33695',
 			name: '300',
 			public: true,
-			adminCode: 'BVB',
+			adminCode: 'BVB---',
 			productName: 'Bus',
 			mode: 'bus',
 			product: 'bus',
@@ -489,11 +372,6 @@ module.exports = [
 				id: 'berliner-verkehrsbetriebe',
 				name: 'Berliner Verkehrsbetriebe'
 			},
-			symbol: null,
-			nr: 300,
-			metro: false,
-			express: false,
-			night: false
 		},
 		remarks: [
 			{ type: 'hint', code: 'OPERATOR', text: 'BVG' },
@@ -525,9 +403,9 @@ module.exports = [
 		origin: null,
 		destination: {
 			type: "stop",
-			id: "900000005207",
+			id: "900005207",
 			stationDHID: 'de:11000:900005207',
-			name: "Philharmonie Süd",
+			name: "Philharmonie Süd (Berlin)",
 			location: {
 				type: "location",
 				id: "900005207",
@@ -554,9 +432,9 @@ module.exports = [
 		tripId: '1|23076|26|86|12102021',
 		stop: {
 			type: 'stop',
-			id: '900000100004',
+			id: '900100004',
 			stationDHID: 'de:11000:900100004',
-			name: 'S+U Jannowitzbrücke',
+			name: 'S+U Jannowitzbrücke (Berlin)',
 			location: {
 				type: 'location',
 				id: '900100004',
@@ -582,11 +460,6 @@ module.exports = [
 					productName: 'S',
 					mode: 'train',
 					product: 'suburban',
-					symbol: 'S',
-					nr: 3,
-					metro: false,
-					express: false,
-					night: false
 				},
 				{
 					type: 'line',
@@ -597,11 +470,6 @@ module.exports = [
 					productName: 'S',
 					mode: 'train',
 					product: 'suburban',
-					symbol: 'S',
-					nr: 5,
-					metro: false,
-					express: false,
-					night: false
 				},
 				{
 					type: 'line',
@@ -612,11 +480,6 @@ module.exports = [
 					productName: 'S',
 					mode: 'train',
 					product: 'suburban',
-					symbol: 'S',
-					nr: 7,
-					metro: false,
-					express: false,
-					night: false
 				},
 				{
 					type: 'line',
@@ -627,11 +490,6 @@ module.exports = [
 					productName: 'S',
 					mode: 'train',
 					product: 'suburban',
-					symbol: 'S',
-					nr: 9,
-					metro: false,
-					express: false,
-					night: false
 				},
 				{
 					type: 'line',
@@ -642,11 +500,6 @@ module.exports = [
 					productName: 'U',
 					mode: 'train',
 					product: 'subway',
-					symbol: 'U',
-					nr: 8,
-					metro: false,
-					express: false,
-					night: false
 				},
 				{
 					type: 'line',
@@ -657,11 +510,6 @@ module.exports = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-					symbol: null,
-					nr: 300,
-					metro: false,
-					express: false,
-					night: false
 				},
 				{
 					type: 'line',
@@ -672,11 +520,6 @@ module.exports = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-					symbol: 'N',
-					nr: 8,
-					metro: false,
-					express: false,
-					night: true
 				},
 				{
 					type: 'line',
@@ -687,11 +530,6 @@ module.exports = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-					symbol: 'N',
-					nr: 40,
-					metro: false,
-					express: false,
-					night: true
 				},
 				{
 					type: 'line',
@@ -702,11 +540,6 @@ module.exports = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-					symbol: 'N',
-					nr: 60,
-					metro: false,
-					express: false,
-					night: true
 				},
 				{
 					type: 'line',
@@ -717,11 +550,6 @@ module.exports = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-					symbol: 'N',
-					nr: 65,
-					metro: false,
-					express: false,
-					night: true
 				},
 				{
 					type: 'line',
@@ -732,11 +560,6 @@ module.exports = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-					symbol: 'S',
-					nr: 7,
-					metro: false,
-					express: false,
-					night: false
 				}
 			]
 		},
@@ -746,7 +569,7 @@ module.exports = [
 		platform: null,
 		plannedPlatform: null,
 		prognosisType: 'prognosed',
-		direction: 'S+U Hermannstr.',
+		direction: 'S+U Hermannstr. (Berlin)',
 		provenance: null,
 		line: {
 			type: 'line',
@@ -754,7 +577,7 @@ module.exports = [
 			fahrtNr: '17590',
 			name: 'U8',
 			public: true,
-			adminCode: 'BVU',
+			adminCode: 'BVU---',
 			productName: 'U',
 			mode: 'train',
 			product: 'subway',
@@ -763,11 +586,6 @@ module.exports = [
 				id: 'berliner-verkehrsbetriebe',
 				name: 'Berliner Verkehrsbetriebe'
 			},
-			symbol: 'U',
-			nr: 8,
-			metro: false,
-			express: false,
-			night: false
 		},
 		remarks: [
 			{ type: 'hint', code: 'OPERATOR', text: 'BVG' },
@@ -800,9 +618,9 @@ module.exports = [
 		origin: null,
 		destination: {
 			type: "stop",
-			id: "900000079221",
+			id: "900079221",
 			stationDHID: 'de:11000:900079221',
-			name: "S+U Hermannstr.",
+			name: "S+U Hermannstr. (Berlin)",
 			location: {
 				type: "location",
 				id: "900079221",
@@ -829,9 +647,9 @@ module.exports = [
 		tripId: '1|23117|2|86|12102021',
 		stop: {
 			type: 'stop',
-			id: '900000100004',
+			id: '900100004',
 			stationDHID: 'de:11000:900100004',
-			name: 'S+U Jannowitzbrücke',
+			name: 'S+U Jannowitzbrücke (Berlin)',
 			location: {
 				type: 'location',
 				id: '900100004',
@@ -857,11 +675,6 @@ module.exports = [
 					productName: 'S',
 					mode: 'train',
 					product: 'suburban',
-					symbol: 'S',
-					nr: 3,
-					metro: false,
-					express: false,
-					night: false
 				},
 				{
 					type: 'line',
@@ -872,11 +685,6 @@ module.exports = [
 					productName: 'S',
 					mode: 'train',
 					product: 'suburban',
-					symbol: 'S',
-					nr: 5,
-					metro: false,
-					express: false,
-					night: false
 				},
 				{
 					type: 'line',
@@ -887,11 +695,6 @@ module.exports = [
 					productName: 'S',
 					mode: 'train',
 					product: 'suburban',
-					symbol: 'S',
-					nr: 7,
-					metro: false,
-					express: false,
-					night: false
 				},
 				{
 					type: 'line',
@@ -902,11 +705,6 @@ module.exports = [
 					productName: 'S',
 					mode: 'train',
 					product: 'suburban',
-					symbol: 'S',
-					nr: 9,
-					metro: false,
-					express: false,
-					night: false
 				},
 				{
 					type: 'line',
@@ -917,11 +715,6 @@ module.exports = [
 					productName: 'U',
 					mode: 'train',
 					product: 'subway',
-					symbol: 'U',
-					nr: 8,
-					metro: false,
-					express: false,
-					night: false
 				},
 				{
 					type: 'line',
@@ -932,11 +725,6 @@ module.exports = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-					symbol: null,
-					nr: 300,
-					metro: false,
-					express: false,
-					night: false
 				},
 				{
 					type: 'line',
@@ -947,11 +735,6 @@ module.exports = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-					symbol: 'N',
-					nr: 8,
-					metro: false,
-					express: false,
-					night: true
 				},
 				{
 					type: 'line',
@@ -962,11 +745,6 @@ module.exports = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-					symbol: 'N',
-					nr: 40,
-					metro: false,
-					express: false,
-					night: true
 				},
 				{
 					type: 'line',
@@ -977,11 +755,6 @@ module.exports = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-					symbol: 'N',
-					nr: 60,
-					metro: false,
-					express: false,
-					night: true
 				},
 				{
 					type: 'line',
@@ -992,11 +765,6 @@ module.exports = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-					symbol: 'N',
-					nr: 65,
-					metro: false,
-					express: false,
-					night: true
 				},
 				{
 					type: 'line',
@@ -1007,11 +775,6 @@ module.exports = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-					symbol: 'S',
-					nr: 7,
-					metro: false,
-					express: false,
-					night: false
 				}
 			]
 		},
@@ -1029,7 +792,7 @@ module.exports = [
 			fahrtNr: '17227',
 			name: 'U8',
 			public: true,
-			adminCode: 'BVU',
+			adminCode: 'BVU---',
 			productName: 'U',
 			mode: 'train',
 			product: 'subway',
@@ -1038,11 +801,6 @@ module.exports = [
 				id: 'berliner-verkehrsbetriebe',
 				name: 'Berliner Verkehrsbetriebe'
 			},
-			symbol: 'U',
-			nr: 8,
-			metro: false,
-			express: false,
-			night: false
 		},
 		remarks: [
 			{ type: 'hint', code: 'OPERATOR', text: 'BVG' },
@@ -1075,9 +833,9 @@ module.exports = [
 		origin: null,
 		destination: {
 			type: 'stop',
-			id: '900000096197',
+			id: '900096197',
 			stationDHID: 'de:11000:900096197',
-			name: 'S+U Wittenau [U8]',
+			name: 'S+U Wittenau (Berlin) [U8]',
 			location: {
 				type: 'location',
 				id: '900096197',
@@ -1104,9 +862,9 @@ module.exports = [
 		tripId: '1|25978|5|86|12102021',
 		stop: {
 			type: 'stop',
-			id: '900000100004',
+			id: '900100004',
 			stationDHID: 'de:11000:900100004',
-			name: 'S+U Jannowitzbrücke',
+			name: 'S+U Jannowitzbrücke (Berlin)',
 			location: {
 				type: 'location',
 				id: '900100004',
@@ -1132,11 +890,6 @@ module.exports = [
 					productName: 'S',
 					mode: 'train',
 					product: 'suburban',
-					symbol: 'S',
-					nr: 3,
-					metro: false,
-					express: false,
-					night: false
 				},
 				{
 					type: 'line',
@@ -1147,11 +900,6 @@ module.exports = [
 					productName: 'S',
 					mode: 'train',
 					product: 'suburban',
-					symbol: 'S',
-					nr: 5,
-					metro: false,
-					express: false,
-					night: false
 				},
 				{
 					type: 'line',
@@ -1162,11 +910,6 @@ module.exports = [
 					productName: 'S',
 					mode: 'train',
 					product: 'suburban',
-					symbol: 'S',
-					nr: 7,
-					metro: false,
-					express: false,
-					night: false
 				},
 				{
 					type: 'line',
@@ -1177,11 +920,6 @@ module.exports = [
 					productName: 'S',
 					mode: 'train',
 					product: 'suburban',
-					symbol: 'S',
-					nr: 9,
-					metro: false,
-					express: false,
-					night: false
 				},
 				{
 					type: 'line',
@@ -1192,11 +930,6 @@ module.exports = [
 					productName: 'U',
 					mode: 'train',
 					product: 'subway',
-					symbol: 'U',
-					nr: 8,
-					metro: false,
-					express: false,
-					night: false
 				},
 				{
 					type: 'line',
@@ -1207,11 +940,6 @@ module.exports = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-					symbol: null,
-					nr: 300,
-					metro: false,
-					express: false,
-					night: false
 				},
 				{
 					type: 'line',
@@ -1222,11 +950,6 @@ module.exports = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-					symbol: 'N',
-					nr: 8,
-					metro: false,
-					express: false,
-					night: true
 				},
 				{
 					type: 'line',
@@ -1237,11 +960,6 @@ module.exports = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-					symbol: 'N',
-					nr: 40,
-					metro: false,
-					express: false,
-					night: true
 				},
 				{
 					type: 'line',
@@ -1252,11 +970,6 @@ module.exports = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-					symbol: 'N',
-					nr: 60,
-					metro: false,
-					express: false,
-					night: true
 				},
 				{
 					type: 'line',
@@ -1267,11 +980,6 @@ module.exports = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-					symbol: 'N',
-					nr: 65,
-					metro: false,
-					express: false,
-					night: true
 				},
 				{
 					type: 'line',
@@ -1282,11 +990,6 @@ module.exports = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-					symbol: 'S',
-					nr: 7,
-					metro: false,
-					express: false,
-					night: false
 				}
 			]
 		},
@@ -1296,7 +999,7 @@ module.exports = [
 		platform: '4',
 		plannedPlatform: '4',
 		prognosisType: 'calculated',
-		direction: 'S Westkreuz',
+		direction: 'S Westkreuz (Berlin)',
 		provenance: null,
 		line: {
 			type: 'line',
@@ -1304,7 +1007,7 @@ module.exports = [
 			fahrtNr: '15359',
 			name: 'S5',
 			public: true,
-			adminCode: 'DBS',
+			adminCode: 'DBS---',
 			productName: 'S',
 			mode: 'train',
 			product: 'suburban',
@@ -1313,11 +1016,6 @@ module.exports = [
 				id: 's-bahn-berlin-gmbh',
 				name: 'S-Bahn Berlin GmbH'
 			},
-			symbol: 'S',
-			nr: 5,
-			metro: false,
-			express: false,
-			night: false
 		},
 		remarks: [
 			{ type: 'hint', code: 'OPERATOR', text: 'DBS' },
@@ -1350,9 +1048,9 @@ module.exports = [
 		origin: null,
 		destination: {
 			type: 'stop',
-			id: '900000024102',
+			id: '900024102',
 			stationDHID: 'de:11000:900024102',
-			name: 'S Westkreuz',
+			name: 'S Westkreuz (Berlin)',
 			location: {
 				type: 'location',
 				id: '900024102',
@@ -1379,9 +1077,9 @@ module.exports = [
 		tripId: '1|26593|10|86|12102021',
 		stop: {
 			type: 'stop',
-			id: '900000100004',
+			id: '900100004',
 			stationDHID: 'de:11000:900100004',
-			name: 'S+U Jannowitzbrücke',
+			name: 'S+U Jannowitzbrücke (Berlin)',
 			location: {
 				type: 'location',
 				id: '900100004',
@@ -1407,11 +1105,6 @@ module.exports = [
 					productName: 'S',
 					mode: 'train',
 					product: 'suburban',
-					symbol: 'S',
-					nr: 3,
-					metro: false,
-					express: false,
-					night: false
 				},
 				{
 					type: 'line',
@@ -1422,11 +1115,6 @@ module.exports = [
 					productName: 'S',
 					mode: 'train',
 					product: 'suburban',
-					symbol: 'S',
-					nr: 5,
-					metro: false,
-					express: false,
-					night: false
 				},
 				{
 					type: 'line',
@@ -1437,11 +1125,6 @@ module.exports = [
 					productName: 'S',
 					mode: 'train',
 					product: 'suburban',
-					symbol: 'S',
-					nr: 7,
-					metro: false,
-					express: false,
-					night: false
 				},
 				{
 					type: 'line',
@@ -1452,11 +1135,6 @@ module.exports = [
 					productName: 'S',
 					mode: 'train',
 					product: 'suburban',
-					symbol: 'S',
-					nr: 9,
-					metro: false,
-					express: false,
-					night: false
 				},
 				{
 					type: 'line',
@@ -1467,11 +1145,6 @@ module.exports = [
 					productName: 'U',
 					mode: 'train',
 					product: 'subway',
-					symbol: 'U',
-					nr: 8,
-					metro: false,
-					express: false,
-					night: false
 				},
 				{
 					type: 'line',
@@ -1482,11 +1155,6 @@ module.exports = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-					symbol: null,
-					nr: 300,
-					metro: false,
-					express: false,
-					night: false
 				},
 				{
 					type: 'line',
@@ -1497,11 +1165,6 @@ module.exports = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-					symbol: 'N',
-					nr: 8,
-					metro: false,
-					express: false,
-					night: true
 				},
 				{
 					type: 'line',
@@ -1512,11 +1175,6 @@ module.exports = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-					symbol: 'N',
-					nr: 40,
-					metro: false,
-					express: false,
-					night: true
 				},
 				{
 					type: 'line',
@@ -1527,11 +1185,6 @@ module.exports = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-					symbol: 'N',
-					nr: 60,
-					metro: false,
-					express: false,
-					night: true
 				},
 				{
 					type: 'line',
@@ -1542,11 +1195,6 @@ module.exports = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-					symbol: 'N',
-					nr: 65,
-					metro: false,
-					express: false,
-					night: true
 				},
 				{
 					type: 'line',
@@ -1557,11 +1205,6 @@ module.exports = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-					symbol: 'S',
-					nr: 7,
-					metro: false,
-					express: false,
-					night: false
 				}
 			]
 		},
@@ -1571,7 +1214,7 @@ module.exports = [
 		platform: '3',
 		plannedPlatform: '3',
 		prognosisType: 'calculated',
-		direction: 'S Ahrensfelde',
+		direction: 'S Ahrensfelde Bhf (Berlin)',
 		provenance: null,
 		line: {
 			type: 'line',
@@ -1579,7 +1222,7 @@ module.exports = [
 			fahrtNr: '17258',
 			name: 'S7',
 			public: true,
-			adminCode: 'DBS',
+			adminCode: 'DBS---',
 			productName: 'S',
 			mode: 'train',
 			product: 'suburban',
@@ -1588,11 +1231,6 @@ module.exports = [
 				id: 's-bahn-berlin-gmbh',
 				name: 'S-Bahn Berlin GmbH'
 			},
-			symbol: 'S',
-			nr: 7,
-			metro: false,
-			express: false,
-			night: false
 		},
 		remarks: [
 			{ type: 'hint', code: 'OPERATOR', text: 'DBS' },
@@ -1625,9 +1263,9 @@ module.exports = [
 		origin: null,
 		destination: {
 			type: 'stop',
-			id: '900000170004',
+			id: '900170004',
 			stationDHID: 'de:11000:900170004',
-			name: 'S Ahrensfelde',
+			name: 'S Ahrensfelde Bhf (Berlin)',
 			location: {
 				type: 'location',
 				id: '900170004',
@@ -1654,9 +1292,9 @@ module.exports = [
 		tripId: '1|26662|10|86|12102021',
 		stop: {
 			type: 'stop',
-			id: '900000100004',
+			id: '900100004',
 			stationDHID: 'de:11000:900100004',
-			name: 'S+U Jannowitzbrücke',
+			name: 'S+U Jannowitzbrücke (Berlin)',
 			location: {
 				type: 'location',
 				id: '900100004',
@@ -1682,11 +1320,6 @@ module.exports = [
 					productName: 'S',
 					mode: 'train',
 					product: 'suburban',
-					symbol: 'S',
-					nr: 3,
-					metro: false,
-					express: false,
-					night: false
 				},
 				{
 					type: 'line',
@@ -1697,11 +1330,6 @@ module.exports = [
 					productName: 'S',
 					mode: 'train',
 					product: 'suburban',
-					symbol: 'S',
-					nr: 5,
-					metro: false,
-					express: false,
-					night: false
 				},
 				{
 					type: 'line',
@@ -1712,11 +1340,6 @@ module.exports = [
 					productName: 'S',
 					mode: 'train',
 					product: 'suburban',
-					symbol: 'S',
-					nr: 7,
-					metro: false,
-					express: false,
-					night: false
 				},
 				{
 					type: 'line',
@@ -1727,11 +1350,6 @@ module.exports = [
 					productName: 'S',
 					mode: 'train',
 					product: 'suburban',
-					symbol: 'S',
-					nr: 9,
-					metro: false,
-					express: false,
-					night: false
 				},
 				{
 					type: 'line',
@@ -1742,11 +1360,6 @@ module.exports = [
 					productName: 'U',
 					mode: 'train',
 					product: 'subway',
-					symbol: 'U',
-					nr: 8,
-					metro: false,
-					express: false,
-					night: false
 				},
 				{
 					type: 'line',
@@ -1757,11 +1370,6 @@ module.exports = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-					symbol: null,
-					nr: 300,
-					metro: false,
-					express: false,
-					night: false
 				},
 				{
 					type: 'line',
@@ -1772,11 +1380,6 @@ module.exports = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-					symbol: 'N',
-					nr: 8,
-					metro: false,
-					express: false,
-					night: true
 				},
 				{
 					type: 'line',
@@ -1787,11 +1390,6 @@ module.exports = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-					symbol: 'N',
-					nr: 40,
-					metro: false,
-					express: false,
-					night: true
 				},
 				{
 					type: 'line',
@@ -1802,11 +1400,6 @@ module.exports = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-					symbol: 'N',
-					nr: 60,
-					metro: false,
-					express: false,
-					night: true
 				},
 				{
 					type: 'line',
@@ -1817,11 +1410,6 @@ module.exports = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-					symbol: 'N',
-					nr: 65,
-					metro: false,
-					express: false,
-					night: true
 				},
 				{
 					type: 'line',
@@ -1832,11 +1420,6 @@ module.exports = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-					symbol: 'S',
-					nr: 7,
-					metro: false,
-					express: false,
-					night: false
 				}
 			]
 		},
@@ -1854,7 +1437,7 @@ module.exports = [
 			fahrtNr: '17985',
 			name: 'S7',
 			public: true,
-			adminCode: 'DBS',
+			adminCode: 'DBS---',
 			productName: 'S',
 			mode: 'train',
 			product: 'suburban',
@@ -1863,11 +1446,6 @@ module.exports = [
 				id: 's-bahn-berlin-gmbh',
 				name: 'S-Bahn Berlin GmbH'
 			},
-			symbol: 'S',
-			nr: 7,
-			metro: false,
-			express: false,
-			night: false
 		},
 		remarks: [
 			{ type: 'hint', code: 'OPERATOR', text: 'DBS' },
@@ -1900,7 +1478,7 @@ module.exports = [
 		origin: null,
 		destination: {
 			type: 'stop',
-			id: '900000230999',
+			id: '900230999',
 			stationDHID: 'de:12054:900230999',
 			name: 'S Potsdam Hauptbahnhof',
 			location: {
@@ -1929,9 +1507,9 @@ module.exports = [
 		tripId: '1|26077|2|86|12102021',
 		stop: {
 			type: 'stop',
-			id: '900000100004',
+			id: '900100004',
 			stationDHID: 'de:11000:900100004',
-			name: 'S+U Jannowitzbrücke',
+			name: 'S+U Jannowitzbrücke (Berlin)',
 			location: {
 				type: 'location',
 				id: '900100004',
@@ -1957,11 +1535,6 @@ module.exports = [
 					productName: 'S',
 					mode: 'train',
 					product: 'suburban',
-					symbol: 'S',
-					nr: 3,
-					metro: false,
-					express: false,
-					night: false
 				},
 				{
 					type: 'line',
@@ -1972,11 +1545,6 @@ module.exports = [
 					productName: 'S',
 					mode: 'train',
 					product: 'suburban',
-					symbol: 'S',
-					nr: 5,
-					metro: false,
-					express: false,
-					night: false
 				},
 				{
 					type: 'line',
@@ -1987,11 +1555,6 @@ module.exports = [
 					productName: 'S',
 					mode: 'train',
 					product: 'suburban',
-					symbol: 'S',
-					nr: 7,
-					metro: false,
-					express: false,
-					night: false
 				},
 				{
 					type: 'line',
@@ -2002,11 +1565,6 @@ module.exports = [
 					productName: 'S',
 					mode: 'train',
 					product: 'suburban',
-					symbol: 'S',
-					nr: 9,
-					metro: false,
-					express: false,
-					night: false
 				},
 				{
 					type: 'line',
@@ -2017,11 +1575,6 @@ module.exports = [
 					productName: 'U',
 					mode: 'train',
 					product: 'subway',
-					symbol: 'U',
-					nr: 8,
-					metro: false,
-					express: false,
-					night: false
 				},
 				{
 					type: 'line',
@@ -2032,11 +1585,6 @@ module.exports = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-					symbol: null,
-					nr: 300,
-					metro: false,
-					express: false,
-					night: false
 				},
 				{
 					type: 'line',
@@ -2047,11 +1595,6 @@ module.exports = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-					symbol: 'N',
-					nr: 8,
-					metro: false,
-					express: false,
-					night: true
 				},
 				{
 					type: 'line',
@@ -2062,11 +1605,6 @@ module.exports = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-					symbol: 'N',
-					nr: 40,
-					metro: false,
-					express: false,
-					night: true
 				},
 				{
 					type: 'line',
@@ -2077,11 +1615,6 @@ module.exports = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-					symbol: 'N',
-					nr: 60,
-					metro: false,
-					express: false,
-					night: true
 				},
 				{
 					type: 'line',
@@ -2092,11 +1625,6 @@ module.exports = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-					symbol: 'N',
-					nr: 65,
-					metro: false,
-					express: false,
-					night: true
 				},
 				{
 					type: 'line',
@@ -2107,11 +1635,6 @@ module.exports = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-					symbol: 'S',
-					nr: 7,
-					metro: false,
-					express: false,
-					night: false
 				}
 			]
 		},
@@ -2121,7 +1644,7 @@ module.exports = [
 		platform: '3',
 		plannedPlatform: '3',
 		prognosisType: 'calculated',
-		direction: 'S Strausberg',
+		direction: 'S Strausberg Bhf',
 		provenance: null,
 		line: {
 			type: 'line',
@@ -2129,7 +1652,7 @@ module.exports = [
 			fahrtNr: '14839',
 			name: 'S5',
 			public: true,
-			adminCode: 'DBS',
+			adminCode: 'DBS---',
 			productName: 'S',
 			mode: 'train',
 			product: 'suburban',
@@ -2138,11 +1661,6 @@ module.exports = [
 				id: 's-bahn-berlin-gmbh',
 				name: 'S-Bahn Berlin GmbH'
 			},
-			symbol: 'S',
-			nr: 5,
-			metro: false,
-			express: false,
-			night: false
 		},
 		remarks: [
 			{ type: 'hint', code: 'OPERATOR', text: 'DBS' },
@@ -2175,9 +1693,9 @@ module.exports = [
 		origin: null,
 		destination: {
 			type: 'stop',
-			id: '900000320004',
+			id: '900320004',
 			stationDHID: 'de:12064:900320004',
-			name: 'S Strausberg',
+			name: 'S Strausberg Bhf',
 			location: {
 				type: 'location',
 				id: '900320004',
@@ -2204,9 +1722,9 @@ module.exports = [
 		tripId: '1|23049|34|86|12102021',
 		stop: {
 			type: 'stop',
-			id: '900000100004',
+			id: '900100004',
 			stationDHID: 'de:11000:900100004',
-			name: 'S+U Jannowitzbrücke',
+			name: 'S+U Jannowitzbrücke (Berlin)',
 			location: {
 				type: 'location',
 				id: '900100004',
@@ -2232,11 +1750,6 @@ module.exports = [
 					productName: 'S',
 					mode: 'train',
 					product: 'suburban',
-					symbol: 'S',
-					nr: 3,
-					metro: false,
-					express: false,
-					night: false
 				},
 				{
 					type: 'line',
@@ -2247,11 +1760,6 @@ module.exports = [
 					productName: 'S',
 					mode: 'train',
 					product: 'suburban',
-					symbol: 'S',
-					nr: 5,
-					metro: false,
-					express: false,
-					night: false
 				},
 				{
 					type: 'line',
@@ -2262,11 +1770,6 @@ module.exports = [
 					productName: 'S',
 					mode: 'train',
 					product: 'suburban',
-					symbol: 'S',
-					nr: 7,
-					metro: false,
-					express: false,
-					night: false
 				},
 				{
 					type: 'line',
@@ -2277,11 +1780,6 @@ module.exports = [
 					productName: 'S',
 					mode: 'train',
 					product: 'suburban',
-					symbol: 'S',
-					nr: 9,
-					metro: false,
-					express: false,
-					night: false
 				},
 				{
 					type: 'line',
@@ -2292,11 +1790,6 @@ module.exports = [
 					productName: 'U',
 					mode: 'train',
 					product: 'subway',
-					symbol: 'U',
-					nr: 8,
-					metro: false,
-					express: false,
-					night: false
 				},
 				{
 					type: 'line',
@@ -2307,11 +1800,6 @@ module.exports = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-					symbol: null,
-					nr: 300,
-					metro: false,
-					express: false,
-					night: false
 				},
 				{
 					type: 'line',
@@ -2322,11 +1810,6 @@ module.exports = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-					symbol: 'N',
-					nr: 8,
-					metro: false,
-					express: false,
-					night: true
 				},
 				{
 					type: 'line',
@@ -2337,11 +1820,6 @@ module.exports = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-					symbol: 'N',
-					nr: 40,
-					metro: false,
-					express: false,
-					night: true
 				},
 				{
 					type: 'line',
@@ -2352,11 +1830,6 @@ module.exports = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-					symbol: 'N',
-					nr: 60,
-					metro: false,
-					express: false,
-					night: true
 				},
 				{
 					type: 'line',
@@ -2367,11 +1840,6 @@ module.exports = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-					symbol: 'N',
-					nr: 65,
-					metro: false,
-					express: false,
-					night: true
 				},
 				{
 					type: 'line',
@@ -2382,11 +1850,6 @@ module.exports = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-					symbol: 'S',
-					nr: 7,
-					metro: false,
-					express: false,
-					night: false
 				}
 			]
 		},
@@ -2396,7 +1859,7 @@ module.exports = [
 		platform: null,
 		plannedPlatform: null,
 		prognosisType: 'prognosed',
-		direction: 'S+U Hermannstr.',
+		direction: 'S+U Hermannstr. (Berlin)',
 		provenance: null,
 		line: {
 			type: 'line',
@@ -2404,7 +1867,7 @@ module.exports = [
 			fahrtNr: '17589',
 			name: 'U8',
 			public: true,
-			adminCode: 'BVU',
+			adminCode: 'BVU---',
 			productName: 'U',
 			mode: 'train',
 			product: 'subway',
@@ -2413,11 +1876,6 @@ module.exports = [
 				id: 'berliner-verkehrsbetriebe',
 				name: 'Berliner Verkehrsbetriebe'
 			},
-			symbol: 'U',
-			nr: 8,
-			metro: false,
-			express: false,
-			night: false
 		},
 		remarks: [
 			{ type: 'hint', code: 'OPERATOR', text: 'BVG' },
@@ -2450,9 +1908,9 @@ module.exports = [
 		origin: null,
 		destination: {
 			type: 'stop',
-			id: '900000079221',
+			id: '900079221',
 			stationDHID: 'de:11000:900079221',
-			name: 'S+U Hermannstr.',
+			name: 'S+U Hermannstr. (Berlin)',
 			location: {
 				type: 'location',
 				id: '900079221',
@@ -2479,9 +1937,9 @@ module.exports = [
 		tripId: '1|23111|31|86|12102021',
 		stop: {
 			type: 'stop',
-			id: '900000100004',
+			id: '900100004',
 			stationDHID: 'de:11000:900100004',
-			name: 'S+U Jannowitzbrücke',
+			name: 'S+U Jannowitzbrücke (Berlin)',
 			location: {
 				type: 'location',
 				id: '900100004',
@@ -2507,11 +1965,6 @@ module.exports = [
 					productName: 'S',
 					mode: 'train',
 					product: 'suburban',
-					symbol: 'S',
-					nr: 3,
-					metro: false,
-					express: false,
-					night: false
 				},
 				{
 					type: 'line',
@@ -2522,11 +1975,6 @@ module.exports = [
 					productName: 'S',
 					mode: 'train',
 					product: 'suburban',
-					symbol: 'S',
-					nr: 5,
-					metro: false,
-					express: false,
-					night: false
 				},
 				{
 					type: 'line',
@@ -2537,11 +1985,6 @@ module.exports = [
 					productName: 'S',
 					mode: 'train',
 					product: 'suburban',
-					symbol: 'S',
-					nr: 7,
-					metro: false,
-					express: false,
-					night: false
 				},
 				{
 					type: 'line',
@@ -2552,11 +1995,6 @@ module.exports = [
 					productName: 'S',
 					mode: 'train',
 					product: 'suburban',
-					symbol: 'S',
-					nr: 9,
-					metro: false,
-					express: false,
-					night: false
 				},
 				{
 					type: 'line',
@@ -2567,11 +2005,6 @@ module.exports = [
 					productName: 'U',
 					mode: 'train',
 					product: 'subway',
-					symbol: 'U',
-					nr: 8,
-					metro: false,
-					express: false,
-					night: false
 				},
 				{
 					type: 'line',
@@ -2582,11 +2015,6 @@ module.exports = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-					symbol: null,
-					nr: 300,
-					metro: false,
-					express: false,
-					night: false
 				},
 				{
 					type: 'line',
@@ -2597,11 +2025,6 @@ module.exports = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-					symbol: 'N',
-					nr: 8,
-					metro: false,
-					express: false,
-					night: true
 				},
 				{
 					type: 'line',
@@ -2612,11 +2035,6 @@ module.exports = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-					symbol: 'N',
-					nr: 40,
-					metro: false,
-					express: false,
-					night: true
 				},
 				{
 					type: 'line',
@@ -2627,11 +2045,6 @@ module.exports = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-					symbol: 'N',
-					nr: 60,
-					metro: false,
-					express: false,
-					night: true
 				},
 				{
 					type: 'line',
@@ -2642,11 +2055,6 @@ module.exports = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-					symbol: 'N',
-					nr: 65,
-					metro: false,
-					express: false,
-					night: true
 				},
 				{
 					type: 'line',
@@ -2657,11 +2065,6 @@ module.exports = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-					symbol: 'S',
-					nr: 7,
-					metro: false,
-					express: false,
-					night: false
 				}
 			]
 		},
@@ -2671,7 +2074,7 @@ module.exports = [
 		platform: null,
 		plannedPlatform: null,
 		prognosisType: 'prognosed',
-		direction: 'U Paracelsus-Bad',
+		direction: 'U Paracelsus-Bad (Berlin)',
 		provenance: null,
 		line: {
 			type: 'line',
@@ -2679,7 +2082,7 @@ module.exports = [
 			fahrtNr: '17229',
 			name: 'U8',
 			public: true,
-			adminCode: 'BVU',
+			adminCode: 'BVU---',
 			productName: 'U',
 			mode: 'train',
 			product: 'subway',
@@ -2688,11 +2091,6 @@ module.exports = [
 				id: 'berliner-verkehrsbetriebe',
 				name: 'Berliner Verkehrsbetriebe'
 			},
-			symbol: 'U',
-			nr: 8,
-			metro: false,
-			express: false,
-			night: false
 		},
 		remarks: [
 			{ type: 'hint', code: 'OPERATOR', text: 'BVG' },
@@ -2725,9 +2123,9 @@ module.exports = [
 		origin: null,
 		destination: {
 			type: 'stop',
-			id: '900000085104',
+			id: '900085104',
 			stationDHID: 'de:11000:900085104',
-			name: 'U Paracelsus-Bad',
+			name: 'U Paracelsus-Bad (Berlin)',
 			location: {
 				type: 'location',
 				id: '900085104',
@@ -2754,9 +2152,9 @@ module.exports = [
 		tripId: '1|12062|15|86|12102021',
 		stop: {
 			type: 'stop',
-			id: '900000100004',
+			id: '900100004',
 			stationDHID: 'de:11000:900100004',
-			name: 'S+U Jannowitzbrücke',
+			name: 'S+U Jannowitzbrücke (Berlin)',
 			location: {
 				type: 'location',
 				id: '900100004',
@@ -2782,11 +2180,6 @@ module.exports = [
 					productName: 'S',
 					mode: 'train',
 					product: 'suburban',
-					symbol: 'S',
-					nr: 3,
-					metro: false,
-					express: false,
-					night: false
 				},
 				{
 					type: 'line',
@@ -2797,11 +2190,6 @@ module.exports = [
 					productName: 'S',
 					mode: 'train',
 					product: 'suburban',
-					symbol: 'S',
-					nr: 5,
-					metro: false,
-					express: false,
-					night: false
 				},
 				{
 					type: 'line',
@@ -2812,11 +2200,6 @@ module.exports = [
 					productName: 'S',
 					mode: 'train',
 					product: 'suburban',
-					symbol: 'S',
-					nr: 7,
-					metro: false,
-					express: false,
-					night: false
 				},
 				{
 					type: 'line',
@@ -2827,11 +2210,6 @@ module.exports = [
 					productName: 'S',
 					mode: 'train',
 					product: 'suburban',
-					symbol: 'S',
-					nr: 9,
-					metro: false,
-					express: false,
-					night: false
 				},
 				{
 					type: 'line',
@@ -2842,11 +2220,6 @@ module.exports = [
 					productName: 'U',
 					mode: 'train',
 					product: 'subway',
-					symbol: 'U',
-					nr: 8,
-					metro: false,
-					express: false,
-					night: false
 				},
 				{
 					type: 'line',
@@ -2857,11 +2230,6 @@ module.exports = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-					symbol: null,
-					nr: 300,
-					metro: false,
-					express: false,
-					night: false
 				},
 				{
 					type: 'line',
@@ -2872,11 +2240,6 @@ module.exports = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-					symbol: 'N',
-					nr: 8,
-					metro: false,
-					express: false,
-					night: true
 				},
 				{
 					type: 'line',
@@ -2887,11 +2250,6 @@ module.exports = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-					symbol: 'N',
-					nr: 40,
-					metro: false,
-					express: false,
-					night: true
 				},
 				{
 					type: 'line',
@@ -2902,11 +2260,6 @@ module.exports = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-					symbol: 'N',
-					nr: 60,
-					metro: false,
-					express: false,
-					night: true
 				},
 				{
 					type: 'line',
@@ -2917,11 +2270,6 @@ module.exports = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-					symbol: 'N',
-					nr: 65,
-					metro: false,
-					express: false,
-					night: true
 				},
 				{
 					type: 'line',
@@ -2932,11 +2280,6 @@ module.exports = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-					symbol: 'S',
-					nr: 7,
-					metro: false,
-					express: false,
-					night: false
 				}
 			]
 		},
@@ -2954,7 +2297,7 @@ module.exports = [
 			fahrtNr: '33624',
 			name: '300',
 			public: true,
-			adminCode: 'BVB',
+			adminCode: 'BVB---',
 			productName: 'Bus',
 			mode: 'bus',
 			product: 'bus',
@@ -2963,11 +2306,6 @@ module.exports = [
 				id: 'berliner-verkehrsbetriebe',
 				name: 'Berliner Verkehrsbetriebe'
 			},
-			symbol: null,
-			nr: 300,
-			metro: false,
-			express: false,
-			night: false
 		},
 		remarks: [
 			{ type: 'hint', code: 'OPERATOR', text: 'BVG' },
@@ -2999,9 +2337,9 @@ module.exports = [
 		origin: null,
 		destination: {
 			type: 'stop',
-			id: '900000120004',
+			id: '900120004',
 			stationDHID: 'de:11000:900120004',
-			name: 'S+U Warschauer Str.',
+			name: 'S+U Warschauer Str. (Berlin)',
 			location: {
 				type: 'location',
 				id: '900120004',
@@ -3028,9 +2366,9 @@ module.exports = [
 		tripId: '1|27181|9|86|12102021',
 		stop: {
 			type: 'stop',
-			id: '900000100004',
+			id: '900100004',
 			stationDHID: 'de:11000:900100004',
-			name: 'S+U Jannowitzbrücke',
+			name: 'S+U Jannowitzbrücke (Berlin)',
 			location: {
 				type: 'location',
 				id: '900100004',
@@ -3056,11 +2394,6 @@ module.exports = [
 					productName: 'S',
 					mode: 'train',
 					product: 'suburban',
-					symbol: 'S',
-					nr: 3,
-					metro: false,
-					express: false,
-					night: false
 				},
 				{
 					type: 'line',
@@ -3071,11 +2404,6 @@ module.exports = [
 					productName: 'S',
 					mode: 'train',
 					product: 'suburban',
-					symbol: 'S',
-					nr: 5,
-					metro: false,
-					express: false,
-					night: false
 				},
 				{
 					type: 'line',
@@ -3086,11 +2414,6 @@ module.exports = [
 					productName: 'S',
 					mode: 'train',
 					product: 'suburban',
-					symbol: 'S',
-					nr: 7,
-					metro: false,
-					express: false,
-					night: false
 				},
 				{
 					type: 'line',
@@ -3101,11 +2424,6 @@ module.exports = [
 					productName: 'S',
 					mode: 'train',
 					product: 'suburban',
-					symbol: 'S',
-					nr: 9,
-					metro: false,
-					express: false,
-					night: false
 				},
 				{
 					type: 'line',
@@ -3116,11 +2434,6 @@ module.exports = [
 					productName: 'U',
 					mode: 'train',
 					product: 'subway',
-					symbol: 'U',
-					nr: 8,
-					metro: false,
-					express: false,
-					night: false
 				},
 				{
 					type: 'line',
@@ -3131,11 +2444,6 @@ module.exports = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-					symbol: null,
-					nr: 300,
-					metro: false,
-					express: false,
-					night: false
 				},
 				{
 					type: 'line',
@@ -3146,11 +2454,6 @@ module.exports = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-					symbol: 'N',
-					nr: 8,
-					metro: false,
-					express: false,
-					night: true
 				},
 				{
 					type: 'line',
@@ -3161,11 +2464,6 @@ module.exports = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-					symbol: 'N',
-					nr: 40,
-					metro: false,
-					express: false,
-					night: true
 				},
 				{
 					type: 'line',
@@ -3176,11 +2474,6 @@ module.exports = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-					symbol: 'N',
-					nr: 60,
-					metro: false,
-					express: false,
-					night: true
 				},
 				{
 					type: 'line',
@@ -3191,11 +2484,6 @@ module.exports = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-					symbol: 'N',
-					nr: 65,
-					metro: false,
-					express: false,
-					night: true
 				},
 				{
 					type: 'line',
@@ -3206,11 +2494,6 @@ module.exports = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-					symbol: 'S',
-					nr: 7,
-					metro: false,
-					express: false,
-					night: false
 				}
 			]
 		},
@@ -3220,7 +2503,7 @@ module.exports = [
 		platform: '4',
 		plannedPlatform: '4',
 		prognosisType: 'calculated',
-		direction: 'S Spandau',
+		direction: 'S Spandau Bhf (Berlin)',
 		provenance: null,
 		line: {
 			type: 'line',
@@ -3228,7 +2511,7 @@ module.exports = [
 			fahrtNr: '20512',
 			name: 'S9',
 			public: true,
-			adminCode: 'DBS',
+			adminCode: 'DBS---',
 			productName: 'S',
 			mode: 'train',
 			product: 'suburban',
@@ -3237,11 +2520,6 @@ module.exports = [
 				id: 's-bahn-berlin-gmbh',
 				name: 'S-Bahn Berlin GmbH'
 			},
-			symbol: 'S',
-			nr: 9,
-			metro: false,
-			express: false,
-			night: false
 		},
 		remarks: [
 			{ type: 'hint', code: 'OPERATOR', text: 'DBS' },
@@ -3274,9 +2552,9 @@ module.exports = [
 		origin: null,
 		destination: {
 			type: 'stop',
-			id: '900000029101',
+			id: '900029101',
 			stationDHID: 'de:11000:900029101',
-			name: 'S Spandau',
+			name: 'S Spandau Bhf (Berlin)',
 			location: {
 				type: 'location',
 				id: '900029101',
@@ -3300,3 +2578,7 @@ module.exports = [
 		},
 	}
 ]
+
+export {
+	vbbDepartures,
+}

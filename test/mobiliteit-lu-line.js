@@ -1,9 +1,7 @@
-'use strict'
+import tap from 'tap'
 
-const tap = require('tap')
-
-const createClient = require('..')
-const rawProfile = require('../p/mobiliteit-lu')
+import {createClient} from '../index.js'
+import {profile as rawProfile} from '../p/mobiliteit-lu/index.js'
 
 const client = createClient(rawProfile, 'public-transport/hafas-client:test')
 const {profile} = client
@@ -43,7 +41,7 @@ tap.test('parses a line correctly (mobiliteit.lu)', (t) => {
 		fahrtNr: '108',
 		name: 'IC 108',
 		public: true,
-		adminCode: 'C88',
+		adminCode: 'C88---',
 		productName: 'IC',
 		mode: 'train',
 		product: 'national-train',

@@ -1,14 +1,13 @@
-'use strict'
-
 const testArrivals = async (cfg) => {
-	const {test: t, arrivals: arrs, validate} = cfg
+	const {test: t, res, validate} = cfg
 	const ids = cfg.ids || (cfg.id ? [cfg.id] : [])
+	const {arrivals: arrs} = res
 
-	validate(t, arrs, 'arrivals', 'arrivals')
-	t.ok(arrs.length > 0, 'must be >0 arrivals')
+	validate(t, res, 'arrivalsResponse', 'res')
+
 	for (let i = 0; i < arrs.length; i++) {
 		let stop = arrs[i].stop
-		let name = `arrs[${i}].stop`
+		let name = `res.arrivals[${i}].stop`
 		if (stop.station) {
 			stop = stop.station
 			name += '.station'
@@ -22,7 +21,9 @@ const testArrivals = async (cfg) => {
 	}
 
 	// todo: move into arrivals validator
-	t.same(arrs, arrs.sort((a, b) => t.when > b.when), 'arrivals must be sorted by .when')
+	t.same(arrs, arrs.sort((a, b) => t.when > b.when), 'res.arrivals must be sorted by .when')
 }
 
-module.exports = testArrivals
+export {
+	testArrivals,
+}

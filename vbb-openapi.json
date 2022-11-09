@@ -1,0 +1,6251 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "2.15.2",
+    "title" : "Proxy API"
+  },
+  "host" : "vbb.demo.hafas.de",
+  "tags" : [ {
+    "name" : "location.name"
+  }, {
+    "name" : "location.nearbystops"
+  }, {
+    "name" : "arrivalBoard"
+  }, {
+    "name" : "departureBoard"
+  }, {
+    "name" : "journeyDetail"
+  }, {
+    "name" : "journeypos"
+  }, {
+    "name" : "trip"
+  }, {
+    "name" : "recon"
+  }, {
+    "name" : "himsearch"
+  }, {
+    "name" : "gisroute"
+  } ],
+  "schemes" : [ "http", "https" ],
+  "paths" : {
+    "/location.name" : {
+      "get" : {
+        "tags" : [ "location.name" ],
+        "summary" : "Location search by name",
+        "operationId" : "endpoint.location.name.get",
+        "produces" : [ "application/xml", "application/json" ],
+        "parameters" : [ {
+          "name" : "requestId",
+          "in" : "query",
+          "description" : "Request ID for identifying the request.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "format",
+          "in" : "query",
+          "description" : "Requested response format. If not set, the Accept-Header is used. If both are missing application/xml is used",
+          "required" : false,
+          "type" : "string",
+          "enum" : [ "xml", "json", "jsonp" ]
+        }, {
+          "name" : "jsonpCallback",
+          "in" : "query",
+          "description" : "Requests the JSON response data is wrapped into a JavaScript function with that name.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "lang",
+          "in" : "query",
+          "description" : "The language of the journey planer.",
+          "required" : false,
+          "type" : "string",
+          "default" : "de"
+        }, {
+          "name" : "input",
+          "in" : "query",
+          "description" : "Search for that token.\n\nSince version: 1.0",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "maxNo",
+          "in" : "query",
+          "description" : "Maximum number of returned stops. Range from 1 to 1000.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "integer",
+          "default" : 10
+        }, {
+          "name" : "type",
+          "in" : "query",
+          "description" : "Type filter for location types.\n\nSince version: 1.20",
+          "required" : false,
+          "type" : "string",
+          "default" : "ALL",
+          "enum" : [ "A", "ALL", "AP", "P", "S", "SA", "SP" ]
+        }, {
+          "name" : "locationSelectionMode",
+          "in" : "query",
+          "description" : "Selection mode for locations.\n\nSince version: 1.20",
+          "required" : false,
+          "type" : "string",
+          "enum" : [ "SLCT_A", "SLCT_N" ]
+        }, {
+          "name" : "products",
+          "in" : "query",
+          "description" : "Decimal value defining the product classes to be included in the search. It represents a bitmask combining bit number of a product as defined in the HAFAS raw data file zugart.\n\nSince version: 1.15",
+          "required" : false,
+          "type" : "integer"
+        }, {
+          "name" : "coordLat",
+          "in" : "query",
+          "description" : "Latitude of centre coordinate.\n\nSince version: 1.20",
+          "required" : false,
+          "type" : "integer"
+        }, {
+          "name" : "coordLong",
+          "in" : "query",
+          "description" : "Longitude of centre coordinate.\n\nSince version: 1.20",
+          "required" : false,
+          "type" : "integer"
+        }, {
+          "name" : "r",
+          "in" : "query",
+          "description" : "Search radius in meter around the given coordinate if any.\n\nSince version: 1.20",
+          "required" : false,
+          "type" : "integer",
+          "default" : 1000
+        }, {
+          "name" : "refineId",
+          "in" : "query",
+          "description" : "In case of an refinable location, this value takes the ID of the refinable one of a previous result.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "meta",
+          "in" : "query",
+          "description" : "Filter by a predefined meta filter. If the rules of the predefined filter should not be negated, put ! in front of it.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "stations",
+          "in" : "query",
+          "description" : "Filter for stations. Matches if the given value is prefix of any station in the itinerary. Multiple values are separated by comma.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "sattributes",
+          "in" : "query",
+          "description" : "Filter locations by one or more attribute codes. Multiple attribute codes are separated by comma. If the attribute should not be part of the be location data, negate it by putting ! in front of it.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "filterMode",
+          "in" : "query",
+          "description" : "Filter modes for nearby searches.\n\nSince version: 2.7",
+          "required" : false,
+          "type" : "string",
+          "default" : "DIST_PERI",
+          "enum" : [ "DIST_PERI", "EXCL_PERI", "SLCT_PERI" ]
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "success",
+            "schema" : {
+              "$ref" : "#/definitions/LocationList"
+            }
+          }
+        },
+        "security" : [ {
+          "accessId" : [ ]
+        } ]
+      }
+    },
+    "/location.nearbystops" : {
+      "get" : {
+        "tags" : [ "location.nearbystops" ],
+        "summary" : "Location search by coordinate",
+        "operationId" : "endpoint.location.nearbystops.get",
+        "produces" : [ "application/xml", "application/json" ],
+        "parameters" : [ {
+          "name" : "requestId",
+          "in" : "query",
+          "description" : "Request ID for identifying the request.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "format",
+          "in" : "query",
+          "description" : "Requested response format. If not set, the Accept-Header is used. If both are missing application/xml is used",
+          "required" : false,
+          "type" : "string",
+          "enum" : [ "xml", "json", "jsonp" ]
+        }, {
+          "name" : "jsonpCallback",
+          "in" : "query",
+          "description" : "Requests the JSON response data is wrapped into a JavaScript function with that name.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "lang",
+          "in" : "query",
+          "description" : "The language of the journey planer.",
+          "required" : false,
+          "type" : "string",
+          "default" : "de"
+        }, {
+          "name" : "originCoordLat",
+          "in" : "query",
+          "description" : "Latitude of centre coordinate.\n\nSince version: 1.0",
+          "required" : true,
+          "type" : "integer"
+        }, {
+          "name" : "originCoordLong",
+          "in" : "query",
+          "description" : "Longitude of centre coordinate.\n\nSince version: 1.0",
+          "required" : true,
+          "type" : "integer"
+        }, {
+          "name" : "r",
+          "in" : "query",
+          "description" : "Search radius in meter around the given coordinate if any.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "integer",
+          "default" : 1000
+        }, {
+          "name" : "maxNo",
+          "in" : "query",
+          "description" : "Maximum number of returned stops. Range from 1 to 1000.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "integer",
+          "default" : 10
+        }, {
+          "name" : "type",
+          "in" : "query",
+          "description" : "Type filter for location types.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "string",
+          "default" : "S",
+          "enum" : [ "S", "P", "SP" ]
+        }, {
+          "name" : "locationSelectionMode",
+          "in" : "query",
+          "description" : "Selection mode for locations.\n\nSince version: 1.20",
+          "required" : false,
+          "type" : "string",
+          "enum" : [ "SLCT_A", "SLCT_N" ]
+        }, {
+          "name" : "products",
+          "in" : "query",
+          "description" : "Decimal value defining the product classes to be included in the search. It represents a bitmask combining bit number of a product as defined in the HAFAS raw data file zugart.\n\nSince version: 1.15",
+          "required" : false,
+          "type" : "integer"
+        }, {
+          "name" : "meta",
+          "in" : "query",
+          "description" : "Filter by a predefined meta filter. If the rules of the predefined filter should not be negated, put ! in front of it.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "sattributes",
+          "in" : "query",
+          "description" : "Filter locations by one or more attribute codes. Multiple attribute codes are separated by comma. If the attribute should not be part of the be location data, negate it by putting ! in front of it.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "sinfotexts",
+          "in" : "query",
+          "description" : "Filter locations by one or more station infotext codes and values. Multiple attribute codes are separated by comma the value by pipe |.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "success",
+            "schema" : {
+              "$ref" : "#/definitions/LocationList"
+            }
+          }
+        },
+        "security" : [ {
+          "accessId" : [ ]
+        } ]
+      }
+    },
+    "/arrivalBoard" : {
+      "get" : {
+        "tags" : [ "arrivalBoard" ],
+        "summary" : "Arrival board",
+        "operationId" : "endpoint.arrivalBoard.get",
+        "produces" : [ "application/xml", "application/json" ],
+        "parameters" : [ {
+          "name" : "requestId",
+          "in" : "query",
+          "description" : "Request ID for identifying the request.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "format",
+          "in" : "query",
+          "description" : "Requested response format. If not set, the Accept-Header is used. If both are missing application/xml is used",
+          "required" : false,
+          "type" : "string",
+          "enum" : [ "xml", "json", "jsonp" ]
+        }, {
+          "name" : "jsonpCallback",
+          "in" : "query",
+          "description" : "Requests the JSON response data is wrapped into a JavaScript function with that name.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "lang",
+          "in" : "query",
+          "description" : "The language of the journey planer.",
+          "required" : false,
+          "type" : "string",
+          "default" : "de"
+        }, {
+          "name" : "id",
+          "in" : "query",
+          "description" : "Specifies the station/stop ID for which the arrivals shall be retrieved. Required if extId is not present.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "extId",
+          "in" : "query",
+          "description" : "Deprecated. Please use `id` as it supports external IDs.\n\nSpecifies the external station/stop ID for which the arrivals shall be retrieved. Required if id is not present.\n\nSince version: 1.21",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "direction",
+          "in" : "query",
+          "description" : "If only vehicles departing or arriving from a certain direction shall be returned, specify the direction by giving the station/stop ID of the last stop on the journey.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "date",
+          "in" : "query",
+          "description" : "Sets the start date for which the departures shall be retrieved. Represented in the format YYYY-MM-DD.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "time",
+          "in" : "query",
+          "description" : "Sets the start time for which the departures shall be retrieved. Represented in the format hh:mm[:ss] in 24h nomenclature. Seconds will be ignored for requests.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "duration",
+          "in" : "query",
+          "description" : "Set the interval size in minutes. Range from 0 to 1439.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "integer",
+          "default" : 60
+        }, {
+          "name" : "maxJourneys",
+          "in" : "query",
+          "description" : "Maximum number of journeys to be returned. If no value is defined or -1, all departing/arriving services within the duration sized period are returned.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "integer",
+          "default" : -1
+        }, {
+          "name" : "products",
+          "in" : "query",
+          "description" : "Decimal value defining the product classes to be included in the search. It represents a bitmask combining bit number of a product as defined in the HAFAS raw data file zugart.\n\nSince version: 1.12",
+          "required" : false,
+          "type" : "integer"
+        }, {
+          "name" : "operators",
+          "in" : "query",
+          "description" : "Only journeys provided by the given operators are part of the result. To filter multiple operators, separate the codes by comma.\nIf the operator should not be part of the be trip, negate it by putting ! in front of it.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "lines",
+          "in" : "query",
+          "description" : "Only journeys running the given line are part of the result. To filter multiple lines, separate the codes by comma. If the line should not be part of the be trip, negate it by putting ! in front of it.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "filterEquiv",
+          "in" : "query",
+          "description" : "Use type instead\n\nEnables/disables the filtering of equivalent marked stops.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "string",
+          "default" : "1",
+          "enum" : [ "0", "1" ]
+        }, {
+          "name" : "attributes",
+          "in" : "query",
+          "description" : "Filter boards by one or more attribute codes of a journey. Multiple attribute codes are separated by comma. If the attribute should not be part of the result, negate it by putting ! in front of it.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "platforms",
+          "in" : "query",
+          "description" : "Filter boards by platform. Multiple platforms are separated by comma.\n\nSince version: 2.7.2",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "passlist",
+          "in" : "query",
+          "description" : "Include a list of all passed waystops?\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "string",
+          "default" : "0",
+          "enum" : [ "0", "1" ]
+        }, {
+          "name" : "type",
+          "in" : "query",
+          "description" : "Set the station arrival board type to be used.\n\nARR: Arrival board as configured in HAFAS\nARR_EQUIVS: Arrival board with all journeys at any masts and equivalent stops\nARR_MAST: Arrival board at mast\nARR_STATION: Arrival board with all journeys at any masts of the requested station\n\nSince version: 2.12",
+          "required" : true,
+          "type" : "string",
+          "default" : "ARR",
+          "enum" : [ "ARR", "ARR_EQUIVS", "ARR_MAST", "ARR_STATION" ]
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "success",
+            "schema" : {
+              "$ref" : "#/definitions/ArrivalBoard"
+            }
+          }
+        },
+        "security" : [ {
+          "accessId" : [ ]
+        } ]
+      }
+    },
+    "/departureBoard" : {
+      "get" : {
+        "tags" : [ "departureBoard" ],
+        "summary" : "Departure board",
+        "operationId" : "endpoint.departureBoard.get",
+        "produces" : [ "application/xml", "application/json" ],
+        "parameters" : [ {
+          "name" : "requestId",
+          "in" : "query",
+          "description" : "Request ID for identifying the request.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "format",
+          "in" : "query",
+          "description" : "Requested response format. If not set, the Accept-Header is used. If both are missing application/xml is used",
+          "required" : false,
+          "type" : "string",
+          "enum" : [ "xml", "json", "jsonp" ]
+        }, {
+          "name" : "jsonpCallback",
+          "in" : "query",
+          "description" : "Requests the JSON response data is wrapped into a JavaScript function with that name.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "lang",
+          "in" : "query",
+          "description" : "The language of the journey planer.",
+          "required" : false,
+          "type" : "string",
+          "default" : "de"
+        }, {
+          "name" : "id",
+          "in" : "query",
+          "description" : "Specifies the station/stop ID for which the departures shall be retrieved. Required if extId is not present.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "extId",
+          "in" : "query",
+          "description" : "Deprecated. Please use `id` as it supports external IDs.\n\nSpecifies the external station/stop ID for which the departures shall be retrieved. Required if id is not present.\n\nSince version: 1.21",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "direction",
+          "in" : "query",
+          "description" : "If only vehicles departing or arriving from a certain direction shall be returned, specify the direction by giving the station/stop ID of the last stop on the journey.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "date",
+          "in" : "query",
+          "description" : "Sets the start date for which the departures shall be retrieved. Represented in the format YYYY-MM-DD.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "time",
+          "in" : "query",
+          "description" : "Sets the start time for which the departures shall be retrieved. Represented in the format hh:mm[:ss] in 24h nomenclature. Seconds will be ignored for requests.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "duration",
+          "in" : "query",
+          "description" : "Set the interval size in minutes. Range from 0 to 1439.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "integer",
+          "default" : 60
+        }, {
+          "name" : "maxJourneys",
+          "in" : "query",
+          "description" : "Maximum number of journeys to be returned. If no value is defined or -1, all departing/arriving services within the duration sized period are returned.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "integer",
+          "default" : -1
+        }, {
+          "name" : "products",
+          "in" : "query",
+          "description" : "Decimal value defining the product classes to be included in the search. It represents a bitmask combining bit number of a product as defined in the HAFAS raw data file zugart.\n\nSince version: 1.12",
+          "required" : false,
+          "type" : "integer"
+        }, {
+          "name" : "operators",
+          "in" : "query",
+          "description" : "Only journeys provided by the given operators are part of the result. To filter multiple operators, separate the codes by comma.\nIf the operator should not be part of the be trip, negate it by putting ! in front of it.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "lines",
+          "in" : "query",
+          "description" : "Only journeys running the given line are part of the result. To filter multiple lines, separate the codes by comma. If the line should not be part of the be trip, negate it by putting ! in front of it.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "filterEquiv",
+          "in" : "query",
+          "description" : "Use type instead\n\nEnables/disables the filtering of equivalent marked stops.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "string",
+          "default" : "1",
+          "enum" : [ "0", "1" ]
+        }, {
+          "name" : "attributes",
+          "in" : "query",
+          "description" : "Filter boards by one or more attribute codes of a journey. Multiple attribute codes are separated by comma. If the attribute should not be part of the result, negate it by putting ! in front of it.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "platforms",
+          "in" : "query",
+          "description" : "Filter boards by platform. Multiple platforms are separated by comma.\n\nSince version: 2.7.2",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "passlist",
+          "in" : "query",
+          "description" : "Include a list of all passed waystops?\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "string",
+          "default" : "0",
+          "enum" : [ "0", "1" ]
+        }, {
+          "name" : "type",
+          "in" : "query",
+          "description" : "Set the station departure board type to be used.\n\nDEP: Departure board as configured in HAFAS\nDEP_EQUIVS: Departure board with all journeys at any masts and equivalent stops\nDEP_MAST: Departure board at mast\nDEP_STATION: Departure board with all journeys at any masts of the requested station\n\nSince version: 2.12",
+          "required" : true,
+          "type" : "string",
+          "default" : "DEP",
+          "enum" : [ "DEP", "DEP_EQUIVS", "DEP_MAST", "DEP_STATION" ]
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "success",
+            "schema" : {
+              "$ref" : "#/definitions/DepartureBoard"
+            }
+          }
+        },
+        "security" : [ {
+          "accessId" : [ ]
+        } ]
+      }
+    },
+    "/journeyDetail" : {
+      "get" : {
+        "tags" : [ "journeyDetail" ],
+        "summary" : "Journey detail",
+        "operationId" : "endpoint.journeyDetail.get",
+        "produces" : [ "application/xml", "application/json" ],
+        "parameters" : [ {
+          "name" : "requestId",
+          "in" : "query",
+          "description" : "Request ID for identifying the request.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "format",
+          "in" : "query",
+          "description" : "Requested response format. If not set, the Accept-Header is used. If both are missing application/xml is used",
+          "required" : false,
+          "type" : "string",
+          "enum" : [ "xml", "json", "jsonp" ]
+        }, {
+          "name" : "jsonpCallback",
+          "in" : "query",
+          "description" : "Requests the JSON response data is wrapped into a JavaScript function with that name.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "lang",
+          "in" : "query",
+          "description" : "The language of the journey planer.",
+          "required" : false,
+          "type" : "string",
+          "default" : "de"
+        }, {
+          "name" : "id",
+          "in" : "query",
+          "description" : "Specifies the internal journey id of the journey shall be retrieved.\n\nSince version: 1.0",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "date",
+          "in" : "query",
+          "description" : "Day of operation\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "poly",
+          "in" : "query",
+          "description" : "Enables/disables the calculation of the polyline for each leg of the trip except any GIS route.\n\nSince version: 1.11",
+          "required" : false,
+          "type" : "string",
+          "default" : "0",
+          "enum" : [ "0", "1" ]
+        }, {
+          "name" : "polyEnc",
+          "in" : "query",
+          "description" : "Defines encoding of the returned polyline. Possible values are N (no encoding / compression), DLT (delta to the previous coordinate), GPA (Google encoded polyline format) defaults to N. Not all option might be available in your installation.\n\nSince version: 1.11",
+          "required" : false,
+          "type" : "string",
+          "default" : "N",
+          "enum" : [ "DLT", "GPA", "N" ]
+        }, {
+          "name" : "showPassingPoints",
+          "in" : "query",
+          "description" : "Enables/disables the return of stops having no alighting and no boarding in its passlist for each leg of the trip.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "string",
+          "default" : "0",
+          "enum" : [ "0", "1" ]
+        }, {
+          "name" : "rtMode",
+          "in" : "query",
+          "description" : "Set the realtime mode to be used if enabled\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "string",
+          "enum" : [ "FULL", "INFOS", "OFF", "REALTIME", "SERVER_DEFAULT" ]
+        }, {
+          "name" : "fromId",
+          "in" : "query",
+          "description" : "Specifies the station/stop ID the partial itinerary shall start from.\n\nSince version: 2.3",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "fromIdx",
+          "in" : "query",
+          "description" : "Specifies the station/stop index the partial itinerary shall start from.\n\nSince version: 2.3",
+          "required" : false,
+          "type" : "integer"
+        }, {
+          "name" : "toId",
+          "in" : "query",
+          "description" : "Specifies the station/stop ID the partial itinerary shall end at.\n\nSince version: 2.3",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "toIdx",
+          "in" : "query",
+          "description" : "Specifies the station/stop index the partial itinerary shall end at.\n\nSince version: 2.3",
+          "required" : false,
+          "type" : "integer"
+        }, {
+          "name" : "baim",
+          "in" : "query",
+          "description" : "Enables/disables BAIM search and response.\n\nSince version: 2.7.3",
+          "required" : false,
+          "type" : "string",
+          "default" : "0",
+          "enum" : [ "0", "1" ]
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "success",
+            "schema" : {
+              "$ref" : "#/definitions/JourneyDetail"
+            }
+          }
+        },
+        "security" : [ {
+          "accessId" : [ ]
+        } ]
+      }
+    },
+    "/journeypos" : {
+      "get" : {
+        "tags" : [ "journeypos" ],
+        "summary" : "Journey Position",
+        "operationId" : "endpoint.journeyPos.get",
+        "produces" : [ "application/xml", "application/json" ],
+        "parameters" : [ {
+          "name" : "requestId",
+          "in" : "query",
+          "description" : "Request ID for identifying the request.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "format",
+          "in" : "query",
+          "description" : "Requested response format. If not set, the Accept-Header is used. If both are missing application/xml is used",
+          "required" : false,
+          "type" : "string",
+          "enum" : [ "xml", "json", "jsonp" ]
+        }, {
+          "name" : "jsonpCallback",
+          "in" : "query",
+          "description" : "Requests the JSON response data is wrapped into a JavaScript function with that name.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "lang",
+          "in" : "query",
+          "description" : "The language of the journey planer.",
+          "required" : false,
+          "type" : "string",
+          "default" : "de"
+        }, {
+          "name" : "llLat",
+          "in" : "query",
+          "description" : "Lower left latitude of bounding box.\n\nSince version: 1.0",
+          "required" : true,
+          "type" : "integer"
+        }, {
+          "name" : "llLon",
+          "in" : "query",
+          "description" : "Lower left longitude of bounding box.\n\nSince version: 1.0",
+          "required" : true,
+          "type" : "integer"
+        }, {
+          "name" : "urLat",
+          "in" : "query",
+          "description" : "Upper right latitude of bounding box.\n\nSince version: 1.0",
+          "required" : true,
+          "type" : "integer"
+        }, {
+          "name" : "urLon",
+          "in" : "query",
+          "description" : "Upper right longitude of bounding box.\n\nSince version: 1.0",
+          "required" : true,
+          "type" : "integer"
+        }, {
+          "name" : "operators",
+          "in" : "query",
+          "description" : "Filter for operators. To filter multiple operators, separate the codes by comma.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "products",
+          "in" : "query",
+          "description" : "Decimal value defining the product classes to be included in the search. It represents a bitmask combining bit number of a product as defined in the HAFAS raw data file zugart.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "integer"
+        }, {
+          "name" : "attributes",
+          "in" : "query",
+          "description" : "Filter trips by one or more attribute codes of a journey. Multiple attribute codes are separated by comma. If the attribute should not be part of the be trip, negate it by putting ! in front of it.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "jid",
+          "in" : "query",
+          "description" : "Filter journeys by one or more journey id. Multiple journey ids are separated by comma. If the journey id should not be part of the be trip, negate it by putting ! in front of it.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "lines",
+          "in" : "query",
+          "description" : "Only journeys running the given line are part of the result. To filter multiple lines, separate the codes by comma. If the line should not be part of the be trip, negate it by putting ! in front of it.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "infotexts",
+          "in" : "query",
+          "description" : "Filter journeys by one or more custom infotext filters. Multiple infotexts are separated by comma. If the infotext should not be part of the be trip, negate it by putting ! in front of it.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "maxJny",
+          "in" : "query",
+          "description" : "Maximum number of journeys in response. Range from 1 to 1000.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "integer",
+          "default" : 1000
+        }, {
+          "name" : "date",
+          "in" : "query",
+          "description" : "Day of operation.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "time",
+          "in" : "query",
+          "description" : "Time the service operates according to scheduled data. If not provided, the whole day is taken into account.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "positionMode",
+          "in" : "query",
+          "description" : "Mode the used for position calculation\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "string",
+          "default" : "REPORT_ONLY",
+          "enum" : [ "CALC", "CALC_REPORT", "REPORT_ONLY" ]
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "success",
+            "schema" : {
+              "$ref" : "#/definitions/JourneyList"
+            }
+          }
+        },
+        "security" : [ {
+          "accessId" : [ ]
+        } ]
+      }
+    },
+    "/trip" : {
+      "get" : {
+        "tags" : [ "trip" ],
+        "summary" : "Trip search",
+        "operationId" : "endpoint.trip.get",
+        "produces" : [ "application/xml", "application/json" ],
+        "parameters" : [ {
+          "name" : "requestId",
+          "in" : "query",
+          "description" : "Request ID for identifying the request.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "format",
+          "in" : "query",
+          "description" : "Requested response format. If not set, the Accept-Header is used. If both are missing application/xml is used",
+          "required" : false,
+          "type" : "string",
+          "enum" : [ "xml", "json", "jsonp" ]
+        }, {
+          "name" : "jsonpCallback",
+          "in" : "query",
+          "description" : "Requests the JSON response data is wrapped into a JavaScript function with that name.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "lang",
+          "in" : "query",
+          "description" : "The language of the journey planer.",
+          "required" : false,
+          "type" : "string",
+          "default" : "de"
+        }, {
+          "name" : "originId",
+          "in" : "query",
+          "description" : "Specifies the station/stop ID of the origin for the trip.\nSuch ID can be retrieved from the location.name or location.nearbystops services.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "originExtId",
+          "in" : "query",
+          "description" : "Deprecated. Please use `originId` as it supports external IDs.\n\nSpecifies the external station/stop ID of the origin for the trip.\nSuch ID can be retrieved from the location.name or location.nearbystops services.\n\nSince version: 1.20",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "originCoordLat",
+          "in" : "query",
+          "description" : "Latitude of station/stop coordinate of the trip’s origin. The coordinate can be retrieved from the location.name or location.nearbystops services.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "integer"
+        }, {
+          "name" : "originCoordLong",
+          "in" : "query",
+          "description" : "Longitude of station/stop coordinate of the trip’s origin. The coordinate can be retrieved from the location.name or location.nearbystops services.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "integer"
+        }, {
+          "name" : "originCoordName",
+          "in" : "query",
+          "description" : "Name of the trip's origin if coordinate cannot be resolved to an address or poi.\n\nSince version: 2.13",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "destId",
+          "in" : "query",
+          "description" : "Specifies the station/stop ID of the destination for the trip.\nSuch ID can be retrieved from the location.name or location.nearbystops services.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "destExtId",
+          "in" : "query",
+          "description" : "Deprecated. Please use `destId` as it supports external IDs.\n\nSpecifies the external station/stop ID of the destination for the trip.\nSuch ID can be retrieved from the location.name or location.nearbystops services.\n\nSince version: 1.20",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "destCoordLat",
+          "in" : "query",
+          "description" : "Latitude of station/stop coordinate of the trip’s destination. The coordinate can be retrieved from the location.name or location.nearbystops services.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "integer"
+        }, {
+          "name" : "destCoordLong",
+          "in" : "query",
+          "description" : "Longitude of station/stop coordinate of the trip’s destination. The coordinate can be retrieved from the location.name or location.nearbystops services.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "integer"
+        }, {
+          "name" : "destCoordName",
+          "in" : "query",
+          "description" : "Name of the trip's destination if coordinate cannot be resolved to an address or poi.\n\nSince version: 2.13",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "via",
+          "in" : "query",
+          "description" : "Complex structure to provide multiple via points separated by semicolon.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "viaId",
+          "in" : "query",
+          "description" : "ID of a station/stop used as a via for the trip. Specifying a via station forces the trip search to look for trips which must pass through this station.\nSuch IDs can be retrieved from the location.name or location.nearbystops services.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "viaWaitTime",
+          "in" : "query",
+          "description" : "Defines the waiting time spent at via station in minutes.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "integer",
+          "default" : 0
+        }, {
+          "name" : "avoid",
+          "in" : "query",
+          "description" : "Complex structure to provide multiple points to be avoided separated by semicolon.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "avoidId",
+          "in" : "query",
+          "description" : "ID of a station/stop to be avoided as transfer stop for the trip.\nSuch IDs can be retrieved from the location.name or location.nearbystops services.\n\nSince version: 1.22.2",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "viaGis",
+          "in" : "query",
+          "description" : "Complex structure to provide multiple GIS via locations separated by semicolon.\n\nSince version: 2.14",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "changeTimePercent",
+          "in" : "query",
+          "description" : "Configures the walking speed when changing from one leg of the journey to the next one. It extends the time required for changes by a specified percentage.\nA value of 200 doubles the change time as initially calculated by the system.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "integer",
+          "default" : 100
+        }, {
+          "name" : "minChangeTime",
+          "in" : "query",
+          "description" : "Minimum change time at stop in minutes.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "integer"
+        }, {
+          "name" : "maxChangeTime",
+          "in" : "query",
+          "description" : "Maximum change time at stop in minutes.\n\nSince version: 1.20",
+          "required" : false,
+          "type" : "integer"
+        }, {
+          "name" : "addChangeTime",
+          "in" : "query",
+          "description" : "This amount of minutes is added to the change time at each stop.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "integer"
+        }, {
+          "name" : "maxChange",
+          "in" : "query",
+          "description" : "Maximum number of changes. Range from 0 to 11.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "integer"
+        }, {
+          "name" : "date",
+          "in" : "query",
+          "description" : "Sets the start date for which the departures shall be retrieved. Represented in the format YYYY-MM-DD.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "time",
+          "in" : "query",
+          "description" : "Sets the start time for which the departures shall be retrieved. Represented in the format hh:mm[:ss] in 24h nomenclature. Seconds will be ignored for requests.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "searchForArrival",
+          "in" : "query",
+          "description" : "If set, the date and time parameters specify the arrival time for the trip search instead of the departure time.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "string",
+          "default" : "0",
+          "enum" : [ "0", "1" ]
+        }, {
+          "name" : "numF",
+          "in" : "query",
+          "description" : "Minimum number of trips after the search time. Sum of numF and numB has to be less or equal 6. Range from 1 to 6.\n\nSince version: 1.10",
+          "required" : false,
+          "type" : "integer",
+          "default" : 5
+        }, {
+          "name" : "numB",
+          "in" : "query",
+          "description" : "Minimum number of trips before the search time. Sum of numF and numB has to be less or equal 6. Range from 0 to 6.\n\nSince version: 1.10",
+          "required" : false,
+          "type" : "integer",
+          "default" : 0
+        }, {
+          "name" : "context",
+          "in" : "query",
+          "description" : "Defines the starting point for the scroll back or forth operation. Use the scrB value from a previous result to scroll backwards in time and use the scrF value to scroll forth.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "poly",
+          "in" : "query",
+          "description" : "Enables/disables the calculation of the polyline for each leg of the trip except any GIS route.\n\nSince version: 1.11",
+          "required" : false,
+          "type" : "string",
+          "default" : "0",
+          "enum" : [ "0", "1" ]
+        }, {
+          "name" : "polyEnc",
+          "in" : "query",
+          "description" : "Defines encoding of the returned polyline. Possible values are N (no encoding / compression), DLT (delta to the previous coordinate), GPA (Google encoded polyline format) defaults to N. Not all option might be available in your installation.\n\nSince version: 1.11",
+          "required" : false,
+          "type" : "string",
+          "default" : "N",
+          "enum" : [ "DLT", "GPA", "N" ]
+        }, {
+          "name" : "passlist",
+          "in" : "query",
+          "description" : "Enables/disables the return of the passlist for each leg of the trip.\n\nSince version: 1.20",
+          "required" : false,
+          "type" : "string",
+          "default" : "0",
+          "enum" : [ "0", "1" ]
+        }, {
+          "name" : "products",
+          "in" : "query",
+          "description" : "Decimal value defining the product classes to be included in the search. It represents a bitmask combining bit number of a product as defined in the HAFAS raw data file zugart.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "integer"
+        }, {
+          "name" : "operators",
+          "in" : "query",
+          "description" : "Only trips provided by the given operators are part of the result. To filter multiple operators, separate the codes by comma.\nIf the operator should not be part of the be trip, negate it by putting ! in front of it.\n\nSince version: 1.12",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "attributes",
+          "in" : "query",
+          "description" : "Filter trips by one or more attribute codes of a journey. Multiple attribute codes are separated by comma. If the attribute should not be part of the be trip, negate it by putting ! in front of it.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "sattributes",
+          "in" : "query",
+          "description" : "Filter trips by one or more station attribute codes of a journey. Multiple attribute codes are separated by comma. If the attribute should not be part of the be trip, negate it by putting ! in front of it.\n\nSince version: 1.23.7",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "fattributes",
+          "in" : "query",
+          "description" : "Filter trips by one or more footway attribute codes of a journey. Multiple attribute codes are separated by comma. If the attribute should not be part of the be trip, negate it by putting ! in front of it.\n\nSince version: 2.7",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "lines",
+          "in" : "query",
+          "description" : "Only journeys running the given line are part of the result. To filter multiple lines, separate the codes by comma. If the line should not be part of the be trip, negate it by putting ! in front of it.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "lineids",
+          "in" : "query",
+          "description" : "Only journeys running the given line (identified by its line ID) are part of the result. To filter multiple lines, separate the line IDs by comma. If the line should not be part of the be trip, negate it by putting ! in front of it.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "avoidPaths",
+          "in" : "query",
+          "description" : "Only path not having the given properties will be part of the result.\n\nSince version: 1.12",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "originWalk",
+          "in" : "query",
+          "description" : "Enables/disables using footpaths in the beginning of a trip when searching from an address.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "originBike",
+          "in" : "query",
+          "description" : "Enables/disables using bike routes in the beginning of a trip when searching from an address.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "originCar",
+          "in" : "query",
+          "description" : "Enables/disables using car in the beginning of a trip when searching from an address.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "originTaxi",
+          "in" : "query",
+          "description" : "Enables/disables using taxi rides in the beginning of a trip when searching from an address.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "originPark",
+          "in" : "query",
+          "description" : "Enables/disables using Park and Ride in the beginning of a trip when searching from an address\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "originMeta",
+          "in" : "query",
+          "description" : "Enables using one or more predefined individual transport meta profile at the beginning of a trip. The profiles are defined in the HAFAS installation.\n\nSince version: 1.23.25",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "destWalk",
+          "in" : "query",
+          "description" : "Enables/disables using footpaths at the end of a trip when searching to an address.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "destBike",
+          "in" : "query",
+          "description" : "Enables/disables using bike routes at the end of a trip when searching to an address.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "destCar",
+          "in" : "query",
+          "description" : "Enables/disables using car routes at the end of a trip when searching to an address.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "destTaxi",
+          "in" : "query",
+          "description" : "Enables/disables using taxi rides at the end of a trip when searching to an address.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "destPark",
+          "in" : "query",
+          "description" : "Enables/disables using Park and Ride at the end of a trip when searching to an address.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "destMeta",
+          "in" : "query",
+          "description" : "Enables using one or more predefined individual transport meta profile at the end of a trip. The profiles are defined in the HAFAS installation.\n\nSince version: 1.23.25",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "totalWalk",
+          "in" : "query",
+          "description" : "Enables/disables using footpaths for the whole trip.\n\nSince version: 1.23.20",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "totalBike",
+          "in" : "query",
+          "description" : "Enables/disables using bike routes for the whole trip.\n\nSince version: 1.23.20",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "totalCar",
+          "in" : "query",
+          "description" : "Enables/disables using car routes for the whole trip.\n\nSince version: 1.23.20",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "totalTaxi",
+          "in" : "query",
+          "description" : "Enables/disables using taxi rides for the whole trip.\n\nSince version: 1.23.20",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "totalMeta",
+          "in" : "query",
+          "description" : "Enables using one or more predefined individual transport meta profile for a trip. The profiles are defined in the HAFAS installation.\n\nSince version: 1.23.25",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "includeIv",
+          "in" : "query",
+          "description" : "Enables/disables search for individual transport routes.\n\nSince version: 2.6.5",
+          "required" : false,
+          "type" : "string",
+          "default" : "0",
+          "enum" : [ "0", "1" ]
+        }, {
+          "name" : "ivOnly",
+          "in" : "query",
+          "description" : "Enables/disables search for individual transport routes only.\n\nSince version: 1.23.20",
+          "required" : false,
+          "type" : "string",
+          "default" : "0",
+          "enum" : [ "0", "1" ]
+        }, {
+          "name" : "mobilityProfile",
+          "in" : "query",
+          "description" : "Use a predefined filter by its name. The filters are defined in the HAFAS installation. If the filter should be negated, put a ! in front of its name.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "bikeCarriage",
+          "in" : "query",
+          "description" : "Enables/disables search for trips explicit allowing bike carriage.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "string",
+          "default" : "0",
+          "enum" : [ "0", "1" ]
+        }, {
+          "name" : "sleepingCar",
+          "in" : "query",
+          "description" : "Enables/disables search for trips having sleeping car.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "string",
+          "default" : "0",
+          "enum" : [ "0", "1" ]
+        }, {
+          "name" : "couchetteCoach",
+          "in" : "query",
+          "description" : "Enables/disables search for trips having couchette coach.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "string",
+          "default" : "0",
+          "enum" : [ "0", "1" ]
+        }, {
+          "name" : "showPassingPoints",
+          "in" : "query",
+          "description" : "Enables/disables the return of stops having no alighting and boarding in its passlist for each leg of the trip. Needs passlist enabled.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "string",
+          "default" : "0",
+          "enum" : [ "0", "1" ]
+        }, {
+          "name" : "baim",
+          "in" : "query",
+          "description" : "Enables/disables BAIM search and response.\n\nSince version: 1.23.8",
+          "required" : false,
+          "type" : "string",
+          "default" : "0",
+          "enum" : [ "0", "1" ]
+        }, {
+          "name" : "eco",
+          "in" : "query",
+          "description" : "Enables/disables eco value calculation.\n\nSince version: 1.23.9",
+          "required" : false,
+          "type" : "string",
+          "default" : "0",
+          "enum" : [ "0", "1" ]
+        }, {
+          "name" : "ecoCmp",
+          "in" : "query",
+          "description" : "Enables/disables eco comparison.\n\nSince version: 1.23.9",
+          "required" : false,
+          "type" : "string",
+          "default" : "0",
+          "enum" : [ "0", "1" ]
+        }, {
+          "name" : "ecoParams",
+          "in" : "query",
+          "description" : "Provide additional eco parameters.\n\nSince version: 1.23.9",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "rtMode",
+          "in" : "query",
+          "description" : "Set the realtime mode to be used.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "string",
+          "enum" : [ "FULL", "INFOS", "OFF", "REALTIME", "SERVER_DEFAULT" ]
+        }, {
+          "name" : "unsharp",
+          "in" : "query",
+          "description" : "Enables/disables unsharp search mode.\n\nSince version: 1.23.13",
+          "required" : false,
+          "type" : "string",
+          "default" : "0",
+          "enum" : [ "0", "1" ]
+        }, {
+          "name" : "trainFilter",
+          "in" : "query",
+          "description" : "Filters a trip search for a certain train.\n\nSince version: 1.23.9",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "economic",
+          "in" : "query",
+          "description" : "Enables/disables economic search mode.\n\nSince version: 1.23.14",
+          "required" : false,
+          "type" : "string",
+          "default" : "0",
+          "enum" : [ "0", "1" ]
+        }, {
+          "name" : "groupFilter",
+          "in" : "query",
+          "description" : "Use a predefined group filter to query for certain modes.\n\nSince version: 1.23.14",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "blockingList",
+          "in" : "query",
+          "description" : "Defines a section of a route of a journey not to be used within the trip search.\n\nSince version: 1.23.18",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "trainComposition",
+          "in" : "query",
+          "description" : "Enables/disables train composition data.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "string",
+          "default" : "0",
+          "enum" : [ "0", "1" ]
+        }, {
+          "name" : "includeEarlier",
+          "in" : "query",
+          "description" : "Disables search optimization in relation of duration.\n\nSince version: 1.23.18",
+          "required" : false,
+          "type" : "string",
+          "default" : "0",
+          "enum" : [ "0", "1" ]
+        }, {
+          "name" : "withICTAlternatives",
+          "in" : "query",
+          "description" : "Enables/disables the search for alternatives with individualized change times (ICT).\n\nSince version: 1.23.19",
+          "required" : false,
+          "type" : "string",
+          "default" : "0",
+          "enum" : [ "0", "1" ]
+        }, {
+          "name" : "tariff",
+          "in" : "query",
+          "description" : "Enables/disables the output of tariff data. The default is configurable via provisioning.\n\nSince version: 2.7",
+          "required" : false,
+          "type" : "string",
+          "enum" : [ "0", "1" ]
+        }, {
+          "name" : "trafficMessages",
+          "in" : "query",
+          "description" : "Enables/disables the output of traffic messages. The default is configurable via provisioning.\n\nSince version: 2.7",
+          "required" : false,
+          "type" : "string",
+          "enum" : [ "0", "1" ]
+        }, {
+          "name" : "travellerProfileData",
+          "in" : "query",
+          "description" : "Traveller profile data. Structure depends on set up.\n\nSince version: 2.15",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "success",
+            "schema" : {
+              "$ref" : "#/definitions/TripList"
+            }
+          }
+        },
+        "security" : [ {
+          "accessId" : [ ]
+        } ]
+      }
+    },
+    "/recon" : {
+      "get" : {
+        "tags" : [ "recon" ],
+        "summary" : "Reconstruction",
+        "operationId" : "endpoint.reconstruction.get",
+        "produces" : [ "application/xml", "application/json" ],
+        "parameters" : [ {
+          "name" : "requestId",
+          "in" : "query",
+          "description" : "Request ID for identifying the request.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "format",
+          "in" : "query",
+          "description" : "Requested response format. If not set, the Accept-Header is used. If both are missing application/xml is used",
+          "required" : false,
+          "type" : "string",
+          "enum" : [ "xml", "json", "jsonp" ]
+        }, {
+          "name" : "jsonpCallback",
+          "in" : "query",
+          "description" : "Requests the JSON response data is wrapped into a JavaScript function with that name.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "lang",
+          "in" : "query",
+          "description" : "The language of the journey planer.",
+          "required" : false,
+          "type" : "string",
+          "default" : "de"
+        }, {
+          "name" : "ctx",
+          "in" : "query",
+          "description" : "Specifies the reconstruction context.\n\nSince version: 1.12",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "poly",
+          "in" : "query",
+          "description" : "Enables/disables the calculation of the polyline for each leg of the trip except any GIS route.\n\nSince version: 1.12",
+          "required" : false,
+          "type" : "string",
+          "default" : "0",
+          "enum" : [ "0", "1" ]
+        }, {
+          "name" : "polyEnc",
+          "in" : "query",
+          "description" : "Defines encoding of the returned polyline. Possible values are N (no encoding / compression), DLT (delta to the previous coordinate), GPA (Google encoded polyline format) defaults to N. Not all option might be available in your installation.\n\nSince version: 1.12",
+          "required" : false,
+          "type" : "string",
+          "default" : "N",
+          "enum" : [ "DLT", "GPA", "N" ]
+        }, {
+          "name" : "date",
+          "in" : "query",
+          "description" : "Sets the start date for which the departures shall be retrieved. Represented in the format YYYY-MM-DD.\n\nSince version: 1.12",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "useCombinedComparison",
+          "in" : "query",
+          "description" : "Compare based on combined output name - false: Compare parameters (category, line, train number) individually",
+          "required" : false,
+          "type" : "string",
+          "enum" : [ "0", "1" ]
+        }, {
+          "name" : "acceptGaps",
+          "in" : "query",
+          "description" : "Accept an incomplete description of the connection (with gaps) i.e. missing walks/transfers\n\nSince version: 2.6.2",
+          "required" : false,
+          "type" : "string",
+          "enum" : [ "0", "1" ]
+        }, {
+          "name" : "allowDisabledStops",
+          "in" : "query",
+          "description" : "Should stops be allowed as start or destination if boarding or alighting is disabled?\n\nSince version: 2.6.2",
+          "required" : false,
+          "type" : "string",
+          "enum" : [ "0", "1" ]
+        }, {
+          "name" : "allowDummySections",
+          "in" : "query",
+          "description" : "Allow a partial reconstruction that will not lead to a reconstruction failure if sections are not reconstructable. Instead, for theses inconstructable sections, dummy sections will be created in the result.\n\nSince version: 2.11.0",
+          "required" : false,
+          "type" : "string",
+          "enum" : [ "0", "1" ]
+        }, {
+          "name" : "flagAllNonReachable",
+          "in" : "query",
+          "description" : "Should all non-reachable journeys be flagged (true), or only the first one encountered?\n\nSince version: 2.6.2",
+          "required" : false,
+          "type" : "string",
+          "enum" : [ "0", "1" ]
+        }, {
+          "name" : "matchCatStrict",
+          "in" : "query",
+          "description" : "Should the category (Gattung) match exactly? Only applicable if useCombinedComparison is false\n\nSince version: 2.6.2",
+          "required" : false,
+          "type" : "string",
+          "enum" : [ "0", "1" ]
+        }, {
+          "name" : "matchIdNonBlank",
+          "in" : "query",
+          "description" : "Should the train identifier (Zugbezeichner) without whitespace match?\n\nSince version: 2.6.2",
+          "required" : false,
+          "type" : "string",
+          "enum" : [ "0", "1" ]
+        }, {
+          "name" : "matchIdStrict",
+          "in" : "query",
+          "description" : "Should the train identifier (Zugbezeichner) match exactly?\n\nSince version: 2.6.2",
+          "required" : false,
+          "type" : "string",
+          "enum" : [ "0", "1" ]
+        }, {
+          "name" : "matchNumStrict",
+          "in" : "query",
+          "description" : "Should the train number (Zugnummer) match exactly? Only applicable if useCombinedComparison is false\n\nSince version: 2.6.2",
+          "required" : false,
+          "type" : "string",
+          "enum" : [ "0", "1" ]
+        }, {
+          "name" : "matchRtType",
+          "in" : "query",
+          "description" : "Should the realtime type that journeys are based on (e.g. SOLL, IST, additional, deviation, ...) be considered?\n\nSince version: 2.6.2",
+          "required" : false,
+          "type" : "string",
+          "enum" : [ "0", "1" ]
+        }, {
+          "name" : "enableRtFullSearch",
+          "in" : "query",
+          "description" : "By default, the reconstruction request makes one attempt for each journey within the scheduled data. However, the scheduled data may not necessarily reflect basic realtime properties of the journeys therein. In such a case, one may enable a two-step approach which we call \"full search\", i.e. search for matching journeys in the scheduled data in a first step. If this fails, then search for matching journeys in the realtime data.\n\nSince version: 2.15",
+          "required" : false,
+          "type" : "string",
+          "enum" : [ "0", "1" ]
+        }, {
+          "name" : "arrL",
+          "in" : "query",
+          "description" : "Lower deviation in minutes within interval [0, 720] indicating \"how much earlier than original arrival\"\n\nSince version: 2.6.2",
+          "required" : false,
+          "type" : "integer"
+        }, {
+          "name" : "arrU",
+          "in" : "query",
+          "description" : "Upper deviation in minutes within interval [0, 720] indicating \"how much later than original arrival\"\n\nSince version: 2.6.2",
+          "required" : false,
+          "type" : "integer"
+        }, {
+          "name" : "depL",
+          "in" : "query",
+          "description" : "Lower deviation in minutes within interval [0, 720] indicating \"how much earlier than original departure\"\n\nSince version: 2.6.2",
+          "required" : false,
+          "type" : "integer"
+        }, {
+          "name" : "depU",
+          "in" : "query",
+          "description" : "Upper deviation in minutes within interval [0, 720] indicating \"how much later than original departure\"\n\nSince version: 2.6.2",
+          "required" : false,
+          "type" : "integer"
+        }, {
+          "name" : "passlist",
+          "in" : "query",
+          "description" : "Enables/disables the return of the passlist for each leg of the trip.\n\nSince version: 1.12",
+          "required" : false,
+          "type" : "string",
+          "default" : "0",
+          "enum" : [ "0", "1" ]
+        }, {
+          "name" : "showPassingPoints",
+          "in" : "query",
+          "description" : "Enables/disables the return of stops having no alighting and boarding in its passlist for each leg of the trip. Needs passlist parameter enabled.\n\nSince version: 1.12",
+          "required" : false,
+          "type" : "string",
+          "default" : "0",
+          "enum" : [ "0", "1" ]
+        }, {
+          "name" : "rtMode",
+          "in" : "query",
+          "description" : "Set the realtime mode to be used.\n\nSince version: 2.10.0",
+          "required" : false,
+          "type" : "string",
+          "enum" : [ "FULL", "INFOS", "OFF", "REALTIME", "SERVER_DEFAULT" ]
+        }, {
+          "name" : "eco",
+          "in" : "query",
+          "description" : "Enables/disables eco value calculation.\n\nSince version: 1.23.9",
+          "required" : false,
+          "type" : "string",
+          "default" : "0",
+          "enum" : [ "0", "1" ]
+        }, {
+          "name" : "ecoCmp",
+          "in" : "query",
+          "description" : "Enables/disables eco comparison.\n\nSince version: 1.23.9",
+          "required" : false,
+          "type" : "string",
+          "default" : "0",
+          "enum" : [ "0", "1" ]
+        }, {
+          "name" : "ecoParams",
+          "in" : "query",
+          "description" : "Provide additional eco parameters. Values vary.\n\nSince version: 1.23.9",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "tariff",
+          "in" : "query",
+          "description" : "Enables/disables the output of tariff data. The default is configurable via provisioning.\n\nSince version: 2.7",
+          "required" : false,
+          "type" : "string",
+          "enum" : [ "0", "1" ]
+        }, {
+          "name" : "trafficMessages",
+          "in" : "query",
+          "description" : "Enables/disables the output of traffic messages. The default is configurable via provisioning.\n\nSince version: 2.7",
+          "required" : false,
+          "type" : "string",
+          "enum" : [ "0", "1" ]
+        }, {
+          "name" : "travellerProfileData",
+          "in" : "query",
+          "description" : "Traveller profile data. Structure depends on set up.\n\nSince version: 2.15",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "success",
+            "schema" : {
+              "$ref" : "#/definitions/TripList"
+            }
+          }
+        },
+        "security" : [ {
+          "accessId" : [ ]
+        } ]
+      }
+    },
+    "/himsearch" : {
+      "get" : {
+        "tags" : [ "himsearch" ],
+        "summary" : "HIM Search",
+        "operationId" : "endpoint.himsearch.get",
+        "produces" : [ "application/xml", "application/json" ],
+        "parameters" : [ {
+          "name" : "requestId",
+          "in" : "query",
+          "description" : "Request ID for identifying the request.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "format",
+          "in" : "query",
+          "description" : "Requested response format. If not set, the Accept-Header is used. If both are missing application/xml is used",
+          "required" : false,
+          "type" : "string",
+          "enum" : [ "xml", "json", "jsonp" ]
+        }, {
+          "name" : "jsonpCallback",
+          "in" : "query",
+          "description" : "Requests the JSON response data is wrapped into a JavaScript function with that name.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "lang",
+          "in" : "query",
+          "description" : "The language of the journey planer.",
+          "required" : false,
+          "type" : "string",
+          "default" : "de"
+        }, {
+          "name" : "dateB",
+          "in" : "query",
+          "description" : "Sets the event period start date.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "dateE",
+          "in" : "query",
+          "description" : "Sets the event period end date.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "timeB",
+          "in" : "query",
+          "description" : "Sets the event period start time.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "timeE",
+          "in" : "query",
+          "description" : "Sets the event period end time.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "weekdays",
+          "in" : "query",
+          "description" : "Bitmask for validity of HIM messages based on weekdays. Each character represents a weekday starting on monday.\n\nSince version: 2.4",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "himIds",
+          "in" : "query",
+          "description" : "List of HIM message IDs seperated by comma.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "hierarchicalView",
+          "in" : "query",
+          "description" : "Return parent messages with childs.\n\nSince version: 2.8.1",
+          "required" : false,
+          "type" : "string",
+          "default" : "0",
+          "enum" : [ "0", "1" ]
+        }, {
+          "name" : "operators",
+          "in" : "query",
+          "description" : "List of operators seperated by comma.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "categories",
+          "in" : "query",
+          "description" : "List of train categories seperated by comma.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "channels",
+          "in" : "query",
+          "description" : "List of channels seperated by comma.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "companies",
+          "in" : "query",
+          "description" : "List of companies seperated by comma.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "lines",
+          "in" : "query",
+          "description" : "Only HIM messages for the given line are part of the result. To filter multiple lines, separate the codes by comma.\n\nSince version: 2.4",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "lineids",
+          "in" : "query",
+          "description" : "Only HIM messages for the given line (identified by its line ID) are part of the result. To filter multiple lines, separate the line IDs by comma.\n\nSince version: 2.11",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "stations",
+          "in" : "query",
+          "description" : "List of (external) station ids to be filtered for seperated by comma.\n\nSince version: 2.4",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "fromstation",
+          "in" : "query",
+          "description" : "Filter messages by line segment starting at this station given as (external) station id.\n\nSince version: 2.4",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "tostation",
+          "in" : "query",
+          "description" : "Filter messages by line segment travelling in direction of this station given as (external) station id.\n\nSince version: 2.4",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "bothways",
+          "in" : "query",
+          "description" : "If enabled, messages in both directions - from 'himfromstation' to 'himtostation' as well as from 'himtostation' to 'himfromstation' are returned\n\nSince version: 2.4",
+          "required" : false,
+          "type" : "string",
+          "enum" : [ "0", "1" ]
+        }, {
+          "name" : "trainnames",
+          "in" : "query",
+          "description" : "List of train name to be filtered for seperated by comma.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "metas",
+          "in" : "query",
+          "description" : "List of predefined filters seperated by comma.\n\nSince version: 2.4",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "himcategory",
+          "in" : "query",
+          "description" : "HIM category, e.g. Works and/or Disturbance. Value depends on your HAFAS server data.\n\nSince version: 1.23.9",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "himtags",
+          "in" : "query",
+          "description" : "HIM Tags. Value depends on your HAFAS server data.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "himtext",
+          "in" : "query",
+          "description" : "Filter for Him messages containing the given free text message seperated by comma.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "poly",
+          "in" : "query",
+          "description" : "Enables/disables returning of geo information for affected edges and regions if available and enabled in the backend.\n\nSince version: 1.23.12",
+          "required" : false,
+          "type" : "string",
+          "default" : "0",
+          "enum" : [ "0", "1" ]
+        }, {
+          "name" : "searchmode",
+          "in" : "query",
+          "description" : "HIM search mode.\n\nSince version: 1.0",
+          "required" : false,
+          "type" : "string",
+          "enum" : [ "MATCH", "NOMATCH", "TFMATCH" ]
+        }, {
+          "name" : "affectedJourneyMode",
+          "in" : "query",
+          "description" : "Define how to return affected journeys\n\nSince version: 2.5",
+          "required" : false,
+          "type" : "string",
+          "enum" : [ "ALL", "OFF" ]
+        }, {
+          "name" : "affectedJourneyStopMode",
+          "in" : "query",
+          "description" : "Define how to return stops of affected journeys\n\nSince version: 2.5",
+          "required" : false,
+          "type" : "string",
+          "enum" : [ "ALL", "IMP", "OFF" ]
+        }, {
+          "name" : "orderBy",
+          "in" : "query",
+          "description" : "Define the Order the returned messages by fields and directions. Multiple, comma separated entries are supported Range: EVT_BEG_ASC,EVT_BEG_DESC,EVT_END_ASC,EVT_END_DESC,HID_ASC,HID_DESC,LMOD_ASC,LMOD_DESC,PRIO_ASC,PRIO_DESC\n\nSince version: 2.4.1",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "minprio",
+          "in" : "query",
+          "description" : "Filter for HIM messages having at least this priority.\n\nSince version: 2.4",
+          "required" : false,
+          "type" : "integer"
+        }, {
+          "name" : "maxprio",
+          "in" : "query",
+          "description" : "Filter for HIM messages having this priority as maximum.\n\nSince version: 2.4",
+          "required" : false,
+          "type" : "integer"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "success",
+            "schema" : {
+              "$ref" : "#/definitions/HimMessages"
+            }
+          }
+        },
+        "security" : [ {
+          "accessId" : [ ]
+        } ]
+      }
+    },
+    "/gisroute" : {
+      "get" : {
+        "tags" : [ "gisroute" ],
+        "summary" : "GIS Route by Context (gisRoute)",
+        "operationId" : "endpoint.gisroute.get",
+        "produces" : [ "application/xml", "application/json" ],
+        "parameters" : [ {
+          "name" : "requestId",
+          "in" : "query",
+          "description" : "Request ID for identifying the request.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "format",
+          "in" : "query",
+          "description" : "Requested response format. If not set, the Accept-Header is used. If both are missing application/xml is used",
+          "required" : false,
+          "type" : "string",
+          "enum" : [ "xml", "json", "jsonp" ]
+        }, {
+          "name" : "jsonpCallback",
+          "in" : "query",
+          "description" : "Requests the JSON response data is wrapped into a JavaScript function with that name.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "lang",
+          "in" : "query",
+          "description" : "The language of the journey planer.",
+          "required" : false,
+          "type" : "string",
+          "default" : "de"
+        }, {
+          "name" : "ctx",
+          "in" : "query",
+          "description" : "Specifies the GIS route context.\n\nSince version: 1.0",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "poly",
+          "in" : "query",
+          "description" : "Enables/disables the calculation of the polyline.\n\nSince version: 1.11",
+          "required" : false,
+          "type" : "string",
+          "default" : "0",
+          "enum" : [ "0", "1" ]
+        }, {
+          "name" : "polyEnc",
+          "in" : "query",
+          "description" : "Defines encoding of the returned polyline. Possible values are N (no encoding / compression), DLT (delta to the previous coordinate), GPA (Google encoded polyline format) defaults to N. Not all option might be available in your installation.\n\nSince version: 1.11",
+          "required" : false,
+          "type" : "string",
+          "default" : "N",
+          "enum" : [ "DLT", "GPA", "N" ]
+        }, {
+          "name" : "eco",
+          "in" : "query",
+          "description" : "Enables/disables eco value calculation.\n\nSince version: 1.23.9",
+          "required" : false,
+          "type" : "string",
+          "default" : "0",
+          "enum" : [ "0", "1" ]
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "success",
+            "schema" : {
+              "$ref" : "#/definitions/TripList"
+            }
+          }
+        },
+        "security" : [ {
+          "accessId" : [ ]
+        } ]
+      }
+    },
+    "/systemInfo" : {
+      "get" : {
+        "summary" : "Health API",
+        "operationId" : "endpoint.systemInfo",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "type",
+          "in" : "query",
+          "required" : true,
+          "type" : "string",
+          "default" : "full",
+          "enum" : [ "full", "ready", "alive" ]
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "success"
+          }
+        }
+      }
+    }
+  },
+  "securityDefinitions" : {
+    "accessId" : {
+      "type" : "apiKey",
+      "name" : "accessId",
+      "in" : "query"
+    }
+  },
+  "definitions" : {
+    "TechnicalMessages" : {
+      "type" : "object",
+      "properties" : {
+        "TechnicalMessage" : {
+          "type" : "array",
+          "items" : {
+            "xml" : {
+              "name" : "TechnicalMessage"
+            },
+            "$ref" : "#/definitions/TechnicalMessage"
+          }
+        }
+      },
+      "xml" : {
+        "name" : "TechnicalMessages",
+        "namespace" : "http://hacon.de/hafas/proxy/hafas-proxy"
+      }
+    },
+    "LocationList" : {
+      "type" : "object",
+      "properties" : {
+        "TechnicalMessages" : {
+          "$ref" : "#/definitions/TechnicalMessages"
+        },
+        "serverVersion" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "dialectVersion" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "version" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "planRtTs" : {
+          "type" : "string",
+          "format" : "date-time",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "errorCode" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "errorText" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "requestId" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "stopLocationOrCoordLocation" : {
+          "type" : "array",
+          "items" : {
+            "type" : "object"
+          }
+        }
+      },
+      "xml" : {
+        "name" : "LocationList",
+        "namespace" : "http://hacon.de/hafas/proxy/hafas-proxy"
+      }
+    },
+    "TechnicalMessage" : {
+      "type" : "object",
+      "properties" : {
+        "value" : {
+          "type" : "string"
+        },
+        "key" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        }
+      },
+      "xml" : {
+        "name" : "TechnicalMessage",
+        "namespace" : "http://hacon.de/hafas/proxy/hafas-proxy"
+      }
+    },
+    "MessageEventType" : {
+      "type" : "object",
+      "properties" : {
+        "sectionNum" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "current" : {
+          "type" : "boolean",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "stime" : {
+          "type" : "string"
+        },
+        "sdate" : {
+          "type" : "string"
+        },
+        "etime" : {
+          "type" : "string"
+        },
+        "edate" : {
+          "type" : "string"
+        },
+        "sstop" : {
+          "$ref" : "#/definitions/StopType"
+        },
+        "estop" : {
+          "$ref" : "#/definitions/StopType"
+        }
+      }
+    },
+    "PolylineDesc" : {
+      "type" : "object",
+      "required" : [ "delta" ],
+      "properties" : {
+        "crd" : {
+          "type" : "array",
+          "items" : {
+            "type" : "number",
+            "format" : "double"
+          }
+        },
+        "name" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "delta" : {
+          "type" : "boolean",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "dim" : {
+          "type" : "integer",
+          "format" : "int32",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "crdEncYX" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "crdEncZ" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "crdEncS" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        }
+      }
+    },
+    "Message" : {
+      "type" : "object",
+      "required" : [ "act", "head", "id", "priority", "text" ],
+      "properties" : {
+        "affectedProduct" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/ProductType"
+          }
+        },
+        "affectedJourney" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/JourneyType"
+          }
+        },
+        "edge" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/MessageEdgeType"
+          }
+        },
+        "region" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/MessageRegionType"
+          }
+        },
+        "event" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/MessageEventType"
+          }
+        },
+        "affectedStops" : {
+          "$ref" : "#/definitions/AffectedStopType"
+        },
+        "validFromStop" : {
+          "$ref" : "#/definitions/StopType"
+        },
+        "validToStop" : {
+          "$ref" : "#/definitions/StopType"
+        },
+        "tags" : {
+          "$ref" : "#/definitions/TagsType"
+        },
+        "channel" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/MessageChannelType"
+          }
+        },
+        "messageCategory" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/MessageCategoryType"
+          }
+        },
+        "messageText" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/MessageTextType"
+          }
+        },
+        "validityDays" : {
+          "$ref" : "#/definitions/ServiceDays"
+        },
+        "Note" : {
+          "type" : "array",
+          "items" : {
+            "xml" : {
+              "name" : "Note"
+            },
+            "$ref" : "#/definitions/Note"
+          }
+        },
+        "message" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Message"
+          }
+        },
+        "id" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "externalId" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "act" : {
+          "type" : "boolean",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "head" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "lead" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "text" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "customText" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "tckr" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "company" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "category" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "priority" : {
+          "type" : "integer",
+          "format" : "int32",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "products" : {
+          "type" : "integer",
+          "format" : "int32",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "icon" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "routeIdxFrom" : {
+          "type" : "integer",
+          "format" : "int32",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "routeIdxTo" : {
+          "type" : "integer",
+          "format" : "int32",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "altStart" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "altEnd" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "modTime" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "modDate" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "dailyStartingAt" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "dailyDuration" : {
+          "$ref" : "#/definitions/Duration"
+        },
+        "baseType" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          },
+          "enum" : [ "UNDEF", "GLOBAL", "INFRASTRUCTURE" ]
+        },
+        "stime" : {
+          "type" : "string"
+        },
+        "sdate" : {
+          "type" : "string"
+        },
+        "etime" : {
+          "type" : "string"
+        },
+        "edate" : {
+          "type" : "string"
+        }
+      }
+    },
+    "FareItem" : {
+      "type" : "object",
+      "properties" : {
+        "ticket" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Ticket"
+          }
+        },
+        "param" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/KVType"
+          }
+        },
+        "externalContent" : {
+          "$ref" : "#/definitions/ExternalContentType"
+        },
+        "name" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "desc" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "price" : {
+          "type" : "integer",
+          "format" : "int32",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "cur" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "shpCtx" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "fromLeg" : {
+          "type" : "integer",
+          "format" : "int32",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "toLeg" : {
+          "type" : "integer",
+          "format" : "int32",
+          "xml" : {
+            "attribute" : true
+          }
+        }
+      },
+      "xml" : {
+        "name" : "fareItem",
+        "namespace" : "http://hacon.de/hafas/proxy/hafas-proxy"
+      }
+    },
+    "MessageRegionType" : {
+      "type" : "object",
+      "properties" : {
+        "name" : {
+          "type" : "string"
+        },
+        "id" : {
+          "type" : "string"
+        },
+        "polyline" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Polyline"
+          }
+        },
+        "polylineGroup" : {
+          "$ref" : "#/definitions/PolylineGroup"
+        },
+        "iconCoordinate" : {
+          "$ref" : "#/definitions/Coordinate"
+        },
+        "ring" : {
+          "$ref" : "#/definitions/Ring"
+        },
+        "messageRef" : {
+          "type" : "array",
+          "items" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        }
+      }
+    },
+    "UrlLinkType" : {
+      "type" : "object",
+      "required" : [ "url" ],
+      "properties" : {
+        "name" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "url" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        }
+      }
+    },
+    "ExternalContentType" : {
+      "type" : "object",
+      "properties" : {
+        "content" : {
+          "type" : "string"
+        },
+        "provider" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "text" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "contentType" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        }
+      }
+    },
+    "TagsType" : {
+      "type" : "object",
+      "required" : [ "tag" ],
+      "properties" : {
+        "tag" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        }
+      }
+    },
+    "AffectedStopType" : {
+      "type" : "object",
+      "required" : [ "StopLocation" ],
+      "properties" : {
+        "StopLocation" : {
+          "type" : "array",
+          "items" : {
+            "xml" : {
+              "name" : "StopLocation"
+            },
+            "$ref" : "#/definitions/StopLocation"
+          }
+        }
+      }
+    },
+    "ResourceLinkType" : {
+      "type" : "object",
+      "required" : [ "href", "rel" ],
+      "properties" : {
+        "rel" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "href" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        }
+      }
+    },
+    "OccupancyType" : {
+      "type" : "object",
+      "properties" : {
+        "name" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "v" : {
+          "type" : "integer",
+          "format" : "int32",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "number" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "raw" : {
+          "type" : "integer",
+          "format" : "int32",
+          "xml" : {
+            "attribute" : true
+          }
+        }
+      }
+    },
+    "FareSetItem" : {
+      "type" : "object",
+      "properties" : {
+        "ticketParam" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/KVType"
+          }
+        },
+        "fareItem" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/FareItem"
+          }
+        },
+        "param" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/KVType"
+          }
+        },
+        "name" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "desc" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "fromLeg" : {
+          "type" : "integer",
+          "format" : "int32",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "toLeg" : {
+          "type" : "integer",
+          "format" : "int32",
+          "xml" : {
+            "attribute" : true
+          }
+        }
+      },
+      "xml" : {
+        "name" : "fareSetItem",
+        "namespace" : "http://hacon.de/hafas/proxy/hafas-proxy"
+      }
+    },
+    "ResourceLinks" : {
+      "type" : "object",
+      "properties" : {
+        "link" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/ResourceLinkType"
+          }
+        }
+      }
+    },
+    "Stops" : {
+      "type" : "object",
+      "required" : [ "Stop" ],
+      "properties" : {
+        "Stop" : {
+          "type" : "array",
+          "items" : {
+            "xml" : {
+              "name" : "Stop"
+            },
+            "$ref" : "#/definitions/StopType"
+          }
+        }
+      },
+      "xml" : {
+        "name" : "Stops",
+        "namespace" : "http://hacon.de/hafas/proxy/hafas-proxy"
+      }
+    },
+    "KVType" : {
+      "type" : "object",
+      "properties" : {
+        "name" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "value" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        }
+      }
+    },
+    "ProductStatusType" : {
+      "type" : "object",
+      "properties" : {
+        "icon" : {
+          "$ref" : "#/definitions/IconType"
+        },
+        "rtIcon" : {
+          "$ref" : "#/definitions/IconType"
+        },
+        "code" : {
+          "type" : "integer",
+          "format" : "int32",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "txt" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        }
+      }
+    },
+    "StopLocation" : {
+      "type" : "object",
+      "required" : [ "extId", "id", "name" ],
+      "properties" : {
+        "LocationNotes" : {
+          "$ref" : "#/definitions/LocationNotes"
+        },
+        "Message" : {
+          "type" : "array",
+          "items" : {
+            "xml" : {
+              "name" : "Message"
+            },
+            "$ref" : "#/definitions/Message"
+          }
+        },
+        "productAtStop" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/ProductType"
+          }
+        },
+        "TariffResult" : {
+          "$ref" : "#/definitions/TariffResult"
+        },
+        "links" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/ResourceLinks"
+          }
+        },
+        "altId" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "mainMastAltId" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "timezoneOffset" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "id" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "extId" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "hasMainMast" : {
+          "type" : "boolean",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "mainMastId" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "mainMastExtId" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "name" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "defName" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "lon" : {
+          "type" : "number",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "lat" : {
+          "type" : "number",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "track" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "weight" : {
+          "type" : "integer",
+          "format" : "int32",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "dist" : {
+          "type" : "integer",
+          "format" : "int32",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "products" : {
+          "type" : "integer",
+          "format" : "int32",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "meta" : {
+          "type" : "boolean",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "refinable" : {
+          "type" : "boolean",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "matchValue" : {
+          "type" : "integer",
+          "format" : "int32",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "entry" : {
+          "type" : "boolean",
+          "xml" : {
+            "attribute" : true
+          }
+        }
+      }
+    },
+    "Notes" : {
+      "type" : "object",
+      "required" : [ "Note" ],
+      "properties" : {
+        "Note" : {
+          "type" : "array",
+          "items" : {
+            "xml" : {
+              "name" : "Note"
+            },
+            "$ref" : "#/definitions/Note"
+          }
+        }
+      },
+      "xml" : {
+        "name" : "Notes",
+        "namespace" : "http://hacon.de/hafas/proxy/hafas-proxy"
+      }
+    },
+    "TariffResult" : {
+      "type" : "object",
+      "properties" : {
+        "fareSetItem" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/FareSetItem"
+          }
+        },
+        "clickout" : {
+          "type" : "string"
+        },
+        "externalContent" : {
+          "$ref" : "#/definitions/ExternalContentType"
+        }
+      },
+      "xml" : {
+        "name" : "TariffResult",
+        "namespace" : "http://hacon.de/hafas/proxy/hafas-proxy"
+      }
+    },
+    "Ticket" : {
+      "type" : "object",
+      "properties" : {
+        "param" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/KVType"
+          }
+        },
+        "externalContent" : {
+          "$ref" : "#/definitions/ExternalContentType"
+        },
+        "name" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "desc" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "price" : {
+          "type" : "integer",
+          "format" : "int32",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "cur" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "shpCtx" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "fromLeg" : {
+          "type" : "integer",
+          "format" : "int32",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "toLeg" : {
+          "type" : "integer",
+          "format" : "int32",
+          "xml" : {
+            "attribute" : true
+          }
+        }
+      },
+      "xml" : {
+        "name" : "ticket",
+        "namespace" : "http://hacon.de/hafas/proxy/hafas-proxy"
+      }
+    },
+    "JourneyDetailRef" : {
+      "type" : "object",
+      "required" : [ "ref" ],
+      "properties" : {
+        "ref" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        }
+      },
+      "xml" : {
+        "name" : "JourneyDetailRef",
+        "namespace" : "http://hacon.de/hafas/proxy/hafas-proxy"
+      }
+    },
+    "JourneyType" : {
+      "type" : "object",
+      "required" : [ "name" ],
+      "properties" : {
+        "Stops" : {
+          "$ref" : "#/definitions/Stops"
+        },
+        "JourneyDetailRef" : {
+          "$ref" : "#/definitions/JourneyDetailRef"
+        },
+        "Product" : {
+          "$ref" : "#/definitions/ProductType"
+        },
+        "Notes" : {
+          "$ref" : "#/definitions/Notes"
+        },
+        "Messages" : {
+          "$ref" : "#/definitions/Messages"
+        },
+        "Occupancy" : {
+          "type" : "array",
+          "items" : {
+            "xml" : {
+              "name" : "Occupancy"
+            },
+            "$ref" : "#/definitions/OccupancyType"
+          }
+        },
+        "name" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "addName" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "direction" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "lon" : {
+          "type" : "number",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "lat" : {
+          "type" : "number",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "trainNumber" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "trainCategory" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        }
+      }
+    },
+    "MessageChannelType" : {
+      "type" : "object",
+      "properties" : {
+        "name" : {
+          "type" : "string"
+        },
+        "url" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/UrlLinkType"
+          }
+        },
+        "validFromTime" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "validFromDate" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "validToTime" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "validToDate" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        }
+      }
+    },
+    "Messages" : {
+      "type" : "object",
+      "required" : [ "Message" ],
+      "properties" : {
+        "Message" : {
+          "type" : "array",
+          "items" : {
+            "xml" : {
+              "name" : "Message"
+            },
+            "$ref" : "#/definitions/Message"
+          }
+        }
+      },
+      "xml" : {
+        "name" : "Messages",
+        "namespace" : "http://hacon.de/hafas/proxy/hafas-proxy"
+      }
+    },
+    "QName" : {
+      "type" : "object",
+      "properties" : {
+        "namespaceURI" : {
+          "type" : "string"
+        },
+        "localPart" : {
+          "type" : "string"
+        },
+        "prefix" : {
+          "type" : "string"
+        }
+      }
+    },
+    "LocationNote" : {
+      "type" : "object",
+      "properties" : {
+        "value" : {
+          "type" : "string"
+        },
+        "key" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "type" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          },
+          "enum" : [ "U", "A", "I", "R", "H", "M", "C", "D", "B", "Q", "L", "N", "O", "P", "S", "V", "X", "Z", "Y", "K", "G", "W", "ED", "TAR" ]
+        },
+        "txtN" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "txtL" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "txtS" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        }
+      },
+      "xml" : {
+        "name" : "LocationNote",
+        "namespace" : "http://hacon.de/hafas/proxy/hafas-proxy"
+      }
+    },
+    "ProductType" : {
+      "type" : "object",
+      "properties" : {
+        "icon" : {
+          "$ref" : "#/definitions/IconType"
+        },
+        "status" : {
+          "$ref" : "#/definitions/ProductStatusType"
+        },
+        "name" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "internalName" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "addName" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "displayNumber" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "num" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "line" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "lineId" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "catOut" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "catIn" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "catCode" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "cls" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "catOutS" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "catOutL" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "operatorCode" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "operator" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "admin" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "routeIdxFrom" : {
+          "type" : "integer",
+          "format" : "int32",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "routeIdxTo" : {
+          "type" : "integer",
+          "format" : "int32",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "matchId" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "tarGr" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "surcharge" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "outCtrl" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "locTraffic" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "shipTraffic" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        }
+      }
+    },
+    "MessageEdgeType" : {
+      "type" : "object",
+      "properties" : {
+        "polyline" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Polyline"
+          }
+        },
+        "polylineGroup" : {
+          "$ref" : "#/definitions/PolylineGroup"
+        },
+        "iconCoordinate" : {
+          "$ref" : "#/definitions/Coordinate"
+        },
+        "messageRef" : {
+          "type" : "array",
+          "items" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        },
+        "direction" : {
+          "type" : "integer",
+          "format" : "int32",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "sstop" : {
+          "$ref" : "#/definitions/StopType"
+        },
+        "estop" : {
+          "$ref" : "#/definitions/StopType"
+        }
+      }
+    },
+    "Duration" : {
+      "type" : "object",
+      "properties" : {
+        "xmlschemaType" : {
+          "$ref" : "#/definitions/QName"
+        },
+        "hours" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "minutes" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "years" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "days" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "sign" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "months" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "seconds" : {
+          "type" : "integer",
+          "format" : "int32"
+        }
+      }
+    },
+    "MessageTextType" : {
+      "type" : "object",
+      "required" : [ "tag", "text" ],
+      "properties" : {
+        "tag" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "text" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        }
+      }
+    },
+    "ArrivalBoard" : {
+      "type" : "object",
+      "properties" : {
+        "TechnicalMessages" : {
+          "$ref" : "#/definitions/TechnicalMessages"
+        },
+        "serverVersion" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "dialectVersion" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "version" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "planRtTs" : {
+          "type" : "string",
+          "format" : "date-time",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "errorCode" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "errorText" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "requestId" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "Arrival" : {
+          "type" : "array",
+          "items" : {
+            "xml" : {
+              "name" : "Arrival"
+            },
+            "$ref" : "#/definitions/Arrival"
+          }
+        },
+        "Message" : {
+          "type" : "array",
+          "items" : {
+            "xml" : {
+              "name" : "Message"
+            },
+            "$ref" : "#/definitions/Message"
+          }
+        },
+        "stopid" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "stopExtId" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        }
+      },
+      "xml" : {
+        "name" : "ArrivalBoard",
+        "namespace" : "http://hacon.de/hafas/proxy/hafas-proxy"
+      }
+    },
+    "Arrival" : {
+      "type" : "object",
+      "required" : [ "JourneyDetailRef", "date", "name", "stop", "stopid", "time", "type" ],
+      "properties" : {
+        "JourneyDetailRef" : {
+          "$ref" : "#/definitions/JourneyDetailRef"
+        },
+        "JourneyStatus" : {
+          "type" : "string",
+          "enum" : [ "P", "R", "A", "S" ]
+        },
+        "ProductAtStop" : {
+          "$ref" : "#/definitions/ProductType"
+        },
+        "Product" : {
+          "type" : "array",
+          "items" : {
+            "xml" : {
+              "name" : "Product"
+            },
+            "$ref" : "#/definitions/ProductType"
+          }
+        },
+        "Notes" : {
+          "$ref" : "#/definitions/Notes"
+        },
+        "Messages" : {
+          "$ref" : "#/definitions/Messages"
+        },
+        "altId" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "Stops" : {
+          "$ref" : "#/definitions/Stops"
+        },
+        "Occupancy" : {
+          "type" : "array",
+          "items" : {
+            "xml" : {
+              "name" : "Occupancy"
+            },
+            "$ref" : "#/definitions/OccupancyType"
+          }
+        },
+        "name" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "type" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "stop" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "stopid" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "stopExtId" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "prognosisType" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          },
+          "enum" : [ "PROGNOSED", "MANUAL", "REPORTED", "CORRECTED", "CALCULATED" ]
+        },
+        "time" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "date" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "scheduledTimeChanged" : {
+          "type" : "boolean",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "tz" : {
+          "type" : "integer",
+          "format" : "int32",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "track" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "rtTime" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "rtDate" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "rtTz" : {
+          "type" : "integer",
+          "format" : "int32",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "rtTrack" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "cancelled" : {
+          "type" : "boolean",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "partCancelled" : {
+          "type" : "boolean",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "reachable" : {
+          "type" : "boolean",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "redirected" : {
+          "type" : "boolean",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "origin" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "isBorderStop" : {
+          "type" : "boolean",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "entry" : {
+          "type" : "boolean",
+          "xml" : {
+            "attribute" : true
+          }
+        }
+      }
+    },
+    "StopType" : {
+      "type" : "object",
+      "required" : [ "extId", "id", "name" ],
+      "properties" : {
+        "Notes" : {
+          "$ref" : "#/definitions/Notes"
+        },
+        "altId" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "mainMastAltId" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "Occupancy" : {
+          "type" : "array",
+          "items" : {
+            "xml" : {
+              "name" : "Occupancy"
+            },
+            "$ref" : "#/definitions/OccupancyType"
+          }
+        },
+        "name" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "id" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "extId" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "routeIdx" : {
+          "type" : "integer",
+          "format" : "int32",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "lon" : {
+          "type" : "number",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "lat" : {
+          "type" : "number",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "arrPrognosisType" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          },
+          "enum" : [ "PROGNOSED", "MANUAL", "REPORTED", "CORRECTED", "CALCULATED" ]
+        },
+        "depPrognosisType" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          },
+          "enum" : [ "PROGNOSED", "MANUAL", "REPORTED", "CORRECTED", "CALCULATED" ]
+        },
+        "depTime" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "depDate" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "depTz" : {
+          "type" : "integer",
+          "format" : "int32",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "scheduledDepTimeChanged" : {
+          "type" : "boolean",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "arrTime" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "arrDate" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "arrTz" : {
+          "type" : "integer",
+          "format" : "int32",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "scheduledArrTimeChanged" : {
+          "type" : "boolean",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "passingTime" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "passingDate" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "passingTz" : {
+          "type" : "integer",
+          "format" : "int32",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "arrTrack" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "depTrack" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "rtDepTime" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "rtDepDate" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "rtDepTz" : {
+          "type" : "integer",
+          "format" : "int32",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "rtArrTime" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "rtArrDate" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "rtArrTz" : {
+          "type" : "integer",
+          "format" : "int32",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "rtArrTrack" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "rtDepTrack" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "rtPassingTime" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "rtPassingDate" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "rtPassingTz" : {
+          "type" : "integer",
+          "format" : "int32",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "cancelled" : {
+          "type" : "boolean",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "cancelledDeparture" : {
+          "type" : "boolean",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "cancelledArrival" : {
+          "type" : "boolean",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "hasMainMast" : {
+          "type" : "boolean",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "mainMastId" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "mainMastExtId" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "alighting" : {
+          "type" : "boolean",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "boarding" : {
+          "type" : "boolean",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "rtAlighting" : {
+          "type" : "boolean",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "rtBoarding" : {
+          "type" : "boolean",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "additional" : {
+          "type" : "boolean",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "isBorderStop" : {
+          "type" : "boolean",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "depDir" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "entry" : {
+          "type" : "boolean",
+          "xml" : {
+            "attribute" : true
+          }
+        }
+      }
+    },
+    "IconType" : {
+      "type" : "object",
+      "properties" : {
+        "foregroundColor" : {
+          "$ref" : "#/definitions/RGBAColorType"
+        },
+        "backgroundColor" : {
+          "$ref" : "#/definitions/RGBAColorType"
+        },
+        "borderColor" : {
+          "$ref" : "#/definitions/RGBAColorType"
+        },
+        "res" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "txt" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "txtS" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "style" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          },
+          "enum" : [ "U", "N", "B", "I", "BI" ]
+        },
+        "shape" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          },
+          "enum" : [ "U", "R", "C", "RES" ]
+        },
+        "shapeRes" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        }
+      }
+    },
+    "RGBAColorType" : {
+      "type" : "object",
+      "properties" : {
+        "r" : {
+          "type" : "integer",
+          "format" : "int32",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "g" : {
+          "type" : "integer",
+          "format" : "int32",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "b" : {
+          "type" : "integer",
+          "format" : "int32",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "a" : {
+          "type" : "integer",
+          "format" : "int32",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "hex" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        }
+      }
+    },
+    "Coordinate" : {
+      "type" : "object",
+      "required" : [ "lat", "lon" ],
+      "properties" : {
+        "lon" : {
+          "type" : "number",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "lat" : {
+          "type" : "number",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "alt" : {
+          "type" : "number",
+          "xml" : {
+            "attribute" : true
+          }
+        }
+      }
+    },
+    "PolylineGroup" : {
+      "type" : "object",
+      "properties" : {
+        "polylineDesc" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/PolylineDesc"
+          }
+        },
+        "name" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "coordType" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          },
+          "enum" : [ "WGS_84", "PLANAR", "HAFASGEO" ]
+        },
+        "layerName" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        }
+      }
+    },
+    "Ring" : {
+      "type" : "object",
+      "required" : [ "lat", "lon" ],
+      "properties" : {
+        "lon" : {
+          "type" : "number",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "lat" : {
+          "type" : "number",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "minRadius" : {
+          "type" : "integer",
+          "format" : "int32",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "maxRadius" : {
+          "type" : "integer",
+          "format" : "int32",
+          "xml" : {
+            "attribute" : true
+          }
+        }
+      }
+    },
+    "Note" : {
+      "type" : "object",
+      "properties" : {
+        "value" : {
+          "type" : "string"
+        },
+        "key" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "type" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          },
+          "enum" : [ "U", "A", "I", "R", "H", "M", "C", "D", "B", "Q", "L", "N", "O", "P", "S", "V", "X", "Z", "Y", "K", "G", "W", "ED", "TAR" ]
+        },
+        "priority" : {
+          "type" : "integer",
+          "format" : "int32",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "routeIdxFrom" : {
+          "type" : "integer",
+          "format" : "int32",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "routeIdxTo" : {
+          "type" : "integer",
+          "format" : "int32",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "txtN" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "txtL" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "txtS" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        }
+      }
+    },
+    "MessageCategoryType" : {
+      "type" : "object",
+      "required" : [ "id" ],
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "name" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        }
+      }
+    },
+    "Polyline" : {
+      "type" : "object",
+      "required" : [ "delta" ],
+      "properties" : {
+        "crd" : {
+          "type" : "array",
+          "items" : {
+            "type" : "number",
+            "format" : "double"
+          }
+        },
+        "name" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "delta" : {
+          "type" : "boolean",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "dim" : {
+          "type" : "integer",
+          "format" : "int32",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "type" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          },
+          "enum" : [ "WGS_84", "PLANAR", "HAFASGEO" ]
+        },
+        "crdEncYX" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "crdEncZ" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "crdEncS" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        }
+      }
+    },
+    "LocationNotes" : {
+      "type" : "object",
+      "required" : [ "LocationNote" ],
+      "properties" : {
+        "LocationNote" : {
+          "type" : "array",
+          "items" : {
+            "xml" : {
+              "name" : "LocationNote"
+            },
+            "$ref" : "#/definitions/LocationNote"
+          }
+        }
+      },
+      "xml" : {
+        "name" : "LocationNotes",
+        "namespace" : "http://hacon.de/hafas/proxy/hafas-proxy"
+      }
+    },
+    "ServiceDays" : {
+      "type" : "object",
+      "properties" : {
+        "planningPeriodBegin" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "planningPeriodEnd" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "routeIdxFrom" : {
+          "type" : "integer",
+          "format" : "int32",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "routeIdxTo" : {
+          "type" : "integer",
+          "format" : "int32",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "sdaysR" : {
+          "type" : "string"
+        },
+        "sdaysI" : {
+          "type" : "string"
+        },
+        "sdaysB" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Departure" : {
+      "type" : "object",
+      "required" : [ "JourneyDetailRef", "date", "name", "stop", "stopid", "time", "type" ],
+      "properties" : {
+        "JourneyDetailRef" : {
+          "$ref" : "#/definitions/JourneyDetailRef"
+        },
+        "JourneyStatus" : {
+          "type" : "string",
+          "enum" : [ "P", "R", "A", "S" ]
+        },
+        "ProductAtStop" : {
+          "$ref" : "#/definitions/ProductType"
+        },
+        "Product" : {
+          "type" : "array",
+          "items" : {
+            "xml" : {
+              "name" : "Product"
+            },
+            "$ref" : "#/definitions/ProductType"
+          }
+        },
+        "Notes" : {
+          "$ref" : "#/definitions/Notes"
+        },
+        "Messages" : {
+          "$ref" : "#/definitions/Messages"
+        },
+        "altId" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "Stops" : {
+          "$ref" : "#/definitions/Stops"
+        },
+        "Occupancy" : {
+          "type" : "array",
+          "items" : {
+            "xml" : {
+              "name" : "Occupancy"
+            },
+            "$ref" : "#/definitions/OccupancyType"
+          }
+        },
+        "name" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "type" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "stop" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "stopid" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "stopExtId" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "prognosisType" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          },
+          "enum" : [ "PROGNOSED", "MANUAL", "REPORTED", "CORRECTED", "CALCULATED" ]
+        },
+        "time" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "scheduledTimeChanged" : {
+          "type" : "boolean",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "date" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "tz" : {
+          "type" : "integer",
+          "format" : "int32",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "track" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "rtTime" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "rtDate" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "rtTz" : {
+          "type" : "integer",
+          "format" : "int32",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "rtTrack" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "cancelled" : {
+          "type" : "boolean",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "partCancelled" : {
+          "type" : "boolean",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "reachable" : {
+          "type" : "boolean",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "redirected" : {
+          "type" : "boolean",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "direction" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "timeAtArrival" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "dateAtArrival" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "rtTimeAtArrival" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "rtDateAtArrival" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "isFastest" : {
+          "type" : "boolean",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "isBorderStop" : {
+          "type" : "boolean",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "entry" : {
+          "type" : "boolean",
+          "xml" : {
+            "attribute" : true
+          }
+        }
+      }
+    },
+    "DepartureBoard" : {
+      "type" : "object",
+      "properties" : {
+        "TechnicalMessages" : {
+          "$ref" : "#/definitions/TechnicalMessages"
+        },
+        "serverVersion" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "dialectVersion" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "version" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "planRtTs" : {
+          "type" : "string",
+          "format" : "date-time",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "errorCode" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "errorText" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "requestId" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "Departure" : {
+          "type" : "array",
+          "items" : {
+            "xml" : {
+              "name" : "Departure"
+            },
+            "$ref" : "#/definitions/Departure"
+          }
+        },
+        "Message" : {
+          "type" : "array",
+          "items" : {
+            "xml" : {
+              "name" : "Message"
+            },
+            "$ref" : "#/definitions/Message"
+          }
+        },
+        "stopid" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "stopExtId" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        }
+      },
+      "xml" : {
+        "name" : "DepartureBoard",
+        "namespace" : "http://hacon.de/hafas/proxy/hafas-proxy"
+      }
+    },
+    "Directions" : {
+      "type" : "object",
+      "required" : [ "Direction" ],
+      "properties" : {
+        "Direction" : {
+          "type" : "array",
+          "items" : {
+            "xml" : {
+              "name" : "Direction"
+            },
+            "$ref" : "#/definitions/Direction"
+          }
+        }
+      },
+      "xml" : {
+        "name" : "Directions",
+        "namespace" : "http://hacon.de/hafas/proxy/hafas-proxy"
+      }
+    },
+    "Direction" : {
+      "type" : "object",
+      "properties" : {
+        "value" : {
+          "type" : "string"
+        },
+        "routeIdxFrom" : {
+          "type" : "integer",
+          "format" : "int32",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "routeIdxTo" : {
+          "type" : "integer",
+          "format" : "int32",
+          "xml" : {
+            "attribute" : true
+          }
+        }
+      },
+      "xml" : {
+        "name" : "Direction",
+        "namespace" : "http://hacon.de/hafas/proxy/hafas-proxy"
+      }
+    },
+    "Name" : {
+      "type" : "object",
+      "required" : [ "name", "number" ],
+      "properties" : {
+        "Product" : {
+          "$ref" : "#/definitions/ProductType"
+        },
+        "name" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "addName" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "number" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "category" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "routeIdxFrom" : {
+          "type" : "integer",
+          "format" : "int32",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "routeIdxTo" : {
+          "type" : "integer",
+          "format" : "int32",
+          "xml" : {
+            "attribute" : true
+          }
+        }
+      },
+      "xml" : {
+        "name" : "Name",
+        "namespace" : "http://hacon.de/hafas/proxy/hafas-proxy"
+      }
+    },
+    "Names" : {
+      "type" : "object",
+      "required" : [ "Name" ],
+      "properties" : {
+        "Name" : {
+          "type" : "array",
+          "items" : {
+            "xml" : {
+              "name" : "Name"
+            },
+            "$ref" : "#/definitions/Name"
+          }
+        }
+      },
+      "xml" : {
+        "name" : "Names",
+        "namespace" : "http://hacon.de/hafas/proxy/hafas-proxy"
+      }
+    },
+    "JourneyDetail" : {
+      "type" : "object",
+      "required" : [ "Stops", "dayOfOperation", "ref" ],
+      "properties" : {
+        "TechnicalMessages" : {
+          "$ref" : "#/definitions/TechnicalMessages"
+        },
+        "serverVersion" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "dialectVersion" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "version" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "planRtTs" : {
+          "type" : "string",
+          "format" : "date-time",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "errorCode" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "errorText" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "requestId" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "Stops" : {
+          "$ref" : "#/definitions/Stops"
+        },
+        "Names" : {
+          "$ref" : "#/definitions/Names"
+        },
+        "Product" : {
+          "type" : "array",
+          "items" : {
+            "xml" : {
+              "name" : "Product"
+            },
+            "$ref" : "#/definitions/ProductType"
+          }
+        },
+        "Directions" : {
+          "$ref" : "#/definitions/Directions"
+        },
+        "Notes" : {
+          "$ref" : "#/definitions/Notes"
+        },
+        "Messages" : {
+          "$ref" : "#/definitions/Messages"
+        },
+        "JourneyStatus" : {
+          "type" : "string",
+          "enum" : [ "P", "R", "A", "S" ]
+        },
+        "Polyline" : {
+          "$ref" : "#/definitions/Polyline"
+        },
+        "PolylineGroup" : {
+          "$ref" : "#/definitions/PolylineGroup"
+        },
+        "ServiceDays" : {
+          "type" : "array",
+          "items" : {
+            "xml" : {
+              "name" : "ServiceDays"
+            },
+            "$ref" : "#/definitions/ServiceDays"
+          }
+        },
+        "lastPos" : {
+          "$ref" : "#/definitions/Coordinate"
+        },
+        "lastPosReported" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "lastPassRouteIdx" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "lastPassStopRef" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "rtLastPassRouteIdx" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "rtLastPassStopRef" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "ref" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "cancelled" : {
+          "type" : "boolean",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "partCancelled" : {
+          "type" : "boolean",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "reachable" : {
+          "type" : "boolean",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "redirected" : {
+          "type" : "boolean",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "dayOfOperation" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        }
+      },
+      "xml" : {
+        "name" : "JourneyDetail",
+        "namespace" : "http://hacon.de/hafas/proxy/hafas-proxy"
+      }
+    },
+    "JourneyList" : {
+      "type" : "object",
+      "properties" : {
+        "TechnicalMessages" : {
+          "$ref" : "#/definitions/TechnicalMessages"
+        },
+        "serverVersion" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "dialectVersion" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "version" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "planRtTs" : {
+          "type" : "string",
+          "format" : "date-time",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "errorCode" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "errorText" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "requestId" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "Journey" : {
+          "type" : "array",
+          "items" : {
+            "xml" : {
+              "name" : "Journey"
+            },
+            "$ref" : "#/definitions/JourneyType"
+          }
+        }
+      },
+      "xml" : {
+        "name" : "JourneyList",
+        "namespace" : "http://hacon.de/hafas/proxy/hafas-proxy"
+      }
+    },
+    "GisRef" : {
+      "type" : "object",
+      "required" : [ "ref" ],
+      "properties" : {
+        "ref" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        }
+      },
+      "xml" : {
+        "name" : "GisRef",
+        "namespace" : "http://hacon.de/hafas/proxy/hafas-proxy"
+      }
+    },
+    "EcoType" : {
+      "type" : "object",
+      "properties" : {
+        "co2" : {
+          "type" : "number",
+          "format" : "double",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "co2f" : {
+          "type" : "number",
+          "format" : "double",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "part" : {
+          "type" : "number",
+          "format" : "double",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "part10" : {
+          "type" : "number",
+          "format" : "double",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "partV" : {
+          "type" : "number",
+          "format" : "double",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "nmhc" : {
+          "type" : "number",
+          "format" : "double",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "nox" : {
+          "type" : "number",
+          "format" : "double",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "prime" : {
+          "type" : "number",
+          "format" : "double",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "primef" : {
+          "type" : "number",
+          "format" : "double",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "so2" : {
+          "type" : "number",
+          "format" : "double",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "ubp" : {
+          "type" : "number",
+          "format" : "double",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "dist" : {
+          "type" : "integer",
+          "format" : "int32",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "type" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        }
+      }
+    },
+    "GisEdgeType" : {
+      "type" : "object",
+      "properties" : {
+        "edgeId" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "graphId" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        }
+      }
+    },
+    "SotContextType" : {
+      "type" : "object",
+      "required" : [ "locMode" ],
+      "properties" : {
+        "calcDate" : {
+          "type" : "string"
+        },
+        "calcTime" : {
+          "type" : "string"
+        },
+        "journeyId" : {
+          "type" : "string"
+        },
+        "trainName" : {
+          "type" : "string"
+        },
+        "legIdx" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "legIdxFootPathConnection" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "prevLocRouteIdx" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "curLocRouteIdx" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "locRouteIdxFootPathConnection" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "locMode" : {
+          "type" : "string",
+          "enum" : [ "UNKNOWN", "FROM_START", "IN_TRAIN", "AT_PASSED_STOP", "AT_CHANGE_STOP", "BEFORE_TRAVEL", "AT_DESTINATION", "ERROR", "ERROR_SEARCH_FROM_TRAIN_BEFORE_START", "ERROR_IN_RECONSTRUCTION", "TO_BE_DEFINED_IN_SERVER", "ERROR_TRAIN_CANCELLED", "CHECK_COMPLETE_TRAIN", "AT_LAST_USABLE_STOP", "ERROR_ALL_TRAINS_FILTERED", "ERROR_STAY_IN_CURRENT_CONNECTION" ]
+        }
+      }
+    },
+    "FreqType" : {
+      "type" : "object",
+      "properties" : {
+        "journey" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/JourneyType"
+          }
+        },
+        "waitMinimum" : {
+          "type" : "integer",
+          "format" : "int32",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "waitMaximum" : {
+          "type" : "integer",
+          "format" : "int32",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "alternativeCount" : {
+          "type" : "integer",
+          "format" : "int32",
+          "xml" : {
+            "attribute" : true
+          }
+        }
+      }
+    },
+    "LegList" : {
+      "type" : "object",
+      "properties" : {
+        "Leg" : {
+          "type" : "array",
+          "items" : {
+            "xml" : {
+              "name" : "Leg"
+            },
+            "$ref" : "#/definitions/Leg"
+          }
+        }
+      },
+      "xml" : {
+        "name" : "LegList",
+        "namespace" : "http://hacon.de/hafas/proxy/hafas-proxy"
+      }
+    },
+    "PricingType" : {
+      "type" : "object",
+      "required" : [ "idx" ],
+      "properties" : {
+        "any" : {
+          "type" : "object"
+        },
+        "idx" : {
+          "type" : "integer",
+          "format" : "int32",
+          "xml" : {
+            "attribute" : true
+          }
+        }
+      }
+    },
+    "TripStatusType" : {
+      "type" : "object",
+      "properties" : {
+        "detour" : {
+          "type" : "boolean",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "daily" : {
+          "type" : "boolean",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "direct" : {
+          "type" : "boolean",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "subOptimalDirect" : {
+          "type" : "boolean",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "slowDirect" : {
+          "type" : "boolean",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "economic" : {
+          "type" : "boolean",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "convenient" : {
+          "type" : "boolean",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "specialtrain" : {
+          "type" : "boolean",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "ukNationalRouteingGuideFailure" : {
+          "type" : "boolean",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "hint" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "hintCode" : {
+          "type" : "integer",
+          "format" : "int32",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "unsharp" : {
+          "type" : "boolean",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "timeDiffCritical" : {
+          "type" : "boolean",
+          "xml" : {
+            "attribute" : true
+          }
+        }
+      }
+    },
+    "ConnectionReliabilityType" : {
+      "type" : "object",
+      "properties" : {
+        "original" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          },
+          "enum" : [ "GUARANTEED", "HIGH", "LOW", "ABORTIVE", "UNDEF" ]
+        },
+        "alternative" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          },
+          "enum" : [ "GUARANTEED", "HIGH", "LOW", "ABORTIVE", "UNDEF" ]
+        }
+      }
+    },
+    "TripList" : {
+      "type" : "object",
+      "properties" : {
+        "TechnicalMessages" : {
+          "$ref" : "#/definitions/TechnicalMessages"
+        },
+        "serverVersion" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "dialectVersion" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "version" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "planRtTs" : {
+          "type" : "string",
+          "format" : "date-time",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "errorCode" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "errorText" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "requestId" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "Trip" : {
+          "type" : "array",
+          "items" : {
+            "xml" : {
+              "name" : "Trip"
+            },
+            "$ref" : "#/definitions/TripType"
+          }
+        },
+        "Pricing" : {
+          "type" : "array",
+          "items" : {
+            "xml" : {
+              "name" : "Pricing"
+            },
+            "$ref" : "#/definitions/PricingType"
+          }
+        },
+        "SotContext" : {
+          "$ref" : "#/definitions/SotContextType"
+        },
+        "scrB" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "scrF" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "scrReturnB" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "scrReturnF" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        }
+      },
+      "xml" : {
+        "name" : "TripList",
+        "namespace" : "http://hacon.de/hafas/proxy/hafas-proxy"
+      }
+    },
+    "Leg" : {
+      "type" : "object",
+      "required" : [ "Destination", "Origin", "idx", "type" ],
+      "properties" : {
+        "Origin" : {
+          "$ref" : "#/definitions/OriginDestType"
+        },
+        "Destination" : {
+          "$ref" : "#/definitions/OriginDestType"
+        },
+        "Notes" : {
+          "$ref" : "#/definitions/Notes"
+        },
+        "JourneyDetailRef" : {
+          "$ref" : "#/definitions/JourneyDetailRef"
+        },
+        "Freq" : {
+          "$ref" : "#/definitions/FreqType"
+        },
+        "GisRef" : {
+          "$ref" : "#/definitions/GisRef"
+        },
+        "GisRoute" : {
+          "$ref" : "#/definitions/GisRouteType"
+        },
+        "Messages" : {
+          "$ref" : "#/definitions/Messages"
+        },
+        "JourneyStatus" : {
+          "type" : "string",
+          "enum" : [ "P", "R", "A", "S" ]
+        },
+        "Product" : {
+          "type" : "array",
+          "items" : {
+            "xml" : {
+              "name" : "Product"
+            },
+            "$ref" : "#/definitions/ProductType"
+          }
+        },
+        "Polyline" : {
+          "$ref" : "#/definitions/Polyline"
+        },
+        "PolylineGroup" : {
+          "$ref" : "#/definitions/PolylineGroup"
+        },
+        "Stops" : {
+          "$ref" : "#/definitions/Stops"
+        },
+        "ServiceDays" : {
+          "type" : "array",
+          "items" : {
+            "xml" : {
+              "name" : "ServiceDays"
+            },
+            "$ref" : "#/definitions/ServiceDays"
+          }
+        },
+        "JourneyDetail" : {
+          "$ref" : "#/definitions/JourneyDetail"
+        },
+        "ParallelJourney" : {
+          "type" : "array",
+          "items" : {
+            "xml" : {
+              "name" : "ParallelJourney"
+            },
+            "$ref" : "#/definitions/JourneyType"
+          }
+        },
+        "Occupancy" : {
+          "type" : "array",
+          "items" : {
+            "xml" : {
+              "name" : "Occupancy"
+            },
+            "$ref" : "#/definitions/OccupancyType"
+          }
+        },
+        "idx" : {
+          "type" : "integer",
+          "format" : "int32",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "name" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "addName" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "number" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "category" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "type" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "cancelled" : {
+          "type" : "boolean",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "partCancelled" : {
+          "type" : "boolean",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "reachable" : {
+          "type" : "boolean",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "redirected" : {
+          "type" : "boolean",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "direction" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "duration" : {
+          "$ref" : "#/definitions/Duration"
+        },
+        "dist" : {
+          "type" : "integer",
+          "format" : "int32",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "hide" : {
+          "type" : "boolean",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "psCtxArriveEarlier" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "psCtxDepartLater" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "recState" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          },
+          "enum" : [ "U", "C", "P", "N", "O" ]
+        }
+      },
+      "xml" : {
+        "name" : "Leg",
+        "namespace" : "http://hacon.de/hafas/proxy/hafas-proxy"
+      }
+    },
+    "GisRouteType" : {
+      "type" : "object",
+      "properties" : {
+        "seg" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/GisRouteSegment"
+          }
+        },
+        "Notes" : {
+          "$ref" : "#/definitions/Notes"
+        },
+        "polyline" : {
+          "$ref" : "#/definitions/Polyline"
+        },
+        "polylineGroup" : {
+          "$ref" : "#/definitions/PolylineGroup"
+        },
+        "altPolyline" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Polyline"
+          }
+        },
+        "altPolylineGroup" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/PolylineGroup"
+          }
+        },
+        "dist" : {
+          "type" : "integer",
+          "format" : "int32",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "durS" : {
+          "$ref" : "#/definitions/Duration"
+        },
+        "durR" : {
+          "$ref" : "#/definitions/Duration"
+        },
+        "durST" : {
+          "$ref" : "#/definitions/Duration"
+        },
+        "durW2C" : {
+          "$ref" : "#/definitions/Duration"
+        },
+        "durW2D" : {
+          "$ref" : "#/definitions/Duration"
+        },
+        "dirTxt" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "dirGeo" : {
+          "type" : "integer",
+          "format" : "int32",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "edgeHashS" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "edgeHashR" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "totUphill" : {
+          "type" : "number",
+          "format" : "double",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "totDownhill" : {
+          "type" : "number",
+          "format" : "double",
+          "xml" : {
+            "attribute" : true
+          }
+        }
+      }
+    },
+    "TripType" : {
+      "type" : "object",
+      "required" : [ "Destination", "LegList", "Origin" ],
+      "properties" : {
+        "Origin" : {
+          "$ref" : "#/definitions/OriginDestType"
+        },
+        "Destination" : {
+          "$ref" : "#/definitions/OriginDestType"
+        },
+        "Messages" : {
+          "$ref" : "#/definitions/Messages"
+        },
+        "Notes" : {
+          "$ref" : "#/definitions/Notes"
+        },
+        "Eco" : {
+          "$ref" : "#/definitions/EcoType"
+        },
+        "EcoCmp" : {
+          "type" : "array",
+          "items" : {
+            "xml" : {
+              "name" : "EcoCmp"
+            },
+            "$ref" : "#/definitions/EcoType"
+          }
+        },
+        "ServiceDays" : {
+          "type" : "array",
+          "items" : {
+            "xml" : {
+              "name" : "ServiceDays"
+            },
+            "$ref" : "#/definitions/ServiceDays"
+          }
+        },
+        "Freq" : {
+          "$ref" : "#/definitions/FreqType"
+        },
+        "LegList" : {
+          "$ref" : "#/definitions/LegList"
+        },
+        "TariffResult" : {
+          "$ref" : "#/definitions/TariffResult"
+        },
+        "calculation" : {
+          "type" : "string",
+          "enum" : [ "INITIAL", "RETRY_SHARP", "RETRY_UNSHARP", "RETRY_DOUBLE_RADIUS" ]
+        },
+        "Occupancy" : {
+          "type" : "array",
+          "items" : {
+            "xml" : {
+              "name" : "Occupancy"
+            },
+            "$ref" : "#/definitions/OccupancyType"
+          }
+        },
+        "reliability" : {
+          "$ref" : "#/definitions/ConnectionReliabilityType"
+        },
+        "TripStatus" : {
+          "$ref" : "#/definitions/TripStatusType"
+        },
+        "alternative" : {
+          "type" : "boolean",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "hasAlternative" : {
+          "type" : "boolean",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "individualChangeTimes" : {
+          "type" : "boolean",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "valid" : {
+          "type" : "boolean",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "idx" : {
+          "type" : "integer",
+          "format" : "int32",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "tripId" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "ctxRecon" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "duration" : {
+          "$ref" : "#/definitions/Duration"
+        },
+        "rtDuration" : {
+          "$ref" : "#/definitions/Duration"
+        },
+        "ecoUrl" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "checksum" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "transferCount" : {
+          "type" : "integer",
+          "format" : "int32",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "return" : {
+          "type" : "boolean"
+        }
+      }
+    },
+    "OriginDestType" : {
+      "type" : "object",
+      "required" : [ "date", "name", "time", "type" ],
+      "properties" : {
+        "Notes" : {
+          "$ref" : "#/definitions/Notes"
+        },
+        "mcpData" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/KVType"
+          }
+        },
+        "Message" : {
+          "type" : "array",
+          "items" : {
+            "xml" : {
+              "name" : "Message"
+            },
+            "$ref" : "#/definitions/Message"
+          }
+        },
+        "altId" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "mainMastAltId" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "Occupancy" : {
+          "type" : "array",
+          "items" : {
+            "xml" : {
+              "name" : "Occupancy"
+            },
+            "$ref" : "#/definitions/OccupancyType"
+          }
+        },
+        "name" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "type" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "id" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "extId" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "lon" : {
+          "type" : "number",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "lat" : {
+          "type" : "number",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "routeIdx" : {
+          "type" : "integer",
+          "format" : "int32",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "prognosisType" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          },
+          "enum" : [ "PROGNOSED", "MANUAL", "REPORTED", "CORRECTED", "CALCULATED" ]
+        },
+        "time" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "date" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "tz" : {
+          "type" : "integer",
+          "format" : "int32",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "scheduledTimeChanged" : {
+          "type" : "boolean",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "track" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "rtTime" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "rtDate" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "rtTz" : {
+          "type" : "integer",
+          "format" : "int32",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "rtTrack" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "hasMainMast" : {
+          "type" : "boolean",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "mainMastId" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "mainMastExtId" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "alighting" : {
+          "type" : "boolean",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "boarding" : {
+          "type" : "boolean",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "rtAlighting" : {
+          "type" : "boolean",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "rtBoarding" : {
+          "type" : "boolean",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "cancelled" : {
+          "type" : "boolean",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "cancelledDeparture" : {
+          "type" : "boolean",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "cancelledArrival" : {
+          "type" : "boolean",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "additional" : {
+          "type" : "boolean",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "isBorderStop" : {
+          "type" : "boolean",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "entry" : {
+          "type" : "boolean",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "mcp" : {
+          "type" : "boolean",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "trainCompositionMarker" : {
+          "type" : "integer",
+          "format" : "int32",
+          "xml" : {
+            "attribute" : true
+          }
+        }
+      }
+    },
+    "GisRouteSegment" : {
+      "type" : "object",
+      "properties" : {
+        "Notes" : {
+          "$ref" : "#/definitions/Notes"
+        },
+        "Edge" : {
+          "type" : "array",
+          "items" : {
+            "xml" : {
+              "name" : "Edge"
+            },
+            "$ref" : "#/definitions/GisEdgeType"
+          }
+        },
+        "name" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "man" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          },
+          "enum" : [ "NO", "FR", "TO", "ON", "LE", "RI", "KL", "KR", "HL", "HR", "KHL", "KHR", "SL", "SR", "KSL", "KSR", "ST", "UT", "EN", "LV", "ER", "SIR", "LR", "EF", "LF", "CH", "CIF", "COF", "EL", "ELD", "ELU", "ES", "ESD", "ESU", "STA", "STD", "STU" ]
+        },
+        "manTx" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "manTargetName" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "dirTx" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "ori" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          },
+          "enum" : [ "U", "N", "S", "E", "W", "NE", "SE", "NW", "SW" ]
+        },
+        "polyS" : {
+          "type" : "integer",
+          "format" : "int32",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "polyE" : {
+          "type" : "integer",
+          "format" : "int32",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "dist" : {
+          "type" : "integer",
+          "format" : "int32",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "rnum" : {
+          "type" : "string"
+        },
+        "rtype" : {
+          "type" : "string",
+          "enum" : [ "U", "M", "H", "T", "T_4_L", "T_2_L", "TR", "NT", "CT", "R", "B", "CW", "C", "W", "F" ]
+        }
+      }
+    },
+    "HimMessages" : {
+      "type" : "object",
+      "properties" : {
+        "TechnicalMessages" : {
+          "$ref" : "#/definitions/TechnicalMessages"
+        },
+        "serverVersion" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "dialectVersion" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "version" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "planRtTs" : {
+          "type" : "string",
+          "format" : "date-time",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "errorCode" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "errorText" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "requestId" : {
+          "type" : "string",
+          "xml" : {
+            "attribute" : true
+          }
+        },
+        "Message" : {
+          "type" : "array",
+          "items" : {
+            "xml" : {
+              "name" : "Message"
+            },
+            "$ref" : "#/definitions/Message"
+          }
+        }
+      },
+      "xml" : {
+        "name" : "HimMessages",
+        "namespace" : "http://hacon.de/hafas/proxy/hafas-proxy"
+      }
+    }
+  }
+}

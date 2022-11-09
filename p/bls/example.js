@@ -1,9 +1,8 @@
-'use strict'
+import {inspect} from 'util'
+import {createClient} from '../../index.js'
+import {profile} from './index.js'
 
-const createClient = require('../..')
-const blsProfile = require('.')
-
-const client = createClient(blsProfile, 'hafas-client-example')
+const client = createClient(profile, 'hafas-client-example')
 
 const bernDennigkofengässli = '8590093'
 const münsingenSpital = '8578932'
@@ -18,7 +17,7 @@ client.journeys(bernDennigkofengässli, münsingenSpital, {results: 1, stopovers
 // .then(({journeys}) => {
 // 	const [journey] = journeys
 // 	const leg = journey.legs[0]
-// 	return client.trip(leg.tripId, leg.line.name, {polyline: true})
+// 	return client.trip(leg.tripId, {polyline: true})
 // })
 
 // client.departures(bernDennigkofengässli, {duration: 1})
@@ -48,6 +47,6 @@ client.journeys(bernDennigkofengässli, münsingenSpital, {results: 1, stopovers
 // })
 
 .then((data) => {
-	console.log(require('util').inspect(data, {depth: null, colors: true}))
+	console.log(inspect(data, {depth: null, colors: true}))
 })
 .catch(console.error)

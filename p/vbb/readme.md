@@ -5,8 +5,8 @@
 ## Usage
 
 ```js
-const createClient = require('hafas-client')
-const vbbProfile = require('hafas-client/p/vbb')
+import {createClient} from 'hafas-client'
+import {vbbProfile} from 'hafas-client/p/vbb/index.js'
 
 // create a client with VBB profile
 const client = createClient(vbbProfile, 'my-awesome-program')
@@ -16,7 +16,4 @@ const client = createClient(vbbProfile, 'my-awesome-program')
 ## Customisations
 
 - parses *VBB*-specific products (such as *X-Bus*)
-- strips parts from station names that are unnecessary in the Berlin context
-- parses line names to give more information (e.g. "Is it an express bus?")
-- parses *VBB*-specific tickets
 - renames *Ringbahn* line names to contain `⟳` and `⟲`

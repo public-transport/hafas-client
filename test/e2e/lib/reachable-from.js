@@ -1,6 +1,4 @@
-'use strict'
-
-const isPlainObject = require('lodash/isPlainObject')
+import isPlainObject from 'lodash/isPlainObject.js'
 
 const testReachableFrom = async (cfg) => {
 	const {
@@ -12,9 +10,17 @@ const testReachableFrom = async (cfg) => {
 		validate
 	} = cfg
 
-	const results = await reachableFrom(address, {
+	const res = await reachableFrom(address, {
 		when, maxDuration
 	})
+	const {
+		reachable: results,
+		realtimeDataUpdatedAt,
+	} = res
+
+	if (realtimeDataUpdatedAt !== null) { // todo: move this check into validators
+		validate(t, realtimeDataUpdatedAt, 'realtimeDataUpdatedAt', 'res.realtimeDataUpdatedAt')
+	}
 
 	t.ok(Array.isArray(results), 'results must an array')
 	t.ok(results.length > 0, 'results must have >0 items')
@@ -39,4 +45,6 @@ const testReachableFrom = async (cfg) => {
 	t.same(results, sorted, 'results must be sorted by res.duration')
 }
 
-module.exports = testReachableFrom
+export {
+	testReachableFrom,
+}

@@ -1,7 +1,7 @@
-'use strict'
+import _googlePolyline from 'google-polyline'
+import distance from 'gps-distance'
 
-const {decode} = require('google-polyline')
-const distance = require('gps-distance')
+const {decode} = _googlePolyline
 
 // todo: what is p.delta?
 // todo: what is p.type?
@@ -46,4 +46,6 @@ const parsePolyline = (ctx, p) => { // p = raw polyline
 	}
 }
 
-module.exports = parsePolyline
+export {
+	parsePolyline,
+}

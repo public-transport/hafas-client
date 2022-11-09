@@ -20,13 +20,20 @@ With `opt`, you can override the default options, which look like this:
 As an example, we're going to use the [SVV profile](../p/svv):
 
 ```js
-const createClient = require('hafas-client')
-const svvProfile = require('hafas-client/p/svv')
+import {createClient} from 'hafas-client'
+import {svvProfile} from 'hafas-client/p/svv.js'
 
 const client = createClient(svvProfile, 'my-awesome-program')
 
-console.log(await client.remarks())
+const {
+	remarks,
+	realtimeDataUpdatedAt,
+} = await client.remarks()
 ```
+
+`realtimeDataUpdatedAt` is a UNIX timestamp reflecting the latest moment when (at least some of) the response's realtime data have been updated.
+
+`remarks` may look like this:
 
 ```js
 [

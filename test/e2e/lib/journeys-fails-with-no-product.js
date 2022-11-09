@@ -1,6 +1,4 @@
-'use strict'
-
-const journeysFailsWithNoProduct = (cfg) => {
+const journeysFailsWithNoProduct = async (cfg) => {
 	const {
 		test: t,
 		fetchJourneys,
@@ -13,11 +11,11 @@ const journeysFailsWithNoProduct = (cfg) => {
 	const noProducts = Object.create(null)
 	for (let p of products) noProducts[p.id] = false
 
-	t.throws(() => {
-		fetchJourneys(fromId, toId, {departure: when, products: noProducts})
-		// silence rejections, we're only interested in exceptions
-		.catch(() => {})
-	}, 'no products used')
+	await t.rejects(async () => {
+		await fetchJourneys(fromId, toId, {departure: when, products: noProducts})
+	})
 }
 
-module.exports = journeysFailsWithNoProduct
+export {
+	journeysFailsWithNoProduct,
+}

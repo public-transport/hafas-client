@@ -1,6 +1,4 @@
-'use strict'
-
-module.exports = [
+const vsnRemarks = [
 	{
 		id: 'HIM_FREETEXT_14164',
 		type: 'warning',
@@ -26,14 +24,14 @@ module.exports = [
 			{
 				icoCrd: { x: 7875575, y: 52201492 },
 				icon: null,
-				fromLoc: null,
-				toLoc: null
+				fromLocation: null,
+				toLocation: null
 			}
 		],
 		events: [
 			{
-				fromLoc: null,
-				toLoc: null,
+				fromLocation: null,
+				toLocation: null,
 				start: '2020-02-03T11:11:00+01:00',
 				end: '2020-12-13T00:00:00+01:00',
 				sections: []
@@ -79,14 +77,14 @@ module.exports = [
 			{
 				icoCrd: { x: 9395422, y: 51748714 },
 				icon: null,
-				fromLoc: null,
-				toLoc: null
+				fromLocation: null,
+				toLocation: null
 			}
 		],
 		events: [
 			{
-				fromLoc: null,
-				toLoc: null,
+				fromLocation: null,
+				toLocation: null,
 				start: '2019-12-15T00:00:00+01:00',
 				end: '2020-12-12T23:59:00+01:00',
 				sections: []
@@ -139,14 +137,14 @@ module.exports = [
 			{
 				icoCrd: { x: 9435051, y: 51783147 },
 				icon: null,
-				fromLoc: null,
-				toLoc: null
+				fromLocation: null,
+				toLocation: null
 			}
 		],
 		events: [
 			{
-				fromLoc: null,
-				toLoc: null,
+				fromLocation: null,
+				toLocation: null,
 				start: '2019-12-15T00:00:00+01:00',
 				end: '2020-12-12T23:59:00+01:00',
 				sections: []
@@ -213,8 +211,8 @@ module.exports = [
 		categories: [ 0 ],
 		events: [
 			{
-				fromLoc: null,
-				toLoc: null,
+				fromLocation: null,
+				toLocation: null,
 				start: '2020-02-21T11:31:00+01:00',
 				end: '2020-06-30T23:59:00+02:00',
 				sections: []
@@ -288,8 +286,8 @@ module.exports = [
 		categories: [ 0 ],
 		events: [
 			{
-				fromLoc: null,
-				toLoc: null,
+				fromLocation: null,
+				toLocation: null,
 				start: '2020-02-21T11:01:00+01:00',
 				end: '2020-06-30T23:59:00+02:00',
 				sections: []
@@ -330,3 +328,7 @@ module.exports = [
 		modified: '2020-02-21T13:31:05+01:00'
 	}
 ]
+
+export {
+	vsnRemarks,
+}

@@ -1,10 +1,8 @@
-'use strict'
-
 const sLandsbergerAllee = {
 	type: 'stop',
-	id: '900000110004',
+	id: '900110004',
 	stationDHID: 'de:11000:900110004',
-	name: 'S Landsberger Allee',
+	name: 'S Landsberger Allee (Berlin)',
 	location: {
 		type: 'location',
 		id: '900110004',
@@ -29,11 +27,6 @@ const sLandsbergerAllee = {
 		productName: 'S',
 		mode: 'train',
 		product: 'suburban',
-		symbol: 'S',
-		nr: 8,
-		metro: false,
-		express: false,
-		night: false,
 	}, {
 		type: 'line',
 		id: 's41',
@@ -43,11 +36,6 @@ const sLandsbergerAllee = {
 		productName: 'S',
 		mode: 'train',
 		product: 'suburban',
-		symbol: 'S',
-		nr: 41,
-		metro: false,
-		express: false,
-		night: false,
 	}, {
 		type: 'line',
 		id: 's42',
@@ -57,11 +45,6 @@ const sLandsbergerAllee = {
 		productName: 'S',
 		mode: 'train',
 		product: 'suburban',
-		symbol: 'S',
-		nr: 42,
-		metro: false,
-		express: false,
-		night: false,
 	}, {
 		type: 'line',
 		id: 's85',
@@ -71,11 +54,6 @@ const sLandsbergerAllee = {
 		productName: 'S',
 		mode: 'train',
 		product: 'suburban',
-		symbol: 'S',
-		nr: 85,
-		metro: false,
-		express: false,
-		night: false,
 	}, {
 		type: 'line',
 		id: '56',
@@ -85,11 +63,6 @@ const sLandsbergerAllee = {
 		productName: 'Tram',
 		mode: 'train',
 		product: 'tram',
-		symbol: null,
-		nr: 56,
-		metro: false,
-		express: false,
-		night: false,
 	}, {
 		type: 'line',
 		id: 'm2',
@@ -99,11 +72,6 @@ const sLandsbergerAllee = {
 		productName: 'Tram',
 		mode: 'train',
 		product: 'tram',
-		symbol: 'M',
-		nr: 2,
-		metro: true,
-		express: false,
-		night: false,
 	}, {
 		type: 'line',
 		id: 'm5',
@@ -113,11 +81,6 @@ const sLandsbergerAllee = {
 		productName: 'Tram',
 		mode: 'train',
 		product: 'tram',
-		symbol: 'M',
-		nr: 5,
-		metro: true,
-		express: false,
-		night: false,
 	}, {
 		type: 'line',
 		id: 'm6',
@@ -127,11 +90,6 @@ const sLandsbergerAllee = {
 		productName: 'Tram',
 		mode: 'train',
 		product: 'tram',
-		symbol: 'M',
-		nr: 6,
-		metro: true,
-		express: false,
-		night: false,
 	}, {
 		type: 'line',
 		id: 'm8',
@@ -141,11 +99,6 @@ const sLandsbergerAllee = {
 		productName: 'Tram',
 		mode: 'train',
 		product: 'tram',
-		symbol: 'M',
-		nr: 8,
-		metro: true,
-		express: false,
-		night: false,
 	}, {
 		type: 'line',
 		id: 'm10',
@@ -155,11 +108,6 @@ const sLandsbergerAllee = {
 		productName: 'Tram',
 		mode: 'train',
 		product: 'tram',
-		symbol: 'M',
-		nr: 10,
-		metro: true,
-		express: false,
-		night: false,
 	}, {
 		type: 'line',
 		id: '156',
@@ -169,11 +117,6 @@ const sLandsbergerAllee = {
 		productName: 'Bus',
 		mode: 'bus',
 		product: 'bus',
-		symbol: null,
-		nr: 156,
-		metro: false,
-		express: false,
-		night: false,
 	}, {
 		type: 'line',
 		id: 'm6',
@@ -183,11 +126,6 @@ const sLandsbergerAllee = {
 		productName: 'Bus',
 		mode: 'bus',
 		product: 'bus',
-		symbol: 'M',
-		nr: 6,
-		metro: true,
-		express: false,
-		night: false,
 	}, {
 		type: 'line',
 		id: 's41',
@@ -197,11 +135,6 @@ const sLandsbergerAllee = {
 		productName: 'Bus',
 		mode: 'bus',
 		product: 'bus',
-		symbol: 'S',
-		nr: 41,
-		metro: false,
-		express: false,
-		night: false,
 	}, {
 		type: 'line',
 		id: 's42',
@@ -211,11 +144,6 @@ const sLandsbergerAllee = {
 		productName: 'Bus',
 		mode: 'bus',
 		product: 'bus',
-		symbol: 'S',
-		nr: 42,
-		metro: false,
-		express: false,
-		night: false,
 	}],
 }
 
@@ -361,7 +289,7 @@ const bauzeitverlängerung = {
 	modified: '2021-10-27T17:00:45+02:00',
 }
 
-module.exports = [
+const bvgArrivals = [
 	{
 		tripId: '1|18731|26|86|28102021',
 		stop: sLandsbergerAllee,
@@ -372,7 +300,7 @@ module.exports = [
 		plannedPlatform: null,
 		prognosisType: 'prognosed',
 		direction: null,
-		provenance: 'Clara-Jaschke-Str.',
+		provenance: 'Clara-Jaschke-Str. (Berlin)',
 		origin: null,
 		destination: null,
 		line: {
@@ -381,7 +309,7 @@ module.exports = [
 			fahrtNr: '2780',
 			name: 'M5',
 			public: true,
-			adminCode: 'BVT',
+			adminCode: 'BVT---',
 			productName: 'Tram',
 			mode: 'train',
 			product: 'tram',
@@ -390,11 +318,6 @@ module.exports = [
 				id: 'berliner-verkehrsbetriebe',
 				name: 'Berliner Verkehrsbetriebe'
 			},
-			symbol: 'M',
-			nr: 5,
-			metro: true,
-			express: false,
-			night: false
 		},
 		remarks: [
 			{type: 'hint', code: 'bf', text: 'barrierefrei'},
@@ -414,7 +337,7 @@ module.exports = [
 		plannedPlatform: null,
 		prognosisType: 'calculated',
 		direction: null,
-		provenance: 'Ahrensfelde/Stadtgrenze',
+		provenance: 'Ahrensfelde/Stadtgrenze (Berlin)',
 		origin: null,
 		destination: null,
 		line: {
@@ -423,7 +346,7 @@ module.exports = [
 			fahrtNr: '3085',
 			name: 'M8',
 			public: true,
-			adminCode: 'BVT',
+			adminCode: 'BVT---',
 			productName: 'Tram',
 			mode: 'train',
 			product: 'tram',
@@ -432,11 +355,6 @@ module.exports = [
 				id: 'berliner-verkehrsbetriebe',
 				name: 'Berliner Verkehrsbetriebe'
 			},
-			symbol: 'M',
-			nr: 8,
-			metro: true,
-			express: false,
-			night: false
 		},
 		remarks: [
 			{type: 'hint', code: 'bf', text: 'barrierefrei'},
@@ -456,7 +374,7 @@ module.exports = [
 		plannedPlatform: null,
 		prognosisType: 'calculated',
 		direction: null,
-		provenance: 'Clara-Jaschke-Str.',
+		provenance: 'Clara-Jaschke-Str. (Berlin)',
 		origin: null,
 		destination: null,
 		line: {
@@ -465,7 +383,7 @@ module.exports = [
 			fahrtNr: '3151',
 			name: 'M8',
 			public: true,
-			adminCode: 'BVT',
+			adminCode: 'BVT---',
 			productName: 'Tram',
 			mode: 'train',
 			product: 'tram',
@@ -474,11 +392,6 @@ module.exports = [
 				id: 'berliner-verkehrsbetriebe',
 				name: 'Berliner Verkehrsbetriebe'
 			},
-			symbol: 'M',
-			nr: 8,
-			metro: true,
-			express: false,
-			night: false
 		},
 		remarks: [
 			{type: 'hint', code: 'bf', text: 'barrierefrei'},
@@ -498,7 +411,7 @@ module.exports = [
 		plannedPlatform: null,
 		prognosisType: 'prognosed',
 		direction: null,
-		provenance: 'Riesaer Str.',
+		provenance: 'Riesaer Str. (Berlin)',
 		origin: null,
 		destination: null,
 		line: {
@@ -507,7 +420,7 @@ module.exports = [
 			fahrtNr: '3255',
 			name: '56',
 			public: true,
-			adminCode: 'BVT',
+			adminCode: 'BVT---',
 			productName: 'Tram',
 			mode: 'train',
 			product: 'tram',
@@ -516,11 +429,6 @@ module.exports = [
 				id: 'berliner-verkehrsbetriebe',
 				name: 'Berliner Verkehrsbetriebe'
 			},
-			symbol: null,
-			nr: 56,
-			metro: false,
-			express: false,
-			night: false
 		},
 		remarks: [
 			{type: 'hint', code: 'bf', text: 'barrierefrei'},
@@ -540,7 +448,7 @@ module.exports = [
 		plannedPlatform: '2',
 		prognosisType: 'prognosed',
 		direction: null,
-		provenance: 'S Grünau',
+		provenance: 'S Grünau (Berlin)',
 		origin: null,
 		destination: null,
 		line: {
@@ -549,7 +457,7 @@ module.exports = [
 			fahrtNr: '25595',
 			name: 'S8',
 			public: true,
-			adminCode: 'DBS',
+			adminCode: 'DBS---',
 			productName: 'S',
 			mode: 'train',
 			product: 'suburban',
@@ -558,11 +466,6 @@ module.exports = [
 				id: 's-bahn-berlin-gmbh',
 				name: 'S-Bahn Berlin GmbH'
 			},
-			symbol: 'S',
-			nr: 8,
-			metro: false,
-			express: false,
-			night: false
 		},
 		remarks: [
 			{type: 'hint', code: 'bf', text: 'barrierefrei'},
@@ -583,7 +486,7 @@ module.exports = [
 		plannedPlatform: '1',
 		prognosisType: 'prognosed',
 		direction: null,
-		provenance: 'S Südkreuz',
+		provenance: 'S Südkreuz Bhf (Berlin)',
 		origin: null,
 		destination: null,
 		line: {
@@ -592,7 +495,7 @@ module.exports = [
 			fahrtNr: '893',
 			name: 'S41',
 			public: true,
-			adminCode: 'DBS',
+			adminCode: 'DBS---',
 			productName: 'S',
 			mode: 'train',
 			product: 'suburban',
@@ -601,11 +504,6 @@ module.exports = [
 				id: 's-bahn-berlin-gmbh',
 				name: 'S-Bahn Berlin GmbH'
 			},
-			symbol: 'S',
-			nr: 41,
-			metro: false,
-			express: false,
-			night: false
 		},
 		remarks: [
 			{type: 'hint', code: 'bf', text: 'barrierefrei'},
@@ -627,7 +525,7 @@ module.exports = [
 		plannedPlatform: '2',
 		prognosisType: null,
 		direction: null,
-		provenance: 'S Südkreuz',
+		provenance: 'S Südkreuz Bhf (Berlin)',
 		origin: null,
 		destination: null,
 		line: {
@@ -636,7 +534,7 @@ module.exports = [
 			fahrtNr: '1710',
 			name: 'S42',
 			public: true,
-			adminCode: 'DBS',
+			adminCode: 'DBS---',
 			productName: 'S',
 			mode: 'train',
 			product: 'suburban',
@@ -645,11 +543,6 @@ module.exports = [
 				id: 's-bahn-berlin-gmbh',
 				name: 'S-Bahn Berlin GmbH'
 			},
-			symbol: 'S',
-			nr: 42,
-			metro: false,
-			express: false,
-			night: false
 		},
 		remarks: [
 			{type: 'hint', code: 'bf', text: 'barrierefrei'},
@@ -671,7 +564,7 @@ module.exports = [
 		plannedPlatform: null,
 		prognosisType: 'prognosed',
 		direction: null,
-		provenance: 'S Hackescher Markt',
+		provenance: 'S Hackescher Markt (Berlin)',
 		origin: null,
 		destination: null,
 		line: {
@@ -680,7 +573,7 @@ module.exports = [
 			fahrtNr: '3304',
 			name: '56',
 			public: true,
-			adminCode: 'BVT',
+			adminCode: 'BVT---',
 			productName: 'Tram',
 			mode: 'train',
 			product: 'tram',
@@ -689,11 +582,6 @@ module.exports = [
 				id: 'berliner-verkehrsbetriebe',
 				name: 'Berliner Verkehrsbetriebe'
 			},
-			symbol: null,
-			nr: 56,
-			metro: false,
-			express: false,
-			night: false
 		},
 		remarks: [
 			{type: 'hint', code: 'bf', text: 'barrierefrei'},
@@ -713,7 +601,7 @@ module.exports = [
 		plannedPlatform: '2',
 		prognosisType: 'prognosed',
 		direction: null,
-		provenance: 'S Südkreuz',
+		provenance: 'S Südkreuz Bhf (Berlin)',
 		origin: null,
 		destination: null,
 		line: {
@@ -722,7 +610,7 @@ module.exports = [
 			fahrtNr: '1344',
 			name: 'S42',
 			public: true,
-			adminCode: 'DBS',
+			adminCode: 'DBS---',
 			productName: 'S',
 			mode: 'train',
 			product: 'suburban',
@@ -731,11 +619,6 @@ module.exports = [
 				id: 's-bahn-berlin-gmbh',
 				name: 'S-Bahn Berlin GmbH'
 			},
-			symbol: 'S',
-			nr: 42,
-			metro: false,
-			express: false,
-			night: false
 		},
 		remarks: [
 			{type: 'hint', code: 'bf', text: 'barrierefrei'},
@@ -757,7 +640,7 @@ module.exports = [
 		plannedPlatform: null,
 		prognosisType: 'calculated',
 		direction: null,
-		provenance: 'Scharnweberstr./Weichselstr.',
+		provenance: 'Scharnweberstr./Weichselstr. (Berlin)',
 		origin: null,
 		destination: null,
 		line: {
@@ -766,7 +649,7 @@ module.exports = [
 			fahrtNr: '2643',
 			name: 'M5',
 			public: true,
-			adminCode: 'BVT',
+			adminCode: 'BVT---',
 			productName: 'Tram',
 			mode: 'train',
 			product: 'tram',
@@ -775,11 +658,6 @@ module.exports = [
 				id: 'berliner-verkehrsbetriebe',
 				name: 'Berliner Verkehrsbetriebe'
 			},
-			symbol: 'M',
-			nr: 5,
-			metro: true,
-			express: false,
-			night: false
 		},
 		remarks: [
 			{type: 'hint', code: 'bf', text: 'barrierefrei'},
@@ -799,7 +677,7 @@ module.exports = [
 		plannedPlatform: '1',
 		prognosisType: 'prognosed',
 		direction: null,
-		provenance: 'S Südkreuz',
+		provenance: 'S Südkreuz Bhf (Berlin)',
 		origin: null,
 		destination: null,
 		line: {
@@ -808,7 +686,7 @@ module.exports = [
 			fahrtNr: '654',
 			name: 'S41',
 			public: true,
-			adminCode: 'DBS',
+			adminCode: 'DBS---',
 			productName: 'S',
 			mode: 'train',
 			product: 'suburban',
@@ -817,11 +695,6 @@ module.exports = [
 				id: 's-bahn-berlin-gmbh',
 				name: 'S-Bahn Berlin GmbH'
 			},
-			symbol: 'S',
-			nr: 41,
-			metro: false,
-			express: false,
-			night: false
 		},
 		remarks: [
 			{type: 'hint', code: 'bf', text: 'barrierefrei'},
@@ -841,7 +714,7 @@ module.exports = [
 		plannedPlatform: '2',
 		prognosisType: null,
 		direction: null,
-		provenance: 'S Südkreuz',
+		provenance: 'S Südkreuz Bhf (Berlin)',
 		origin: null,
 		destination: null,
 		line: {
@@ -850,7 +723,7 @@ module.exports = [
 			fahrtNr: '1357',
 			name: 'S42',
 			public: true,
-			adminCode: 'DBS',
+			adminCode: 'DBS---',
 			productName: 'S',
 			mode: 'train',
 			product: 'suburban',
@@ -859,11 +732,6 @@ module.exports = [
 				id: 's-bahn-berlin-gmbh',
 				name: 'S-Bahn Berlin GmbH'
 			},
-			symbol: 'S',
-			nr: 42,
-			metro: false,
-			express: false,
-			night: false
 		},
 		remarks: [
 			{type: 'hint', code: 'bf', text: 'barrierefrei'},
@@ -883,7 +751,7 @@ module.exports = [
 		plannedPlatform: null,
 		prognosisType: 'calculated',
 		direction: null,
-		provenance: 'Clara-Jaschke-Str.',
+		provenance: 'Clara-Jaschke-Str. (Berlin)',
 		origin: null,
 		destination: null,
 		line: {
@@ -892,7 +760,7 @@ module.exports = [
 			fahrtNr: '2780',
 			name: 'M5',
 			public: true,
-			adminCode: 'BVT',
+			adminCode: 'BVT---',
 			productName: 'Tram',
 			mode: 'train',
 			product: 'tram',
@@ -901,11 +769,6 @@ module.exports = [
 				id: 'berliner-verkehrsbetriebe',
 				name: 'Berliner Verkehrsbetriebe'
 			},
-			symbol: 'M',
-			nr: 5,
-			metro: true,
-			express: false,
-			night: false
 		},
 		remarks: [
 			{type: 'hint', code: 'bf', text: 'barrierefrei'},
@@ -927,7 +790,7 @@ module.exports = [
 		prognosedPlatform: null,
 		prognosisType: null,
 		direction: null,
-		provenance: 'S Birkenwerder',
+		provenance: 'S Birkenwerder Bhf',
 		origin: null,
 		destination: null,
 		line: {
@@ -936,7 +799,7 @@ module.exports = [
 			fahrtNr: '25467',
 			name: 'S8',
 			public: true,
-			adminCode: 'DBS',
+			adminCode: 'DBS---',
 			productName: 'S',
 			mode: 'train',
 			product: 'suburban',
@@ -945,11 +808,6 @@ module.exports = [
 				id: 's-bahn-berlin-gmbh',
 				name: 'S-Bahn Berlin GmbH'
 			},
-			symbol: 'S',
-			nr: 8,
-			metro: false,
-			express: false,
-			night: false
 		},
 		remarks: [
 			{type: 'hint', code: 'bf', text: 'barrierefrei'},
@@ -980,7 +838,7 @@ module.exports = [
 		plannedPlatform: null,
 		prognosisType: 'calculated',
 		direction: null,
-		provenance: 'Ahrensfelde/Stadtgrenze',
+		provenance: 'Ahrensfelde/Stadtgrenze (Berlin)',
 		origin: null,
 		destination: null,
 		line: {
@@ -989,7 +847,7 @@ module.exports = [
 			fahrtNr: '3085',
 			name: 'M8',
 			public: true,
-			adminCode: 'BVT',
+			adminCode: 'BVT---',
 			productName: 'Tram',
 			mode: 'train',
 			product: 'tram',
@@ -998,11 +856,6 @@ module.exports = [
 				id: 'berliner-verkehrsbetriebe',
 				name: 'Berliner Verkehrsbetriebe'
 			},
-			symbol: 'M',
-			nr: 8,
-			metro: true,
-			express: false,
-			night: false
 		},
 		remarks: [
 			{type: 'hint', code: 'bf', text: 'barrierefrei'},
@@ -1022,7 +875,7 @@ module.exports = [
 		plannedPlatform: null,
 		prognosisType: 'calculated',
 		direction: null,
-		provenance: 'Clara-Jaschke-Str.',
+		provenance: 'Clara-Jaschke-Str. (Berlin)',
 		origin: null,
 		destination: null,
 		line: {
@@ -1031,7 +884,7 @@ module.exports = [
 			fahrtNr: '3151',
 			name: 'M8',
 			public: true,
-			adminCode: 'BVT',
+			adminCode: 'BVT---',
 			productName: 'Tram',
 			mode: 'train',
 			product: 'tram',
@@ -1040,11 +893,6 @@ module.exports = [
 				id: 'berliner-verkehrsbetriebe',
 				name: 'Berliner Verkehrsbetriebe'
 			},
-			symbol: 'M',
-			nr: 8,
-			metro: true,
-			express: false,
-			night: false
 		},
 		remarks: [
 			{type: 'hint', code: 'bf', text: 'barrierefrei'},
@@ -1064,7 +912,7 @@ module.exports = [
 		plannedPlatform: null,
 		prognosisType: 'calculated',
 		direction: null,
-		provenance: 'Riesaer Str.',
+		provenance: 'Riesaer Str. (Berlin)',
 		origin: null,
 		destination: null,
 		line: {
@@ -1073,7 +921,7 @@ module.exports = [
 			fahrtNr: '3255',
 			name: '56',
 			public: true,
-			adminCode: 'BVT',
+			adminCode: 'BVT---',
 			productName: 'Tram',
 			mode: 'train',
 			product: 'tram',
@@ -1082,11 +930,6 @@ module.exports = [
 				id: 'berliner-verkehrsbetriebe',
 				name: 'Berliner Verkehrsbetriebe'
 			},
-			symbol: null,
-			nr: 56,
-			metro: false,
-			express: false,
-			night: false
 		},
 		remarks: [
 			{type: 'hint', code: 'bf', text: 'barrierefrei'},
@@ -1108,7 +951,7 @@ module.exports = [
 		prognosedPlatform: null,
 		prognosisType: null,
 		direction: null,
-		provenance: 'S Grünau',
+		provenance: 'S Grünau (Berlin)',
 		origin: null,
 		destination: null,
 		line: {
@@ -1117,7 +960,7 @@ module.exports = [
 			fahrtNr: '26542',
 			name: 'S85',
 			public: true,
-			adminCode: 'DBS',
+			adminCode: 'DBS---',
 			productName: 'S',
 			mode: 'train',
 			product: 'suburban',
@@ -1126,11 +969,6 @@ module.exports = [
 				id: 's-bahn-berlin-gmbh',
 				name: 'S-Bahn Berlin GmbH'
 			},
-			symbol: 'S',
-			nr: 85,
-			metro: false,
-			express: false,
-			night: false
 		},
 		remarks: [
 			{type: 'hint', code: 'bf', text: 'barrierefrei'},
@@ -1183,7 +1021,7 @@ module.exports = [
 		plannedPlatform: '1',
 		prognosisType: 'prognosed',
 		direction: null,
-		provenance: 'S Südkreuz',
+		provenance: 'S Südkreuz Bhf (Berlin)',
 		origin: null,
 		destination: null,
 		line: {
@@ -1192,7 +1030,7 @@ module.exports = [
 			fahrtNr: '889',
 			name: 'S41',
 			public: true,
-			adminCode: 'DBS',
+			adminCode: 'DBS---',
 			productName: 'S',
 			mode: 'train',
 			product: 'suburban',
@@ -1201,11 +1039,6 @@ module.exports = [
 				id: 's-bahn-berlin-gmbh',
 				name: 'S-Bahn Berlin GmbH'
 			},
-			symbol: 'S',
-			nr: 41,
-			metro: false,
-			express: false,
-			night: false
 		},
 		remarks: [
 			{type: 'hint', code: 'bf', text: 'barrierefrei'},
@@ -1227,7 +1060,7 @@ module.exports = [
 		plannedPlatform: '2',
 		prognosisType: null,
 		direction: null,
-		provenance: 'S Südkreuz',
+		provenance: 'S Südkreuz Bhf (Berlin)',
 		origin: null,
 		destination: null,
 		line: {
@@ -1236,7 +1069,7 @@ module.exports = [
 			fahrtNr: '1706',
 			name: 'S42',
 			public: true,
-			adminCode: 'DBS',
+			adminCode: 'DBS---',
 			productName: 'S',
 			mode: 'train',
 			product: 'suburban',
@@ -1245,11 +1078,6 @@ module.exports = [
 				id: 's-bahn-berlin-gmbh',
 				name: 'S-Bahn Berlin GmbH'
 			},
-			symbol: 'S',
-			nr: 42,
-			metro: false,
-			express: false,
-			night: false
 		},
 		remarks: [
 			{type: 'hint', code: 'bf', text: 'barrierefrei'},
@@ -1271,7 +1099,7 @@ module.exports = [
 		plannedPlatform: '2',
 		prognosisType: null,
 		direction: null,
-		provenance: 'S Südkreuz',
+		provenance: 'S Südkreuz Bhf (Berlin)',
 		origin: null,
 		destination: null,
 		line: {
@@ -1280,7 +1108,7 @@ module.exports = [
 			fahrtNr: '1704',
 			name: 'S42',
 			public: true,
-			adminCode: 'DBS',
+			adminCode: 'DBS---',
 			productName: 'S',
 			mode: 'train',
 			product: 'suburban',
@@ -1289,11 +1117,6 @@ module.exports = [
 				id: 's-bahn-berlin-gmbh',
 				name: 'S-Bahn Berlin GmbH'
 			},
-			symbol: 'S',
-			nr: 42,
-			metro: false,
-			express: false,
-			night: false
 		},
 		remarks: [
 			{type: 'hint', code: 'bf', text: 'barrierefrei'},
@@ -1315,7 +1138,7 @@ module.exports = [
 		plannedPlatform: '2',
 		prognosisType: null,
 		direction: null,
-		provenance: 'S Südkreuz',
+		provenance: 'S Südkreuz Bhf (Berlin)',
 		origin: null,
 		destination: null,
 		line: {
@@ -1324,7 +1147,7 @@ module.exports = [
 			fahrtNr: '1702',
 			name: 'S42',
 			public: true,
-			adminCode: 'DBS',
+			adminCode: 'DBS---',
 			productName: 'S',
 			mode: 'train',
 			product: 'suburban',
@@ -1333,11 +1156,6 @@ module.exports = [
 				id: 's-bahn-berlin-gmbh',
 				name: 'S-Bahn Berlin GmbH'
 			},
-			symbol: 'S',
-			nr: 42,
-			metro: false,
-			express: false,
-			night: false
 		},
 		remarks: [
 			{type: 'hint', code: 'bf', text: 'barrierefrei'},
@@ -1359,7 +1177,7 @@ module.exports = [
 		plannedPlatform: '2',
 		prognosisType: null,
 		direction: null,
-		provenance: 'S Südkreuz',
+		provenance: 'S Südkreuz Bhf (Berlin)',
 		origin: null,
 		destination: null,
 		line: {
@@ -1368,7 +1186,7 @@ module.exports = [
 			fahrtNr: '1700',
 			name: 'S42',
 			public: true,
-			adminCode: 'DBS',
+			adminCode: 'DBS---',
 			productName: 'S',
 			mode: 'train',
 			product: 'suburban',
@@ -1377,11 +1195,6 @@ module.exports = [
 				id: 's-bahn-berlin-gmbh',
 				name: 'S-Bahn Berlin GmbH'
 			},
-			symbol: 'S',
-			nr: 42,
-			metro: false,
-			express: false,
-			night: false
 		},
 		remarks: [
 			{type: 'hint', code: 'bf', text: 'barrierefrei'},
@@ -1403,7 +1216,7 @@ module.exports = [
 		plannedPlatform: '2',
 		prognosisType: null,
 		direction: null,
-		provenance: 'S Südkreuz',
+		provenance: 'S Südkreuz Bhf (Berlin)',
 		origin: null,
 		destination: null,
 		line: {
@@ -1412,7 +1225,7 @@ module.exports = [
 			fahrtNr: '1698',
 			name: 'S42',
 			public: true,
-			adminCode: 'DBS',
+			adminCode: 'DBS---',
 			productName: 'S',
 			mode: 'train',
 			product: 'suburban',
@@ -1421,11 +1234,6 @@ module.exports = [
 				id: 's-bahn-berlin-gmbh',
 				name: 'S-Bahn Berlin GmbH'
 			},
-			symbol: 'S',
-			nr: 42,
-			metro: false,
-			express: false,
-			night: false
 		},
 		remarks: [
 			{type: 'hint', code: 'bf', text: 'barrierefrei'},
@@ -1438,3 +1246,7 @@ module.exports = [
 		currentTripPosition: {type: 'location', latitude: 52.473811, longitude: 13.456142},
 	},
 ]
+
+export {
+	bvgArrivals,
+}

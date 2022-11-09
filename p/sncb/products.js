@@ -1,7 +1,5 @@
-'use strict'
-
 // https://www.belgiantrain.be/en/support/faq/faq-routes-schedules/faq-train-types
-module.exports = [ // todo: 2, 8, 32, 128
+const products = [ // todo: 2, 8, 32, 128
 	{
 		id: 'high-speed-train',
 		mode: 'train',
@@ -59,3 +57,7 @@ module.exports = [ // todo: 2, 8, 32, 128
 		default: true
 	}
 ]
+
+export {
+	products,
+}

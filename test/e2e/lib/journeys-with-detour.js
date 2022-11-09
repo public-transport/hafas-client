@@ -1,5 +1,3 @@
-'use strict'
-
 const testJourneysWithDetour = async (cfg) => {
 	const {test: t, res, validate, detourIds} = cfg
 
@@ -18,4 +16,6 @@ const testJourneysWithDetour = async (cfg) => {
 	t.ok(leg, detourIds.join('/') + ' is not being passed')
 }
 
-module.exports = testJourneysWithDetour
+export {
+	testJourneysWithDetour,
+}

@@ -1,10 +1,8 @@
-'use strict'
+import tap from 'tap'
 
-const tap = require('tap')
-
-const createClient = require('..')
-const withRetrying = require('../retry')
-const vbbProfile = require('../p/vbb')
+import {createClient} from '../index.js'
+import {withRetrying} from '../retry.js'
+import {profile as vbbProfile} from '../p/vbb/index.js'
 
 const userAgent = 'public-transport/hafas-client:test'
 const spichernstr = '900000042101'
@@ -42,9 +40,16 @@ tap.test('withRetrying works', (t) => {
 	})
 	const client = createClient(profile, userAgent)
 
-	t.plan(1 + 4)
+	t.plan(2 + 4)
 	client.departures(spichernstr, {duration: 1})
-	.then(deps => t.same(deps, [], 'resolved with invalid value'))
+	.then((res) => {
+		const {
+			departures: deps,
+			realtimeDataUpdatedAt,
+		} = res
+		t.same(deps, [], 'resolved with invalid value')
+		t.equal(realtimeDataUpdatedAt, null, 'resolved with invalid value')
+	})
 	.catch(t.ifError)
 
 	setTimeout(() => t.equal(calls, 1), 50) // buffer

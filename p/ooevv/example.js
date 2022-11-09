@@ -1,9 +1,8 @@
-'use strict'
+import {inspect} from 'util'
+import {createClient} from '../../index.js'
+import {profile} from './index.js'
 
-const createClient = require('../..')
-const vvvProfile = require('.')
-
-const client = createClient(vvvProfile, 'hafas-client example')
+const client = createClient(profile, 'hafas-client example')
 
 const linzTheatergasse = '444670100'
 const amstettenStadtbad = '431507400'
@@ -18,7 +17,7 @@ const amstettenStadtbad = '431507400'
 // .then(({journeys}) => {
 // 	const [journey] = journeys
 // 	const leg = journey.legs.find(l => !!l.line)
-// 	return client.trip(leg.tripId, leg.line.name, {polyline: true})
+// 	return client.trip(leg.tripId, {polyline: true})
 // })
 
 client.departures(linzTheatergasse, {duration: 12 * 60})
@@ -44,6 +43,6 @@ client.departures(linzTheatergasse, {duration: 12 * 60})
 // })
 
 .then((data) => {
-	console.log(require('util').inspect(data, {depth: null, colors: true}))
+	console.log(inspect(data, {depth: null, colors: true}))
 })
 .catch(console.error)

@@ -1,24 +1,21 @@
-'use strict'
+import tap from 'tap'
 
-const tap = require('tap')
+import {createWhen} from './lib/util.js'
+import {createClient} from '../../index.js'
+import {profile as svvProfile} from '../../p/svv/index.js'
+import {createValidateFptfWith as createValidate} from './lib/validate-fptf-with.js'
+import {testJourneysStationToStation} from './lib/journeys-station-to-station.js'
+import {testArrivals} from './lib/arrivals.js'
+import {testReachableFrom} from './lib/reachable-from.js'
+import {testServerInfo} from './lib/server-info.js'
 
-const {createWhen} = require('./lib/util')
-const createClient = require('../..')
-const svvProfile = require('../../p/svv')
-const products = require('../../p/svv/products')
-const createValidate = require('./lib/validate-fptf-with')
-const testJourneysStationToStation = require('./lib/journeys-station-to-station')
-const testArrivals = require('./lib/arrivals')
-const testReachableFrom = require('./lib/reachable-from')
-const testServerInfo = require('./lib/server-info')
-
-const T_MOCK = 1641897000 * 1000 // 2022-01-11T11:30:00+01
+const T_MOCK = 1657618200 * 1000 // 2022-07-12T11:30+02:00
 const when = createWhen(svvProfile.timezone, svvProfile.locale, T_MOCK)
 
 const cfg = {
 	when,
 	stationCoordsOptional: false,
-	products,
+	products: svvProfile.products,
 	minLatitude: 45.742,
 	maxLatitude: 49.41,
 	minLongitude: 8.177,
@@ -66,20 +63,21 @@ tap.test('trip details', async (t) => {
 	const p = res.journeys[0].legs.find(l => !l.walking)
 	t.ok(p.tripId, 'precondition failed')
 	t.ok(p.line.name, 'precondition failed')
-	const trip = await client.trip(p.tripId, p.line.name, {when})
 
-	validate(t, trip, 'trip', 'trip')
+	const tripRes = await client.trip(p.tripId, {when})
+
+	validate(t, tripRes, 'tripResult', 'res')
 	t.end()
 })
 
 tap.test('arrivals at Volksgarten', async (t) => {
-	const arrivals = await client.arrivals(volksgarten, {
+	const res = await client.arrivals(volksgarten, {
 		duration: 10, when
 	})
 
 	await testArrivals({
 		test: t,
-		arrivals,
+		res,
 		validate,
 		id: volksgarten,
 	})

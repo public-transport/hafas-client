@@ -25,22 +25,25 @@ With `opt`, you can override the default options, which look like this:
 As an example, we're going to use the [VBB profile](../p/vbb):
 
 ```js
-const createClient = require('hafas-client')
-const vbbProfile = require('hafas-client/p/vbb')
+import {createClient} from 'hafas-client'
+import {vbbProfile} from 'hafas-client/p/vbb.js'
 
 const client = createClient(vbbProfile, 'my-awesome-program')
 
-client.radar({
+const {
+	movements,
+	realtimeDataUpdatedAt,
+} = await client.radar({
 	north: 52.52411,
 	west: 13.41002,
 	south: 52.51942,
 	east: 13.41709
 }, {results: 5})
-.then(console.log)
-.catch(console.error)
 ```
 
-The response may look like this:
+`realtimeDataUpdatedAt` is a UNIX timestamp reflecting the latest moment when (at least some of) the response's realtime data have been updated.
+
+`movements` may look like this:
 
 ```js
 [ {

@@ -1,5 +1,3 @@
-'use strict'
-
 const formatStopReq = (ctx, stopRef) => {
 	return {
 		// todo: there's also `StationDetails`, are there differences?
@@ -10,4 +8,6 @@ const formatStopReq = (ctx, stopRef) => {
 	}
 }
 
-module.exports = formatStopReq
+export {
+	formatStopReq,
+}

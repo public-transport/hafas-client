@@ -1,9 +1,8 @@
-'use strict'
+import {inspect} from 'util'
+import {createClient} from '../../index.js'
+import {profile} from './index.js'
 
-const createClient = require('../..')
-const oebbProfile = require('.')
-
-const client = createClient(oebbProfile, 'hafas-client-example')
+const client = createClient(profile, 'hafas-client-example')
 
 // Wien Westbahnhof to Salzburg Hbf
 client.journeys('1291501', '8100002', {results: 1})
@@ -43,6 +42,6 @@ client.journeys('1291501', '8100002', {results: 1})
 // })
 
 .then((data) => {
-	console.log(require('util').inspect(data, {depth: null, colors: true}))
+	console.log(inspect(data, {depth: null, colors: true}))
 })
 .catch(console.error)

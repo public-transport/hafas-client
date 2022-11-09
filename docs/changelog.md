@@ -40,7 +40,7 @@
 
 ## `5.23.0`
 
-- 57084262 expose `departure.destination` & `arrival.origin` ✅
+- 57084262 expose `departure.destination` & `arrival.origin` ✅ – Thanks @bddq!
 
 [🏷 `5.23.0`](https://github.com/public-transport/hafas-client/releases/tag/5.23.0), 2022-02-23
 

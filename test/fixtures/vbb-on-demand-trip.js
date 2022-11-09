@@ -1,6 +1,4 @@
-'use strict'
-
-module.exports = {
+const vbbOnDemandTrip = {
 	id: '1|42971|454|86|24102021',
 	direction: 'Rufbus Niederer-Fläming',
 	line: {
@@ -18,14 +16,7 @@ module.exports = {
 			id: 'verkehrsgesellschaft-teltow-flaming-mbh',
 			name: 'Verkehrsgesellschaft Teltow-Fläming mbH'
 		},
-		symbol: 'R',
-		nr: 777,
-		metro: false,
-		express: false,
-		night: false
 	},
-	reachable: true,
-	realtimeDataUpdatedAt: 1635084435,
 
 	origin: {},
 	departure: null,
@@ -42,4 +33,8 @@ module.exports = {
 	arrivalPlatform: null,
 	plannedArrivalPlatform: null,
 	arrivalPrognosisType: null,
+}
+
+export {
+	vbbOnDemandTrip,
 }

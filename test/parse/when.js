@@ -1,7 +1,5 @@
-'use strict'
-
-const tap = require('tap')
-const parse = require('../../parse/when')
+import tap from 'tap'
+import {parseWhen as parse} from '../../parse/when.js'
 
 const profile = {
 	parseDateTime: ({profile}, date, time, tzOffset, timestamp = false) => {

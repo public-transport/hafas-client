@@ -1,9 +1,12 @@
-'use strict'
+// todo: use import assertions once they're supported by Node.js & ESLint
+// https://github.com/tc39/proposal-import-assertions
+import {createRequire} from 'module'
+const require = createRequire(import.meta.url)
 
-const tap = require('tap')
+import tap from 'tap'
 
-const parseCommon = require('../parse/common')
-const defaultProfile = require('../lib/default-profile')
+import {parseCommonData as parseCommon} from '../parse/common.js'
+import {defaultProfile} from '../lib/default-profile.js'
 const res = require('./fixtures/db-netz-remarks.json')
 
 const profile = {
@@ -40,7 +43,7 @@ tap.test('parseCommon parses a DB Netz response properly', (t) => {
 			icoCrd: { x: 13469131, y: 52614672, type: 'WGS84' },
 			msgRefL: [ 3, 7, 17, 18, 20, 21 ],
 			icon: { type: 'HIM11216', title: null },
-			fromLoc: {
+			fromLocation: {
 				type: 'stop',
 				id: '8011046',
 				name: 'Berlin-Karow (BKAR)',
@@ -52,7 +55,7 @@ tap.test('parseCommon parses a DB Netz response properly', (t) => {
 				},
 				products: { a: true, b: false, c: true }
 			},
-			toLoc: {
+			toLocation: {
 				type: 'stop',
 				id: '8011046',
 				name: 'Berlin-Karow (BKAR)',
@@ -66,7 +69,7 @@ tap.test('parseCommon parses a DB Netz response properly', (t) => {
 			}
 		}],
 		events: [{
-			fromLoc: {
+			fromLocation: {
 				type: 'stop',
 				id: '8011046',
 				name: 'Berlin-Karow (BKAR)',
@@ -78,7 +81,7 @@ tap.test('parseCommon parses a DB Netz response properly', (t) => {
 				},
 				products: { a: true, b: false, c: true }
 			},
-			toLoc: {
+			toLocation: {
 				type: 'stop',
 				id: '8011046',
 				name: 'Berlin-Karow (BKAR)',

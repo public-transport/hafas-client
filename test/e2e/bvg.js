@@ -1,43 +1,47 @@
-'use strict'
-
 // todo: DRY with vbb tests
-const tap = require('tap')
 
-const isRoughlyEqual = require('is-roughly-equal')
-const {DateTime} = require('luxon')
-const flatMap = require('lodash/flatMap')
+import tap from 'tap'
 
-const createClient = require('../..')
-const bvgProfile = require('../../p/bvg')
-const products = require('../../p/bvg/products')
-const createValidate = require('./lib/validate-fptf-with')
+import isRoughlyEqual from 'is-roughly-equal'
+import {DateTime} from 'luxon'
+import flatMap from 'lodash/flatMap.js'
+
+import {createWhen} from './lib/util.js'
+import {createClient} from '../../index.js'
+import {profile as bvgProfile} from '../../p/bvg/index.js'
+import {createValidateFptfWith as createValidate} from './lib/validate-fptf-with.js'
+import {createVbbBvgValidators} from './lib/vbb-bvg-validators.js'
+import {testJourneysStationToStation} from './lib/journeys-station-to-station.js'
+import {testJourneysStationToAddress} from './lib/journeys-station-to-address.js'
+import {testJourneysStationToPoi} from './lib/journeys-station-to-poi.js'
+import {testJourneysWalkingSpeed} from './lib/journeys-walking-speed.js'
+import {testEarlierLaterJourneys} from './lib/earlier-later-journeys.js'
+import {testLegCycleAlternatives} from './lib/leg-cycle-alternatives.js'
+import {testRefreshJourney} from './lib/refresh-journey.js'
+import {journeysFailsWithNoProduct} from './lib/journeys-fails-with-no-product.js'
+import {testDepartures} from './lib/departures.js'
+import {testDeparturesInDirection} from './lib/departures-in-direction.js'
+import {testArrivals} from './lib/arrivals.js'
+import {testJourneysWithDetour} from './lib/journeys-with-detour.js'
+import {testReachableFrom} from './lib/reachable-from.js'
+import {testRemarks} from './lib/remarks.js'
+import {testLines} from './lib/lines.js'
+
+const T_MOCK = 1657618200 * 1000 // 2022-07-12T11:30+02:00
+const when = createWhen(bvgProfile.timezone, bvgProfile.locale, T_MOCK)
+
 const {
 	cfg,
 	validateStation,
-	validateLine,
 	validateJourneyLeg,
 	validateDeparture,
 	validateMovement
-} = require('./lib/vbb-bvg-validators')
-const testJourneysStationToStation = require('./lib/journeys-station-to-station')
-const testJourneysStationToAddress = require('./lib/journeys-station-to-address')
-const testJourneysStationToPoi = require('./lib/journeys-station-to-poi')
-const testJourneysWalkingSpeed = require('./lib/journeys-walking-speed')
-const testEarlierLaterJourneys = require('./lib/earlier-later-journeys')
-const testLegCycleAlternatives = require('./lib/leg-cycle-alternatives')
-const testRefreshJourney = require('./lib/refresh-journey')
-const journeysFailsWithNoProduct = require('./lib/journeys-fails-with-no-product')
-const testDepartures = require('./lib/departures')
-const testDeparturesInDirection = require('./lib/departures-in-direction')
-const testArrivals = require('./lib/arrivals')
-const testJourneysWithDetour = require('./lib/journeys-with-detour')
-const testReachableFrom = require('./lib/reachable-from')
-
-const when = cfg.when
+} = createVbbBvgValidators({
+	when,
+})
 
 const validate = createValidate(cfg, {
 	station: validateStation,
-	line: validateLine,
 	journeyLeg: validateJourneyLeg,
 	departure: validateDeparture,
 	movement: validateMovement
@@ -45,13 +49,13 @@ const validate = createValidate(cfg, {
 
 const client = createClient(bvgProfile, 'public-transport/hafas-client:test')
 
-const amrumerStr = '900000009101'
-const spichernstr = '900000042101'
-const bismarckstr = '900000024201'
-const westhafen = '900000001201'
-const wedding = '900000009104'
-const württembergallee = '900000026153'
-const tiergarten = '900000003103'
+const amrumerStr = '900009101'
+const spichernstr = '900042101'
+const bismarckstr = '900024201'
+const westhafen = '900001201'
+const wedding = '900009104'
+const württembergallee = '900026153'
+const tiergarten = '900003103'
 const jannowitzbrücke = '900000100004'
 
 const hour = 60 * 60 * 1000
@@ -110,14 +114,14 @@ tap.test('journeys – only subway', async (t) => {
 	t.end()
 })
 
-tap.test('journeys – fails with no product', (t) => {
-	journeysFailsWithNoProduct({
+tap.test('journeys – fails with no product', async (t) => {
+	await journeysFailsWithNoProduct({
 		test: t,
 		fetchJourneys: client.journeys,
 		fromId: spichernstr,
 		toId: bismarckstr,
 		when,
-		products
+		products: bvgProfile.products,
 	})
 	t.end()
 })
@@ -165,7 +169,7 @@ tap.skip('journeys: walkingSpeed', async (t) => {
 		latitude: 52.443576,
 		longitude: 13.198973
 	}
-	const wannsee = '900000053301'
+	const wannsee = '900053301'
 
 	await testJourneysWalkingSpeed({
 		test: t,
@@ -221,9 +225,10 @@ tap.test('trip details', async (t) => {
 	const p = res.journeys[0].legs.find(l => !l.walking)
 	t.ok(p.tripId, 'precondition failed')
 	t.ok(p.line.name, 'precondition failed')
-	const trip = await client.trip(p.tripId, p.line.name, {when})
 
-	validate(t, trip, 'trip', 'trip')
+	const tripRes = await client.trip(p.tripId, {when})
+
+	validate(t, tripRes, 'tripResult', 'res')
 	t.end()
 })
 
@@ -295,13 +300,13 @@ tap.test('journeys: via works – with detour', async (t) => {
 // todo: without detour test
 
 tap.test('departures', async (t) => {
-	const departures = await client.departures(spichernstr, {
+	const res = await client.departures(spichernstr, {
 		duration: 5, when
 	})
 
 	await testDepartures({
 		test: t,
-		departures,
+		res,
 		validate,
 		id: spichernstr
 	})
@@ -309,7 +314,7 @@ tap.test('departures', async (t) => {
 })
 
 tap.test('departures with station object', async (t) => {
-	const deps = await client.departures({
+	const res = await client.departures({
 		type: 'station',
 		id: spichernstr,
 		name: 'U Spichernstr',
@@ -320,7 +325,7 @@ tap.test('departures with station object', async (t) => {
 		}
 	}, {when})
 
-	validate(t, deps, 'departures', 'departures')
+	validate(t, res, 'departuresResponse', 'res')
 	t.end()
 })
 
@@ -345,13 +350,13 @@ tap.test('departures at 7-digit station', async (t) => {
 })
 
 tap.test('arrivals', async (t) => {
-	const arrivals = await client.arrivals(spichernstr, {
+	const res = await client.arrivals(spichernstr, {
 		duration: 5, when
 	})
 
 	await testArrivals({
 		test: t,
-		arrivals,
+		res,
 		validate,
 		id: spichernstr
 	})
@@ -359,8 +364,8 @@ tap.test('arrivals', async (t) => {
 })
 
 tap.test('nearby', async (t) => {
-	const berlinerStr = '900000044201'
-	const landhausstr = '900000043252'
+	const berlinerStr = '900044201'
+	const landhausstr = '900043252'
 
 	// Berliner Str./Bundesallee
 	const nearby = await client.nearby({
@@ -375,13 +380,13 @@ tap.test('nearby', async (t) => {
 	validate(t, nearby, 'locations', 'nearby')
 
 	t.equal(nearby[0].id, berlinerStr)
-	t.equal(nearby[0].name, 'U Berliner Str.')
+	t.equal(nearby[0].name, 'U Berliner Str. (Berlin)')
 	t.ok(nearby[0].distance > 0)
 	t.ok(nearby[0].distance < 100)
 
 	const res = nearby.find(s => s.id === landhausstr)
 	t.ok(res, `Landhausstr. ${landhausstr} is not among the nearby stops`)
-	t.equal(nearby[1].name, 'Landhausstr.')
+	t.equal(nearby[1].name, 'Landhausstr. (Berlin)')
 	t.ok(nearby[1].distance > 100)
 	t.ok(nearby[1].distance < 200)
 
@@ -411,7 +416,7 @@ tap.test('stop', async (t) => {
 })
 
 tap.test('radar', async (t) => {
-	const vehicles = await client.radar({
+	const res = await client.radar({
 		north: 52.52411,
 		west: 13.41002,
 		south: 52.51942,
@@ -420,7 +425,7 @@ tap.test('radar', async (t) => {
 		duration: 5 * 60, when
 	})
 
-	validate(t, vehicles, 'movements', 'vehicles')
+	validate(t, res, 'radarResult', 'res')
 	t.end()
 })
 
@@ -439,6 +444,26 @@ tap.test('reachableFrom', async (t) => {
 		when,
 		maxDuration: 15,
 		validate
+	})
+	t.end()
+})
+
+tap.test('remarks', async (t) => {
+	await testRemarks({
+		test: t,
+		fetchRemarks: client.remarks,
+		when,
+		validate,
+	})
+	t.end()
+})
+
+tap.test('lines', async (t) => {
+	await testLines({
+		test: t,
+		fetchLines: client.lines,
+		validate,
+		query: 'M10',
 	})
 	t.end()
 })

@@ -1,18 +1,16 @@
-'use strict'
+import tap from 'tap'
+import isRoughlyEqual from 'is-roughly-equal'
 
-const tap = require('tap')
-const isRoughlyEqual = require('is-roughly-equal')
-
-const {createWhen} = require('./lib/util')
-const createClient = require('../..')
-const dbBusradarNrwProfile = require('../../p/db-busradar-nrw')
-const createValidate = require('./lib/validate-fptf-with')
-const testDepartures = require('./lib/departures')
-const testArrivals = require('./lib/arrivals')
+import {createWhen} from './lib/util.js'
+import {createClient} from '../../index.js'
+import {profile as dbBusradarNrwProfile} from '../../p/db-busradar-nrw/index.js'
+import {createValidateFptfWith as createValidate} from './lib/validate-fptf-with.js'
+import {testDepartures} from './lib/departures.js'
+import {testArrivals} from './lib/arrivals.js'
 
 const isObj = o => o !== null && 'object' === typeof o && !Array.isArray(o)
 
-const T_MOCK = 1641897000 * 1000 // 2022-01-11T11:30:00+01
+const T_MOCK = 1657618200 * 1000 // 2022-07-12T11:30+02:00
 const when = createWhen(dbBusradarNrwProfile.timezone, dbBusradarNrwProfile.locale, T_MOCK)
 
 const cfg = {
@@ -34,13 +32,13 @@ const bielefeldHbf = '8000036'
 const hagenVorhalle = '8000977'
 
 tap.test('departures at Hagen Bauhaus', async (t) => {
-	const departures = await client.departures(hagenBauhaus, {
+	const res = await client.departures(hagenBauhaus, {
 		duration: 120, when,
 	})
 
 	await testDepartures({
 		test: t,
-		departures,
+		res,
 		validate,
 		id: hagenBauhaus
 	})
@@ -48,21 +46,22 @@ tap.test('departures at Hagen Bauhaus', async (t) => {
 })
 
 tap.test('trip details', async (t) => {
-	const deps = await client.departures(hagenBauhaus, {
+	const res = await client.departures(hagenBauhaus, {
 		results: 1, duration: 120, when
 	})
 
-	const p = deps[0] || {}
+	const p = res.departures[0] || {}
 	t.ok(p.tripId, 'precondition failed')
 	t.ok(p.line.name, 'precondition failed')
-	const trip = await client.trip(p.tripId, p.line.name, {when})
 
-	validate(t, trip, 'trip', 'trip')
+	const tripRes = await client.trip(p.tripId, {when})
+
+	validate(t, tripRes, 'tripResult', 'res')
 	t.end()
 })
 
 tap.test('departures with station object', async (t) => {
-	const deps = await client.departures({
+	const res = await client.departures({
 		type: 'station',
 		id: hagenBauhaus,
 		name: 'Hagen(Westf) Bauhaus',
@@ -73,20 +72,20 @@ tap.test('departures with station object', async (t) => {
 		}
 	}, {when, duration: 120})
 
-	validate(t, deps, 'departures', 'departures')
+	validate(t, res, 'departuresResponse', 'res')
 	t.end()
 })
 
 // todo: departures at hagenBauhaus in direction of …
 
 tap.test('arrivals at Hagen Bauhaus', async (t) => {
-	const arrivals = await client.arrivals(hagenBauhaus, {
+	const res = await client.arrivals(hagenBauhaus, {
 		duration: 120, when
 	})
 
 	await testArrivals({
 		test: t,
-		arrivals,
+		res,
 		validate,
 		id: hagenBauhaus
 	})
@@ -122,7 +121,7 @@ tap.test('station Hagen-Vorhalle', async (t) => {
 })
 
 tap.test('radar', async (t) => {
-	const vehicles = await client.radar({
+	const res = await client.radar({
 		north: 51.5,
 		west: 7.2,
 		south: 51.2,
@@ -135,6 +134,6 @@ tap.test('radar', async (t) => {
 		...cfg,
 		stationCoordsOptional: true,
 	}, {})
-	validate(t, vehicles, 'movements', 'vehicles')
+	validate(t, res, 'radarResult', 'res')
 	t.end()
 })

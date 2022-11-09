@@ -1,0 +1,28 @@
+{
+	"ver": "1.44",
+	"ext": "BVG.1",
+	"lang": "deu",
+	"id": "3xmggksuiukkx6wx",
+	"err": "OK",
+	"graph": {
+		"id": "standard",
+		"index": 0
+	},
+	"subGraph": {
+		"id": "global",
+		"index": 0
+	},
+	"view": {
+		"id": "standard",
+		"index": 0,
+		"type": "WGS84"
+	},
+	"svcResL": [
+		{
+			"meth": "StationBoard",
+			"err": "H9360",
+			"errTxt": "HAFAS Kernel: Date outside of the timetable period.",
+			"errTxtOut": "Fehler bei der Datumseingabe oder Datum außerhalb der Fahrplanperiode (01.05.2022 - 10.12.2022)"
+		}
+	]
+}

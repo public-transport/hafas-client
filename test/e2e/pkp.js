@@ -1,20 +1,17 @@
-'use strict'
+import tap from 'tap'
 
-const tap = require('tap')
-
-const { createWhen } = require('./lib/util')
-const createClient = require('../..')
-const pkpProfile = require('../../p/pkp')
-const products = require('../../p/pkp/products')
-const {
-	line: createValidateLine,
-	journeyLeg: createValidateJourneyLeg,
-	movement: _validateMovement
-} = require('./lib/validators')
-const createValidate = require('./lib/validate-fptf-with')
-const testJourneysStationToStation = require('./lib/journeys-station-to-station')
-const testArrivals = require('./lib/arrivals')
-const testReachableFrom = require('./lib/reachable-from')
+import {createWhen} from './lib/util.js'
+import {createClient} from '../../index.js'
+import {profile as pkpProfile} from '../../p/pkp/index.js'
+import {
+	createValidateLine,
+	createValidateJourneyLeg,
+	createValidateMovement,
+} from './lib/validators.js'
+import {createValidateFptfWith as createValidate} from './lib/validate-fptf-with.js'
+import {testJourneysStationToStation} from './lib/journeys-station-to-station.js'
+import {testArrivals} from './lib/arrivals.js'
+import {testReachableFrom} from './lib/reachable-from.js'
 
 const T_MOCK = 1641897000 * 1000 // 2022-01-11T11:30:00+01
 const when = createWhen(pkpProfile.timezone, pkpProfile.locale, T_MOCK)
@@ -22,7 +19,7 @@ const when = createWhen(pkpProfile.timezone, pkpProfile.locale, T_MOCK)
 const cfg = {
 	when,
 	stationCoordsOptional: false,
-	products,
+	products: pkpProfile.products,
 	minLatitude: 40,
 	maxLatitude: 65,
 	minLongitude: 10,
@@ -41,6 +38,7 @@ const validateJourneyLeg = (validate, l, name) => {
 	_validateJourneyLeg(validate, l, name)
 }
 
+const _validateMovement = createValidateMovement(cfg)
 const validateMovement = (val, m, name) => {
 	if (!m.direction) m = Object.assign({}, m, { direction: 'foo' })
 	_validateMovement(val, m, name)
@@ -99,9 +97,10 @@ tap.skip('trip details', async (t) => {
 	const p = res.journeys[0].legs.find(l => !l.walking)
 	t.ok(p.tripId, 'precondition failed')
 	t.ok(p.line.name, 'precondition failed')
-	const trip = await client.trip(p.tripId, p.line.name, { when })
 
-	validate(t, trip, 'trip', 'trip')
+	const tripRes = await client.trip(p.tripId, {when})
+
+	validate(t, tripRes, 'tripResult', 'res')
 	t.end()
 })
 
@@ -130,7 +129,7 @@ tap.skip('nearby', async (t) => {
 })
 
 tap.skip('radar', async (t) => {
-	const vehicles = await client.radar({
+	const res = await client.radar({
 		north: 48.74453,
 		west: 11.42733,
 		south: 48.73453,
@@ -139,7 +138,7 @@ tap.skip('radar', async (t) => {
 		duration: 5 * 60, when, results: 10
 	})
 
-	validate(t, vehicles, 'movements', 'vehicles')
+	validate(t, res, 'radarResult', 'res')
 	t.end()
 })
 
