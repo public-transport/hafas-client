@@ -1,5 +1,14 @@
 # Changelog
 
+## `5.26.2`
+
+- a60083f8 parse `trip.scheduledDays` ✅
+- b6900a3d parse `journey.scheduleDays` using `fpB` & `fpE` 🐛✅ – Thanks @bergmannjg!
+- f530a30f mention related libs 📝
+- 5ff8527b tweak & restructure docs 📝, explicit defaults
+
+[🏷 `5.26.2`](https://github.com/public-transport/hafas-client/releases/tag/5.26.2), 2022-10-15
+
 ## `5.26.1`
 
 - 0f7382e3 `parseArrival` & `parseDeparture`: properly parse `.origin` & `destination` 🐛
