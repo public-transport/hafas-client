@@ -490,7 +490,8 @@ const createClient = (profile, userAgent, opt = {}) => {
 			polyline: false, // return a track shape?
 			subStops: true, // parse & expose sub-stops of stations?
 			entrances: true, // parse & expose entrances of stops/stations?
-			remarks: true // parse & expose hints & warnings?
+			remarks: true, // parse & expose hints & warnings?
+			scheduledDays: false, // parse & expose dates trip is valid on?
 		}, opt)
 
 		const req = profile.formatTripReq({profile, opt}, id, lineName)

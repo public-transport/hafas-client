@@ -16,6 +16,7 @@ const opt = {
 	subStops: false,
 	entrances: true,
 	remarks: true,
+	scheduledDays: true,
 	when: '2021-10-28T09:28:00+02:00',
 }
 

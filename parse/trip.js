@@ -5,7 +5,7 @@ const maxBy = require('lodash/maxBy')
 const last = require('lodash/last')
 
 const parseTrip = (ctx, t) => { // t = raw trip
-	const {profile, res} = ctx
+	const {profile, opt, res} = ctx
 
 	// pretend the trip is a leg in a journey
 	const fakeLeg = {
@@ -28,6 +28,20 @@ const parseTrip = (ctx, t) => { // t = raw trip
 	trip.id = trip.tripId
 	delete trip.tripId
 	// todo [breaking]: delete trip.reachable
+
+	if (opt.scheduledDays) {
+		const nrOfStopovers = t.stopL.length
+		// trips seem to use sDaysL[], journeys use sDays
+		const sDaysL = Array.isArray(t.sDaysL) ? t.sDaysL : []
+		const matchingSDays = sDaysL.filter((sDays) => {
+			return sDays.fLocIdx === 0 && sDays.tLocIdx === (nrOfStopovers - 1)
+		})
+
+		// if there are >1 sDays, we don't know how to interpret them
+		const sDays = matchingSDays.length === 1 ? matchingSDays[0] : null
+		// todo [breaking]: rename to scheduledDates
+		trip.scheduledDays = profile.parseScheduledDays(ctx, sDays)
+	}
 
 	if (res.planrtTS) {
 		// todo [breaking]: remove here
