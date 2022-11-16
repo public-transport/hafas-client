@@ -3,14 +3,27 @@
 const {DateTime} = require('luxon')
 const findRemarks = require('./find-remarks')
 
-const parseScheduledDays = (sDaysB, year, profile) => {
+// todo: DRY with parse/date-time.js
+const parseDate = (date) => {
+	const res = {
+		year: parseInt(date.substr(-8, 4)),
+		month: parseInt(date.substr(-4, 2)),
+		day: parseInt(date.substr(-2, 2)),
+	}
+	if (!Number.isInteger(res.year) || !Number.isInteger(res.month) || !Number.isInteger(res.day)) {
+		throw new Error('invalid date format: ' + date)
+	}
+	return res
+}
+
+const parseScheduledDays = (sDaysB, fpB, fpE, profile) => {
 	sDaysB = Buffer.from(sDaysB, 'hex')
 	const res = Object.create(null)
 
+	const _fpB = parseDate(fpB)
 	let d = DateTime.fromObject({
 		zone: profile.timezone, locale: profile.locale,
-		year, // Expected to be in the correct tz offset!
-		month: 1, day: 1,
+		year: _fpB.year, month: _fpB.month, day: _fpB.day,
 		hour: 0, minute: 0, second: 0, millisecond: 0
 	})
 	for (let b = 0; b < sDaysB.length; b++) {
@@ -58,8 +71,12 @@ const parseJourney = (ctx, j) => { // j = raw jouney
 	}
 
 	if (opt.scheduledDays) {
-		const year = parseInt(j.date.slice(0, 4))
-		res.scheduledDays = parseScheduledDays(j.sDays.sDaysB, year, profile)
+		// sDaysB is a bitmap mapping all days from fpB (first date of schedule) to fpE (last date in schedule).
+		const {sDaysB} = j.sDays
+		const {fpB, fpE} = ctx.res
+		if (sDaysB && fpB && fpE) {
+			res.scheduledDays = parseScheduledDays(sDaysB, fpB, fpE, profile)
+		}
 	}
 
 	return res

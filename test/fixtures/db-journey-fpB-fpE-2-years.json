@@ -1,0 +1,1977 @@
+{
+	"common": {
+		"locL": [
+			{
+				"lid": "A=1@O=Köln Messe/Deutz@X=6975000@Y=50940872@U=80@L=8003368@",
+				"type": "S",
+				"name": "Köln Messe/Deutz",
+				"icoX": 0,
+				"extId": "8003368",
+				"state": "F",
+				"crd": {
+					"x": 6974578,
+					"y": 50940989,
+					"z": 0,
+					"floor": 0
+				},
+				"pCls": 319
+			},
+			{
+				"lid": "A=1@O=Köln Messe/Deutz Gl.11-12@X=6974065@Y=50941717@U=80@L=8073368@",
+				"type": "S",
+				"name": "Köln Messe/Deutz Gl.11-12",
+				"icoX": 0,
+				"extId": "8073368",
+				"state": "F",
+				"crd": {
+					"x": 6975162,
+					"y": 50940602,
+					"z": 0,
+					"floor": 0
+				},
+				"pCls": 319,
+				"entry": true,
+				"mMastLocX": 0
+			},
+			{
+				"lid": "A=1@O=Köln Hbf@X=6958730@Y=50943029@U=80@L=8000207@",
+				"type": "S",
+				"name": "Köln Hbf",
+				"icoX": 0,
+				"extId": "8000207",
+				"state": "F",
+				"crd": {
+					"x": 6959197,
+					"y": 50942823,
+					"z": 0,
+					"floor": 0
+				},
+				"pCls": 319
+			},
+			{
+				"lid": "A=1@O=Frankfurt(M) Flughafen Fernbf@X=8570181@Y=50053169@U=80@L=8070003@",
+				"type": "S",
+				"name": "Frankfurt(M) Flughafen Fernbf",
+				"icoX": 0,
+				"extId": "8070003",
+				"state": "F",
+				"crd": {
+					"x": 8569776,
+					"y": 50052926,
+					"z": 0,
+					"floor": 0
+				},
+				"pCls": 31
+			},
+			{
+				"lid": "A=1@O=Frankfurt(M) Flughafen Regionalbf@X=8571250@Y=50051219@U=80@L=8070004@",
+				"type": "S",
+				"name": "Frankfurt(M) Flughafen Regionalbf",
+				"icoX": 0,
+				"extId": "8070004",
+				"state": "F",
+				"crd": {
+					"x": 8571349,
+					"y": 50051389,
+					"z": 0,
+					"floor": 0
+				},
+				"pCls": 31
+			},
+			{
+				"lid": "A=1@O=Mainz Hbf@X=8258723@Y=50001113@U=80@L=8000240@",
+				"type": "S",
+				"name": "Mainz Hbf",
+				"icoX": 0,
+				"extId": "8000240",
+				"state": "F",
+				"crd": {
+					"x": 8258453,
+					"y": 50001239,
+					"z": 0,
+					"floor": 0
+				},
+				"pCls": 319
+			}
+		],
+		"prodL": [
+			{
+				"name": "RE 28520",
+				"nameS": "DPN",
+				"number": "28520",
+				"icoX": 1,
+				"cls": 8,
+				"oprX": 0,
+				"prodCtx": {
+					"name": "RE 28520",
+					"num": "28520",
+					"matchId": "5",
+					"catOut": "RE",
+					"catOutS": "DPN",
+					"catOutL": "National Express",
+					"catIn": "DPN",
+					"catCode": "3",
+					"admin": "NXRE__",
+					"addName": "RE     5"
+				},
+				"addName": "RE 5"
+			},
+			{
+				"name": "Walk",
+				"icoX": 6,
+				"prodCtx": {
+					"name": "Walk"
+				}
+			},
+			{
+				"name": "ICE 721",
+				"number": "721",
+				"icoX": 0,
+				"cls": 1,
+				"oprX": 1,
+				"prodCtx": {
+					"name": "ICE  721",
+					"num": "721",
+					"matchId": "41",
+					"catOut": "ICE",
+					"catOutS": "ICE",
+					"catOutL": "Intercity-Express",
+					"catIn": "ICE",
+					"catCode": "0",
+					"admin": "80____"
+				}
+			},
+			{
+				"name": "S 8",
+				"nameS": "8",
+				"number": "8",
+				"icoX": 11,
+				"cls": 16,
+				"oprX": 2,
+				"prodCtx": {
+					"name": "S      8",
+					"num": "35848",
+					"line": "8",
+					"matchId": "8",
+					"catOut": "S",
+					"catOutS": "s",
+					"catOutL": "S-Bahn",
+					"catIn": "s",
+					"catCode": "4",
+					"admin": "800528"
+				}
+			},
+			{
+				"name": "S 8",
+				"nameS": "8",
+				"number": "8",
+				"icoX": 11,
+				"cls": 16,
+				"oprX": 2,
+				"prodCtx": {
+					"name": "S      8",
+					"num": "35848",
+					"line": "8",
+					"lineId": "4_800528_8",
+					"matchId": "8",
+					"catOut": "S",
+					"catOutS": "s",
+					"catOutL": "S-Bahn",
+					"catIn": "s",
+					"catCode": "4",
+					"admin": "800528"
+				}
+			},
+			{
+				"name": "IC 2217",
+				"number": "2217",
+				"icoX": 15,
+				"cls": 2,
+				"oprX": 1,
+				"prodCtx": {
+					"name": "IC  2217",
+					"num": "2217",
+					"matchId": "30",
+					"catOut": "IC",
+					"catOutS": "IC",
+					"catOutL": "Intercity",
+					"catIn": "IC",
+					"catCode": "1",
+					"admin": "80____"
+				}
+			},
+			{
+				"name": "ICE 109",
+				"number": "109",
+				"icoX": 0,
+				"cls": 1,
+				"oprX": 1,
+				"prodCtx": {
+					"name": "ICE  109",
+					"num": "109",
+					"matchId": "43",
+					"catOut": "ICE",
+					"catOutS": "ICE",
+					"catOutL": "Intercity-Express",
+					"catIn": "ICE",
+					"catCode": "0",
+					"admin": "80____"
+				}
+			},
+			{
+				"name": "RB 29258",
+				"nameS": "DPN",
+				"number": "29258",
+				"icoX": 20,
+				"cls": 8,
+				"oprX": 3,
+				"prodCtx": {
+					"name": "RB 29258",
+					"num": "29258",
+					"matchId": "31",
+					"catOut": "RB",
+					"catOutS": "DPN",
+					"catOutL": "vlexx",
+					"catIn": "DPN",
+					"catCode": "3",
+					"admin": "V6RB__",
+					"addName": "RB    31"
+				},
+				"addName": "RB 31"
+			}
+		],
+		"opL": [
+			{
+				"name": "National Express",
+				"icoX": 2
+			},
+			{
+				"name": "DB Fernverkehr AG",
+				"icoX": 7
+			},
+			{
+				"name": "DB Regio AG S-Bahn Rhein-Main",
+				"icoX": 12
+			},
+			{
+				"name": "vlexx",
+				"icoX": 21
+			}
+		],
+		"remL": [
+			{
+				"type": "A",
+				"code": "N ",
+				"prio": 5,
+				"icoX": 3,
+				"txtN": "\"RRX Rhein-Ruhr-Express\""
+			},
+			{
+				"type": "A",
+				"code": "PF",
+				"prio": 200,
+				"icoX": 3,
+				"txtN": "Please wear an FFP2 mask. You are legally required to do so"
+			},
+			{
+				"type": "A",
+				"code": "FB",
+				"prio": 260,
+				"icoX": 4,
+				"txtN": "Number of bicycles conveyed limited"
+			},
+			{
+				"type": "A",
+				"code": "RG",
+				"prio": 560,
+				"icoX": 3,
+				"txtN": "Behindertengerechtes Fahrzeug"
+			},
+			{
+				"type": "A",
+				"code": "RO",
+				"prio": 560,
+				"icoX": 5,
+				"txtN": "space for wheelchairs"
+			},
+			{
+				"type": "A",
+				"code": "LS",
+				"prio": 605,
+				"icoX": 3,
+				"txtN": "power sockets for laptop"
+			},
+			{
+				"type": "A",
+				"code": "KL",
+				"prio": 610,
+				"icoX": 3,
+				"txtN": "air conditioning"
+			},
+			{
+				"type": "A",
+				"code": "WV",
+				"prio": 710,
+				"icoX": 3,
+				"txtN": "Wifi available"
+			},
+			{
+				"type": "A",
+				"code": "CK",
+				"prio": 200,
+				"icoX": 3,
+				"txtN": "Komfort Check-in possible (visit bahn.de/kci for more information)"
+			},
+			{
+				"type": "A",
+				"code": "PM",
+				"prio": 200,
+				"icoX": 3,
+				"txtN": "Please wear an FFP2 mask. You are legally required to do so"
+			},
+			{
+				"type": "A",
+				"code": "BR",
+				"prio": 450,
+				"icoX": 9,
+				"txtN": "Bordrestaurant"
+			},
+			{
+				"type": "A",
+				"code": "IT",
+				"prio": 100,
+				"icoX": 10,
+				"txtN": "ICE Sprinter"
+			},
+			{
+				"type": "A",
+				"code": "X7",
+				"prio": 100,
+				"icoX": 3,
+				"txtN": "walking distance 300 m"
+			},
+			{
+				"type": "A",
+				"code": "EH",
+				"prio": 560,
+				"icoX": 3,
+				"txtN": "vehicle-mounted access aid"
+			},
+			{
+				"type": "M",
+				"code": "",
+				"icoX": 13,
+				"txtS": "S 8: Mainz-Bischofsheim->Mainz Römisches Theater: Information.",
+				"txtN": "Usually this train has a high load.",
+				"sIdx": 4
+			},
+			{
+				"type": "H",
+				"code": "",
+				"icoX": 14,
+				"txtN": "ICE Sprinter"
+			},
+			{
+				"type": "D",
+				"code": "",
+				"icoX": 16,
+				"txtN": "Delay of previous train",
+				"sIdx": 0
+			},
+			{
+				"type": "A",
+				"code": "FR",
+				"prio": 260,
+				"icoX": 17,
+				"txtN": "Bicycles conveyed - subject to reservation"
+			},
+			{
+				"type": "A",
+				"code": "BT",
+				"prio": 450,
+				"icoX": 18,
+				"txtN": "Bordbistro"
+			},
+			{
+				"type": "M",
+				"code": "",
+				"icoX": 19,
+				"txtS": "ICE 109: Köln Hbf->Frankfurt(M) Flughafen Fernbf: Information.",
+				"txtN": "Train running with only one train segment. No coaches 31 - 39. Train service with reduced number of seats.",
+				"sIdx": 0
+			},
+			{
+				"type": "C",
+				"code": "",
+				"icoX": 19,
+				"txtN": "Current information available."
+			}
+		],
+		"icoL": [
+			{
+				"res": "ICE"
+			},
+			{
+				"res": "RE"
+			},
+			{
+				"res": "DPN",
+				"txt": "National Express"
+			},
+			{
+				"res": "attr_info"
+			},
+			{
+				"res": "attr_bike"
+			},
+			{
+				"res": "attr_wchair"
+			},
+			{
+				"res": "prod_walk"
+			},
+			{
+				"res": "D",
+				"txt": "DB Fernverkehr AG"
+			},
+			{
+				"res": "rt_ont"
+			},
+			{
+				"res": "attr_resto"
+			},
+			{
+				"res": "attr_sprinter"
+			},
+			{
+				"res": "S"
+			},
+			{
+				"res": "s",
+				"txt": "DB Regio AG S-Bahn Rhein-Main"
+			},
+			{
+				"res": "HimLow"
+			},
+			{
+				"res": "Sprinter"
+			},
+			{
+				"res": "IC"
+			},
+			{
+				"res": "Empty"
+			},
+			{
+				"res": "attr_bike_r"
+			},
+			{
+				"res": "attr_bistro"
+			},
+			{
+				"res": "HimInfo"
+			},
+			{
+				"res": "RB"
+			},
+			{
+				"res": "DPN",
+				"txt": "vlexx"
+			},
+			{
+				"res": "cl_all"
+			}
+		],
+		"tcocL": [
+			{
+				"c": "FIRST",
+				"r": 3
+			},
+			{
+				"c": "SECOND",
+				"r": 2
+			},
+			{
+				"c": "FIRST",
+				"r": 1
+			},
+			{
+				"c": "SECOND",
+				"r": 1
+			},
+			{
+				"c": "FIRST",
+				"r": 2
+			}
+		],
+		"lDrawStyleL": [
+			{
+				"sIcoX": 1,
+				"type": "SOLID"
+			},
+			{
+				"type": "SOLID"
+			},
+			{
+				"sIcoX": 6,
+				"type": "SOLID"
+			},
+			{
+				"type": "DOT"
+			},
+			{
+				"sIcoX": 0,
+				"type": "SOLID"
+			},
+			{
+				"sIcoX": 11,
+				"type": "SOLID"
+			},
+			{
+				"sIcoX": 15,
+				"type": "SOLID"
+			},
+			{
+				"sIcoX": 20,
+				"type": "SOLID"
+			}
+		]
+	},
+	"outConL": [
+		{
+			"cid": "C-0",
+			"date": "20221116",
+			"dur": "015500",
+			"durS": "015800",
+			"durR": "015500",
+			"chg": 2,
+			"sDays": {
+				"sDaysR": "runs 16. Nov 2022 ",
+				"sDaysB": "000000000000000000000000000000000000000000000000000000000000000000000000000000000001F0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+			},
+			"isAlt": true,
+			"dep": {
+				"locX": 2,
+				"idx": 12,
+				"dProdX": 0,
+				"dPltfS": {
+					"type": "PL",
+					"txt": "1 A-C"
+				},
+				"dTimeS": "143100",
+				"dTimeR": "143400",
+				"dProgType": "PROGNOSED",
+				"dTZOffset": 60,
+				"type": "N"
+			},
+			"arr": {
+				"locX": 5,
+				"idx": 21,
+				"aProdX": 3,
+				"aPltfS": {
+					"type": "PL",
+					"txt": "1a"
+				},
+				"aTimeS": "162900",
+				"aProgType": "PROGNOSED",
+				"aTZOffset": 60,
+				"type": "N"
+			},
+			"secL": [
+				{
+					"type": "JNY",
+					"dep": {
+						"locX": 2,
+						"idx": 12,
+						"dProdX": 0,
+						"dPltfS": {
+							"type": "PL",
+							"txt": "1 A-C"
+						},
+						"dTimeS": "143100",
+						"dTimeR": "143400",
+						"dProgType": "PROGNOSED",
+						"dTZOffset": 60,
+						"type": "N"
+					},
+					"arr": {
+						"locX": 0,
+						"idx": 13,
+						"aProdX": 0,
+						"aPltfS": {
+							"type": "PL",
+							"txt": "1"
+						},
+						"aTimeS": "143300",
+						"aTimeR": "143600",
+						"aProgType": "PROGNOSED",
+						"aTZOffset": 60,
+						"type": "N"
+					},
+					"jny": {
+						"jid": "1|274796|1|80|16112022",
+						"prodX": 0,
+						"dirTxt": "Wesel",
+						"dirFlg": "2",
+						"status": "P",
+						"isRchbl": true,
+						"pos": {
+							"x": 6977913,
+							"y": 50940710
+						},
+						"ctxRecon": "T$A=1@O=Köln Hbf@L=8000207@a=128@$A=1@O=Köln Messe/Deutz@L=8003368@a=128@$202211161431$202211161433$RE 28520$$1$$$$$$",
+						"msgL": [
+							{
+								"type": "REM",
+								"remX": 0,
+								"sty": "I",
+								"fLocX": 2,
+								"tLocX": 0,
+								"fIdx": 12,
+								"tIdx": 13,
+								"tagL": [
+									"RES_JNY_DTL"
+								],
+								"sort": 537526272
+							},
+							{
+								"type": "REM",
+								"remX": 1,
+								"sty": "I",
+								"fLocX": 2,
+								"tLocX": 0,
+								"fIdx": 12,
+								"tIdx": 13,
+								"tagL": [
+									"RES_JNY_DTL"
+								],
+								"sort": 831520768
+							},
+							{
+								"type": "REM",
+								"remX": 2,
+								"sty": "I",
+								"fLocX": 2,
+								"tLocX": 0,
+								"fIdx": 12,
+								"tIdx": 13,
+								"tagL": [
+									"RES_JNY_DTL_L"
+								],
+								"sort": 839385088
+							},
+							{
+								"type": "REM",
+								"remX": 3,
+								"sty": "I",
+								"fLocX": 2,
+								"tLocX": 0,
+								"fIdx": 12,
+								"tIdx": 13,
+								"tagL": [
+									"RES_JNY_DTL"
+								],
+								"sort": 878706688
+							},
+							{
+								"type": "REM",
+								"remX": 4,
+								"sty": "I",
+								"fLocX": 2,
+								"tLocX": 0,
+								"fIdx": 12,
+								"tIdx": 13,
+								"tagL": [
+									"RES_JNY_DTL_L"
+								],
+								"sort": 878706688
+							},
+							{
+								"type": "REM",
+								"remX": 5,
+								"sty": "I",
+								"fLocX": 2,
+								"tLocX": 0,
+								"fIdx": 12,
+								"tIdx": 13,
+								"tagL": [
+									"RES_JNY_DTL"
+								],
+								"sort": 884604928
+							},
+							{
+								"type": "REM",
+								"remX": 6,
+								"sty": "I",
+								"fLocX": 2,
+								"tLocX": 0,
+								"fIdx": 12,
+								"tIdx": 13,
+								"tagL": [
+									"RES_JNY_DTL"
+								],
+								"sort": 885260288
+							},
+							{
+								"type": "REM",
+								"remX": 7,
+								"sty": "I",
+								"fLocX": 2,
+								"tLocX": 0,
+								"fIdx": 12,
+								"tIdx": 13,
+								"tagL": [
+									"RES_JNY_DTL"
+								],
+								"sort": 898367488
+							}
+						],
+						"chRatingRT": 2,
+						"subscr": "F",
+						"chgDurR": 10,
+						"prodL": [
+							{
+								"prodX": 0,
+								"fLocX": 2,
+								"tLocX": 0,
+								"fIdx": 12,
+								"tIdx": 13
+							}
+						],
+						"sumLDrawStyleX": 0,
+						"resLDrawStyleX": 1,
+						"trainStartDate": "20221116",
+						"durS": "000200"
+					},
+					"minChg": "000700",
+					"resState": "N",
+					"resRecommendation": "N"
+				},
+				{
+					"type": "WALK",
+					"dep": {
+						"locX": 0,
+						"dTimeS": "143300",
+						"dTimeR": "143600",
+						"dProgType": "CALCULATED",
+						"dTZOffset": 60,
+						"type": "N"
+					},
+					"arr": {
+						"locX": 1,
+						"aTimeS": "144000",
+						"aTimeR": "144300",
+						"aProgType": "CALCULATED",
+						"aTZOffset": 60,
+						"type": "N"
+					},
+					"gis": {
+						"dist": 115,
+						"durS": "000700",
+						"dirGeo": 12,
+						"ctx": "H|1|W$A=1@O=Köln Messe/Deutz@L=8003368@a=128@$A=1@O=Köln Messe/Deutz Gl.11-12@L=8073368@a=128@$202211161433$202211161440$$$1$$$$$$",
+						"gisPrvr": "H",
+						"getDescr": true,
+						"getPoly": true,
+						"sumLDrawStyleX": 2,
+						"resLDrawStyleX": 3,
+						"prodX": 1
+					},
+					"resState": "N",
+					"resRecommendation": "N"
+				},
+				{
+					"type": "JNY",
+					"dep": {
+						"locX": 1,
+						"idx": 3,
+						"dProdX": 2,
+						"dPltfS": {
+							"type": "PL",
+							"txt": "11"
+						},
+						"dTimeS": "144400",
+						"dTimeR": "144600",
+						"dProgType": "PROGNOSED",
+						"dTrnCmpSX": {
+							"tcocX": [
+								0,
+								1
+							],
+							"tcM": 1
+						},
+						"dTZOffset": 60,
+						"type": "N"
+					},
+					"arr": {
+						"locX": 3,
+						"idx": 4,
+						"aProdX": 2,
+						"aPltfS": {
+							"type": "PL",
+							"txt": "Fern 4"
+						},
+						"aTimeS": "153300",
+						"aTimeR": "153300",
+						"aProgType": "PROGNOSED",
+						"aTrnCmpSX": {
+							"tcM": 1
+						},
+						"aTZOffset": 60,
+						"type": "N"
+					},
+					"jny": {
+						"jid": "1|185620|0|80|16112022",
+						"prodX": 2,
+						"dirTxt": "München Hbf",
+						"dirFlg": "1",
+						"status": "P",
+						"isRchbl": true,
+						"pos": {
+							"x": 6996053,
+							"y": 51014476
+						},
+						"ctxRecon": "T$A=1@O=Köln Messe/Deutz Gl.11-12@L=8073368@a=128@$A=1@O=Frankfurt(M) Flughafen Fernbf@L=8070003@a=128@$202211161444$202211161533$ICE  721$$1$$$$$$",
+						"msgL": [
+							{
+								"type": "REM",
+								"remX": 8,
+								"sty": "I",
+								"fLocX": 1,
+								"tLocX": 3,
+								"fIdx": 3,
+								"tIdx": 4,
+								"tagL": [
+									"RES_JNY_DTL"
+								],
+								"sort": 831520768
+							},
+							{
+								"type": "REM",
+								"remX": 9,
+								"sty": "I",
+								"fLocX": 1,
+								"tLocX": 3,
+								"fIdx": 3,
+								"tIdx": 4,
+								"tagL": [
+									"RES_JNY_DTL"
+								],
+								"sort": 831520768
+							},
+							{
+								"type": "REM",
+								"remX": 10,
+								"sty": "I",
+								"fLocX": 1,
+								"tLocX": 3,
+								"fIdx": 3,
+								"tIdx": 4,
+								"tagL": [
+									"RES_JNY_DTL_L"
+								],
+								"sort": 864288768
+							},
+							{
+								"type": "REM",
+								"remX": 11,
+								"sty": "I",
+								"fLocX": 1,
+								"tLocX": 3,
+								"fIdx": 3,
+								"tIdx": 4,
+								"tagL": [
+									"RES_JNY_DTL_L"
+								],
+								"sort": 818413568
+							}
+						],
+						"subscr": "F",
+						"chgDurR": 30,
+						"prodL": [
+							{
+								"prodX": 2,
+								"fLocX": 1,
+								"tLocX": 3,
+								"fIdx": 3,
+								"tIdx": 4
+							}
+						],
+						"dTrnCmpSX": {
+							"tcocX": [
+								0,
+								1
+							]
+						},
+						"sumLDrawStyleX": 4,
+						"resLDrawStyleX": 1,
+						"trainStartDate": "20221116",
+						"durS": "004900",
+						"tcocXL": [
+							0,
+							1
+						]
+					},
+					"minChg": "001500",
+					"resState": "N",
+					"resRecommendation": "N"
+				},
+				{
+					"type": "WALK",
+					"dep": {
+						"locX": 3,
+						"dTimeS": "153300",
+						"dTZOffset": 60,
+						"type": "N"
+					},
+					"arr": {
+						"locX": 4,
+						"aTimeS": "154800",
+						"aTZOffset": 60,
+						"type": "N"
+					},
+					"gis": {
+						"dist": 230,
+						"durS": "001500",
+						"dirGeo": 26,
+						"ctx": "H|1|W$A=1@O=Frankfurt(M) Flughafen Fernbf@L=8070003@a=128@$A=1@O=Frankfurt(M) Flughafen Regionalbf@L=8070004@a=128@$202211161533$202211161548$$$1$$$$$$",
+						"gisPrvr": "H",
+						"msgL": [
+							{
+								"type": "REM",
+								"remX": 12,
+								"sty": "I",
+								"tagL": [
+									"RES_JNY_DTL_H1"
+								],
+								"sort": 818413568
+							}
+						],
+						"getDescr": true,
+						"getPoly": true,
+						"sumLDrawStyleX": 2,
+						"resLDrawStyleX": 3,
+						"prodX": 1
+					},
+					"resState": "N",
+					"resRecommendation": "N"
+				},
+				{
+					"type": "JNY",
+					"dep": {
+						"locX": 4,
+						"idx": 13,
+						"dProdX": 3,
+						"dPltfS": {
+							"type": "PL",
+							"txt": "Regio 3"
+						},
+						"dTimeS": "160300",
+						"dProgType": "PROGNOSED",
+						"dTrnCmpSX": {
+							"tcM": 1
+						},
+						"dTZOffset": 60,
+						"type": "N"
+					},
+					"arr": {
+						"locX": 5,
+						"idx": 21,
+						"aProdX": 3,
+						"aPltfS": {
+							"type": "PL",
+							"txt": "1a"
+						},
+						"aTimeS": "162900",
+						"aProgType": "PROGNOSED",
+						"aTrnCmpSX": {
+							"tcM": 1
+						},
+						"aTZOffset": 60,
+						"type": "N"
+					},
+					"jny": {
+						"jid": "1|263782|0|80|16112022",
+						"prodX": 4,
+						"dirTxt": "Wiesbaden Hbf",
+						"status": "P",
+						"isRchbl": true,
+						"freq": {
+							"minC": 30,
+							"maxC": 31,
+							"numC": 4
+						},
+						"ctxRecon": "T$A=1@O=Frankfurt(M) Flughafen Regionalbf@L=8070004@a=128@$A=1@O=Mainz Hbf@L=8000240@a=128@$202211161603$202211161629$S      8$$1$$$$$$",
+						"msgL": [
+							{
+								"type": "REM",
+								"remX": 1,
+								"sty": "I",
+								"fLocX": 4,
+								"tLocX": 5,
+								"fIdx": 13,
+								"tIdx": 21,
+								"tagL": [
+									"RES_JNY_DTL"
+								],
+								"sort": 831520768
+							},
+							{
+								"type": "REM",
+								"remX": 2,
+								"sty": "I",
+								"fLocX": 4,
+								"tLocX": 5,
+								"fIdx": 13,
+								"tIdx": 21,
+								"tagL": [
+									"RES_JNY_DTL_L"
+								],
+								"sort": 839385088
+							},
+							{
+								"type": "REM",
+								"remX": 13,
+								"sty": "I",
+								"fLocX": 4,
+								"tLocX": 5,
+								"fIdx": 13,
+								"tIdx": 21,
+								"tagL": [
+									"RES_JNY_DTL"
+								],
+								"sort": 878706688
+							},
+							{
+								"type": "REM",
+								"remX": 6,
+								"sty": "I",
+								"fLocX": 4,
+								"tLocX": 5,
+								"fIdx": 13,
+								"tIdx": 21,
+								"tagL": [
+									"RES_JNY_DTL"
+								],
+								"sort": 885260288
+							},
+							{
+								"type": "REM",
+								"remX": 14,
+								"sty": "I",
+								"prio": 240,
+								"fIdx": -1,
+								"tIdx": -1,
+								"tagL": [
+									"RES_CON_FTR_H3"
+								],
+								"sort": 818413568
+							}
+						],
+						"subscr": "F",
+						"prodL": [
+							{
+								"prodX": 4,
+								"fLocX": 4,
+								"tLocX": 5,
+								"fIdx": 13,
+								"tIdx": 21
+							}
+						],
+						"sumLDrawStyleX": 5,
+						"resLDrawStyleX": 1,
+						"trainStartDate": "20221116",
+						"durS": "002600"
+					},
+					"resState": "N",
+					"resRecommendation": "N"
+				}
+			],
+			"ctxRecon": "T$A=1@O=Köln Hbf@L=8000207@a=128@$A=1@O=Köln Messe/Deutz@L=8003368@a=128@$202211161431$202211161433$RE 28520$$1$$$$$$§W$A=1@O=Köln Messe/Deutz@L=8003368@a=128@$A=1@O=Köln Messe/Deutz Gl.11-12@L=8073368@a=128@$202211161433$202211161440$$$1$$$$$$§T$A=1@O=Köln Messe/Deutz Gl.11-12@L=8073368@a=128@$A=1@O=Frankfurt(M) Flughafen Fernbf@L=8070003@a=128@$202211161444$202211161533$ICE  721$$1$$$$$$§W$A=1@O=Frankfurt(M) Flughafen Fernbf@L=8070003@a=128@$A=1@O=Frankfurt(M) Flughafen Regionalbf@L=8070004@a=128@$202211161533$202211161548$$$1$$$$$$§T$A=1@O=Frankfurt(M) Flughafen Regionalbf@L=8070004@a=128@$A=1@O=Mainz Hbf@L=8000240@a=128@$202211161603$202211161629$S      8$$1$$$$$$",
+			"freq": {
+				"minC": 30
+			},
+			"trfRes": {
+				"statusCode": "NA",
+				"fareSetL": [
+					{
+						"fareL": [
+							{
+								"desc": "Fares not available",
+								"isFromPrice": false,
+								"isPartPrice": false,
+								"isBookable": false,
+								"isUpsell": false,
+								"buttonText": "To offer selection",
+								"price": {
+									"amount": -1
+								},
+								"retPriceIsCompletePrice": false,
+								"retPrice": -1
+							}
+						]
+					}
+				]
+			},
+			"msgL": [
+				{
+					"type": "REM",
+					"remX": 15,
+					"sty": "I",
+					"prio": 200,
+					"fIdx": -1,
+					"tIdx": -1,
+					"tagL": [
+						"SUM_CON_FTR_H3"
+					],
+					"sort": 147324928
+				}
+			],
+			"conSubscr": "N",
+			"resState": "N",
+			"resRecommendation": "N",
+			"recState": "U",
+			"sotRating": 0,
+			"isSotCon": false,
+			"showARSLink": true,
+			"sotCtxt": {
+				"cnLocX": 0,
+				"calcDate": "20221116",
+				"ctLocX": 1,
+				"ctSectX": 2,
+				"jid": "1|274796|1|80|-1",
+				"locMode": "AT_CHANGE_STOP",
+				"pLocX": 0,
+				"reqMode": "UNKNOWN",
+				"sectX": 0,
+				"calcTime": "143717"
+			},
+			"cksum": "6749e23b_3",
+			"cksumDti": "9c219755_3",
+			"dTrnCmpSX": {
+				"tcocX": [
+					0,
+					1
+				]
+			},
+			"intvlSubscr": "F",
+			"tcocXL": [
+				0,
+				1
+			],
+			"originType": "INITIAL"
+		},
+		{
+			"cid": "C-1",
+			"date": "20221116",
+			"dur": "014700",
+			"durS": "020500",
+			"durR": "020600",
+			"chg": 0,
+			"sDays": {
+				"sDaysR": "runs 16. Nov until 9. Dec 2022 We - Fr;  not 25. Nov until 2. Dec 2022; also 19. until 22. Nov 2022 ",
+				"sDaysB": "01FFFC000FE0C18307FFFFCF9F1E000FFFE7DF9FFE0004001FFFFFFFE7FFFFFFFFFFFFFFFFFFE0007FFFFFF000E0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+			},
+			"dep": {
+				"locX": 2,
+				"idx": 15,
+				"dProdX": 5,
+				"dPltfS": {
+					"type": "PL",
+					"txt": "7"
+				},
+				"dTimeS": "145300",
+				"dTimeR": "145600",
+				"dProgType": "PROGNOSED",
+				"dTrnCmpSX": {
+					"tcocX": [
+						2,
+						3
+					]
+				},
+				"dTZOffset": 60,
+				"msgL": [
+					{
+						"type": "REM",
+						"remX": 16,
+						"sty": "I",
+						"txtC": {
+							"r": 204,
+							"g": 0,
+							"b": 0
+						},
+						"prio": 478,
+						"fIdx": -1,
+						"tIdx": -1,
+						"tagL": [
+							"RES_LOC_H3"
+						],
+						"sort": 818413568
+					}
+				],
+				"type": "N"
+			},
+			"arr": {
+				"locX": 5,
+				"idx": 18,
+				"aProdX": 5,
+				"aPltfS": {
+					"type": "PL",
+					"txt": "5a/b"
+				},
+				"aTimeS": "163900",
+				"aTimeR": "164300",
+				"aProgType": "PROGNOSED",
+				"aTZOffset": 60,
+				"type": "N"
+			},
+			"secL": [
+				{
+					"type": "JNY",
+					"dep": {
+						"locX": 2,
+						"idx": 15,
+						"dProdX": 5,
+						"dPltfS": {
+							"type": "PL",
+							"txt": "7"
+						},
+						"dTimeS": "145300",
+						"dTimeR": "145600",
+						"dProgType": "PROGNOSED",
+						"dTrnCmpSX": {
+							"tcocX": [
+								2,
+								3
+							],
+							"tcM": 1
+						},
+						"dTZOffset": 60,
+						"msgL": [
+							{
+								"type": "REM",
+								"remX": 16,
+								"sty": "I",
+								"txtC": {
+									"r": 204,
+									"g": 0,
+									"b": 0
+								},
+								"prio": 478,
+								"fIdx": -1,
+								"tIdx": -1,
+								"tagL": [
+									"RES_LOC_H3"
+								],
+								"sort": 818413568
+							}
+						],
+						"type": "N"
+					},
+					"arr": {
+						"locX": 5,
+						"idx": 18,
+						"aProdX": 5,
+						"aPltfS": {
+							"type": "PL",
+							"txt": "5a/b"
+						},
+						"aTimeS": "163900",
+						"aTimeR": "164300",
+						"aProgType": "PROGNOSED",
+						"aTrnCmpSX": {
+							"tcM": 1
+						},
+						"aTZOffset": 60,
+						"type": "N"
+					},
+					"jny": {
+						"jid": "1|177776|0|80|16112022",
+						"prodX": 5,
+						"dirTxt": "Stuttgart Hbf",
+						"dirFlg": "1",
+						"status": "P",
+						"isRchbl": true,
+						"pos": {
+							"x": 6907985,
+							"y": 51133322
+						},
+						"ctxRecon": "T$A=1@O=Köln Hbf@L=8000207@a=128@$A=1@O=Mainz Hbf@L=8000240@a=128@$202211161453$202211161639$IC  2217$$1$$$$$$",
+						"msgL": [
+							{
+								"type": "REM",
+								"remX": 8,
+								"sty": "I",
+								"fLocX": 2,
+								"tLocX": 5,
+								"fIdx": 15,
+								"tIdx": 18,
+								"tagL": [
+									"RES_JNY_DTL"
+								],
+								"sort": 831520768
+							},
+							{
+								"type": "REM",
+								"remX": 9,
+								"sty": "I",
+								"fLocX": 2,
+								"tLocX": 5,
+								"fIdx": 15,
+								"tIdx": 18,
+								"tagL": [
+									"RES_JNY_DTL"
+								],
+								"sort": 831520768
+							},
+							{
+								"type": "REM",
+								"remX": 17,
+								"sty": "I",
+								"fLocX": 2,
+								"tLocX": 5,
+								"fIdx": 15,
+								"tIdx": 18,
+								"tagL": [
+									"RES_JNY_DTL_L"
+								],
+								"sort": 839385088
+							},
+							{
+								"type": "REM",
+								"remX": 2,
+								"sty": "I",
+								"fLocX": 2,
+								"tLocX": 5,
+								"fIdx": 15,
+								"tIdx": 18,
+								"tagL": [
+									"RES_JNY_DTL_L"
+								],
+								"sort": 839385088
+							},
+							{
+								"type": "REM",
+								"remX": 18,
+								"sty": "I",
+								"fLocX": 2,
+								"tLocX": 5,
+								"fIdx": 15,
+								"tIdx": 18,
+								"tagL": [
+									"RES_JNY_DTL_L"
+								],
+								"sort": 864288768
+							}
+						],
+						"subscr": "F",
+						"prodL": [
+							{
+								"prodX": 5,
+								"fLocX": 2,
+								"tLocX": 5,
+								"fIdx": 15,
+								"tIdx": 18
+							}
+						],
+						"dTrnCmpSX": {
+							"tcocX": [
+								2,
+								3
+							]
+						},
+						"sumLDrawStyleX": 6,
+						"resLDrawStyleX": 1,
+						"trainStartDate": "20221116",
+						"durS": "014600",
+						"tcocXL": [
+							2,
+							3
+						]
+					},
+					"resState": "N",
+					"resRecommendation": "N"
+				}
+			],
+			"ctxRecon": "T$A=1@O=Köln Hbf@L=8000207@a=128@$A=1@O=Mainz Hbf@L=8000240@a=128@$202211161453$202211161639$IC  2217$$1$$$$$$",
+			"trfRes": {
+				"statusCode": "OK",
+				"fareSetL": [
+					{
+						"fareL": [
+							{
+								"isFromPrice": true,
+								"isPartPrice": false,
+								"isBookable": true,
+								"isUpsell": false,
+								"targetCtx": "D",
+								"buttonText": "To offer selection",
+								"price": {
+									"amount": 3990
+								},
+								"retPriceIsCompletePrice": false,
+								"retPrice": -1
+							}
+						]
+					}
+				]
+			},
+			"conSubscr": "F",
+			"resState": "N",
+			"resRecommendation": "N",
+			"recState": "U",
+			"sotRating": 0,
+			"isSotCon": false,
+			"showARSLink": false,
+			"sotCtxt": {
+				"cnLocX": 2,
+				"calcDate": "20221116",
+				"jid": "1|177776|0|80|-1",
+				"locMode": "FROM_START",
+				"pLocX": 2,
+				"reqMode": "UNKNOWN",
+				"sectX": 0,
+				"calcTime": "143717"
+			},
+			"cksum": "fbdd3391_3",
+			"cksumDti": "4e0a964d_3",
+			"dTrnCmpSX": {
+				"tcocX": [
+					2,
+					3
+				]
+			},
+			"intvlSubscr": "F",
+			"tcocXL": [
+				2,
+				3
+			],
+			"originType": "INITIAL"
+		},
+		{
+			"cid": "C-2",
+			"date": "20221116",
+			"dur": "013600",
+			"durS": "013600",
+			"durR": "013600",
+			"chg": 1,
+			"sDays": {
+				"sDaysR": "runs 16. until 18. Nov 2022 ",
+				"sDaysB": "00F1E3E7CF9F3E7CF803E7800F3E7CF0F3E7CF9F3A7C79D3E7CF9F3E7CF9F3E7CF9F000000F3E00F9F3E7C000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+			},
+			"dep": {
+				"locX": 2,
+				"idx": 0,
+				"dProdX": 6,
+				"dPltfS": {
+					"type": "PL",
+					"txt": "6"
+				},
+				"dTimeS": "145400",
+				"dTimeR": "145400",
+				"dProgType": "PROGNOSED",
+				"dTrnCmpSX": {
+					"tcocX": [
+						2,
+						3
+					]
+				},
+				"dTZOffset": 60,
+				"type": "N"
+			},
+			"arr": {
+				"locX": 5,
+				"idx": 4,
+				"aProdX": 7,
+				"aPltfS": {
+					"type": "PL",
+					"txt": "6a"
+				},
+				"aTimeS": "163000",
+				"aTimeR": "163000",
+				"aProgType": "PROGNOSED",
+				"aTZOffset": 60,
+				"type": "N"
+			},
+			"secL": [
+				{
+					"type": "JNY",
+					"dep": {
+						"locX": 2,
+						"idx": 0,
+						"dProdX": 6,
+						"dPltfS": {
+							"type": "PL",
+							"txt": "6"
+						},
+						"dTimeS": "145400",
+						"dTimeR": "145400",
+						"dProgType": "PROGNOSED",
+						"dTrnCmpSX": {
+							"tcocX": [
+								2,
+								3
+							],
+							"tcM": 1
+						},
+						"dTZOffset": 60,
+						"type": "N"
+					},
+					"arr": {
+						"locX": 3,
+						"idx": 2,
+						"aProdX": 6,
+						"aPltfS": {
+							"type": "PL",
+							"txt": "Fern 5"
+						},
+						"aTimeS": "154900",
+						"aTimeR": "154900",
+						"aProgType": "PROGNOSED",
+						"aTrnCmpSX": {
+							"tcM": 1
+						},
+						"aTZOffset": 60,
+						"type": "N"
+					},
+					"jny": {
+						"jid": "1|172858|0|80|16112022",
+						"prodX": 6,
+						"dirTxt": "Basel SBB",
+						"dirFlg": "1",
+						"status": "P",
+						"isRchbl": true,
+						"ctxRecon": "T$A=1@O=Köln Hbf@L=8000207@a=128@$A=1@O=Frankfurt(M) Flughafen Fernbf@L=8070003@a=128@$202211161454$202211161549$ICE  109$$1$$$$$$",
+						"msgL": [
+							{
+								"type": "REM",
+								"remX": 8,
+								"sty": "I",
+								"fLocX": 2,
+								"tLocX": 3,
+								"fIdx": 0,
+								"tIdx": 2,
+								"tagL": [
+									"RES_JNY_DTL"
+								],
+								"sort": 831520768
+							},
+							{
+								"type": "REM",
+								"remX": 9,
+								"sty": "I",
+								"fLocX": 2,
+								"tLocX": 3,
+								"fIdx": 0,
+								"tIdx": 2,
+								"tagL": [
+									"RES_JNY_DTL"
+								],
+								"sort": 831520768
+							},
+							{
+								"type": "REM",
+								"remX": 10,
+								"sty": "I",
+								"fLocX": 2,
+								"tLocX": 3,
+								"fIdx": 0,
+								"tIdx": 2,
+								"tagL": [
+									"RES_JNY_DTL_L"
+								],
+								"sort": 864288768
+							},
+							{
+								"type": "REM",
+								"remX": 19,
+								"sty": "I",
+								"prio": 240,
+								"fIdx": -1,
+								"tIdx": -1,
+								"tagL": [
+									"RES_CON_FTR_H3"
+								],
+								"sort": 818413568
+							}
+						],
+						"subscr": "F",
+						"chgDurR": 18,
+						"prodL": [
+							{
+								"prodX": 6,
+								"fLocX": 2,
+								"tLocX": 3,
+								"fIdx": 0,
+								"tIdx": 2
+							}
+						],
+						"dTrnCmpSX": {
+							"tcocX": [
+								4,
+								3
+							]
+						},
+						"sumLDrawStyleX": 4,
+						"resLDrawStyleX": 1,
+						"trainStartDate": "20221116",
+						"durS": "005500",
+						"tcocXL": [
+							2,
+							3
+						]
+					},
+					"minChg": "001500",
+					"resState": "N",
+					"resRecommendation": "N"
+				},
+				{
+					"type": "WALK",
+					"dep": {
+						"locX": 3,
+						"dTimeS": "154900",
+						"dTZOffset": 60,
+						"type": "N"
+					},
+					"arr": {
+						"locX": 4,
+						"aTimeS": "160400",
+						"aTZOffset": 60,
+						"type": "N"
+					},
+					"gis": {
+						"dist": 230,
+						"durS": "001500",
+						"dirGeo": 26,
+						"ctx": "H|1|W$A=1@O=Frankfurt(M) Flughafen Fernbf@L=8070003@a=128@$A=1@O=Frankfurt(M) Flughafen Regionalbf@L=8070004@a=128@$202211161549$202211161604$$$1$$$$$$",
+						"gisPrvr": "H",
+						"msgL": [
+							{
+								"type": "REM",
+								"remX": 12,
+								"sty": "I",
+								"tagL": [
+									"RES_JNY_DTL_H1"
+								],
+								"sort": 818413568
+							}
+						],
+						"getDescr": true,
+						"getPoly": true,
+						"sumLDrawStyleX": 2,
+						"resLDrawStyleX": 3,
+						"prodX": 1
+					},
+					"resState": "N",
+					"resRecommendation": "N"
+				},
+				{
+					"type": "JNY",
+					"dep": {
+						"locX": 4,
+						"idx": 1,
+						"dProdX": 7,
+						"dPltfS": {
+							"type": "PL",
+							"txt": "Regio 3"
+						},
+						"dTimeS": "160700",
+						"dTimeR": "160700",
+						"dProgType": "PROGNOSED",
+						"dTZOffset": 60,
+						"type": "N"
+					},
+					"arr": {
+						"locX": 5,
+						"idx": 4,
+						"aProdX": 7,
+						"aPltfS": {
+							"type": "PL",
+							"txt": "6a"
+						},
+						"aTimeS": "163000",
+						"aTimeR": "163000",
+						"aProgType": "PROGNOSED",
+						"aTZOffset": 60,
+						"type": "N"
+					},
+					"jny": {
+						"jid": "1|1165950|0|80|16112022",
+						"prodX": 7,
+						"dirTxt": "Alzey",
+						"status": "P",
+						"isRchbl": true,
+						"ctxRecon": "T$A=1@O=Frankfurt(M) Flughafen Regionalbf@L=8070004@a=128@$A=1@O=Mainz Hbf@L=8000240@a=128@$202211161607$202211161630$RB 29258$$1$$$$$$",
+						"msgL": [
+							{
+								"type": "REM",
+								"remX": 1,
+								"sty": "I",
+								"fLocX": 4,
+								"tLocX": 5,
+								"fIdx": 1,
+								"tIdx": 4,
+								"tagL": [
+									"RES_JNY_DTL"
+								],
+								"sort": 831520768
+							},
+							{
+								"type": "REM",
+								"remX": 2,
+								"sty": "I",
+								"fLocX": 4,
+								"tLocX": 5,
+								"fIdx": 1,
+								"tIdx": 4,
+								"tagL": [
+									"RES_JNY_DTL_L"
+								],
+								"sort": 839385088
+							},
+							{
+								"type": "REM",
+								"remX": 3,
+								"sty": "I",
+								"fLocX": 4,
+								"tLocX": 5,
+								"fIdx": 1,
+								"tIdx": 4,
+								"tagL": [
+									"RES_JNY_DTL"
+								],
+								"sort": 878706688
+							},
+							{
+								"type": "REM",
+								"remX": 5,
+								"sty": "I",
+								"fLocX": 4,
+								"tLocX": 5,
+								"fIdx": 1,
+								"tIdx": 4,
+								"tagL": [
+									"RES_JNY_DTL"
+								],
+								"sort": 884604928
+							},
+							{
+								"type": "REM",
+								"remX": 6,
+								"sty": "I",
+								"fLocX": 4,
+								"tLocX": 5,
+								"fIdx": 1,
+								"tIdx": 4,
+								"tagL": [
+									"RES_JNY_DTL"
+								],
+								"sort": 885260288
+							}
+						],
+						"subscr": "F",
+						"prodL": [
+							{
+								"prodX": 7,
+								"fLocX": 4,
+								"tLocX": 5,
+								"fIdx": 1,
+								"tIdx": 4
+							}
+						],
+						"sumLDrawStyleX": 7,
+						"resLDrawStyleX": 1,
+						"trainStartDate": "20221116",
+						"durS": "002300"
+					},
+					"resState": "N",
+					"resRecommendation": "N"
+				}
+			],
+			"ctxRecon": "T$A=1@O=Köln Hbf@L=8000207@a=128@$A=1@O=Frankfurt(M) Flughafen Fernbf@L=8070003@a=128@$202211161454$202211161549$ICE  109$$1$$$$$$§W$A=1@O=Frankfurt(M) Flughafen Fernbf@L=8070003@a=128@$A=1@O=Frankfurt(M) Flughafen Regionalbf@L=8070004@a=128@$202211161549$202211161604$$$1$$$$$$§T$A=1@O=Frankfurt(M) Flughafen Regionalbf@L=8070004@a=128@$A=1@O=Mainz Hbf@L=8000240@a=128@$202211161607$202211161630$RB 29258$$1$$$$$$",
+			"trfRes": {
+				"statusCode": "OK",
+				"fareSetL": [
+					{
+						"fareL": [
+							{
+								"isFromPrice": true,
+								"isPartPrice": false,
+								"isBookable": true,
+								"isUpsell": false,
+								"targetCtx": "D",
+								"buttonText": "To offer selection",
+								"price": {
+									"amount": 7590
+								},
+								"retPriceIsCompletePrice": false,
+								"retPrice": -1
+							}
+						]
+					}
+				]
+			},
+			"msgL": [
+				{
+					"type": "REM",
+					"remX": 20,
+					"sty": "I",
+					"prio": 200,
+					"fIdx": -1,
+					"tIdx": -1,
+					"tagL": [
+						"SUM_CON_FTR_H3"
+					],
+					"sort": 818413568
+				}
+			],
+			"conSubscr": "F",
+			"resState": "N",
+			"resRecommendation": "N",
+			"recState": "U",
+			"sotRating": 0,
+			"isSotCon": false,
+			"showARSLink": false,
+			"sotCtxt": {
+				"cnLocX": 2,
+				"calcDate": "20221116",
+				"jid": "1|172858|0|80|-1",
+				"locMode": "FROM_START",
+				"pLocX": 2,
+				"reqMode": "UNKNOWN",
+				"sectX": 0,
+				"calcTime": "143717"
+			},
+			"cksum": "58a737d5_3",
+			"cksumDti": "800c90e9_3",
+			"dTrnCmpSX": {
+				"tcocX": [
+					4,
+					3
+				]
+			},
+			"intvlSubscr": "F",
+			"tcocXL": [
+				2,
+				3
+			],
+			"originType": "INITIAL"
+		}
+	],
+	"outCtxScrB": "2|OB|MT#14#491934#491933#492030#492058#0#0#485#491913#1#0#1034#0#0#-2147483648#1#2|PDH#c88b31895196689bf92cc69c34e68b0f|RD#16112022|RT#143316|US#0",
+	"outCtxScrF": "2|OF|MT#14#491934#491934#492030#492030#0#0#485#491913#2#0#18#0#0#-2147483648#1#2|PDH#c88b31895196689bf92cc69c34e68b0f|RD#16112022|RT#143316|US#0",
+	"fpB": "20211212",
+	"fpE": "20231209",
+	"bfATS": -1,
+	"bfIOSTS": -1,
+	"planrtTS": "1668605728",
+	"outConGrpSettings": {
+		"conGrpL": [
+			{
+				"name": "All connections",
+				"icoX": 22,
+				"grpid": "cl_all",
+				"conScoringL": [
+					{
+						"type": "DT",
+						"conScoreL": [
+							{
+								"score": 7072574460748366000,
+								"scoreS": "07072574460748365821",
+								"conRefL": [
+									0
+								]
+							},
+							{
+								"score": 7072477703729316000,
+								"scoreS": "07072477703729315839",
+								"conRefL": [
+									1
+								]
+							},
+							{
+								"score": 7072486499828105000,
+								"scoreS": "07072486499828105214",
+								"conRefL": [
+									2
+								]
+							}
+						],
+						"name": "Departure"
+					},
+					{
+						"type": "AT",
+						"conScoreL": [
+							{
+								"score": 7072068685399589000,
+								"scoreS": "07072068685399588861",
+								"conRefL": [
+									0
+								]
+							},
+							{
+								"score": 7072007112752628000,
+								"scoreS": "07072007112752627711",
+								"conRefL": [
+									1
+								]
+							},
+							{
+								"score": 7072064287363039000,
+								"scoreS": "07072064287363039230",
+								"conRefL": [
+									2
+								]
+							}
+						],
+						"name": "Arrival"
+					},
+					{
+						"type": "TI",
+						"conScoreL": [
+							{
+								"score": 9222862706576458000,
+								"scoreS": "09222862706576457725",
+								"conRefL": [
+									0
+								]
+							},
+							{
+								"score": 9222897890937012000,
+								"scoreS": "09222897890937012223",
+								"conRefL": [
+									1
+								]
+							},
+							{
+								"score": 9222946269449683000,
+								"scoreS": "09222946269449682942",
+								"conRefL": [
+									2
+								]
+							}
+						],
+						"name": "Duration"
+					}
+				],
+				"initScoringType": "DT",
+				"requests": [
+					{
+						"id": "RQ_CLIENT",
+						"autosend": true
+					}
+				],
+				"scrollable": true,
+				"bitmask": 1
+			}
+		],
+		"selectL": [
+			{
+				"icoX": 22,
+				"name": "All connections",
+				"bitIdx": 0
+			}
+		],
+		"variant": "RADIO"
+	}
+}
