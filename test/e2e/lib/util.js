@@ -3,6 +3,7 @@ import {ok, AssertionError} from 'assert'
 import {DateTime} from 'luxon'
 import * as a from 'assert'
 import {createRequire} from 'module'
+import {gunzipSync} from 'zlib'
 
 const hour = 60 * 60 * 1000
 const day = 24 * hour
@@ -43,6 +44,23 @@ if (process.env.VCR_MODE && !process.env.VCR_OFF) {
 	const NodeHttpAdapter = require('@pollyjs/adapter-node-http')
 	const FSPersister = require('@pollyjs/persister-fs')
 	const tap = require('tap')
+
+	// monkey-patch NodeHttpAdapter to handle gzipped responses properly
+	// todo: submit a PR
+	// related: https://github.com/Netflix/pollyjs/issues/256
+	// related: https://github.com/Netflix/pollyjs/issues/463
+	// related: https://github.com/Netflix/pollyjs/issues/207
+	const _getBodyFromChunks = NodeHttpAdapter.prototype.getBodyFromChunks
+	NodeHttpAdapter.prototype.getBodyFromChunks = function getBodyFromChunksWithGunzip (chunks, headers) {
+		if (headers['content-encoding'] === 'gzip') {
+			const concatenated = Buffer.concat(chunks)
+			chunks = [gunzipSync(concatenated)]
+			// todo: this is ugly, find a better way
+			delete headers['content-encoding']
+			headers['content-length'] = chunks[0].length
+		}
+		return _getBodyFromChunks.call(this, chunks, headers)
+	}
 
 	Polly.register(NodeHttpAdapter)
 	Polly.register(FSPersister)
