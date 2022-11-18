@@ -191,16 +191,18 @@ tap.skip('earlier/later journeys, Jungfernheide -> München Hbf', async (t) => {
 	t.end()
 })
 
-tap.test('journeys – leg cycle & alternatives', async (t) => {
-	await testLegCycleAlternatives({
-		test: t,
-		fetchJourneys: client.journeys,
-		fromId: blnTiergarten,
-		toId: blnJannowitzbrücke,
-		when,
+if (!process.env.VCR_MODE) {
+	tap.test('journeys – leg cycle & alternatives', async (t) => {
+		await testLegCycleAlternatives({
+			test: t,
+			fetchJourneys: client.journeys,
+			fromId: blnTiergarten,
+			toId: blnJannowitzbrücke,
+			when,
+		})
+		t.end()
 	})
-	t.end()
-})
+}
 
 tap.test('refreshJourney', async (t) => {
 	await testRefreshJourney({

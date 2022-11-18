@@ -195,15 +195,18 @@ tap.test('earlier/later journeys', async (t) => {
 	t.end()
 })
 
-tap.test('journeys – leg cycle & alternatives', async (t) => {
-	await testLegCycleAlternatives({
-		test: t,
-		fetchJourneys: client.journeys,
-		fromId: tiergarten,
-		toId: jannowitzbrücke
+if (!process.env.VCR_MODE) {
+	tap.test('journeys – leg cycle & alternatives', async (t) => {
+		await testLegCycleAlternatives({
+			test: t,
+			fetchJourneys: client.journeys,
+			fromId: tiergarten,
+			toId: jannowitzbrücke
+		})
+		t.end()
 	})
-	t.end()
-})
+}
+
 tap.test('refreshJourney', async (t) => {
 	await testRefreshJourney({
 		test: t,
