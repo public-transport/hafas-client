@@ -2,6 +2,7 @@
 
 const tap = require('tap')
 const parse = require('../../parse/warning')
+const merge = require('lodash/merge')
 
 const profile = {
 	parseProductsBitmask: (_, bitmask) => [bitmask],
@@ -63,6 +64,57 @@ tap.test('parses warnings correctly', (t) => {
 		modified: '20190101:084020'
 	})
 
-	// todo: .edges, .events
+	// events
+	const ctxWithHimMsgEventL = {
+		...ctx,
+		res: {
+			common: {
+				himMsgEventL: [{
+					fDate: '20211111', fTime: '123456',
+					tDate: '20211221', tTime: '012345',
+				}],
+			},
+		},
+	}
+	const inputWithEventRefL = {
+		...input,
+		eventRefL: [0],
+	}
+	const expectedWithEvents = {
+		...expected,
+		events: [{
+			fromLoc: null,
+			toLoc: null,
+			start: '20211111:123456',
+			end: '20211221:012345',
+			sections: [],
+		}],
+	}
+	t.same(parse(
+		ctxWithHimMsgEventL,
+		inputWithEventRefL,
+	), expectedWithEvents)
+	// without res.common.himMsgEventL[].{f,t}Time
+	t.same(parse(
+		merge(ctxWithHimMsgEventL, {
+			res: {
+				common: {
+					himMsgEventL: [{
+						fTime: null,
+						tTime: null,
+					}],
+				},
+			},
+		}),
+		inputWithEventRefL,
+	), merge(expectedWithEvents, {
+		events: [{
+			start: '20211111:000000',
+			end: '20211221:000000',
+		}]
+	}))
+
+	// todo: .edges
+
 	t.end()
 })
