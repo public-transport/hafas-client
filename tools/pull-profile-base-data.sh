@@ -35,7 +35,6 @@ node -p "$query" "$src/lu/cfl-hafas-mgate.json" >../p/cfl/base.json
 node -p "$query" "$src/us/cmta-hafas-mgate.json" >../p/cmta/base.json
 node -p "$query" "$src/de/db-hafas-mgate.json" >../p/db/base.json
 node -p "$query" "$src/de/db-busradar-nrw-hafas-mgate.json" >../p/db-busradar-nrw/base.json
-node -p "$query" "$src/de/hvv-hafas-mgate.json" >../p/hvv/base.json
 node -p "$query" "$src/de/nasa-hafas-mgate.json" >../p/insa/base.json
 node -p "$query" "$src/de/invg-hafas-mgate.json" >../p/invg/base.json
 node -p "$query" "$src/ie/iarnrod-eireann-hafas-mgate.json" >../p/irish-rail/base.json

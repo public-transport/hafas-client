@@ -25,7 +25,6 @@ HAFAS endpoint | wrapper library | docs | example code | profile name
 [*S-Bahn München*](https://en.wikipedia.org/wiki/Munich_S-Bahn) | - | [docs](sbahn-muenchen/readme.md) | [example](sbahn-muenchen/example.js) | [`sbahn-muenchen`](sbahn-muenchen)
 *Saarfahrplan*/VGS ([Saarland](https://en.wikipedia.org/wiki/Saarland)) | - | [docs](saarfahrplan/readme.md) | [example](saarfahrplan/example.js) | [`saarfahrplan`](saarfahrplan)
 [Société Nationale des Chemins de Fer Luxembourgeois (CFL)](https://en.wikipedia.org/wiki/Société_Nationale_des_Chemins_de_Fer_Luxembourgeois) | - | [docs](cfl/readme.md) | [example](cfl/example.js) | [`cfl`](cfl)
-[Hamburg public transport (HVV)](https://en.wikipedia.org/wiki/Hamburger_Verkehrsverbund) | - | [docs](hvv/readme.md) | [example](hvv/example.js) | [`hvv`](hvv)
 [*Nordhessischer Verkehrsverbund (NVV)*](https://en.wikipedia.org/wiki/Nordhessischer_Verkehrsverbund) ([Hesse](https://en.wikipedia.org/wiki/Hesse)) | - | [docs](nvv/readme.md) | [example](nvv/example.js) | [`nvv`](nvv)
 [*mobil.nrw*](https://www.mobil.nrw) | - | [docs](mobil-nrw/readme.md) | [example](mobil-nrw/example.js) | [`mobil-nrw`](mobil-nrw)
 *DB Busradar NRW* ([DB Regio Bus](https://en.wikipedia.org/wiki/DB_Regio#Bus_division_(DB_Regio_Bus))) | - | [docs](db-busradar-nrw/readme.md) | [example](db-busradar-nrw/example.js) | [`db-busradar-nrw`](db-busradar-nrw)

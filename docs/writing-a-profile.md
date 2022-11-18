@@ -91,7 +91,7 @@ You may want to start with the [profile boilerplate](profile-boilerplate.js).
 - **Identify the `locale`.** Basically guess work; Use the date & time formats as an indicator.
 - **Identify the `timezone`.** This may be tricky, a for example [Deutsche Bahn](https://en.wikipedia.org/wiki/Deutsche_Bahn) returns departures for Moscow as `+01:00` instead of `+03:00`.
 - **Copy the authentication** and other meta fields, namely `ver`, `ext`, `client` and `lang`.
-	- You can find these fields in the root of each request JSON. Check [a HVV request](https://gist.github.com/derhuerst/5a9d29a556b54182f9d30202f7244bfd#file-journeys-http-L11-L54) and [the corresponding HVV profile](https://github.com/public-transport/hafas-client/blob/99142acf8b156599daa69f2e1470901088827982/p/hvv/index.js#L5-L23) for an example.
+	- You can find these fields in the root of each request JSON. Check [a VBB request](https://gist.github.com/derhuerst/ea5d6482b61aeb7384a2c788f43dc11d#file-0-serverinfo-http-L11-L33) and [the corresponding VBB profile](https://github.com/public-transport/hafas-client/blob/2baf2f6f0444ffc67317f8bafe0fe05f687e5fae/p/vbb/base.json#L2-L11) for an example.
 	- Add a function `transformReqBody(ctx, body)` to your profile, which adds the fields to `body`. todo: adapt this
 	- Some profiles have a `checksum` parameter (like [here](https://gist.github.com/derhuerst/2a735268bd82a0a6779633f15dceba33#file-journey-details-1-http-L1)) or two `mic` & `mac` parameters (like [here](https://gist.github.com/derhuerst/5fa86ed5aec63645e5ae37e23e555886#file-1-http-L1)). If you see one of them in your requests, jump to the [*Authentication* section of the `mgate.exe` docs](hafas-mgate-api.md#authentication). Unfortunately, this is necessary to get the profile working.
 
