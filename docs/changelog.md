@@ -1,5 +1,49 @@
 # Changelog
 
+## `6.0.0`
+
+Note that this version is not backwords-compatible with `5.*`. Check out [the migration guide](migrating-to-6.md).
+
+### breaking changes 💥
+
+- 1e8b5982 remove SBB profile (they have shut off their endpoint)
+- 0349ebac remove HVV profile (they have shut off their endpoint)
+- 339d64e9 convert all code to [ES Modules](https://exploringjs.com/es6/ch_modules.html)
+- d5969bc0 require Node `>=10`
+- 30cb1f3d `trip()`: remove `lineName` parameter, update integration test fixtures
+- a81e550f `departures()`/`arrivals()`
+	- `departures{GetPasslist,StbFltrEquiv}`: default to `false`
+	- return object with `realtimeDataUpdatedAt` & results
+- 40957d35 `reachableFrom()`: don't retry failed requests 3 times
+- 751ae21d/a0a4064b/0cc50a91/2fcaa230/bb70081c/44c8e37e `journeys()`/`journeysFromTrip()`/`trip()`/`tripsByName()`/`radar()`/`reachableFrom()`/`remarks()`/`lines()`: rename `realtimeDataFrom` to `realtimeDataUpdatedAt`
+- 3cbbc3c4 `refreshJourney()`: return object with `realtimeDataUpdatedAt` & results
+- 7765f9d7/9b263bb3 rework errors thrown by `hafas-client`
+- e0cdd559 rename `warning.{from,to}Loc` to `{from,to}Location`
+- b7405390 remove `trip.reachable`
+- ef9e3765 don't trim `line.adminCode`
+- b030eec1/7765f9d7 make (almost) all `Promise`-based code async functions
+- BVG/VBB profile:
+	- 1ae13629/7b037469 don't parse line props using `vbb-parse-line`
+	- 1f611595/5ecf03f3 don't convert 7/9 <-> 12 digit IDs
+	- df4124e3/d2bc1346 don't shorten stop/station names
+- DB profile:
+	- e46514c5 rename `regionalExp` product to `regionalExpress`
+	- 3c17678d use `REALTIME` routing mode
+
+### features
+
+- 16671b6d SNCB: re-enable `reachableFrom()`
+- 492fdeb2 add boolean `profile.randomizeUserAgent` flag 📝
+- 1000e48d handle `METHOD_NA`/`NO_MATCH`/`PARAMETER` errors
+
+### bugfixes 🐛
+
+- db442bb5 `serverInfo()`: fix `realtimeDataUpdatedAt` parsing
+- b1c2eb9b `parseWarning()`: handle missing `common.himMsgEventL[].{f,t}Time`
+- cef6dcaf `lib/request.js`: pass whole request body into `profile.transformReqBody()`
+
+[🏷 `6.0.0`](https://github.com/public-transport/hafas-client/releases/tag/6.0.0), 2020-01-05
+
 ## `5.26.2`
 
 - a60083f8 parse `trip.scheduledDays` ✅
