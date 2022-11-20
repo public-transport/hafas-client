@@ -23,13 +23,13 @@ As an example, we're going to use the [*Deutsche Bahn* profile](../p/db):
 
 ```js
 import {createClient} from 'hafas-client'
-import {dbProfile} from 'hafas-client/p/db.js'
+import {profile} from 'hafas-client/p/db.js'
 
 const berlinSüdkreuz = '8011113'
 const münchenHbf = '8000261'
 const kölnHbf = '8000207'
 
-const client = createClient(dbProfile, 'my-awesome-program')
+const client = createClient(profile, 'my-awesome-program')
 
 // find any journey from Berlin Südkreuz to München Hbf
 const [journey] = await client.journeys(berlinSüdkreuz, münchenHbf, {results: 1, stopovers: true})
