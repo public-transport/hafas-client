@@ -6,10 +6,10 @@
 
 ```js
 import {createClient} from 'hafas-client'
-import {saarfahrplanProfile} from 'hafas-client/p/saarfahrplan/index.js'
+import {profile} from 'hafas-client/p/saarfahrplan/index.js'
 
 // create a client with Saarfahrplan profile
-const client = createClient(saarfahrplanProfile, 'my-awesome-program')
+const client = createClient(profile, 'my-awesome-program')
 ```
 
 

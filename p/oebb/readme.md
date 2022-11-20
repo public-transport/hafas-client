@@ -6,10 +6,10 @@
 
 ```js
 import {createClient} from 'hafas-client'
-import {oebbProfile} from 'hafas-client/p/oebb/index.js'
+import {profile} from 'hafas-client/p/oebb/index.js'
 
 // create a client with ÖBB profile
-const client = createClient(oebbProfile, 'my-awesome-program')
+const client = createClient(profile, 'my-awesome-program')
 ```
 
 

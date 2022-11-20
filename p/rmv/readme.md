@@ -6,10 +6,10 @@
 
 ```js
 import {createClient} from 'hafas-client'
-import {rmvProfile} from 'hafas-client/p/rmv/index.js'
+import {profile} from 'hafas-client/p/rmv/index.js'
 
 // create a client with RMV profile
-const client = createClient(rmvProfile, 'my-awesome-program')
+const client = createClient(profile, 'my-awesome-program')
 ```
 
 

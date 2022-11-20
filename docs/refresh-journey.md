@@ -22,9 +22,9 @@ As an example, we're going to use the [VBB profile](../p/vbb):
 
 ```js
 import {createClient} from 'hafas-client'
-import {vbbProfile} from 'hafas-client/p/vbb.js'
+import {profile} from 'hafas-client/p/vbb/index.js'
 
-const client = createClient(vbbProfile)
+const client = createClient(profile)
 
 // Hauptbahnhof to Heinrich-Heine-Str.
 const {journeys} = await client.journeys('900000003201', '900000100008', {results: 1})

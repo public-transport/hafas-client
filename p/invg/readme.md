@@ -6,10 +6,10 @@
 
 ```js
 import {createClient} from 'hafas-client'
-import {invgProfile} from 'hafas-client/p/invg/index.js'
+import {profile} from 'hafas-client/p/invg/index.js'
 
 // create a client with INVG profile
-const client = createClient(invgProfile, 'my-awesome-program')
+const client = createClient(profile, 'my-awesome-program')
 ```
 
 

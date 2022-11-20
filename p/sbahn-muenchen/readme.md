@@ -6,8 +6,8 @@
 
 ```js
 import {createClient} from 'hafas-client'
-import {sMuenchenProfile} from 'hafas-client/p/sbahn-muenchen/index.js'
+import {profile} from 'hafas-client/p/sbahn-muenchen/index.js'
 
 // create a client with S-Bahn München profile
-const client = createClient(sMuenchenProfile, 'my-awesome-program')
+const client = createClient(profile, 'my-awesome-program')
 ```

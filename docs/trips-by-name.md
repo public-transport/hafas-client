@@ -8,9 +8,9 @@ As an example, we're going to use the [VBB profile](../p/vbb):
 
 ```js
 import {createClient} from 'hafas-client'
-import {vbbProfile} from 'hafas-client/p/vbb.js'
+import {profile} from 'hafas-client/p/vbb/index.js'
 
-const client = createClient(vbbProfile, 'my-awesome-program')
+const client = createClient(profile, 'my-awesome-program')
 
 const {
 	trips,

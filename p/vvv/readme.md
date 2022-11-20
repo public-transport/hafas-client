@@ -6,10 +6,10 @@
 
 ```js
 import {createClient} from 'hafas-client'
-import {vvvProfile} from 'hafas-client/p/vvv/index.js'
+import {profile} from 'hafas-client/p/vvv/index.js'
 
 // create a client with VVV profile
-const client = createClient(vvvProfile, 'my-awesome-program')
+const client = createClient(profile, 'my-awesome-program')
 ```
 
 Check out the [code examples](example.js).

@@ -6,10 +6,10 @@
 
 ```js
 import {createClient} from 'hafas-client'
-import {mobilNrwProfile} from 'hafas-client/p/mobil-nrw/index.js'
+import {profile} from 'hafas-client/p/mobil-nrw/index.js'
 
 // create a client with mobil.nrw profile
-const client = createClient(mobilNrwProfile)
+const client = createClient(profile)
 ```
 
 

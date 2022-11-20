@@ -6,8 +6,8 @@
 
 ```js
 import {createClient} from 'hafas-client'
-import {zvvProfile} from 'hafas-client/p/zvv/index.js'
+import {profile} from 'hafas-client/p/zvv/index.js'
 
 // create a client with ZVV profile
-const client = createClient(zvvProfile, 'my-awesome-program')
+const client = createClient(profile, 'my-awesome-program')
 ```

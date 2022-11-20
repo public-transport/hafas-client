@@ -6,8 +6,8 @@
 
 ```js
 import {createClient} from 'hafas-client'
-import {vosProfile} from 'hafas-client/p/vos/index.js'
+import {profile} from 'hafas-client/p/vos/index.js'
 
 // create a client with VOS profile
-const client = createClient(vosProfile, 'my-awesome-program')
+const client = createClient(profile, 'my-awesome-program')
 ```

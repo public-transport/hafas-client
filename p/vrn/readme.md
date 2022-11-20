@@ -6,10 +6,10 @@
 
 ```js
 import {createClient} from 'hafas-client'
-import {vrnProfile} from 'hafas-client/p/vrn/index.js'
+import {profile} from 'hafas-client/p/vrn/index.js'
 
 // create a client with VRN profile
-const client = createClient(vrnProfile, 'my-awesome-program')
+const client = createClient(profile, 'my-awesome-program')
 ```
 
 

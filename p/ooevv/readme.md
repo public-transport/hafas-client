@@ -6,10 +6,10 @@
 
 ```js
 import {createClient} from 'hafas-client'
-import {oövvProfile} from 'hafas-client/p/ooevv/index.js'
+import {profile} from 'hafas-client/p/ooevv/index.js'
 
 // create a client with OÖVV profile
-const client = createClient(oövvProfile, 'my-awesome-program')
+const client = createClient(profile, 'my-awesome-program')
 ```
 
 Check out the [code examples](example.js).

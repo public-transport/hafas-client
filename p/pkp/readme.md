@@ -6,10 +6,10 @@
 
 ```js
 import {createClient} from 'hafas-client'
-import {pkpProfile} from 'hafas-client/p/pkp/index.js'
+import {profile} from 'hafas-client/p/pkp/index.js'
 
 // create a client with PKP profile
-const client = createClient(pkpProfile, 'my-awesome-program')
+const client = createClient(profile, 'my-awesome-program')
 ```
 
 

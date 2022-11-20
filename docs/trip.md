@@ -8,9 +8,9 @@ Let's say you used [`journeys`](journeys.md) and now want to get more up-to-date
 
 ```js
 import {createClient} from 'hafas-client'
-import {vbbProfile} from 'hafas-client/p/vbb.js'
+import {profile} from 'hafas-client/p/vbb/index.js'
 
-const client = createClient(vbbProfile, 'my-awesome-program')
+const client = createClient(profile, 'my-awesome-program')
 
 // Hauptbahnhof to Heinrich-Heine-Str.
 const {journeys} = client.journeys('900000003201', '900000100008', {results: 1})
@@ -40,9 +40,9 @@ As an example, we're going to use the [VBB profile](../p/vbb):
 
 ```js
 import {createClient} from 'hafas-client'
-import {vbbProfile} from 'hafas-client/p/vbb/index.js'
+import {profile} from 'hafas-client/p/vbb/index.js'
 
-const client = createClient(vbbProfile)
+const client = createClient(profile)
 
 const {
 	trip,
