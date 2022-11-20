@@ -13,7 +13,7 @@ There's opt-in support for throttling requests to the endpoint.
 ```js
 import {createClient} from 'hafas-client'
 import {withThrottling} from 'hafas-client/throttle.js'
-import {profile} from 'hafas-client/p/db.js'
+import {profile} from 'hafas-client/p/db/index.js'
 
 // create a throttled HAFAS client with Deutsche Bahn profile
 const client = createClient(withThrottling(profile), 'my-awesome-program')
@@ -37,7 +37,7 @@ There's opt-in support for retrying failed requests to the endpoint.
 ```js
 import {createClient} from 'hafas-client'
 import {withRetrying} from 'hafas-client/retry.js'
-import {profile} from 'hafas-client/p/db.js'
+import {profile} from 'hafas-client/p/db/index.js'
 
 // create a client with Deutsche Bahn profile that will retry on HAFAS errors
 const client = createClient(withRetrying(profile), 'my-awesome-program')
@@ -87,7 +87,7 @@ As an example, we can implement a custom logger:
 
 ```js
 import {createClient} from 'hafas-client'
-import {profile} from 'hafas-client/p/db.js'
+import {profile} from 'hafas-client/p/db/index.js'
 
 const logRequest = (ctx, fetchRequest, requestId) => {
 	// ctx looks just like with the other profile.* hooks:
