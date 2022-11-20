@@ -50,10 +50,10 @@ Pick the [profile](p/readme.md) for the HAFAS endpoint covering the area you wan
 
 ```js
 import {createClient} from 'hafas-client'
-import {dbProfile} from 'hafas-client/p/db/index.js'
+import {profile} from 'hafas-client/p/db/index.js'
 
 // create a client with the Deutsche Bahn profile
-const client = createClient(dbProfile, 'my-awesome-program')
+const client = createClient(profile, 'my-awesome-program')
 ```
 
 You can now use `client` to query the HAFAS endpoint configured in the [`db` profile](p/db):

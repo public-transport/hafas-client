@@ -13,10 +13,10 @@ There's opt-in support for throttling requests to the endpoint.
 ```js
 import {createClient} from 'hafas-client'
 import {withThrottling} from 'hafas-client/throttle.js'
-import {dbProfile} from 'hafas-client/p/db.js'
+import {profile} from 'hafas-client/p/db.js'
 
 // create a throttled HAFAS client with Deutsche Bahn profile
-const client = createClient(withThrottling(dbProfile), 'my-awesome-program')
+const client = createClient(withThrottling(profile), 'my-awesome-program')
 
 // Berlin Jungfernheide to München Hbf
 await client.journeys('8011167', '8000261', {results: 1})
@@ -26,8 +26,8 @@ You can pass custom values for the nr of requests (`limit`) per interval into `w
 
 ```js
 // 2 requests per second
-const throttledDbProfile = withThrottling(dbProfile, 2, 1000)
-const client = createClient(throttledDbProfile, 'my-awesome-program')
+const throttledProfile = withThrottling(profile, 2, 1000)
+const client = createClient(throttledProfile, 'my-awesome-program')
 ```
 
 ## Retrying failed requests
@@ -37,22 +37,22 @@ There's opt-in support for retrying failed requests to the endpoint.
 ```js
 import {createClient} from 'hafas-client'
 import {withRetrying} from 'hafas-client/retry.js'
-import {dbProfile} from 'hafas-client/p/db.js'
+import {profile} from 'hafas-client/p/db.js'
 
 // create a client with Deutsche Bahn profile that will retry on HAFAS errors
-const client = createClient(withRetrying(dbProfile), 'my-awesome-program')
+const client = createClient(withRetrying(profile), 'my-awesome-program')
 ```
 
 You can pass custom options into `withRetrying`. They will be passed into [`retry`](https://github.com/tim-kos/node-retry#tutorial).
 
 ```js
 // retry 2 times, after 10 seconds & 30 seconds
-const retryingDbProfile = withRetrying(dbProfile, {
+const retryingProfile = withRetrying(profile, {
 	retries: 2,
 	minTimeout: 10 * 1000,
 	factor: 3
 })
-const client = createClient(retryingDbProfile, 'my-awesome-program')
+const client = createClient(retryingProfile, 'my-awesome-program')
 ```
 
 ## User agent randomization
@@ -86,8 +86,8 @@ You can use `profile.logRequest` and `profile.logResponse` to process the raw [F
 As an example, we can implement a custom logger:
 
 ```js
-const createClient = require('hafas-client')
-const dbProfile = require('hafas-client/p/db')
+import {createClient} from 'hafas-client'
+import {profile} from 'hafas-client/p/db.js'
 
 const logRequest = (ctx, fetchRequest, requestId) => {
 	// ctx looks just like with the other profile.* hooks:
@@ -102,7 +102,7 @@ const logResponse = (ctx, fetchResponse, body, requestId) => {
 
 // create a client with Deutsche Bahn profile that debug-logs
 const client = createClient({
-	...dbProfile,
+	...profile,
 	logRequest,
 	logResponse,
 }, 'my-awesome-program')

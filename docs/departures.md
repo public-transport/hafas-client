@@ -44,9 +44,9 @@ If you pass an object `opt.products`, its fields will partially override the def
 
 ```js
 import {createClient} from 'hafas-client'
-import {vbbProfile} from 'hafas-client/p/vbb.js'
+import {profile} from 'hafas-client/p/vbb.js'
 
-const client = createClient(vbbProfile, 'my-awesome-program')
+const client = createClient(profile, 'my-awesome-program')
 
 // will query with these products: suburban, subway, bus, express, regional
 await client.departures('900000024101', {products: {tram: false, ferry: false}})
@@ -62,9 +62,9 @@ As an example, we're going to use the [VBB profile](../p/vbb):
 
 ```js
 import {createClient} from 'hafas-client'
-import {vbbProfile} from 'hafas-client/p/vbb.js'
+import {profile} from 'hafas-client/p/vbb.js'
 
-const client = createClient(vbbProfile, 'my-awesome-program')
+const client = createClient(profile, 'my-awesome-program')
 
 // S Charlottenburg
 const {
