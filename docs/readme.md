@@ -26,8 +26,8 @@ You can pass custom values for the nr of requests (`limit`) per interval into `w
 
 ```js
 // 2 requests per second
-const throttledProfile = withThrottling(profile, 2, 1000)
-const client = createClient(throttledProfile, 'my-awesome-program')
+const throttledDbProfile = withThrottling(profile, 2, 1000)
+const client = createClient(throttledDbProfile, 'my-awesome-program')
 ```
 
 ## Retrying failed requests
@@ -47,12 +47,12 @@ You can pass custom options into `withRetrying`. They will be passed into [`retr
 
 ```js
 // retry 2 times, after 10 seconds & 30 seconds
-const retryingProfile = withRetrying(profile, {
+const retryingDbProfile = withRetrying(profile, {
 	retries: 2,
 	minTimeout: 10 * 1000,
 	factor: 3
 })
-const client = createClient(retryingProfile, 'my-awesome-program')
+const client = createClient(retryingDbProfile, 'my-awesome-program')
 ```
 
 ## User agent randomization
