@@ -6,10 +6,10 @@
 
 ```js
 import {createClient} from 'hafas-client'
-import {profile} from 'hafas-client/p/rsag/index.js'
+import {profile as rsagProfile} from 'hafas-client/p/rsag/index.js'
 
 // create a client with RSAG profile
-const client = createClient(profile, 'my-awesome-program')
+const client = createClient(rsagProfile, 'my-awesome-program')
 ```
 
 

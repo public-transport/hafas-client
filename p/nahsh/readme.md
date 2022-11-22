@@ -6,10 +6,10 @@
 
 ```js
 import {createClient} from 'hafas-client'
-import {profile} from 'hafas-client/p/nahsh/index.js'
+import {profile as nahshProfile} from 'hafas-client/p/nahsh/index.js'
 
 // create a client with NAH.SH profile
-const client = createClient(profile, 'my-awesome-program')
+const client = createClient(nahshProfile, 'my-awesome-program')
 ```
 
 

@@ -6,10 +6,10 @@
 
 ```js
 import {createClient} from 'hafas-client'
-import {profile} from 'hafas-client/p/db/index.js'
+import {profile as dbProfile} from 'hafas-client/p/db/index.js'
 
 // create a client with DB profile
-const client = createClient(profile, 'my-awesome-program')
+const client = createClient(dbProfile, 'my-awesome-program')
 ```
 
 

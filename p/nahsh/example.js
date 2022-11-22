@@ -1,8 +1,8 @@
 import {inspect} from 'util'
 import {createClient} from '../../index.js'
-import {profile} from './index.js'
+import {profile as nahshProfile} from './index.js'
 
-const client = createClient(profile, 'hafas-client-example')
+const client = createClient(nahshProfile, 'hafas-client-example')
 
 // Flensburg Hbf to Kiel Hbf
 client.journeys('8000103', '8000199', {results: 10, tickets: true})

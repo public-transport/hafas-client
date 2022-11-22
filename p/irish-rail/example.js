@@ -1,8 +1,8 @@
 import {inspect} from 'util'
 import {createClient} from '../../index.js'
-import {profile} from './index.js'
+import {profile as irishProfile} from './index.js'
 
-const client = createClient(profile, 'hafas-client example')
+const client = createClient(irishProfile, 'hafas-client example')
 
 // from Dublin to Belfast Central
 client.journeys('9909002', '9990840', {results: 1})

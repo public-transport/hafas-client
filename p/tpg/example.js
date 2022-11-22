@@ -1,8 +1,8 @@
 import {inspect} from 'util'
 import {createClient} from '../../index.js'
-import {profile} from './index.js'
+import {profile as tpgProfile} from './index.js'
 
-const client = createClient(profile, 'hafas-client-example')
+const client = createClient(tpgProfile, 'hafas-client-example')
 
 const miremont = '100449'
 const moillebeau = '100451'

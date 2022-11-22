@@ -6,10 +6,10 @@
 
 ```js
 import {createClient} from 'hafas-client'
-import {profile} from 'hafas-client/p/ivb/index.js'
+import {profile as ivbProfile} from 'hafas-client/p/ivb/index.js'
 
 // create a client with IVB profile
-const client = createClient(profile, 'my-awesome-program')
+const client = createClient(ivbProfile, 'my-awesome-program')
 ```
 
 Check out the [code examples](example.js).

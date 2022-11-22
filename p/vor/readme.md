@@ -6,10 +6,10 @@
 
 ```js
 import {createClient} from 'hafas-client'
-import {profile} from 'hafas-client/p/vor/index.js'
+import {profile as vorProfile} from 'hafas-client/p/vor/index.js'
 
 // create a client with VOR profile
-const client = createClient(profile, 'my-awesome-program')
+const client = createClient(vorProfile, 'my-awesome-program')
 ```
 
 Check out the [code examples](example.js).

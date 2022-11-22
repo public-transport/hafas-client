@@ -1,8 +1,8 @@
 import {inspect} from 'util'
 import {createClient} from '../../index.js'
-import {profile} from './index.js'
+import {profile as invgProfile} from './index.js'
 
-const client = createClient(profile, 'hafas-client-example')
+const client = createClient(invgProfile, 'hafas-client-example')
 
 const ingolstadtHbf = '8000183'
 const audiParkplatz = '84999'

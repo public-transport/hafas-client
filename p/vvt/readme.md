@@ -6,8 +6,8 @@
 
 ```js
 import {createClient} from 'hafas-client'
-import {profile} from 'hafas-client/p/vvt/index.js'
+import {profile as vvtProfile} from 'hafas-client/p/vvt/index.js'
 
 // create a client with VVT profile
-const client = createClient(profile, 'my-awesome-program')
+const client = createClient(vvtProfile, 'my-awesome-program')
 ```

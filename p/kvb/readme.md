@@ -6,10 +6,10 @@
 
 ```js
 import {createClient} from 'hafas-client'
-import {profile} from 'hafas-client/p/kvb/index.js'
+import {profile as kvbProfile} from 'hafas-client/p/kvb/index.js'
 
 // create a client with KVB profile
-const client = createClient(profile, 'my-awesome-program')
+const client = createClient(kvbProfile, 'my-awesome-program')
 ```
 
 Check out the [code examples](example.js).

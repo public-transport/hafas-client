@@ -6,10 +6,10 @@
 
 ```js
 import {createClient} from 'hafas-client'
-import {profile} from 'hafas-client/p/vbb/index.js'
+import {profile as vbbProfile} from 'hafas-client/p/vbb/index.js'
 
 // create a client with VBB profile
-const client = createClient(profile, 'my-awesome-program')
+const client = createClient(vbbProfile, 'my-awesome-program')
 ```
 
 

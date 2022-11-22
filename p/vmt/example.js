@@ -1,8 +1,8 @@
 import {inspect} from 'util'
 import {createClient} from '../../index.js'
-import {profile} from './index.js'
+import {profile as vmtProfile} from './index.js'
 
-const client = createClient(profile, 'hafas-client-example')
+const client = createClient(vmtProfile, 'hafas-client-example')
 
 const jena = '190014'
 const gothaZOB = '167280'

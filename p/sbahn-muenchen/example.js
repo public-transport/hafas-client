@@ -1,8 +1,8 @@
 import {inspect} from 'util'
 import {createClient} from '../../index.js'
-import {profile} from './index.js'
+import {profile as sMuenchenProfile} from './index.js'
 
-const client = createClient(profile, 'hafas-client-example')
+const client = createClient(sMuenchenProfile, 'hafas-client-example')
 
 // Mittersendling to Charlottenburg
 // client.journeys('8004154', '0621790', {results: 1, polylines: true})

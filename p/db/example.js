@@ -1,8 +1,8 @@
 import {inspect} from 'util'
 import {createClient} from '../../index.js'
-import {profile} from './index.js'
+import {profile as dbProfile} from './index.js'
 
-const client = createClient(profile, 'hafas-client-example')
+const client = createClient(dbProfile, 'hafas-client-example')
 
 // Berlin Jungfernheide to München Hbf
 client.journeys('8011167', '8000261', {results: 1, tickets: true})

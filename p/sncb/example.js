@@ -1,8 +1,8 @@
 import {inspect} from 'util'
 import {createClient} from '../../index.js'
-import {profile} from './index.js'
+import {profile as sncbProfile} from './index.js'
 
-const client = createClient(profile, 'hafas-client-example')
+const client = createClient(sncbProfile, 'hafas-client-example')
 
 const gentStPieters = '8892007'
 const bruxellesMidi = '8814001'

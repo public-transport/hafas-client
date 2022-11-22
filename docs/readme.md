@@ -13,10 +13,10 @@ There's opt-in support for throttling requests to the endpoint.
 ```js
 import {createClient} from 'hafas-client'
 import {withThrottling} from 'hafas-client/throttle.js'
-import {profile} from 'hafas-client/p/db/index.js'
+import {profile as dbProfile} from 'hafas-client/p/db/index.js'
 
 // create a throttled HAFAS client with Deutsche Bahn profile
-const client = createClient(withThrottling(profile), 'my-awesome-program')
+const client = createClient(withThrottling(dbProfile), 'my-awesome-program')
 
 // Berlin Jungfernheide to München Hbf
 await client.journeys('8011167', '8000261', {results: 1})
@@ -37,10 +37,10 @@ There's opt-in support for retrying failed requests to the endpoint.
 ```js
 import {createClient} from 'hafas-client'
 import {withRetrying} from 'hafas-client/retry.js'
-import {profile} from 'hafas-client/p/db/index.js'
+import {profile as dbProfile} from 'hafas-client/p/db/index.js'
 
 // create a client with Deutsche Bahn profile that will retry on HAFAS errors
-const client = createClient(withRetrying(profile), 'my-awesome-program')
+const client = createClient(withRetrying(dbProfile), 'my-awesome-program')
 ```
 
 You can pass custom options into `withRetrying`. They will be passed into [`retry`](https://github.com/tim-kos/node-retry#tutorial).
@@ -87,11 +87,11 @@ As an example, we can implement a custom logger:
 
 ```js
 import {createClient} from 'hafas-client'
-import {profile} from 'hafas-client/p/db/index.js'
+import {profile as dbProfile} from 'hafas-client/p/db/index.js'
 
 const logRequest = (ctx, fetchRequest, requestId) => {
 	// ctx looks just like with the other profile.* hooks:
-	const {profile, opt} = ctx
+	const {dbProfile, opt} = ctx
 
 	console.debug(requestId, fetchRequest.headers, fetchRequest.body + '')
 }
@@ -102,7 +102,7 @@ const logResponse = (ctx, fetchResponse, body, requestId) => {
 
 // create a client with Deutsche Bahn profile that debug-logs
 const client = createClient({
-	...profile,
+	...dbProfile,
 	logRequest,
 	logResponse,
 }, 'my-awesome-program')

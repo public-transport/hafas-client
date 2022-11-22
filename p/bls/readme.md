@@ -6,10 +6,10 @@
 
 ```js
 import {createClient} from 'hafas-client'
-import {profile} from 'hafas-client/p/bls/index.js'
+import {profile as blsProfile} from 'hafas-client/p/bls/index.js'
 
 // create a client with BLS profile
-const client = createClient(profile, 'my-awesome-program')
+const client = createClient(blsProfile, 'my-awesome-program')
 ```
 
 Check out the [code examples](example.js).

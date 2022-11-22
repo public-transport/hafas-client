@@ -1,8 +1,8 @@
 import {inspect} from 'util'
 import {createClient} from '../../index.js'
-import {profile} from './index.js'
+import {profile as vbnProfile} from './index.js'
 
-const client = createClient(profile, 'hafas-client-example')
+const client = createClient(vbnProfile, 'hafas-client-example')
 
 const bremerhavenHbf = '9014418'
 const verden = '9093627'

@@ -6,10 +6,10 @@
 
 ```js
 import {createClient} from 'hafas-client'
-import {profile} from 'hafas-client/p/rejseplanen/index.js'
+import {profile as rejseplanenProfile} from 'hafas-client/p/rejseplanen/index.js'
 
 // create a client with Rejseplanen profile
-const client = createClient(profile)
+const client = createClient(rejseplanenProfile)
 ```
 
 

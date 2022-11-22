@@ -6,10 +6,10 @@
 
 ```js
 import {createClient} from 'hafas-client'
-import {profile} from 'hafas-client/p/stv/index.js'
+import {profile as stvProfile} from 'hafas-client/p/stv/index.js'
 
 // create a client with STV profile
-const client = createClient(profile, 'my-awesome-program')
+const client = createClient(stvProfile, 'my-awesome-program')
 ```
 
 Check out the [code examples](example.js).

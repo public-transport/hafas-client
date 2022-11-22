@@ -6,10 +6,10 @@ The [*Société Nationale des Chemins de Fer Luxembourgeois (CFL)*](https://en.w
 
 ```js
 import {createClient} from 'hafas-client'
-import {profile} from 'hafas-client/p/cfl/index.js'
+import {profile as cflProfile} from 'hafas-client/p/cfl/index.js'
 
 // create a client with CFL profile
-const client = createClient(profile)
+const client = createClient(cflProfile, 'my-awesome-program')
 ```
 
 

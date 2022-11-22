@@ -1,8 +1,8 @@
 import {inspect} from 'util'
 import {createClient} from '../../index.js'
-import {profile} from './index.js'
+import {profile as svvProfile} from './index.js'
 
-const client = createClient(profile, 'hafas-client-example')
+const client = createClient(svvProfile, 'hafas-client-example')
 
 const sam = '455086100'
 const volksgarten = '455082100'

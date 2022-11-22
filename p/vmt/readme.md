@@ -6,10 +6,10 @@
 
 ```js
 import {createClient} from 'hafas-client'
-import {profile} from 'hafas-client/p/vmt/index.js'
+import {profile as vmtProfile} from 'hafas-client/p/vmt/index.js'
 
 // create a client with VMT profile
-const client = createClient(profile, 'my-awesome-program')
+const client = createClient(vmtProfile, 'my-awesome-program')
 ```
 
 ## Customisations

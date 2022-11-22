@@ -1,8 +1,8 @@
 import {inspect} from 'util'
 import {createClient} from '../../index.js'
-import {profile} from './index.js'
+import {profile as oebbProfile} from './index.js'
 
-const client = createClient(profile, 'hafas-client-example')
+const client = createClient(oebbProfile, 'hafas-client-example')
 
 // Wien Westbahnhof to Salzburg Hbf
 client.journeys('1291501', '8100002', {results: 1})

@@ -6,7 +6,7 @@ import last from 'lodash/last.js'
 
 import {createWhen} from './lib/util.js'
 import {createClient} from '../../index.js'
-import {profile} from '../../p/db/index.js'
+import {profile as dbProfile} from '../../p/db/index.js'
 import {
     createValidateStation,
 	createValidateTrip
@@ -30,12 +30,12 @@ const isObj = o => o !== null && 'object' === typeof o && !Array.isArray(o)
 const minute = 60 * 1000
 
 const T_MOCK = 1668495600 * 1000 // 2022-11-15T08:00:00+01:00
-const when = createWhen(profile.timezone, profile.locale, T_MOCK)
+const when = createWhen(dbProfile.timezone, dbProfile.locale, T_MOCK)
 
 const cfg = {
 	when,
 	stationCoordsOptional: false,
-	products: profile.products,
+	products: dbProfile.products,
 	minLatitude: 46.673100,
 	maxLatitude: 55.030671,
 	minLongitude: 6.896517,
@@ -56,7 +56,7 @@ const assertValidPrice = (t, p) => {
 	}
 }
 
-const client = createClient(profile, 'public-transport/hafas-client:test')
+const client = createClient(dbProfile, 'public-transport/hafas-client:test')
 
 const berlinHbf = '8011160'
 const münchenHbf = '8000261'
@@ -104,7 +104,7 @@ tap.test('journeys – fails with no product', async (t) => {
 		fromId: blnSchwedterStr,
 		toId: münchenHbf,
 		when,
-		products: profile.products,
+		products: dbProfile.products,
 	})
 	t.end()
 })

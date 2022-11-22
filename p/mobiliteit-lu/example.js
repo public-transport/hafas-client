@@ -1,8 +1,8 @@
 import {inspect} from 'util'
 import {createClient} from '../../index.js'
-import {profile} from './index.js'
+import {profile as mobiliteitluProfile} from './index.js'
 
-const client = createClient(profile, 'hafas-client example')
+const client = createClient(mobiliteitluProfile, 'hafas-client example')
 
 const mersch = '160904011'
 const luxembourgCentral = '200405060'

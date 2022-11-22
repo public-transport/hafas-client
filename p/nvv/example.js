@@ -1,8 +1,8 @@
 import {inspect} from 'util'
 import {createClient} from '../../index.js'
-import {profile} from './index.js'
+import {profile as nvvProfile} from './index.js'
 
-const client = createClient(profile, 'hafas-client-example')
+const client = createClient(nvvProfile, 'hafas-client-example')
 
 // Scheidemannplatz to Auestadion
 client.journeys('2200073', '2200042', {results: 1, polylines: true})

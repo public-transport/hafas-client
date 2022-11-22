@@ -12,8 +12,8 @@ This profile adapts `hafas-client` to the HAFAS endpoint used by the application
 
 ```js
 import {createClient} from 'hafas-client'
-import {profile} from 'hafas-client/p/db-busradar-nrw/index.js'
+import {profile as dbbusradarnrwProfile} from 'hafas-client/p/db-busradar-nrw/index.js'
 
 // create a client with DB Busradar NRW profile
-const client = createClient(profile, 'my-awesome-program')
+const client = createClient(dbbusradarnrwProfile, 'my-awesome-program')
 ```

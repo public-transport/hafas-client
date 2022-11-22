@@ -8,9 +8,9 @@ As an example, we're going to use the [SVV profile](../p/svv):
 
 ```js
 import {createClient} from 'hafas-client'
-import {profile} from 'hafas-client/p/svv/index.js'
+import {profileas svvProfile} from 'hafas-client/p/svv/index.js'
 
-const client = createClient(profile, 'my-awesome-program')
+const client = createClient(svvProfile, 'my-awesome-program')
 
 const {
 	lines,
