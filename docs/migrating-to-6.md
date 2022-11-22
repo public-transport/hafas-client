@@ -1,4 +1,4 @@
-# Migrating to `hafas-client@5`
+# Migrating to `hafas-client@6`
 
 ## If you use Node.js <16 …
 
