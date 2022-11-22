@@ -6,7 +6,7 @@
 
 ```js
 import {createClient} from 'hafas-client'
-import {cmtaProfile} from 'hafas-client/p/cmta/index.js'
+import {profile as cmtaProfile} from 'hafas-client/p/cmta/index.js'
 
 // create a client with CMTA profile
 const client = createClient(cmtaProfile, 'my-awesome-program')

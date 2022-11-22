@@ -25,7 +25,7 @@ As an example, we're going to use the [VBB profile](../p/vbb):
 
 ```js
 import {createClient} from 'hafas-client'
-import {vbbProfile} from 'hafas-client/p/vbb.js'
+import {profile as vbbProfile} from 'hafas-client/p/vbb/index.js'
 
 const client = createClient(vbbProfile, 'my-awesome-program')
 

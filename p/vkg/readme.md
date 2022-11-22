@@ -6,7 +6,7 @@
 
 ```js
 import {createClient} from 'hafas-client'
-import {vkgProfile} from 'hafas-client/p/vkg/index.js'
+import {profile as vkgProfile} from 'hafas-client/p/vkg/index.js'
 
 // create a client with VKG profile
 const client = createClient(vkgProfile, 'my-awesome-program')

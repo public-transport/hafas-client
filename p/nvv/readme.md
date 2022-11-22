@@ -6,7 +6,7 @@
 
 ```js
 import {createClient} from 'hafas-client'
-import {nvvProfile} from 'hafas-client/p/nvv/index.js'
+import {profile as nvvProfile} from 'hafas-client/p/nvv/index.js'
 
 // create a client with NVV profile
 const client = createClient(nvvProfile, 'my-awesome-program')

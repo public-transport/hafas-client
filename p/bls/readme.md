@@ -6,7 +6,7 @@
 
 ```js
 import {createClient} from 'hafas-client'
-import {blsProfile} from 'hafas-client/p/bls/index.js'
+import {profile as blsProfile} from 'hafas-client/p/bls/index.js'
 
 // create a client with BLS profile
 const client = createClient(blsProfile, 'my-awesome-program')

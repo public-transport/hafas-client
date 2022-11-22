@@ -6,7 +6,7 @@
 
 ```js
 import {createClient} from 'hafas-client'
-import {bvgProfile} from 'hafas-client/p/bvg/index.js'
+import {profile as bvgProfile} from 'hafas-client/p/bvg/index.js'
 
 // create a client with BVG profile
 const client = createClient(bvgProfile, 'my-awesome-program')

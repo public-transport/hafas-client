@@ -1,8 +1,8 @@
 import {inspect} from 'util'
 import {createClient} from '../../index.js'
-import {profile} from './index.js'
+import {profile as ooevvProfile} from './index.js'
 
-const client = createClient(profile, 'hafas-client example')
+const client = createClient(ooevvProfile, 'hafas-client example')
 
 const linzTheatergasse = '444670100'
 const amstettenStadtbad = '431507400'

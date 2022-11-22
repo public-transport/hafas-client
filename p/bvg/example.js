@@ -1,8 +1,8 @@
 import {inspect} from 'util'
 import {createClient} from '../../index.js'
-import {profile} from './index.js'
+import {profile as bvgProfile} from './index.js'
 
-const client = createClient(profile, 'hafas-client-example')
+const client = createClient(bvgProfile, 'hafas-client-example')
 
 // Hauptbahnhof to Charlottenburg
 client.journeys('900000003201', '900000024101', {results: 1, polylines: true})

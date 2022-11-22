@@ -13,7 +13,7 @@ There's opt-in support for throttling requests to the endpoint.
 ```js
 import {createClient} from 'hafas-client'
 import {withThrottling} from 'hafas-client/throttle.js'
-import {dbProfile} from 'hafas-client/p/db.js'
+import {profile as dbProfile} from 'hafas-client/p/db/index.js'
 
 // create a throttled HAFAS client with Deutsche Bahn profile
 const client = createClient(withThrottling(dbProfile), 'my-awesome-program')
@@ -37,7 +37,7 @@ There's opt-in support for retrying failed requests to the endpoint.
 ```js
 import {createClient} from 'hafas-client'
 import {withRetrying} from 'hafas-client/retry.js'
-import {dbProfile} from 'hafas-client/p/db.js'
+import {profile as dbProfile} from 'hafas-client/p/db/index.js'
 
 // create a client with Deutsche Bahn profile that will retry on HAFAS errors
 const client = createClient(withRetrying(dbProfile), 'my-awesome-program')
@@ -86,12 +86,12 @@ You can use `profile.logRequest` and `profile.logResponse` to process the raw [F
 As an example, we can implement a custom logger:
 
 ```js
-const createClient = require('hafas-client')
-const dbProfile = require('hafas-client/p/db')
+import {createClient} from 'hafas-client'
+import {profile as dbProfile} from 'hafas-client/p/db/index.js'
 
 const logRequest = (ctx, fetchRequest, requestId) => {
 	// ctx looks just like with the other profile.* hooks:
-	const {profile, opt} = ctx
+	const {dbProfile, opt} = ctx
 
 	console.debug(requestId, fetchRequest.headers, fetchRequest.body + '')
 }

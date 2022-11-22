@@ -1,8 +1,8 @@
 import {inspect} from 'util'
 import {createClient} from '../../index.js'
-import {profile} from './index.js'
+import {profile as vkgProfile} from './index.js'
 
-const client = createClient(profile, 'hafas-client-example')
+const client = createClient(vkgProfile, 'hafas-client-example')
 
 const spittalMittelschule = '420512200'
 const klagenfurtSteingasse = '420649500'

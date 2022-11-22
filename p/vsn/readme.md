@@ -4,7 +4,7 @@
 ## Usage
 ```js
 import {createClient} from 'hafas-client'
-import {vsnProfile} from 'hafas-client/p/vsn/index.js'
+import {profile as vsnProfile} from 'hafas-client/p/vsn/index.js'
 
 // create a client with VSN profile
 const client = createClient(vsnProfile, 'my-awesome-program')

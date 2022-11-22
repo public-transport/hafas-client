@@ -1,8 +1,8 @@
 import {inspect} from 'util'
 import {createClient} from '../../index.js'
-import {profile} from './index.js'
+import {profile as kvbProfile} from './index.js'
 
-const client = createClient(profile, 'hafas-client example')
+const client = createClient(kvbProfile, 'hafas-client example')
 
 const heumarkt = '900000001'
 const poststr = '900000003'

@@ -1,8 +1,8 @@
 import {inspect} from 'util'
 import {createClient} from '../../index.js'
-import {profile} from './index.js'
+import {profile as rsagProfile} from './index.js'
 
-const client = createClient(profile, 'hafas-client-example')
+const client = createClient(rsagProfile, 'hafas-client-example')
 
 const rostockHbf = '8010304'
 const güstrow = '8010153'

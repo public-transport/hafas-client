@@ -1,8 +1,8 @@
 import {inspect} from 'util'
 import {createClient} from '../../index.js'
-import {profile} from './index.js'
+import {profile as dartProfile} from './index.js'
 
-const client = createClient(profile, 'hafas-client example')
+const client = createClient(dartProfile, 'hafas-client example')
 
 const mlkJrPkwyAdamsAveDsm2055 = '100002702'
 const se5thStEHackleyAveDsm2294 = '100004972'

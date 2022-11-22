@@ -1,8 +1,8 @@
 import {inspect} from 'util'
 import {createClient} from '../../index.js'
-import {profile} from './index.js'
+import {profile as vvtProfile} from './index.js'
 
-const client = createClient(profile, 'hafas-client-example')
+const client = createClient(vvtProfile, 'hafas-client-example')
 
 const innsbruckMitterweg = '476152300'
 const kufsteinListstr = '476603100'

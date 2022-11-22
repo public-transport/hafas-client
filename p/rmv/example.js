@@ -1,8 +1,8 @@
 import {inspect} from 'util'
 import {createClient} from '../../index.js'
-import {profile} from './index.js'
+import {profile as rmvProfile} from './index.js'
 
-const client = createClient(profile, 'hafas-client-example')
+const client = createClient(rmvProfile, 'hafas-client-example')
 
 const marburgHbf = '3010011'
 const mainzGonsenheim = '3011332'

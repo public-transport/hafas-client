@@ -6,7 +6,7 @@
 
 ```js
 import {createClient} from 'hafas-client'
-import {bartProfile} from 'hafas-client/p/bart/index.js'
+import {profile as bartProfile} from 'hafas-client/p/bart/index.js'
 
 // create a client with BART profile
 const client = createClient(bartProfile, 'my-awesome-program')

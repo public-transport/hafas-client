@@ -1,8 +1,8 @@
 import {inspect} from 'util'
 import {createClient} from '../../index.js'
-import {profile} from './index.js'
+import {profile as cflProfile} from './index.js'
 
-const client = createClient(profile, 'hafas-client-example')
+const client = createClient(cflProfile, 'hafas-client-example')
 
 const mersch = '9864348'
 const bruxellesCentral = '8800003'

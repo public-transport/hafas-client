@@ -6,7 +6,7 @@
 
 ```js
 import {createClient} from 'hafas-client'
-import {invgProfile} from 'hafas-client/p/invg/index.js'
+import {profile as invgProfile} from 'hafas-client/p/invg/index.js'
 
 // create a client with INVG profile
 const client = createClient(invgProfile, 'my-awesome-program')

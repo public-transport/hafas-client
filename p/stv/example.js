@@ -1,8 +1,8 @@
 import {inspect} from 'util'
 import {createClient} from '../../index.js'
-import {profile} from './index.js'
+import {profile as stvProfile} from './index.js'
 
-const client = createClient(profile, 'hafas-client example')
+const client = createClient(stvProfile, 'hafas-client example')
 
 const grazSonnenhang = '460413500'
 const grazHödlweg = '460415400'

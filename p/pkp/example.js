@@ -1,8 +1,8 @@
 import {inspect} from 'util'
 import {createClient} from '../../index.js'
-import {profile} from './index.js'
+import {profile as pkpProfile} from './index.js'
 
-const client = createClient(profile, 'hafas-client-example')
+const client = createClient(pkpProfile, 'hafas-client-example')
 
 const wrocławGł = '5100069'
 const krakówGł = '5100028'

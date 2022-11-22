@@ -8,7 +8,7 @@
 
 ```js
 import {createClient} from 'hafas-client'
-import {dartProfile} from 'hafas-client/p/dart/index.js'
+import {profile as dartProfile} from 'hafas-client/p/dart/index.js'
 
 // create a client with DART profile
 const client = createClient(dartProfile, 'my-awesome-program')

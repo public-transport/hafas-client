@@ -1,8 +1,8 @@
 import {inspect} from 'util'
 import {createClient} from '../../index.js'
-import {profile} from './index.js'
+import {profile as bartProfile} from './index.js'
 
-const client = createClient(profile, 'hafas-client-example')
+const client = createClient(bartProfile, 'hafas-client-example')
 
 const fremont = '100013296'
 const embarcadero = '100013295'

@@ -6,7 +6,7 @@
 
 ```js
 import {createClient} from 'hafas-client'
-import {svvProfile} from 'hafas-client/p/svv/index.js'
+import {profile as svvProfile} from 'hafas-client/p/svv/index.js'
 
 // create a client with SVV profile
 const client = createClient(svvProfile, 'my-awesome-program')

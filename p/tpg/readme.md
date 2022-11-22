@@ -6,7 +6,7 @@
 
 ```js
 import {createClient} from 'hafas-client'
-import {tpgProfile} from 'hafas-client/p/tpg/index.js'
+import {profile as tpgProfile} from 'hafas-client/p/tpg/index.js'
 
 // create a client with TPG profile
 const client = createClient(tpgProfile, 'my-awesome-program')

@@ -1,8 +1,8 @@
 import {inspect} from 'util'
 import {createClient} from '../../index.js'
-import {profile} from './index.js'
+import {profile as vrnProfile} from './index.js'
 
-const client = createClient(profile, 'hafas-client-example')
+const client = createClient(vrnProfile, 'hafas-client-example')
 
 const ludwigshafen = '8000236'
 const meckesheim = '8003932'

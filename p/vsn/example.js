@@ -1,8 +1,8 @@
 import {inspect} from 'util'
 import {createClient} from '../../index.js'
-import {profile} from './index.js'
+import {profile as vsnProfile} from './index.js'
 
-const client = createClient(profile, 'hafas-client-example')
+const client = createClient(vsnProfile, 'hafas-client-example')
 
 client.journeys('9033961', '9033962', {results: 1, polylines: true})
 

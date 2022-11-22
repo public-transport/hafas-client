@@ -1,8 +1,8 @@
 import {inspect} from 'util'
 import {createClient} from '../../index.js'
-import {profile} from './index.js'
+import {profile as insaProfile} from './index.js'
 
-const client = createClient(profile, 'hafas-client-example')
+const client = createClient(insaProfile, 'hafas-client-example')
 
 const hellestr1 = {
 	type: 'location',

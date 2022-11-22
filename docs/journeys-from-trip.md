@@ -23,7 +23,7 @@ As an example, we're going to use the [*Deutsche Bahn* profile](../p/db):
 
 ```js
 import {createClient} from 'hafas-client'
-import {dbProfile} from 'hafas-client/p/db.js'
+import {profile as dbProfile} from 'hafas-client/p/db/index.js'
 
 const berlinSüdkreuz = '8011113'
 const münchenHbf = '8000261'

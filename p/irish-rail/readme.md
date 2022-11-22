@@ -6,7 +6,7 @@ The [*Iarnród Éireann* (Irish Rail)](https://en.wikipedia.org/wiki/Iarnród_É
 
 ```js
 import {createClient} from 'hafas-client'
-import {irishProfile} from 'hafas-client/p/irish-rail/index.js'
+import {profile as irishProfile} from 'hafas-client/p/irish-rail/index.js'
 
 // create a client with Irish Rail profile
 const client = createClient(irishProfile, 'my-awesome-program')

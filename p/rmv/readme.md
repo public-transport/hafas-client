@@ -6,7 +6,7 @@
 
 ```js
 import {createClient} from 'hafas-client'
-import {rmvProfile} from 'hafas-client/p/rmv/index.js'
+import {profile as rmvProfile} from 'hafas-client/p/rmv/index.js'
 
 // create a client with RMV profile
 const client = createClient(rmvProfile, 'my-awesome-program')
