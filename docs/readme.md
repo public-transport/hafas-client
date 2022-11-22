@@ -26,7 +26,7 @@ You can pass custom values for the nr of requests (`limit`) per interval into `w
 
 ```js
 // 2 requests per second
-const throttledDbProfile = withThrottling(profile, 2, 1000)
+const throttledDbProfile = withThrottling(dbProfile, 2, 1000)
 const client = createClient(throttledDbProfile, 'my-awesome-program')
 ```
 
@@ -47,7 +47,7 @@ You can pass custom options into `withRetrying`. They will be passed into [`retr
 
 ```js
 // retry 2 times, after 10 seconds & 30 seconds
-const retryingDbProfile = withRetrying(profile, {
+const retryingDbProfile = withRetrying(dbProfile, {
 	retries: 2,
 	minTimeout: 10 * 1000,
 	factor: 3
