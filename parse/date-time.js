@@ -1,6 +1,5 @@
 import {DateTime, FixedOffsetZone, IANAZone} from 'luxon'
-
-const timezones = new WeakMap()
+import {luxonIANAZonesByProfile as timezones} from '../lib/luxon-timezones.js'
 
 const parseDateTime = ({profile}, date, time, tzOffset = null, timestamp = false) => {
 	const pDate = [date.substr(-8, 4), date.substr(-4, 2), date.substr(-2, 2)]

@@ -1,6 +1,5 @@
 import {DateTime, IANAZone} from 'luxon'
-
-const timezones = new WeakMap()
+import {luxonIANAZonesByProfile as timezones} from '../lib/luxon-timezones.js'
 
 // todo: change to `(profile) => (when) => {}`
 const formatTime = (profile, when) => {
