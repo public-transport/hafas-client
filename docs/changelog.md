@@ -1,5 +1,13 @@
 # Changelog
 
+## `6.0.1`
+
+- d8805d9e/fc1afe06 docs: fix profile `import`s in code examples 📝 – Thanks @KristjanESPERANTO!
+- 547dd4b2 `parseDateTime()`/`formatDate()`/`formatTime()`: share Luxon `IANAZone`s ⚡️
+- 557fc660 upgrade to `luxon@3`
+
+[🏷 `6.0.1`](https://github.com/public-transport/hafas-client/releases/tag/6.0.1), 2022-12-11
+
 ## `6.0.0`
 
 Note that this version is not backwords-compatible with `5.*`. Check out [the migration guide](migrating-to-6.md).
