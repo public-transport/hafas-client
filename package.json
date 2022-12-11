@@ -54,7 +54,7 @@
 		"gps-distance": "0.0.4",
 		"https-proxy-agent": "^5.0.0",
 		"lodash": "^4.17.5",
-		"luxon": "^2.3.2",
+		"luxon": "^3.1.1",
 		"object-scan": "^13.0.0",
 		"p-retry": "^5.1.1",
 		"p-throttle": "^5.0.0",
