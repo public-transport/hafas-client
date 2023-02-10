@@ -2,6 +2,9 @@ name: test
 
 on: [push, pull_request]
 
+env:
+  npm_config_cache: /tmp/npm-cache
+
 jobs:
   unit-tests:
     runs-on: ubuntu-latest
@@ -15,6 +18,13 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
+
+    - id: cache-npm
+      name: restore npm cache
+      uses: actions/cache@v3
+      with:
+        key: npm-cache-${{ github.ref_name }}
+        path: ${{ env.npm_config_cache }}
     - run: npm install
 
     - run: npm run lint
@@ -33,6 +43,13 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
+
+    - id: cache-npm
+      name: restore npm cache
+      uses: actions/cache@v3
+      with:
+        key: npm-cache-${{ github.ref_name }}
+        path: ${{ env.npm_config_cache }}
     - run: npm install
 
     - run: npm run lint
@@ -51,6 +68,13 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
+
+    - id: cache-npm
+      name: restore npm cache
+      uses: actions/cache@v3
+      with:
+        key: npm-cache-${{ github.ref_name }}
+        path: ${{ env.npm_config_cache }}
     - run: npm install
 
     - run: npm run lint
