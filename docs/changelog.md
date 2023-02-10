@@ -1,5 +1,8 @@
 # Changelog
 
+- 26394489 [*SNCB*/*NMBS* profile](../p/sncb): document profile as temporarily broken 📝
+- c2a71b08 `lib/request.js`: import `Buffer` 🐛
+
 ## `6.0.1`
 
 - d8805d9e/fc1afe06 docs: fix profile `import`s in code examples 📝 – Thanks @KristjanESPERANTO!
