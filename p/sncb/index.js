@@ -1,14 +1,9 @@
-// todo: use import assertions once they're supported by Node.js & ESLint
-// https://github.com/tc39/proposal-import-assertions
-import {createRequire} from 'module'
-const require = createRequire(import.meta.url)
-
 import {readFileSync} from 'fs'
 import {Agent} from 'https'
 import {strictEqual as eql} from 'assert'
 import {parseHook} from '../../lib/profile-hooks.js'
 import {parseLine} from '../../parse/line.js'
-const baseProfile = require('./base.json')
+import baseProfile from './base.json'
 import {products} from './products.js'
 
 // `www.belgianrail.be:443` doesn't provide the necessary CA certificate
