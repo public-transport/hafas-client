@@ -48,7 +48,6 @@
 		"@derhuerst/br2nl": "^1.0.0",
 		"content-type": "^1.0.4",
 		"create-hash": "^1.2.0",
-		"cross-fetch": "^3.1.5",
 		"google-polyline": "^1.0.3",
 		"gps-distance": "0.0.4",
 		"lodash": "^4.17.5",
