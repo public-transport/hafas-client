@@ -46,13 +46,11 @@
 	},
 	"dependencies": {
 		"@derhuerst/br2nl": "^1.0.0",
-		"@derhuerst/round-robin-scheduler": "^1.0.4",
 		"content-type": "^1.0.4",
 		"create-hash": "^1.2.0",
 		"cross-fetch": "^3.1.5",
 		"google-polyline": "^1.0.3",
 		"gps-distance": "0.0.4",
-		"https-proxy-agent": "^5.0.0",
 		"lodash": "^4.17.5",
 		"luxon": "^3.1.1",
 		"object-scan": "^13.0.0",
