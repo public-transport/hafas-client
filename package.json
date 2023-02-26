@@ -58,7 +58,6 @@
 		"object-scan": "^13.0.0",
 		"p-retry": "^5.1.1",
 		"p-throttle": "^5.0.0",
-		"qs": "^6.6.0",
 		"slugg": "^1.2.0"
 	},
 	"devDependencies": {
