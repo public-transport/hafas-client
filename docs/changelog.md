@@ -1,7 +1,11 @@
 # Changelog
 
+## `6.0.2`
+
 - 26394489 [*SNCB*/*NMBS* profile](../p/sncb): document profile as temporarily broken 📝
 - c2a71b08 `lib/request.js`: import `Buffer` 🐛
+
+[🏷 `6.0.2`](https://github.com/public-transport/hafas-client/releases/tag/6.0.2), 2023-02-10
 
 ## `6.0.1`
 
