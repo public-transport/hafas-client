@@ -1,5 +1,15 @@
 # Changelog
 
+## `5.26.3`
+
+- 56b9b048 `createClient()`: throw if `userAgent` is one of the documented ones 💥📝 (cherry-pick of e7602e6c)
+- 80f1db2b docs: make user agent instructions more specific & actionable 📝 (cherry-pick of 5910d625)
+- 17311fb0 `parseWarning()`: handle missing `common.himMsgEventL[].{f,t}Time` 🐛✅ (cherry-pick of b1c2eb9b)
+- bf5f7c39 `serverInfo()`: fix `realtimeDataUpdatedAt` parsing 🐛 (cherry-pick of db442bb5)
+- 772744d0 minor docs fixes 📝 (cherry-pick of c736ff64)
+
+[🏷 `5.26.3`](https://github.com/public-transport/hafas-client/releases/tag/5.26.3), 2023-02-15
+
 ## `5.26.2`
 
 - a60083f8 parse `trip.scheduledDays` ✅

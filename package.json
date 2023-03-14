@@ -1,7 +1,7 @@
 {
 	"name": "hafas-client",
 	"description": "Client for HAFAS public transport APIs.",
-	"version": "5.26.2",
+	"version": "5.26.3",
 	"main": "index.js",
 	"files": [
 		"index.js",
@@ -25,7 +25,7 @@
 		"Benoit Deldicque (https://github.com/bddq)",
 		"roehrt"
 	],
-	"homepage": "https://github.com/public-transport/hafas-client/tree/5.26.2",
+	"homepage": "https://github.com/public-transport/hafas-client/tree/5.26.3",
 	"repository": "public-transport/hafas-client",
 	"bugs": "https://github.com/public-transport/hafas-client/issues",
 	"funding": {
