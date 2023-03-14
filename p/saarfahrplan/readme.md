@@ -8,8 +8,10 @@
 import {createClient} from 'hafas-client'
 import {profile as saarfahrplanProfile} from 'hafas-client/p/saarfahrplan/index.js'
 
+const userAgent = 'link-to-your-project-or-email' // adapt this to your project!
+
 // create a client with Saarfahrplan profile
-const client = createClient(saarfahrplanProfile, 'my-awesome-program')
+const client = createClient(saarfahrplanProfile, userAgent)
 ```
 
 

@@ -8,8 +8,10 @@
 import {createClient} from 'hafas-client'
 import {profile as vrnProfile} from 'hafas-client/p/vrn/index.js'
 
+const userAgent = 'link-to-your-project-or-email' // adapt this to your project!
+
 // create a client with VRN profile
-const client = createClient(vrnProfile, 'my-awesome-program')
+const client = createClient(vrnProfile, userAgent)
 ```
 
 

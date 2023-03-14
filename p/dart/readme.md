@@ -10,8 +10,10 @@
 import {createClient} from 'hafas-client'
 import {profile as dartProfile} from 'hafas-client/p/dart/index.js'
 
+const userAgent = 'link-to-your-project-or-email' // adapt this to your project!
+
 // create a client with DART profile
-const client = createClient(dartProfile, 'my-awesome-program')
+const client = createClient(dartProfile, userAgent)
 ```
 
 Check out the [code examples](example.js).

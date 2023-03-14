@@ -8,8 +8,10 @@
 import {createClient} from 'hafas-client'
 import {profile as rmvProfile} from 'hafas-client/p/rmv/index.js'
 
+const userAgent = 'link-to-your-project-or-email' // adapt this to your project!
+
 // create a client with RMV profile
-const client = createClient(rmvProfile, 'my-awesome-program')
+const client = createClient(rmvProfile, userAgent)
 ```
 
 

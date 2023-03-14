@@ -8,8 +8,10 @@
 import {createClient} from 'hafas-client'
 import {profile as bvgProfile} from 'hafas-client/p/bvg/index.js'
 
+const userAgent = 'link-to-your-project-or-email' // adapt this to your project!
+
 // create a client with BVG profile
-const client = createClient(bvgProfile, 'my-awesome-program')
+const client = createClient(bvgProfile, userAgent)
 ```
 
 

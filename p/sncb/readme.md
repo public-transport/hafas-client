@@ -10,8 +10,10 @@
 import {createClient} from 'hafas-client'
 import {profile as sncbProfile} from 'hafas-client/p/sncb/index.js'
 
+const userAgent = 'link-to-your-project-or-email' // adapt this to your project!
+
 // create a client with SNCB profile
-const client = createClient(sncbProfile, 'my-awesome-program')
+const client = createClient(sncbProfile, userAgent)
 ```
 
 

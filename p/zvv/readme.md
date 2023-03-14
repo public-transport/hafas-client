@@ -8,6 +8,8 @@
 import {createClient} from 'hafas-client'
 import {profile as zvvProfile} from 'hafas-client/p/zvv/index.js'
 
+const userAgent = 'link-to-your-project-or-email' // adapt this to your project!
+
 // create a client with ZVV profile
-const client = createClient(zvvProfile, 'my-awesome-program')
+const client = createClient(zvvProfile, userAgent)
 ```

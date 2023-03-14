@@ -8,8 +8,10 @@
 import {createClient} from 'hafas-client'
 import {profile as nvvProfile} from 'hafas-client/p/nvv/index.js'
 
+const userAgent = 'link-to-your-project-or-email' // adapt this to your project!
+
 // create a client with NVV profile
-const client = createClient(nvvProfile, 'my-awesome-program')
+const client = createClient(nvvProfile, userAgent)
 ```
 
 

@@ -8,6 +8,8 @@
 import {createClient} from 'hafas-client'
 import {profile as avvProfile} from 'hafas-client/p/avv/index.js'
 
+const userAgent = 'link-to-your-project-or-email' // adapt this to your project!
+
 // create a client with AVV profile
-const client = createClient(avvProfile, 'my-awesome-program')
+const client = createClient(avvProfile, userAgent)
 ```

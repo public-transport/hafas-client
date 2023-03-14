@@ -8,8 +8,10 @@
 import {createClient} from 'hafas-client'
 import {profile as mobilNrwProfile} from 'hafas-client/p/mobil-nrw/index.js'
 
+const userAgent = 'link-to-your-project-or-email' // adapt this to your project!
+
 // create a client with mobil.nrw profile
-const client = createClient(mobilNrwProfile)
+const client = createClient(mobilNrwProfile, userAgent)
 ```
 
 

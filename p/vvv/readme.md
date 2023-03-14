@@ -8,8 +8,10 @@
 import {createClient} from 'hafas-client'
 import {profile as vvvProfile} from 'hafas-client/p/vvv/index.js'
 
+const userAgent = 'link-to-your-project-or-email' // adapt this to your project!
+
 // create a client with VVV profile
-const client = createClient(vvvProfile, 'my-awesome-program')
+const client = createClient(vvvProfile, userAgent)
 ```
 
 Check out the [code examples](example.js).

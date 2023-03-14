@@ -6,8 +6,10 @@
 import {createClient} from 'hafas-client'
 import {profile as vsnProfile} from 'hafas-client/p/vsn/index.js'
 
+const userAgent = 'link-to-your-project-or-email' // adapt this to your project!
+
 // create a client with VSN profile
-const client = createClient(vsnProfile, 'my-awesome-program')
+const client = createClient(vsnProfile, userAgent)
 ```
 
 ## Customisations

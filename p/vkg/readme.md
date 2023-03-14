@@ -8,6 +8,8 @@
 import {createClient} from 'hafas-client'
 import {profile as vkgProfile} from 'hafas-client/p/vkg/index.js'
 
+const userAgent = 'link-to-your-project-or-email' // adapt this to your project!
+
 // create a client with VKG profile
-const client = createClient(vkgProfile, 'my-awesome-program')
+const client = createClient(vkgProfile, userAgent)
 ```

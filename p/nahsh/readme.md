@@ -8,8 +8,10 @@
 import {createClient} from 'hafas-client'
 import {profile as nahshProfile} from 'hafas-client/p/nahsh/index.js'
 
+const userAgent = 'link-to-your-project-or-email' // adapt this to your project!
+
 // create a client with NAH.SH profile
-const client = createClient(nahshProfile, 'my-awesome-program')
+const client = createClient(nahshProfile, userAgent)
 ```
 
 

@@ -8,8 +8,10 @@
 import {createClient} from 'hafas-client'
 import {profile as vmtProfile} from 'hafas-client/p/vmt/index.js'
 
+const userAgent = 'link-to-your-project-or-email' // adapt this to your project!
+
 // create a client with VMT profile
-const client = createClient(vmtProfile, 'my-awesome-program')
+const client = createClient(vmtProfile, userAgent)
 ```
 
 ## Customisations

@@ -8,8 +8,10 @@
 import {createClient} from 'hafas-client'
 import {profile as pkpProfile} from 'hafas-client/p/pkp/index.js'
 
+const userAgent = 'link-to-your-project-or-email' // adapt this to your project!
+
 // create a client with PKP profile
-const client = createClient(pkpProfile, 'my-awesome-program')
+const client = createClient(pkpProfile, userAgent)
 ```
 
 

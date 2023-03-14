@@ -15,19 +15,21 @@ import {createClient} from 'hafas-client'
 import {withThrottling} from 'hafas-client/throttle.js'
 import {profile as dbProfile} from 'hafas-client/p/db/index.js'
 
+const userAgent = 'link-to-your-project-or-email' // adapt this to your project!
+
 // create a throttled HAFAS client with Deutsche Bahn profile
-const client = createClient(withThrottling(dbProfile), 'my-awesome-program')
+const client = createClient(withThrottling(dbProfile), userAgent)
 
 // Berlin Jungfernheide to München Hbf
 await client.journeys('8011167', '8000261', {results: 1})
 ```
 
-You can pass custom values for the nr of requests (`limit`) per interval into `withThrottling`:
+You can also pass custom values for the nr of requests (`limit`) per interval into `withThrottling`:
 
 ```js
 // 2 requests per second
 const throttledDbProfile = withThrottling(dbProfile, 2, 1000)
-const client = createClient(throttledDbProfile, 'my-awesome-program')
+const client = createClient(throttledDbProfile, userAgent)
 ```
 
 ## Retrying failed requests
@@ -39,8 +41,10 @@ import {createClient} from 'hafas-client'
 import {withRetrying} from 'hafas-client/retry.js'
 import {profile as dbProfile} from 'hafas-client/p/db/index.js'
 
+const userAgent = 'link-to-your-project-or-email' // adapt this to your project!
+
 // create a client with Deutsche Bahn profile that will retry on HAFAS errors
-const client = createClient(withRetrying(dbProfile), 'my-awesome-program')
+const client = createClient(withRetrying(dbProfile), userAgent)
 ```
 
 You can pass custom options into `withRetrying`. They will be passed into [`retry`](https://github.com/tim-kos/node-retry#tutorial).
@@ -52,7 +56,7 @@ const retryingDbProfile = withRetrying(dbProfile, {
 	minTimeout: 10 * 1000,
 	factor: 3
 })
-const client = createClient(retryingDbProfile, 'my-awesome-program')
+const client = createClient(retryingDbProfile, userAgent)
 ```
 
 ## User agent randomization
@@ -62,7 +66,9 @@ By default, `hafas-client` randomizes the client name that you pass into `create
 ```js
 import {createClient} from 'hafas-client'
 // …
-const client = createClient(someProfile, 'my-awesome-program')
+
+const userAgent = 'my-awesome-program'
+const client = createClient(someProfile, userAgent)
 
 await client.journeys(/* … */)
 // User-Agent: my-awee70429some-pre70429ogram
@@ -76,7 +82,7 @@ You can turn this off by setting `profile.randomizeUserAgent` to `false`:
 const client = createClient({
 	...someProfile,
 	randomizeUserAgent: false,
-}, 'my-awesome-program')
+}, userAgent)
 ```
 
 ## Logging requests
@@ -88,6 +94,8 @@ As an example, we can implement a custom logger:
 ```js
 import {createClient} from 'hafas-client'
 import {profile as dbProfile} from 'hafas-client/p/db/index.js'
+
+const userAgent = 'link-to-your-project-or-email' // adapt this to your project!
 
 const logRequest = (ctx, fetchRequest, requestId) => {
 	// ctx looks just like with the other profile.* hooks:
@@ -105,7 +113,7 @@ const client = createClient({
 	...dbProfile,
 	logRequest,
 	logResponse,
-}, 'my-awesome-program')
+}, userAgent)
 ```
 
 ```js

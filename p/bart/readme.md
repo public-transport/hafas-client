@@ -8,6 +8,8 @@
 import {createClient} from 'hafas-client'
 import {profile as bartProfile} from 'hafas-client/p/bart/index.js'
 
+const userAgent = 'link-to-your-project-or-email' // adapt this to your project!
+
 // create a client with BART profile
-const client = createClient(bartProfile, 'my-awesome-program')
+const client = createClient(bartProfile, userAgent)
 ```

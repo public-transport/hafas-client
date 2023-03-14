@@ -8,8 +8,10 @@
 import {createClient} from 'hafas-client'
 import {profile as oebbProfile} from 'hafas-client/p/oebb/index.js'
 
+const userAgent = 'link-to-your-project-or-email' // adapt this to your project!
+
 // create a client with ÖBB profile
-const client = createClient(oebbProfile, 'my-awesome-program')
+const client = createClient(oebbProfile, userAgent)
 ```
 
 

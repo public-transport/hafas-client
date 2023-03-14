@@ -88,7 +88,8 @@ As an example, we're going to use the [VBB profile](../p/vbb):
 import {createClient} 'hafas-client'
 import {profile as vbbProfile} from 'hafas-client/p/vbb/index.js'
 
-const client = createClient(vbbProfile, 'my-awesome-program')
+const userAgent = 'link-to-your-project-or-email' // adapt this to your project!
+const client = createClient(vbbProfile, userAgent)
 
 // Hauptbahnhof to Heinrich-Heine-Str.
 await client.journeys('900000003201', '900000100008', {

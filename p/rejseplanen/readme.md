@@ -8,8 +8,10 @@
 import {createClient} from 'hafas-client'
 import {profile as rejseplanenProfile} from 'hafas-client/p/rejseplanen/index.js'
 
+const userAgent = 'link-to-your-project-or-email' // adapt this to your project!
+
 // create a client with Rejseplanen profile
-const client = createClient(rejseplanenProfile)
+const client = createClient(rejseplanenProfile, userAgent)
 ```
 
 

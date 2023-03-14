@@ -8,8 +8,10 @@
 import {createClient} from 'hafas-client'
 import {profile as blsProfile} from 'hafas-client/p/bls/index.js'
 
+const userAgent = 'link-to-your-project-or-email' // adapt this to your project!
+
 // create a client with BLS profile
-const client = createClient(blsProfile, 'my-awesome-program')
+const client = createClient(blsProfile, userAgent)
 ```
 
 Check out the [code examples](example.js).

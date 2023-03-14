@@ -8,8 +8,10 @@
 import {createClient} from 'hafas-client'
 import {profile as invgProfile} from 'hafas-client/p/invg/index.js'
 
+const userAgent = 'link-to-your-project-or-email' // adapt this to your project!
+
 // create a client with INVG profile
-const client = createClient(invgProfile, 'my-awesome-program')
+const client = createClient(invgProfile, userAgent)
 ```
 
 

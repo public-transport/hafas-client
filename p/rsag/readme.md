@@ -8,8 +8,10 @@
 import {createClient} from 'hafas-client'
 import {profile as rsagProfile} from 'hafas-client/p/rsag/index.js'
 
+const userAgent = 'link-to-your-project-or-email' // adapt this to your project!
+
 // create a client with RSAG profile
-const client = createClient(rsagProfile, 'my-awesome-program')
+const client = createClient(rsagProfile, userAgent)
 ```
 
 

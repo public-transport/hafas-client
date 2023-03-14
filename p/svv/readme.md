@@ -8,8 +8,10 @@
 import {createClient} from 'hafas-client'
 import {profile as svvProfile} from 'hafas-client/p/svv/index.js'
 
+const userAgent = 'link-to-your-project-or-email' // adapt this to your project!
+
 // create a client with SVV profile
-const client = createClient(svvProfile, 'my-awesome-program')
+const client = createClient(svvProfile, userAgent)
 ```
 
 

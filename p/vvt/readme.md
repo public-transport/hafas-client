@@ -8,6 +8,8 @@
 import {createClient} from 'hafas-client'
 import {profile as vvtProfile} from 'hafas-client/p/vvt/index.js'
 
+const userAgent = 'link-to-your-project-or-email' // adapt this to your project!
+
 // create a client with VVT profile
-const client = createClient(vvtProfile, 'my-awesome-program')
+const client = createClient(vvtProfile, userAgent)
 ```

@@ -8,8 +8,10 @@
 import {createClient} from 'hafas-client'
 import {profile as mobiliteitProfile} from 'hafas-client/p/mobiliteit-lu/index.js'
 
+const userAgent = 'link-to-your-project-or-email' // adapt this to your project!
+
 // create a client with mobiliteit.lu profile
-const client = createClient(mobiliteitProfile, 'my-awesome-program')
+const client = createClient(mobiliteitProfile, userAgent)
 ```
 
 

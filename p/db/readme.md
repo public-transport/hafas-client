@@ -8,8 +8,10 @@
 import {createClient} from 'hafas-client'
 import {profile as dbProfile} from 'hafas-client/p/db/index.js'
 
+const userAgent = 'link-to-your-project-or-email' // adapt this to your project!
+
 // create a client with DB profile
-const client = createClient(dbProfile, 'my-awesome-program')
+const client = createClient(dbProfile, userAgent)
 ```
 
 

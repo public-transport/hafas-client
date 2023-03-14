@@ -10,7 +10,8 @@ Let's say you used [`journeys`](journeys.md) and now want to get more up-to-date
 import {createClient} from 'hafas-client'
 import {profile as vbbProfile} from 'hafas-client/p/vbb/index.js'
 
-const client = createClient(vbbProfile, 'my-awesome-program')
+const userAgent = 'link-to-your-project-or-email' // adapt this to your project!
+const client = createClient(vbbProfile, userAgent)
 
 // Hauptbahnhof to Heinrich-Heine-Str.
 const {journeys} = client.journeys('900000003201', '900000100008', {results: 1})

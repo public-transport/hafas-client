@@ -8,8 +8,10 @@
 import {createClient} from 'hafas-client'
 import {profile as vbbProfile} from 'hafas-client/p/vbb/index.js'
 
+const userAgent = 'link-to-your-project-or-email' // adapt this to your project!
+
 // create a client with VBB profile
-const client = createClient(vbbProfile, 'my-awesome-program')
+const client = createClient(vbbProfile, userAgent)
 ```
 
 

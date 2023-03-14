@@ -8,8 +8,10 @@
 import {createClient} from 'hafas-client'
 import {profile as ooevvProfile} from 'hafas-client/p/ooevv/index.js'
 
+const userAgent = 'link-to-your-project-or-email' // adapt this to your project!
+
 // create a client with OÖVV profile
-const client = createClient(ooevvProfile, 'my-awesome-program')
+const client = createClient(ooevvProfile, userAgent)
 ```
 
 Check out the [code examples](example.js).
