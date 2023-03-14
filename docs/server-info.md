@@ -19,7 +19,8 @@ As an example, we're going to use the [SVV profile](../p/svv):
 const createClient = require('hafas-client')
 const svvProfile = require('hafas-client/p/svv')
 
-const client = createClient(svvProfile, 'my-awesome-program')
+const userAgent = 'link-to-your-project-or-email' // adapt this to your project!
+const client = createClient(svvProfile, userAgent)
 
 console.log(await client.serverInfo())
 ```

@@ -8,6 +8,8 @@
 const createClient = require('hafas-client')
 const bartProfile = require('hafas-client/p/BART')
 
+const userAgent = 'link-to-your-project-or-email' // adapt this to your project!
+
 // create a client with BART profile
-const client = createClient(bartProfile, 'my-awesome-program')
+const client = createClient(bartProfile, userAgent)
 ```

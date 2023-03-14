@@ -8,8 +8,10 @@
 const createClient = require('hafas-client')
 const rejseplanenProfile = require('hafas-client/p/rejseplanen')
 
+const userAgent = 'link-to-your-project-or-email' // adapt this to your project!
+
 // create a client with Rejseplanen profile
-const client = createClient(rejseplanenProfile)
+const client = createClient(rejseplanenProfile, userAgent)
 ```
 
 

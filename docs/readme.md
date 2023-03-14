@@ -15,8 +15,10 @@ const createClient = require('hafas-client')
 const withThrottling = require('hafas-client/throttle')
 const dbProfile = require('hafas-client/p/db')
 
+const userAgent = 'link-to-your-project-or-email' // adapt this to your project!
+
 // create a throttled HAFAS client with Deutsche Bahn profile
-const client = createClient(withThrottling(dbProfile), 'my-awesome-program')
+const client = createClient(withThrottling(dbProfile), userAgent)
 
 // Berlin Jungfernheide to München Hbf
 client.journeys('8011167', '8000261', {results: 1})
@@ -24,12 +26,12 @@ client.journeys('8011167', '8000261', {results: 1})
 .catch(console.error)
 ```
 
-You can pass custom values for the nr of requests (`limit`) per interval into `withThrottling`:
+You can also pass custom values for the nr of requests (`limit`) per interval into `withThrottling`:
 
 ```js
 // 2 requests per second
 const throttledDbProfile = withThrottling(dbProfile, 2, 1000)
-const client = createClient(throttledDbProfile, 'my-awesome-program')
+const client = createClient(throttledDbProfile, userAgent)
 ```
 
 ## Retrying failed requests
@@ -41,8 +43,10 @@ const createClient = require('hafas-client')
 const withRetrying = require('hafas-client/retry')
 const dbProfile = require('hafas-client/p/db')
 
+const userAgent = 'link-to-your-project-or-email' // adapt this to your project!
+
 // create a client with Deutsche Bahn profile that will retry on HAFAS errors
-const client = createClient(withRetrying(dbProfile), 'my-awesome-program')
+const client = createClient(withRetrying(dbProfile), userAgent)
 
 // Berlin Jungfernheide to München Hbf
 client.journeys('8011167', '8000261', {results: 1})
@@ -59,8 +63,9 @@ const retryingDbProfile = withRetrying(dbProfile, {
 	minTimeout: 10 * 1000,
 	factor: 3
 })
-const client = createClient(retryingDbProfile, 'my-awesome-program')
+const client = createClient(retryingDbProfile, userAgent)
 ```
+
 
 ## Logging requests
 
@@ -71,6 +76,8 @@ As an example, we can implement a custom logger:
 ```js
 const createClient = require('hafas-client')
 const dbProfile = require('hafas-client/p/db')
+
+const userAgent = 'link-to-your-project-or-email' // adapt this to your project!
 
 const logRequest = (ctx, fetchRequest, requestId) => {
 	// ctx looks just like with the other profile.* hooks:
@@ -88,7 +95,7 @@ const client = createClient({
 	...dbProfile,
 	logRequest,
 	logResponse,
-}, 'my-awesome-program')
+}, userAgent)
 ```
 
 ```js

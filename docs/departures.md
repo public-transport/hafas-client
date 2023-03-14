@@ -45,7 +45,9 @@ If you pass an object `opt.products`, its fields will partially override the def
 ```js
 const createClient = require('hafas-client')
 const vbbProfile = require('hafas-client/p/vbb')
-const client = createClient(vbbProfile, 'my-awesome-program')
+
+const userAgent = 'link-to-your-project-or-email' // adapt this to your project!
+const client = createClient(vbbProfile, userAgent)
 
 // will query with these products: suburban, subway, bus, express, regional
 client.departures('900000024101', {products: {tram: false, ferry: false}})
@@ -63,7 +65,8 @@ As an example, we're going to use the [VBB profile](../p/vbb):
 const createClient = require('hafas-client')
 const vbbProfile = require('hafas-client/p/vbb')
 
-const client = createClient(vbbProfile, 'my-awesome-program')
+const userAgent = 'link-to-your-project-or-email' // adapt this to your project!
+const client = createClient(vbbProfile, userAgent)
 
 // S Charlottenburg
 client.departures('900000024101', {duration: 3})

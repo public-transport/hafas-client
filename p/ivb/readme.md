@@ -8,8 +8,10 @@
 const createClient = require('hafas-client')
 const ivbProfile = require('hafas-client/p/ivb')
 
+const userAgent = 'link-to-your-project-or-email' // adapt this to your project!
+
 // create a client with IVB profile
-const client = createClient(ivbProfile, 'my-awesome-program')
+const client = createClient(ivbProfile, userAgent)
 ```
 
 Check out the [code examples](example.js).

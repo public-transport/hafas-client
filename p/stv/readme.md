@@ -8,8 +8,10 @@
 const createClient = require('hafas-client')
 const stvProfile = require('hafas-client/p/stv')
 
+const userAgent = 'link-to-your-project-or-email' // adapt this to your project!
+
 // create a client with STV profile
-const client = createClient(stvProfile, 'my-awesome-program')
+const client = createClient(stvProfile, userAgent)
 ```
 
 Check out the [code examples](example.js).

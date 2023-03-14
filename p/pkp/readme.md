@@ -8,8 +8,10 @@
 const createClient = require('hafas-client')
 const pkpProfile = require('hafas-client/p/pkp')
 
+const userAgent = 'link-to-your-project-or-email' // adapt this to your project!
+
 // create a client with PKP profile
-const client = createClient(pkpProfile, 'my-awesome-program')
+const client = createClient(pkpProfile, userAgent)
 ```
 
 

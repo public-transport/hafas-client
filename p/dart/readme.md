@@ -10,8 +10,10 @@
 const createClient = require('hafas-client')
 const dartProfile = require('hafas-client/p/dart')
 
+const userAgent = 'link-to-your-project-or-email' // adapt this to your project!
+
 // create a client with DART profile
-const client = createClient(dartProfile, 'my-awesome-program')
+const client = createClient(dartProfile, userAgent)
 ```
 
 Check out the [code examples](example.js).

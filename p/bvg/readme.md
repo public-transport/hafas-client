@@ -8,8 +8,10 @@
 const createClient = require('hafas-client')
 const bvgProfile = require('hafas-client/p/bvg')
 
+const userAgent = 'link-to-your-project-or-email' // adapt this to your project!
+
 // create a client with BVG profile
-const client = createClient(bvgProfile, 'my-awesome-program')
+const client = createClient(bvgProfile, userAgent)
 ```
 
 

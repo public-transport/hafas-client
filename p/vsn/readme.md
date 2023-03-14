@@ -6,8 +6,10 @@
 const createClient = require('hafas-client')
 const vsnProfile = require('hafas-client/p/vsn')
 
+const userAgent = 'link-to-your-project-or-email' // adapt this to your project!
+
 // create a client with VSN profile
-const client = createClient(vsnProfile, 'my-awesome-program')
+const client = createClient(vsnProfile, userAgent)
 ```
 
 ## Customisations

@@ -14,6 +14,8 @@ This profile adapts `hafas-client` to the HAFAS endpoint used by the application
 const createClient = require('hafas-client')
 const dbbusradarnrwProfile = require('hafas-client/p/db-busradar-nrw')
 
+const userAgent = 'link-to-your-project-or-email' // adapt this to your project!
+
 // create a client with DB Busradar NRW profile
-const client = createClient(dbbusradarnrwProfile, 'my-awesome-program')
+const client = createClient(dbbusradarnrwProfile, userAgent)
 ```

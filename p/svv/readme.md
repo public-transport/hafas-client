@@ -8,8 +8,10 @@
 const createClient = require('hafas-client')
 const svvProfile = require('hafas-client/p/svv')
 
+const userAgent = 'link-to-your-project-or-email' // adapt this to your project!
+
 // create a client with SVV profile
-const client = createClient(svvProfile, 'my-awesome-program')
+const client = createClient(svvProfile, userAgent)
 ```
 
 

@@ -8,8 +8,10 @@ The [*Société Nationale des Chemins de Fer Luxembourgeois (CFL)*](https://en.w
 const createClient = require('hafas-client')
 const cflProfile = require('hafas-client/p/cfl')
 
+const userAgent = 'link-to-your-project-or-email' // adapt this to your project!
+
 // create a client with CFL profile
-const client = createClient(cflProfile)
+const client = createClient(cflProfile, userAgent)
 ```
 
 

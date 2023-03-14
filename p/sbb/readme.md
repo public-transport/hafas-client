@@ -8,8 +8,10 @@
 const createClient = require('hafas-client')
 const sbbProfile = require('hafas-client/p/sbb')
 
+const userAgent = 'link-to-your-project-or-email' // adapt this to your project!
+
 // create a client with SBB profile
-const client = createClient(sbbProfile, 'my-awesome-program')
+const client = createClient(sbbProfile, userAgent)
 ```
 
 By default, the `de_CH` locale is being used. You can customize it using `withLocale()`:

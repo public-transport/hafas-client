@@ -8,8 +8,10 @@
 const createClient = require('hafas-client')
 const vbbProfile = require('hafas-client/p/vbb')
 
+const userAgent = 'link-to-your-project-or-email' // adapt this to your project!
+
 // create a client with VBB profile
-const client = createClient(vbbProfile, 'my-awesome-program')
+const client = createClient(vbbProfile, userAgent)
 ```
 
 

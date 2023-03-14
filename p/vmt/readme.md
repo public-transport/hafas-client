@@ -8,8 +8,10 @@
 const createClient = require('hafas-client')
 const vmtProfile = require('hafas-client/p/vmt')
 
+const userAgent = 'link-to-your-project-or-email' // adapt this to your project!
+
 // create a client with VMT profile
-const client = createClient(vmtProfile, 'my-awesome-program')
+const client = createClient(vmtProfile, userAgent)
 ```
 
 ## Customisations

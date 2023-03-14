@@ -8,8 +8,10 @@
 const createClient = require('hafas-client')
 const nvvProfile = require('hafas-client/p/nvv')
 
+const userAgent = 'link-to-your-project-or-email' // adapt this to your project!
+
 // create a client with NVV profile
-const client = createClient(nvvProfile, 'my-awesome-program')
+const client = createClient(nvvProfile, userAgent)
 ```
 
 

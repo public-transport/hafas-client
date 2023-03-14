@@ -8,8 +8,10 @@
 const createClient = require('hafas-client')
 const dbProfile = require('hafas-client/p/db')
 
+const userAgent = 'link-to-your-project-or-email' // adapt this to your project!
+
 // create a client with DB profile
-const client = createClient(dbProfile, 'my-awesome-program')
+const client = createClient(dbProfile, userAgent)
 ```
 
 

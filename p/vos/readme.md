@@ -8,6 +8,8 @@
 const createClient = require('hafas-client')
 const vosProfile = require('hafas-client/p/VOS')
 
+const userAgent = 'link-to-your-project-or-email' // adapt this to your project!
+
 // create a client with VOS profile
-const client = createClient(vosProfile, 'my-awesome-program')
+const client = createClient(vosProfile, userAgent)
 ```

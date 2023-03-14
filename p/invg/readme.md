@@ -8,8 +8,10 @@
 const createClient = require('hafas-client')
 const invgProfile = require('hafas-client/p/invg')
 
+const userAgent = 'link-to-your-project-or-email' // adapt this to your project!
+
 // create a client with INVG profile
-const client = createClient(invgProfile, 'my-awesome-program')
+const client = createClient(invgProfile, userAgent)
 ```
 
 

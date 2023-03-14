@@ -8,8 +8,10 @@
 const createClient = require('hafas-client')
 const sncbProfile = require('hafas-client/p/sncb')
 
+const userAgent = 'link-to-your-project-or-email' // adapt this to your project!
+
 // create a client with SNCB profile
-const client = createClient(sncbProfile, 'my-awesome-program')
+const client = createClient(sncbProfile, userAgent)
 ```
 
 

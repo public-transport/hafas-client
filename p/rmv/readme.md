@@ -8,8 +8,10 @@
 const createClient = require('hafas-client')
 const rmvProfile = require('hafas-client/p/rmv')
 
+const userAgent = 'link-to-your-project-or-email' // adapt this to your project!
+
 // create a client with RMV profile
-const client = createClient(rmvProfile, 'my-awesome-program')
+const client = createClient(rmvProfile, userAgent)
 ```
 
 

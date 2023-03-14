@@ -8,8 +8,10 @@
 const createClient = require('hafas-client')
 const tpgProfile = require('hafas-client/p/TPG')
 
+const userAgent = 'link-to-your-project-or-email' // adapt this to your project!
+
 // create a client with TPG profile
-const client = createClient(tpgProfile, 'my-awesome-program')
+const client = createClient(tpgProfile, userAgent)
 ```
 
 Check out the [code examples](example.js).

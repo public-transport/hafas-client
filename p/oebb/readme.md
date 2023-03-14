@@ -8,8 +8,10 @@
 const createClient = require('hafas-client')
 const oebbProfile = require('hafas-client/p/oebb')
 
+const userAgent = 'link-to-your-project-or-email' // adapt this to your project!
+
 // create a client with ÖBB profile
-const client = createClient(oebbProfile, 'my-awesome-program')
+const client = createClient(oebbProfile, userAgent)
 ```
 
 

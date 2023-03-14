@@ -8,8 +8,10 @@
 const createClient = require('hafas-client')
 const vrnProfile = require('hafas-client/p/vrn')
 
+const userAgent = 'link-to-your-project-or-email' // adapt this to your project!
+
 // create a client with VRN profile
-const client = createClient(vrnProfile, 'my-awesome-program')
+const client = createClient(vrnProfile, userAgent)
 ```
 
 

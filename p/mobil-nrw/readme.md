@@ -8,8 +8,10 @@
 const createClient = require('hafas-client')
 const mobilNrwProfile = require('hafas-client/p/mobil-nrw')
 
+const userAgent = 'link-to-your-project-or-email' // adapt this to your project!
+
 // create a client with mobil.nrw profile
-const client = createClient(mobilNrwProfile)
+const client = createClient(mobilNrwProfile, userAgent)
 ```
 
 

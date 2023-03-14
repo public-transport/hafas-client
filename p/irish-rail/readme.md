@@ -8,8 +8,10 @@ The [*Iarnród Éireann* (Irish Rail)](https://en.wikipedia.org/wiki/Iarnród_É
 const createClient = require('hafas-client')
 const irishProfile = require('hafas-client/p/irish-rail')
 
+const userAgent = 'link-to-your-project-or-email' // adapt this to your project!
+
 // create a client with Irish Rail profile
-const client = createClient(irishProfile, 'my-awesome-program')
+const client = createClient(irishProfile, userAgent)
 ```
 
 

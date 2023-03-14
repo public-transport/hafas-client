@@ -8,6 +8,8 @@
 const createClient = require('hafas-client')
 const vvtProfile = require('hafas-client/p/vvt')
 
+const userAgent = 'link-to-your-project-or-email' // adapt this to your project!
+
 // create a client with VVT profile
-const client = createClient(vvtProfile, 'my-awesome-program')
+const client = createClient(vvtProfile, userAgent)
 ```

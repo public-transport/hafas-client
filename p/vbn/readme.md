@@ -8,8 +8,10 @@ The [*Verkehrsverbund Bremen/Niedersachsen (VBN)*](https://de.wikipedia.org/wiki
 const createClient = require('hafas-client')
 const vbnProfile = require('hafas-client/p/vbn')
 
+const userAgent = 'link-to-your-project-or-email' // adapt this to your project!
+
 // create a client with VBN profile
-const client = createClient(vbnProfile, 'my-awesome-program')
+const client = createClient(vbnProfile, userAgent)
 ```
 
 

@@ -8,8 +8,10 @@
 const createClient = require('hafas-client')
 const blsProfile = require('hafas-client/p/BLS')
 
+const userAgent = 'link-to-your-project-or-email' // adapt this to your project!
+
 // create a client with BLS profile
-const client = createClient(blsProfile, 'my-awesome-program')
+const client = createClient(blsProfile, userAgent)
 ```
 
 Check out the [code examples](example.js).

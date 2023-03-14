@@ -8,8 +8,10 @@
 const createClient = require('hafas-client')
 const saarfahrplanProfile = require('hafas-client/p/saarfahrplan')
 
+const userAgent = 'link-to-your-project-or-email' // adapt this to your project!
+
 // create a client with Saarfahrplan profile
-const client = createClient(saarfahrplanProfile, 'my-awesome-program')
+const client = createClient(saarfahrplanProfile, userAgent)
 ```
 
 

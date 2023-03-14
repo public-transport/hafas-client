@@ -8,8 +8,10 @@
 const createClient = require('hafas-client')
 const nahshProfile = require('hafas-client/p/nahsh')
 
+const userAgent = 'link-to-your-project-or-email' // adapt this to your project!
+
 // create a client with NAH.SH profile
-const client = createClient(nahshProfile, 'my-awesome-program')
+const client = createClient(nahshProfile, userAgent)
 ```
 
 

@@ -8,8 +8,10 @@
 const createClient = require('hafas-client')
 const oövvProfile = require('hafas-client/p/ooevv')
 
+const userAgent = 'link-to-your-project-or-email' // adapt this to your project!
+
 // create a client with OÖVV profile
-const client = createClient(oövvProfile, 'my-awesome-program')
+const client = createClient(oövvProfile, userAgent)
 ```
 
 Check out the [code examples](example.js).

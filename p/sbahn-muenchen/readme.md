@@ -8,6 +8,8 @@
 const createClient = require('hafas-client')
 const sMuenchenProfile = require('hafas-client/p/sbahn-muenchen')
 
+const userAgent = 'link-to-your-project-or-email' // adapt this to your project!
+
 // create a client with S-Bahn München profile
-const client = createClient(sMuenchenProfile, 'my-awesome-program')
+const client = createClient(sMuenchenProfile, userAgent)
 ```

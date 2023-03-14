@@ -8,8 +8,10 @@
 const createClient = require('hafas-client')
 const vorProfile = require('hafas-client/p/vor')
 
+const userAgent = 'link-to-your-project-or-email' // adapt this to your project!
+
 // create a client with VOR profile
-const client = createClient(vorProfile, 'my-awesome-program')
+const client = createClient(vorProfile, userAgent)
 ```
 
 Check out the [code examples](example.js).

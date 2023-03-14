@@ -8,8 +8,10 @@
 const createClient = require('hafas-client')
 const rsagProfile = require('hafas-client/p/rsag')
 
+const userAgent = 'link-to-your-project-or-email' // adapt this to your project!
+
 // create a client with RSAG profile
-const client = createClient(rsagProfile, 'my-awesome-program')
+const client = createClient(rsagProfile, userAgent)
 ```
 
 

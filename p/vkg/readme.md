@@ -8,6 +8,8 @@
 const createClient = require('hafas-client')
 const vkgProfile = require('hafas-client/p/vkg')
 
+const userAgent = 'link-to-your-project-or-email' // adapt this to your project!
+
 // create a client with VKG profile
-const client = createClient(vkgProfile, 'my-awesome-program')
+const client = createClient(vkgProfile, userAgent)
 ```
