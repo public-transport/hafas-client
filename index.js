@@ -10,6 +10,13 @@ const validateProfile = require('./lib/validate-profile')
 const {INVALID_REQUEST} = require('./lib/errors')
 const sliceLeg = require('./lib/slice-leg')
 
+// background info: https://github.com/public-transport/hafas-client/issues/286
+const FORBIDDEN_USER_AGENTS = [
+	'my-awesome-program', // previously used in readme.md, p/*/readme.md & docs/*.md
+	'hafas-client-example', // previously used in p/*/example.js
+	'link-to-your-project-or-email', // now used throughout
+]
+
 const isNonEmptyString = str => 'string' === typeof str && str.length > 0
 
 const validateLocation = (loc, name = 'location') => {
@@ -36,6 +43,9 @@ const createClient = (profile, userAgent, opt = {}) => {
 
 	if ('string' !== typeof userAgent) {
 		throw new TypeError('userAgent must be a string');
+	}
+	if (FORBIDDEN_USER_AGENTS.includes(userAgent.toLowerCase())) {
+		throw new Error(`userAgent should tell the HAFAS API operators how to contact you. If you have copied "${userAgent}" value from the documentation, please adapt it.`);
 	}
 
 	const _stationBoard = (station, type, parse, opt = {}) => {

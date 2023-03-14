@@ -54,7 +54,8 @@ Because the operatores of the HAFAS endpoint should be able to contact you about
 const createClient = require('hafas-client')
 const dbProfile = require('hafas-client/p/db')
 
-const userAgent = 'link-to-your-project-or-email' // adapt this to your project!
+// Adapt this to your project! createClient() won't work with this string.
+const userAgent = 'link-to-your-project-or-email'
 
 // create a client with the Deutsche Bahn profile
 const client = createClient(dbProfile, userAgent)
