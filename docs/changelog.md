@@ -1,5 +1,12 @@
 # Changelog
 
+## `6.0.3`
+
+- e7602e6c `createClient()`: throw if userAgent is one of the documented ones 💥📝
+- 5910d625 docs: make user agent instructions more specific & actionable 📝 (related: [#286](https://github.com/public-transport/hafas-client/issues/286))
+
+[🏷 `6.0.3`](https://github.com/public-transport/hafas-client/releases/tag/6.0.3), todo
+
 ## `6.0.2`
 
 - 26394489 [*SNCB*/*NMBS* profile](../p/sncb): document profile as temporarily broken 📝
