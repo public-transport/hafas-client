@@ -1,11 +1,18 @@
 # Changelog
 
+## `6.0.4`
+
+- 14c9805a `journeys()`: let `earlierRef`/`laterRef` fall back to `null` 🐛
+- 8faf8ba5 [*DB* profile](../p/db): use ver `1.16` for `stop()` requests 🐛, update integration test fixture ✅
+
+[🏷 `6.0.4`](https://github.com/public-transport/hafas-client/releases/tag/6.0.4), 2023-04-04
+
 ## `6.0.3`
 
 - e7602e6c `createClient()`: throw if userAgent is one of the documented ones 💥📝
 - 5910d625 docs: make user agent instructions more specific & actionable 📝 (related: [#286](https://github.com/public-transport/hafas-client/issues/286))
 
-[🏷 `6.0.3`](https://github.com/public-transport/hafas-client/releases/tag/6.0.3), todo
+[🏷 `6.0.3`](https://github.com/public-transport/hafas-client/releases/tag/6.0.3), 2023-03-14
 
 ## `6.0.2`
 
@@ -64,7 +71,7 @@ Note that this version is not backwords-compatible with `5.*`. Check out [the mi
 - b1c2eb9b `parseWarning()`: handle missing `common.himMsgEventL[].{f,t}Time`
 - cef6dcaf `lib/request.js`: pass whole request body into `profile.transformReqBody()`
 
-[🏷 `6.0.0`](https://github.com/public-transport/hafas-client/releases/tag/6.0.0), 2020-01-05
+[🏷 `6.0.0`](https://github.com/public-transport/hafas-client/releases/tag/6.0.0), 2022-11-19
 
 ## `5.26.2`
 
