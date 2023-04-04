@@ -33,6 +33,19 @@ const transformReqBody = (ctx, body) => {
 	return body
 }
 
+const transformReq = (ctx, req) => {
+	const body = JSON.parse(req.body)
+	// stop() a.k.a. LocDetails seems broken with ver >1.16, all other methods work
+	if (body.svcReqL[0].meth === 'LocDetails') {
+		req.body = JSON.stringify({
+			...body,
+			ver: '1.16',
+		})
+	}
+
+	return req
+}
+
 const slices = (n, arr) => {
 	const initialState = {slices: [], count: Infinity}
 	return arr.reduce(({slices, count}, item) => {
@@ -493,6 +506,7 @@ const profile = {
 	addChecksum: true,
 
 	transformReqBody,
+	transformReq,
 	transformJourneysQuery,
 
 	products: products,
