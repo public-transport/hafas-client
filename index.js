@@ -236,8 +236,8 @@ const createClient = (profile, userAgent, opt = {}) => {
 		.map(j => profile.parseJourney(ctx, j))
 
 		return {
-			earlierRef: res.outCtxScrB,
-			laterRef: res.outCtxScrF,
+			earlierRef: res.outCtxScrB || null,
+			laterRef: res.outCtxScrF || null,
 			journeys,
 			realtimeDataUpdatedAt: res.planrtTS && res.planrtTS !== '0'
 				? parseInt(res.planrtTS)
