@@ -1,5 +1,11 @@
 # Changelog
 
+## `5.26.4`
+
+- 25cc3b88 DB: use ver `1.16` for `stop()` requests 🐛, update integration test fixtures ✅
+
+[🏷 `5.26.4`](https://github.com/public-transport/hafas-client/releases/tag/5.26.4), 2023-04-06
+
 ## `5.26.3`
 
 - 56b9b048 `createClient()`: throw if `userAgent` is one of the documented ones 💥📝 (cherry-pick of e7602e6c)
