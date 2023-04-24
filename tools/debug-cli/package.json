@@ -8,7 +8,7 @@
 	},
 	"author": "Jannis R <mail@jannisr.de>",
 	"license": "ISC",
-	"dependencies": {
-		"mri": "^1.1.4"
+	"engines": {
+		"node": ">=16.17"
 	}
 }

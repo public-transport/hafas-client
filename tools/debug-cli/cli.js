@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import mri from 'mri'
+import {parseArgs} from 'node:util'
 import {createClient} from '../../index.js'
 
 const showError = (err) => {
@@ -14,7 +14,7 @@ const parseJsObject = val => {
 	return res && 'object' === typeof res ? res : {}
 }
 
-const parseArgs = [
+const methodsAndTheirArgs = [
 	['departures', 0, toString],
 	['departures', 1, parseJsObject],
 	['arrivals', 0, toString],
@@ -48,23 +48,29 @@ const parseArgs = [
 	['serverInfo', 0, parseJsObject],
 ]
 
-const argv = mri(process.argv.slice(2))
+const {
+	positionals: args,
+} = parseArgs({
+	strict: true,
+	allowPositionals: true,
+})
 
-const fnName = argv._[1]
+const profileName = args[0]
+const fnName = args[1]
 
-const args = argv._.slice(2).map((arg, i) => {
-	const parser = parseArgs.find(([_fnName, _i]) => _fnName === fnName && _i === i)
+const parsedArgs = args.slice(2).map((arg, i) => {
+	const parser = methodsAndTheirArgs.find(([_fnName, _i]) => _fnName === fnName && _i === i)
 	return parser ? parser[2](arg) : arg
 })
 
 ;(async () => {
-	const {profile} = await import(`../../p/${argv._[0]}/index.js`)
+	const {profile} = await import(`../../p/${profileName}/index.js`)
 
 	const client = createClient(profile, 'hafas-client debug CLI')
 
 	const fn = client[fnName]
 
-	const res = await fn(...args)
+	const res = await fn(...parsedArgs)
 	process.stdout.write(JSON.stringify(res) + '\n')
 })()
 .catch(showError)
