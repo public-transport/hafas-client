@@ -26,7 +26,7 @@ Examples:
 const silent = argv.silent || argv.s
 
 ;(async () => {
-	const {profile} = import(`../../p/${argv._[0]}/index.js`)
+	const {profile} = await import(`../../p/${argv._[0]}/index.js`)
 
 	const client = createClient(
 		profile,
