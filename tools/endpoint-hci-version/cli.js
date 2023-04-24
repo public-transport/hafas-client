@@ -1,16 +1,27 @@
 #!/usr/bin/env node
 
-import mri from 'mri'
+import {parseArgs} from 'node:util'
 import {createClient} from '../../index.js'
 
-const argv = mri(process.argv.slice(2), {
-	boolean: [
-		'help', 'h',
-		'silent', 's',
-	]
+const {
+	values: flags,
+	positionals: args,
+} = parseArgs({
+	options: {
+		help: {
+			type: 'boolean',
+			short: 'h',
+		},
+		silent: {
+			type: 'boolean',
+			short: 's',
+		},
+	},
+	strict: true,
+	allowPositionals: true,
 })
 
-if (argv.help || argv.h) {
+if (flags.help) {
 	process.stdout.write(`
 Usage:
     endpoint-hci-version <profile>
@@ -23,10 +34,11 @@ Examples:
 	process.exit(0)
 }
 
-const silent = argv.silent || argv.s
+const profileName = args[0]
+const silent = flags.silent
 
 ;(async () => {
-	const {profile} = await import(`../../p/${argv._[0]}/index.js`)
+	const {profile} = await import(`../../p/${profileName}/index.js`)
 
 	const client = createClient(
 		profile,
