@@ -23,7 +23,7 @@ const opt = {
 	bike: false,
 	tickets: true,
 	polylines: true,
-	remarks: true,
+	remarks: false,
 	walkingSpeed: 'normal',
 	startWithWalking: true,
 	scheduledDays: false,

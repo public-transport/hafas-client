@@ -183,6 +183,14 @@ const dbJourney = {
 			plannedArrivalPlatform: '9',
 			departurePlatform: '11',
 			plannedDeparturePlatform: '11',
+			remarks: [
+					{
+					text: 'Komfort Check-in möglich (Infos unter bahn.de/kci)',
+					type: 'hint',
+					code: 'komfort-checkin',
+					summary: 'Komfort-Checkin available',
+				}
+			]
 		}
 	],
 	refreshToken: '¶HKI¶D$A=1@O=Köln Hbf@L=8000207@a=128@$A=1@O=Köln Messe/Deutz Gl.11-12@L=8073368@a=128@$202004110517$202004110520$$$1$§T$A=1@O=Köln Messe/Deutz Gl.11-12@L=8073368@a=128@$A=1@O=Nürnberg Hbf@L=8000284@a=128@$202004110520$202004110901$ICE  523$$1$',

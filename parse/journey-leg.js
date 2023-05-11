@@ -136,13 +136,14 @@ const parseJourneyLeg = (ctx, pt, date) => { // pt = raw leg
 			res.stopovers = stopL.map(s => profile.parseStopover(ctx, s, date))
 
 			if (opt.remarks && Array.isArray(pt.jny.msgL)) {
-				// todo: apply leg-wide remarks if `opt.stopovers` is false
 				applyRemarks(res, pt.jny.msgL)
 				// todo: parse & use `code: EXTERNAL_ID` remarks?
 			}
 
 			// filter stations the train passes without stopping, as this doesn't comply with fptf (yet)
 			res.stopovers = res.stopovers.filter((x) => !x.passBy)
+		} else if (opt.remarks && Array.isArray(pt.jny.msgL)) {
+			applyRemarks(res, pt.jny.msgL);
 		}
 
 		const freq = pt.jny.freq || {}
