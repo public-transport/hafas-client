@@ -19,7 +19,7 @@ const opt = {
 	polylines: false,
 	subStops: true,
 	entrances: true,
-	remarks: true,
+	remarks: false,
 	products: {}
 }
 
