@@ -1,5 +1,11 @@
 # Changelog
 
+## `6.0.5`
+
+- 9a1ef7c5 `journeys()`/`journeysFromTrip()`/`refreshJourney()`/`trip()`/`tripsByName()`: apply leg-wide remarks even if `opt.stopovers` is `false` 🐛 – Thanks @traines-source!
+
+[🏷 `6.0.5`](https://github.com/public-transport/hafas-client/releases/tag/6.0.5), 2023-05-15
+
 ## `6.0.4`
 
 - 14c9805a `journeys()`: let `earlierRef`/`laterRef` fall back to `null` 🐛
