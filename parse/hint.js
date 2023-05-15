@@ -47,6 +47,69 @@ const linkTypesByCode = Object.assign(Object.create(null), {
 // 	"icoX": 2,
 // 	"txtN": "Für diese Strecke ist ein internationales Ticket notwendig."
 // }
+
+// DB:
+// {
+// 	"type": "C",
+// 	"code": "",
+// 	"icoX": 2,
+// 	"txtN": "Current information available."
+// }
+// {
+// 	"type": "H",
+// 	"code": "text.connection.section.arrival.date.deviation",
+// 	"icoX": 4,
+// 	"txtN": "Arrival Wednesday, 2023-05-10"
+// }
+// {
+// 	"type": "H",
+// 	"code": "text.connection.section.departure.date.deviation",
+// 	"icoX": 4,
+// 	"txtN": "Departure Wednesday, 2023-05-10"
+// }
+// {
+// 	"type": "C",
+// 	"code": "",
+// 	"icoX": 8,
+// 	"txtN": "Includes trains requiring a reservation"
+// }
+
+// DB:
+// {
+// 	"type": "A",
+// 	"code": "RP",
+// 	"icoX": 7,
+// 	"txtN": "RP"
+// }
+// on this `jny`:
+// {
+// 	"jid": "1|327365|0|80|-1",
+// 	"prodX": 27,
+// 	"status": "P",
+// 	"isRchbl": true,
+// 	"pos": {
+// 		"x": 9837336,
+// 		"y": 52241377
+// 	},
+// 	"ctxRecon": "T$A=1@O=Hamburg Hbf@L=8002549@a=0@$A=1@O=Freiburg(Breisgau) Hbf@L=8000107@a=0@$202305092207$202305100721$NJ   471$$1$$$$$$",
+// 	"msgL": [
+// 		{
+// 			"type": "REM",
+// 			"remX": 3,
+// 			"sty": "I",
+// 			"tagL": [
+// 				"RES_JNY_DTL_L"
+// 			],
+// 			"sort": 818413568
+// 		}
+// 	],
+// 	"approxDelay": true,
+// 	"subscr": "F",
+// 	"sumLDrawStyleX": 4,
+// 	"resLDrawStyleX": 1,
+// 	"durS": "091400"
+// }
+
 const parseHint = (ctx, h) => {
 	// todo: C
 
