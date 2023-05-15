@@ -178,6 +178,10 @@ const transformJourneysQuery = ({opt}, query) => {
 	const tvlrAgeGroup = ('age' in opt) ? ageGroupFromAge(opt.age) : opt.ageGroup
 
 	query.trfReq = {
+		// todo:
+		// "directESuiteCall": true,
+		// "rType": "DB-PE",
+
 		jnyCl: opt.firstClass === true ? 1 : 2,
 		// todo [breaking]: support multiple travelers
 		tvlrProf: [{
@@ -240,6 +244,25 @@ const parseJourneyWithPrice = ({parsed}, raw) => {
 	//     }
 	//   ]
 	// }
+	// "fareSetL": [
+	// 	{
+	// 		"fareL": [
+	// 			{
+	// 				"isFromPrice": true,
+	// 				"isPartPrice": false,
+	// 				"isBookable": true,
+	// 				"isUpsell": false,
+	// 				"targetCtx": "D",
+	// 				"buttonText": "To offer selection",
+	// 				"price": {
+	// 					"amount": 13990
+	// 				},
+	// 				"retPriceIsCompletePrice": false,
+	// 				"retPrice": -1
+	// 			}
+	// 		]
+	// 	}
+	// ]
 	if (
 		raw.trfRes &&
 		Array.isArray(raw.trfRes.fareSetL) &&
