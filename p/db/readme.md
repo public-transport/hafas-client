@@ -82,3 +82,15 @@ hafas.journeys(from, to, {
 	loyaltyCard: {type: data.BAHNCARD, discount: 25}
 })
 ```
+
+## Using the `routingMode` option
+
+The default option is `REALTIME`. An explaination about different routing options can be found in [https://pastebin.com/qZ9WS3Cx](https://pastebin.com/qZ9WS3Cx). The option `HYBRID` is the default option (as of 18.07.2023) in the iOS DB mobile application and also shows cancelled trains (in contrast to the default option `REALTIME`).
+
+```js
+import {routingModes} from 'hafas-client/p/db/routing-modes.js'
+
+await hafas.journeys(from, to, {
+	routingMode: routingModes.HYBRID,
+})
+```

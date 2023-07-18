@@ -7,6 +7,7 @@ import last from 'lodash/last.js'
 import {createWhen} from './lib/util.js'
 import {createClient} from '../../index.js'
 import {profile as dbProfile} from '../../p/db/index.js'
+import {routingModes} from '../../p/db/routing-modes.js'
 import {
     createValidateStation,
 	createValidateTrip
@@ -176,6 +177,18 @@ tap.test('journeys: via works – with detour', async (t) => {
 
 // todo: walkingSpeed "Berlin - Charlottenburg, Hallerstraße" -> jungfernheide
 // todo: without detour
+
+tap.test('journeys – all routing modes work', async (t) => {
+	for (const mode in routingModes) {
+		await client.journeys(berlinHbf, münchenHbf, {
+			results: 1,
+			departure: when,
+			routingMode: mode,
+		})
+	}
+
+	t.end()
+})
 
 // todo: with the DB endpoint, earlierRef/laterRef is missing queries many days in the future
 tap.skip('earlier/later journeys, Jungfernheide -> München Hbf', async (t) => {

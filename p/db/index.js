@@ -23,12 +23,18 @@ const baseProfile = require('./base.json')
 import {products} from './products.js'
 import {formatLoyaltyCard} from './loyalty-cards.js'
 import {ageGroup, ageGroupFromAge} from './ageGroup.js'
+import {routingModes} from './routing-modes.js'
 
 const transformReqBody = (ctx, body) => {
 	const req = body.svcReqL[0] || {}
 
 	// see https://pastebin.com/qZ9WS3Cx
-	req.cfg = {...req.cfg, rtMode: 'REALTIME'}
+	const rtMode = ('routingMode' in ctx.opt) ? ctx.opt.routingMode :  routingModes.REALTIME
+
+	req.cfg = {
+		...req.cfg,
+		rtMode,
+	}
 
 	return body
 }
