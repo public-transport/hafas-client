@@ -20,12 +20,19 @@ const products = require('./products')
 const baseProfile = require('./base.json')
 const formatLoyaltyCard = require('./loyalty-cards').format
 const {ageGroup, ageGroupFromAge} = require('./ageGroup')
+const routingModes = require('./routing-modes')
 
 const transformReqBody = (ctx, body) => {
 	const req = body.svcReqL[0] || {}
 
 	// see https://pastebin.com/qZ9WS3Cx
-	req.cfg = {...req.cfg, rtMode: 'HYBRID'} // todo: use `REALTIME`?
+	// todo: use `REALTIME` as default?
+	const rtMode = ('routingMode' in ctx.opt) ? ctx.opt.routingMode :  routingModes.HYBRID
+
+	req.cfg = {
+		...req.cfg,
+		rtMode,
+	}
 
 	return body
 }

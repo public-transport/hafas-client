@@ -9,6 +9,7 @@ const last = require('lodash/last')
 const {createWhen} = require('./lib/util')
 const createClient = require('../..')
 const dbProfile = require('../../p/db')
+const routingModes = require('../../p/db/routing-modes')
 const products = require('../../p/db/products')
 const {
 	station: createValidateStation,
@@ -183,6 +184,18 @@ tap.test('journeys: via works – with detour', async (t) => {
 
 // todo: walkingSpeed "Berlin - Charlottenburg, Hallerstraße" -> jungfernheide
 // todo: without detour
+
+tap.skip('journeys – all routing modes work', async (t) => {
+	for (const mode in routingModes) {
+		await client.journeys(berlinHbf, münchenHbf, {
+			results: 1,
+			departure: when,
+			routingMode: mode,
+		})
+	}
+
+	t.end()
+})
 
 tap.test('earlier/later journeys, Jungfernheide -> München Hbf', async (t) => {
 	await testEarlierLaterJourneys({
