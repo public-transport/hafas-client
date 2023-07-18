@@ -11,13 +11,11 @@ const münchenHbf = '8000261'
 
 tap.test('journeys – check all routing modes', async (t) => {
 	for (let mode in routingModes) {
-		console.log(mode)
 		const res = await client.journeys(berlinHbf, münchenHbf,
 			{
 				results: 1, tickets: true, routingMode: mode
 			}
-			)
-		console.log(res)
+		)
 	}
 
 	t.end()
