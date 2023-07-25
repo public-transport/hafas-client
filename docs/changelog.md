@@ -1,5 +1,12 @@
 # Changelog
 
+## `6.1.0`
+
+- 793cc9ee with `$HTTP(S)_PROXY`, keep connections alive for 10s
+- 5ce0129c [*DB* profile](../p/db): add `routingMode` option 📝✅
+
+[🏷 `6.1.0`](https://github.com/public-transport/hafas-client/releases/tag/6.1.0), 2023-07-25
+
 ## `6.0.5`
 
 - 9a1ef7c5 `journeys()`/`journeysFromTrip()`/`refreshJourney()`/`trip()`/`tripsByName()`: apply leg-wide remarks even if `opt.stopovers` is `false` 🐛 – Thanks @traines-source!
