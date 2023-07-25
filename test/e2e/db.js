@@ -29,7 +29,7 @@ import {testServerInfo} from './lib/server-info.js'
 const isObj = o => o !== null && 'object' === typeof o && !Array.isArray(o)
 const minute = 60 * 1000
 
-const T_MOCK = 1668495600 * 1000 // 2022-11-15T08:00:00+01:00
+const T_MOCK = 1696921200 * 1000 // 2023-10-10T08:00:00+01:00
 const when = createWhen(dbProfile.timezone, dbProfile.locale, T_MOCK)
 
 const cfg = {
