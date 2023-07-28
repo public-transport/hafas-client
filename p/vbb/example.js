@@ -2,26 +2,21 @@ import {inspect} from 'util'
 import {createClient} from '../../index.js'
 import {profile as vbnProfile} from './index.js'
 
-const client = createClient(vbnProfile, 'hafas-client-example')
+// Pick a descriptive user agent! hafas-client won't work with this string.
+const client = createClient(vbnProfile, 'foo')
 
-// Hauptbahnhof to Charlottenburg
-// client.journeys('900000003201', '900000024101', {results: 1, polylines: true})
-// client.departures('900000013102', {duration: 1})
-// client.arrivals('900000013102', {duration: 10, linesOfStops: true})
-client.locations('hansaplatz', {results: 2})
-// client.stop('900000042101', {linesOfStops: true}) // Spichernstr
-// client.nearby({
+const hauptbahnhof = '900003201'
+const charlottenburg = '900024101'
+const kottbusserTor = '900013102'
+const spichernstr = '900042101'
+
+let data = await client.locations('hansaplatz', {results: 2})
+// let data = await client.nearby({
 // 	type: 'location',
 // 	latitude: 52.5137344,
 // 	longitude: 13.4744798
 // }, {distance: 60})
-// client.radar({
-// 	north: 52.52411,
-// 	west: 13.41002,
-// 	south: 52.51942,
-// 	east: 13.41709
-// }, {results: 10})
-// client.reachableFrom({
+// let data = await client.reachableFrom({
 // 	type: 'location',
 // 	address: '13353 Berlin-Wedding, Torfstr. 17',
 // 	latitude: 52.541797,
@@ -31,17 +26,33 @@ client.locations('hansaplatz', {results: 2})
 // 	maxDuration: 10
 // })
 
-// .then(({journeys}) => {
-// 	const [journey] = journeys
-// 	const leg = journey.legs[0]
-// 	return client.trip(leg.tripId, {polyline: true})
-// })
+// let data = await client.stop(spichernstr, {linesOfStops: true}) // Spichernstr
 
-// .then(({journeys}) => {
-// 	const [journey] = journeys
-// 	return client.refreshJourney(journey.refreshToken, {stopovers: true, remarks: true})
+// let data = await client.departures(kottbusserTor, {duration: 1})
+// let data = await client.arrivals(kottbusserTor, {duration: 10, linesOfStops: true})
+
+// let data = await client.journeys(hauptbahnhof, charlottenburg, {
+// 	results: 1,
+// 	polylines: true,
 // })
-.then((data) => {
-	console.log(inspect(data, {depth: null, colors: true}))
-})
-.catch(console.error)
+// {
+// 	const [journey] = data.journeys
+// 	data = await client.refreshJourney(journey.refreshToken, {
+// 		stopovers: true,
+// 		remarks: true,
+// 	})
+// }
+// {
+// 	const [journey] = data.journeys
+// 	const leg = journey.legs[0]
+// 	data = await client.trip(leg.tripId, {polyline: true})
+// }
+
+// let data = await client.radar({
+// 	north: 52.52411,
+// 	west: 13.41002,
+// 	south: 52.51942,
+// 	east: 13.41709
+// }, {results: 10})
+
+console.log(inspect(data, {depth: null, colors: true}))

@@ -2,22 +2,19 @@ import {inspect} from 'util'
 import {createClient} from '../../index.js'
 import {profile as vmtProfile} from './index.js'
 
+// Pick a descriptive user agent! hafas-client won't work with this string.
 const client = createClient(vmtProfile, 'hafas-client-example')
 
 const jena = '190014'
 const gothaZOB = '167280'
 
-client.journeys(jena, gothaZOB, {results: 1})
-// client.departures(jena)
-// client.arrivals(jena, {duration: 10, linesOfStops: true})
-// client.locations('ohrdruf', {results: 2})
-// client.stop(jena, {linesOfStops: true}) // Dammtor
-// client.nearby({
+let data = await client.locations('ohrdruf', {results: 2})
+// let data = await client.nearby({
 // 	type: 'location',
 // 	latitude: 50.975615,
 // 	longitude: 11.032374
 // })
-// client.reachableFrom({
+// let data = await client.reachableFrom({
 // 	type: 'location',
 // 	id: '980348376',
 // 	address: 'Erfurt, Grafengasse 12',
@@ -26,18 +23,23 @@ client.journeys(jena, gothaZOB, {results: 1})
 // 	when: new Date('2020-03-04T10:00:00+01:00')
 // })
 
-// .then(({journeys}) => {
-// 	const [journey] = journeys
+// let data = await client.stop(jena, {linesOfStops: true}) // Dammtor
+
+// let data = await client.departures(jena)
+// let data = await client.arrivals(jena, {duration: 10, linesOfStops: true})
+
+// let data = await client.journeys(jena, gothaZOB, {results: 1})
+// {
+// 	const [journey] = data.journeys
+// 	data = await client.refreshJourney(journey.refreshToken, {
+// 		stopovers: true,
+// 		remarks: true,
+// 	})
+// }
+// {
+// 	const [journey] = data.journeys
 // 	const leg = journey.legs[0]
-// 	return client.trip(leg.tripId, {polyline: true})
-// })
+// 	data = await client.trip(leg.tripId, {polyline: true})
+// }
 
-// .then(({journeys}) => {
-// 	const [journey] = journeys
-// 	return client.refreshJourney(journey.refreshToken, {stopovers: true, remarks: true})
-// })
-
-.then((data) => {
-	console.log(inspect(data, {depth: null, colors: true}))
-})
-.catch(console.error)
+console.log(inspect(data, {depth: null, colors: true}))

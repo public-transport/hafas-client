@@ -2,35 +2,20 @@ import {inspect} from 'util'
 import {createClient} from '../../index.js'
 import {profile as oebbProfile} from './index.js'
 
+// Pick a descriptive user agent! hafas-client won't work with this string.
 const client = createClient(oebbProfile, 'hafas-client-example')
 
-// Wien Westbahnhof to Salzburg Hbf
-client.journeys('1291501', '8100002', {results: 1})
-// .then(({journeys}) => {
-// 	const leg = journeys[0].legs[0]
-// 	return client.trip(leg.tripId, leg.line.name)
-// })
-// .then(({journeys}) => {
-// 	const [journey] = journeys
-// 	return client.refreshJourney(journey.refreshToken, {stopovers: true, remarks: true})
-// })
+const westbahnhof = '1291501'
+const salzburgHbf = '8100002'
+const grazHbf = '8100173'
 
-// client.departures('8100002', {duration: 1})
-// client.arrivals('8100002', {duration: 10, linesOfStops: true})
-// client.locations('Salzburg', {results: 2})
-// client.stop('8100173') // Graz Hbf
-// client.nearby({
+let data = await client.locations('Salzburg', {results: 2})
+// let data = await client.nearby({
 // 	type: 'location',
 // 	latitude: 47.812851,
 // 	longitude: 13.045604
 // }, {distance: 60})
-// client.radar({
-// 	north: 47.827203,
-// 	west: 13.001261,
-// 	south: 47.773278,
-// 	east: 13.07562
-// }, {results: 10})
-// client.reachableFrom({
+// let data = await client.reachableFrom({
 // 	type: 'location',
 // 	id: '970053039',
 // 	name: 'Graz, BILLA, Hauptplatz',
@@ -41,7 +26,30 @@ client.journeys('1291501', '8100002', {results: 1})
 // 	maxDuration: 20
 // })
 
-.then((data) => {
-	console.log(inspect(data, {depth: null, colors: true}))
-})
-.catch(console.error)
+// let data = await client.stop(grazHbf)
+
+// let data = await client.departures(salzburgHbf, {duration: 1})
+// let data = await client.arrivals(salzburgHbf, {duration: 10, linesOfStops: true})
+
+// let data = await client.journeys(westbahnhof, salzburgHbf, {results: 1})
+// {
+// 	const [journey] = data.journeys
+// 	data = await client.refreshJourney(journey.refreshToken, {
+// 		stopovers: true,
+// 		remarks: true,
+// 	})
+// }
+// {
+// 	const [journey] = data.journeys
+// 	const [leg] = journey.legs
+// 	data = await client.trip(leg.tripId, leg.line.name)
+// }
+
+// let data = await client.radar({
+// 	north: 47.827203,
+// 	west: 13.001261,
+// 	south: 47.773278,
+// 	east: 13.07562
+// }, {results: 10})
+
+console.log(inspect(data, {depth: null, colors: true}))

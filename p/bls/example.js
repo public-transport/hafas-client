@@ -2,41 +2,19 @@ import {inspect} from 'util'
 import {createClient} from '../../index.js'
 import {profile as blsProfile} from './index.js'
 
+// Pick a descriptive user agent! hafas-client won't work with this string.
 const client = createClient(blsProfile, 'hafas-client-example')
 
 const bernDennigkofengässli = '8590093'
 const münsingenSpital = '8578932'
 
-client.journeys(bernDennigkofengässli, münsingenSpital, {results: 1, stopovers: true})
-
-// .then(({journeys}) => {
-// 	const [journey] = journeys
-// 	return client.refreshJourney(journey.refreshToken, {stopovers: true, remarks: true})
-// })
-
-// .then(({journeys}) => {
-// 	const [journey] = journeys
-// 	const leg = journey.legs[0]
-// 	return client.trip(leg.tripId, {polyline: true})
-// })
-
-// client.departures(bernDennigkofengässli, {duration: 1})
-// client.arrivals(bernDennigkofengässli, {duration: 10, linesOfStops: true})
-// client.radar({
-// 	north: 46.969,
-// 	west: 7.3941,
-// 	south: 46.921,
-// 	east: 7.5141,
-// }, {results: 10})
-
-// client.locations('münsingen spital', {results: 3})
-// client.stop(bernDennigkofengässli, {linesOfStops: true})
-// client.nearby({
+let data = await client.locations('münsingen spital', {results: 3})
+// let data = await client.nearby({
 // 	type: 'location',
 // 	latitude: 53.554422,
 // 	longitude: 9.977934
 // }, {distance: 500})
-// client.reachableFrom({
+// let data = await client.reachableFrom({
 // 	type: 'location',
 // 	id: '990017698',
 // 	address: 'Bern, Schänzlihalde 17',
@@ -46,7 +24,33 @@ client.journeys(bernDennigkofengässli, münsingenSpital, {results: 1, stopovers
 // 	maxDuration: 10,
 // })
 
-.then((data) => {
-	console.log(inspect(data, {depth: null, colors: true}))
-})
-.catch(console.error)
+// let data = await client.stop(bernDennigkofengässli, {linesOfStops: true})
+
+// let data = await client.departures(bernDennigkofengässli, {duration: 1})
+// let data = await client.arrivals(bernDennigkofengässli, {duration: 10, linesOfStops: true})
+
+// let data = await client.journeys(bernDennigkofengässli, münsingenSpital, {
+// 	results: 1,
+// 	stopovers: true,
+// })
+// {
+// 	const [journey] = data.journeys
+// 	data = await client.refreshJourney(journey.refreshToken, {
+// 		stopovers: true,
+// 		remarks: true,
+// 	})
+// }
+// {
+// 	const [journey] = data.journeys
+// 	const leg = journey.legs[0]
+// 	data = await client.trip(leg.tripId, {polyline: true})
+// }
+
+// let data = await client.radar({
+// 	north: 46.969,
+// 	west: 7.3941,
+// 	south: 46.921,
+// 	east: 7.5141,
+// }, {results: 10})
+
+console.log(inspect(data, {depth: null, colors: true}))

@@ -2,26 +2,19 @@ import {inspect} from 'util'
 import {createClient} from '../../index.js'
 import {profile as sMuenchenProfile} from './index.js'
 
+// Pick a descriptive user agent! hafas-client won't work with this string.
 const client = createClient(sMuenchenProfile, 'hafas-client-example')
 
-// Mittersendling to Charlottenburg
-// client.journeys('8004154', '0621790', {results: 1, polylines: true})
-client.departures('8004154', {duration: 5})
-// client.arrivals('8004154', {duration: 10, linesOfStops: true})
-// client.locations('mittersendling', {results: 5})
-// client.stop('8004154', {linesOfStops: true}) // Mittersendling
-// client.nearby({
+const mittersendling = '8004154'
+const charlottenburg = '0621790'
+
+let data = await client.locations('mittersendling', {results: 5})
+// let data = await client.nearby({
 // 	type: 'location',
 // 	latitude: 48.153858,
 // 	longitude: 11.533059
 // }, {distance: 750})
-// client.radar({
-// 	north: 48.145121,
-// 	west: 11.543736,
-// 	south: 48.138339,
-// 	east: 11.553776
-// }, {results: 10})
-// client.reachableFrom({
+// let data = await client.reachableFrom({
 // 	type: 'location',
 //     address: 'Pötschnerstraße 3, neuhausen',
 //     latitude: 48.152499,
@@ -31,20 +24,32 @@ client.departures('8004154', {duration: 5})
 // 	maxDuration: 20
 // })
 
-// .then(({journeys}) => {
-// 	const [journey] = journeys
-// 	const leg = journey.legs.find(leg => leg.line)
-// 	return client.trip(leg.tripId, {polyline: true})
-// })
+// let data = await client.stop(mittersendling, {linesOfStops: true})
 
-// .then(({journeys}) => {
-// 	const [journey] = journeys
-// 	return client.refreshJourney(journey.refreshToken, {
+// let data = await client.departures(mittersendling, {duration: 5})
+// let data = await client.arrivals(mittersendling, {duration: 10, linesOfStops: true})
+
+// let data = await client.journeys(mittersendling, charlottenburg, {
+// 	results: 1,
+// 	polylines: true,
+// })
+// {
+// 	const [journey] = data.journeys
+// 	data = await client.refreshJourney(journey.refreshToken, {
 // 		stopovers: true, remarks: true
 // 	})
-// })
+// }
+// {
+// 	const [journey] = data.journeys
+// 	const leg = journey.legs.find(leg => leg.line)
+// 	data = await client.trip(leg.tripId, {polyline: true})
+// }
 
-.then((data) => {
-	console.log(inspect(data, {depth: null, colors: true}))
-})
-.catch(console.error)
+// let data = await client.radar({
+// 	north: 48.145121,
+// 	west: 11.543736,
+// 	south: 48.138339,
+// 	east: 11.553776
+// }, {results: 10})
+
+console.log(inspect(data, {depth: null, colors: true}))
