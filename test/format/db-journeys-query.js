@@ -27,6 +27,7 @@ const opt = {
 	products: {},
 
 	firstClass: false,
+	age: 24,
 	loyaltyCard: {
 		type: loyaltyCards.BAHNCARD,
 		discount: 25,
@@ -73,7 +74,8 @@ tap.test('formats a journeys() request correctly (DB)', (t) => {
 		trfReq: {
 			jnyCl: 2,
 			tvlrProf: [{
-				type: 'E', // "adult"
+				type: 'Y', // "young"
+				age: 24,
 				redtnCard: 2, // BahnCard 25
 			}],
 			cType: 'PK',
