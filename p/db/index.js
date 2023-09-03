@@ -176,8 +176,11 @@ const transformJourneysQuery = ({opt}, query) => {
 	const filters = query.jnyFltrL
 	if (opt.bike) filters.push(bike)
 
-	if (('age' in opt) && ('ageGroup' in opt))
-		throw new TypeError('opt.age and opt.ageGroup are mutually exclusive.')
+	if (('age' in opt) && ('ageGroup' in opt)) {
+		throw new TypeError(`\
+opt.age and opt.ageGroup are mutually exclusive.
+Pass in just opt.age, and the age group will calculated automatically.`)
+	}
 
 	const tvlrAgeGroup = ('age' in opt) ? ageGroupFromAge(opt.age) : opt.ageGroup
 
@@ -186,6 +189,7 @@ const transformJourneysQuery = ({opt}, query) => {
 		// todo [breaking]: support multiple travelers
 		tvlrProf: [{
 			type: tvlrAgeGroup || ageGroup.ADULT,
+			...(('age' in opt) ? {age: opt.age} : {}),
 			redtnCard: opt.loyaltyCard
 				? formatLoyaltyCard(opt.loyaltyCard)
 				: null
