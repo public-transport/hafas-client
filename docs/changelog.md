@@ -1,5 +1,14 @@
 # Changelog
 
+## `6.1.1`
+
+- 45610fc9 [*IVB* profile](../p/ivb): update SSL CA certificate chain 🐛
+- 581a4751 profiles' examples: fixes, minor tweaks 📝
+- 19cdde06 document testing setup 📝
+- 0bc6ba36 [*DB* profile](../p/db): pass along `opt.age` if defined ✅
+
+[🏷 `6.1.1`](https://github.com/public-transport/hafas-client/releases/tag/6.1.1), 2023-09-03
+
 ## `6.1.0`
 
 - 793cc9ee with `$HTTP(S)_PROXY`, keep connections alive for 10s
