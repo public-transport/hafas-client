@@ -1,6 +1,7 @@
 // todo: use import assertions once they're supported by Node.js & ESLint
 // https://github.com/tc39/proposal-import-assertions
 import {createRequire} from 'module'
+
 const require = createRequire(import.meta.url)
 
 import trim from 'lodash/trim.js'
@@ -29,7 +30,7 @@ const transformReqBody = (ctx, body) => {
 	const req = body.svcReqL[0] || {}
 
 	// see https://pastebin.com/qZ9WS3Cx
-	const rtMode = ('routingMode' in ctx.opt) ? ctx.opt.routingMode :  routingModes.REALTIME
+	const rtMode = ('routingMode' in ctx.opt) ? ctx.opt.routingMode : routingModes.REALTIME
 
 	req.cfg = {
 		...req.cfg,
@@ -134,8 +135,8 @@ const parseLocWithDetails = ({parsed, common}, l) => {
 		})
 
 		let grids = l.gridL
-		.map(grid => parseGrid(grid, common))
-		.map(resolveCells)
+			.map(grid => parseGrid(grid, common))
+			.map(resolveCells)
 
 		const ausstattung = grids.find(g => slugg(g.title) === 'ausstattung')
 		if (ausstattung) {
@@ -257,68 +258,32 @@ const parseLineWithAdditionalName = ({parsed}, l) => {
 	return parsed
 }
 
-// todo: sotRating, conSubscr, isSotCon, showARSLink, sotCtxt
-// todo: conSubscr, showARSLink, useableTime
-const parseJourneyWithPrice = ({parsed}, raw) => {
-	parsed.price = null
-	// todo: find cheapest, find discounts
-	// todo: write a parser like vbb-parse-ticket
-	// {
-	//   "statusCode": "OK",
-	//   "fareSetL": [
-	//     {
-	//       "fareL": [
-	//         {
-	//           "isFromPrice": true,
-	//           "isPartPrice": false,
-	//           "isBookable": true,
-	//           "isUpsell": false,
-	//           "targetCtx": "D",
-	//           "buttonText": "To offer selection",
-	//           "price": {
-	//             "amount": 11400
-	//           }
-	//         }
-	//       ]
-	//     }
-	//   ]
-	// }
-	// "fareSetL": [
-	// 	{
-	// 		"fareL": [
-	// 			{
-	// 				"isFromPrice": true,
-	// 				"isPartPrice": false,
-	// 				"isBookable": true,
-	// 				"isUpsell": false,
-	// 				"targetCtx": "D",
-	// 				"buttonText": "To offer selection",
-	// 				"price": {
-	// 					"amount": 13990
-	// 				},
-	// 				"retPriceIsCompletePrice": false,
-	// 				"retPrice": -1
-	// 			}
-	// 		]
-	// 	}
-	// ]
+const parseJourneyWithTickets = ({parsed}, j) => {
 	if (
-		raw.trfRes &&
-		Array.isArray(raw.trfRes.fareSetL) &&
-		raw.trfRes.fareSetL[0] &&
-		Array.isArray(raw.trfRes.fareSetL[0].fareL) &&
-		raw.trfRes.fareSetL[0].fareL[0]
+		j.trfRes &&
+		Array.isArray(j.trfRes.fareSetL)
 	) {
-		const tariff = raw.trfRes.fareSetL[0].fareL[0]
-		if (tariff.price && tariff.price.amount >= 0) { // wat
-			parsed.price = {
-				amount: tariff.price.amount / 100,
-				currency: 'EUR',
-				hint: null
-			}
-		}
-	}
+		parsed.tickets = j.trfRes.fareSetL
+			.map((s) => {
+				if (!Array.isArray(s.fareL) || s.fareL.length === 0) return null
+				// if journeys()
+				const fare = s.fareL[0]
+				if (!fare.ticketL) {
+					return {
+						name: fare.buttonText,
+						ticket: {price: fare.price}
+					}
+				}
+				// if refreshJourney()
+				else {
+					return {
+						name: fare.name,
+						ticket: fare.ticketL[0],
+					}
+				}
+			}).filter(set => !!set)
 
+	}
 	return parsed
 }
 
@@ -575,7 +540,7 @@ const profile = {
 	products: products,
 
 	parseLocation: parseHook(_parseLocation, parseLocWithDetails),
-	parseJourney: parseHook(_parseJourney, parseJourneyWithPrice),
+	parseJourney: parseHook(_parseJourney, parseJourneyWithTickets),
 	parseJourneyLeg: parseHook(_parseJourneyLeg, parseJourneyLegWithLoadFactor),
 	parseLine: parseHook(_parseLine, parseLineWithAdditionalName),
 	parseArrival: parseHook(_parseArrival, parseArrOrDepWithLoadFactor),
