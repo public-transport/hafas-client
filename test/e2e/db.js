@@ -45,17 +45,39 @@ const cfg = {
 
 const validate = createValidate(cfg)
 
-const assertValidPrice = (t, p) => {
-	t.ok(p)
-	if (p.amount !== null) {
-		t.equal(typeof p.amount, 'number')
-		t.ok(p.amount > 0)
-	}
-	if (p.hint !== null) {
-		t.equal(typeof p.hint, 'string')
-		t.ok(p.hint)
-	}
-}
+const assertValidFare = (test, fare) => {
+  test.ok(fare);
+
+  if (fare.name !== undefined) {
+    test.equal(typeof fare.name, 'string');
+    test.ok(fare.name);
+  } else {
+    test.fail('Mandatory field "name" is missing');
+  }
+  if (fare.ticket !== undefined) {
+    if (fare.ticket.price !== undefined) {
+      if (fare.ticket.price.amount !== undefined) {
+        test.equal(typeof fare.ticket.price.amount, 'number');
+        test.ok(fare.ticket.price.amount > 0);
+      } else {
+        test.fail('Mandatory field "amount" in "price" is missing');
+      }
+      // Check optional currency field
+      if (fare.ticket.price.currency !== undefined) {
+        test.equal(typeof fare.ticket.price.currency, 'string');
+      }
+    } else {
+      test.fail('Mandatory field "price" in "ticket" is missing');
+    }
+    // Check optional addData field
+    if (fare.ticket.addData !== undefined) {
+      test.equal(typeof fare.ticket.addData, 'string');
+    }
+  } else {
+    test.fail('Mandatory field "ticket" is missing');
+  }
+};
+
 
 const client = createClient(dbProfile, 'public-transport/hafas-client:test')
 
@@ -88,9 +110,13 @@ tap.test('journeys – Berlin Schwedter Str. to München Hbf', async (t) => {
 		fromId: blnSchwedterStr,
 		toId: münchenHbf
 	})
-	// todo: find a journey where there pricing info is always available
+	// todo: find a journey where there fare info is always available
 	for (let journey of res.journeys) {
-		if (journey.price) assertValidPrice(t, journey.price)
+		if (journey.tickets) {
+			for (let fare of journey.tickets) {
+				assertValidFare(t, fare);
+			}
+		}
 	}
 
 	t.end()
