@@ -1,0 +1,5115 @@
+{
+	"common": {
+		"locL": [
+			{
+				"lid": "A=1@O=Kassel Hbf@X=9489499@Y=51318257@U=80@L=8000193@",
+				"type": "S",
+				"name": "Kassel Hbf",
+				"icoX": 0,
+				"extId": "8000193",
+				"state": "F",
+				"crd": {
+					"x": 9489903,
+					"y": 51318320,
+					"z": 0,
+					"floor": 0
+				},
+				"pCls": 312,
+				"icon": {
+					"type": "Bus",
+					"title": null
+				}
+			},
+			{
+				"lid": "A=1@O=Kassel-Wilhelmshöhe@X=9446899@Y=51313115@U=80@L=8003200@",
+				"type": "S",
+				"name": "Kassel-Wilhelmshöhe",
+				"icoX": 1,
+				"extId": "8003200",
+				"state": "F",
+				"crd": {
+					"x": 9446845,
+					"y": 51312998,
+					"z": 0,
+					"floor": 0
+				},
+				"pCls": 319,
+				"icon": {
+					"type": "ICE",
+					"title": null
+				}
+			},
+			{
+				"lid": "A=1@O=Hamburg Hbf@X=0@Y=0@L=8002549@",
+				"type": "S",
+				"name": "Hamburg Hbf",
+				"icoX": 3,
+				"extId": "8002549",
+				"state": "F",
+				"crd": {
+					"x": 0,
+					"y": 0
+				},
+				"pCls": 191,
+				"icon": {
+					"type": "STA",
+					"title": null
+				}
+			},
+			{
+				"lid": "A=1@O=Hamburg-Harburg@X=0@Y=0@L=8000147@",
+				"type": "S",
+				"name": "Hamburg-Harburg",
+				"icoX": 3,
+				"extId": "8000147",
+				"state": "F",
+				"crd": {
+					"x": 0,
+					"y": 0
+				},
+				"pCls": 63,
+				"icon": {
+					"type": "STA",
+					"title": null
+				}
+			},
+			{
+				"lid": "A=1@O=Göttingen@X=0@Y=0@L=8000128@",
+				"type": "S",
+				"name": "Göttingen",
+				"icoX": 3,
+				"extId": "8000128",
+				"state": "F",
+				"crd": {
+					"x": 0,
+					"y": 0
+				},
+				"pCls": 559,
+				"icon": {
+					"type": "STA",
+					"title": null
+				}
+			}
+		],
+		"prodL": [
+			{
+				"name": "Deviation",
+				"icoX": 2,
+				"prodCtx": {
+					"name": "Deviation"
+				},
+				"icon": {
+					"type": "prod_gen",
+					"title": null
+				}
+			},
+			{
+				"name": "ICE 690",
+				"icoX": 1,
+				"prodCtx": {
+					"name": "ICE  690",
+					"catOut": "ICE",
+					"catCode": "0"
+				},
+				"icon": {
+					"type": "ICE",
+					"title": null
+				}
+			},
+			{
+				"name": "ICE 588",
+				"icoX": 1,
+				"prodCtx": {
+					"name": "ICE  588",
+					"catOut": "ICE",
+					"catCode": "0"
+				},
+				"icon": {
+					"type": "ICE",
+					"title": null
+				}
+			},
+			{
+				"name": "ICE 1578",
+				"icoX": 1,
+				"prodCtx": {
+					"name": "ICE 1578",
+					"catOut": "ICE",
+					"catCode": "0"
+				},
+				"icon": {
+					"type": "ICE",
+					"title": null
+				}
+			},
+			{
+				"name": "ICE 370",
+				"icoX": 1,
+				"prodCtx": {
+					"name": "ICE  370",
+					"catOut": "ICE",
+					"catCode": "0"
+				},
+				"icon": {
+					"type": "ICE",
+					"title": null
+				}
+			},
+			{
+				"name": "ICE 1218",
+				"icoX": 1,
+				"prodCtx": {
+					"name": "ICE 1218",
+					"catOut": "ICE",
+					"catCode": "0"
+				},
+				"icon": {
+					"type": "ICE",
+					"title": null
+				}
+			},
+			{
+				"name": "ICE 586",
+				"icoX": 1,
+				"prodCtx": {
+					"name": "ICE  586",
+					"catOut": "ICE",
+					"catCode": "0"
+				},
+				"icon": {
+					"type": "ICE",
+					"title": null
+				}
+			},
+			{
+				"name": "ICE 1576",
+				"icoX": 1,
+				"prodCtx": {
+					"name": "ICE 1576",
+					"catOut": "ICE",
+					"catCode": "0"
+				},
+				"icon": {
+					"type": "ICE",
+					"title": null
+				}
+			},
+			{
+				"name": "ICE 278",
+				"icoX": 1,
+				"prodCtx": {
+					"name": "ICE  278",
+					"catOut": "ICE",
+					"catCode": "0"
+				},
+				"icon": {
+					"type": "ICE",
+					"title": null
+				}
+			},
+			{
+				"name": "ICE 596",
+				"icoX": 1,
+				"prodCtx": {
+					"name": "ICE  596",
+					"catOut": "ICE",
+					"catCode": "0"
+				},
+				"icon": {
+					"type": "ICE",
+					"title": null
+				}
+			},
+			{
+				"name": "ICE 584",
+				"icoX": 1,
+				"prodCtx": {
+					"name": "ICE  584",
+					"catOut": "ICE",
+					"catCode": "0"
+				},
+				"icon": {
+					"type": "ICE",
+					"title": null
+				}
+			},
+			{
+				"name": "ICE 1574",
+				"icoX": 1,
+				"prodCtx": {
+					"name": "ICE 1574",
+					"catOut": "ICE",
+					"catCode": "0"
+				},
+				"icon": {
+					"type": "ICE",
+					"title": null
+				}
+			},
+			{
+				"name": "ICE 276",
+				"icoX": 1,
+				"prodCtx": {
+					"name": "ICE  276",
+					"catOut": "ICE",
+					"catCode": "0"
+				},
+				"icon": {
+					"type": "ICE",
+					"title": null
+				}
+			},
+			{
+				"name": "ICE 2876",
+				"icoX": 1,
+				"prodCtx": {
+					"name": "ICE 2876",
+					"catOut": "ICE",
+					"catCode": "0"
+				},
+				"icon": {
+					"type": "ICE",
+					"title": null
+				}
+			},
+			{
+				"name": "ICE 594",
+				"icoX": 1,
+				"prodCtx": {
+					"name": "ICE  594",
+					"catOut": "ICE",
+					"catCode": "0"
+				},
+				"icon": {
+					"type": "ICE",
+					"title": null
+				}
+			},
+			{
+				"name": "ICE 582",
+				"icoX": 1,
+				"prodCtx": {
+					"name": "ICE  582",
+					"catOut": "ICE",
+					"catCode": "0"
+				},
+				"icon": {
+					"type": "ICE",
+					"title": null
+				}
+			},
+			{
+				"name": "ICE 274",
+				"icoX": 1,
+				"prodCtx": {
+					"name": "ICE  274",
+					"catOut": "ICE",
+					"catCode": "0"
+				},
+				"icon": {
+					"type": "ICE",
+					"title": null
+				}
+			},
+			{
+				"name": "ICE 592",
+				"icoX": 1,
+				"prodCtx": {
+					"name": "ICE  592",
+					"catOut": "ICE",
+					"catCode": "0"
+				},
+				"icon": {
+					"type": "ICE",
+					"title": null
+				}
+			},
+			{
+				"name": "ICE 272",
+				"icoX": 1,
+				"prodCtx": {
+					"name": "ICE  272",
+					"catOut": "ICE",
+					"catCode": "0"
+				},
+				"icon": {
+					"type": "ICE",
+					"title": null
+				}
+			},
+			{
+				"name": "RB 24038",
+				"icoX": 7,
+				"prodCtx": {
+					"name": "RB 24038",
+					"catOut": "RB",
+					"catCode": "3",
+					"addName": "RB    83"
+				},
+				"addName": "RB 83",
+				"icon": {
+					"type": "RB",
+					"title": null
+				}
+			},
+			{
+				"name": "ICE 1688",
+				"icoX": 1,
+				"prodCtx": {
+					"name": "ICE 1688",
+					"catOut": "ICE",
+					"catCode": "0"
+				},
+				"icon": {
+					"type": "ICE",
+					"title": null
+				}
+			}
+		],
+		"remL": [
+			{
+				"type": "C",
+				"code": "",
+				"icoX": 4,
+				"txtN": "Current information available.",
+				"icon": {
+					"type": "HimWarn",
+					"title": null
+				}
+			},
+			{
+				"type": "C",
+				"code": "",
+				"icoX": 5,
+				"txtN": "Current information available.",
+				"icon": {
+					"type": "HimInfo",
+					"title": null
+				}
+			},
+			{
+				"type": "H",
+				"code": "text.connection.section.arrival.date.deviation",
+				"icoX": 6,
+				"txtN": "Arrival Tuesday, 2023-11-14",
+				"icon": {
+					"type": "attr_day_change",
+					"title": null
+				}
+			},
+			{
+				"type": "H",
+				"code": "text.connection.section.departure.date.deviation",
+				"icoX": 6,
+				"txtN": "Departure Tuesday, 2023-11-14",
+				"icon": {
+					"type": "attr_day_change",
+					"title": null
+				}
+			}
+		],
+		"icoL": [
+			{
+				"res": "Bus"
+			},
+			{
+				"res": "ICE"
+			},
+			{
+				"res": "prod_gen"
+			},
+			{
+				"res": "STA"
+			},
+			{
+				"res": "HimWarn"
+			},
+			{
+				"res": "HimInfo"
+			},
+			{
+				"res": "attr_day_change"
+			},
+			{
+				"res": "RB"
+			}
+		],
+		"tcocL": [
+			{
+				"c": "FIRST",
+				"r": 3
+			},
+			{
+				"c": "SECOND",
+				"r": 2
+			},
+			{
+				"c": "FIRST",
+				"r": 2
+			},
+			{
+				"c": "FIRST",
+				"r": 1
+			},
+			{
+				"c": "SECOND",
+				"r": 1
+			}
+		],
+		"lDrawStyleL": [
+			{
+				"sIcoX": 2,
+				"type": "SOLID"
+			},
+			{
+				"type": "SOLID"
+			},
+			{
+				"sIcoX": 1,
+				"type": "SOLID"
+			},
+			{
+				"sIcoX": 7,
+				"type": "SOLID"
+			}
+		],
+		"hints": []
+	},
+	"outConL": [
+		{
+			"cid": "A0-0",
+			"date": "20231113",
+			"dur": "020900",
+			"chg": 0,
+			"dep": {},
+			"arr": {},
+			"secL": [
+				{
+					"type": "DEVI",
+					"dep": {
+						"locX": 0,
+						"dTimeS": "141400",
+						"type": "N",
+						"location": {
+							"type": "stop",
+							"id": "8000193",
+							"name": "Kassel Hbf",
+							"location": {
+								"type": "location",
+								"id": "8000193",
+								"latitude": 51.31832,
+								"longitude": 9.489903
+							},
+							"products": {
+								"nationalExpress": false,
+								"national": false,
+								"regionalExpress": false,
+								"regional": true,
+								"suburban": true,
+								"bus": true,
+								"ferry": false,
+								"subway": false,
+								"tram": true,
+								"taxi": false
+							}
+						}
+					},
+					"arr": {
+						"locX": 1,
+						"aTimeS": "142100",
+						"type": "N",
+						"location": {
+							"type": "stop",
+							"id": "8003200",
+							"name": "Kassel-Wilhelmshöhe",
+							"location": {
+								"type": "location",
+								"id": "8003200",
+								"latitude": 51.312998,
+								"longitude": 9.446845
+							},
+							"products": {
+								"nationalExpress": true,
+								"national": true,
+								"regionalExpress": true,
+								"regional": true,
+								"suburban": true,
+								"bus": true,
+								"ferry": false,
+								"subway": false,
+								"tram": true,
+								"taxi": false
+							}
+						}
+					},
+					"gis": {
+						"ctx": "H|1|D$A=1@O=Kassel Hbf@L=8000193@a=0@$A=1@O=Kassel-Wilhelmshöhe@L=8003200@a=0@$202311131414$202311131421$$$1$$$$$$|",
+						"gisPrvr": "H",
+						"getDescr": false,
+						"getPoly": false,
+						"sumLDrawStyleX": 0,
+						"resLDrawStyleX": 1,
+						"prodX": 0,
+						"line": {
+							"type": "line",
+							"id": "deviation",
+							"fahrtNr": null,
+							"name": "Deviation",
+							"public": true
+						}
+					},
+					"resState": "N",
+					"resRecommendation": "N"
+				},
+				{
+					"type": "JNY",
+					"dep": {
+						"locX": 1,
+						"dProdX": 1,
+						"dPltfS": {
+							"type": "PL",
+							"txt": "12"
+						},
+						"dTimeS": "142100",
+						"dTimeR": "144600",
+						"dProgType": "PROGNOSED",
+						"dTZOffset": 60,
+						"type": "N",
+						"location": {
+							"type": "stop",
+							"id": "8003200",
+							"name": "Kassel-Wilhelmshöhe",
+							"location": {
+								"type": "location",
+								"id": "8003200",
+								"latitude": 51.312998,
+								"longitude": 9.446845
+							},
+							"products": {
+								"nationalExpress": true,
+								"national": true,
+								"regionalExpress": true,
+								"regional": true,
+								"suburban": true,
+								"bus": true,
+								"ferry": false,
+								"subway": false,
+								"tram": true,
+								"taxi": false
+							}
+						}
+					},
+					"arr": {
+						"locX": 2,
+						"aProdX": 1,
+						"aTimeS": "163600",
+						"aTimeR": "165500",
+						"aProgType": "PROGNOSED",
+						"aTZOffset": 60,
+						"type": "N",
+						"location": {
+							"type": "stop",
+							"id": "8002549",
+							"name": "Hamburg Hbf",
+							"location": {
+								"type": "location",
+								"id": "8002549",
+								"latitude": 0,
+								"longitude": 0
+							},
+							"products": {
+								"nationalExpress": true,
+								"national": true,
+								"regionalExpress": true,
+								"regional": true,
+								"suburban": true,
+								"bus": true,
+								"ferry": false,
+								"subway": true,
+								"tram": false,
+								"taxi": false
+							}
+						}
+					},
+					"jny": {
+						"jid": "1|204522|0|80|-1",
+						"prodX": 1,
+						"status": "P",
+						"isRchbl": true,
+						"pos": {
+							"x": 9558617,
+							"y": 51143830
+						},
+						"ctxRecon": "T$A=1@O=Kassel-Wilhelmshöhe@L=8003200@a=0@$A=1@O=Hamburg Hbf@L=8002549@a=0@$202311131421$202311131636$ICE  690$$1$$$$$$",
+						"approxDelay": true,
+						"subscr": "F",
+						"sumLDrawStyleX": 2,
+						"resLDrawStyleX": 1,
+						"durS": "021500",
+						"line": {
+							"type": "line",
+							"id": "ice-690",
+							"fahrtNr": null,
+							"name": "ICE 690",
+							"public": true,
+							"productName": "ICE"
+						}
+					},
+					"resState": "N",
+					"resRecommendation": "N"
+				}
+			],
+			"ctxRecon": "D$A=1@O=Kassel Hbf@L=8000193@a=0@$A=1@O=Kassel-Wilhelmshöhe@L=8003200@a=0@$202311131414$202311131421$$$1$$$$$$§T$A=1@O=Kassel-Wilhelmshöhe@L=8003200@a=0@$A=1@O=Hamburg Hbf@L=8002549@a=0@$202311131421$202311131636$ICE  690$$1$$$$$$",
+			"trfRes": {
+				"statusCode": "NA",
+				"fareSetL": [
+					{
+						"fareL": [
+							{
+								"desc": "Fares not available",
+								"isFromPrice": false,
+								"isPartPrice": false,
+								"isBookable": false,
+								"isUpsell": false,
+								"buttonText": "To offer selection",
+								"price": {
+									"amount": -1
+								},
+								"retPriceIsCompletePrice": false,
+								"retPrice": -1
+							}
+						]
+					}
+				]
+			},
+			"msgL": [
+				{
+					"type": "REM",
+					"remX": 0,
+					"sty": "I",
+					"txtC": {
+						"r": 204,
+						"g": 0,
+						"b": 0
+					},
+					"prio": 200,
+					"fIdx": -1,
+					"tIdx": -1,
+					"tagL": [
+						"SUM_CON_FTR_H3"
+					],
+					"sort": 818413568,
+					"hint": null
+				}
+			],
+			"conSubscr": "U",
+			"resState": "N",
+			"resRecommendation": "N",
+			"recState": "U",
+			"sotRating": 0,
+			"isSotCon": false,
+			"showARSLink": false,
+			"cksum": "078a143e_3",
+			"cksumDti": "0f7b9d19_3",
+			"dTrnCmpSX": {
+				"tcocX": [
+					0,
+					1
+				]
+			},
+			"intvlSubscr": "U",
+			"originType": "INITIAL",
+			"remarkRefs": []
+		},
+		{
+			"cid": "A0-1",
+			"date": "20231113",
+			"dur": "022100",
+			"chg": 0,
+			"dep": {},
+			"arr": {},
+			"secL": [
+				{
+					"type": "DEVI",
+					"dep": {
+						"locX": 0,
+						"dTimeS": "142900",
+						"type": "N",
+						"location": {
+							"type": "stop",
+							"id": "8000193",
+							"name": "Kassel Hbf",
+							"location": {
+								"type": "location",
+								"id": "8000193",
+								"latitude": 51.31832,
+								"longitude": 9.489903
+							},
+							"products": {
+								"nationalExpress": false,
+								"national": false,
+								"regionalExpress": false,
+								"regional": true,
+								"suburban": true,
+								"bus": true,
+								"ferry": false,
+								"subway": false,
+								"tram": true,
+								"taxi": false
+							}
+						}
+					},
+					"arr": {
+						"locX": 1,
+						"aTimeS": "143600",
+						"type": "N",
+						"location": {
+							"type": "stop",
+							"id": "8003200",
+							"name": "Kassel-Wilhelmshöhe",
+							"location": {
+								"type": "location",
+								"id": "8003200",
+								"latitude": 51.312998,
+								"longitude": 9.446845
+							},
+							"products": {
+								"nationalExpress": true,
+								"national": true,
+								"regionalExpress": true,
+								"regional": true,
+								"suburban": true,
+								"bus": true,
+								"ferry": false,
+								"subway": false,
+								"tram": true,
+								"taxi": false
+							}
+						}
+					},
+					"gis": {
+						"ctx": "H|1|D$A=1@O=Kassel Hbf@L=8000193@a=0@$A=1@O=Kassel-Wilhelmshöhe@L=8003200@a=0@$202311131429$202311131436$$$1$$$$$$|",
+						"gisPrvr": "H",
+						"getDescr": false,
+						"getPoly": false,
+						"sumLDrawStyleX": 0,
+						"resLDrawStyleX": 1,
+						"prodX": 0,
+						"line": {
+							"type": "line",
+							"id": "deviation",
+							"fahrtNr": null,
+							"name": "Deviation",
+							"public": true
+						}
+					},
+					"resState": "N",
+					"resRecommendation": "N"
+				},
+				{
+					"type": "JNY",
+					"dep": {
+						"locX": 1,
+						"dProdX": 2,
+						"dPltfS": {
+							"type": "PL",
+							"txt": "11"
+						},
+						"dTimeS": "143600",
+						"dTimeR": "143600",
+						"dProgType": "PROGNOSED",
+						"dTZOffset": 60,
+						"type": "N",
+						"location": {
+							"type": "stop",
+							"id": "8003200",
+							"name": "Kassel-Wilhelmshöhe",
+							"location": {
+								"type": "location",
+								"id": "8003200",
+								"latitude": 51.312998,
+								"longitude": 9.446845
+							},
+							"products": {
+								"nationalExpress": true,
+								"national": true,
+								"regionalExpress": true,
+								"regional": true,
+								"suburban": true,
+								"bus": true,
+								"ferry": false,
+								"subway": false,
+								"tram": true,
+								"taxi": false
+							}
+						}
+					},
+					"arr": {
+						"locX": 2,
+						"aProdX": 2,
+						"aTimeS": "165500",
+						"aTimeR": "165700",
+						"aProgType": "PROGNOSED",
+						"aTZOffset": 60,
+						"type": "N",
+						"location": {
+							"type": "stop",
+							"id": "8002549",
+							"name": "Hamburg Hbf",
+							"location": {
+								"type": "location",
+								"id": "8002549",
+								"latitude": 0,
+								"longitude": 0
+							},
+							"products": {
+								"nationalExpress": true,
+								"national": true,
+								"regionalExpress": true,
+								"regional": true,
+								"suburban": true,
+								"bus": true,
+								"ferry": false,
+								"subway": true,
+								"tram": false,
+								"taxi": false
+							}
+						}
+					},
+					"jny": {
+						"jid": "1|202657|0|80|-1",
+						"prodX": 2,
+						"status": "P",
+						"isRchbl": true,
+						"pos": {
+							"x": 9468536,
+							"y": 51258542
+						},
+						"ctxRecon": "T$A=1@O=Kassel-Wilhelmshöhe@L=8003200@a=0@$A=1@O=Hamburg Hbf@L=8002549@a=0@$202311131436$202311131655$ICE  588$$3$$$$$$",
+						"approxDelay": true,
+						"subscr": "F",
+						"sumLDrawStyleX": 2,
+						"resLDrawStyleX": 1,
+						"durS": "021900",
+						"line": {
+							"type": "line",
+							"id": "ice-588",
+							"fahrtNr": null,
+							"name": "ICE 588",
+							"public": true,
+							"productName": "ICE"
+						}
+					},
+					"resState": "N",
+					"resRecommendation": "N"
+				}
+			],
+			"ctxRecon": "D$A=1@O=Kassel Hbf@L=8000193@a=0@$A=1@O=Kassel-Wilhelmshöhe@L=8003200@a=0@$202311131429$202311131436$$$1$$$$$$§T$A=1@O=Kassel-Wilhelmshöhe@L=8003200@a=0@$A=1@O=Hamburg Hbf@L=8002549@a=0@$202311131436$202311131655$ICE  588$$3$$$$$$",
+			"trfRes": {
+				"statusCode": "OK",
+				"fareSetL": [
+					{
+						"fareL": [
+							{
+								"isFromPrice": true,
+								"isPartPrice": false,
+								"isBookable": true,
+								"isUpsell": false,
+								"targetCtx": "D",
+								"buttonText": "To offer selection",
+								"price": {
+									"amount": 8890
+								},
+								"retPriceIsCompletePrice": false,
+								"retPrice": -1
+							}
+						]
+					}
+				]
+			},
+			"msgL": [
+				{
+					"type": "REM",
+					"remX": 0,
+					"sty": "I",
+					"txtC": {
+						"r": 204,
+						"g": 0,
+						"b": 0
+					},
+					"prio": 200,
+					"fIdx": -1,
+					"tIdx": -1,
+					"tagL": [
+						"SUM_CON_FTR_H3"
+					],
+					"sort": 818413568,
+					"hint": null
+				}
+			],
+			"conSubscr": "U",
+			"resState": "N",
+			"resRecommendation": "N",
+			"recState": "U",
+			"sotRating": 0,
+			"isSotCon": false,
+			"showARSLink": false,
+			"cksum": "843d3238_3",
+			"cksumDti": "078132cc_3",
+			"dTrnCmpSX": {
+				"tcocX": [
+					2,
+					1
+				]
+			},
+			"intvlSubscr": "U",
+			"originType": "INITIAL",
+			"remarkRefs": []
+		},
+		{
+			"cid": "A0-2",
+			"date": "20231113",
+			"dur": "023600",
+			"chg": 0,
+			"dep": {},
+			"arr": {},
+			"secL": [
+				{
+					"type": "DEVI",
+					"dep": {
+						"locX": 0,
+						"dTimeS": "144900",
+						"type": "N",
+						"location": {
+							"type": "stop",
+							"id": "8000193",
+							"name": "Kassel Hbf",
+							"location": {
+								"type": "location",
+								"id": "8000193",
+								"latitude": 51.31832,
+								"longitude": 9.489903
+							},
+							"products": {
+								"nationalExpress": false,
+								"national": false,
+								"regionalExpress": false,
+								"regional": true,
+								"suburban": true,
+								"bus": true,
+								"ferry": false,
+								"subway": false,
+								"tram": true,
+								"taxi": false
+							}
+						}
+					},
+					"arr": {
+						"locX": 1,
+						"aTimeS": "145600",
+						"type": "N",
+						"location": {
+							"type": "stop",
+							"id": "8003200",
+							"name": "Kassel-Wilhelmshöhe",
+							"location": {
+								"type": "location",
+								"id": "8003200",
+								"latitude": 51.312998,
+								"longitude": 9.446845
+							},
+							"products": {
+								"nationalExpress": true,
+								"national": true,
+								"regionalExpress": true,
+								"regional": true,
+								"suburban": true,
+								"bus": true,
+								"ferry": false,
+								"subway": false,
+								"tram": true,
+								"taxi": false
+							}
+						}
+					},
+					"gis": {
+						"ctx": "H|1|D$A=1@O=Kassel Hbf@L=8000193@a=0@$A=1@O=Kassel-Wilhelmshöhe@L=8003200@a=0@$202311131449$202311131456$$$1$$$$$$|",
+						"gisPrvr": "H",
+						"getDescr": false,
+						"getPoly": false,
+						"sumLDrawStyleX": 0,
+						"resLDrawStyleX": 1,
+						"prodX": 0,
+						"line": {
+							"type": "line",
+							"id": "deviation",
+							"fahrtNr": null,
+							"name": "Deviation",
+							"public": true
+						}
+					},
+					"resState": "N",
+					"resRecommendation": "N"
+				},
+				{
+					"type": "JNY",
+					"dep": {
+						"locX": 1,
+						"dProdX": 3,
+						"dPltfS": {
+							"type": "PL",
+							"txt": "11A-C"
+						},
+						"dTimeS": "145600",
+						"dTimeR": "145600",
+						"dProgType": "PROGNOSED",
+						"dTZOffset": 60,
+						"type": "N",
+						"location": {
+							"type": "stop",
+							"id": "8003200",
+							"name": "Kassel-Wilhelmshöhe",
+							"location": {
+								"type": "location",
+								"id": "8003200",
+								"latitude": 51.312998,
+								"longitude": 9.446845
+							},
+							"products": {
+								"nationalExpress": true,
+								"national": true,
+								"regionalExpress": true,
+								"regional": true,
+								"suburban": true,
+								"bus": true,
+								"ferry": false,
+								"subway": false,
+								"tram": true,
+								"taxi": false
+							}
+						}
+					},
+					"arr": {
+						"locX": 2,
+						"aProdX": 3,
+						"aTimeS": "173200",
+						"aTimeR": "173200",
+						"aProgType": "PROGNOSED",
+						"aTZOffset": 60,
+						"type": "N",
+						"location": {
+							"type": "stop",
+							"id": "8002549",
+							"name": "Hamburg Hbf",
+							"location": {
+								"type": "location",
+								"id": "8002549",
+								"latitude": 0,
+								"longitude": 0
+							},
+							"products": {
+								"nationalExpress": true,
+								"national": true,
+								"regionalExpress": true,
+								"regional": true,
+								"suburban": true,
+								"bus": true,
+								"ferry": false,
+								"subway": true,
+								"tram": false,
+								"taxi": false
+							}
+						}
+					},
+					"jny": {
+						"jid": "1|193891|0|80|-1",
+						"prodX": 3,
+						"status": "P",
+						"isRchbl": true,
+						"pos": {
+							"x": 9286765,
+							"y": 51051655
+						},
+						"ctxRecon": "T$A=1@O=Kassel-Wilhelmshöhe@L=8003200@a=0@$A=1@O=Hamburg Hbf@L=8002549@a=0@$202311131456$202311131732$ICE 1578$$1$$$$$$",
+						"approxDelay": true,
+						"subscr": "F",
+						"sumLDrawStyleX": 2,
+						"resLDrawStyleX": 1,
+						"durS": "023600",
+						"line": {
+							"type": "line",
+							"id": "ice-1578",
+							"fahrtNr": null,
+							"name": "ICE 1578",
+							"public": true,
+							"productName": "ICE"
+						}
+					},
+					"resState": "N",
+					"resRecommendation": "N"
+				}
+			],
+			"ctxRecon": "D$A=1@O=Kassel Hbf@L=8000193@a=0@$A=1@O=Kassel-Wilhelmshöhe@L=8003200@a=0@$202311131449$202311131456$$$1$$$$$$§T$A=1@O=Kassel-Wilhelmshöhe@L=8003200@a=0@$A=1@O=Hamburg Hbf@L=8002549@a=0@$202311131456$202311131732$ICE 1578$$1$$$$$$",
+			"trfRes": {
+				"statusCode": "OK",
+				"fareSetL": [
+					{
+						"fareL": [
+							{
+								"isFromPrice": true,
+								"isPartPrice": false,
+								"isBookable": true,
+								"isUpsell": false,
+								"targetCtx": "D",
+								"buttonText": "To offer selection",
+								"price": {
+									"amount": 8890
+								},
+								"retPriceIsCompletePrice": false,
+								"retPrice": -1
+							}
+						]
+					}
+				]
+			},
+			"conSubscr": "U",
+			"resState": "N",
+			"resRecommendation": "N",
+			"recState": "U",
+			"sotRating": 0,
+			"isSotCon": false,
+			"showARSLink": false,
+			"cksum": "af65c8df_3",
+			"cksumDti": "fed9a154_3",
+			"dTrnCmpSX": {
+				"tcocX": [
+					0,
+					1
+				]
+			},
+			"intvlSubscr": "U",
+			"originType": "INITIAL"
+		},
+		{
+			"cid": "A0-3",
+			"date": "20231113",
+			"dur": "020900",
+			"chg": 0,
+			"dep": {},
+			"arr": {},
+			"secL": [
+				{
+					"type": "DEVI",
+					"dep": {
+						"locX": 0,
+						"dTimeS": "151400",
+						"type": "N",
+						"location": {
+							"type": "stop",
+							"id": "8000193",
+							"name": "Kassel Hbf",
+							"location": {
+								"type": "location",
+								"id": "8000193",
+								"latitude": 51.31832,
+								"longitude": 9.489903
+							},
+							"products": {
+								"nationalExpress": false,
+								"national": false,
+								"regionalExpress": false,
+								"regional": true,
+								"suburban": true,
+								"bus": true,
+								"ferry": false,
+								"subway": false,
+								"tram": true,
+								"taxi": false
+							}
+						}
+					},
+					"arr": {
+						"locX": 1,
+						"aTimeS": "152100",
+						"type": "N",
+						"location": {
+							"type": "stop",
+							"id": "8003200",
+							"name": "Kassel-Wilhelmshöhe",
+							"location": {
+								"type": "location",
+								"id": "8003200",
+								"latitude": 51.312998,
+								"longitude": 9.446845
+							},
+							"products": {
+								"nationalExpress": true,
+								"national": true,
+								"regionalExpress": true,
+								"regional": true,
+								"suburban": true,
+								"bus": true,
+								"ferry": false,
+								"subway": false,
+								"tram": true,
+								"taxi": false
+							}
+						}
+					},
+					"gis": {
+						"ctx": "H|1|D$A=1@O=Kassel Hbf@L=8000193@a=0@$A=1@O=Kassel-Wilhelmshöhe@L=8003200@a=0@$202311131514$202311131521$$$1$$$$$$|",
+						"gisPrvr": "H",
+						"getDescr": false,
+						"getPoly": false,
+						"sumLDrawStyleX": 0,
+						"resLDrawStyleX": 1,
+						"prodX": 0,
+						"line": {
+							"type": "line",
+							"id": "deviation",
+							"fahrtNr": null,
+							"name": "Deviation",
+							"public": true
+						}
+					},
+					"resState": "N",
+					"resRecommendation": "N"
+				},
+				{
+					"type": "JNY",
+					"dep": {
+						"locX": 1,
+						"dProdX": 4,
+						"dPltfS": {
+							"type": "PL",
+							"txt": "12"
+						},
+						"dTimeS": "152100",
+						"dTimeR": "153200",
+						"dProgType": "PROGNOSED",
+						"dTZOffset": 60,
+						"type": "N",
+						"location": {
+							"type": "stop",
+							"id": "8003200",
+							"name": "Kassel-Wilhelmshöhe",
+							"location": {
+								"type": "location",
+								"id": "8003200",
+								"latitude": 51.312998,
+								"longitude": 9.446845
+							},
+							"products": {
+								"nationalExpress": true,
+								"national": true,
+								"regionalExpress": true,
+								"regional": true,
+								"suburban": true,
+								"bus": true,
+								"ferry": false,
+								"subway": false,
+								"tram": true,
+								"taxi": false
+							}
+						}
+					},
+					"arr": {
+						"locX": 2,
+						"aProdX": 4,
+						"aTimeS": "173600",
+						"aTimeR": "174100",
+						"aProgType": "PROGNOSED",
+						"aTZOffset": 60,
+						"type": "N",
+						"location": {
+							"type": "stop",
+							"id": "8002549",
+							"name": "Hamburg Hbf",
+							"location": {
+								"type": "location",
+								"id": "8002549",
+								"latitude": 0,
+								"longitude": 0
+							},
+							"products": {
+								"nationalExpress": true,
+								"national": true,
+								"regionalExpress": true,
+								"regional": true,
+								"suburban": true,
+								"bus": true,
+								"ferry": false,
+								"subway": true,
+								"tram": false,
+								"taxi": false
+							}
+						}
+					},
+					"jny": {
+						"jid": "1|200248|0|80|-1",
+						"prodX": 4,
+						"status": "P",
+						"isRchbl": true,
+						"pos": {
+							"x": 9685643,
+							"y": 50623274
+						},
+						"ctxRecon": "T$A=1@O=Kassel-Wilhelmshöhe@L=8003200@a=0@$A=1@O=Hamburg Hbf@L=8002549@a=0@$202311131521$202311131736$ICE  370$$1$$$$$$",
+						"approxDelay": true,
+						"subscr": "F",
+						"sumLDrawStyleX": 2,
+						"resLDrawStyleX": 1,
+						"durS": "021500",
+						"line": {
+							"type": "line",
+							"id": "ice-370",
+							"fahrtNr": null,
+							"name": "ICE 370",
+							"public": true,
+							"productName": "ICE"
+						}
+					},
+					"resState": "N",
+					"resRecommendation": "N"
+				}
+			],
+			"ctxRecon": "D$A=1@O=Kassel Hbf@L=8000193@a=0@$A=1@O=Kassel-Wilhelmshöhe@L=8003200@a=0@$202311131514$202311131521$$$1$$$$$$§T$A=1@O=Kassel-Wilhelmshöhe@L=8003200@a=0@$A=1@O=Hamburg Hbf@L=8002549@a=0@$202311131521$202311131736$ICE  370$$1$$$$$$",
+			"trfRes": {
+				"statusCode": "OK",
+				"fareSetL": [
+					{
+						"fareL": [
+							{
+								"isFromPrice": true,
+								"isPartPrice": false,
+								"isBookable": true,
+								"isUpsell": false,
+								"targetCtx": "D",
+								"buttonText": "To offer selection",
+								"price": {
+									"amount": 8890
+								},
+								"retPriceIsCompletePrice": false,
+								"retPrice": -1
+							}
+						]
+					}
+				]
+			},
+			"msgL": [
+				{
+					"type": "REM",
+					"remX": 0,
+					"sty": "I",
+					"txtC": {
+						"r": 204,
+						"g": 0,
+						"b": 0
+					},
+					"prio": 200,
+					"fIdx": -1,
+					"tIdx": -1,
+					"tagL": [
+						"SUM_CON_FTR_H3"
+					],
+					"sort": 818413568,
+					"hint": null
+				}
+			],
+			"conSubscr": "U",
+			"resState": "N",
+			"resRecommendation": "N",
+			"recState": "U",
+			"sotRating": 0,
+			"isSotCon": false,
+			"showARSLink": false,
+			"cksum": "73d77156_3",
+			"cksumDti": "80b02e70_3",
+			"dTrnCmpSX": {
+				"tcocX": [
+					0,
+					1
+				]
+			},
+			"intvlSubscr": "U",
+			"originType": "INITIAL",
+			"remarkRefs": []
+		},
+		{
+			"cid": "A1-0",
+			"date": "20231113",
+			"dur": "021100",
+			"chg": 0,
+			"dep": {},
+			"arr": {},
+			"secL": [
+				{
+					"type": "DEVI",
+					"dep": {
+						"locX": 0,
+						"dTimeS": "161400",
+						"type": "N",
+						"location": {
+							"type": "stop",
+							"id": "8000193",
+							"name": "Kassel Hbf",
+							"location": {
+								"type": "location",
+								"id": "8000193",
+								"latitude": 51.31832,
+								"longitude": 9.489903
+							},
+							"products": {
+								"nationalExpress": false,
+								"national": false,
+								"regionalExpress": false,
+								"regional": true,
+								"suburban": true,
+								"bus": true,
+								"ferry": false,
+								"subway": false,
+								"tram": true,
+								"taxi": false
+							}
+						}
+					},
+					"arr": {
+						"locX": 1,
+						"aTimeS": "162100",
+						"type": "N",
+						"location": {
+							"type": "stop",
+							"id": "8003200",
+							"name": "Kassel-Wilhelmshöhe",
+							"location": {
+								"type": "location",
+								"id": "8003200",
+								"latitude": 51.312998,
+								"longitude": 9.446845
+							},
+							"products": {
+								"nationalExpress": true,
+								"national": true,
+								"regionalExpress": true,
+								"regional": true,
+								"suburban": true,
+								"bus": true,
+								"ferry": false,
+								"subway": false,
+								"tram": true,
+								"taxi": false
+							}
+						}
+					},
+					"gis": {
+						"ctx": "H|1|D$A=1@O=Kassel Hbf@L=8000193@a=0@$A=1@O=Kassel-Wilhelmshöhe@L=8003200@a=0@$202311131614$202311131621$$$1$$$$$$|",
+						"gisPrvr": "H",
+						"getDescr": false,
+						"getPoly": false,
+						"sumLDrawStyleX": 0,
+						"resLDrawStyleX": 1,
+						"prodX": 0,
+						"line": {
+							"type": "line",
+							"id": "deviation",
+							"fahrtNr": null,
+							"name": "Deviation",
+							"public": true
+						}
+					},
+					"resState": "N",
+					"resRecommendation": "N"
+				},
+				{
+					"type": "JNY",
+					"dep": {
+						"locX": 1,
+						"dProdX": 5,
+						"dPltfS": {
+							"type": "PL",
+							"txt": "12"
+						},
+						"dTimeS": "162100",
+						"dTimeR": "162800",
+						"dProgType": "PROGNOSED",
+						"dTZOffset": 60,
+						"type": "N",
+						"location": {
+							"type": "stop",
+							"id": "8003200",
+							"name": "Kassel-Wilhelmshöhe",
+							"location": {
+								"type": "location",
+								"id": "8003200",
+								"latitude": 51.312998,
+								"longitude": 9.446845
+							},
+							"products": {
+								"nationalExpress": true,
+								"national": true,
+								"regionalExpress": true,
+								"regional": true,
+								"suburban": true,
+								"bus": true,
+								"ferry": false,
+								"subway": false,
+								"tram": true,
+								"taxi": false
+							}
+						}
+					},
+					"arr": {
+						"locX": 2,
+						"aProdX": 5,
+						"aTimeS": "183600",
+						"aTimeR": "183900",
+						"aProgType": "PROGNOSED",
+						"aTZOffset": 60,
+						"type": "N",
+						"location": {
+							"type": "stop",
+							"id": "8002549",
+							"name": "Hamburg Hbf",
+							"location": {
+								"type": "location",
+								"id": "8002549",
+								"latitude": 0,
+								"longitude": 0
+							},
+							"products": {
+								"nationalExpress": true,
+								"national": true,
+								"regionalExpress": true,
+								"regional": true,
+								"suburban": true,
+								"bus": true,
+								"ferry": false,
+								"subway": true,
+								"tram": false,
+								"taxi": false
+							}
+						}
+					},
+					"jny": {
+						"jid": "1|192803|0|80|-1",
+						"prodX": 5,
+						"status": "P",
+						"isRchbl": true,
+						"pos": {
+							"x": 8652028,
+							"y": 50097360
+						},
+						"ctxRecon": "T$A=1@O=Kassel-Wilhelmshöhe@L=8003200@a=0@$A=1@O=Hamburg Hbf@L=8002549@a=0@$202311131621$202311131836$ICE 1218$$1$$$$$$",
+						"approxDelay": true,
+						"subscr": "F",
+						"sumLDrawStyleX": 2,
+						"resLDrawStyleX": 1,
+						"durS": "021500",
+						"line": {
+							"type": "line",
+							"id": "ice-1218",
+							"fahrtNr": null,
+							"name": "ICE 1218",
+							"public": true,
+							"productName": "ICE"
+						}
+					},
+					"resState": "N",
+					"resRecommendation": "N"
+				}
+			],
+			"ctxRecon": "D$A=1@O=Kassel Hbf@L=8000193@a=0@$A=1@O=Kassel-Wilhelmshöhe@L=8003200@a=0@$202311131614$202311131621$$$1$$$$$$§T$A=1@O=Kassel-Wilhelmshöhe@L=8003200@a=0@$A=1@O=Hamburg Hbf@L=8002549@a=0@$202311131621$202311131836$ICE 1218$$1$$$$$$",
+			"trfRes": {
+				"statusCode": "OK",
+				"fareSetL": [
+					{
+						"fareL": [
+							{
+								"isFromPrice": true,
+								"isPartPrice": false,
+								"isBookable": true,
+								"isUpsell": false,
+								"targetCtx": "D",
+								"buttonText": "To offer selection",
+								"price": {
+									"amount": 7990
+								},
+								"retPriceIsCompletePrice": false,
+								"retPrice": -1
+							}
+						]
+					}
+				]
+			},
+			"msgL": [
+				{
+					"type": "REM",
+					"remX": 1,
+					"sty": "I",
+					"prio": 200,
+					"fIdx": -1,
+					"tIdx": -1,
+					"tagL": [
+						"SUM_CON_FTR_H3"
+					],
+					"sort": 818413568,
+					"hint": null
+				}
+			],
+			"conSubscr": "U",
+			"resState": "N",
+			"resRecommendation": "N",
+			"recState": "U",
+			"sotRating": 0,
+			"isSotCon": false,
+			"showARSLink": false,
+			"cksum": "a82843e8_3",
+			"cksumDti": "51e64e13_3",
+			"dTrnCmpSX": {
+				"tcocX": [
+					2,
+					1
+				]
+			},
+			"intvlSubscr": "U",
+			"originType": "INITIAL",
+			"remarkRefs": []
+		},
+		{
+			"cid": "A1-1",
+			"date": "20231113",
+			"dur": "021800",
+			"chg": 0,
+			"dep": {},
+			"arr": {},
+			"secL": [
+				{
+					"type": "DEVI",
+					"dep": {
+						"locX": 0,
+						"dTimeS": "162900",
+						"type": "N",
+						"location": {
+							"type": "stop",
+							"id": "8000193",
+							"name": "Kassel Hbf",
+							"location": {
+								"type": "location",
+								"id": "8000193",
+								"latitude": 51.31832,
+								"longitude": 9.489903
+							},
+							"products": {
+								"nationalExpress": false,
+								"national": false,
+								"regionalExpress": false,
+								"regional": true,
+								"suburban": true,
+								"bus": true,
+								"ferry": false,
+								"subway": false,
+								"tram": true,
+								"taxi": false
+							}
+						}
+					},
+					"arr": {
+						"locX": 1,
+						"aTimeS": "163600",
+						"type": "N",
+						"location": {
+							"type": "stop",
+							"id": "8003200",
+							"name": "Kassel-Wilhelmshöhe",
+							"location": {
+								"type": "location",
+								"id": "8003200",
+								"latitude": 51.312998,
+								"longitude": 9.446845
+							},
+							"products": {
+								"nationalExpress": true,
+								"national": true,
+								"regionalExpress": true,
+								"regional": true,
+								"suburban": true,
+								"bus": true,
+								"ferry": false,
+								"subway": false,
+								"tram": true,
+								"taxi": false
+							}
+						}
+					},
+					"gis": {
+						"ctx": "H|1|D$A=1@O=Kassel Hbf@L=8000193@a=0@$A=1@O=Kassel-Wilhelmshöhe@L=8003200@a=0@$202311131629$202311131636$$$1$$$$$$|",
+						"gisPrvr": "H",
+						"getDescr": false,
+						"getPoly": false,
+						"sumLDrawStyleX": 0,
+						"resLDrawStyleX": 1,
+						"prodX": 0,
+						"line": {
+							"type": "line",
+							"id": "deviation",
+							"fahrtNr": null,
+							"name": "Deviation",
+							"public": true
+						}
+					},
+					"resState": "N",
+					"resRecommendation": "N"
+				},
+				{
+					"type": "JNY",
+					"dep": {
+						"locX": 1,
+						"dProdX": 6,
+						"dPltfS": {
+							"type": "PL",
+							"txt": "8"
+						},
+						"dTimeS": "163600",
+						"dTimeR": "163800",
+						"dProgType": "PROGNOSED",
+						"dTZOffset": 60,
+						"type": "N",
+						"location": {
+							"type": "stop",
+							"id": "8003200",
+							"name": "Kassel-Wilhelmshöhe",
+							"location": {
+								"type": "location",
+								"id": "8003200",
+								"latitude": 51.312998,
+								"longitude": 9.446845
+							},
+							"products": {
+								"nationalExpress": true,
+								"national": true,
+								"regionalExpress": true,
+								"regional": true,
+								"suburban": true,
+								"bus": true,
+								"ferry": false,
+								"subway": false,
+								"tram": true,
+								"taxi": false
+							}
+						}
+					},
+					"arr": {
+						"locX": 2,
+						"aProdX": 6,
+						"aTimeS": "185500",
+						"aTimeR": "185600",
+						"aProgType": "PROGNOSED",
+						"aTZOffset": 60,
+						"type": "N",
+						"location": {
+							"type": "stop",
+							"id": "8002549",
+							"name": "Hamburg Hbf",
+							"location": {
+								"type": "location",
+								"id": "8002549",
+								"latitude": 0,
+								"longitude": 0
+							},
+							"products": {
+								"nationalExpress": true,
+								"national": true,
+								"regionalExpress": true,
+								"regional": true,
+								"suburban": true,
+								"bus": true,
+								"ferry": false,
+								"subway": true,
+								"tram": false,
+								"taxi": false
+							}
+						}
+					},
+					"jny": {
+						"jid": "1|202623|0|80|-1",
+						"prodX": 6,
+						"status": "P",
+						"isRchbl": true,
+						"pos": {
+							"x": 10118609,
+							"y": 49772400
+						},
+						"ctxRecon": "T$A=1@O=Kassel-Wilhelmshöhe@L=8003200@a=0@$A=1@O=Hamburg Hbf@L=8002549@a=0@$202311131636$202311131855$ICE  586$$1$$$$$$",
+						"approxDelay": true,
+						"subscr": "F",
+						"sumLDrawStyleX": 2,
+						"resLDrawStyleX": 1,
+						"durS": "021900",
+						"line": {
+							"type": "line",
+							"id": "ice-586",
+							"fahrtNr": null,
+							"name": "ICE 586",
+							"public": true,
+							"productName": "ICE"
+						}
+					},
+					"resState": "N",
+					"resRecommendation": "N"
+				}
+			],
+			"ctxRecon": "D$A=1@O=Kassel Hbf@L=8000193@a=0@$A=1@O=Kassel-Wilhelmshöhe@L=8003200@a=0@$202311131629$202311131636$$$1$$$$$$§T$A=1@O=Kassel-Wilhelmshöhe@L=8003200@a=0@$A=1@O=Hamburg Hbf@L=8002549@a=0@$202311131636$202311131855$ICE  586$$1$$$$$$",
+			"trfRes": {
+				"statusCode": "OK",
+				"fareSetL": [
+					{
+						"fareL": [
+							{
+								"isFromPrice": true,
+								"isPartPrice": false,
+								"isBookable": true,
+								"isUpsell": false,
+								"targetCtx": "D",
+								"buttonText": "To offer selection",
+								"price": {
+									"amount": 7990
+								},
+								"retPriceIsCompletePrice": false,
+								"retPrice": -1
+							}
+						]
+					}
+				]
+			},
+			"msgL": [
+				{
+					"type": "REM",
+					"remX": 1,
+					"sty": "I",
+					"prio": 200,
+					"fIdx": -1,
+					"tIdx": -1,
+					"tagL": [
+						"SUM_CON_FTR_H3"
+					],
+					"sort": 818413568,
+					"hint": null
+				}
+			],
+			"conSubscr": "U",
+			"resState": "N",
+			"resRecommendation": "N",
+			"recState": "U",
+			"sotRating": 0,
+			"isSotCon": false,
+			"showARSLink": false,
+			"cksum": "629e26d1_3",
+			"cksumDti": "8a7d61de_3",
+			"dTrnCmpSX": {
+				"tcocX": [
+					0,
+					1
+				]
+			},
+			"intvlSubscr": "U",
+			"originType": "INITIAL",
+			"remarkRefs": []
+		},
+		{
+			"cid": "A1-2",
+			"date": "20231113",
+			"dur": "023300",
+			"chg": 0,
+			"dep": {},
+			"arr": {},
+			"secL": [
+				{
+					"type": "DEVI",
+					"dep": {
+						"locX": 0,
+						"dTimeS": "164900",
+						"type": "N",
+						"location": {
+							"type": "stop",
+							"id": "8000193",
+							"name": "Kassel Hbf",
+							"location": {
+								"type": "location",
+								"id": "8000193",
+								"latitude": 51.31832,
+								"longitude": 9.489903
+							},
+							"products": {
+								"nationalExpress": false,
+								"national": false,
+								"regionalExpress": false,
+								"regional": true,
+								"suburban": true,
+								"bus": true,
+								"ferry": false,
+								"subway": false,
+								"tram": true,
+								"taxi": false
+							}
+						}
+					},
+					"arr": {
+						"locX": 1,
+						"aTimeS": "165600",
+						"type": "N",
+						"location": {
+							"type": "stop",
+							"id": "8003200",
+							"name": "Kassel-Wilhelmshöhe",
+							"location": {
+								"type": "location",
+								"id": "8003200",
+								"latitude": 51.312998,
+								"longitude": 9.446845
+							},
+							"products": {
+								"nationalExpress": true,
+								"national": true,
+								"regionalExpress": true,
+								"regional": true,
+								"suburban": true,
+								"bus": true,
+								"ferry": false,
+								"subway": false,
+								"tram": true,
+								"taxi": false
+							}
+						}
+					},
+					"gis": {
+						"ctx": "H|1|D$A=1@O=Kassel Hbf@L=8000193@a=0@$A=1@O=Kassel-Wilhelmshöhe@L=8003200@a=0@$202311131649$202311131656$$$1$$$$$$|",
+						"gisPrvr": "H",
+						"getDescr": false,
+						"getPoly": false,
+						"sumLDrawStyleX": 0,
+						"resLDrawStyleX": 1,
+						"prodX": 0,
+						"line": {
+							"type": "line",
+							"id": "deviation",
+							"fahrtNr": null,
+							"name": "Deviation",
+							"public": true
+						}
+					},
+					"resState": "N",
+					"resRecommendation": "N"
+				},
+				{
+					"type": "JNY",
+					"dep": {
+						"locX": 1,
+						"dProdX": 7,
+						"dPltfS": {
+							"type": "PL",
+							"txt": "11"
+						},
+						"dTimeS": "165600",
+						"dTimeR": "165800",
+						"dProgType": "PROGNOSED",
+						"dTZOffset": 60,
+						"type": "N",
+						"location": {
+							"type": "stop",
+							"id": "8003200",
+							"name": "Kassel-Wilhelmshöhe",
+							"location": {
+								"type": "location",
+								"id": "8003200",
+								"latitude": 51.312998,
+								"longitude": 9.446845
+							},
+							"products": {
+								"nationalExpress": true,
+								"national": true,
+								"regionalExpress": true,
+								"regional": true,
+								"suburban": true,
+								"bus": true,
+								"ferry": false,
+								"subway": false,
+								"tram": true,
+								"taxi": false
+							}
+						}
+					},
+					"arr": {
+						"locX": 2,
+						"aProdX": 7,
+						"aTimeS": "192900",
+						"aTimeR": "193100",
+						"aProgType": "PROGNOSED",
+						"aTZOffset": 60,
+						"type": "N",
+						"location": {
+							"type": "stop",
+							"id": "8002549",
+							"name": "Hamburg Hbf",
+							"location": {
+								"type": "location",
+								"id": "8002549",
+								"latitude": 0,
+								"longitude": 0
+							},
+							"products": {
+								"nationalExpress": true,
+								"national": true,
+								"regionalExpress": true,
+								"regional": true,
+								"suburban": true,
+								"bus": true,
+								"ferry": false,
+								"subway": true,
+								"tram": false,
+								"taxi": false
+							}
+						}
+					},
+					"jny": {
+						"jid": "1|193807|0|80|-1",
+						"prodX": 7,
+						"status": "P",
+						"isRchbl": true,
+						"pos": {
+							"x": 8626903,
+							"y": 49885152
+						},
+						"ctxRecon": "T$A=1@O=Kassel-Wilhelmshöhe@L=8003200@a=0@$A=1@O=Hamburg Hbf@L=8002549@a=0@$202311131656$202311131929$ICE 1576$$1$$$$$$",
+						"approxDelay": true,
+						"subscr": "F",
+						"sumLDrawStyleX": 2,
+						"resLDrawStyleX": 1,
+						"durS": "023300",
+						"line": {
+							"type": "line",
+							"id": "ice-1576",
+							"fahrtNr": null,
+							"name": "ICE 1576",
+							"public": true,
+							"productName": "ICE"
+						}
+					},
+					"resState": "N",
+					"resRecommendation": "N"
+				}
+			],
+			"ctxRecon": "D$A=1@O=Kassel Hbf@L=8000193@a=0@$A=1@O=Kassel-Wilhelmshöhe@L=8003200@a=0@$202311131649$202311131656$$$1$$$$$$§T$A=1@O=Kassel-Wilhelmshöhe@L=8003200@a=0@$A=1@O=Hamburg Hbf@L=8002549@a=0@$202311131656$202311131929$ICE 1576$$1$$$$$$",
+			"trfRes": {
+				"statusCode": "OK",
+				"fareSetL": [
+					{
+						"fareL": [
+							{
+								"isFromPrice": true,
+								"isPartPrice": false,
+								"isBookable": true,
+								"isUpsell": false,
+								"targetCtx": "D",
+								"buttonText": "To offer selection",
+								"price": {
+									"amount": 7990
+								},
+								"retPriceIsCompletePrice": false,
+								"retPrice": -1
+							}
+						]
+					}
+				]
+			},
+			"conSubscr": "U",
+			"resState": "N",
+			"resRecommendation": "N",
+			"recState": "U",
+			"sotRating": 0,
+			"isSotCon": false,
+			"showARSLink": false,
+			"cksum": "5ae35e8c_3",
+			"cksumDti": "73ad6f67_3",
+			"dTrnCmpSX": {
+				"tcocX": [
+					0,
+					1
+				]
+			},
+			"intvlSubscr": "U",
+			"originType": "INITIAL"
+		},
+		{
+			"cid": "A1-3",
+			"date": "20231113",
+			"dur": "021600",
+			"chg": 0,
+			"dep": {},
+			"arr": {},
+			"secL": [
+				{
+					"type": "DEVI",
+					"dep": {
+						"locX": 0,
+						"dTimeS": "171400",
+						"type": "N",
+						"location": {
+							"type": "stop",
+							"id": "8000193",
+							"name": "Kassel Hbf",
+							"location": {
+								"type": "location",
+								"id": "8000193",
+								"latitude": 51.31832,
+								"longitude": 9.489903
+							},
+							"products": {
+								"nationalExpress": false,
+								"national": false,
+								"regionalExpress": false,
+								"regional": true,
+								"suburban": true,
+								"bus": true,
+								"ferry": false,
+								"subway": false,
+								"tram": true,
+								"taxi": false
+							}
+						}
+					},
+					"arr": {
+						"locX": 1,
+						"aTimeS": "172100",
+						"type": "N",
+						"location": {
+							"type": "stop",
+							"id": "8003200",
+							"name": "Kassel-Wilhelmshöhe",
+							"location": {
+								"type": "location",
+								"id": "8003200",
+								"latitude": 51.312998,
+								"longitude": 9.446845
+							},
+							"products": {
+								"nationalExpress": true,
+								"national": true,
+								"regionalExpress": true,
+								"regional": true,
+								"suburban": true,
+								"bus": true,
+								"ferry": false,
+								"subway": false,
+								"tram": true,
+								"taxi": false
+							}
+						}
+					},
+					"gis": {
+						"ctx": "H|1|D$A=1@O=Kassel Hbf@L=8000193@a=0@$A=1@O=Kassel-Wilhelmshöhe@L=8003200@a=0@$202311131714$202311131721$$$1$$$$$$|",
+						"gisPrvr": "H",
+						"getDescr": false,
+						"getPoly": false,
+						"sumLDrawStyleX": 0,
+						"resLDrawStyleX": 1,
+						"prodX": 0,
+						"line": {
+							"type": "line",
+							"id": "deviation",
+							"fahrtNr": null,
+							"name": "Deviation",
+							"public": true
+						}
+					},
+					"resState": "N",
+					"resRecommendation": "N"
+				},
+				{
+					"type": "JNY",
+					"dep": {
+						"locX": 1,
+						"dProdX": 8,
+						"dPltfS": {
+							"type": "PL",
+							"txt": "13"
+						},
+						"dTimeS": "172100",
+						"dTimeR": "172300",
+						"dProgType": "PROGNOSED",
+						"dTZOffset": 60,
+						"type": "N",
+						"location": {
+							"type": "stop",
+							"id": "8003200",
+							"name": "Kassel-Wilhelmshöhe",
+							"location": {
+								"type": "location",
+								"id": "8003200",
+								"latitude": 51.312998,
+								"longitude": 9.446845
+							},
+							"products": {
+								"nationalExpress": true,
+								"national": true,
+								"regionalExpress": true,
+								"regional": true,
+								"suburban": true,
+								"bus": true,
+								"ferry": false,
+								"subway": false,
+								"tram": true,
+								"taxi": false
+							}
+						}
+					},
+					"arr": {
+						"locX": 2,
+						"aProdX": 8,
+						"aTimeS": "193600",
+						"aTimeR": "193900",
+						"aProgType": "PROGNOSED",
+						"aTZOffset": 60,
+						"type": "N",
+						"location": {
+							"type": "stop",
+							"id": "8002549",
+							"name": "Hamburg Hbf",
+							"location": {
+								"type": "location",
+								"id": "8002549",
+								"latitude": 0,
+								"longitude": 0
+							},
+							"products": {
+								"nationalExpress": true,
+								"national": true,
+								"regionalExpress": true,
+								"regional": true,
+								"suburban": true,
+								"bus": true,
+								"ferry": false,
+								"subway": true,
+								"tram": false,
+								"taxi": false
+							}
+						}
+					},
+					"jny": {
+						"jid": "1|361144|0|80|-1",
+						"prodX": 8,
+						"status": "P",
+						"isRchbl": true,
+						"pos": {
+							"x": 8520785,
+							"y": 49453885
+						},
+						"ctxRecon": "T$A=1@O=Kassel-Wilhelmshöhe@L=8003200@a=0@$A=1@O=Hamburg Hbf@L=8002549@a=0@$202311131721$202311131936$ICE  278$$1$$$$$$",
+						"approxDelay": true,
+						"subscr": "F",
+						"sumLDrawStyleX": 2,
+						"resLDrawStyleX": 1,
+						"durS": "021500",
+						"line": {
+							"type": "line",
+							"id": "ice-278",
+							"fahrtNr": null,
+							"name": "ICE 278",
+							"public": true,
+							"productName": "ICE"
+						}
+					},
+					"resState": "N",
+					"resRecommendation": "N"
+				}
+			],
+			"ctxRecon": "D$A=1@O=Kassel Hbf@L=8000193@a=0@$A=1@O=Kassel-Wilhelmshöhe@L=8003200@a=0@$202311131714$202311131721$$$1$$$$$$§T$A=1@O=Kassel-Wilhelmshöhe@L=8003200@a=0@$A=1@O=Hamburg Hbf@L=8002549@a=0@$202311131721$202311131936$ICE  278$$1$$$$$$",
+			"trfRes": {
+				"statusCode": "OK",
+				"fareSetL": [
+					{
+						"fareL": [
+							{
+								"isFromPrice": true,
+								"isPartPrice": false,
+								"isBookable": true,
+								"isUpsell": false,
+								"targetCtx": "D",
+								"buttonText": "To offer selection",
+								"price": {
+									"amount": 7990
+								},
+								"retPriceIsCompletePrice": false,
+								"retPrice": -1
+							}
+						]
+					}
+				]
+			},
+			"msgL": [
+				{
+					"type": "REM",
+					"remX": 1,
+					"sty": "I",
+					"prio": 200,
+					"fIdx": -1,
+					"tIdx": -1,
+					"tagL": [
+						"SUM_CON_FTR_H3"
+					],
+					"sort": 818413568,
+					"hint": null
+				}
+			],
+			"conSubscr": "U",
+			"resState": "N",
+			"resRecommendation": "N",
+			"recState": "U",
+			"sotRating": 0,
+			"isSotCon": false,
+			"showARSLink": false,
+			"cksum": "73ba4353_3",
+			"cksumDti": "e2c2701d_3",
+			"dTrnCmpSX": {
+				"tcocX": [
+					2,
+					1
+				]
+			},
+			"intvlSubscr": "U",
+			"originType": "INITIAL",
+			"remarkRefs": []
+		},
+		{
+			"cid": "A1-4",
+			"date": "20231113",
+			"dur": "021600",
+			"chg": 0,
+			"dep": {},
+			"arr": {},
+			"secL": [
+				{
+					"type": "DEVI",
+					"dep": {
+						"locX": 0,
+						"dTimeS": "181400",
+						"type": "N",
+						"location": {
+							"type": "stop",
+							"id": "8000193",
+							"name": "Kassel Hbf",
+							"location": {
+								"type": "location",
+								"id": "8000193",
+								"latitude": 51.31832,
+								"longitude": 9.489903
+							},
+							"products": {
+								"nationalExpress": false,
+								"national": false,
+								"regionalExpress": false,
+								"regional": true,
+								"suburban": true,
+								"bus": true,
+								"ferry": false,
+								"subway": false,
+								"tram": true,
+								"taxi": false
+							}
+						}
+					},
+					"arr": {
+						"locX": 1,
+						"aTimeS": "182100",
+						"type": "N",
+						"location": {
+							"type": "stop",
+							"id": "8003200",
+							"name": "Kassel-Wilhelmshöhe",
+							"location": {
+								"type": "location",
+								"id": "8003200",
+								"latitude": 51.312998,
+								"longitude": 9.446845
+							},
+							"products": {
+								"nationalExpress": true,
+								"national": true,
+								"regionalExpress": true,
+								"regional": true,
+								"suburban": true,
+								"bus": true,
+								"ferry": false,
+								"subway": false,
+								"tram": true,
+								"taxi": false
+							}
+						}
+					},
+					"gis": {
+						"ctx": "H|1|D$A=1@O=Kassel Hbf@L=8000193@a=0@$A=1@O=Kassel-Wilhelmshöhe@L=8003200@a=0@$202311131814$202311131821$$$1$$$$$$|",
+						"gisPrvr": "H",
+						"getDescr": false,
+						"getPoly": false,
+						"sumLDrawStyleX": 0,
+						"resLDrawStyleX": 1,
+						"prodX": 0,
+						"line": {
+							"type": "line",
+							"id": "deviation",
+							"fahrtNr": null,
+							"name": "Deviation",
+							"public": true
+						}
+					},
+					"resState": "N",
+					"resRecommendation": "N"
+				},
+				{
+					"type": "JNY",
+					"dep": {
+						"locX": 1,
+						"dProdX": 9,
+						"dPltfS": {
+							"type": "PL",
+							"txt": "11"
+						},
+						"dTimeS": "182100",
+						"dTimeR": "182800",
+						"dProgType": "PROGNOSED",
+						"dTZOffset": 60,
+						"type": "N",
+						"location": {
+							"type": "stop",
+							"id": "8003200",
+							"name": "Kassel-Wilhelmshöhe",
+							"location": {
+								"type": "location",
+								"id": "8003200",
+								"latitude": 51.312998,
+								"longitude": 9.446845
+							},
+							"products": {
+								"nationalExpress": true,
+								"national": true,
+								"regionalExpress": true,
+								"regional": true,
+								"suburban": true,
+								"bus": true,
+								"ferry": false,
+								"subway": false,
+								"tram": true,
+								"taxi": false
+							}
+						}
+					},
+					"arr": {
+						"locX": 2,
+						"aProdX": 9,
+						"aTimeS": "204000",
+						"aTimeR": "204400",
+						"aProgType": "PROGNOSED",
+						"aTZOffset": 60,
+						"type": "N",
+						"location": {
+							"type": "stop",
+							"id": "8002549",
+							"name": "Hamburg Hbf",
+							"location": {
+								"type": "location",
+								"id": "8002549",
+								"latitude": 0,
+								"longitude": 0
+							},
+							"products": {
+								"nationalExpress": true,
+								"national": true,
+								"regionalExpress": true,
+								"regional": true,
+								"suburban": true,
+								"bus": true,
+								"ferry": false,
+								"subway": true,
+								"tram": false,
+								"taxi": false
+							}
+						}
+					},
+					"jny": {
+						"jid": "1|202847|0|80|-1",
+						"prodX": 9,
+						"status": "P",
+						"isRchbl": true,
+						"pos": {
+							"x": 9708035,
+							"y": 48533597
+						},
+						"ctxRecon": "T$A=1@O=Kassel-Wilhelmshöhe@L=8003200@a=0@$A=1@O=Hamburg Hbf@L=8002549@a=0@$202311131821$202311132040$ICE  596$$1$$$$$$",
+						"approxDelay": true,
+						"subscr": "F",
+						"sumLDrawStyleX": 2,
+						"resLDrawStyleX": 1,
+						"durS": "021900",
+						"line": {
+							"type": "line",
+							"id": "ice-596",
+							"fahrtNr": null,
+							"name": "ICE 596",
+							"public": true,
+							"productName": "ICE"
+						}
+					},
+					"resState": "N",
+					"resRecommendation": "N"
+				}
+			],
+			"ctxRecon": "D$A=1@O=Kassel Hbf@L=8000193@a=0@$A=1@O=Kassel-Wilhelmshöhe@L=8003200@a=0@$202311131814$202311131821$$$1$$$$$$§T$A=1@O=Kassel-Wilhelmshöhe@L=8003200@a=0@$A=1@O=Hamburg Hbf@L=8002549@a=0@$202311131821$202311132040$ICE  596$$1$$$$$$",
+			"trfRes": {
+				"statusCode": "OK",
+				"fareSetL": [
+					{
+						"fareL": [
+							{
+								"isFromPrice": true,
+								"isPartPrice": false,
+								"isBookable": true,
+								"isUpsell": false,
+								"targetCtx": "D",
+								"buttonText": "To offer selection",
+								"price": {
+									"amount": 7990
+								},
+								"retPriceIsCompletePrice": false,
+								"retPrice": -1
+							}
+						]
+					}
+				]
+			},
+			"msgL": [
+				{
+					"type": "REM",
+					"remX": 1,
+					"sty": "I",
+					"prio": 200,
+					"fIdx": -1,
+					"tIdx": -1,
+					"tagL": [
+						"SUM_CON_FTR_H3"
+					],
+					"sort": 818413568,
+					"hint": null
+				}
+			],
+			"conSubscr": "U",
+			"resState": "N",
+			"resRecommendation": "N",
+			"recState": "U",
+			"sotRating": 0,
+			"isSotCon": false,
+			"showARSLink": false,
+			"cksum": "4433bf53_3",
+			"cksumDti": "dee6af99_3",
+			"dTrnCmpSX": {
+				"tcocX": [
+					2,
+					1
+				]
+			},
+			"intvlSubscr": "U",
+			"originType": "INITIAL",
+			"remarkRefs": []
+		},
+		{
+			"cid": "A1-5",
+			"date": "20231113",
+			"dur": "022300",
+			"chg": 0,
+			"dep": {},
+			"arr": {},
+			"secL": [
+				{
+					"type": "DEVI",
+					"dep": {
+						"locX": 0,
+						"dTimeS": "182900",
+						"type": "N",
+						"location": {
+							"type": "stop",
+							"id": "8000193",
+							"name": "Kassel Hbf",
+							"location": {
+								"type": "location",
+								"id": "8000193",
+								"latitude": 51.31832,
+								"longitude": 9.489903
+							},
+							"products": {
+								"nationalExpress": false,
+								"national": false,
+								"regionalExpress": false,
+								"regional": true,
+								"suburban": true,
+								"bus": true,
+								"ferry": false,
+								"subway": false,
+								"tram": true,
+								"taxi": false
+							}
+						}
+					},
+					"arr": {
+						"locX": 1,
+						"aTimeS": "183600",
+						"type": "N",
+						"location": {
+							"type": "stop",
+							"id": "8003200",
+							"name": "Kassel-Wilhelmshöhe",
+							"location": {
+								"type": "location",
+								"id": "8003200",
+								"latitude": 51.312998,
+								"longitude": 9.446845
+							},
+							"products": {
+								"nationalExpress": true,
+								"national": true,
+								"regionalExpress": true,
+								"regional": true,
+								"suburban": true,
+								"bus": true,
+								"ferry": false,
+								"subway": false,
+								"tram": true,
+								"taxi": false
+							}
+						}
+					},
+					"gis": {
+						"ctx": "H|1|D$A=1@O=Kassel Hbf@L=8000193@a=0@$A=1@O=Kassel-Wilhelmshöhe@L=8003200@a=0@$202311131829$202311131836$$$1$$$$$$|",
+						"gisPrvr": "H",
+						"getDescr": false,
+						"getPoly": false,
+						"sumLDrawStyleX": 0,
+						"resLDrawStyleX": 1,
+						"prodX": 0,
+						"line": {
+							"type": "line",
+							"id": "deviation",
+							"fahrtNr": null,
+							"name": "Deviation",
+							"public": true
+						}
+					},
+					"resState": "N",
+					"resRecommendation": "N"
+				},
+				{
+					"type": "JNY",
+					"dep": {
+						"locX": 1,
+						"dProdX": 10,
+						"dPltfS": {
+							"type": "PL",
+							"txt": "8"
+						},
+						"dTimeS": "183600",
+						"dTimeR": "183600",
+						"dProgType": "PROGNOSED",
+						"dTZOffset": 60,
+						"type": "N",
+						"location": {
+							"type": "stop",
+							"id": "8003200",
+							"name": "Kassel-Wilhelmshöhe",
+							"location": {
+								"type": "location",
+								"id": "8003200",
+								"latitude": 51.312998,
+								"longitude": 9.446845
+							},
+							"products": {
+								"nationalExpress": true,
+								"national": true,
+								"regionalExpress": true,
+								"regional": true,
+								"suburban": true,
+								"bus": true,
+								"ferry": false,
+								"subway": false,
+								"tram": true,
+								"taxi": false
+							}
+						}
+					},
+					"arr": {
+						"locX": 2,
+						"aProdX": 10,
+						"aTimeS": "205900",
+						"aTimeR": "205900",
+						"aProgType": "PROGNOSED",
+						"aTZOffset": 60,
+						"type": "N",
+						"location": {
+							"type": "stop",
+							"id": "8002549",
+							"name": "Hamburg Hbf",
+							"location": {
+								"type": "location",
+								"id": "8002549",
+								"latitude": 0,
+								"longitude": 0
+							},
+							"products": {
+								"nationalExpress": true,
+								"national": true,
+								"regionalExpress": true,
+								"regional": true,
+								"suburban": true,
+								"bus": true,
+								"ferry": false,
+								"subway": true,
+								"tram": false,
+								"taxi": false
+							}
+						}
+					},
+					"jny": {
+						"jid": "1|202555|0|80|-1",
+						"prodX": 10,
+						"status": "P",
+						"isRchbl": true,
+						"pos": {
+							"x": 11481805,
+							"y": 48154207
+						},
+						"ctxRecon": "T$A=1@O=Kassel-Wilhelmshöhe@L=8003200@a=0@$A=1@O=Hamburg Hbf@L=8002549@a=0@$202311131836$202311132059$ICE  584$$1$$$$$$",
+						"approxDelay": true,
+						"subscr": "F",
+						"sumLDrawStyleX": 2,
+						"resLDrawStyleX": 1,
+						"durS": "022300",
+						"line": {
+							"type": "line",
+							"id": "ice-584",
+							"fahrtNr": null,
+							"name": "ICE 584",
+							"public": true,
+							"productName": "ICE"
+						}
+					},
+					"resState": "N",
+					"resRecommendation": "N"
+				}
+			],
+			"ctxRecon": "D$A=1@O=Kassel Hbf@L=8000193@a=0@$A=1@O=Kassel-Wilhelmshöhe@L=8003200@a=0@$202311131829$202311131836$$$1$$$$$$§T$A=1@O=Kassel-Wilhelmshöhe@L=8003200@a=0@$A=1@O=Hamburg Hbf@L=8002549@a=0@$202311131836$202311132059$ICE  584$$1$$$$$$",
+			"trfRes": {
+				"statusCode": "OK",
+				"fareSetL": [
+					{
+						"fareL": [
+							{
+								"isFromPrice": true,
+								"isPartPrice": false,
+								"isBookable": true,
+								"isUpsell": false,
+								"targetCtx": "D",
+								"buttonText": "To offer selection",
+								"price": {
+									"amount": 6990
+								},
+								"retPriceIsCompletePrice": false,
+								"retPrice": -1
+							}
+						]
+					}
+				]
+			},
+			"conSubscr": "U",
+			"resState": "N",
+			"resRecommendation": "N",
+			"recState": "U",
+			"sotRating": 0,
+			"isSotCon": false,
+			"showARSLink": false,
+			"cksum": "21fd278b_3",
+			"cksumDti": "d2716413_3",
+			"dTrnCmpSX": {
+				"tcocX": [
+					3,
+					1
+				]
+			},
+			"intvlSubscr": "U",
+			"originType": "INITIAL"
+		},
+		{
+			"cid": "A1-6",
+			"date": "20231113",
+			"dur": "023300",
+			"chg": 0,
+			"dep": {},
+			"arr": {},
+			"secL": [
+				{
+					"type": "DEVI",
+					"dep": {
+						"locX": 0,
+						"dTimeS": "184900",
+						"type": "N",
+						"location": {
+							"type": "stop",
+							"id": "8000193",
+							"name": "Kassel Hbf",
+							"location": {
+								"type": "location",
+								"id": "8000193",
+								"latitude": 51.31832,
+								"longitude": 9.489903
+							},
+							"products": {
+								"nationalExpress": false,
+								"national": false,
+								"regionalExpress": false,
+								"regional": true,
+								"suburban": true,
+								"bus": true,
+								"ferry": false,
+								"subway": false,
+								"tram": true,
+								"taxi": false
+							}
+						}
+					},
+					"arr": {
+						"locX": 1,
+						"aTimeS": "185600",
+						"type": "N",
+						"location": {
+							"type": "stop",
+							"id": "8003200",
+							"name": "Kassel-Wilhelmshöhe",
+							"location": {
+								"type": "location",
+								"id": "8003200",
+								"latitude": 51.312998,
+								"longitude": 9.446845
+							},
+							"products": {
+								"nationalExpress": true,
+								"national": true,
+								"regionalExpress": true,
+								"regional": true,
+								"suburban": true,
+								"bus": true,
+								"ferry": false,
+								"subway": false,
+								"tram": true,
+								"taxi": false
+							}
+						}
+					},
+					"gis": {
+						"ctx": "H|1|D$A=1@O=Kassel Hbf@L=8000193@a=0@$A=1@O=Kassel-Wilhelmshöhe@L=8003200@a=0@$202311131849$202311131856$$$1$$$$$$|",
+						"gisPrvr": "H",
+						"getDescr": false,
+						"getPoly": false,
+						"sumLDrawStyleX": 0,
+						"resLDrawStyleX": 1,
+						"prodX": 0,
+						"line": {
+							"type": "line",
+							"id": "deviation",
+							"fahrtNr": null,
+							"name": "Deviation",
+							"public": true
+						}
+					},
+					"resState": "N",
+					"resRecommendation": "N"
+				},
+				{
+					"type": "JNY",
+					"dep": {
+						"locX": 1,
+						"dProdX": 11,
+						"dPltfS": {
+							"type": "PL",
+							"txt": "14"
+						},
+						"dTimeS": "185600",
+						"dTZOffset": 60,
+						"type": "N",
+						"location": {
+							"type": "stop",
+							"id": "8003200",
+							"name": "Kassel-Wilhelmshöhe",
+							"location": {
+								"type": "location",
+								"id": "8003200",
+								"latitude": 51.312998,
+								"longitude": 9.446845
+							},
+							"products": {
+								"nationalExpress": true,
+								"national": true,
+								"regionalExpress": true,
+								"regional": true,
+								"suburban": true,
+								"bus": true,
+								"ferry": false,
+								"subway": false,
+								"tram": true,
+								"taxi": false
+							}
+						}
+					},
+					"arr": {
+						"locX": 2,
+						"aProdX": 11,
+						"aTimeS": "212900",
+						"aTZOffset": 60,
+						"type": "N",
+						"location": {
+							"type": "stop",
+							"id": "8002549",
+							"name": "Hamburg Hbf",
+							"location": {
+								"type": "location",
+								"id": "8002549",
+								"latitude": 0,
+								"longitude": 0
+							},
+							"products": {
+								"nationalExpress": true,
+								"national": true,
+								"regionalExpress": true,
+								"regional": true,
+								"suburban": true,
+								"bus": true,
+								"ferry": false,
+								"subway": true,
+								"tram": false,
+								"taxi": false
+							}
+						}
+					},
+					"jny": {
+						"jid": "1|193753|0|80|-1",
+						"prodX": 11,
+						"status": "P",
+						"isRchbl": true,
+						"ctxRecon": "T$A=1@O=Kassel-Wilhelmshöhe@L=8003200@a=0@$A=1@O=Hamburg Hbf@L=8002549@a=0@$202311131856$202311132129$ICE 1574$$1$$$$$$",
+						"approxDelay": true,
+						"subscr": "F",
+						"sumLDrawStyleX": 2,
+						"resLDrawStyleX": 1,
+						"durS": "023300",
+						"line": {
+							"type": "line",
+							"id": "ice-1574",
+							"fahrtNr": null,
+							"name": "ICE 1574",
+							"public": true,
+							"productName": "ICE"
+						}
+					},
+					"resState": "N",
+					"resRecommendation": "N"
+				}
+			],
+			"ctxRecon": "D$A=1@O=Kassel Hbf@L=8000193@a=0@$A=1@O=Kassel-Wilhelmshöhe@L=8003200@a=0@$202311131849$202311131856$$$1$$$$$$§T$A=1@O=Kassel-Wilhelmshöhe@L=8003200@a=0@$A=1@O=Hamburg Hbf@L=8002549@a=0@$202311131856$202311132129$ICE 1574$$1$$$$$$",
+			"trfRes": {
+				"statusCode": "OK",
+				"fareSetL": [
+					{
+						"fareL": [
+							{
+								"isFromPrice": true,
+								"isPartPrice": false,
+								"isBookable": true,
+								"isUpsell": false,
+								"targetCtx": "D",
+								"buttonText": "To offer selection",
+								"price": {
+									"amount": 3190
+								},
+								"retPriceIsCompletePrice": false,
+								"retPrice": -1
+							}
+						]
+					}
+				]
+			},
+			"conSubscr": "U",
+			"resState": "N",
+			"resRecommendation": "N",
+			"recState": "U",
+			"sotRating": 0,
+			"isSotCon": false,
+			"showARSLink": false,
+			"cksum": "b8272bdc_3",
+			"cksumDti": "120884e3_3",
+			"dTrnCmpSX": {
+				"tcocX": [
+					2,
+					1
+				]
+			},
+			"intvlSubscr": "U",
+			"originType": "INITIAL"
+		},
+		{
+			"cid": "A2-0",
+			"date": "20231113",
+			"dur": "021800",
+			"chg": 0,
+			"isNotRdbl": true,
+			"dep": {},
+			"arr": {},
+			"secL": [
+				{
+					"type": "DEVI",
+					"dep": {
+						"locX": 0,
+						"dTimeS": "191400",
+						"type": "N",
+						"location": {
+							"type": "stop",
+							"id": "8000193",
+							"name": "Kassel Hbf",
+							"location": {
+								"type": "location",
+								"id": "8000193",
+								"latitude": 51.31832,
+								"longitude": 9.489903
+							},
+							"products": {
+								"nationalExpress": false,
+								"national": false,
+								"regionalExpress": false,
+								"regional": true,
+								"suburban": true,
+								"bus": true,
+								"ferry": false,
+								"subway": false,
+								"tram": true,
+								"taxi": false
+							}
+						}
+					},
+					"arr": {
+						"locX": 1,
+						"aTimeS": "192100",
+						"type": "N",
+						"location": {
+							"type": "stop",
+							"id": "8003200",
+							"name": "Kassel-Wilhelmshöhe",
+							"location": {
+								"type": "location",
+								"id": "8003200",
+								"latitude": 51.312998,
+								"longitude": 9.446845
+							},
+							"products": {
+								"nationalExpress": true,
+								"national": true,
+								"regionalExpress": true,
+								"regional": true,
+								"suburban": true,
+								"bus": true,
+								"ferry": false,
+								"subway": false,
+								"tram": true,
+								"taxi": false
+							}
+						}
+					},
+					"gis": {
+						"ctx": "H|1|D$A=1@O=Kassel Hbf@L=8000193@a=0@$A=1@O=Kassel-Wilhelmshöhe@L=8003200@a=0@$202311131914$202311131921$$$1$$$$$$|",
+						"gisPrvr": "H",
+						"getDescr": false,
+						"getPoly": false,
+						"sumLDrawStyleX": 0,
+						"resLDrawStyleX": 1,
+						"prodX": 0,
+						"line": {
+							"type": "line",
+							"id": "deviation",
+							"fahrtNr": null,
+							"name": "Deviation",
+							"public": true
+						}
+					},
+					"resState": "N",
+					"resRecommendation": "N"
+				},
+				{
+					"type": "JNY",
+					"dep": {
+						"locX": 1,
+						"dProdX": 12,
+						"dPltfS": {
+							"type": "PL",
+							"txt": "14"
+						},
+						"dTimeS": "192100",
+						"dTZOffset": 60,
+						"type": "N",
+						"location": {
+							"type": "stop",
+							"id": "8003200",
+							"name": "Kassel-Wilhelmshöhe",
+							"location": {
+								"type": "location",
+								"id": "8003200",
+								"latitude": 51.312998,
+								"longitude": 9.446845
+							},
+							"products": {
+								"nationalExpress": true,
+								"national": true,
+								"regionalExpress": true,
+								"regional": true,
+								"suburban": true,
+								"bus": true,
+								"ferry": false,
+								"subway": false,
+								"tram": true,
+								"taxi": false
+							}
+						}
+					},
+					"arr": {
+						"locX": 2,
+						"aProdX": 12,
+						"aTimeS": "213900",
+						"aTZOffset": 60,
+						"type": "N",
+						"location": {
+							"type": "stop",
+							"id": "8002549",
+							"name": "Hamburg Hbf",
+							"location": {
+								"type": "location",
+								"id": "8002549",
+								"latitude": 0,
+								"longitude": 0
+							},
+							"products": {
+								"nationalExpress": true,
+								"national": true,
+								"regionalExpress": true,
+								"regional": true,
+								"suburban": true,
+								"bus": true,
+								"ferry": false,
+								"subway": true,
+								"tram": false,
+								"taxi": false
+							}
+						}
+					},
+					"jny": {
+						"jid": "1|199982|0|80|-1",
+						"prodX": 12,
+						"status": "P",
+						"isRchbl": true,
+						"ctxRecon": "T$A=1@O=Kassel-Wilhelmshöhe@L=8003200@a=0@$A=1@O=Hamburg Hbf@L=8002549@a=0@$202311131921$202311132139$ICE  276$$1$$$$$$",
+						"approxDelay": true,
+						"subscr": "F",
+						"sumLDrawStyleX": 2,
+						"resLDrawStyleX": 1,
+						"durS": "021800",
+						"line": {
+							"type": "line",
+							"id": "ice-276",
+							"fahrtNr": null,
+							"name": "ICE 276",
+							"public": true,
+							"productName": "ICE"
+						}
+					},
+					"resState": "N",
+					"resRecommendation": "N"
+				}
+			],
+			"ctxRecon": "D$A=1@O=Kassel Hbf@L=8000193@a=0@$A=1@O=Kassel-Wilhelmshöhe@L=8003200@a=0@$202311131914$202311131921$$$1$$$$$$§T$A=1@O=Kassel-Wilhelmshöhe@L=8003200@a=0@$A=1@O=Hamburg Hbf@L=8002549@a=0@$202311131921$202311132139$ICE  276$$1$$$$$$",
+			"trfRes": {
+				"statusCode": "OK",
+				"fareSetL": [
+					{
+						"fareL": [
+							{
+								"isFromPrice": true,
+								"isPartPrice": false,
+								"isBookable": true,
+								"isUpsell": false,
+								"targetCtx": "D",
+								"buttonText": "To offer selection",
+								"price": {
+									"amount": 7990
+								},
+								"retPriceIsCompletePrice": false,
+								"retPrice": -1
+							}
+						]
+					}
+				]
+			},
+			"msgL": [
+				{
+					"type": "REM",
+					"remX": 0,
+					"sty": "I",
+					"txtC": {
+						"r": 204,
+						"g": 0,
+						"b": 0
+					},
+					"prio": 200,
+					"fIdx": -1,
+					"tIdx": -1,
+					"tagL": [
+						"SUM_CON_FTR_H3"
+					],
+					"sort": 818413568,
+					"hint": null
+				}
+			],
+			"conSubscr": "U",
+			"resState": "N",
+			"resRecommendation": "N",
+			"recState": "U",
+			"sotRating": 0,
+			"isSotCon": false,
+			"showARSLink": false,
+			"cksum": "b2f8e59b_3",
+			"cksumDti": "f7ef3530_3",
+			"intvlSubscr": "U",
+			"originType": "INITIAL",
+			"remarkRefs": []
+		},
+		{
+			"cid": "A2-1",
+			"date": "20231113",
+			"dur": "021900",
+			"chg": 0,
+			"isAlt": true,
+			"dep": {},
+			"arr": {},
+			"secL": [
+				{
+					"type": "DEVI",
+					"dep": {
+						"locX": 0,
+						"dTimeS": "191400",
+						"type": "N",
+						"location": {
+							"type": "stop",
+							"id": "8000193",
+							"name": "Kassel Hbf",
+							"location": {
+								"type": "location",
+								"id": "8000193",
+								"latitude": 51.31832,
+								"longitude": 9.489903
+							},
+							"products": {
+								"nationalExpress": false,
+								"national": false,
+								"regionalExpress": false,
+								"regional": true,
+								"suburban": true,
+								"bus": true,
+								"ferry": false,
+								"subway": false,
+								"tram": true,
+								"taxi": false
+							}
+						}
+					},
+					"arr": {
+						"locX": 1,
+						"aTimeS": "192100",
+						"type": "N",
+						"location": {
+							"type": "stop",
+							"id": "8003200",
+							"name": "Kassel-Wilhelmshöhe",
+							"location": {
+								"type": "location",
+								"id": "8003200",
+								"latitude": 51.312998,
+								"longitude": 9.446845
+							},
+							"products": {
+								"nationalExpress": true,
+								"national": true,
+								"regionalExpress": true,
+								"regional": true,
+								"suburban": true,
+								"bus": true,
+								"ferry": false,
+								"subway": false,
+								"tram": true,
+								"taxi": false
+							}
+						}
+					},
+					"gis": {
+						"ctx": "H|1|D$A=1@O=Kassel Hbf@L=8000193@a=0@$A=1@O=Kassel-Wilhelmshöhe@L=8003200@a=0@$202311131914$202311131921$$$1$$$$$$|",
+						"gisPrvr": "H",
+						"getDescr": false,
+						"getPoly": false,
+						"sumLDrawStyleX": 0,
+						"resLDrawStyleX": 1,
+						"prodX": 0,
+						"line": {
+							"type": "line",
+							"id": "deviation",
+							"fahrtNr": null,
+							"name": "Deviation",
+							"public": true
+						}
+					},
+					"resState": "N",
+					"resRecommendation": "N"
+				},
+				{
+					"type": "JNY",
+					"dep": {
+						"locX": 1,
+						"dProdX": 13,
+						"dPltfS": {
+							"type": "PL",
+							"txt": "14"
+						},
+						"dTimeS": "192100",
+						"dTimeR": "192300",
+						"dProgType": "PROGNOSED",
+						"dTZOffset": 60,
+						"type": "N",
+						"location": {
+							"type": "stop",
+							"id": "8003200",
+							"name": "Kassel-Wilhelmshöhe",
+							"location": {
+								"type": "location",
+								"id": "8003200",
+								"latitude": 51.312998,
+								"longitude": 9.446845
+							},
+							"products": {
+								"nationalExpress": true,
+								"national": true,
+								"regionalExpress": true,
+								"regional": true,
+								"suburban": true,
+								"bus": true,
+								"ferry": false,
+								"subway": false,
+								"tram": true,
+								"taxi": false
+							}
+						}
+					},
+					"arr": {
+						"locX": 2,
+						"aProdX": 13,
+						"aTimeS": "213900",
+						"aTimeR": "214200",
+						"aProgType": "PROGNOSED",
+						"aTZOffset": 60,
+						"type": "N",
+						"location": {
+							"type": "stop",
+							"id": "8002549",
+							"name": "Hamburg Hbf",
+							"location": {
+								"type": "location",
+								"id": "8002549",
+								"latitude": 0,
+								"longitude": 0
+							},
+							"products": {
+								"nationalExpress": true,
+								"national": true,
+								"regionalExpress": true,
+								"regional": true,
+								"suburban": true,
+								"bus": true,
+								"ferry": false,
+								"subway": true,
+								"tram": false,
+								"taxi": false
+							}
+						}
+					},
+					"jny": {
+						"jid": "1|1745370|0|80|-1",
+						"prodX": 13,
+						"status": "P",
+						"isRchbl": true,
+						"ctxRecon": "T$A=1@O=Kassel-Wilhelmshöhe@L=8003200@a=0@$A=1@O=Hamburg Hbf@L=8002549@a=0@$202311131921$202311132139$ICE 2876$$2$$$$$$",
+						"approxDelay": true,
+						"subscr": "F",
+						"sumLDrawStyleX": 2,
+						"resLDrawStyleX": 1,
+						"durS": "021800",
+						"line": {
+							"type": "line",
+							"id": "ice-2876",
+							"fahrtNr": null,
+							"name": "ICE 2876",
+							"public": true,
+							"productName": "ICE"
+						}
+					},
+					"resState": "N",
+					"resRecommendation": "N"
+				}
+			],
+			"ctxRecon": "D$A=1@O=Kassel Hbf@L=8000193@a=0@$A=1@O=Kassel-Wilhelmshöhe@L=8003200@a=0@$202311131914$202311131921$$$1$$$$$$§T$A=1@O=Kassel-Wilhelmshöhe@L=8003200@a=0@$A=1@O=Hamburg Hbf@L=8002549@a=0@$202311131921$202311132139$ICE 2876$$2$$$$$$",
+			"trfRes": {
+				"statusCode": "OK",
+				"fareSetL": [
+					{
+						"fareL": [
+							{
+								"isFromPrice": true,
+								"isPartPrice": false,
+								"isBookable": true,
+								"isUpsell": false,
+								"targetCtx": "D",
+								"buttonText": "To offer selection",
+								"price": {
+									"amount": 8890
+								},
+								"retPriceIsCompletePrice": false,
+								"retPrice": -1
+							}
+						]
+					}
+				]
+			},
+			"msgL": [
+				{
+					"type": "REM",
+					"remX": 0,
+					"sty": "I",
+					"txtC": {
+						"r": 204,
+						"g": 0,
+						"b": 0
+					},
+					"prio": 200,
+					"fIdx": -1,
+					"tIdx": -1,
+					"tagL": [
+						"SUM_CON_FTR_H3"
+					],
+					"sort": 818413568,
+					"hint": null
+				}
+			],
+			"conSubscr": "U",
+			"resState": "N",
+			"resRecommendation": "N",
+			"recState": "U",
+			"sotRating": 0,
+			"isSotCon": false,
+			"showARSLink": false,
+			"cksum": "16c4b6d9_3",
+			"cksumDti": "cc4c8ce5_3",
+			"intvlSubscr": "U",
+			"originType": "INITIAL",
+			"remarkRefs": []
+		},
+		{
+			"cid": "A2-2",
+			"date": "20231113",
+			"dur": "022300",
+			"chg": 0,
+			"dep": {},
+			"arr": {},
+			"secL": [
+				{
+					"type": "DEVI",
+					"dep": {
+						"locX": 0,
+						"dTimeS": "201400",
+						"type": "N",
+						"location": {
+							"type": "stop",
+							"id": "8000193",
+							"name": "Kassel Hbf",
+							"location": {
+								"type": "location",
+								"id": "8000193",
+								"latitude": 51.31832,
+								"longitude": 9.489903
+							},
+							"products": {
+								"nationalExpress": false,
+								"national": false,
+								"regionalExpress": false,
+								"regional": true,
+								"suburban": true,
+								"bus": true,
+								"ferry": false,
+								"subway": false,
+								"tram": true,
+								"taxi": false
+							}
+						}
+					},
+					"arr": {
+						"locX": 1,
+						"aTimeS": "202100",
+						"type": "N",
+						"location": {
+							"type": "stop",
+							"id": "8003200",
+							"name": "Kassel-Wilhelmshöhe",
+							"location": {
+								"type": "location",
+								"id": "8003200",
+								"latitude": 51.312998,
+								"longitude": 9.446845
+							},
+							"products": {
+								"nationalExpress": true,
+								"national": true,
+								"regionalExpress": true,
+								"regional": true,
+								"suburban": true,
+								"bus": true,
+								"ferry": false,
+								"subway": false,
+								"tram": true,
+								"taxi": false
+							}
+						}
+					},
+					"gis": {
+						"ctx": "H|1|D$A=1@O=Kassel Hbf@L=8000193@a=0@$A=1@O=Kassel-Wilhelmshöhe@L=8003200@a=0@$202311132014$202311132021$$$1$$$$$$|",
+						"gisPrvr": "H",
+						"getDescr": false,
+						"getPoly": false,
+						"sumLDrawStyleX": 0,
+						"resLDrawStyleX": 1,
+						"prodX": 0,
+						"line": {
+							"type": "line",
+							"id": "deviation",
+							"fahrtNr": null,
+							"name": "Deviation",
+							"public": true
+						}
+					},
+					"resState": "N",
+					"resRecommendation": "N"
+				},
+				{
+					"type": "JNY",
+					"dep": {
+						"locX": 1,
+						"dProdX": 14,
+						"dPltfS": {
+							"type": "PL",
+							"txt": "13"
+						},
+						"dTimeS": "202100",
+						"dTimeR": "202300",
+						"dProgType": "PROGNOSED",
+						"dTZOffset": 60,
+						"type": "N",
+						"location": {
+							"type": "stop",
+							"id": "8003200",
+							"name": "Kassel-Wilhelmshöhe",
+							"location": {
+								"type": "location",
+								"id": "8003200",
+								"latitude": 51.312998,
+								"longitude": 9.446845
+							},
+							"products": {
+								"nationalExpress": true,
+								"national": true,
+								"regionalExpress": true,
+								"regional": true,
+								"suburban": true,
+								"bus": true,
+								"ferry": false,
+								"subway": false,
+								"tram": true,
+								"taxi": false
+							}
+						}
+					},
+					"arr": {
+						"locX": 2,
+						"aProdX": 14,
+						"aTimeS": "224600",
+						"aTimeR": "224600",
+						"aProgType": "PROGNOSED",
+						"aTZOffset": 60,
+						"type": "N",
+						"location": {
+							"type": "stop",
+							"id": "8002549",
+							"name": "Hamburg Hbf",
+							"location": {
+								"type": "location",
+								"id": "8002549",
+								"latitude": 0,
+								"longitude": 0
+							},
+							"products": {
+								"nationalExpress": true,
+								"national": true,
+								"regionalExpress": true,
+								"regional": true,
+								"suburban": true,
+								"bus": true,
+								"ferry": false,
+								"subway": true,
+								"tram": false,
+								"taxi": false
+							}
+						}
+					},
+					"jny": {
+						"jid": "1|202791|0|80|-1",
+						"prodX": 14,
+						"status": "P",
+						"isRchbl": true,
+						"ctxRecon": "T$A=1@O=Kassel-Wilhelmshöhe@L=8003200@a=0@$A=1@O=Hamburg Hbf@L=8002549@a=0@$202311132021$202311132246$ICE  594$$1$$$$$$",
+						"approxDelay": true,
+						"subscr": "F",
+						"sumLDrawStyleX": 2,
+						"resLDrawStyleX": 1,
+						"durS": "022500",
+						"line": {
+							"type": "line",
+							"id": "ice-594",
+							"fahrtNr": null,
+							"name": "ICE 594",
+							"public": true,
+							"productName": "ICE"
+						}
+					},
+					"resState": "N",
+					"resRecommendation": "N"
+				}
+			],
+			"ctxRecon": "D$A=1@O=Kassel Hbf@L=8000193@a=0@$A=1@O=Kassel-Wilhelmshöhe@L=8003200@a=0@$202311132014$202311132021$$$1$$$$$$§T$A=1@O=Kassel-Wilhelmshöhe@L=8003200@a=0@$A=1@O=Hamburg Hbf@L=8002549@a=0@$202311132021$202311132246$ICE  594$$1$$$$$$",
+			"trfRes": {
+				"statusCode": "OK",
+				"fareSetL": [
+					{
+						"fareL": [
+							{
+								"isFromPrice": true,
+								"isPartPrice": false,
+								"isBookable": true,
+								"isUpsell": false,
+								"targetCtx": "D",
+								"buttonText": "To offer selection",
+								"price": {
+									"amount": 5590
+								},
+								"retPriceIsCompletePrice": false,
+								"retPrice": -1
+							}
+						]
+					}
+				]
+			},
+			"conSubscr": "U",
+			"resState": "N",
+			"resRecommendation": "N",
+			"recState": "U",
+			"sotRating": 0,
+			"isSotCon": false,
+			"showARSLink": false,
+			"cksum": "270a608f_3",
+			"cksumDti": "1e831660_3",
+			"dTrnCmpSX": {
+				"tcocX": [
+					3,
+					4
+				]
+			},
+			"intvlSubscr": "U",
+			"originType": "INITIAL"
+		},
+		{
+			"cid": "A2-3",
+			"date": "20231113",
+			"dur": "021900",
+			"chg": 0,
+			"dep": {},
+			"arr": {},
+			"secL": [
+				{
+					"type": "DEVI",
+					"dep": {
+						"locX": 0,
+						"dTimeS": "202900",
+						"type": "N",
+						"location": {
+							"type": "stop",
+							"id": "8000193",
+							"name": "Kassel Hbf",
+							"location": {
+								"type": "location",
+								"id": "8000193",
+								"latitude": 51.31832,
+								"longitude": 9.489903
+							},
+							"products": {
+								"nationalExpress": false,
+								"national": false,
+								"regionalExpress": false,
+								"regional": true,
+								"suburban": true,
+								"bus": true,
+								"ferry": false,
+								"subway": false,
+								"tram": true,
+								"taxi": false
+							}
+						}
+					},
+					"arr": {
+						"locX": 1,
+						"aTimeS": "203600",
+						"type": "N",
+						"location": {
+							"type": "stop",
+							"id": "8003200",
+							"name": "Kassel-Wilhelmshöhe",
+							"location": {
+								"type": "location",
+								"id": "8003200",
+								"latitude": 51.312998,
+								"longitude": 9.446845
+							},
+							"products": {
+								"nationalExpress": true,
+								"national": true,
+								"regionalExpress": true,
+								"regional": true,
+								"suburban": true,
+								"bus": true,
+								"ferry": false,
+								"subway": false,
+								"tram": true,
+								"taxi": false
+							}
+						}
+					},
+					"gis": {
+						"ctx": "H|1|D$A=1@O=Kassel Hbf@L=8000193@a=0@$A=1@O=Kassel-Wilhelmshöhe@L=8003200@a=0@$202311132029$202311132036$$$1$$$$$$|",
+						"gisPrvr": "H",
+						"getDescr": false,
+						"getPoly": false,
+						"sumLDrawStyleX": 0,
+						"resLDrawStyleX": 1,
+						"prodX": 0,
+						"line": {
+							"type": "line",
+							"id": "deviation",
+							"fahrtNr": null,
+							"name": "Deviation",
+							"public": true
+						}
+					},
+					"resState": "N",
+					"resRecommendation": "N"
+				},
+				{
+					"type": "JNY",
+					"dep": {
+						"locX": 1,
+						"dProdX": 15,
+						"dPltfS": {
+							"type": "PL",
+							"txt": "13"
+						},
+						"dTimeS": "203600",
+						"dTZOffset": 60,
+						"type": "N",
+						"location": {
+							"type": "stop",
+							"id": "8003200",
+							"name": "Kassel-Wilhelmshöhe",
+							"location": {
+								"type": "location",
+								"id": "8003200",
+								"latitude": 51.312998,
+								"longitude": 9.446845
+							},
+							"products": {
+								"nationalExpress": true,
+								"national": true,
+								"regionalExpress": true,
+								"regional": true,
+								"suburban": true,
+								"bus": true,
+								"ferry": false,
+								"subway": false,
+								"tram": true,
+								"taxi": false
+							}
+						}
+					},
+					"arr": {
+						"locX": 2,
+						"aProdX": 15,
+						"aTimeS": "225500",
+						"aTZOffset": 60,
+						"type": "N",
+						"location": {
+							"type": "stop",
+							"id": "8002549",
+							"name": "Hamburg Hbf",
+							"location": {
+								"type": "location",
+								"id": "8002549",
+								"latitude": 0,
+								"longitude": 0
+							},
+							"products": {
+								"nationalExpress": true,
+								"national": true,
+								"regionalExpress": true,
+								"regional": true,
+								"suburban": true,
+								"bus": true,
+								"ferry": false,
+								"subway": true,
+								"tram": false,
+								"taxi": false
+							}
+						}
+					},
+					"jny": {
+						"jid": "1|202534|0|80|-1",
+						"prodX": 15,
+						"status": "P",
+						"isRchbl": true,
+						"ctxRecon": "T$A=1@O=Kassel-Wilhelmshöhe@L=8003200@a=0@$A=1@O=Hamburg Hbf@L=8002549@a=0@$202311132036$202311132255$ICE  582$$1$$$$$$",
+						"approxDelay": true,
+						"subscr": "F",
+						"sumLDrawStyleX": 2,
+						"resLDrawStyleX": 1,
+						"durS": "021900",
+						"line": {
+							"type": "line",
+							"id": "ice-582",
+							"fahrtNr": null,
+							"name": "ICE 582",
+							"public": true,
+							"productName": "ICE"
+						}
+					},
+					"resState": "N",
+					"resRecommendation": "N"
+				}
+			],
+			"ctxRecon": "D$A=1@O=Kassel Hbf@L=8000193@a=0@$A=1@O=Kassel-Wilhelmshöhe@L=8003200@a=0@$202311132029$202311132036$$$1$$$$$$§T$A=1@O=Kassel-Wilhelmshöhe@L=8003200@a=0@$A=1@O=Hamburg Hbf@L=8002549@a=0@$202311132036$202311132255$ICE  582$$1$$$$$$",
+			"trfRes": {
+				"statusCode": "OK",
+				"fareSetL": [
+					{
+						"fareL": [
+							{
+								"isFromPrice": true,
+								"isPartPrice": false,
+								"isBookable": true,
+								"isUpsell": false,
+								"targetCtx": "D",
+								"buttonText": "To offer selection",
+								"price": {
+									"amount": 5590
+								},
+								"retPriceIsCompletePrice": false,
+								"retPrice": -1
+							}
+						]
+					}
+				]
+			},
+			"conSubscr": "U",
+			"resState": "N",
+			"resRecommendation": "N",
+			"recState": "U",
+			"sotRating": 0,
+			"isSotCon": false,
+			"showARSLink": false,
+			"cksum": "c09cbe65_3",
+			"cksumDti": "ec2f5df6_3",
+			"dTrnCmpSX": {
+				"tcocX": [
+					3,
+					4
+				]
+			},
+			"intvlSubscr": "U",
+			"originType": "INITIAL"
+		},
+		{
+			"cid": "A2-4",
+			"date": "20231113",
+			"dur": "022100",
+			"chg": 0,
+			"dep": {},
+			"arr": {},
+			"secL": [
+				{
+					"type": "DEVI",
+					"dep": {
+						"locX": 0,
+						"dTimeS": "211400",
+						"type": "N",
+						"location": {
+							"type": "stop",
+							"id": "8000193",
+							"name": "Kassel Hbf",
+							"location": {
+								"type": "location",
+								"id": "8000193",
+								"latitude": 51.31832,
+								"longitude": 9.489903
+							},
+							"products": {
+								"nationalExpress": false,
+								"national": false,
+								"regionalExpress": false,
+								"regional": true,
+								"suburban": true,
+								"bus": true,
+								"ferry": false,
+								"subway": false,
+								"tram": true,
+								"taxi": false
+							}
+						}
+					},
+					"arr": {
+						"locX": 1,
+						"aTimeS": "212100",
+						"type": "N",
+						"location": {
+							"type": "stop",
+							"id": "8003200",
+							"name": "Kassel-Wilhelmshöhe",
+							"location": {
+								"type": "location",
+								"id": "8003200",
+								"latitude": 51.312998,
+								"longitude": 9.446845
+							},
+							"products": {
+								"nationalExpress": true,
+								"national": true,
+								"regionalExpress": true,
+								"regional": true,
+								"suburban": true,
+								"bus": true,
+								"ferry": false,
+								"subway": false,
+								"tram": true,
+								"taxi": false
+							}
+						}
+					},
+					"gis": {
+						"ctx": "H|1|D$A=1@O=Kassel Hbf@L=8000193@a=0@$A=1@O=Kassel-Wilhelmshöhe@L=8003200@a=0@$202311132114$202311132121$$$1$$$$$$|",
+						"gisPrvr": "H",
+						"getDescr": false,
+						"getPoly": false,
+						"sumLDrawStyleX": 0,
+						"resLDrawStyleX": 1,
+						"prodX": 0,
+						"line": {
+							"type": "line",
+							"id": "deviation",
+							"fahrtNr": null,
+							"name": "Deviation",
+							"public": true
+						}
+					},
+					"resState": "N",
+					"resRecommendation": "N"
+				},
+				{
+					"type": "JNY",
+					"dep": {
+						"locX": 1,
+						"dProdX": 16,
+						"dPltfS": {
+							"type": "PL",
+							"txt": "12"
+						},
+						"dTimeS": "212100",
+						"dTZOffset": 60,
+						"type": "N",
+						"location": {
+							"type": "stop",
+							"id": "8003200",
+							"name": "Kassel-Wilhelmshöhe",
+							"location": {
+								"type": "location",
+								"id": "8003200",
+								"latitude": 51.312998,
+								"longitude": 9.446845
+							},
+							"products": {
+								"nationalExpress": true,
+								"national": true,
+								"regionalExpress": true,
+								"regional": true,
+								"suburban": true,
+								"bus": true,
+								"ferry": false,
+								"subway": false,
+								"tram": true,
+								"taxi": false
+							}
+						}
+					},
+					"arr": {
+						"locX": 2,
+						"aProdX": 16,
+						"aTimeS": "234200",
+						"aTZOffset": 60,
+						"type": "N",
+						"location": {
+							"type": "stop",
+							"id": "8002549",
+							"name": "Hamburg Hbf",
+							"location": {
+								"type": "location",
+								"id": "8002549",
+								"latitude": 0,
+								"longitude": 0
+							},
+							"products": {
+								"nationalExpress": true,
+								"national": true,
+								"regionalExpress": true,
+								"regional": true,
+								"suburban": true,
+								"bus": true,
+								"ferry": false,
+								"subway": true,
+								"tram": false,
+								"taxi": false
+							}
+						}
+					},
+					"jny": {
+						"jid": "1|199944|0|80|-1",
+						"prodX": 16,
+						"status": "P",
+						"isRchbl": true,
+						"ctxRecon": "T$A=1@O=Kassel-Wilhelmshöhe@L=8003200@a=0@$A=1@O=Hamburg Hbf@L=8002549@a=0@$202311132121$202311132342$ICE  274$$1$$$$$$",
+						"approxDelay": true,
+						"subscr": "F",
+						"sumLDrawStyleX": 2,
+						"resLDrawStyleX": 1,
+						"durS": "022100",
+						"line": {
+							"type": "line",
+							"id": "ice-274",
+							"fahrtNr": null,
+							"name": "ICE 274",
+							"public": true,
+							"productName": "ICE"
+						}
+					},
+					"resState": "N",
+					"resRecommendation": "N"
+				}
+			],
+			"ctxRecon": "D$A=1@O=Kassel Hbf@L=8000193@a=0@$A=1@O=Kassel-Wilhelmshöhe@L=8003200@a=0@$202311132114$202311132121$$$1$$$$$$§T$A=1@O=Kassel-Wilhelmshöhe@L=8003200@a=0@$A=1@O=Hamburg Hbf@L=8002549@a=0@$202311132121$202311132342$ICE  274$$1$$$$$$",
+			"trfRes": {
+				"statusCode": "OK",
+				"fareSetL": [
+					{
+						"fareL": [
+							{
+								"isFromPrice": true,
+								"isPartPrice": false,
+								"isBookable": true,
+								"isUpsell": false,
+								"targetCtx": "D",
+								"buttonText": "To offer selection",
+								"price": {
+									"amount": 5590
+								},
+								"retPriceIsCompletePrice": false,
+								"retPrice": -1
+							}
+						]
+					}
+				]
+			},
+			"conSubscr": "U",
+			"resState": "N",
+			"resRecommendation": "N",
+			"recState": "U",
+			"sotRating": 0,
+			"isSotCon": false,
+			"showARSLink": false,
+			"cksum": "15f4e41c_3",
+			"cksumDti": "9e13fcd7_3",
+			"dTrnCmpSX": {
+				"tcocX": [
+					3,
+					4
+				]
+			},
+			"intvlSubscr": "U",
+			"originType": "INITIAL"
+		},
+		{
+			"cid": "A2-5",
+			"date": "20231113",
+			"dur": "030100",
+			"chg": 0,
+			"dep": {},
+			"arr": {},
+			"secL": [
+				{
+					"type": "DEVI",
+					"dep": {
+						"locX": 0,
+						"dTimeS": "221400",
+						"type": "N",
+						"location": {
+							"type": "stop",
+							"id": "8000193",
+							"name": "Kassel Hbf",
+							"location": {
+								"type": "location",
+								"id": "8000193",
+								"latitude": 51.31832,
+								"longitude": 9.489903
+							},
+							"products": {
+								"nationalExpress": false,
+								"national": false,
+								"regionalExpress": false,
+								"regional": true,
+								"suburban": true,
+								"bus": true,
+								"ferry": false,
+								"subway": false,
+								"tram": true,
+								"taxi": false
+							}
+						}
+					},
+					"arr": {
+						"locX": 1,
+						"aTimeS": "222100",
+						"type": "N",
+						"location": {
+							"type": "stop",
+							"id": "8003200",
+							"name": "Kassel-Wilhelmshöhe",
+							"location": {
+								"type": "location",
+								"id": "8003200",
+								"latitude": 51.312998,
+								"longitude": 9.446845
+							},
+							"products": {
+								"nationalExpress": true,
+								"national": true,
+								"regionalExpress": true,
+								"regional": true,
+								"suburban": true,
+								"bus": true,
+								"ferry": false,
+								"subway": false,
+								"tram": true,
+								"taxi": false
+							}
+						}
+					},
+					"gis": {
+						"ctx": "H|1|D$A=1@O=Kassel Hbf@L=8000193@a=0@$A=1@O=Kassel-Wilhelmshöhe@L=8003200@a=0@$202311132214$202311132221$$$1$$$$$$|",
+						"gisPrvr": "H",
+						"getDescr": false,
+						"getPoly": false,
+						"sumLDrawStyleX": 0,
+						"resLDrawStyleX": 1,
+						"prodX": 0,
+						"line": {
+							"type": "line",
+							"id": "deviation",
+							"fahrtNr": null,
+							"name": "Deviation",
+							"public": true
+						}
+					},
+					"resState": "N",
+					"resRecommendation": "N"
+				},
+				{
+					"type": "JNY",
+					"dep": {
+						"locX": 1,
+						"dProdX": 17,
+						"dPltfS": {
+							"type": "PL",
+							"txt": "1"
+						},
+						"dTimeS": "222100",
+						"dTZOffset": 60,
+						"type": "N",
+						"location": {
+							"type": "stop",
+							"id": "8003200",
+							"name": "Kassel-Wilhelmshöhe",
+							"location": {
+								"type": "location",
+								"id": "8003200",
+								"latitude": 51.312998,
+								"longitude": 9.446845
+							},
+							"products": {
+								"nationalExpress": true,
+								"national": true,
+								"regionalExpress": true,
+								"regional": true,
+								"suburban": true,
+								"bus": true,
+								"ferry": false,
+								"subway": false,
+								"tram": true,
+								"taxi": false
+							}
+						}
+					},
+					"arr": {
+						"locX": 3,
+						"aProdX": 17,
+						"aTimeS": "01012200",
+						"aTZOffset": 60,
+						"msgL": [
+							{
+								"type": "REM",
+								"remX": 2,
+								"sty": "I",
+								"tagL": [
+									"RES_LOC_H3"
+								],
+								"sort": 147324928,
+								"hint": null
+							}
+						],
+						"type": "N",
+						"remarkRefs": [],
+						"location": {
+							"type": "stop",
+							"id": "8000147",
+							"name": "Hamburg-Harburg",
+							"location": {
+								"type": "location",
+								"id": "8000147",
+								"latitude": 0,
+								"longitude": 0
+							},
+							"products": {
+								"nationalExpress": true,
+								"national": true,
+								"regionalExpress": true,
+								"regional": true,
+								"suburban": true,
+								"bus": true,
+								"ferry": false,
+								"subway": false,
+								"tram": false,
+								"taxi": false
+							}
+						}
+					},
+					"jny": {
+						"jid": "1|202739|0|80|-1",
+						"prodX": 17,
+						"status": "P",
+						"isRchbl": true,
+						"ctxRecon": "T$A=1@O=Kassel-Wilhelmshöhe@L=8003200@a=0@$A=1@O=Hamburg-Harburg@L=8000147@a=0@$202311132221$202311140122$ICE  592$$1$$$$$$",
+						"approxDelay": true,
+						"subscr": "F",
+						"sumLDrawStyleX": 2,
+						"resLDrawStyleX": 1,
+						"durS": "030100",
+						"line": {
+							"type": "line",
+							"id": "ice-592",
+							"fahrtNr": null,
+							"name": "ICE 592",
+							"public": true,
+							"productName": "ICE"
+						}
+					},
+					"resState": "N",
+					"resRecommendation": "N"
+				},
+				{
+					"type": "DEVI",
+					"dep": {
+						"locX": 3,
+						"dTimeS": "012200",
+						"type": "N",
+						"location": {
+							"type": "stop",
+							"id": "8000147",
+							"name": "Hamburg-Harburg",
+							"location": {
+								"type": "location",
+								"id": "8000147",
+								"latitude": 0,
+								"longitude": 0
+							},
+							"products": {
+								"nationalExpress": true,
+								"national": true,
+								"regionalExpress": true,
+								"regional": true,
+								"suburban": true,
+								"bus": true,
+								"ferry": false,
+								"subway": false,
+								"tram": false,
+								"taxi": false
+							}
+						}
+					},
+					"arr": {
+						"locX": 2,
+						"aTimeS": "014200",
+						"type": "N",
+						"location": {
+							"type": "stop",
+							"id": "8002549",
+							"name": "Hamburg Hbf",
+							"location": {
+								"type": "location",
+								"id": "8002549",
+								"latitude": 0,
+								"longitude": 0
+							},
+							"products": {
+								"nationalExpress": true,
+								"national": true,
+								"regionalExpress": true,
+								"regional": true,
+								"suburban": true,
+								"bus": true,
+								"ferry": false,
+								"subway": true,
+								"tram": false,
+								"taxi": false
+							}
+						}
+					},
+					"gis": {
+						"ctx": "H|1|D$A=1@O=Hamburg-Harburg@L=8000147@a=0@$A=1@O=Hamburg Hbf@L=8002549@a=0@$202311140122$202311140142$$$1$$$$$$|",
+						"gisPrvr": "H",
+						"getDescr": false,
+						"getPoly": false,
+						"sumLDrawStyleX": 0,
+						"resLDrawStyleX": 1,
+						"prodX": 0,
+						"line": {
+							"type": "line",
+							"id": "deviation",
+							"fahrtNr": null,
+							"name": "Deviation",
+							"public": true
+						}
+					},
+					"resState": "N",
+					"resRecommendation": "N"
+				}
+			],
+			"ctxRecon": "D$A=1@O=Kassel Hbf@L=8000193@a=0@$A=1@O=Kassel-Wilhelmshöhe@L=8003200@a=0@$202311132214$202311132221$$$1$$$$$$§T$A=1@O=Kassel-Wilhelmshöhe@L=8003200@a=0@$A=1@O=Hamburg-Harburg@L=8000147@a=0@$202311132221$202311140122$ICE  592$$1$$$$$$§D$A=1@O=Hamburg-Harburg@L=8000147@a=0@$A=1@O=Hamburg Hbf@L=8002549@a=0@$202311140122$202311140142$$$1$$$$$$",
+			"trfRes": {
+				"statusCode": "OK",
+				"fareSetL": [
+					{
+						"fareL": [
+							{
+								"isFromPrice": true,
+								"isPartPrice": false,
+								"isBookable": true,
+								"isUpsell": false,
+								"targetCtx": "D",
+								"buttonText": "To offer selection",
+								"price": {
+									"amount": 5590
+								},
+								"retPriceIsCompletePrice": false,
+								"retPrice": -1
+							}
+						]
+					}
+				]
+			},
+			"conSubscr": "U",
+			"resState": "N",
+			"resRecommendation": "N",
+			"recState": "U",
+			"sotRating": 0,
+			"isSotCon": false,
+			"showARSLink": false,
+			"cksum": "244b04ed_3",
+			"cksumDti": "c312c541_3",
+			"dTrnCmpSX": {
+				"tcocX": [
+					3,
+					4
+				]
+			},
+			"intvlSubscr": "U",
+			"originType": "INITIAL"
+		},
+		{
+			"cid": "A2-6",
+			"date": "20231113",
+			"dur": "033700",
+			"chg": 0,
+			"dep": {},
+			"arr": {},
+			"secL": [
+				{
+					"type": "DEVI",
+					"dep": {
+						"locX": 0,
+						"dTimeS": "231400",
+						"type": "N",
+						"location": {
+							"type": "stop",
+							"id": "8000193",
+							"name": "Kassel Hbf",
+							"location": {
+								"type": "location",
+								"id": "8000193",
+								"latitude": 51.31832,
+								"longitude": 9.489903
+							},
+							"products": {
+								"nationalExpress": false,
+								"national": false,
+								"regionalExpress": false,
+								"regional": true,
+								"suburban": true,
+								"bus": true,
+								"ferry": false,
+								"subway": false,
+								"tram": true,
+								"taxi": false
+							}
+						}
+					},
+					"arr": {
+						"locX": 1,
+						"aTimeS": "232100",
+						"type": "N",
+						"location": {
+							"type": "stop",
+							"id": "8003200",
+							"name": "Kassel-Wilhelmshöhe",
+							"location": {
+								"type": "location",
+								"id": "8003200",
+								"latitude": 51.312998,
+								"longitude": 9.446845
+							},
+							"products": {
+								"nationalExpress": true,
+								"national": true,
+								"regionalExpress": true,
+								"regional": true,
+								"suburban": true,
+								"bus": true,
+								"ferry": false,
+								"subway": false,
+								"tram": true,
+								"taxi": false
+							}
+						}
+					},
+					"gis": {
+						"ctx": "H|1|D$A=1@O=Kassel Hbf@L=8000193@a=0@$A=1@O=Kassel-Wilhelmshöhe@L=8003200@a=0@$202311132314$202311132321$$$1$$$$$$|",
+						"gisPrvr": "H",
+						"getDescr": false,
+						"getPoly": false,
+						"sumLDrawStyleX": 0,
+						"resLDrawStyleX": 1,
+						"prodX": 0,
+						"line": {
+							"type": "line",
+							"id": "deviation",
+							"fahrtNr": null,
+							"name": "Deviation",
+							"public": true
+						}
+					},
+					"resState": "N",
+					"resRecommendation": "N"
+				},
+				{
+					"type": "JNY",
+					"dep": {
+						"locX": 1,
+						"dProdX": 18,
+						"dPltfS": {
+							"type": "PL",
+							"txt": "13"
+						},
+						"dTimeS": "232100",
+						"dTZOffset": 60,
+						"type": "N",
+						"location": {
+							"type": "stop",
+							"id": "8003200",
+							"name": "Kassel-Wilhelmshöhe",
+							"location": {
+								"type": "location",
+								"id": "8003200",
+								"latitude": 51.312998,
+								"longitude": 9.446845
+							},
+							"products": {
+								"nationalExpress": true,
+								"national": true,
+								"regionalExpress": true,
+								"regional": true,
+								"suburban": true,
+								"bus": true,
+								"ferry": false,
+								"subway": false,
+								"tram": true,
+								"taxi": false
+							}
+						}
+					},
+					"arr": {
+						"locX": 2,
+						"aProdX": 18,
+						"aTimeS": "01025800",
+						"aTZOffset": 60,
+						"msgL": [
+							{
+								"type": "REM",
+								"remX": 2,
+								"sty": "I",
+								"tagL": [
+									"RES_LOC_H3"
+								],
+								"sort": 147324928,
+								"hint": null
+							}
+						],
+						"type": "N",
+						"remarkRefs": [],
+						"location": {
+							"type": "stop",
+							"id": "8002549",
+							"name": "Hamburg Hbf",
+							"location": {
+								"type": "location",
+								"id": "8002549",
+								"latitude": 0,
+								"longitude": 0
+							},
+							"products": {
+								"nationalExpress": true,
+								"national": true,
+								"regionalExpress": true,
+								"regional": true,
+								"suburban": true,
+								"bus": true,
+								"ferry": false,
+								"subway": true,
+								"tram": false,
+								"taxi": false
+							}
+						}
+					},
+					"jny": {
+						"jid": "1|361010|0|80|-1",
+						"prodX": 18,
+						"status": "P",
+						"isRchbl": true,
+						"ctxRecon": "T$A=1@O=Kassel-Wilhelmshöhe@L=8003200@a=0@$A=1@O=Hamburg Hbf@L=8002549@a=0@$202311132321$202311140258$ICE  272$$1$$$$$$",
+						"approxDelay": true,
+						"subscr": "F",
+						"sumLDrawStyleX": 2,
+						"resLDrawStyleX": 1,
+						"durS": "033700",
+						"line": {
+							"type": "line",
+							"id": "ice-272",
+							"fahrtNr": null,
+							"name": "ICE 272",
+							"public": true,
+							"productName": "ICE"
+						}
+					},
+					"resState": "N",
+					"resRecommendation": "N"
+				}
+			],
+			"ctxRecon": "D$A=1@O=Kassel Hbf@L=8000193@a=0@$A=1@O=Kassel-Wilhelmshöhe@L=8003200@a=0@$202311132314$202311132321$$$1$$$$$$§T$A=1@O=Kassel-Wilhelmshöhe@L=8003200@a=0@$A=1@O=Hamburg Hbf@L=8002549@a=0@$202311132321$202311140258$ICE  272$$1$$$$$$",
+			"trfRes": {
+				"statusCode": "OK",
+				"fareSetL": [
+					{
+						"fareL": [
+							{
+								"isFromPrice": true,
+								"isPartPrice": false,
+								"isBookable": true,
+								"isUpsell": false,
+								"targetCtx": "D",
+								"buttonText": "To offer selection",
+								"price": {
+									"amount": 5590
+								},
+								"retPriceIsCompletePrice": false,
+								"retPrice": -1
+							}
+						]
+					}
+				]
+			},
+			"conSubscr": "U",
+			"resState": "N",
+			"resRecommendation": "N",
+			"recState": "U",
+			"sotRating": 0,
+			"isSotCon": false,
+			"showARSLink": false,
+			"cksum": "17aa85e1_3",
+			"cksumDti": "4cd6bf0e_3",
+			"dTrnCmpSX": {
+				"tcocX": [
+					3,
+					4
+				]
+			},
+			"intvlSubscr": "U",
+			"originType": "INITIAL"
+		},
+		{
+			"cid": "A2-7",
+			"date": "20231113",
+			"dur": "065600",
+			"chg": 1,
+			"dep": {},
+			"arr": {},
+			"secL": [
+				{
+					"type": "JNY",
+					"dep": {
+						"locX": 0,
+						"dProdX": 19,
+						"dPltfS": {
+							"type": "PL",
+							"txt": "5"
+						},
+						"dTimeS": "234600",
+						"dTimeR": "234600",
+						"dProgType": "PROGNOSED",
+						"dTZOffset": 60,
+						"type": "N",
+						"location": {
+							"type": "stop",
+							"id": "8000193",
+							"name": "Kassel Hbf",
+							"location": {
+								"type": "location",
+								"id": "8000193",
+								"latitude": 51.31832,
+								"longitude": 9.489903
+							},
+							"products": {
+								"nationalExpress": false,
+								"national": false,
+								"regionalExpress": false,
+								"regional": true,
+								"suburban": true,
+								"bus": true,
+								"ferry": false,
+								"subway": false,
+								"tram": true,
+								"taxi": false
+							}
+						}
+					},
+					"arr": {
+						"locX": 4,
+						"aProdX": 19,
+						"aTimeS": "01004100",
+						"aTZOffset": 60,
+						"msgL": [
+							{
+								"type": "REM",
+								"remX": 2,
+								"sty": "I",
+								"tagL": [
+									"RES_LOC_H3"
+								],
+								"sort": 147324928,
+								"hint": null
+							}
+						],
+						"type": "N",
+						"remarkRefs": [],
+						"location": {
+							"type": "stop",
+							"id": "8000128",
+							"name": "Göttingen",
+							"location": {
+								"type": "location",
+								"id": "8000128",
+								"latitude": 0,
+								"longitude": 0
+							},
+							"products": {
+								"nationalExpress": true,
+								"national": true,
+								"regionalExpress": true,
+								"regional": true,
+								"suburban": false,
+								"bus": true,
+								"ferry": false,
+								"subway": false,
+								"tram": false,
+								"taxi": true
+							}
+						}
+					},
+					"jny": {
+						"jid": "1|162318|0|80|-1",
+						"prodX": 19,
+						"status": "P",
+						"isRchbl": true,
+						"ctxRecon": "T$A=1@O=Kassel Hbf@L=8000193@a=0@$A=1@O=Göttingen@L=8000128@a=0@$202311132346$202311140041$RB 24038$$1$$$$$$",
+						"approxDelay": true,
+						"subscr": "F",
+						"sumLDrawStyleX": 3,
+						"resLDrawStyleX": 1,
+						"durS": "005500",
+						"line": {
+							"type": "line",
+							"id": "rb-83",
+							"fahrtNr": null,
+							"name": "RB 83",
+							"public": true,
+							"productName": "RB",
+							"additionalName": "RB 83"
+						}
+					},
+					"resState": "N",
+					"resRecommendation": "N"
+				},
+				{
+					"type": "JNY",
+					"dep": {
+						"locX": 4,
+						"dProdX": 20,
+						"dPltfS": {
+							"type": "PL",
+							"txt": "12"
+						},
+						"dTimeS": "01040500",
+						"dTZOffset": 60,
+						"msgL": [
+							{
+								"type": "REM",
+								"remX": 3,
+								"sty": "I",
+								"tagL": [
+									"RES_LOC_H3"
+								],
+								"sort": 147324928,
+								"hint": null
+							}
+						],
+						"type": "N",
+						"remarkRefs": [],
+						"location": {
+							"type": "stop",
+							"id": "8000128",
+							"name": "Göttingen",
+							"location": {
+								"type": "location",
+								"id": "8000128",
+								"latitude": 0,
+								"longitude": 0
+							},
+							"products": {
+								"nationalExpress": true,
+								"national": true,
+								"regionalExpress": true,
+								"regional": true,
+								"suburban": false,
+								"bus": true,
+								"ferry": false,
+								"subway": false,
+								"tram": false,
+								"taxi": true
+							}
+						}
+					},
+					"arr": {
+						"locX": 2,
+						"aProdX": 20,
+						"aTimeS": "01064200",
+						"aTZOffset": 60,
+						"msgL": [
+							{
+								"type": "REM",
+								"remX": 2,
+								"sty": "I",
+								"tagL": [
+									"RES_LOC_H3"
+								],
+								"sort": 147324928,
+								"hint": null
+							}
+						],
+						"type": "N",
+						"remarkRefs": [],
+						"location": {
+							"type": "stop",
+							"id": "8002549",
+							"name": "Hamburg Hbf",
+							"location": {
+								"type": "location",
+								"id": "8002549",
+								"latitude": 0,
+								"longitude": 0
+							},
+							"products": {
+								"nationalExpress": true,
+								"national": true,
+								"regionalExpress": true,
+								"regional": true,
+								"suburban": true,
+								"bus": true,
+								"ferry": false,
+								"subway": true,
+								"tram": false,
+								"taxi": false
+							}
+						}
+					},
+					"jny": {
+						"jid": "1|194587|0|80|-1",
+						"prodX": 20,
+						"status": "P",
+						"isRchbl": true,
+						"ctxRecon": "T$A=1@O=Göttingen@L=8000128@a=0@$A=1@O=Hamburg Hbf@L=8002549@a=0@$202311140405$202311140642$ICE 1688$$1$$$$$$",
+						"approxDelay": true,
+						"subscr": "F",
+						"sumLDrawStyleX": 2,
+						"resLDrawStyleX": 1,
+						"durS": "023700",
+						"line": {
+							"type": "line",
+							"id": "ice-1688",
+							"fahrtNr": null,
+							"name": "ICE 1688",
+							"public": true,
+							"productName": "ICE"
+						}
+					},
+					"resState": "N",
+					"resRecommendation": "N"
+				}
+			],
+			"ctxRecon": "T$A=1@O=Kassel Hbf@L=8000193@a=0@$A=1@O=Göttingen@L=8000128@a=0@$202311132346$202311140041$RB 24038$$1$$$$$$§T$A=1@O=Göttingen@L=8000128@a=0@$A=1@O=Hamburg Hbf@L=8002549@a=0@$202311140405$202311140642$ICE 1688$$1$$$$$$",
+			"trfRes": {
+				"statusCode": "OK",
+				"fareSetL": [
+					{
+						"fareL": [
+							{
+								"isFromPrice": true,
+								"isPartPrice": false,
+								"isBookable": true,
+								"isUpsell": false,
+								"targetCtx": "D",
+								"buttonText": "To offer selection",
+								"price": {
+									"amount": 2590
+								},
+								"retPriceIsCompletePrice": false,
+								"retPrice": -1
+							}
+						]
+					}
+				]
+			},
+			"msgL": [
+				{
+					"type": "REM",
+					"remX": 1,
+					"sty": "I",
+					"prio": 200,
+					"fIdx": -1,
+					"tIdx": -1,
+					"tagL": [
+						"SUM_CON_FTR_H3"
+					],
+					"sort": 818413568,
+					"hint": null
+				}
+			],
+			"conSubscr": "U",
+			"resState": "N",
+			"resRecommendation": "N",
+			"recState": "U",
+			"sotRating": 0,
+			"isSotCon": false,
+			"showARSLink": false,
+			"cksum": "8d978903_3",
+			"cksumDti": "4d26ca94_3",
+			"dTrnCmpSX": {
+				"tcocX": [
+					2,
+					1
+				]
+			},
+			"intvlSubscr": "U",
+			"originType": "INITIAL",
+			"remarkRefs": []
+		}
+	],
+	"fpB": "20221211",
+	"fpE": "20241214",
+	"bfATS": -1,
+	"bfIOSTS": -1,
+	"planrtTS": "1699881993",
+	"outDaySegL": [
+		{
+			"conRefL": [
+				1,
+				2,
+				3,
+				0
+			],
+			"id": "3",
+			"fromDate": "20231113",
+			"fromTime": "130000",
+			"toDate": "20231113",
+			"toTime": "160000",
+			"bestPrice": {
+				"amount": 8890
+			},
+			"segmentHeightIndicator": 100,
+			"isCompletePrice": false,
+			"tbpState": 3
+		},
+		{
+			"conRefL": [
+				10,
+				9,
+				4,
+				5,
+				6,
+				7,
+				8
+			],
+			"id": "4",
+			"fromDate": "20231113",
+			"fromTime": "160000",
+			"toDate": "20231113",
+			"toTime": "190000",
+			"bestPrice": {
+				"amount": 3190
+			},
+			"segmentHeightIndicator": 35,
+			"isCompletePrice": false,
+			"tbpState": 0
+		},
+		{
+			"conRefL": [
+				18,
+				13,
+				14,
+				15,
+				16,
+				17,
+				11,
+				12
+			],
+			"id": "5",
+			"fromDate": "20231113",
+			"fromTime": "190000",
+			"toDate": "20231113",
+			"toTime": "01000000",
+			"bestPrice": {
+				"amount": 2590
+			},
+			"segmentHeightIndicator": 29,
+			"isCompletePrice": false,
+			"tbpState": 0
+		},
+		{
+			"id": "0",
+			"fromDate": "20231113",
+			"fromTime": "000000",
+			"toDate": "20231113",
+			"toTime": "070000",
+			"bestPrice": {
+				"amount": 0
+			},
+			"segmentHeightIndicator": 0,
+			"isCompletePrice": false,
+			"tbpState": 4
+		},
+		{
+			"id": "1",
+			"fromDate": "20231113",
+			"fromTime": "070000",
+			"toDate": "20231113",
+			"toTime": "100000",
+			"bestPrice": {
+				"amount": 0
+			},
+			"segmentHeightIndicator": 0,
+			"isCompletePrice": false,
+			"tbpState": 4
+		},
+		{
+			"id": "2",
+			"fromDate": "20231113",
+			"fromTime": "100000",
+			"toDate": "20231113",
+			"toTime": "130000",
+			"bestPrice": {
+				"amount": 0
+			},
+			"segmentHeightIndicator": 0,
+			"isCompletePrice": false,
+			"tbpState": 4
+		}
+	],
+	"outTbpState": 0
+}

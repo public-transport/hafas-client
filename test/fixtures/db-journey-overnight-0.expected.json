@@ -1,0 +1,198 @@
+{
+  "type": "journey",
+  "legs": [
+    {
+      "origin": {
+        "type": "stop",
+        "id": "8000193",
+        "name": "Kassel Hbf",
+        "location": {
+          "type": "location",
+          "id": "8000193",
+          "latitude": 51.31832,
+          "longitude": 9.489903
+        },
+        "products": {
+          "nationalExpress": false,
+          "national": false,
+          "regionalExpress": false,
+          "regional": true,
+          "suburban": true,
+          "bus": true,
+          "ferry": false,
+          "subway": false,
+          "tram": true,
+          "taxi": false
+        }
+      },
+      "destination": {
+        "type": "stop",
+        "id": "8003200",
+        "name": "Kassel-Wilhelmshöhe",
+        "location": {
+          "type": "location",
+          "id": "8003200",
+          "latitude": 51.312998,
+          "longitude": 9.446845
+        },
+        "products": {
+          "nationalExpress": true,
+          "national": true,
+          "regionalExpress": true,
+          "regional": true,
+          "suburban": true,
+          "bus": true,
+          "ferry": false,
+          "subway": false,
+          "tram": true,
+          "taxi": false
+        }
+      },
+      "departure": "2023-11-13T22:14:00+01:00",
+      "plannedDeparture": "2023-11-13T22:14:00+01:00",
+      "departureDelay": null,
+      "arrival": "2023-11-13T22:21:00+01:00",
+      "plannedArrival": "2023-11-13T22:21:00+01:00",
+      "arrivalDelay": null,
+      "public": true,
+      "walking": true,
+      "distance": null,
+      "transfer": true
+    },
+    {
+      "origin": {
+        "type": "stop",
+        "id": "8003200",
+        "name": "Kassel-Wilhelmshöhe",
+        "location": {
+          "type": "location",
+          "id": "8003200",
+          "latitude": 51.312998,
+          "longitude": 9.446845
+        },
+        "products": {
+          "nationalExpress": true,
+          "national": true,
+          "regionalExpress": true,
+          "regional": true,
+          "suburban": true,
+          "bus": true,
+          "ferry": false,
+          "subway": false,
+          "tram": true,
+          "taxi": false
+        }
+      },
+      "destination": {
+        "type": "stop",
+        "id": "8000147",
+        "name": "Hamburg-Harburg",
+        "location": {
+          "type": "location",
+          "id": "8000147",
+          "latitude": 0,
+          "longitude": 0
+        },
+        "products": {
+          "nationalExpress": true,
+          "national": true,
+          "regionalExpress": true,
+          "regional": true,
+          "suburban": true,
+          "bus": true,
+          "ferry": false,
+          "subway": false,
+          "tram": false,
+          "taxi": false
+        }
+      },
+      "departure": "2023-11-13T22:21:00+01:00",
+      "plannedDeparture": "2023-11-13T22:21:00+01:00",
+      "departureDelay": null,
+      "arrival": "2023-11-14T01:22:00+01:00",
+      "plannedArrival": "2023-11-14T01:22:00+01:00",
+      "arrivalDelay": null,
+      "reachable": true,
+      "tripId": "1|202739|0|80|-1",
+      "line": {
+        "type": "line",
+        "id": "ice-592",
+        "fahrtNr": null,
+        "name": "ICE 592",
+        "public": true,
+        "productName": "ICE"
+      },
+      "direction": null,
+      "arrivalPlatform": null,
+      "plannedArrivalPlatform": null,
+      "arrivalPrognosisType": null,
+      "departurePlatform": "1",
+      "plannedDeparturePlatform": "1",
+      "departurePrognosisType": null
+    },
+    {
+      "origin": {
+        "type": "stop",
+        "id": "8000147",
+        "name": "Hamburg-Harburg",
+        "location": {
+          "type": "location",
+          "id": "8000147",
+          "latitude": 0,
+          "longitude": 0
+        },
+        "products": {
+          "nationalExpress": true,
+          "national": true,
+          "regionalExpress": true,
+          "regional": true,
+          "suburban": true,
+          "bus": true,
+          "ferry": false,
+          "subway": false,
+          "tram": false,
+          "taxi": false
+        }
+      },
+      "destination": {
+        "type": "stop",
+        "id": "8002549",
+        "name": "Hamburg Hbf",
+        "location": {
+          "type": "location",
+          "id": "8002549",
+          "latitude": 0,
+          "longitude": 0
+        },
+        "products": {
+          "nationalExpress": true,
+          "national": true,
+          "regionalExpress": true,
+          "regional": true,
+          "suburban": true,
+          "bus": true,
+          "ferry": false,
+          "subway": true,
+          "tram": false,
+          "taxi": false
+        }
+      },
+      "departure": "2023-11-14T01:22:00+01:00",
+      "plannedDeparture": "2023-11-14T01:22:00+01:00",
+      "departureDelay": null,
+      "arrival": "2023-11-14T01:42:00+01:00",
+      "plannedArrival": "2023-11-14T01:42:00+01:00",
+      "arrivalDelay": null,
+      "public": true,
+      "walking": true,
+      "distance": null,
+      "transfer": true
+    }
+  ],
+  "refreshToken": "D$A=1@O=Kassel Hbf@L=8000193@a=0@$A=1@O=Kassel-Wilhelmshöhe@L=8003200@a=0@$202311132214$202311132221$$$1$$$$$$§T$A=1@O=Kassel-Wilhelmshöhe@L=8003200@a=0@$A=1@O=Hamburg-Harburg@L=8000147@a=0@$202311132221$202311140122$ICE  592$$1$$$$$$§D$A=1@O=Hamburg-Harburg@L=8000147@a=0@$A=1@O=Hamburg Hbf@L=8002549@a=0@$202311140122$202311140142$$$1$$$$$$",
+  "price": {
+    "amount": 55.9,
+    "currency": "EUR",
+    "hint": null
+  }
+}
