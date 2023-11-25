@@ -37,6 +37,10 @@ const parseStopover = (ctx, st, date) => { // st = raw stopover
 		Object.defineProperty(res, 'canceled', {value: true})
 	}
 
+    if (st.isAdd) {
+        res.additional = true
+    }
+
 	if (opt.remarks && Array.isArray(st.msgL)) {
 		res.remarks = findRemarks(st.msgL).map(([remark]) => remark)
 	}
