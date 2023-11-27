@@ -1,5 +1,13 @@
 # Changelog
 
+## `6.2.0`
+
+- 244e88de add attribute `additional` to additional stopovers ✅
+- 02c781b1 `cross-fetch@4`, `p-retry@6`
+- ecc8fccc `tap@18`
+
+[🏷 `6.2.0`](https://github.com/public-transport/hafas-client/releases/tag/6.2.0), 2023-11-27
+
 ## `6.1.1`
 
 - 45610fc9 [*IVB* profile](../p/ivb): update SSL CA certificate chain 🐛
