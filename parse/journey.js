@@ -17,7 +17,28 @@ const findRemarks = require('./find-remarks')
 const parseJourney = (ctx, j) => { // j = raw jouney
 	const {profile, opt} = ctx
 
-	const legs = j.secL.map(l => profile.parseJourneyLeg(ctx, l, j.date))
+	const legs = []
+	for (const l of j.secL) {
+		let date = j.date
+		// Next-day DEVI legs in an overnight journey lack both
+		// - the "01" prefix in {dep.d,arr.a}Time{S,R} and
+		// - the jny.trainStartDate field.
+		// However, we can use the previous leg's effective date.
+		const prevLeg = legs[legs.length - 1] || null
+		if (l.type === 'DEVI' && prevLeg && prevLeg.arrival) {
+			// todo: parse effective date from jny.ctxRecon/gis.ctx instead?
+			// todo: prefer plannedArrival?
+			date = [
+				prevLeg.arrival.slice(0, 4), // year
+				prevLeg.arrival.slice(5, 7), // month
+				prevLeg.arrival.slice(8, 10), // day
+			].join('')
+		}
+
+		const leg = profile.parseJourneyLeg(ctx, l, date)
+		legs.push(leg)
+	}
+
 	const res = {
 		type: 'journey',
 		legs,

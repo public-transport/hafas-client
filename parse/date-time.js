@@ -4,7 +4,13 @@ const {DateTime, FixedOffsetZone, IANAZone} = require('luxon')
 
 const timezones = new WeakMap()
 
-const parseDateTime = ({profile}, date, time, tzOffset = null, timestamp = false) => {
+const parseDaysOffset = (_, time) => {
+	return time.length > 6 ? parseInt(time.slice(0, -6)) : 0
+}
+
+const parseDateTime = (ctx, date, time, tzOffset = null, timestamp = false) => {
+	const {profile} = ctx
+
 	const pDate = [date.substr(-8, 4), date.substr(-4, 2), date.substr(-2, 2)]
 	if (!pDate[0] || !pDate[1] || !pDate[2]) {
 		throw new Error('invalid date format: ' + date)
@@ -15,7 +21,7 @@ const parseDateTime = ({profile}, date, time, tzOffset = null, timestamp = false
 		throw new Error('invalid time format: ' + time)
 	}
 
-	const daysOffset = time.length > 6 ? parseInt(time.slice(0, -6)) : 0
+	const daysOffset = parseDaysOffset(ctx, time)
 
 	let timezone
 	if (tzOffset !== null) {
