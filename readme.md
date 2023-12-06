@@ -47,7 +47,7 @@ npm install hafas-client
 
 Pick the [profile](p/readme.md) for the HAFAS endpoint covering the area you want to get data for.
 
-Because the operatores of the HAFAS endpoint should be able to contact you about excessive traffic, please pass a link to your project/program (or an email address) into `createClient()`:
+Because the operators of the HAFAS endpoint should be able to contact you about excessive traffic, please pass a link to your project/program (or an email address) into `createClient()`:
 
 ```js
 import {createClient} from 'hafas-client'
@@ -227,7 +227,7 @@ There are [community-maintained TypeScript typings available as `@types/hafas-cl
 ## Related Projects
 
 - [`*.transport.rest`](https://transport.rest/) – Public APIs wrapping some HAFAS endpoints.
-- [`BahnhofsAbfahrten`](https://github.com/marudor/BahnhofsAbfahrten) a.k.a. [`marudor.de`](https://marudor.de/) – A very detailed public transport website for Germany. Uses HAFAS underneath, [has an API](https://docs.marudor.de).
+- [`BahnhofsAbfahrten`](https://github.com/marudor/BahnhofsAbfahrten) a.k.a. [`bahn.expert`](https://bahn.expert/) – A very detailed public transport website for Germany. Uses HAFAS underneath, [has an API](https://docs.marudor.de).
 - [`public-transport-enabler`](https://github.com/schildbach/public-transport-enabler) – Java equivalent to `hafas-client`, with support for more types of public transport APIs; Used by [Öffi](https://play.google.com/store/apps/details?id=de.schildbach.oeffi) & [Transportr](https://transportr.app).
 - [`TripKit`](https://github.com/alexander-albers/tripkit) – Swift equivalent to `hafas-client`, with support for more types of public transport APIs; Used by [ÖPNV Navigator](https://apps.apple.com/de/app/öpnv-navigator/id1239908782).
 - [`kpublictransport`](https://github.com/KDE/kpublictransport) – C++ equivalent to `hafas-client`, with support for more types of public transport APIs; Used by [KDE Itinerary](https://apps.kde.org/itinerary/).
@@ -236,6 +236,7 @@ There are [community-maintained TypeScript typings available as `@types/hafas-cl
 - [`fshafas`](https://github.com/bergmannjg/fshafas) – F# port of `hafas-client`.
 - [`hafas-client-php`](https://github.com/MrKrisKrisu/hafas-client-php) – PHP port of `hafas-client`.
 - [*Transit*](https://jlnstrk.github.io/transit/) – Kotlin client for mutliple kinds of public transport APIs, with support for HAFAS APIs.
+- [`nimhafas`](https://git.ctu.cx/nimhafas/index.html) – Nim HAFAS client (no longer maintained).
 - [*Friendly Public Transport Format*](https://github.com/public-transport/friendly-public-transport-format#friendly-public-transport-format-fptf) – A format for APIs, libraries and datasets containing and working with public transport data.
 - [`observe-hafas-client`](https://github.com/public-transport/observe-hafas-client) – Observe all departures/arrivals/etc. returned by `hafas-client`.
 - [`cached-hafas-client`](https://github.com/public-transport/cached-hafas-client) – Pass in a `hafas-client` instance, cache data from it.

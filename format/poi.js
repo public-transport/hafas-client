@@ -2,6 +2,7 @@ import {formatLocationIdentifier} from './location-identifier.js'
 import {formatCoord} from './coord.js'
 
 const formatPoi = (p) => {
+	// todo: use Number.isFinite()!
 	if (p.type !== 'location' || !p.latitude || !p.longitude || !p.id || !p.name) {
 		throw new TypeError('invalid POI')
 	}
