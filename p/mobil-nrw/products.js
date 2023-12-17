@@ -67,7 +67,7 @@ const products = [
 	},
 	{
 		id: 'ec-ic',
-		mode: 'ec-ic',
+		mode: 'train',
 		bitmasks: [2],
 		name: 'EC/IC',
 		short: 'EC/IC',
