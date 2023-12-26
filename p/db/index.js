@@ -258,49 +258,9 @@ const parseLineWithAdditionalName = ({parsed}, l) => {
 
 // todo: sotRating, conSubscr, isSotCon, showARSLink, sotCtxt
 // todo: conSubscr, showARSLink, useableTime
-const parseJourneyWithPrice = ({parsed}, raw) => {
+const mutateToAddPrice = (parsed, raw) => {
 	parsed.price = null;
 	// todo: find cheapest, find discounts
-	// todo: write a parser like vbb-parse-ticket
-	// {
-	//   "statusCode": "OK",
-	//   "fareSetL": [
-	//     {
-	//       "fareL": [
-	//         {
-	//           "isFromPrice": true,
-	//           "isPartPrice": false,
-	//           "isBookable": true,
-	//           "isUpsell": false,
-	//           "targetCtx": "D",
-	//           "buttonText": "To offer selection",
-	//           "price": {
-	//             "amount": 11400
-	//           }
-	//         }
-	//       ]
-	//     }
-	//   ]
-	// }
-	// "fareSetL": [
-	// 	{
-	// 		"fareL": [
-	// 			{
-	// 				"isFromPrice": true,
-	// 				"isPartPrice": false,
-	// 				"isBookable": true,
-	// 				"isUpsell": false,
-	// 				"targetCtx": "D",
-	// 				"buttonText": "To offer selection",
-	// 				"price": {
-	// 					"amount": 13990
-	// 				},
-	// 				"retPriceIsCompletePrice": false,
-	// 				"retPrice": -1
-	// 			}
-	// 		]
-	// 	}
-	// ]
 	if (
 		raw.trfRes
 		&& Array.isArray(raw.trfRes.fareSetL)
@@ -318,6 +278,65 @@ const parseJourneyWithPrice = ({parsed}, raw) => {
 		}
 	}
 
+	return parsed;
+};
+
+const isFirstClassTicket = (addData, opt) => {
+	// if addData is undefined, it is assumed that the ticket is not first class
+	// (this is the case for S-Bahn tickets)
+	if (!addData) {
+		return false;
+	}
+	try {
+		const addDataJson = JSON.parse(atob(addData));
+		return Boolean(addDataJson.Upsell === 'S1' || opt.firstClass);
+	} catch (err) {
+		return false;
+	}
+};
+
+const mutateToAddTickets = (parsed, opt, j) => {
+	if (
+		j.trfRes
+		&& Array.isArray(j.trfRes.fareSetL)
+	) {
+		const addData = j.trfRes.fareSetL[0].addData;
+		parsed.tickets = j.trfRes.fareSetL
+			.filter(s => Array.isArray(s.fareL) && s.fareL.length > 0)
+			.map((s) => {
+				const fare = s.fareL[0];
+				if (!fare.ticketL) { // if journeys()
+					return {
+						name: fare.buttonText,
+						priceObj: {amount: fare.price.amount},
+					};
+				} else { // if refreshJourney()
+					return {
+						name: fare.name || fare.ticketL[0].name,
+						priceObj: fare.ticketL[0].price,
+						addData: addData,
+						addDataTicketInfo: s.addData,
+						addDataTicketDetails: fare.addData,
+						addDataTravelInfo: fare.ticketL[0].addData,
+						firstClass: isFirstClassTicket(s.addData, opt),
+					};
+				}
+			});
+		// add price info, to avoid breaking changes
+		// todo [breaking]: remove this format
+		if (parsed.tickets.length > 0 && !parsed.price) {
+			parsed.price = {
+				...parsed.tickets[0].priceObj,
+				amount: parsed.tickets[0].priceObj.amount / 100,
+				currency: 'EUR',
+			};
+		}
+	}
+};
+
+const parseJourneyWithPriceAndTickets = ({parsed, opt}, raw) => {
+	mutateToAddPrice(parsed, raw);
+	mutateToAddTickets(parsed, opt, raw);
 	return parsed;
 };
 
@@ -580,7 +599,7 @@ const profile = {
 	products: products,
 
 	parseLocation: parseHook(_parseLocation, parseLocWithDetails),
-	parseJourney: parseHook(_parseJourney, parseJourneyWithPrice),
+	parseJourney: parseHook(_parseJourney, parseJourneyWithPriceAndTickets),
 	parseJourneyLeg: parseHook(_parseJourneyLeg, parseJourneyLegWithLoadFactor),
 	parseLine: parseHook(_parseLine, parseLineWithAdditionalName),
 	parseArrival: parseHook(_parseArrival, parseArrOrDepWithLoadFactor),
