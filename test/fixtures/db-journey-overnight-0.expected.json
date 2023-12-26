@@ -194,5 +194,11 @@
     "amount": 55.9,
     "currency": "EUR",
     "hint": null
-  }
+  },                         
+  "tickets": [
+    {                       
+      "name": "To offer selection",
+      "priceObj": {"amount": 5590}
+    }
+  ]
 }

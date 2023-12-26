@@ -3975,6 +3975,10 @@ const dbJourneyPolyline = {
 		currency: 'EUR',
 		hint: null,
 	},
+	tickets: [{
+		name: 'Continue to booking',
+		priceObj: {amount: 6990},
+	}],
 };
 
 export {

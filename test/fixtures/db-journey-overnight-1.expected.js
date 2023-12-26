@@ -306,6 +306,10 @@ const overnightJourney = {
 
 	remarks: [],
 	price: {amount: 108.9, currency: 'EUR', hint: null},
+	tickets: [{
+		name: 'To offer selection',
+		priceObj: {amount: 10890},
+	}],
 };
 
 export {
