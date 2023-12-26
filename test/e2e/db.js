@@ -57,6 +57,49 @@ const assertValidPrice = (t, p) => {
 	}
 };
 
+const assertValidTickets = (test, tickets) => {
+	test.ok(tickets);
+	for (let fare of tickets) {
+		if (fare.name !== undefined) {
+			test.equal(typeof fare.name, 'string');
+			test.ok(fare.name);
+		} else {
+			test.fail('Mandatory field "name" is missing');
+		}
+		if (fare.priceObj !== undefined) {
+			if (fare.priceObj.amount !== undefined) {
+				test.equal(typeof fare.priceObj.amount, 'number');
+				test.ok(fare.priceObj.amount > 0);
+			} else {
+				test.fail('Mandatory field "amount" in "priceObj" is missing');
+			}
+			// Check optional currency field
+			if (fare.priceObj.currency !== undefined) {
+				test.equal(typeof fare.priceObj.currency, 'string');
+			}
+		} else {
+			test.fail('Mandatory field "priceObj" in "ticket" is missing');
+		}
+		// Check optional fields
+		if (tickets.addData !== undefined) {
+			test.equal(typeof tickets.addData, 'string');
+		}
+		if (fare.addDataTicketInfo !== undefined) {
+			test.equal(typeof fare.addDataTicketInfo, 'string');
+		}
+		if (fare.addDataTicketDetails !== undefined) {
+			test.equal(typeof fare.addDataTicketDetails, 'string');
+		}
+		if (fare.addDataTravelInfo !== undefined) {
+			test.equal(typeof fare.addDataTravelInfo, 'string');
+		}
+		if (fare.firstClass !== undefined) {
+			test.equal(typeof fare.firstClass, 'boolean');
+		}
+
+	}
+};
+
 const client = createClient(dbProfile, 'public-transport/hafas-client:test');
 
 const berlinHbf = '8011160';
@@ -92,6 +135,29 @@ tap.test('journeys – Berlin Schwedter Str. to München Hbf', async (t) => {
 	for (let journey of res.journeys) {
 		if (journey.price) {
 			assertValidPrice(t, journey.price);
+		}
+		if (journey.tickets) {
+			assertValidTickets(t, journey.tickets);
+		}
+	}
+	t.end();
+});
+
+tap.test('refreshJourney – valid tickets', async (t) => {
+	const journeysRes = await client.journeys(berlinHbf, münchenHbf, {
+		results: 4,
+		departure: when,
+		stopovers: true,
+	});
+	const refreshWithoutTicketsRes = await client.refreshJourney(journeysRes.journeys[0].refreshToken, {
+		tickets: false,
+	});
+	const refreshWithTicketsRes = await client.refreshJourney(journeysRes.journeys[0].refreshToken, {
+		tickets: true,
+	});
+	for (let res of [refreshWithoutTicketsRes, refreshWithTicketsRes]) {
+		if (res.journey.tickets !== undefined) {
+			assertValidTickets(t, res.journey.tickets);
 		}
 	}
 
