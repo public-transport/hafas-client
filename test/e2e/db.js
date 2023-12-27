@@ -144,6 +144,9 @@ tap.test('journeys – Berlin Schwedter Str. to München Hbf', async (t) => {
 });
 
 tap.test('refreshJourney – valid tickets', async (t) => {
+	const T_MOCK = 1710831600 * 1000; // 2024-03-19T08:00:00+01:00
+	const when = createWhen(dbProfile.timezone, dbProfile.locale, T_MOCK);
+
 	const journeysRes = await client.journeys(berlinHbf, münchenHbf, {
 		results: 4,
 		departure: when,
@@ -286,6 +289,10 @@ if (!process.env.VCR_MODE) {
 }
 
 tap.test('refreshJourney', async (t) => {
+	const T_MOCK = 1710831600 * 1000; // 2024-03-19T08:00:00+01:00
+	const when = createWhen(dbProfile.timezone, dbProfile.locale, T_MOCK);
+	const validate = createValidate({...cfg, when});
+
 	await testRefreshJourney({
 		test: t,
 		fetchJourneys: client.journeys,
