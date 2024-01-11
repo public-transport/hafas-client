@@ -22,29 +22,25 @@ const products = [
 const ctx = {
 	common: {},
 	opt: {},
-	profile: {products}
+	profile: {
+		products,
+		formatProductsBitmask: (_, filter) => filter.bus ? 123 : 12345,
+	}
 }
 
 tap.test('formatProductsFilter works without customisations', (t) => {
-	const expected = 1 | 2 | 4
 	const filter = {}
 	t.same(format(ctx, filter), {
 		type: 'PROD',
 		mode: 'INC',
-		value: expected + ''
+		value: '12345'
 	})
 	t.end()
 })
 
 tap.test('formatProductsFilter works with customisations', (t) => {
-	t.equal(+format(ctx, {
+	t.equal(format(ctx, {
 		bus: true
-	}).value, 1 | 2 | 4)
-	t.equal(+format(ctx, {
-		bus: false
-	}).value, 1 | 2)
-	t.equal(+format(ctx, {
-		tram: true
-	}).value, 1 | 2 | 4 | 8 | 32)
+	}).value, '123')
 	t.end()
 })

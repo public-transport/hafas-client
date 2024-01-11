@@ -8,6 +8,7 @@ const parseMovement = (ctx, m) => { // m = raw movement
 	const {profile, opt} = ctx
 
 	const res = {
+		// todo [breaking]: don't parse this text!
 		direction: m.dirTxt ? profile.parseStationName(ctx, m.dirTxt) : null,
 		tripId: m.jid || null,
 		line: m.line || null,

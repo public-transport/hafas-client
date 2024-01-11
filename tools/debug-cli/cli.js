@@ -1,12 +1,15 @@
 #!/usr/bin/env node
 
 import {parseArgs} from 'node:util'
-import {createClient} from '../../index.js'
+import {createRestClient} from '../../rest-exe.js'
 
 const showError = (err) => {
 	console.error(err)
 	process.exit(1)
 }
+
+const token = process.env.TOKEN
+if (!token) showError('Missing TOKEN env var.')
 
 const toString = val => val + ''
 const parseJsObject = val => {
@@ -66,9 +69,13 @@ const parsedArgs = args.slice(2).map((arg, i) => {
 ;(async () => {
 	const {profile} = await import(`../../p/${profileName}/index.js`)
 
-	const client = createClient(profile, 'hafas-client debug CLI')
+	const client = createRestClient(profile, token, 'hafas-client debug CLI')
 
 	const fn = client[fnName]
+	if ('function' !== typeof fn) {
+		console.error(`client.${fnName} is not a function`)
+		process.exit(1)
+	}
 
 	const res = await fn(...parsedArgs)
 	process.stdout.write(JSON.stringify(res) + '\n')

@@ -1,9 +1,9 @@
 import throttle from 'p-throttle'
-import {defaultProfile} from './lib/default-profile.js'
+import {defaultRestProfile} from './lib/default-rest-profile.js'
 
 const withThrottling = (profile, limit = 5, interval = 1000) => {
 	// https://github.com/public-transport/hafas-client/issues/76#issuecomment-574408717
-	const {request} = {...defaultProfile, ...profile}
+	const {request} = {...defaultRestProfile, ...profile}
 
 	return {
 		...profile,

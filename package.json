@@ -5,12 +5,16 @@
 	"type": "module",
 	"main": "index.js",
 	"files": [
+		"rest-exe.js",
+		"rest-exe-example.js",
 		"index.js",
 		"throttle.js",
 		"retry.js",
 		"lib",
 		"parse",
+		"parse-rest",
 		"format",
+		"format-rest",
 		"p",
 		"docs"
 	],
@@ -59,6 +63,7 @@
 		"object-scan": "^13.0.0",
 		"p-retry": "^6.0.0",
 		"p-throttle": "^5.0.0",
+		"parse-iso-duration": "^1.1.0",
 		"qs": "^6.6.0",
 		"slugg": "^1.2.0"
 	},
