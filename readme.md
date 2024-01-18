@@ -237,6 +237,7 @@ There are [community-maintained TypeScript typings available as `@types/hafas-cl
 - [`hafas-client-php`](https://github.com/MrKrisKrisu/hafas-client-php) – PHP port of `hafas-client`.
 - [*Transit*](https://jlnstrk.github.io/transit/) – Kotlin client for mutliple kinds of public transport APIs, with support for HAFAS APIs.
 - [`nimhafas`](https://git.ctu.cx/nimhafas/index.html) – Nim HAFAS client (no longer maintained).
+- [Travel-Status-DE-HAFAS](https://chaosdorf.de/git/derf/travel-status-de-hafas/-/tree/5.01/lib/Travel/Status/DE) – Perl HAFAS client, rather minimal.
 - [*Friendly Public Transport Format*](https://github.com/public-transport/friendly-public-transport-format#friendly-public-transport-format-fptf) – A format for APIs, libraries and datasets containing and working with public transport data.
 - [`observe-hafas-client`](https://github.com/public-transport/observe-hafas-client) – Observe all departures/arrivals/etc. returned by `hafas-client`.
 - [`cached-hafas-client`](https://github.com/public-transport/cached-hafas-client) – Pass in a `hafas-client` instance, cache data from it.
