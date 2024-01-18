@@ -148,6 +148,7 @@ const parseJourneyLeg = (ctx, pt, date) => { // pt = raw leg
 
 		const freq = pt.jny.freq || {}
 		// todo: expose `res.cycle` even if only one field exists (breaking)
+		// todo [breaking]: rename to something more intuitive, e.g. res.headways.{min,max,nrOfTrips}
 		if (freq.minC && freq.maxC) {
 			res.cycle = {
 				min: freq.minC * 60,
