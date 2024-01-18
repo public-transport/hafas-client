@@ -1,5 +1,12 @@
 # Changelog
 
+## `6.2.1`
+
+- 8520eb3d [*mobil.nrw* profile](../p/mobil-nrw): fix `mode` for `ec-ic` product 🐛
+- f29ced5b handle `PROBLEMS` HAFAS error code
+
+[🏷 `6.2.1`](https://github.com/public-transport/hafas-client/releases/tag/6.2.1), 2024-01-18
+
 ## `6.2.0`
 
 - 244e88de add attribute `additional` to additional stopovers ✅
