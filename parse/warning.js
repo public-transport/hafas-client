@@ -2,7 +2,8 @@ import brToNewline from '@derhuerst/br2nl'
 import omit from 'lodash/omit.js'
 
 const typesByIcon = Object.assign(Object.create(null), {
-	HimWarn: 'status'
+	HimWarn: 'status',
+	HimInfo: 'status',
 })
 
 const parseMsgEdge = (ctx) => (e) => {

@@ -60,7 +60,8 @@
 		"p-retry": "^6.0.0",
 		"p-throttle": "^5.0.0",
 		"qs": "^6.6.0",
-		"slugg": "^1.2.0"
+		"slugg": "^1.2.0",
+		"uuid": "^8.3.1"
 	},
 	"devDependencies": {
 		"@pollyjs/adapter-node-http": "^6.0.5",

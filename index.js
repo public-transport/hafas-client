@@ -1,6 +1,9 @@
 import isObj from 'lodash/isObject.js'
 import sortBy from 'lodash/sortBy.js'
 import omit from 'lodash/omit.js'
+import {v4 as uuidV4} from 'uuid'
+import {randomBytes} from 'node:crypto'
+import {DateTime} from 'luxon'
 
 import {defaultProfile} from './lib/default-profile.js'
 import {validateProfile} from './lib/validate-profile.js'
@@ -782,6 +785,204 @@ const createClient = (profile, userAgent, opt = {}) => {
 		}
 	}
 
+	// This HAFAS call seems to be idempotent.
+	// user IDs are case-sensitive!
+	const createSubscriptionsUser = async (channelIds = [uuidV4()], opt = {}) => {
+		if (!Array.isArray(channelIds) || channelIds.length === 0) {
+			throw new TypeError('channelIds must be a non-empty array')
+		}
+		for (let i = 0; i < channelIds.length; i++) {
+			if (!isNonEmptyString(channelIds[i])) {
+				throw new TypeError(`channelIds[${i}] must be a non-empty string`)
+			}
+		}
+
+		const pushToken = opt.pushToken || randomBytes(32).toString('hex')
+		const channels = channelIds.map((channelId) => ({
+			type: 'IPHONE',
+			name: 'PUSH_IPHONE',
+			address: pushToken,
+			channelId,
+			options: [
+				{type: 'NO_SOUND', value: '1'},
+				// todo: move to profiles?
+				// {type: 'CUSTOMER_TYPE', value: 'com.deutschebahn.vrn'},
+			],
+		}))
+		const {res} = await profile.request({profile, opt}, userAgent, {
+			meth: 'SubscrUserCreate',
+			req: {
+				userId: opt.userId || uuidV4(),
+				language: 'en', // todo: make customizable
+				channels,
+			},
+		})
+		return res.userId
+	}
+
+	const subscriptions = async (userId) => {
+		if (!isNonEmptyString(userId)) {
+			throw new TypeError('userId must be a non-empty string')
+		}
+
+		const {res} = await profile.request({profile, opt}, userAgent, {
+			meth: 'SubscrSearch',
+			req: {
+				userId,
+			},
+		})
+
+		const parseChannel = (ch) => ({
+			id: ch.channelId,
+		})
+		const parseSubscription = (sub) => ({
+			id: sub.subscrId,
+			status: sub.status,
+			channels: (sub.channels || []).map(parseChannel),
+			journeyRefreshToken: sub.ctxRecon,
+		})
+
+		if (!Array.isArray(res.conSubscrL)) return []
+		return res.conSubscrL.map(parseSubscription)
+	}
+
+	const subscription = async (userId, subscriptionId, opt = {}) => {
+		if (!isNonEmptyString(userId)) {
+			throw new TypeError('userId must be a non-empty string')
+		}
+		if (subscriptionId === null || subscriptionId === undefined) {
+			throw new TypeError('missing subscriptionId')
+		}
+		opt = {
+			activeDays: false, // parse & expose days the subscription is active for?
+			payload: false, // decode & expose the subscription's payload?
+			...opt,
+		}
+
+		const {res, common} = await profile.request({profile, opt}, userAgent, {
+			meth: 'SubscrDetails',
+			req: {
+				userId,
+				subscrId: subscriptionId,
+				// todo: use opt.activeDays
+			},
+		})
+		const ctx = {profile, opt, common, res}
+
+		return profile.parseSubscription(ctx, res.details)
+	}
+
+	const _setSubscriptionStatus = async (status, userId, subscriptionId, opt = {}) => {
+		if (!isNonEmptyString(userId)) {
+			throw new TypeError('userId must be a non-empty string')
+		}
+		if (subscriptionId === null || subscriptionId === undefined) {
+			throw new TypeError('missing subscriptionId')
+		}
+		return await profile.request({profile, opt}, userAgent, {
+			meth: 'SubscrStatus',
+			req: {
+				userId,
+				subscrId: subscriptionId,
+				status,
+			},
+		})
+	}
+	// todo: these fail repeatedly with a 504 Gateway Timeout 🤡
+	const disableSubscription = _setSubscriptionStatus.bind(null, 'EXPIRED')
+	const enableSubscription = _setSubscriptionStatus.bind(null, 'ACTIVE')
+
+	// todo: subscribeToJourneysInterval
+	// https://gist.github.com/derhuerst/d267ac179e49e927d38daa1a4bdf7760#file-6-subscriptions-http-L81-L132
+
+	const subscribeToJourney = async (userId, channelIds, journeyRefreshToken, opt = {}) => {
+		if (!isNonEmptyString(userId)) {
+			throw new TypeError('userId must be a non-empty string')
+		}
+		if (!Array.isArray(channelIds) || channelIds.length === 0) {
+			throw new TypeError('channelIds must be a non-empty array')
+		}
+		for (let i = 0; i < channelIds.length; i++) {
+			if (!isNonEmptyString(channelIds[i])) {
+				throw new TypeError(`channelIds[${i}] must be a non-empty string`)
+			}
+		}
+		if (!isNonEmptyString(journeyRefreshToken)) {
+			throw new TypeError('journeyRefreshToken must be a non-empty string')
+		}
+
+		opt = {
+			tripWarnings: true, // Subscribe to train information (failures, delays, change of platforms)?
+			routeWarnings: true, // Subscribe to route information (disturbances & construction sites)?
+			startMinutesBeforeJourney: 30, // Start monitoring x minutes before the journey begins.
+			minimumDelay: 1, // Only send notifications with at least x minutes of (vehicle) delay.
+			fromDate: Date.now(),
+			duration: 3, // Subscribe for 3 days.
+			// Most mobile apps pass in the whole journey, with all references to `res.common`
+			// properly inlined. HAFAS seems to ignore the `data` field entirely though:
+			// Whatever we pass in here is being stored and returned on `subscription(userId, subId)`.
+			// todo: comply with mobile apps, pass in properly formatted journey?
+			payload: null,
+			...opt,
+		}
+		if (opt.payload !== null && 'string' !== typeof opt.payload) {
+			throw new TypeError('opt.payload must be a string')
+		}
+
+		const untilDate = DateTime
+		.fromMillis(+opt.fromDate, {locale: profile.locale, zone: profile.timezone})
+		.plus({days: 3})
+		.toMillis()
+
+		const req = {
+			userId,
+			channels: channelIds.map((channelId) => ({channelId})),
+			conSubscr: {
+				ctxRecon: journeyRefreshToken,
+				data: opt.payload,
+				hysteresis: {
+					minDeviationInterval: opt.minimumDelay,
+					notificationStart: opt.startMinutesBeforeJourney,
+					notifyArrivalPreviewTime: 1, // todo: what is this?
+					notifyDepartureWithoutRT: 1, // todo: what is this?
+				},
+				monitorFlags: [
+					// todo: what exactly do these values stand for?
+					...(opt.tripWarnings ? ['OF', 'PF', 'DF', 'AF', 'DV'] : []),
+					...(opt.routeWarnings ? ['FTF'] : []),
+				],
+				serviceDays: {
+					beginDate: profile.formatDate(profile, +new Date(opt.fromDate)),
+					endDate: profile.formatDate(profile, untilDate),
+					// todo: allow custom weekdays via the `selectedDays` "binary string"
+				},
+			},
+		}
+
+		const {res} = await profile.request({profile, opt}, userAgent, {
+			meth: 'SubscrCreate',
+			req,
+		})
+		return res.subscrId
+	}
+
+	const unsubscribe = async (userId, subscriptionId) => {
+		if (!isNonEmptyString(userId)) {
+			throw new TypeError('userId must be a non-empty string')
+		}
+		if (subscriptionId === null || subscriptionId === undefined) {
+			throw new TypeError('missing subscriptionId')
+		}
+
+		await profile.request({profile, opt}, userAgent, {
+			meth: 'SubscrDelete',
+			req: {
+				userId,
+				subscrId: subscriptionId,
+			},
+		})
+	}
+
 	const client = {
 		departures,
 		arrivals,
@@ -799,6 +1000,15 @@ const createClient = (profile, userAgent, opt = {}) => {
 	if (profile.tripsByName) client.tripsByName = tripsByName
 	if (profile.remarks !== false) client.remarks = remarks
 	if (profile.lines !== false) client.lines = lines
+	if (profile.subscriptions !== false) {
+		client.createSubscriptionsUser = createSubscriptionsUser
+		client.subscriptions = subscriptions
+		client.subscription = subscription
+		client.disableSubscription = disableSubscription
+		client.enableSubscription = enableSubscription
+		client.subscribeToJourney = subscribeToJourney
+		client.unsubscribe = unsubscribe
+	}
 	Object.defineProperty(client, 'profile', {value: profile})
 	return client
 }

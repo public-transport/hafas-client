@@ -1,0 +1,68 @@
+{
+	"result": {
+		"resultCode": "OK"
+	},
+	"details": {
+		"userId": "B3B3CBF1-86F3-4280-BFE4-E586A3624B1B",
+		"subscrId": 1349811,
+		"status": "ACTIVE",
+		"channels": [
+			{
+				"type": "IPHONE",
+				"address": "3b4b49491e1b1094be093ce6197a3fde1df6dccce33de17d37cf649ec8ec0aa7",
+				"options": [
+					{
+						"type": "CUSTOMER_TYPE",
+						"value": "com.deutschebahn.vrn"
+					},
+					{
+						"type": "NO_SOUND",
+						"value": "1"
+					}
+				],
+				"active": true,
+				"name": "PUSH_IPHONE",
+				"channelId": "1952745D-F196-4775-B291-FA5CD84A81D4",
+				"confirmed": true
+			}
+		],
+		"conSubscr": {
+			"ctxRecon": "¶HKI¶T$A=1@O=Heidelberg Hbf@L=8000156@a=128@$A=1@O=Mannheim Hbf@L=8000244@a=128@$202011281813$202011281829$S      3$$1$$$",
+			"serviceDays": {
+				"beginDate": "20191215",
+				"endDate": "20211211",
+				"selectedDays": "00011111001111100111110011111001111100111110011111001111100111110011111001111100111110011111001111100111110011111001111100111110011111001111100111110011111001111100111110011111001111100111110011111001111100111110011111001111100111110011111001111100111110011111001111100111110011111001111100111110011111001111100111110011111001111100111110011111001111100111110011110000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+			},
+			"hysteresis": {
+				"minDeviationInterval": 5,
+				"notificationStart": 20
+			},
+			"monitorFlags": [
+				"AF",
+				"DF",
+				"DV",
+				"FTF",
+				"OF",
+				"PF"
+			],
+			"data": "GZip:H4sIAPoBb2EAA4tWykjNyclX0lFQKs8vyklRigUAdcc7yhIAAAA=",
+			"connectionInfo": [
+				{
+					"arrivalStation": "8000244",
+					"arrivalPlatform": "1",
+					"arrivalStationName": "Mannheim Hbf",
+					"arrivalTime": "2020-11-28T18:29:00Z",
+					"departureStation": "8000156",
+					"departurePlatform": "4",
+					"departureStationName": "Heidelberg Hbf",
+					"departureTime": "2020-11-28T18:13:00Z",
+					"productName": "S 3"
+				}
+			]
+		},
+		"eventHistory": {
+			"rtEvents": [],
+			"himEvents": []
+		}
+	}
+}
