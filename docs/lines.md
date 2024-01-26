@@ -1,4 +1,4 @@
-# `lines([opt])`
+# `lines(query, [opt])`
 
 **Fetches all lines known to the HAFAS endpoint**, e.g. warnings about disruptions, planned construction work, and general notices about the operating situation.
 
