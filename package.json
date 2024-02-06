@@ -66,7 +66,8 @@
 		"@pollyjs/adapter-node-http": "^6.0.5",
 		"@pollyjs/core": "^6.0.5",
 		"@pollyjs/persister-fs": "^6.0.5",
-		"eslint": "^8.15.0",
+		"@stylistic/eslint-plugin": "^1.5.1",
+		"eslint": "^8.56.0",
 		"is-coordinates": "^2.0.2",
 		"is-roughly-equal": "^0.1.0",
 		"tap": "^18.0.4",
@@ -74,6 +75,7 @@
 	},
 	"scripts": {
 		"lint": "eslint .",
+		"lint:fix": "eslint . --fix",
 		"test-unit": "tap test/lib/*.js test/*.js test/format/*.js test/parse/*.js",
 		"test-integration": "VCR_MODE=playback tap test/e2e/*.js",
 		"test-integration:record": "VCR_MODE=record tap -t60 -j1 test/e2e/*.js",
