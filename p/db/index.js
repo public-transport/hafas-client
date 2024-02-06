@@ -1,70 +1,72 @@
 // todo: use import assertions once they're supported by Node.js & ESLint
 // https://github.com/tc39/proposal-import-assertions
-import {createRequire} from 'module'
-const require = createRequire(import.meta.url)
+import {createRequire} from 'module';
+const require = createRequire(import.meta.url);
 
-import trim from 'lodash/trim.js'
-import uniqBy from 'lodash/uniqBy.js'
-import slugg from 'slugg'
-import without from 'lodash/without.js'
-import {parseHook} from '../../lib/profile-hooks.js'
+import trim from 'lodash/trim.js';
+import uniqBy from 'lodash/uniqBy.js';
+import slugg from 'slugg';
+import without from 'lodash/without.js';
+import {parseHook} from '../../lib/profile-hooks.js';
 
-import {parseJourney as _parseJourney} from '../../parse/journey.js'
-import {parseJourneyLeg as _parseJourneyLeg} from '../../parse/journey-leg.js'
-import {parseLine as _parseLine} from '../../parse/line.js'
-import {parseArrival as _parseArrival} from '../../parse/arrival.js'
-import {parseDeparture as _parseDeparture} from '../../parse/departure.js'
-import {parseHint as _parseHint} from '../../parse/hint.js'
-import {parseLocation as _parseLocation} from '../../parse/location.js'
-import {formatStation as _formatStation} from '../../format/station.js'
-import {bike} from '../../format/filters.js'
+import {parseJourney as _parseJourney} from '../../parse/journey.js';
+import {parseJourneyLeg as _parseJourneyLeg} from '../../parse/journey-leg.js';
+import {parseLine as _parseLine} from '../../parse/line.js';
+import {parseArrival as _parseArrival} from '../../parse/arrival.js';
+import {parseDeparture as _parseDeparture} from '../../parse/departure.js';
+import {parseHint as _parseHint} from '../../parse/hint.js';
+import {parseLocation as _parseLocation} from '../../parse/location.js';
+import {formatStation as _formatStation} from '../../format/station.js';
+import {bike} from '../../format/filters.js';
 
-const baseProfile = require('./base.json')
-import {products} from './products.js'
-import {formatLoyaltyCard} from './loyalty-cards.js'
-import {ageGroup, ageGroupFromAge} from './ageGroup.js'
-import {routingModes} from './routing-modes.js'
+const baseProfile = require('./base.json');
+import {products} from './products.js';
+import {formatLoyaltyCard} from './loyalty-cards.js';
+import {ageGroup, ageGroupFromAge} from './ageGroup.js';
+import {routingModes} from './routing-modes.js';
 
 const transformReqBody = (ctx, body) => {
-	const req = body.svcReqL[0] || {}
+	const req = body.svcReqL[0] || {};
 
 	// see https://pastebin.com/qZ9WS3Cx
-	const rtMode = ('routingMode' in ctx.opt) ? ctx.opt.routingMode :  routingModes.REALTIME
+	const rtMode = 'routingMode' in ctx.opt
+		? ctx.opt.routingMode
+		: routingModes.REALTIME;
 
 	req.cfg = {
 		...req.cfg,
 		rtMode,
-	}
+	};
 
-	return body
-}
+	return body;
+};
 
 const transformReq = (ctx, req) => {
-	const body = JSON.parse(req.body)
+	const body = JSON.parse(req.body);
 	// stop() a.k.a. LocDetails seems broken with ver >1.16, all other methods work
 	if (body.svcReqL[0].meth === 'LocDetails') {
 		req.body = JSON.stringify({
 			...body,
 			ver: '1.16',
-		})
+		});
 	}
 
-	return req
-}
+	return req;
+};
 
 const slices = (n, arr) => {
-	const initialState = {slices: [], count: Infinity}
+	const initialState = {slices: [], count: Infinity};
 	return arr.reduce(({slices, count}, item) => {
 		if (count >= n) {
-			slices.push([item])
-			count = 1
+			slices.push([item]);
+			count = 1;
 		} else {
-			slices[slices.length - 1].push(item)
-			count++
+			slices[slices.length - 1].push(item);
+			count++;
 		}
-		return {slices, count}
-	}, initialState).slices
-}
+		return {slices, count};
+	}, initialState).slices;
+};
 
 const parseGrid = (g) => {
 	// todo: g.type, e.g. `S`
@@ -78,13 +80,12 @@ const parseGrid = (g) => {
 	// iterative process.
 	return {
 		title: g.title,
-		rows: slices(g.nCols, g.itemL.map(item => (
-			Array.isArray(item.hints) && item.hints[0] ||
-			Array.isArray(item.remarkRefs) && item.remarkRefs[0] && item.remarkRefs[0].hint ||
-			{}
-		))),
-	}
-}
+		rows: slices(g.nCols, g.itemL.map(item => Array.isArray(item.hints) && item.hints[0]
+		|| Array.isArray(item.remarkRefs) && item.remarkRefs[0] && item.remarkRefs[0].hint
+		|| {},
+		)),
+	};
+};
 
 const ausstattungKeys = Object.assign(Object.create(null), {
 	'3-s-zentrale': '3SZentrale',
@@ -96,115 +97,142 @@ const ausstattungKeys = Object.assign(Object.create(null), {
 	'reisebedarf': 'travelShop',
 	'stufenfreier-zugang': 'stepFreeAccess',
 	'ein-umsteigehilfe': 'boardingAid',
-	'taxi-am-bahnhof': 'taxis'
-})
+	'taxi-am-bahnhof': 'taxis',
+});
 const parseAusstattungVal = (val) => {
-	val = val.toLowerCase()
-	return val === 'ja' ? true : (val === 'nein' ? false : val)
-}
+	val = val.toLowerCase();
+	return val === 'ja'
+		? true
+		: val === 'nein'
+			? false
+			: val;
+};
 
 const parseAusstattungGrid = (g) => {
 	// filter duplicate hint rows
-	const rows = uniqBy(g.rows, ([key, val]) => key + ':' + val)
+	const rows = uniqBy(g.rows, ([key, val]) => key + ':' + val);
 
-	const res = {}
-	Object.defineProperty(res, 'raw', {value: rows})
+	const res = {};
+	Object.defineProperty(res, 'raw', {value: rows});
 	for (let [key, val] of rows) {
-		key = ausstattungKeys[slugg(key)]
-		if (key) res[key] = parseAusstattungVal(val)
+		key = ausstattungKeys[slugg(key)];
+		if (key) {
+			res[key] = parseAusstattungVal(val);
+		}
 	}
-	return res
-}
+	return res;
+};
 
 const parseReisezentrumÖffnungszeiten = (g) => {
-	const res = {}
-	for (const [dayOfWeek, val] of g.rows) res[dayOfWeek] = val
-	res.raw = g.rows
-	return res
-}
+	const res = {};
+	for (const [dayOfWeek, val] of g.rows) {
+		res[dayOfWeek] = val;
+	}
+	res.raw = g.rows;
+	return res;
+};
 
 const parseLocWithDetails = ({parsed, common}, l) => {
-	if (!parsed) return parsed
-	if (parsed.type !== 'stop' && parsed.type !== 'station') return parsed
+	if (!parsed) {
+		return parsed;
+	}
+	if (parsed.type !== 'stop' && parsed.type !== 'station') {
+		return parsed;
+	}
 
 	if (Array.isArray(l.gridL)) {
 		const resolveCells = grid => ({
 			...grid,
 			rows: grid.rows.map(row => row.map(cell => cell && cell.text)),
-		})
+		});
 
 		let grids = l.gridL
-		.map(grid => parseGrid(grid, common))
-		.map(resolveCells)
+			.map(grid => parseGrid(grid, common))
+			.map(resolveCells);
 
-		const ausstattung = grids.find(g => slugg(g.title) === 'ausstattung')
+		const ausstattung = grids.find(g => slugg(g.title) === 'ausstattung');
 		if (ausstattung) {
-			parsed.facilities = parseAusstattungGrid(ausstattung)
+			parsed.facilities = parseAusstattungGrid(ausstattung);
 		}
-		const öffnungszeiten = grids.find(g => slugg(g.title) === 'offnungszeiten-reisezentrum')
+		const öffnungszeiten = grids.find(g => slugg(g.title) === 'offnungszeiten-reisezentrum');
 		if (öffnungszeiten) {
-			parsed.reisezentrumOpeningHours = parseReisezentrumÖffnungszeiten(öffnungszeiten)
+			parsed.reisezentrumOpeningHours = parseReisezentrumÖffnungszeiten(öffnungszeiten);
 		}
 
-		grids = without(grids, ausstattung, öffnungszeiten)
-		if (grids.length > 0) parsed.grids = grids
+		grids = without(grids, ausstattung, öffnungszeiten);
+		if (grids.length > 0) {
+			parsed.grids = grids;
+		}
 	}
 
-	return parsed
-}
+	return parsed;
+};
 
 // https://www.bahn.de/p/view/service/buchung/auslastungsinformation.shtml
-const loadFactors = []
-loadFactors[1] = 'low-to-medium'
-loadFactors[2] = 'high'
-loadFactors[3] = 'very-high'
-loadFactors[4] = 'exceptionally-high'
+const loadFactors = [];
+loadFactors[1] = 'low-to-medium';
+loadFactors[2] = 'high';
+loadFactors[3] = 'very-high';
+loadFactors[4] = 'exceptionally-high';
 
 const parseLoadFactor = (opt, tcocL, tcocX) => {
-	const cls = opt.firstClass ? 'FIRST' : 'SECOND'
-	const load = tcocX.map(i => tcocL[i]).find(lf => lf.c === cls)
-	return load && loadFactors[load.r] || null
-}
+	const cls = opt.firstClass
+		? 'FIRST'
+		: 'SECOND';
+	const load = tcocX.map(i => tcocL[i])
+		.find(lf => lf.c === cls);
+	return load && loadFactors[load.r] || null;
+};
 
 const parseArrOrDepWithLoadFactor = ({parsed, res, opt}, d) => {
 	if (d.stbStop.dTrnCmpSX && Array.isArray(d.stbStop.dTrnCmpSX.tcocX)) {
-		const load = parseLoadFactor(opt, res.common.tcocL || [], d.stbStop.dTrnCmpSX.tcocX)
-		if (load) parsed.loadFactor = load
+		const load = parseLoadFactor(opt, res.common.tcocL || [], d.stbStop.dTrnCmpSX.tcocX);
+		if (load) {
+			parsed.loadFactor = load;
+		}
 	}
-	return parsed
-}
+	return parsed;
+};
 
 const transformJourneysQuery = ({opt}, query) => {
-	const filters = query.jnyFltrL
-	if (opt.bike) filters.push(bike)
-
-	if (('age' in opt) && ('ageGroup' in opt)) {
-		throw new TypeError(`\
-opt.age and opt.ageGroup are mutually exclusive.
-Pass in just opt.age, and the age group will calculated automatically.`)
+	const filters = query.jnyFltrL;
+	if (opt.bike) {
+		filters.push(bike);
 	}
 
-	const tvlrAgeGroup = ('age' in opt) ? ageGroupFromAge(opt.age) : opt.ageGroup
+	if ('age' in opt && 'ageGroup' in opt) {
+		throw new TypeError(`\
+opt.age and opt.ageGroup are mutually exclusive.
+Pass in just opt.age, and the age group will calculated automatically.`);
+	}
+
+	const tvlrAgeGroup = 'age' in opt
+		? ageGroupFromAge(opt.age)
+		: opt.ageGroup;
 
 	query.trfReq = {
 		// todo: what are these?
 		// "directESuiteCall": true,
 		// "rType": "DB-PE",
 
-		jnyCl: opt.firstClass === true ? 1 : 2,
+		jnyCl: opt.firstClass === true
+			? 1
+			: 2,
 		// todo [breaking]: support multiple travelers
 		tvlrProf: [{
 			type: tvlrAgeGroup || ageGroup.ADULT,
-			...(('age' in opt) ? {age: opt.age} : {}),
+			...'age' in opt
+				? {age: opt.age}
+				: {},
 			redtnCard: opt.loyaltyCard
 				? formatLoyaltyCard(opt.loyaltyCard)
-				: null
+				: null,
 		}],
-		cType: 'PK'
-	}
+		cType: 'PK',
+	};
 
-	return query
-}
+	return query;
+};
 
 // todo: fix this
 // line: {
@@ -219,19 +247,19 @@ Pass in just opt.age, and the age group will calculated automatically.`)
 // }
 const parseLineWithAdditionalName = ({parsed}, l) => {
 	if (l.nameS && ['bus', 'tram', 'ferry'].includes(l.product)) {
-		parsed.name = l.nameS
+		parsed.name = l.nameS;
 	}
 	if (l.addName) {
-		parsed.additionalName = parsed.name
-		parsed.name = l.addName
+		parsed.additionalName = parsed.name;
+		parsed.name = l.addName;
 	}
-	return parsed
-}
+	return parsed;
+};
 
 // todo: sotRating, conSubscr, isSotCon, showARSLink, sotCtxt
 // todo: conSubscr, showARSLink, useableTime
 const parseJourneyWithPrice = ({parsed}, raw) => {
-	parsed.price = null
+	parsed.price = null;
 	// todo: find cheapest, find discounts
 	// todo: write a parser like vbb-parse-ticket
 	// {
@@ -274,33 +302,35 @@ const parseJourneyWithPrice = ({parsed}, raw) => {
 	// 	}
 	// ]
 	if (
-		raw.trfRes &&
-		Array.isArray(raw.trfRes.fareSetL) &&
-		raw.trfRes.fareSetL[0] &&
-		Array.isArray(raw.trfRes.fareSetL[0].fareL) &&
-		raw.trfRes.fareSetL[0].fareL[0]
+		raw.trfRes
+		&& Array.isArray(raw.trfRes.fareSetL)
+		&& raw.trfRes.fareSetL[0]
+		&& Array.isArray(raw.trfRes.fareSetL[0].fareL)
+		&& raw.trfRes.fareSetL[0].fareL[0]
 	) {
-		const tariff = raw.trfRes.fareSetL[0].fareL[0]
+		const tariff = raw.trfRes.fareSetL[0].fareL[0];
 		if (tariff.price && tariff.price.amount >= 0) { // wat
 			parsed.price = {
 				amount: tariff.price.amount / 100,
 				currency: 'EUR',
-				hint: null
-			}
+				hint: null,
+			};
 		}
 	}
 
-	return parsed
-}
+	return parsed;
+};
 
 const parseJourneyLegWithLoadFactor = ({parsed, res, opt}, raw) => {
-	const tcocX = raw.jny && raw.jny.dTrnCmpSX && raw.jny.dTrnCmpSX.tcocX
+	const tcocX = raw.jny && raw.jny.dTrnCmpSX && raw.jny.dTrnCmpSX.tcocX;
 	if (Array.isArray(tcocX) && Array.isArray(res.common.tcocL)) {
-		const load = parseLoadFactor(opt, res.common.tcocL, tcocX)
-		if (load) parsed.loadFactor = load
+		const load = parseLoadFactor(opt, res.common.tcocL, tcocX);
+		if (load) {
+			parsed.loadFactor = load;
+		}
 	}
-	return parsed
-}
+	return parsed;
+};
 
 // todo:
 // [ { type: 'hint',
@@ -310,189 +340,189 @@ const hintsByCode = Object.assign(Object.create(null), {
 	fb: {
 		type: 'hint',
 		code: 'bicycle-conveyance',
-		summary: 'bicycles conveyed'
+		summary: 'bicycles conveyed',
 	},
 	fr: {
 		type: 'hint',
 		code: 'bicycle-conveyance-reservation',
-		summary: 'bicycles conveyed, subject to reservation'
+		summary: 'bicycles conveyed, subject to reservation',
 	},
 	nf: {
 		type: 'hint',
 		code: 'no-bicycle-conveyance',
-		summary: 'bicycles not conveyed'
+		summary: 'bicycles not conveyed',
 	},
 	k2: {
 		type: 'hint',
 		code: '2nd-class-only',
-		summary: '2. class only'
+		summary: '2. class only',
 	},
 	eh: {
 		type: 'hint',
 		code: 'boarding-ramp',
-		summary: 'vehicle-mounted boarding ramp available'
+		summary: 'vehicle-mounted boarding ramp available',
 	},
 	ro: {
 		type: 'hint',
 		code: 'wheelchairs-space',
-		summary: 'space for wheelchairs'
+		summary: 'space for wheelchairs',
 	},
 	oa: {
 		type: 'hint',
 		code: 'wheelchairs-space-reservation',
-		summary: 'space for wheelchairs, subject to reservation'
+		summary: 'space for wheelchairs, subject to reservation',
 	},
 	wv: {
 		type: 'hint',
 		code: 'wifi',
-		summary: 'WiFi available'
+		summary: 'WiFi available',
 	},
 	wi: {
 		type: 'hint',
 		code: 'wifi',
-		summary: 'WiFi available'
+		summary: 'WiFi available',
 	},
 	sn: {
 		type: 'hint',
 		code: 'snacks',
-		summary: 'snacks available for purchase'
+		summary: 'snacks available for purchase',
 	},
 	mb: {
 		type: 'hint',
 		code: 'snacks',
-		summary: 'snacks available for purchase'
+		summary: 'snacks available for purchase',
 	},
 	mp: {
 		type: 'hint',
 		code: 'snacks',
-		summary: 'snacks available for purchase at the seat'
+		summary: 'snacks available for purchase at the seat',
 	},
 	bf: {
 		type: 'hint',
 		code: 'barrier-free',
-		summary: 'barrier-free'
+		summary: 'barrier-free',
 	},
 	rg: {
 		type: 'hint',
 		code: 'barrier-free-vehicle',
-		summary: 'barrier-free vehicle'
+		summary: 'barrier-free vehicle',
 	},
 	bt: {
 		type: 'hint',
 		code: 'on-board-bistro',
-		summary: 'Bordbistro available'
+		summary: 'Bordbistro available',
 	},
 	br: {
 		type: 'hint',
 		code: 'on-board-restaurant',
-		summary: 'Bordrestaurant available'
+		summary: 'Bordrestaurant available',
 	},
 	ki: {
 		type: 'hint',
 		code: 'childrens-area',
-		summary: `children's area available`
+		summary: 'children\'s area available',
 	},
 	kk: {
 		type: 'hint',
 		code: 'parents-childrens-compartment',
-		summary: `parent-and-children compartment available`
+		summary: 'parent-and-children compartment available',
 	},
 	kr: {
 		type: 'hint',
 		code: 'kids-service',
-		summary: 'DB Kids Service available'
+		summary: 'DB Kids Service available',
 	},
 	ls: {
 		type: 'hint',
 		code: 'power-sockets',
-		summary: 'power sockets available'
+		summary: 'power sockets available',
 	},
 	ev: {
 		type: 'hint',
 		code: 'replacement-service',
-		summary: 'replacement service'
+		summary: 'replacement service',
 	},
 	kl: {
 		type: 'hint',
 		code: 'air-conditioned',
-		summary: 'air-conditioned vehicle'
+		summary: 'air-conditioned vehicle',
 	},
 	r0: {
 		type: 'hint',
 		code: 'upward-escalator',
-		summary: 'upward escalator'
+		summary: 'upward escalator',
 	},
 	au: {
 		type: 'hint',
 		code: 'elevator',
-		summary: 'elevator available'
+		summary: 'elevator available',
 	},
 	ck: {
 		type: 'hint',
 		code: 'komfort-checkin',
-		summary: 'Komfort-Checkin available'
+		summary: 'Komfort-Checkin available',
 	},
 	it: {
 		type: 'hint',
 		code: 'ice-sprinter',
-		summary: 'ICE Sprinter service'
+		summary: 'ICE Sprinter service',
 	},
 	rp: {
 		type: 'hint',
 		code: 'compulsory-reservation',
-		summary: 'compulsory seat reservation'
+		summary: 'compulsory seat reservation',
 	},
 	rm: {
 		type: 'hint',
 		code: 'optional-reservation',
-		summary: 'optional seat reservation'
+		summary: 'optional seat reservation',
 	},
 	scl: {
 		type: 'hint',
 		code: 'all-2nd-class-seats-reserved',
-		summary: 'all 2nd class seats reserved'
+		summary: 'all 2nd class seats reserved',
 	},
 	acl: {
 		type: 'hint',
 		code: 'all-seats-reserved',
-		summary: 'all seats reserved'
+		summary: 'all seats reserved',
 	},
 	sk: {
 		type: 'hint',
 		code: 'oversize-luggage-forbidden',
-		summary: 'oversize luggage not allowed'
+		summary: 'oversize luggage not allowed',
 	},
 	hu: {
 		type: 'hint',
 		code: 'animals-forbidden',
-		summary: 'animals not allowed, except guide dogs'
+		summary: 'animals not allowed, except guide dogs',
 	},
 	ik: {
 		type: 'hint',
 		code: 'baby-cot-required',
-		summary: 'baby cot/child seat required'
+		summary: 'baby cot/child seat required',
 	},
 	ee: {
 		type: 'hint',
 		code: 'on-board-entertainment',
-		summary: 'on-board entertainment available'
+		summary: 'on-board entertainment available',
 	},
 	toilet: {
 		type: 'hint',
 		code: 'toilet',
-		summary: 'toilet available'
+		summary: 'toilet available',
 	},
 	oc: {
 		type: 'hint',
 		code: 'wheelchair-accessible-toilet',
-		summary: 'wheelchair-accessible toilet available'
+		summary: 'wheelchair-accessible toilet available',
 	},
 	iz: {
 		type: 'hint',
 		code: 'intercity-2',
-		summary: 'Intercity 2'
-	}
-})
+		summary: 'Intercity 2',
+	},
+});
 
 const codesByText = Object.assign(Object.create(null), {
 	'journey cancelled': 'journey-cancelled', // todo: German variant
@@ -501,34 +531,39 @@ const codesByText = Object.assign(Object.create(null), {
 	'signalstörung': 'signal-failure',
 	'additional stop': 'additional-stopover', // todo: German variant
 	'platform change': 'changed platform', // todo: use dash, German variant
-})
+});
 
 const parseHintByCode = ({parsed}, raw) => {
 	// plain-text hints used e.g. for stop metadata
 	if (raw.type === 'K') {
-		return {type: 'hint', text: raw.txtN}
+		return {type: 'hint', text: raw.txtN};
 	}
 
 	if (raw.type === 'A') {
-		const hint = hintsByCode[raw.code && raw.code.trim().toLowerCase()]
+		const hint = hintsByCode[raw.code && raw.code.trim()
+			.toLowerCase()];
 		if (hint) {
-			return Object.assign({text: raw.txtN}, hint)
+			return Object.assign({text: raw.txtN}, hint);
 		}
 	}
 
 	if (parsed && raw.txtN) {
-		const text = trim(raw.txtN.toLowerCase(), ' ()')
-		if (codesByText[text]) parsed.code = codesByText[text]
+		const text = trim(raw.txtN.toLowerCase(), ' ()');
+		if (codesByText[text]) {
+			parsed.code = codesByText[text];
+		}
 	}
 
-	return parsed
-}
+	return parsed;
+};
 
-const isIBNR = /^\d{6,}$/
+const isIBNR = /^\d{6,}$/;
 const formatStation = (id) => {
-	if (!isIBNR.test(id)) throw new Error('station ID must be an IBNR.')
-	return _formatStation(id)
-}
+	if (!isIBNR.test(id)) {
+		throw new Error('station ID must be an IBNR.');
+	}
+	return _formatStation(id);
+};
 
 // todo: find option for absolute number of results
 
@@ -560,8 +595,8 @@ const profile = {
 	radar: true,
 	reachableFrom: true,
 	lines: false, // `.svcResL[0].res.lineL[]` is missing 🤔
-}
+};
 
 export {
 	profile,
-}
+};

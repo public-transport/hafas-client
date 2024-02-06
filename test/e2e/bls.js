@@ -1,13 +1,13 @@
-import tap from 'tap'
+import tap from 'tap';
 
-import {createWhen} from './lib/util.js'
-import {createClient} from '../../index.js'
-import {profile as blsProfile} from '../../p/bls/index.js'
-import {createValidateFptfWith as createValidate} from './lib/validate-fptf-with.js'
-import {testJourneysStationToAddress} from './lib/journeys-station-to-address.js'
+import {createWhen} from './lib/util.js';
+import {createClient} from '../../index.js';
+import {profile as blsProfile} from '../../p/bls/index.js';
+import {createValidateFptfWith as createValidate} from './lib/validate-fptf-with.js';
+import {testJourneysStationToAddress} from './lib/journeys-station-to-address.js';
 
-const T_MOCK = 1671260400 * 1000 // 2022-12-17T08:00:00+01:00
-const when = createWhen(blsProfile.timezone, blsProfile.locale, T_MOCK)
+const T_MOCK = 1671260400 * 1000; // 2022-12-17T08:00:00+01:00
+const when = createWhen(blsProfile.timezone, blsProfile.locale, T_MOCK);
 
 const cfg = {
 	when,
@@ -17,13 +17,13 @@ const cfg = {
 	minLongitude: 4.4604,
 	maxLatitude: 47.2969,
 	maxLongitude: 7.8607,
-}
+};
 
-const validate = createValidate(cfg)
+const validate = createValidate(cfg);
 
-const client = createClient(blsProfile, 'public-transport/hafas-client:test')
+const client = createClient(blsProfile, 'public-transport/hafas-client:test');
 
-const bernDennigkofengässli = '8590093'
+const bernDennigkofengässli = '8590093';
 
 tap.test('Dennigkofengässli to Schänzlihalde', async (t) => {
 	const schänzlihalde = {
@@ -32,12 +32,12 @@ tap.test('Dennigkofengässli to Schänzlihalde', async (t) => {
 		address: 'Bern, Schänzlihalde 17',
 		latitude: 46.952835,
 		longitude: 7.447527,
-	}
+	};
 
 	const res = await client.journeys(bernDennigkofengässli, schänzlihalde, {
 		results: 3,
 		departure: when,
-	})
+	});
 
 	await testJourneysStationToAddress({
 		test: t,
@@ -45,6 +45,6 @@ tap.test('Dennigkofengässli to Schänzlihalde', async (t) => {
 		validate,
 		fromId: bernDennigkofengässli,
 		to: schänzlihalde,
-	})
-	t.end()
-})
+	});
+	t.end();
+});

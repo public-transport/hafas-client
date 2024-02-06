@@ -6,7 +6,7 @@ const products = [
 		bitmasks: [1, 2, 4],
 		name: 'long-distance train',
 		short: 'ICE/IC/EC',
-		default: true
+		default: true,
 	},
 	{
 		id: 'regional-train',
@@ -15,7 +15,7 @@ const products = [
 		bitmasks: [8, 16],
 		name: 'regional train',
 		short: 'RE/RB',
-		default: true
+		default: true,
 	},
 	{
 		id: 'tram',
@@ -23,7 +23,7 @@ const products = [
 		bitmasks: [32],
 		name: 'tram',
 		short: 'tram',
-		default: true
+		default: true,
 	},
 	// todo: what are `64` & `128`?
 	{
@@ -32,10 +32,10 @@ const products = [
 		bitmasks: [256],
 		name: 'bus',
 		short: 'bus',
-		default: true
-	}
-]
+		default: true,
+	},
+];
 
 export {
 	products,
-}
+};

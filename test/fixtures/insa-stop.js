@@ -9,7 +9,7 @@ const insaStop = {
 		type: 'location',
 		id: '7341',
 		latitude: 52.096849,
-		longitude: 11.637444
+		longitude: 11.637444,
 	},
 	products: {
 		nationalExpress: false,
@@ -18,10 +18,10 @@ const insaStop = {
 		suburban: false,
 		tram: false,
 		bus: true,
-		tourismTrain: false
+		tourismTrain: false,
 	},
-}
+};
 
 export {
 	insaStop,
-}
+};

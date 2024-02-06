@@ -5,7 +5,7 @@ const products = [
 		bitmasks: [1],
 		name: 'InterCityExpress/Fernzug',
 		short: 'ICE',
-		default: true
+		default: true,
 	},
 	{
 		id: 'long-distance-train',
@@ -13,7 +13,7 @@ const products = [
 		bitmasks: [2],
 		name: 'EuroCity/InterCity/EuroNight/InterRegio',
 		short: 'EC/IC/EN/IR',
-		default: true
+		default: true,
 	},
 	{
 		id: 'regiona-train',
@@ -21,7 +21,7 @@ const products = [
 		bitmasks: [4],
 		name: 'RegionalExpress/Regionalbahn',
 		short: 'RE/RB',
-		default: true
+		default: true,
 	},
 	{
 		id: 's-bahn',
@@ -29,7 +29,7 @@ const products = [
 		bitmasks: [8],
 		name: 'S-Bahn',
 		short: 'S',
-		default: true
+		default: true,
 	},
 	{
 		id: 'u-bahn',
@@ -37,7 +37,7 @@ const products = [
 		bitmasks: [16],
 		name: 'U-Bahn',
 		short: 'U',
-		default: true
+		default: true,
 	},
 	{
 		id: 'tram',
@@ -45,7 +45,7 @@ const products = [
 		bitmasks: [32],
 		name: 'Straßenbahn',
 		short: 'Tram',
-		default: true
+		default: true,
 	},
 	{
 		id: 'bus',
@@ -53,7 +53,7 @@ const products = [
 		bitmasks: [64, 128],
 		name: 'Bus',
 		short: 'Bus',
-		default: true
+		default: true,
 	},
 	{
 		id: 'watercraft',
@@ -61,7 +61,7 @@ const products = [
 		bitmasks: [256],
 		name: 'Schiff',
 		short: 'Schiff',
-		default: true
+		default: true,
 	},
 	{
 		id: 'ast',
@@ -69,7 +69,7 @@ const products = [
 		bitmasks: [512],
 		name: 'Anruf-Sammel-Taxi',
 		short: 'AST',
-		default: true
+		default: true,
 	},
 	{
 		id: 'cable-car',
@@ -77,11 +77,11 @@ const products = [
 		bitmasks: [1024],
 		name: 'Seilbahn',
 		short: 'Seilbahn',
-		default: true
-	}
+		default: true,
+	},
 	// todo: remaining bitmask `1015`
-]
+];
 
 export {
 	products,
-}
+};

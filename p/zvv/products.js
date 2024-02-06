@@ -55,8 +55,8 @@ const products = [
 		short: 'Night Train',
 		default: true,
 	},
-]
+];
 
 export {
 	products,
-}
+};

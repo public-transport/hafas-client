@@ -1,80 +1,80 @@
-import tap from 'tap'
-import isRoughlyEqual from 'is-roughly-equal'
+import tap from 'tap';
+import isRoughlyEqual from 'is-roughly-equal';
 
-import {createWhen} from './lib/util.js'
-import {createClient} from '../../index.js'
-import {profile as invgProfile} from '../../p/invg/index.js'
+import {createWhen} from './lib/util.js';
+import {createClient} from '../../index.js';
+import {profile as invgProfile} from '../../p/invg/index.js';
 import {
 	createValidateJourneyLeg,
 	createValidateMovement,
-} from './lib/validators.js'
-import {createValidateFptfWith as createValidate} from './lib/validate-fptf-with.js'
-import {testJourneysStationToStation} from './lib/journeys-station-to-station.js'
-import {testJourneysStationToAddress} from './lib/journeys-station-to-address.js'
-import {testJourneysStationToPoi} from './lib/journeys-station-to-poi.js'
-import {testEarlierLaterJourneys} from './lib/earlier-later-journeys.js'
-import {testRefreshJourney} from './lib/refresh-journey.js'
-import {journeysFailsWithNoProduct} from './lib/journeys-fails-with-no-product.js'
-import {testDepartures} from './lib/departures.js'
-import {testArrivals} from './lib/arrivals.js'
+} from './lib/validators.js';
+import {createValidateFptfWith as createValidate} from './lib/validate-fptf-with.js';
+import {testJourneysStationToStation} from './lib/journeys-station-to-station.js';
+import {testJourneysStationToAddress} from './lib/journeys-station-to-address.js';
+import {testJourneysStationToPoi} from './lib/journeys-station-to-poi.js';
+import {testEarlierLaterJourneys} from './lib/earlier-later-journeys.js';
+import {testRefreshJourney} from './lib/refresh-journey.js';
+import {journeysFailsWithNoProduct} from './lib/journeys-fails-with-no-product.js';
+import {testDepartures} from './lib/departures.js';
+import {testArrivals} from './lib/arrivals.js';
 
-const T_MOCK = 1668495600 * 1000 // 2022-11-15T08:00:00+01:00
-const when = createWhen(invgProfile.timezone, invgProfile.locale, T_MOCK)
+const T_MOCK = 1668495600 * 1000; // 2022-11-15T08:00:00+01:00
+const when = createWhen(invgProfile.timezone, invgProfile.locale, T_MOCK);
 
 const cfg = {
 	when,
 	products: invgProfile.products,
-}
+};
 
-const _validateJourneyLeg = createValidateJourneyLeg(cfg)
+const _validateJourneyLeg = createValidateJourneyLeg(cfg);
 const validateJourneyLeg = (val, leg, name = 'journeyLeg') => {
 	_validateJourneyLeg(val, {
 		...leg,
 		direction: leg.direction || 'foo',
-	}, name)
-}
+	}, name);
+};
 
-const _validateMovement = createValidateMovement(cfg)
+const _validateMovement = createValidateMovement(cfg);
 const validateMovement = (val, m, name = 'movement') => {
 	_validateMovement(val, {
 		...m,
 		direction: m.direction || 'foo',
-	}, name)
-}
+	}, name);
+};
 
 const validate = createValidate(cfg, {
 	journeyLeg: validateJourneyLeg,
-	movement: validateMovement
-})
+	movement: validateMovement,
+});
 
-const client = createClient(invgProfile, 'public-transport/hafas-client:test')
+const client = createClient(invgProfile, 'public-transport/hafas-client:test');
 
-const ingolstadtHbf = '8000183'
-const telemannstr = '71802'
+const ingolstadtHbf = '8000183';
+const telemannstr = '71802';
 const uhlandstr1 = {
 	type: 'location',
 	address: 'Ingolstadt, Uhlandstraße 1',
 	latitude: 48.775236,
-	longitude: 11.441138
-}
+	longitude: 11.441138,
+};
 
 tap.test('journeys – Ingolstadt Hbf to Audi Parkplatz', async (t) => {
-	const telemannstr = '71801'
+	const telemannstr = '71801';
 	const res = await client.journeys(ingolstadtHbf, telemannstr, {
 		results: 4,
 		departure: when,
-		stopovers: true
-	})
+		stopovers: true,
+	});
 
 	await testJourneysStationToStation({
 		test: t,
 		res,
 		validate,
 		fromId: ingolstadtHbf,
-		toId: telemannstr
-	})
-	t.end()
-})
+		toId: telemannstr,
+	});
+	t.end();
+});
 
 // todo: journeys, only one product
 
@@ -86,25 +86,25 @@ tap.test('journeys – fails with no product', async (t) => {
 		toId: telemannstr,
 		when,
 		products: invgProfile.products,
-	})
-	t.end()
-})
+	});
+	t.end();
+});
 
 tap.test('Ingolstadt Hbf to Uhlandstr. 1', async (t) => {
 	const res = await client.journeys(ingolstadtHbf, uhlandstr1, {
 		results: 3,
-		departure: when
-	})
+		departure: when,
+	});
 
 	await testJourneysStationToAddress({
 		test: t,
 		res,
 		validate,
 		fromId: ingolstadtHbf,
-		to: uhlandstr1
-	})
-	t.end()
-})
+		to: uhlandstr1,
+	});
+	t.end();
+});
 
 tap.test('Ingolstadt Hbf to Städtisches Freibad', async (t) => {
 	const freibad = {
@@ -113,22 +113,22 @@ tap.test('Ingolstadt Hbf to Städtisches Freibad', async (t) => {
 		poi: true,
 		name: 'Ingolstadt, Städtisches Freibad (Sport)',
 		latitude: 48.761473,
-		longitude: 11.418602
-	}
+		longitude: 11.418602,
+	};
 	const res = await client.journeys(ingolstadtHbf, freibad, {
 		results: 3,
-		departure: when
-	})
+		departure: when,
+	});
 
 	await testJourneysStationToPoi({
 		test: t,
 		res,
 		validate,
 		fromId: ingolstadtHbf,
-		to: freibad
-	})
-	t.end()
-})
+		to: freibad,
+	});
+	t.end();
+});
 
 // todo: via works – with detour
 // todo: without detour
@@ -141,10 +141,10 @@ tap.test('earlier/later journeys', async (t) => {
 		fromId: ingolstadtHbf,
 		toId: telemannstr,
 		when,
-	})
+	});
 
-	t.end()
-})
+	t.end();
+});
 
 tap.test('refreshJourney', async (t) => {
 	await testRefreshJourney({
@@ -154,25 +154,25 @@ tap.test('refreshJourney', async (t) => {
 		validate,
 		fromId: ingolstadtHbf,
 		toId: telemannstr,
-		when
-	})
-	t.end()
-})
+		when,
+	});
+	t.end();
+});
 
 tap.test('trip details', async (t) => {
 	const {journeys} = await client.journeys(ingolstadtHbf, telemannstr, {
-		results: 1, departure: when
-	})
+		results: 1, departure: when,
+	});
 
-	const p = journeys[0].legs.find(l => !l.walking)
-	t.ok(p.tripId, 'precondition failed')
-	t.ok(p.line.name, 'precondition failed')
+	const p = journeys[0].legs.find(l => !l.walking);
+	t.ok(p.tripId, 'precondition failed');
+	t.ok(p.line.name, 'precondition failed');
 
-	const tripRes = await client.trip(p.tripId, {when})
+	const tripRes = await client.trip(p.tripId, {when});
 
-	validate(t, tripRes, 'tripResult', 'res')
-	t.end()
-})
+	validate(t, tripRes, 'tripResult', 'res');
+	t.end();
+});
 
 tap.test('departures at Ingolstadt Hbf', async (t) => {
 	const ids = [
@@ -180,20 +180,20 @@ tap.test('departures at Ingolstadt Hbf', async (t) => {
 		'80301', // stop "Ingolstadt, Hauptbahnhof Stadtauswärts"
 		'80302', // stop "Ingolstadt, Hauptbahnhof Stadteinwärts"
 		'80303', // stop "Ingolstadt, Hauptbahnhof Stadtauswärts"
-	]
+	];
 
 	const res = await client.departures(ingolstadtHbf, {
-		duration: 10, when
-	})
+		duration: 10, when,
+	});
 
 	await testDepartures({
 		test: t,
 		res,
 		validate,
 		ids,
-	})
-	t.end()
-})
+	});
+	t.end();
+});
 
 tap.test('departures with station object', async (t) => {
 	const res = await client.departures({
@@ -203,33 +203,33 @@ tap.test('departures with station object', async (t) => {
 		location: {
 			type: 'location',
 			latitude: 48.822834,
-			longitude: 11.461148
-		}
-	}, {when})
+			longitude: 11.461148,
+		},
+	}, {when});
 
-	validate(t, res, 'departuresResponse', 'res')
-	t.end()
-})
+	validate(t, res, 'departuresResponse', 'res');
+	t.end();
+});
 
 tap.test('arrivals at Ingolstadt Hbf', async (t) => {
 	const ids = [
 		ingolstadtHbf, // station
 		'80301', // stop "Ingolstadt, Hauptbahnhof Stadtauswärts"
-		'80302' // stop "Ingolstadt, Hauptbahnhof Stadteinwärts"
-	]
+		'80302', // stop "Ingolstadt, Hauptbahnhof Stadteinwärts"
+	];
 
 	const res = await client.arrivals(ingolstadtHbf, {
-		duration: 10, when
-	})
+		duration: 10, when,
+	});
 
 	await testArrivals({
 		test: t,
 		res,
 		validate,
 		ids,
-	})
-	t.end()
-})
+	});
+	t.end();
+});
 
 tap.test('nearby', async (t) => {
 	const nearby = await client.nearby({
@@ -237,57 +237,57 @@ tap.test('nearby', async (t) => {
 		id: '990001921',
 		address: 'Ingolstadt, Rathausplatz 1',
 		latitude: 48.76292,
-		longitude: 11.424624
-	}, {distance: 500})
+		longitude: 11.424624,
+	}, {distance: 500});
 
-	validate(t, nearby, 'locations', 'nearby')
+	validate(t, nearby, 'locations', 'nearby');
 
-	const rathausplatz = '60706'
-	const harderstr = '28402'
-	t.ok(nearby.find(l => l.id === rathausplatz))
-	t.ok(nearby.find(l => l.id === harderstr))
+	const rathausplatz = '60706';
+	const harderstr = '28402';
+	t.ok(nearby.find(l => l.id === rathausplatz));
+	t.ok(nearby.find(l => l.id === harderstr));
 
-	t.end()
-})
+	t.end();
+});
 
 tap.test('locations named "freibad"', async (t) => {
-	const freibadIngolstadt = '980000591'
+	const freibadIngolstadt = '980000591';
 	const locations = await client.locations('freibad', {
-		results: 5
-	})
+		results: 5,
+	});
 
-	validate(t, locations, 'locations', 'locations')
-	t.ok(locations.length <= 10)
+	validate(t, locations, 'locations', 'locations');
+	t.ok(locations.length <= 10);
 
-	t.ok(locations.find(s => s.type === 'stop' || s.type === 'station'))
-	t.ok(locations.find(s => s.id && s.name)) // POIs
+	t.ok(locations.find(s => s.type === 'stop' || s.type === 'station'));
+	t.ok(locations.find(s => s.id && s.name)); // POIs
 	t.ok(locations.some((l) => {
-		return l.station && l.station.id === freibadIngolstadt || l.id === freibadIngolstadt
-	}))
+		return l.station && l.station.id === freibadIngolstadt || l.id === freibadIngolstadt;
+	}));
 
-	t.end()
-})
+	t.end();
+});
 
 tap.test('stop Ettinger Str.', async (t) => {
-	const ettingerStr = '18304'
-	const s = await client.stop(ettingerStr)
+	const ettingerStr = '18304';
+	const s = await client.stop(ettingerStr);
 
-	validate(t, s, ['stop', 'station'], 'stop')
-	t.equal(s.id, ettingerStr)
+	validate(t, s, ['stop', 'station'], 'stop');
+	t.equal(s.id, ettingerStr);
 
-	t.end()
-})
+	t.end();
+});
 
 tap.test('radar', async (t) => {
 	const res = await client.radar({
 		north: 48.74453,
 		west: 11.42733,
 		south: 48.73453,
-		east: 11.43733
+		east: 11.43733,
 	}, {
-		duration: 5 * 60, when, results: 10
-	})
+		duration: 5 * 60, when, results: 10,
+	});
 
-	validate(t, res, 'radarResult', 'res')
-	t.end()
-})
+	validate(t, res, 'radarResult', 'res');
+	t.end();
+});

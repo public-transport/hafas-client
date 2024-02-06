@@ -5,7 +5,7 @@ const products = [
 		bitmasks: [2],
 		name: 'InterCity',
 		short: 'IC',
-		default: true
+		default: true,
 	},
 	// todo: 4
 	{
@@ -14,7 +14,7 @@ const products = [
 		bitmasks: [8],
 		name: 'Commuter',
 		short: 'Commuter',
-		default: true
+		default: true,
 	},
 	{
 		id: 'suburban',
@@ -22,7 +22,7 @@ const products = [
 		bitmasks: [16],
 		name: 'Dublin Area Rapid Transit',
 		short: 'DART',
-		default: true
+		default: true,
 	},
 	// todo: 32
 	{
@@ -31,10 +31,10 @@ const products = [
 		bitmasks: [64],
 		name: 'LUAS Tram',
 		short: 'LUAS',
-		default: true
-	}
-]
+		default: true,
+	},
+];
 
 export {
 	products,
-}
+};

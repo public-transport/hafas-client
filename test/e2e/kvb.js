@@ -1,12 +1,12 @@
-import tap from 'tap'
+import tap from 'tap';
 
-import {createWhen} from './lib/util.js'
-import {createClient} from '../../index.js'
-import {profile as kvbProfile} from '../../p/kvb/index.js'
-import {createValidateFptfWith as createValidate} from './lib/validate-fptf-with.js'
+import {createWhen} from './lib/util.js';
+import {createClient} from '../../index.js';
+import {profile as kvbProfile} from '../../p/kvb/index.js';
+import {createValidateFptfWith as createValidate} from './lib/validate-fptf-with.js';
 
-const T_MOCK = 1671260400 * 1000 // 2022-12-17T08:00:00+01:00
-const when = createWhen(kvbProfile.timezone, kvbProfile.locale, T_MOCK)
+const T_MOCK = 1671260400 * 1000; // 2022-12-17T08:00:00+01:00
+const when = createWhen(kvbProfile.timezone, kvbProfile.locale, T_MOCK);
 
 const cfg = {
 	when,
@@ -16,20 +16,20 @@ const cfg = {
 	maxLongitude: 7.8333,
 	minLatitude: 50.3253,
 	minLongitude: 6.2320,
-}
-const validate = createValidate(cfg)
+};
+const validate = createValidate(cfg);
 
-const client = createClient(kvbProfile, 'public-transport/hafas-client:test')
+const client = createClient(kvbProfile, 'public-transport/hafas-client:test');
 
-const heumarkt = '900000001'
+const heumarkt = '900000001';
 
 tap.test('locations named "heumarkt"', async (t) => {
-	const locations = await client.locations('heumarkt')
+	const locations = await client.locations('heumarkt');
 
-	validate(t, locations, 'locations', 'locations')
+	validate(t, locations, 'locations', 'locations');
 	t.ok(locations.some((l) => {
-		return l.station && l.station.id === heumarkt || l.id === heumarkt
-	}), 'Heumarkt not found')
+		return l.station && l.station.id === heumarkt || l.id === heumarkt;
+	}), 'Heumarkt not found');
 
-	t.end()
-})
+	t.end();
+});

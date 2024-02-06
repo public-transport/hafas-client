@@ -5,7 +5,7 @@ const products = [
 		bitmasks: [1, 2],
 		name: 'ExpressInterCity & ExpressInterCity Premium & InterCityExpress',
 		short: 'EIC/EIP/ICE',
-		default: true
+		default: true,
 	},
 	{
 		id: 'long-distance-train',
@@ -13,7 +13,7 @@ const products = [
 		bitmasks: [4],
 		name: 'InterCity & Twoje Linie Kolejowe & EuroCity & EuroNight',
 		short: 'IC/TLK/EC/EN',
-		default: true
+		default: true,
 	},
 	{
 		id: 'regional-train',
@@ -21,7 +21,7 @@ const products = [
 		bitmasks: [8],
 		name: 'Regional',
 		short: 'R',
-		default: true
+		default: true,
 	},
 	{
 		id: 'bus',
@@ -29,10 +29,10 @@ const products = [
 		bitmasks: [32],
 		name: 'Bus',
 		short: 'B',
-		default: true
-	}
-]
+		default: true,
+	},
+];
 
 export {
 	products,
-}
+};

@@ -10,7 +10,7 @@ const vbbDepartures = [
 				type: 'location',
 				id: '900100004',
 				latitude: 52.515503,
-				longitude: 13.418027
+				longitude: 13.418027,
 			},
 			products: {
 				suburban: true,
@@ -19,7 +19,7 @@ const vbbDepartures = [
 				bus: true,
 				ferry: false,
 				express: false,
-				regional: false
+				regional: false,
 			},
 			lines: [
 				{
@@ -131,8 +131,8 @@ const vbbDepartures = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-				}
-			]
+				},
+			],
 		},
 		when: '2021-10-12T17:44:00+02:00',
 		plannedWhen: '2021-10-12T17:44:00+02:00',
@@ -143,13 +143,13 @@ const vbbDepartures = [
 		direction: 'S Erkner Bhf',
 		origin: null,
 		destination: {
-			type: "stop",
-			id: "900310004",
+			type: 'stop',
+			id: '900310004',
 			stationDHID: 'de:12067:900310004',
-			name: "S Erkner Bhf",
+			name: 'S Erkner Bhf',
 			location: {
-				type: "location",
-				id: "900310004",
+				type: 'location',
+				id: '900310004',
 				latitude: 52.428398,
 				longitude: 13.752246,
 			},
@@ -177,20 +177,20 @@ const vbbDepartures = [
 			operator: {
 				type: 'operator',
 				id: 's-bahn-berlin-gmbh',
-				name: 'S-Bahn Berlin GmbH'
+				name: 'S-Bahn Berlin GmbH',
 			},
 		},
 		remarks: [
-			{ type: 'hint', code: 'OPERATOR', text: 'DBS' },
-			{ type: 'hint', code: 'bf', text: 'barrierefrei' },
-			{ type: 'hint', code: 'FB', text: 'Fahrradmitnahme möglich' },
+			{type: 'hint', code: 'OPERATOR', text: 'DBS'},
+			{type: 'hint', code: 'bf', text: 'barrierefrei'},
+			{type: 'hint', code: 'FB', text: 'Fahrradmitnahme möglich'},
 			{
 				id: '118634',
 				type: 'warning',
 				summary: 'Gemeinsam sicher unterwegs - mit Abstand und medizinischer Maske (in Berlin: FFP2)!',
-				text: 'An Haltestellen und Bahnhöfen sowie in Fahrzeugen. Maskenmuffel riskieren mindestens 50 Euro.\n' +
-					'<a href="https://www.vbb.de/corona" target="_blank" rel="noopener">Weitere Informationen</a>',
-				icon: { type: 'HIM0', title: null },
+				text: 'An Haltestellen und Bahnhöfen sowie in Fahrzeugen. Maskenmuffel riskieren mindestens 50 Euro.\n'
+				+ '<a href="https://www.vbb.de/corona" target="_blank" rel="noopener">Weitere Informationen</a>',
+				icon: {type: 'HIM0', title: null},
 				priority: 100,
 				products: {
 					suburban: true,
@@ -199,14 +199,14 @@ const vbbDepartures = [
 					bus: true,
 					ferry: true,
 					express: true,
-					regional: true
+					regional: true,
 				},
 				company: 'VBB',
-				categories: [ 0 ],
+				categories: [0],
 				validFrom: '2021-04-24T00:00:00+02:00',
 				validUntil: '2022-12-31T00:00:00+01:00',
-				modified: '2021-06-12T07:43:36+02:00'
-			}
+				modified: '2021-06-12T07:43:36+02:00',
+			},
 		],
 		currentTripPosition: {
 			type: 'location',
@@ -225,7 +225,7 @@ const vbbDepartures = [
 				type: 'location',
 				id: '900100004',
 				latitude: 52.515503,
-				longitude: 13.418027
+				longitude: 13.418027,
 			},
 			products: {
 				suburban: true,
@@ -234,7 +234,7 @@ const vbbDepartures = [
 				bus: true,
 				ferry: false,
 				express: false,
-				regional: false
+				regional: false,
 			},
 			lines: [
 				{
@@ -346,8 +346,8 @@ const vbbDepartures = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-				}
-			]
+				},
+			],
 		},
 		when: '2021-10-12T17:45:00+02:00',
 		plannedWhen: '2021-10-12T17:45:00+02:00',
@@ -370,19 +370,19 @@ const vbbDepartures = [
 			operator: {
 				type: 'operator',
 				id: 'berliner-verkehrsbetriebe',
-				name: 'Berliner Verkehrsbetriebe'
+				name: 'Berliner Verkehrsbetriebe',
 			},
 		},
 		remarks: [
-			{ type: 'hint', code: 'OPERATOR', text: 'BVG' },
-			{ type: 'hint', code: 'bf', text: 'barrierefrei' },
+			{type: 'hint', code: 'OPERATOR', text: 'BVG'},
+			{type: 'hint', code: 'bf', text: 'barrierefrei'},
 			{
 				id: '118634',
 				type: 'warning',
 				summary: 'Gemeinsam sicher unterwegs - mit Abstand und medizinischer Maske (in Berlin: FFP2)!',
-				text: 'An Haltestellen und Bahnhöfen sowie in Fahrzeugen. Maskenmuffel riskieren mindestens 50 Euro.\n' +
-					'<a href="https://www.vbb.de/corona" target="_blank" rel="noopener">Weitere Informationen</a>',
-				icon: { type: 'HIM0', title: null },
+				text: 'An Haltestellen und Bahnhöfen sowie in Fahrzeugen. Maskenmuffel riskieren mindestens 50 Euro.\n'
+				+ '<a href="https://www.vbb.de/corona" target="_blank" rel="noopener">Weitere Informationen</a>',
+				icon: {type: 'HIM0', title: null},
 				priority: 100,
 				products: {
 					suburban: true,
@@ -391,24 +391,24 @@ const vbbDepartures = [
 					bus: true,
 					ferry: true,
 					express: true,
-					regional: true
+					regional: true,
 				},
 				company: 'VBB',
-				categories: [ 0 ],
+				categories: [0],
 				validFrom: '2021-04-24T00:00:00+02:00',
 				validUntil: '2022-12-31T00:00:00+01:00',
-				modified: '2021-06-12T07:43:36+02:00'
-			}
+				modified: '2021-06-12T07:43:36+02:00',
+			},
 		],
 		origin: null,
 		destination: {
-			type: "stop",
-			id: "900005207",
+			type: 'stop',
+			id: '900005207',
 			stationDHID: 'de:11000:900005207',
-			name: "Philharmonie Süd (Berlin)",
+			name: 'Philharmonie Süd (Berlin)',
 			location: {
-				type: "location",
-				id: "900005207",
+				type: 'location',
+				id: '900005207',
 				latitude: 52.508761,
 				longitude: 13.370025,
 			},
@@ -439,7 +439,7 @@ const vbbDepartures = [
 				type: 'location',
 				id: '900100004',
 				latitude: 52.515503,
-				longitude: 13.418027
+				longitude: 13.418027,
 			},
 			products: {
 				suburban: true,
@@ -448,7 +448,7 @@ const vbbDepartures = [
 				bus: true,
 				ferry: false,
 				express: false,
-				regional: false
+				regional: false,
 			},
 			lines: [
 				{
@@ -560,8 +560,8 @@ const vbbDepartures = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-				}
-			]
+				},
+			],
 		},
 		when: '2021-10-12T17:45:00+02:00',
 		plannedWhen: '2021-10-12T17:45:00+02:00',
@@ -584,20 +584,20 @@ const vbbDepartures = [
 			operator: {
 				type: 'operator',
 				id: 'berliner-verkehrsbetriebe',
-				name: 'Berliner Verkehrsbetriebe'
+				name: 'Berliner Verkehrsbetriebe',
 			},
 		},
 		remarks: [
-			{ type: 'hint', code: 'OPERATOR', text: 'BVG' },
-			{ type: 'hint', code: 'bf', text: 'barrierefrei' },
-			{ type: 'hint', code: 'FB', text: 'Fahrradmitnahme möglich' },
+			{type: 'hint', code: 'OPERATOR', text: 'BVG'},
+			{type: 'hint', code: 'bf', text: 'barrierefrei'},
+			{type: 'hint', code: 'FB', text: 'Fahrradmitnahme möglich'},
 			{
 				id: '118634',
 				type: 'warning',
 				summary: 'Gemeinsam sicher unterwegs - mit Abstand und medizinischer Maske (in Berlin: FFP2)!',
-				text: 'An Haltestellen und Bahnhöfen sowie in Fahrzeugen. Maskenmuffel riskieren mindestens 50 Euro.\n' +
-					'<a href="https://www.vbb.de/corona" target="_blank" rel="noopener">Weitere Informationen</a>',
-				icon: { type: 'HIM0', title: null },
+				text: 'An Haltestellen und Bahnhöfen sowie in Fahrzeugen. Maskenmuffel riskieren mindestens 50 Euro.\n'
+				+ '<a href="https://www.vbb.de/corona" target="_blank" rel="noopener">Weitere Informationen</a>',
+				icon: {type: 'HIM0', title: null},
 				priority: 100,
 				products: {
 					suburban: true,
@@ -606,24 +606,24 @@ const vbbDepartures = [
 					bus: true,
 					ferry: true,
 					express: true,
-					regional: true
+					regional: true,
 				},
 				company: 'VBB',
-				categories: [ 0 ],
+				categories: [0],
 				validFrom: '2021-04-24T00:00:00+02:00',
 				validUntil: '2022-12-31T00:00:00+01:00',
-				modified: '2021-06-12T07:43:36+02:00'
-			}
+				modified: '2021-06-12T07:43:36+02:00',
+			},
 		],
 		origin: null,
 		destination: {
-			type: "stop",
-			id: "900079221",
+			type: 'stop',
+			id: '900079221',
 			stationDHID: 'de:11000:900079221',
-			name: "S+U Hermannstr. (Berlin)",
+			name: 'S+U Hermannstr. (Berlin)',
 			location: {
-				type: "location",
-				id: "900079221",
+				type: 'location',
+				id: '900079221',
 				latitude: 52.467339,
 				longitude: 13.43143,
 			},
@@ -654,7 +654,7 @@ const vbbDepartures = [
 				type: 'location',
 				id: '900100004',
 				latitude: 52.515503,
-				longitude: 13.418027
+				longitude: 13.418027,
 			},
 			products: {
 				suburban: true,
@@ -663,7 +663,7 @@ const vbbDepartures = [
 				bus: true,
 				ferry: false,
 				express: false,
-				regional: false
+				regional: false,
 			},
 			lines: [
 				{
@@ -775,8 +775,8 @@ const vbbDepartures = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-				}
-			]
+				},
+			],
 		},
 		when: '2021-10-12T17:45:00+02:00',
 		plannedWhen: '2021-10-12T17:45:00+02:00',
@@ -799,20 +799,20 @@ const vbbDepartures = [
 			operator: {
 				type: 'operator',
 				id: 'berliner-verkehrsbetriebe',
-				name: 'Berliner Verkehrsbetriebe'
+				name: 'Berliner Verkehrsbetriebe',
 			},
 		},
 		remarks: [
-			{ type: 'hint', code: 'OPERATOR', text: 'BVG' },
-			{ type: 'hint', code: 'bf', text: 'barrierefrei' },
-			{ type: 'hint', code: 'FB', text: 'Fahrradmitnahme möglich' },
+			{type: 'hint', code: 'OPERATOR', text: 'BVG'},
+			{type: 'hint', code: 'bf', text: 'barrierefrei'},
+			{type: 'hint', code: 'FB', text: 'Fahrradmitnahme möglich'},
 			{
 				id: '118634',
 				type: 'warning',
 				summary: 'Gemeinsam sicher unterwegs - mit Abstand und medizinischer Maske (in Berlin: FFP2)!',
-				text: 'An Haltestellen und Bahnhöfen sowie in Fahrzeugen. Maskenmuffel riskieren mindestens 50 Euro.\n' +
-					'<a href="https://www.vbb.de/corona" target="_blank" rel="noopener">Weitere Informationen</a>',
-				icon: { type: 'HIM0', title: null },
+				text: 'An Haltestellen und Bahnhöfen sowie in Fahrzeugen. Maskenmuffel riskieren mindestens 50 Euro.\n'
+				+ '<a href="https://www.vbb.de/corona" target="_blank" rel="noopener">Weitere Informationen</a>',
+				icon: {type: 'HIM0', title: null},
 				priority: 100,
 				products: {
 					suburban: true,
@@ -821,14 +821,14 @@ const vbbDepartures = [
 					bus: true,
 					ferry: true,
 					express: true,
-					regional: true
+					regional: true,
 				},
 				company: 'VBB',
-				categories: [ 0 ],
+				categories: [0],
 				validFrom: '2021-04-24T00:00:00+02:00',
 				validUntil: '2022-12-31T00:00:00+01:00',
-				modified: '2021-06-12T07:43:36+02:00'
-			}
+				modified: '2021-06-12T07:43:36+02:00',
+			},
 		],
 		origin: null,
 		destination: {
@@ -869,7 +869,7 @@ const vbbDepartures = [
 				type: 'location',
 				id: '900100004',
 				latitude: 52.515503,
-				longitude: 13.418027
+				longitude: 13.418027,
 			},
 			products: {
 				suburban: true,
@@ -878,7 +878,7 @@ const vbbDepartures = [
 				bus: true,
 				ferry: false,
 				express: false,
-				regional: false
+				regional: false,
 			},
 			lines: [
 				{
@@ -990,8 +990,8 @@ const vbbDepartures = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-				}
-			]
+				},
+			],
 		},
 		when: '2021-10-12T17:45:00+02:00',
 		plannedWhen: '2021-10-12T17:45:00+02:00',
@@ -1014,20 +1014,20 @@ const vbbDepartures = [
 			operator: {
 				type: 'operator',
 				id: 's-bahn-berlin-gmbh',
-				name: 'S-Bahn Berlin GmbH'
+				name: 'S-Bahn Berlin GmbH',
 			},
 		},
 		remarks: [
-			{ type: 'hint', code: 'OPERATOR', text: 'DBS' },
-			{ type: 'hint', code: 'bf', text: 'barrierefrei' },
-			{ type: 'hint', code: 'FB', text: 'Fahrradmitnahme möglich' },
+			{type: 'hint', code: 'OPERATOR', text: 'DBS'},
+			{type: 'hint', code: 'bf', text: 'barrierefrei'},
+			{type: 'hint', code: 'FB', text: 'Fahrradmitnahme möglich'},
 			{
 				id: '118634',
 				type: 'warning',
 				summary: 'Gemeinsam sicher unterwegs - mit Abstand und medizinischer Maske (in Berlin: FFP2)!',
-				text: 'An Haltestellen und Bahnhöfen sowie in Fahrzeugen. Maskenmuffel riskieren mindestens 50 Euro.\n' +
-					'<a href="https://www.vbb.de/corona" target="_blank" rel="noopener">Weitere Informationen</a>',
-				icon: { type: 'HIM0', title: null },
+				text: 'An Haltestellen und Bahnhöfen sowie in Fahrzeugen. Maskenmuffel riskieren mindestens 50 Euro.\n'
+				+ '<a href="https://www.vbb.de/corona" target="_blank" rel="noopener">Weitere Informationen</a>',
+				icon: {type: 'HIM0', title: null},
 				priority: 100,
 				products: {
 					suburban: true,
@@ -1036,14 +1036,14 @@ const vbbDepartures = [
 					bus: true,
 					ferry: true,
 					express: true,
-					regional: true
+					regional: true,
 				},
 				company: 'VBB',
-				categories: [ 0 ],
+				categories: [0],
 				validFrom: '2021-04-24T00:00:00+02:00',
 				validUntil: '2022-12-31T00:00:00+01:00',
-				modified: '2021-06-12T07:43:36+02:00'
-			}
+				modified: '2021-06-12T07:43:36+02:00',
+			},
 		],
 		origin: null,
 		destination: {
@@ -1084,7 +1084,7 @@ const vbbDepartures = [
 				type: 'location',
 				id: '900100004',
 				latitude: 52.515503,
-				longitude: 13.418027
+				longitude: 13.418027,
 			},
 			products: {
 				suburban: true,
@@ -1093,7 +1093,7 @@ const vbbDepartures = [
 				bus: true,
 				ferry: false,
 				express: false,
-				regional: false
+				regional: false,
 			},
 			lines: [
 				{
@@ -1205,8 +1205,8 @@ const vbbDepartures = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-				}
-			]
+				},
+			],
 		},
 		when: '2021-10-12T17:47:00+02:00',
 		plannedWhen: '2021-10-12T17:47:00+02:00',
@@ -1229,20 +1229,20 @@ const vbbDepartures = [
 			operator: {
 				type: 'operator',
 				id: 's-bahn-berlin-gmbh',
-				name: 'S-Bahn Berlin GmbH'
+				name: 'S-Bahn Berlin GmbH',
 			},
 		},
 		remarks: [
-			{ type: 'hint', code: 'OPERATOR', text: 'DBS' },
-			{ type: 'hint', code: 'bf', text: 'barrierefrei' },
-			{ type: 'hint', code: 'FB', text: 'Fahrradmitnahme möglich' },
+			{type: 'hint', code: 'OPERATOR', text: 'DBS'},
+			{type: 'hint', code: 'bf', text: 'barrierefrei'},
+			{type: 'hint', code: 'FB', text: 'Fahrradmitnahme möglich'},
 			{
 				id: '118634',
 				type: 'warning',
 				summary: 'Gemeinsam sicher unterwegs - mit Abstand und medizinischer Maske (in Berlin: FFP2)!',
-				text: 'An Haltestellen und Bahnhöfen sowie in Fahrzeugen. Maskenmuffel riskieren mindestens 50 Euro.\n' +
-					'<a href="https://www.vbb.de/corona" target="_blank" rel="noopener">Weitere Informationen</a>',
-				icon: { type: 'HIM0', title: null },
+				text: 'An Haltestellen und Bahnhöfen sowie in Fahrzeugen. Maskenmuffel riskieren mindestens 50 Euro.\n'
+				+ '<a href="https://www.vbb.de/corona" target="_blank" rel="noopener">Weitere Informationen</a>',
+				icon: {type: 'HIM0', title: null},
 				priority: 100,
 				products: {
 					suburban: true,
@@ -1251,14 +1251,14 @@ const vbbDepartures = [
 					bus: true,
 					ferry: true,
 					express: true,
-					regional: true
+					regional: true,
 				},
 				company: 'VBB',
-				categories: [ 0 ],
+				categories: [0],
 				validFrom: '2021-04-24T00:00:00+02:00',
 				validUntil: '2022-12-31T00:00:00+01:00',
-				modified: '2021-06-12T07:43:36+02:00'
-			}
+				modified: '2021-06-12T07:43:36+02:00',
+			},
 		],
 		origin: null,
 		destination: {
@@ -1299,7 +1299,7 @@ const vbbDepartures = [
 				type: 'location',
 				id: '900100004',
 				latitude: 52.515503,
-				longitude: 13.418027
+				longitude: 13.418027,
 			},
 			products: {
 				suburban: true,
@@ -1308,7 +1308,7 @@ const vbbDepartures = [
 				bus: true,
 				ferry: false,
 				express: false,
-				regional: false
+				regional: false,
 			},
 			lines: [
 				{
@@ -1420,8 +1420,8 @@ const vbbDepartures = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-				}
-			]
+				},
+			],
 		},
 		when: '2021-10-12T17:48:00+02:00',
 		plannedWhen: '2021-10-12T17:48:00+02:00',
@@ -1444,20 +1444,20 @@ const vbbDepartures = [
 			operator: {
 				type: 'operator',
 				id: 's-bahn-berlin-gmbh',
-				name: 'S-Bahn Berlin GmbH'
+				name: 'S-Bahn Berlin GmbH',
 			},
 		},
 		remarks: [
-			{ type: 'hint', code: 'OPERATOR', text: 'DBS' },
-			{ type: 'hint', code: 'bf', text: 'barrierefrei' },
-			{ type: 'hint', code: 'FB', text: 'Fahrradmitnahme möglich' },
+			{type: 'hint', code: 'OPERATOR', text: 'DBS'},
+			{type: 'hint', code: 'bf', text: 'barrierefrei'},
+			{type: 'hint', code: 'FB', text: 'Fahrradmitnahme möglich'},
 			{
 				id: '118634',
 				type: 'warning',
 				summary: 'Gemeinsam sicher unterwegs - mit Abstand und medizinischer Maske (in Berlin: FFP2)!',
-				text: 'An Haltestellen und Bahnhöfen sowie in Fahrzeugen. Maskenmuffel riskieren mindestens 50 Euro.\n' +
-					'<a href="https://www.vbb.de/corona" target="_blank" rel="noopener">Weitere Informationen</a>',
-				icon: { type: 'HIM0', title: null },
+				text: 'An Haltestellen und Bahnhöfen sowie in Fahrzeugen. Maskenmuffel riskieren mindestens 50 Euro.\n'
+				+ '<a href="https://www.vbb.de/corona" target="_blank" rel="noopener">Weitere Informationen</a>',
+				icon: {type: 'HIM0', title: null},
 				priority: 100,
 				products: {
 					suburban: true,
@@ -1466,14 +1466,14 @@ const vbbDepartures = [
 					bus: true,
 					ferry: true,
 					express: true,
-					regional: true
+					regional: true,
 				},
 				company: 'VBB',
-				categories: [ 0 ],
+				categories: [0],
 				validFrom: '2021-04-24T00:00:00+02:00',
 				validUntil: '2022-12-31T00:00:00+01:00',
-				modified: '2021-06-12T07:43:36+02:00'
-			}
+				modified: '2021-06-12T07:43:36+02:00',
+			},
 		],
 		origin: null,
 		destination: {
@@ -1514,7 +1514,7 @@ const vbbDepartures = [
 				type: 'location',
 				id: '900100004',
 				latitude: 52.515503,
-				longitude: 13.418027
+				longitude: 13.418027,
 			},
 			products: {
 				suburban: true,
@@ -1523,7 +1523,7 @@ const vbbDepartures = [
 				bus: true,
 				ferry: false,
 				express: false,
-				regional: false
+				regional: false,
 			},
 			lines: [
 				{
@@ -1635,8 +1635,8 @@ const vbbDepartures = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-				}
-			]
+				},
+			],
 		},
 		when: '2021-10-12T17:49:00+02:00',
 		plannedWhen: '2021-10-12T17:49:00+02:00',
@@ -1659,20 +1659,20 @@ const vbbDepartures = [
 			operator: {
 				type: 'operator',
 				id: 's-bahn-berlin-gmbh',
-				name: 'S-Bahn Berlin GmbH'
+				name: 'S-Bahn Berlin GmbH',
 			},
 		},
 		remarks: [
-			{ type: 'hint', code: 'OPERATOR', text: 'DBS' },
-			{ type: 'hint', code: 'bf', text: 'barrierefrei' },
-			{ type: 'hint', code: 'FB', text: 'Fahrradmitnahme möglich' },
+			{type: 'hint', code: 'OPERATOR', text: 'DBS'},
+			{type: 'hint', code: 'bf', text: 'barrierefrei'},
+			{type: 'hint', code: 'FB', text: 'Fahrradmitnahme möglich'},
 			{
 				id: '118634',
 				type: 'warning',
 				summary: 'Gemeinsam sicher unterwegs - mit Abstand und medizinischer Maske (in Berlin: FFP2)!',
-				text: 'An Haltestellen und Bahnhöfen sowie in Fahrzeugen. Maskenmuffel riskieren mindestens 50 Euro.\n' +
-					'<a href="https://www.vbb.de/corona" target="_blank" rel="noopener">Weitere Informationen</a>',
-				icon: { type: 'HIM0', title: null },
+				text: 'An Haltestellen und Bahnhöfen sowie in Fahrzeugen. Maskenmuffel riskieren mindestens 50 Euro.\n'
+				+ '<a href="https://www.vbb.de/corona" target="_blank" rel="noopener">Weitere Informationen</a>',
+				icon: {type: 'HIM0', title: null},
 				priority: 100,
 				products: {
 					suburban: true,
@@ -1681,14 +1681,14 @@ const vbbDepartures = [
 					bus: true,
 					ferry: true,
 					express: true,
-					regional: true
+					regional: true,
 				},
 				company: 'VBB',
-				categories: [ 0 ],
+				categories: [0],
 				validFrom: '2021-04-24T00:00:00+02:00',
 				validUntil: '2022-12-31T00:00:00+01:00',
-				modified: '2021-06-12T07:43:36+02:00'
-			}
+				modified: '2021-06-12T07:43:36+02:00',
+			},
 		],
 		origin: null,
 		destination: {
@@ -1729,7 +1729,7 @@ const vbbDepartures = [
 				type: 'location',
 				id: '900100004',
 				latitude: 52.515503,
-				longitude: 13.418027
+				longitude: 13.418027,
 			},
 			products: {
 				suburban: true,
@@ -1738,7 +1738,7 @@ const vbbDepartures = [
 				bus: true,
 				ferry: false,
 				express: false,
-				regional: false
+				regional: false,
 			},
 			lines: [
 				{
@@ -1850,8 +1850,8 @@ const vbbDepartures = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-				}
-			]
+				},
+			],
 		},
 		when: '2021-10-12T17:50:00+02:00',
 		plannedWhen: '2021-10-12T17:50:00+02:00',
@@ -1874,20 +1874,20 @@ const vbbDepartures = [
 			operator: {
 				type: 'operator',
 				id: 'berliner-verkehrsbetriebe',
-				name: 'Berliner Verkehrsbetriebe'
+				name: 'Berliner Verkehrsbetriebe',
 			},
 		},
 		remarks: [
-			{ type: 'hint', code: 'OPERATOR', text: 'BVG' },
-			{ type: 'hint', code: 'bf', text: 'barrierefrei' },
-			{ type: 'hint', code: 'FB', text: 'Fahrradmitnahme möglich' },
+			{type: 'hint', code: 'OPERATOR', text: 'BVG'},
+			{type: 'hint', code: 'bf', text: 'barrierefrei'},
+			{type: 'hint', code: 'FB', text: 'Fahrradmitnahme möglich'},
 			{
 				id: '118634',
 				type: 'warning',
 				summary: 'Gemeinsam sicher unterwegs - mit Abstand und medizinischer Maske (in Berlin: FFP2)!',
-				text: 'An Haltestellen und Bahnhöfen sowie in Fahrzeugen. Maskenmuffel riskieren mindestens 50 Euro.\n' +
-					'<a href="https://www.vbb.de/corona" target="_blank" rel="noopener">Weitere Informationen</a>',
-				icon: { type: 'HIM0', title: null },
+				text: 'An Haltestellen und Bahnhöfen sowie in Fahrzeugen. Maskenmuffel riskieren mindestens 50 Euro.\n'
+				+ '<a href="https://www.vbb.de/corona" target="_blank" rel="noopener">Weitere Informationen</a>',
+				icon: {type: 'HIM0', title: null},
 				priority: 100,
 				products: {
 					suburban: true,
@@ -1896,14 +1896,14 @@ const vbbDepartures = [
 					bus: true,
 					ferry: true,
 					express: true,
-					regional: true
+					regional: true,
 				},
 				company: 'VBB',
-				categories: [ 0 ],
+				categories: [0],
 				validFrom: '2021-04-24T00:00:00+02:00',
 				validUntil: '2022-12-31T00:00:00+01:00',
-				modified: '2021-06-12T07:43:36+02:00'
-			}
+				modified: '2021-06-12T07:43:36+02:00',
+			},
 		],
 		origin: null,
 		destination: {
@@ -1944,7 +1944,7 @@ const vbbDepartures = [
 				type: 'location',
 				id: '900100004',
 				latitude: 52.515503,
-				longitude: 13.418027
+				longitude: 13.418027,
 			},
 			products: {
 				suburban: true,
@@ -1953,7 +1953,7 @@ const vbbDepartures = [
 				bus: true,
 				ferry: false,
 				express: false,
-				regional: false
+				regional: false,
 			},
 			lines: [
 				{
@@ -2065,8 +2065,8 @@ const vbbDepartures = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-				}
-			]
+				},
+			],
 		},
 		when: '2021-10-12T17:50:00+02:00',
 		plannedWhen: '2021-10-12T17:50:00+02:00',
@@ -2089,20 +2089,20 @@ const vbbDepartures = [
 			operator: {
 				type: 'operator',
 				id: 'berliner-verkehrsbetriebe',
-				name: 'Berliner Verkehrsbetriebe'
+				name: 'Berliner Verkehrsbetriebe',
 			},
 		},
 		remarks: [
-			{ type: 'hint', code: 'OPERATOR', text: 'BVG' },
-			{ type: 'hint', code: 'bf', text: 'barrierefrei' },
-			{ type: 'hint', code: 'FB', text: 'Fahrradmitnahme möglich' },
+			{type: 'hint', code: 'OPERATOR', text: 'BVG'},
+			{type: 'hint', code: 'bf', text: 'barrierefrei'},
+			{type: 'hint', code: 'FB', text: 'Fahrradmitnahme möglich'},
 			{
 				id: '118634',
 				type: 'warning',
 				summary: 'Gemeinsam sicher unterwegs - mit Abstand und medizinischer Maske (in Berlin: FFP2)!',
-				text: 'An Haltestellen und Bahnhöfen sowie in Fahrzeugen. Maskenmuffel riskieren mindestens 50 Euro.\n' +
-					'<a href="https://www.vbb.de/corona" target="_blank" rel="noopener">Weitere Informationen</a>',
-				icon: { type: 'HIM0', title: null },
+				text: 'An Haltestellen und Bahnhöfen sowie in Fahrzeugen. Maskenmuffel riskieren mindestens 50 Euro.\n'
+				+ '<a href="https://www.vbb.de/corona" target="_blank" rel="noopener">Weitere Informationen</a>',
+				icon: {type: 'HIM0', title: null},
 				priority: 100,
 				products: {
 					suburban: true,
@@ -2111,14 +2111,14 @@ const vbbDepartures = [
 					bus: true,
 					ferry: true,
 					express: true,
-					regional: true
+					regional: true,
 				},
 				company: 'VBB',
-				categories: [ 0 ],
+				categories: [0],
 				validFrom: '2021-04-24T00:00:00+02:00',
 				validUntil: '2022-12-31T00:00:00+01:00',
-				modified: '2021-06-12T07:43:36+02:00'
-			}
+				modified: '2021-06-12T07:43:36+02:00',
+			},
 		],
 		origin: null,
 		destination: {
@@ -2159,7 +2159,7 @@ const vbbDepartures = [
 				type: 'location',
 				id: '900100004',
 				latitude: 52.515503,
-				longitude: 13.418027
+				longitude: 13.418027,
 			},
 			products: {
 				suburban: true,
@@ -2168,7 +2168,7 @@ const vbbDepartures = [
 				bus: true,
 				ferry: false,
 				express: false,
-				regional: false
+				regional: false,
 			},
 			lines: [
 				{
@@ -2280,8 +2280,8 @@ const vbbDepartures = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-				}
-			]
+				},
+			],
 		},
 		when: '2021-10-12T17:51:00+02:00',
 		plannedWhen: '2021-10-12T17:51:00+02:00',
@@ -2304,19 +2304,19 @@ const vbbDepartures = [
 			operator: {
 				type: 'operator',
 				id: 'berliner-verkehrsbetriebe',
-				name: 'Berliner Verkehrsbetriebe'
+				name: 'Berliner Verkehrsbetriebe',
 			},
 		},
 		remarks: [
-			{ type: 'hint', code: 'OPERATOR', text: 'BVG' },
-			{ type: 'hint', code: 'bf', text: 'barrierefrei' },
+			{type: 'hint', code: 'OPERATOR', text: 'BVG'},
+			{type: 'hint', code: 'bf', text: 'barrierefrei'},
 			{
 				id: '118634',
 				type: 'warning',
 				summary: 'Gemeinsam sicher unterwegs - mit Abstand und medizinischer Maske (in Berlin: FFP2)!',
-				text: 'An Haltestellen und Bahnhöfen sowie in Fahrzeugen. Maskenmuffel riskieren mindestens 50 Euro.\n' +
-					'<a href="https://www.vbb.de/corona" target="_blank" rel="noopener">Weitere Informationen</a>',
-				icon: { type: 'HIM0', title: null },
+				text: 'An Haltestellen und Bahnhöfen sowie in Fahrzeugen. Maskenmuffel riskieren mindestens 50 Euro.\n'
+				+ '<a href="https://www.vbb.de/corona" target="_blank" rel="noopener">Weitere Informationen</a>',
+				icon: {type: 'HIM0', title: null},
 				priority: 100,
 				products: {
 					suburban: true,
@@ -2325,14 +2325,14 @@ const vbbDepartures = [
 					bus: true,
 					ferry: true,
 					express: true,
-					regional: true
+					regional: true,
 				},
 				company: 'VBB',
-				categories: [ 0 ],
+				categories: [0],
 				validFrom: '2021-04-24T00:00:00+02:00',
 				validUntil: '2022-12-31T00:00:00+01:00',
-				modified: '2021-06-12T07:43:36+02:00'
-			}
+				modified: '2021-06-12T07:43:36+02:00',
+			},
 		],
 		origin: null,
 		destination: {
@@ -2373,7 +2373,7 @@ const vbbDepartures = [
 				type: 'location',
 				id: '900100004',
 				latitude: 52.515503,
-				longitude: 13.418027
+				longitude: 13.418027,
 			},
 			products: {
 				suburban: true,
@@ -2382,7 +2382,7 @@ const vbbDepartures = [
 				bus: true,
 				ferry: false,
 				express: false,
-				regional: false
+				regional: false,
 			},
 			lines: [
 				{
@@ -2494,8 +2494,8 @@ const vbbDepartures = [
 					productName: 'Bus',
 					mode: 'bus',
 					product: 'bus',
-				}
-			]
+				},
+			],
 		},
 		when: '2021-10-12T17:51:00+02:00',
 		plannedWhen: '2021-10-12T17:51:00+02:00',
@@ -2518,20 +2518,20 @@ const vbbDepartures = [
 			operator: {
 				type: 'operator',
 				id: 's-bahn-berlin-gmbh',
-				name: 'S-Bahn Berlin GmbH'
+				name: 'S-Bahn Berlin GmbH',
 			},
 		},
 		remarks: [
-			{ type: 'hint', code: 'OPERATOR', text: 'DBS' },
-			{ type: 'hint', code: 'bf', text: 'barrierefrei' },
-			{ type: 'hint', code: 'FB', text: 'Fahrradmitnahme möglich' },
+			{type: 'hint', code: 'OPERATOR', text: 'DBS'},
+			{type: 'hint', code: 'bf', text: 'barrierefrei'},
+			{type: 'hint', code: 'FB', text: 'Fahrradmitnahme möglich'},
 			{
 				id: '118634',
 				type: 'warning',
 				summary: 'Gemeinsam sicher unterwegs - mit Abstand und medizinischer Maske (in Berlin: FFP2)!',
-				text: 'An Haltestellen und Bahnhöfen sowie in Fahrzeugen. Maskenmuffel riskieren mindestens 50 Euro.\n' +
-					'<a href="https://www.vbb.de/corona" target="_blank" rel="noopener">Weitere Informationen</a>',
-				icon: { type: 'HIM0', title: null },
+				text: 'An Haltestellen und Bahnhöfen sowie in Fahrzeugen. Maskenmuffel riskieren mindestens 50 Euro.\n'
+				+ '<a href="https://www.vbb.de/corona" target="_blank" rel="noopener">Weitere Informationen</a>',
+				icon: {type: 'HIM0', title: null},
 				priority: 100,
 				products: {
 					suburban: true,
@@ -2540,14 +2540,14 @@ const vbbDepartures = [
 					bus: true,
 					ferry: true,
 					express: true,
-					regional: true
+					regional: true,
 				},
 				company: 'VBB',
-				categories: [ 0 ],
+				categories: [0],
 				validFrom: '2021-04-24T00:00:00+02:00',
 				validUntil: '2022-12-31T00:00:00+01:00',
-				modified: '2021-06-12T07:43:36+02:00'
-			}
+				modified: '2021-06-12T07:43:36+02:00',
+			},
 		],
 		origin: null,
 		destination: {
@@ -2576,9 +2576,9 @@ const vbbDepartures = [
 			latitude: 52.498604,
 			longitude: 13.467252,
 		},
-	}
-]
+	},
+];
 
 export {
 	vbbDepartures,
-}
+};

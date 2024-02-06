@@ -6,7 +6,7 @@ const büchen = {
 		type: 'location',
 		id: '8000058',
 		latitude: 53.475291,
-		longitude: 10.622939
+		longitude: 10.622939,
 	},
 	products: {
 		nationalExpress: true,
@@ -20,7 +20,7 @@ const büchen = {
 		tram: false,
 		taxi: true,
 	},
-}
+};
 
 const berlinHbfTief = {
 	type: 'stop',
@@ -30,7 +30,7 @@ const berlinHbfTief = {
 		type: 'location',
 		id: '8098160',
 		latitude: 52.52585,
-		longitude: 13.368892
+		longitude: 13.368892,
 	},
 	products: {
 		nationalExpress: true,
@@ -52,7 +52,7 @@ const berlinHbfTief = {
 			type: 'location',
 			id: '8011160',
 			latitude: 52.524924,
-			longitude: 13.369629
+			longitude: 13.369629,
 		},
 		products: {
 			nationalExpress: true,
@@ -67,7 +67,7 @@ const berlinHbfTief = {
 			taxi: false,
 		},
 	},
-}
+};
 
 const overnightJourney = {
 	type: 'journey',
@@ -83,7 +83,7 @@ const overnightJourney = {
 					type: 'location',
 					id: '8000237',
 					latitude: 53.86767,
-					longitude: 10.669737
+					longitude: 10.669737,
 				},
 				products: {
 					nationalExpress: true,
@@ -160,7 +160,7 @@ const overnightJourney = {
 					code: 'SM',
 					text: 'Info www.bahn.de/sh-barrierefrei',
 				},
-			]
+			],
 		},
 		{
 			origin: büchen,
@@ -222,7 +222,7 @@ const overnightJourney = {
 					type: 'location',
 					id: '8000261',
 					latitude: 48.140364,
-					longitude: 11.558744
+					longitude: 11.558744,
 				},
 				products: {
 					nationalExpress: true,
@@ -306,8 +306,8 @@ const overnightJourney = {
 
 	remarks: [],
 	price: {amount: 108.9, currency: 'EUR', hint: null},
-}
+};
 
 export {
 	overnightJourney,
-}
+};

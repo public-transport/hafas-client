@@ -6,8 +6,8 @@ const routingModes = {
 	REALTIME: 'REALTIME',
 	SERVER_DEFAULT: 'SERVER_DEFAULT',
 	HYBRID: 'HYBRID',
-}
+};
 
 export {
 	routingModes,
-}
+};

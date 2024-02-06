@@ -9,7 +9,7 @@ const vbbJourneys = [{
 				type: 'location',
 				id: '900042101',
 				latitude: 52.496581,
-				longitude: 13.330616
+				longitude: 13.330616,
 			},
 			products: {
 				suburban: false,
@@ -29,7 +29,7 @@ const vbbJourneys = [{
 				type: 'location',
 				id: '900001201',
 				latitude: 52.536179,
-				longitude: 13.343839
+				longitude: 13.343839,
 			},
 			products: {
 				suburban: true,
@@ -64,7 +64,7 @@ const vbbJourneys = [{
 			operator: {
 				type: 'operator',
 				id: 'berliner-verkehrsbetriebe',
-				name: 'Berliner Verkehrsbetriebe'
+				name: 'Berliner Verkehrsbetriebe',
 			},
 		},
 		direction: 'U Osloer Str. (Berlin)',
@@ -124,7 +124,7 @@ const vbbJourneys = [{
 				type: 'location',
 				id: '900001201',
 				latitude: 52.536179,
-				longitude: 13.343839
+				longitude: 13.343839,
 			},
 			products: {
 				suburban: true,
@@ -144,7 +144,7 @@ const vbbJourneys = [{
 				type: 'location',
 				id: '900007102',
 				latitude: 52.548638,
-				longitude: 13.388372
+				longitude: 13.388372,
 			},
 			products: {
 				suburban: true,
@@ -179,7 +179,7 @@ const vbbJourneys = [{
 			operator: {
 				type: 'operator',
 				id: 's-bahn-berlin-gmbh',
-				name: 'S-Bahn Berlin GmbH'
+				name: 'S-Bahn Berlin GmbH',
 			},
 		},
 		direction: 'Ringbahn S 41',
@@ -229,7 +229,7 @@ const vbbJourneys = [{
 				validUntil: '2022-12-31T00:00:00+01:00',
 				modified: '2020-11-04T11:22:50+01:00',
 			},
-        ],
+		],
 	}, {
 		origin: {
 			type: 'stop',
@@ -239,7 +239,7 @@ const vbbJourneys = [{
 				type: 'location',
 				id: '900007102',
 				latitude: 52.548638,
-				longitude: 13.388372
+				longitude: 13.388372,
 			},
 			products: {
 				suburban: true,
@@ -259,7 +259,7 @@ const vbbJourneys = [{
 				type: 'location',
 				id: '900350127',
 				latitude: 52.833668,
-				longitude: 13.797031
+				longitude: 13.797031,
 			},
 			products: {
 				suburban: false,
@@ -314,7 +314,7 @@ const vbbJourneys = [{
 				operator: {
 					type: 'operator',
 					id: 'db-regio-ag',
-					name: 'DB Regio AG'
+					name: 'DB Regio AG',
 				},
 			},
 			direction: 'Ostseebad Binz, Bahnhof',
@@ -336,7 +336,7 @@ const vbbJourneys = [{
 				operator: {
 					type: 'operator',
 					id: 'db-regio-ag',
-					name: 'DB Regio AG'
+					name: 'DB Regio AG',
 				},
 			},
 			direction: 'Stralsund, Hauptbahnhof',
@@ -344,7 +344,7 @@ const vbbJourneys = [{
 			plannedWhen: '2020-12-07T18:22:00+01:00',
 			delay: null,
 		}],
-        remarks: [
+		remarks: [
 			{
 				type: 'hint',
 				code: 'OPERATOR',
@@ -405,19 +405,19 @@ const vbbJourneys = [{
 				validUntil: '2022-12-31T00:00:00+01:00',
 				modified: '2020-11-04T11:22:50+01:00',
 			},
-        ],
+		],
 	}],
 	refreshToken: '¶HKI¶T$A=1@O=U Spichernstr. (Berlin)@L=900042101@a=128@$A=1@O=S+U Westhafen (Berlin)@L=900001201@a=128@$202012071408$202012071416$      U9$$1$$$$§T$A=1@O=S+U Westhafen (Berlin)@L=900001201@a=128@$A=1@O=S+U Gesundbrunnen Bhf (Berlin)@L=900007102@a=128@$202012071420$202012071425$     S41$$1$$$$§T$A=1@O=S+U Gesundbrunnen Bhf (Berlin)@L=900007102@a=128@$A=1@O=Eberswalde, Hauptbahnhof@L=900350127@a=128@$202012071352$202012071417$ICE 1710$$3$$$$',
 	cycle: {min: 7200},
 	remarks: [{
 		type: 'status',
 		code: 'text.realtime.connection.alternative.summary',
-		text: 'Journey suggestion according to current traffic.'
+		text: 'Journey suggestion according to current traffic.',
 	}, {
 		type: 'status',
 		code: 'text.realtime.connection.alternative.detail',
-		text: 'Journey suggestion according to current traffic situation. Please note the current real-time information.'
-	}]
+		text: 'Journey suggestion according to current traffic situation. Please note the current real-time information.',
+	}],
 },
 {
 	type: 'journey',
@@ -430,7 +430,7 @@ const vbbJourneys = [{
 				type: 'location',
 				id: '900042101',
 				latitude: 52.496581,
-				longitude: 13.330616
+				longitude: 13.330616,
 			},
 			products: {
 				suburban: false,
@@ -450,7 +450,7 @@ const vbbJourneys = [{
 				type: 'location',
 				id: '900001201',
 				latitude: 52.536179,
-				longitude: 13.343839
+				longitude: 13.343839,
 			},
 			products: {
 				suburban: true,
@@ -485,7 +485,7 @@ const vbbJourneys = [{
 			operator: {
 				type: 'operator',
 				id: 'berliner-verkehrsbetriebe',
-				name: 'Berliner Verkehrsbetriebe'
+				name: 'Berliner Verkehrsbetriebe',
 			},
 		},
 		direction: 'U Osloer Str. (Berlin)',
@@ -494,7 +494,7 @@ const vbbJourneys = [{
 		departurePlatform: null,
 		plannedDeparturePlatform: null,
 		cycle: {min: 240, max: 300, nr: 26},
-        remarks: [
+		remarks: [
 			{
 				type: 'hint',
 				code: 'OPERATOR',
@@ -535,7 +535,7 @@ const vbbJourneys = [{
 				validUntil: '2022-12-31T00:00:00+01:00',
 				modified: '2020-11-04T11:22:50+01:00',
 			},
-        ],
+		],
 	}, {
 		origin: {
 			type: 'stop',
@@ -545,7 +545,7 @@ const vbbJourneys = [{
 				type: 'location',
 				id: '900001201',
 				latitude: 52.536179,
-				longitude: 13.343839
+				longitude: 13.343839,
 			},
 			products: {
 				suburban: true,
@@ -565,7 +565,7 @@ const vbbJourneys = [{
 				type: 'location',
 				id: '900007102',
 				latitude: 52.548638,
-				longitude: 13.388372
+				longitude: 13.388372,
 			},
 			products: {
 				suburban: true,
@@ -600,7 +600,7 @@ const vbbJourneys = [{
 			operator: {
 				type: 'operator',
 				id: 's-bahn-berlin-gmbh',
-				name: 'S-Bahn Berlin GmbH'
+				name: 'S-Bahn Berlin GmbH',
 			},
 		},
 		direction: 'Ringbahn S 41',
@@ -666,7 +666,7 @@ const vbbJourneys = [{
 				type: 'location',
 				id: '900007102',
 				latitude: 52.548638,
-				longitude: 13.388372
+				longitude: 13.388372,
 			},
 			products: {
 				suburban: true,
@@ -686,7 +686,7 @@ const vbbJourneys = [{
 				type: 'location',
 				id: '900350127',
 				latitude: 52.833668,
-				longitude: 13.797031
+				longitude: 13.797031,
 			},
 			products: {
 				suburban: false,
@@ -741,7 +741,7 @@ const vbbJourneys = [{
 				operator: {
 					type: 'operator',
 					id: 'db-regio-ag',
-					name: 'DB Regio AG'
+					name: 'DB Regio AG',
 				},
 			},
 			direction: 'Tantow, Bahnhof',
@@ -763,7 +763,7 @@ const vbbJourneys = [{
 				operator: {
 					type: 'operator',
 					id: 'db-regio-ag',
-					name: 'DB Regio AG'
+					name: 'DB Regio AG',
 				},
 			},
 			direction: 'Schwedt, Bahnhof',
@@ -785,7 +785,7 @@ const vbbJourneys = [{
 				operator: {
 					type: 'operator',
 					id: 'db-regio-ag',
-					name: 'DB Regio AG'
+					name: 'DB Regio AG',
 				},
 			},
 			direction: 'Eberswalde, Hauptbahnhof',
@@ -807,7 +807,7 @@ const vbbJourneys = [{
 				operator: {
 					type: 'operator',
 					id: 'db-regio-ag',
-					name: 'DB Regio AG'
+					name: 'DB Regio AG',
 				},
 			},
 			direction: 'Stralsund, Hauptbahnhof',
@@ -829,7 +829,7 @@ const vbbJourneys = [{
 				operator: {
 					type: 'operator',
 					id: 'db-regio-ag',
-					name: 'DB Regio AG'
+					name: 'DB Regio AG',
 				},
 			},
 			direction: 'Szczecin, Glowny',
@@ -900,10 +900,10 @@ const vbbJourneys = [{
 	remarks: [{
 		type: 'status',
 		code: 'text.realtime.connection.cancelled',
-		text: 'A section of this itinerary is cancelled or unusable.'
+		text: 'A section of this itinerary is cancelled or unusable.',
 	}],
-}]
+}];
 
 export {
 	vbbJourneys,
-}
+};

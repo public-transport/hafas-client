@@ -1,9 +1,9 @@
 // todo: use import assertions once they're supported by Node.js & ESLint
 // https://github.com/tc39/proposal-import-assertions
-import {createRequire} from 'module'
-const require = createRequire(import.meta.url)
+import {createRequire} from 'module';
+const require = createRequire(import.meta.url);
 
-const baseProfile = require('./base.json')
+const baseProfile = require('./base.json');
 
 const products = [{
 	id: 'regional-train',
@@ -82,7 +82,7 @@ const products = [{
 	name: 'Fähre',
 	short: 'Fähre',
 	default: true,
-}]
+}];
 
 const profile = {
 	...baseProfile,
@@ -98,8 +98,8 @@ const profile = {
 	reachableFrom: true,
 	remarks: true,
 	remarksGetPolyline: false,
-}
+};
 
 export {
 	profile,
-}
+};

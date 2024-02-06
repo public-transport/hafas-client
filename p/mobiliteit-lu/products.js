@@ -5,7 +5,7 @@ const products = [
 		bitmasks: [1],
 		name: 'local train (TGV/ICE)',
 		short: 'TGV/ICE',
-		default: true
+		default: true,
 	},
 	{
 		id: 'national-train',
@@ -13,7 +13,7 @@ const products = [
 		bitmasks: [2, 4],
 		name: 'national train (IC/RE/IRE)',
 		short: 'IC/RE/IRE',
-		default: true
+		default: true,
 	},
 	{
 		id: 'local-train',
@@ -21,7 +21,7 @@ const products = [
 		bitmasks: [8],
 		name: 'local train (RB/TER)',
 		short: 'RB/TER',
-		default: true
+		default: true,
 	},
 	{
 		id: 'bus',
@@ -29,7 +29,7 @@ const products = [
 		bitmasks: [32],
 		name: 'Bus',
 		short: 'Bus',
-		default: true
+		default: true,
 	},
 	{
 		id: 'tram',
@@ -37,10 +37,10 @@ const products = [
 		bitmasks: [256],
 		name: 'Tram',
 		short: 'Tram',
-		default: true
-	}
-]
+		default: true,
+	},
+];
 
 export {
 	products,
-}
+};

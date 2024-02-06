@@ -1,15 +1,15 @@
-import tap from 'tap'
+import tap from 'tap';
 
-import {createWhen} from './lib/util.js'
-import {createClient} from '../../index.js'
-import {profile as rmvProfile} from '../../p/rmv/index.js'
-import {createValidateFptfWith as createValidate} from './lib/validate-fptf-with.js'
-import {testJourneysStationToStation} from './lib/journeys-station-to-station.js'
-import {testArrivals} from './lib/arrivals.js'
-import {testReachableFrom} from './lib/reachable-from.js'
+import {createWhen} from './lib/util.js';
+import {createClient} from '../../index.js';
+import {profile as rmvProfile} from '../../p/rmv/index.js';
+import {createValidateFptfWith as createValidate} from './lib/validate-fptf-with.js';
+import {testJourneysStationToStation} from './lib/journeys-station-to-station.js';
+import {testArrivals} from './lib/arrivals.js';
+import {testReachableFrom} from './lib/reachable-from.js';
 
-const T_MOCK = 1668495600 * 1000 // 2022-11-15T08:00:00+01:00
-const when = createWhen(rmvProfile.timezone, rmvProfile.locale, T_MOCK)
+const T_MOCK = 1668495600 * 1000; // 2022-11-15T08:00:00+01:00
+const when = createWhen(rmvProfile.timezone, rmvProfile.locale, T_MOCK);
 
 const cfg = {
 	when,
@@ -19,63 +19,63 @@ const cfg = {
 	maxLatitude: 54,
 	minLongitude: 6,
 	maxLongitude: 11,
-}
+};
 
-const validate = createValidate(cfg)
+const validate = createValidate(cfg);
 
-const client = createClient(rmvProfile, 'public-transport/hafas-client:test')
+const client = createClient(rmvProfile, 'public-transport/hafas-client:test');
 
-const frankfurtOstendstr = '3000525'
-const wiesbadenHbf = '3006907'
+const frankfurtOstendstr = '3000525';
+const wiesbadenHbf = '3006907';
 
 tap.test('journeys – Frankfurt Ostendstr. to Wiesbaden Hbf', async (t) => {
 	const res = await client.journeys(frankfurtOstendstr, wiesbadenHbf, {
 		results: 4,
 		departure: when,
-		stopovers: true
-	})
+		stopovers: true,
+	});
 
 	await testJourneysStationToStation({
 		test: t,
 		res,
 		validate,
 		fromId: frankfurtOstendstr,
-		toId: wiesbadenHbf
-	})
-	t.end()
-})
+		toId: wiesbadenHbf,
+	});
+	t.end();
+});
 
 // todo: via works – with detour
 // todo: without detour
 
 tap.test('trip details', async (t) => {
 	const res = await client.journeys(frankfurtOstendstr, wiesbadenHbf, {
-		results: 1, departure: when
-	})
+		results: 1, departure: when,
+	});
 
-	const p = res.journeys[0].legs.find(l => !l.walking)
-	t.ok(p.tripId, 'precondition failed')
-	t.ok(p.line.name, 'precondition failed')
+	const p = res.journeys[0].legs.find(l => !l.walking);
+	t.ok(p.tripId, 'precondition failed');
+	t.ok(p.line.name, 'precondition failed');
 
-	const tripRes = await client.trip(p.tripId, {when})
+	const tripRes = await client.trip(p.tripId, {when});
 
-	validate(t, tripRes, 'tripResult', 'res')
-	t.end()
-})
+	validate(t, tripRes, 'tripResult', 'res');
+	t.end();
+});
 
 tap.test('arrivals at Wiesbaden Hbf', async (t) => {
 	const res = await client.arrivals(wiesbadenHbf, {
-		duration: 10, when
-	})
+		duration: 10, when,
+	});
 
 	await testArrivals({
 		test: t,
 		res,
 		validate,
 		id: wiesbadenHbf,
-	})
-	t.end()
-})
+	});
+	t.end();
+});
 
 // todo: nearby
 
@@ -84,14 +84,14 @@ tap.test('radar', async (t) => {
 		north: 53.090516,
 		west: 8.750106,
 		south: 53.062859,
-		east: 8.847423
+		east: 8.847423,
 	}, {
-		duration: 5 * 60, when, results: 10
-	})
+		duration: 5 * 60, when, results: 10,
+	});
 
-	validate(t, res, 'radarResult', 'res')
-	t.end()
-})
+	validate(t, res, 'radarResult', 'res');
+	t.end();
+});
 
 tap.test('reachableFrom', async (t) => {
 	await testReachableFrom({
@@ -106,7 +106,7 @@ tap.test('reachableFrom', async (t) => {
 		},
 		when,
 		maxDuration: 15,
-		validate
-	})
-	t.end()
-})
+		validate,
+	});
+	t.end();
+});

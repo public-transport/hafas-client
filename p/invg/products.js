@@ -6,7 +6,7 @@ const products = [
 		bitmasks: [1, 16],
 		name: 'Bus',
 		short: 'Bus',
-		default: true // the other `bus` has `false`
+		default: true, // the other `bus` has `false`
 	},
 	{
 		id: 'express-train',
@@ -14,7 +14,7 @@ const products = [
 		bitmasks: [2],
 		name: 'High-speed train',
 		short: 'Train',
-		default: false
+		default: false,
 	},
 	{
 		id: 'regional-train',
@@ -22,7 +22,7 @@ const products = [
 		bitmasks: [4],
 		name: 'Regional train',
 		short: 'Train',
-		default: false
+		default: false,
 	},
 	{
 		id: 'local-train',
@@ -30,7 +30,7 @@ const products = [
 		bitmasks: [8],
 		name: 'Nahverkehrszug',
 		short: 'Zug',
-		default: true
+		default: true,
 	},
 	{
 		id: 'ferry',
@@ -38,7 +38,7 @@ const products = [
 		bitmasks: [32],
 		name: 'Ferry',
 		short: 'Ferry',
-		default: false
+		default: false,
 	},
 	{
 		id: 'subway',
@@ -46,7 +46,7 @@ const products = [
 		bitmasks: [64],
 		name: 'Subway',
 		short: 'Subway',
-		default: false
+		default: false,
 	},
 	{
 		id: 'tram',
@@ -54,7 +54,7 @@ const products = [
 		bitmasks: [128],
 		name: 'Tram',
 		short: 'Tram',
-		default: false
+		default: false,
 	},
 	{
 		id: 'on-demand',
@@ -62,10 +62,10 @@ const products = [
 		bitmasks: [256],
 		name: 'On-demand traffic',
 		short: 'on demand',
-		default: false
-	}
-]
+		default: false,
+	},
+];
 
 export {
 	products,
-}
+};

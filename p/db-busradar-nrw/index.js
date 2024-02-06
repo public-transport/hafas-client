@@ -1,9 +1,9 @@
 // todo: use import assertions once they're supported by Node.js & ESLint
 // https://github.com/tc39/proposal-import-assertions
-import {createRequire} from 'module'
-const require = createRequire(import.meta.url)
+import {createRequire} from 'module';
+const require = createRequire(import.meta.url);
 
-const baseProfile = require('./base.json')
+const baseProfile = require('./base.json');
 
 // DB Busradar NRW app does not allow selecting specific modes of transport to filter results,
 // so the bitmasks had to be determined by querying some stations and looking at the results..
@@ -14,7 +14,7 @@ const products = [
 		bitmasks: [1],
 		name: 'InterCityExpress',
 		short: 'ICE',
-		default: true
+		default: true,
 	},
 	{
 		id: 'national',
@@ -22,7 +22,7 @@ const products = [
 		bitmasks: [2],
 		name: 'InterCity & EuroCity',
 		short: 'IC/EC',
-		default: true
+		default: true,
 	},
 	// todo: not always true when a station has RE stopping at it
 	// maybe something else?
@@ -32,7 +32,7 @@ const products = [
 		bitmasks: [4],
 		name: 'Regionalexpress',
 		short: 'RE',
-		default: true
+		default: true,
 	},
 	// todo: also used for replacement service incl. S-Bahn replacement
 	{
@@ -41,7 +41,7 @@ const products = [
 		bitmasks: [8],
 		name: 'Regionalzug',
 		short: 'RB/RE',
-		default: true
+		default: true,
 	},
 	{
 		id: 'suburban',
@@ -49,7 +49,7 @@ const products = [
 		bitmasks: [16],
 		name: 'S-Bahn',
 		short: 'S',
-		default: true
+		default: true,
 	},
 	{
 		id: 'bus',
@@ -57,7 +57,7 @@ const products = [
 		bitmasks: [32],
 		name: 'Bus',
 		short: 'Bus',
-		default: true
+		default: true,
 	},
 	{
 		id: 'ferry',
@@ -65,7 +65,7 @@ const products = [
 		bitmasks: [64],
 		name: 'Ferry',
 		short: 'F',
-		default: true
+		default: true,
 	},
 	// todo: are `128` & `256` unused?
 	{
@@ -74,9 +74,9 @@ const products = [
 		bitmasks: [512],
 		name: 'AnrufSammelTaxi',
 		short: 'AST',
-		default: true
-	}
-]
+		default: true,
+	},
+];
 
 const profile = {
 	...baseProfile,
@@ -91,8 +91,8 @@ const profile = {
 	radar: true,
 	remarks: true, // `.svcResL[0].res.msgL[]` is missing though 🤔
 	lines: false, // `.svcResL[0].res.lineL[]` is missing 🤔
-}
+};
 
 export {
 	profile,
-}
+};

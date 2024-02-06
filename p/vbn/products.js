@@ -5,7 +5,7 @@ const products = [
 		bitmasks: [1],
 		name: 'InterCityExpress',
 		short: 'ICE',
-		default: true
+		default: true,
 	},
 	{
 		id: 'national-train',
@@ -13,7 +13,7 @@ const products = [
 		bitmasks: [2, 4],
 		name: 'InterCity, EuroCity, CityNightLine, InterRegio',
 		short: 'IC/EC/CNL/IR',
-		default: true
+		default: true,
 	},
 	{
 		id: 'local-train',
@@ -21,7 +21,7 @@ const products = [
 		bitmasks: [8],
 		name: 'Nahverkehr',
 		short: 'Nahv.',
-		default: true
+		default: true,
 	},
 	{
 		id: 'suburban',
@@ -29,7 +29,7 @@ const products = [
 		bitmasks: [16],
 		name: 'S-Bahn',
 		short: 'S',
-		default: true
+		default: true,
 	},
 	{
 		id: 'bus',
@@ -37,7 +37,7 @@ const products = [
 		bitmasks: [32],
 		name: 'Bus',
 		short: 'Bus',
-		default: true
+		default: true,
 	},
 	{
 		id: 'watercraft',
@@ -45,7 +45,7 @@ const products = [
 		bitmasks: [64],
 		name: 'Schiff',
 		short: 'Schiff',
-		default: true
+		default: true,
 	},
 	{
 		id: 'subway',
@@ -53,7 +53,7 @@ const products = [
 		bitmasks: [128],
 		name: 'U-Bahn',
 		short: 'U',
-		default: true
+		default: true,
 	},
 	{
 		id: 'tram',
@@ -61,7 +61,7 @@ const products = [
 		bitmasks: [256],
 		name: 'Tram',
 		short: 'Tram',
-		default: true
+		default: true,
 	},
 	{
 		id: 'dial-a-ride',
@@ -69,10 +69,10 @@ const products = [
 		bitmasks: [256],
 		name: 'Anrufverkehr',
 		short: 'AST',
-		default: true
-	}
-]
+		default: true,
+	},
+];
 
 export {
 	products,
-}
+};

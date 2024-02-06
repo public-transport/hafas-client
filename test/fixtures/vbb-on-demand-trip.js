@@ -14,7 +14,7 @@ const vbbOnDemandTrip = {
 		operator: {
 			type: 'operator',
 			id: 'verkehrsgesellschaft-teltow-flaming-mbh',
-			name: 'Verkehrsgesellschaft Teltow-Fläming mbH'
+			name: 'Verkehrsgesellschaft Teltow-Fläming mbH',
 		},
 	},
 
@@ -86,15 +86,15 @@ const vbbOnDemandTrip = {
 			},
 			company: 'VBB',
 			categories: [
-				0
+				0,
 			],
 			validFrom: '2021-04-24T00:00:00+02:00',
 			validUntil: '2022-12-31T00:00:00+01:00',
 			modified: '2021-06-12T07:43:36+02:00',
-		}
-	]
-}
+		},
+	],
+};
 
 export {
 	vbbOnDemandTrip,
-}
+};

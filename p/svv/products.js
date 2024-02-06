@@ -5,7 +5,7 @@ const products = [
 		bitmasks: [1, 2],
 		name: 'Bahn & S-Bahn',
 		short: 'S/Zug',
-		default: true
+		default: true,
 	},
 	{
 		id: 'u-bahn',
@@ -13,7 +13,7 @@ const products = [
 		bitmasks: [4],
 		name: 'U-Bahn',
 		short: 'U',
-		default: true
+		default: true,
 	},
 	{
 		id: 'strassenbahn',
@@ -21,7 +21,7 @@ const products = [
 		bitmasks: [16],
 		name: 'Strassenbahn',
 		short: 'Str',
-		default: true
+		default: true,
 	},
 	{
 		id: 'fernbus',
@@ -29,7 +29,7 @@ const products = [
 		bitmasks: [32],
 		name: 'Fernbus',
 		short: 'Bus',
-		default: true
+		default: true,
 	},
 	{
 		id: 'regionalbus',
@@ -37,7 +37,7 @@ const products = [
 		bitmasks: [64],
 		name: 'Regionalbus',
 		short: 'Bus',
-		default: true
+		default: true,
 	},
 	{
 		id: 'stadtbus',
@@ -45,7 +45,7 @@ const products = [
 		bitmasks: [128],
 		name: 'Stadtbus',
 		short: 'Bus',
-		default: true
+		default: true,
 	},
 	{
 		id: 'seilbahn-zahnradbahn',
@@ -53,7 +53,7 @@ const products = [
 		bitmasks: [256],
 		name: 'Seil-/Zahnradbahn',
 		short: 'Seil-/Zahnradbahn',
-		default: true
+		default: true,
 	},
 	{
 		id: 'schiff',
@@ -61,10 +61,10 @@ const products = [
 		bitmasks: [512],
 		name: 'Schiff',
 		short: 'F',
-		default: true
+		default: true,
 	},
-]
+];
 
 export {
 	products,
-}
+};

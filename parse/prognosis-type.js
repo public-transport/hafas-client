@@ -1,11 +1,11 @@
 const parsePrognosisType = (_, progType) => {
 	return {
-		'PROGNOSED': 'prognosed',
-		'CALCULATED': 'calculated',
+		PROGNOSED: 'prognosed',
+		CALCULATED: 'calculated',
 		// todo: are there more?
-	}[progType] || null
-}
+	}[progType] || null;
+};
 
 export {
 	parsePrognosisType,
-}
+};

@@ -1,16 +1,16 @@
 // todo: use import assertions once they're supported by Node.js & ESLint
 // https://github.com/tc39/proposal-import-assertions
-import {createRequire} from 'module'
-const require = createRequire(import.meta.url)
+import {createRequire} from 'module';
+const require = createRequire(import.meta.url);
 
-import tap from 'tap'
+import tap from 'tap';
 
-import {createClient} from '../index.js'
-import {profile as rawProfile} from '../p/db/index.js'
-const res = require('./fixtures/db-journey-fpB-fpE-2-years.json')
+import {createClient} from '../index.js';
+import {profile as rawProfile} from '../p/db/index.js';
+const res = require('./fixtures/db-journey-fpB-fpE-2-years.json');
 
-const client = createClient(rawProfile, 'public-transport/hafas-client:test')
-const {profile} = client
+const client = createClient(rawProfile, 'public-transport/hafas-client:test');
+const {profile} = client;
 
 const opt = {
 	results: 1,
@@ -28,12 +28,12 @@ const opt = {
 	entrances: false,
 	remarks: false,
 	scheduledDays: true,
-}
+};
 
 tap.test('parses journey.scheduledDays correctly with planning period of >1 year', (t) => {
-	const common = profile.parseCommon({profile, opt, res})
-	const ctx = {profile, opt, common, res}
-	const journey = profile.parseJourney(ctx, res.outConL[0])
+	const common = profile.parseCommon({profile, opt, res});
+	const ctx = {profile, opt, common, res};
+	const journey = profile.parseJourney(ctx, res.outConL[0]);
 
 	// "fpB": "20211212",
 	// "fpE": "20231209",
@@ -771,6 +771,6 @@ tap.test('parses journey.scheduledDays correctly with planning period of >1 year
 		'2023-12-07': false,
 		'2023-12-08': false,
 		'2023-12-09': false,
-	})
-	t.end()
-})
+	});
+	t.end();
+});

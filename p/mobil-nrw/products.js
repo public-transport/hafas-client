@@ -72,9 +72,9 @@ const products = [
 		name: 'EC/IC',
 		short: 'EC/IC',
 		default: true,
-	}
-]
+	},
+];
 
 export {
 	products,
-}
+};

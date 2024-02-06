@@ -6,7 +6,7 @@ const products = [
 		bitmasks: [1],
 		name: 'InterCityExpress',
 		short: 'ICE',
-		default: true
+		default: true,
 	},
 	{
 		id: 'national',
@@ -14,7 +14,7 @@ const products = [
 		bitmasks: [2],
 		name: 'InterCity & EuroCity',
 		short: 'IC/EC',
-		default: true
+		default: true,
 	},
 	{
 		id: 'regionalExpress',
@@ -22,7 +22,7 @@ const products = [
 		bitmasks: [4],
 		name: 'RegionalExpress & InterRegio',
 		short: 'RE/IR',
-		default: true
+		default: true,
 	},
 	{
 		id: 'regional',
@@ -30,7 +30,7 @@ const products = [
 		bitmasks: [8],
 		name: 'Regio',
 		short: 'RB',
-		default: true
+		default: true,
 	},
 	{
 		id: 'suburban',
@@ -38,7 +38,7 @@ const products = [
 		bitmasks: [16],
 		name: 'S-Bahn',
 		short: 'S',
-		default: true
+		default: true,
 	},
 	{
 		id: 'bus',
@@ -46,7 +46,7 @@ const products = [
 		bitmasks: [32],
 		name: 'Bus',
 		short: 'B',
-		default: true
+		default: true,
 	},
 	{
 		id: 'ferry',
@@ -54,7 +54,7 @@ const products = [
 		bitmasks: [64],
 		name: 'Ferry',
 		short: 'F',
-		default: true
+		default: true,
 	},
 	{
 		id: 'subway',
@@ -62,7 +62,7 @@ const products = [
 		bitmasks: [128],
 		name: 'U-Bahn',
 		short: 'U',
-		default: true
+		default: true,
 	},
 	{
 		id: 'tram',
@@ -70,7 +70,7 @@ const products = [
 		bitmasks: [256],
 		name: 'Tram',
 		short: 'T',
-		default: true
+		default: true,
 	},
 	{
 		id: 'taxi',
@@ -78,10 +78,10 @@ const products = [
 		bitmasks: [512],
 		name: 'Group Taxi',
 		short: 'Taxi',
-		default: true
-	}
-]
+		default: true,
+	},
+];
 
 export {
 	products,
-}
+};

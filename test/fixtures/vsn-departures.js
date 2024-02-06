@@ -30,7 +30,7 @@ const vsnDepartures = {
 				type: 'location',
 				id: '9013927',
 				latitude: 53.083478,
-				longitude: 8.813833
+				longitude: 8.813833,
 			},
 			products: {
 				nationalExpress: true,
@@ -45,7 +45,7 @@ const vsnDepartures = {
 				anrufSammelTaxi: true,
 			},
 			isMeta: true,
-		}
+		},
 	},
 	when: '2020-08-01T18:42:00+02:00',
 	plannedWhen: '2020-08-01T17:44:00+02:00',
@@ -96,8 +96,8 @@ const vsnDepartures = {
 		},
 	},
 	remarks: [],
-}
+};
 
 export {
 	vsnDepartures,
-}
+};

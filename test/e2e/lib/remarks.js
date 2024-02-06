@@ -1,4 +1,4 @@
-const WEEK = 7 * 24 * 60 * 60 * 1000
+const WEEK = 7 * 24 * 60 * 60 * 1000;
 
 const testRemarks = async (cfg) => {
 	const {
@@ -6,30 +6,30 @@ const testRemarks = async (cfg) => {
 		fetchRemarks,
 		validate,
 		when,
-	} = cfg
+	} = cfg;
 
 	const res = await fetchRemarks({
 		results: 10,
 		from: when,
 		to: new Date(when + WEEK),
-	})
+	});
 	const {
 		remarks,
 		realtimeDataUpdatedAt,
-	} = res
+	} = res;
 
 	for (let i = 0; i < res.remarks.length; i++) {
-		const rem = res.remarks[i]
-		const name = `res.remarks[${i}]`
-		validate(t, rem, 'remark', name)
+		const rem = res.remarks[i];
+		const name = `res.remarks[${i}]`;
+		validate(t, rem, 'remark', name);
 	}
 
 	// most endpoints currently don't provide this info for remarks()
 	if (realtimeDataUpdatedAt !== null) {
-		validate(t, realtimeDataUpdatedAt, 'realtimeDataUpdatedAt', 'res.realtimeDataUpdatedAt')
+		validate(t, realtimeDataUpdatedAt, 'realtimeDataUpdatedAt', 'res.realtimeDataUpdatedAt');
 	}
-}
+};
 
 export {
 	testRemarks,
-}
+};

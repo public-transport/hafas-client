@@ -38,9 +38,9 @@ const products = [
 		name: 'S-Tog A/B/Bx/C/E/F/H',
 		short: 'S',
 		default: true,
-	}
-]
+	},
+];
 
 export {
 	products,
-}
+};

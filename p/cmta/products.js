@@ -5,7 +5,7 @@ const products = [
 		bitmasks: [32],
 		name: 'MetroBus',
 		short: 'B',
-		default: true
+		default: true,
 	},
 	{
 		id: 'rapid',
@@ -13,7 +13,7 @@ const products = [
 		bitmasks: [4096],
 		name: 'MetroRapid',
 		short: 'R',
-		default: true
+		default: true,
 	},
 	{
 		id: 'rail',
@@ -21,10 +21,10 @@ const products = [
 		bitmasks: [8],
 		name: 'MetroRail',
 		short: 'M',
-		default: true
-	}
-]
+		default: true,
+	},
+];
 
 export {
 	products,
-}
+};

@@ -6,7 +6,7 @@ const products = [ // todo: 2, 8, 32, 128
 		bitmasks: [1],
 		name: 'high-speed train',
 		short: 'HST',
-		default: true
+		default: true,
 	},
 	{
 		id: 'intercity-p',
@@ -14,7 +14,7 @@ const products = [ // todo: 2, 8, 32, 128
 		bitmasks: [4],
 		name: 'InterCity/Peak',
 		short: 'IC/P',
-		default: true
+		default: true,
 	},
 	{
 		id: 's-train',
@@ -22,7 +22,7 @@ const products = [ // todo: 2, 8, 32, 128
 		bitmasks: [16],
 		name: 'S-train',
 		short: 'S',
-		default: true
+		default: true,
 	},
 	{
 		id: 'local-train',
@@ -30,7 +30,7 @@ const products = [ // todo: 2, 8, 32, 128
 		bitmasks: [64],
 		name: 'local train',
 		short: 'L',
-		default: true
+		default: true,
 	},
 	{
 		id: 'metro',
@@ -38,7 +38,7 @@ const products = [ // todo: 2, 8, 32, 128
 		bitmasks: [256],
 		name: 'Metro',
 		short: 'M',
-		default: true
+		default: true,
 	},
 	{
 		id: 'bus',
@@ -46,7 +46,7 @@ const products = [ // todo: 2, 8, 32, 128
 		bitmasks: [512],
 		name: 'bus',
 		short: 'bus',
-		default: true
+		default: true,
 	},
 	{
 		id: 'tram',
@@ -54,10 +54,10 @@ const products = [ // todo: 2, 8, 32, 128
 		bitmasks: [1024],
 		name: 'tram',
 		short: 'tram',
-		default: true
-	}
-]
+		default: true,
+	},
+];
 
 export {
 	products,
-}
+};

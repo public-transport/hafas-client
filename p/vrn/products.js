@@ -56,8 +56,8 @@ const products = [
 		short: 'ICE/IC/EC/EN',
 		default: false,
 	},
-]
+];
 
 export {
 	products,
-}
+};

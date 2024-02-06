@@ -1,36 +1,38 @@
-import brToNewline from '@derhuerst/br2nl'
-import omit from 'lodash/omit.js'
+import brToNewline from '@derhuerst/br2nl';
+import omit from 'lodash/omit.js';
 
 const typesByIcon = Object.assign(Object.create(null), {
-	HimWarn: 'status'
-})
+	HimWarn: 'status',
+});
 
 const parseMsgEdge = (ctx) => (e) => {
 	const res = omit(e, [
 		'icoX',
-		'fLocX', 'fromLocation',
-		'tLocX', 'toLocation'
-	])
-	res.icon = e.icon || null
-	res.fromLocation = Array.isArray(e.fromLocations) && e.fromLocations[0] || e.fromLocation || null
-	res.toLocation = Array.isArray(e.toLocations) && e.toLocations[0] || e.toLocation || null
-	return res
-}
+		'fLocX',
+		'fromLocation',
+		'tLocX',
+		'toLocation',
+	]);
+	res.icon = e.icon || null;
+	res.fromLocation = Array.isArray(e.fromLocations) && e.fromLocations[0] || e.fromLocation || null;
+	res.toLocation = Array.isArray(e.toLocations) && e.toLocations[0] || e.toLocation || null;
+	return res;
+};
 
-const fallbackTime = '000000' // midnight
+const fallbackTime = '000000'; // midnight
 const parseMsgEvent = (ctx) => (e) => {
-	const {profile} = ctx // todo: test that covers this
+	const {profile} = ctx; // todo: test that covers this
 	return {
 		fromLocation: Array.isArray(e.fromLocations) && e.fromLocations[0] || e.fromLocation || null,
 		toLocation: Array.isArray(e.toLocations) && e.toLocations[0] || e.toLocation || null,
 		start: profile.parseDateTime(ctx, e.fDate, e.fTime || fallbackTime, null),
 		end: profile.parseDateTime(ctx, e.tDate, e.tTime || fallbackTime, null),
-		sections: e.sectionNums || [] // todo: parse
-	}
-}
+		sections: e.sectionNums || [], // todo: parse
+	};
+};
 
 const parseWarning = (ctx, w) => {
-	const {profile, res: resp, common} = ctx
+	const {profile, res: resp, common} = ctx;
 
 	// todo: https://github.com/marudor/BahnhofsAbfahrten/blob/46a74957d68edc15713112df44e1a25150f5a178/src/types/HAFAS/HimSearch.ts#L31-L53
 	// todo: act, pub, lead, tckr
@@ -53,57 +55,77 @@ const parseWarning = (ctx, w) => {
 	// tTime: '120000' }
 	// todo: w.regionRefL & res.common.himMsgRegionL
 
-	const icon = w.icon || null
-	const type = icon && icon.type && typesByIcon[icon.type] || 'warning'
+	const icon = w.icon || null;
+	const type = icon && icon.type && typesByIcon[icon.type] || 'warning';
 
 	const res = {
 		id: w.hid || null,
 		type,
-		summary: w.head ? brToNewline(w.head) : null, // todo: decode HTML entities?
-		text: w.text ? brToNewline(w.text) : null, // todo: decode HTML entities?
+		summary: w.head
+			? brToNewline(w.head)
+			: null, // todo: decode HTML entities?
+		text: w.text
+			? brToNewline(w.text)
+			: null, // todo: decode HTML entities?
 		icon, // todo: parse icon
 		priority: w.prio,
+	};
+	if ('prod' in w) {
+		res.products = profile.parseProductsBitmask(ctx, w.prod);
 	}
-	if ('prod' in w) res.products = profile.parseProductsBitmask(ctx, w.prod)
-	if ('comp' in w) res.company = w.comp || null
+	if ('comp' in w) {
+		res.company = w.comp || null;
+	}
 
 	// todo: parse to sth meaningful
-	if ('cat' in w) res.category = w.cat
+	if ('cat' in w) {
+		res.category = w.cat;
+	}
 	if (w.catRefL && resp.common && resp.common.himMsgCatL) {
 		res.categories = w.catRefL
-		.map(i => resp.common.himMsgCatL[i])
-		.filter(e => !!e)
-		.map(cat => cat.id)
+			.map(i => resp.common.himMsgCatL[i])
+			.filter(e => Boolean(e))
+			.map(cat => cat.id);
 	}
 
 	if (w.edgeRefL && resp.common && resp.common.himMsgEdgeL) {
 		res.edges = w.edgeRefL
-		.map(i => resp.common.himMsgEdgeL[i])
-		.filter(e => !!e)
-		.map(parseMsgEdge(ctx))
+			.map(i => resp.common.himMsgEdgeL[i])
+			.filter(e => Boolean(e))
+			.map(parseMsgEdge(ctx));
 	}
 	if (w.eventRefL && resp.common && resp.common.himMsgEventL) {
 		res.events = w.eventRefL
-		.map(i => resp.common.himMsgEventL[i])
-		.filter(e => !!e)
-		.map(parseMsgEvent(ctx))
+			.map(i => resp.common.himMsgEventL[i])
+			.filter(e => Boolean(e))
+			.map(parseMsgEvent(ctx));
 	}
 
 	if (w.affProdRefL) {
 		res.affectedLines = w.affProdRefL
-		.map(i => common.lines[i])
-		.filter(l => !!l)
+			.map(i => common.lines[i])
+			.filter(l => Boolean(l));
 	}
-	if (w.fromLocations) res.fromStops = w.fromLocations
-	if (w.toLocations) res.toStops = w.toLocations
+	if (w.fromLocations) {
+		res.fromStops = w.fromLocations;
+	}
+	if (w.toLocations) {
+		res.toStops = w.toLocations;
+	}
 
-	if (w.sDate && w.sTime) res.validFrom = profile.parseDateTime(ctx, w.sDate, w.sTime, null)
-	if (w.eDate && w.eTime) res.validUntil = profile.parseDateTime(ctx, w.eDate, w.eTime, null)
-	if (w.lModDate && w.lModTime) res.modified = profile.parseDateTime(ctx, w.lModDate, w.lModTime, null)
+	if (w.sDate && w.sTime) {
+		res.validFrom = profile.parseDateTime(ctx, w.sDate, w.sTime, null);
+	}
+	if (w.eDate && w.eTime) {
+		res.validUntil = profile.parseDateTime(ctx, w.eDate, w.eTime, null);
+	}
+	if (w.lModDate && w.lModTime) {
+		res.modified = profile.parseDateTime(ctx, w.lModDate, w.lModTime, null);
+	}
 
-	return res
-}
+	return res;
+};
 
 export {
 	parseWarning,
-}
+};

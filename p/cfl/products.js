@@ -6,7 +6,7 @@ const products = [
 		bitmasks: [1, 2],
 		name: 'TGV, ICE, EuroCity',
 		short: 'TGV/ICE/EC',
-		default: true
+		default: true,
 	},
 	{
 		id: 'local-train',
@@ -14,7 +14,7 @@ const products = [
 		bitmasks: [8, 16],
 		name: 'local trains',
 		short: 'local',
-		default: true
+		default: true,
 	},
 	{
 		id: 'tram',
@@ -22,7 +22,7 @@ const products = [
 		bitmasks: [256],
 		name: 'tram',
 		short: 'tram',
-		default: true
+		default: true,
 	},
 	{
 		id: 'bus',
@@ -30,7 +30,7 @@ const products = [
 		bitmasks: [32],
 		name: 'bus',
 		short: 'bus',
-		default: true
+		default: true,
 	},
 	{
 		id: 'gondola',
@@ -38,10 +38,10 @@ const products = [
 		bitmasks: [512],
 		name: 'Fun', // taken from the horaires.cfl.lu website
 		short: 'Fun', // abbreviation for funicular?
-		default: true
-	}
-]
+		default: true,
+	},
+];
 
 export {
 	products,
-}
+};

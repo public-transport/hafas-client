@@ -10,7 +10,7 @@ const dbJourney = {
 					type: 'location',
 					id: '8004154',
 					latitude: 48.107418,
-					longitude: 11.536306
+					longitude: 11.536306,
 				},
 				products: {
 					nationalExpress: false,
@@ -22,8 +22,8 @@ const dbJourney = {
 					ferry: false,
 					subway: false,
 					tram: false,
-					taxi: false
-				}
+					taxi: false,
+				},
 			},
 			destination: {
 				type: 'stop',
@@ -33,7 +33,7 @@ const dbJourney = {
 					type: 'location',
 					id: '8004137',
 					latitude: 48.094492,
-					longitude: 11.53281
+					longitude: 11.53281,
 				},
 				products: {
 					nationalExpress: false,
@@ -45,8 +45,8 @@ const dbJourney = {
 					ferry: false,
 					subway: false,
 					tram: false,
-					taxi: false
-				}
+					taxi: false,
+				},
 			},
 			departure: '2020-11-16T10:04:00+01:00',
 			plannedDeparture: '2020-11-16T10:04:00+01:00',
@@ -71,8 +71,8 @@ const dbJourney = {
 				operator: {
 					type: 'operator',
 					id: 'db-regio-ag-bayern',
-					name: 'DB Regio AG Bayern'
-				}
+					name: 'DB Regio AG Bayern',
+				},
 			},
 			direction: 'Höllriegelskreuth',
 			arrivalPlatform: '2',
@@ -89,7 +89,7 @@ const dbJourney = {
 							type: 'location',
 							id: '8004154',
 							latitude: 48.107418,
-							longitude: 11.536306
+							longitude: 11.536306,
 						},
 						products: {
 							nationalExpress: false,
@@ -101,8 +101,8 @@ const dbJourney = {
 							ferry: false,
 							subway: false,
 							tram: false,
-							taxi: false
-						}
+							taxi: false,
+						},
 					},
 					arrival: null,
 					plannedArrival: null,
@@ -126,7 +126,7 @@ const dbJourney = {
 							type: 'location',
 							id: '8004137',
 							latitude: 48.094492,
-							longitude: 11.53281
+							longitude: 11.53281,
 						},
 						products: {
 							nationalExpress: false,
@@ -138,8 +138,8 @@ const dbJourney = {
 							ferry: false,
 							subway: false,
 							tram: false,
-							taxi: false
-						}
+							taxi: false,
+						},
 					},
 					arrival: '2020-11-16T10:05:00+01:00',
 					plannedArrival: '2020-11-16T10:05:00+01:00',
@@ -153,33 +153,33 @@ const dbJourney = {
 					departurePlatform: null,
 					plannedDeparturePlatform: null,
 					departurePrognosisType: null,
-				}
+				},
 			],
 			remarks: [
 				{
 					type: 'hint',
 					code: 'PB',
-					text: 'Obligation to cover nose and mouth'
+					text: 'Obligation to cover nose and mouth',
 				},
 				{
 					text: 'Number of bicycles conveyed limited',
 					type: 'hint',
 					code: 'bicycle-conveyance',
-					summary: 'bicycles conveyed'
+					summary: 'bicycles conveyed',
 				},
 				{
 					type: 'hint',
 					code: 'FS',
-					text: 'conveying bicycles: mind the excluded times'
+					text: 'conveying bicycles: mind the excluded times',
 				},
 				{
 					text: '2nd class only',
 					type: 'hint',
 					code: '2nd-class-only',
-					summary: '2. class only'
-				}
+					summary: '2. class only',
+				},
 			],
-			cycle: {min: 1200, max: 1200, nr: 7}
+			cycle: {min: 1200, max: 1200, nr: 7},
 		},
 		{
 			origin: {
@@ -190,7 +190,7 @@ const dbJourney = {
 					type: 'location',
 					id: '8004137',
 					latitude: 48.094492,
-					longitude: 11.53281
+					longitude: 11.53281,
 				},
 				products: {
 					nationalExpress: false,
@@ -202,8 +202,8 @@ const dbJourney = {
 					ferry: false,
 					subway: false,
 					tram: false,
-					taxi: false
-				}
+					taxi: false,
+				},
 			},
 			destination: {
 				type: 'stop',
@@ -213,7 +213,7 @@ const dbJourney = {
 					type: 'location',
 					id: '625016',
 					latitude: 48.098357,
-					longitude: 11.536261
+					longitude: 11.536261,
 				},
 				products: {
 					nationalExpress: false,
@@ -225,7 +225,7 @@ const dbJourney = {
 					ferry: false,
 					subway: true,
 					tram: false,
-					taxi: false
+					taxi: false,
 				},
 				station: {
 					type: 'station',
@@ -235,7 +235,7 @@ const dbJourney = {
 						type: 'location',
 						id: '625021',
 						latitude: 48.098627,
-						longitude: 11.538023
+						longitude: 11.538023,
 					},
 					products: {
 						nationalExpress: false,
@@ -247,9 +247,9 @@ const dbJourney = {
 						ferry: false,
 						subway: true,
 						tram: false,
-						taxi: false
-					}
-				}
+						taxi: false,
+					},
+				},
 			},
 			departure: '2020-11-16T10:05:00+01:00',
 			plannedDeparture: '2020-11-16T10:05:00+01:00',
@@ -260,7 +260,7 @@ const dbJourney = {
 			public: true,
 			walking: true,
 			distance: 500,
-			remarks: [ {type: 'hint', code: 'XK', text: 'walking distance 500 m'} ]
+			remarks: [{type: 'hint', code: 'XK', text: 'walking distance 500 m'}],
 		},
 		{
 			origin: {
@@ -271,7 +271,7 @@ const dbJourney = {
 					type: 'location',
 					id: '625016',
 					latitude: 48.098357,
-					longitude: 11.536261
+					longitude: 11.536261,
 				},
 				products: {
 					nationalExpress: false,
@@ -283,7 +283,7 @@ const dbJourney = {
 					ferry: false,
 					subway: true,
 					tram: false,
-					taxi: false
+					taxi: false,
 				},
 				station: {
 					type: 'station',
@@ -293,7 +293,7 @@ const dbJourney = {
 						type: 'location',
 						id: '625021',
 						latitude: 48.098627,
-						longitude: 11.538023
+						longitude: 11.538023,
 					},
 					products: {
 						nationalExpress: false,
@@ -305,9 +305,9 @@ const dbJourney = {
 						ferry: false,
 						subway: true,
 						tram: false,
-						taxi: false
-					}
-				}
+						taxi: false,
+					},
+				},
 			},
 			destination: {
 				type: 'stop',
@@ -317,7 +317,7 @@ const dbJourney = {
 					type: 'location',
 					id: '624333',
 					latitude: 48.166702,
-					longitude: 11.578151
+					longitude: 11.578151,
 				},
 				products: {
 					nationalExpress: false,
@@ -329,7 +329,7 @@ const dbJourney = {
 					ferry: false,
 					subway: true,
 					tram: false,
-					taxi: false
+					taxi: false,
 				},
 				station: {
 					type: 'station',
@@ -339,7 +339,7 @@ const dbJourney = {
 						type: 'location',
 						id: '790754',
 						latitude: 48.167035,
-						longitude: 11.579347
+						longitude: 11.579347,
 					},
 					products: {
 						nationalExpress: false,
@@ -351,9 +351,9 @@ const dbJourney = {
 						ferry: false,
 						subway: true,
 						tram: false,
-						taxi: false
-					}
-				}
+						taxi: false,
+					},
+				},
 			},
 			departure: '2020-11-16T10:15:00+01:00',
 			plannedDeparture: '2020-11-16T10:15:00+01:00',
@@ -374,7 +374,7 @@ const dbJourney = {
 				adminCode: 'swm001',
 				productName: 'U',
 				mode: 'train',
-				product: 'subway'
+				product: 'subway',
 			},
 			direction: 'Moosach, München',
 			arrivalPlatform: null,
@@ -391,7 +391,7 @@ const dbJourney = {
 							type: 'location',
 							id: '625016',
 							latitude: 48.098357,
-							longitude: 11.536261
+							longitude: 11.536261,
 						},
 						products: {
 							nationalExpress: false,
@@ -403,7 +403,7 @@ const dbJourney = {
 							ferry: false,
 							subway: true,
 							tram: false,
-							taxi: false
+							taxi: false,
 						},
 						station: {
 							type: 'station',
@@ -413,7 +413,7 @@ const dbJourney = {
 								type: 'location',
 								id: '625021',
 								latitude: 48.098627,
-								longitude: 11.538023
+								longitude: 11.538023,
 							},
 							products: {
 								nationalExpress: false,
@@ -425,9 +425,9 @@ const dbJourney = {
 								ferry: false,
 								subway: true,
 								tram: false,
-								taxi: false
-							}
-						}
+								taxi: false,
+							},
+						},
 					},
 					arrival: null,
 					plannedArrival: null,
@@ -451,7 +451,7 @@ const dbJourney = {
 							type: 'location',
 							id: '625236',
 							latitude: 48.102708,
-							longitude: 11.546015
+							longitude: 11.546015,
 						},
 						products: {
 							nationalExpress: false,
@@ -463,7 +463,7 @@ const dbJourney = {
 							ferry: false,
 							subway: true,
 							tram: false,
-							taxi: false
+							taxi: false,
 						},
 						station: {
 							type: 'station',
@@ -473,7 +473,7 @@ const dbJourney = {
 								type: 'location',
 								id: '625242',
 								latitude: 48.101009,
-								longitude: 11.54668
+								longitude: 11.54668,
 							},
 							products: {
 								nationalExpress: false,
@@ -485,9 +485,9 @@ const dbJourney = {
 								ferry: false,
 								subway: true,
 								tram: false,
-								taxi: false
-							}
-						}
+								taxi: false,
+							},
+						},
 					},
 					arrival: '2020-11-16T10:16:00+01:00',
 					plannedArrival: '2020-11-16T10:16:00+01:00',
@@ -511,7 +511,7 @@ const dbJourney = {
 							type: 'location',
 							id: '624342',
 							latitude: 48.112596,
-							longitude: 11.548721
+							longitude: 11.548721,
 						},
 						products: {
 							nationalExpress: false,
@@ -523,7 +523,7 @@ const dbJourney = {
 							ferry: false,
 							subway: true,
 							tram: false,
-							taxi: false
+							taxi: false,
 						},
 						station: {
 							type: 'station',
@@ -533,7 +533,7 @@ const dbJourney = {
 								type: 'location',
 								id: '624345',
 								latitude: 48.112209,
-								longitude: 11.548235
+								longitude: 11.548235,
 							},
 							products: {
 								nationalExpress: false,
@@ -545,9 +545,9 @@ const dbJourney = {
 								ferry: false,
 								subway: true,
 								tram: false,
-								taxi: false
-							}
-						}
+								taxi: false,
+							},
+						},
 					},
 					arrival: '2020-11-16T10:18:00+01:00',
 					plannedArrival: '2020-11-16T10:18:00+01:00',
@@ -571,7 +571,7 @@ const dbJourney = {
 							type: 'location',
 							id: '624684',
 							latitude: 48.120138,
-							longitude: 11.548433
+							longitude: 11.548433,
 						},
 						products: {
 							nationalExpress: false,
@@ -583,7 +583,7 @@ const dbJourney = {
 							ferry: false,
 							subway: true,
 							tram: false,
-							taxi: false
+							taxi: false,
 						},
 						station: {
 							type: 'station',
@@ -593,7 +593,7 @@ const dbJourney = {
 								type: 'location',
 								id: '624691',
 								latitude: 48.119392,
-								longitude: 11.548855
+								longitude: 11.548855,
 							},
 							products: {
 								nationalExpress: false,
@@ -605,9 +605,9 @@ const dbJourney = {
 								ferry: false,
 								subway: true,
 								tram: false,
-								taxi: false
-							}
-						}
+								taxi: false,
+							},
+						},
 					},
 					arrival: '2020-11-16T10:20:00+01:00',
 					plannedArrival: '2020-11-16T10:20:00+01:00',
@@ -631,7 +631,7 @@ const dbJourney = {
 							type: 'location',
 							id: '625095',
 							latitude: 48.125513,
-							longitude: 11.550357
+							longitude: 11.550357,
 						},
 						products: {
 							nationalExpress: false,
@@ -643,8 +643,8 @@ const dbJourney = {
 							ferry: false,
 							subway: true,
 							tram: false,
-							taxi: false
-						}
+							taxi: false,
+						},
 					},
 					arrival: '2020-11-16T10:21:00+01:00',
 					plannedArrival: '2020-11-16T10:21:00+01:00',
@@ -668,7 +668,7 @@ const dbJourney = {
 							type: 'location',
 							id: '624535',
 							latitude: 48.129064,
-							longitude: 11.557422
+							longitude: 11.557422,
 						},
 						products: {
 							nationalExpress: false,
@@ -680,8 +680,8 @@ const dbJourney = {
 							ferry: false,
 							subway: true,
 							tram: false,
-							taxi: false
-						}
+							taxi: false,
+						},
 					},
 					arrival: '2020-11-16T10:22:00+01:00',
 					plannedArrival: '2020-11-16T10:22:00+01:00',
@@ -705,7 +705,7 @@ const dbJourney = {
 							type: 'location',
 							id: '625176',
 							latitude: 48.133406,
-							longitude: 11.566744
+							longitude: 11.566744,
 						},
 						products: {
 							nationalExpress: false,
@@ -717,8 +717,8 @@ const dbJourney = {
 							ferry: false,
 							subway: true,
 							tram: true,
-							taxi: false
-						}
+							taxi: false,
+						},
 					},
 					arrival: '2020-11-16T10:24:00+01:00',
 					plannedArrival: '2020-11-16T10:24:00+01:00',
@@ -742,7 +742,7 @@ const dbJourney = {
 							type: 'location',
 							id: '624885',
 							latitude: 48.137829,
-							longitude: 11.576596
+							longitude: 11.576596,
 						},
 						products: {
 							nationalExpress: false,
@@ -754,7 +754,7 @@ const dbJourney = {
 							ferry: false,
 							subway: true,
 							tram: false,
-							taxi: false
+							taxi: false,
 						},
 						station: {
 							type: 'station',
@@ -764,7 +764,7 @@ const dbJourney = {
 								type: 'location',
 								id: '8004135',
 								latitude: 48.137047,
-								longitude: 11.575383
+								longitude: 11.575383,
 							},
 							products: {
 								nationalExpress: false,
@@ -776,9 +776,9 @@ const dbJourney = {
 								ferry: false,
 								subway: true,
 								tram: false,
-								taxi: false
-							}
-						}
+								taxi: false,
+							},
+						},
 					},
 					arrival: '2020-11-16T10:26:00+01:00',
 					plannedArrival: '2020-11-16T10:26:00+01:00',
@@ -802,7 +802,7 @@ const dbJourney = {
 							type: 'location',
 							id: '638143',
 							latitude: 48.143411,
-							longitude: 11.57798
+							longitude: 11.57798,
 						},
 						products: {
 							nationalExpress: false,
@@ -814,7 +814,7 @@ const dbJourney = {
 							ferry: false,
 							subway: true,
 							tram: false,
-							taxi: false
+							taxi: false,
 						},
 						station: {
 							type: 'station',
@@ -824,7 +824,7 @@ const dbJourney = {
 								type: 'location',
 								id: '8070914',
 								latitude: 48.142943,
-								longitude: 11.577819
+								longitude: 11.577819,
 							},
 							products: {
 								nationalExpress: false,
@@ -836,9 +836,9 @@ const dbJourney = {
 								ferry: false,
 								subway: true,
 								tram: false,
-								taxi: false
-							}
-						}
+								taxi: false,
+							},
+						},
 					},
 					arrival: '2020-11-16T10:27:00+01:00',
 					plannedArrival: '2020-11-16T10:27:00+01:00',
@@ -862,7 +862,7 @@ const dbJourney = {
 							type: 'location',
 							id: '638611',
 							latitude: 48.150063,
-							longitude: 11.581001
+							longitude: 11.581001,
 						},
 						products: {
 							nationalExpress: false,
@@ -874,7 +874,7 @@ const dbJourney = {
 							ferry: false,
 							subway: true,
 							tram: false,
-							taxi: false
+							taxi: false,
 						},
 						station: {
 							type: 'station',
@@ -884,7 +884,7 @@ const dbJourney = {
 								type: 'location',
 								id: '625286',
 								latitude: 48.148283,
-								longitude: 11.580048
+								longitude: 11.580048,
 							},
 							products: {
 								nationalExpress: false,
@@ -896,9 +896,9 @@ const dbJourney = {
 								ferry: false,
 								subway: true,
 								tram: false,
-								taxi: false
-							}
-						}
+								taxi: false,
+							},
+						},
 					},
 					arrival: '2020-11-16T10:29:00+01:00',
 					plannedArrival: '2020-11-16T10:29:00+01:00',
@@ -922,7 +922,7 @@ const dbJourney = {
 							type: 'location',
 							id: '624521',
 							latitude: 48.156517,
-							longitude: 11.584003
+							longitude: 11.584003,
 						},
 						products: {
 							nationalExpress: false,
@@ -934,7 +934,7 @@ const dbJourney = {
 							ferry: false,
 							subway: true,
 							tram: false,
-							taxi: false
+							taxi: false,
 						},
 						station: {
 							type: 'station',
@@ -944,7 +944,7 @@ const dbJourney = {
 								type: 'location',
 								id: '624526',
 								latitude: 48.157236,
-								longitude: 11.584803
+								longitude: 11.584803,
 							},
 							products: {
 								nationalExpress: false,
@@ -956,9 +956,9 @@ const dbJourney = {
 								ferry: false,
 								subway: true,
 								tram: false,
-								taxi: false
-							}
-						}
+								taxi: false,
+							},
+						},
 					},
 					arrival: '2020-11-16T10:30:00+01:00',
 					plannedArrival: '2020-11-16T10:30:00+01:00',
@@ -982,7 +982,7 @@ const dbJourney = {
 							type: 'location',
 							id: '624950',
 							latitude: 48.161839,
-							longitude: 11.586331
+							longitude: 11.586331,
 						},
 						products: {
 							nationalExpress: false,
@@ -994,8 +994,8 @@ const dbJourney = {
 							ferry: false,
 							subway: true,
 							tram: true,
-							taxi: false
-						}
+							taxi: false,
+						},
 					},
 					arrival: '2020-11-16T10:31:00+01:00',
 					plannedArrival: '2020-11-16T10:31:00+01:00',
@@ -1019,7 +1019,7 @@ const dbJourney = {
 							type: 'location',
 							id: '624333',
 							latitude: 48.166702,
-							longitude: 11.578151
+							longitude: 11.578151,
 						},
 						products: {
 							nationalExpress: false,
@@ -1031,7 +1031,7 @@ const dbJourney = {
 							ferry: false,
 							subway: true,
 							tram: false,
-							taxi: false
+							taxi: false,
 						},
 						station: {
 							type: 'station',
@@ -1041,7 +1041,7 @@ const dbJourney = {
 								type: 'location',
 								id: '790754',
 								latitude: 48.167035,
-								longitude: 11.579347
+								longitude: 11.579347,
 							},
 							products: {
 								nationalExpress: false,
@@ -1053,9 +1053,9 @@ const dbJourney = {
 								ferry: false,
 								subway: true,
 								tram: false,
-								taxi: false
-							}
-						}
+								taxi: false,
+							},
+						},
 					},
 					arrival: '2020-11-16T10:33:00+01:00',
 					plannedArrival: '2020-11-16T10:33:00+01:00',
@@ -1069,9 +1069,9 @@ const dbJourney = {
 					departurePlatform: null,
 					plannedDeparturePlatform: null,
 					departurePrognosisType: null,
-				}
+				},
 			],
-			cycle: {min: 600, max: 600, nr: 13}
+			cycle: {min: 600, max: 600, nr: 13},
 		},
 		{
 			origin: {
@@ -1082,7 +1082,7 @@ const dbJourney = {
 					type: 'location',
 					id: '624333',
 					latitude: 48.166702,
-					longitude: 11.578151
+					longitude: 11.578151,
 				},
 				products: {
 					nationalExpress: false,
@@ -1094,7 +1094,7 @@ const dbJourney = {
 					ferry: false,
 					subway: true,
 					tram: false,
-					taxi: false
+					taxi: false,
 				},
 				station: {
 					type: 'station',
@@ -1104,7 +1104,7 @@ const dbJourney = {
 						type: 'location',
 						id: '790754',
 						latitude: 48.167035,
-						longitude: 11.579347
+						longitude: 11.579347,
 					},
 					products: {
 						nationalExpress: false,
@@ -1116,9 +1116,9 @@ const dbJourney = {
 						ferry: false,
 						subway: true,
 						tram: false,
-						taxi: false
-					}
-				}
+						taxi: false,
+					},
+				},
 			},
 			destination: {
 				type: 'station',
@@ -1128,7 +1128,7 @@ const dbJourney = {
 					type: 'location',
 					id: '621790',
 					latitude: 48.166918,
-					longitude: 11.574043
+					longitude: 11.574043,
 				},
 				products: {
 					nationalExpress: false,
@@ -1140,8 +1140,8 @@ const dbJourney = {
 					ferry: false,
 					subway: false,
 					tram: true,
-					taxi: false
-				}
+					taxi: false,
+				},
 			},
 			departure: '2020-11-16T10:33:00+01:00',
 			plannedDeparture: '2020-11-16T10:33:00+01:00',
@@ -1151,14 +1151,14 @@ const dbJourney = {
 			arrivalDelay: null,
 			public: true,
 			walking: true,
-			distance: 353
-		}
+			distance: 353,
+		},
 	],
 	refreshToken: '¶HKI¶T$A=1@O=München-Mittersendling@L=8004154@a=128@$A=1@O=München Siemenswerke@L=8004137@a=128@$202011161004$202011161005$S      7$$1$$$§W$A=1@O=München Siemenswerke@L=8004137@a=128@$A=1@O=Obersendling, München@L=625016@a=128@$202011161005$202011161015$$$1$$$§T$A=1@O=Obersendling, München@L=625016@a=128@$A=1@O=Bonner Platz, München@L=624333@a=128@$202011161015$202011161033$U      3$$1$$$§G@F$A=1@O=Bonner Platz, München@L=624333@a=128@$A=1@O=Karl-Theodor-Straße, München@L=621790@a=128@$202011161033$202011161038$$$1$$$¶GP¶ft@0@2000@120@1@100@1@1000@0@@@@@false@0@-1@$f@$f@$f@$f@$f@$§bt@0@2000@120@1@100@1@1000@0@@@@@false@0@-1@$f@$f@$f@$f@$f@$§tt@0@5000@120@1@100@1@2500@0@@@@@false@0@-1@$t@0@25000@120@1@100@1@3000@0@@@@@false@0@-1@$f@$f@$f@$f@$§',
 	cycle: {min: 1200},
-	price: null
-}
+	price: null,
+};
 
 export {
 	dbJourney,
-}
+};

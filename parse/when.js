@@ -1,14 +1,18 @@
 const parseWhen = (ctx, date, timeS, timeR, tzOffset, cncl = false) => {
-	const parse = ctx.profile.parseDateTime
+	const parse = ctx.profile.parseDateTime;
 
-	let planned = timeS ? parse(ctx, date, timeS, tzOffset, false) : null
-	let prognosed = timeR ? parse(ctx, date, timeR, tzOffset, false) : null
-	let delay = null
+	let planned = timeS
+		? parse(ctx, date, timeS, tzOffset, false)
+		: null;
+	let prognosed = timeR
+		? parse(ctx, date, timeR, tzOffset, false)
+		: null;
+	let delay = null;
 
 	if (planned && prognosed) {
-		const tPlanned = parse(ctx, date, timeS, tzOffset, true)
-		const tPrognosed = parse(ctx, date, timeR, tzOffset, true)
-		delay = Math.round((tPrognosed - tPlanned) / 1000)
+		const tPlanned = parse(ctx, date, timeS, tzOffset, true);
+		const tPrognosed = parse(ctx, date, timeR, tzOffset, true);
+		delay = Math.round((tPrognosed - tPlanned) / 1000);
 	}
 
 	if (cncl) {
@@ -16,16 +20,16 @@ const parseWhen = (ctx, date, timeS, timeR, tzOffset, cncl = false) => {
 			when: null,
 			plannedWhen: planned,
 			prognosedWhen: prognosed,
-			delay
-		}
+			delay,
+		};
 	}
 	return {
 		when: prognosed || planned,
 		plannedWhen: planned,
-		delay
-	}
-}
+		delay,
+	};
+};
 
 export {
 	parseWhen,
-}
+};

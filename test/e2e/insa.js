@@ -1,28 +1,28 @@
-import tap from 'tap'
-import isRoughlyEqual from 'is-roughly-equal'
+import tap from 'tap';
+import isRoughlyEqual from 'is-roughly-equal';
 
-import {createWhen} from './lib/util.js'
-import {createClient} from '../../index.js'
-import {profile as insaProfile} from '../../p/insa/index.js'
+import {createWhen} from './lib/util.js';
+import {createClient} from '../../index.js';
+import {profile as insaProfile} from '../../p/insa/index.js';
 import {
 	createValidateMovement,
 	createValidateJourneyLeg,
-} from './lib/validators.js'
-import {createValidateFptfWith as createValidate} from './lib/validate-fptf-with.js'
-import {testJourneysStationToStation} from './lib/journeys-station-to-station.js'
-import {testJourneysStationToAddress} from './lib/journeys-station-to-address.js'
-import {testJourneysStationToPoi} from './lib/journeys-station-to-poi.js'
-import {testEarlierLaterJourneys} from './lib/earlier-later-journeys.js'
-import {journeysFailsWithNoProduct} from './lib/journeys-fails-with-no-product.js'
-import {testDepartures} from './lib/departures.js'
-import {testDeparturesInDirection} from './lib/departures-in-direction.js'
-import {testArrivals} from './lib/arrivals.js'
-import {testJourneysWithDetour} from './lib/journeys-with-detour.js'
+} from './lib/validators.js';
+import {createValidateFptfWith as createValidate} from './lib/validate-fptf-with.js';
+import {testJourneysStationToStation} from './lib/journeys-station-to-station.js';
+import {testJourneysStationToAddress} from './lib/journeys-station-to-address.js';
+import {testJourneysStationToPoi} from './lib/journeys-station-to-poi.js';
+import {testEarlierLaterJourneys} from './lib/earlier-later-journeys.js';
+import {journeysFailsWithNoProduct} from './lib/journeys-fails-with-no-product.js';
+import {testDepartures} from './lib/departures.js';
+import {testDeparturesInDirection} from './lib/departures-in-direction.js';
+import {testArrivals} from './lib/arrivals.js';
+import {testJourneysWithDetour} from './lib/journeys-with-detour.js';
 
-const isObj = o => o !== null && 'object' === typeof o && !Array.isArray(o)
+const isObj = o => o !== null && 'object' === typeof o && !Array.isArray(o);
 
-const T_MOCK = 1668495600 * 1000 // 2022-11-15T08:00:00+01:00
-const when = createWhen(insaProfile.timezone, insaProfile.locale, T_MOCK)
+const T_MOCK = 1668495600 * 1000; // 2022-11-15T08:00:00+01:00
+const when = createWhen(insaProfile.timezone, insaProfile.locale, T_MOCK);
 
 const cfg = {
 	when,
@@ -31,48 +31,50 @@ const cfg = {
 	minLatitude: 50.7,
 	maxLatitude: 53.2,
 	minLongitude: 9, // considering e.g. IC 245
-	maxLongitude: 13.4
-}
+	maxLongitude: 13.4,
+};
 
 const withFakeDirection = (validate) => (val, item, name) => {
 	validate(val, {
 		...item,
-		direction: item.direction === null ? 'foo' : item.direction,
-	}, name)
-}
+		direction: item.direction === null
+			? 'foo'
+			: item.direction,
+	}, name);
+};
 const validators = {
 	movement: withFakeDirection(createValidateMovement(cfg)),
 	journeyLeg: withFakeDirection(createValidateJourneyLeg(cfg)),
-}
+};
 
-const validate = createValidate(cfg, validators)
+const validate = createValidate(cfg, validators);
 
-const client = createClient(insaProfile, 'public-transport/hafas-client:test')
+const client = createClient(insaProfile, 'public-transport/hafas-client:test');
 
-const magdeburgHbf = '8010224'
-const magdeburgBuckau = '8013456'
-const spielhagenstr = '7336'
-const hasselbachplatz = '90443'
-const stendal = '8010334'
-const dessau = '8010077'
-const universitaet = '19686'
+const magdeburgHbf = '8010224';
+const magdeburgBuckau = '8013456';
+const spielhagenstr = '7336';
+const hasselbachplatz = '90443';
+const stendal = '8010334';
+const dessau = '8010077';
+const universitaet = '19686';
 
 tap.test('journeys – Magdeburg Hbf to Magdeburg-Buckau', async (t) => {
 	const res = await client.journeys(magdeburgHbf, magdeburgBuckau, {
 		results: 4,
 		departure: when,
-		stopovers: true
-	})
+		stopovers: true,
+	});
 
 	await testJourneysStationToStation({
 		test: t,
 		res,
 		validate,
 		fromId: magdeburgHbf,
-		toId: magdeburgBuckau
-	})
-	t.end()
-})
+		toId: magdeburgBuckau,
+	});
+	t.end();
+});
 
 // todo: journeys, only one product
 
@@ -84,32 +86,32 @@ tap.test('journeys – fails with no product', async (t) => {
 		toId: magdeburgBuckau,
 		when,
 		products: insaProfile.products,
-	})
-	t.end()
-})
+	});
+	t.end();
+});
 
 tap.test('Magdeburg Hbf to 39104 Magdeburg, Sternstr. 10', async (t) => {
 	const sternStr = {
 		type: 'location',
 		address: 'Magdeburg - Altenstadt, Sternstraße 10',
 		latitude: 52.118414,
-		longitude: 11.422332
-	}
+		longitude: 11.422332,
+	};
 
 	const res = await client.journeys(magdeburgHbf, sternStr, {
 		results: 3,
-		departure: when
-	})
+		departure: when,
+	});
 
 	await testJourneysStationToAddress({
 		test: t,
 		res,
 		validate,
 		fromId: magdeburgHbf,
-		to: sternStr
-	})
-	t.end()
-})
+		to: sternStr,
+	});
+	t.end();
+});
 
 tap.test('Magdeburg Hbf to Kloster Unser Lieben Frauen', async (t) => {
 	const kloster = {
@@ -118,22 +120,22 @@ tap.test('Magdeburg Hbf to Kloster Unser Lieben Frauen', async (t) => {
 		poi: true,
 		name: 'Magdeburg, Kloster Unser Lieben Frauen (Denkmal)',
 		latitude: 52.127601,
-		longitude: 11.636437
-	}
+		longitude: 11.636437,
+	};
 	const res = await client.journeys(magdeburgHbf, kloster, {
 		results: 3,
-		departure: when
-	})
+		departure: when,
+	});
 
 	await testJourneysStationToPoi({
 		test: t,
 		res,
 		validate,
 		fromId: magdeburgHbf,
-		to: kloster
-	})
-	t.end()
-})
+		to: kloster,
+	});
+	t.end();
+});
 
 tap.test('journeys: via works – with detour', async (t) => {
 	// Going from Magdeburg, Hasselbachplatz (Sternstr.) (Tram/Bus) to Stendal
@@ -143,17 +145,17 @@ tap.test('journeys: via works – with detour', async (t) => {
 		via: dessau,
 		results: 1,
 		departure: when,
-		stopovers: true
-	})
+		stopovers: true,
+	});
 
 	await testJourneysWithDetour({
 		test: t,
 		res,
 		validate,
-		detourIds: [dessau]
-	})
-	t.end()
-})
+		detourIds: [dessau],
+	});
+	t.end();
+});
 
 // todo: without detour
 
@@ -164,40 +166,40 @@ tap.test('earlier/later journeys', async (t) => {
 		validate,
 		fromId: magdeburgHbf,
 		toId: magdeburgBuckau,
-		when
-	})
+		when,
+	});
 
-	t.end()
-})
+	t.end();
+});
 
 tap.test('trip details', async (t) => {
 	const res = await client.journeys(magdeburgHbf, magdeburgBuckau, {
-		results: 1, departure: when
-	})
+		results: 1, departure: when,
+	});
 
-	const p = res.journeys[0].legs.find(l => !l.walking)
-	t.ok(p.tripId, 'precondition failed')
-	t.ok(p.line.name, 'precondition failed')
+	const p = res.journeys[0].legs.find(l => !l.walking);
+	t.ok(p.tripId, 'precondition failed');
+	t.ok(p.line.name, 'precondition failed');
 
-	const tripRes = await client.trip(p.tripId, {when})
+	const tripRes = await client.trip(p.tripId, {when});
 
-	validate(t, tripRes, 'tripResult', 'res')
-	t.end()
-})
+	validate(t, tripRes, 'tripResult', 'res');
+	t.end();
+});
 
 tap.test('departures at Magdeburg Universität', async (t) => {
 	const res = await client.departures(universitaet, {
 		duration: 30, when,
-	})
+	});
 
 	await testDepartures({
 		test: t,
 		res,
 		validate,
-		id: universitaet
-	})
-	t.end()
-})
+		id: universitaet,
+	});
+	t.end();
+});
 
 tap.test('departures with station object', async (t) => {
 	const res = await client.departures({
@@ -207,15 +209,15 @@ tap.test('departures with station object', async (t) => {
 		location: {
 			type: 'location',
 			latitude: 1.23,
-			longitude: 2.34
-		}
+			longitude: 2.34,
+		},
 	}, {
 		duration: 30, when,
-	})
+	});
 
-	validate(t, res, 'departuresResponse', 'res')
-	t.end()
-})
+	validate(t, res, 'departuresResponse', 'res');
+	t.end();
+});
 
 // todo: deps empty, wrong loc ID?
 tap.test('departures at Universität in direction of Spielhagenstr.', async (t) => {
@@ -226,69 +228,69 @@ tap.test('departures at Universität in direction of Spielhagenstr.', async (t) 
 		id: universitaet,
 		directionIds: [spielhagenstr],
 		when,
-		validate
-	})
-	t.end()
-})
+		validate,
+	});
+	t.end();
+});
 
 tap.test('arrivals at Magdeburg Universität', async (t) => {
 	const res = await client.arrivals(universitaet, {
-		duration: 30, when
-	})
+		duration: 30, when,
+	});
 
 	await testArrivals({
 		test: t,
 		res,
 		validate,
-		id: universitaet
-	})
-	t.end()
-})
+		id: universitaet,
+	});
+	t.end();
+});
 
 // todo: nearby
 
 tap.test('locations named Magdeburg', async (t) => {
-	const nordpark = '7480'
+	const nordpark = '7480';
 	const locations = await client.locations('nordpark', {
-		results: 20
-	})
+		results: 20,
+	});
 
-	validate(t, locations, 'locations', 'locations')
-	t.ok(locations.length <= 20)
+	validate(t, locations, 'locations', 'locations');
+	t.ok(locations.length <= 20);
 
-	t.ok(locations.find(s => s.type === 'stop' || s.type === 'station'))
-	t.ok(locations.find(s => s.poi)) // POIs
+	t.ok(locations.find(s => s.type === 'stop' || s.type === 'station'));
+	t.ok(locations.find(s => s.poi)); // POIs
 	t.ok(locations.some((l) => {
-		return l.station && l.station.id === nordpark || l.id === nordpark
-	}))
+		return l.station && l.station.id === nordpark || l.id === nordpark;
+	}));
 
-	t.end()
-})
+	t.end();
+});
 
 tap.test('station Magdeburg-Buckau', async (t) => {
-	const s = await client.stop(magdeburgBuckau)
+	const s = await client.stop(magdeburgBuckau);
 
-	validate(t, s, ['stop', 'station'], 'station')
-	t.equal(s.id, magdeburgBuckau)
+	validate(t, s, ['stop', 'station'], 'station');
+	t.equal(s.id, magdeburgBuckau);
 
-	t.end()
-})
+	t.end();
+});
 
 tap.test('radar', async (t) => {
 	const res = await client.radar({
 		north: 52.148364,
 		west: 11.600826,
 		south: 52.108486,
-		east: 11.651451
+		east: 11.651451,
 	}, {
-		duration: 5 * 60, when, results: 10
-	})
+		duration: 5 * 60, when, results: 10,
+	});
 
 	const customCfg = Object.assign({}, cfg, {
 		stationCoordsOptional: true, // see #28
-	})
-	const validate = createValidate(customCfg, validators)
-	validate(t, res, 'radarResult', 'res')
+	});
+	const validate = createValidate(customCfg, validators);
+	validate(t, res, 'radarResult', 'res');
 
-	t.end()
-})
+	t.end();
+});

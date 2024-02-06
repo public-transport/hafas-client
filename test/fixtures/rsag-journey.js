@@ -17,8 +17,8 @@ const rsagJourneys = {
 				operator: {
 					type: 'operator',
 					id: 'db-regio-ag-nordost',
-					name: 'DB Regio AG Nordost'
-				}
+					name: 'DB Regio AG Nordost',
+				},
 			},
 			reachable: true,
 			currentLocation: {
@@ -38,17 +38,17 @@ const rsagJourneys = {
 					longitude: 12.131078,
 				},
 				products: {
-					ice: true,
+					'ice': true,
 					'ic-ec': true,
 					'long-distance-train': false,
 					'regional-train': true,
 					's-bahn': true,
-					bus: false,
-					ferry: false,
+					'bus': false,
+					'ferry': false,
 					'u-bahn': false,
-					tram: false,
+					'tram': false,
 					'on-call': false,
-				}
+				},
 			},
 			departure: '2021-01-19T14:14:00+01:00',
 			plannedDeparture: '2021-01-19T14:14:00+01:00',
@@ -68,17 +68,17 @@ const rsagJourneys = {
 					longitude: 12.172833,
 				},
 				products: {
-					ice: false,
+					'ice': false,
 					'ic-ec': true,
 					'long-distance-train': false,
 					'regional-train': true,
 					's-bahn': true,
-					bus: false,
-					ferry: false,
+					'bus': false,
+					'ferry': false,
 					'u-bahn': false,
-					tram: false,
+					'tram': false,
 					'on-call': false,
-				}
+				},
 			},
 			arrival: '2021-01-19T14:44:00+01:00',
 			plannedArrival: '2021-01-19T14:44:00+01:00',
@@ -92,8 +92,8 @@ const rsagJourneys = {
 	],
 	refreshToken: '¶HKI¶T$A=1@O=Rostock Hbf@L=8010304@a=128@$A=1@O=Güstrow@L=8010153@a=128@$202101191414$202101191444$      S2$$1$$$$',
 	cycle: {min: 3600},
-}
+};
 
 export {
 	rsagJourneys,
-}
+};

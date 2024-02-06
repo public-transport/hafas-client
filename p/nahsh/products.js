@@ -5,7 +5,7 @@ const products = [
 		bitmasks: [1],
 		name: 'High-speed rail',
 		short: 'ICE/HSR',
-		default: true
+		default: true,
 	},
 	{
 		id: 'national',
@@ -13,7 +13,7 @@ const products = [
 		bitmasks: [2],
 		name: 'InterCity & EuroCity',
 		short: 'IC/EC',
-		default: true
+		default: true,
 	},
 	{ // todo: also includes EN?
 		id: 'interregional',
@@ -21,7 +21,7 @@ const products = [
 		bitmasks: [4],
 		name: 'Interregional',
 		short: 'IR',
-		default: true
+		default: true,
 	},
 	{
 		id: 'regional',
@@ -29,7 +29,7 @@ const products = [
 		bitmasks: [8],
 		name: 'Regional & RegionalExpress',
 		short: 'RB/RE',
-		default: true
+		default: true,
 	},
 	{
 		id: 'suburban',
@@ -37,7 +37,7 @@ const products = [
 		bitmasks: [16],
 		name: 'S-Bahn',
 		short: 'S',
-		default: true
+		default: true,
 	},
 	{
 		id: 'bus',
@@ -45,7 +45,7 @@ const products = [
 		bitmasks: [32],
 		name: 'Bus',
 		short: 'B',
-		default: true
+		default: true,
 	},
 	{
 		id: 'ferry',
@@ -53,7 +53,7 @@ const products = [
 		bitmasks: [64],
 		name: 'Ferry',
 		short: 'F',
-		default: true
+		default: true,
 	},
 	{
 		id: 'subway',
@@ -61,7 +61,7 @@ const products = [
 		bitmasks: [128],
 		name: 'U-Bahn',
 		short: 'U',
-		default: true
+		default: true,
 	},
 	{
 		id: 'tram',
@@ -69,7 +69,7 @@ const products = [
 		bitmasks: [256],
 		name: 'Tram',
 		short: 'T',
-		default: true
+		default: true,
 	},
 	{
 		id: 'onCall',
@@ -77,10 +77,10 @@ const products = [
 		bitmasks: [512],
 		name: 'On-call transit',
 		short: 'on-call',
-		default: true
-	}
-]
+		default: true,
+	},
+];
 
 export {
 	products,
-}
+};

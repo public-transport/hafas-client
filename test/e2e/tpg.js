@@ -1,13 +1,13 @@
-import tap from 'tap'
+import tap from 'tap';
 
-import {createWhen} from './lib/util.js'
-import {createClient} from '../../index.js'
-import {profile as tpgProfile} from '../../p/tpg/index.js'
-import {createValidateFptfWith as createValidate} from './lib/validate-fptf-with.js'
-import {testJourneysStationToAddress} from './lib/journeys-station-to-address.js'
+import {createWhen} from './lib/util.js';
+import {createClient} from '../../index.js';
+import {profile as tpgProfile} from '../../p/tpg/index.js';
+import {createValidateFptfWith as createValidate} from './lib/validate-fptf-with.js';
+import {testJourneysStationToAddress} from './lib/journeys-station-to-address.js';
 
-const T_MOCK = 1668495600 * 1000 // 2022-11-15T08:00:00+01:00
-const when = createWhen(tpgProfile.timezone, tpgProfile.locale, T_MOCK)
+const T_MOCK = 1668495600 * 1000; // 2022-11-15T08:00:00+01:00
+const when = createWhen(tpgProfile.timezone, tpgProfile.locale, T_MOCK);
 
 const cfg = {
 	when,
@@ -17,13 +17,13 @@ const cfg = {
 	minLongitude: 4.4604,
 	maxLatitude: 47.2969,
 	maxLongitude: 7.8607,
-}
+};
 
-const validate = createValidate(cfg)
+const validate = createValidate(cfg);
 
-const client = createClient(tpgProfile, 'public-transport/hafas-client:test')
+const client = createClient(tpgProfile, 'public-transport/hafas-client:test');
 
-const moillebeau = '100451'
+const moillebeau = '100451';
 
 tap.test('Moillebeau to Cours des Bastions 10', async (t) => {
 	const coursDesBastions10 = {
@@ -32,12 +32,12 @@ tap.test('Moillebeau to Cours des Bastions 10', async (t) => {
 		address: 'Cours des Bastions 10, 1205 Genève',
 		latitude: 46.197768,
 		longitude: 6.148046,
-	}
+	};
 
 	const res = await client.journeys(moillebeau, coursDesBastions10, {
 		results: 3,
 		departure: when,
-	})
+	});
 
 	await testJourneysStationToAddress({
 		test: t,
@@ -45,6 +45,6 @@ tap.test('Moillebeau to Cours des Bastions 10', async (t) => {
 		validate,
 		fromId: moillebeau,
 		to: coursDesBastions10,
-	})
-	t.end()
-})
+	});
+	t.end();
+});

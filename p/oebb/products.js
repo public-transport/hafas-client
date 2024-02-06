@@ -5,7 +5,7 @@ const products = [
 		bitmasks: [1],
 		name: 'InterCityExpress & RailJet',
 		short: 'ICE/RJ',
-		default: true
+		default: true,
 	},
 	{
 		id: 'national',
@@ -13,7 +13,7 @@ const products = [
 		bitmasks: [2, 4],
 		name: 'InterCity & EuroCity',
 		short: 'IC/EC',
-		default: true
+		default: true,
 	},
 	{
 		id: 'interregional',
@@ -21,7 +21,7 @@ const products = [
 		bitmasks: [8, 4096],
 		name: 'Durchgangszug & EuroNight',
 		short: 'D/EN',
-		default: true
+		default: true,
 	},
 	{
 		id: 'regional',
@@ -29,7 +29,7 @@ const products = [
 		bitmasks: [16],
 		name: 'Regional & RegionalExpress',
 		short: 'R/REX',
-		default: true
+		default: true,
 	},
 	{
 		id: 'suburban',
@@ -37,7 +37,7 @@ const products = [
 		bitmasks: [32],
 		name: 'S-Bahn',
 		short: 'S',
-		default: true
+		default: true,
 	},
 	{
 		id: 'bus',
@@ -45,7 +45,7 @@ const products = [
 		bitmasks: [64],
 		name: 'Bus',
 		short: 'B',
-		default: true
+		default: true,
 	},
 	{
 		id: 'ferry',
@@ -53,7 +53,7 @@ const products = [
 		bitmasks: [128],
 		name: 'Ferry',
 		short: 'F',
-		default: true
+		default: true,
 	},
 	{
 		id: 'subway',
@@ -61,7 +61,7 @@ const products = [
 		bitmasks: [256],
 		name: 'U-Bahn',
 		short: 'U',
-		default: true
+		default: true,
 	},
 	{
 		id: 'tram',
@@ -69,7 +69,7 @@ const products = [
 		bitmasks: [512],
 		name: 'Tram',
 		short: 'T',
-		default: true
+		default: true,
 	},
 	{
 		id: 'onCall',
@@ -77,10 +77,10 @@ const products = [
 		bitmasks: [2048],
 		name: 'on-call transit, lifts, etc',
 		short: 'on-call/lift',
-		default: true
-	}
-]
+		default: true,
+	},
+];
 
 export {
 	products,
-}
+};

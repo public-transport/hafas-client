@@ -1,15 +1,15 @@
-import tap from 'tap'
+import tap from 'tap';
 
-import {createClient} from '../index.js'
-import {profile as rawProfile} from '../p/mobiliteit-lu/index.js'
+import {createClient} from '../index.js';
+import {profile as rawProfile} from '../p/mobiliteit-lu/index.js';
 
-const client = createClient(rawProfile, 'public-transport/hafas-client:test')
-const {profile} = client
+const client = createClient(rawProfile, 'public-transport/hafas-client:test');
+const {profile} = client;
 
 const opt = {
 	linesOfStops: false, // parse & expose lines at the stop/station?
 	remarks: true,
-}
+};
 
 tap.test('parses a line correctly (mobiliteit.lu)', (t) => {
 	const rawLine = {
@@ -30,10 +30,10 @@ tap.test('parses a line correctly (mobiliteit.lu)', (t) => {
 			catCode: '1',
 			admin: 'C88---',
 		},
-	}
+	};
 
-	const ctx = {profile, opt}
-	const stop = profile.parseLine(ctx, rawLine)
+	const ctx = {profile, opt};
+	const stop = profile.parseLine(ctx, rawLine);
 
 	t.same(stop, {
 		type: 'line',
@@ -45,6 +45,6 @@ tap.test('parses a line correctly (mobiliteit.lu)', (t) => {
 		productName: 'IC',
 		mode: 'train',
 		product: 'national-train',
-	})
-	t.end()
-})
+	});
+	t.end();
+});

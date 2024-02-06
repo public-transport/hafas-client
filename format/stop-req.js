@@ -3,11 +3,11 @@ const formatStopReq = (ctx, stopRef) => {
 		// todo: there's also `StationDetails`, are there differences?
 		meth: 'LocDetails',
 		req: {
-			locL: [stopRef]
-		}
-	}
-}
+			locL: [stopRef],
+		},
+	};
+};
 
 export {
 	formatStopReq,
-}
+};

@@ -1,11 +1,11 @@
-import tap from 'tap'
+import tap from 'tap';
 
-import {createClient} from '../../index.js'
-import {profile as rawProfile} from '../../p/db/index.js'
-import {data as loyaltyCards} from '../../p/db/loyalty-cards.js'
+import {createClient} from '../../index.js';
+import {profile as rawProfile} from '../../p/db/index.js';
+import {data as loyaltyCards} from '../../p/db/loyalty-cards.js';
 
-const client = createClient(rawProfile, 'public-transport/hafas-client:test')
-const {profile} = client
+const client = createClient(rawProfile, 'public-transport/hafas-client:test');
+const {profile} = client;
 
 const opt = {
 	results: null,
@@ -32,7 +32,7 @@ const opt = {
 		type: loyaltyCards.BAHNCARD,
 		discount: 25,
 	},
-}
+};
 
 const berlinWienQuery0 = Object.freeze({
 	getPasslist: false,
@@ -60,14 +60,14 @@ const berlinWienQuery0 = Object.freeze({
 	outDate: '20230912',
 	outTime: '080910',
 	outFrwd: true,
-})
+});
 
 tap.test('formats a journeys() request correctly (DB)', (t) => {
-	const ctx = {profile, opt}
+	const ctx = {profile, opt};
 
 	// transformJourneysQuery() mutates its 2nd argument!
-	const query = {...berlinWienQuery0}
-	const req = profile.transformJourneysQuery(ctx, query)
+	const query = {...berlinWienQuery0};
+	const req = profile.transformJourneysQuery(ctx, query);
 
 	t.same(req, {
 		...berlinWienQuery0,
@@ -80,6 +80,6 @@ tap.test('formats a journeys() request correctly (DB)', (t) => {
 			}],
 			cType: 'PK',
 		},
-	})
-	t.end()
-})
+	});
+	t.end();
+});

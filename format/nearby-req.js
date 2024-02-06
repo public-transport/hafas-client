@@ -1,5 +1,5 @@
 const formatNearbyReq = (ctx, location) => {
-	const {profile, opt} = ctx
+	const {profile, opt} = ctx;
 
 	return {
 		cfg: {polyEnc: 'GPA'},
@@ -8,21 +8,21 @@ const formatNearbyReq = (ctx, location) => {
 			ring: {
 				cCrd: {
 					x: profile.formatCoord(location.longitude),
-					y: profile.formatCoord(location.latitude)
+					y: profile.formatCoord(location.latitude),
 				},
 				maxDist: opt.distance || -1,
-				minDist: 0
+				minDist: 0,
 			},
 			locFltrL: [
 				profile.formatProductsFilter(ctx, opt.products || {}),
 			],
-			getPOIs: !!opt.poi,
-			getStops: !!opt.stops,
-			maxLoc: opt.results
-		}
-	}
-}
+			getPOIs: Boolean(opt.poi),
+			getStops: Boolean(opt.stops),
+			maxLoc: opt.results,
+		},
+	};
+};
 
 export {
 	formatNearbyReq,
-}
+};

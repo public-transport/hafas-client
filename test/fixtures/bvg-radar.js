@@ -14,7 +14,7 @@ const bvgRadar = [
 		location: {
 			type: 'location',
 			latitude: 52.52211,
-			longitude: 13.414728
+			longitude: 13.414728,
 		},
 		nextStopovers: [
 			{
@@ -26,7 +26,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100002',
 						latitude: 52.522605,
-						longitude: 13.402359
+						longitude: 13.402359,
 					},
 					products: {
 						suburban: true,
@@ -35,8 +35,8 @@ const bvgRadar = [
 						bus: true,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
 				arrival: null,
 				plannedArrival: null,
@@ -60,7 +60,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100026',
 						latitude: 52.521059,
-						longitude: 13.41125
+						longitude: 13.41125,
 					},
 					products: {
 						suburban: false,
@@ -69,8 +69,8 @@ const bvgRadar = [
 						bus: false,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
 				arrival: '2019-08-19T20:30:00+02:00',
 				plannedArrival: '2019-08-19T20:29:00+02:00',
@@ -94,7 +94,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100005',
 						latitude: 52.522389,
-						longitude: 13.414495
+						longitude: 13.414495,
 					},
 					products: {
 						suburban: false,
@@ -103,8 +103,8 @@ const bvgRadar = [
 						bus: false,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
 				arrival: '2019-08-19T20:34:00+02:00',
 				plannedArrival: '2019-08-19T20:31:00+02:00',
@@ -128,7 +128,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900151003',
 						latitude: 52.57236,
-						longitude: 13.495164
+						longitude: 13.495164,
 					},
 					products: {
 						suburban: false,
@@ -137,8 +137,8 @@ const bvgRadar = [
 						bus: false,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
 				arrival: '2019-08-19T21:01:00+02:00',
 				plannedArrival: '2019-08-19T20:58:00+02:00',
@@ -152,7 +152,7 @@ const bvgRadar = [
 				departurePlatform: null,
 				plannedDeparturePlatform: null,
 				departurePrognosisType: null,
-			}
+			},
 		],
 		frames: [
 			{
@@ -164,7 +164,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100026',
 						latitude: 52.521059,
-						longitude: 13.41125
+						longitude: 13.41125,
 					},
 					products: {
 						suburban: false,
@@ -173,8 +173,8 @@ const bvgRadar = [
 						bus: false,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
 				destination: {
 					type: 'stop',
@@ -184,7 +184,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100005',
 						latitude: 52.522389,
-						longitude: 13.414495
+						longitude: 13.414495,
 					},
 					products: {
 						suburban: false,
@@ -193,10 +193,10 @@ const bvgRadar = [
 						bus: false,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
-				t: 0
+				t: 0,
 			},
 			{
 				origin: {
@@ -207,7 +207,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100026',
 						latitude: 52.521059,
-						longitude: 13.41125
+						longitude: 13.41125,
 					},
 					products: {
 						suburban: false,
@@ -216,8 +216,8 @@ const bvgRadar = [
 						bus: false,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
 				destination: {
 					type: 'stop',
@@ -227,7 +227,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100005',
 						latitude: 52.522389,
-						longitude: 13.414495
+						longitude: 13.414495,
 					},
 					products: {
 						suburban: false,
@@ -236,10 +236,10 @@ const bvgRadar = [
 						bus: false,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
-				t: 10000
+				t: 10000,
 			},
 			{
 				origin: {
@@ -250,7 +250,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100026',
 						latitude: 52.521059,
-						longitude: 13.41125
+						longitude: 13.41125,
 					},
 					products: {
 						suburban: false,
@@ -259,8 +259,8 @@ const bvgRadar = [
 						bus: false,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
 				destination: {
 					type: 'stop',
@@ -270,7 +270,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100005',
 						latitude: 52.522389,
-						longitude: 13.414495
+						longitude: 13.414495,
 					},
 					products: {
 						suburban: false,
@@ -279,10 +279,10 @@ const bvgRadar = [
 						bus: false,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
-				t: 20000
+				t: 20000,
 			},
 			{
 				origin: {
@@ -293,7 +293,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100026',
 						latitude: 52.521059,
-						longitude: 13.41125
+						longitude: 13.41125,
 					},
 					products: {
 						suburban: false,
@@ -302,8 +302,8 @@ const bvgRadar = [
 						bus: false,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
 				destination: {
 					type: 'stop',
@@ -313,7 +313,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100005',
 						latitude: 52.522389,
-						longitude: 13.414495
+						longitude: 13.414495,
 					},
 					products: {
 						suburban: false,
@@ -322,11 +322,11 @@ const bvgRadar = [
 						bus: false,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
-				t: 30000
-			}
+				t: 30000,
+			},
 		],
 		polyline: {
 			type: 'FeatureCollection',
@@ -338,9 +338,9 @@ const bvgRadar = [
 						type: 'Point',
 						coordinates: [
 							13.41473,
-							52.52211
-						]
-					}
+							52.52211,
+						],
+					},
 				},
 				{
 					type: 'Feature',
@@ -349,9 +349,9 @@ const bvgRadar = [
 						type: 'Point',
 						coordinates: [
 							13.4149,
-							52.52222
-						]
-					}
+							52.52222,
+						],
+					},
 				},
 				{
 					type: 'Feature',
@@ -360,9 +360,9 @@ const bvgRadar = [
 						type: 'Point',
 						coordinates: [
 							13.41507,
-							52.52234
-						]
-					}
+							52.52234,
+						],
+					},
 				},
 				{
 					type: 'Feature',
@@ -371,12 +371,12 @@ const bvgRadar = [
 						type: 'Point',
 						coordinates: [
 							13.4151,
-							52.52236
-						]
-					}
-				}
-			]
-		}
+							52.52236,
+						],
+					},
+				},
+			],
+		},
 	},
 	{
 		direction: 'S Spandau Bhf (Berlin)',
@@ -393,7 +393,7 @@ const bvgRadar = [
 		location: {
 			type: 'location',
 			latitude: 52.521877,
-			longitude: 13.410899
+			longitude: 13.410899,
 		},
 		nextStopovers: [
 			{
@@ -405,7 +405,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900260005',
 						latitude: 52.390796,
-						longitude: 13.51352
+						longitude: 13.51352,
 					},
 					products: {
 						suburban: true,
@@ -414,8 +414,8 @@ const bvgRadar = [
 						bus: true,
 						ferry: false,
 						express: false,
-						regional: true
-					}
+						regional: true,
+					},
 				},
 				arrival: null,
 				plannedArrival: null,
@@ -439,7 +439,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100003',
 						latitude: 52.521508,
-						longitude: 13.411267
+						longitude: 13.411267,
 					},
 					products: {
 						suburban: true,
@@ -448,8 +448,8 @@ const bvgRadar = [
 						bus: true,
 						ferry: false,
 						express: false,
-						regional: true
-					}
+						regional: true,
+					},
 				},
 				arrival: '2019-08-19T20:32:00+02:00',
 				plannedArrival: '2019-08-19T20:32:00+02:00',
@@ -473,7 +473,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100002',
 						latitude: 52.522605,
-						longitude: 13.402359
+						longitude: 13.402359,
 					},
 					products: {
 						suburban: true,
@@ -482,8 +482,8 @@ const bvgRadar = [
 						bus: true,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
 				arrival: '2019-08-19T20:34:00+02:00',
 				plannedArrival: '2019-08-19T20:34:00+02:00',
@@ -507,7 +507,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900029101',
 						latitude: 52.534794,
-						longitude: 13.197477
+						longitude: 13.197477,
 					},
 					products: {
 						suburban: true,
@@ -516,8 +516,8 @@ const bvgRadar = [
 						bus: false,
 						ferry: false,
 						express: true,
-						regional: true
-					}
+						regional: true,
+					},
 				},
 				arrival: '2019-08-19T21:07:00+02:00',
 				plannedArrival: '2019-08-19T21:07:00+02:00',
@@ -531,7 +531,7 @@ const bvgRadar = [
 				departurePlatform: null,
 				plannedDeparturePlatform: null,
 				departurePrognosisType: null,
-			}
+			},
 		],
 		frames: [
 			{
@@ -543,7 +543,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100003',
 						latitude: 52.521508,
-						longitude: 13.411267
+						longitude: 13.411267,
 					},
 					products: {
 						suburban: true,
@@ -552,8 +552,8 @@ const bvgRadar = [
 						bus: true,
 						ferry: false,
 						express: false,
-						regional: true
-					}
+						regional: true,
+					},
 				},
 				destination: {
 					type: 'stop',
@@ -563,7 +563,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100002',
 						latitude: 52.522605,
-						longitude: 13.402359
+						longitude: 13.402359,
 					},
 					products: {
 						suburban: true,
@@ -572,10 +572,10 @@ const bvgRadar = [
 						bus: true,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
-				t: 0
+				t: 0,
 			},
 			{
 				origin: {
@@ -586,7 +586,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100003',
 						latitude: 52.521508,
-						longitude: 13.411267
+						longitude: 13.411267,
 					},
 					products: {
 						suburban: true,
@@ -595,8 +595,8 @@ const bvgRadar = [
 						bus: true,
 						ferry: false,
 						express: false,
-						regional: true
-					}
+						regional: true,
+					},
 				},
 				destination: {
 					type: 'stop',
@@ -606,7 +606,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100002',
 						latitude: 52.522605,
-						longitude: 13.402359
+						longitude: 13.402359,
 					},
 					products: {
 						suburban: true,
@@ -615,10 +615,10 @@ const bvgRadar = [
 						bus: true,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
-				t: 10000
+				t: 10000,
 			},
 			{
 				origin: {
@@ -629,7 +629,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100003',
 						latitude: 52.521508,
-						longitude: 13.411267
+						longitude: 13.411267,
 					},
 					products: {
 						suburban: true,
@@ -638,8 +638,8 @@ const bvgRadar = [
 						bus: true,
 						ferry: false,
 						express: false,
-						regional: true
-					}
+						regional: true,
+					},
 				},
 				destination: {
 					type: 'stop',
@@ -649,7 +649,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100002',
 						latitude: 52.522605,
-						longitude: 13.402359
+						longitude: 13.402359,
 					},
 					products: {
 						suburban: true,
@@ -658,10 +658,10 @@ const bvgRadar = [
 						bus: true,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
-				t: 20000
+				t: 20000,
 			},
 			{
 				origin: {
@@ -672,7 +672,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100003',
 						latitude: 52.521508,
-						longitude: 13.411267
+						longitude: 13.411267,
 					},
 					products: {
 						suburban: true,
@@ -681,8 +681,8 @@ const bvgRadar = [
 						bus: true,
 						ferry: false,
 						express: false,
-						regional: true
-					}
+						regional: true,
+					},
 				},
 				destination: {
 					type: 'stop',
@@ -692,7 +692,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100002',
 						latitude: 52.522605,
-						longitude: 13.402359
+						longitude: 13.402359,
 					},
 					products: {
 						suburban: true,
@@ -701,11 +701,11 @@ const bvgRadar = [
 						bus: true,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
-				t: 30000
-			}
+				t: 30000,
+			},
 		],
 		polyline: {
 			type: 'FeatureCollection',
@@ -717,9 +717,9 @@ const bvgRadar = [
 						type: 'Point',
 						coordinates: [
 							13.4109,
-							52.52188
-						]
-					}
+							52.52188,
+						],
+					},
 				},
 				{
 					type: 'Feature',
@@ -728,9 +728,9 @@ const bvgRadar = [
 						type: 'Point',
 						coordinates: [
 							13.40921,
-							52.52268
-						]
-					}
+							52.52268,
+						],
+					},
 				},
 				{
 					type: 'Feature',
@@ -739,9 +739,9 @@ const bvgRadar = [
 						type: 'Point',
 						coordinates: [
 							13.40738,
-							52.5233
-						]
-					}
+							52.5233,
+						],
+					},
 				},
 				{
 					type: 'Feature',
@@ -750,12 +750,12 @@ const bvgRadar = [
 						type: 'Point',
 						coordinates: [
 							13.40532,
-							52.52338
-						]
-					}
-				}
-			]
-		}
+							52.52338,
+						],
+					},
+				},
+			],
+		},
 	},
 	{
 		direction: 'S+U Hermannstr. (Berlin)',
@@ -772,7 +772,7 @@ const bvgRadar = [
 		location: {
 			type: 'location',
 			latitude: 52.52096,
-			longitude: 13.412652
+			longitude: 13.412652,
 		},
 		nextStopovers: [
 			{
@@ -784,7 +784,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900085104',
 						latitude: 52.574536,
-						longitude: 13.347534
+						longitude: 13.347534,
 					},
 					products: {
 						suburban: false,
@@ -793,8 +793,8 @@ const bvgRadar = [
 						bus: true,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
 				arrival: null,
 				plannedArrival: null,
@@ -818,7 +818,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100705',
 						latitude: 52.521616,
-						longitude: 13.412121
+						longitude: 13.412121,
 					},
 					products: {
 						suburban: false,
@@ -827,8 +827,8 @@ const bvgRadar = [
 						bus: false,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
 				arrival: '2019-08-19T20:33:00+02:00',
 				plannedArrival: '2019-08-19T20:33:00+02:00',
@@ -852,7 +852,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100004',
 						latitude: 52.515503,
-						longitude: 13.418027
+						longitude: 13.418027,
 					},
 					products: {
 						suburban: true,
@@ -861,8 +861,8 @@ const bvgRadar = [
 						bus: true,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
 				arrival: '2019-08-19T20:35:00+02:00',
 				plannedArrival: '2019-08-19T20:35:00+02:00',
@@ -886,7 +886,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900079221',
 						latitude: 52.467177,
-						longitude: 13.4317
+						longitude: 13.4317,
 					},
 					products: {
 						suburban: true,
@@ -895,8 +895,8 @@ const bvgRadar = [
 						bus: true,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
 				arrival: '2019-08-19T20:47:00+02:00',
 				plannedArrival: '2019-08-19T20:47:00+02:00',
@@ -910,7 +910,7 @@ const bvgRadar = [
 				departurePlatform: null,
 				plannedDeparturePlatform: null,
 				departurePrognosisType: null,
-			}
+			},
 		],
 		frames: [
 			{
@@ -922,7 +922,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100705',
 						latitude: 52.521616,
-						longitude: 13.412121
+						longitude: 13.412121,
 					},
 					products: {
 						suburban: false,
@@ -931,8 +931,8 @@ const bvgRadar = [
 						bus: false,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
 				destination: {
 					type: 'stop',
@@ -942,7 +942,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100004',
 						latitude: 52.515503,
-						longitude: 13.418027
+						longitude: 13.418027,
 					},
 					products: {
 						suburban: true,
@@ -951,10 +951,10 @@ const bvgRadar = [
 						bus: true,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
-				t: 0
+				t: 0,
 			},
 			{
 				origin: {
@@ -965,7 +965,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100705',
 						latitude: 52.521616,
-						longitude: 13.412121
+						longitude: 13.412121,
 					},
 					products: {
 						suburban: false,
@@ -974,8 +974,8 @@ const bvgRadar = [
 						bus: false,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
 				destination: {
 					type: 'stop',
@@ -985,7 +985,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100004',
 						latitude: 52.515503,
-						longitude: 13.418027
+						longitude: 13.418027,
 					},
 					products: {
 						suburban: true,
@@ -994,10 +994,10 @@ const bvgRadar = [
 						bus: true,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
-				t: 10000
+				t: 10000,
 			},
 			{
 				origin: {
@@ -1008,7 +1008,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100705',
 						latitude: 52.521616,
-						longitude: 13.412121
+						longitude: 13.412121,
 					},
 					products: {
 						suburban: false,
@@ -1017,8 +1017,8 @@ const bvgRadar = [
 						bus: false,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
 				destination: {
 					type: 'stop',
@@ -1028,7 +1028,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100004',
 						latitude: 52.515503,
-						longitude: 13.418027
+						longitude: 13.418027,
 					},
 					products: {
 						suburban: true,
@@ -1037,10 +1037,10 @@ const bvgRadar = [
 						bus: true,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
-				t: 20000
+				t: 20000,
 			},
 			{
 				origin: {
@@ -1051,7 +1051,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100705',
 						latitude: 52.521616,
-						longitude: 13.412121
+						longitude: 13.412121,
 					},
 					products: {
 						suburban: false,
@@ -1060,8 +1060,8 @@ const bvgRadar = [
 						bus: false,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
 				destination: {
 					type: 'stop',
@@ -1071,7 +1071,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100004',
 						latitude: 52.515503,
-						longitude: 13.418027
+						longitude: 13.418027,
 					},
 					products: {
 						suburban: true,
@@ -1080,11 +1080,11 @@ const bvgRadar = [
 						bus: true,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
-				t: 30000
-			}
+				t: 30000,
+			},
 		],
 		polyline: {
 			type: 'FeatureCollection',
@@ -1096,9 +1096,9 @@ const bvgRadar = [
 						type: 'Point',
 						coordinates: [
 							13.41265,
-							52.52096
-						]
-					}
+							52.52096,
+						],
+					},
 				},
 				{
 					type: 'Feature',
@@ -1107,9 +1107,9 @@ const bvgRadar = [
 						type: 'Point',
 						coordinates: [
 							13.41286,
-							52.5208
-						]
-					}
+							52.5208,
+						],
+					},
 				},
 				{
 					type: 'Feature',
@@ -1118,9 +1118,9 @@ const bvgRadar = [
 						type: 'Point',
 						coordinates: [
 							13.41352,
-							52.52026
-						]
-					}
+							52.52026,
+						],
+					},
 				},
 				{
 					type: 'Feature',
@@ -1129,12 +1129,12 @@ const bvgRadar = [
 						type: 'Point',
 						coordinates: [
 							13.41423,
-							52.51976
-						]
-					}
-				}
-			]
-		}
+							52.51976,
+						],
+					},
+				},
+			],
+		},
 	},
 	{
 		direction: 'S+U Alexanderplatz',
@@ -1151,7 +1151,7 @@ const bvgRadar = [
 		location: {
 			type: 'location',
 			latitude: 52.522182,
-			longitude: 13.415394
+			longitude: 13.415394,
 		},
 		nextStopovers: [
 			{
@@ -1163,7 +1163,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900175004',
 						latitude: 52.521436,
-						longitude: 13.588759
+						longitude: 13.588759,
 					},
 					products: {
 						suburban: false,
@@ -1172,8 +1172,8 @@ const bvgRadar = [
 						bus: true,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
 				arrival: null,
 				plannedArrival: null,
@@ -1197,7 +1197,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100017',
 						latitude: 52.520313,
-						longitude: 13.421893
+						longitude: 13.421893,
 					},
 					products: {
 						suburban: false,
@@ -1206,8 +1206,8 @@ const bvgRadar = [
 						bus: true,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
 				arrival: '2019-08-19T20:31:00+02:00',
 				plannedArrival: '2019-08-19T20:32:00+02:00',
@@ -1231,7 +1231,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100704',
 						latitude: 52.521607,
-						longitude: 13.41311
+						longitude: 13.41311,
 					},
 					products: {
 						suburban: false,
@@ -1240,8 +1240,8 @@ const bvgRadar = [
 						bus: false,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
 				arrival: '2019-08-19T20:34:00+02:00',
 				plannedArrival: '2019-08-19T20:34:00+02:00',
@@ -1265,7 +1265,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100704',
 						latitude: 52.521607,
-						longitude: 13.41311
+						longitude: 13.41311,
 					},
 					products: {
 						suburban: false,
@@ -1274,8 +1274,8 @@ const bvgRadar = [
 						bus: false,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
 				arrival: '2019-08-19T20:34:00+02:00',
 				plannedArrival: '2019-08-19T20:34:00+02:00',
@@ -1289,7 +1289,7 @@ const bvgRadar = [
 				departurePlatform: null,
 				plannedDeparturePlatform: null,
 				departurePrognosisType: null,
-			}
+			},
 		],
 		frames: [
 			{
@@ -1301,7 +1301,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100017',
 						latitude: 52.520313,
-						longitude: 13.421893
+						longitude: 13.421893,
 					},
 					products: {
 						suburban: false,
@@ -1310,8 +1310,8 @@ const bvgRadar = [
 						bus: true,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
 				destination: {
 					type: 'stop',
@@ -1321,7 +1321,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100704',
 						latitude: 52.521607,
-						longitude: 13.41311
+						longitude: 13.41311,
 					},
 					products: {
 						suburban: false,
@@ -1330,10 +1330,10 @@ const bvgRadar = [
 						bus: false,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
-				t: 0
+				t: 0,
 			},
 			{
 				origin: {
@@ -1344,7 +1344,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100017',
 						latitude: 52.520313,
-						longitude: 13.421893
+						longitude: 13.421893,
 					},
 					products: {
 						suburban: false,
@@ -1353,8 +1353,8 @@ const bvgRadar = [
 						bus: true,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
 				destination: {
 					type: 'stop',
@@ -1364,7 +1364,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100704',
 						latitude: 52.521607,
-						longitude: 13.41311
+						longitude: 13.41311,
 					},
 					products: {
 						suburban: false,
@@ -1373,10 +1373,10 @@ const bvgRadar = [
 						bus: false,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
-				t: 10000
+				t: 10000,
 			},
 			{
 				origin: {
@@ -1387,7 +1387,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100017',
 						latitude: 52.520313,
-						longitude: 13.421893
+						longitude: 13.421893,
 					},
 					products: {
 						suburban: false,
@@ -1396,8 +1396,8 @@ const bvgRadar = [
 						bus: true,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
 				destination: {
 					type: 'stop',
@@ -1407,7 +1407,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100704',
 						latitude: 52.521607,
-						longitude: 13.41311
+						longitude: 13.41311,
 					},
 					products: {
 						suburban: false,
@@ -1416,10 +1416,10 @@ const bvgRadar = [
 						bus: false,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
-				t: 20000
+				t: 20000,
 			},
 			{
 				origin: {
@@ -1430,7 +1430,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100017',
 						latitude: 52.520313,
-						longitude: 13.421893
+						longitude: 13.421893,
 					},
 					products: {
 						suburban: false,
@@ -1439,8 +1439,8 @@ const bvgRadar = [
 						bus: true,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
 				destination: {
 					type: 'stop',
@@ -1450,7 +1450,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100704',
 						latitude: 52.521607,
-						longitude: 13.41311
+						longitude: 13.41311,
 					},
 					products: {
 						suburban: false,
@@ -1459,11 +1459,11 @@ const bvgRadar = [
 						bus: false,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
-				t: 30000
-			}
+				t: 30000,
+			},
 		],
 		polyline: {
 			type: 'FeatureCollection',
@@ -1475,9 +1475,9 @@ const bvgRadar = [
 						type: 'Point',
 						coordinates: [
 							13.41539,
-							52.52218
-						]
-					}
+							52.52218,
+						],
+					},
 				},
 				{
 					type: 'Feature',
@@ -1486,9 +1486,9 @@ const bvgRadar = [
 						type: 'Point',
 						coordinates: [
 							13.41487,
-							52.52201
-						]
-					}
+							52.52201,
+						],
+					},
 				},
 				{
 					type: 'Feature',
@@ -1497,9 +1497,9 @@ const bvgRadar = [
 						type: 'Point',
 						coordinates: [
 							13.41439,
-							52.5218
-						]
-					}
+							52.5218,
+						],
+					},
 				},
 				{
 					type: 'Feature',
@@ -1508,12 +1508,12 @@ const bvgRadar = [
 						type: 'Point',
 						coordinates: [
 							13.41389,
-							52.52159
-						]
-					}
-				}
-			]
-		}
+							52.52159,
+						],
+					},
+				},
+			],
+		},
 	},
 	{
 		direction: 'S+U Pankow (Berlin)',
@@ -1530,7 +1530,7 @@ const bvgRadar = [
 		location: {
 			type: 'location',
 			latitude: 52.520043,
-			longitude: 13.413506
+			longitude: 13.413506,
 		},
 		nextStopovers: [
 			{
@@ -1542,7 +1542,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900026201',
 						latitude: 52.509795,
-						longitude: 13.272977
+						longitude: 13.272977,
 					},
 					products: {
 						suburban: false,
@@ -1551,8 +1551,8 @@ const bvgRadar = [
 						bus: true,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
 				arrival: null,
 				plannedArrival: null,
@@ -1576,7 +1576,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100015',
 						latitude: 52.517229,
-						longitude: 13.412454
+						longitude: 13.412454,
 					},
 					products: {
 						suburban: false,
@@ -1585,8 +1585,8 @@ const bvgRadar = [
 						bus: false,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
 				arrival: '2019-08-19T20:32:00+02:00',
 				plannedArrival: '2019-08-19T20:31:00+02:00',
@@ -1610,7 +1610,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100703',
 						latitude: 52.522075,
-						longitude: 13.413596
+						longitude: 13.413596,
 					},
 					products: {
 						suburban: false,
@@ -1619,8 +1619,8 @@ const bvgRadar = [
 						bus: false,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
 				arrival: '2019-08-19T20:34:00+02:00',
 				plannedArrival: '2019-08-19T20:33:00+02:00',
@@ -1644,7 +1644,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900130002',
 						latitude: 52.567281,
-						longitude: 13.412283
+						longitude: 13.412283,
 					},
 					products: {
 						suburban: true,
@@ -1653,8 +1653,8 @@ const bvgRadar = [
 						bus: true,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
 				arrival: '2019-08-19T20:46:00+02:00',
 				plannedArrival: '2019-08-19T20:45:00+02:00',
@@ -1668,7 +1668,7 @@ const bvgRadar = [
 				departurePlatform: null,
 				plannedDeparturePlatform: null,
 				departurePrognosisType: null,
-			}
+			},
 		],
 		frames: [
 			{
@@ -1680,7 +1680,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100015',
 						latitude: 52.517229,
-						longitude: 13.412454
+						longitude: 13.412454,
 					},
 					products: {
 						suburban: false,
@@ -1689,8 +1689,8 @@ const bvgRadar = [
 						bus: false,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
 				destination: {
 					type: 'stop',
@@ -1700,7 +1700,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100703',
 						latitude: 52.522075,
-						longitude: 13.413596
+						longitude: 13.413596,
 					},
 					products: {
 						suburban: false,
@@ -1709,10 +1709,10 @@ const bvgRadar = [
 						bus: false,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
-				t: 0
+				t: 0,
 			},
 			{
 				origin: {
@@ -1723,7 +1723,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100015',
 						latitude: 52.517229,
-						longitude: 13.412454
+						longitude: 13.412454,
 					},
 					products: {
 						suburban: false,
@@ -1732,8 +1732,8 @@ const bvgRadar = [
 						bus: false,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
 				destination: {
 					type: 'stop',
@@ -1743,7 +1743,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100703',
 						latitude: 52.522075,
-						longitude: 13.413596
+						longitude: 13.413596,
 					},
 					products: {
 						suburban: false,
@@ -1752,10 +1752,10 @@ const bvgRadar = [
 						bus: false,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
-				t: 10000
+				t: 10000,
 			},
 			{
 				origin: {
@@ -1766,7 +1766,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100015',
 						latitude: 52.517229,
-						longitude: 13.412454
+						longitude: 13.412454,
 					},
 					products: {
 						suburban: false,
@@ -1775,8 +1775,8 @@ const bvgRadar = [
 						bus: false,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
 				destination: {
 					type: 'stop',
@@ -1786,7 +1786,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100703',
 						latitude: 52.522075,
-						longitude: 13.413596
+						longitude: 13.413596,
 					},
 					products: {
 						suburban: false,
@@ -1795,10 +1795,10 @@ const bvgRadar = [
 						bus: false,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
-				t: 20000
+				t: 20000,
 			},
 			{
 				origin: {
@@ -1809,7 +1809,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100015',
 						latitude: 52.517229,
-						longitude: 13.412454
+						longitude: 13.412454,
 					},
 					products: {
 						suburban: false,
@@ -1818,8 +1818,8 @@ const bvgRadar = [
 						bus: false,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
 				destination: {
 					type: 'stop',
@@ -1829,7 +1829,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100703',
 						latitude: 52.522075,
-						longitude: 13.413596
+						longitude: 13.413596,
 					},
 					products: {
 						suburban: false,
@@ -1838,11 +1838,11 @@ const bvgRadar = [
 						bus: false,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
-				t: 30000
-			}
+				t: 30000,
+			},
 		],
 		polyline: {
 			type: 'FeatureCollection',
@@ -1854,9 +1854,9 @@ const bvgRadar = [
 						type: 'Point',
 						coordinates: [
 							13.41351,
-							52.52005
-						]
-					}
+							52.52005,
+						],
+					},
 				},
 				{
 					type: 'Feature',
@@ -1865,9 +1865,9 @@ const bvgRadar = [
 						type: 'Point',
 						coordinates: [
 							13.41429,
-							52.52035
-						]
-					}
+							52.52035,
+						],
+					},
 				},
 				{
 					type: 'Feature',
@@ -1876,9 +1876,9 @@ const bvgRadar = [
 						type: 'Point',
 						coordinates: [
 							13.41473,
-							52.52084
-						]
-					}
+							52.52084,
+						],
+					},
 				},
 				{
 					type: 'Feature',
@@ -1887,12 +1887,12 @@ const bvgRadar = [
 						type: 'Point',
 						coordinates: [
 							13.41453,
-							52.52139
-						]
-					}
-				}
-			]
-		}
+							52.52139,
+						],
+					},
+				},
+			],
+		},
 	},
 	{
 		direction: 'Hellersdorf, Riesaer Str.',
@@ -1909,7 +1909,7 @@ const bvgRadar = [
 		location: {
 			type: 'location',
 			latitude: 52.522353,
-			longitude: 13.415097
+			longitude: 13.415097,
 		},
 		nextStopovers: [
 			{
@@ -1921,7 +1921,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100002',
 						latitude: 52.522605,
-						longitude: 13.402359
+						longitude: 13.402359,
 					},
 					products: {
 						suburban: true,
@@ -1930,8 +1930,8 @@ const bvgRadar = [
 						bus: true,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
 				arrival: null,
 				plannedArrival: null,
@@ -1955,7 +1955,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100005',
 						latitude: 52.522389,
-						longitude: 13.414495
+						longitude: 13.414495,
 					},
 					products: {
 						suburban: false,
@@ -1964,8 +1964,8 @@ const bvgRadar = [
 						bus: false,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
 				arrival: '2019-08-19T20:33:00+02:00',
 				plannedArrival: '2019-08-19T20:30:00+02:00',
@@ -1989,7 +1989,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100040',
 						latitude: 52.525185,
-						longitude: 13.419942
+						longitude: 13.419942,
 					},
 					products: {
 						suburban: false,
@@ -1998,8 +1998,8 @@ const bvgRadar = [
 						bus: true,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
 				arrival: '2019-08-19T20:36:00+02:00',
 				plannedArrival: '2019-08-19T20:33:00+02:00',
@@ -2023,7 +2023,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900175013',
 						latitude: 52.529401,
-						longitude: 13.624186
+						longitude: 13.624186,
 					},
 					products: {
 						suburban: false,
@@ -2032,8 +2032,8 @@ const bvgRadar = [
 						bus: true,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
 				arrival: '2019-08-19T21:22:00+02:00',
 				plannedArrival: '2019-08-19T21:19:00+02:00',
@@ -2047,7 +2047,7 @@ const bvgRadar = [
 				departurePlatform: null,
 				plannedDeparturePlatform: null,
 				departurePrognosisType: null,
-			}
+			},
 		],
 		frames: [
 			{
@@ -2059,7 +2059,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100005',
 						latitude: 52.522389,
-						longitude: 13.414495
+						longitude: 13.414495,
 					},
 					products: {
 						suburban: false,
@@ -2068,8 +2068,8 @@ const bvgRadar = [
 						bus: false,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
 				destination: {
 					type: 'stop',
@@ -2079,7 +2079,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100040',
 						latitude: 52.525185,
-						longitude: 13.419942
+						longitude: 13.419942,
 					},
 					products: {
 						suburban: false,
@@ -2088,10 +2088,10 @@ const bvgRadar = [
 						bus: true,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
-				t: 0
+				t: 0,
 			},
 			{
 				origin: {
@@ -2102,7 +2102,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100005',
 						latitude: 52.522389,
-						longitude: 13.414495
+						longitude: 13.414495,
 					},
 					products: {
 						suburban: false,
@@ -2111,8 +2111,8 @@ const bvgRadar = [
 						bus: false,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
 				destination: {
 					type: 'stop',
@@ -2122,7 +2122,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100040',
 						latitude: 52.525185,
-						longitude: 13.419942
+						longitude: 13.419942,
 					},
 					products: {
 						suburban: false,
@@ -2131,10 +2131,10 @@ const bvgRadar = [
 						bus: true,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
-				t: 10000
+				t: 10000,
 			},
 			{
 				origin: {
@@ -2145,7 +2145,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100005',
 						latitude: 52.522389,
-						longitude: 13.414495
+						longitude: 13.414495,
 					},
 					products: {
 						suburban: false,
@@ -2154,8 +2154,8 @@ const bvgRadar = [
 						bus: false,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
 				destination: {
 					type: 'stop',
@@ -2165,7 +2165,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100040',
 						latitude: 52.525185,
-						longitude: 13.419942
+						longitude: 13.419942,
 					},
 					products: {
 						suburban: false,
@@ -2174,10 +2174,10 @@ const bvgRadar = [
 						bus: true,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
-				t: 20000
+				t: 20000,
 			},
 			{
 				origin: {
@@ -2188,7 +2188,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100005',
 						latitude: 52.522389,
-						longitude: 13.414495
+						longitude: 13.414495,
 					},
 					products: {
 						suburban: false,
@@ -2197,8 +2197,8 @@ const bvgRadar = [
 						bus: false,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
 				destination: {
 					type: 'stop',
@@ -2208,7 +2208,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100040',
 						latitude: 52.525185,
-						longitude: 13.419942
+						longitude: 13.419942,
 					},
 					products: {
 						suburban: false,
@@ -2217,11 +2217,11 @@ const bvgRadar = [
 						bus: true,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
-				t: 30000
-			}
+				t: 30000,
+			},
 		],
 		polyline: {
 			type: 'FeatureCollection',
@@ -2233,9 +2233,9 @@ const bvgRadar = [
 						type: 'Point',
 						coordinates: [
 							13.4151,
-							52.52236
-						]
-					}
+							52.52236,
+						],
+					},
 				},
 				{
 					type: 'Feature',
@@ -2244,9 +2244,9 @@ const bvgRadar = [
 						type: 'Point',
 						coordinates: [
 							13.41513,
-							52.52238
-						]
-					}
+							52.52238,
+						],
+					},
 				},
 				{
 					type: 'Feature',
@@ -2255,9 +2255,9 @@ const bvgRadar = [
 						type: 'Point',
 						coordinates: [
 							13.41541,
-							52.52263
-						]
-					}
+							52.52263,
+						],
+					},
 				},
 				{
 					type: 'Feature',
@@ -2266,12 +2266,12 @@ const bvgRadar = [
 						type: 'Point',
 						coordinates: [
 							13.41569,
-							52.52286
-						]
-					}
-				}
-			]
-		}
+							52.52286,
+						],
+					},
+				},
+			],
+		},
 	},
 	{
 		direction: 'S Hackescher Markt',
@@ -2288,7 +2288,7 @@ const bvgRadar = [
 		location: {
 			type: 'location',
 			latitude: 52.521283,
-			longitude: 13.411034
+			longitude: 13.411034,
 		},
 		nextStopovers: [
 			{
@@ -2300,7 +2300,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900175013',
 						latitude: 52.529401,
-						longitude: 13.624186
+						longitude: 13.624186,
 					},
 					products: {
 						suburban: false,
@@ -2309,8 +2309,8 @@ const bvgRadar = [
 						bus: true,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
 				arrival: null,
 				plannedArrival: null,
@@ -2334,7 +2334,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100026',
 						latitude: 52.521059,
-						longitude: 13.41125
+						longitude: 13.41125,
 					},
 					products: {
 						suburban: false,
@@ -2343,8 +2343,8 @@ const bvgRadar = [
 						bus: false,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
 				arrival: '2019-08-19T20:33:00+02:00',
 				plannedArrival: '2019-08-19T20:30:00+02:00',
@@ -2368,7 +2368,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100515',
 						latitude: 52.520025,
-						longitude: 13.404822
+						longitude: 13.404822,
 					},
 					products: {
 						suburban: false,
@@ -2377,8 +2377,8 @@ const bvgRadar = [
 						bus: true,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
 				arrival: '2019-08-19T20:35:00+02:00',
 				plannedArrival: '2019-08-19T20:32:00+02:00',
@@ -2402,7 +2402,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100002',
 						latitude: 52.522605,
-						longitude: 13.402359
+						longitude: 13.402359,
 					},
 					products: {
 						suburban: true,
@@ -2411,8 +2411,8 @@ const bvgRadar = [
 						bus: true,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
 				arrival: '2019-08-19T20:36:00+02:00',
 				plannedArrival: '2019-08-19T20:33:00+02:00',
@@ -2426,7 +2426,7 @@ const bvgRadar = [
 				departurePlatform: null,
 				plannedDeparturePlatform: null,
 				departurePrognosisType: null,
-			}
+			},
 		],
 		frames: [
 			{
@@ -2438,7 +2438,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100026',
 						latitude: 52.521059,
-						longitude: 13.41125
+						longitude: 13.41125,
 					},
 					products: {
 						suburban: false,
@@ -2447,8 +2447,8 @@ const bvgRadar = [
 						bus: false,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
 				destination: {
 					type: 'stop',
@@ -2458,7 +2458,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100515',
 						latitude: 52.520025,
-						longitude: 13.404822
+						longitude: 13.404822,
 					},
 					products: {
 						suburban: false,
@@ -2467,10 +2467,10 @@ const bvgRadar = [
 						bus: true,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
-				t: 0
+				t: 0,
 			},
 			{
 				origin: {
@@ -2481,7 +2481,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100026',
 						latitude: 52.521059,
-						longitude: 13.41125
+						longitude: 13.41125,
 					},
 					products: {
 						suburban: false,
@@ -2490,8 +2490,8 @@ const bvgRadar = [
 						bus: false,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
 				destination: {
 					type: 'stop',
@@ -2501,7 +2501,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100515',
 						latitude: 52.520025,
-						longitude: 13.404822
+						longitude: 13.404822,
 					},
 					products: {
 						suburban: false,
@@ -2510,10 +2510,10 @@ const bvgRadar = [
 						bus: true,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
-				t: 10000
+				t: 10000,
 			},
 			{
 				origin: {
@@ -2524,7 +2524,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100026',
 						latitude: 52.521059,
-						longitude: 13.41125
+						longitude: 13.41125,
 					},
 					products: {
 						suburban: false,
@@ -2533,8 +2533,8 @@ const bvgRadar = [
 						bus: false,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
 				destination: {
 					type: 'stop',
@@ -2544,7 +2544,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100515',
 						latitude: 52.520025,
-						longitude: 13.404822
+						longitude: 13.404822,
 					},
 					products: {
 						suburban: false,
@@ -2553,10 +2553,10 @@ const bvgRadar = [
 						bus: true,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
-				t: 20000
+				t: 20000,
 			},
 			{
 				origin: {
@@ -2567,7 +2567,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100026',
 						latitude: 52.521059,
-						longitude: 13.41125
+						longitude: 13.41125,
 					},
 					products: {
 						suburban: false,
@@ -2576,8 +2576,8 @@ const bvgRadar = [
 						bus: false,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
 				destination: {
 					type: 'stop',
@@ -2587,7 +2587,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100515',
 						latitude: 52.520025,
-						longitude: 13.404822
+						longitude: 13.404822,
 					},
 					products: {
 						suburban: false,
@@ -2596,11 +2596,11 @@ const bvgRadar = [
 						bus: true,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
-				t: 30000
-			}
+				t: 30000,
+			},
 		],
 		polyline: {
 			type: 'FeatureCollection',
@@ -2612,9 +2612,9 @@ const bvgRadar = [
 						type: 'Point',
 						coordinates: [
 							13.41103,
-							52.52129
-						]
-					}
+							52.52129,
+						],
+					},
 				},
 				{
 					type: 'Feature',
@@ -2623,9 +2623,9 @@ const bvgRadar = [
 						type: 'Point',
 						coordinates: [
 							13.41057,
-							52.52157
-						]
-					}
+							52.52157,
+						],
+					},
 				},
 				{
 					type: 'Feature',
@@ -2634,9 +2634,9 @@ const bvgRadar = [
 						type: 'Point',
 						coordinates: [
 							13.41001,
-							52.52191
-						]
-					}
+							52.52191,
+						],
+					},
 				},
 				{
 					type: 'Feature',
@@ -2645,12 +2645,12 @@ const bvgRadar = [
 						type: 'Point',
 						coordinates: [
 							13.40943,
-							52.52221
-						]
-					}
-				}
-			]
-		}
+							52.52221,
+						],
+					},
+				},
+			],
+		},
 	},
 	{
 		direction: 'S+U Hauptbahnhof',
@@ -2667,7 +2667,7 @@ const bvgRadar = [
 		location: {
 			type: 'location',
 			latitude: 52.52389,
-			longitude: 13.416814
+			longitude: 13.416814,
 		},
 		nextStopovers: [
 			{
@@ -2679,7 +2679,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900151003',
 						latitude: 52.57236,
-						longitude: 13.495164
+						longitude: 13.495164,
 					},
 					products: {
 						suburban: false,
@@ -2688,8 +2688,8 @@ const bvgRadar = [
 						bus: false,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
 				arrival: null,
 				plannedArrival: null,
@@ -2713,7 +2713,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100040',
 						latitude: 52.525185,
-						longitude: 13.419942
+						longitude: 13.419942,
 					},
 					products: {
 						suburban: false,
@@ -2722,8 +2722,8 @@ const bvgRadar = [
 						bus: true,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
 				arrival: '2019-08-19T20:32:00+02:00',
 				plannedArrival: '2019-08-19T20:30:00+02:00',
@@ -2747,7 +2747,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100005',
 						latitude: 52.522389,
-						longitude: 13.414495
+						longitude: 13.414495,
 					},
 					products: {
 						suburban: false,
@@ -2756,8 +2756,8 @@ const bvgRadar = [
 						bus: false,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
 				arrival: '2019-08-19T20:34:00+02:00',
 				plannedArrival: '2019-08-19T20:33:00+02:00',
@@ -2781,7 +2781,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900003259',
 						latitude: 52.523315,
-						longitude: 13.36207
+						longitude: 13.36207,
 					},
 					products: {
 						suburban: false,
@@ -2790,8 +2790,8 @@ const bvgRadar = [
 						bus: false,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
 				arrival: '2019-08-19T20:55:00+02:00',
 				plannedArrival: '2019-08-19T20:54:00+02:00',
@@ -2805,7 +2805,7 @@ const bvgRadar = [
 				departurePlatform: null,
 				plannedDeparturePlatform: null,
 				departurePrognosisType: null,
-			}
+			},
 		],
 		frames: [
 			{
@@ -2817,7 +2817,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100040',
 						latitude: 52.525185,
-						longitude: 13.419942
+						longitude: 13.419942,
 					},
 					products: {
 						suburban: false,
@@ -2826,8 +2826,8 @@ const bvgRadar = [
 						bus: true,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
 				destination: {
 					type: 'stop',
@@ -2837,7 +2837,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100005',
 						latitude: 52.522389,
-						longitude: 13.414495
+						longitude: 13.414495,
 					},
 					products: {
 						suburban: false,
@@ -2846,10 +2846,10 @@ const bvgRadar = [
 						bus: false,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
-				t: 0
+				t: 0,
 			},
 			{
 				origin: {
@@ -2860,7 +2860,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100040',
 						latitude: 52.525185,
-						longitude: 13.419942
+						longitude: 13.419942,
 					},
 					products: {
 						suburban: false,
@@ -2869,8 +2869,8 @@ const bvgRadar = [
 						bus: true,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
 				destination: {
 					type: 'stop',
@@ -2880,7 +2880,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100005',
 						latitude: 52.522389,
-						longitude: 13.414495
+						longitude: 13.414495,
 					},
 					products: {
 						suburban: false,
@@ -2889,10 +2889,10 @@ const bvgRadar = [
 						bus: false,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
-				t: 10000
+				t: 10000,
 			},
 			{
 				origin: {
@@ -2903,7 +2903,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100040',
 						latitude: 52.525185,
-						longitude: 13.419942
+						longitude: 13.419942,
 					},
 					products: {
 						suburban: false,
@@ -2912,8 +2912,8 @@ const bvgRadar = [
 						bus: true,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
 				destination: {
 					type: 'stop',
@@ -2923,7 +2923,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100005',
 						latitude: 52.522389,
-						longitude: 13.414495
+						longitude: 13.414495,
 					},
 					products: {
 						suburban: false,
@@ -2932,10 +2932,10 @@ const bvgRadar = [
 						bus: false,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
-				t: 20000
+				t: 20000,
 			},
 			{
 				origin: {
@@ -2946,7 +2946,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100040',
 						latitude: 52.525185,
-						longitude: 13.419942
+						longitude: 13.419942,
 					},
 					products: {
 						suburban: false,
@@ -2955,8 +2955,8 @@ const bvgRadar = [
 						bus: true,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
 				destination: {
 					type: 'stop',
@@ -2966,7 +2966,7 @@ const bvgRadar = [
 						type: 'location',
 						id: '900100005',
 						latitude: 52.522389,
-						longitude: 13.414495
+						longitude: 13.414495,
 					},
 					products: {
 						suburban: false,
@@ -2975,11 +2975,11 @@ const bvgRadar = [
 						bus: false,
 						ferry: false,
 						express: false,
-						regional: false
-					}
+						regional: false,
+					},
 				},
-				t: 30000
-			}
+				t: 30000,
+			},
 		],
 		polyline: {
 			type: 'FeatureCollection',
@@ -2991,9 +2991,9 @@ const bvgRadar = [
 						type: 'Point',
 						coordinates: [
 							13.41681,
-							52.52389
-						]
-					}
+							52.52389,
+						],
+					},
 				},
 				{
 					type: 'Feature',
@@ -3002,9 +3002,9 @@ const bvgRadar = [
 						type: 'Point',
 						coordinates: [
 							13.41628,
-							52.52345
-						]
-					}
+							52.52345,
+						],
+					},
 				},
 				{
 					type: 'Feature',
@@ -3013,9 +3013,9 @@ const bvgRadar = [
 						type: 'Point',
 						coordinates: [
 							13.41574,
-							52.52301
-						]
-					}
+							52.52301,
+						],
+					},
 				},
 				{
 					type: 'Feature',
@@ -3024,15 +3024,15 @@ const bvgRadar = [
 						type: 'Point',
 						coordinates: [
 							13.41521,
-							52.52257
-						]
-					}
-				}
-			]
-		}
-	}
-]
+							52.52257,
+						],
+					},
+				},
+			],
+		},
+	},
+];
 
 export {
 	bvgRadar,
-}
+};

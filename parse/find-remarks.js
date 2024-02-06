@@ -1,4 +1,4 @@
-import flatMap from 'lodash/flatMap.js'
+import flatMap from 'lodash/flatMap.js';
 
 // There are two kinds of notes: "remarks" (in `remL`) and HAFAS
 // Information Manager (HIM) notes (in `himL`). The former describe
@@ -13,11 +13,11 @@ import flatMap from 'lodash/flatMap.js'
 const findRemarks = (refs) => {
 	return flatMap(refs, (ref) => {
 		return [ref.warning, ref.hint]
-		.filter(rem => !!rem)
-		.map(rem => [rem, ref])
-	})
-}
+			.filter(rem => Boolean(rem))
+			.map(rem => [rem, ref]);
+	});
+};
 
 export {
 	findRemarks,
-}
+};

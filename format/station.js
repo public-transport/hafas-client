@@ -1,4 +1,4 @@
-import {formatLocationIdentifier} from './location-identifier.js'
+import {formatLocationIdentifier} from './location-identifier.js';
 
 const formatStation = (id) => {
 	return {
@@ -6,12 +6,12 @@ const formatStation = (id) => {
 		// todo: name necessary?
 		lid: formatLocationIdentifier({
 			A: '1', // station?
-			L: id
+			L: id,
 			// todo: `p` – timestamp of when the ID was obtained
-		})
-	}
-}
+		}),
+	};
+};
 
 export {
 	formatStation,
-}
+};

@@ -7,7 +7,7 @@ const bvgJourney = {
 			latitude: 52.521769,
 			longitude: 13.395231,
 			name: 'Berlin, Bodemuseum',
-			poi: true
+			poi: true,
 		},
 		destination: {
 			type: 'stop',
@@ -17,7 +17,7 @@ const bvgJourney = {
 				type: 'location',
 				id: '900100007',
 				latitude: 52.525158,
-				longitude: 13.393064
+				longitude: 13.393064,
 			},
 			products: {
 				suburban: true,
@@ -26,8 +26,8 @@ const bvgJourney = {
 				bus: false,
 				ferry: false,
 				express: false,
-				regional: false
-			}
+				regional: false,
+			},
 		},
 		arrival: '2019-08-18T14:16:00+02:00',
 		plannedArrival: '2019-08-18T14:16:00+02:00',
@@ -37,7 +37,7 @@ const bvgJourney = {
 		departureDelay: null,
 		public: true,
 		walking: true,
-		distance: 568
+		distance: 568,
 	}, {
 		origin: {
 			type: 'stop',
@@ -47,7 +47,7 @@ const bvgJourney = {
 				type: 'location',
 				id: '900100007',
 				latitude: 52.525158,
-				longitude: 13.393064
+				longitude: 13.393064,
 			},
 			products: {
 				suburban: true,
@@ -56,8 +56,8 @@ const bvgJourney = {
 				bus: false,
 				ferry: false,
 				express: false,
-				regional: false
-			}
+				regional: false,
+			},
 		},
 		destination: {
 			type: 'stop',
@@ -67,7 +67,7 @@ const bvgJourney = {
 				type: 'location',
 				id: '900058101',
 				latitude: 52.475465,
-				longitude: 13.365575
+				longitude: 13.365575,
 			},
 			products: {
 				suburban: true,
@@ -76,8 +76,8 @@ const bvgJourney = {
 				bus: true,
 				ferry: false,
 				express: true,
-				regional: true
-			}
+				regional: true,
+			},
 		},
 		arrival: '2019-08-18T14:29:00+02:00',
 		plannedArrival: '2019-08-18T14:29:00+02:00',
@@ -101,7 +101,7 @@ const bvgJourney = {
 							type: 'location',
 							id: '900100007',
 							latitude: 52.525158,
-							longitude: 13.393064
+							longitude: 13.393064,
 						},
 						products: {
 							suburban: true,
@@ -110,16 +110,16 @@ const bvgJourney = {
 							bus: false,
 							ferry: false,
 							express: false,
-							regional: false
-						}
+							regional: false,
+						},
 					},
 					geometry: {
 						type: 'Point',
 						coordinates: [
 							13.39306,
-							52.52516
-						]
-					}
+							52.52516,
+						],
+					},
 				},
 				{
 					type: 'Feature',
@@ -128,9 +128,9 @@ const bvgJourney = {
 						type: 'Point',
 						coordinates: [
 							13.39176,
-							52.52284
-						]
-					}
+							52.52284,
+						],
+					},
 				},
 				{
 					type: 'Feature',
@@ -139,9 +139,9 @@ const bvgJourney = {
 						type: 'Point',
 						coordinates: [
 							13.39023,
-							52.52216
-						]
-					}
+							52.52216,
+						],
+					},
 				},
 				{
 					type: 'Feature',
@@ -150,9 +150,9 @@ const bvgJourney = {
 						type: 'Point',
 						coordinates: [
 							13.38866,
-							52.52195
-						]
-					}
+							52.52195,
+						],
+					},
 				},
 				{
 					type: 'Feature',
@@ -161,9 +161,9 @@ const bvgJourney = {
 						type: 'Point',
 						coordinates: [
 							13.38798,
-							52.52174
-						]
-					}
+							52.52174,
+						],
+					},
 				},
 				{
 					type: 'Feature',
@@ -172,9 +172,9 @@ const bvgJourney = {
 						type: 'Point',
 						coordinates: [
 							13.38744,
-							52.52141
-						]
-					}
+							52.52141,
+						],
+					},
 				},
 				{
 					type: 'Feature',
@@ -183,9 +183,9 @@ const bvgJourney = {
 						type: 'Point',
 						coordinates: [
 							13.38651,
-							52.5206
-						]
-					}
+							52.5206,
+						],
+					},
 				},
 				{
 					type: 'Feature',
@@ -197,7 +197,7 @@ const bvgJourney = {
 							type: 'location',
 							id: '900100001',
 							latitude: 52.520268,
-							longitude: 13.387149
+							longitude: 13.387149,
 						},
 						products: {
 							suburban: true,
@@ -206,16 +206,16 @@ const bvgJourney = {
 							bus: true,
 							ferry: false,
 							express: false,
-							regional: true
-						}
+							regional: true,
+						},
 					},
 					geometry: {
 						type: 'Point',
 						coordinates: [
 							13.38715,
-							52.52027
-						]
-					}
+							52.52027,
+						],
+					},
 				},
 				{
 					type: 'Feature',
@@ -224,9 +224,9 @@ const bvgJourney = {
 						type: 'Point',
 						coordinates: [
 							13.38635,
-							52.52049
-						]
-					}
+							52.52049,
+						],
+					},
 				},
 				{
 					type: 'Feature',
@@ -235,9 +235,9 @@ const bvgJourney = {
 						type: 'Point',
 						coordinates: [
 							13.38537,
-							52.51974
-						]
-					}
+							52.51974,
+						],
+					},
 				},
 				{
 					type: 'Feature',
@@ -246,9 +246,9 @@ const bvgJourney = {
 						type: 'Point',
 						coordinates: [
 							13.38567,
-							52.51785
-						]
-					}
+							52.51785,
+						],
+					},
 				},
 				{
 					type: 'Feature',
@@ -257,9 +257,9 @@ const bvgJourney = {
 						type: 'Point',
 						coordinates: [
 							13.3855,
-							52.51745
-						]
-					}
+							52.51745,
+						],
+					},
 				},
 				{
 					type: 'Feature',
@@ -268,9 +268,9 @@ const bvgJourney = {
 						type: 'Point',
 						coordinates: [
 							13.38497,
-							52.51691
-						]
-					}
+							52.51691,
+						],
+					},
 				},
 				{
 					type: 'Feature',
@@ -279,9 +279,9 @@ const bvgJourney = {
 						type: 'Point',
 						coordinates: [
 							13.38444,
-							52.51665
-						]
-					}
+							52.51665,
+						],
+					},
 				},
 				{
 					type: 'Feature',
@@ -290,9 +290,9 @@ const bvgJourney = {
 						type: 'Point',
 						coordinates: [
 							13.38399,
-							52.51657
-						]
-					}
+							52.51657,
+						],
+					},
 				},
 				{
 					type: 'Feature',
@@ -304,7 +304,7 @@ const bvgJourney = {
 							type: 'location',
 							id: '900100025',
 							latitude: 52.51651,
-							longitude: 13.381936
+							longitude: 13.381936,
 						},
 						products: {
 							suburban: true,
@@ -313,16 +313,16 @@ const bvgJourney = {
 							bus: true,
 							ferry: false,
 							express: false,
-							regional: false
-						}
+							regional: false,
+						},
 					},
 					geometry: {
 						type: 'Point',
 						coordinates: [
 							13.38194,
-							52.51651
-						]
-					}
+							52.51651,
+						],
+					},
 				},
 				{
 					type: 'Feature',
@@ -331,9 +331,9 @@ const bvgJourney = {
 						type: 'Point',
 						coordinates: [
 							13.38178,
-							52.51643
-						]
-					}
+							52.51643,
+						],
+					},
 				},
 				{
 					type: 'Feature',
@@ -342,9 +342,9 @@ const bvgJourney = {
 						type: 'Point',
 						coordinates: [
 							13.37888,
-							52.51623
-						]
-					}
+							52.51623,
+						],
+					},
 				},
 				{
 					type: 'Feature',
@@ -353,9 +353,9 @@ const bvgJourney = {
 						type: 'Point',
 						coordinates: [
 							13.37831,
-							52.51609
-						]
-					}
+							52.51609,
+						],
+					},
 				},
 				{
 					type: 'Feature',
@@ -364,9 +364,9 @@ const bvgJourney = {
 						type: 'Point',
 						coordinates: [
 							13.37768,
-							52.51576
-						]
-					}
+							52.51576,
+						],
+					},
 				},
 				{
 					type: 'Feature',
@@ -375,9 +375,9 @@ const bvgJourney = {
 						type: 'Point',
 						coordinates: [
 							13.37714,
-							52.51313
-						]
-					}
+							52.51313,
+						],
+					},
 				},
 				{
 					type: 'Feature',
@@ -386,9 +386,9 @@ const bvgJourney = {
 						type: 'Point',
 						coordinates: [
 							13.37669,
-							52.51024
-						]
-					}
+							52.51024,
+						],
+					},
 				},
 				{
 					type: 'Feature',
@@ -397,9 +397,9 @@ const bvgJourney = {
 						type: 'Point',
 						coordinates: [
 							13.3767,
-							52.50949
-						]
-					}
+							52.50949,
+						],
+					},
 				},
 				{
 					type: 'Feature',
@@ -411,7 +411,7 @@ const bvgJourney = {
 							type: 'location',
 							id: '900100020',
 							latitude: 52.509337,
-							longitude: 13.376452
+							longitude: 13.376452,
 						},
 						products: {
 							suburban: true,
@@ -420,16 +420,16 @@ const bvgJourney = {
 							bus: false,
 							ferry: false,
 							express: false,
-							regional: true
-						}
+							regional: true,
+						},
 					},
 					geometry: {
 						type: 'Point',
 						coordinates: [
 							13.37645,
-							52.50934
-						]
-					}
+							52.50934,
+						],
+					},
 				},
 				{
 					type: 'Feature',
@@ -438,9 +438,9 @@ const bvgJourney = {
 						type: 'Point',
 						coordinates: [
 							13.37686,
-							52.50873
-						]
-					}
+							52.50873,
+						],
+					},
 				},
 				{
 					type: 'Feature',
@@ -452,7 +452,7 @@ const bvgJourney = {
 							type: 'location',
 							id: '900012101',
 							latitude: 52.504537,
-							longitude: 13.38208
+							longitude: 13.38208,
 						},
 						products: {
 							suburban: true,
@@ -461,16 +461,16 @@ const bvgJourney = {
 							bus: true,
 							ferry: false,
 							express: false,
-							regional: false
-						}
+							regional: false,
+						},
 					},
 					geometry: {
 						type: 'Point',
 						coordinates: [
 							13.38208,
-							52.50454
-						]
-					}
+							52.50454,
+						],
+					},
 				},
 				{
 					type: 'Feature',
@@ -479,9 +479,9 @@ const bvgJourney = {
 						type: 'Point',
 						coordinates: [
 							13.38181,
-							52.5046
-						]
-					}
+							52.5046,
+						],
+					},
 				},
 				{
 					type: 'Feature',
@@ -490,9 +490,9 @@ const bvgJourney = {
 						type: 'Point',
 						coordinates: [
 							13.37956,
-							52.50099
-						]
-					}
+							52.50099,
+						],
+					},
 				},
 				{
 					type: 'Feature',
@@ -501,9 +501,9 @@ const bvgJourney = {
 						type: 'Point',
 						coordinates: [
 							13.37902,
-							52.50004
-						]
-					}
+							52.50004,
+						],
+					},
 				},
 				{
 					type: 'Feature',
@@ -512,9 +512,9 @@ const bvgJourney = {
 						type: 'Point',
 						coordinates: [
 							13.37814,
-							52.49942
-						]
-					}
+							52.49942,
+						],
+					},
 				},
 				{
 					type: 'Feature',
@@ -523,9 +523,9 @@ const bvgJourney = {
 						type: 'Point',
 						coordinates: [
 							13.37639,
-							52.4987
-						]
-					}
+							52.4987,
+						],
+					},
 				},
 				{
 					type: 'Feature',
@@ -534,9 +534,9 @@ const bvgJourney = {
 						type: 'Point',
 						coordinates: [
 							13.37493,
-							52.49795
-						]
-					}
+							52.49795,
+						],
+					},
 				},
 				{
 					type: 'Feature',
@@ -545,9 +545,9 @@ const bvgJourney = {
 						type: 'Point',
 						coordinates: [
 							13.37338,
-							52.49679
-						]
-					}
+							52.49679,
+						],
+					},
 				},
 				{
 					type: 'Feature',
@@ -556,9 +556,9 @@ const bvgJourney = {
 						type: 'Point',
 						coordinates: [
 							13.37287,
-							52.49597
-						]
-					}
+							52.49597,
+						],
+					},
 				},
 				{
 					type: 'Feature',
@@ -567,9 +567,9 @@ const bvgJourney = {
 						type: 'Point',
 						coordinates: [
 							13.37242,
-							52.49468
-						]
-					}
+							52.49468,
+						],
+					},
 				},
 				{
 					type: 'Feature',
@@ -581,7 +581,7 @@ const bvgJourney = {
 							type: 'location',
 							id: '900058103',
 							latitude: 52.49232,
-							longitude: 13.372227
+							longitude: 13.372227,
 						},
 						products: {
 							suburban: true,
@@ -590,16 +590,16 @@ const bvgJourney = {
 							bus: true,
 							ferry: false,
 							express: false,
-							regional: false
-						}
+							regional: false,
+						},
 					},
 					geometry: {
 						type: 'Point',
 						coordinates: [
 							13.37223,
-							52.49232
-						]
-					}
+							52.49232,
+						],
+					},
 				},
 				{
 					type: 'Feature',
@@ -608,9 +608,9 @@ const bvgJourney = {
 						type: 'Point',
 						coordinates: [
 							13.37207,
-							52.49233
-						]
-					}
+							52.49233,
+						],
+					},
 				},
 				{
 					type: 'Feature',
@@ -619,9 +619,9 @@ const bvgJourney = {
 						type: 'Point',
 						coordinates: [
 							13.37186,
-							52.48857
-						]
-					}
+							52.48857,
+						],
+					},
 				},
 				{
 					type: 'Feature',
@@ -630,9 +630,9 @@ const bvgJourney = {
 						type: 'Point',
 						coordinates: [
 							13.37121,
-							52.48667
-						]
-					}
+							52.48667,
+						],
+					},
 				},
 				{
 					type: 'Feature',
@@ -641,9 +641,9 @@ const bvgJourney = {
 						type: 'Point',
 						coordinates: [
 							13.36503,
-							52.47612
-						]
-					}
+							52.47612,
+						],
+					},
 				},
 				{
 					type: 'Feature',
@@ -652,9 +652,9 @@ const bvgJourney = {
 						type: 'Point',
 						coordinates: [
 							13.36524,
-							52.476
-						]
-					}
+							52.476,
+						],
+					},
 				},
 				{
 					type: 'Feature',
@@ -666,7 +666,7 @@ const bvgJourney = {
 							type: 'location',
 							id: '900058101',
 							latitude: 52.475465,
-							longitude: 13.365575
+							longitude: 13.365575,
 						},
 						products: {
 							suburban: true,
@@ -675,18 +675,18 @@ const bvgJourney = {
 							bus: true,
 							ferry: false,
 							express: true,
-							regional: true
-						}
+							regional: true,
+						},
 					},
 					geometry: {
 						type: 'Point',
 						coordinates: [
 							13.36558,
-							52.47547
-						]
-					}
-				}
-			]
+							52.47547,
+						],
+					},
+				},
+			],
 		},
 		tripId: '1|32794|20|86|18082019',
 		line: {
@@ -702,7 +702,7 @@ const bvgJourney = {
 			operator: {
 				type: 'operator',
 				id: 's-bahn-berlin-gmbh',
-				name: 'S-Bahn Berlin GmbH'
+				name: 'S-Bahn Berlin GmbH',
 			},
 		},
 		direction: 'S Blankenfelde (TF) Bhf',
@@ -719,7 +719,7 @@ const bvgJourney = {
 					type: 'location',
 					id: '900100007',
 					latitude: 52.525158,
-					longitude: 13.393064
+					longitude: 13.393064,
 				},
 				products: {
 					suburban: true,
@@ -728,8 +728,8 @@ const bvgJourney = {
 					bus: false,
 					ferry: false,
 					express: false,
-					regional: false
-				}
+					regional: false,
+				},
 			},
 			arrival: null,
 			plannedArrival: null,
@@ -753,7 +753,7 @@ const bvgJourney = {
 					type: 'location',
 					id: '900100001',
 					latitude: 52.520268,
-					longitude: 13.387149
+					longitude: 13.387149,
 				},
 				products: {
 					suburban: true,
@@ -762,8 +762,8 @@ const bvgJourney = {
 					bus: true,
 					ferry: false,
 					express: false,
-					regional: true
-				}
+					regional: true,
+				},
 			},
 			arrival: '2019-08-18T14:18:00+02:00',
 			plannedArrival: '2019-08-18T14:18:00+02:00',
@@ -787,7 +787,7 @@ const bvgJourney = {
 					type: 'location',
 					id: '900100025',
 					latitude: 52.51651,
-					longitude: 13.381936
+					longitude: 13.381936,
 				},
 				products: {
 					suburban: true,
@@ -796,8 +796,8 @@ const bvgJourney = {
 					bus: true,
 					ferry: false,
 					express: false,
-					regional: false
-				}
+					regional: false,
+				},
 			},
 			arrival: '2019-08-18T14:19:00+02:00',
 			plannedArrival: '2019-08-18T14:19:00+02:00',
@@ -821,7 +821,7 @@ const bvgJourney = {
 					type: 'location',
 					id: '900100020',
 					latitude: 52.509337,
-					longitude: 13.376452
+					longitude: 13.376452,
 				},
 				products: {
 					suburban: true,
@@ -830,8 +830,8 @@ const bvgJourney = {
 					bus: false,
 					ferry: false,
 					express: false,
-					regional: true
-				}
+					regional: true,
+				},
 			},
 			arrival: '2019-08-18T14:21:00+02:00',
 			plannedArrival: '2019-08-18T14:21:00+02:00',
@@ -855,7 +855,7 @@ const bvgJourney = {
 					type: 'location',
 					id: '900012101',
 					latitude: 52.504537,
-					longitude: 13.38208
+					longitude: 13.38208,
 				},
 				products: {
 					suburban: true,
@@ -864,8 +864,8 @@ const bvgJourney = {
 					bus: true,
 					ferry: false,
 					express: false,
-					regional: false
-				}
+					regional: false,
+				},
 			},
 			arrival: '2019-08-18T14:24:00+02:00',
 			plannedArrival: '2019-08-18T14:24:00+02:00',
@@ -889,7 +889,7 @@ const bvgJourney = {
 					type: 'location',
 					id: '900058103',
 					latitude: 52.49232,
-					longitude: 13.372227
+					longitude: 13.372227,
 				},
 				products: {
 					suburban: true,
@@ -898,8 +898,8 @@ const bvgJourney = {
 					bus: true,
 					ferry: false,
 					express: false,
-					regional: false
-				}
+					regional: false,
+				},
 			},
 			arrival: '2019-08-18T14:26:00+02:00',
 			plannedArrival: '2019-08-18T14:26:00+02:00',
@@ -923,7 +923,7 @@ const bvgJourney = {
 					type: 'location',
 					id: '900058101',
 					latitude: 52.475465,
-					longitude: 13.365575
+					longitude: 13.365575,
 				},
 				products: {
 					suburban: true,
@@ -932,8 +932,8 @@ const bvgJourney = {
 					bus: true,
 					ferry: false,
 					express: true,
-					regional: true
-				}
+					regional: true,
+				},
 			},
 			arrival: '2019-08-18T14:29:00+02:00',
 			plannedArrival: '2019-08-18T14:29:00+02:00',
@@ -952,23 +952,23 @@ const bvgJourney = {
 			{
 				type: 'hint',
 				code: 'bf',
-				text: 'barrier-free'
+				text: 'barrier-free',
 			},
 			{
 				type: 'hint',
 				code: 'FB',
-				text: 'Bicycle conveyance'
-			}
+				text: 'Bicycle conveyance',
+			},
 		],
 		cycle: {
 			min: 300,
 			max: 600,
-			nr: 19
-		}
+			nr: 19,
+		},
 	}],
 	refreshToken: '¶HKI¶G@F$A=4@O=Berlin, Bodemuseum@X=13395231@Y=52521769@L=900980968@a=128@$A=1@O=S Oranienburger Str. (Berlin)@L=900100007@a=128@$201908181406$201908181416$$$1$§T$A=1@O=S Oranienburger Str. (Berlin)@L=900100007@a=128@$A=1@O=S Südkreuz Bhf (Berlin)@L=900058101@a=128@$201908181416$201908181429$      S2$$1$¶GP¶ft@0@2000@120@-1@100@1@1000@0@@@@@false@0@-1@$f@$f@$f@$f@$f@$§bt@0@2000@120@-1@100@1@1000@0@@@@@false@0@-1@$f@$f@$f@$f@$f@$§tf@$f@$f@$f@$f@$f@$§',
 	cycle: {
-		min: 300
+		min: 300,
 	},
 	scheduledDays: Object.assign(Object.create(null), {
 		'2019-08-11': true,
@@ -1100,8 +1100,8 @@ const bvgJourney = {
 		'2019-12-15': false,
 		'2019-12-16': false,
 	}),
-}
+};
 
 export {
 	bvgJourney,
-}
+};

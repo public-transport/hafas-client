@@ -23,7 +23,7 @@ const dbJourney = {
 					subway: false,
 					tram: true,
 					taxi: false,
-				}
+				},
 			},
 			destination: {
 				type: 'stop',
@@ -68,8 +68,8 @@ const dbJourney = {
 						subway: false,
 						tram: true,
 						taxi: false,
-					}
-				}
+					},
+				},
 			},
 			arrival: '2020-04-11T05:20:00+02:00',
 			plannedArrival: '2020-04-11T05:20:00+02:00',
@@ -126,8 +126,8 @@ const dbJourney = {
 						subway: false,
 						tram: true,
 						taxi: false,
-					}
-				}
+					},
+				},
 			},
 			destination: {
 				type: 'stop',
@@ -150,7 +150,7 @@ const dbJourney = {
 					subway: true,
 					tram: true,
 					taxi: false,
-				}
+				},
 			},
 			arrival: '2020-04-11T09:01:00+02:00',
 			plannedArrival: '2020-04-11T09:01:00+02:00',
@@ -176,7 +176,7 @@ const dbJourney = {
 					type: 'operator',
 					id: 'db-fernverkehr-ag',
 					name: 'DB Fernverkehr AG',
-				}
+				},
 			},
 			direction: 'München Hbf',
 			arrivalPlatform: '9',
@@ -184,19 +184,19 @@ const dbJourney = {
 			departurePlatform: '11',
 			plannedDeparturePlatform: '11',
 			remarks: [
-					{
+				{
 					text: 'Komfort Check-in möglich (Infos unter bahn.de/kci)',
 					type: 'hint',
 					code: 'komfort-checkin',
 					summary: 'Komfort-Checkin available',
-				}
-			]
-		}
+				},
+			],
+		},
 	],
 	refreshToken: '¶HKI¶D$A=1@O=Köln Hbf@L=8000207@a=128@$A=1@O=Köln Messe/Deutz Gl.11-12@L=8073368@a=128@$202004110517$202004110520$$$1$§T$A=1@O=Köln Messe/Deutz Gl.11-12@L=8073368@a=128@$A=1@O=Nürnberg Hbf@L=8000284@a=128@$202004110520$202004110901$ICE  523$$1$',
 	price: {amount: 49.9, currency: 'EUR', hint: null},
-}
+};
 
 export {
 	dbJourney,
-}
+};

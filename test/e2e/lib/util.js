@@ -1,74 +1,81 @@
-import isRoughlyEqual from 'is-roughly-equal'
-import {ok, AssertionError} from 'assert'
-import {DateTime} from 'luxon'
-import * as a from 'assert'
-import {createRequire} from 'module'
-import {gunzipSync} from 'zlib'
+import isRoughlyEqual from 'is-roughly-equal';
+import {ok, AssertionError} from 'assert';
+import {DateTime} from 'luxon';
+import * as a from 'assert';
+import {createRequire} from 'module';
+import {gunzipSync} from 'zlib';
 
-const hour = 60 * 60 * 1000
-const day = 24 * hour
-const week = 7 * day
+const hour = 60 * 60 * 1000;
+const day = 24 * hour;
+const week = 7 * day;
 
 // next Monday 10 am
 const createWhen = (timezone, locale, tMock) => {
-	ok(Number.isInteger(tMock), 'tMock must be an integer')
+	ok(Number.isInteger(tMock), 'tMock must be an integer');
 
 	const t = process.env.VCR_MODE && !process.env.VCR_OFF
 		? tMock
-		: Date.now()
+		: Date.now();
 	return DateTime.fromMillis(t, {
 		zone: timezone,
 		locale,
-	}).startOf('week').plus({weeks: 1, hours: 10}).toJSDate()
-}
+	})
+		.startOf('week')
+		.plus({weeks: 1, hours: 10})
+		.toJSDate();
+};
 
 const assertValidWhen = (actual, expected, name, delta = day + 6 * hour) => {
-	const ts = +new Date(actual)
-	a.ok(!Number.isNaN(ts), name + ' is not parsable by Date')
+	const ts = Number(new Date(actual));
+	a.ok(!Number.isNaN(ts), name + ' is not parsable by Date');
 	// the timestamps might be from long-distance trains
-	if (!isRoughlyEqual(delta, +expected, ts)) {
+	if (!isRoughlyEqual(delta, Number(expected), ts)) {
 		throw new AssertionError({
 			message: name + ' is out of range',
 			actual: ts,
-			expected: `${expected - delta} - ${+expected + delta}`,
+			expected: `${expected - delta} - ${Number(expected) + delta}`,
 			operator: 'isRoughlyEqual',
-		})
+		});
 	}
-}
+};
 
 // HTTP request mocking
 if (process.env.VCR_MODE && !process.env.VCR_OFF) {
-	const require = createRequire(import.meta.url)
+	const require = createRequire(import.meta.url);
 
-	const {Polly} = require('@pollyjs/core')
-	const NodeHttpAdapter = require('@pollyjs/adapter-node-http')
-	const FSPersister = require('@pollyjs/persister-fs')
-	const tap = require('tap')
+	const {Polly} = require('@pollyjs/core');
+	const NodeHttpAdapter = require('@pollyjs/adapter-node-http');
+	const FSPersister = require('@pollyjs/persister-fs');
+	const tap = require('tap');
 
 	// monkey-patch NodeHttpAdapter to handle gzipped responses properly
 	// todo: submit a PR
 	// related: https://github.com/Netflix/pollyjs/issues/256
 	// related: https://github.com/Netflix/pollyjs/issues/463
 	// related: https://github.com/Netflix/pollyjs/issues/207
-	const _getBodyFromChunks = NodeHttpAdapter.prototype.getBodyFromChunks
+	const _getBodyFromChunks = NodeHttpAdapter.prototype.getBodyFromChunks;
 	NodeHttpAdapter.prototype.getBodyFromChunks = function getBodyFromChunksWithGunzip (chunks, headers) {
 		if (headers['content-encoding'] === 'gzip') {
-			const concatenated = Buffer.concat(chunks)
-			chunks = [gunzipSync(concatenated)]
+			const concatenated = Buffer.concat(chunks);
+			chunks = [gunzipSync(concatenated)];
 			// todo: this is ugly, find a better way
-			delete headers['content-encoding']
-			headers['content-length'] = chunks[0].length
+			delete headers['content-encoding'];
+			headers['content-length'] = chunks[0].length;
 		}
-		return _getBodyFromChunks.call(this, chunks, headers)
+		return _getBodyFromChunks.call(this, chunks, headers);
+	};
+
+	Polly.register(NodeHttpAdapter);
+	Polly.register(FSPersister);
+
+	let mode;
+	if (process.env.VCR_MODE === 'record') {
+		mode = 'record';
+	} else if (process.env.VCR_MODE === 'playback') {
+		mode = 'replay';
+	} else {
+		throw new Error('invalid $VCR_MODE, must be "record" or "replay"');
 	}
-
-	Polly.register(NodeHttpAdapter)
-	Polly.register(FSPersister)
-
-	let mode
-	if (process.env.VCR_MODE === 'record') mode = 'record'
-	else if (process.env.VCR_MODE === 'playback') mode = 'replay'
-	else throw new Error('invalid $VCR_MODE, must be "record" or "replay"')
 
 	const polly = new Polly('requests', {
 		logLevel: 'warn',
@@ -106,13 +113,13 @@ if (process.env.VCR_MODE && !process.env.VCR_OFF) {
 				],
 			},
 		},
-	})
+	});
 
 	tap.teardown(async () => {
-		await polly.stop()
-	})
+		await polly.stop();
+	});
 }
 
 export {
 	hour, createWhen, assertValidWhen,
-}
+};

@@ -1,10 +1,10 @@
-import {formatLocationIdentifier} from './location-identifier.js'
-import {formatCoord} from './coord.js'
+import {formatLocationIdentifier} from './location-identifier.js';
+import {formatCoord} from './coord.js';
 
 const formatPoi = (p) => {
 	// todo: use Number.isFinite()!
 	if (p.type !== 'location' || !p.latitude || !p.longitude || !p.id || !p.name) {
-		throw new TypeError('invalid POI')
+		throw new TypeError('invalid POI');
 	}
 
 	return {
@@ -15,11 +15,11 @@ const formatPoi = (p) => {
 			O: p.name,
 			L: p.id,
 			X: formatCoord(p.longitude),
-			Y: formatCoord(p.latitude)
-		})
-	}
-}
+			Y: formatCoord(p.latitude),
+		}),
+	};
+};
 
 export {
 	formatPoi,
-}
+};

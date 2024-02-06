@@ -1,5 +1,5 @@
 const formatRadarReq = (ctx, north, west, south, east) => {
-	const {profile, opt} = ctx
+	const {profile, opt} = ctx;
 
 	return {
 		meth: 'JourneyGeoPos',
@@ -14,16 +14,16 @@ const formatRadarReq = (ctx, north, west, south, east) => {
 			perStep: Math.round(opt.duration / Math.max(opt.frames, 1) * 1000),
 			ageOfReport: true, // todo: what is this?
 			jnyFltrL: [
-				profile.formatProductsFilter(ctx, opt.products || {})
+				profile.formatProductsFilter(ctx, opt.products || {}),
 			],
 			// todo: what is this? what about realtime?
 			// - CALC
 			// - CALC_REPORT (as seen in the INSA Young app)
 			trainPosMode: 'CALC',
-		}
-	}
-}
+		},
+	};
+};
 
 export {
 	formatRadarReq,
-}
+};

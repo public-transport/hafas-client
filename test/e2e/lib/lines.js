@@ -4,23 +4,23 @@ const testLines = async (cfg) => {
 		fetchLines,
 		validate,
 		query,
-	} = cfg
+	} = cfg;
 
-	const res = await fetchLines(query)
+	const res = await fetchLines(query);
 	const {
 		lines,
 		realtimeDataUpdatedAt,
-	} = res
+	} = res;
 
 	for (let i = 0; i < res.lines.length; i++) {
-		const l = res.lines[i]
-		const name = `res.lines[${i}]`
-		validate(t, l, 'line', name)
+		const l = res.lines[i];
+		const name = `res.lines[${i}]`;
+		validate(t, l, 'line', name);
 	}
 
-	validate(t, realtimeDataUpdatedAt, 'realtimeDataUpdatedAt', 'res.realtimeDataUpdatedAt')
-}
+	validate(t, realtimeDataUpdatedAt, 'realtimeDataUpdatedAt', 'res.realtimeDataUpdatedAt');
+};
 
 export {
 	testLines,
-}
+};

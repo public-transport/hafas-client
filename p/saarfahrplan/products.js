@@ -5,7 +5,7 @@ const products = [
 		bitmasks: [8192],
 		name: 'Hochgeschwindigkeitszug',
 		short: 'ICE',
-		default: true
+		default: true,
 	},
 	{
 		id: 'national',
@@ -13,7 +13,7 @@ const products = [
 		bitmasks: [4096],
 		name: 'InterCity & EuroCity',
 		short: 'IC/EC',
-		default: true
+		default: true,
 	},
 	{
 		id: 'interregional',
@@ -21,7 +21,7 @@ const products = [
 		bitmasks: [2048],
 		name: 'InterRegio',
 		short: 'IR',
-		default: true
+		default: true,
 	},
 	{
 		id: 'regional',
@@ -29,7 +29,7 @@ const products = [
 		bitmasks: [1024],
 		name: 'Regionalzug',
 		short: 'RB ?', // todo
-		default: true
+		default: true,
 	},
 	{
 		id: 'suburban',
@@ -37,7 +37,7 @@ const products = [
 		bitmasks: [512],
 		name: 'S-Bahn',
 		short: 'S-Bahn',
-		default: true
+		default: true,
 	},
 	{
 		id: 'subway',
@@ -45,7 +45,7 @@ const products = [
 		bitmasks: [256],
 		name: 'U-Bahn',
 		short: 'U',
-		default: true
+		default: true,
 	},
 	{
 		id: 'saarbahn',
@@ -53,7 +53,7 @@ const products = [
 		bitmasks: [128],
 		name: 'Saarbahn',
 		short: 'S',
-		default: true
+		default: true,
 	},
 	{
 		id: 'bus',
@@ -61,7 +61,7 @@ const products = [
 		bitmasks: [64],
 		name: 'Bus',
 		short: 'Bus',
-		default: true
+		default: true,
 	},
 	{
 		id: 'watercraft',
@@ -69,7 +69,7 @@ const products = [
 		bitmasks: [32], // todo: correct?
 		name: 'Schiff',
 		short: 'Schiff',
-		default: true
+		default: true,
 	},
 	{
 		id: 'onCall',
@@ -77,7 +77,7 @@ const products = [
 		bitmasks: [16],
 		name: 'Anruf-Sammel-Taxi',
 		short: 'AST',
-		default: true
+		default: true,
 	},
 	{
 		id: 'school-bus',
@@ -85,11 +85,11 @@ const products = [
 		bitmasks: [8],
 		name: 'Schulbus',
 		short: 'Schulbus',
-		default: true
-	}
+		default: true,
+	},
 	// todo: `1`, `2`, `4` bitmasks?
-]
+];
 
 export {
 	products,
-}
+};

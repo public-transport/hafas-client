@@ -9,7 +9,7 @@ const dbArrivals = [
 				type: 'location',
 				id: '730985',
 				latitude: 52.530866,
-				longitude: 13.300781
+				longitude: 13.300781,
 			},
 			products: {
 				nationalExpress: false,
@@ -21,7 +21,7 @@ const dbArrivals = [
 				ferry: false,
 				subway: true,
 				tram: false,
-				taxi: false
+				taxi: false,
 			},
 			station: {
 				type: 'station',
@@ -31,7 +31,7 @@ const dbArrivals = [
 					type: 'location',
 					id: '8011167',
 					latitude: 52.530291,
-					longitude: 13.299451
+					longitude: 13.299451,
 				},
 				products: {
 					nationalExpress: false,
@@ -43,7 +43,7 @@ const dbArrivals = [
 					ferry: false,
 					subway: true,
 					tram: false,
-					taxi: false
+					taxi: false,
 				},
 				lines: [
 					{
@@ -53,7 +53,7 @@ const dbArrivals = [
 						name: 'Bus RE6',
 						public: true,
 						mode: 'train',
-						product: 'regional'
+						product: 'regional',
 					},
 					{
 						type: 'line',
@@ -62,7 +62,7 @@ const dbArrivals = [
 						name: 'Bus SEV',
 						public: true,
 						mode: 'train',
-						product: 'regional'
+						product: 'regional',
 					},
 					{
 						type: 'line',
@@ -71,7 +71,7 @@ const dbArrivals = [
 						name: 'RB',
 						public: true,
 						mode: 'train',
-						product: 'regional'
+						product: 'regional',
 					},
 					{
 						type: 'line',
@@ -80,7 +80,7 @@ const dbArrivals = [
 						name: 'RE',
 						public: true,
 						mode: 'train',
-						product: 'regional'
+						product: 'regional',
 					},
 					{
 						type: 'line',
@@ -89,7 +89,7 @@ const dbArrivals = [
 						name: 'RE',
 						public: true,
 						mode: 'train',
-						product: 'regional'
+						product: 'regional',
 					},
 					{
 						type: 'line',
@@ -98,7 +98,7 @@ const dbArrivals = [
 						name: 'S 2',
 						public: true,
 						mode: 'train',
-						product: 'suburban'
+						product: 'suburban',
 					},
 					{
 						type: 'line',
@@ -107,7 +107,7 @@ const dbArrivals = [
 						name: 'S 25',
 						public: true,
 						mode: 'train',
-						product: 'suburban'
+						product: 'suburban',
 					},
 					{
 						type: 'line',
@@ -116,7 +116,7 @@ const dbArrivals = [
 						name: 'S 41',
 						public: true,
 						mode: 'train',
-						product: 'suburban'
+						product: 'suburban',
 					},
 					{
 						type: 'line',
@@ -125,7 +125,7 @@ const dbArrivals = [
 						name: 'S 42',
 						public: true,
 						mode: 'train',
-						product: 'suburban'
+						product: 'suburban',
 					},
 					{
 						type: 'line',
@@ -134,7 +134,7 @@ const dbArrivals = [
 						name: 'S 46',
 						public: true,
 						mode: 'train',
-						product: 'suburban'
+						product: 'suburban',
 					},
 					{
 						type: 'line',
@@ -143,7 +143,7 @@ const dbArrivals = [
 						name: 'Bus N7',
 						public: true,
 						mode: 'bus',
-						product: 'bus'
+						product: 'bus',
 					},
 					{
 						type: 'line',
@@ -152,7 +152,7 @@ const dbArrivals = [
 						name: 'Bus X9',
 						public: true,
 						mode: 'bus',
-						product: 'bus'
+						product: 'bus',
 					},
 					{
 						type: 'line',
@@ -161,7 +161,7 @@ const dbArrivals = [
 						name: 'Bus 109',
 						public: true,
 						mode: 'bus',
-						product: 'bus'
+						product: 'bus',
 					},
 					{
 						type: 'line',
@@ -170,7 +170,7 @@ const dbArrivals = [
 						name: 'Bus M21',
 						public: true,
 						mode: 'bus',
-						product: 'bus'
+						product: 'bus',
 					},
 					{
 						type: 'line',
@@ -179,7 +179,7 @@ const dbArrivals = [
 						name: 'Bus M27',
 						public: true,
 						mode: 'bus',
-						product: 'bus'
+						product: 'bus',
 					},
 					{
 						type: 'line',
@@ -188,9 +188,9 @@ const dbArrivals = [
 						name: 'U 7',
 						public: true,
 						mode: 'train',
-						product: 'subway'
-					}
-				]
+						product: 'subway',
+					},
+				],
 			},
 			lines: [
 				{
@@ -200,7 +200,7 @@ const dbArrivals = [
 					name: 'Bus N7',
 					public: true,
 					mode: 'bus',
-					product: 'bus'
+					product: 'bus',
 				},
 				{
 					type: 'line',
@@ -209,7 +209,7 @@ const dbArrivals = [
 					name: 'Bus X9',
 					public: true,
 					mode: 'bus',
-					product: 'bus'
+					product: 'bus',
 				},
 				{
 					type: 'line',
@@ -218,7 +218,7 @@ const dbArrivals = [
 					name: 'Bus M21',
 					public: true,
 					mode: 'bus',
-					product: 'bus'
+					product: 'bus',
 				},
 				{
 					type: 'line',
@@ -227,7 +227,7 @@ const dbArrivals = [
 					name: 'Bus M27',
 					public: true,
 					mode: 'bus',
-					product: 'bus'
+					product: 'bus',
 				},
 				{
 					type: 'line',
@@ -236,9 +236,9 @@ const dbArrivals = [
 					name: 'U 7',
 					public: true,
 					mode: 'train',
-					product: 'subway'
-				}
-			]
+					product: 'subway',
+				},
+			],
 		},
 		when: '2020-06-09T17:21:00+02:00',
 		plannedWhen: '2020-06-09T17:04:00+02:00',
@@ -260,12 +260,12 @@ const dbArrivals = [
 			productName: 'U',
 			mode: 'train',
 			product: 'subway',
-			operator: { type: 'operator', id: 'nahreisezug', name: 'Nahreisezug' }
+			operator: {type: 'operator', id: 'nahreisezug', name: 'Nahreisezug'},
 		},
-		remarks: []
-	}
-]
+		remarks: [],
+	},
+];
 
 export {
 	dbArrivals,
-}
+};

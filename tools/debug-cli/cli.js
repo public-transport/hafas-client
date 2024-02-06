@@ -1,18 +1,20 @@
 #!/usr/bin/env node
 
-import {parseArgs} from 'node:util'
-import {createClient} from '../../index.js'
+import {parseArgs} from 'node:util';
+import {createClient} from '../../index.js';
 
 const showError = (err) => {
-	console.error(err)
-	process.exit(1)
-}
+	console.error(err);
+	process.exit(1);
+};
 
-const toString = val => val + ''
+const toString = val => String(val);
 const parseJsObject = val => {
-	const res = eval(`(${val})`)
-	return res && 'object' === typeof res ? res : {}
-}
+	const res = eval(`(${val})`);
+	return res && 'object' === typeof res
+		? res
+		: {};
+};
 
 const methodsAndTheirArgs = [
 	['departures', 0, toString],
@@ -46,31 +48,33 @@ const methodsAndTheirArgs = [
 	['lines', 0, toString],
 	['lines', 1, parseJsObject],
 	['serverInfo', 0, parseJsObject],
-]
+];
 
 const {
 	positionals: args,
 } = parseArgs({
 	strict: true,
 	allowPositionals: true,
-})
+});
 
-const profileName = args[0]
-const fnName = args[1]
+const profileName = args[0];
+const fnName = args[1];
 
-const parsedArgs = args.slice(2).map((arg, i) => {
-	const parser = methodsAndTheirArgs.find(([_fnName, _i]) => _fnName === fnName && _i === i)
-	return parser ? parser[2](arg) : arg
-})
+const parsedArgs = args.slice(2)
+	.map((arg, i) => {
+		const parser = methodsAndTheirArgs.find(([_fnName, _i]) => _fnName === fnName && _i === i);
+		return parser
+			? parser[2](arg)
+			: arg;
+	});
+(async () => {
+	const {profile} = await import(`../../p/${profileName}/index.js`);
 
-;(async () => {
-	const {profile} = await import(`../../p/${profileName}/index.js`)
+	const client = createClient(profile, 'hafas-client debug CLI');
 
-	const client = createClient(profile, 'hafas-client debug CLI')
+	const fn = client[fnName];
 
-	const fn = client[fnName]
-
-	const res = await fn(...parsedArgs)
-	process.stdout.write(JSON.stringify(res) + '\n')
+	const res = await fn(...parsedArgs);
+	process.stdout.write(JSON.stringify(res) + '\n');
 })()
-.catch(showError)
+	.catch(showError);

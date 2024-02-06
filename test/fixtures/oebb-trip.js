@@ -1,13 +1,13 @@
 const point = (lon, lat) => ({
 	type: 'Point',
 	coordinates: [lon, lat],
-})
+});
 
 const feature = (geometry, props = {}) => ({
 	type: 'Feature',
 	properties: props,
 	geometry: geometry,
-})
+});
 
 const wienFlughafen = {
 	type: 'stop',
@@ -17,7 +17,7 @@ const wienFlughafen = {
 		type: 'location',
 		id: '8100353',
 		latitude: 48.121163,
-		longitude: 16.562418
+		longitude: 16.562418,
 	},
 	products: {
 		nationalExpress: true,
@@ -29,9 +29,9 @@ const wienFlughafen = {
 		ferry: false,
 		subway: false,
 		tram: false,
-		onCall: false
-	}
-}
+		onCall: false,
+	},
+};
 
 const salzburgHbf = {
 	type: 'stop',
@@ -41,7 +41,7 @@ const salzburgHbf = {
 		type: 'location',
 		id: '8100002',
 		latitude: 47.812851,
-		longitude: 13.045604
+		longitude: 13.045604,
 	},
 	products: {
 		nationalExpress: true,
@@ -53,15 +53,15 @@ const salzburgHbf = {
 		ferry: false,
 		subway: false,
 		tram: false,
-		onCall: false
-	}
-}
+		onCall: false,
+	},
+};
 
 const öbbWestbahnTickets = {
 	type: 'hint',
 	code: 'O5',
-	text: 'Hinweis: Gegenseitige Anerkennung von ÖBB- und WESTbahn-Tickets (Wien Hbf - Salzburg Hbf)'
-}
+	text: 'Hinweis: Gegenseitige Anerkennung von ÖBB- und WESTbahn-Tickets (Wien Hbf - Salzburg Hbf)',
+};
 
 const corona = {
 	id: '483655',
@@ -81,18 +81,18 @@ const corona = {
 		ferry: true,
 		subway: true,
 		tram: true,
-		onCall: true
+		onCall: true,
 	},
 	edges: [{
 		icoCrd: {x: 14768356, y: 48156724, type: 'WGS84'},
 		icon: null,
 		fromLocation: null,
-		toLocation: null
+		toLocation: null,
 	}],
 	validFrom: '2020-05-15T00:00:00+02:00',
 	validUntil: '2020-06-30T23:59:00+02:00',
-	modified: '2020-05-28T13:48:14+02:00'
-}
+	modified: '2020-05-28T13:48:14+02:00',
+};
 
 const oebbTrip = {
 	id: '2|#VN#0#ST#1591790769#PI#0#ZI#398470#TA#0#DA#110620#1S#8100353#1T#1633#LS#8100002#LT#1948#PU#81#RT#1#CA#RJ#ZE#742#ZB#RJ 742  #',
@@ -116,7 +116,7 @@ const oebbTrip = {
 		productName: 'RJ',
 		mode: 'train',
 		product: 'nationalExpress',
-		operator: {type: 'operator', id: 'nahreisezug', name: 'Nahreisezug'}
+		operator: {type: 'operator', id: 'nahreisezug', name: 'Nahreisezug'},
 	},
 	direction: 'Salzburg Hbf',
 	arrivalPlatform: '6A-C',
@@ -148,7 +148,7 @@ const oebbTrip = {
 					type: 'location',
 					id: '8103000',
 					latitude: 48.184564,
-					longitude: 16.378526
+					longitude: 16.378526,
 				},
 				products: {
 					nationalExpress: true,
@@ -160,8 +160,8 @@ const oebbTrip = {
 					ferry: false,
 					subway: false,
 					tram: false,
-					onCall: false
-				}
+					onCall: false,
+				},
 			},
 			arrival: '2020-06-11T16:48:00+02:00',
 			plannedArrival: '2020-06-11T16:48:00+02:00',
@@ -178,7 +178,7 @@ const oebbTrip = {
 			remarks: [
 				öbbWestbahnTickets,
 				corona,
-			]
+			],
 		},
 		{
 			stop: {
@@ -189,7 +189,7 @@ const oebbTrip = {
 					type: 'location',
 					id: '8100514',
 					latitude: 48.174585,
-					longitude: 16.333733
+					longitude: 16.333733,
 				},
 				products: {
 					nationalExpress: true,
@@ -201,8 +201,8 @@ const oebbTrip = {
 					ferry: false,
 					subway: false,
 					tram: false,
-					onCall: false
-				}
+					onCall: false,
+				},
 			},
 			arrival: '2020-06-11T17:00:00+02:00',
 			plannedArrival: '2020-06-11T17:00:00+02:00',
@@ -219,7 +219,7 @@ const oebbTrip = {
 			remarks: [
 				öbbWestbahnTickets,
 				corona,
-			]
+			],
 		},
 		{
 			stop: {
@@ -230,7 +230,7 @@ const oebbTrip = {
 					type: 'location',
 					id: '8102059',
 					latitude: 48.295167,
-					longitude: 15.996538
+					longitude: 15.996538,
 				},
 				products: {
 					nationalExpress: true,
@@ -242,8 +242,8 @@ const oebbTrip = {
 					ferry: false,
 					subway: false,
 					tram: false,
-					onCall: false
-				}
+					onCall: false,
+				},
 			},
 			arrival: '2020-06-11T17:15:00+02:00',
 			plannedArrival: '2020-06-11T17:15:00+02:00',
@@ -260,7 +260,7 @@ const oebbTrip = {
 			remarks: [
 				öbbWestbahnTickets,
 				corona,
-			]
+			],
 		},
 		{
 			stop: {
@@ -271,7 +271,7 @@ const oebbTrip = {
 					type: 'location',
 					id: '8100008',
 					latitude: 48.20825,
-					longitude: 15.624681
+					longitude: 15.624681,
 				},
 				products: {
 					nationalExpress: true,
@@ -283,8 +283,8 @@ const oebbTrip = {
 					ferry: false,
 					subway: false,
 					tram: false,
-					onCall: false
-				}
+					onCall: false,
+				},
 			},
 			arrival: '2020-06-11T17:28:00+02:00',
 			plannedArrival: '2020-06-11T17:28:00+02:00',
@@ -301,7 +301,7 @@ const oebbTrip = {
 			remarks: [
 				öbbWestbahnTickets,
 				corona,
-			]
+			],
 		},
 		{
 			stop: {
@@ -312,7 +312,7 @@ const oebbTrip = {
 					type: 'location',
 					id: '8100012',
 					latitude: 48.121477,
-					longitude: 14.878199
+					longitude: 14.878199,
 				},
 				products: {
 					nationalExpress: true,
@@ -324,8 +324,8 @@ const oebbTrip = {
 					ferry: false,
 					subway: false,
 					tram: false,
-					onCall: false
-				}
+					onCall: false,
+				},
 			},
 			arrival: '2020-06-11T18:00:00+02:00',
 			plannedArrival: '2020-06-11T18:00:00+02:00',
@@ -342,7 +342,7 @@ const oebbTrip = {
 			remarks: [
 				öbbWestbahnTickets,
 				corona,
-			]
+			],
 		},
 		{
 			stop: {
@@ -353,7 +353,7 @@ const oebbTrip = {
 					type: 'location',
 					id: '8100009',
 					latitude: 48.17873,
-					longitude: 14.522083
+					longitude: 14.522083,
 				},
 				products: {
 					nationalExpress: true,
@@ -365,8 +365,8 @@ const oebbTrip = {
 					ferry: false,
 					subway: false,
 					tram: false,
-					onCall: false
-				}
+					onCall: false,
+				},
 			},
 			arrival: '2020-06-11T18:16:00+02:00',
 			plannedArrival: '2020-06-11T18:16:00+02:00',
@@ -383,7 +383,7 @@ const oebbTrip = {
 			remarks: [
 				öbbWestbahnTickets,
 				corona,
-			]
+			],
 		},
 		{
 			stop: {
@@ -394,7 +394,7 @@ const oebbTrip = {
 					type: 'location',
 					id: '8100013',
 					latitude: 48.29016,
-					longitude: 14.291941
+					longitude: 14.291941,
 				},
 				products: {
 					nationalExpress: true,
@@ -406,8 +406,8 @@ const oebbTrip = {
 					ferry: false,
 					subway: false,
 					tram: false,
-					onCall: false
-				}
+					onCall: false,
+				},
 			},
 			arrival: '2020-06-11T18:30:00+02:00',
 			plannedArrival: '2020-06-11T18:30:00+02:00',
@@ -424,7 +424,7 @@ const oebbTrip = {
 			remarks: [
 				öbbWestbahnTickets,
 				corona,
-			]
+			],
 		},
 		{
 			stop: {
@@ -435,7 +435,7 @@ const oebbTrip = {
 					type: 'location',
 					id: '8100014',
 					latitude: 48.166208,
-					longitude: 14.027271
+					longitude: 14.027271,
 				},
 				products: {
 					nationalExpress: true,
@@ -447,8 +447,8 @@ const oebbTrip = {
 					ferry: false,
 					subway: false,
 					tram: false,
-					onCall: false
-				}
+					onCall: false,
+				},
 			},
 			arrival: '2020-06-11T18:44:00+02:00',
 			plannedArrival: '2020-06-11T18:44:00+02:00',
@@ -465,7 +465,7 @@ const oebbTrip = {
 			remarks: [
 				öbbWestbahnTickets,
 				corona,
-			]
+			],
 		},
 		{
 			stop: {
@@ -476,7 +476,7 @@ const oebbTrip = {
 					type: 'location',
 					id: '8100017',
 					latitude: 48.012654,
-					longitude: 13.720883
+					longitude: 13.720883,
 				},
 				products: {
 					nationalExpress: true,
@@ -488,8 +488,8 @@ const oebbTrip = {
 					ferry: false,
 					subway: false,
 					tram: false,
-					onCall: false
-				}
+					onCall: false,
+				},
 			},
 			arrival: '2020-06-11T18:58:00+02:00',
 			plannedArrival: '2020-06-11T18:58:00+02:00',
@@ -506,7 +506,7 @@ const oebbTrip = {
 			remarks: [
 				öbbWestbahnTickets,
 				corona,
-			]
+			],
 		},
 		{
 			stop: {
@@ -517,7 +517,7 @@ const oebbTrip = {
 					type: 'location',
 					id: '8100507',
 					latitude: 48.010002,
-					longitude: 13.663936
+					longitude: 13.663936,
 				},
 				products: {
 					nationalExpress: true,
@@ -529,8 +529,8 @@ const oebbTrip = {
 					ferry: false,
 					subway: false,
 					tram: false,
-					onCall: false
-				}
+					onCall: false,
+				},
 			},
 			arrival: '2020-06-11T19:04:00+02:00',
 			plannedArrival: '2020-06-11T19:04:00+02:00',
@@ -547,7 +547,7 @@ const oebbTrip = {
 			remarks: [
 				öbbWestbahnTickets,
 				corona,
-			]
+			],
 		},
 		{
 			stop: {
@@ -558,7 +558,7 @@ const oebbTrip = {
 					type: 'location',
 					id: '8100134',
 					latitude: 47.954512,
-					longitude: 13.224714
+					longitude: 13.224714,
 				},
 				products: {
 					nationalExpress: true,
@@ -570,8 +570,8 @@ const oebbTrip = {
 					ferry: false,
 					subway: false,
 					tram: false,
-					onCall: false
-				}
+					onCall: false,
+				},
 			},
 			arrival: '2020-06-11T19:30:00+02:00',
 			plannedArrival: '2020-06-11T19:30:00+02:00',
@@ -588,7 +588,7 @@ const oebbTrip = {
 			remarks: [
 				öbbWestbahnTickets,
 				corona,
-			]
+			],
 		},
 		{
 			stop: salzburgHbf,
@@ -607,19 +607,19 @@ const oebbTrip = {
 			remarks: [
 				öbbWestbahnTickets,
 				corona,
-			]
-		}
+			],
+		},
 	],
 	remarks: [
 		{
 			type: 'hint',
 			code: 'FR',
-			text: 'Fahrradmitnahme reservierungspflichtig'
+			text: 'Fahrradmitnahme reservierungspflichtig',
 		},
 		{
 			type: 'hint',
 			code: 'FK',
-			text: 'Fahrradmitnahme begrenzt möglich'
+			text: 'Fahrradmitnahme begrenzt möglich',
 		},
 		{type: 'hint', code: 'RM', text: 'Reservierung möglich'},
 		{type: 'hint', code: 'BR', text: 'Bordrestaurant'},
@@ -627,12 +627,12 @@ const oebbTrip = {
 		{
 			type: 'hint',
 			code: 'OA',
-			text: 'Rollstuhlstellplatz - Voranmeldung unter +43 5 1717'
+			text: 'Rollstuhlstellplatz - Voranmeldung unter +43 5 1717',
 		},
 		{
 			type: 'hint',
 			code: 'EF',
-			text: 'Fahrzeuggebundene Einstiegshilfe'
+			text: 'Fahrzeuggebundene Einstiegshilfe',
 		},
 		{type: 'hint', code: 'OC', text: 'rollstuhltaugliches WC'},
 		{type: 'hint', code: 'HD', text: 'Ruhezone'},
@@ -642,11 +642,11 @@ const oebbTrip = {
 			id: '483653',
 			type: 'warning',
 			summary: 'Aktuelle Lage',
-			text: 'Wegen der aktuellen Corona-Situation wurde <b>der Fahrplan österreichweit angepasst</b>.\n' +
-				'Der Fernverkehr fährt innerhalb Österreichs wieder verstärkt. Der Regelbetrieb für S-Bahnen und Regionalzüge ist wieder aufgenommen.\n' +
-				'Einschränkungen im grenzüberschreitenden Verkehr bleiben bis auf Weiteres bestehen.\n' +
-				'Informationen dazu erhalten Sie auf SCOTTY mobil, im Internet auf <a href="https://www.oebb.at">www.oebb.at</a> und beim <a href="https://www.oebb.at/de/reiseplanung-services/kundenservice">ÖBB-Kundenservice</a> unter +43-5-1717.\n' +
-				' Wir bitten Sie in allen <b>öffentlichen Verkehrsmitteln und im gesamten Bahnhofsbereich</b> ein <b>Mund-Nasenschutz</b> zu tragen. Bitte halten Sie auch einen <b> Sicherheitsabstand </b> zu anderen Personen ein. Nähere Informationen des Bundesministeriums finden Sie <a href="https://kundeninformation-pv.oebb.at/dam/verkehrsauskunft/extern/2020/2020_04/Fahrgast-Charta_April_2020/Fahrgast-Charta_April_2020.pdf">hier</a>.\n',
+			text: 'Wegen der aktuellen Corona-Situation wurde <b>der Fahrplan österreichweit angepasst</b>.\n'
+			+ 'Der Fernverkehr fährt innerhalb Österreichs wieder verstärkt. Der Regelbetrieb für S-Bahnen und Regionalzüge ist wieder aufgenommen.\n'
+			+ 'Einschränkungen im grenzüberschreitenden Verkehr bleiben bis auf Weiteres bestehen.\n'
+			+ 'Informationen dazu erhalten Sie auf SCOTTY mobil, im Internet auf <a href="https://www.oebb.at">www.oebb.at</a> und beim <a href="https://www.oebb.at/de/reiseplanung-services/kundenservice">ÖBB-Kundenservice</a> unter +43-5-1717.\n'
+			+ ' Wir bitten Sie in allen <b>öffentlichen Verkehrsmitteln und im gesamten Bahnhofsbereich</b> ein <b>Mund-Nasenschutz</b> zu tragen. Bitte halten Sie auch einen <b> Sicherheitsabstand </b> zu anderen Personen ein. Nähere Informationen des Bundesministeriums finden Sie <a href="https://kundeninformation-pv.oebb.at/dam/verkehrsauskunft/extern/2020/2020_04/Fahrgast-Charta_April_2020/Fahrgast-Charta_April_2020.pdf">hier</a>.\n',
 			icon: {type: 'HIM5', title: null},
 			priority: 100,
 			category: 5,
@@ -660,12 +660,12 @@ const oebbTrip = {
 				ferry: false,
 				subway: false,
 				tram: false,
-				onCall: false
+				onCall: false,
 			},
 			validFrom: '2020-05-18T00:00:00+02:00',
 			validUntil: '2020-06-30T23:59:00+02:00',
-			modified: '2020-05-28T13:47:56+02:00'
-		}
+			modified: '2020-05-28T13:47:56+02:00',
+		},
 	],
 	polyline: {
 		type: 'FeatureCollection',
@@ -718,7 +718,7 @@ const oebbTrip = {
 						type: 'location',
 						id: '8199506',
 						latitude: 48.139555,
-						longitude: 16.435221
+						longitude: 16.435221,
 					},
 					products: {
 						nationalExpress: false,
@@ -730,10 +730,10 @@ const oebbTrip = {
 						ferry: false,
 						subway: false,
 						tram: false,
-						onCall: false
-					}
+						onCall: false,
+					},
 				},
-				geometry: point(16.43523, 48.13958)
+				geometry: point(16.43523, 48.13958),
 			},
 			feature(point(16.43308, 48.14005)),
 			feature(point(16.4315, 48.14055)),
@@ -769,7 +769,7 @@ const oebbTrip = {
 						type: 'location',
 						id: '8103000',
 						latitude: 48.184564,
-						longitude: 16.378526
+						longitude: 16.378526,
 					},
 					products: {
 						nationalExpress: true,
@@ -781,10 +781,10 @@ const oebbTrip = {
 						ferry: false,
 						subway: false,
 						tram: false,
-						onCall: false
-					}
+						onCall: false,
+					},
 				},
-				geometry: point(16.37852, 48.18457)
+				geometry: point(16.37852, 48.18457),
 			},
 			feature(point(16.37616, 48.18488)),
 			feature(point(16.37427, 48.18495)),
@@ -809,7 +809,7 @@ const oebbTrip = {
 						type: 'location',
 						id: '8100514',
 						latitude: 48.174585,
-						longitude: 16.333733
+						longitude: 16.333733,
 					},
 					products: {
 						nationalExpress: true,
@@ -821,10 +821,10 @@ const oebbTrip = {
 						ferry: false,
 						subway: false,
 						tram: false,
-						onCall: false
-					}
+						onCall: false,
+					},
 				},
-				geometry: point(16.33373, 48.17459)
+				geometry: point(16.33373, 48.17459),
 			},
 			feature(point(16.3287, 48.17346)),
 			feature(point(16.32447, 48.17195)),
@@ -867,7 +867,7 @@ const oebbTrip = {
 						type: 'location',
 						id: '8199501',
 						latitude: 48.216493,
-						longitude: 16.196431
+						longitude: 16.196431,
 					},
 					products: {
 						nationalExpress: false,
@@ -879,10 +879,10 @@ const oebbTrip = {
 						ferry: false,
 						subway: false,
 						tram: false,
-						onCall: false
-					}
+						onCall: false,
+					},
 				},
-				geometry: point(16.19643, 48.2165)
+				geometry: point(16.19643, 48.2165),
 			},
 			feature(point(16.19266, 48.21819)),
 			feature(point(16.18994, 48.2197)),
@@ -910,7 +910,7 @@ const oebbTrip = {
 						type: 'location',
 						id: '8102059',
 						latitude: 48.295167,
-						longitude: 15.996538
+						longitude: 15.996538,
 					},
 					products: {
 						nationalExpress: true,
@@ -922,10 +922,10 @@ const oebbTrip = {
 						ferry: false,
 						subway: false,
 						tram: false,
-						onCall: false
-					}
+						onCall: false,
+					},
 				},
-				geometry: point(15.99654, 48.29517)
+				geometry: point(15.99654, 48.29517),
 			},
 			feature(point(15.97902, 48.29573)),
 			feature(point(15.94482, 48.29681)),
@@ -1006,7 +1006,7 @@ const oebbTrip = {
 						type: 'location',
 						id: '8100008',
 						latitude: 48.20825,
-						longitude: 15.624681
+						longitude: 15.624681,
 					},
 					products: {
 						nationalExpress: true,
@@ -1018,10 +1018,10 @@ const oebbTrip = {
 						ferry: false,
 						subway: false,
 						tram: false,
-						onCall: false
-					}
+						onCall: false,
+					},
 				},
-				geometry: point(15.62468, 48.20825)
+				geometry: point(15.62468, 48.20825),
 			},
 			feature(point(15.62117, 48.20838)),
 			feature(point(15.61982, 48.20854)),
@@ -1103,7 +1103,7 @@ const oebbTrip = {
 						type: 'location',
 						id: '8100006',
 						latitude: 48.207944,
-						longitude: 15.216346
+						longitude: 15.216346,
 					},
 					products: {
 						nationalExpress: false,
@@ -1115,10 +1115,10 @@ const oebbTrip = {
 						ferry: false,
 						subway: false,
 						tram: false,
-						onCall: false
-					}
+						onCall: false,
+					},
 				},
-				geometry: point(15.21635, 48.20794)
+				geometry: point(15.21635, 48.20794),
 			},
 			feature(point(15.20289, 48.20773)),
 			feature(point(15.18148, 48.20714)),
@@ -1164,7 +1164,7 @@ const oebbTrip = {
 						type: 'location',
 						id: '8100012',
 						latitude: 48.121477,
-						longitude: 14.878199
+						longitude: 14.878199,
 					},
 					products: {
 						nationalExpress: true,
@@ -1176,10 +1176,10 @@ const oebbTrip = {
 						ferry: false,
 						subway: false,
 						tram: false,
-						onCall: false
-					}
+						onCall: false,
+					},
 				},
-				geometry: point(14.8782, 48.12148)
+				geometry: point(14.8782, 48.12148),
 			},
 			feature(point(14.87397, 48.1214)),
 			feature(point(14.87116, 48.12117)),
@@ -1258,7 +1258,7 @@ const oebbTrip = {
 						type: 'location',
 						id: '8100009',
 						latitude: 48.17873,
-						longitude: 14.522083
+						longitude: 14.522083,
 					},
 					products: {
 						nationalExpress: true,
@@ -1270,10 +1270,10 @@ const oebbTrip = {
 						ferry: false,
 						subway: false,
 						tram: false,
-						onCall: false
-					}
+						onCall: false,
+					},
 				},
-				geometry: point(14.52208, 48.17873)
+				geometry: point(14.52208, 48.17873),
 			},
 			feature(point(14.51228, 48.19552)),
 			feature(point(14.51102, 48.198)),
@@ -1351,7 +1351,7 @@ const oebbTrip = {
 						type: 'location',
 						id: '8100013',
 						latitude: 48.29016,
-						longitude: 14.291941
+						longitude: 14.291941,
 					},
 					products: {
 						nationalExpress: true,
@@ -1363,10 +1363,10 @@ const oebbTrip = {
 						ferry: false,
 						subway: false,
 						tram: false,
-						onCall: false
-					}
+						onCall: false,
+					},
 				},
-				geometry: point(14.29194, 48.29016)
+				geometry: point(14.29194, 48.29016),
 			},
 			feature(point(14.28644, 48.28392)),
 			feature(point(14.28542, 48.28301)),
@@ -1388,7 +1388,7 @@ const oebbTrip = {
 						type: 'location',
 						id: '8101165',
 						latitude: 48.274015,
-						longitude: 14.253871
+						longitude: 14.253871,
 					},
 					products: {
 						nationalExpress: false,
@@ -1400,10 +1400,10 @@ const oebbTrip = {
 						ferry: false,
 						subway: false,
 						tram: false,
-						onCall: false
-					}
+						onCall: false,
+					},
 				},
-				geometry: point(14.25387, 48.27402)
+				geometry: point(14.25387, 48.27402),
 			},
 			feature(point(14.24863, 48.27396)),
 			feature(point(14.24531, 48.27367)),
@@ -1422,7 +1422,7 @@ const oebbTrip = {
 						type: 'location',
 						id: '8101389',
 						latitude: 48.257448,
-						longitude: 14.209339
+						longitude: 14.209339,
 					},
 					products: {
 						nationalExpress: false,
@@ -1434,10 +1434,10 @@ const oebbTrip = {
 						ferry: false,
 						subway: false,
 						tram: false,
-						onCall: false
-					}
+						onCall: false,
+					},
 				},
-				geometry: point(14.20934, 48.25745)
+				geometry: point(14.20934, 48.25745),
 			},
 			feature(point(14.18643, 48.24575)),
 			feature(point(14.15117, 48.2276)),
@@ -1452,7 +1452,7 @@ const oebbTrip = {
 						type: 'location',
 						id: '8101204',
 						latitude: 48.200996,
-						longitude: 14.099491
+						longitude: 14.099491,
 					},
 					products: {
 						nationalExpress: false,
@@ -1464,10 +1464,10 @@ const oebbTrip = {
 						ferry: false,
 						subway: false,
 						tram: false,
-						onCall: false
-					}
+						onCall: false,
+					},
 				},
-				geometry: point(14.09949, 48.201)
+				geometry: point(14.09949, 48.201),
 			},
 			feature(point(14.07166, 48.18672)),
 			feature(point(14.03896, 48.16978)),
@@ -1485,7 +1485,7 @@ const oebbTrip = {
 						type: 'location',
 						id: '8100014',
 						latitude: 48.166208,
-						longitude: 14.027271
+						longitude: 14.027271,
 					},
 					products: {
 						nationalExpress: true,
@@ -1497,10 +1497,10 @@ const oebbTrip = {
 						ferry: false,
 						subway: false,
 						tram: false,
-						onCall: false
-					}
+						onCall: false,
+					},
 				},
-				geometry: point(14.02727, 48.16621)
+				geometry: point(14.02727, 48.16621),
 			},
 			feature(point(14.02361, 48.1651)),
 			feature(point(14.01975, 48.16375)),
@@ -1522,7 +1522,7 @@ const oebbTrip = {
 						type: 'location',
 						id: '8199518',
 						latitude: 48.101198,
-						longitude: 13.899058
+						longitude: 13.899058,
 					},
 					products: {
 						nationalExpress: false,
@@ -1534,10 +1534,10 @@ const oebbTrip = {
 						ferry: false,
 						subway: false,
 						tram: false,
-						onCall: false
-					}
+						onCall: false,
+					},
 				},
-				geometry: point(13.90023, 48.10178)
+				geometry: point(13.90023, 48.10178),
 			},
 			feature(point(13.89709, 48.09997)),
 			feature(point(13.89427, 48.09856)),
@@ -1556,7 +1556,7 @@ const oebbTrip = {
 						type: 'location',
 						id: '8199519',
 						latitude: 48.094321,
-						longitude: 13.872297
+						longitude: 13.872297,
 					},
 					products: {
 						nationalExpress: false,
@@ -1568,10 +1568,10 @@ const oebbTrip = {
 						ferry: false,
 						subway: false,
 						tram: false,
-						onCall: false
-					}
+						onCall: false,
+					},
 				},
-				geometry: point(13.87004, 48.09435)
+				geometry: point(13.87004, 48.09435),
 			},
 			feature(point(13.84047, 48.09589)),
 			feature(point(13.83635, 48.09583)),
@@ -1585,7 +1585,7 @@ const oebbTrip = {
 						type: 'location',
 						id: '8101278',
 						latitude: 48.095471,
-						longitude: 13.832529
+						longitude: 13.832529,
 					},
 					products: {
 						nationalExpress: false,
@@ -1597,10 +1597,10 @@ const oebbTrip = {
 						ferry: false,
 						subway: false,
 						tram: false,
-						onCall: false
-					}
+						onCall: false,
+					},
 				},
-				geometry: point(13.83253, 48.09547)
+				geometry: point(13.83253, 48.09547),
 			},
 			feature(point(13.82899, 48.09485)),
 			feature(point(13.82521, 48.09386)),
@@ -1629,7 +1629,7 @@ const oebbTrip = {
 						type: 'location',
 						id: '8100017',
 						latitude: 48.012654,
-						longitude: 13.720883
+						longitude: 13.720883,
 					},
 					products: {
 						nationalExpress: true,
@@ -1641,10 +1641,10 @@ const oebbTrip = {
 						ferry: false,
 						subway: false,
 						tram: false,
-						onCall: false
-					}
+						onCall: false,
+					},
 				},
-				geometry: point(13.72088, 48.01266)
+				geometry: point(13.72088, 48.01266),
 			},
 			feature(point(13.71806, 48.00964)),
 			feature(point(13.71741, 48.00904)),
@@ -1672,7 +1672,7 @@ const oebbTrip = {
 						type: 'location',
 						id: '8100507',
 						latitude: 48.010002,
-						longitude: 13.663936
+						longitude: 13.663936,
 					},
 					products: {
 						nationalExpress: true,
@@ -1684,10 +1684,10 @@ const oebbTrip = {
 						ferry: false,
 						subway: false,
 						tram: false,
-						onCall: false
-					}
+						onCall: false,
+					},
 				},
-				geometry: point(13.66394, 48.01)
+				geometry: point(13.66394, 48.01),
 			},
 			feature(point(13.66038, 48.01116)),
 			feature(point(13.65788, 48.01184)),
@@ -1740,7 +1740,7 @@ const oebbTrip = {
 						type: 'location',
 						id: '8100508',
 						latitude: 47.99792,
-						longitude: 13.489321
+						longitude: 13.489321,
 					},
 					products: {
 						nationalExpress: false,
@@ -1752,10 +1752,10 @@ const oebbTrip = {
 						ferry: false,
 						subway: false,
 						tram: false,
-						onCall: false
-					}
+						onCall: false,
+					},
 				},
-				geometry: point(13.48932, 47.99792)
+				geometry: point(13.48932, 47.99792),
 			},
 			feature(point(13.4877, 47.99737)),
 			feature(point(13.48626, 47.997)),
@@ -1856,7 +1856,7 @@ const oebbTrip = {
 						type: 'location',
 						id: '8100020',
 						latitude: 47.966683,
-						longitude: 13.239124
+						longitude: 13.239124,
 					},
 					products: {
 						nationalExpress: false,
@@ -1868,10 +1868,10 @@ const oebbTrip = {
 						ferry: false,
 						subway: false,
 						tram: false,
-						onCall: false
-					}
+						onCall: false,
+					},
 				},
-				geometry: point(13.23912, 47.96669)
+				geometry: point(13.23912, 47.96669),
 			},
 			feature(point(13.23454, 47.96389)),
 			feature(point(13.23295, 47.96274)),
@@ -1886,7 +1886,7 @@ const oebbTrip = {
 						type: 'location',
 						id: '8100134',
 						latitude: 47.954512,
-						longitude: 13.224714
+						longitude: 13.224714,
 					},
 					products: {
 						nationalExpress: true,
@@ -1898,10 +1898,10 @@ const oebbTrip = {
 						ferry: false,
 						subway: false,
 						tram: false,
-						onCall: false
-					}
+						onCall: false,
+					},
 				},
-				geometry: point(13.22471, 47.95451)
+				geometry: point(13.22471, 47.95451),
 			},
 			feature(point(13.22338, 47.95317)),
 			feature(point(13.22247, 47.95247)),
@@ -2019,10 +2019,10 @@ const oebbTrip = {
 			feature(point(13.04872, 47.81824)),
 			feature(point(13.04627, 47.81381)),
 			feature(point(13.0456, 47.81285), salzburgHbf),
-		]
+		],
 	},
-}
+};
 
 export {
 	oebbTrip,
-}
+};

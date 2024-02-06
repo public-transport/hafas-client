@@ -1,11 +1,11 @@
 const formatStationBoardReq = (ctx, station, type) => {
-	const {profile, opt} = ctx
+	const {profile, opt} = ctx;
 
 	const jnyFltrL = [
-		profile.formatProductsFilter(ctx, opt.products || {})
-	]
+		profile.formatProductsFilter(ctx, opt.products || {}),
+	];
 	if (opt.line !== null) {
-		jnyFltrL.push({type: 'LINEID', mode: 'INC', value: opt.line})
+		jnyFltrL.push({type: 'LINEID', mode: 'INC', value: opt.line});
 	}
 
 	const req = {
@@ -13,22 +13,30 @@ const formatStationBoardReq = (ctx, station, type) => {
 		date: profile.formatDate(profile, opt.when),
 		time: profile.formatTime(profile, opt.when),
 		stbLoc: station,
-		dirLoc: opt.direction ? profile.formatStation(opt.direction) : undefined,
+		dirLoc: opt.direction
+			? profile.formatStation(opt.direction)
+			: undefined,
 		jnyFltrL,
-		dur: opt.duration
-	}
+		dur: opt.duration,
+	};
 	if (opt.results !== null) {
-		req.maxJny = opt.results === Infinity ? 10000 : opt.results
+		req.maxJny = opt.results === Infinity
+			? 10000
+			: opt.results;
 	}
-	if (profile.departuresGetPasslist) req.getPasslist = !!opt.stopovers
-	if (profile.departuresStbFltrEquiv) req.stbFltrEquiv = !opt.includeRelatedStations
+	if (profile.departuresGetPasslist) {
+		req.getPasslist = Boolean(opt.stopovers);
+	}
+	if (profile.departuresStbFltrEquiv) {
+		req.stbFltrEquiv = !opt.includeRelatedStations;
+	}
 
 	return {
 		meth: 'StationBoard',
-		req
-	}
-}
+		req,
+	};
+};
 
 export {
 	formatStationBoardReq,
-}
+};

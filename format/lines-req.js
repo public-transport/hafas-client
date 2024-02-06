@@ -3,10 +3,10 @@ const formatLinesReq = (ctx, query) => {
 		meth: 'LineMatch',
 		req: {
 			input: query,
-		}
-	}
-}
+		},
+	};
+};
 
 export {
 	formatLinesReq,
-}
+};

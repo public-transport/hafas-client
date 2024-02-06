@@ -1,16 +1,18 @@
-const sep = '@'
+const sep = '@';
 
 const formatLocationIdentifier = (data) => {
-	let str = ''
+	let str = '';
 	for (let key in data) {
-		if (!Object.prototype.hasOwnProperty.call(data, key)) continue
+		if (!Object.prototype.hasOwnProperty.call(data, key)) {
+			continue;
+		}
 
-		str += key + '=' + data[key] + sep // todo: escape, but how?
+		str += key + '=' + data[key] + sep; // todo: escape, but how?
 	}
 
-	return str
-}
+	return str;
+};
 
 export {
 	formatLocationIdentifier,
-}
+};
