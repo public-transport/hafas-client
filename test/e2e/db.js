@@ -58,45 +58,34 @@ const assertValidPrice = (t, p) => {
 };
 
 const assertValidTickets = (test, tickets) => {
-	test.ok(tickets);
+	test.ok(Array.isArray(tickets));
 	for (let fare of tickets) {
-		if (fare.name !== undefined) {
-			test.equal(typeof fare.name, 'string');
-			test.ok(fare.name);
-		} else {
-			test.fail('Mandatory field "name" is missing');
-		}
-		if (fare.priceObj !== undefined) {
-			if (fare.priceObj.amount !== undefined) {
-				test.equal(typeof fare.priceObj.amount, 'number');
-				test.ok(fare.priceObj.amount > 0);
-			} else {
-				test.fail('Mandatory field "amount" in "priceObj" is missing');
-			}
-			// Check optional currency field
-			if (fare.priceObj.currency !== undefined) {
-				test.equal(typeof fare.priceObj.currency, 'string');
-			}
-		} else {
-			test.fail('Mandatory field "priceObj" in "ticket" is missing');
-		}
-		// Check optional fields
-		if (tickets.addData !== undefined) {
-			test.equal(typeof tickets.addData, 'string');
-		}
-		if (fare.addDataTicketInfo !== undefined) {
-			test.equal(typeof fare.addDataTicketInfo, 'string');
-		}
-		if (fare.addDataTicketDetails !== undefined) {
-			test.equal(typeof fare.addDataTicketDetails, 'string');
-		}
-		if (fare.addDataTravelInfo !== undefined) {
-			test.equal(typeof fare.addDataTravelInfo, 'string');
-		}
-		if (fare.firstClass !== undefined) {
-			test.equal(typeof fare.firstClass, 'boolean');
+		test.equal(typeof fare.name, 'string', 'Mandatory field "name" is missing or not a string');
+		test.ok(fare.name);
+
+		test.ok(isObj(fare.priceObj), 'Mandatory field "priceObj" is missing or not an object');
+		test.equal(typeof fare.priceObj.amount, 'number', 'Mandatory field "amount" in "priceObj" is missing or not a number');
+		test.ok(fare.priceObj.amount > 0);
+		if ('currency' in fare.priceObj) {
+			test.equal(typeof fare.priceObj.currency, 'string');
 		}
 
+		// Check optional fields
+		if ('addData' in fare) {
+			test.equal(typeof fare.addData, 'string');
+		}
+		if ('addDataTicketInfo' in fare) {
+			test.equal(typeof fare.addDataTicketInfo, 'string');
+		}
+		if ('addDataTicketDetails' in fare) {
+			test.equal(typeof fare.addDataTicketDetails, 'string');
+		}
+		if ('addDataTravelInfo' in fare) {
+			test.equal(typeof fare.addDataTravelInfo, 'string');
+		}
+		if ('addDataTravelDetails' in fare) {
+			test.equal(typeof fare.firstClass, 'boolean');
+		}
 	}
 };
 
