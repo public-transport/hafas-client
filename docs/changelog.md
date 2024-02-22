@@ -1,5 +1,13 @@
 # Changelog
 
+## `6.2.2`
+
+- 26c56f8d/c85f083d/8a174016 fix date of next-day DEVI leg in an overnight journey 🐛 – Thanks @soerface!
+- 1ee316fa `radar()`: relax bounding box checks 🐛 – Thanks @dancesWithCycles!
+- 228c7253/66d9fb51 add linting rules enforcing code style – Thanks @KristjanESPERANTO!
+
+[🏷 `6.2.2`](https://github.com/public-transport/hafas-client/releases/tag/6.2.2), 2024-02-22
+
 ## `6.2.1`
 
 - 8520eb3d [*mobil.nrw* profile](../p/mobil-nrw): fix `mode` for `ec-ic` product 🐛
