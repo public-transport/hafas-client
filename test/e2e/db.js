@@ -470,6 +470,19 @@ tap.test('radar', async (t) => {
 	t.end()
 })
 
+tap.test('radar works across the antimeridian', async (t) => {
+	await client.radar({
+		north: -8,
+		west: 179,
+		south: -10,
+		east: -179,
+	}, {
+		// todo: update `when`, re-record all fixtures, remove this special handling
+		when: process.env.VCR_MODE ? '2024-02-22T16:00+01:00' : when,
+	});
+	t.end();
+});
+
 tap.test('reachableFrom', {timeout: 20 * 1000}, async (t) => {
 	const torfstr17 = {
 		type: 'location',
