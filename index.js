@@ -657,11 +657,16 @@ const createClient = (profile, userAgent, opt = {}) => {
 		if ('number' !== typeof east) {
 			throw new TypeError('east must be a number.');
 		}
-		if (north <= south) {
-			throw new Error('north must be larger than south.');
+		// With a bounding box across the antimeridian, east (e.g. -175) might be smaller than west (e.g. 175).
+		// Likewise, across the north/south poles, north (e.g. -85) might be smaller than south (e.g. 85).
+		// In these cases, the terms north/south & east/west become rather arbitrary of couse.
+		// see also https://antimeridian.readthedocs.io/en/stable/
+		// todo: how does HAFAS handle this?
+		if (north === south) {
+			throw new Error('bbox.north must not be equal to bbox.south.');
 		}
-		if (east <= west) {
-			throw new Error('east must be larger than west.');
+		if (east === west) {
+			throw new Error('bbox.east must not be equal to bbox.west.');
 		}
 
 		opt = Object.assign({
