@@ -3,6 +3,9 @@ import {ok, AssertionError} from 'assert';
 import {DateTime} from 'luxon';
 import * as a from 'assert';
 import {createRequire} from 'module';
+// Note: We *must* import tap up here, not just in the if(VCR_MODE) block below, because a) we can only use `require()` conditionally, not `import`; and b) requiring it below makes the teardown script behave differently.
+// may be related: https://github.com/tapjs/tapjs/issues/1005
+import tap from 'tap';
 import {gunzipSync} from 'zlib';
 
 const hour = 60 * 60 * 1000;
@@ -46,7 +49,6 @@ if (process.env.VCR_MODE && !process.env.VCR_OFF) {
 	const {Polly} = require('@pollyjs/core');
 	const NodeHttpAdapter = require('@pollyjs/adapter-node-http');
 	const FSPersister = require('@pollyjs/persister-fs');
-	const tap = require('tap');
 
 	// monkey-patch NodeHttpAdapter to handle gzipped responses properly
 	// todo: submit a PR
