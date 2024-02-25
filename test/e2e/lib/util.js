@@ -1,3 +1,8 @@
+// Polly's HTTP adapter uses nock [1] underneath, with currenctly monkey-patches the built-in `node:http` module. For this to work, it must be imported quite early, before many other parts of hafas-client.
+// Importing the adapter itself has no side effects (or rather: immediately undoes nock's monkey-patching, to re-patch when it is actually getting used). We activate it (by passing it into Polly's core) below.
+// remotely related: https://github.com/nock/nock/issues/2461
+import NodeHttpAdapter from '@pollyjs/adapter-node-http';
+
 import isRoughlyEqual from 'is-roughly-equal';
 import {ok, AssertionError} from 'assert';
 import {DateTime} from 'luxon';
@@ -70,6 +75,11 @@ if (process.env.VCR_MODE && !process.env.VCR_OFF) {
 	Polly.register(NodeHttpAdapter);
 	Polly.register(FSPersister);
 
+	// https://github.com/Netflix/pollyjs/blob/9b6bede12b7ee998472b8883c9dd01e2159e00a8/packages/%40pollyjs/adapter/src/index.js#L184-L189
+	if ('navigator' in global && global.navigator && !('onLine' in global.navigator)) {
+		global.navigator.onLine = true;
+	}
+
 	let mode;
 	if (process.env.VCR_MODE === 'record') {
 		mode = 'record';
@@ -102,7 +112,7 @@ if (process.env.VCR_MODE && !process.env.VCR_OFF) {
 			keepUnusedRequests: true, // todo: change to false?
 		},
 		matchRequestsBy: {
-			order: false,
+			order: false, // todo: set to true for better Git diffs?
 			headers: {
 				// todo: use an allow-list here?
 				exclude: [
