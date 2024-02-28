@@ -1,5 +1,21 @@
 # Changelog
 
+## `5.26.5`
+
+This release contains back-ports from `6.x` releases.
+
+- 841e12fe `journeys()`: let `earlierRef`/`laterRef` fall back to `null` 🐛
+- 1ff6351d DB: add `routingMode` option 📝
+- 78660d96 DB: pass along `opt.age` if defined
+- aee49339 IVB: update SSL CA certificate chain 🐛
+- 4228823e mobil.nrw: fix `mode` for `ec-ic` product 🐛 – Thanks KristjanESPERANTO!
+- 5b7303f2 handle `PROBLEMS` HAFAS error code
+- 5515f6f1 fix date of next-day DEVI leg in an overnight journey 🐛 – Thanks @soerface!
+- f52d138a `radar()`: relax bounding box checks 🐛 – Thanks @dancesWithCycles!
+- 32021bc1 SNCB/NMBS: document profile as temporarily broken 📝
+
+[🏷 `5.26.5`](https://github.com/public-transport/hafas-client/releases/tag/5.26.5), 2024-02-28
+
 ## `5.26.4`
 
 - 25cc3b88 DB: use ver `1.16` for `stop()` requests 🐛, update integration test fixtures ✅
