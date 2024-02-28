@@ -9,6 +9,7 @@ const formatStation = (id) => {
 		lid: formatLocationIdentifier({
 			A: '1', // station?
 			L: id
+			// todo: `p` – timestamp of when the ID was obtained
 		})
 	}
 }

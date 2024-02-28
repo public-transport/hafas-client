@@ -4,6 +4,7 @@ const formatLocationIdentifier = require('./location-identifier')
 const formatCoord = require('./coord')
 
 const formatPoi = (p) => {
+	// todo: use Number.isFinite()!
 	if (p.type !== 'location' || !p.latitude || !p.longitude || !p.id || !p.name) {
 		throw new TypeError('invalid POI')
 	}
