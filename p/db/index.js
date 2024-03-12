@@ -51,6 +51,8 @@ const transformReq = (ctx, req) => {
 		});
 	}
 
+	// todo: `LocGeoPos`/nearby() breaks with `getStops: false`
+
 	return req;
 };
 

@@ -110,6 +110,9 @@ const linkTypesByCode = Object.assign(Object.create(null), {
 // 	"durS": "091400"
 // }
 
+// todo bvg:
+// {"type": "R", "code": "text.realtime.journey.cancelled", "icoX": 7, "txtN": ": S41"} with icon {"res": "rt_cancel"}
+
 const parseHint = (ctx, h) => {
 	// todo: C
 

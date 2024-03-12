@@ -113,6 +113,14 @@ const parseJourneyLeg = (ctx, pt, date) => { // pt = raw leg
 			res.transfer = true;
 		}
 		if (pt.type === 'DEVI') {
+			// > DEVI Legs are Deviations.
+			// > It happens if you ask for a route to a specific stopPlace but HAFAS returns one to another stopPlace. Happens mainly in the night when there is no route to you destination for the forseeable future.
+			// > For Instance you want to go from Berlin Hbf to München Hbf. One of the only routes to München is to München Ost with a NJ at your time.
+			// > HAFAS returns that NJ and the last leg is a DEVI that just says "you wanted München HBF, this route ends in München Ost"
+
+			// > Bahn.de for instance ignores this completly, the DEVI leg also has no real information.
+			// https://github.com/public-transport/hafas-client/issues/301#issuecomment-1840820895
+
 			// todo: pt.resState, pt.resRecommendation
 			res.transfer = true;
 		}
