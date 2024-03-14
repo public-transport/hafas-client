@@ -49,6 +49,7 @@ node -p "$query" "$src/de/rmv-hafas-mgate.json" >../p/rmv/base.json
 node -p "$query" "$src/de/rsag-hafas-mgate.json" >../p/rsag/base.json
 node -p "$query" "$src/de/saarvv-hafas-mgate.json" >../p/saarfahrplan/base.json
 node -p "$query" "$src/de/db-sbahn-muenchen-hafas-mgate.json" >../p/sbahn-muenchen/base.json
+node -p "$query" "$src/de/db-smartrbl-hafas-mgate.json" >../p/db-smartrbl/base.json
 node -p "$query" "$src/be/nmbs-sncb-hafas-mgate.json" >../p/sncb/base.json
 node -p "$query" "$src/at/svv-hafas-mgate.json" >../p/svv/base.json
 node -p "$query" "$src/de/vbb-hafas-mgate.json" >../p/vbb/base.json

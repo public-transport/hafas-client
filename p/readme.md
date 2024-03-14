@@ -50,6 +50,7 @@ HAFAS endpoint | wrapper library | docs | example code | profile name
 [*Transports publics genevois (TPG)*](https://en.wikipedia.org/wiki/Geneva_Public_Transport) (Geneva) | - | [docs](tpg/readme.md) | [example](tpg/example.js) | [`tpg`](tpg)
 [*BLS AG*](https://en.wikipedia.org/wiki/BLS_AG) (Bern) | - | [docs](bls/readme.md) | [example](bls/example.js) | [`bls`](bls)
 [Zürich public transport (ZVV)](https://en.wikipedia.org/wiki/Zürcher_Verkehrsverbund) | - | [docs](zvv/readme.md) | [example](zvv/example.js) | [`zvv`](zvv)
+Deutsche Bahn "smartrbl" | – | [docs](db-smartrbl/readme.md) | [example](db-smartrbl/example.js) | [`db-smartrbl`](db-smartrbl)
 
 ## writing your own
 

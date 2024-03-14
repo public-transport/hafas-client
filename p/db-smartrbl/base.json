@@ -1,0 +1,15 @@
+{
+	"auth": {
+		"type": "AID",
+		"aid": "izfpmpj8tnh6acye"
+	},
+	"client": {
+		"type": "WEB",
+		"id": "HAFAS",
+		"v": "1.0.0",
+		"name": "Test-Client"
+	},
+	"endpoint": "https://db-smartrbl.hafas.de/mct/mgate",
+	"ver": "1.60",
+	"defaultLanguage": "de"
+}
