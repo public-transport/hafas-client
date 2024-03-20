@@ -1,5 +1,13 @@
 # Changelog
 
+## `6.3.0`
+
+- 248adb5f [*DB* profile](../p/db) `refreshJourney()`: with `opt.tickets: true`, request ticket details – Thanks @PaulSut!
+- fd90abde/9365c00a/c4966aec [*DB* profile](../p/db) `journeys()`/`refreshJourney()`: parse & expose ticket details – Thanks @PaulSut!
+- c4966aec [*DB* profile](../p/db) `journeys()`/`refreshJourney()`: with `opt.generateUnreliableTicketUrls: true`, try to generate *bahn.de* URLs to the tickets – Thanks @PaulSut!
+
+[🏷 `6.3.0`](https://github.com/public-transport/hafas-client/releases/tag/6.3.0), 2024-03-20
+
 ## `6.2.2`
 
 - 26c56f8d/c85f083d/8a174016 fix date of next-day DEVI leg in an overnight journey 🐛 – Thanks @soerface!
