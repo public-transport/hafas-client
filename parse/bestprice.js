@@ -4,7 +4,7 @@ const parseBestPrice = (ctx, outDaySeg, journeys) => {
 
 	const bpjourneys = outDaySeg.conRefL
 		? outDaySeg.conRefL
-			.map(i => journeys.find(j => j.refreshToken == res.outConL[i].ctxRecon))
+			.map(outConLIdx => journeys.find(j => j.refreshToken == res.outConL[outConLIdx].ctxRecon))
 			.filter(j => Boolean(j))
 		: [];
 
@@ -13,9 +13,9 @@ const parseBestPrice = (ctx, outDaySeg, journeys) => {
 
 	const result = {
 		journeys: bpjourneys,
-		fromDate: profile.parseDateTime(ctx, outDaySeg.fromDate, outDaySeg.fromTime),
-		toDate: profile.parseDateTime(ctx, outDaySeg.toDate, outDaySeg.toTime),
-		bestPrice: amount > 0 && currency ? {amount, currency} : undefined,
+		from: profile.parseDateTime(ctx, outDaySeg.fromDate, outDaySeg.fromTime),
+		to: profile.parseDateTime(ctx, outDaySeg.toDate, outDaySeg.toTime),
+		bestPrice: amount > 0 && currency ? {amount, currency} : null,
 	};
 
 	return result;

@@ -17,15 +17,14 @@ const opt = {
 	via: null,
 	transfers: -1,
 	transferTime: 0,
-	accessibility: 'none',
 	bike: false,
 	tickets: true,
 	polylines: true,
 	remarks: true,
-	walkingSpeed: 'normal',
-	startWithWalking: true,
 	departure: '2023-06-15',
 	products: {},
+	firstClass: false,
+	ageGroup: 'E',
 };
 
 tap.test('parses a bestprice with a DEVI leg correctly (DB)', (t) => {

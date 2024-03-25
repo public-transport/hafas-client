@@ -1,6 +1,7 @@
 import isObj from 'lodash/isObject.js';
 import sortBy from 'lodash/sortBy.js';
 import omit from 'lodash/omit.js';
+import {DateTime} from 'luxon';
 
 import {defaultProfile} from './lib/default-profile.js';
 import {validateProfile} from './lib/validate-profile.js';
@@ -276,6 +277,7 @@ const createClient = (profile, userAgent, opt = {}) => {
 		opt = Object.assign({
 			via: null, // let journeys pass this station?
 			transfers: -1, // maximum nr of transfers
+			transferTime: 0, // minimum time for a single transfer in minutes
 			bike: false, // only bike-friendly journeys
 			tickets: false, // return tickets?
 			polylines: false, // return leg shapes?
@@ -295,7 +297,13 @@ const createClient = (profile, userAgent, opt = {}) => {
 				throw new TypeError('opt.departure is invalid');
 			}
 			const now = new Date();
-			const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+			let today = DateTime.fromObject({
+				year: now.year, month: now.month, day: now.day,
+				hour: 0, minute: 0, second: 0, millisecond: 0,
+			}, {
+				zone: profile.timezone,
+				locale: profile.locale,
+			});
 			if (today > when) {
 				throw new TypeError('opt.departure date older than current date.');
 			}
@@ -304,14 +312,6 @@ const createClient = (profile, userAgent, opt = {}) => {
 		const filters = [
 			profile.formatProductsFilter({profile}, opt.products || {}),
 		];
-		if (
-			opt.accessibility
-			&& profile.filters
-			&& profile.filters.accessibility
-			&& profile.filters.accessibility[opt.accessibility]
-		) {
-			filters.push(profile.filters.accessibility[opt.accessibility]);
-		}
 
 		const query = {
 			maxChg: opt.transfers,
@@ -326,7 +326,7 @@ const createClient = (profile, userAgent, opt = {}) => {
 		query.outDate = profile.formatDate(profile, when);
 
 		if (profile.endpoint !== dbProfile.endpoint) {
-			throw new Error('db profile expected.');
+			throw new Error('bestPrices() only works with the DB profile.');
 		}
 
 		const {res, common} = await profile.request({profile, opt}, userAgent, {
@@ -335,7 +335,7 @@ const createClient = (profile, userAgent, opt = {}) => {
 			req: profile.transformJourneysQuery({profile, opt}, query),
 		});
 		if (!Array.isArray(res.outConL)) {
-			return {};
+			return null;
 		}
 		// todo: outConGrpL
 
