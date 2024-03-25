@@ -50,6 +50,7 @@ HAFAS endpoint | wrapper library | docs | example code | profile name
 [*Transports publics genevois (TPG)*](https://en.wikipedia.org/wiki/Geneva_Public_Transport) (Geneva) | - | [docs](tpg/readme.md) | [example](tpg/example.js) | [`tpg`](tpg)
 [*BLS AG*](https://en.wikipedia.org/wiki/BLS_AG) (Bern) | - | [docs](bls/readme.md) | [example](bls/example.js) | [`bls`](bls)
 [Zürich public transport (ZVV)](https://en.wikipedia.org/wiki/Zürcher_Verkehrsverbund) | - | [docs](zvv/readme.md) | [example](zvv/example.js) | [`zvv`](zvv)
+[Deutsche Bahn *Streckenagent*](https://www.bahn.de/service/mobile/streckenagent-app) | – | [docs](db-streckenagent/readme.md) | [example](db-streckenagent/example.js) | [`db-streckenagent`](db-streckenagent)
 
 ## writing your own
 
