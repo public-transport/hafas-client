@@ -28,7 +28,7 @@
 	longitude: 3.21
 }
 
-// an address, which is an FTPF `location` object
+// an address, which is an FPTF `location` object
 {
 	type: 'location',
 	address: 'foo street 1',
