@@ -34,6 +34,7 @@ node -p "$query" "$src/de/bvg-hafas-mgate.json" >../p/bvg/base.json
 node -p "$query" "$src/lu/cfl-hafas-mgate.json" >../p/cfl/base.json
 node -p "$query" "$src/us/cmta-hafas-mgate.json" >../p/cmta/base.json
 node -p "$query" "$src/de/db-hafas-mgate.json" >../p/db/base.json
+node -p "$query" "$src/de/db-streckenagent-hafas-mgate.json" >../p/db-streckenagent/base.json
 node -p "$query" "$src/de/db-busradar-nrw-hafas-mgate.json" >../p/db-busradar-nrw/base.json
 node -p "$query" "$src/de/nasa-hafas-mgate.json" >../p/insa/base.json
 node -p "$query" "$src/de/invg-hafas-mgate.json" >../p/invg/base.json
