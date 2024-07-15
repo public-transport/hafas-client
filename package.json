@@ -58,7 +58,7 @@
 		"https-proxy-agent": "^7.0.0",
 		"lodash": "^4.17.5",
 		"luxon": "^3.1.1",
-		"object-scan": "^13.0.0",
+		"object-scan": "^19.0.5",
 		"p-retry": "^6.0.0",
 		"p-throttle": "^5.0.0",
 		"qs": "^6.6.0",
@@ -72,7 +72,7 @@
 		"eslint": "^8.56.0",
 		"is-coordinates": "^2.0.2",
 		"is-roughly-equal": "^0.1.0",
-		"tap": "^18.0.4",
+		"tap": "^19.2.5",
 		"validate-fptf": "^3.0.0"
 	},
 	"scripts": {
