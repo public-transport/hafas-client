@@ -1,5 +1,13 @@
 # Changelog
 
+## `6.3.1`
+
+- 6e74b9ab fix typo in `journeys.md` 📝 – Thanks @1Maxnet1!
+- 48719b21 [*DB* profile](../p/db) `stop()`: remove v1.16 workaround
+- 1a0b595a use `object-scan@19` & `tap@19`
+
+[🏷 `6.3.1`](https://github.com/public-transport/hafas-client/releases/tag/6.3.1), 2024-07-16
+
 ## `6.3.0`
 
 - 248adb5f [*DB* profile](../p/db) `refreshJourney()`: with `opt.tickets: true`, request ticket details – Thanks @PaulSut!
