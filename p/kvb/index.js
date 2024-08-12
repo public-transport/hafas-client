@@ -3,8 +3,6 @@
 import {createRequire} from 'module';
 const require = createRequire(import.meta.url);
 
-import {readFileSync} from 'fs';
-import {Agent} from 'https';
 const baseProfile = require('./base.json');
 
 const products = [{
@@ -51,18 +49,10 @@ const products = [{
 	default: true,
 }];
 
-// `auskunft.kvb.koeln:443` doesn't provide the necessary CA certificate chain for
-// Node.js to trust the certificate, so we manually add it.
-// todo: fix this properly, e.g. by letting them know
-const ca = readFileSync(new URL('./thawte-rsa-ca-2018.pem', import.meta.url).pathname);
-const agent = new Agent({ca});
-const transformReq = (ctx, req) => ({...req, agent});
-
 const profile = {
 	...baseProfile,
 	locale: 'de-DE',
 	timezone: 'Europe/Berlin',
-	transformReq,
 
 	products,
 
