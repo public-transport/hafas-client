@@ -38,7 +38,7 @@ const products = [{
 }, {
 	id: 'regionalverkehr',
 	mode: 'train',
-	bitmasks: [46],
+	bitmasks: [16],
 	name: 'Regionalverkehr',
 	short: 'Regionalverkehr',
 	default: true,
