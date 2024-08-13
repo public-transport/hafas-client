@@ -11,13 +11,6 @@ import {parseLine} from '../../parse/line.js';
 const baseProfile = require('./base.json');
 import {products} from './products.js';
 
-// `www.belgianrail.be:443` doesn't provide the necessary CA certificate
-// chain for Node.js to trust the certificate, so we manually add it.
-// todo: fix this properly, e.g. by letting them know
-const ca = readFileSync(new URL('./digicert-sha2-secure-server-ca.crt.pem', import.meta.url).pathname);
-const agent = new Agent({ca});
-const transformReq = (ctx, req) => ({...req, agent});
-
 // todo: this is ugly
 const lineNameWithoutFahrtNr = ({parsed}) => {
 	const {name, fahrtNr} = parsed;
@@ -57,8 +50,6 @@ const profile = {
 	...baseProfile,
 	locale: 'fr-BE',
 	timezone: 'Europe/Brussels',
-
-	transformReq,
 
 	products,
 
