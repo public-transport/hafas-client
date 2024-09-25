@@ -10,6 +10,6 @@
 		"name": "oebbPROD-ADHOC"
 	},
 	"endpoint": "https://fahrplan.oebb.at/bin/mgate.exe",
-	"ver": "1.41",
+	"ver": "1.45",
 	"defaultLanguage": "de"
 }
