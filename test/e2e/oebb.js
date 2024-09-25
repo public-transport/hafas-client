@@ -20,7 +20,7 @@ import {testJourneysWithDetour} from './lib/journeys-with-detour.js';
 import {testDepartures} from './lib/departures.js';
 import {testDeparturesInDirection} from './lib/departures-in-direction.js';
 
-const T_MOCK = 1671260400 * 1000; // 2022-12-17T08:00:00+01:00
+const T_MOCK = 1731394800 * 1000; // 2024-11-12T08:00:00+01:00
 const when = createWhen(oebbProfile.timezone, oebbProfile.locale, T_MOCK);
 
 const cfg = {
