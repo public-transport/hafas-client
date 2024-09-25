@@ -59,7 +59,6 @@ jobs:
         path: ${{ env.npm_config_cache }}
     - run: npm install
 
-    - run: npm run lint
     - run: npm run test-integration
 
   e2e-tests:
@@ -84,5 +83,4 @@ jobs:
         path: ${{ env.npm_config_cache }}
     - run: npm install
 
-    - run: npm run lint
     - run: npm run test-e2e
