@@ -27,7 +27,7 @@ import {testReachableFrom} from './lib/reachable-from.js';
 import {testRemarks} from './lib/remarks.js';
 import {testLines} from './lib/lines.js';
 
-const T_MOCK = 1671260400 * 1000; // 2022-12-17T08:00:00+01:00
+const T_MOCK = 1731394800 * 1000; // 2024-11-12T08:00:00+01:00
 const when = createWhen(bvgProfile.timezone, bvgProfile.locale, T_MOCK);
 
 const {
@@ -242,7 +242,7 @@ tap.test('trip details', async (t) => {
 tap.test('journeys – station to address', async (t) => {
 	const torfstr = {
 		type: 'location',
-		address: '13353 Berlin-Wedding, Torfstr. 17',
+		address: '13353 Berlin-Wedding, Torfstraße 17',
 		latitude: 52.541797,
 		longitude: 13.350042,
 	};
