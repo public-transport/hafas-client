@@ -3,8 +3,6 @@
 import {createRequire} from 'module';
 const require = createRequire(import.meta.url);
 
-import {readFileSync} from 'fs';
-import {Agent} from 'https';
 import {strictEqual as eql} from 'assert';
 import {parseHook} from '../../lib/profile-hooks.js';
 import {parseLine} from '../../parse/line.js';
