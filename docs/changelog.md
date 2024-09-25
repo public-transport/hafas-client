@@ -1,5 +1,15 @@
 # Changelog
 
+## `6.3.2`
+
+- 83772028/d001fcc1/3c8bb905 [*BVG* profile](../p/bvg): update auth details in order to fix "invalid client version" error 🐛✅ – Thanks @timvonwerne!
+- 329c89c4 [*KVB* profile](../p/kvb): fix bitmask for "Regionalverkehr" product 🐛
+- d2b490a4 [*KVB* profile](../p/kvb): remove hard-coded SSL CA certificate chain 🐛
+- 96f97f24/e411a4b6 [*SNCB*/*NMBS* profile](../p/sncb): remove hard-coded SSL CA certificate chain 🐛
+- 52f0dd19 [*SNCB*/*NMBS* profile](../p/sncb): un-skip E2E/integration tests ✅
+
+[🏷 `6.3.2`](https://github.com/public-transport/hafas-client/releases/tag/6.3.2), 2024-09-25
+
 ## `6.3.1`
 
 - 6e74b9ab fix typo in `journeys.md` 📝 – Thanks @1Maxnet1!
