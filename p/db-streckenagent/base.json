@@ -1,0 +1,17 @@
+{
+	"auth": {
+		"type": "AID",
+		"aid": "Xd91BNAVkuI6rr6z"
+	},
+	"salt": "7a374446424e41563048766836715137",
+	"client": {
+		"type": "IPH",
+		"id": "DB-REGIO-BNAV",
+		"v": "3000500",
+		"name": "StreckenagentPROD-APPSTORE"
+	},
+	"endpoint": "https://bnav.hafas.de/bin/mgate.exe",
+	"ext": "DB.R19.12.a",
+	"ver": "1.18",
+	"defaultLanguage": "de"
+}
