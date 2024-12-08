@@ -189,7 +189,7 @@ const vbbDepartures = [
 				type: 'warning',
 				summary: 'Gemeinsam sicher unterwegs - mit Abstand und medizinischer Maske (in Berlin: FFP2)!',
 				text: 'An Haltestellen und Bahnhöfen sowie in Fahrzeugen. Maskenmuffel riskieren mindestens 50 Euro.\n'
-				+ '<a href="https://www.vbb.de/corona" target="_blank" rel="noopener">Weitere Informationen</a>',
+					+ '<a href="https://www.vbb.de/corona" target="_blank" rel="noopener">Weitere Informationen</a>',
 				icon: {type: 'HIM0', title: null},
 				priority: 100,
 				products: {
@@ -381,7 +381,7 @@ const vbbDepartures = [
 				type: 'warning',
 				summary: 'Gemeinsam sicher unterwegs - mit Abstand und medizinischer Maske (in Berlin: FFP2)!',
 				text: 'An Haltestellen und Bahnhöfen sowie in Fahrzeugen. Maskenmuffel riskieren mindestens 50 Euro.\n'
-				+ '<a href="https://www.vbb.de/corona" target="_blank" rel="noopener">Weitere Informationen</a>',
+					+ '<a href="https://www.vbb.de/corona" target="_blank" rel="noopener">Weitere Informationen</a>',
 				icon: {type: 'HIM0', title: null},
 				priority: 100,
 				products: {
@@ -596,7 +596,7 @@ const vbbDepartures = [
 				type: 'warning',
 				summary: 'Gemeinsam sicher unterwegs - mit Abstand und medizinischer Maske (in Berlin: FFP2)!',
 				text: 'An Haltestellen und Bahnhöfen sowie in Fahrzeugen. Maskenmuffel riskieren mindestens 50 Euro.\n'
-				+ '<a href="https://www.vbb.de/corona" target="_blank" rel="noopener">Weitere Informationen</a>',
+					+ '<a href="https://www.vbb.de/corona" target="_blank" rel="noopener">Weitere Informationen</a>',
 				icon: {type: 'HIM0', title: null},
 				priority: 100,
 				products: {
@@ -811,7 +811,7 @@ const vbbDepartures = [
 				type: 'warning',
 				summary: 'Gemeinsam sicher unterwegs - mit Abstand und medizinischer Maske (in Berlin: FFP2)!',
 				text: 'An Haltestellen und Bahnhöfen sowie in Fahrzeugen. Maskenmuffel riskieren mindestens 50 Euro.\n'
-				+ '<a href="https://www.vbb.de/corona" target="_blank" rel="noopener">Weitere Informationen</a>',
+					+ '<a href="https://www.vbb.de/corona" target="_blank" rel="noopener">Weitere Informationen</a>',
 				icon: {type: 'HIM0', title: null},
 				priority: 100,
 				products: {
@@ -1026,7 +1026,7 @@ const vbbDepartures = [
 				type: 'warning',
 				summary: 'Gemeinsam sicher unterwegs - mit Abstand und medizinischer Maske (in Berlin: FFP2)!',
 				text: 'An Haltestellen und Bahnhöfen sowie in Fahrzeugen. Maskenmuffel riskieren mindestens 50 Euro.\n'
-				+ '<a href="https://www.vbb.de/corona" target="_blank" rel="noopener">Weitere Informationen</a>',
+					+ '<a href="https://www.vbb.de/corona" target="_blank" rel="noopener">Weitere Informationen</a>',
 				icon: {type: 'HIM0', title: null},
 				priority: 100,
 				products: {
@@ -1241,7 +1241,7 @@ const vbbDepartures = [
 				type: 'warning',
 				summary: 'Gemeinsam sicher unterwegs - mit Abstand und medizinischer Maske (in Berlin: FFP2)!',
 				text: 'An Haltestellen und Bahnhöfen sowie in Fahrzeugen. Maskenmuffel riskieren mindestens 50 Euro.\n'
-				+ '<a href="https://www.vbb.de/corona" target="_blank" rel="noopener">Weitere Informationen</a>',
+					+ '<a href="https://www.vbb.de/corona" target="_blank" rel="noopener">Weitere Informationen</a>',
 				icon: {type: 'HIM0', title: null},
 				priority: 100,
 				products: {
@@ -1456,7 +1456,7 @@ const vbbDepartures = [
 				type: 'warning',
 				summary: 'Gemeinsam sicher unterwegs - mit Abstand und medizinischer Maske (in Berlin: FFP2)!',
 				text: 'An Haltestellen und Bahnhöfen sowie in Fahrzeugen. Maskenmuffel riskieren mindestens 50 Euro.\n'
-				+ '<a href="https://www.vbb.de/corona" target="_blank" rel="noopener">Weitere Informationen</a>',
+					+ '<a href="https://www.vbb.de/corona" target="_blank" rel="noopener">Weitere Informationen</a>',
 				icon: {type: 'HIM0', title: null},
 				priority: 100,
 				products: {
@@ -1671,7 +1671,7 @@ const vbbDepartures = [
 				type: 'warning',
 				summary: 'Gemeinsam sicher unterwegs - mit Abstand und medizinischer Maske (in Berlin: FFP2)!',
 				text: 'An Haltestellen und Bahnhöfen sowie in Fahrzeugen. Maskenmuffel riskieren mindestens 50 Euro.\n'
-				+ '<a href="https://www.vbb.de/corona" target="_blank" rel="noopener">Weitere Informationen</a>',
+					+ '<a href="https://www.vbb.de/corona" target="_blank" rel="noopener">Weitere Informationen</a>',
 				icon: {type: 'HIM0', title: null},
 				priority: 100,
 				products: {
@@ -1886,7 +1886,7 @@ const vbbDepartures = [
 				type: 'warning',
 				summary: 'Gemeinsam sicher unterwegs - mit Abstand und medizinischer Maske (in Berlin: FFP2)!',
 				text: 'An Haltestellen und Bahnhöfen sowie in Fahrzeugen. Maskenmuffel riskieren mindestens 50 Euro.\n'
-				+ '<a href="https://www.vbb.de/corona" target="_blank" rel="noopener">Weitere Informationen</a>',
+					+ '<a href="https://www.vbb.de/corona" target="_blank" rel="noopener">Weitere Informationen</a>',
 				icon: {type: 'HIM0', title: null},
 				priority: 100,
 				products: {
@@ -2101,7 +2101,7 @@ const vbbDepartures = [
 				type: 'warning',
 				summary: 'Gemeinsam sicher unterwegs - mit Abstand und medizinischer Maske (in Berlin: FFP2)!',
 				text: 'An Haltestellen und Bahnhöfen sowie in Fahrzeugen. Maskenmuffel riskieren mindestens 50 Euro.\n'
-				+ '<a href="https://www.vbb.de/corona" target="_blank" rel="noopener">Weitere Informationen</a>',
+					+ '<a href="https://www.vbb.de/corona" target="_blank" rel="noopener">Weitere Informationen</a>',
 				icon: {type: 'HIM0', title: null},
 				priority: 100,
 				products: {
@@ -2315,7 +2315,7 @@ const vbbDepartures = [
 				type: 'warning',
 				summary: 'Gemeinsam sicher unterwegs - mit Abstand und medizinischer Maske (in Berlin: FFP2)!',
 				text: 'An Haltestellen und Bahnhöfen sowie in Fahrzeugen. Maskenmuffel riskieren mindestens 50 Euro.\n'
-				+ '<a href="https://www.vbb.de/corona" target="_blank" rel="noopener">Weitere Informationen</a>',
+					+ '<a href="https://www.vbb.de/corona" target="_blank" rel="noopener">Weitere Informationen</a>',
 				icon: {type: 'HIM0', title: null},
 				priority: 100,
 				products: {
@@ -2530,7 +2530,7 @@ const vbbDepartures = [
 				type: 'warning',
 				summary: 'Gemeinsam sicher unterwegs - mit Abstand und medizinischer Maske (in Berlin: FFP2)!',
 				text: 'An Haltestellen und Bahnhöfen sowie in Fahrzeugen. Maskenmuffel riskieren mindestens 50 Euro.\n'
-				+ '<a href="https://www.vbb.de/corona" target="_blank" rel="noopener">Weitere Informationen</a>',
+					+ '<a href="https://www.vbb.de/corona" target="_blank" rel="noopener">Weitere Informationen</a>',
 				icon: {type: 'HIM0', title: null},
 				priority: 100,
 				products: {

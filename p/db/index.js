@@ -68,8 +68,8 @@ const parseGrid = (g) => {
 	return {
 		title: g.title,
 		rows: slices(g.nCols, g.itemL.map(item => Array.isArray(item.hints) && item.hints[0]
-		|| Array.isArray(item.remarkRefs) && item.remarkRefs[0] && item.remarkRefs[0].hint
-		|| {},
+			|| Array.isArray(item.remarkRefs) && item.remarkRefs[0] && item.remarkRefs[0].hint
+			|| {},
 		)),
 	};
 };
@@ -250,7 +250,7 @@ const formatRefreshJourneyReq = (ctx, refreshToken) => {
 const parseShpCtx = (addDataTicketInfo) => {
 	try {
 		return JSON.parse(atob(addDataTicketInfo)).shpCtx;
-	} catch (e) {
+	} catch {
 		// in case addDataTicketInfo is not a valid base64 string
 		return null;
 	}
@@ -349,7 +349,7 @@ const isFirstClassTicket = (addData, opt) => {
 	try {
 		const addDataJson = JSON.parse(atob(addData));
 		return Boolean(addDataJson.Upsell === 'S1' || opt.firstClass);
-	} catch (err) {
+	} catch {
 		return false;
 	}
 };

@@ -11,7 +11,7 @@ const bremenRutenstr = {
 	type: 'location',
 	id: '990025693',
 	address: 'Bremen Rutenstraße 1',
-	latitude: 53.074165, longitude: 8.8184
+	latitude: 53.074165, longitude: 8.8184,
 }
 
 let data = await client.locations('oldenburg', {results: 2})

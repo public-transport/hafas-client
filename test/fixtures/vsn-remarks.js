@@ -55,8 +55,8 @@ const vsnRemarks = [
 		type: 'warning',
 		summary: 'Sperrung Weserbrücke Lauenförde-Beverungen',
 		text: 'Aufgrund der Sperrung können die Haltestellen in Beverungen nicht bedient werden.\n'
-		+ '<a href="http://www.vsninfo.de/de/verkehrsbehinderungen/landkreis-holzminden/554-556-sperrung-weserbruecke-lauenfoerde-beverungen" target="_blank" rel="noopener">Lauenförde-Beverungen</a>\n'
-		+ '<a href="http://weserems.hafas.de/pdf/1558512346653_HOL_556_beide_FPL_Baustelle%20Beverungen.pdf" target="_blank" rel="noopener">Baustellenfahrplan Linie 556</a>',
+			+ '<a href="http://www.vsninfo.de/de/verkehrsbehinderungen/landkreis-holzminden/554-556-sperrung-weserbruecke-lauenfoerde-beverungen" target="_blank" rel="noopener">Lauenförde-Beverungen</a>\n'
+			+ '<a href="http://weserems.hafas.de/pdf/1558512346653_HOL_556_beide_FPL_Baustelle%20Beverungen.pdf" target="_blank" rel="noopener">Baustellenfahrplan Linie 556</a>',
 		icon: {type: 'HIM0', title: null},
 		priority: 6,
 		company: 'VSN',
@@ -115,8 +115,8 @@ const vsnRemarks = [
 		type: 'warning',
 		summary: 'Sperrung Weserbrücke Lauenförde-Beverungen',
 		text: 'Aufgrund der Sperrung können die Haltestellen in Beverungen nicht bedient werden.\n'
-		+ '<a href="http://www.vsninfo.de/de/verkehrsbehinderungen/landkreis-holzminden/554-556-sperrung-weserbruecke-lauenfoerde-beverungen" target="_blank" rel="noopener">Lauenförde-Beverungen</a>\n'
-		+ '<a href="http://weserems.hafas.de/pdf/1558512267592_HOL_554_beide_FPL_Baustelle%20Beverungen.pdf" target="_blank" rel="noopener">Baustellenfahrplan Linie 554</a>',
+			+ '<a href="http://www.vsninfo.de/de/verkehrsbehinderungen/landkreis-holzminden/554-556-sperrung-weserbruecke-lauenfoerde-beverungen" target="_blank" rel="noopener">Lauenförde-Beverungen</a>\n'
+			+ '<a href="http://weserems.hafas.de/pdf/1558512267592_HOL_554_beide_FPL_Baustelle%20Beverungen.pdf" target="_blank" rel="noopener">Baustellenfahrplan Linie 554</a>',
 		icon: {type: 'HIM0', title: null},
 		priority: 6,
 		company: 'VSN',
@@ -182,17 +182,17 @@ const vsnRemarks = [
 		type: 'warning',
 		summary: 'Verlegung einer Stromleitung in der Lindenstraße (Umleitung verschoben)',
 		text: 'Betrifft die Linien 91, 92, 94, N7\n'
-		+ '\n'
-		+ 'Beginn der Umleitung verschoben auf voraussichtlich 16. März bis Juni 2020\n'
-		+ '\n'
-		+ 'Die Bauarbeiten sollten ursprünglich bereits am 2. März beginnen. Ab diesem Datum wurde auch die Umleitung der Buslinien geplant. Bitte beachten Sie, dass die Fahrpläne an den Haltestellen sowie die Fahrplanauskunft im Internet ab 2. März den Bauplan anzeigen, obwohl die Busse bis zum Beginn der Bauarbeiten noch in der regulären Linienführung fahren.\n'
-		+ '\n'
-		+ 'Umleitung ab Baubeginn:\n'
-		+ 'Die Linien 91, 92, 94 und N7 werden in Richtung Vegesack zwischen (H) Bf Blumenthal und (H) Bremer Vulkan über die Straßen Zur Westpier und Am Werfttor umgeleitet.\n'
-		+ '\n'
-		+ 'Haltestellenänderungen in Richtung Vegesack:\n'
-		+ '(H) Wätjens Park &gt; verlegt vor die Kreuzung Lüssumer Str./Zur Westpier\n'
-		+ '(H) Margaretenallee &gt; entfällt \n',
+			+ '\n'
+			+ 'Beginn der Umleitung verschoben auf voraussichtlich 16. März bis Juni 2020\n'
+			+ '\n'
+			+ 'Die Bauarbeiten sollten ursprünglich bereits am 2. März beginnen. Ab diesem Datum wurde auch die Umleitung der Buslinien geplant. Bitte beachten Sie, dass die Fahrpläne an den Haltestellen sowie die Fahrplanauskunft im Internet ab 2. März den Bauplan anzeigen, obwohl die Busse bis zum Beginn der Bauarbeiten noch in der regulären Linienführung fahren.\n'
+			+ '\n'
+			+ 'Umleitung ab Baubeginn:\n'
+			+ 'Die Linien 91, 92, 94 und N7 werden in Richtung Vegesack zwischen (H) Bf Blumenthal und (H) Bremer Vulkan über die Straßen Zur Westpier und Am Werfttor umgeleitet.\n'
+			+ '\n'
+			+ 'Haltestellenänderungen in Richtung Vegesack:\n'
+			+ '(H) Wätjens Park &gt; verlegt vor die Kreuzung Lüssumer Str./Zur Westpier\n'
+			+ '(H) Margaretenallee &gt; entfällt \n',
 		icon: {type: 'HIM0', title: null},
 		priority: 6,
 		company: 'BSAG',
@@ -257,17 +257,17 @@ const vsnRemarks = [
 		type: 'warning',
 		summary: 'Verlegung einer Stromleitung in der Lindenstraße',
 		text: 'Betrifft die Linien 91, 92, 94, N7\n'
-		+ '\n'
-		+ 'Beginn der Umleitung verschoben auf voraussichtlich 16. März bis Juni 2020\n'
-		+ '\n'
-		+ 'Die Bauarbeiten sollten ursprünglich bereits am 2. März beginnen. Ab diesem Datum wurde auch die Umleitung der Buslinien geplant. Bitte beachten Sie, dass die Fahrpläne an den Haltestellen sowie die Fahrplanauskunft im Internet ab 2. März den Bauplan anzeigen, obwohl die Busse bis zum Beginn der Bauarbeiten noch in der regulären Linienführung fahren.\n'
-		+ '\n'
-		+ 'Umleitung ab Baubeginn:\n'
-		+ 'Die Linien 91, 92, 94 und N7 werden in Richtung Vegesack zwischen (H) Bf Blumenthal und (H) Bremer Vulkan über die Straßen Zur Westpier und Am Werfttor umgeleitet.\n'
-		+ '\n'
-		+ 'Haltestellenänderungen in Richtung Vegesack:\n'
-		+ '(H) Wätjens Park &gt; verlegt vor die Kreuzung Lüssumer Str./Zur Westpier\n'
-		+ '(H) Margaretenallee &gt; entfällt \n',
+			+ '\n'
+			+ 'Beginn der Umleitung verschoben auf voraussichtlich 16. März bis Juni 2020\n'
+			+ '\n'
+			+ 'Die Bauarbeiten sollten ursprünglich bereits am 2. März beginnen. Ab diesem Datum wurde auch die Umleitung der Buslinien geplant. Bitte beachten Sie, dass die Fahrpläne an den Haltestellen sowie die Fahrplanauskunft im Internet ab 2. März den Bauplan anzeigen, obwohl die Busse bis zum Beginn der Bauarbeiten noch in der regulären Linienführung fahren.\n'
+			+ '\n'
+			+ 'Umleitung ab Baubeginn:\n'
+			+ 'Die Linien 91, 92, 94 und N7 werden in Richtung Vegesack zwischen (H) Bf Blumenthal und (H) Bremer Vulkan über die Straßen Zur Westpier und Am Werfttor umgeleitet.\n'
+			+ '\n'
+			+ 'Haltestellenänderungen in Richtung Vegesack:\n'
+			+ '(H) Wätjens Park &gt; verlegt vor die Kreuzung Lüssumer Str./Zur Westpier\n'
+			+ '(H) Margaretenallee &gt; entfällt \n',
 		icon: {type: 'HIM0', title: null},
 		priority: 6,
 		company: 'BSAG',

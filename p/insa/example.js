@@ -11,7 +11,7 @@ const hellestr1 = {
 	type: 'location',
 	id: '980801263',
 	address: 'Magdeburg - Leipziger Straße, Hellestraße 1',
-	latitude: 52.116706, longitude: 11.621821
+	latitude: 52.116706, longitude: 11.621821,
 }
 
 let data = await client.locations('Magdeburg Hbf', {results: 2})
