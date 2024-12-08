@@ -11,7 +11,7 @@ const offenbachLiebigstr = {
 	type: 'location',
 	id: '990148095',
 	address: 'Offenbach am Main, Liebigstraße 22',
-	latitude: 50.096326, longitude: 8.759979
+	latitude: 50.096326, longitude: 8.759979,
 }
 
 let data = await client.locations('wiesbaden igstadt', {results: 2})

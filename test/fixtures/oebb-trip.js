@@ -643,10 +643,10 @@ const oebbTrip = {
 			type: 'warning',
 			summary: 'Aktuelle Lage',
 			text: 'Wegen der aktuellen Corona-Situation wurde <b>der Fahrplan österreichweit angepasst</b>.\n'
-			+ 'Der Fernverkehr fährt innerhalb Österreichs wieder verstärkt. Der Regelbetrieb für S-Bahnen und Regionalzüge ist wieder aufgenommen.\n'
-			+ 'Einschränkungen im grenzüberschreitenden Verkehr bleiben bis auf Weiteres bestehen.\n'
-			+ 'Informationen dazu erhalten Sie auf SCOTTY mobil, im Internet auf <a href="https://www.oebb.at">www.oebb.at</a> und beim <a href="https://www.oebb.at/de/reiseplanung-services/kundenservice">ÖBB-Kundenservice</a> unter +43-5-1717.\n'
-			+ ' Wir bitten Sie in allen <b>öffentlichen Verkehrsmitteln und im gesamten Bahnhofsbereich</b> ein <b>Mund-Nasenschutz</b> zu tragen. Bitte halten Sie auch einen <b> Sicherheitsabstand </b> zu anderen Personen ein. Nähere Informationen des Bundesministeriums finden Sie <a href="https://kundeninformation-pv.oebb.at/dam/verkehrsauskunft/extern/2020/2020_04/Fahrgast-Charta_April_2020/Fahrgast-Charta_April_2020.pdf">hier</a>.\n',
+				+ 'Der Fernverkehr fährt innerhalb Österreichs wieder verstärkt. Der Regelbetrieb für S-Bahnen und Regionalzüge ist wieder aufgenommen.\n'
+				+ 'Einschränkungen im grenzüberschreitenden Verkehr bleiben bis auf Weiteres bestehen.\n'
+				+ 'Informationen dazu erhalten Sie auf SCOTTY mobil, im Internet auf <a href="https://www.oebb.at">www.oebb.at</a> und beim <a href="https://www.oebb.at/de/reiseplanung-services/kundenservice">ÖBB-Kundenservice</a> unter +43-5-1717.\n'
+				+ ' Wir bitten Sie in allen <b>öffentlichen Verkehrsmitteln und im gesamten Bahnhofsbereich</b> ein <b>Mund-Nasenschutz</b> zu tragen. Bitte halten Sie auch einen <b> Sicherheitsabstand </b> zu anderen Personen ein. Nähere Informationen des Bundesministeriums finden Sie <a href="https://kundeninformation-pv.oebb.at/dam/verkehrsauskunft/extern/2020/2020_04/Fahrgast-Charta_April_2020/Fahrgast-Charta_April_2020.pdf">hier</a>.\n',
 			icon: {type: 'HIM5', title: null},
 			priority: 100,
 			category: 5,

@@ -11,7 +11,7 @@ const albertEinsteinStr = {
 	type: 'location',
 	id: '990004201',
 	address: 'Rostock - Südstadt, Albert-Einstein-Straße 23',
-	latitude: 54.077208, longitude: 12.108299
+	latitude: 54.077208, longitude: 12.108299,
 }
 
 let data = await client.locations('güstrow', {results: 2})

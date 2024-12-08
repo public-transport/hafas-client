@@ -95,7 +95,7 @@ const parseLocation = (ctx, l) => {
 		const locHints = (l.remarkRefs || [])
 			.filter(ref => Boolean(ref.hint) && Array.isArray(ref.tagL))
 			.filter(({tagL}) => tagL.includes('RES_LOC')
-			|| tagL.find(t => t.slice(0, 8) === 'RES_LOC_'), // e.g. `RES_LOC_H3`
+				|| tagL.find(t => t.slice(0, 8) === 'RES_LOC_'), // e.g. `RES_LOC_H3`
 			)
 			.map(ref => ref.hint);
 		const hints = [
