@@ -261,32 +261,29 @@ const addDbOfferSelectionUrl = (journey, opt) => {
 
 	// if no ticket contains addData, we can't get the offer selection URL
 	if (journey.tickets.some((t) => t.addDataTicketInfo)) {
-
-		const queryParams = new URLSearchParams();
-
-		// Add individual parameters
-		queryParams.append('A.1', opt.age);
-		queryParams.append('E', 'F');
-		queryParams.append('E.1', opt.loyaltyCard ? formatLoyaltyCard(opt.loyaltyCard) : '0');
-		queryParams.append('K', opt.firstClass ? '1' : '2');
-		queryParams.append('M', 'D');
-		queryParams.append('RT.1', 'E');
-		queryParams.append('SS', journey.legs[0].origin.id);
-		queryParams.append('T', journey.legs[0].departure);
-		queryParams.append('VH', journey.refreshToken);
-		queryParams.append('ZS', journey.legs[journey.legs.length - 1].destination.id);
-		queryParams.append('journeyOptions', '0');
-		queryParams.append('journeyProducts', '1023');
-		queryParams.append('optimize', '1');
-		queryParams.append('returnurl', 'dbnavigator://');
 		const endpoint = opt.language === 'de' ? 'dox' : 'eox';
 
 		journey.tickets.forEach((t) => {
 			const shpCtx = parseShpCtx(t.addDataTicketInfo);
 			if (shpCtx) {
 				const url = new URL(`https://mobile.bahn.de/bin/mobil/query.exe/${endpoint}`);
-				url.searchParams = new URLSearchParams(queryParams);
+
+				url.searchParams.append('A.1', opt.age);
+				url.searchParams.append('E', 'F');
+				url.searchParams.append('E.1', opt.loyaltyCard ? formatLoyaltyCard(opt.loyaltyCard) : '0');
+				url.searchParams.append('K', opt.firstClass ? '1' : '2');
+				url.searchParams.append('M', 'D');
+				url.searchParams.append('RT.1', 'E');
+				url.searchParams.append('SS', journey.legs[0].origin.id);
+				url.searchParams.append('T', journey.legs[0].departure);
+				url.searchParams.append('VH', journey.refreshToken);
+				url.searchParams.append('ZS', journey.legs[journey.legs.length - 1].destination.id);
+				url.searchParams.append('journeyOptions', '0');
+				url.searchParams.append('journeyProducts', '1023');
+				url.searchParams.append('optimize', '1');
+				url.searchParams.append('returnurl', 'dbnavigator://');
 				url.searchParams.append('shpCtx', shpCtx);
+
 				t.url = url.href;
 			} else {
 				t.url = null;
