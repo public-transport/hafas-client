@@ -411,23 +411,25 @@ const createValidateJourneyLeg = (cfg) => {
 	return validateJourneyLeg;
 };
 
-const validateJourney = (val, j, name = 'journey') => {
-	const withFakeId = Object.assign({
-		id: 'foo', // todo: let hafas-client parse a journey ID
-	}, j);
-	defaultValidators.journey(val, withFakeId, name);
-	// todo: j.refreshToken
+const createValidateJourney = (cfg) => {
+	const validateJourney = (val, j, name = 'journey') => {
+		const withFakeId = Object.assign({
+			id: 'foo', // todo: let hafas-client parse a journey ID
+		}, j);
+		defaultValidators.journey(val, withFakeId, name);
+		// todo: j.refreshToken
 
-	if ('tickets' in j) {
-		a.ok(Array.isArray(j.tickets), name + '.tickets must be an array');
-		a.ok(j.tickets.length > 0, name + '.tickets must not be empty');
+		if (cfg.validateJourneyTickets !== false && 'tickets' in j) {
+			a.ok(Array.isArray(j.tickets), name + '.tickets must be an array');
+			a.ok(j.tickets.length > 0, name + '.tickets must not be empty');
 
-		for (let i = 0; i < j.tickets.length; i++) {
-			val.ticket(val, j.tickets[i], name + `.tickets[${i}]`);
+			for (let i = 0; i < j.tickets.length; i++) {
+				val.ticket(val, j.tickets[i], name + `.tickets[${i}]`);
+			}
 		}
-	}
+	};
+	return validateJourney;
 };
-const createValidateJourney = () => validateJourney;
 
 const validateJourneys = (val, js, name = 'journeys') => {
 	a.ok(Array.isArray(js), name + ' must be an array');
