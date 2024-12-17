@@ -42,6 +42,8 @@ const cfg = {
 	minLongitude: 6.896517,
 	maxLongitude: 16.180237,
 	validateJourneyTickets: false, // don't validate a journey's tickets
+	// with `journeys()` & `refreshJourney()`, don't validate .realtimeDataUpdatedAt
+	validateJourneysRealtimeDataUpdatedAt: false,
 };
 
 const validate = createValidate(cfg);
