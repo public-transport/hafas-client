@@ -24,7 +24,7 @@ const parseJourney = (ctx, j) => { // j = raw jouney
 		// However, we can use the previous leg's effective date.
 		const prevLeg = legs[legs.length - 1] || null;
 		if (l.type === 'DEVI' && prevLeg?.arrival) {
-			// todo: parse effective date from jny.ctxRecon/gis.ctx instead?
+			// todo: parse effective date from jny.recon.ctx/gis.ctx instead?
 			// todo: prefer plannedArrival?
 			date = [
 				prevLeg.arrival.slice(0, 4), // year
@@ -40,6 +40,7 @@ const parseJourney = (ctx, j) => { // j = raw jouney
 	const res = {
 		type: 'journey',
 		legs,
+		// recon.ctx seems to be used in new protocol versions, ctxRecon in older versions.
 		refreshToken: j.recon && j.recon.ctx || j.ctxRecon || null,
 	};
 

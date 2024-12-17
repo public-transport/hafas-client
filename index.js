@@ -250,6 +250,7 @@ const createClient = (profile, userAgent, opt = {}) => {
 			req: profile.transformJourneysQuery({profile, opt}, query),
 		});
 		if (!Array.isArray(res.outConL)) {
+			// todo [breaking]: return `{}` or `null` in this case.
 			return [];
 		}
 		// todo: outConGrpL

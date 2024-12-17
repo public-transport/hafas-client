@@ -7,7 +7,7 @@ const ADDRESS = 'A';
 
 const leadingZeros = /^0+/;
 
-// todo: what is l.wt? is it "weight"?
+// todo: what is l.wt? – seems to be "weight"?
 // 	- `6733` for 8013074 with p/vmt
 // 	- `3933` for 8012092 with p/vmt
 // 	- `2062` for 8010168 with p/vmt
@@ -26,6 +26,7 @@ const parseLocation = (ctx, l) => {
 	if (l.crd) {
 		res.latitude = l.crd.y / 1000000;
 		res.longitude = l.crd.x / 1000000;
+		// todo: l.crd.floor
 	} else if ('X' in lid && 'Y' in lid) {
 		res.latitude = lid.Y / 1000000;
 		res.longitude = lid.X / 1000000;

@@ -21,8 +21,8 @@ const methodsAndTheirArgs = [
 	['departures', 1, parseJsObject],
 	['arrivals', 0, toString],
 	['arrivals', 1, parseJsObject],
-	['journeys', 0, toString],
-	['journeys', 1, toString],
+	['journeys', 0, toString], // todo: support location objects *and* stop IDs
+	['journeys', 1, toString], // todo: support location objects *and* stop IDs
 	['journeys', 2, parseJsObject],
 	['refreshJourney', 0, toString],
 	['refreshJourney', 1, parseJsObject],
