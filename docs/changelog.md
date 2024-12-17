@@ -1,5 +1,16 @@
 # Changelog
 
+## `6.3.3`
+
+- 75de610c [*DB* profile](../p/db): fix parsing of ticket URLs 🐛
+- dfab132e/cc69ef5d [*DB* profile](../p/db): update `ver` 🐛, update integration test fixtures ✅
+- 4be39afd/e3d1d2fb [*ZVV* profile](../p/zvv): update endpoint URL & authentication `aid` 🐛, update integration test fixtures ✅
+- 31c4f17b/e9211e81 [*ÖBB* profile](../p/oebb): update `ver` 🐛, update integration test fixtures ✅
+- 8432ff1f [*DB* profile](../p/db) E2E/integration tests: disable price/fare/ticket validation ✅
+- 29f922b7 [*DB* profile](../p/db) E2E/integration tests: disable `.realtimeDataUpdatedAt` validation ✅
+
+[🏷 `6.3.3`](https://github.com/public-transport/hafas-client/releases/tag/6.3.3), 2024-12-17
+
 ## `6.3.2`
 
 - 83772028/d001fcc1/3c8bb905 [*BVG* profile](../p/bvg): update auth details in order to fix "invalid client version" error 🐛✅ – Thanks @timvonwerne!

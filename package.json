@@ -1,7 +1,7 @@
 {
 	"name": "hafas-client",
 	"description": "Client for HAFAS public transport APIs.",
-	"version": "6.3.2",
+	"version": "6.3.3",
 	"type": "module",
 	"main": "index.js",
 	"files": [
@@ -27,9 +27,10 @@
 		"roehrt",
 		"Sören Wegener (https://soerface.de/)",
 		"Paul Sutter <paul.sutter@moia.io>",
-		"1Maxnet1"
+		"1Maxnet1",
+		"Tim von Werne <tim@vonwernet.de>"
 	],
-	"homepage": "https://github.com/public-transport/hafas-client/tree/6.3.2",
+	"homepage": "https://github.com/public-transport/hafas-client/tree/6.3.3",
 	"repository": "public-transport/hafas-client",
 	"bugs": "https://github.com/public-transport/hafas-client/issues",
 	"funding": {
