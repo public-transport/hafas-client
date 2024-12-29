@@ -130,7 +130,6 @@ const requestJourneysWithBerlkoenig = ({opt}, query) => {
 	if (opt.berlkoenig) {
 		query.jnyFltrL.push({type: 'GROUP', mode: 'INC', value: 'BERLKOENIG'});
 	}
-	query.gisFltrL = [{meta: 'foot_speed_normal', type: 'M', mode: 'FB'}];
 	return query;
 };
 
@@ -160,6 +159,7 @@ const profile = {
 		parseJourneyLegWithOccupancy,
 	),
 
+	journeysWalkingSpeed: true,
 	refreshJourneyUseOutReconL: true,
 	trip: true,
 	radar: true,
