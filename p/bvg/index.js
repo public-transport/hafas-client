@@ -90,19 +90,12 @@ const parseJourneyLegWithOccupancy = ({parsed}, leg, date) => {
 	return parsed;
 };
 
-const requestJourneysWithOEVGroup = ({opt}, query) => {
-	query.jnyFltrL.push({type: 'GROUP', mode: 'INC', value: 'OEV'});
-	return query;
-};
-
 // todo: adapt/extend `vbb-parse-ticket` to support the BVG markup
 
 const profile = {
 	...baseProfile,
 	locale: 'de-DE',
 	timezone: 'Europe/Berlin',
-
-	transformJourneysQuery: requestJourneysWithOEVGroup,
 
 	products,
 
