@@ -18,28 +18,6 @@ const client = createClient(bvgProfile, userAgent)
 ## Customisations
 
 - parses *BVG*-specific products (such as *X-Bus*)
-- supports [BerlKönig `journey` legs](#berlkoenig)
 - strips parts from station names that are unnecessary in the Berlin context
 - parses line names to give more information (e.g. "Is it an express bus?")
 - renames *Ringbahn* line names to contain `⟳` and `⟲`
-
-### BerlKönig
-
-BVG has recently announced [a ride-sharing service called *BerlKönig*](https://www.berlkoenig.de). Pass `berlkoenig: true` into `journeys()` to get special legs:
-
-```js
-{
-	mode: 'walking',
-	departure: // …
-	arrival: // …
-	origin: // …
-	destination: // …
-	line: {
-		type: 'line',
-		name: 'BerlKönig',
-		public: true,
-		mode: 'taxi',
-		product: 'berlkoenig'
-	}
-}
-```

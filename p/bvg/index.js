@@ -83,35 +83,6 @@ const parseStopoverWithOccupancy = ({parsed}, st, date) => {
 	return parsed;
 };
 
-const parseJourneyLegWithBerlkönig = (ctx, leg, date) => {
-	if (leg.type === 'KISS') {
-		const icon = ctx.common.icons[leg.icoX];
-		if (icon && icon.type === 'prod_berl') {
-			const res = _parseJourneyLeg(ctx, {
-				...leg, type: 'WALK',
-			}, date);
-			delete res.walking;
-
-			const mcp = leg.dep.mcp || {};
-			const mcpData = mcp.mcpData || {};
-			// todo: mcp.lid
-			// todo: mcpData.occupancy, mcpData.type
-			// todo: journey.trfRes.bkgData
-			res.line = {
-				type: 'line',
-				id: null, // todo
-				// todo: fahrtNr?
-				name: mcpData.providerName,
-				public: true,
-				mode: 'taxi',
-				product: 'berlkoenig',
-				// todo: operator
-			};
-			return res;
-		}
-	}
-	return _parseJourneyLeg(ctx, leg, date);
-};
 const parseJourneyLegWithOccupancy = ({parsed}, leg, date) => {
 	if (leg.type === 'JNY') {
 		addOccupancy(parsed, journeyLegOccupancyCodes);
@@ -119,17 +90,8 @@ const parseJourneyLegWithOccupancy = ({parsed}, leg, date) => {
 	return parsed;
 };
 
-// use the Berlkönig ride sharing service?
-// todo: https://github.com/alexander-albers/tripkit/issues/26#issuecomment-825437320
-const requestJourneysWithBerlkoenig = ({opt}, query) => {
-	if ('numF' in query && opt.berlkoenig) {
-		// todo: check if this is still true
-		throw new Error('The `berlkoenig` and `results` options are mutually exclusive.');
-	}
+const requestJourneysWithOEVGroup = ({opt}, query) => {
 	query.jnyFltrL.push({type: 'GROUP', mode: 'INC', value: 'OEV'});
-	if (opt.berlkoenig) {
-		query.jnyFltrL.push({type: 'GROUP', mode: 'INC', value: 'BERLKOENIG'});
-	}
 	return query;
 };
 
@@ -140,7 +102,7 @@ const profile = {
 	locale: 'de-DE',
 	timezone: 'Europe/Berlin',
 
-	transformJourneysQuery: requestJourneysWithBerlkoenig,
+	transformJourneysQuery: requestJourneysWithOEVGroup,
 
 	products,
 
@@ -155,7 +117,7 @@ const profile = {
 	),
 	parseStopover: parseHook(_parseStopover, parseStopoverWithOccupancy),
 	parseJourneyLeg: parseHook(
-		parseJourneyLegWithBerlkönig,
+		_parseJourneyLeg,
 		parseJourneyLegWithOccupancy,
 	),
 

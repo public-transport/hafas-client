@@ -126,45 +126,6 @@ tap.test('journeys – fails with no product', async (t) => {
 	t.end();
 });
 
-// BerlKönig for public use is suspended during COVID-19.
-tap.skip('journeys – BerlKönig', async (t) => {
-	const when = DateTime
-		.fromMillis(Date.now(), {
-			zone: 'Europe/Berlin',
-			locale: 'de-De',
-		})
-		.startOf('day')
-		.plus({days: 1, hours: 18})
-		.toISO();
-
-	const {journeys} = await client.journeys({
-		type: 'location',
-		address: '12101 Berlin-Tempelhof, Peter-Str.r-Weg 1',
-		latitude: 52.476283,
-		longitude: 13.384947,
-	}, {
-		type: 'location',
-		id: '900981505',
-		poi: true,
-		name: 'Berlin, Tempelhofer Park Eingang Oderstr.',
-		latitude: 52.476688,
-		longitude: 13.41872,
-	}, {
-		berlkoenig: true,
-		departure: when,
-	});
-
-	const withBerlkoenig = flatMap(journeys, j => j.legs)
-		.find(l => l.line && l.line.product === 'berlkoenig');
-	t.ok(withBerlkoenig, 'journey with BerlKönig not found');
-
-	t.ok(withBerlkoenig.line);
-	t.equal(withBerlkoenig.line.public, true);
-	t.equal(withBerlkoenig.line.mode, 'taxi');
-	t.equal(withBerlkoenig.line.product, 'berlkoenig');
-	t.end();
-});
-
 // todo: opt.walkingSpeed doesn't seem to work right now
 tap.skip('journeys: walkingSpeed', async (t) => {
 	const havelchaussee = {
