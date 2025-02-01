@@ -6,11 +6,11 @@
 	"client": {
 		"type": "AND",
 		"id": "DB-REGIO",
-		"v": 100021,
+		"v": 3000000,
 		"name": "DB Busradar NRW"
 	},
-	"endpoint": "https://db-regio.hafas.de/bin/hci/mgate.exe",
+	"endpoint": "https://db-regio.hafas.de/bin/mgate.exe",
 	"ext": "DB.REGIO.1",
-	"ver": "1.24",
+	"ver": "1.45",
 	"defaultLanguage": "de"
 }
