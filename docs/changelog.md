@@ -1,5 +1,16 @@
 # Changelog
 
+## `6.3.4`
+
+- 7f3eaa23 [*DB* profile](../p/db): explain that the endpoint is down, link to alternative [`db-vendo-client`](https://github.com/public-transport/db-vendo-client) 📝
+- 9dd6d2cb [*BVG* profile](../p/bvg): remove hard-coded normal walking speed 🐛
+- d728dd8a [*BVG* profile](../p/bvg): remove outdated Berlkönig integration
+- 8ecf87d9 [*BVG* profile](../p/bvg): remove hard-coded `OEV` filter
+- 66c30367 [*BVG* profile](../p/bvg) E2E/integration tests: update fixtures ✅
+- 8baa32b8 [*DB Busradar NRW* profile](../p/db-busradar-nrw): update URL, `ver` & `client.v`, update integration test fixtures ✅
+
+[🏷 `6.3.4`](https://github.com/public-transport/hafas-client/releases/tag/6.3.4), 2025-02-01
+
 ## `6.3.3`
 
 - 75de610c [*DB* profile](../p/db): fix parsing of ticket URLs 🐛
