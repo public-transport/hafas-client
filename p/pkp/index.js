@@ -20,9 +20,9 @@ const trimStopName = ({parsed}, l) => {
 };
 
 const transformReqOverrideUserAgent = (ctx, req) => {
-	req.headers['user-agent'] = PKP_USER_AGENT
-	return req
-}
+	req.headers['user-agent'] = PKP_USER_AGENT;
+	return req;
+};
 
 const profile = {
 	...baseProfile,
