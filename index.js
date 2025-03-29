@@ -715,8 +715,11 @@ const createClient = (profile, userAgent, opt = {}) => {
 			entrances: true, // parse & expose entrances of stops/stations?
 			polylines: false, // return leg shapes?
 		}, opt);
-		if (Number.isNaN(Number(opt.when))) {
-			throw new TypeError('opt.when is invalid');
+		if (opt.when !== undefined && opt.when !== null) {
+			opt.when = new Date(opt.when);
+			if (Number.isNaN(Number(opt.when))) {
+				throw new TypeError('opt.when is invalid');
+			}
 		}
 
 		const req = profile.formatReachableFromReq({profile, opt}, address);
