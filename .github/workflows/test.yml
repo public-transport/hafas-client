@@ -43,7 +43,7 @@ jobs:
       name: restore npm cache
       uses: actions/cache@v3
       with:
-        key: npm-cache-${{ github.ref_name }}
+        key: npm-cache-${{ github.ref_name }}-${{ matrix.node-version }}
         path: ${{ env.npm_config_cache }}
     - run: npm install
 
@@ -71,7 +71,7 @@ jobs:
       name: restore npm cache
       uses: actions/cache@v3
       with:
-        key: npm-cache-${{ github.ref_name }}
+        key: npm-cache-${{ github.ref_name }}-${{ matrix.node-version }}
         path: ${{ env.npm_config_cache }}
     - run: npm install
 
@@ -95,7 +95,7 @@ jobs:
       name: restore npm cache
       uses: actions/cache@v3
       with:
-        key: npm-cache-${{ github.ref_name }}
+        key: npm-cache-${{ github.ref_name }}-${{ matrix.node-version }}
         path: ${{ env.npm_config_cache }}
     - run: npm install
 
