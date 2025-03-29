@@ -1,12 +1,8 @@
 #!/usr/bin/env node
 
+import {ok} from 'node:assert';
 import {parseArgs} from 'node:util';
 import {createClient} from '../../index.js';
-
-const showError = (err) => {
-	console.error(err);
-	process.exit(1);
-};
 
 const toString = val => String(val);
 const parseJsObject = val => {
@@ -67,14 +63,15 @@ const parsedArgs = args.slice(2)
 			? parser[2](arg)
 			: arg;
 	});
-(async () => {
+
+{
 	const {profile} = await import(`../../p/${profileName}/index.js`);
 
 	const client = createClient(profile, 'hafas-client debug CLI');
 
 	const fn = client[fnName];
+	ok(typeof fn === 'function', `client must have a method "${fnName}"`);
 
 	const res = await fn(...parsedArgs);
 	process.stdout.write(JSON.stringify(res) + '\n');
-})()
-	.catch(showError);
+}
