@@ -9,5 +9,5 @@ export default {
 	},
 	endpoint: 'https://mobil.rozklad-pkp.pl:8019/bin/mgate.exe',
 	ver: '1.21',
-	defaultLanguage: 'en',
+	defaultLanguage: 'pl',
 };
