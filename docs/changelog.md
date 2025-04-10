@@ -1,5 +1,17 @@
 # Changelog
 
+## `6.3.5`
+
+- 033e1956 `reachableFrom()`: validate `opt.when` 🐛
+- 4751df34/9eea7eae [*PKP* profile](../p/bvg): fix by using a randomized `User-Agent` 🐛
+- 51bda313 [*PKP* profile](../p/bvg): set `profile.defaultLanguage` to `pl` 🐛
+- 58e657c4/04fc46b0/64d8d42a [*PKP* profile](../p/pkp) fix linting, re-enable E2E tests, update integration test fixtures ✅
+- e6bdbfb2/4dff08f8/d8658988 [*KVB* profile](../p/kvb) provide hard-coded CA certificates 🐛
+- d2b23dfb [*DB* profile](../p/db): explain that the endpoint is shut off permanently 📝
+- 66c30367 [*IVB* profile](../p/ivb) remove superfluous CA certificate
+
+[🏷 `6.3.5`](https://github.com/public-transport/hafas-client/releases/tag/6.3.5), 2025-04-10
+
 ## `6.3.4`
 
 - 7f3eaa23 [*DB* profile](../p/db): explain that the endpoint is down, link to alternative [`db-vendo-client`](https://github.com/public-transport/db-vendo-client) 📝
