@@ -111,12 +111,12 @@ tap.skip('trip details', async (t) => {
 });
 
 tap.skip('arrivals at Kraków Główny', async (t) => {
-	const arrivals = await client.arrivals(krakówGł, {
+	const res = await client.arrivals(krakówGł, {
 		duration: 10, when,
 	});
 	await testArrivals({
 		test: t,
-		arrivals,
+		res,
 		id: krakówGł,
 		validate,
 	});
