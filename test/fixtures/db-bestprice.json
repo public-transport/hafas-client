@@ -1,0 +1,2519 @@
+{
+    "ver": "1.34",
+    "ext": "DB.R21.12.a",
+    "lang": "eng",
+    "id": "8d42fhgw2xgq92ck",
+    "err": "OK",
+    "cInfo": {
+        "code": "OK"
+    },
+    "graph": {
+        "id": "standard",
+        "index": 0
+    },
+    "subGraph": {
+        "id": "global",
+        "index": 0
+    },
+    "view": {
+        "id": "standard",
+        "index": 0,
+        "type": "WGS84"
+    },
+    "svcResL": [
+        {
+            "meth": "BestPriceSearch",
+            "err": "OK",
+            "res": {
+                "common": {
+                    "locL": [
+                        {
+                            "lid": "A=1@O=Bielefeld Hbf@X=0@Y=0@L=8000036@",
+                            "type": "S",
+                            "name": "Bielefeld Hbf",
+                            "icoX": 1,
+                            "extId": "8000036",
+                            "state": "F",
+                            "crd": {
+                                "x": 0,
+                                "y": 0
+                            },
+                            "pCls": 303
+                        },
+                        {
+                            "lid": "A=1@O=Hannover Hbf@X=0@Y=0@L=8000152@",
+                            "type": "S",
+                            "name": "Hannover Hbf",
+                            "icoX": 1,
+                            "extId": "8000152",
+                            "state": "F",
+                            "crd": {
+                                "x": 0,
+                                "y": 0
+                            },
+                            "pCls": 319
+                        },
+                        {
+                            "lid": "A=1@O=Minden(Westf)@X=0@Y=0@L=8000252@",
+                            "type": "S",
+                            "name": "Minden(Westf)",
+                            "icoX": 1,
+                            "extId": "8000252",
+                            "state": "F",
+                            "crd": {
+                                "x": 0,
+                                "y": 0
+                            },
+                            "pCls": 571
+                        },
+                        {
+                            "lid": "A=1@O=Bad Oeynhausen@X=0@Y=0@L=8000732@",
+                            "type": "S",
+                            "name": "Bad Oeynhausen",
+                            "icoX": 1,
+                            "extId": "8000732",
+                            "state": "F",
+                            "crd": {
+                                "x": 0,
+                                "y": 0
+                            },
+                            "pCls": 555
+                        },
+                        {
+                            "lid": "A=1@O=Stadthagen@X=0@Y=0@L=8005662@",
+                            "type": "S",
+                            "name": "Stadthagen",
+                            "icoX": 1,
+                            "extId": "8005662",
+                            "state": "F",
+                            "crd": {
+                                "x": 0,
+                                "y": 0
+                            },
+                            "pCls": 568
+                        },
+                        {
+                            "lid": "A=1@O=Hannover Hbf ZOB@X=0@Y=0@L=8089194@",
+                            "type": "S",
+                            "name": "Hannover Hbf ZOB",
+                            "icoX": 1,
+                            "extId": "8089194",
+                            "state": "F",
+                            "crd": {
+                                "x": 0,
+                                "y": 0
+                            },
+                            "pCls": 319,
+                            "mMastLocX": 1
+                        }
+                    ],
+                    "prodL": [
+                        {
+                            "name": "ICE 847",
+                            "icoX": 0,
+                            "prodCtx": {
+                                "name": "ICE  847",
+                                "catOut": "ICE",
+                                "catCode": "0"
+                            }
+                        },
+                        {
+                            "name": "RE 89715",
+                            "icoX": 2,
+                            "prodCtx": {
+                                "name": "RE 89715",
+                                "catOut": "RE",
+                                "catCode": "3"
+                            }
+                        },
+                        {
+                            "name": "IC 143",
+                            "icoX": 3,
+                            "prodCtx": {
+                                "name": "IC   143",
+                                "catOut": "IC",
+                                "catCode": "1"
+                            }
+                        },
+                        {
+                            "name": "ICE 547",
+                            "icoX": 0,
+                            "prodCtx": {
+                                "name": "ICE  547",
+                                "catOut": "ICE",
+                                "catCode": "0"
+                            }
+                        },
+                        {
+                            "name": "ICE 849",
+                            "icoX": 0,
+                            "prodCtx": {
+                                "name": "ICE  849",
+                                "catOut": "ICE",
+                                "catCode": "0"
+                            }
+                        },
+                        {
+                            "name": "RE 89719",
+                            "icoX": 2,
+                            "prodCtx": {
+                                "name": "RE 89719",
+                                "catOut": "RE",
+                                "catCode": "3"
+                            }
+                        },
+                        {
+                            "name": "IC 145",
+                            "icoX": 3,
+                            "prodCtx": {
+                                "name": "IC   145",
+                                "catOut": "IC",
+                                "catCode": "1"
+                            }
+                        },
+                        {
+                            "name": "ICE 549",
+                            "icoX": 0,
+                            "prodCtx": {
+                                "name": "ICE  549",
+                                "catOut": "ICE",
+                                "catCode": "0"
+                            }
+                        },
+                        {
+                            "name": "ICE 941",
+                            "icoX": 0,
+                            "prodCtx": {
+                                "name": "ICE  941",
+                                "catOut": "ICE",
+                                "catCode": "0"
+                            }
+                        },
+                        {
+                            "name": "RE 89723",
+                            "icoX": 2,
+                            "prodCtx": {
+                                "name": "RE 89723",
+                                "catOut": "RE",
+                                "catCode": "3"
+                            }
+                        },
+                        {
+                            "name": "IC 147",
+                            "icoX": 3,
+                            "prodCtx": {
+                                "name": "IC   147",
+                                "catOut": "IC",
+                                "catCode": "1"
+                            }
+                        },
+                        {
+                            "name": "ICE 641",
+                            "icoX": 0,
+                            "prodCtx": {
+                                "name": "ICE  641",
+                                "catOut": "ICE",
+                                "catCode": "0"
+                            }
+                        },
+                        {
+                            "name": "ICE 943",
+                            "icoX": 0,
+                            "prodCtx": {
+                                "name": "ICE  943",
+                                "catOut": "ICE",
+                                "catCode": "0"
+                            }
+                        },
+                        {
+                            "name": "RE 89727",
+                            "icoX": 2,
+                            "prodCtx": {
+                                "name": "RE 89727",
+                                "catOut": "RE",
+                                "catCode": "3"
+                            }
+                        },
+                        {
+                            "name": "IC 149",
+                            "icoX": 3,
+                            "prodCtx": {
+                                "name": "IC   149",
+                                "catOut": "IC",
+                                "catCode": "1"
+                            }
+                        },
+                        {
+                            "name": "ICE 643",
+                            "icoX": 0,
+                            "prodCtx": {
+                                "name": "ICE  643",
+                                "catOut": "ICE",
+                                "catCode": "0"
+                            }
+                        },
+                        {
+                            "name": "FLX 1239",
+                            "icoX": 4,
+                            "prodCtx": {
+                                "name": "FLX 1239",
+                                "catOut": "FLX",
+                                "catCode": "2"
+                            }
+                        },
+                        {
+                            "name": "ICE 945",
+                            "icoX": 0,
+                            "prodCtx": {
+                                "name": "ICE  945",
+                                "catOut": "ICE",
+                                "catCode": "0"
+                            }
+                        },
+                        {
+                            "name": "RE 89731",
+                            "icoX": 2,
+                            "prodCtx": {
+                                "name": "RE 89731",
+                                "catOut": "RE",
+                                "catCode": "3"
+                            }
+                        },
+                        {
+                            "name": "IC 241",
+                            "icoX": 3,
+                            "prodCtx": {
+                                "name": "IC   241",
+                                "catOut": "IC",
+                                "catCode": "1"
+                            }
+                        },
+                        {
+                            "name": "ICE 645",
+                            "icoX": 0,
+                            "prodCtx": {
+                                "name": "ICE  645",
+                                "catOut": "ICE",
+                                "catCode": "0"
+                            }
+                        },
+                        {
+                            "name": "ICE 947",
+                            "icoX": 0,
+                            "prodCtx": {
+                                "name": "ICE  947",
+                                "catOut": "ICE",
+                                "catCode": "0"
+                            }
+                        },
+                        {
+                            "name": "WFB95847",
+                            "icoX": 7,
+                            "prodCtx": {
+                                "name": "WFB95847",
+                                "catOut": "WFB",
+                                "catCode": "3"
+                            }
+                        },
+                        {
+                            "name": "RE 89737",
+                            "icoX": 2,
+                            "prodCtx": {
+                                "name": "RE 89737",
+                                "catOut": "RE",
+                                "catCode": "3"
+                            }
+                        },
+                        {
+                            "name": "S 1",
+                            "icoX": 8,
+                            "prodCtx": {
+                                "name": "S      1",
+                                "catOut": "S",
+                                "catCode": "4"
+                            }
+                        },
+                        {
+                            "name": "Bus EV",
+                            "icoX": 9,
+                            "prodCtx": {
+                                "name": "Bus   EV",
+                                "catOut": "Bus",
+                                "catCode": "3"
+                            }
+                        }
+                    ],
+                    "remL": [
+                        {
+                            "type": "A",
+                            "code": "RP",
+                            "icoX": 5,
+                            "txtN": "RP"
+                        },
+                        {
+                            "type": "C",
+                            "code": "",
+                            "icoX": 6,
+                            "txtN": "Includes trains requiring a reservation"
+                        },
+                        {
+                            "type": "H",
+                            "code": "text.connection.section.arrival.date.deviation",
+                            "icoX": 10,
+                            "txtN": "Arrival Friday, 2023-06-16"
+                        },
+                        {
+                            "type": "C",
+                            "code": "",
+                            "icoX": 11,
+                            "txtN": "Current information available."
+                        }
+                    ],
+                    "icoL": [
+                        {
+                            "res": "ICE"
+                        },
+                        {
+                            "res": "STA"
+                        },
+                        {
+                            "res": "RE"
+                        },
+                        {
+                            "res": "IC"
+                        },
+                        {
+                            "res": "FLX"
+                        },
+                        {
+                            "res": "attr_booking"
+                        },
+                        {
+                            "res": "ResHint"
+                        },
+                        {
+                            "res": "WFB"
+                        },
+                        {
+                            "res": "S"
+                        },
+                        {
+                            "res": "Bus"
+                        },
+                        {
+                            "res": "attr_day_change"
+                        },
+                        {
+                            "res": "HimInfo"
+                        }
+                    ],
+                    "tcocL": [
+                        {
+                            "c": "FIRST",
+                            "r": 3
+                        },
+                        {
+                            "c": "SECOND",
+                            "r": 3
+                        },
+                        {
+                            "c": "SECOND",
+                            "r": 2
+                        },
+                        {
+                            "c": "FIRST",
+                            "r": 2
+                        },
+                        {
+                            "c": "SECOND",
+                            "r": 1
+                        },
+                        {
+                            "c": "FIRST",
+                            "r": 1
+                        }
+                    ],
+                    "lDrawStyleL": [
+                        {
+                            "sIcoX": 0,
+                            "type": "SOLID"
+                        },
+                        {
+                            "type": "SOLID"
+                        },
+                        {
+                            "sIcoX": 2,
+                            "type": "SOLID"
+                        },
+                        {
+                            "sIcoX": 3,
+                            "type": "SOLID"
+                        },
+                        {
+                            "sIcoX": 4,
+                            "type": "SOLID"
+                        },
+                        {
+                            "sIcoX": 7,
+                            "type": "SOLID"
+                        },
+                        {
+                            "sIcoX": 8,
+                            "type": "SOLID"
+                        },
+                        {
+                            "sIcoX": 9,
+                            "type": "SOLID"
+                        }
+                    ]
+                },
+                "outConL": [
+                    {
+                        "cid": "A0-0",
+                        "date": "20230615",
+                        "dur": "005400",
+                        "chg": 0,
+                        "dep": {},
+                        "arr": {},
+                        "secL": [
+                            {
+                                "type": "JNY",
+                                "dep": {
+                                    "locX": 0,
+                                    "dProdX": 0,
+                                    "dPltfS": {
+                                        "type": "PL",
+                                        "txt": "9"
+                                    },
+                                    "dTimeS": "113800",
+                                    "dTimeR": "113800",
+                                    "dProgType": "PROGNOSED",
+                                    "dTZOffset": 120,
+                                    "type": "N"
+                                },
+                                "arr": {
+                                    "locX": 1,
+                                    "aProdX": 0,
+                                    "aTimeS": "123100",
+                                    "aTimeR": "123100",
+                                    "aProgType": "PROGNOSED",
+                                    "aTZOffset": 120,
+                                    "type": "N"
+                                },
+                                "jny": {
+                                    "jid": "1|222760|0|80|-1",
+                                    "prodX": 0,
+                                    "status": "P",
+                                    "isRchbl": true,
+                                    "ctxRecon": "T$A=1@O=Bielefeld Hbf@L=8000036@a=0@$A=1@O=Hannover Hbf@L=8000152@a=0@$202306151138$202306151231$ICE  847$$3$$$$$$",
+                                    "approxDelay": true,
+                                    "subscr": "F",
+                                    "sumLDrawStyleX": 0,
+                                    "resLDrawStyleX": 1,
+                                    "durS": "005300"
+                                },
+                                "resState": "N",
+                                "resRecommendation": "N"
+                            }
+                        ],
+                        "ctxRecon": "T$A=1@O=Bielefeld Hbf@L=8000036@a=0@$A=1@O=Hannover Hbf@L=8000152@a=0@$202306151138$202306151231$ICE  847$$3$$$$$$",
+                        "trfRes": {
+                            "statusCode": "OK",
+                            "fareSetL": [
+                                {
+                                    "fareL": [
+                                        {
+                                            "isFromPrice": false,
+                                            "isPartPrice": false,
+                                            "isBookable": true,
+                                            "isUpsell": false,
+                                            "targetCtx": "D",
+                                            "buttonText": "To offer selection",
+                                            "price": {
+                                                "amount": 3410
+                                            },
+                                            "retPriceIsCompletePrice": false,
+                                            "retPrice": -1
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "conSubscr": "U",
+                        "resState": "N",
+                        "resRecommendation": "N",
+                        "recState": "U",
+                        "sotRating": 0,
+                        "isSotCon": false,
+                        "showARSLink": false,
+                        "cksum": "9f68b57e_3",
+                        "cksumDti": "eb305516_3",
+                        "dTrnCmpSX": {
+                            "tcocX": [
+                                0,
+                                1
+                            ]
+                        },
+                        "intvlSubscr": "U",
+                        "originType": "INITIAL"
+                    },
+                    {
+                        "cid": "A0-1",
+                        "date": "20230615",
+                        "dur": "012200",
+                        "chg": 1,
+                        "dep": {},
+                        "arr": {},
+                        "secL": [
+                            {
+                                "type": "JNY",
+                                "dep": {
+                                    "locX": 0,
+                                    "dProdX": 1,
+                                    "dPltfS": {
+                                        "type": "PL",
+                                        "txt": "13"
+                                    },
+                                    "dTimeS": "120000",
+                                    "dTimeR": "120000",
+                                    "dProgType": "PROGNOSED",
+                                    "dTZOffset": 120,
+                                    "type": "N"
+                                },
+                                "arr": {
+                                    "locX": 2,
+                                    "aProdX": 1,
+                                    "aTimeS": "123000",
+                                    "aTZOffset": 120,
+                                    "type": "N"
+                                },
+                                "jny": {
+                                    "jid": "1|289982|0|80|-1",
+                                    "prodX": 1,
+                                    "status": "P",
+                                    "isRchbl": true,
+                                    "pos": {
+                                        "x": 7527747,
+                                        "y": 51534987
+                                    },
+                                    "ctxRecon": "T$A=1@O=Bielefeld Hbf@L=8000036@a=0@$A=1@O=Minden(Westf)@L=8000252@a=0@$202306151200$202306151230$RE 89715$$1$$$$$$",
+                                    "approxDelay": true,
+                                    "subscr": "F",
+                                    "sumLDrawStyleX": 2,
+                                    "resLDrawStyleX": 1,
+                                    "durS": "003000"
+                                },
+                                "resState": "N",
+                                "resRecommendation": "N"
+                            },
+                            {
+                                "type": "JNY",
+                                "dep": {
+                                    "locX": 2,
+                                    "dProdX": 2,
+                                    "dPltfS": {
+                                        "type": "PL",
+                                        "txt": "9"
+                                    },
+                                    "dTimeS": "124700",
+                                    "dTZOffset": 120,
+                                    "type": "N"
+                                },
+                                "arr": {
+                                    "locX": 1,
+                                    "aProdX": 2,
+                                    "aTimeS": "132200",
+                                    "aTimeR": "132200",
+                                    "aProgType": "PROGNOSED",
+                                    "aTZOffset": 120,
+                                    "type": "N"
+                                },
+                                "jny": {
+                                    "jid": "1|322267|0|80|-1",
+                                    "prodX": 2,
+                                    "status": "P",
+                                    "isRchbl": true,
+                                    "pos": {
+                                        "x": 6777273,
+                                        "y": 52273163
+                                    },
+                                    "ctxRecon": "T$A=1@O=Minden(Westf)@L=8000252@a=0@$A=1@O=Hannover Hbf@L=8000152@a=0@$202306151247$202306151322$IC   143$$1$$$$$$",
+                                    "approxDelay": true,
+                                    "subscr": "F",
+                                    "sumLDrawStyleX": 3,
+                                    "resLDrawStyleX": 1,
+                                    "durS": "003500"
+                                },
+                                "resState": "N",
+                                "resRecommendation": "N"
+                            }
+                        ],
+                        "ctxRecon": "T$A=1@O=Bielefeld Hbf@L=8000036@a=0@$A=1@O=Minden(Westf)@L=8000252@a=0@$202306151200$202306151230$RE 89715$$1$$$$$$§T$A=1@O=Minden(Westf)@L=8000252@a=0@$A=1@O=Hannover Hbf@L=8000152@a=0@$202306151247$202306151322$IC   143$$1$$$$$$",
+                        "trfRes": {
+                            "statusCode": "OK",
+                            "fareSetL": [
+                                {
+                                    "fareL": [
+                                        {
+                                            "isFromPrice": false,
+                                            "isPartPrice": false,
+                                            "isBookable": true,
+                                            "isUpsell": false,
+                                            "targetCtx": "D",
+                                            "buttonText": "To offer selection",
+                                            "price": {
+                                                "amount": 3100
+                                            },
+                                            "retPriceIsCompletePrice": false,
+                                            "retPrice": -1
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "conSubscr": "U",
+                        "resState": "N",
+                        "resRecommendation": "N",
+                        "recState": "U",
+                        "sotRating": 0,
+                        "isSotCon": false,
+                        "showARSLink": false,
+                        "cksum": "60458781_3",
+                        "cksumDti": "8c585003_3",
+                        "dTrnCmpSX": {
+                            "tcocX": [
+                                0,
+                                2
+                            ]
+                        },
+                        "intvlSubscr": "U",
+                        "originType": "INITIAL"
+                    },
+                    {
+                        "cid": "A0-2",
+                        "date": "20230615",
+                        "dur": "004900",
+                        "chg": 0,
+                        "dep": {},
+                        "arr": {},
+                        "secL": [
+                            {
+                                "type": "JNY",
+                                "dep": {
+                                    "locX": 0,
+                                    "dProdX": 3,
+                                    "dPltfS": {
+                                        "type": "PL",
+                                        "txt": "9"
+                                    },
+                                    "dTimeS": "123800",
+                                    "dTimeR": "124200",
+                                    "dProgType": "PROGNOSED",
+                                    "dTZOffset": 120,
+                                    "type": "N"
+                                },
+                                "arr": {
+                                    "locX": 1,
+                                    "aProdX": 3,
+                                    "aTimeS": "133100",
+                                    "aTimeR": "133100",
+                                    "aProgType": "PROGNOSED",
+                                    "aTZOffset": 120,
+                                    "type": "N"
+                                },
+                                "jny": {
+                                    "jid": "1|219255|0|80|-1",
+                                    "prodX": 3,
+                                    "status": "P",
+                                    "isRchbl": true,
+                                    "pos": {
+                                        "x": 6792231,
+                                        "y": 51255836
+                                    },
+                                    "ctxRecon": "T$A=1@O=Bielefeld Hbf@L=8000036@a=0@$A=1@O=Hannover Hbf@L=8000152@a=0@$202306151238$202306151331$ICE  547$$1$$$$$$",
+                                    "approxDelay": true,
+                                    "subscr": "F",
+                                    "sumLDrawStyleX": 0,
+                                    "resLDrawStyleX": 1,
+                                    "durS": "005300"
+                                },
+                                "resState": "N",
+                                "resRecommendation": "N"
+                            }
+                        ],
+                        "ctxRecon": "T$A=1@O=Bielefeld Hbf@L=8000036@a=0@$A=1@O=Hannover Hbf@L=8000152@a=0@$202306151238$202306151331$ICE  547$$1$$$$$$",
+                        "trfRes": {
+                            "statusCode": "OK",
+                            "fareSetL": [
+                                {
+                                    "fareL": [
+                                        {
+                                            "isFromPrice": false,
+                                            "isPartPrice": false,
+                                            "isBookable": true,
+                                            "isUpsell": false,
+                                            "targetCtx": "D",
+                                            "buttonText": "To offer selection",
+                                            "price": {
+                                                "amount": 3410
+                                            },
+                                            "retPriceIsCompletePrice": false,
+                                            "retPrice": -1
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "conSubscr": "U",
+                        "resState": "N",
+                        "resRecommendation": "N",
+                        "recState": "U",
+                        "sotRating": 0,
+                        "isSotCon": false,
+                        "showARSLink": false,
+                        "cksum": "cf2075a0_3",
+                        "cksumDti": "303937c8_3",
+                        "dTrnCmpSX": {
+                            "tcocX": [
+                                0,
+                                1
+                            ]
+                        },
+                        "intvlSubscr": "U",
+                        "originType": "INITIAL"
+                    },
+                    {
+                        "cid": "A1-0",
+                        "date": "20230615",
+                        "dur": "005400",
+                        "chg": 0,
+                        "dep": {},
+                        "arr": {},
+                        "secL": [
+                            {
+                                "type": "JNY",
+                                "dep": {
+                                    "locX": 0,
+                                    "dProdX": 4,
+                                    "dPltfS": {
+                                        "type": "PL",
+                                        "txt": "9"
+                                    },
+                                    "dTimeS": "133800",
+                                    "dTZOffset": 120,
+                                    "type": "N"
+                                },
+                                "arr": {
+                                    "locX": 1,
+                                    "aProdX": 4,
+                                    "aTimeS": "143100",
+                                    "aTZOffset": 120,
+                                    "type": "N"
+                                },
+                                "jny": {
+                                    "jid": "1|222817|0|80|-1",
+                                    "prodX": 4,
+                                    "status": "P",
+                                    "isRchbl": true,
+                                    "ctxRecon": "T$A=1@O=Bielefeld Hbf@L=8000036@a=0@$A=1@O=Hannover Hbf@L=8000152@a=0@$202306151338$202306151431$ICE  849$$1$$$$$$",
+                                    "approxDelay": true,
+                                    "subscr": "F",
+                                    "sumLDrawStyleX": 0,
+                                    "resLDrawStyleX": 1,
+                                    "durS": "005300"
+                                },
+                                "resState": "N",
+                                "resRecommendation": "N"
+                            }
+                        ],
+                        "ctxRecon": "T$A=1@O=Bielefeld Hbf@L=8000036@a=0@$A=1@O=Hannover Hbf@L=8000152@a=0@$202306151338$202306151431$ICE  849$$1$$$$$$",
+                        "trfRes": {
+                            "statusCode": "OK",
+                            "fareSetL": [
+                                {
+                                    "fareL": [
+                                        {
+                                            "isFromPrice": false,
+                                            "isPartPrice": false,
+                                            "isBookable": true,
+                                            "isUpsell": false,
+                                            "targetCtx": "D",
+                                            "buttonText": "To offer selection",
+                                            "price": {
+                                                "amount": 3410
+                                            },
+                                            "retPriceIsCompletePrice": false,
+                                            "retPrice": -1
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "conSubscr": "U",
+                        "resState": "N",
+                        "resRecommendation": "N",
+                        "recState": "U",
+                        "sotRating": 0,
+                        "isSotCon": false,
+                        "showARSLink": false,
+                        "cksum": "02227fe7_3",
+                        "cksumDti": "ba2e51fb_3",
+                        "dTrnCmpSX": {
+                            "tcocX": [
+                                0,
+                                2
+                            ]
+                        },
+                        "intvlSubscr": "U",
+                        "originType": "INITIAL"
+                    },
+                    {
+                        "cid": "A1-1",
+                        "date": "20230615",
+                        "dur": "012100",
+                        "chg": 1,
+                        "dep": {},
+                        "arr": {},
+                        "secL": [
+                            {
+                                "type": "JNY",
+                                "dep": {
+                                    "locX": 0,
+                                    "dProdX": 5,
+                                    "dPltfS": {
+                                        "type": "PL",
+                                        "txt": "1"
+                                    },
+                                    "dTimeS": "140000",
+                                    "dTimeR": "140000",
+                                    "dProgType": "PROGNOSED",
+                                    "dTZOffset": 120,
+                                    "type": "N"
+                                },
+                                "arr": {
+                                    "locX": 3,
+                                    "aProdX": 5,
+                                    "aTimeS": "141800",
+                                    "aTZOffset": 120,
+                                    "type": "N"
+                                },
+                                "jny": {
+                                    "jid": "1|290018|0|80|-1",
+                                    "prodX": 5,
+                                    "status": "P",
+                                    "isRchbl": true,
+                                    "pos": {
+                                        "x": 6994884,
+                                        "y": 50936710
+                                    },
+                                    "ctxRecon": "T$A=1@O=Bielefeld Hbf@L=8000036@a=0@$A=1@O=Bad Oeynhausen@L=8000732@a=0@$202306151400$202306151418$RE 89719$$1$$$$$$",
+                                    "approxDelay": true,
+                                    "subscr": "F",
+                                    "sumLDrawStyleX": 2,
+                                    "resLDrawStyleX": 1,
+                                    "durS": "001800"
+                                },
+                                "resState": "N",
+                                "resRecommendation": "N"
+                            },
+                            {
+                                "type": "JNY",
+                                "dep": {
+                                    "locX": 3,
+                                    "dProdX": 6,
+                                    "dPltfS": {
+                                        "type": "PL",
+                                        "txt": "9"
+                                    },
+                                    "dTimeS": "143700",
+                                    "dTZOffset": 120,
+                                    "type": "N"
+                                },
+                                "arr": {
+                                    "locX": 1,
+                                    "aProdX": 6,
+                                    "aTimeS": "152100",
+                                    "aTimeR": "152100",
+                                    "aProgType": "PROGNOSED",
+                                    "aTZOffset": 120,
+                                    "type": "N"
+                                },
+                                "jny": {
+                                    "jid": "1|322325|0|80|-1",
+                                    "prodX": 6,
+                                    "status": "P",
+                                    "isRchbl": true,
+                                    "ctxRecon": "T$A=1@O=Bad Oeynhausen@L=8000732@a=0@$A=1@O=Hannover Hbf@L=8000152@a=0@$202306151437$202306151521$IC   145$$1$$$$$$",
+                                    "approxDelay": true,
+                                    "subscr": "F",
+                                    "sumLDrawStyleX": 3,
+                                    "resLDrawStyleX": 1,
+                                    "durS": "004400"
+                                },
+                                "resState": "N",
+                                "resRecommendation": "N"
+                            }
+                        ],
+                        "ctxRecon": "T$A=1@O=Bielefeld Hbf@L=8000036@a=0@$A=1@O=Bad Oeynhausen@L=8000732@a=0@$202306151400$202306151418$RE 89719$$1$$$$$$§T$A=1@O=Bad Oeynhausen@L=8000732@a=0@$A=1@O=Hannover Hbf@L=8000152@a=0@$202306151437$202306151521$IC   145$$1$$$$$$",
+                        "trfRes": {
+                            "statusCode": "OK",
+                            "fareSetL": [
+                                {
+                                    "fareL": [
+                                        {
+                                            "isFromPrice": false,
+                                            "isPartPrice": false,
+                                            "isBookable": true,
+                                            "isUpsell": false,
+                                            "targetCtx": "D",
+                                            "buttonText": "To offer selection",
+                                            "price": {
+                                                "amount": 3100
+                                            },
+                                            "retPriceIsCompletePrice": false,
+                                            "retPrice": -1
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "conSubscr": "U",
+                        "resState": "N",
+                        "resRecommendation": "N",
+                        "recState": "U",
+                        "sotRating": 0,
+                        "isSotCon": false,
+                        "showARSLink": false,
+                        "cksum": "586d45ab_3",
+                        "cksumDti": "71a9fd0f_3",
+                        "dTrnCmpSX": {
+                            "tcocX": [
+                                0,
+                                2
+                            ]
+                        },
+                        "intvlSubscr": "U",
+                        "originType": "INITIAL"
+                    },
+                    {
+                        "cid": "A1-2",
+                        "date": "20230615",
+                        "dur": "005300",
+                        "chg": 0,
+                        "dep": {},
+                        "arr": {},
+                        "secL": [
+                            {
+                                "type": "JNY",
+                                "dep": {
+                                    "locX": 0,
+                                    "dProdX": 7,
+                                    "dPltfS": {
+                                        "type": "PL",
+                                        "txt": "9"
+                                    },
+                                    "dTimeS": "143800",
+                                    "dTZOffset": 120,
+                                    "type": "N"
+                                },
+                                "arr": {
+                                    "locX": 1,
+                                    "aProdX": 7,
+                                    "aTimeS": "153100",
+                                    "aTZOffset": 120,
+                                    "type": "N"
+                                },
+                                "jny": {
+                                    "jid": "1|219321|0|80|-1",
+                                    "prodX": 7,
+                                    "status": "P",
+                                    "isRchbl": true,
+                                    "ctxRecon": "T$A=1@O=Bielefeld Hbf@L=8000036@a=0@$A=1@O=Hannover Hbf@L=8000152@a=0@$202306151438$202306151531$ICE  549$$1$$$$$$",
+                                    "approxDelay": true,
+                                    "subscr": "F",
+                                    "sumLDrawStyleX": 0,
+                                    "resLDrawStyleX": 1,
+                                    "durS": "005300"
+                                },
+                                "resState": "N",
+                                "resRecommendation": "N"
+                            }
+                        ],
+                        "ctxRecon": "T$A=1@O=Bielefeld Hbf@L=8000036@a=0@$A=1@O=Hannover Hbf@L=8000152@a=0@$202306151438$202306151531$ICE  549$$1$$$$$$",
+                        "trfRes": {
+                            "statusCode": "OK",
+                            "fareSetL": [
+                                {
+                                    "fareL": [
+                                        {
+                                            "isFromPrice": true,
+                                            "isPartPrice": false,
+                                            "isBookable": true,
+                                            "isUpsell": false,
+                                            "targetCtx": "D",
+                                            "buttonText": "To offer selection",
+                                            "price": {
+                                                "amount": 2990
+                                            },
+                                            "retPriceIsCompletePrice": false,
+                                            "retPrice": -1
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "conSubscr": "U",
+                        "resState": "N",
+                        "resRecommendation": "N",
+                        "recState": "U",
+                        "sotRating": 0,
+                        "isSotCon": false,
+                        "showARSLink": false,
+                        "cksum": "e1f54f68_3",
+                        "cksumDti": "a999e56a_3",
+                        "dTrnCmpSX": {
+                            "tcocX": [
+                                0,
+                                2
+                            ]
+                        },
+                        "intvlSubscr": "U",
+                        "originType": "INITIAL"
+                    },
+                    {
+                        "cid": "A1-3",
+                        "date": "20230615",
+                        "dur": "005400",
+                        "chg": 0,
+                        "dep": {},
+                        "arr": {},
+                        "secL": [
+                            {
+                                "type": "JNY",
+                                "dep": {
+                                    "locX": 0,
+                                    "dProdX": 8,
+                                    "dPltfS": {
+                                        "type": "PL",
+                                        "txt": "9"
+                                    },
+                                    "dTimeS": "153800",
+                                    "dTZOffset": 120,
+                                    "type": "N"
+                                },
+                                "arr": {
+                                    "locX": 1,
+                                    "aProdX": 8,
+                                    "aTimeS": "163100",
+                                    "aTZOffset": 120,
+                                    "type": "N"
+                                },
+                                "jny": {
+                                    "jid": "1|223754|0|80|-1",
+                                    "prodX": 8,
+                                    "status": "P",
+                                    "isRchbl": true,
+                                    "ctxRecon": "T$A=1@O=Bielefeld Hbf@L=8000036@a=0@$A=1@O=Hannover Hbf@L=8000152@a=0@$202306151538$202306151631$ICE  941$$1$$$$$$",
+                                    "approxDelay": true,
+                                    "subscr": "F",
+                                    "sumLDrawStyleX": 0,
+                                    "resLDrawStyleX": 1,
+                                    "durS": "005300"
+                                },
+                                "resState": "N",
+                                "resRecommendation": "N"
+                            }
+                        ],
+                        "ctxRecon": "T$A=1@O=Bielefeld Hbf@L=8000036@a=0@$A=1@O=Hannover Hbf@L=8000152@a=0@$202306151538$202306151631$ICE  941$$1$$$$$$",
+                        "trfRes": {
+                            "statusCode": "OK",
+                            "fareSetL": [
+                                {
+                                    "fareL": [
+                                        {
+                                            "isFromPrice": true,
+                                            "isPartPrice": false,
+                                            "isBookable": true,
+                                            "isUpsell": false,
+                                            "targetCtx": "D",
+                                            "buttonText": "To offer selection",
+                                            "price": {
+                                                "amount": 2990
+                                            },
+                                            "retPriceIsCompletePrice": false,
+                                            "retPrice": -1
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "conSubscr": "U",
+                        "resState": "N",
+                        "resRecommendation": "N",
+                        "recState": "U",
+                        "sotRating": 0,
+                        "isSotCon": false,
+                        "showARSLink": false,
+                        "cksum": "a201b231_3",
+                        "cksumDti": "509387f4_3",
+                        "dTrnCmpSX": {
+                            "tcocX": [
+                                0,
+                                2
+                            ]
+                        },
+                        "intvlSubscr": "U",
+                        "originType": "INITIAL"
+                    },
+                    {
+                        "cid": "A2-0",
+                        "date": "20230615",
+                        "dur": "012100",
+                        "chg": 1,
+                        "dep": {},
+                        "arr": {},
+                        "secL": [
+                            {
+                                "type": "JNY",
+                                "dep": {
+                                    "locX": 0,
+                                    "dProdX": 9,
+                                    "dPltfS": {
+                                        "type": "PL",
+                                        "txt": "13"
+                                    },
+                                    "dTimeS": "160000",
+                                    "dTimeR": "160000",
+                                    "dProgType": "PROGNOSED",
+                                    "dTZOffset": 120,
+                                    "type": "N"
+                                },
+                                "arr": {
+                                    "locX": 2,
+                                    "aProdX": 9,
+                                    "aTimeS": "163000",
+                                    "aTZOffset": 120,
+                                    "type": "N"
+                                },
+                                "jny": {
+                                    "jid": "1|290056|0|80|-1",
+                                    "prodX": 9,
+                                    "status": "P",
+                                    "isRchbl": true,
+                                    "ctxRecon": "T$A=1@O=Bielefeld Hbf@L=8000036@a=0@$A=1@O=Minden(Westf)@L=8000252@a=0@$202306151600$202306151630$RE 89723$$1$$$$$$",
+                                    "approxDelay": true,
+                                    "subscr": "F",
+                                    "sumLDrawStyleX": 2,
+                                    "resLDrawStyleX": 1,
+                                    "durS": "003000"
+                                },
+                                "resState": "N",
+                                "resRecommendation": "N"
+                            },
+                            {
+                                "type": "JNY",
+                                "dep": {
+                                    "locX": 2,
+                                    "dProdX": 10,
+                                    "dPltfS": {
+                                        "type": "PL",
+                                        "txt": "9"
+                                    },
+                                    "dTimeS": "164700",
+                                    "dTZOffset": 120,
+                                    "type": "N"
+                                },
+                                "arr": {
+                                    "locX": 1,
+                                    "aProdX": 10,
+                                    "aTimeS": "172100",
+                                    "aTZOffset": 120,
+                                    "type": "N"
+                                },
+                                "jny": {
+                                    "jid": "1|322378|0|80|-1",
+                                    "prodX": 10,
+                                    "status": "P",
+                                    "isRchbl": true,
+                                    "ctxRecon": "T$A=1@O=Minden(Westf)@L=8000252@a=0@$A=1@O=Hannover Hbf@L=8000152@a=0@$202306151647$202306151721$IC   147$$1$$$$$$",
+                                    "approxDelay": true,
+                                    "subscr": "F",
+                                    "sumLDrawStyleX": 3,
+                                    "resLDrawStyleX": 1,
+                                    "durS": "003400"
+                                },
+                                "resState": "N",
+                                "resRecommendation": "N"
+                            }
+                        ],
+                        "ctxRecon": "T$A=1@O=Bielefeld Hbf@L=8000036@a=0@$A=1@O=Minden(Westf)@L=8000252@a=0@$202306151600$202306151630$RE 89723$$1$$$$$$§T$A=1@O=Minden(Westf)@L=8000252@a=0@$A=1@O=Hannover Hbf@L=8000152@a=0@$202306151647$202306151721$IC   147$$1$$$$$$",
+                        "trfRes": {
+                            "statusCode": "OK",
+                            "fareSetL": [
+                                {
+                                    "fareL": [
+                                        {
+                                            "isFromPrice": true,
+                                            "isPartPrice": false,
+                                            "isBookable": true,
+                                            "isUpsell": false,
+                                            "targetCtx": "D",
+                                            "buttonText": "To offer selection",
+                                            "price": {
+                                                "amount": 3100
+                                            },
+                                            "retPriceIsCompletePrice": false,
+                                            "retPrice": -1
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "conSubscr": "U",
+                        "resState": "N",
+                        "resRecommendation": "N",
+                        "recState": "U",
+                        "sotRating": 0,
+                        "isSotCon": false,
+                        "showARSLink": false,
+                        "cksum": "89aa529b_3",
+                        "cksumDti": "ed1cad22_3",
+                        "dTrnCmpSX": {
+                            "tcocX": [
+                                3,
+                                2
+                            ]
+                        },
+                        "intvlSubscr": "U",
+                        "originType": "INITIAL"
+                    },
+                    {
+                        "cid": "A2-1",
+                        "date": "20230615",
+                        "dur": "005300",
+                        "chg": 0,
+                        "dep": {},
+                        "arr": {},
+                        "secL": [
+                            {
+                                "type": "JNY",
+                                "dep": {
+                                    "locX": 0,
+                                    "dProdX": 11,
+                                    "dPltfS": {
+                                        "type": "PL",
+                                        "txt": "9"
+                                    },
+                                    "dTimeS": "163800",
+                                    "dTZOffset": 120,
+                                    "type": "N"
+                                },
+                                "arr": {
+                                    "locX": 1,
+                                    "aProdX": 11,
+                                    "aTimeS": "173100",
+                                    "aTZOffset": 120,
+                                    "type": "N"
+                                },
+                                "jny": {
+                                    "jid": "1|220684|0|80|-1",
+                                    "prodX": 11,
+                                    "status": "P",
+                                    "isRchbl": true,
+                                    "ctxRecon": "T$A=1@O=Bielefeld Hbf@L=8000036@a=0@$A=1@O=Hannover Hbf@L=8000152@a=0@$202306151638$202306151731$ICE  641$$1$$$$$$",
+                                    "approxDelay": true,
+                                    "subscr": "F",
+                                    "sumLDrawStyleX": 0,
+                                    "resLDrawStyleX": 1,
+                                    "durS": "005300"
+                                },
+                                "resState": "N",
+                                "resRecommendation": "N"
+                            }
+                        ],
+                        "ctxRecon": "T$A=1@O=Bielefeld Hbf@L=8000036@a=0@$A=1@O=Hannover Hbf@L=8000152@a=0@$202306151638$202306151731$ICE  641$$1$$$$$$",
+                        "trfRes": {
+                            "statusCode": "OK",
+                            "fareSetL": [
+                                {
+                                    "fareL": [
+                                        {
+                                            "isFromPrice": true,
+                                            "isPartPrice": false,
+                                            "isBookable": true,
+                                            "isUpsell": false,
+                                            "targetCtx": "D",
+                                            "buttonText": "To offer selection",
+                                            "price": {
+                                                "amount": 3410
+                                            },
+                                            "retPriceIsCompletePrice": false,
+                                            "retPrice": -1
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "conSubscr": "U",
+                        "resState": "N",
+                        "resRecommendation": "N",
+                        "recState": "U",
+                        "sotRating": 0,
+                        "isSotCon": false,
+                        "showARSLink": false,
+                        "cksum": "dd9a5f4a_3",
+                        "cksumDti": "018c4136_3",
+                        "dTrnCmpSX": {
+                            "tcocX": [
+                                0,
+                                1
+                            ]
+                        },
+                        "intvlSubscr": "U",
+                        "originType": "INITIAL"
+                    },
+                    {
+                        "cid": "A2-2",
+                        "date": "20230615",
+                        "dur": "005400",
+                        "chg": 0,
+                        "dep": {},
+                        "arr": {},
+                        "secL": [
+                            {
+                                "type": "JNY",
+                                "dep": {
+                                    "locX": 0,
+                                    "dProdX": 12,
+                                    "dPltfS": {
+                                        "type": "PL",
+                                        "txt": "9"
+                                    },
+                                    "dTimeS": "173800",
+                                    "dTZOffset": 120,
+                                    "type": "N"
+                                },
+                                "arr": {
+                                    "locX": 1,
+                                    "aProdX": 12,
+                                    "aTimeS": "183100",
+                                    "aTZOffset": 120,
+                                    "type": "N"
+                                },
+                                "jny": {
+                                    "jid": "1|223803|0|80|-1",
+                                    "prodX": 12,
+                                    "status": "P",
+                                    "isRchbl": true,
+                                    "ctxRecon": "T$A=1@O=Bielefeld Hbf@L=8000036@a=0@$A=1@O=Hannover Hbf@L=8000152@a=0@$202306151738$202306151831$ICE  943$$1$$$$$$",
+                                    "approxDelay": true,
+                                    "subscr": "F",
+                                    "sumLDrawStyleX": 0,
+                                    "resLDrawStyleX": 1,
+                                    "durS": "005300"
+                                },
+                                "resState": "N",
+                                "resRecommendation": "N"
+                            }
+                        ],
+                        "ctxRecon": "T$A=1@O=Bielefeld Hbf@L=8000036@a=0@$A=1@O=Hannover Hbf@L=8000152@a=0@$202306151738$202306151831$ICE  943$$1$$$$$$",
+                        "trfRes": {
+                            "statusCode": "OK",
+                            "fareSetL": [
+                                {
+                                    "fareL": [
+                                        {
+                                            "isFromPrice": true,
+                                            "isPartPrice": false,
+                                            "isBookable": true,
+                                            "isUpsell": false,
+                                            "targetCtx": "D",
+                                            "buttonText": "To offer selection",
+                                            "price": {
+                                                "amount": 2990
+                                            },
+                                            "retPriceIsCompletePrice": false,
+                                            "retPrice": -1
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "conSubscr": "U",
+                        "resState": "N",
+                        "resRecommendation": "N",
+                        "recState": "U",
+                        "sotRating": 0,
+                        "isSotCon": false,
+                        "showARSLink": false,
+                        "cksum": "4cfc4bf6_3",
+                        "cksumDti": "f054644e_3",
+                        "dTrnCmpSX": {
+                            "tcocX": [
+                                0,
+                                1
+                            ]
+                        },
+                        "intvlSubscr": "U",
+                        "originType": "INITIAL"
+                    },
+                    {
+                        "cid": "A2-3",
+                        "date": "20230615",
+                        "dur": "012100",
+                        "chg": 1,
+                        "dep": {},
+                        "arr": {},
+                        "secL": [
+                            {
+                                "type": "JNY",
+                                "dep": {
+                                    "locX": 0,
+                                    "dProdX": 13,
+                                    "dPltfS": {
+                                        "type": "PL",
+                                        "txt": "1"
+                                    },
+                                    "dTimeS": "180000",
+                                    "dTimeR": "180000",
+                                    "dProgType": "PROGNOSED",
+                                    "dTZOffset": 120,
+                                    "type": "N"
+                                },
+                                "arr": {
+                                    "locX": 3,
+                                    "aProdX": 13,
+                                    "aTimeS": "181800",
+                                    "aTZOffset": 120,
+                                    "type": "N"
+                                },
+                                "jny": {
+                                    "jid": "1|290099|0|80|-1",
+                                    "prodX": 13,
+                                    "status": "P",
+                                    "isRchbl": true,
+                                    "ctxRecon": "T$A=1@O=Bielefeld Hbf@L=8000036@a=0@$A=1@O=Bad Oeynhausen@L=8000732@a=0@$202306151800$202306151818$RE 89727$$1$$$$$$",
+                                    "approxDelay": true,
+                                    "subscr": "F",
+                                    "sumLDrawStyleX": 2,
+                                    "resLDrawStyleX": 1,
+                                    "durS": "001800"
+                                },
+                                "resState": "N",
+                                "resRecommendation": "N"
+                            },
+                            {
+                                "type": "JNY",
+                                "dep": {
+                                    "locX": 3,
+                                    "dProdX": 14,
+                                    "dPltfS": {
+                                        "type": "PL",
+                                        "txt": "9"
+                                    },
+                                    "dTimeS": "183700",
+                                    "dTZOffset": 120,
+                                    "type": "N"
+                                },
+                                "arr": {
+                                    "locX": 1,
+                                    "aProdX": 14,
+                                    "aTimeS": "192100",
+                                    "aTZOffset": 120,
+                                    "type": "N"
+                                },
+                                "jny": {
+                                    "jid": "1|322447|0|80|-1",
+                                    "prodX": 14,
+                                    "status": "P",
+                                    "isRchbl": true,
+                                    "ctxRecon": "T$A=1@O=Bad Oeynhausen@L=8000732@a=0@$A=1@O=Hannover Hbf@L=8000152@a=0@$202306151837$202306151921$IC   149$$1$$$$$$",
+                                    "approxDelay": true,
+                                    "subscr": "F",
+                                    "sumLDrawStyleX": 3,
+                                    "resLDrawStyleX": 1,
+                                    "durS": "004400"
+                                },
+                                "resState": "N",
+                                "resRecommendation": "N"
+                            }
+                        ],
+                        "ctxRecon": "T$A=1@O=Bielefeld Hbf@L=8000036@a=0@$A=1@O=Bad Oeynhausen@L=8000732@a=0@$202306151800$202306151818$RE 89727$$1$$$$$$§T$A=1@O=Bad Oeynhausen@L=8000732@a=0@$A=1@O=Hannover Hbf@L=8000152@a=0@$202306151837$202306151921$IC   149$$1$$$$$$",
+                        "trfRes": {
+                            "statusCode": "OK",
+                            "fareSetL": [
+                                {
+                                    "fareL": [
+                                        {
+                                            "isFromPrice": true,
+                                            "isPartPrice": false,
+                                            "isBookable": true,
+                                            "isUpsell": false,
+                                            "targetCtx": "D",
+                                            "buttonText": "To offer selection",
+                                            "price": {
+                                                "amount": 2890
+                                            },
+                                            "retPriceIsCompletePrice": false,
+                                            "retPrice": -1
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "conSubscr": "U",
+                        "resState": "N",
+                        "resRecommendation": "N",
+                        "recState": "U",
+                        "sotRating": 0,
+                        "isSotCon": false,
+                        "showARSLink": false,
+                        "cksum": "5ef7b86c_3",
+                        "cksumDti": "47379f47_3",
+                        "dTrnCmpSX": {
+                            "tcocX": [
+                                0,
+                                2
+                            ]
+                        },
+                        "intvlSubscr": "U",
+                        "originType": "INITIAL"
+                    },
+                    {
+                        "cid": "A2-4",
+                        "date": "20230615",
+                        "dur": "005300",
+                        "chg": 0,
+                        "dep": {},
+                        "arr": {},
+                        "secL": [
+                            {
+                                "type": "JNY",
+                                "dep": {
+                                    "locX": 0,
+                                    "dProdX": 15,
+                                    "dPltfS": {
+                                        "type": "PL",
+                                        "txt": "9"
+                                    },
+                                    "dTimeS": "183800",
+                                    "dTZOffset": 120,
+                                    "type": "N"
+                                },
+                                "arr": {
+                                    "locX": 1,
+                                    "aProdX": 15,
+                                    "aTimeS": "193100",
+                                    "aTZOffset": 120,
+                                    "type": "N"
+                                },
+                                "jny": {
+                                    "jid": "1|220731|0|80|-1",
+                                    "prodX": 15,
+                                    "status": "P",
+                                    "isRchbl": true,
+                                    "ctxRecon": "T$A=1@O=Bielefeld Hbf@L=8000036@a=0@$A=1@O=Hannover Hbf@L=8000152@a=0@$202306151838$202306151931$ICE  643$$1$$$$$$",
+                                    "approxDelay": true,
+                                    "subscr": "F",
+                                    "sumLDrawStyleX": 0,
+                                    "resLDrawStyleX": 1,
+                                    "durS": "005300"
+                                },
+                                "resState": "N",
+                                "resRecommendation": "N"
+                            }
+                        ],
+                        "ctxRecon": "T$A=1@O=Bielefeld Hbf@L=8000036@a=0@$A=1@O=Hannover Hbf@L=8000152@a=0@$202306151838$202306151931$ICE  643$$1$$$$$$",
+                        "trfRes": {
+                            "statusCode": "OK",
+                            "fareSetL": [
+                                {
+                                    "fareL": [
+                                        {
+                                            "isFromPrice": true,
+                                            "isPartPrice": false,
+                                            "isBookable": true,
+                                            "isUpsell": false,
+                                            "targetCtx": "D",
+                                            "buttonText": "To offer selection",
+                                            "price": {
+                                                "amount": 2990
+                                            },
+                                            "retPriceIsCompletePrice": false,
+                                            "retPrice": -1
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "conSubscr": "U",
+                        "resState": "N",
+                        "resRecommendation": "N",
+                        "recState": "U",
+                        "sotRating": 0,
+                        "isSotCon": false,
+                        "showARSLink": false,
+                        "cksum": "b767fa8f_3",
+                        "cksumDti": "733286e4_3",
+                        "dTrnCmpSX": {
+                            "tcocX": [
+                                3,
+                                2
+                            ]
+                        },
+                        "intvlSubscr": "U",
+                        "originType": "INITIAL"
+                    },
+                    {
+                        "cid": "A2-5",
+                        "date": "20230615",
+                        "dur": "011300",
+                        "chg": 0,
+                        "dep": {},
+                        "arr": {},
+                        "secL": [
+                            {
+                                "type": "JNY",
+                                "dep": {
+                                    "locX": 0,
+                                    "dProdX": 16,
+                                    "dPltfS": {
+                                        "type": "PL",
+                                        "txt": "10"
+                                    },
+                                    "dTimeS": "184200",
+                                    "dTZOffset": 120,
+                                    "type": "N"
+                                },
+                                "arr": {
+                                    "locX": 1,
+                                    "aProdX": 16,
+                                    "aTimeS": "195500",
+                                    "aTZOffset": 120,
+                                    "type": "N"
+                                },
+                                "jny": {
+                                    "jid": "1|277033|0|80|-1",
+                                    "prodX": 16,
+                                    "status": "P",
+                                    "isRchbl": true,
+                                    "ctxRecon": "T$A=1@O=Bielefeld Hbf@L=8000036@a=0@$A=1@O=Hannover Hbf@L=8000152@a=0@$202306151842$202306151955$FLX 1239$$1$$$$$$",
+                                    "msgL": [
+                                        {
+                                            "type": "REM",
+                                            "remX": 0,
+                                            "sty": "I",
+                                            "tagL": [
+                                                "RES_JNY_DTL_L"
+                                            ],
+                                            "sort": 818413568
+                                        }
+                                    ],
+                                    "approxDelay": true,
+                                    "subscr": "F",
+                                    "sumLDrawStyleX": 4,
+                                    "resLDrawStyleX": 1,
+                                    "durS": "011300"
+                                },
+                                "resState": "N",
+                                "resRecommendation": "N"
+                            }
+                        ],
+                        "ctxRecon": "T$A=1@O=Bielefeld Hbf@L=8000036@a=0@$A=1@O=Hannover Hbf@L=8000152@a=0@$202306151842$202306151955$FLX 1239$$1$$$$$$",
+                        "trfRes": {
+                            "statusCode": "NA",
+                            "fareSetL": [
+                                {
+                                    "fareL": [
+                                        {
+                                            "desc": "Fares not available",
+                                            "isFromPrice": false,
+                                            "isPartPrice": false,
+                                            "isBookable": false,
+                                            "isUpsell": false,
+                                            "price": {
+                                                "amount": -1
+                                            },
+                                            "retPriceIsCompletePrice": false,
+                                            "retPrice": -1
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "msgL": [
+                            {
+                                "type": "REM",
+                                "remX": 1,
+                                "sty": "I",
+                                "prio": 200,
+                                "fIdx": -1,
+                                "tIdx": -1,
+                                "tagL": [
+                                    "SUM_CON_FTR_H3"
+                                ],
+                                "sort": 818413568
+                            }
+                        ],
+                        "conSubscr": "U",
+                        "resState": "N",
+                        "resRecommendation": "N",
+                        "recState": "U",
+                        "sotRating": 0,
+                        "isSotCon": false,
+                        "showARSLink": false,
+                        "cksum": "445a7b80_3",
+                        "cksumDti": "35e4fdff_3",
+                        "intvlSubscr": "U",
+                        "originType": "INITIAL"
+                    },
+                    {
+                        "cid": "A3-0",
+                        "date": "20230615",
+                        "dur": "005400",
+                        "chg": 0,
+                        "dep": {},
+                        "arr": {},
+                        "secL": [
+                            {
+                                "type": "JNY",
+                                "dep": {
+                                    "locX": 0,
+                                    "dProdX": 17,
+                                    "dPltfS": {
+                                        "type": "PL",
+                                        "txt": "9"
+                                    },
+                                    "dTimeS": "193800",
+                                    "dTZOffset": 120,
+                                    "type": "N"
+                                },
+                                "arr": {
+                                    "locX": 1,
+                                    "aProdX": 17,
+                                    "aTimeS": "203100",
+                                    "aTZOffset": 120,
+                                    "type": "N"
+                                },
+                                "jny": {
+                                    "jid": "1|223858|0|80|-1",
+                                    "prodX": 17,
+                                    "status": "P",
+                                    "isRchbl": true,
+                                    "ctxRecon": "T$A=1@O=Bielefeld Hbf@L=8000036@a=0@$A=1@O=Hannover Hbf@L=8000152@a=0@$202306151938$202306152031$ICE  945$$1$$$$$$",
+                                    "approxDelay": true,
+                                    "subscr": "F",
+                                    "sumLDrawStyleX": 0,
+                                    "resLDrawStyleX": 1,
+                                    "durS": "005300"
+                                },
+                                "resState": "N",
+                                "resRecommendation": "N"
+                            }
+                        ],
+                        "ctxRecon": "T$A=1@O=Bielefeld Hbf@L=8000036@a=0@$A=1@O=Hannover Hbf@L=8000152@a=0@$202306151938$202306152031$ICE  945$$1$$$$$$",
+                        "trfRes": {
+                            "statusCode": "OK",
+                            "fareSetL": [
+                                {
+                                    "fareL": [
+                                        {
+                                            "isFromPrice": true,
+                                            "isPartPrice": false,
+                                            "isBookable": true,
+                                            "isUpsell": false,
+                                            "targetCtx": "D",
+                                            "buttonText": "To offer selection",
+                                            "price": {
+                                                "amount": 2990
+                                            },
+                                            "retPriceIsCompletePrice": false,
+                                            "retPrice": -1
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "conSubscr": "U",
+                        "resState": "N",
+                        "resRecommendation": "N",
+                        "recState": "U",
+                        "sotRating": 0,
+                        "isSotCon": false,
+                        "showARSLink": false,
+                        "cksum": "1edfbe71_3",
+                        "cksumDti": "a67c2ffd_3",
+                        "dTrnCmpSX": {
+                            "tcocX": [
+                                0,
+                                1
+                            ]
+                        },
+                        "intvlSubscr": "U",
+                        "originType": "INITIAL"
+                    },
+                    {
+                        "cid": "A3-1",
+                        "date": "20230615",
+                        "dur": "012200",
+                        "chg": 1,
+                        "dep": {},
+                        "arr": {},
+                        "secL": [
+                            {
+                                "type": "JNY",
+                                "dep": {
+                                    "locX": 0,
+                                    "dProdX": 18,
+                                    "dPltfS": {
+                                        "type": "PL",
+                                        "txt": "13"
+                                    },
+                                    "dTimeS": "200000",
+                                    "dTimeR": "200000",
+                                    "dProgType": "PROGNOSED",
+                                    "dTZOffset": 120,
+                                    "type": "N"
+                                },
+                                "arr": {
+                                    "locX": 2,
+                                    "aProdX": 18,
+                                    "aTimeS": "203000",
+                                    "aTZOffset": 120,
+                                    "type": "N"
+                                },
+                                "jny": {
+                                    "jid": "1|290132|0|80|-1",
+                                    "prodX": 18,
+                                    "status": "P",
+                                    "isRchbl": true,
+                                    "ctxRecon": "T$A=1@O=Bielefeld Hbf@L=8000036@a=0@$A=1@O=Minden(Westf)@L=8000252@a=0@$202306152000$202306152030$RE 89731$$1$$$$$$",
+                                    "approxDelay": true,
+                                    "subscr": "F",
+                                    "sumLDrawStyleX": 2,
+                                    "resLDrawStyleX": 1,
+                                    "durS": "003000"
+                                },
+                                "resState": "N",
+                                "resRecommendation": "N"
+                            },
+                            {
+                                "type": "JNY",
+                                "dep": {
+                                    "locX": 2,
+                                    "dProdX": 19,
+                                    "dPltfS": {
+                                        "type": "PL",
+                                        "txt": "9"
+                                    },
+                                    "dTimeS": "204700",
+                                    "dTZOffset": 120,
+                                    "type": "N"
+                                },
+                                "arr": {
+                                    "locX": 1,
+                                    "aProdX": 19,
+                                    "aTimeS": "212200",
+                                    "aTZOffset": 120,
+                                    "type": "N"
+                                },
+                                "jny": {
+                                    "jid": "1|325344|0|80|-1",
+                                    "prodX": 19,
+                                    "status": "P",
+                                    "isRchbl": true,
+                                    "ctxRecon": "T$A=1@O=Minden(Westf)@L=8000252@a=0@$A=1@O=Hannover Hbf@L=8000152@a=0@$202306152047$202306152122$IC   241$$1$$$$$$",
+                                    "approxDelay": true,
+                                    "subscr": "F",
+                                    "sumLDrawStyleX": 3,
+                                    "resLDrawStyleX": 1,
+                                    "durS": "003500"
+                                },
+                                "resState": "N",
+                                "resRecommendation": "N"
+                            }
+                        ],
+                        "ctxRecon": "T$A=1@O=Bielefeld Hbf@L=8000036@a=0@$A=1@O=Minden(Westf)@L=8000252@a=0@$202306152000$202306152030$RE 89731$$1$$$$$$§T$A=1@O=Minden(Westf)@L=8000252@a=0@$A=1@O=Hannover Hbf@L=8000152@a=0@$202306152047$202306152122$IC   241$$1$$$$$$",
+                        "trfRes": {
+                            "statusCode": "OK",
+                            "fareSetL": [
+                                {
+                                    "fareL": [
+                                        {
+                                            "isFromPrice": true,
+                                            "isPartPrice": false,
+                                            "isBookable": true,
+                                            "isUpsell": false,
+                                            "targetCtx": "D",
+                                            "buttonText": "To offer selection",
+                                            "price": {
+                                                "amount": 2490
+                                            },
+                                            "retPriceIsCompletePrice": false,
+                                            "retPrice": -1
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "conSubscr": "U",
+                        "resState": "N",
+                        "resRecommendation": "N",
+                        "recState": "U",
+                        "sotRating": 0,
+                        "isSotCon": false,
+                        "showARSLink": false,
+                        "cksum": "d5e1b451_3",
+                        "cksumDti": "3da83d88_3",
+                        "dTrnCmpSX": {
+                            "tcocX": [
+                                3,
+                                4
+                            ]
+                        },
+                        "intvlSubscr": "U",
+                        "originType": "INITIAL"
+                    },
+                    {
+                        "cid": "A3-2",
+                        "date": "20230615",
+                        "dur": "005300",
+                        "chg": 0,
+                        "dep": {},
+                        "arr": {},
+                        "secL": [
+                            {
+                                "type": "JNY",
+                                "dep": {
+                                    "locX": 0,
+                                    "dProdX": 20,
+                                    "dPltfS": {
+                                        "type": "PL",
+                                        "txt": "9"
+                                    },
+                                    "dTimeS": "203800",
+                                    "dTZOffset": 120,
+                                    "type": "N"
+                                },
+                                "arr": {
+                                    "locX": 1,
+                                    "aProdX": 20,
+                                    "aTimeS": "213100",
+                                    "aTZOffset": 120,
+                                    "type": "N"
+                                },
+                                "jny": {
+                                    "jid": "1|220789|0|80|-1",
+                                    "prodX": 20,
+                                    "status": "P",
+                                    "isRchbl": true,
+                                    "ctxRecon": "T$A=1@O=Bielefeld Hbf@L=8000036@a=0@$A=1@O=Hannover Hbf@L=8000152@a=0@$202306152038$202306152131$ICE  645$$1$$$$$$",
+                                    "approxDelay": true,
+                                    "subscr": "F",
+                                    "sumLDrawStyleX": 0,
+                                    "resLDrawStyleX": 1,
+                                    "durS": "005300"
+                                },
+                                "resState": "N",
+                                "resRecommendation": "N"
+                            }
+                        ],
+                        "ctxRecon": "T$A=1@O=Bielefeld Hbf@L=8000036@a=0@$A=1@O=Hannover Hbf@L=8000152@a=0@$202306152038$202306152131$ICE  645$$1$$$$$$",
+                        "trfRes": {
+                            "statusCode": "OK",
+                            "fareSetL": [
+                                {
+                                    "fareL": [
+                                        {
+                                            "isFromPrice": true,
+                                            "isPartPrice": false,
+                                            "isBookable": true,
+                                            "isUpsell": false,
+                                            "targetCtx": "D",
+                                            "buttonText": "To offer selection",
+                                            "price": {
+                                                "amount": 990
+                                            },
+                                            "retPriceIsCompletePrice": false,
+                                            "retPrice": -1
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "conSubscr": "U",
+                        "resState": "N",
+                        "resRecommendation": "N",
+                        "recState": "U",
+                        "sotRating": 0,
+                        "isSotCon": false,
+                        "showARSLink": false,
+                        "cksum": "2a0221dd_3",
+                        "cksumDti": "66be055d_3",
+                        "dTrnCmpSX": {
+                            "tcocX": [
+                                5,
+                                4
+                            ]
+                        },
+                        "intvlSubscr": "U",
+                        "originType": "INITIAL"
+                    },
+                    {
+                        "cid": "A3-3",
+                        "date": "20230615",
+                        "dur": "005300",
+                        "chg": 0,
+                        "dep": {},
+                        "arr": {},
+                        "secL": [
+                            {
+                                "type": "JNY",
+                                "dep": {
+                                    "locX": 0,
+                                    "dProdX": 21,
+                                    "dPltfS": {
+                                        "type": "PL",
+                                        "txt": "9"
+                                    },
+                                    "dTimeS": "213800",
+                                    "dTZOffset": 120,
+                                    "type": "N"
+                                },
+                                "arr": {
+                                    "locX": 1,
+                                    "aProdX": 21,
+                                    "aTimeS": "223100",
+                                    "aTZOffset": 120,
+                                    "type": "N"
+                                },
+                                "jny": {
+                                    "jid": "1|223950|0|80|-1",
+                                    "prodX": 21,
+                                    "status": "P",
+                                    "isRchbl": true,
+                                    "ctxRecon": "T$A=1@O=Bielefeld Hbf@L=8000036@a=0@$A=1@O=Hannover Hbf@L=8000152@a=0@$202306152138$202306152231$ICE  947$$1$$$$$$",
+                                    "approxDelay": true,
+                                    "subscr": "F",
+                                    "sumLDrawStyleX": 0,
+                                    "resLDrawStyleX": 1,
+                                    "durS": "005300"
+                                },
+                                "resState": "N",
+                                "resRecommendation": "N"
+                            }
+                        ],
+                        "ctxRecon": "T$A=1@O=Bielefeld Hbf@L=8000036@a=0@$A=1@O=Hannover Hbf@L=8000152@a=0@$202306152138$202306152231$ICE  947$$1$$$$$$",
+                        "trfRes": {
+                            "statusCode": "OK",
+                            "fareSetL": [
+                                {
+                                    "fareL": [
+                                        {
+                                            "isFromPrice": true,
+                                            "isPartPrice": false,
+                                            "isBookable": true,
+                                            "isUpsell": false,
+                                            "targetCtx": "D",
+                                            "buttonText": "To offer selection",
+                                            "price": {
+                                                "amount": 2790
+                                            },
+                                            "retPriceIsCompletePrice": false,
+                                            "retPrice": -1
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "conSubscr": "U",
+                        "resState": "N",
+                        "resRecommendation": "N",
+                        "recState": "U",
+                        "sotRating": 0,
+                        "isSotCon": false,
+                        "showARSLink": false,
+                        "cksum": "6caaebab_3",
+                        "cksumDti": "bf2f13da_3",
+                        "dTrnCmpSX": {
+                            "tcocX": [
+                                5,
+                                2
+                            ]
+                        },
+                        "intvlSubscr": "U",
+                        "originType": "INITIAL"
+                    },
+                    {
+                        "cid": "A3-4",
+                        "date": "20230615",
+                        "dur": "012700",
+                        "chg": 0,
+                        "dep": {},
+                        "arr": {},
+                        "secL": [
+                            {
+                                "type": "JNY",
+                                "dep": {
+                                    "locX": 0,
+                                    "dProdX": 22,
+                                    "dPltfS": {
+                                        "type": "PL",
+                                        "txt": "12"
+                                    },
+                                    "dTimeS": "222400",
+                                    "dTZOffset": 120,
+                                    "type": "N"
+                                },
+                                "arr": {
+                                    "locX": 1,
+                                    "aProdX": 22,
+                                    "aTimeS": "235100",
+                                    "aTZOffset": 120,
+                                    "type": "N"
+                                },
+                                "jny": {
+                                    "jid": "1|1636803|0|80|-1",
+                                    "prodX": 22,
+                                    "status": "P",
+                                    "isRchbl": true,
+                                    "ctxRecon": "T$A=1@O=Bielefeld Hbf@L=8000036@a=0@$A=1@O=Hannover Hbf@L=8000152@a=0@$202306152224$202306152351$WFB95847$$1$$$$$$",
+                                    "approxDelay": true,
+                                    "subscr": "F",
+                                    "sumLDrawStyleX": 5,
+                                    "resLDrawStyleX": 1,
+                                    "durS": "012700"
+                                },
+                                "resState": "N",
+                                "resRecommendation": "N"
+                            }
+                        ],
+                        "ctxRecon": "T$A=1@O=Bielefeld Hbf@L=8000036@a=0@$A=1@O=Hannover Hbf@L=8000152@a=0@$202306152224$202306152351$WFB95847$$1$$$$$$",
+                        "trfRes": {
+                            "statusCode": "OK",
+                            "fareSetL": [
+                                {
+                                    "fareL": [
+                                        {
+                                            "desc": "NDS-Tariff",
+                                            "descOverv": "NDS-Tariff",
+                                            "isFromPrice": true,
+                                            "isPartPrice": false,
+                                            "isBookable": true,
+                                            "isUpsell": false,
+                                            "targetCtx": "D",
+                                            "buttonText": "To offer selection",
+                                            "price": {
+                                                "amount": 2350
+                                            },
+                                            "retPriceIsCompletePrice": false,
+                                            "retPrice": -1
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "conSubscr": "U",
+                        "resState": "N",
+                        "resRecommendation": "N",
+                        "recState": "U",
+                        "sotRating": 0,
+                        "isSotCon": false,
+                        "showARSLink": false,
+                        "cksum": "4bd9fb8c_3",
+                        "cksumDti": "75c6c6ec_3",
+                        "intvlSubscr": "U",
+                        "originType": "INITIAL"
+                    },
+                    {
+                        "cid": "A3-5",
+                        "date": "20230615",
+                        "dur": "023100",
+                        "chg": 2,
+                        "dep": {},
+                        "arr": {},
+                        "secL": [
+                            {
+                                "type": "JNY",
+                                "dep": {
+                                    "locX": 0,
+                                    "dProdX": 23,
+                                    "dPltfS": {
+                                        "type": "PL",
+                                        "txt": "13"
+                                    },
+                                    "dTimeS": "230000",
+                                    "dTimeR": "230000",
+                                    "dProgType": "PROGNOSED",
+                                    "dTZOffset": 120,
+                                    "type": "N"
+                                },
+                                "arr": {
+                                    "locX": 2,
+                                    "aProdX": 23,
+                                    "aTimeS": "233000",
+                                    "aTZOffset": 120,
+                                    "type": "N"
+                                },
+                                "jny": {
+                                    "jid": "1|290203|0|80|-1",
+                                    "prodX": 23,
+                                    "status": "P",
+                                    "isRchbl": true,
+                                    "ctxRecon": "T$A=1@O=Bielefeld Hbf@L=8000036@a=0@$A=1@O=Minden(Westf)@L=8000252@a=0@$202306152300$202306152330$RE 89737$$1$$$$$$",
+                                    "approxDelay": true,
+                                    "subscr": "F",
+                                    "sumLDrawStyleX": 2,
+                                    "resLDrawStyleX": 1,
+                                    "durS": "003000"
+                                },
+                                "resState": "N",
+                                "resRecommendation": "N"
+                            },
+                            {
+                                "type": "JNY",
+                                "dep": {
+                                    "locX": 2,
+                                    "dProdX": 24,
+                                    "dPltfS": {
+                                        "type": "PL",
+                                        "txt": "3"
+                                    },
+                                    "dTimeS": "233500",
+                                    "dTZOffset": 120,
+                                    "type": "N"
+                                },
+                                "arr": {
+                                    "locX": 4,
+                                    "aProdX": 24,
+                                    "aTimeS": "234900",
+                                    "aTZOffset": 120,
+                                    "type": "N"
+                                },
+                                "jny": {
+                                    "jid": "1|1089125|0|80|-1",
+                                    "prodX": 24,
+                                    "status": "P",
+                                    "isRchbl": true,
+                                    "ctxRecon": "T$A=1@O=Minden(Westf)@L=8000252@a=0@$A=1@O=Stadthagen@L=8005662@a=0@$202306152335$202306152349$S      1$$1$$$$$$",
+                                    "approxDelay": true,
+                                    "subscr": "F",
+                                    "sumLDrawStyleX": 6,
+                                    "resLDrawStyleX": 1,
+                                    "durS": "001400"
+                                },
+                                "resState": "N",
+                                "resRecommendation": "N"
+                            },
+                            {
+                                "type": "JNY",
+                                "dep": {
+                                    "locX": 4,
+                                    "dProdX": 25,
+                                    "dTimeS": "235500",
+                                    "dTZOffset": 120,
+                                    "type": "N"
+                                },
+                                "arr": {
+                                    "locX": 5,
+                                    "aProdX": 25,
+                                    "aTimeS": "01013100",
+                                    "aTZOffset": 120,
+                                    "msgL": [
+                                        {
+                                            "type": "REM",
+                                            "remX": 2,
+                                            "sty": "I",
+                                            "tagL": [
+                                                "RES_LOC_H3"
+                                            ],
+                                            "sort": 147324928
+                                        }
+                                    ],
+                                    "type": "N"
+                                },
+                                "jny": {
+                                    "jid": "1|1088997|0|80|-1",
+                                    "prodX": 25,
+                                    "status": "P",
+                                    "isRchbl": true,
+                                    "ctxRecon": "T$A=1@O=Stadthagen@L=8005662@a=0@$A=1@O=Hannover Hbf ZOB@L=8089194@a=0@$202306152355$202306160131$Bus   EV$$1$$$$$$",
+                                    "approxDelay": true,
+                                    "subscr": "F",
+                                    "sumLDrawStyleX": 7,
+                                    "resLDrawStyleX": 1,
+                                    "durS": "013600"
+                                },
+                                "resState": "N",
+                                "resRecommendation": "N"
+                            }
+                        ],
+                        "ctxRecon": "T$A=1@O=Bielefeld Hbf@L=8000036@a=0@$A=1@O=Minden(Westf)@L=8000252@a=0@$202306152300$202306152330$RE 89737$$1$$$$$$§T$A=1@O=Minden(Westf)@L=8000252@a=0@$A=1@O=Stadthagen@L=8005662@a=0@$202306152335$202306152349$S      1$$1$$$$$$§T$A=1@O=Stadthagen@L=8005662@a=0@$A=1@O=Hannover Hbf ZOB@L=8089194@a=0@$202306152355$202306160131$Bus   EV$$1$$$$$$",
+                        "trfRes": {
+                            "statusCode": "OK",
+                            "fareSetL": [
+                                {
+                                    "fareL": [
+                                        {
+                                            "desc": "NDS-Tariff",
+                                            "descOverv": "NDS-Tariff",
+                                            "isFromPrice": true,
+                                            "isPartPrice": false,
+                                            "isBookable": true,
+                                            "isUpsell": false,
+                                            "targetCtx": "D",
+                                            "buttonText": "To offer selection",
+                                            "price": {
+                                                "amount": 2350
+                                            },
+                                            "retPriceIsCompletePrice": false,
+                                            "retPrice": -1
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "msgL": [
+                            {
+                                "type": "REM",
+                                "remX": 3,
+                                "sty": "I",
+                                "prio": 200,
+                                "fIdx": -1,
+                                "tIdx": -1,
+                                "tagL": [
+                                    "SUM_CON_FTR_H3"
+                                ],
+                                "sort": 818413568
+                            }
+                        ],
+                        "conSubscr": "U",
+                        "resState": "N",
+                        "resRecommendation": "N",
+                        "recState": "U",
+                        "sotRating": 0,
+                        "isSotCon": false,
+                        "showARSLink": false,
+                        "cksum": "7b7a355a_3",
+                        "cksumDti": "7799c794_3",
+                        "intvlSubscr": "U",
+                        "originType": "INITIAL"
+                    }
+                ],
+                "fpB": "20221211",
+                "fpE": "20231209",
+                "bfATS": -1,
+                "bfIOSTS": -1,
+                "planrtTS": "1686819428",
+                "outDaySegL": [
+                    {
+                        "conRefL": [
+                            1,
+                            0,
+                            2
+                        ],
+                        "id": "2",
+                        "fromDate": "20230615",
+                        "fromTime": "100000",
+                        "toDate": "20230615",
+                        "toTime": "130000",
+                        "bestPrice": {
+                            "amount": 3100
+                        },
+                        "segmentHeightIndicator": 100,
+                        "isCompletePrice": false,
+                        "tbpState": 0
+                    },
+                    {
+                        "conRefL": [
+                            5,
+                            6,
+                            4,
+                            3
+                        ],
+                        "id": "3",
+                        "fromDate": "20230615",
+                        "fromTime": "130000",
+                        "toDate": "20230615",
+                        "toTime": "160000",
+                        "bestPrice": {
+                            "amount": 2990
+                        },
+                        "segmentHeightIndicator": 96,
+                        "isCompletePrice": false,
+                        "tbpState": 0
+                    },
+                    {
+                        "conRefL": [
+                            10,
+                            9,
+                            11,
+                            7,
+                            8,
+                            12
+                        ],
+                        "id": "4",
+                        "fromDate": "20230615",
+                        "fromTime": "160000",
+                        "toDate": "20230615",
+                        "toTime": "190000",
+                        "bestPrice": {
+                            "amount": 2890
+                        },
+                        "segmentHeightIndicator": 93,
+                        "isCompletePrice": false,
+                        "tbpState": 0
+                    },
+                    {
+                        "conRefL": [
+                            15,
+                            17,
+                            18,
+                            14,
+                            16,
+                            13
+                        ],
+                        "id": "5",
+                        "fromDate": "20230615",
+                        "fromTime": "190000",
+                        "toDate": "20230615",
+                        "toTime": "01000000",
+                        "bestPrice": {
+                            "amount": 990
+                        },
+                        "segmentHeightIndicator": 31,
+                        "isCompletePrice": false,
+                        "tbpState": 0
+                    },
+                    {
+                        "id": "0",
+                        "fromDate": "20230615",
+                        "fromTime": "000000",
+                        "toDate": "20230615",
+                        "toTime": "070000",
+                        "bestPrice": {
+                            "amount": 0
+                        },
+                        "segmentHeightIndicator": 0,
+                        "isCompletePrice": false,
+                        "tbpState": 4
+                    },
+                    {
+                        "id": "1",
+                        "fromDate": "20230615",
+                        "fromTime": "070000",
+                        "toDate": "20230615",
+                        "toTime": "100000",
+                        "bestPrice": {
+                            "amount": 0
+                        },
+                        "segmentHeightIndicator": 0,
+                        "isCompletePrice": false,
+                        "tbpState": 4
+                    }
+                ],
+                "outTbpState": 0
+            }
+        }
+    ]
+}
