@@ -51,20 +51,20 @@ Because the operators of the HAFAS endpoint should be able to contact you about 
 
 ```js
 import {createClient} from 'hafas-client'
-import {profile as dbProfile} from 'hafas-client/p/db/index.js'
+import {profile as oebbProfile} from 'hafas-client/p/oebb/index.js'
 
 // Adapt this to your project! createClient() won't work with this string.
 const userAgent = 'link-to-your-project-or-email'
 
-// create a client with the Deutsche Bahn profile
-const client = createClient(dbProfile, userAgent)
+// create a client with the ÖBB (Austrian state railways) profile
+const client = createClient(oebbProfile, userAgent)
 ```
 
-You can now use `client` to query the HAFAS endpoint configured in the [`db` profile](p/db):
+You can now use `client` to query the HAFAS endpoint configured in the [`oebb` profile](p/oebb):
 
 ```js
-// Berlin Jungfernheide to München Hbf
-const res = await client.journeys('8011167', '8000261', {results: 1})
+// Berlin Landsberger Allee to München Hbf
+const res = await client.journeys('8089020', '8000261', {results: 1})
 console.log(res)
 ```
 
@@ -73,137 +73,111 @@ console.log(res)
 ```js
 {
 	journeys: [ {
-		origin: {
-			type: 'station',
-			id: '8089100',
-			name: 'Berlin Jungfernheide (S)',
-			location: { /* … */ },
-			products: { /* … */ }
-		},
-		departure: '2017-12-19T17:05:30+01:00',
-		plannedDeparture: '2017-12-19T17:05:00+01:00',
-		departureDelay: 30,
-		departurePlatform: '5',
-		plannedDeparturePlatform: '5',
-
-		destination: {
-			type: 'station',
-			id: '8000261',
-			name: 'München Hbf',
-			location: { /* … */ },
-			products: { /* … */ }
-		},
-		arrival: '2017-12-19T22:44:00+01:00',
-		plannedArrival: '2017-12-19T22:45:00+01:00',
-		arrivalDelay: -60,
-		arrivalPlatform: '11A',
-		plannedArrivalPlatform: '13',
-
-		legs: [ {
-			tripId: '1|100067|48|81|17122017',
-			line: {
-				type: 'line',
-				id: '41172',
-				name: 'S 41',
-				public: true,
-				mode: 'train',
-				product: 'suburban',
-				operator: {
-					type: 'operator',
-					id: 's-bahn-berlin-gmbh',
-					name: 'S-Bahn Berlin GmbH'
-				}
-			},
-			direction: 'Ringbahn ->',
-
-			origin: {
-				type: 'station',
-				id: '8089100',
-				name: 'Berlin Jungfernheide (S)',
-				location: {
-					type: 'location',
-					latitude: 52.530291,
-					longitude: 13.299451
+		legs: [
+			{
+				tripId: '2|#VN#1#ST#1747904107#PI#0#ZI#717274#TA#0#DA#260525#1S#8089118#1T#648#LS#8089118#LT#847#PU#81#RT#1#CA#s#ZE#41#ZB#S 41    #PC#5#FR#8089118#FT#648#TO#8089118#TT#847#',
+				line: {
+					type: 'line',
+					id: '41',
+					fahrtNr: '41058',
+					name: 'S 41 (Zug-Nr. 41058)',
+					public: true,
+					adminCode: '08____',
+					productName: 'S',
+					mode: 'train',
+					product: 'suburban',
+					operator: {
+						type: 'operator',
+						id: 's-bahn-berlin',
+						name: 'S-Bahn Berlin'
+					}
 				},
-				products: { /* … */ }
-			},
-			departure: '2017-12-19T17:05:30+01:00',
-			plannedDeparture: '2017-12-19T17:05:00+01:00',
-			departureDelay: 30,
-			departurePlatform: '5',
-			plannedDeparturePlatform: '5',
+				direction: 'Berlin Beusselstraße',
 
-			destination: {
-				type: 'station',
-				id: '8089118',
-				name: 'Berlin Beusselstraße'
+				origin: {
+					type: 'stop',
+					id: '8089020',
+					name: 'Berlin Landsberger Allee',
+					location: { /* … */ },
+					products: { /* … */ },
+				},
+				departure: '2025-05-26T08:04:00+02:00',
+				plannedDeparture: '2025-05-26T08:04:00+02:00',
+				departureDelay: null,
+				departurePlatform: '1',
+				plannedDeparturePlatform: '1',
+				departurePrognosisType: 'prognosed',
+
+				destination: {
+					type: 'stop',
+					id: '8089073',
+					name: 'Berlin Südkreuz (S)',
+					location: { /* … */ },
+					products: { /* … */ },
+				},
+				arrival: '2025-05-26T08:25:00+02:00',
+				plannedArrival: '2025-05-26T08:25:00+02:00',
+				arrivalDelay: null,
+				arrivalPlatform: '11',
+				plannedArrivalPlatform: '11',
+				arrivalPrognosisType: 'prognosed',
+
+				// …
+				remarks: [
+					{
+						type: 'hint',
+						code: 'FK',
+						text: 'Fahrradmitnahme begrenzt möglich'
+					},
+					// …
+				],
+			},
+			{
+				walking: true,
+				distance: 122
+				origin: {
+					type: 'stop',
+					id: '8089073',
+					name: 'Berlin Südkreuz (S)',
+					// …
+				},
+				destination: {
+					type: 'stop',
+					id: '8011113',
+					name: 'Berlin Südkreuz',
+					// …
+				},
 				// …
 			},
-			arrival: '2017-12-19T17:08:00+01:00',
-			plannedArrival: '2017-12-19T17:08:00+01:00',
-			arrivalDelay: null,
-			arrivalPlatform: '2a-b',
-			plannedArrivalPlatform: '1'
-		},
-		/* more legs… */
-		{
-			walking: true,
-			public: true,
+			{
+				tripId: '2|#VN#1#ST#1747904107#PI#0#ZI#326315#TA#0#DA#260525#1S#8002553#1T#617#LS#8000261#LT#1301#PU#81#RT#1#CA#ICE#ZE#505#ZB#ICE 505 #PC#0#FR#8002553#FT#617#TO#8000261#TT#1301#',
+				line: {
+					type: 'line',
+					name: 'ICE 505',
+					mode: 'train',
+					// …
+				},
 
-			origin: {
-				type: 'station',
-				id: '730749',
-				name: 'Berlin Hauptbahnhof (S+U), Berlin'
-				// …
-			},
-			plannedDeparture: '2017-12-19T17:25:00+01:00',
-			prognosedDeparture: null,
-			departureDelay: null,
+				origin: {
+					type: 'stop',
+					id: '8011113',
+					name: 'Berlin Südkreuz',
+					// …
+				},
+				destination: {
+					type: 'stop',
+					id: '8000261',
+					name: 'München Hbf',
+					// …
+				},
 
-			destination: {
-				type: 'station',
-				id: '8098160',
-				name: 'Berlin Hbf (tief)'
+				remarks: [ /* … */ ],
+				alternatives: [ /* … */ ],
 				// …
-			},
-			arrival: '2017-12-19T17:33:00+01:00',
-			plannedArrival: '2017-12-19T17:33:00+01:00',
-			arrivalDelay: null
-		}, {
-			tripId: '1|70906|0|81|17122017',
-			line: { /* … */ },
-			direction: 'München Hbf',
-
-			origin: {
-				type: 'station',
-				id: '8098160',
-				name: 'Berlin Hbf (tief)'
-				// …
-			},
-			departure: '2017-12-19T17:35:00+01:00',
-			plannedDeparture: '2017-12-19T17:37:00+01:00',
-			departureDelay: -120,
-			departurePlatform: '1',
-			plannedDeparturePlatform: '1',
-
-			destination: {
-				type: 'station',
-				id: '8000261',
-				name: 'München Hbf',
-				// …
-			},
-			arrival: '2017-12-19T22:44:00+01:00',
-			plannedArrival: '2017-12-19T22:45:00+01:00',
-			arrivalDelay: -60,
-			arrivalPlatform: '11A',
-			plannedArrivalPlatform: '13'
-		} ],
-		price: {
-			amount: null,
-			hint: 'No pricing information available.'
-		}
+			}
+		],
 		// …
-	} ]
+	} ],
 	// …
 }
 ```
