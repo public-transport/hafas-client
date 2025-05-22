@@ -100,7 +100,7 @@ console.log(res)
 		plannedArrivalPlatform: '13',
 
 		legs: [ {
-			id: '1|100067|48|81|17122017',
+			tripId: '1|100067|48|81|17122017',
 			line: {
 				type: 'line',
 				id: '41172',
@@ -170,7 +170,7 @@ console.log(res)
 			plannedArrival: '2017-12-19T17:33:00+01:00',
 			arrivalDelay: null
 		}, {
-			id: '1|70906|0|81|17122017',
+			tripId: '1|70906|0|81|17122017',
 			line: { /* … */ },
 			direction: 'München Hbf',
 
