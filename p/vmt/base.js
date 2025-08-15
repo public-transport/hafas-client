@@ -1,15 +1,15 @@
 export default {
 	auth: {
 		type: 'AID',
-		aid: 't2h7u1e6r4i8n3g7e0n',
+		aid: 'web-vmt-qdr6c6y8s4cvfmfw',
 	},
 	client: {
-		type: 'IPH',
-		id: 'HAFAS',
-		v: '2040100',
-		name: 'VMT',
+		type: 'WEB',
+		id: 'VMT',
+		v: '10010',
+		name: 'webapp',
 	},
-	endpoint: 'https://vmt.hafas.de/bin/ticketing/mgate.exe',
-	ver: '1.34',
+	endpoint: 'https://vmt.eks-prod-euc1.hafas.cloud/bin/mgate.exe',
+	ver: '1.78',
 	defaultLanguage: 'de',
 };
