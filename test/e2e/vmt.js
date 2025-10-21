@@ -1,4 +1,5 @@
 import tap from 'tap';
+import {DateTime} from 'luxon';
 
 import {createWhen} from './lib/util.js';
 import {createClient} from '../../index.js';
@@ -67,5 +68,33 @@ tap.test('departures at Jena Paradies', async (t) => {
 			'9441956',
 		],
 	});
+	t.end();
+});
+
+tap.test('radar() with opt.tripId works', async (t) => {
+	const {
+		departures: [dep0],
+	} = await client.departures(jenaParadies, {
+		duration: 60,
+		when,
+	});
+	const {
+		stop: {
+			location: loc0,
+		},
+	} = dep0
+
+	const res = await client.radar({
+		north: loc0.latitude + 1,
+		south: loc0.latitude - 1,
+		east: loc0.longitude + 1,
+		west: loc0.longitude - 1,
+	}, {
+		when: dep0.when,
+		tripId: dep0.tripId,
+	})
+	t.equal(res.movements.length, 1, 'radar() should return exactly 1 movement')
+	t.equal(res.movements[0].tripId, dep0.tripId, 'movements should include the filtered-by trip ID')
+
 	t.end();
 });

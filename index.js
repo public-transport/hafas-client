@@ -679,6 +679,7 @@ const createClient = (profile, userAgent, opt = {}) => {
 			polylines: true, // return a track shape for each vehicle?
 			subStops: true, // parse & expose sub-stops of stations?
 			entrances: true, // parse & expose entrances of stops/stations?
+			tripId: null, // single trip to filter for
 		}, opt || {});
 		opt.when = new Date(opt.when || Date.now());
 		if (Number.isNaN(Number(opt.when))) {
