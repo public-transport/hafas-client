@@ -14,6 +14,7 @@ const profile = {
 
 	refreshJourneyUseOutReconL: true,
 	trip: true,
+	radar: true,
 	reachableFrom: true,
 	remarks: false, // seems like ver >= 1.20 is required
 };
