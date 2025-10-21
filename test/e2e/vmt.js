@@ -2,7 +2,7 @@ import tap from 'tap';
 
 import {createWhen} from './lib/util.js';
 import {createClient} from '../../index.js';
-import {profile as vmtProfile} from '../../p/nahsh/index.js';
+import {profile as vmtProfile} from '../../p/vmt/index.js';
 import {createValidateFptfWith as createValidate} from './lib/validate-fptf-with.js';
 import {testJourneysStationToStation} from './lib/journeys-station-to-station.js';
 import {testDepartures} from './lib/departures.js';
@@ -45,18 +45,27 @@ tap.test('journeys – Jena Paradies to Erfurt Hbf', async (t) => {
 	t.end();
 });
 
-tap.only('departures at Jena Paradies', async (t) => {
+tap.test('departures at Jena Paradies', async (t) => {
 	const res = await client.departures(jenaParadies, {
 		duration: 60,
 		when,
 	});
 
-	const jenaParadies2 = '9441956'; // wtf
 	await testDepartures({
 		test: t,
 		res,
 		validate,
-		ids: [jenaParadies, jenaParadies2],
+		ids: [
+			jenaParadies,
+			// wtf
+			'153004',
+			'153027',
+			'153049',
+			'153050',
+			'153167',
+			'8011957',
+			'9441956',
+		],
 	});
 	t.end();
 });
