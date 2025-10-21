@@ -79,6 +79,7 @@
 		"validate-fptf": "^3.0.0"
 	},
 	"scripts": {
+		"pull-profile-base-data": "./tools/pull-profile-base-data.sh",
 		"lint": "eslint .",
 		"lint:fix": "eslint . --fix",
 		"test-unit": "tap test/lib/*.js test/*.js test/format/*.js test/parse/*.js",
