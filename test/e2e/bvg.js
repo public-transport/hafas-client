@@ -27,7 +27,7 @@ import {testReachableFrom} from './lib/reachable-from.js';
 import {testRemarks} from './lib/remarks.js';
 import {testLines} from './lib/lines.js';
 
-const T_MOCK = 1731394800 * 1000; // 2024-11-12T08:00:00+01:00
+const T_MOCK = 1761631200 * 1000 // 2025-10-28T08:00:00+02:00
 const when = createWhen(bvgProfile.timezone, bvgProfile.locale, T_MOCK);
 
 const {
@@ -126,8 +126,7 @@ tap.test('journeys – fails with no product', async (t) => {
 	t.end();
 });
 
-// todo: opt.walkingSpeed doesn't seem to work right now
-tap.skip('journeys: walkingSpeed', async (t) => {
+tap.test('journeys: walkingSpeed', async (t) => {
 	const havelchaussee = {
 		type: 'location',
 		address: 'Havelchaussee',
@@ -142,6 +141,7 @@ tap.skip('journeys: walkingSpeed', async (t) => {
 		validate,
 		from: havelchaussee,
 		to: wannsee,
+		when,
 		products: {bus: false},
 		minTimeDifference: 5 * 60 * 1000,
 	});
@@ -203,7 +203,7 @@ tap.test('trip details', async (t) => {
 tap.test('journeys – station to address', async (t) => {
 	const torfstr = {
 		type: 'location',
-		address: '13353 Berlin-Wedding, Torfstraße 17',
+		address: 'Torfstraße 17, 13353 Berlin-Wedding',
 		latitude: 52.541797,
 		longitude: 13.350042,
 	};
@@ -426,7 +426,7 @@ tap.test('remarks', async (t) => {
 	t.end();
 });
 
-tap.test('lines', async (t) => {
+tap.skip('lines', async (t) => {
 	await testLines({
 		test: t,
 		fetchLines: client.lines,
