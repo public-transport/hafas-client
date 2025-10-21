@@ -49,6 +49,9 @@ const rsagJourneys = {
 					'tram': false,
 					'on-call': false,
 				},
+				ids: {
+					ifopt: 'de:13003:1489',
+				},
 			},
 			departure: '2021-01-19T14:14:00+01:00',
 			plannedDeparture: '2021-01-19T14:14:00+01:00',
@@ -78,6 +81,9 @@ const rsagJourneys = {
 					'u-bahn': false,
 					'tram': false,
 					'on-call': false,
+				},
+				ids: {
+					ifopt: 'de:13072:2295',
 				},
 			},
 			arrival: '2021-01-19T14:44:00+01:00',

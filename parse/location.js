@@ -118,6 +118,31 @@ const parseLocation = (ctx, l) => {
 			stop.ids.dhid = dhid;
 		}
 
+		let ifoptId = null;
+		// The old `l.gidL?` scheme seems to be used with `ver` <= 1.46. The new `globalIdL` scheme seems to be used with `ver` >= 1.47.
+		// todo: is type `A` really always an IFOPT?
+		if (Array.isArray(l.globalIdL)) {
+			const _ifopt = l.globalIdL.find(gId => gId.type === 'A') || null;
+			if (_ifopt?.id) {
+				ifoptId = _ifopt.id;
+			}
+		} else if (Array.isArray(l.gidL)) {
+			const _ifopt = l.gidL
+				.filter(gId => gId[0] === 'A')
+				.map(gId => gId.split('×'))
+				.find(([type]) => type === 'A')
+				|| null;
+			if (_ifopt?.[1]) {
+				ifoptId = _ifopt[1];
+			}
+		}
+		if (ifoptId) {
+			if (!stop.ids) {
+				stop.ids = {};
+			}
+			stop.ids.ifopt = ifoptId;
+		}
+
 		const otherIds = hints
 			.filter(h => h.type === 'foreign-id')
 			.filter(h => 'string' === typeof h.text && h.text.includes(':'))

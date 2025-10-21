@@ -5,6 +5,9 @@ const vbbDepartures = [
 			type: 'stop',
 			id: '900100004',
 			stationDHID: 'de:11000:900100004',
+			ids: {
+				ifopt: 'de:11000:900100004',
+			},
 			name: 'S+U Jannowitzbrücke (Berlin)',
 			location: {
 				type: 'location',
@@ -146,6 +149,9 @@ const vbbDepartures = [
 			type: 'stop',
 			id: '900310004',
 			stationDHID: 'de:12067:900310004',
+			ids: {
+				ifopt: 'de:12067:900310004',
+			},
 			name: 'S Erkner Bhf',
 			location: {
 				type: 'location',
@@ -220,6 +226,9 @@ const vbbDepartures = [
 			type: 'stop',
 			id: '900100004',
 			stationDHID: 'de:11000:900100004',
+			ids: {
+				ifopt: 'de:11000:900100004',
+			},
 			name: 'S+U Jannowitzbrücke (Berlin)',
 			location: {
 				type: 'location',
@@ -405,6 +414,9 @@ const vbbDepartures = [
 			type: 'stop',
 			id: '900005207',
 			stationDHID: 'de:11000:900005207',
+			ids: {
+				ifopt: 'de:11000:900005207',
+			},
 			name: 'Philharmonie Süd (Berlin)',
 			location: {
 				type: 'location',
@@ -434,6 +446,9 @@ const vbbDepartures = [
 			type: 'stop',
 			id: '900100004',
 			stationDHID: 'de:11000:900100004',
+			ids: {
+				ifopt: 'de:11000:900100004',
+			},
 			name: 'S+U Jannowitzbrücke (Berlin)',
 			location: {
 				type: 'location',
@@ -620,6 +635,9 @@ const vbbDepartures = [
 			type: 'stop',
 			id: '900079221',
 			stationDHID: 'de:11000:900079221',
+			ids: {
+				ifopt: 'de:11000:900079221',
+			},
 			name: 'S+U Hermannstr. (Berlin)',
 			location: {
 				type: 'location',
@@ -649,6 +667,9 @@ const vbbDepartures = [
 			type: 'stop',
 			id: '900100004',
 			stationDHID: 'de:11000:900100004',
+			ids: {
+				ifopt: 'de:11000:900100004',
+			},
 			name: 'S+U Jannowitzbrücke (Berlin)',
 			location: {
 				type: 'location',
@@ -835,6 +856,9 @@ const vbbDepartures = [
 			type: 'stop',
 			id: '900096197',
 			stationDHID: 'de:11000:900096197',
+			ids: {
+				ifopt: 'de:11000:900096197',
+			},
 			name: 'S+U Wittenau (Berlin) [U8]',
 			location: {
 				type: 'location',
@@ -864,6 +888,9 @@ const vbbDepartures = [
 			type: 'stop',
 			id: '900100004',
 			stationDHID: 'de:11000:900100004',
+			ids: {
+				ifopt: 'de:11000:900100004',
+			},
 			name: 'S+U Jannowitzbrücke (Berlin)',
 			location: {
 				type: 'location',
@@ -1050,6 +1077,9 @@ const vbbDepartures = [
 			type: 'stop',
 			id: '900024102',
 			stationDHID: 'de:11000:900024102',
+			ids: {
+				ifopt: 'de:11000:900024102',
+			},
 			name: 'S Westkreuz (Berlin)',
 			location: {
 				type: 'location',
@@ -1079,6 +1109,9 @@ const vbbDepartures = [
 			type: 'stop',
 			id: '900100004',
 			stationDHID: 'de:11000:900100004',
+			ids: {
+				ifopt: 'de:11000:900100004',
+			},
 			name: 'S+U Jannowitzbrücke (Berlin)',
 			location: {
 				type: 'location',
@@ -1265,6 +1298,9 @@ const vbbDepartures = [
 			type: 'stop',
 			id: '900170004',
 			stationDHID: 'de:11000:900170004',
+			ids: {
+				ifopt: 'de:11000:900170004',
+			},
 			name: 'S Ahrensfelde Bhf (Berlin)',
 			location: {
 				type: 'location',
@@ -1294,6 +1330,9 @@ const vbbDepartures = [
 			type: 'stop',
 			id: '900100004',
 			stationDHID: 'de:11000:900100004',
+			ids: {
+				ifopt: 'de:11000:900100004',
+			},
 			name: 'S+U Jannowitzbrücke (Berlin)',
 			location: {
 				type: 'location',
@@ -1480,6 +1519,9 @@ const vbbDepartures = [
 			type: 'stop',
 			id: '900230999',
 			stationDHID: 'de:12054:900230999',
+			ids: {
+				ifopt: 'de:12054:900230999',
+			},
 			name: 'S Potsdam Hauptbahnhof',
 			location: {
 				type: 'location',
@@ -1509,6 +1551,9 @@ const vbbDepartures = [
 			type: 'stop',
 			id: '900100004',
 			stationDHID: 'de:11000:900100004',
+			ids: {
+				ifopt: 'de:11000:900100004',
+			},
 			name: 'S+U Jannowitzbrücke (Berlin)',
 			location: {
 				type: 'location',
@@ -1695,6 +1740,9 @@ const vbbDepartures = [
 			type: 'stop',
 			id: '900320004',
 			stationDHID: 'de:12064:900320004',
+			ids: {
+				ifopt: 'de:12064:900320004',
+			},
 			name: 'S Strausberg Bhf',
 			location: {
 				type: 'location',
@@ -1724,6 +1772,9 @@ const vbbDepartures = [
 			type: 'stop',
 			id: '900100004',
 			stationDHID: 'de:11000:900100004',
+			ids: {
+				ifopt: 'de:11000:900100004',
+			},
 			name: 'S+U Jannowitzbrücke (Berlin)',
 			location: {
 				type: 'location',
@@ -1910,6 +1961,9 @@ const vbbDepartures = [
 			type: 'stop',
 			id: '900079221',
 			stationDHID: 'de:11000:900079221',
+			ids: {
+				ifopt: 'de:11000:900079221',
+			},
 			name: 'S+U Hermannstr. (Berlin)',
 			location: {
 				type: 'location',
@@ -1939,6 +1993,9 @@ const vbbDepartures = [
 			type: 'stop',
 			id: '900100004',
 			stationDHID: 'de:11000:900100004',
+			ids: {
+				ifopt: 'de:11000:900100004',
+			},
 			name: 'S+U Jannowitzbrücke (Berlin)',
 			location: {
 				type: 'location',
@@ -2125,6 +2182,9 @@ const vbbDepartures = [
 			type: 'stop',
 			id: '900085104',
 			stationDHID: 'de:11000:900085104',
+			ids: {
+				ifopt: 'de:11000:900085104',
+			},
 			name: 'U Paracelsus-Bad (Berlin)',
 			location: {
 				type: 'location',
@@ -2154,6 +2214,9 @@ const vbbDepartures = [
 			type: 'stop',
 			id: '900100004',
 			stationDHID: 'de:11000:900100004',
+			ids: {
+				ifopt: 'de:11000:900100004',
+			},
 			name: 'S+U Jannowitzbrücke (Berlin)',
 			location: {
 				type: 'location',
@@ -2339,6 +2402,9 @@ const vbbDepartures = [
 			type: 'stop',
 			id: '900120004',
 			stationDHID: 'de:11000:900120004',
+			ids: {
+				ifopt: 'de:11000:900120004',
+			},
 			name: 'S+U Warschauer Str. (Berlin)',
 			location: {
 				type: 'location',
@@ -2368,6 +2434,9 @@ const vbbDepartures = [
 			type: 'stop',
 			id: '900100004',
 			stationDHID: 'de:11000:900100004',
+			ids: {
+				ifopt: 'de:11000:900100004',
+			},
 			name: 'S+U Jannowitzbrücke (Berlin)',
 			location: {
 				type: 'location',
@@ -2554,6 +2623,9 @@ const vbbDepartures = [
 			type: 'stop',
 			id: '900029101',
 			stationDHID: 'de:11000:900029101',
+			ids: {
+				ifopt: 'de:11000:900029101',
+			},
 			name: 'S Spandau Bhf (Berlin)',
 			location: {
 				type: 'location',
