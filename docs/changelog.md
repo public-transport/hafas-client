@@ -1,5 +1,16 @@
 # Changelog
 
+## `6.3.6`
+
+- 1870dc57 parse stop/station IFOPT IDs as `.ids.ifopt`  ✅
+- 6ceeebd3/8b876f90 `radar()`: support filtering by `opt.tripId` ✅
+- 3bd8cb3b [*VMT* profile](../p/vmt): enable `radar()`
+- f680acfa [*VMT* profile](../p/vmt): update endpoint, auth & client – Thanks @OskarPetersilie!
+- 1acc1fb1/4791e396: readme: fix `journeys()` example 📝
+- 8666666d [*BVG* profile](../p/bvg): fix BVG's name in readme 📝 – Thanks @Hoishin!
+
+[🏷 `6.3.6`](https://github.com/public-transport/hafas-client/releases/tag/6.3.6), 2025-10-28
+
 ## `6.3.5`
 
 - 033e1956 `reachableFrom()`: validate `opt.when` 🐛

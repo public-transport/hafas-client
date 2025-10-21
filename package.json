@@ -1,7 +1,7 @@
 {
 	"name": "hafas-client",
 	"description": "Client for HAFAS public transport APIs.",
-	"version": "6.3.5",
+	"version": "6.3.6",
 	"type": "module",
 	"main": "index.js",
 	"files": [
@@ -30,7 +30,7 @@
 		"1Maxnet1",
 		"Tim von Werne <tim@vonwernet.de>"
 	],
-	"homepage": "https://github.com/public-transport/hafas-client/tree/6.3.4",
+	"homepage": "https://github.com/public-transport/hafas-client/tree/6.3.6",
 	"repository": "public-transport/hafas-client",
 	"bugs": "https://github.com/public-transport/hafas-client/issues",
 	"funding": {
