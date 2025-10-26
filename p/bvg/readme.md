@@ -1,6 +1,6 @@
 # BVG profile for `hafas-client`
 
-[*Verkehrsverbund Berlin-Brandenburg (BVG)*](https://en.wikipedia.org/wiki/Verkehrsverbund_Berlin-Brandenburg) is the major local transport provider in [Berlin](https://en.wikipedia.org/wiki/Berlin). This profile adds *BVG*-specific customizations to `hafas-client`.
+[*Berliner Verkehrsbetriebe (BVG)*](https://en.wikipedia.org/wiki/Berliner_Verkehrsbetriebe) is the major local transport provider in [Berlin](https://en.wikipedia.org/wiki/Berlin). This profile adds *BVG*-specific customizations to `hafas-client`.
 
 ## Usage
 
