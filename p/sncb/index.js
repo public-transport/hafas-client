@@ -1,12 +1,7 @@
-// todo: use import assertions once they're supported by Node.js & ESLint
-// https://github.com/tc39/proposal-import-assertions
-import {createRequire} from 'module';
-const require = createRequire(import.meta.url);
-
 import {strictEqual as eql} from 'assert';
 import {parseHook} from '../../lib/profile-hooks.js';
 import {parseLine} from '../../parse/line.js';
-const baseProfile = require('./base.json');
+import baseProfile from './base.js';
 import {products} from './products.js';
 
 // todo: this is ugly

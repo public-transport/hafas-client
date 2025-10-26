@@ -30,7 +30,7 @@ import {testServerInfo} from './lib/server-info.js';
 const isObj = o => o !== null && 'object' === typeof o && !Array.isArray(o);
 const minute = 60 * 1000;
 
-const T_MOCK = 1696921200 * 1000; // 2023-10-10T08:00:00+01:00
+const T_MOCK = 1734591600 * 1000; // 2024-12-19T08:00+01:00
 const when = createWhen(dbProfile.timezone, dbProfile.locale, T_MOCK);
 
 const cfg = {
@@ -41,6 +41,9 @@ const cfg = {
 	maxLatitude: 55.030671,
 	minLongitude: 6.896517,
 	maxLongitude: 16.180237,
+	validateJourneyTickets: false, // don't validate a journey's tickets
+	// with `journeys()` & `refreshJourney()`, don't validate .realtimeDataUpdatedAt
+	validateJourneysRealtimeDataUpdatedAt: false,
 };
 
 const validate = createValidate(cfg);
@@ -122,17 +125,21 @@ tap.test('journeys – Berlin Schwedter Str. to München Hbf', async (t) => {
 	});
 	// todo: find a journey where there pricing info is always available
 	for (let journey of res.journeys) {
-		if (journey.price) {
-			assertValidPrice(t, journey.price);
-		}
-		if (journey.tickets) {
-			assertValidTickets(t, journey.tickets);
-		}
+		// It seems like the DB endpoint doesn't return (valid) prices/fares/tickets anymore.
+		// see https://github.com/public-transport/hafas-client/issues/331
+		// if (journey.price) {
+		// 	assertValidPrice(t, journey.price);
+		// }
+		// if (journey.tickets) {
+		// 	assertValidTickets(t, journey.tickets);
+		// }
 	}
 	t.end();
 });
 
-tap.test('refreshJourney – valid tickets', async (t) => {
+// It seems like the DB endpoint doesn't return (valid) prices/fares/tickets anymore.
+// see https://github.com/public-transport/hafas-client/issues/331
+tap.skip('refreshJourney – valid tickets', async (t) => {
 	const T_MOCK = 1710831600 * 1000; // 2024-03-19T08:00:00+01:00
 	const when = createWhen(dbProfile.timezone, dbProfile.locale, T_MOCK);
 

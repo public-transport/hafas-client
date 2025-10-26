@@ -1,9 +1,4 @@
-// todo: use import assertions once they're supported by Node.js & ESLint
-// https://github.com/tc39/proposal-import-assertions
-import {createRequire} from 'module';
-const require = createRequire(import.meta.url);
-
-const baseProfile = require('./base.json');
+import baseProfile from './base.js';
 import {products} from './products.js';
 
 const profile = {
@@ -19,6 +14,7 @@ const profile = {
 
 	refreshJourneyUseOutReconL: true,
 	trip: true,
+	radar: true,
 	reachableFrom: true,
 	remarks: false, // seems like ver >= 1.20 is required
 };

@@ -1,8 +1,3 @@
-// todo: use import assertions once they're supported by Node.js & ESLint
-// https://github.com/tc39/proposal-import-assertions
-import {createRequire} from 'module';
-const require = createRequire(import.meta.url);
-
 import {parseHook} from '../../lib/profile-hooks.js';
 
 import {parseAndAddLocationDHID} from '../vbb/parse-loc-dhid.js';
@@ -13,7 +8,7 @@ import {parseDeparture as _parseDeparture} from '../../parse/departure.js';
 import {parseStopover as _parseStopover} from '../../parse/stopover.js';
 import {parseJourneyLeg as _parseJourneyLeg} from '../../parse/journey-leg.js';
 
-const baseProfile = require('./base.json');
+import baseProfile from './base.js';
 import {products} from './products.js';
 
 // todo: there's also a referenced icon `{"res":"occup_fig_{low,mid}"}`
@@ -83,55 +78,11 @@ const parseStopoverWithOccupancy = ({parsed}, st, date) => {
 	return parsed;
 };
 
-const parseJourneyLegWithBerlkönig = (ctx, leg, date) => {
-	if (leg.type === 'KISS') {
-		const icon = ctx.common.icons[leg.icoX];
-		if (icon && icon.type === 'prod_berl') {
-			const res = _parseJourneyLeg(ctx, {
-				...leg, type: 'WALK',
-			}, date);
-			delete res.walking;
-
-			const mcp = leg.dep.mcp || {};
-			const mcpData = mcp.mcpData || {};
-			// todo: mcp.lid
-			// todo: mcpData.occupancy, mcpData.type
-			// todo: journey.trfRes.bkgData
-			res.line = {
-				type: 'line',
-				id: null, // todo
-				// todo: fahrtNr?
-				name: mcpData.providerName,
-				public: true,
-				mode: 'taxi',
-				product: 'berlkoenig',
-				// todo: operator
-			};
-			return res;
-		}
-	}
-	return _parseJourneyLeg(ctx, leg, date);
-};
 const parseJourneyLegWithOccupancy = ({parsed}, leg, date) => {
 	if (leg.type === 'JNY') {
 		addOccupancy(parsed, journeyLegOccupancyCodes);
 	}
 	return parsed;
-};
-
-// use the Berlkönig ride sharing service?
-// todo: https://github.com/alexander-albers/tripkit/issues/26#issuecomment-825437320
-const requestJourneysWithBerlkoenig = ({opt}, query) => {
-	if ('numF' in query && opt.berlkoenig) {
-		// todo: check if this is still true
-		throw new Error('The `berlkoenig` and `results` options are mutually exclusive.');
-	}
-	query.jnyFltrL.push({type: 'GROUP', mode: 'INC', value: 'OEV'});
-	if (opt.berlkoenig) {
-		query.jnyFltrL.push({type: 'GROUP', mode: 'INC', value: 'BERLKOENIG'});
-	}
-	query.gisFltrL = [{meta: 'foot_speed_normal', type: 'M', mode: 'FB'}];
-	return query;
 };
 
 // todo: adapt/extend `vbb-parse-ticket` to support the BVG markup
@@ -140,8 +91,6 @@ const profile = {
 	...baseProfile,
 	locale: 'de-DE',
 	timezone: 'Europe/Berlin',
-
-	transformJourneysQuery: requestJourneysWithBerlkoenig,
 
 	products,
 
@@ -156,10 +105,11 @@ const profile = {
 	),
 	parseStopover: parseHook(_parseStopover, parseStopoverWithOccupancy),
 	parseJourneyLeg: parseHook(
-		parseJourneyLegWithBerlkönig,
+		_parseJourneyLeg,
 		parseJourneyLegWithOccupancy,
 	),
 
+	journeysWalkingSpeed: true,
 	refreshJourneyUseOutReconL: true,
 	trip: true,
 	radar: true,

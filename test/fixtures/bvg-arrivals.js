@@ -2,6 +2,9 @@ const sLandsbergerAllee = {
 	type: 'stop',
 	id: '900110004',
 	stationDHID: 'de:11000:900110004',
+	ids: {
+		ifopt: 'de:11000:900110004',
+	},
 	name: 'S Landsberger Allee (Berlin)',
 	location: {
 		type: 'location',
@@ -152,7 +155,7 @@ const achtungFalscheFahrplanauskünfte = {
 	type: 'warning',
 	summary: 'Achtung! Falsche Fahrplanauskünfte für S41, S42 für Do (28.10.)',
 	text: 'Informationen zum Fahrplan finden Sie hier:\n'
-	+ '<a href="https://sbahn.berlin/fahren/fahrplanaenderungen" target="_blank" rel="noopener">sbahn.berlin</a>',
+		+ '<a href="https://sbahn.berlin/fahren/fahrplanaenderungen" target="_blank" rel="noopener">sbahn.berlin</a>',
 	icon: {type: 'HIM2', title: null},
 	priority: 100,
 	products: {
@@ -176,7 +179,7 @@ const gemeinsamSicherUnterwegs = {
 	type: 'warning',
 	summary: 'Gemeinsam sicher unterwegs - mit Abstand und medizinischer Maske (in Berlin: FFP2)!',
 	text: 'An Haltestellen und Bahnhöfen sowie in Fahrzeugen. Maskenmuffel riskieren mindestens 50 Euro.\n'
-	+ '<a href="https://www.vbb.de/corona" target="_blank" rel="noopener">Weitere Informationen</a>',
+		+ '<a href="https://www.vbb.de/corona" target="_blank" rel="noopener">Weitere Informationen</a>',
 	icon: {type: 'HIM0', title: null},
 	priority: 100,
 	products: {
@@ -200,7 +203,7 @@ const ausfallS8 = {
 	type: 'warning',
 	summary: 'Ausfall S8 zwischen Frankfurter Allee und Greifswalder Straße.',
 	text: 'Bauzeitverlängerung: Weiterhin durchgehend bis zum 29.10.(Do), ca. 1:30 Uhr kein Zugverkehr zwischen Greifswalder Str. und Frankfurter Allee. Zwischen Greifswalder Straße und Ostkreuz ist Ersatzverkehr mit Bussen eingerichtet. Bitte steigen Sie zwischen der S-Bahn und dem Ersatzverkehr am Bahnhof Ostkreuz um, am Bahnhof Frankfurter Allee beträgt der Fußweg zwischen S-Bahnhof und der Haltestelle des Ersatzverkehrs in der Gürtelstraße ca. 300 Meter. Achtung eingeschränkte Fahrradmitnahme! Bitte informieren Sie sich frühzeitig über Ihre Fahrmöglichkeiten. Wir bitten um Entschuldigung.\n'
-	+ '<a href="https://sbahn.berlin/fahren/fahrplanaenderungen/detail/16829-sanierung-einer-stuetzmauer-an-der-bruecke-eldenaer-strasse-gleiserneuerung-aufbringen-einer-ge/" target="_blank" rel="noopener">S-Bahn Berlin</a>',
+		+ '<a href="https://sbahn.berlin/fahren/fahrplanaenderungen/detail/16829-sanierung-einer-stuetzmauer-an-der-bruecke-eldenaer-strasse-gleiserneuerung-aufbringen-einer-ge/" target="_blank" rel="noopener">S-Bahn Berlin</a>',
 	icon: {type: 'HIM1', title: null},
 	priority: 100,
 	products: {
@@ -270,7 +273,7 @@ const bauzeitverlängerung = {
 	type: 'warning',
 	summary: 'Bauarbeiten.',
 	text: 'Bauzeitverlängerung: Weiterhin durchgehend bis zum 29.10.(Fr), ca. 1:30 Uhr kein Zugverkehr zwischen Greifswalder Str. und Frankfurter Allee. Zwischen Greifswalder Straße und Ostkreuz ist Ersatzverkehr mit Bussen eingerichtet. Bitte steigen Sie zwischen der S-Bahn und dem Ersatzverkehr am Bahnhof Ostkreuz um, am Bahnhof Frankfurter Allee beträgt der Fußweg zwischen S-Bahnhof und der Haltestelle des Ersatzverkehrs in der Gürtelstraße ca. 300 Meter.  Achtung eingeschränkte Fahrradmitnahme! Bitte informieren Sie sich frühzeitig über Ihre Fahrmöglichkeiten. Wir bitten um Entschuldigung.\n'
-	+ '<a href="https://sbahn.berlin/fahren/fahrplanaenderungen/detail/16829-sanierung-einer-stuetzmauer-an-der-bruecke-eldenaer-strasse-gleiserneuerung-aufbringen-einer-ge/" target="_blank" rel="noopener">Infos Bauzeitverlängerung</a>',
+		+ '<a href="https://sbahn.berlin/fahren/fahrplanaenderungen/detail/16829-sanierung-einer-stuetzmauer-an-der-bruecke-eldenaer-strasse-gleiserneuerung-aufbringen-einer-ge/" target="_blank" rel="noopener">Infos Bauzeitverlängerung</a>',
 	icon: {type: 'HIM1', title: null},
 	priority: 1,
 	products: {
@@ -978,7 +981,7 @@ const bvgArrivals = [
 				type: 'warning',
 				summary: 'Bauarbeiten.',
 				text: 'Diese Fahrt fällt heute leider aus, bitte auf die Linie S8 ausweichen. Wegen Bauzeitverlängerung fahren keine Züge zwischen Frankfurter Allee und Greifswalder Straße, hier fahren Busse. Wir bitten um Entschuldigung\n'
-				+ '<a href="https://sbahn.berlin/fahren/fahrplanaenderungen/detail/16829-sanierung-einer-stuetzmauer-an-der-bruecke-eldenaer-strasse-gleiserneuerung-aufbringen-einer-ge/#con-22772" target="_blank" rel="noopener">Infos Bauzeitverlängerung</a>',
+					+ '<a href="https://sbahn.berlin/fahren/fahrplanaenderungen/detail/16829-sanierung-einer-stuetzmauer-an-der-bruecke-eldenaer-strasse-gleiserneuerung-aufbringen-einer-ge/#con-22772" target="_blank" rel="noopener">Infos Bauzeitverlängerung</a>',
 				icon: {type: 'HIM1', title: null},
 				priority: 50,
 				products: {

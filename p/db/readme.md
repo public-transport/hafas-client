@@ -2,6 +2,10 @@
 
 [*Deutsche Bahn (DB)*](https://en.wikipedia.org/wiki/Deutsche_Bahn) is the largest German long-distance public transport company. This profile adds *DB*-specific customizations to `hafas-client`. Consider using [`db-hafas`](https://github.com/derhuerst/db-hafas#db-hafas), to always get the customized client right away.
 
+> [!IMPORTANT]
+> The underlying [DB HAFAS API seems to be shut off permanently](https://github.com/public-transport/hafas-client/issues/331).
+> We **recommend using [`db-vendo-client`](https://github.com/public-transport/db-vendo-client)** as a replacement. It covers most of the use cases served by `hafas-client`, but [the underlying APIs seem to have a **much lower rate limit**](https://github.com/public-transport/db-vendo-client/issues/10). ⚠️
+
 ## Usage
 
 ```js

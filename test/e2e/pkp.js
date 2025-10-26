@@ -13,7 +13,7 @@ import {testJourneysStationToStation} from './lib/journeys-station-to-station.js
 import {testArrivals} from './lib/arrivals.js';
 import {testReachableFrom} from './lib/reachable-from.js';
 
-const T_MOCK = 1671260400 * 1000; // 2022-12-17T08:00:00+01:00
+const T_MOCK = 1744696800 * 1000; // 2025-04-15T08:00+02:00
 const when = createWhen(pkpProfile.timezone, pkpProfile.locale, T_MOCK);
 
 const cfg = {
@@ -75,7 +75,7 @@ const filharmonia = {
 	poi: true,
 };
 
-tap.skip('journeys – Wrocław Główny to Kraków Główny', async (t) => {
+tap.test('journeys – Wrocław Główny to Kraków Główny', async (t) => {
 	const res = await client.journeys(wrocławGł, krakówGł, {
 		results: 4,
 		departure: when,
@@ -95,7 +95,7 @@ tap.skip('journeys – Wrocław Główny to Kraków Główny', async (t) => {
 // todo: via works – with detour
 // todo: without detour
 
-tap.skip('trip details', async (t) => {
+tap.test('trip details', async (t) => {
 	const res = await client.journeys(wrocławGł, krakówGł, {
 		results: 1, departure: when,
 	});
@@ -110,20 +110,20 @@ tap.skip('trip details', async (t) => {
 	t.end();
 });
 
-tap.skip('arrivals at Kraków Główny', async (t) => {
-	const arrivals = await client.arrivals(krakówGł, {
+tap.test('arrivals at Kraków Główny', async (t) => {
+	const res = await client.arrivals(krakówGł, {
 		duration: 10, when,
 	});
 	await testArrivals({
 		test: t,
-		arrivals,
+		res,
 		id: krakówGł,
 		validate,
 	});
 	t.end();
 });
 
-tap.skip('nearby', async (t) => {
+tap.test('nearby', async (t) => {
 	const nearby = await client.nearby(dworcowa100, {distance: 500});
 
 	validate(t, nearby, 'locations', 'nearby');
@@ -134,7 +134,7 @@ tap.skip('nearby', async (t) => {
 	t.end();
 });
 
-tap.skip('radar', async (t) => {
+tap.test('radar', async (t) => {
 	const res = await client.radar({
 		north: 48.74453,
 		west: 11.42733,
@@ -148,7 +148,7 @@ tap.skip('radar', async (t) => {
 	t.end();
 });
 
-tap.skip('reachableFrom', async (t) => {
+tap.test('reachableFrom', async (t) => {
 	await testReachableFrom({
 		test: t,
 		reachableFrom: client.reachableFrom,

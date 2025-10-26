@@ -1,9 +1,6 @@
-// todo: use import assertions once they're supported by Node.js & ESLint
-// https://github.com/tc39/proposal-import-assertions
-import {createRequire} from 'module';
-const require = createRequire(import.meta.url);
-
-const baseProfile = require('./base.json');
+import {readFileSync} from 'fs';
+import {Agent} from 'https';
+import baseProfile from './base.js';
 
 const products = [{
 	id: 'stadtbahn',
@@ -49,8 +46,18 @@ const products = [{
 	default: true,
 }];
 
+// `auskunft.kvb.koeln/gate` doesn't provide the necessary CA certificate chain for Node.js to trust the certificate, so we manually augment it.
+// I have let them know on 2025-03-13, let's see when they fix it.
+const ca = readFileSync(new URL('./thawte-tls-rsa-ca-g1.crt.pem', import.meta.url).pathname);
+const root = readFileSync(new URL('./digicert-global-root-g2.crt.pem', import.meta.url).pathname);
+const caChain = ca + '\n' + root;
+const agent = new Agent({ca: caChain});
+const transformReq = (ctx, req) => ({...req, agent});
+
 const profile = {
 	...baseProfile,
+	transformReq,
+
 	locale: 'de-DE',
 	timezone: 'Europe/Berlin',
 

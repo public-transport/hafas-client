@@ -180,3 +180,34 @@ tap.test('handles recursive references properly', (t) => {
 
 	t.end();
 });
+
+tap.test('parses IFOPT ("global") IDs properly', (t) => {
+	// see also https://en.wikipedia.org/wiki/Identification_of_Fixed_Objects_in_Public_Transport
+	{
+		const foo = parse(ctx, {
+			...fooBusStop,
+			// old scheme with `ver` <= 1.46
+			gidL: [
+				'B×nope',
+				'A×de:11000:900100001',
+			],
+		});
+		t.equal(foo.id, 'foo stop');
+		t.equal(foo.ids?.ifopt, 'de:11000:900100001');
+	}
+
+	{
+		const foo = parse(ctx, {
+			...fooBusStop,
+			// new scheme with `ver` >= 1.47
+			globalIdL: [
+				{type: 'B', id: 'nope'},
+				{type: 'A', id: 'de:11000:900100001'},
+			],
+		});
+		t.equal(foo.id, 'foo stop');
+		t.equal(foo.ids?.ifopt, 'de:11000:900100001');
+	}
+
+	t.end();
+});

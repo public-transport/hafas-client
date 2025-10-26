@@ -1,5 +1,39 @@
 # Changelog
 
+## `6.3.5`
+
+- 033e1956 `reachableFrom()`: validate `opt.when` 🐛
+- 4751df34/9eea7eae [*PKP* profile](../p/bvg): fix by using a randomized `User-Agent` 🐛
+- 51bda313 [*PKP* profile](../p/bvg): set `profile.defaultLanguage` to `pl` 🐛
+- 58e657c4/04fc46b0/64d8d42a [*PKP* profile](../p/pkp) fix linting, re-enable E2E tests, update integration test fixtures ✅
+- e6bdbfb2/4dff08f8/d8658988 [*KVB* profile](../p/kvb) provide hard-coded CA certificates 🐛
+- d2b23dfb [*DB* profile](../p/db): explain that the endpoint is shut off permanently 📝
+- 66c30367 [*IVB* profile](../p/ivb) remove superfluous CA certificate
+
+[🏷 `6.3.5`](https://github.com/public-transport/hafas-client/releases/tag/6.3.5), 2025-04-10
+
+## `6.3.4`
+
+- 7f3eaa23 [*DB* profile](../p/db): explain that the endpoint is down, link to alternative [`db-vendo-client`](https://github.com/public-transport/db-vendo-client) 📝
+- 9dd6d2cb [*BVG* profile](../p/bvg): remove hard-coded normal walking speed 🐛
+- d728dd8a [*BVG* profile](../p/bvg): remove outdated Berlkönig integration
+- 8ecf87d9 [*BVG* profile](../p/bvg): remove hard-coded `OEV` filter
+- 66c30367 [*BVG* profile](../p/bvg) E2E/integration tests: update fixtures ✅
+- 8baa32b8 [*DB Busradar NRW* profile](../p/db-busradar-nrw): update URL, `ver` & `client.v`, update integration test fixtures ✅
+
+[🏷 `6.3.4`](https://github.com/public-transport/hafas-client/releases/tag/6.3.4), 2025-02-01
+
+## `6.3.3`
+
+- 75de610c [*DB* profile](../p/db): fix parsing of ticket URLs 🐛
+- dfab132e/cc69ef5d [*DB* profile](../p/db): update `ver` 🐛, update integration test fixtures ✅
+- 4be39afd/e3d1d2fb [*ZVV* profile](../p/zvv): update endpoint URL & authentication `aid` 🐛, update integration test fixtures ✅
+- 31c4f17b/e9211e81 [*ÖBB* profile](../p/oebb): update `ver` 🐛, update integration test fixtures ✅
+- 8432ff1f [*DB* profile](../p/db) E2E/integration tests: disable price/fare/ticket validation ✅
+- 29f922b7 [*DB* profile](../p/db) E2E/integration tests: disable `.realtimeDataUpdatedAt` validation ✅
+
+[🏷 `6.3.3`](https://github.com/public-transport/hafas-client/releases/tag/6.3.3), 2024-12-17
+
 ## `6.3.2`
 
 - 83772028/d001fcc1/3c8bb905 [*BVG* profile](../p/bvg): update auth details in order to fix "invalid client version" error 🐛✅ – Thanks @timvonwerne!

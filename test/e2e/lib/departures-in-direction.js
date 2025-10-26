@@ -26,7 +26,7 @@ const testDeparturesInDirection = async (cfg) => {
 			when, stopovers: true,
 		});
 		t.ok(trip.stopovers.some(st => st.stop.station && directionIds.includes(st.stop.station.id)
-		|| directionIds.includes(st.stop.id),
+			|| directionIds.includes(st.stop.id),
 		), `trip ${dep.tripId} of ${name} has no stopover at ${directionIds.join('/')}`);
 	}
 };

@@ -27,7 +27,7 @@ import {testReachableFrom} from './lib/reachable-from.js';
 import {testRemarks} from './lib/remarks.js';
 import {testLines} from './lib/lines.js';
 
-const T_MOCK = 1731394800 * 1000; // 2024-11-12T08:00:00+01:00
+const T_MOCK = 1761631200 * 1000 // 2025-10-28T08:00:00+02:00
 const when = createWhen(bvgProfile.timezone, bvgProfile.locale, T_MOCK);
 
 const {
@@ -126,47 +126,7 @@ tap.test('journeys – fails with no product', async (t) => {
 	t.end();
 });
 
-// BerlKönig for public use is suspended during COVID-19.
-tap.skip('journeys – BerlKönig', async (t) => {
-	const when = DateTime
-		.fromMillis(Date.now(), {
-			zone: 'Europe/Berlin',
-			locale: 'de-De',
-		})
-		.startOf('day')
-		.plus({days: 1, hours: 18})
-		.toISO();
-
-	const {journeys} = await client.journeys({
-		type: 'location',
-		address: '12101 Berlin-Tempelhof, Peter-Str.r-Weg 1',
-		latitude: 52.476283,
-		longitude: 13.384947,
-	}, {
-		type: 'location',
-		id: '900981505',
-		poi: true,
-		name: 'Berlin, Tempelhofer Park Eingang Oderstr.',
-		latitude: 52.476688,
-		longitude: 13.41872,
-	}, {
-		berlkoenig: true,
-		departure: when,
-	});
-
-	const withBerlkoenig = flatMap(journeys, j => j.legs)
-		.find(l => l.line && l.line.product === 'berlkoenig');
-	t.ok(withBerlkoenig, 'journey with BerlKönig not found');
-
-	t.ok(withBerlkoenig.line);
-	t.equal(withBerlkoenig.line.public, true);
-	t.equal(withBerlkoenig.line.mode, 'taxi');
-	t.equal(withBerlkoenig.line.product, 'berlkoenig');
-	t.end();
-});
-
-// todo: opt.walkingSpeed doesn't seem to work right now
-tap.skip('journeys: walkingSpeed', async (t) => {
+tap.test('journeys: walkingSpeed', async (t) => {
 	const havelchaussee = {
 		type: 'location',
 		address: 'Havelchaussee',
@@ -181,6 +141,7 @@ tap.skip('journeys: walkingSpeed', async (t) => {
 		validate,
 		from: havelchaussee,
 		to: wannsee,
+		when,
 		products: {bus: false},
 		minTimeDifference: 5 * 60 * 1000,
 	});
@@ -242,7 +203,7 @@ tap.test('trip details', async (t) => {
 tap.test('journeys – station to address', async (t) => {
 	const torfstr = {
 		type: 'location',
-		address: '13353 Berlin-Wedding, Torfstraße 17',
+		address: 'Torfstraße 17, 13353 Berlin-Wedding',
 		latitude: 52.541797,
 		longitude: 13.350042,
 	};
@@ -465,7 +426,7 @@ tap.test('remarks', async (t) => {
 	t.end();
 });
 
-tap.test('lines', async (t) => {
+tap.skip('lines', async (t) => {
 	await testLines({
 		test: t,
 		fetchLines: client.lines,

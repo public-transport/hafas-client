@@ -7,7 +7,7 @@ const ADDRESS = 'A';
 
 const leadingZeros = /^0+/;
 
-// todo: what is l.wt? is it "weight"?
+// todo: what is l.wt? – seems to be "weight"?
 // 	- `6733` for 8013074 with p/vmt
 // 	- `3933` for 8012092 with p/vmt
 // 	- `2062` for 8010168 with p/vmt
@@ -26,6 +26,7 @@ const parseLocation = (ctx, l) => {
 	if (l.crd) {
 		res.latitude = l.crd.y / 1000000;
 		res.longitude = l.crd.x / 1000000;
+		// todo: l.crd.floor
 	} else if ('X' in lid && 'Y' in lid) {
 		res.latitude = lid.Y / 1000000;
 		res.longitude = lid.X / 1000000;
@@ -95,7 +96,7 @@ const parseLocation = (ctx, l) => {
 		const locHints = (l.remarkRefs || [])
 			.filter(ref => Boolean(ref.hint) && Array.isArray(ref.tagL))
 			.filter(({tagL}) => tagL.includes('RES_LOC')
-			|| tagL.find(t => t.slice(0, 8) === 'RES_LOC_'), // e.g. `RES_LOC_H3`
+				|| tagL.find(t => t.slice(0, 8) === 'RES_LOC_'), // e.g. `RES_LOC_H3`
 			)
 			.map(ref => ref.hint);
 		const hints = [
@@ -115,6 +116,31 @@ const parseLocation = (ctx, l) => {
 				stop.ids = {};
 			}
 			stop.ids.dhid = dhid;
+		}
+
+		let ifoptId = null;
+		// The old `l.gidL?` scheme seems to be used with `ver` <= 1.46. The new `globalIdL` scheme seems to be used with `ver` >= 1.47.
+		// todo: is type `A` really always an IFOPT?
+		if (Array.isArray(l.globalIdL)) {
+			const _ifopt = l.globalIdL.find(gId => gId.type === 'A') || null;
+			if (_ifopt?.id) {
+				ifoptId = _ifopt.id;
+			}
+		} else if (Array.isArray(l.gidL)) {
+			const _ifopt = l.gidL
+				.filter(gId => gId[0] === 'A')
+				.map(gId => gId.split('×'))
+				.find(([type]) => type === 'A')
+				|| null;
+			if (_ifopt?.[1]) {
+				ifoptId = _ifopt[1];
+			}
+		}
+		if (ifoptId) {
+			if (!stop.ids) {
+				stop.ids = {};
+			}
+			stop.ids.ifopt = ifoptId;
 		}
 
 		const otherIds = hints

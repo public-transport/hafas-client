@@ -411,23 +411,25 @@ const createValidateJourneyLeg = (cfg) => {
 	return validateJourneyLeg;
 };
 
-const validateJourney = (val, j, name = 'journey') => {
-	const withFakeId = Object.assign({
-		id: 'foo', // todo: let hafas-client parse a journey ID
-	}, j);
-	defaultValidators.journey(val, withFakeId, name);
-	// todo: j.refreshToken
+const createValidateJourney = (cfg) => {
+	const validateJourney = (val, j, name = 'journey') => {
+		const withFakeId = Object.assign({
+			id: 'foo', // todo: let hafas-client parse a journey ID
+		}, j);
+		defaultValidators.journey(val, withFakeId, name);
+		// todo: j.refreshToken
 
-	if ('tickets' in j) {
-		a.ok(Array.isArray(j.tickets), name + '.tickets must be an array');
-		a.ok(j.tickets.length > 0, name + '.tickets must not be empty');
+		if (cfg.validateJourneyTickets !== false && 'tickets' in j) {
+			a.ok(Array.isArray(j.tickets), name + '.tickets must be an array');
+			a.ok(j.tickets.length > 0, name + '.tickets must not be empty');
 
-		for (let i = 0; i < j.tickets.length; i++) {
-			val.ticket(val, j.tickets[i], name + `.tickets[${i}]`);
+			for (let i = 0; i < j.tickets.length; i++) {
+				val.ticket(val, j.tickets[i], name + `.tickets[${i}]`);
+			}
 		}
-	}
+	};
+	return validateJourney;
 };
-const createValidateJourney = () => validateJourney;
 
 const validateJourneys = (val, js, name = 'journeys') => {
 	a.ok(Array.isArray(js), name + ' must be an array');
@@ -438,23 +440,31 @@ const validateJourneys = (val, js, name = 'journeys') => {
 };
 const createValidateJourneys = () => validateJourneys;
 
-const validateJourneysResult = (val, res, name = 'journeysResult') => {
-	a.ok(isObj(res), name + ' must be an object');
-	// todo: `earlierRef`, `laterRef`
-	val.journeys(val, res.journeys, name + '.journeys');
+const createValidateJourneysResult = (cfg) => {
+	const validateJourneysResult = (val, res, name = 'journeysResult') => {
+		a.ok(isObj(res), name + ' must be an object');
+		// todo: `earlierRef`, `laterRef`
+		val.journeys(val, res.journeys, name + '.journeys');
 
-	val.realtimeDataUpdatedAt(val, res.realtimeDataUpdatedAt, name + '.realtimeDataUpdatedAt');
+		if (cfg.validateJourneysRealtimeDataUpdatedAt !== false) {
+			val.realtimeDataUpdatedAt(val, res.realtimeDataUpdatedAt, name + '.realtimeDataUpdatedAt');
+		}
+	};
+	return validateJourneysResult;
 };
-const createValidateJourneysResult = () => validateJourneysResult;
 
-const validateRefreshJourneyResult = (val, res, name = 'refreshJourneyResult') => {
-	a.ok(isObj(res), name + ' must be an object');
+const createValidateRefreshJourneyResult = (cfg) => {
+	const validateRefreshJourneyResult = (val, res, name = 'refreshJourneyResult') => {
+		a.ok(isObj(res), name + ' must be an object');
 
-	val.realtimeDataUpdatedAt(val, res.realtimeDataUpdatedAt, name + '.realtimeDataUpdatedAt');
+		if (cfg.validateJourneysRealtimeDataUpdatedAt !== false) {
+			val.realtimeDataUpdatedAt(val, res.realtimeDataUpdatedAt, name + '.realtimeDataUpdatedAt');
+		}
 
-	val.journey(val, res.journey, name + '.journey');
+		val.journey(val, res.journey, name + '.journey');
+	};
+	return validateRefreshJourneyResult;
 };
-const createValidateRefreshJourneyResult = () => validateRefreshJourneyResult;
 
 const validateTrip = (val, trip, name = 'trip') => {
 	const withFakeTripId = Object.assign({

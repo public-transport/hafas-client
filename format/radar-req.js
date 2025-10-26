@@ -15,6 +15,15 @@ const formatRadarReq = (ctx, north, west, south, east) => {
 			ageOfReport: true, // todo: what is this?
 			jnyFltrL: [
 				profile.formatProductsFilter(ctx, opt.products || {}),
+				...opt.tripId
+					? [
+						{
+							mode: 'INC',
+							type: 'JID',
+							value: opt.tripId,
+						},
+					]
+					: [],
 			],
 			// todo: what is this? what about realtime?
 			// - CALC

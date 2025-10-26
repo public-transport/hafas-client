@@ -7,6 +7,8 @@ const {decode} = _googlePolyline;
 // todo: what is p.type?
 // todo: what is p.crdEncS?
 // todo: what is p.crdEncF?
+// todo: what is p.crdEncDist? likely each point's distance to the previous point
+// todo: what is p.crdEncZ? altitude?
 const parsePolyline = (ctx, p) => { // p = raw polyline
 	const points = decode(p.crdEncYX);
 	if (points.length === 0) {

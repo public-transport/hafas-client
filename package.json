@@ -1,7 +1,7 @@
 {
 	"name": "hafas-client",
 	"description": "Client for HAFAS public transport APIs.",
-	"version": "6.3.2",
+	"version": "6.3.5",
 	"type": "module",
 	"main": "index.js",
 	"files": [
@@ -27,9 +27,10 @@
 		"roehrt",
 		"Sören Wegener (https://soerface.de/)",
 		"Paul Sutter <paul.sutter@moia.io>",
-		"1Maxnet1"
+		"1Maxnet1",
+		"Tim von Werne <tim@vonwernet.de>"
 	],
-	"homepage": "https://github.com/public-transport/hafas-client/tree/6.3.2",
+	"homepage": "https://github.com/public-transport/hafas-client/tree/6.3.4",
 	"repository": "public-transport/hafas-client",
 	"bugs": "https://github.com/public-transport/hafas-client/issues",
 	"funding": {
@@ -69,14 +70,16 @@
 		"@pollyjs/adapter-node-http": "^6.0.5",
 		"@pollyjs/core": "^6.0.5",
 		"@pollyjs/persister-fs": "^6.0.5",
-		"@stylistic/eslint-plugin": "^1.5.1",
-		"eslint": "^8.56.0",
+		"@stylistic/eslint-plugin": "^2.11.0",
+		"eslint": "^9.16.0",
+		"globals": "^15.13.0",
 		"is-coordinates": "^2.0.2",
 		"is-roughly-equal": "^0.1.0",
 		"tap": "^19.2.5",
 		"validate-fptf": "^3.0.0"
 	},
 	"scripts": {
+		"pull-profile-base-data": "./tools/pull-profile-base-data.sh",
 		"lint": "eslint .",
 		"lint:fix": "eslint . --fix",
 		"test-unit": "tap test/lib/*.js test/*.js test/format/*.js test/parse/*.js",
