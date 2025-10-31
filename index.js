@@ -1,12 +1,14 @@
 import isObj from 'lodash/isObject.js';
 import sortBy from 'lodash/sortBy.js';
 import omit from 'lodash/omit.js';
+import {DateTime} from 'luxon';
 
 import {defaultProfile} from './lib/default-profile.js';
 import {validateProfile} from './lib/validate-profile.js';
 import {INVALID_REQUEST} from './lib/errors.js';
 import {sliceLeg} from './lib/slice-leg.js';
 import {HafasError} from './lib/errors.js';
+import {profile as dbProfile} from './p/db/index.js';
 
 // background info: https://github.com/public-transport/hafas-client/issues/286
 const FORBIDDEN_USER_AGENTS = [
@@ -263,6 +265,87 @@ const createClient = (profile, userAgent, opt = {}) => {
 			earlierRef: res.outCtxScrB || null,
 			laterRef: res.outCtxScrF || null,
 			journeys,
+			realtimeDataUpdatedAt: res.planrtTS && res.planrtTS !== '0'
+				? parseInt(res.planrtTS)
+				: null,
+		};
+	};
+
+	const bestPrices = async (from, to, opt = {}) => {
+		from = profile.formatLocation(profile, from, 'from');
+		to = profile.formatLocation(profile, to, 'to');
+
+		opt = Object.assign({
+			via: null, // let journeys pass this station?
+			transfers: -1, // maximum nr of transfers
+			transferTime: 0, // minimum time for a single transfer in minutes
+			bike: false, // only bike-friendly journeys
+			tickets: false, // return tickets?
+			polylines: false, // return leg shapes?
+			subStops: false, // parse & expose sub-stops of stations?
+			entrances: false, // parse & expose entrances of stops/stations?
+			remarks: true, // parse & expose hints & warnings?
+			scheduledDays: false, // parse & expose dates each journey is valid on?
+		}, opt);
+		if (opt.via) {
+			opt.via = profile.formatLocation(profile, opt.via, 'opt.via');
+		}
+
+		let when = new Date();
+		if (opt.departure !== undefined && opt.departure !== null) {
+			when = new Date(opt.departure);
+			if (Number.isNaN(Number(when))) {
+				throw new TypeError('opt.departure is invalid');
+			}
+			const now = new Date();
+			let today = DateTime.fromObject({
+				year: now.year, month: now.month, day: now.day,
+				hour: 0, minute: 0, second: 0, millisecond: 0,
+			}, {
+				zone: profile.timezone,
+				locale: profile.locale,
+			});
+			if (today > when) {
+				throw new TypeError('opt.departure date older than current date.');
+			}
+		}
+
+		const filters = [
+			profile.formatProductsFilter({profile}, opt.products || {}),
+		];
+
+		const query = {
+			maxChg: opt.transfers,
+			depLocL: [from],
+			viaLocL: opt.via ? [{loc: opt.via}] : [],
+			arrLocL: [to],
+			jnyFltrL: filters,
+			getTariff: Boolean(opt.tickets),
+
+			getPolyline: Boolean(opt.polylines),
+		};
+		query.outDate = profile.formatDate(profile, when);
+
+		if (profile.endpoint !== dbProfile.endpoint) {
+			throw new Error('bestPrices() only works with the DB profile.');
+		}
+
+		const {res, common} = await profile.request({profile, opt}, userAgent, {
+			cfg: {polyEnc: 'GPA'},
+			meth: 'BestPriceSearch',
+			req: profile.transformJourneysQuery({profile, opt}, query),
+		});
+		if (!Array.isArray(res.outConL)) {
+			return null;
+		}
+		// todo: outConGrpL
+
+		const ctx = {profile, opt, common, res};
+		const journeys = res.outConL.map(j => profile.parseJourney(ctx, j));
+		const bestPrices = res.outDaySegL.map(j => profile.parseBestPrice(ctx, j, journeys));
+
+		return {
+			bestPrices,
 			realtimeDataUpdatedAt: res.planrtTS && res.planrtTS !== '0'
 				? parseInt(res.planrtTS)
 				: null,
@@ -893,6 +976,9 @@ const createClient = (profile, userAgent, opt = {}) => {
 	}
 	if (profile.lines !== false) {
 		client.lines = lines;
+	}
+	if (profile.bestPrices !== false) {
+		client.bestPrices = bestPrices;
 	}
 	Object.defineProperty(client, 'profile', {value: profile});
 	return client;
