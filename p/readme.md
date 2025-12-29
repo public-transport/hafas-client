@@ -8,9 +8,9 @@ There are built-in profiles for these public transportation networks:
 
 HAFAS endpoint | wrapper library | docs | example code | profile name
 -|-|-|-|-
-[Deutsche Bahn (DB)](https://en.wikipedia.org/wiki/Deutsche_Bahn) | [`db-hafas`](https://github.com/public-transport/db-hafas) | [docs](db/readme.md) | [example](db/example.js) | [`db`](db)
+[Deutsche Bahn (DB)](https://en.wikipedia.org/wiki/Deutsche_Bahn) | [`db-hafas`](https://github.com/public-transport/db-hafas) | [docs](db/readme.md) | [example](db/example.js) | [`db`](db) (endpoint shut down, see [#331](https://github.com/public-transport/hafas-client/issues/331))
 [Polskie Koleje Państwowe (PKP)](https://en.wikipedia.org/wiki/Polish_State_Railways) | [`pkp-hafas`](https://github.com/juliuste/pkp-hafas) | [docs](pkp/readme.md) | [example](pkp/example.js) | [`pkp`](pkp)
-[Belgian National Railways (SNCB/NMBS)](https://en.wikipedia.org/wiki/National_Railway_Company_of_Belgium) | - | [docs](sncb/readme.md) | [example](sncb/example.js) | [`sncb`](sncb) (currently broken)
+[Belgian National Railways (SNCB/NMBS)](https://en.wikipedia.org/wiki/National_Railway_Company_of_Belgium) | - | [docs](sncb/readme.md) | [example](sncb/example.js) | [`sncb`](sncb) (endpoint shut down, see [#284](https://github.com/public-transport/hafas-client/issues/284))
 [*Iarnród Éireann* (Irish Rail)](https://en.wikipedia.org/wiki/Iarnród_Éireann) | - | [docs](irish-rail/readme.md) | [example](irish-rail/example.js) | [`irish-rail`](irish-rail)
 [Berlin & Brandenburg public transport (VBB)](https://en.wikipedia.org/wiki/Verkehrsverbund_Berlin-Brandenburg) | [`vbb-hafas`](https://github.com/public-transport/vbb-hafas) | [docs](vbb/readme.md) | [example](vbb/example.js) | [`vbb`](vbb)
 [Berlin public transport (BVG)](https://en.wikipedia.org/wiki/Berliner_Verkehrsbetriebe) | [`bvg-hafas`](https://github.com/public-transport/bvg-hafas) | [docs](bvg/readme.md) | [example](bvg/example.js) | [`bvg`](bvg)
