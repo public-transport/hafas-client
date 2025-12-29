@@ -1,6 +1,13 @@
 # SNCB profile for `hafas-client`
 
-*Note:* **This profile is currently broken** because [SNCB has switched the HAFAS API style](https://github.com/public-transport/hafas-client/issues/284) and we haven't migrated to the new API.
+> [!IMPORTANT]
+> The underlying [SNCB HAFAS API has been permanently shut down](https://github.com/public-transport/hafas-client/issues/284).
+> The API responds with: "This feature is no longer available. To plan your trip, download the new SNCB app."
+
+> [!TIP]
+> **Alternative:** For Belgian railway data, consider using the [iRail API](https://api.irail.be/) instead.
+> - Documentation: https://docs.irail.be/
+> - GitHub: https://github.com/iRail
 
 [*Société nationale des chemins de fer belges (SNCB)*/*Nationale Maatschappij der Belgische Spoorwegen (NMBS)*](https://en.wikipedia.org/wiki/National_Railway_Company_of_Belgium) is the major public transport provider of [Belgium](https://en.wikipedia.org/wiki/Belgium). This profile adds *SNCB*-specific customizations to `hafas-client`.
 
