@@ -384,16 +384,28 @@ tap.test('stop', async (t) => {
 });
 
 tap.test('radar', async (t) => {
+	// BVG's radar API doesn't return movements for timestamps too far in the
+	// future. For E2E tests, use a near-future timestamp (1 hour). For integration
+	// tests, use the standard `when` to match existing fixtures.
+	const radarWhen = process.env.VCR_MODE && !process.env.VCR_OFF
+		? when
+		: new Date(Date.now() + 60 * 60 * 1000);
+	const radarValidators = createVbbBvgValidators({when: radarWhen});
+	const validateRadar = createValidate(radarValidators.cfg, {
+		movement: radarValidators.validateMovement,
+	});
+
 	const res = await client.radar({
 		north: 52.52411,
 		west: 13.41002,
 		south: 52.51942,
 		east: 13.41709,
 	}, {
-		duration: 5 * 60, when,
+		duration: 5 * 60,
+		when: radarWhen,
 	});
 
-	validate(t, res, 'radarResult', 'res');
+	validateRadar(t, res, 'radarResult', 'res');
 	t.end();
 });
 
