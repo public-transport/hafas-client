@@ -438,7 +438,7 @@ tap.test('remarks', async (t) => {
 	t.end();
 });
 
-tap.skip('lines', async (t) => {
+tap.test('lines', async (t) => {
 	await testLines({
 		test: t,
 		fetchLines: client.lines,
