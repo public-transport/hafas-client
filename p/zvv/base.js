@@ -9,7 +9,7 @@ export default {
 		v: '6000400',
 		name: 'zvvPROD-STORE',
 	},
-	endpoint: 'https://online.fahrplan.zvv.ch/gate',
+	endpoint: 'https://zvv.hafas.cloud/gate',
 	ext: 'ZVV.2',
 	ver: '1.42',
 	defaultLanguage: 'de',
