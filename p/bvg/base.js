@@ -9,7 +9,7 @@ export default {
 		v: 10002,
 		name: 'webapp',
 	},
-	endpoint: 'https://bvg-apps-ext.hafas.de/bin/mgate.exe',
+	endpoint: 'https://bvg.hafas.cloud/apps/gate',
 	ext: 'BVG.1',
 	ver: '1.72',
 	defaultLanguage: 'de',
