@@ -27,7 +27,7 @@ import {testReachableFrom} from './lib/reachable-from.js';
 import {testRemarks} from './lib/remarks.js';
 import {testLines} from './lib/lines.js';
 
-const T_MOCK = 1761631200 * 1000 // 2025-10-28T08:00:00+02:00
+const T_MOCK = 1787472202138 // 2026-08-23T10:03:22+02:00
 const when = createWhen(bvgProfile.timezone, bvgProfile.locale, T_MOCK);
 
 const {
@@ -203,7 +203,7 @@ tap.test('trip details', async (t) => {
 tap.test('journeys – station to address', async (t) => {
 	const torfstr = {
 		type: 'location',
-		address: 'Torfstraße 17, 13353 Berlin-Wedding',
+		address: '13353 Berlin-Wedding, Torfstraße 17',
 		latitude: 52.541797,
 		longitude: 13.350042,
 	};
@@ -385,10 +385,11 @@ tap.test('stop', async (t) => {
 
 tap.test('radar', async (t) => {
 	// BVG's radar API doesn't return movements for timestamps too far in the
-	// future. For E2E tests, use a near-future timestamp (1 hour). For integration
-	// tests, use the standard `when` to match existing fixtures.
+	// future, so `when` (next Monday) doesn't work here. Use a near-future
+	// timestamp (1 hour) instead, fixed relative to `T_MOCK` for integration
+	// tests so that it matches the recorded fixtures.
 	const radarWhen = process.env.VCR_MODE && !process.env.VCR_OFF
-		? when
+		? new Date(T_MOCK + 60 * 60 * 1000)
 		: new Date(Date.now() + 60 * 60 * 1000);
 	const radarValidators = createVbbBvgValidators({when: radarWhen});
 	const validateRadar = createValidate(radarValidators.cfg, {
