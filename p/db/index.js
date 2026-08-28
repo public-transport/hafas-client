@@ -668,6 +668,7 @@ const profile = {
 
 	generateUnreliableTicketUrls: false,
 	refreshJourneyUseOutReconL: true,
+	bestPrices: true,
 	trip: true,
 	journeysFromTrip: true,
 	radar: true,
