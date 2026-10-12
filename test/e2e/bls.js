@@ -1,3 +1,5 @@
+// bls api endpoint seems to be dead or at least misconfigured so this is disabled pending further testing
+
 /* import tap from 'tap';
 
 import {createWhen} from './lib/util.js';
