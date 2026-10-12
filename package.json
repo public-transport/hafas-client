@@ -75,7 +75,7 @@
 		"globals": "^15.13.0",
 		"is-coordinates": "^2.0.2",
 		"is-roughly-equal": "^0.1.0",
-		"tap": "^19.2.5",
+		"tap": "^21.8.0",
 		"validate-fptf": "^3.0.0"
 	},
 	"scripts": {

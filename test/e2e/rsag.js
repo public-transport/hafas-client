@@ -29,10 +29,10 @@ const client = createClient(rsagProfile, 'public-transport/hafas-client:test');
 
 const sternwarte = '704956';
 const sternwarte2 = '708539';
-const weißesKreuz = '708573';
+const weißesKreuz = '9479762';
 
 tap.test('journeys – Platz der Jugend to Weißes Kreuz', async (t) => {
-	const res = await client.journeys(sternwarte, weißesKreuz, {
+	const res = await client.journeys(sternwarte2, weißesKreuz, {
 		results: 4,
 		departure: when,
 		stopovers: true,
