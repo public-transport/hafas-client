@@ -251,7 +251,7 @@ tap.test('nearby', async (t) => {
 });
 
 tap.test('locations named "freibad"', async (t) => {
-	const freibadIngolstadt = '980000591';
+	const freibadAltmannstein = '802401';
 	const locations = await client.locations('freibad', {
 		results: 5,
 	});
@@ -259,10 +259,12 @@ tap.test('locations named "freibad"', async (t) => {
 	validate(t, locations, 'locations', 'locations');
 	t.ok(locations.length <= 10);
 
+	console.error(locations);
+
 	t.ok(locations.find(s => s.type === 'stop' || s.type === 'station'));
 	t.ok(locations.find(s => s.id && s.name)); // POIs
 	t.ok(locations.some((l) => {
-		return l.station && l.station.id === freibadIngolstadt || l.id === freibadIngolstadt;
+		return l.station && l.station.id === freibadAltmannstein || l.id === freibadAltmannstein;
 	}));
 
 	t.end();
